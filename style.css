@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #000;
+  background: #fff;
+}
+
+.navbar {
+  height: 225px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 32px 56px 0 32px;
+  background: #fff;
+}
+
+.logo {
+  font-family: 'Great Vibes', cursive;
+  font-size: 43px;
+  color: #000;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+  padding-top: 12px;
+}
+
+nav a {
+  color: #000;
+  text-decoration: none;
+  font-size: 23px;
+  font-weight: 400;
+}
+
+nav a.active {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.page-title {
+  height: 162px;
+  background: #a9bad4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-title h1 {
+  margin: 0;
+  font-size: 64px;
+  font-weight: 400;
+}
+
+.content {
+  max-width: 1520px;
+  margin: 135px auto 0;
+  padding: 0 135px;
+}
+
+.service h2 {
+  font-size: 33px;
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+
+.service p {
+  font-size: 25px;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.service a {
+  color: #d88cab;
+  font-style: italic;
+  text-decoration: none;
+}
