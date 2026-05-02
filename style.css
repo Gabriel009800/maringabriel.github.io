@@ -1,83 +1,703 @@
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  color: #000;
+  color: #222;
   background: #fff;
 }
 
-.navbar {
-  height: 225px;
+/* MENIU */
+.menu {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  padding: 32px 56px 0 32px;
-  background: #fff;
-}
-
-.logo {
-  font-family: 'Great Vibes', cursive;
-  font-size: 43px;
-  color: #000;
-}
-
-nav {
-  display: flex;
-  gap: 20px;
-  padding-top: 12px;
-}
-
-nav a {
-  color: #000;
-  text-decoration: none;
-  font-size: 23px;
-  font-weight: 400;
-}
-
-nav a.active {
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-.page-title {
-  height: 162px;
-  background: #a9bad4;
-  display: flex;
-  align-items: center;
   justify-content: center;
+  gap: 30px;
+  padding: 22px 20px;
 }
 
-.page-title h1 {
-  margin: 0;
-  font-size: 64px;
-  font-weight: 400;
-}
-
-.content {
-  max-width: 1520px;
-  margin: 135px auto 0;
-  padding: 0 135px;
-}
-
-.service h2 {
-  font-size: 33px;
-  margin: 0 0 8px;
+.menu a {
+  text-decoration: none;
+  color: #111;
   font-weight: 600;
 }
 
+/* HERO ACASĂ */
+.hero {
+  max-width: 900px;
+  margin: 60px auto 70px;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 42px;
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+
+.hero p {
+  max-width: 760px;
+  margin: 0 auto;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* SERVICII ACASĂ */
+.services {
+  background: #a9bad4;
+  color: white;
+  text-align: center;
+  padding: 45px 24px 55px;
+}
+
+.services h2 {
+  font-size: 32px;
+  margin-bottom: 35px;
+}
+
+.services-grid {
+  max-width: 850px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+}
+
+.service {
+  padding: 10px 20px;
+}
+
+.service h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
 .service p {
-  font-size: 25px;
-  line-height: 1.35;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* DESPRE MINE ACASĂ */
+.about-preview {
+  max-width: 850px;
+  margin: 60px auto 70px;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.about-preview h2 {
+  font-size: 32px;
+  margin-bottom: 25px;
+}
+
+.about-preview p {
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+/* PAGINA PSIHOLOGIE */
+.page-hero {
+  max-width: 850px;
+  margin: 55px auto 45px;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.page-hero h1 {
+  font-size: 42px;
+  margin-bottom: 12px;
+}
+
+.hero-subtitle {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 18px;
+  background: #a9bad4;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 25px;
+  font-weight: 500;
+}
+
+.psychology-services {
+  max-width: 900px;
+  margin: 0 auto 60px;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.psychology-card {
+  background: #f7f7f2;
+  padding: 28px;
+  border-radius: 14px;
+}
+
+.psychology-card h2 {
+  font-size: 21px;
+  margin-top: 0;
+}
+
+.psychology-card p {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* PROCES EVALUARE */
+.process {
+  background: #a9bad4;
+  color: white;
+  text-align: center;
+  padding: 50px 24px;
+}
+
+.process h2 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.process-subtitle {
+  margin-bottom: 35px;
+}
+
+.process-grid {
+  max-width: 950px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.process-step {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 24px 18px;
+  border-radius: 14px;
+}
+
+.process-step span {
+  display: inline-flex;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: white;
+  color: #3b001c;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.process-step h3 {
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.process-step p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* BUTON PROGRAMARE */
+.appointment-box {
+  width: 100%;
+  padding: 35px 24px 0;
+  text-align: center;
+  background: #fff;
+}
+
+.btn-cta {
+  display: inline-block;
+  padding: 16px 34px;
+  background: #005247;
+  color: white;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+
+  margin-bottom: 60px; /* distanță față de footer */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.btn-cta:hover {
+  background: #003d36;
+}
+
+/* PAGINA PROGRAMARE */
+.form-page {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.form-page h1 {
+  margin-bottom: 35px;
+}
+
+.appointment-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 🔥 doar 2 coloane */
+  gap: 24px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.appointment-grid div {
+  border: 1px solid #ddd;
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.appointment-grid h3 {
+  margin-top: 0;
+  color: #3b001c;
+}
+
+.appointment-grid p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* FOOTER */
+.footer {
+  background: #3b001c;
+  color: white;
+
+  width: 100vw;        /* 🔥 ocupă tot ecranul */
+  margin-left: calc(-50vw + 50%); /* 🔥 rupe containerul */
+
+  padding: 40px 0 20px;
+}
+
+.footer-top {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer-left h2 {
+  margin: 0 0 10px;
+}
+
+.footer-left p {
+  margin: 5px 0;
+}
+
+.footer-right {
+  text-align: right;
+}
+
+.footer-right p {
+  margin: 6px 0;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .hero {
+    margin: 45px auto 55px;
+  }
+
+  .hero h1,
+  .page-hero h1 {
+    font-size: 30px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .services-grid,
+  .psychology-services,
+  .process-grid,
+  .appointment-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .services h2,
+  .about-preview h2,
+  .process h2 {
+    font-size: 27px;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-right {
+    text-align: center;
+  }
+}
+
+
+.faq-intro {
+  max-width: 900px;
+  margin: 0 auto 55px;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.faq-card {
+  background: #f7f7f2;
+  padding: 28px;
+  border-radius: 14px;
+}
+
+.faq-card h2 {
+  font-size: 20px;
+  margin-top: 0;
+}
+
+.faq-card p {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.faq-columns {
+  max-width: 1100px;
+  margin: 0 auto 70px;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.faq-section {
+  background: #a9bad4;
+  color: white;
+  padding: 32px;
+  border-radius: 18px;
+}
+
+.faq-section h2 {
+  font-size: 26px;
+  margin-top: 0;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.faq-item {
+  background: rgba(255, 255, 255, 0.16);
+  padding: 20px;
+  border-radius: 14px;
+  margin-bottom: 18px;
+}
+
+.faq-item h3 {
+  font-size: 17px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.faq-item p {
+  font-size: 14px;
+  line-height: 1.6;
   margin: 0;
 }
 
-.service a {
-  color: #d88cab;
-  font-style: italic;
+@media (max-width: 768px) {
+  .faq-intro,
+  .faq-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+
+.faq-intro {
+  max-width: 900px;
+  margin: 0 auto 55px;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.faq-card {
+  background: #f7f7f2;
+  padding: 28px;
+  border-radius: 14px;
+}
+
+.faq-card h2 {
+  font-size: 20px;
+  margin-top: 0;
+}
+
+.faq-card p {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.faq-columns {
+  max-width: 1100px;
+  margin: 0 auto 70px;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.faq-section {
+  background: #a9bad4;
+  color: white;
+  padding: 32px;
+  border-radius: 18px;
+}
+
+.faq-section h2 {
+  font-size: 26px;
+  margin-top: 0;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.faq-item {
+  background: rgba(255, 255, 255, 0.16);
+  padding: 20px;
+  border-radius: 14px;
+  margin-bottom: 18px;
+}
+
+.faq-item details {
+  cursor: pointer;
+}
+
+.faq-item summary {
+  font-weight: 600;
+  font-size: 16px;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  float: right;
+  font-size: 18px;
+}
+
+.faq-item details[open] summary::after {
+  content: "–";
+}
+
+.faq-item p {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .faq-intro,
+  .faq-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.contact-page {
+  max-width: 1000px;
+  margin: 0 auto 80px;
+  padding: 0 24px;
+}
+
+.contact-main-card {
+  background: #3b001c;
+  color: white;
+  text-align: center;
+  padding: 45px 24px;
+  border-radius: 22px;
+  margin-bottom: 32px;
+}
+
+.contact-main-card h2 {
+  font-size: 34px;
+  margin: 0 0 10px;
+}
+
+.contact-main-card p {
+  margin: 6px 0;
+  font-size: 16px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.contact-card {
+  background: #f7f7f2;
+  border-radius: 18px;
+  padding: 28px;
+  text-align: center;
+  border: 1px solid #e5e5df;
+}
+
+.contact-card h3 {
+  margin-top: 0;
+  color: #3b001c;
+  font-size: 20px;
+}
+
+.contact-card a {
+  color: #005247;
+  font-weight: 600;
   text-decoration: none;
+  word-break: break-word;
+}
+
+.contact-card a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-main-card h2 {
+    font-size: 28px;
+  }
+}
+
+
+.footer a {
+  text-decoration: none;   /* 🔥 fără subliniere */
+  color: #fff;
+}
+
+.footer a:hover {
+  opacity: 0.8;           /* mic efect la hover */
+}
+
+
+
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 22px;   /* ajustezi până încape */
+    white-space: nowrap;  /* 🔥 forțează un singur rând */
+  }
+}
+
+
+
+
+
+
+
+
+
+
+.appointment-card {
+  background: #f7f7f2;
+  padding: 24px;
+  border-radius: 14px;
+  border: 1px solid #ddd;
+}
+
+.appointment-card h3 {
+  margin-top: 0;
+  color: #3b001c;
+}
+
+.appointment-card.important {
+  background: #fff4f4;
+  border-left: 4px solid #b00020;
+}
+
+/* CONTACT BOX */
+.contact-box {
+  margin-top: 70px;
+  text-align: center;
+}
+
+.contact-box h2 {
+  margin-bottom: 30px;
+  font-size: 28px;
+}
+
+/* GRID MINI */
+.contact-grid-mini {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.mini-card {
+  background: #3b001c;
+  color: white;
+  padding: 22px;
+  border-radius: 14px;
+}
+
+.mini-card h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.mini-card a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.mini-card a:hover {
+  opacity: 0.8;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .contact-grid-mini {
+    grid-template-columns: 1fr 1fr;
+  }
 }
