@@ -32,7 +32,7 @@ body {
 /* INTRO ACASĂ */
 .intro {
   text-align: center;
-  padding: 70px 20px 70px;
+  padding: 70px 20px;
   max-width: 950px;
   margin: 0 auto;
 }
@@ -80,7 +80,7 @@ body {
   color: #555;
 }
 
-/* HERO VECHI */
+/* HERO */
 .hero {
   max-width: 900px;
   margin: 60px auto 70px;
@@ -407,9 +407,9 @@ body {
   line-height: 1.6;
 }
 
-/* CONTACT */
+/* CONTACT PAGINĂ CONTACT */
 .contact-page {
-  max-width: 1000px;
+  max-width: 650px;
   margin: 0 auto 80px;
   padding: 0 24px;
 }
@@ -420,7 +420,7 @@ body {
   text-align: center;
   padding: 45px 24px;
   border-radius: 22px;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .contact-main-card h2 {
@@ -434,37 +434,41 @@ body {
 }
 
 .contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .contact-card {
-  background: #f7f7f2;
+  background: #3b001c;
+  color: white;
   border-radius: 18px;
   padding: 28px;
   text-align: center;
-  border: 1px solid #e5e5df;
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .contact-card h3 {
-  margin-top: 0;
-  color: #3b001c;
+  margin: 0 0 12px;
+  color: white;
   font-size: 20px;
 }
 
 .contact-card a {
-  color: #005247;
+  color: white;
   font-weight: 600;
   text-decoration: none;
   word-break: break-word;
 }
 
 .contact-card a:hover {
-  text-decoration: underline;
+  opacity: 0.8;
 }
 
-/* CONTACT MINI */
+/* CONTACT DIN PROGRAMARE - IMPORTANT */
 .contact-box {
   margin-top: 70px;
   text-align: center;
@@ -476,27 +480,35 @@ body {
 }
 
 .contact-grid-mini {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: 20px;
+  max-width: 520px;
+  margin: 0 auto;
 }
 
 .mini-card {
   background: #3b001c;
   color: white;
-  padding: 22px;
-  border-radius: 14px;
+  padding: 28px;
+  border-radius: 18px;
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 
 .mini-card h4 {
-  margin-top: 0;
-  margin-bottom: 10px;
+  margin: 0 0 12px;
+  font-size: 20px;
 }
 
 .mini-card a {
   color: white;
   text-decoration: none;
   font-weight: 600;
+  word-break: break-word;
 }
 
 .mini-card a:hover {
@@ -551,24 +563,21 @@ body {
 
 /* MOBILE */
 @media (max-width: 768px) {
-
   .menu {
-    gap: 14px;           /* mai compact */
-    padding: 14px 10px;  /* mai aproape de margini */
-    flex-wrap: nowrap;   /* pe un singur rând */
-    overflow-x: auto;    /* dacă nu încape, se poate derula */
+    gap: 12px;
+    padding: 14px 10px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .menu::-webkit-scrollbar {
+    display: none;
   }
 
   .menu a {
-    font-size: 14px;     /* 🔥 mai mic */
-    white-space: nowrap; /* nu rupe cuvintele */
+    font-size: 13px;
+    white-space: nowrap;
   }
-
-}
-
-
-
-
 
   .intro {
     padding: 50px 20px 60px;
@@ -609,13 +618,8 @@ body {
   .process-grid,
   .appointment-grid,
   .faq-intro,
-  .faq-columns,
-  .contact-grid {
+  .faq-columns {
     grid-template-columns: 1fr;
-  }
-
-  .contact-grid-mini {
-    grid-template-columns: 1fr 1fr;
   }
 
   .services h2,
@@ -627,6 +631,20 @@ body {
   .home .services,
   .process {
     margin: 55px 0;
+  }
+
+  .contact-page {
+    max-width: 100%;
+  }
+
+  .contact-main-card h2 {
+    font-size: 28px;
+  }
+
+  .contact-card,
+  .mini-card {
+    min-height: 115px;
+    padding: 24px;
   }
 
   .footer-top {
