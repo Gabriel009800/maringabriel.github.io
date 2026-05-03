@@ -711,3 +711,25 @@ body {
 .service h3 a:hover {
   opacity: 0.7;             /* efect discret la hover */
 }
+
+
+
+.home-page .navbar {
+  position: absolute;
+  top: 25px;
+  right: 60px;
+  z-index: 10;
+  display: flex;
+  gap: 38px;
+}
+
+.home-page .navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.home-page .navbar a:hover {
+  opacity: 0.8;
+}
