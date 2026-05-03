@@ -29,7 +29,58 @@ body {
   font-weight: 600;
 }
 
-/* HERO ACASĂ */
+/* INTRO ACASĂ */
+.intro {
+  text-align: center;
+  padding: 70px 20px 70px;
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 38px;
+}
+
+.profile-photo {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  box-shadow: 0 14px 45px rgba(0, 0, 0, 0.22);
+}
+
+.profile-card h2 {
+  margin: 22px 0 5px;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.profile-card p {
+  margin: 0;
+  font-size: 17px;
+  color: #666;
+}
+
+.intro h1 {
+  font-size: 48px;
+  line-height: 1.2;
+  margin: 28px 0 16px;
+}
+
+.intro-text {
+  max-width: 820px;
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* HERO VECHI */
 .hero {
   max-width: 900px;
   margin: 60px auto 70px;
@@ -56,7 +107,12 @@ body {
   background: #a9bad4;
   color: white;
   text-align: center;
-  padding: 45px 24px 55px;
+  padding: 55px 24px;
+  margin: 0;
+}
+
+.home .services {
+  margin: 70px 0;
 }
 
 .services h2 {
@@ -89,7 +145,7 @@ body {
 /* DESPRE MINE ACASĂ */
 .about-preview {
   max-width: 850px;
-  margin: 60px auto 70px;
+  margin: 70px auto;
   padding: 0 24px;
   text-align: center;
 }
@@ -105,7 +161,7 @@ body {
   margin-bottom: 18px;
 }
 
-/* PAGINA PSIHOLOGIE */
+/* PAGINI INTERIOARE */
 .page-hero {
   max-width: 850px;
   margin: 55px auto 45px;
@@ -129,6 +185,7 @@ body {
   font-weight: 500;
 }
 
+/* PSIHOLOGIE */
 .psychology-services {
   max-width: 900px;
   margin: 0 auto 60px;
@@ -138,7 +195,9 @@ body {
   gap: 28px;
 }
 
-.psychology-card {
+.psychology-card,
+.faq-card,
+.appointment-card {
   background: #f7f7f2;
   padding: 28px;
   border-radius: 14px;
@@ -149,17 +208,20 @@ body {
   margin-top: 0;
 }
 
-.psychology-card p {
+.psychology-card p,
+.faq-card p,
+.appointment-grid p {
   font-size: 15px;
   line-height: 1.7;
 }
 
-/* PROCES EVALUARE */
+/* PROCES */
 .process {
   background: #a9bad4;
   color: white;
   text-align: center;
   padding: 50px 24px;
+  margin: 70px 0;
 }
 
 .process h2 {
@@ -211,7 +273,7 @@ body {
 /* BUTON PROGRAMARE */
 .appointment-box {
   width: 100%;
-  padding: 35px 24px 0;
+  padding: 0 24px;
   text-align: center;
   background: #fff;
 }
@@ -226,31 +288,14 @@ body {
   font-weight: 600;
   font-size: 16px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-
-  margin-bottom: 60px; /* distanță față de footer */
+  margin-bottom: 60px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .btn-cta:hover {
   background: #003d36;
 }
 
-/* PAGINA PROGRAMARE */
+/* PROGRAMARE */
 .form-page {
   max-width: 900px;
   margin: 60px auto;
@@ -264,7 +309,7 @@ body {
 
 .appointment-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* 🔥 doar 2 coloane */
+  grid-template-columns: 1fr 1fr;
   gap: 24px;
   max-width: 800px;
   margin: auto;
@@ -276,102 +321,18 @@ body {
   padding: 24px;
 }
 
-.appointment-grid h3 {
+.appointment-grid h3,
+.appointment-card h3 {
   margin-top: 0;
   color: #3b001c;
 }
 
-.appointment-grid p {
-  font-size: 14px;
-  line-height: 1.6;
+.appointment-card.important {
+  background: #fff4f4;
+  border-left: 4px solid #b00020;
 }
 
-/* FOOTER */
-.footer {
-  background: #3b001c;
-  color: white;
-
-  width: 100vw;        /* 🔥 ocupă tot ecranul */
-  margin-left: calc(-50vw + 50%); /* 🔥 rupe containerul */
-
-  padding: 40px 0 20px;
-}
-
-.footer-top {
-  max-width: 1100px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  gap: 40px;
-}
-
-.footer-left h2 {
-  margin: 0 0 10px;
-}
-
-.footer-left p {
-  margin: 5px 0;
-}
-
-.footer-right {
-  text-align: right;
-}
-
-.footer-right p {
-  margin: 6px 0;
-}
-
-.footer a {
-  color: #fff;
-  text-decoration: underline;
-}
-
-.footer-bottom {
-  margin-top: 30px;
-  text-align: center;
-  font-size: 13px;
-  opacity: 0.8;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-  .hero {
-    margin: 45px auto 55px;
-  }
-
-  .hero h1,
-  .page-hero h1 {
-    font-size: 30px;
-  }
-
-  .hero p {
-    font-size: 16px;
-  }
-
-  .services-grid,
-  .psychology-services,
-  .process-grid,
-  .appointment-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .services h2,
-  .about-preview h2,
-  .process h2 {
-    font-size: 27px;
-  }
-
-  .footer-top {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .footer-right {
-    text-align: center;
-  }
-}
-
-
+/* FAQ */
 .faq-intro {
   max-width: 900px;
   margin: 0 auto 55px;
@@ -381,98 +342,9 @@ body {
   gap: 28px;
 }
 
-.faq-card {
-  background: #f7f7f2;
-  padding: 28px;
-  border-radius: 14px;
-}
-
 .faq-card h2 {
   font-size: 20px;
   margin-top: 0;
-}
-
-.faq-card p {
-  font-size: 15px;
-  line-height: 1.7;
-}
-
-.faq-columns {
-  max-width: 1100px;
-  margin: 0 auto 70px;
-  padding: 0 24px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-}
-
-.faq-section {
-  background: #a9bad4;
-  color: white;
-  padding: 32px;
-  border-radius: 18px;
-}
-
-.faq-section h2 {
-  font-size: 26px;
-  margin-top: 0;
-  margin-bottom: 25px;
-  text-align: center;
-}
-
-.faq-item {
-  background: rgba(255, 255, 255, 0.16);
-  padding: 20px;
-  border-radius: 14px;
-  margin-bottom: 18px;
-}
-
-.faq-item h3 {
-  font-size: 17px;
-  margin-top: 0;
-  margin-bottom: 10px;
-}
-
-.faq-item p {
-  font-size: 14px;
-  line-height: 1.6;
-  margin: 0;
-}
-
-@media (max-width: 768px) {
-  .faq-intro,
-  .faq-columns {
-    grid-template-columns: 1fr;
-  }
-}
-
-
-
-
-
-.faq-intro {
-  max-width: 900px;
-  margin: 0 auto 55px;
-  padding: 0 24px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 28px;
-}
-
-.faq-card {
-  background: #f7f7f2;
-  padding: 28px;
-  border-radius: 14px;
-}
-
-.faq-card h2 {
-  font-size: 20px;
-  margin-top: 0;
-}
-
-.faq-card p {
-  font-size: 15px;
-  line-height: 1.7;
 }
 
 .faq-columns {
@@ -535,14 +407,7 @@ body {
   line-height: 1.6;
 }
 
-@media (max-width: 768px) {
-  .faq-intro,
-  .faq-columns {
-    grid-template-columns: 1fr;
-  }
-}
-
-
+/* CONTACT */
 .contact-page {
   max-width: 1000px;
   margin: 0 auto 80px;
@@ -599,63 +464,7 @@ body {
   text-decoration: underline;
 }
 
-@media (max-width: 768px) {
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .contact-main-card h2 {
-    font-size: 28px;
-  }
-}
-
-
-.footer a {
-  text-decoration: none;   /* 🔥 fără subliniere */
-  color: #fff;
-}
-
-.footer a:hover {
-  opacity: 0.8;           /* mic efect la hover */
-}
-
-
-
-
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: 22px;   /* ajustezi până încape */
-    white-space: nowrap;  /* 🔥 forțează un singur rând */
-  }
-}
-
-
-
-
-
-
-
-
-
-
-.appointment-card {
-  background: #f7f7f2;
-  padding: 24px;
-  border-radius: 14px;
-  border: 1px solid #ddd;
-}
-
-.appointment-card h3 {
-  margin-top: 0;
-  color: #3b001c;
-}
-
-.appointment-card.important {
-  background: #fff4f4;
-  border-left: 4px solid #b00020;
-}
-
-/* CONTACT BOX */
+/* CONTACT MINI */
 .contact-box {
   margin-top: 70px;
   text-align: center;
@@ -666,7 +475,6 @@ body {
   font-size: 28px;
 }
 
-/* GRID MINI */
 .contact-grid-mini {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -695,9 +503,139 @@ body {
   opacity: 0.8;
 }
 
+/* FOOTER */
+.footer {
+  background: #3b001c;
+  color: white;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  padding: 40px 0 20px;
+}
+
+.footer-top {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer-left h2 {
+  margin: 0 0 10px;
+}
+
+.footer-left p,
+.footer-right p {
+  margin: 6px 0;
+}
+
+.footer-right {
+  text-align: right;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  opacity: 0.8;
+}
+
+.footer-bottom {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 13px;
+  opacity: 0.8;
+}
+
 /* MOBILE */
 @media (max-width: 768px) {
+
+  .menu {
+    gap: 14px;           /* mai compact */
+    padding: 14px 10px;  /* mai aproape de margini */
+    flex-wrap: nowrap;   /* pe un singur rând */
+    overflow-x: auto;    /* dacă nu încape, se poate derula */
+  }
+
+  .menu a {
+    font-size: 14px;     /* 🔥 mai mic */
+    white-space: nowrap; /* nu rupe cuvintele */
+  }
+
+}
+
+
+
+
+
+  .intro {
+    padding: 50px 20px 60px;
+  }
+
+  .profile-photo {
+    width: 210px;
+    height: 210px;
+  }
+
+  .profile-card h2 {
+    font-size: 26px;
+  }
+
+  .intro h1 {
+    font-size: 28px;
+  }
+
+  .intro-text {
+    font-size: 16px;
+  }
+
+  .hero {
+    margin: 45px auto 55px;
+  }
+
+  .hero h1,
+  .page-hero h1 {
+    font-size: 30px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .services-grid,
+  .psychology-services,
+  .process-grid,
+  .appointment-grid,
+  .faq-intro,
+  .faq-columns,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
   .contact-grid-mini {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .services h2,
+  .about-preview h2,
+  .process h2 {
+    font-size: 27px;
+  }
+
+  .home .services,
+  .process {
+    margin: 55px 0;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    text-align: center;
+    padding: 0 24px;
+  }
+
+  .footer-right {
+    text-align: center;
   }
 }
