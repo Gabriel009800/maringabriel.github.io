@@ -712,3 +712,18 @@ body {
 .publication p {
   line-height: 1.55;
 }
+
+
+/* ===================== */
+/* TEXT JUSTIFIED */
+/* ===================== */
+
+.timeline-main p,
+.publication p,
+.hobby-block p {
+  text-align: justify !important;
+  text-align-last: left;
+  text-justify: inter-word;
+  hyphens: auto;
+  line-height: 1.55;
+}
