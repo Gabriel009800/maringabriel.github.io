@@ -693,3 +693,22 @@ body {
   background: #eef6fb;
   text-decoration: none;
 }
+
+
+/* ===================== */
+/* TEXT JUSTIFIED */
+/* ===================== */
+
+.timeline-main p,
+.publication p,
+.hobby-block p {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+/* Pentru texte mai aerisite și mai curate vizual */
+.timeline-main p,
+.publication p {
+  line-height: 1.55;
+}
