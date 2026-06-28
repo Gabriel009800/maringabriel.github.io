@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <!-- Variantă reparată: standalone, fără dependență de style.css -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evaluare - Marin Gabriel</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #f6f0e7;
+      color: #2f241c;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .evaluation-page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 46px 22px 70px;
+    }
+
+    .evaluation-hero {
+      background: #fffaf3;
+      border: 1px solid rgba(91, 62, 36, 0.18);
+      border-radius: 26px;
+      padding: 34px;
+      box-shadow: 0 14px 36px rgba(69, 46, 25, 0.08);
+      margin-bottom: 28px;
+    }
+
+    .evaluation-hero h1 {
+      margin: 0 0 14px;
+      font-size: 42px;
+      color: #3c2a1e;
+      letter-spacing: -0.5px;
+    }
+
+    .evaluation-hero p {
+      margin: 0;
+      max-width: 900px;
+      font-size: 18px;
+      line-height: 1.7;
+      text-align: justify;
+      color: #5b4a3d;
+    }
+
+    .evaluation-panel {
+      background: #fffaf3;
+      border: 1px solid rgba(91, 62, 36, 0.16);
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: 0 10px 28px rgba(69, 46, 25, 0.06);
+    }
+
+    .evaluation-panel h2 {
+      margin: 0 0 18px;
+      font-size: 26px;
+      color: #3c2a1e;
+    }
+
+    .class-buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+
+    .class-btn {
+      border: 1px solid rgba(91, 62, 36, 0.22);
+      background: #f0e4d4;
+      color: #3c2a1e;
+      padding: 16px 12px;
+      border-radius: 17px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s ease;
+      font-family: inherit;
+    }
+
+    .class-btn:hover {
+      transform: translateY(-2px);
+      background: #e5d2bb;
+    }
+
+    .class-btn.active {
+      background: #3c2a1e;
+      color: #fffaf3;
+      border-color: #3c2a1e;
+    }
+
+    .unit-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .unit-wrap {
+      display: grid;
+      gap: 10px;
+    }
+
+    .unit-card {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      background: #ffffff;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 18px;
+      padding: 18px 20px;
+      box-shadow: 0 8px 20px rgba(69, 46, 25, 0.045);
+      cursor: pointer;
+      font-family: inherit;
+      text-align: left;
+    }
+
+    .unit-card:hover {
+      background: #fff6eb;
+    }
+
+    .unit-card.open {
+      border-color: rgba(91, 62, 36, 0.38);
+      background: #fff3e3;
+    }
+
+    .unit-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: #3c2a1e;
+      line-height: 1.4;
+    }
+
+    .unit-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+    }
+
+    .test-count {
+      font-size: 15px;
+      font-weight: 700;
+      color: #7a5c3c;
+      background: #f3eadf;
+      border: 1px solid rgba(91, 62, 36, 0.15);
+      border-radius: 999px;
+      padding: 8px 13px;
+    }
+
+    .toggle-label {
+      font-size: 14px;
+      color: #5b4a3d;
+      opacity: 0.9;
+    }
+
+    .tests-panel {
+      background: #ffffff;
+      border: 1px solid rgba(91, 62, 36, 0.12);
+      border-radius: 18px;
+      padding: 18px;
+      margin-left: 18px;
+      box-shadow: 0 8px 18px rgba(69, 46, 25, 0.04);
+    }
+
+    .no-tests {
+      color: #5b4a3d;
+      line-height: 1.6;
+    }
+
+    .test-link {
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid rgba(91, 62, 36, 0.20);
+      background: #f3eadf;
+      color: #3c2a1e;
+      padding: 15px 17px;
+      border-radius: 15px;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .test-link:visited,
+    .test-link:hover,
+    .test-link:active {
+      color: #3c2a1e;
+      text-decoration: none;
+    }
+
+    .test-link:hover {
+      background: #ead8c4;
+    }
+
+    @media (max-width: 760px) {
+      .evaluation-hero h1 {
+        font-size: 34px;
+      }
+
+      .class-buttons {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .unit-card {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .unit-meta {
+        white-space: normal;
+        flex-wrap: wrap;
+      }
+
+      .tests-panel {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<nav class="menu">
+  <a href="index.html">Acasă</a>
+  <a href="psihologie.html">Psihologie</a>
+  <a href="meditatii.html">Meditații</a>
+  <a href="intrebari.html">Întrebări</a>
+  <a href="contact.html" target="_blank">Contact</a>
+</nav>
+
+<main class="evaluation-page">
+
+  <section class="evaluation-hero">
+    <h1>Evaluare</h1>
+    <p>
+      Această secțiune este dedicată instrumentelor de evaluare pentru disciplina Istorie.
+      Alege clasa, apoi unitatea de învățare. Dacă există teste disponibile, acestea vor apărea sub unitatea selectată.
+      Dacă apeși din nou pe aceeași unitate, lista de teste se închide.
+    </p>
+  </section>
+
+  <section class="evaluation-panel">
+    <h2>Alege clasa</h2>
+
+    <div class="class-buttons">
+      <button class="class-btn active" onclick="showClass('V', this)">Clasa a V-a</button>
+      <button class="class-btn" onclick="showClass('VI', this)">Clasa a VI-a</button>
+      <button class="class-btn" onclick="showClass('VII', this)">Clasa a VII-a</button>
+      <button class="class-btn" onclick="showClass('VIII', this)">Clasa a VIII-a</button>
+    </div>
+
+    <div id="unitList" class="unit-list"></div>
+  </section>
+
+</main>
+
+<script>
+  const units = {
+    "V": [
+        {
+            "name": "Alfabetul istoriei",
+            "tests": []
+        },
+        {
+            "name": "Preistoria",
+            "tests": [
+                {
+                    "title": "Testul grilă nr. 1",
+                    "url": "test-preistoria-grila-1.html"
+                },
+                {
+                    "title": "Testul grilă nr. 2",
+                    "url": "test-preistoria-grila-2.html"
+                },
+                {
+                    "title": "Testul grilă nr. 3",
+                    "url": "test-preistoria-grila-3.html"
+                }
+            ]
+        },
+        {
+            "name": "Orientul Antic",
+            "tests": []
+        },
+        {
+            "name": "Civilizația greacă",
+            "tests": []
+        },
+        {
+            "name": "Lumea romană",
+            "tests": []
+        }
+    ],
+    "VI": [
+        {
+            "name": "Călători și călătorii: Europa și Lumea Nouă",
+            "tests": [
+                {
+                    "title": "Testul grilă nr. 1",
+                    "url": "test-marile-descoperiri-grila-1.html"
+                }
+            ]
+        },
+        {
+            "name": "Geneza spiritului modern",
+            "tests": []
+        },
+        {
+            "name": "Spre o nouă epocă",
+            "tests": []
+        },
+        {
+            "name": "Secolul Naționalităților",
+            "tests": []
+        }
+    ],
+    "VII": [
+        {
+            "name": "Lumea la începutul secolului al XIX-lea și începutul secolului al XX-lea",
+            "tests": []
+        },
+        {
+            "name": "Lumea interbelică: o lume în schimbare",
+            "tests": []
+        },
+        {
+            "name": "Lumea în război",
+            "tests": []
+        },
+        {
+            "name": "Lumea postbelică",
+            "tests": []
+        }
+    ],
+    "VIII": [
+        {
+            "name": "Preistoria în spațiul românesc",
+            "tests": []
+        },
+        {
+            "name": "Geto-dacii",
+            "tests": []
+        },
+        {
+            "name": "Etnogeneza românească",
+            "tests": []
+        },
+        {
+            "name": "Evul mediu românesc",
+            "tests": []
+        },
+        {
+            "name": "Modernitatea timpurie",
+            "tests": []
+        },
+        {
+            "name": "Lumea românească până la sfârșitul secolului al XIX-lea",
+            "tests": []
+        },
+        {
+            "name": "România modernă",
+            "tests": []
+        },
+        {
+            "name": "România în secolele XX-XXI",
+            "tests": []
+        }
+    ]
+};
+
+  let currentClass = "V";
+  let openUnitIndex = null;
+
+  function testCountLabel(count) {
+    if (count === 1) return "1 test disponibil";
+    return count + " teste disponibile";
+  }
+
+  function showClass(className, button) {
+    currentClass = className;
+    openUnitIndex = null;
+
+    document.querySelectorAll(".class-btn").forEach(btn => {
+      btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+    renderUnits();
+  }
+
+  function renderUnits() {
+    const unitList = document.getElementById("unitList");
+    unitList.innerHTML = "";
+
+    units[currentClass].forEach((unit, unitIndex) => {
+      const wrap = document.createElement("div");
+      wrap.className = "unit-wrap";
+
+      const unitCard = document.createElement("button");
+      unitCard.type = "button";
+      unitCard.className = "unit-card";
+      if (openUnitIndex === unitIndex) unitCard.classList.add("open");
+
+      unitCard.innerHTML = `
+        <div class="unit-name">${unit.name}</div>
+        <div class="unit-meta">
+          <span class="test-count">${testCountLabel(unit.tests.length)}</span>
+          <span class="toggle-label">${openUnitIndex === unitIndex ? "Ascunde" : "Deschide"}</span>
+        </div>
+      `;
+
+      unitCard.addEventListener("click", () => {
+        openUnitIndex = openUnitIndex === unitIndex ? null : unitIndex;
+        renderUnits();
+      });
+
+      wrap.appendChild(unitCard);
+
+      if (openUnitIndex === unitIndex) {
+        const testsPanel = document.createElement("div");
+        testsPanel.className = "tests-panel";
+
+        if (unit.tests.length === 0) {
+          testsPanel.innerHTML = `<div class="no-tests">Deocamdată nu există teste disponibile pentru această unitate de învățare.</div>`;
+        } else {
+          unit.tests.forEach(test => {
+            const link = document.createElement("a");
+            link.className = "test-link";
+            link.href = test.url;
+            link.target = "_blank";
+            link.innerHTML = `<span>${test.title}</span><span>Deschide testul</span>`;
+            testsPanel.appendChild(link);
+          });
+        }
+
+        wrap.appendChild(testsPanel);
+      }
+
+      unitList.appendChild(wrap);
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", renderUnits);
+</script>
+
+</body>
+</html>

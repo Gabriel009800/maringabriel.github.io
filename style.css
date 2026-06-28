@@ -794,3 +794,21 @@ body {
 .link-calatorii:active {
   transform: translateY(-1px);
 }
+
+.process-step a,
+.process-step a:visited,
+.process-step a:hover,
+.process-step a:active,
+.link-calatorii,
+.link-calatorii:visited,
+.link-calatorii:hover,
+.link-calatorii:active {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-weight: 700;
+}
+
+.process-step a:hover,
+.link-calatorii:hover {
+  opacity: 0.85;
+}
