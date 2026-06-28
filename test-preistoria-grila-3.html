@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <!-- Variantă reparată: standalone, fără dependență de style.css -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testul grilă nr. 3 - Preistoria</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #f6f0e7;
+      color: #2f241c;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .test-page {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 42px 22px 70px;
+    }
+
+    .test-hero,
+    .result-box {
+      background: #fffaf3;
+      border: 1px solid rgba(91, 62, 36, 0.18);
+      border-radius: 26px;
+      padding: 32px;
+      box-shadow: 0 14px 36px rgba(69, 46, 25, 0.08);
+      margin-bottom: 24px;
+    }
+
+    .test-hero h1 {
+      margin: 0 0 10px;
+      color: #3c2a1e;
+      font-size: 40px;
+      letter-spacing: -0.4px;
+    }
+
+    .test-hero p,
+    .result-box p {
+      margin: 0 0 10px;
+      color: #5b4a3d;
+      line-height: 1.65;
+      font-size: 17px;
+    }
+
+    .question-card {
+      background: #ffffff;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 8px 20px rgba(69, 46, 25, 0.045);
+    }
+
+    .question-title {
+      margin: 0 0 14px;
+      color: #3c2a1e;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .question-competency {
+      display: none;
+    }
+
+    .option-label {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 9px 0;
+      color: #4c3b2e;
+      line-height: 1.45;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .option-label input {
+      margin-top: 4px;
+    }
+
+    .finish-box {
+      position: sticky;
+      bottom: 16px;
+      background: rgba(255, 250, 243, 0.96);
+      border: 1px solid rgba(91, 62, 36, 0.18);
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: 0 12px 30px rgba(69, 46, 25, 0.10);
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      margin-top: 24px;
+      backdrop-filter: blur(8px);
+    }
+
+    .finish-box span {
+      color: #5b4a3d;
+      font-size: 15px;
+    }
+
+    .finish-button,
+    .secondary-button {
+      border: 1px solid rgba(91, 62, 36, 0.22);
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 15px;
+      white-space: nowrap;
+    }
+
+    .finish-button {
+      background: #3c2a1e;
+      color: #fffaf3;
+    }
+
+    .secondary-button {
+      background: #f3eadf;
+      color: #3c2a1e;
+    }
+
+    .finish-button:hover,
+    .secondary-button:hover {
+      opacity: 0.9;
+    }
+
+    .result-box {
+      display: none;
+      border-color: rgba(91, 62, 36, 0.28);
+    }
+
+    .result-box h2 {
+      margin: 0 0 16px;
+      color: #3c2a1e;
+      font-size: 32px;
+    }
+
+    .result-line {
+      font-size: 20px !important;
+      color: #2f241c !important;
+    }
+
+    .result-line strong {
+      color: #120c08;
+    }
+
+    .competency-results {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .competency-card {
+      background: #ffffff;
+      border: 1px solid rgba(91, 62, 36, 0.13);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .competency-card strong {
+      color: #3c2a1e;
+    }
+
+    .competency-card p {
+      margin: 6px 0 0;
+      font-size: 15px;
+      color: #5b4a3d;
+      line-height: 1.5;
+    }
+
+    .interpretation {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 18px;
+      background: #f3eadf;
+      color: #4c3b2e;
+      line-height: 1.65;
+      font-size: 17px;
+      text-align: justify;
+    }
+
+    .answer-review {
+      margin-top: 20px;
+      display: none;
+    }
+
+    .review-item {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(91, 62, 36, 0.12);
+      color: #4c3b2e;
+      line-height: 1.5;
+    }
+
+    .correct { color: #1d6b35; font-weight: 700; }
+    .wrong { color: #9a2c20; font-weight: 700; }
+    .missing { color: #7a5c3c; font-weight: 700; }
+
+
+
+    .result-actions {
+      margin-top: 28px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(91, 62, 36, 0.14);
+    }
+
+    .result-actions .secondary-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0;
+    }
+
+    .review-hint {
+      margin-top: 12px !important;
+      font-size: 15px !important;
+      color: #6a5544 !important;
+    }
+
+    .question-card.review-mode {
+      border-width: 2px;
+    }
+
+    .question-card.review-correct-card {
+      border-color: rgba(29, 107, 53, 0.35);
+      background: #fbfffc;
+    }
+
+    .question-card.review-wrong-card {
+      border-color: rgba(154, 44, 32, 0.35);
+      background: #fffafa;
+    }
+
+    .question-card.review-missing-card {
+      border-color: rgba(122, 92, 60, 0.35);
+      background: #fffdf8;
+    }
+
+    .question-review-note {
+      margin: 0 0 14px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .question-review-note.correct {
+      background: rgba(29, 107, 53, 0.09);
+      color: #1d6b35;
+    }
+
+    .question-review-note.wrong {
+      background: rgba(154, 44, 32, 0.09);
+      color: #9a2c20;
+    }
+
+    .question-review-note.missing {
+      background: rgba(122, 92, 60, 0.12);
+      color: #6c4d2f;
+    }
+
+    .option-label.review-correct-option,
+    .option-label.review-selected-correct,
+    .option-label.review-selected-wrong {
+      border-radius: 12px;
+      padding: 10px 12px;
+      margin: 5px 0;
+    }
+
+    .option-label.review-correct-option {
+      background: rgba(29, 107, 53, 0.08);
+      outline: 1px solid rgba(29, 107, 53, 0.25);
+    }
+
+    .option-label.review-selected-correct {
+      background: rgba(29, 107, 53, 0.12);
+      outline: 2px solid rgba(29, 107, 53, 0.42);
+    }
+
+    .option-label.review-selected-wrong {
+      background: rgba(154, 44, 32, 0.10);
+      outline: 2px solid rgba(154, 44, 32, 0.38);
+    }
+
+    .review-badge {
+      margin-left: auto;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .review-badge.correct {
+      background: rgba(29, 107, 53, 0.14);
+      color: #1d6b35;
+    }
+
+    .review-badge.wrong {
+      background: rgba(154, 44, 32, 0.14);
+      color: #9a2c20;
+    }
+
+    .review-badge.missing {
+      background: rgba(122, 92, 60, 0.14);
+      color: #6c4d2f;
+    }
+
+    @media (max-width: 720px) {
+      .test-hero h1 { font-size: 32px; }
+      .finish-box {
+        position: static;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .finish-button,
+      .secondary-button { width: 100%; }
+    }
+  
+    .competency-lines {
+      margin-top: 10px;
+      margin-bottom: 18px;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .competency-lines p {
+      margin: 8px 0;
+    }
+
+  </style>
+</head>
+<body>
+
+
+
+<main class="test-page">
+  <section class="test-hero">
+    <h1>Testul grilă nr. 3</h1>
+    <p><strong>Unitatea de învățare:</strong> Preistoria · <strong>Clasa:</strong> a V-a · <strong>Număr întrebări:</strong> 40</p>
+    <p>La final, apasă pe butonul <strong>Am terminat testul</strong>. Vei primi o interpretare automată a rezultatelor.</p>
+  </section>
+
+  <section id="resultBox" class="result-box"></section>
+
+  <form id="quizForm"></form>
+
+  <div class="finish-box">
+    <span>După ce ai bifat răspunsurile, apasă pe buton pentru interpretare.</span>
+    <div>
+      <button type="button" class="secondary-button" onclick="resetQuiz()">Șterge răspunsurile</button>
+      <button type="button" class="finish-button" onclick="finishQuiz()">Am terminat testul</button>
+    </div>
+  </div>
+</main>
+
+<script>
+  const questions = [
+    {
+        "id": 1,
+        "competency": "C1.1",
+        "text": "Selectează șirul ordonat corect în funcție de perioadele preistorice:",
+        "options": {
+            "A": "Epoca Fierului, Epoca Bronzului, Paleolitic",
+            "B": "Neolitic, Epoca Bronzului, Epoca Fierului",
+            "C": "Epoca Metalelor, Paleolitic, Neolitic",
+            "D": "Neolitic, Paleolitic, Epoca Bronzului"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 2,
+        "competency": "C1.1",
+        "text": "Epoca Pietrei este o perioadă ce a durat:",
+        "options": {
+            "A": "Aproximativ 2 milioane de ani",
+            "B": "Aproximativ 300.000 de ani",
+            "C": "Aproximativ 30.000 de ani",
+            "D": "Aproximativ 20 de milioane de ani"
+        },
+        "answer": "A"
+    },
+    {
+        "id": 3,
+        "competency": "C1.1",
+        "text": "Ce eveniment a marcat începuturile Neoliticului?",
+        "options": {
+            "A": "Inventarea agriculturii",
+            "B": "Folosirea primelor unelte din metal",
+            "C": "Apariția scrisului",
+            "D": "Inventarea primelor ambarcațiuni"
+        },
+        "answer": "A"
+    },
+    {
+        "id": 4,
+        "competency": "C1.1",
+        "text": "Oamenii au început să folosească în mod obișnuit piatra cioplită în:",
+        "options": {
+            "A": "Mezolitic",
+            "B": "Epoca Metalelor",
+            "C": "Paleolitic",
+            "D": "Neolitic"
+        },
+        "answer": "C"
+    },
+    {
+        "id": 5,
+        "competency": "C1.2",
+        "text": "Perioada cea mai veche dintre cele menționate mai jos este:",
+        "options": {
+            "A": "Epoca Fierului",
+            "B": "Neoliticul",
+            "C": "Epoca Bronzului",
+            "D": "Mezoliticul"
+        },
+        "answer": "D"
+    },
+    {
+        "id": 6,
+        "competency": "C1.2",
+        "text": "Care dintre evenimentele de mai jos s-a produs primul?",
+        "options": {
+            "A": "Inventarea roții",
+            "B": "Apariția agriculturii",
+            "C": "Primele unelte din os",
+            "D": "Prima folosire a fierului"
+        },
+        "answer": "C"
+    },
+    {
+        "id": 7,
+        "competency": "C1.2",
+        "text": "Care dintre evenimentele de mai jos s-a produs cel mai recent?",
+        "options": {
+            "A": "Apariția lui Homo habilis",
+            "B": "Apariția lui Homo erectus",
+            "C": "Apariția lui Homo neanderthalensis",
+            "D": "Apariția lui Homo sapiens"
+        },
+        "answer": "D"
+    },
+    {
+        "id": 8,
+        "competency": "C1.2",
+        "text": "Primele bijuterii din bronz datează din:",
+        "options": {
+            "A": "Antichitate",
+            "B": "Epoca Metalelor",
+            "C": "Neolitic",
+            "D": "Paleolitic"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 9,
+        "competency": "C1.3",
+        "text": "În ce regiune și-au făcut apariția australopitecii?",
+        "options": {
+            "A": "Asia",
+            "B": "America de Sud",
+            "C": "Europa",
+            "D": "Africa"
+        },
+        "answer": "D"
+    },
+    {
+        "id": 10,
+        "competency": "C1.3",
+        "text": "Primele rute de comerț pe apă erau realizate:",
+        "options": {
+            "A": "În largul mării, pe vreme liniștită",
+            "B": "De-a lungul râurilor",
+            "C": "Doar pe lacuri de joasă adâncime",
+            "D": "Pe Marea Neagră"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 11,
+        "competency": "C1.3",
+        "text": "Un grup de oameni de acum 9.000 de ani s-ar fi orientat în alegerea locului pentru construirea unui sat mai ales în funcție de:",
+        "options": {
+            "A": "Prezența râurilor",
+            "B": "Prezența stâncilor",
+            "C": "Prezența mamuților",
+            "D": "Prezența ghețarilor"
+        },
+        "answer": "A"
+    },
+    {
+        "id": 12,
+        "competency": "C1.3",
+        "text": "Revoluția neolitică nu a însemnat:",
+        "options": {
+            "A": "Sedentarizare",
+            "B": "Inventarea agriculturii",
+            "C": "Apariția orașelor",
+            "D": "Apariția scrierii"
+        },
+        "answer": "D"
+    },
+    {
+        "id": 13,
+        "competency": "C2.1",
+        "text": "Oamenii care trăiesc în așezări stabile și își construiesc locuințe permanente se numesc:",
+        "options": {
+            "A": "Războinici",
+            "B": "Nomazi",
+            "C": "Sedentari",
+            "D": "Exploratori"
+        },
+        "answer": "C"
+    },
+    {
+        "id": 14,
+        "competency": "C2.1",
+        "text": "O piatră semiprețioasă folosită în Preistorie pentru unelte mici și podoabe este:",
+        "options": {
+            "A": "Cărbune",
+            "B": "Jasp",
+            "C": "Silex",
+            "D": "Cretă"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 15,
+        "competency": "C2.1",
+        "text": "Oamenii care își procură hrana prin cultivarea de plante și prin creșterea animalelor se numesc:",
+        "options": {
+            "A": "Pescari",
+            "B": "Agricultori",
+            "C": "Mineri",
+            "D": "Negustori"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 16,
+        "competency": "C2.1",
+        "text": "Termenul „șaman” în Preistorie se referă la:",
+        "options": {
+            "A": "Un conducător militar",
+            "B": "O persoană care se ocupa de vindecare și ritualuri religioase",
+            "C": "Un meșteșugar care făcea vase",
+            "D": "Un vânător de animale mari"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 17,
+        "competency": "C2.2",
+        "text": "Dacă o pictură rupestră prezintă oameni dansând în cerc, sursa sugerează că:",
+        "options": {
+            "A": "Oamenii aveau ritualuri și activități comunitare",
+            "B": "Oamenii aveau zei cărora le ridicau temple circulare",
+            "C": "Oamenii mergeau la școală și se adunau în cerc în jurul profesorului",
+            "D": "Oamenii practicau trocul, dar nu se puteau adesea înțelege cu cei din triburile vecine pentru că vorbeau limbi diferite, astfel că era nevoie să comunice prin semne"
+        },
+        "answer": "A"
+    },
+    {
+        "id": 18,
+        "competency": "C2.2",
+        "text": "Foarte multe urme de grâu carbonizat (ars) descoperite într-un sat preistoric indică faptul că locuitorii acestuia:",
+        "options": {
+            "A": "Erau carnivori",
+            "B": "Erau agricultori",
+            "C": "Trăiau din culesul plantelor sălbatice",
+            "D": "Obișnuiau adesea să ardă mâncarea deoarece încă nu se pricepeau foarte bine la gătit"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 19,
+        "competency": "C2.2",
+        "text": "Dacă lângă un schelet preistoric se găsesc podoabe din scoici, aceasta arată că oamenii:",
+        "options": {
+            "A": "Își îngropau semenii lângă malul apei, chiar dacă între timp nivelul apei a scăzut și mormântul este acum departe de mare",
+            "B": "Foloseau obiecte decorative la înmormântare, probabil cu semnificație simbolică",
+            "C": "Îl veneraseră pe cel care murise, crezând că este un zeu al mării",
+            "D": "Se folosiseră de scoici ca să acopere mormântul"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 20,
+        "competency": "C2.2",
+        "text": "O piatră mare, greoaie, rotunjită și plată, cu urme de zgâriere pe suprafață, datând din Preistorie, ar putea să fie mai degrabă:",
+        "options": {
+            "A": "O monedă preistorică",
+            "B": "O piatră de măcinat cereale",
+            "C": "Un ornament pentru perete",
+            "D": "O amuletă magică"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 21,
+        "competency": "C2.3",
+        "text": "Niște pietre arse dispuse în formă de cerc și o pictură rupestră cu oameni care vânau bizoni ne arată:",
+        "options": {
+            "A": "Practicarea scrierii",
+            "B": "Prepararea cărnii prin gătire",
+            "C": "Folosirea arcului cu săgeți",
+            "D": "Practicarea vânătorii prin goană"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 22,
+        "competency": "C2.3",
+        "text": "O pictură rupestră cu oameni dansând și o figurină de lut reprezentând un șaman indică:",
+        "options": {
+            "A": "Doar activități de vânătoare",
+            "B": "Existența unor ritualuri și credințe spirituale",
+            "C": "Practicarea scrisului religios",
+            "D": "Lipsa oricăror credințe"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 23,
+        "competency": "C2.3",
+        "text": "Urme ale unor locuințe din lut, vase de ceramică și pietre de măcinat cereale indică:",
+        "options": {
+            "A": "Așezări temporare și migrație continuă",
+            "B": "Viață sedentară și agricultură",
+            "C": "Practicarea unei diete strict vegetariene",
+            "D": "Lipsa oricăror așezări permanente (o locuință nu poate fi construită din cărămizi de lut)"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 24,
+        "competency": "C2.3",
+        "text": "O brățară din bronz și o sabie de fier găsite într-un mormânt ne arată că:",
+        "options": {
+            "A": "Femeile (singurele care purtau brățări) obișnuiau cândva să ia parte la lupte (asemenea bărbaților)",
+            "B": "Atât podoabele, cât și armele erau importante pentru statutul social",
+            "C": "Acolo a fost îngropată o căpetenie",
+            "D": "Brățara din bronz era un trofeu obținut în urma unei lupte"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 25,
+        "competency": "C3.1",
+        "text": "Un articol prezintă fotografii cu unelte din piatră și citează arheologi. Această sursă este:",
+        "options": {
+            "A": "Credibilă, deoarece folosește dovezi",
+            "B": "Falsă, pentru că preistoricii nu aveau aparate de fotografiat",
+            "C": "O reclamă la un joc video",
+            "D": "Falsă, pentru că citează arheologi"
+        },
+        "answer": "A"
+    },
+    {
+        "id": 26,
+        "competency": "C3.1",
+        "text": "Pe un cont de Facebook numit „Prof. Konrad Edelmann” putem citi următoarea postare: „Civilizațiile preistorice puteau să comunice cu Dumnezeu.” Această afirmație:",
+        "options": {
+            "A": "Este adevărată deoarece are la bază cercetările unui specialist",
+            "B": "Este o pură speculație (presupunere) care nu poate fi dovedită",
+            "C": "Este adevărată deoarece se bazează pe textul Bibliei",
+            "D": "Este falsă deoarece postările de pe Facebook sunt întotdeauna mincinoase"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 27,
+        "competency": "C3.1",
+        "text": "Pe un site web numit “Românii preistorici” citim următoarea afirmație: „Roata a fost inventată în vechime pe actualul teritoriu al României”. Aceasta este:",
+        "options": {
+            "A": "O informație factuală (bazată pe fapte)",
+            "B": "O simplă opinie sau o speculație (presupunere)",
+            "C": "O teorie confirmată",
+            "D": "Un document arheologic"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 28,
+        "competency": "C3.2",
+        "text": "Cine poate evalua mai obiectiv autenticitatea unei bijuterii din Epoca Bronzului?",
+        "options": {
+            "A": "Un bijutier modern care se pricepe să creeze inele asemănătoare celor din Epoca Bronzului",
+            "B": "Un arheolog expert în metalurgie preistorică",
+            "C": "Un influencer care vinde online replici ale unor bijuterii preistorice și de la care cumpără foarte mulți oameni",
+            "D": "Un prezentator TV renumit pentru interesul acordat bijuteriilor preistorice și care susține că strămoșii noștri sunt cei care au realizat primii astfel de podoabe"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 29,
+        "competency": "C3.2",
+        "text": "Un articol publicat pe site-ul Universității din Iași descrie descoperirea unor unelte din Epoca Bronzului și include citate din studii arheologice. Aceasta este:",
+        "options": {
+            "A": "O sursă educativă și credibilă",
+            "B": "O poveste inventată de niște profesori care vor mai multă atenție",
+            "C": "O opinie fără bază științifică",
+            "D": "O legendă populară"
+        },
+        "answer": "A"
+    },
+    {
+        "id": 30,
+        "competency": "C3.2",
+        "text": "Un politician afirmă: „Strămoșii noștri preistorici din Munții Carpați erau cei mai avansați oameni din lume.” Ce interes ar putea mai degrabă să urmărească politicianul?",
+        "options": {
+            "A": "Dorința sinceră de a informa tinerele generații despre fapte istorice verificate",
+            "B": "Dorința de a prezenta rezultatele unor cercetări arheologice recente",
+            "C": "Variantele A și B sunt corecte",
+            "D": "Dorința de a câștiga simpatia alegătorilor prin apel la mândria națională"
+        },
+        "answer": "D"
+    },
+    {
+        "id": 31,
+        "competency": "C3.3",
+        "text": "Un autor susține: „Civilizațiile preistorice au fost toate închise și izolate.” Ce riscuri pot apărea dacă acceptăm această afirmație?",
+        "options": {
+            "A": "Riscul de a neglija schimburile culturale și comerciale dintre grupurile preistorice",
+            "B": "Atât varianta A, cât și varianta D",
+            "C": "Nu există riscuri",
+            "D": "Riscul de a subestima importanța migrațiilor și a interacțiunilor între triburi"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 32,
+        "competency": "C3.3",
+        "text": "Elevii învață la ora de istorie despre formarea primelor așezări din Neolitic. Totuși, un călugăr susține că aceste așezări au fost create de către divinitate, cu scopul ca oamenii să poată trăi în armonie. Ce putem spune cel mai sigur despre situația aceasta?",
+        "options": {
+            "A": "Călugărul prezintă o viziune religioasă care nu poate să fie dovedită din punct de vedere istoric",
+            "B": "Afirmația profesorului se sprijină pe dovezi arheologice",
+            "C": "Ambele perspective sunt corecte, pentru că religia poate oferi întotdeauna o interpretare realistă a evenimentelor istorice",
+            "D": "Variantele A și B sunt corecte"
+        },
+        "answer": "D"
+    },
+    {
+        "id": 33,
+        "competency": "C3.3",
+        "text": "Arheologul 1 datează o așezare neolitică în jurul anului 7.000 î.Hr., iar arheologul 2 afirmă că o așezare similară, dintr-o altă regiune, datează din 5.500 î.Hr. Care explicație este cea mai plauzibilă?",
+        "options": {
+            "A": "Așezările permanente au apărut la momente diferite în funcție de regiune",
+            "B": "Al doilea arheolog nu înțelege metodele de datare",
+            "C": "Primul arheolog exagerează intenționat vechimea sitului",
+            "D": "Așezările au apărut în același timp peste tot, doar că nu știm încă dovezile"
+        },
+        "answer": "A"
+    },
+    {
+        "id": 34,
+        "competency": "C3.4",
+        "text": "O imagine colorată cu oameni ai peșterii îi arată zâmbind, fericiți, lângă foc, într-un cadru calm. Ce intenție credeți că a avut autorul?",
+        "options": {
+            "A": "Redarea perfectă și demonstrată științific a emoțiilor lor",
+            "B": "Indiferent de context, oamenii preistorici erau fericiți",
+            "C": "Idealizarea trecutului, pentru a sugera că pe atunci „viață era mai simplă și mai fericită”",
+            "D": "Imagine fără intenție emoțională"
+        },
+        "answer": "C"
+    },
+    {
+        "id": 35,
+        "competency": "C3.4",
+        "text": "Un material video despre oamenii din Paleolitic folosește sunete intense (urlete de animale, tunete, bătăi de tobe) și imagini cu vânătoare în ritm rapid. Care este intenția probabilă a autorului?",
+        "options": {
+            "A": "Să provoace tensiune pentru a face trecutul să pară periculos și sălbatic",
+            "B": "Să reprezinte fidel atmosfera reală, demonstrată științific",
+            "C": "Să transmită liniștea și rutina vieții cotidiene preistorice",
+            "D": "Să explice cu precizie metodele de vânătoare, fără influențe emoționale"
+        },
+        "answer": "A"
+    },
+    {
+        "id": 36,
+        "competency": "C3.4",
+        "text": "Într-un film documentar, oamenii preistorici sunt reprezentați doar alergând după animale și luptând pentru supraviețuire, fără a fi arătate scene de cooperare sau alte tipuri de activități zilnice. Ce trebuie să observăm critic?",
+        "options": {
+            "A": "Că oamenii din Preistorie au făcut doar activități violente",
+            "B": "Că documentarul selectează doar imagini spectaculoase pentru a crea o impresie dramatică și tensionată, având mai degrabă rolul de a impresiona sau de a șoca, nu de a educa",
+            "C": "Că dacă apare într-un film documentar, atunci este adevărat în totalitate",
+            "D": "Că oamenii preistorici nu aveau timp pentru alte activități în afară de vânătoare"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 37,
+        "competency": "C4.1",
+        "text": "Un site postează un articol cu titlul: „Arheologii ne mint! Civilizațiile antice erau mai avansate decât suntem noi astăzi!” Ce strategie de manipulare observăm?",
+        "options": {
+            "A": "Utilizarea unui titlu care induce neîncredere în specialiști și în instituții publice pentru a șoca",
+            "B": "Prezentarea unei evaluări istorice riguroase, cu trimitere la surse credibile și verificabile",
+            "C": "Folosirea unui ton academic, menit să transmită obiectivitate și precizie științifică",
+            "D": "Argumentare structurată, bazată pe analiză logică a dovezilor existente și pe consensul cercetătorilor"
+        },
+        "answer": "A"
+    },
+    {
+        "id": 38,
+        "competency": "C4.1",
+        "text": "Un turist aflat în Maramureș distribuie un videoclip cu „fosile de dragoni zburători din Preistorie care scuipă flăcări”. Ce este greșit la acest conținut?",
+        "options": {
+            "A": "Dragonii zburători care scuipă flăcări nu sunt creaturi reale, iar videoclipul prezintă informații fabricate",
+            "B": "Fosilele de dragoni au fost descoperite doar în Asia, nu în România",
+            "C": "Videoclipul are imagini color, iar preistoria nu poate fi reprezentată color",
+            "D": "Astfel de fosile nu se găsesc niciodată în zone montane precum Maramureșul"
+        },
+        "answer": "A"
+    },
+    {
+        "id": 39,
+        "competency": "C4.1",
+        "text": "Cineva scrie pe un blog că în Paleolitic toți oamenii erau „mereu violenți și primitivi”. Ce eroare observi?",
+        "options": {
+            "A": "Nu este o eroare, ci este prezentat adevărul istoric",
+            "B": "Generalizare asupra violenței primitivilor (presupunem greșit că preistoricii erau cruzi întotdeauna, ignorând alte aspecte ale vieții)",
+            "C": "Violența este prezentată ca fiind ceva rău; în realitate, este singurul lucru care i-a ajutat pe preistorici să supraviețuiască.",
+            "D": "Folosirea incorectă a unor termeni istorici"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 40,
+        "competency": "C4.1",
+        "text": "Un videoclip pe YouTube promite „dovada absolută” că dinozaurii au trăit cu oamenii (videoclipul are 3 milioane de vizualizări). Ce facem?",
+        "options": {
+            "A": "Acceptăm, pentru că videoclipurile cu multe vizualizări sunt adevărate",
+            "B": "Analizăm sursele și verificăm informația în manualul școlar și în alte surse web",
+            "C": "Ne uităm la comentarii și, dacă jumătate dintre ele îi dau dreptate autorului videoclipului, înseamnă că acesta chiar are dreptate",
+            "D": "Salvăm videoclipul deoarece serviciile secrete îl vor șterge foarte curând pentru a menține sub secret „dovada absolută a existenței dinozaurilor” (putem salva o părticică de istorie dacă ne grăbim să salvăm videoclipul)"
+        },
+        "answer": "B"
+    }
+];
+
+  const competencies = {
+    "C1.1": {
+        "title": "Ordonarea pe criterii cronologice a faptelor / proceselor istorice",
+        "group": "Utilizarea coordonatelor şi reprezentărilor de timp şi spaţiu"
+    },
+    "C1.2": {
+        "title": "Identificarea diferenţelor temporale dintre evenimente şi procese istorice",
+        "group": "Utilizarea coordonatelor şi reprezentărilor de timp şi spaţiu"
+    },
+    "C1.3": {
+        "title": "Localizarea în timp şi în spaţiu a faptelor şi/sau a proceselor istorice",
+        "group": "Utilizarea coordonatelor şi reprezentărilor de timp şi spaţiu"
+    },
+    "C2.1": {
+        "title": "Folosirea termenilor de specialitate în descrierea unui eveniment/proces istoric",
+        "group": "Utilizarea critică şi reflexivă a limbajului de specialitate şi a surselor istorice"
+    },
+    "C2.2": {
+        "title": "Relatarea unui eveniment / proces istoric, utilizând informaţii din surse istorice",
+        "group": "Utilizarea critică şi reflexivă a limbajului de specialitate şi a surselor istorice"
+    },
+    "C2.3": {
+        "title": "Stabilirea de asemănări și deosebiri între fapte istorice, pe bază de surse diferite",
+        "group": "Utilizarea critică şi reflexivă a limbajului de specialitate şi a surselor istorice"
+    },
+    "C3.1": {
+        "title": "Selectarea și interpretarea informațiilor istorice digitale",
+        "group": "Aplicarea gândirii critice și a instrumentelor analitice"
+    },
+    "C3.2": {
+        "title": "Evaluarea motivației, utilității și credibilității unei surse",
+        "group": "Aplicarea gândirii critice și a instrumentelor analitice"
+    },
+    "C3.3": {
+        "title": "Analizarea perspectivelor multiple și a interpretărilor divergente",
+        "group": "Aplicarea gândirii critice și a instrumentelor analitice"
+    },
+    "C3.4": {
+        "title": "Analizarea critică a materialelor vizuale cu conținut istoric",
+        "group": "Aplicarea gândirii critice și a instrumentelor analitice"
+    },
+    "C4.1": {
+        "title": "Dezvoltarea unei atitudini critice față de utilizarea media digitale",
+        "group": "Conștientizarea potențialului abuz al media digitale"
+    }
+};
+
+  const resultAreas = [
+    {
+      title: "cerințele de cronologie și de reprezentare a spațiului istoric",
+      match: code => code.startsWith("C1.")
+    },
+    {
+      title: "cerințele de utilizare critică a limbajului de specialitate și a surselor istorice",
+      match: code => code.startsWith("C2.")
+    },
+    {
+      title: "cerințele de aplicare a gândirii critice și analitice",
+      match: code => code.startsWith("C3.") || code.startsWith("C4.")
+    }
+  ];
+
+  function percent(value, total) {
+    if (total === 0) return "0%";
+    return ((value / total) * 100).toFixed(2).replace(".00", "") + "%";
+  }
+
+  function levelLabel(score) {
+    if (score >= 85) return "nivel foarte bun";
+    if (score >= 70) return "nivel bun";
+    if (score >= 50) return "nivel mediu";
+    if (score >= 30) return "nivel fragil";
+    return "necesită consolidare";
+  }
+
+  function generalFeedback(score) {
+    if (score >= 85) return "Rezultatul indică o stăpânire foarte bună a conținuturilor și a competențelor evaluate. Elevul poate lucra mai departe pe itemi de analiză și comparație, nu doar pe recunoașterea informațiilor.";
+    if (score >= 70) return "Rezultatul indică o înțelegere bună a temei Preistoria. Pentru progres, este utilă exersarea itemilor care cer interpretarea surselor și verificarea critică a informațiilor.";
+    if (score >= 50) return "Rezultatul indică un nivel mediu. Noțiunile principale sunt parțial înțelese, dar este nevoie de recapitulare, mai ales la competențele unde procentul este mai scăzut.";
+    if (score >= 30) return "Rezultatul indică un nivel fragil. Este recomandată reluarea lecției, lucrul cu axa cronologică, termenii de bază și exemple simple de surse istorice.";
+    return "Rezultatul indică nevoia de consolidare serioasă. Este recomandată reluarea unității Preistoria pas cu pas, cu accent pe cronologie, termeni istorici și diferențierea dintre informații factuale, opinii și speculații.";
+  }
+
+  function renderQuiz() {
+    const form = document.getElementById("quizForm");
+    form.innerHTML = "";
+
+    questions.forEach(question => {
+      const card = document.createElement("article");
+      card.className = "question-card";
+      card.id = "question-" + question.id;
+      card.dataset.questionId = question.id;
+
+      const title = document.createElement("p");
+      title.className = "question-title";
+      title.textContent = question.id + ". " + question.text;
+      card.appendChild(title);
+
+      Object.entries(question.options).forEach(([letter, option]) => {
+        const label = document.createElement("label");
+        label.className = "option-label";
+
+        const input = document.createElement("input");
+        input.type = "radio";
+        input.name = "q" + question.id;
+        input.value = letter;
+
+        const span = document.createElement("span");
+        span.textContent = letter + ". " + option;
+
+        label.appendChild(input);
+        label.appendChild(span);
+        card.appendChild(label);
+      });
+
+      form.appendChild(card);
+    });
+  }
+
+  function finishQuiz() {
+    let correct = 0;
+    let wrong = 0;
+    let missing = 0;
+
+    const areaStats = resultAreas.map(area => ({
+      title: area.title,
+      match: area.match,
+      total: 0,
+      correct: 0
+    }));
+
+    questions.forEach(question => {
+      const selected = document.querySelector(`input[name="q${question.id}"]:checked`);
+      const area = areaStats.find(item => item.match(question.competency));
+
+      if (area) {
+        area.total += 1;
+      }
+
+      if (!selected) {
+        missing += 1;
+      } else if (selected.value === question.answer) {
+        correct += 1;
+        if (area) {
+          area.correct += 1;
+        }
+      } else {
+        wrong += 1;
+      }
+    });
+
+    const total = questions.length;
+    const totalPercent = (correct / total) * 100;
+
+    let html = `
+      <h2>Interpretarea rezultatului</h2>
+      <p class="result-line">Răspunsuri corecte: <strong>${correct} (${percent(correct, total)})</strong>. Răspunsuri greșite: <strong>${wrong} (${percent(wrong, total)})</strong>.</p>
+      <p class="result-line">Cerințe la care nu ai răspuns: <strong>${missing} (${percent(missing, total)})</strong>.</p>
+      <div class="interpretation">${generalFeedback(totalPercent)}</div>
+      <h3>Ai răspuns corect în proporție de:</h3>
+      <div class="competency-lines">
+    `;
+
+    areaStats.forEach(area => {
+      html += `
+        <p><strong>${percent(area.correct, area.total)}</strong> la ${area.title}</p>
+      `;
+    });
+
+    html += `
+      </div>
+      <div class="interpretation"><strong>Această fișă se poate salva sau imprima pentru urmărirea progresului.</strong> Rezultatul este orientativ și trebuie interpretat împreună cu participarea la ore, exercițiile scrise și evoluția elevului în timp.</div>
+      <div class="result-actions">
+        <button id="reviewToggleButton" type="button" class="secondary-button" onclick="toggleReview()">Arată răspunsurile pe întrebări</button>
+        <p id="reviewHint" class="review-hint">Răspunsurile nu mai apar ca listă separată. Se vor marca direct pe fiecare întrebare: ce ai bifat, dacă este corect sau greșit și care era varianta corectă.</p>
+      </div>
+    `;
+
+    clearReviewMarks();
+    reviewVisible = false;
+
+    const resultBox = document.getElementById("resultBox");
+    resultBox.innerHTML = html;
+    resultBox.style.display = "block";
+    resultBox.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  let reviewVisible = false;
+
+  function clearReviewMarks() {
+    document.querySelectorAll(".question-card").forEach(card => {
+      card.classList.remove("review-mode", "review-correct-card", "review-wrong-card", "review-missing-card");
+      const note = card.querySelector(".question-review-note");
+      if (note) note.remove();
+    });
+
+    document.querySelectorAll(".option-label").forEach(label => {
+      label.classList.remove("review-correct-option", "review-selected-correct", "review-selected-wrong");
+      const badge = label.querySelector(".review-badge");
+      if (badge) badge.remove();
+    });
+  }
+
+  function addBadge(label, text, kind) {
+    const badge = document.createElement("span");
+    badge.className = "review-badge " + kind;
+    badge.textContent = text;
+    label.appendChild(badge);
+  }
+
+  function applyReviewMarks() {
+    clearReviewMarks();
+
+    questions.forEach(question => {
+      const card = document.getElementById("question-" + question.id);
+      if (!card) return;
+
+      const selected = document.querySelector(`input[name="q${question.id}"]:checked`);
+      const chosen = selected ? selected.value : null;
+      const isCorrect = chosen === question.answer;
+
+      let noteText;
+      let noteClass;
+
+      card.classList.add("review-mode");
+
+      if (!chosen) {
+        noteText = `Nu ai bifat niciun răspuns. Varianta corectă era ${question.answer}.`;
+        noteClass = "missing";
+        card.classList.add("review-missing-card");
+      } else if (isCorrect) {
+        noteText = `Ai bifat ${chosen}. Răspuns corect.`;
+        noteClass = "correct";
+        card.classList.add("review-correct-card");
+      } else {
+        noteText = `Ai bifat ${chosen}, dar varianta corectă era ${question.answer}.`;
+        noteClass = "wrong";
+        card.classList.add("review-wrong-card");
+      }
+
+      const note = document.createElement("div");
+      note.className = "question-review-note " + noteClass;
+      note.textContent = noteText;
+
+      const title = card.querySelector(".question-title");
+      if (title) {
+        title.insertAdjacentElement("afterend", note);
+      } else {
+        card.prepend(note);
+      }
+
+      card.querySelectorAll(".option-label").forEach(label => {
+        const input = label.querySelector("input");
+        if (!input) return;
+
+        if (input.value === question.answer && input.value === chosen) {
+          label.classList.add("review-selected-correct");
+          addBadge(label, "ai bifat — corect", "correct");
+        } else if (input.value === chosen && input.value !== question.answer) {
+          label.classList.add("review-selected-wrong");
+          addBadge(label, "ai bifat — greșit", "wrong");
+        } else if (input.value === question.answer) {
+          label.classList.add("review-correct-option");
+          addBadge(label, "varianta corectă", "correct");
+        }
+      });
+    });
+  }
+
+  function toggleReview() {
+    const button = document.getElementById("reviewToggleButton");
+    const hint = document.getElementById("reviewHint");
+
+    reviewVisible = !reviewVisible;
+
+    if (reviewVisible) {
+      applyReviewMarks();
+      if (button) button.textContent = "Ascunde marcajele de pe întrebări";
+      if (hint) hint.textContent = "Marcajele sunt afișate direct pe întrebări. Derulează prin test ca să vezi ce ai bifat și care era varianta corectă.";
+      const firstQuestion = document.getElementById("question-1");
+      if (firstQuestion) firstQuestion.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      clearReviewMarks();
+      if (button) button.textContent = "Arată răspunsurile pe întrebări";
+      if (hint) hint.textContent = "Răspunsurile nu mai apar ca listă separată. Se vor marca direct pe fiecare întrebare: ce ai bifat, dacă este corect sau greșit și care era varianta corectă.";
+    }
+  }
+
+  function resetQuiz() {
+    document.querySelectorAll("input[type='radio']").forEach(input => input.checked = false);
+    clearReviewMarks();
+    reviewVisible = false;
+    const resultBox = document.getElementById("resultBox");
+    resultBox.style.display = "none";
+    resultBox.innerHTML = "";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  document.addEventListener("DOMContentLoaded", renderQuiz);
+</script>
+
+</body>
+</html>

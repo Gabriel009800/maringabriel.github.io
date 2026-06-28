@@ -727,3 +727,34 @@ body {
   hyphens: auto;
   line-height: 1.55;
 }
+
+
+
+.card-link {
+  color: white;
+  text-decoration: none;
+  font-weight: inherit;
+}
+
+.card-link:hover {
+  text-decoration: underline;
+}
+
+
+
+.link-calatorii {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.link-calatorii:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.link-calatorii:active {
+  transform: translateY(-1px);
+}

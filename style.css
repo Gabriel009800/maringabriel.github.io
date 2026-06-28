@@ -735,9 +735,62 @@ body {
 }
 
 
+.link-calatorii {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.link-calatorii:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.link-calatorii:active {
+  transform: translateY(-1px);
+}
 
 
 
+.link-calatorii {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
 
+.link-calatorii:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
 
+.link-calatorii:active {
+  transform: translateY(-1px);
+}
 
+.link-calatorii,
+.link-calatorii:visited,
+.link-calatorii:hover,
+.link-calatorii:active {
+  color: white !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+}
+
+.link-calatorii {
+  display: inline-block !important;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.link-calatorii:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
+}
+
+.link-calatorii:active {
+  transform: translateY(-1px);
+}

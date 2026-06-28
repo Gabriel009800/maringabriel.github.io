@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Călătorii – Marin Gabriel</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #ffffff;
+      color: #222;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .page {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 45px 48px 70px;
+    }
+
+    h1 {
+      font-size: 54px;
+      line-height: 1.1;
+      font-weight: 500;
+      margin: 0 0 42px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 28px 0 38px;
+    }
+
+    .summary-block {
+      display: inline-block;
+      width: fit-content;
+      max-width: 100%;
+      margin: 0 0 38px;
+    }
+
+    .summary-title {
+      font-size: 34px;
+      line-height: 1.35;
+      font-weight: 400;
+      margin: 0 0 34px;
+      padding-top: 34px;
+      border-top: 1px solid #ddd;
+      white-space: nowrap;
+    }
+
+    .stats {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 36px;
+    }
+
+    .stat {
+      height: 128px;
+      border: 1px solid #ddd;
+      background: #fafafa;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 32px;
+      line-height: 1;
+      font-weight: 500;
+      margin: 0 0 8px;
+    }
+
+    .stat span {
+      display: block;
+      font-size: 19px;
+      line-height: 1.2;
+      font-weight: 400;
+    }
+
+    #map {
+      width: 100%;
+      height: 590px;
+      border: 1px solid #d5d5d5;
+      margin: 10px 0 40px;
+    }
+
+    .leaflet-control-layers {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+    }
+
+    .places-title {
+      font-size: 28px;
+      font-weight: 500;
+      margin: 0 0 22px;
+    }
+
+    .places {
+      columns: 3;
+      column-gap: 48px;
+      font-size: 17px;
+      line-height: 1.9;
+      margin-bottom: 42px;
+    }
+
+    .place-item {
+      break-inside: avoid;
+      margin-bottom: 4px;
+    }
+
+    .place-region {
+      color: #777;
+      font-size: 14px;
+    }
+
+    .edit-panel {
+      display: none;
+      margin-top: 34px;
+      padding: 24px;
+      border: 1px solid #ddd;
+      background: #fafafa;
+    }
+
+    body.edit-mode .edit-panel {
+      display: block;
+    }
+
+    .edit-panel h2 {
+      margin: 0 0 12px;
+      font-size: 26px;
+      font-weight: 500;
+    }
+
+    .edit-note {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .edit-list {
+      columns: 3;
+      column-gap: 32px;
+      margin-top: 16px;
+    }
+
+    .edit-list label {
+      display: block;
+      margin-bottom: 10px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .edit-list input {
+      margin-right: 7px;
+    }
+
+    .reset-button {
+      margin-top: 18px;
+      padding: 10px 16px;
+      border: 1px solid #bbb;
+      background: #fff;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+    }
+
+    .reset-button:hover {
+      background: #eee;
+    }
+
+    .footer {
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+      padding: 26px 0 0;
+    }
+
+    @media (max-width: 900px) {
+      .page {
+        padding: 34px 22px 55px;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+
+      .summary-block {
+        display: block;
+        width: 100%;
+      }
+
+      .summary-title {
+        white-space: normal;
+        font-size: 26px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .stat {
+        height: 112px;
+      }
+
+      #map {
+        height: 430px;
+      }
+
+      .places,
+      .edit-list {
+        columns: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+
+    <h1>Călătorii</h1>
+
+    <hr>
+
+    <section class="summary-block">
+      <h2 class="summary-title">
+        Locurile pe care le-am vizitat și care mi-au rămas în memorie
+      </h2>
+
+      <div class="stats">
+        <div class="stat">
+          <strong id="count-tari">0</strong>
+          <span>țări</span>
+        </div>
+
+        <div class="stat">
+          <strong id="count-regiuni">0</strong>
+          <span>regiuni</span>
+        </div>
+
+        <div class="stat">
+          <strong id="count-localitati">0</strong>
+          <span>localități</span>
+        </div>
+      </div>
+    </section>
+
+    <div id="map"></div>
+
+    <h2 class="places-title">Localități vizitate</h2>
+
+    <div class="places" id="places"></div>
+
+    <div class="edit-panel">
+      <h2>Selectare localități</h2>
+
+      <p class="edit-note">
+        Modul de editare apare doar dacă deschizi pagina cu:
+        <strong>calatorii.html?edit=1</strong>.
+        Bifările se salvează în browserul tău. Pentru varianta publică permanentă,
+        setează în cod <strong>vazut: true</strong> la localitățile dorite.
+      </p>
+
+      <div class="edit-list" id="edit-list"></div>
+
+      <button class="reset-button" id="reset-selection">
+        Resetează selecția salvată în browser
+      </button>
+    </div>
+
+    <hr>
+
+    <div class="footer">
+      · © 2026 Marin Gabriel ·
+    </div>
+
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <script>
+const localitati = [
+  {
+    id: "viena",
+    nume: "Viena",
+    regiune: "Viena",
+    tara: "Austria",
+    lat: 48.2082,
+    lng: 16.3738,
+    vazut: true
+  },
+
+  {
+    id: "cascadele_krushuna",
+    nume: "Cascadele Krushuna",
+    regiune: "Lovech",
+    tara: "Bulgaria",
+    lat: 43.2530,
+    lng: 25.0344,
+    vazut: true
+  },
+  {
+    id: "lovech",
+    nume: "Lovech",
+    regiune: "Lovech",
+    tara: "Bulgaria",
+    lat: 43.1368,
+    lng: 24.7158,
+    vazut: true
+  },
+  {
+    id: "pestera_devetashka",
+    nume: "Peștera Devetashka",
+    regiune: "Lovech",
+    tara: "Bulgaria",
+    lat: 43.2342,
+    lng: 24.8852,
+    vazut: true
+  },
+  {
+    id: "varna",
+    nume: "Varna",
+    regiune: "Varna",
+    tara: "Bulgaria",
+    lat: 43.2141,
+    lng: 27.9147,
+    vazut: true
+  },
+  {
+    id: "veliko_tarnovo",
+    nume: "Veliko Tarnovo",
+    regiune: "Veliko Tarnovo",
+    tara: "Bulgaria",
+    lat: 43.0757,
+    lng: 25.6172,
+    vazut: true
+  },
+
+  {
+    id: "paris",
+    nume: "Paris",
+    regiune: "Île-de-France",
+    tara: "Franța",
+    lat: 48.8566,
+    lng: 2.3522,
+    vazut: true
+  },
+
+  {
+    id: "rust",
+    nume: "Rust",
+    regiune: "Baden-Württemberg",
+    tara: "Germania",
+    lat: 48.2672,
+    lng: 7.7256,
+    vazut: true
+  },
+
+  {
+    id: "atena",
+    nume: "Atena",
+    regiune: "Attica",
+    tara: "Grecia",
+    lat: 37.9838,
+    lng: 23.7275,
+    vazut: true
+  },
+
+  {
+    id: "bologna",
+    nume: "Bologna",
+    regiune: "Emilia-Romagna",
+    tara: "Italia",
+    lat: 44.4949,
+    lng: 11.3426,
+    vazut: true
+  },
+  {
+    id: "florenta",
+    nume: "Florența",
+    regiune: "Toscana",
+    tara: "Italia",
+    lat: 43.7696,
+    lng: 11.2558,
+    vazut: true
+  },
+  {
+    id: "pisa",
+    nume: "Pisa",
+    regiune: "Toscana",
+    tara: "Italia",
+    lat: 43.7228,
+    lng: 10.4017,
+    vazut: true
+  },
+  {
+    id: "roma",
+    nume: "Roma",
+    regiune: "Lazio",
+    tara: "Italia",
+    lat: 41.9028,
+    lng: 12.4964,
+    vazut: true
+  },
+  {
+    id: "venetia",
+    nume: "Veneția",
+    regiune: "Veneto",
+    tara: "Italia",
+    lat: 45.4408,
+    lng: 12.3155,
+    vazut: true
+  },
+
+  {
+    id: "2_mai",
+    nume: "2 Mai",
+    regiune: "Dobrogea",
+    tara: "România",
+    lat: 43.7876,
+    lng: 28.5756,
+    vazut: true
+  },
+  {
+    id: "balotesti",
+    nume: "Balotești",
+    regiune: "Muntenia",
+    tara: "România",
+    lat: 44.6167,
+    lng: 26.1167,
+    vazut: true
+  },
+  {
+    id: "braila",
+    nume: "Brăila",
+    regiune: "Muntenia",
+    tara: "România",
+    lat: 45.2692,
+    lng: 27.9575,
+    vazut: true
+  },
+  {
+    id: "bran",
+    nume: "Bran",
+    regiune: "Transilvania",
+    tara: "România",
+    lat: 45.5155,
+    lng: 25.3673,
+    vazut: true
+  },
+  {
+    id: "brasov",
+    nume: "Brașov",
+    regiune: "Transilvania",
+    tara: "România",
+    lat: 45.6579,
+    lng: 25.6012,
+    vazut: true
+  },
+  {
+    id: "bucuresti",
+    nume: "București",
+    regiune: "Muntenia",
+    tara: "România",
+    lat: 44.4268,
+    lng: 26.1025,
+    vazut: true
+  },
+  {
+    id: "buftea",
+    nume: "Buftea",
+    regiune: "Muntenia",
+    tara: "România",
+    lat: 44.5614,
+    lng: 25.9489,
+    vazut: true
+  },
+  {
+  id: "busteni",
+  nume: "Bușteni",
+  regiune: "Muntenia",
+  tara: "România",
+  lat: 45.4153,
+  lng: 25.5340,
+  vazut: true
+},
+{
+  id: "campina",
+  nume: "Câmpina",
+  regiune: "Muntenia",
+  tara: "România",
+  lat: 45.1262,
+  lng: 25.7349,
+  vazut: true
+},
+{
+  id: "sinaia",
+  nume: "Sinaia",
+  regiune: "Muntenia",
+  tara: "România",
+  lat: 45.3500,
+  lng: 25.5500,
+  vazut: true
+},
+{
+  id: "slanic",
+  nume: "Slănic",
+  regiune: "Muntenia",
+  tara: "România",
+  lat: 45.2314,
+  lng: 25.9394,
+  vazut: true
+},
+{
+  id: "targu_jiu",
+  nume: "Târgu Jiu",
+  regiune: "Oltenia",
+  tara: "România",
+  lat: 45.0314,
+  lng: 23.2689,
+  vazut: true
+},
+{
+  id: "turda",
+  nume: "Turda",
+  regiune: "Transilvania",
+  tara: "România",
+  lat: 46.5667,
+  lng: 23.7833,
+  vazut: true
+},
+  {
+    id: "buzau",
+    nume: "Buzău",
+    regiune: "Muntenia",
+    tara: "România",
+    lat: 45.1517,
+    lng: 26.8236,
+    vazut: true
+  },
+  {
+    id: "chiajna",
+    nume: "Chiajna",
+    regiune: "Muntenia",
+    tara: "România",
+    lat: 44.4594,
+    lng: 25.9733,
+    vazut: true
+  },
+  {
+    id: "chitila",
+    nume: "Chitila",
+    regiune: "Muntenia",
+    tara: "România",
+    lat: 44.5084,
+    lng: 25.9821,
+    vazut: true
+  },
+  {
+    id: "cluj_napoca",
+    nume: "Cluj-Napoca",
+    regiune: "Transilvania",
+    tara: "România",
+    lat: 46.7712,
+    lng: 23.6236,
+    vazut: true
+  },
+  {
+    id: "constanta",
+    nume: "Constanța",
+    regiune: "Dobrogea",
+    tara: "România",
+    lat: 44.1598,
+    lng: 28.6348,
+    vazut: true
+  },
+  {
+    id: "costinesti",
+    nume: "Costinești",
+    regiune: "Dobrogea",
+    tara: "România",
+    lat: 43.9506,
+    lng: 28.6328,
+    vazut: true
+  },
+  {
+    id: "craiova",
+    nume: "Craiova",
+    regiune: "Oltenia",
+    tara: "România",
+    lat: 44.3302,
+    lng: 23.7949,
+    vazut: true
+  },
+  {
+  id: "bucov",
+  nume: "Bucov",
+  regiune: "Muntenia",
+  tara: "România",
+  lat: 44.9667,
+  lng: 26.0833,
+  vazut: true
+},
+{
+  id: "darmanesti_db",
+  nume: "Dărmănești",
+  regiune: "Muntenia",
+  tara: "România",
+  lat: 44.9170,
+  lng: 25.7670,
+  vazut: true
+},  
+  {
+    id: "deva",
+    nume: "Deva",
+    regiune: "Transilvania",
+    tara: "România",
+    lat: 45.8663,
+    lng: 22.9144,
+    vazut: true
+  },
+  {
+    id: "drobeta_turnu_severin",
+    nume: "Drobeta-Turnu Severin",
+    regiune: "Oltenia",
+    tara: "România",
+    lat: 44.6369,
+    lng: 22.6597,
+    vazut: true
+  },
+  {
+    id: "eforie_nord",
+    nume: "Eforie Nord",
+    regiune: "Dobrogea",
+    tara: "România",
+    lat: 44.0656,
+    lng: 28.6328,
+    vazut: true
+  },
+  {
+    id: "eforie_sud",
+    nume: "Eforie Sud",
+    regiune: "Dobrogea",
+    tara: "România",
+    lat: 44.0229,
+    lng: 28.6493,
+    vazut: true
+  },
+  {
+    id: "focsani",
+    nume: "Focșani",
+    regiune: "Moldova",
+    tara: "România",
+    lat: 45.6965,
+    lng: 27.1840,
+    vazut: true
+  },
+  {
+    id: "galati",
+    nume: "Galați",
+    regiune: "Moldova",
+    tara: "România",
+    lat: 45.4353,
+    lng: 28.0080,
+    vazut: true
+  },
+  {
+    id: "histria",
+    nume: "Histria",
+    regiune: "Dobrogea",
+    tara: "România",
+    lat: 44.5484,
+    lng: 28.7744,
+    vazut: true
+  },
+  {
+    id: "hunedoara",
+    nume: "Hunedoara",
+    regiune: "Transilvania",
+    tara: "România",
+    lat: 45.7678,
+    lng: 22.9072,
+    vazut: true
+  },
+  {
+    id: "iasi",
+    nume: "Iași",
+    regiune: "Moldova",
+    tara: "România",
+    lat: 47.1585,
+    lng: 27.6014,
+    vazut: true
+  },
+  {
+    id: "jupiter",
+    nume: "Jupiter",
+    regiune: "Dobrogea",
+    tara: "România",
+    lat: 43.8500,
+    lng: 28.5960,
+    vazut: true
+  },
+  {
+    id: "mamaia",
+    nume: "Mamaia",
+    regiune: "Dobrogea",
+    tara: "România",
+    lat: 44.2387,
+    lng: 28.6212,
+    vazut: true
+  },
+  {
+    id: "mamaia_sat",
+    nume: "Mamaia-Sat",
+    regiune: "Dobrogea",
+    tara: "România",
+    lat: 44.3000,
+    lng: 28.6260,
+    vazut: true
+  },
+  {
+    id: "mangalia",
+    nume: "Mangalia",
+    regiune: "Dobrogea",
+    tara: "România",
+    lat: 43.8152,
+    lng: 28.5744,
+    vazut: true
+  },
+  {
+    id: "mogosoaia",
+    nume: "Mogoșoaia",
+    regiune: "Muntenia",
+    tara: "România",
+    lat: 44.5292,
+    lng: 26.0005,
+    vazut: true
+  },
+  {
+    id: "neptun",
+    nume: "Neptun",
+    regiune: "Dobrogea",
+    tara: "România",
+    lat: 43.8701,
+    lng: 28.6025,
+    vazut: true
+  },
+  {
+    id: "olimp",
+    nume: "Olimp",
+    regiune: "Dobrogea",
+    tara: "România",
+    lat: 43.8844,
+    lng: 28.6068,
+    vazut: true
+  },
+  {
+    id: "oradea",
+    nume: "Oradea",
+    regiune: "Crișana",
+    tara: "România",
+    lat: 47.0465,
+    lng: 21.9189,
+    vazut: true
+  },
+  {
+    id: "pitesti",
+    nume: "Pitești",
+    regiune: "Muntenia",
+    tara: "România",
+    lat: 44.8565,
+    lng: 24.8692,
+    vazut: true
+  },
+  {
+    id: "ploiesti",
+    nume: "Ploiești",
+    regiune: "Muntenia",
+    tara: "România",
+    lat: 44.9367,
+    lng: 26.0129,
+    vazut: true
+  },
+  {
+    id: "popesti_leordeni",
+    nume: "Popești-Leordeni",
+    regiune: "Muntenia",
+    tara: "România",
+    lat: 44.3833,
+    lng: 26.1667,
+    vazut: true
+  },
+  {
+    id: "rasnov",
+    nume: "Râșnov",
+    regiune: "Transilvania",
+    tara: "România",
+    lat: 45.5913,
+    lng: 25.4580,
+    vazut: true
+  },
+  {
+    id: "saturn",
+    nume: "Saturn",
+    regiune: "Dobrogea",
+    tara: "România",
+    lat: 43.8239,
+    lng: 28.5917,
+    vazut: true
+  },
+  {
+    id: "schitu",
+    nume: "Schitu",
+    regiune: "Dobrogea",
+    tara: "România",
+    lat: 43.9426,
+    lng: 28.6218,
+    vazut: true
+  },
+  {
+    id: "sibiu",
+    nume: "Sibiu",
+    regiune: "Transilvania",
+    tara: "România",
+    lat: 45.7983,
+    lng: 24.1256,
+    vazut: true
+  },
+  {
+    id: "sighisoara",
+    nume: "Sighișoara",
+    regiune: "Transilvania",
+    tara: "România",
+    lat: 46.2197,
+    lng: 24.7964,
+    vazut: true
+  },
+  {
+    id: "sighetu_marmatiei",
+    nume: "Sighetu Marmației",
+    regiune: "Maramureș",
+    tara: "România",
+    lat: 47.9277,
+    lng: 23.8864,
+    vazut: true
+  },
+  {
+    id: "suceava",
+    nume: "Suceava",
+    regiune: "Moldova",
+    tara: "România",
+    lat: 47.6635,
+    lng: 26.2732,
+    vazut: true
+  },
+  {
+    id: "targoviste",
+    nume: "Târgoviște",
+    regiune: "Muntenia",
+    tara: "România",
+    lat: 44.9254,
+    lng: 25.4567,
+    vazut: true
+  },
+  {
+    id: "timisoara",
+    nume: "Timișoara",
+    regiune: "Banat",
+    tara: "România",
+    lat: 45.7489,
+    lng: 21.2087,
+    vazut: true
+  },
+  {
+    id: "tulcea",
+    nume: "Tulcea",
+    regiune: "Dobrogea",
+    tara: "România",
+    lat: 45.1716,
+    lng: 28.7914,
+    vazut: true
+  },
+  {
+    id: "tuzla",
+    nume: "Tuzla",
+    regiune: "Dobrogea",
+    tara: "România",
+    lat: 44.0032,
+    lng: 28.6421,
+    vazut: true
+  },
+  {
+    id: "vadu_crisului",
+    nume: "Vadu Crișului",
+    regiune: "Crișana",
+    tara: "România",
+    lat: 46.9833,
+    lng: 22.5167,
+    vazut: true
+  },
+  {
+    id: "valenii_de_munte",
+    nume: "Vălenii de Munte",
+    regiune: "Muntenia",
+    tara: "România",
+    lat: 45.1833,
+    lng: 26.0333,
+    vazut: true
+  },
+  {
+    id: "vama_veche",
+    nume: "Vama Veche",
+    regiune: "Dobrogea",
+    tara: "România",
+    lat: 43.7520,
+    lng: 28.5749,
+    vazut: true
+  },
+  {
+    id: "venus",
+    nume: "Venus",
+    regiune: "Dobrogea",
+    tara: "România",
+    lat: 43.8507,
+    lng: 28.6010,
+    vazut: true
+  },
+  {
+    id: "voluntari",
+    nume: "Voluntari",
+    regiune: "Muntenia",
+    tara: "România",
+    lat: 44.4900,
+    lng: 26.1734,
+    vazut: true
+  },
+
+  {
+    id: "bratislava",
+    nume: "Bratislava",
+    regiune: "Bratislava",
+    tara: "Slovacia",
+    lat: 48.1486,
+    lng: 17.1077,
+    vazut: true
+  },
+
+  {
+    id: "budapesta",
+    nume: "Budapesta",
+    regiune: "Budapesta",
+    tara: "Ungaria",
+    lat: 47.4979,
+    lng: 19.0402,
+    vazut: true
+  }
+];
+
+    const STORAGE_KEY = "marin_gabriel_calatorii";
+    const editMode = new URLSearchParams(window.location.search).has("edit");
+
+    if (editMode) {
+      document.body.classList.add("edit-mode");
+    }
+
+    const savedSelection = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+
+    if (Array.isArray(savedSelection)) {
+      localitati.forEach(loc => {
+        loc.vazut = savedSelection.includes(loc.id);
+      });
+    }
+
+    const map = L.map("map", {
+      scrollWheelZoom: true
+    }).setView([45.9432, 24.9668], 6);
+
+    const hartaStradala = L.tileLayer(
+      "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      {
+        maxZoom: 19,
+        attribution: "&copy; OpenStreetMap"
+      }
+    );
+
+    const hartaAdministrativa = L.tileLayer(
+      "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+      {
+        maxZoom: 19,
+        attribution: "&copy; OpenStreetMap &copy; CARTO"
+      }
+    );
+
+    const satelitImagine = L.tileLayer(
+      "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+      {
+        maxZoom: 19,
+        attribution: "Tiles &copy; Esri"
+      }
+    );
+
+    const satelitEtichete = L.tileLayer(
+      "https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}",
+      {
+        maxZoom: 19,
+        attribution: "Labels &copy; Esri"
+      }
+    );
+
+    const hartaSatelit = L.layerGroup([satelitImagine, satelitEtichete]);
+
+    const hartaTopografica = L.tileLayer(
+      "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
+      {
+        maxZoom: 17,
+        attribution: "&copy; OpenTopoMap"
+      }
+    );
+
+hartaStradala.addTo(map);
+
+const hartiDisponibile = {
+  "Hartă stradală": hartaStradala,
+  "Hartă administrativă": hartaAdministrativa,
+  "Hartă satelit": hartaSatelit,
+  "Hartă topografică": hartaTopografica
+};
+
+    L.control.layers(hartiDisponibile, null, {
+      collapsed: false
+    }).addTo(map);
+
+    const markerGroup = L.layerGroup().addTo(map);
+
+    function getVizitate() {
+      return localitati.filter(loc => loc.vazut);
+    }
+
+    function saveSelection() {
+      const selectedIds = getVizitate().map(loc => loc.id);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(selectedIds));
+    }
+
+    function renderMap() {
+      markerGroup.clearLayers();
+
+      const vizitate = getVizitate();
+      const markers = [];
+
+      vizitate.forEach(loc => {
+const marker = L.circleMarker([loc.lat, loc.lng], {
+  radius: 4,
+color: "#6a00ff",
+fillColor: "#6a00ff",
+  weight: 1.5,
+  fillOpacity: 0.85
+}).bindPopup(
+  "<strong>" + loc.nume + "</strong><br>" +
+  loc.regiune + ", " + loc.tara
+);
+
+
+
+        marker.addTo(markerGroup);
+        markers.push(marker);
+      });
+
+      if (markers.length > 0) {
+        const group = L.featureGroup(markers);
+        map.fitBounds(group.getBounds().pad(0.25));
+      } else {
+        map.setView([45.9432, 24.9668], 6);
+      }
+    }
+
+    function renderPlaces() {
+      const container = document.getElementById("places");
+      container.innerHTML = "";
+
+      const vizitate = getVizitate().sort((a, b) => {
+        return a.nume.localeCompare(b.nume);
+      });
+
+      vizitate.forEach(loc => {
+        const div = document.createElement("div");
+        div.className = "place-item";
+        div.innerHTML =
+          loc.nume +
+          ' <span class="place-region">— ' +
+          loc.regiune +
+          ", " +
+          loc.tara +
+          "</span>";
+
+        container.appendChild(div);
+      });
+
+      const tari = new Set(vizitate.map(loc => loc.tara));
+      const regiuni = new Set(vizitate.map(loc => loc.regiune));
+
+      document.getElementById("count-tari").textContent = tari.size;
+      document.getElementById("count-regiuni").textContent = regiuni.size;
+      document.getElementById("count-localitati").textContent = vizitate.length;
+    }
+
+    function renderEditList() {
+      const container = document.getElementById("edit-list");
+      container.innerHTML = "";
+
+      localitati
+        .slice()
+        .sort((a, b) => a.nume.localeCompare(b.nume))
+        .forEach(loc => {
+          const label = document.createElement("label");
+
+          label.innerHTML =
+            '<input type="checkbox" ' +
+            (loc.vazut ? "checked" : "") +
+            "> " +
+            loc.nume +
+            ' <span style="color:#777;">(' +
+            loc.regiune +
+            ", " +
+            loc.tara +
+            ")</span>";
+
+          const checkbox = label.querySelector("input");
+
+          checkbox.addEventListener("change", () => {
+            loc.vazut = checkbox.checked;
+            saveSelection();
+            renderMap();
+            renderPlaces();
+          });
+
+          container.appendChild(label);
+        });
+    }
+
+    document.getElementById("reset-selection").addEventListener("click", () => {
+      localStorage.removeItem(STORAGE_KEY);
+      location.reload();
+    });
+
+    renderMap();
+    renderPlaces();
+    renderEditList();
+  </script>
+
+</body>
+</html>
