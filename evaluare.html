@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <!-- Variantă reparată: standalone, fără dependență de style.css -->
+  <!-- Variantă standalone, fără dependență de style.css -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Evaluare - Marin Gabriel</title>
@@ -20,12 +20,17 @@
       padding: 46px 22px 70px;
     }
 
-    .evaluation-hero {
+    .evaluation-hero,
+    .evaluation-panel,
+    .materials-panel-main {
       background: #fffaf3;
       border: 1px solid rgba(91, 62, 36, 0.18);
       border-radius: 26px;
-      padding: 34px;
       box-shadow: 0 14px 36px rgba(69, 46, 25, 0.08);
+    }
+
+    .evaluation-hero {
+      padding: 34px;
       margin-bottom: 28px;
     }
 
@@ -45,18 +50,26 @@
       color: #5b4a3d;
     }
 
-    .evaluation-panel {
-      background: #fffaf3;
-      border: 1px solid rgba(91, 62, 36, 0.16);
-      border-radius: 24px;
+    .evaluation-panel,
+    .materials-panel-main {
       padding: 26px;
-      box-shadow: 0 10px 28px rgba(69, 46, 25, 0.06);
+      margin-bottom: 28px;
     }
 
-    .evaluation-panel h2 {
+    .evaluation-panel h2,
+    .materials-panel-main h2 {
       margin: 0 0 18px;
       font-size: 26px;
       color: #3c2a1e;
+    }
+
+    .materials-intro {
+      margin: -6px 0 20px;
+      max-width: 900px;
+      font-size: 17px;
+      line-height: 1.65;
+      color: #5b4a3d;
+      text-align: justify;
     }
 
     .class-buttons {
@@ -90,18 +103,20 @@
       border-color: #3c2a1e;
     }
 
-    .unit-list {
+    .unit-list,
+    .materials-list {
       display: grid;
-      gap: 14px;
       gap: 14px;
     }
 
-    .unit-wrap {
+    .unit-wrap,
+    .materials-wrap {
       display: grid;
       gap: 10px;
     }
 
-    .unit-card {
+    .unit-card,
+    .materials-card {
       width: 100%;
       display: flex;
       justify-content: space-between;
@@ -115,25 +130,31 @@
       cursor: pointer;
       font-family: inherit;
       text-align: left;
+      transition: 0.2s ease;
     }
 
-    .unit-card:hover {
+    .unit-card:hover,
+    .materials-card:hover {
       background: #fff6eb;
+      transform: translateY(-1px);
     }
 
-    .unit-card.open {
+    .unit-card.open,
+    .materials-card.open {
       border-color: rgba(91, 62, 36, 0.38);
       background: #fff3e3;
     }
 
-    .unit-name {
+    .unit-name,
+    .materials-name {
       font-size: 18px;
       font-weight: 700;
       color: #3c2a1e;
       line-height: 1.4;
     }
 
-    .unit-meta {
+    .unit-meta,
+    .materials-meta {
       display: flex;
       align-items: center;
       gap: 10px;
@@ -156,7 +177,9 @@
       opacity: 0.9;
     }
 
-    .tests-panel {
+    .tests-panel,
+    .materials-children,
+    .materials-empty {
       background: #ffffff;
       border: 1px solid rgba(91, 62, 36, 0.12);
       border-radius: 18px;
@@ -165,12 +188,38 @@
       box-shadow: 0 8px 18px rgba(69, 46, 25, 0.04);
     }
 
-    .no-tests {
+    .materials-children {
+      display: grid;
+      gap: 12px;
+    }
+
+    .materials-level-1 .materials-card {
+      background: #fffdf9;
+      padding-left: 22px;
+    }
+
+    .materials-level-2 .materials-card {
+      background: #fbf5ec;
+      padding-left: 26px;
+    }
+
+    .materials-level-3 .materials-card {
+      background: #f8efe3;
+      padding-left: 30px;
+    }
+
+    .no-tests,
+    .materials-empty {
       color: #5b4a3d;
       line-height: 1.6;
     }
 
-    .test-link {
+    .materials-empty strong {
+      color: #3c2a1e;
+    }
+
+    .test-link,
+    .material-link {
       width: 100%;
       box-sizing: border-box;
       border: 1px solid rgba(91, 62, 36, 0.20);
@@ -192,16 +241,31 @@
 
     .test-link:visited,
     .test-link:hover,
-    .test-link:active {
+    .test-link:active,
+    .material-link:visited,
+    .material-link:hover,
+    .material-link:active {
       color: #3c2a1e;
       text-decoration: none;
     }
 
-    .test-link:hover {
+    .test-link:hover,
+    .material-link:hover {
       background: #ead8c4;
     }
 
     @media (max-width: 760px) {
+      .evaluation-page {
+        padding: 30px 14px 56px;
+      }
+
+      .evaluation-hero,
+      .evaluation-panel,
+      .materials-panel-main {
+        border-radius: 22px;
+        padding: 22px;
+      }
+
       .evaluation-hero h1 {
         font-size: 34px;
       }
@@ -210,17 +274,23 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .unit-card {
+      .unit-card,
+      .materials-card,
+      .test-link,
+      .material-link {
         align-items: flex-start;
         flex-direction: column;
       }
 
-      .unit-meta {
+      .unit-meta,
+      .materials-meta {
         white-space: normal;
         flex-wrap: wrap;
       }
 
-      .tests-panel {
+      .tests-panel,
+      .materials-children,
+      .materials-empty {
         margin-left: 0;
       }
     }
@@ -228,8 +298,6 @@
 </head>
 
 <body>
-
- 
 
 <main class="evaluation-page">
 
@@ -255,152 +323,334 @@
     <div id="unitList" class="unit-list"></div>
   </section>
 
+  <section class="materials-panel-main">
+    <h2>Materiale ajutătoare</h2>
+
+
+    <div id="materialsList" class="materials-list"></div>
+  </section>
+
 </main>
 
 <script>
   const units = {
     "V": [
-        {
-            "name": "Alfabetul istoriei",
-            "tests": []
-        },
-        {
-            "name": "Preistoria",
-            "tests": [
-                {
-                    "title": "Testul grilă nr. 1",
-                    "url": "test-preistoria-grila-1.html"
-                },
-				                {
-                    "title": "Testul grilă nr. 2",
-                    "url": "test-preistoria-grila-2.html"
-                },
-				
-								{
-                    "title": "Testul grilă nr. 3",
-                    "url": "test-preistoria-grila-3.html"
-                },
-								{
-                    "title": "Roata destinului",
-                    "url": "roata-destinului-preistoria.html"
-                }				
-				
-            ]
-        },
-        {
-            "name": "Orientul Antic",
-            "tests": []
-        },
-        {
-            "name": "Civilizația greacă",
-            "tests": [
-			
-								{
-                    "title": "Testul grilă nr. 1",
-                    "url": "test-civilizația-greacă-grila-1.html"
-                }
-			
-			]
-        },
-        {
-            "name": "Lumea romană",
-            "tests": []
-        }
+      {
+        "name": "Alfabetul istoriei",
+        "tests": []
+      },
+      {
+        "name": "Preistoria",
+        "tests": [
+          {
+            "title": "Testul grilă nr. 1",
+            "url": "test-preistoria-grila-1.html"
+          },
+          {
+            "title": "Testul grilă nr. 2",
+            "url": "test-preistoria-grila-2.html"
+          },
+          {
+            "title": "Testul grilă nr. 3",
+            "url": "test-preistoria-grila-3.html"
+          },
+          {
+            "title": "Roata destinului",
+            "url": "roata-destinului-preistoria.html"
+          }
+        ]
+      },
+      {
+        "name": "Orientul Antic",
+        "tests": []
+      },
+      {
+        "name": "Civilizația greacă",
+        "tests": [
+          {
+            "title": "Testul grilă nr. 1",
+            "url": "test-civilizația-greacă-grila-1.html"
+          }
+        ]
+      },
+      {
+        "name": "Lumea romană",
+        "tests": []
+      },
+      {
+        "name": "Civilizația medievală",
+        "tests": []
+      }
     ],
     "VI": [
-        {
-            "name": "Călători și călătorii: Europa și Lumea Nouă",
-            "tests": [
-			
-											{
-                    "title": "Testul grilă nr. 1",
-                    "url": "test-marile-descoperiri-grila-1.html"
-                }
-			
-			]
-        },
-        {
-            "name": "Geneza spiritului modern",
-            "tests": []
-        },
-        {
-            "name": "Spre o nouă epocă",
-            "tests": []
-        },
-        {
-            "name": "Secolul Naționalităților",
-            "tests": []
-        }
+      {
+        "name": "Călători și călătorii: Europa și Lumea Nouă",
+        "tests": [
+          {
+            "title": "Testul grilă nr. 1",
+            "url": "test-marile-descoperiri-grila-1.html"
+          }
+        ]
+      },
+      {
+        "name": "Geneza spiritului modern",
+        "tests": []
+      },
+      {
+        "name": "Spre o nouă epocă",
+        "tests": []
+      },
+      {
+        "name": "Secolul Naționalităților",
+        "tests": []
+      }
     ],
     "VII": [
-        {
-            "name": "Lumea la începutul secolului al XIX-lea și începutul secolului al XX-lea",
-            "tests": []
-        },
-        {
-            "name": "Lumea interbelică: o lume în schimbare",
-            "tests": [
-			
-														{
-                    "title": "Testul grilă nr. 1",
-                    "url": "test-primul-razboi-mondial-grila-1.html"
-                }
-			
-			
-			]
-        },
-        {
-            "name": "Lumea în război",
-            "tests": []
-        },
-        {
-            "name": "Lumea postbelică",
-            "tests": []
-        }
+      {
+        "name": "Lumea la începutul secolului al XIX-lea și începutul secolului al XX-lea",
+        "tests": []
+      },
+      {
+        "name": "Lumea interbelică: o lume în schimbare",
+        "tests": [
+          {
+            "title": "Testul grilă nr. 1",
+            "url": "test-primul-razboi-mondial-grila-1.html"
+          }
+        ]
+      },
+      {
+        "name": "Lumea în război",
+        "tests": []
+      },
+      {
+        "name": "Lumea postbelică",
+        "tests": []
+      }
     ],
     "VIII": [
-        {
-            "name": "Preistoria în spațiul românesc",
-            "tests": []
-        },
-        {
-            "name": "Geto-dacii",
-            "tests": []
-        },
-        {
-            "name": "Etnogeneza românească",
-            "tests": []
-        },
-        {
-            "name": "Evul mediu românesc",
-            "tests": []
-        },
-        {
-            "name": "Modernitatea timpurie",
-            "tests": []
-        },
-        {
-            "name": "Lumea românească până la sfârșitul secolului al XIX-lea",
-            "tests": []
-        },
-        {
-            "name": "România modernă",
-            "tests": []
-        },
-        {
-            "name": "România în secolele XX-XXI",
-            "tests": []
-        }
+      {
+        "name": "Preistoria în spațiul românesc",
+        "tests": []
+      },
+      {
+        "name": "Geto-dacii",
+        "tests": []
+      },
+      {
+        "name": "Etnogeneza românească",
+        "tests": []
+      },
+      {
+        "name": "Evul mediu românesc",
+        "tests": []
+      },
+      {
+        "name": "Modernitatea timpurie",
+        "tests": []
+      },
+      {
+        "name": "Lumea românească până la sfârșitul secolului al XIX-lea",
+        "tests": []
+      },
+      {
+        "name": "România modernă",
+        "tests": []
+      },
+      {
+        "name": "România în secolele XX-XXI",
+        "tests": []
+      }
     ]
-};
+  };
+
+  const materials = [
+    {
+      name: "Istoria universală",
+      children: [
+	  
+	        {
+          name: "Preistoria",
+          resources: []
+      },
+	  
+        {
+          name: "Alfabetul istoriei",
+          resources: []
+        },
+
+        {
+          name: "Antichitatea",
+          children: [
+            {
+              name: "Civilizația mesopotamiană",
+              resources: []
+            },
+            {
+              name: "Civilizația egipteană",
+              resources: []
+            },
+            {
+              name: "Civilizația evreiască",
+              resources: []
+            },
+            {
+              name: "Civilizația greacă",
+              resources: []
+            },
+            {
+              name: "Civilizația romană",
+              resources: []
+            }
+          ]
+        },
+        {
+          name: "Evul Mediu",
+          children: [
+            {
+              name: "Creștinismul",
+              resources: []
+            },
+            {
+              name: "Islamul",
+              resources: []
+            },
+            {
+              name: "Formarea popoarelor europene",
+              resources: []
+            },
+            {
+              name: "Formarea statelor medievale",
+              resources: []
+            },
+            {
+              name: "Artă, cultură și viață cotidiană",
+              resources: []
+            }
+          ]
+        },
+        {
+          name: "Epoca Modernă",
+          children: [
+            {
+              name: "Marile descoperiri geografice",
+              resources: []
+            },
+            {
+              name: "Renașterea și Umanismul",
+              resources: []
+            },
+            {
+              name: "Reforma și Contrareforma",
+              resources: []
+            },
+            {
+              name: "Absolutismul monarhic",
+              resources: []
+            },
+            {
+              name: "Iluminismul",
+              resources: []
+            },
+            {
+              name: "Revoluția Engleză",
+              resources: []
+            },
+            {
+              name: "Revoluția Americană",
+              resources: []
+            },
+            {
+              name: "Revoluția Franceză",
+              resources: []
+            },
+            {
+              name: "Revoluția Industrială",
+              resources: []
+            },
+            {
+              name: "Statele moderne",
+              resources: []
+            }
+          ]
+        },
+        {
+          name: "Epoca Contemporană",
+          children: [
+            {
+              name: "Primul Război Mondial",
+              resources: [
+			                  {
+                  title: "Începutul conflictului",
+                  url: "primul-razboi-mondial-inceputul-conflictului.html"
+                }
+			  ]
+            },
+            {
+              name: "Perioada Interbelică",
+              resources: []
+            },
+            {
+              name: "Al Doilea Război Mondial",
+              resources: []
+            },
+            {
+              name: "Războiul Rece",
+              resources: []
+            },
+            {
+              name: "Lumea contemporană",
+              resources: []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      name: "Istoria românilor",
+      children: [
+	  
+	  
+	         {
+          name: "Alfabetul istoriei",
+          resources: []
+        },
+
+	  	        {
+          name: "Preistoria",
+          resources: []
+      },
+	  
+	
+        {
+          name: "Antichitatea",
+          resources: []
+        },
+        {
+          name: "Evul Mediu",
+          resources: []
+        },
+        {
+          name: "Epoca Modernă",
+          resources: []
+        },
+        {
+          name: "Epoca Contemporană",
+          resources: []
+        }
+      ]
+    }
+  ];
 
   let currentClass = "V";
   let openUnitIndex = null;
+  const openMaterialPaths = new Set();
 
   function testCountLabel(count) {
     if (count === 1) return "1 test disponibil";
     return count + " teste disponibile";
   }
+
 
   function showClass(className, button) {
     currentClass = className;
@@ -454,6 +704,7 @@
             link.className = "test-link";
             link.href = test.url;
             link.target = "_blank";
+            link.rel = "noopener";
             link.innerHTML = `<span>${test.title}</span><span>Deschide testul</span>`;
             testsPanel.appendChild(link);
           });
@@ -466,7 +717,86 @@
     });
   }
 
-  document.addEventListener("DOMContentLoaded", renderUnits);
+  function renderMaterials() {
+    const materialsList = document.getElementById("materialsList");
+    materialsList.innerHTML = "";
+
+    materials.forEach((node, index) => {
+      materialsList.appendChild(createMaterialNode(node, String(index), 0));
+    });
+  }
+
+  function createMaterialNode(node, path, level) {
+    const wrap = document.createElement("div");
+    wrap.className = `materials-wrap materials-level-${level}`;
+
+    const isOpen = openMaterialPaths.has(path);
+    const hasChildren = node.children && node.children.length > 0;
+    const resources = node.resources || [];
+
+    const card = document.createElement("button");
+    card.type = "button";
+    card.className = "materials-card";
+    if (isOpen) card.classList.add("open");
+
+    card.innerHTML = `
+      <div class="materials-name">${node.name}</div>
+      <div class="materials-meta">
+        <span class="toggle-label">${isOpen ? "Ascunde" : "Deschide"}</span>
+      </div>
+    `;
+
+    card.addEventListener("click", () => {
+      if (isOpen) {
+        openMaterialPaths.delete(path);
+      } else {
+        openMaterialPaths.add(path);
+      }
+      renderMaterials();
+    });
+
+    wrap.appendChild(card);
+
+    if (isOpen) {
+      if (hasChildren) {
+        const childrenBox = document.createElement("div");
+        childrenBox.className = "materials-children";
+
+        node.children.forEach((child, childIndex) => {
+          childrenBox.appendChild(createMaterialNode(child, `${path}-${childIndex}`, level + 1));
+        });
+
+        wrap.appendChild(childrenBox);
+      } else if (resources.length > 0) {
+        const resourcesBox = document.createElement("div");
+        resourcesBox.className = "materials-children";
+
+        resources.forEach(resource => {
+          const link = document.createElement("a");
+          link.className = "material-link";
+          link.href = resource.url;
+          link.target = "_blank";
+          link.rel = "noopener";
+          link.innerHTML = `<span>${resource.title}</span><span>Deschide materialul</span>`;
+          resourcesBox.appendChild(link);
+        });
+
+        wrap.appendChild(resourcesBox);
+      } else {
+        const emptyBox = document.createElement("div");
+        emptyBox.className = "materials-empty";
+        emptyBox.innerHTML = `Nu există încă materiale încărcate pentru <strong>${node.name}</strong>.`;
+        wrap.appendChild(emptyBox);
+      }
+    }
+
+    return wrap;
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    renderUnits();
+    renderMaterials();
+  });
 </script>
 
 </body>
