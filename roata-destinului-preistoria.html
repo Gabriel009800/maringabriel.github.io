@@ -658,32 +658,165 @@
 
     .list-card {
       display: none;
-      max-height: 330px;
-      overflow: auto;
-      padding: 20px 22px;
+      max-height: 360px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 20px 18px 20px 22px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 190, 86, 0.75) rgba(28, 4, 12, 0.72);
+      scrollbar-gutter: stable;
     }
 
     .list-card.active {
       display: block;
     }
 
+    .list-card::-webkit-scrollbar {
+      width: 11px;
+    }
+
+    .list-card::-webkit-scrollbar-track {
+      margin: 14px 0;
+      border-radius: 999px;
+      background:
+        linear-gradient(180deg, rgba(25, 2, 10, 0.88), rgba(72, 13, 22, 0.58));
+      box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.55);
+    }
+
+    .list-card::-webkit-scrollbar-thumb {
+      border: 2px solid rgba(21, 2, 9, 0.92);
+      border-radius: 999px;
+      background:
+        linear-gradient(180deg, #ffe19a 0%, #ff9a24 44%, #b51937 100%);
+      box-shadow:
+        0 0 10px rgba(255, 136, 22, 0.45),
+        inset 0 0 8px rgba(255, 255, 255, 0.18);
+    }
+
+    .list-card::-webkit-scrollbar-thumb:hover {
+      background:
+        linear-gradient(180deg, #fff0b8 0%, #ffb13d 42%, #d32043 100%);
+    }
+
     .list-card ol {
       margin: 0;
-      padding-left: 22px;
+      padding-left: 0;
+      list-style: none;
+      counter-reset: questionCounter;
     }
 
     .list-card li {
-      margin-bottom: 10px;
+      position: relative;
+      margin-bottom: 12px;
+      padding: 10px 12px 11px 48px;
+      border: 1px solid rgba(255, 206, 113, 0.18);
+      border-radius: 16px;
       color: #fff0cb;
+      background:
+        linear-gradient(135deg, rgba(255, 211, 114, 0.07), rgba(95, 10, 27, 0.20));
+      box-shadow:
+        inset 0 0 12px rgba(255, 255, 255, 0.025),
+        0 8px 16px rgba(0, 0, 0, 0.16);
       line-height: 1.35;
       font-weight: 700;
+      cursor: pointer;
+      transition:
+        border-color 0.22s ease,
+        background 0.22s ease,
+        transform 0.22s ease,
+        box-shadow 0.22s ease;
+    }
+
+    .list-card li::before {
+      counter-increment: questionCounter;
+      content: counter(questionCounter) ".";
+      position: absolute;
+      left: 14px;
+      top: 10px;
+      width: 24px;
+      color: #ffd977;
+      font-weight: 900;
+      text-align: right;
+      text-shadow: 0 0 8px rgba(255, 126, 24, 0.32);
+    }
+
+    .list-card li:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255, 217, 119, 0.42);
+      background:
+        linear-gradient(135deg, rgba(255, 211, 114, 0.12), rgba(132, 15, 35, 0.28));
+      box-shadow:
+        0 0 18px rgba(255, 124, 25, 0.12),
+        0 10px 20px rgba(0, 0, 0, 0.20);
+    }
+
+    .list-card li:focus-visible {
+      outline: 2px solid rgba(255, 226, 139, 0.92);
+      outline-offset: 3px;
+    }
+
+    .question-item {
+      display: block;
+    }
+
+    .answer-hint {
+      display: none;
+      margin-top: 10px;
+      padding: 10px 12px;
+      border: 1px solid rgba(255, 218, 132, 0.28);
+      border-left: 4px solid rgba(255, 157, 35, 0.92);
+      border-radius: 13px;
+      color: #ffe8b6;
+      background:
+        linear-gradient(135deg, rgba(255, 141, 26, 0.14), rgba(0, 0, 0, 0.24));
+      box-shadow: inset 0 0 14px rgba(255, 210, 117, 0.04);
+      font-size: 0.9rem;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .list-card li.open .answer-hint {
+      display: block;
+      animation: hintReveal 0.22s ease both;
+    }
+
+    .hint-label {
+      display: inline-block;
+      margin-right: 5px;
+      color: #ffd977;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.35px;
+      font-size: 0.76rem;
+    }
+
+    .list-card li.used .question-item {
+      color: rgba(255, 223, 190, 0.46);
+      text-decoration: line-through;
+      text-decoration-thickness: 2px;
+      opacity: 0.78;
+    }
+
+    .list-card li.used::before {
+      color: rgba(255, 223, 190, 0.44);
+      text-shadow: none;
     }
 
     .list-card li.used {
-      color: rgba(255, 223, 190, 0.42);
-      text-decoration: line-through;
-      text-decoration-thickness: 2px;
-      opacity: 0.74;
+      border-color: rgba(255, 206, 113, 0.10);
+      background:
+        linear-gradient(135deg, rgba(255, 211, 114, 0.035), rgba(0, 0, 0, 0.20));
+    }
+
+    @keyframes hintReveal {
+      from {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .wheel-side {
@@ -2447,14 +2580,47 @@
       "Ce este ceramica și de ce era utilă?",
       "Ce meșteșuguri practicau oamenii în Epoca Metalelor?",
       "Ce diferență există între piatră cioplită și piatră șlefuită?",
-      "În ce constă diferențe sociale în comunitățile neolitice?",
+      "În ce constau diferențele sociale în comunitățile neolitice?",
       "Ce sunt monumentele megalitice?",
       "Dă un exemplu de monument megalitic celebru.",
       "Care este importanța metalelor în evoluția omului?",
       "Ce metale au fost folosite la sfârșitul Preistoriei?",
       "Cum a influențat inventarea roții viața oamenilor?",
       "De ce putem spune că Preistoria pregătește apariția civilizațiilor antice?"
-    ];
+];
+
+    const answerHints = [
+      "Preistoria este cea mai veche perioadă din istoria omenirii, întinsă de la apariția primilor oameni până la apariția scrierii. Se numește «preistorie» deoarece este perioada de dinaintea istoriei scrise, adică nu avem documente redactate de oamenii de atunci. Pentru a o cunoaște, cercetătorii folosesc urme materiale: unelte, arme, oase, locuințe, morminte, podoabe și picturi rupestre.",
+      "Principalele izvoare pentru Preistorie sunt izvoarele nescrise, deoarece scrierea nu fusese încă inventată. Putem da ca exemple unelte din piatră, os sau metal, resturi de locuințe, vase, podoabe, morminte, schelete și picturi rupestre. Acestea sunt descoperite și interpretate mai ales de arheologi, care reconstituie viața oamenilor preistorici pe baza obiectelor rămase.",
+      "Termenul «hominid» se referă la ființe aflate pe linia evoluției omului, apropiate de omul modern. Un răspuns bun poate aminti că hominizii mergeau pe două picioare, aveau mâinile libere, un creier mai dezvoltat și puteau folosi sau confecționa unelte simple. Ei reprezintă etape importante în procesul lung prin care a apărut omul de astăzi.",
+      "Paleoliticul este prima mare perioadă a Preistoriei și mai este numit epoca pietrei cioplite. Atunci oamenii trăiau mai ales din vânătoare, pescuit și cules, fiind în general nomazi. Neoliticul este epoca pietrei șlefuite, când apar agricultura, domesticirea animalelor, satele stabile, ceramica și o viață mai organizată.",
+      "Focul a fost una dintre cele mai importante descoperiri, deoarece le-a oferit oamenilor căldură, lumină și protecție împotriva animalelor sălbatice. Cu ajutorul lui, hrana putea fi gătită, devenind mai ușor de consumat. Focul a permis oamenilor să supraviețuiască în zone mai reci și a creat un loc de adunare pentru grup, favorizând comunicarea și cooperarea.",
+      "În Paleolitic, oamenii foloseau mai ales unelte din piatră cioplită, dar și din os, lemn sau corn. Ei realizau răzuitoare, cuțite primitive, vârfuri de suliță, topoare simple și obiecte pentru tăiat, spart, răzuit sau prelucrat pieile animalelor. Aceste unelte erau rudimentare, dar foarte importante pentru supraviețuire, vânătoare și apărare.",
+      "Oamenii din Paleolitic erau în general nomazi, adică nu trăiau permanent într-un singur loc. Ei se mutau în funcție de anotimpuri, de animalele pe care le urmăreau, de apă și de plantele disponibile. Deoarece nu practicau încă agricultura stabilă, depindeau direct de resursele oferite de natură.",
+      "Un vânător-culegător este un om care își procură hrana direct din natură, fără să cultive pământul. El vânează animale, pescuiește, adună fructe, semințe, rădăcini, ouă, miere sau plante comestibile. Acest mod de viață era specific Paleoliticului și presupunea deplasări dese după hrană.",
+      "Oamenii preistorici locuiau uneori în peșteri deoarece acestea ofereau adăpost natural împotriva frigului, ploii, vântului și animalelor sălbatice. Peșterile puteau fi folosite ca locuințe temporare, spații de protecție sau locuri cu rol ritualic. Totuși, nu toți oamenii preistorici au trăit în peșteri; mulți foloseau colibe, adăposturi din crengi, piei sau oase.",
+      "Oamenii preistorici vânau animalele care trăiau în zona lor și care le puteau oferi hrană și materiale utile. Printre exemple se pot menționa mamuți, bizoni, reni, cerbi, cai sălbatici, mistreți sau bourii. Din animale foloseau carnea pentru hrană, pieile pentru îmbrăcăminte și adăpost, iar oasele și coarnele pentru unelte.",
+      "Picturile rupestre sunt picturi sau desene realizate pe pereții peșterilor de către oamenii preistorici. Ele reprezentau frecvent animale, scene de vânătoare, siluete umane, semne și simboluri. Sunt importante deoarece ne arată nu doar activități din viața de zi cu zi, ci și faptul că oamenii aveau imaginație, credințe și forme timpurii de exprimare artistică.",
+      "Picturi rupestre celebre au fost descoperite în peșteri precum Lascaux și Chauvet, în Franța, sau Altamira, în Spania. Aceste locuri conțin reprezentări foarte vechi de animale, realizate cu multă atenție la formă și mișcare. Ele sunt dovezi valoroase despre arta, gândirea și lumea spirituală a oamenilor preistorici.",
+      "Picturile rupestre puteau avea mai multe roluri, nu doar unul singur. Ele puteau fi legate de magie sau religie, de dorința de a avea succes la vânătoare, de transmiterea experienței către membrii grupului sau de marcarea unor locuri importante. Prin aceste picturi, oamenii preistorici își exprimau fricile, speranțele și legătura cu animalele de care depindeau.",
+      "În Neolitic apare o schimbare majoră: oamenii încep să producă hrană prin agricultură și creșterea animalelor. Această transformare este numită uneori revoluția neolitică, deoarece a schimbat profund modul de viață. Oamenii nu mai depindeau doar de vânătoare și cules, ci puteau locui în sate, depozita hrană și dezvolta ocupații noi.",
+      "Sedentarizarea înseamnă trecerea de la viața nomadă la viața stabilă, într-un loc fix sau într-o așezare permanentă. Ea a fost posibilă mai ales datorită agriculturii și domesticirii animalelor. Oamenii au început să construiască locuințe durabile, să formeze sate, să cultive pământul din jur și să păstreze rezerve de hrană.",
+      "Agricultura a schimbat viața oamenilor deoarece le-a permis să producă hrană, nu doar să o caute în natură. Odată cu agricultura, oamenii au devenit sedentari, au construit sate și au putut depozita surplusuri de cereale. Surplusul de hrană a dus la schimburi, la specializarea unor ocupații și, treptat, la apariția diferențelor sociale.",
+      "În Preistorie au fost domesticite mai multe animale utile omului. Printre primele se numără câinele, apoi oaia, capra, porcul, vita și, mai târziu, calul. Aceste animale ofereau carne, lapte, piei, lână, ajutor la pază, la transport sau la muncile agricole, contribuind la stabilitatea comunităților.",
+      "Domesticirea animalelor înseamnă îmblânzirea, creșterea și controlul unor animale de către oameni. Animalele nu mai erau doar vânate, ci erau ținute aproape de așezări și folosite în mod organizat. Domesticirea a oferit hrană mai sigură, materiale pentru îmbrăcăminte și unelte, dar și ajutor la muncă sau transport.",
+      "Primele așezări omenești s-au format mai ales în zone fertile, lângă ape, unde oamenii aveau condiții bune pentru agricultură și creșterea animalelor. Oamenii au construit locuințe, spații de depozitare și locuri pentru activități meșteșugărești. În timp, aceste grupuri de case au devenit sate, iar viața comunitară a devenit mai bine organizată.",
+      "În Neolitic, oamenii aveau ocupații mai variate decât în Paleolitic. Ei se ocupau cu agricultura, creșterea animalelor, olăritul, țesutul, construirea locuințelor, confecționarea uneltelor și schimbul de produse. Această diversificare arată că societatea devenea mai complexă și că nu toți membrii comunității făceau exact aceleași activități.",
+      "Ceramica este reprezentată de vase și obiecte făcute din lut modelat și ars. Ea era foarte utilă pentru gătit, transportul apei, păstrarea cerealelor și depozitarea alimentelor. Apariția ceramicii este legată de sedentarizare, deoarece oamenii care locuiau în sate aveau nevoie de recipiente durabile pentru gospodărie.",
+      "În Epoca Metalelor, oamenii au început să practice metalurgia, adică prelucrarea metalelor pentru a obține unelte, arme și podoabe. Pe lângă metalurgie, se dezvoltau olăritul, țesutul, prelucrarea lemnului, a osului și a pieilor. Meșteșugurile au devenit tot mai importante, deoarece produsele erau mai rezistente, mai specializate și puteau fi schimbate cu alte comunități.",
+      "Piatra cioplită era obținută prin lovirea unei pietre pentru a-i da o formă utilă și margini tăioase. Piatra șlefuită era lucrată mai atent, prin frecare și finisare, devenind mai netedă, mai precisă și mai rezistentă. De aceea, uneltele din piatră șlefuită, precum topoarele neolitice, erau mai eficiente pentru agricultură și prelucrarea lemnului.",
+      "Diferențele sociale în comunitățile neolitice apar atunci când unii oameni ajung să aibă mai multe bunuri, mai mult prestigiu sau roluri mai importante în grup. Aceste diferențe se pot observa prin locuințe mai mari, morminte mai bogate, podoabe, arme sau obiecte rare. Ele arată că societatea nu mai era complet egalitară și că începeau să apară conducători, meșteșugari specializați sau persoane cu autoritate.",
+      "Monumentele megalitice sunt construcții realizate din blocuri foarte mari de piatră, ridicate de comunități preistorice. Ele puteau avea rol funerar, religios, simbolic sau astronomic. Faptul că au fost construite din pietre uriașe arată că oamenii puteau coopera, organiza munca și avea credințe comune importante.",
+      "Un exemplu celebru de monument megalitic este Stonehenge, aflat în Anglia. Acesta este format din pietre uriașe așezate într-o formă circulară și a fost probabil legat de ceremonii, credințe religioase sau observații astronomice. Poți menționa că ridicarea lui arată o organizare foarte bună a comunității.",
+      "Metalele au fost importante deoarece au permis realizarea unor unelte și arme mai rezistente decât cele din piatră. Cu ajutorul metalelor, oamenii au putut lucra mai eficient pământul, au produs arme mai bune și au creat podoabe sau obiecte de prestigiu. Folosirea metalelor a dus la dezvoltarea meșteșugurilor, a schimburilor comerciale și a diferențelor sociale.",
+      "La sfârșitul Preistoriei au fost folosite mai ales cuprul, bronzul și fierul. Cuprul a fost printre primele metale prelucrate, dar era mai moale. Bronzul, obținut din cupru și cositor, era mai rezistent, iar fierul a permis realizarea unor arme și unelte și mai eficiente.",
+      "Inventarea roții a influențat puternic viața oamenilor, deoarece a ușurat transportul persoanelor, animalelor și mărfurilor. Roata a făcut posibilă folosirea carelor, a sprijinit comerțul și a legat mai ușor comunitățile între ele. De asemenea, roata olarului a ajutat la realizarea unor vase mai regulate și mai rapid produse.",
+      "Preistoria pregătește apariția civilizațiilor antice deoarece în această perioadă apar elementele de bază ale vieții organizate. Agricultura, sedentarizarea, satele, meșteșugurile, metalurgia, schimburile și diferențele sociale au creat condițiile pentru orașe și state. Mai târziu, aceste transformări vor duce la apariția scrierii, a legilor, a conducătorilor și a marilor civilizații antice."
+];
 
     const wheelColors = [
       "#ffd159",
@@ -2675,7 +2841,34 @@
 
       questions.forEach((question, index) => {
         const li = document.createElement("li");
-        li.textContent = question;
+        li.tabIndex = 0;
+        li.setAttribute("role", "button");
+        li.setAttribute("aria-expanded", "false");
+        li.setAttribute("title", "Click pentru sugestia de răspuns");
+
+        const questionText = document.createElement("span");
+        questionText.className = "question-item";
+        questionText.textContent = question;
+
+        const answerBox = document.createElement("div");
+        answerBox.className = "answer-hint";
+        answerBox.innerHTML = `<span class="hint-label">Sugestie:</span>${answerHints[index] || "Răspunsul trebuie formulat scurt, cu ideea principală și un exemplu."}`;
+
+        li.appendChild(questionText);
+        li.appendChild(answerBox);
+
+        const toggleHint = () => {
+          const isOpen = li.classList.toggle("open");
+          li.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        };
+
+        li.addEventListener("click", toggleHint);
+        li.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            toggleHint();
+          }
+        });
 
         if (usedQuestions.has(index)) {
           li.classList.add("used");
