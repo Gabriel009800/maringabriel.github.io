@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Verso pliant Diana Bădele</title>
 
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+    referrerpolicy="no-referrer">
+  </script>
+
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+    referrerpolicy="no-referrer">
+  </script>
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
 
@@ -19,6 +29,46 @@
       font-family: 'Montserrat', sans-serif;
     }
 
+    .export-toolbar {
+      width: 14.8cm;
+      margin: 0 auto 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .export-toolbar button {
+      border: none;
+      background: #173148;
+      color: #ffffff;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10pt;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+    }
+
+    .export-toolbar button:hover {
+      background: #244963;
+    }
+
+    .export-toolbar button:active {
+      transform: translateY(1px);
+    }
+
+    .export-status {
+      width: 14.8cm;
+      margin: 0 auto 14px;
+      text-align: center;
+      font-size: 9pt;
+      color: #173148;
+      min-height: 18px;
+    }
+
     .flyer {
       width: 14.8cm;
       height: 21cm;
@@ -28,6 +78,10 @@
       background: #eef4f2;
       color: #173148;
       box-shadow: 0 14px 36px rgba(0, 0, 0, 0.22);
+    }
+
+    .flyer.exporting {
+      box-shadow: none;
     }
 
     .left-panel {
@@ -271,6 +325,11 @@
         background: none;
       }
 
+      .export-toolbar,
+      .export-status {
+        display: none;
+      }
+
       .flyer {
         width: 14.8cm;
         height: 21cm;
@@ -283,13 +342,20 @@
 
 <body>
 
-  <main class="flyer">
+  <div class="export-toolbar">
+    <button type="button" onclick="descarcaJPG()">Descarcă JPG</button>
+    <button type="button" onclick="descarcaPDF()">Descarcă PDF</button>
+  </div>
+
+  <div class="export-status" id="exportStatus"></div>
+
+  <main class="flyer" id="flyer">
 
     <div class="left-panel"></div>
 
     <div class="photo">
-      <img 
-        src="poza-diana.jpeg" 
+      <img
+        src="poza-diana.jpeg"
         alt="Portret psiholog clinician"
         onerror="this.onerror=null; this.src='poza-diana.jpg';"
       >
@@ -399,6 +465,143 @@
     </div>
 
   </main>
+
+  <script>
+    const statusBox = document.getElementById('exportStatus');
+
+    function setStatus(text) {
+      statusBox.textContent = text || '';
+    }
+
+    function verificaBiblioteci(tip) {
+      if (!window.html2canvas) {
+        setStatus('Eroare: html2canvas nu s-a încărcat. Verifică internetul sau deschide pagina prin Live Server.');
+        alert('html2canvas nu s-a încărcat. Verifică dacă ai internet sau dacă browserul blochează scripturile externe.');
+        return false;
+      }
+
+      if (tip === 'pdf' && (!window.jspdf || !window.jspdf.jsPDF)) {
+        setStatus('Eroare: jsPDF nu s-a încărcat. Verifică internetul sau deschide pagina prin Live Server.');
+        alert('jsPDF nu s-a încărcat. Verifică dacă ai internet sau dacă browserul blochează scripturile externe.');
+        return false;
+      }
+
+      return true;
+    }
+
+    async function asteaptaFonturiSiImagini() {
+      const flyer = document.getElementById('flyer');
+
+      if (document.fonts && document.fonts.ready) {
+        await document.fonts.ready;
+      }
+
+      const images = flyer.querySelectorAll('img');
+
+      await Promise.all(
+        Array.from(images).map(img => {
+          if (img.complete && img.naturalWidth > 0) {
+            return Promise.resolve();
+          }
+
+          return new Promise(resolve => {
+            img.onload = resolve;
+            img.onerror = resolve;
+          });
+        })
+      );
+
+      await new Promise(resolve => requestAnimationFrame(resolve));
+    }
+
+    async function pregatesteCanvas() {
+      const flyer = document.getElementById('flyer');
+
+      await asteaptaFonturiSiImagini();
+
+      flyer.classList.add('exporting');
+
+      const canvas = await html2canvas(flyer, {
+        scale: 4,
+        backgroundColor: '#eef4f2',
+        useCORS: true,
+        allowTaint: false,
+        logging: false,
+        imageTimeout: 15000,
+        removeContainer: true
+      });
+
+      flyer.classList.remove('exporting');
+
+      return canvas;
+    }
+
+    async function descarcaJPG() {
+      try {
+        if (!verificaBiblioteci('jpg')) return;
+
+        setStatus('Se generează JPG-ul...');
+
+        const canvas = await pregatesteCanvas();
+
+        canvas.toBlob(function(blob) {
+          if (!blob) {
+            setStatus('Eroare: browserul nu a putut genera fișierul JPG.');
+            alert('Nu s-a putut genera JPG-ul.');
+            return;
+          }
+
+          const link = document.createElement('a');
+          link.download = 'pliant-diana-badele-verso.jpg';
+          link.href = URL.createObjectURL(blob);
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+
+          setTimeout(() => {
+            URL.revokeObjectURL(link.href);
+          }, 1000);
+
+          setStatus('JPG descărcat.');
+        }, 'image/jpeg', 1);
+
+      } catch (error) {
+        console.error(error);
+        setStatus('Nu s-a putut descărca JPG-ul. Deschide fișierul prin Live Server, nu direct cu file:///');
+        alert('Nu s-a putut descărca JPG-ul. Cel mai probabil pagina este deschisă direct din calculator cu file:/// sau imaginile sunt blocate.');
+      }
+    }
+
+    async function descarcaPDF() {
+      try {
+        if (!verificaBiblioteci('pdf')) return;
+
+        setStatus('Se generează PDF-ul...');
+
+        const canvas = await pregatesteCanvas();
+        const imgData = canvas.toDataURL('image/jpeg', 1);
+
+        const { jsPDF } = window.jspdf;
+
+        const pdf = new jsPDF({
+          orientation: 'portrait',
+          unit: 'cm',
+          format: [14.8, 21],
+          compress: true
+        });
+
+        pdf.addImage(imgData, 'JPEG', 0, 0, 14.8, 21);
+        pdf.save('pliant-diana-badele-verso.pdf');
+
+        setStatus('PDF descărcat.');
+
+      } catch (error) {
+        console.error(error);
+        setStatus('Nu s-a putut descărca PDF-ul. Deschide fișierul prin Live Server, nu direct cu file:///');
+        alert('Nu s-a putut descărca PDF-ul. Cel mai probabil pagina este deschisă direct din calculator cu file:/// sau imaginile sunt blocate.');
+      }
+    }
+  </script>
 
 </body>
 </html>
