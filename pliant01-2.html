@@ -736,7 +736,7 @@
         const canvas = await pregatesteCanvas();
 
         const link = document.createElement('a');
-        link.download = 'pliant-01-2.jpg';
+        link.download = 'pliant-diana-badele-pliant01-2.jpg';
         link.href = canvas.toDataURL('image/jpeg', 1);
 
         document.body.appendChild(link);
@@ -770,7 +770,7 @@
         });
 
         pdf.addImage(imgData, 'JPEG', 0, 0, 14.8, 21);
-        pdf.save('pliant01-2.pdf');
+        pdf.save('pliant-diana-badele-pliant01-2.pdf');
 
         setStatus('PDF descărcat.');
       } catch (error) {
