@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>primul-razboi-mondial-desfasurarea-conflictului</title>
+  <style>
+    :root {
+      --bg: #171411;
+      --paper: #f4ead7;
+      --paper-2: #fff7e8;
+      --ink: #211915;
+      --muted: #6c5b4f;
+      --accent: #b85c38;
+      --accent-dark: #74351f;
+      --gold: #d7a94f;
+      --green: #586b4d;
+      --red: #8d2f24;
+      --line: rgba(33, 25, 21, 0.18);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(216, 151, 71, 0.2), transparent 34%),
+        radial-gradient(circle at 88% 5%, rgba(184, 92, 56, 0.22), transparent 28%),
+        linear-gradient(135deg, #171411 0%, #2c241d 50%, #16120f 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.18;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mix-blend-mode: screen;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      margin-bottom: 22px;
+      padding: 12px;
+      border: 1px solid rgba(244, 234, 215, 0.22);
+      border-radius: 999px;
+      background: rgba(23, 20, 17, 0.72);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.24);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--paper);
+      font-size: 0.88rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      padding-left: 10px;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+      display: grid;
+      place-items: center;
+      color: #1d140f;
+      font-weight: 900;
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,0.25);
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 7px;
+    }
+
+    .nav a,
+    .print-btn {
+      border: 1px solid rgba(244, 234, 215, 0.2);
+      border-radius: 999px;
+      padding: 9px 13px;
+      color: var(--paper);
+      background: rgba(244, 234, 215, 0.06);
+      text-decoration: none;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .nav a:hover,
+    .print-btn:hover {
+      background: rgba(244, 234, 215, 0.18);
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      background:
+        linear-gradient(120deg, rgba(255, 247, 232, 0.96), rgba(244, 234, 215, 0.92)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Cg fill='none' stroke='%2374351f' stroke-opacity='.18'%3E%3Cpath d='M40 320C140 270 210 365 320 300s145-40 245-88'/%3E%3Cpath d='M0 180c85-30 135 25 210-8s160-78 320-16'/%3E%3Cpath d='M70 80c120 75 210 10 310 44 70 24 104 88 170 72'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: cover;
+      padding: clamp(34px, 5vw, 70px);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .hero::after {
+      content: "1914–1918";
+      position: absolute;
+      right: -16px;
+      bottom: -24px;
+      font-size: clamp(4rem, 12vw, 10rem);
+      line-height: 0.8;
+      color: rgba(116, 53, 31, 0.09);
+      font-weight: 900;
+      letter-spacing: -0.08em;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 16px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(184, 92, 56, 0.12);
+      color: var(--accent-dark);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-weight: 750;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      max-width: 900px;
+      font-size: clamp(2.6rem, 7vw, 6.8rem);
+      line-height: 0.92;
+      letter-spacing: -0.07em;
+      color: var(--ink);
+    }
+
+    .subtitle {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 24px 0 0;
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .stat-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.44);
+      border: 1px solid rgba(116, 53, 31, 0.14);
+      min-height: 116px;
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 1.65rem;
+      line-height: 1;
+      color: var(--accent-dark);
+      margin-bottom: 8px;
+    }
+
+    .stat-card span {
+      display: block;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.35;
+      color: var(--muted);
+    }
+
+    .panel {
+      margin-top: 24px;
+      border-radius: 30px;
+      padding: clamp(22px, 4vw, 42px);
+      background: rgba(244, 234, 215, 0.96);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.36);
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 24px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.75rem, 3vw, 3rem);
+      letter-spacing: -0.045em;
+      line-height: 1;
+      color: var(--accent-dark);
+    }
+
+    .panel-note {
+      margin: 0;
+      max-width: 460px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.95rem;
+    }
+
+    .map-grid {
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .front-map {
+      min-height: 360px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(116, 53, 31, 0.14);
+      background:
+        linear-gradient(rgba(255, 247, 232, 0.84), rgba(255, 247, 232, 0.84)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='520' viewBox='0 0 900 520'%3E%3Crect width='900' height='520' fill='%23f4ead7'/%3E%3Cg fill='none' stroke='%2374351f' stroke-width='3' stroke-opacity='.28'%3E%3Cpath d='M82 365c70-48 111-42 175-16 58 24 107 6 159-26 82-51 133-34 218 0 59 23 111 8 184-31'/%3E%3Cpath d='M115 142c75 42 112 95 190 72 72-21 104-99 194-73 104 31 139 151 266 118'/%3E%3Cpath d='M520 68c-8 62 54 102 86 149 42 61 34 130 11 212'/%3E%3C/g%3E%3Cg font-family='Georgia' font-weight='700' font-size='28' fill='%2374351f' fill-opacity='.35'%3E%3Ctext x='94' y='98'%3EVEST%3C/text%3E%3Ctext x='685' y='124'%3EEST%3C/text%3E%3Ctext x='382' y='410'%3EBALCANI%3C/text%3E%3C/g%3E%3C/svg%3E");
+      background-size: cover;
+      position: relative;
+      overflow: hidden;
+      padding: 26px;
+    }
+
+    .front-map::before,
+    .front-map::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(0.5px);
+      opacity: 0.94;
+    }
+
+    .front-map::before {
+      width: 72%;
+      height: 9px;
+      left: 7%;
+      top: 50%;
+      background: repeating-linear-gradient(90deg, var(--red), var(--red) 18px, transparent 18px, transparent 27px);
+      transform: rotate(-7deg);
+    }
+
+    .front-map::after {
+      width: 57%;
+      height: 9px;
+      right: 2%;
+      top: 35%;
+      background: repeating-linear-gradient(90deg, var(--green), var(--green) 18px, transparent 18px, transparent 27px);
+      transform: rotate(72deg);
+    }
+
+    .map-label {
+      position: absolute;
+      z-index: 2;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(33, 25, 21, 0.85);
+      color: var(--paper-2);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.8rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.23);
+    }
+
+    .map-label.vest { left: 13%; top: 43%; }
+    .map-label.est { right: 8%; top: 45%; }
+    .map-label.balcani { left: 43%; bottom: 17%; }
+
+    .info-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .info-item {
+      padding: 17px 18px;
+      border-radius: 20px;
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+    }
+
+    .info-item strong {
+      display: block;
+      color: var(--accent-dark);
+      margin-bottom: 5px;
+      font-size: 1.06rem;
+    }
+
+    .info-item span {
+      display: block;
+      color: var(--muted);
+      line-height: 1.45;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.94rem;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 26px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 34px;
+      top: 6px;
+      bottom: 6px;
+      width: 4px;
+      border-radius: 999px;
+      background: linear-gradient(var(--accent), var(--gold), var(--green));
+    }
+
+    .year-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .year-badge {
+      position: sticky;
+      top: 90px;
+      z-index: 3;
+      width: 72px;
+      height: 72px;
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, var(--accent-dark), var(--accent));
+      color: var(--paper-2);
+      font-size: 1.28rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      box-shadow: 0 16px 42px rgba(116, 53, 31, 0.28);
+      border: 1px solid rgba(255,255,255,0.22);
+    }
+
+    .year-content {
+      border-radius: 28px;
+      background: var(--paper-2);
+      border: 1px solid rgba(116, 53, 31, 0.14);
+      overflow: hidden;
+      box-shadow: 0 16px 42px rgba(33, 25, 21, 0.09);
+    }
+
+    .year-title {
+      padding: 24px 26px 20px;
+      background:
+        linear-gradient(120deg, rgba(184, 92, 56, 0.14), transparent 70%),
+        linear-gradient(0deg, rgba(215, 169, 79, 0.16), transparent);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .year-title h3 {
+      margin: 0;
+      color: var(--accent-dark);
+      font-size: clamp(1.45rem, 2.6vw, 2.35rem);
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+    }
+
+    .year-title p {
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      padding: 18px;
+    }
+
+    .content-grid.one {
+      grid-template-columns: 1fr;
+    }
+
+    .note-card {
+      padding: 20px;
+      border-radius: 22px;
+      background: rgba(244, 234, 215, 0.6);
+      border: 1px solid var(--line);
+    }
+
+    .note-card.full {
+      grid-column: 1 / -1;
+    }
+
+    .note-card h4 {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 14px;
+      color: var(--accent-dark);
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: rgba(184, 92, 56, 0.13);
+      color: var(--accent-dark);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    ul, ol {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    li {
+      margin: 8px 0;
+      line-height: 1.52;
+    }
+
+    li::marker {
+      color: var(--accent);
+    }
+
+    .sublist {
+      margin-top: 7px;
+      color: var(--muted);
+    }
+
+    .sublist li {
+      margin: 6px 0;
+    }
+
+    .mini-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.93rem;
+    }
+
+    .mini-table th,
+    .mini-table td {
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .mini-table th {
+      background: rgba(116, 53, 31, 0.1);
+      color: var(--accent-dark);
+    }
+
+    .mini-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .callout {
+      margin-top: 16px;
+      padding: 16px 18px;
+      border-left: 5px solid var(--accent);
+      border-radius: 16px;
+      background: rgba(184, 92, 56, 0.1);
+      color: var(--accent-dark);
+      line-height: 1.55;
+      font-weight: 700;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .summary-card {
+      padding: 18px;
+      min-height: 170px;
+      border-radius: 20px;
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(33, 25, 21, 0.07);
+    }
+
+    .summary-card strong {
+      display: block;
+      color: var(--accent-dark);
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+    }
+
+    .summary-card span {
+      display: block;
+      color: var(--muted);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.91rem;
+      line-height: 1.45;
+    }
+
+    .footer {
+      color: rgba(244, 234, 215, 0.78);
+      text-align: center;
+      padding: 28px 12px 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .map-grid,
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        width: min(100% - 20px, 1180px);
+        padding-top: 12px;
+      }
+
+      .topbar {
+        position: static;
+        border-radius: 24px;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        border-radius: 24px;
+      }
+
+      .hero-grid,
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .panel-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .timeline::before {
+        left: 22px;
+      }
+
+      .year-card {
+        grid-template-columns: 58px 1fr;
+        gap: 12px;
+      }
+
+      .year-badge {
+        width: 48px;
+        height: 48px;
+        border-radius: 16px;
+        font-size: 0.92rem;
+        top: 12px;
+      }
+
+      .year-title,
+      .content-grid {
+        padding: 16px;
+      }
+
+      .front-map {
+        min-height: 270px;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      body::before,
+      .topbar,
+      .footer {
+        display: none;
+      }
+
+      .page {
+        width: 100%;
+        padding: 0;
+      }
+
+      .hero,
+      .panel,
+      .year-content,
+      .summary-card {
+        box-shadow: none;
+      }
+
+      .year-card {
+        break-inside: avoid;
+      }
+
+      .year-badge {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <nav class="topbar" aria-label="Navigare material">
+      <div class="brand"><span class="brand-mark">I</span> Primul Război Mondial</div>
+      <div class="nav">
+        <a href="#fronturi">Fronturi</a>
+        <a href="#planuri">Planuri</a>
+        <a href="#timeline">1914–1918</a>
+        <a href="#sinteza">Sinteză</a>
+        <button class="print-btn" onclick="window.print()">Printează / PDF</button>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <p class="eyebrow">Material de istorie · clasa a VII-a / liceu</p>
+      <h1>Primul Război Mondial: desfășurarea conflictului</h1>
+      <p class="subtitle">
+        De la „campania marilor surprize” din 1914 până la capitularea Germaniei din 11 noiembrie 1918, războiul a evoluat prin blocarea fronturilor, epuizarea resurselor, intrarea unor noi puteri și prăbușirea imperiilor multinaționale.
+      </p>
+      <section class="hero-grid" aria-label="Repere rapide">
+        <article class="stat-card">
+          <strong>1914</strong>
+          <span>Planul Schlieffen eșuează, Franța rezistă, Serbia surprinde Austro-Ungaria.</span>
+        </article>
+        <article class="stat-card">
+          <strong>1915</strong>
+          <span>Strategia periferică: Gallipoli, Salonic, Serbia și Frontul Italian.</span>
+        </article>
+        <article class="stat-card">
+          <strong>1916</strong>
+          <span>Campania epuizării: Verdun, Somme și presiunea resurselor.</span>
+        </article>
+        <article class="stat-card">
+          <strong>1917–1918</strong>
+          <span>Rusia iese din război, SUA intră, iar Puterile Centrale se prăbușesc.</span>
+        </article>
+      </section>
+    </header>
+
+    <section id="fronturi" class="panel">
+      <div class="panel-header">
+        <h2>Fronturile războiului</h2>
+        <p class="panel-note">Conflictul devine rapid un război continental și mondial, cu fronturi principale în Europa și operațiuni secundare pe alte continente și pe mări.</p>
+      </div>
+
+      <div class="map-grid">
+        <div class="front-map" role="img" aria-label="Hartă stilizată a fronturilor Primului Război Mondial">
+          <span class="map-label vest">Vest: 500–700 km</span>
+          <span class="map-label est">Est: aprox. 1000 km</span>
+          <span class="map-label balcani">Balcani: Serbia</span>
+        </div>
+        <div class="info-list">
+          <div class="info-item">
+            <strong>Frontul de Vest</strong>
+            <span>Între Elveția și Canalul Mânecii / Marea Nordului; aproximativ 500–700 km.</span>
+          </div>
+          <div class="info-item">
+            <strong>Frontul de Est</strong>
+            <span>Între Carpații Orientali / Bucovina și Marea Baltică; aproximativ 1000 km.</span>
+          </div>
+          <div class="info-item">
+            <strong>Frontul Balcanic</strong>
+            <span>Zona Serbiei, unde Austro-Ungaria se lovește de o rezistență neașteptată.</span>
+          </div>
+          <div class="info-item">
+            <strong>Alte spații de luptă</strong>
+            <span>Africa, Asia, Oceania, războiul pe mări, lupta submarină și primele forme ale războiului aerian.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="planuri" class="panel">
+      <div class="panel-header">
+        <h2>Planuri de război</h2>
+        <p class="panel-note">Marile puteri intră în conflict cu planuri rigide, dar realitatea fronturilor le obligă rapid să improvizeze.</p>
+      </div>
+
+      <div class="content-grid">
+        <article class="note-card">
+          <h4><span class="tag">DE</span> Planul Schlieffen</h4>
+          <ul>
+            <li>Planul urmărea înfrângerea rapidă a Franței printr-o ofensivă prin Belgia.</li>
+            <li>Aspecte directe:
+              <ul class="sublist">
+                <li>fixarea Belgiei ca punct de inițiere a ofensivei terestre către Franța;</li>
+                <li>nimicirea Armatei Franceze între Verdun și Canalul Mânecii;</li>
+                <li>supunerea Franței prin ocuparea Parisului.</li>
+              </ul>
+            </li>
+            <li>Aspect indirect: în Est, apărarea germană era minimă, mizând pe ideea că Rusia se va mobiliza greu.</li>
+          </ul>
+        </article>
+
+        <article class="note-card">
+          <h4><span class="tag">DE</span> Germania</h4>
+          <ul>
+            <li>Se pregătește pentru o ofensivă intensă în Vest.</li>
+            <li>În Est mizează pe o defensivă minimă.</li>
+            <li>Calculul german se baza pe înfrângerea rapidă a Franței, înainte ca Rusia să poată acționa decisiv.</li>
+          </ul>
+        </article>
+
+        <article class="note-card">
+          <h4><span class="tag">FR</span> Franța</h4>
+          <ul>
+            <li>Se pregătește pentru apărare și acțiuni în regiunea Alsacia-Lorena.</li>
+            <li>Este însă lovită prin Belgia, direcția principală a ofensivei germane.</li>
+            <li>Planul XVII al generalului Joseph Joffre reprezenta schema de mobilizare și concentrare a armatei franceze.</li>
+          </ul>
+        </article>
+
+        <article class="note-card">
+          <h4><span class="tag">RU</span> Rusia</h4>
+          <ul>
+            <li>Se pregătește pentru atacarea rapidă a Germaniei.</li>
+            <li>Obține victorii inițiale la Goldap și Gumbinnen.</li>
+            <li>Ulterior, Germania revine în forță și produce înfrângeri grele Rusiei.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="timeline" class="panel">
+      <div class="panel-header">
+        <h2>Desfășurarea conflictului</h2>
+        <p class="panel-note">Fiecare an are o logică proprie: surpriză, strategie periferică, epuizare, defecțiuni majore și victorie finală.</p>
+      </div>
+
+      <div class="timeline">
+        <article class="year-card" id="anul-1914">
+          <div class="year-badge">1914</div>
+          <div class="year-content">
+            <div class="year-title">
+              <h3>Campania marilor surprize</h3>
+              <p>Anul 1914 a fost numit astfel deoarece calculele inițiale ale marilor puteri au fost răsturnate de mobilizări rapide, rezistențe neașteptate și folosirea unor arme noi.</p>
+            </div>
+            <div class="content-grid">
+              <section class="note-card">
+                <h4><span class="tag">1</span> De ce „marile surprize”?</h4>
+                <ul>
+                  <li>Intrarea în război a Franței și Marii Britanii.</li>
+                  <li>Mobilizarea foarte rapidă a Armatei Rusiei.</li>
+                  <li>Rezistența Franței și năruirea Planului Schlieffen.</li>
+                  <li>Rezistența neașteptată a Serbiei.</li>
+                  <li>Folosirea noilor arme și revoluția tehnologică.</li>
+                  <li>Lupta submarină și aeriană.</li>
+                </ul>
+              </section>
+
+              <section class="note-card">
+                <h4><span class="tag">2</span> Serbia și Balcanii</h4>
+                <ul>
+                  <li>Serbia rezistă ofensivei austro-ungare.</li>
+                  <li>Austro-Ungaria ocupă Belgradul, dar după două săptămâni orașul este eliberat.</li>
+                  <li>Vor urma înfrângeri severe ale Austro-Ungariei.</li>
+                </ul>
+              </section>
+
+              <section class="note-card full">
+                <h4><span class="tag">3</span> Frontul de Vest: Marna, Flandra și Crăciunul din tranșee</h4>
+                <ul>
+                  <li>La începutul lunii septembrie 1914, Germania ajunge la aproximativ 32 km de Paris.</li>
+                  <li>Francezii încearcă o apărare disperată.</li>
+                  <li>Are loc <strong>Miracolul de pe Marna</strong>, bătălia pentru salvarea Parisului.</li>
+                  <li>La sfârșitul lui septembrie 1914, Germania renunță practic la Planul Schlieffen.</li>
+                  <li>Franța pune în aplicare Planul XVII al generalului Joseph Joffre.</li>
+                  <li>Germania continuă presiunea spre mare, încercând să obțină orașele-port franceze.</li>
+                  <li>În acest context începe <strong>Bătălia Flandrei</strong>, desfășurată în octombrie–noiembrie 1914.</li>
+                  <li>Pe front are loc și <strong>Armistițiul de Crăciun</strong>.</li>
+                </ul>
+              </section>
+
+              <section class="note-card full">
+                <h4><span class="tag">4</span> Frontul de Est: succese inițiale și înfrângeri grele</h4>
+                <ul>
+                  <li>Rusia obține victorii inițiale la Goldap și Gumbinnen.</li>
+                  <li>În cele din urmă, armata rusă este înfrântă la Tannenberg și la Lacurile Mazuriene.</li>
+                </ul>
+                <div class="callout">Ideea centrală: 1914 arată că războiul nu va fi scurt. Planurile ofensive se blochează, iar fronturile devin tot mai stabile și mai costisitoare.</div>
+              </section>
+            </div>
+          </div>
+        </article>
+
+        <article class="year-card" id="anul-1915">
+          <div class="year-badge">1915</div>
+          <div class="year-content">
+            <div class="year-title">
+              <h3>Campania strategiei periferice</h3>
+              <p>Strategia de bază a anului 1915 a fost păstrarea fronturilor principale și atacarea repetată a punctelor vulnerabile.</p>
+            </div>
+            <div class="content-grid">
+              <section class="note-card">
+                <h4><span class="tag">A</span> Antanta: Gallipoli</h4>
+                <ul>
+                  <li>În Peninsula Gallipoli, Antanta încearcă debarcarea în zona Strâmtorii Dardanele.</li>
+                  <li>Obiectivul era scoaterea Imperiului Otoman din război.</li>
+                  <li>Trupele veniseră în mare parte din colonii, mai ales din Australia și Noua Zeelandă.</li>
+                  <li>Germania își sprijină aliații, inclusiv Turcia, cu echipamente, instructori și artilerie.</li>
+                  <li>Sprijinul german contribuie la înfrângerea Antantei în debarcarea de la Gallipoli.</li>
+                </ul>
+              </section>
+
+              <section class="note-card">
+                <h4><span class="tag">A</span> Antanta: Salonic</h4>
+                <ul>
+                  <li>Are loc debarcarea din Salonic.</li>
+                  <li>Operațiunea este coordonată de generalul francez Maurice Sarrail.</li>
+                  <li>Scopul era deschiderea unei presiuni asupra Puterilor Centrale în zona balcanică.</li>
+                </ul>
+              </section>
+
+              <section class="note-card">
+                <h4><span class="tag">PC</span> Puterile Centrale</h4>
+                <ul>
+                  <li>Urmăresc scoaterea Serbiei din război.</li>
+                  <li>Obiectivul este favorizat de intrarea Bulgariei în război de partea Puterilor Centrale.</li>
+                  <li>Obțin victorii pe Frontul Italian.</li>
+                </ul>
+              </section>
+
+              <section class="note-card">
+                <h4><span class="tag">IT</span> Frontul Italian</h4>
+                <ul>
+                  <li>Italia are parte de înfrângeri repetate.</li>
+                  <li>Sunt amintite luptele de la Isonzo și Caporetto.</li>
+                  <li>La sfârșitul anului 1915, Puterile Centrale se află în superioritate.</li>
+                </ul>
+              </section>
+            </div>
+          </div>
+        </article>
+
+        <article class="year-card" id="anul-1916">
+          <div class="year-badge">1916</div>
+          <div class="year-content">
+            <div class="year-title">
+              <h3>Campania epuizării</h3>
+              <p>Strategia anului 1916 constă în concentrarea unor forțe uriașe pentru slăbirea și înfrângerea inamicului prin consum masiv de oameni și resurse.</p>
+            </div>
+            <div class="content-grid">
+              <section class="note-card">
+                <h4><span class="tag">V</span> Verdun</h4>
+                <ul>
+                  <li>Germania aplică strategia la Verdun, numit și „Abatorul de la Verdun”.</li>
+                  <li>Atacă masiv în apropierea localității Verdun.</li>
+                  <li>Germania se aștepta ca Franța să retragă trupe de pe alte fronturi pentru a trimite întăriri.</li>
+                  <li>Planul german era să atace apoi în punctele rămase descoperite.</li>
+                </ul>
+              </section>
+
+              <section class="note-card">
+                <h4><span class="tag">S</span> Somme</h4>
+                <ul>
+                  <li>Franța și aliații aplică aceeași logică în Campania de pe Somme.</li>
+                  <li>Războiul devine o confruntare a rezistenței materiale și umane.</li>
+                </ul>
+              </section>
+
+              <section class="note-card full">
+                <h4><span class="tag">R</span> De ce strategia favoriza Antanta?</h4>
+                <ul>
+                  <li>Anglo-francezii dispuneau de resurse foarte mari, provenite și din colonii.</li>
+                  <li>Germanii și austro-ungarii aveau resurse mai limitate.</li>
+                  <li>Pe termen lung, un război de uzură era mai greu de susținut de Puterile Centrale.</li>
+                </ul>
+              </section>
+
+              <section class="note-card full">
+                <h4><span class="tag">E</span> Frontul de Est</h4>
+                <ul>
+                  <li>Rusia are succese împotriva Austro-Ungariei.</li>
+                  <li>În schimb, are eșecuri în confruntările cu Germania.</li>
+                </ul>
+              </section>
+            </div>
+          </div>
+        </article>
+
+        <article class="year-card" id="anul-1917">
+          <div class="year-badge">1917</div>
+          <div class="year-content">
+            <div class="year-title">
+              <h3>Anul Marii Defecțiuni</h3>
+              <p>Anul 1917 schimbă decisiv raportul de forțe: Rusia iese din război, iar Statele Unite intră de partea Antantei.</p>
+            </div>
+            <div class="content-grid">
+              <section class="note-card full">
+                <h4><span class="tag">RU</span> Din perspectiva Antantei: ieșirea Rusiei din război</h4>
+                <ul>
+                  <li>La 2 martie 1917, țarul Nicolae al II-lea abdică.</li>
+                  <li>Sunt instaurate mai multe guverne provizorii:
+                    <ul class="sublist">
+                      <li>unul condus de Lvov;</li>
+                      <li>altul condus de Alexandr Kerenski.</li>
+                    </ul>
+                  </li>
+                  <li>Guvernele provizorii continuă războiul, dar cu mai puțină combativitate.</li>
+                  <li>Trupele părăsesc frontul în dezordine.</li>
+                  <li>Apar revolte ale țăranilor și manifestații ale muncitorilor.</li>
+                  <li>Bolșevicii au două încercări de preluare a puterii:
+                    <ul class="sublist">
+                      <li>5 iunie: prima încercare, eșuată;</li>
+                      <li>25 octombrie / 7 noiembrie 1917: Partidul Bolșevicilor, condus de Lenin, preia puterea.</li>
+                    </ul>
+                  </li>
+                  <li>Evenimentul este cunoscut drept Revoluția din Noiembrie, deși după calendarul vechi a avut loc în octombrie.</li>
+                  <li>Partidul Bolșevicilor decide ieșirea Rusiei din război.</li>
+                </ul>
+                <div class="callout">Pentru Germania, ieșirea Rusiei nu a fost un avantaj complet: trebuia menținută o armată de ocupație de aproximativ 500.000 de soldați pentru asigurarea transporturilor de cereale și petrol din spațiul rusesc.</div>
+              </section>
+
+              <section class="note-card full">
+                <h4><span class="tag">SUA</span> Din perspectiva Puterilor Centrale: intrarea SUA în război</h4>
+                <ul>
+                  <li>Inițial, aportul militar american este redus:
+                    <ul class="sublist">
+                      <li>în 1917: aproximativ 50 de avioane și 200.000 de soldați;</li>
+                      <li>la sfârșitul lui 1918: aproximativ 4 milioane de soldați, dintre care 2 milioane în Europa.</li>
+                    </ul>
+                  </li>
+                  <li>Cauze vizibile ale intrării SUA în război:
+                    <ul class="sublist">
+                      <li>războiul submarin total inițiat de Germania;</li>
+                      <li>scufundarea navelor comerciale ale țărilor neutre, inclusiv state scandinave și SUA;</li>
+                      <li>scufundarea navelor de pasageri, precum Lusitania.</li>
+                    </ul>
+                  </li>
+                  <li>Cauze mai puțin vizibile:
+                    <ul class="sublist">
+                      <li>Telegrama Zimmerman, care prevedea o alianță între Mexic și Germania împotriva SUA pentru redobândirea Texasului, New Mexico și Arizonei;</li>
+                      <li>interesul financiar al SUA, care sprijiniseră taberele prin împrumuturi și credite.</li>
+                    </ul>
+                  </li>
+                </ul>
+              </section>
+
+              <section class="note-card full">
+                <h4><span class="tag">$</span> Interesul financiar al SUA</h4>
+                <table class="mini-table">
+                  <thead>
+                    <tr>
+                      <th>Destinație</th>
+                      <th>1914</th>
+                      <th>1915</th>
+                      <th>1916 / 1917</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Regatul Unit</td>
+                      <td>924 mil. $</td>
+                      <td>1.991 mil. $</td>
+                      <td>3.214 mil. $ în 1916</td>
+                    </tr>
+                    <tr>
+                      <td>Germania</td>
+                      <td>169 mil. $</td>
+                      <td>1.159 mil. $</td>
+                      <td>—</td>
+                    </tr>
+                    <tr>
+                      <td>Rusia</td>
+                      <td>—</td>
+                      <td>—</td>
+                      <td>100 mil. $ în mai 1917</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="callout">SUA voiau să se asigure că va câștiga tabăra cu cele mai mari creanțe, pentru ca împrumuturile să poată fi rambursate. Sprijinul acordat Antantei fusese mult mai masiv.</div>
+              </section>
+            </div>
+          </div>
+        </article>
+
+        <article class="year-card" id="anul-1918">
+          <div class="year-badge">1918</div>
+          <div class="year-content">
+            <div class="year-title">
+              <h3>Anul Victoriei</h3>
+              <p>În 1918, Germania încearcă o ofensivă finală, dar prăbușirea aliaților săi și revoltele interne duc la capitulare.</p>
+            </div>
+            <div class="content-grid">
+              <section class="note-card">
+                <h4><span class="tag">1</span> Comandament unic</h4>
+                <ul>
+                  <li>Antanta alege un comandament unic pe Frontul de Vest.</li>
+                  <li>Acesta este condus de mareșalul francez Ferdinand Foch.</li>
+                </ul>
+              </section>
+
+              <section class="note-card">
+                <h4><span class="tag">2</span> Ofensiva germană finală</h4>
+                <ul>
+                  <li>În iunie, Germania lansează o mare ofensivă finală.</li>
+                  <li>A fost finală nu pentru Antantă, ci pentru Germania însăși.</li>
+                  <li>Are loc a doua bătălie de pe Marna, prima fiind la începutul războiului.</li>
+                </ul>
+              </section>
+
+              <section class="note-card">
+                <h4><span class="tag">3</span> Contraofensiva anglo-franceză</h4>
+                <ul>
+                  <li>Germanii se retrag după linia de apărare Siegfried.</li>
+                  <li>Retragerea nu era încă o catastrofă militară, deoarece Germania mai putea rezista.</li>
+                  <li>Problema reală va fi prăbușirea aliaților și izbucnirea revoltelor interne.</li>
+                </ul>
+              </section>
+
+              <section class="note-card">
+                <h4><span class="tag">4</span> Aliații Germaniei capitulează</h4>
+                <ul>
+                  <li>29 septembrie: Bulgaria.</li>
+                  <li>30 octombrie: Imperiul Otoman.</li>
+                  <li>3 noiembrie: Austro-Ungaria.</li>
+                </ul>
+              </section>
+
+              <section class="note-card full">
+                <h4><span class="tag">5</span> Cascada Tronurilor</h4>
+                <ul>
+                  <li>Are loc lupta de eliberare a popoarelor din estul Europei.</li>
+                  <li>Împăratul Austro-Ungariei încearcă să formeze un sistem al Confederației Dunărene.</li>
+                  <li>Ideea este învinsă de principiul națiunilor.</li>
+                  <li>Franz Joseph propusese o monarhie tetralistă, acordând puteri cehilor, slovacilor și românilor, în completarea celor aparținând deja ungurilor.</li>
+                  <li>Austro-Ungaria se destramă.</li>
+                </ul>
+              </section>
+
+              <section class="note-card full">
+                <h4><span class="tag">6</span> Revolte și capitulare</h4>
+                <ul>
+                  <li>Pe teritoriul Germaniei izbucnesc revolte ale marinarilor.</li>
+                  <li>Au loc revolte ale lucrătorilor din fabrici.</li>
+                  <li>Germania capitulează la <strong>11 noiembrie 1918</strong>.</li>
+                </ul>
+                <div class="callout">Ideea centrală: înfrângerea Germaniei nu vine doar dintr-o singură bătălie, ci dintr-o combinație de uzură militară, superioritatea resurselor Antantei, intrarea SUA, prăbușirea aliaților și revoluțiile interne.</div>
+              </section>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="sinteza" class="panel">
+      <div class="panel-header">
+        <h2>Sinteză rapidă</h2>
+        <p class="panel-note">Schema de mai jos poate fi folosită la recapitulare sau ca bază pentru întrebări de evaluare.</p>
+      </div>
+      <div class="summary-grid">
+        <article class="summary-card">
+          <strong>1914</strong>
+          <span>Surpriza mobilizării ruse, rezistența Franței și Serbiei, eșecul Planului Schlieffen.</span>
+        </article>
+        <article class="summary-card">
+          <strong>1915</strong>
+          <span>Atacuri periferice: Gallipoli, Salonic, Serbia, Frontul Italian; avantaj pentru Puterile Centrale.</span>
+        </article>
+        <article class="summary-card">
+          <strong>1916</strong>
+          <span>Verdun și Somme transformă războiul într-o confruntare de epuizare.</span>
+        </article>
+        <article class="summary-card">
+          <strong>1917</strong>
+          <span>Rusia iese din război, dar SUA intră de partea Antantei și schimbă balanța strategică.</span>
+        </article>
+        <article class="summary-card">
+          <strong>1918</strong>
+          <span>Ofensiva germană eșuează, aliații capitulează, Austro-Ungaria se destramă, Germania semnează armistițiul.</span>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer">
+      Material: „Primul Război Mondial – desfășurarea conflictului” · Titlu fereastră: primul-razboi-mondial-desfasurarea-conflictului
+    </footer>
+  </main>
+</body>
+</html>

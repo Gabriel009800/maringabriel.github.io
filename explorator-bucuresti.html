@@ -1,0 +1,3157 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Locuri din București – Marin Gabriel</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: #ffffff;
+      color: #222;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .page {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 45px 48px 70px;
+    }
+
+    h1 {
+      font-size: 54px;
+      line-height: 1.1;
+      font-weight: 500;
+      margin: 0 0 42px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 28px 0 38px;
+    }
+
+    .summary-block {
+      display: inline-block;
+      width: fit-content;
+      max-width: 100%;
+      margin: 0 0 24px;
+    }
+
+    .summary-title {
+      font-size: 34px;
+      line-height: 1.35;
+      font-weight: 400;
+      margin: 0 0 34px;
+      padding-top: 34px;
+      border-top: 1px solid #ddd;
+      white-space: nowrap;
+    }
+
+    .stats {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 36px;
+    }
+
+    .stat {
+      height: 128px;
+      border: 1px solid #ddd;
+      background: #fafafa;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 32px;
+      line-height: 1;
+      font-weight: 500;
+      margin: 0 0 8px;
+    }
+
+    .stat span {
+      display: block;
+      font-size: 19px;
+      line-height: 1.2;
+      font-weight: 400;
+    }
+
+    .filter-panel {
+      margin: 4px 0 26px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      background: #fafafa;
+    }
+
+    .filter-title {
+      margin: 0 0 14px;
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    .filter-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr 1.1fr auto;
+      gap: 14px;
+      align-items: end;
+    }
+
+    .filter-field { display: flex; flex-direction: column; gap: 7px; }
+
+    .filter-field label {
+      font-size: 13px;
+      color: #666;
+      font-weight: 500;
+    }
+
+    .filter-field select,
+    .filter-button {
+      height: 42px;
+      border: 1px solid #bbb;
+      background: #fff;
+      color: #222;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      padding: 0 12px;
+      outline: none;
+    }
+
+    .filter-field select:focus { border-color: #555; }
+
+    .filter-button {
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .filter-button:hover { background: #eee; }
+
+    .filter-field.is-hidden { display: none; }
+
+    #map {
+      width: 100%;
+      height: 590px;
+      border: 1px solid #d5d5d5;
+      margin: 10px 0 40px;
+    }
+
+    .leaflet-popup-content {
+      margin: 12px 14px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .popup-title {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #222;
+    }
+
+    .popup-story {
+      max-width: 285px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: #555;
+      font-style: normal;
+    }
+
+    .popup-status {
+      display: block;
+      margin-top: 7px;
+      color: #9a5a00;
+      font-size: 12px;
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    .leaflet-control-layers {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin: -15px 0 34px;
+      color: #555;
+      font-size: 14px;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      white-space: nowrap;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+      border: 1px solid rgba(0,0,0,.18);
+    }
+
+    .places-title {
+      font-size: 28px;
+      font-weight: 500;
+      margin: 0 0 22px;
+    }
+
+    .places {
+      columns: 3;
+      column-gap: 48px;
+      font-size: 17px;
+      line-height: 1.85;
+      margin-bottom: 42px;
+    }
+
+    .domain-group {
+      break-inside: avoid;
+      margin: 0 0 28px;
+    }
+
+    .domain-title {
+      font-size: 21px;
+      font-weight: 600;
+      margin: 0 0 10px;
+    }
+
+    .category-group {
+      break-inside: avoid;
+      margin: 0 0 18px;
+    }
+
+    .category-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0 0 6px;
+      color: #555;
+    }
+
+    .place-item {
+      break-inside: avoid;
+      margin-bottom: 4px;
+    }
+
+    .place-meta {
+      color: #777;
+      font-size: 14px;
+    }
+
+    .place-status {
+      color: #9a5a00;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .empty-state {
+      padding: 18px;
+      border: 1px dashed #ccc;
+      background: #fafafa;
+      color: #666;
+      font-size: 15px;
+    }
+
+    .footer {
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+      padding: 26px 0 0;
+    }
+
+    @media (max-width: 900px) {
+      .page { padding: 34px 22px 55px; }
+      h1 { font-size: 40px; }
+      .summary-block { display: block; width: 100%; }
+      .summary-title { white-space: normal; font-size: 26px; }
+      .stats { grid-template-columns: 1fr; gap: 18px; }
+      .stat { height: 112px; }
+      .filter-grid { grid-template-columns: 1fr; }
+      #map { height: 430px; }
+      .places { columns: 1; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <h1>Locuri din București</h1>
+
+    <hr>
+
+    <section class="filter-panel" aria-label="Filtre hartă">
+      <h2 class="filter-title">Filtre hartă</h2>
+      <div class="filter-grid">
+        <div class="filter-field">
+          <label for="filter-domain">Domeniu</label>
+          <select id="filter-domain"></select>
+        </div>
+
+        <div class="filter-field">
+          <label for="filter-category">Subcategorie</label>
+          <select id="filter-category"></select>
+        </div>
+
+        <div class="filter-field is-hidden" id="restaurant-type-field">
+          <label for="filter-restaurant-type">Tip restaurant</label>
+          <select id="filter-restaurant-type"></select>
+        </div>
+
+        <button class="filter-button" id="reset-filters" type="button">Resetează filtrele</button>
+      </div>
+    </section>
+
+    <div id="map"></div>
+    <div class="legend" id="legend"></div>
+
+    <h2 class="places-title">Lista locurilor afișate</h2>
+    <div class="places" id="places"></div>
+
+    <hr>
+
+    <div class="footer">· © 2026 Marin Gabriel ·</div>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <script>
+    const locuri = [
+      {
+            "id": "locuri_de_luat_masa_restaurante_caru_cu_bere",
+            "nume": "Caru cu Bere",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Românesc",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.4320131101635,
+            "lng": 26.09812207397832,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_colosseum",
+            "nume": "Colosseum",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Italian",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43655971798415,
+            "lng": 26.098910362548253,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_el_torido_el_torito_obor",
+            "nume": "El Torido / El Torito Obor",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Mexican",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.44287452310445,
+            "lng": 26.12144880297673,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_journey_pub",
+            "nume": "Journey Pub",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Internațional",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.443291340868186,
+            "lng": 26.09724062087078,
+            "status": "închis definitiv"
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_stadio_piata_unirii",
+            "nume": "Stadio Piața Unirii",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Internațional",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.42769043105517,
+            "lng": 26.093329648947623,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_stadio_universitate",
+            "nume": "Stadio Universitate",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Internațional",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.437159071735266,
+            "lng": 26.099200302851344,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_taglio",
+            "nume": "Taglio",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Italian",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.4300785770326,
+            "lng": 26.10334783308644,
+            "status": "închis definitiv"
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_the_pub",
+            "nume": "The Pub",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Internațional",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43469767678861,
+            "lng": 26.1001360292411,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_trattoria_adagio",
+            "nume": "Trattoria Adagio",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Italian",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.44506925909593,
+            "lng": 26.099225362709177,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_cismigiu_bistro_la_etaj",
+            "nume": "Cișmigiu Bistro La Etaj",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Internațional",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43480798158847,
+            "lng": 26.095070384811148,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_18_lounge",
+            "nume": "18 Lounge",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Internațional",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.47740636518873,
+            "lng": 26.07168137970763,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_nor_sky_casual_restaurant",
+            "nume": "NOR Sky Casual Restaurant",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Internațional",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.47815070942236,
+            "lng": 26.104643341643545,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_aria_tnb",
+            "nume": "Aria TNB",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Internațional",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43696663857062,
+            "lng": 26.103595440378808,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_trattoria_garibaldi",
+            "nume": "Trattoria Garibaldi",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Italian",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.4116686925762,
+            "lng": 26.114457470333296,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_burgr_factory",
+            "nume": "Burgr Factory",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "American",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.44661744501908,
+            "lng": 26.095500758895756,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_big_ben_pub",
+            "nume": "Big Ben Pub",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Englezesc",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.429604237518475,
+            "lng": 26.100488644596712,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_city_grill_herastrau",
+            "nume": "City Grill Herăstrău",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Românesc",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.467034184378925,
+            "lng": 26.087828907773638,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_sera_eden",
+            "nume": "Sera Eden",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Internațional",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.44131792096052,
+            "lng": 26.10378804943549,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_la_placinte_romana",
+            "nume": "La Plăcinte Romană",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Românesc",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.44486430318531,
+            "lng": 26.09824379546968,
+            "status": "închis definitiv"
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_isan_thai_kitchen",
+            "nume": "ISAN Thai Kitchen",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Thailandez",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43480448341765,
+            "lng": 26.096481164508248,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_el_torito_unirii",
+            "nume": "El Torito Unirii",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Mexican",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.428409488528416,
+            "lng": 26.094616312323836,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_casa_de_tacos",
+            "nume": "Casa de Tacos",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Mexican",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43049080132179,
+            "lng": 26.104624048318623,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_hanu_lui_manuc",
+            "nume": "Hanu’ lui Manuc",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Românesc",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.42971381989239,
+            "lng": 26.10229384712441,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_la_mama",
+            "nume": "La Mama",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Românesc",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43191403921443,
+            "lng": 26.102538938180363,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_mexikanos",
+            "nume": "Mexikanos",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Mexican",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.431046636466974,
+            "lng": 26.103048126104166,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_taverna_covaci",
+            "nume": "Taverna Covaci",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Românesc",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.431088818554535,
+            "lng": 26.10117839965987,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_la_felinare",
+            "nume": "La Felinare",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Românesc",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.4159978751452,
+            "lng": 26.035169138863715,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_la_ciotoianu_grill",
+            "nume": "La Ciotoianu Grill",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Românesc",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.41878385841065,
+            "lng": 26.030615085099008,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_trattoria_roz_cafe",
+            "nume": "Trattoria Roz Café",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Italian",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.436389158559415,
+            "lng": 26.035547235144943,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_tulin",
+            "nume": "Tulin",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Libanez",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43931349553448,
+            "lng": 26.08675716098397,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_restaurant_maher",
+            "nume": "Restaurant Maher",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Libanez",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.44625209911028,
+            "lng": 26.10949186599432,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_distrikt_42",
+            "nume": "Distrikt 42",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Internațional",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.430889022037086,
+            "lng": 26.099221966009104,
+            "status": "închis definitiv"
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_old_habits",
+            "nume": "Old Habits",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Internațional",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43169825568658,
+            "lng": 26.10102122566924,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_hashtag_pub",
+            "nume": "Hashtag Pub",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "American",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.4464290477514,
+            "lng": 26.125439613851178,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_hatz_burger",
+            "nume": "Hatz Burger",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "American",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.44931755197761,
+            "lng": 26.123500668256348,
+            "status": "închis definitiv"
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_hard_rock_cafe",
+            "nume": "Hard Rock Cafe",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "American",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.475518544525535,
+            "lng": 26.07612968601472,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_beraria_h",
+            "nume": "Berăria H",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Internațional",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.4764674753669,
+            "lng": 26.07599478141787,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_mitt_burgarie_si_altele",
+            "nume": "MitT – Burgărie și altele",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Internațional",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.37069834702625,
+            "lng": 26.14625087692521,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_barrio",
+            "nume": "Barrio",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Mediteranean",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.44508472933107,
+            "lng": 26.09570358390886,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_restaurante_allucinante",
+            "nume": "Allucinante",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Restaurante",
+            "tipRestaurant": "Italian",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.42473031804327,
+            "lng": 26.07954813694771,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_ciorbarii_ciorbe_si_placinte_piata_muncii",
+            "nume": "Ciorbe și Plăcinte Piața Muncii",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Ciorbării",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43033027830949,
+            "lng": 26.13870785451037,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_ciorbarii_ciorbe_si_placinte_gorjului",
+            "nume": "Ciorbe și Plăcinte Gorjului",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Ciorbării",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.434227550971315,
+            "lng": 26.01789140113162,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_ciorbarii_ciorbe_si_placinte_tineretului",
+            "nume": "Ciorbe și Plăcinte Tineretului",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Ciorbării",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.41522406597163,
+            "lng": 26.10479769453395,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_ciorbarii_ciorbe_si_placinte_lujerului",
+            "nume": "Ciorbe și Plăcinte Lujerului",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Ciorbării",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43349118646294,
+            "lng": 26.037109523924833,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_ciorbarii_ciorbarie_piata_romana",
+            "nume": "Ciorbărie Piața Romană",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Ciorbării",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.447909637272055,
+            "lng": 26.107049946355612,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_ciorbarii_treevi_pizza_universitate",
+            "nume": "Treevi Pizza Universitate",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Ciorbării",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43801146330927,
+            "lng": 26.102633209801127,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_ciorbarii_treevi_pizza_politehnica",
+            "nume": "Treevi Pizza Politehnică",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Ciorbării",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.434200059993124,
+            "lng": 26.054122733227523,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_deserturi_maison_des_crepes_aviatorilor",
+            "nume": "Maison des Crêpes Aviatorilor",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Deserturi",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.46550474840321,
+            "lng": 26.083811735373992,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_deserturi_zoomserie_piata_victoriei",
+            "nume": "Zoomserie Piața Victoriei",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Deserturi",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.45179680764999,
+            "lng": 26.083354321588242,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_deserturi_zoomserie_piata_unirii",
+            "nume": "Zoomserie Piața Unirii",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Deserturi",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.430033456270145,
+            "lng": 26.107632640798887,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_deserturi_tip_top_crangasi",
+            "nume": "Tip Top Crângași",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Deserturi",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.452023138533505,
+            "lng": 26.04722762425188,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_deserturi_sweet_chocolate",
+            "nume": "Sweet Chocolate",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Deserturi",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43380987983919,
+            "lng": 26.021573465024808,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_deserturi_cereal_crunch_cafe_piata_constitutiei",
+            "nume": "Cereal Crunch Cafe Piața Constituției",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Deserturi",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.42966896545289,
+            "lng": 26.093948773569583,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_deserturi_roshen_shop_unirii",
+            "nume": "Roshen Shop Unirii",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Deserturi",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.42641056781683,
+            "lng": 26.099402918591423,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_deserturi_roshen_shop_gabroveni",
+            "nume": "Roshen Shop Gabroveni",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Deserturi",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.431109615836824,
+            "lng": 26.10331673444286,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_bauturi_bohemia_piata_romana",
+            "nume": "Bohemia Piața Romană",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Băuturi",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43972823298972,
+            "lng": 26.09134444289998,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_bauturi_mosaic_coffee",
+            "nume": "Mosaic Coffee",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Băuturi",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43471807570449,
+            "lng": 26.099913418285738,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_bauturi_grand_cafe_van_gogh",
+            "nume": "Grand Cafe Van Gogh",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Băuturi",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43242050322844,
+            "lng": 26.100113315642787,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_bauturi_carturesti_carusel_cafe",
+            "nume": "Cărturești Carusel Cafe",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Băuturi",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.4319689561122,
+            "lng": 26.101575750509276,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_bauturi_hug_cafe_izvor",
+            "nume": "Hug Cafe Izvor",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Băuturi",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43404870589397,
+            "lng": 26.089838944134566,
+            "status": "închis definitiv"
+      },
+      {
+            "id": "locuri_de_luat_masa_bauturi_kiss_tea_bubble_tea",
+            "nume": "Kiss Tea Bubble Tea",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Băuturi",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.42926331353745,
+            "lng": 26.102343017215734,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_bauturi_la_vita_e_velo",
+            "nume": "La Vita e Velo",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Băuturi",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.4336594271473,
+            "lng": 26.100974178186622,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_bauturi_ironic_taproom",
+            "nume": "Ironic Taproom",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Băuturi",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43390050721867,
+            "lng": 26.0953258350353,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_bauturi_beat_bar_umanist",
+            "nume": "BEAT bar umanist",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Băuturi",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.440448512523844,
+            "lng": 26.07229479283291,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_fast_food_pizza_hut_universitate",
+            "nume": "Pizza Hut Universitate",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Fast Food",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.434642621975634,
+            "lng": 26.098533972971858,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_fast_food_pizza_hut_dorobanti",
+            "nume": "Pizza Hut Dorobanți",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Fast Food",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.44679095560128,
+            "lng": 26.098655271023368,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_fast_food_dristor_kebab_politehnica",
+            "nume": "Dristor Kebab Politehnică",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Fast Food",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43423206036634,
+            "lng": 26.0533655647557,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_fast_food_dristor_kebab_dristor",
+            "nume": "Dristor Kebab Dristor",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Fast Food",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.42037040957005,
+            "lng": 26.13747727656766,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_cantine_cantina_mihail_kogalniceanu",
+            "nume": "Cantina Mihail Kogălniceanu",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Cantine",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.435011116794804,
+            "lng": 26.080399451303826,
+            "status": ""
+      },
+      {
+            "id": "locuri_de_luat_masa_cantine_cantina_west_gate",
+            "nume": "Cantina West Gate",
+            "domeniu": "Locuri de luat masa",
+            "categorie": "Cantine",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43199311960825,
+            "lng": 25.988144177729534,
+            "status": ""
+      },
+      {
+            "id": "cultura_spectacole_circul_metropolitan_bucuresti",
+            "nume": "Circul Metropolitan București",
+            "domeniu": "Cultură",
+            "categorie": "Spectacole",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.4565748308406,
+            "lng": 26.109545269595635,
+            "status": ""
+      },
+      {
+            "id": "cultura_spectacole_opera_nationala_bucuresti",
+            "nume": "Opera Națională București",
+            "domeniu": "Cultură",
+            "categorie": "Spectacole",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43597184409986,
+            "lng": 26.079466370084788,
+            "status": ""
+      },
+      {
+            "id": "cultura_spectacole_ateneul_roman",
+            "nume": "Ateneul Român",
+            "domeniu": "Cultură",
+            "categorie": "Spectacole",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.441295961422746,
+            "lng": 26.097311113956994,
+            "status": ""
+      },
+      {
+            "id": "cultura_spectacole_teatrul_odeon",
+            "nume": "Teatrul Odeon",
+            "domeniu": "Cultură",
+            "categorie": "Spectacole",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43592483440354,
+            "lng": 26.098621960432943,
+            "status": ""
+      },
+      {
+            "id": "cultura_spectacole_teatrul_national_de_opereta_si_musical",
+            "nume": "Teatrul Național de Operetă și Musical",
+            "domeniu": "Cultură",
+            "categorie": "Spectacole",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.42400509822982,
+            "lng": 26.11111782667495,
+            "status": ""
+      },
+      {
+            "id": "cultura_spectacole_teatrul_national_bucuresti",
+            "nume": "Teatrul Național București",
+            "domeniu": "Cultură",
+            "categorie": "Spectacole",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.437139286380926,
+            "lng": 26.103774368958142,
+            "status": ""
+      },
+      {
+            "id": "cultura_spectacole_ff_theatre",
+            "nume": "FF Theatre",
+            "domeniu": "Cultură",
+            "categorie": "Spectacole",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43258520071959,
+            "lng": 26.10041095369509,
+            "status": ""
+      },
+      {
+            "id": "cultura_spectacole_teatrul_nottara",
+            "nume": "Teatrul Nottara",
+            "domeniu": "Cultură",
+            "categorie": "Spectacole",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.443541527384454,
+            "lng": 26.098675415862292,
+            "status": ""
+      },
+      {
+            "id": "cultura_spectacole_teatrul_infinit",
+            "nume": "Teatrul Infinit",
+            "domeniu": "Cultură",
+            "categorie": "Spectacole",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.44692672222432,
+            "lng": 26.1125202376914,
+            "status": ""
+      },
+      {
+            "id": "cultura_spectacole_teatrul_evreiesc_de_stat",
+            "nume": "Teatrul Evreiesc de Stat",
+            "domeniu": "Cultură",
+            "categorie": "Spectacole",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.429323806012334,
+            "lng": 26.110818436595782,
+            "status": ""
+      },
+      {
+            "id": "cultura_spectacole_teatrul_masca",
+            "nume": "Teatrul Masca",
+            "domeniu": "Cultură",
+            "categorie": "Spectacole",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43874407043718,
+            "lng": 26.030305193576822,
+            "status": ""
+      },
+      {
+            "id": "cultura_spectacole_casa_caragiale",
+            "nume": "Casa Caragiale",
+            "domeniu": "Cultură",
+            "categorie": "Spectacole",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.44157411575064,
+            "lng": 26.10563348315433,
+            "status": ""
+      },
+      {
+            "id": "cultura_spectacole_teatrul_coquette",
+            "nume": "Teatrul Coquette",
+            "domeniu": "Cultură",
+            "categorie": "Spectacole",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.433113549883885,
+            "lng": 26.11783809033912,
+            "status": ""
+      },
+      {
+            "id": "cultura_spectacole_teatrul_excelsior",
+            "nume": "Teatrul Excelsior",
+            "domeniu": "Cultură",
+            "categorie": "Spectacole",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.437737312573304,
+            "lng": 26.098668370163775,
+            "status": ""
+      },
+      {
+            "id": "cultura_spectacole_teatrul_in_culise",
+            "nume": "Teatrul în Culise",
+            "domeniu": "Cultură",
+            "categorie": "Spectacole",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.446539952727505,
+            "lng": 26.10913201764045,
+            "status": ""
+      },
+      {
+            "id": "cultura_spectacole_teatrul_nou",
+            "nume": "Teatrul Nou",
+            "domeniu": "Cultură",
+            "categorie": "Spectacole",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.418386591480086,
+            "lng": 26.115800726698705,
+            "status": ""
+      },
+      {
+            "id": "cultura_spectacole_trattoria_20",
+            "nume": "Trattoria 20",
+            "domeniu": "Cultură",
+            "categorie": "Spectacole",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.445359333446554,
+            "lng": 26.054336224567944,
+            "status": "închis definitiv"
+      },
+      {
+            "id": "cultura_spectacole_teatrul_unteatru",
+            "nume": "Teatrul Unteatru",
+            "domeniu": "Cultură",
+            "categorie": "Spectacole",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.42890961176346,
+            "lng": 26.09424324775619,
+            "status": "închis definitiv"
+      },
+      {
+            "id": "cultura_cinematografe_centrul_ceh",
+            "nume": "Centrul Ceh",
+            "domeniu": "Cultură",
+            "categorie": "Cinematografe",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43373869689328,
+            "lng": 26.10141486660683,
+            "status": ""
+      },
+      {
+            "id": "cultura_cinematografe_cinema_elvire_popescu",
+            "nume": "Cinema Elvire Popescu",
+            "domeniu": "Cultură",
+            "categorie": "Cinematografe",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.44664522493771,
+            "lng": 26.104663296674484,
+            "status": ""
+      },
+      {
+            "id": "cultura_cinematografe_cinemateca_eforie",
+            "nume": "Cinemateca Eforie",
+            "domeniu": "Cultură",
+            "categorie": "Cinematografe",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43399317147632,
+            "lng": 26.096858718147327,
+            "status": ""
+      },
+      {
+            "id": "cultura_cinematografe_cinema_europa",
+            "nume": "Cinema Europa",
+            "domeniu": "Cultură",
+            "categorie": "Cinematografe",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43823031127604,
+            "lng": 26.11439518418626,
+            "status": ""
+      },
+      {
+            "id": "cultura_cinematografe_cinema_union",
+            "nume": "Cinema Union",
+            "domeniu": "Cultură",
+            "categorie": "Cinematografe",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43717084786503,
+            "lng": 26.09597074391731,
+            "status": ""
+      },
+      {
+            "id": "cultura_cinematografe_cinema_muzeul_taranului",
+            "nume": "Cinema Muzeul Țăranului",
+            "domeniu": "Cultură",
+            "categorie": "Cinematografe",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.454558143727525,
+            "lng": 26.084104712675096,
+            "status": ""
+      },
+      {
+            "id": "cultura_cinematografe_gradina_cu_filme",
+            "nume": "Grădina cu Filme",
+            "domeniu": "Cultură",
+            "categorie": "Cinematografe",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.44521057060863,
+            "lng": 26.09912577155347,
+            "status": ""
+      },
+      {
+            "id": "cultura_cinematografe_din_mall_uri_movieplex_plaza_romania",
+            "nume": "Movieplex Plaza România",
+            "domeniu": "Cultură",
+            "categorie": "Cinematografe din mall-uri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.4281561605162,
+            "lng": 26.03425173982484,
+            "status": ""
+      },
+      {
+            "id": "cultura_cinematografe_din_mall_uri_cinema_city_afi_cotroceni",
+            "nume": "Cinema City AFI Cotroceni",
+            "domeniu": "Cultură",
+            "categorie": "Cinematografe din mall-uri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43126140557716,
+            "lng": 26.052105794120493,
+            "status": ""
+      },
+      {
+            "id": "cultura_cinematografe_din_mall_uri_hollywood_multiplex_vitan",
+            "nume": "Hollywood Multiplex Vitan",
+            "domeniu": "Cultură",
+            "categorie": "Cinematografe din mall-uri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.41975305379023,
+            "lng": 26.12709972510167,
+            "status": ""
+      },
+      {
+            "id": "cultura_cinematografe_din_mall_uri_cinema_city_park_lake",
+            "nume": "Cinema City Park Lake",
+            "domeniu": "Cultură",
+            "categorie": "Cinematografe din mall-uri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.42076247547221,
+            "lng": 26.149727528900367,
+            "status": ""
+      },
+      {
+            "id": "cultura_cinematografe_din_mall_uri_cinema_city_mega_mall",
+            "nume": "Cinema City Mega Mall",
+            "domeniu": "Cultură",
+            "categorie": "Cinematografe din mall-uri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.44082068134674,
+            "lng": 26.15206551887706,
+            "status": ""
+      },
+      {
+            "id": "cultura_cinematografe_din_mall_uri_cinemax_veranda",
+            "nume": "Cinemax Veranda",
+            "domeniu": "Cultură",
+            "categorie": "Cinematografe din mall-uri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.451859977122254,
+            "lng": 26.13108032934078,
+            "status": ""
+      },
+      {
+            "id": "cultura_cinematografe_din_mall_uri_cinema_city_piata_sudului",
+            "nume": "Cinema City Piața Sudului",
+            "domeniu": "Cultură",
+            "categorie": "Cinematografe din mall-uri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.396120197692554,
+            "lng": 26.122910751038557,
+            "status": ""
+      },
+      {
+            "id": "istorie_muzee_muzeul_de_arta_recenta",
+            "nume": "Muzeul de Artă Recentă",
+            "domeniu": "Istorie",
+            "categorie": "Muzee",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.4678336485918,
+            "lng": 26.08918825704926,
+            "status": ""
+      },
+      {
+            "id": "istorie_muzee_muzeul_national_de_istorie",
+            "nume": "Muzeul Național de Istorie",
+            "domeniu": "Istorie",
+            "categorie": "Muzee",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43143613590084,
+            "lng": 26.09749868963411,
+            "status": ""
+      },
+      {
+            "id": "istorie_muzee_muzeul_national_de_arta_contemporana",
+            "nume": "Muzeul Național de Artă Contemporană",
+            "domeniu": "Istorie",
+            "categorie": "Muzee",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.42791269507051,
+            "lng": 26.08638209825417,
+            "status": ""
+      },
+      {
+            "id": "istorie_muzee_muzeul_comunismului",
+            "nume": "Muzeul Comunismului",
+            "domeniu": "Istorie",
+            "categorie": "Muzee",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.430654660130735,
+            "lng": 26.101472693609377,
+            "status": ""
+      },
+      {
+            "id": "istorie_muzee_muzeul_micul_paris",
+            "nume": "Muzeul Micul Paris",
+            "domeniu": "Istorie",
+            "categorie": "Muzee",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.432060636842785,
+            "lng": 26.10083455656569,
+            "status": ""
+      },
+      {
+            "id": "istorie_muzee_muzeul_municipiului_bucuresti",
+            "nume": "Muzeul Municipiului București",
+            "domeniu": "Istorie",
+            "categorie": "Muzee",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43481289633176,
+            "lng": 26.102177896717297,
+            "status": ""
+      },
+      {
+            "id": "istorie_muzee_muzeul_universitatii_din_bucuresti",
+            "nume": "Muzeul Universității din București",
+            "domeniu": "Istorie",
+            "categorie": "Muzee",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.435137254974556,
+            "lng": 26.08176986850641,
+            "status": ""
+      },
+      {
+            "id": "istorie_muzee_muzeul_national_de_arta",
+            "nume": "Muzeul Național de Artă",
+            "domeniu": "Istorie",
+            "categorie": "Muzee",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.439360258096826,
+            "lng": 26.09592615699134,
+            "status": ""
+      },
+      {
+            "id": "istorie_muzee_muzeul_theodor_aman",
+            "nume": "Muzeul Theodor Aman",
+            "domeniu": "Istorie",
+            "categorie": "Muzee",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.44024618864754,
+            "lng": 26.098130682852325,
+            "status": ""
+      },
+      {
+            "id": "istorie_muzee_muzeul_colectiilor_de_arta",
+            "nume": "Muzeul Colecțiilor de Artă",
+            "domeniu": "Istorie",
+            "categorie": "Muzee",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.444714659802905,
+            "lng": 26.091129039000315,
+            "status": ""
+      },
+      {
+            "id": "istorie_muzee_muzeul_national_george_enescu",
+            "nume": "Muzeul Național George Enescu",
+            "domeniu": "Istorie",
+            "categorie": "Muzee",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.44874144591411,
+            "lng": 26.088453097325516,
+            "status": ""
+      },
+      {
+            "id": "istorie_muzee_muzeul_national_grigore_antipa",
+            "nume": "Muzeul Național Grigore Antipa",
+            "domeniu": "Istorie",
+            "categorie": "Muzee",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.453099016820936,
+            "lng": 26.084637812601983,
+            "status": ""
+      },
+      {
+            "id": "istorie_muzee_muzeul_hartilor",
+            "nume": "Muzeul Hărților",
+            "domeniu": "Istorie",
+            "categorie": "Muzee",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.45693140606537,
+            "lng": 26.092736175961114,
+            "status": ""
+      },
+      {
+            "id": "istorie_muzee_muzeul_de_arta_zambaccian",
+            "nume": "Muzeul de Artă Zambaccian",
+            "domeniu": "Istorie",
+            "categorie": "Muzee",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.460895537857326,
+            "lng": 26.090917862230825,
+            "status": ""
+      },
+      {
+            "id": "istorie_muzee_muzeul_literaturii_romane",
+            "nume": "Muzeul Literaturii Române",
+            "domeniu": "Istorie",
+            "categorie": "Muzee",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.44206801136506,
+            "lng": 26.095319566605262,
+            "status": ""
+      },
+      {
+            "id": "istorie_muzee_art_safari",
+            "nume": "Art Safari",
+            "domeniu": "Istorie",
+            "categorie": "Muzee",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.432105468636955,
+            "lng": 26.09929116386434,
+            "status": "închis definitiv"
+      },
+      {
+            "id": "istorie_muzee_muzeul_militar_national",
+            "nume": "Muzeul Militar Național",
+            "domeniu": "Istorie",
+            "categorie": "Muzee",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.44143495745787,
+            "lng": 26.076432100250422,
+            "status": ""
+      },
+      {
+            "id": "istorie_muzee_muzeul_frederic_si_cecilia_cutescu_storck",
+            "nume": "Muzeul Frederic și Cecilia-Cuțescu Storck",
+            "domeniu": "Istorie",
+            "categorie": "Muzee",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.45096818008751,
+            "lng": 26.094687773105697,
+            "status": ""
+      },
+      {
+            "id": "istorie_muzee_muzeul_tehnic_profesor_inginer_dimitrie_leonida",
+            "nume": "Muzeul Tehnic Profesor Inginer Dimitrie Leonida",
+            "domeniu": "Istorie",
+            "categorie": "Muzee",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.417514479594445,
+            "lng": 26.096116451882462,
+            "status": ""
+      },
+      {
+            "id": "istorie_muzee_muzeul_geologic_national",
+            "nume": "Muzeul Geologic Național",
+            "domeniu": "Istorie",
+            "categorie": "Muzee",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.45482223563632,
+            "lng": 26.085167704886413,
+            "status": ""
+      },
+      {
+            "id": "istorie_castele_si_palate_palatul_lui_ceausescu",
+            "nume": "Palatul lui Ceaușescu",
+            "domeniu": "Istorie",
+            "categorie": "Castele și palate",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.469155483297364,
+            "lng": 26.092547864860293,
+            "status": ""
+      },
+      {
+            "id": "istorie_edificii_religioase_catedrala_mantuirii_neamului",
+            "nume": "Catedrala Mântuirii Neamului",
+            "domeniu": "Istorie",
+            "categorie": "Edificii religioase",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.42594171303532,
+            "lng": 26.08189773882893,
+            "status": ""
+      },
+      {
+            "id": "istorie_edificii_religioase_catedrala_sfantul_iosif",
+            "nume": "Catedrala Sfântul Iosif",
+            "domeniu": "Istorie",
+            "categorie": "Edificii religioase",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.44230374663297,
+            "lng": 26.09134803478992,
+            "status": ""
+      },
+      {
+            "id": "istorie_edificii_religioase_catedrala_patriarhiei",
+            "nume": "Catedrala Patriarhiei",
+            "domeniu": "Istorie",
+            "categorie": "Edificii religioase",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.4245508634988,
+            "lng": 26.09781229023449,
+            "status": ""
+      },
+      {
+            "id": "istorie_edificii_religioase_biserica_manastirii_stavropoleos",
+            "nume": "Biserica Mănăstirii Stavropoleos",
+            "domeniu": "Istorie",
+            "categorie": "Edificii religioase",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43179539989337,
+            "lng": 26.098839136163917,
+            "status": ""
+      },
+      {
+            "id": "istorie_edificii_religioase_biserica_ortodoxa_sfantul_anton",
+            "nume": "Biserica Ortodoxă Sfântul Anton",
+            "domeniu": "Istorie",
+            "categorie": "Edificii religioase",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43009070113899,
+            "lng": 26.102029679330048,
+            "status": ""
+      },
+      {
+            "id": "istorie_edificii_religioase_biserica_rusa_sfantul_nicolae",
+            "nume": "Biserica Rusă Sfântul Nicolae",
+            "domeniu": "Istorie",
+            "categorie": "Edificii religioase",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.433840156902846,
+            "lng": 26.10166776057853,
+            "status": ""
+      },
+      {
+            "id": "istorie_edificii_religioase_biserica_italiana",
+            "nume": "Biserica Italiană",
+            "domeniu": "Istorie",
+            "categorie": "Edificii religioase",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.439652789554486,
+            "lng": 26.10068185693168,
+            "status": ""
+      },
+      {
+            "id": "divertisment_spatii_de_distractii_oraselul_copiilor",
+            "nume": "Orășelul Copiilor",
+            "domeniu": "Divertisment",
+            "categorie": "Spații de distracții",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.40075510098042,
+            "lng": 26.108198554762176,
+            "status": ""
+      },
+      {
+            "id": "divertisment_spatii_de_distractii_vmax_karting_romexpo",
+            "nume": "Vmax Karting Romexpo",
+            "domeniu": "Divertisment",
+            "categorie": "Spații de distracții",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.477498366892895,
+            "lng": 26.06408261505108,
+            "status": ""
+      },
+      {
+            "id": "divertisment_spatii_de_distractii_laser_maxx_afi_cotroceni",
+            "nume": "Laser Maxx AFI Cotroceni",
+            "domeniu": "Divertisment",
+            "categorie": "Spații de distracții",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43023413338444,
+            "lng": 26.05130639073584,
+            "status": ""
+      },
+      {
+            "id": "divertisment_spatii_de_distractii_casa_experimentelor_romanian_science_center",
+            "nume": "Casa Experimentelor – Romanian Science Center",
+            "domeniu": "Divertisment",
+            "categorie": "Spații de distracții",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.404478836972615,
+            "lng": 26.141355570160616,
+            "status": ""
+      },
+      {
+            "id": "divertisment_roti_panoramice_roata_din_drumul_taberei",
+            "nume": "Roata din Drumul Taberei",
+            "domeniu": "Divertisment",
+            "categorie": "Roți panoramice",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.421564068030705,
+            "lng": 26.03077396987289,
+            "status": ""
+      },
+      {
+            "id": "divertisment_roti_panoramice_roata_din_parcul_tineretului",
+            "nume": "Roata din Parcul Tineretului",
+            "domeniu": "Divertisment",
+            "categorie": "Roți panoramice",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.40177274473609,
+            "lng": 26.109940481812117,
+            "status": ""
+      },
+      {
+            "id": "divertisment_roti_panoramice_roata_din_parcul_tei",
+            "nume": "Roata din Parcul Tei",
+            "domeniu": "Divertisment",
+            "categorie": "Roți panoramice",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.46624557332144,
+            "lng": 26.126009254773056,
+            "status": ""
+      },
+      {
+            "id": "divertisment_roti_panoramice_roata_din_herastrau",
+            "nume": "Roata din Herăstrău",
+            "domeniu": "Divertisment",
+            "categorie": "Roți panoramice",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.481961126643,
+            "lng": 26.08319730026042,
+            "status": ""
+      },
+      {
+            "id": "socializare_cluburi_el_comandante",
+            "nume": "El Comandante",
+            "domeniu": "Socializare",
+            "categorie": "Cluburi",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43243906158911,
+            "lng": 26.101087212703113,
+            "status": ""
+      },
+      {
+            "id": "socializare_cluburi_expirat",
+            "nume": "Expirat",
+            "domeniu": "Socializare",
+            "categorie": "Cluburi",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.4154850650947,
+            "lng": 26.093094367340047,
+            "status": ""
+      },
+      {
+            "id": "socializare_cluburi_fratelli",
+            "nume": "Fratelli",
+            "domeniu": "Socializare",
+            "categorie": "Cluburi",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.47234953671909,
+            "lng": 26.11325055075681,
+            "status": ""
+      },
+      {
+            "id": "socializare_cluburi_hangover",
+            "nume": "Hangover",
+            "domeniu": "Socializare",
+            "categorie": "Cluburi",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43341570318441,
+            "lng": 26.10420900839261,
+            "status": "închis definitiv"
+      },
+      {
+            "id": "socializare_cluburi_private_hell",
+            "nume": "Private Hell",
+            "domeniu": "Socializare",
+            "categorie": "Cluburi",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.4304460159908,
+            "lng": 26.10141802945868,
+            "status": ""
+      },
+      {
+            "id": "socializare_cluburi_fomo_club",
+            "nume": "FOMO Club",
+            "domeniu": "Socializare",
+            "categorie": "Cluburi",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.430986545928235,
+            "lng": 26.100626822493478,
+            "status": ""
+      },
+      {
+            "id": "socializare_cluburi_interbelic",
+            "nume": "Interbelic",
+            "domeniu": "Socializare",
+            "categorie": "Cluburi",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.432985998341344,
+            "lng": 26.096764252569876,
+            "status": ""
+      },
+      {
+            "id": "socializare_cluburi_geek_hub",
+            "nume": "Geek Hub",
+            "domeniu": "Socializare",
+            "categorie": "Cluburi",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.430716575470754,
+            "lng": 26.101486124186962,
+            "status": ""
+      },
+      {
+            "id": "socializare_escape_room_uri_lockedup_real_escape_rooms_chernobyl",
+            "nume": "LOCKEDup Real Escape Rooms — Chernobyl",
+            "domeniu": "Socializare",
+            "categorie": "Escape Room-uri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.437474372287156,
+            "lng": 26.10887412559737,
+            "status": ""
+      },
+      {
+            "id": "socializare_escape_room_uri_locked_in_escaperoom_the_guardians",
+            "nume": "Locked in Escaperoom — The Guardians",
+            "domeniu": "Socializare",
+            "categorie": "Escape Room-uri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.437474372287156,
+            "lng": 26.10887412559737,
+            "status": ""
+      },
+      {
+            "id": "socializare_escape_room_uri_escape_my_room_harry_potter_trials",
+            "nume": "Escape my Room — Harry Potter Trials",
+            "domeniu": "Socializare",
+            "categorie": "Escape Room-uri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.4443152784057,
+            "lng": 26.11560370748611,
+            "status": ""
+      },
+      {
+            "id": "socializare_escape_room_uri_mystery_rooms_escape_garden",
+            "nume": "Mystery Rooms Escape — Garden",
+            "domeniu": "Socializare",
+            "categorie": "Escape Room-uri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43813992498731,
+            "lng": 26.123501632007827,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_tineretului",
+            "nume": "Parcul Tineretului",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.40700786719908,
+            "lng": 26.10509070771854,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_carol",
+            "nume": "Parcul Carol",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.41455837699745,
+            "lng": 26.09598030527181,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_izvor",
+            "nume": "Parcul Izvor",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.4317037315705,
+            "lng": 26.08780559906991,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_cismigiu",
+            "nume": "Parcul Cișmigiu",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.436948940871865,
+            "lng": 26.0909182611712,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_bazilescu",
+            "nume": "Parcul Bazilescu",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.48806007183845,
+            "lng": 26.034053821616965,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_operei",
+            "nume": "Parcul Operei",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.435958381997395,
+            "lng": 26.077053049759737,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_unirii",
+            "nume": "Parcul Unirii",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.4281626683483,
+            "lng": 26.10232899462988,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_eroilor",
+            "nume": "Parcul Eroilor",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.4349553120456,
+            "lng": 26.07435138566353,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_drumul_taberei",
+            "nume": "Parcul Drumul Taberei",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.42030938817042,
+            "lng": 26.031917456948268,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_gradina_botanica",
+            "nume": "Grădina Botanică",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43748019206634,
+            "lng": 26.06326133375796,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_grozavesti",
+            "nume": "Parcul Grozăvești",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.436976644925366,
+            "lng": 26.056936635295475,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_crangasi",
+            "nume": "Parcul Crângași",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.45164985850116,
+            "lng": 26.043616700272057,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_de_pe_lacul_morii",
+            "nume": "Parcul de pe Lacul Morii",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.45895019446685,
+            "lng": 26.029065194628103,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_kiseleff",
+            "nume": "Parcul Kiseleff",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.45748910196671,
+            "lng": 26.08402194021177,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_herastrau",
+            "nume": "Parcul Herăstrău",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.469894427080014,
+            "lng": 26.082672929154906,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_gradina_japoneza",
+            "nume": "Grădina Japoneză",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.468299124109414,
+            "lng": 26.08023176037415,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_de_pe_insula_trandafirilor",
+            "nume": "Parcul de pe Insula Trandafirilor",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.47322750872287,
+            "lng": 26.078829267267192,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_floreasca",
+            "nume": "Parcul Floreasca",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.46444023861567,
+            "lng": 26.0975769422624,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_verdi",
+            "nume": "Parcul Verdi",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.46991589399507,
+            "lng": 26.108092993162145,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_circului",
+            "nume": "Parcul Circului",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.457358817579134,
+            "lng": 26.11107308497243,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_tei",
+            "nume": "Parcul Tei",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.46518143497089,
+            "lng": 26.12476389202815,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_plumbuita",
+            "nume": "Parcul Plumbuita",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.46462727179983,
+            "lng": 26.132392203865873,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_national",
+            "nume": "Parcul Național",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.434229231974356,
+            "lng": 26.144367085583248,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_alexandru_ioan_cuza",
+            "nume": "Parcul Alexandru Ioan Cuza",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.42297055033425,
+            "lng": 26.15436877378616,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_sticlariei",
+            "nume": "Parcul Sticlăriei",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43704271126865,
+            "lng": 26.177070241846128,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_morarilor",
+            "nume": "Parcul Morarilor",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43949939569674,
+            "lng": 26.170536910265707,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_florilor",
+            "nume": "Parcul Florilor",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.443517008477556,
+            "lng": 26.168197857417418,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_pantelimon",
+            "nume": "Parcul Pantelimon",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.436951291145846,
+            "lng": 26.202780161181362,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_casa_alba",
+            "nume": "Parcul Casa Albă",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.517824707087556,
+            "lng": 26.09047187760726,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_gradina_icoanei",
+            "nume": "Parcul Grădina Icoanei",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.44331534481196,
+            "lng": 26.103928478536776,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_parcuri_parcul_ioanid",
+            "nume": "Parcul Ioanid",
+            "domeniu": "Spații verzi",
+            "categorie": "Parcuri",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.44558747142603,
+            "lng": 26.10454355502121,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_paduri_si_rezervatii_delta_vacaresti",
+            "nume": "Delta Văcărești",
+            "domeniu": "Spații verzi",
+            "categorie": "Păduri și rezervații",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.399071605601456,
+            "lng": 26.132061609118214,
+            "status": ""
+      },
+      {
+            "id": "spatii_verzi_paduri_si_rezervatii_padurea_baneasa",
+            "nume": "Pădurea Băneasa",
+            "domeniu": "Spații verzi",
+            "categorie": "Păduri și rezervații",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.52363968684019,
+            "lng": 26.09093022970442,
+            "status": ""
+      },
+      {
+            "id": "turism_intunecat_cimitire_cimitirul_bellu_catolic",
+            "nume": "Cimitirul Bellu Catolic",
+            "domeniu": "Turism întunecat",
+            "categorie": "Cimitire",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.40183625597205,
+            "lng": 26.102258877625314,
+            "status": ""
+      },
+      {
+            "id": "turism_intunecat_cimitire_cimitirul_bellu_ortodox",
+            "nume": "Cimitirul Bellu Ortodox",
+            "domeniu": "Turism întunecat",
+            "categorie": "Cimitire",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.40368658924667,
+            "lng": 26.099133961723847,
+            "status": ""
+      },
+      {
+            "id": "turism_intunecat_cimitire_cimitirul_ghencea",
+            "nume": "Cimitirul Ghencea",
+            "domeniu": "Turism întunecat",
+            "categorie": "Cimitire",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.41835324330649,
+            "lng": 26.053227164581,
+            "status": ""
+      },
+      {
+            "id": "carti_librarii_antic_exlibris",
+            "nume": "Antic ExLibris",
+            "domeniu": "Cărți",
+            "categorie": "Librării",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43348921479692,
+            "lng": 26.102198752139213,
+            "status": ""
+      },
+      {
+            "id": "carti_librarii_carturesti_carusel",
+            "nume": "Cărturești Carusel",
+            "domeniu": "Cărți",
+            "categorie": "Librării",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.431931154754885,
+            "lng": 26.101591997911477,
+            "status": ""
+      },
+      {
+            "id": "carti_librarii_carturesti_verona",
+            "nume": "Cărturești Verona",
+            "domeniu": "Cărți",
+            "categorie": "Librării",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.44292247623761,
+            "lng": 26.099322093918374,
+            "status": ""
+      },
+      {
+            "id": "carti_anticariate_targul_cartii_strada_doamnei",
+            "nume": "Târgul Cărții Strada Doamnei",
+            "domeniu": "Cărți",
+            "categorie": "Anticariate",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43382738907316,
+            "lng": 26.10274410230846,
+            "status": ""
+      },
+      {
+            "id": "carti_anticariate_targul_cartii_bd_magheru",
+            "nume": "Târgul Cărții Bd. Magheru",
+            "domeniu": "Cărți",
+            "categorie": "Anticariate",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.443097120603085,
+            "lng": 26.09883348124757,
+            "status": ""
+      },
+      {
+            "id": "carti_anticariate_trored",
+            "nume": "Trored",
+            "domeniu": "Cărți",
+            "categorie": "Anticariate",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.42966582996122,
+            "lng": 26.104808377566304,
+            "status": ""
+      },
+      {
+            "id": "carti_anticariate_printre_carti",
+            "nume": "Printre Cărți",
+            "domeniu": "Cărți",
+            "categorie": "Anticariate",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.45571966035223,
+            "lng": 26.126569264904884,
+            "status": ""
+      },
+      {
+            "id": "carti_anticariate_anticariat_unu",
+            "nume": "Anticariat UNU",
+            "domeniu": "Cărți",
+            "categorie": "Anticariate",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "București",
+            "lat": 44.43466416737924,
+            "lng": 26.099701144250304,
+            "status": ""
+      },
+      {
+            "id": "istorie_castele_si_palate_palatul_mogosoaia",
+            "nume": "Palatul Mogoșoaia",
+            "domeniu": "Istorie",
+            "categorie": "Castele și palate",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "Mogoșoaia",
+            "lat": 44.525665904740805,
+            "lng": 25.99460366733582,
+            "status": ""
+      },
+      {
+            "id": "istorie_castele_si_palate_domeniul_buftea",
+            "nume": "Domeniul Buftea",
+            "domeniu": "Istorie",
+            "categorie": "Castele și palate",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "Buftea",
+            "lat": 44.567006546043935,
+            "lng": 25.938033640026813,
+            "status": ""
+      },
+      {
+            "id": "divertisment_spatii_de_distractii_ferma_animalelor",
+            "nume": "Ferma Animalelor",
+            "domeniu": "Divertisment",
+            "categorie": "Spații de distracții",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "Ilfov",
+            "lat": 44.467401969052354,
+            "lng": 26.209949852498635,
+            "status": ""
+      },
+      {
+            "id": "divertisment_spatii_de_distractii_eden_park",
+            "nume": "Eden Park",
+            "domeniu": "Divertisment",
+            "categorie": "Spații de distracții",
+            "tipRestaurant": "",
+            "tipLoc": "",
+            "oras": "Balotești",
+            "lat": 44.65088245546121,
+            "lng": 26.104767242351183,
+            "status": ""
+      }
+];
+
+    const domainOrder = ["Locuri de luat masa", "Cultură", "Istorie", "Divertisment", "Socializare", "Spații verzi", "Turism întunecat", "Cărți"];
+    const categoryOrder = ["Restaurante", "Ciorbării", "Deserturi", "Băuturi", "Fast Food", "Cantine", "Spectacole", "Cinematografe", "Cinematografe din mall-uri", "Muzee", "Castele și palate", "Edificii religioase", "Spații de distracții", "Roți panoramice", "Cluburi", "Escape Room-uri", "Parcuri", "Păduri și rezervații", "Cimitire", "Clădiri abandonate", "Librării", "Anticariate"];
+
+    const domainColors = {
+      "Locuri de luat masa": "#d35400",
+      "Cultură": "#8e44ad",
+      "Istorie": "#1565c0",
+      "Divertisment": "#e67e22",
+      "Socializare": "#c2185b",
+      "Spații verzi": "#2e7d32",
+      "Turism întunecat": "#2c3e50",
+      "Cărți": "#6d4c41"
+};
+
+    const filterState = {
+      domain: "__all__",
+      category: "__all__",
+      restaurantType: "__all__"
+    };
+
+    const map = L.map("map", { scrollWheelZoom: true }).setView([44.4268, 26.1025], 12);
+
+    const hartaStradala = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: "&copy; OpenStreetMap"
+    });
+
+    const hartaAdministrativa = L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+      maxZoom: 19,
+      attribution: "&copy; OpenStreetMap &copy; CARTO"
+    });
+
+    const satelitImagine = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
+      maxZoom: 19,
+      attribution: "Tiles &copy; Esri"
+    });
+
+    const satelitEtichete = L.tileLayer("https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}", {
+      maxZoom: 19,
+      attribution: "Labels &copy; Esri"
+    });
+
+    const hartaSatelit = L.layerGroup([satelitImagine, satelitEtichete]);
+
+    const hartaTopografica = L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {
+      maxZoom: 17,
+      attribution: "&copy; OpenTopoMap"
+    });
+
+    hartaAdministrativa.addTo(map);
+
+    const hartiDisponibile = {
+      "Hartă administrativă": hartaAdministrativa,
+      "Hartă stradală": hartaStradala,
+      "Hartă satelit": hartaSatelit,
+      "Hartă topografică": hartaTopografica
+    };
+
+    L.control.layers(hartiDisponibile, null, { collapsed: false }).addTo(map);
+
+    const markerGroup = L.layerGroup().addTo(map);
+
+    function romanianCompare(a, b) {
+      return a.localeCompare(b, "ro");
+    }
+
+    function uniqueSorted(values) {
+      return [...new Set(values.filter(Boolean))].sort(romanianCompare);
+    }
+
+    function fillSelect(select, options, selectedValue) {
+      select.innerHTML = "";
+      options.forEach(option => {
+        const el = document.createElement("option");
+        el.value = option.value;
+        el.textContent = option.label;
+        if (option.value === selectedValue) el.selected = true;
+        select.appendChild(el);
+      });
+    }
+
+    function getCategoriesForDomain(domain) {
+      const visiblePlaces = domain === "__all__"
+        ? locuri
+        : locuri.filter(loc => loc.domeniu === domain);
+
+      const existing = new Set(visiblePlaces.map(loc => loc.categorie));
+      return categoryOrder.filter(cat => existing.has(cat));
+    }
+
+    function renderFilterControls() {
+      const domainSelect = document.getElementById("filter-domain");
+      const categorySelect = document.getElementById("filter-category");
+      const typeSelect = document.getElementById("filter-restaurant-type");
+      const typeField = document.getElementById("restaurant-type-field");
+
+      const domainOptions = [
+        { value: "__all__", label: "Toate domeniile" },
+        ...domainOrder.map(domain => ({ value: domain, label: domain }))
+      ];
+      fillSelect(domainSelect, domainOptions, filterState.domain);
+
+      const categories = getCategoriesForDomain(filterState.domain);
+      if (filterState.category !== "__all__" && !categories.includes(filterState.category)) {
+        filterState.category = "__all__";
+      }
+
+      const categoryOptions = [
+        { value: "__all__", label: "Toate subcategoriile" },
+        ...categories.map(cat => ({ value: cat, label: cat }))
+      ];
+      fillSelect(categorySelect, categoryOptions, filterState.category);
+
+      const showRestaurantType = filterState.category === "Restaurante";
+      typeField.classList.toggle("is-hidden", !showRestaurantType);
+
+      if (!showRestaurantType) {
+        filterState.restaurantType = "__all__";
+      }
+
+      const restaurantTypes = uniqueSorted(locuri
+        .filter(loc => loc.domeniu === "Locuri de luat masa" && loc.categorie === "Restaurante")
+        .map(loc => loc.tipRestaurant));
+
+      const typeOptions = [
+        { value: "__all__", label: "Toate tipurile" },
+        ...restaurantTypes.map(type => ({ value: type, label: type }))
+      ];
+      fillSelect(typeSelect, typeOptions, filterState.restaurantType);
+    }
+
+    function getFilteredPlaces() {
+      return locuri.filter(loc => {
+        const domainMatches = filterState.domain === "__all__" || loc.domeniu === filterState.domain;
+        const categoryMatches = filterState.category === "__all__" || loc.categorie === filterState.category;
+        const typeMatches = filterState.restaurantType === "__all__" || loc.tipRestaurant === filterState.restaurantType;
+        return domainMatches && categoryMatches && typeMatches;
+      });
+    }
+
+    function renderLegend(places) {
+      const legend = document.getElementById("legend");
+      legend.innerHTML = "";
+
+      const activeDomains = domainOrder.filter(domain => places.some(loc => loc.domeniu === domain));
+
+      activeDomains.forEach(domain => {
+        const item = document.createElement("span");
+        item.className = "legend-item";
+        item.innerHTML = '<span class="dot" style="background:' + domainColors[domain] + '"></span>' + domain;
+        legend.appendChild(item);
+      });
+    }
+
+    function escapeHTML(value) {
+      return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    const objectiveDescriptions = {
+      "locuri_de_luat_masa_fast_food_dristor_kebab_politehnica": "Kebab, shaorma și alte preparate rapide de inspirație orientală.",
+      "locuri_de_luat_masa_fast_food_dristor_kebab_dristor": "Kebab, shaorma și alte preparate rapide de inspirație orientală.",
+      "istorie_muzee_muzeul_de_arta_recenta": "Artă românească recentă și contemporană, cu accent pe creația de după anii 1960.",
+      "istorie_muzee_muzeul_national_de_istorie": "Arheologie, istorie medievală și modernă, tezaur istoric, lapidarium și copia Columnei lui Traian.",
+      "istorie_muzee_muzeul_national_de_arta_contemporana": "Artă contemporană românească și internațională, proiecte curatoriale și expoziții temporare.",
+      "istorie_muzee_muzeul_comunismului": "Viața cotidiană în perioada comunistă, obiecte, documente și materiale de propagandă.",
+      "istorie_muzee_muzeul_micul_paris": "Obiecte decorative, mobilier și ambient urban asociat Bucureștiului de la sfârșitul secolului XIX și începutul secolului XX.",
+      "istorie_muzee_muzeul_municipiului_bucuresti": "Istoria Bucureștiului, arheologie, documente, fotografie, artă și obiecte legate de evoluția orașului.",
+      "istorie_muzee_muzeul_universitatii_din_bucuresti": "Documente, fotografii, publicații și obiecte legate de istoria Universității din București.",
+      "istorie_muzee_muzeul_national_de_arta": "Artă românească medievală și modernă, artă europeană, artă decorativă și colecții regale.",
+      "istorie_muzee_muzeul_theodor_aman": "Pictură, grafică, gravură, mobilier și interioare ale casei-atelier Theodor Aman.",
+      "istorie_muzee_muzeul_colectiilor_de_arta": "Donații și colecții private de pictură, sculptură, grafică și artă decorativă.",
+      "istorie_muzee_muzeul_national_george_enescu": "Documente, fotografii, manuscrise, obiecte personale și materiale legate de George Enescu.",
+      "istorie_muzee_muzeul_national_grigore_antipa": "Zoologie, biodiversitate, diorame, minerale, fosile și materiale de istorie naturală.",
+      "istorie_muzee_muzeul_hartilor": "Hărți vechi, planuri urbane, gravuri și materiale de cartografie românească și europeană.",
+      "istorie_muzee_muzeul_de_arta_zambaccian": "Artă românească modernă și lucrări europene din colecția K. H. Zambaccian.",
+      "istorie_muzee_muzeul_literaturii_romane": "Manuscrise, documente, ediții rare, fotografii și obiecte legate de scriitori români.",
+      "istorie_muzee_art_safari": "Artă românească și internațională, programe curatoriale și expoziții temporare.",
+      "istorie_muzee_muzeul_militar_national": "Armament, uniforme, decorații, documente, tehnică militară și materiale despre istoria armatei române.",
+      "istorie_muzee_muzeul_frederic_si_cecilia_cutescu_storck": "Sculptură, pictură, artă decorativă și interioare ale familiei Storck.",
+      "istorie_muzee_muzeul_tehnic_profesor_inginer_dimitrie_leonida": "Istoria tehnicii, electricitate, mecanică, transporturi, invenții și aparate tehnice.",
+      "istorie_muzee_muzeul_geologic_national": "Roci, minerale, fosile și materiale despre structura geologică a României.",
+      "istorie_castele_si_palate_palatul_lui_ceausescu": "Fostă reședință oficială a familiei Ceaușescu, folosită în perioada comunistă. Clădirea este cunoscută și ca Palatul Primăverii.",
+      "istorie_edificii_religioase_catedrala_mantuirii_neamului": "Piatra de temelie a fost pusă în 2007, iar lucrările au început oficial în 2010. Catedrala Patriarhiei Române a fost sfințită în 2018, lângă Palatul Parlamentului.",
+      "istorie_edificii_religioase_catedrala_sfantul_iosif": "Ridicată între 1875 și 1883, după planurile lui Friedrich Schmidt și Carol Benesch. Fondatorul a fost episcopul Ignatius Paoli, iar consacrarea a avut loc în 1884.",
+      "istorie_edificii_religioase_catedrala_patriarhiei": "Construită între 1654 și 1658 de Constantin Șerban Basarab și doamna Bălașa. A fost sfințită în 1658 și a devenit centrul vieții mitropolitane, apoi patriarhale, din București.",
+      "istorie_edificii_religioase_biserica_manastirii_stavropoleos": "Biserica a fost ridicată în 1724 de arhimandritul Ioanichie Stratonikeas, în incinta hanului său. Este unul dintre reperele brâncovenești importante ale centrului vechi.",
+      "istorie_edificii_religioase_biserica_ortodoxa_sfantul_anton": "Este considerată cea mai veche biserică păstrată din București. Pisania îl indică drept ctitor pe Mircea Ciobanul, iar prima atestare sigură este din secolul al XVI-lea.",
+      "istorie_edificii_religioase_biserica_rusa_sfantul_nicolae": "Construcția a fost inițiată în 1905 de ambasadorul rus Mihail Giers și finanțată de curtea țarului Nicolae al II-lea. A fost finalizată și sfințită în 1909.",
+      "istorie_edificii_religioase_biserica_italiana": "Ridicată între 1915 și 1916 pentru comunitatea italiană din București, în stil romanic lombard. A fost consacrată în 1916 de arhiepiscopul Raymond Netzhammer.",
+
+      "spatii_verzi_parcuri_parcul_tineretului": "Amenajat între 1965 și 1974; proiectul este legat de arhitectul Valentin Donose și de dezvoltarea sudului Bucureștiului.",
+      "spatii_verzi_parcuri_parcul_carol": "Inaugurat în 1906 pentru Expoziția Generală Română; proiectul a fost realizat de peisagistul Édouard Redont.",
+      "spatii_verzi_parcuri_parcul_izvor": "Transformat în parc la începutul anilor 1990, pe terenul rămas liber după demolările din zona Uranus–Mihai Vodă.",
+      "spatii_verzi_parcuri_parcul_cismigiu": "Inaugurat la 23 septembrie 1847; amenajarea a fost coordonată de Wilhelm Friedrich Carl Meyer.",
+      "spatii_verzi_parcuri_parcul_bazilescu": "Dat în folosință în 1954, pe terenul donat statului de Nicolae Bazilescu; a purtat și numele Nicolae Bălcescu.",
+      "spatii_verzi_parcuri_parcul_operei": "Amenajat după demolarea Stadionului Venus, deschis în 1931 și demolat în 1953; parcul ocupă astăzi acel amplasament.",
+      "spatii_verzi_parcuri_parcul_unirii": "Amenajat în anii 1980, odată cu restructurarea Pieței Unirii și a axei spre Centrul Civic.",
+      "spatii_verzi_parcuri_parcul_eroilor": "Amenajat ca spațiu public în secolul XX, în zona Pieței Eroilor; sursele uzuale nu dau o dată unică de inaugurare.",
+      "spatii_verzi_parcuri_parcul_drumul_taberei": "Dat în folosință în 1960, în centrul cartierului Drumul Taberei; inițial era cunoscut ca Parcul Moghioroș.",
+      "spatii_verzi_parcuri_gradina_botanica": "Înființată prin decret în 1860; mutată în amplasamentul actual în 1884 și deschisă publicului în 1891.",
+      "spatii_verzi_parcuri_parcul_grozavesti": "Data dării în folosință nu este documentată clar în sursele uzuale; parcul apare ca amenajare publică a zonei Grozăvești–Regie.",
+      "spatii_verzi_parcuri_parcul_crangasi": "Conturat ca parc al zonei Crângași după lucrările pentru Lacul Morii, realizat în 1986.",
+      "spatii_verzi_parcuri_parcul_de_pe_lacul_morii": "Amenajat pe malul Lacului Morii, lac de acumulare realizat în 1986 pentru protecția Bucureștiului la inundații.",
+      "spatii_verzi_parcuri_parcul_kiseleff": "Amenajat după 1832, odată cu Șoseaua Kiseleff; lucrările sunt legate de perioada Gheorghe Bibescu–Barbu Știrbey.",
+      "spatii_verzi_parcuri_parcul_herastrau": "Datat oficial din 1936; zona a fost asanată între 1930 și 1935, iar parcul a fost extins în 1951.",
+      "spatii_verzi_parcuri_gradina_japoneza": "Sector din Herăstrău; parcul de bază este datat din 1936, iar grădina japoneză funcționează ca amenajare tematică internă.",
+      "spatii_verzi_parcuri_parcul_de_pe_insula_trandafirilor": "Parte a ansamblului Herăstrău; amenajarea parcului este datată din 1936, cu extindere importantă în 1951.",
+      "spatii_verzi_parcuri_parcul_floreasca": "Proiectat și amenajat între 1961 și 1963, pe locul fostei zone Groapa Floreasca.",
+      "spatii_verzi_parcuri_parcul_verdi": "Parc de cartier din zona Floreasca–Barbu Văcărescu; sursele uzuale nu indică o dată unică de inaugurare.",
+      "spatii_verzi_parcuri_parcul_circului": "Amenajat în anii 1960 în jurul Circului de Stat, clădire ridicată în perioada 1960–1961.",
+      "spatii_verzi_parcuri_parcul_tei": "Amenajat ca parc al zonei Tei în perioada urbanizării comuniste; nu are o dată publică unică de inaugurare.",
+      "spatii_verzi_parcuri_parcul_plumbuita": "Amenajat pe malurile lacului Plumbuita, în zona Colentina–Tei; sursele uzuale nu dau o dată unică de inaugurare.",
+      "spatii_verzi_parcuri_parcul_national": "Amenajat în perioada comunistă în estul orașului, ca parc al zonei Basarabia–Arena Națională.",
+      "spatii_verzi_parcuri_parcul_alexandru_ioan_cuza": "Construit în anii 1970, odată cu dezvoltarea cartierului Titan, în jurul lacului Titan/I.O.R.",
+      "spatii_verzi_parcuri_parcul_sticlariei": "Amenajările recente ca parc urban aparțin perioadei postcomuniste; nu există o dată istorică unică de inaugurare.",
+      "spatii_verzi_parcuri_parcul_morarilor": "Amenajat în perioada dezvoltării cartierelor estice ale Bucureștiului, în a doua jumătate a secolului XX.",
+      "spatii_verzi_parcuri_parcul_florilor": "Amenajat în perioada dezvoltării cartierelor estice ale Bucureștiului, în a doua jumătate a secolului XX.",
+      "spatii_verzi_parcuri_parcul_pantelimon": "Amenajat ca parc al zonei Pantelimon în perioada extinderii cartierului din a doua jumătate a secolului XX.",
+      "spatii_verzi_parcuri_parcul_casa_alba": "Parc de cartier din nordul Bucureștiului; sursele uzuale nu indică o dată unică de inaugurare.",
+      "spatii_verzi_parcuri_parcul_gradina_icoanei": "Inaugurată în 1873; amenajarea a urmat asanării fostului Iaz al Icoanei dintre 1832 și 1846.",
+      "spatii_verzi_parcuri_parcul_ioanid": "Legat de lotizarea Ioanid de la începutul secolului XX; parcul apare ca nucleu al parcelării rezidențiale din zonă.",
+      "istorie_castele_si_palate_palatul_mogosoaia": "Ridicat între 1698 și 1702 de Constantin Brâncoveanu, palatul este un reper al stilului brâncovenesc. Ansamblul a fost restaurat în secolul XX și este legat și de familia Bibescu.",
+      "istorie_castele_si_palate_domeniul_buftea": "Ansamblu istoric asociat familiei Știrbey, dezvoltat în secolul al XIX-lea. Domeniul include palatul și parcul, folosite ulterior și ca spațiu pentru evenimente și producții cinematografice.",
+      "divertisment_spatii_de_distractii_ferma_animalelor": "Fermă educativă din Ilfov, cu animale domestice și activități de interacțiune pentru copii.",
+      "divertisment_spatii_de_distractii_eden_park": "Parc de aventură din Balotești, cu trasee în copaci, tiroliene și activități în aer liber.",
+      "istorie_cladiri_abandonate_inchisoarea_doftana": "Fost penitenciar politic din zona Câmpina-Telega, asociat cu detenția unor figuri comuniste în perioada interbelică. În listă apare ca loc închis definitiv."
+    };
+
+    function popupInfo(loc) {
+      if (objectiveDescriptions[loc.id]) return objectiveDescriptions[loc.id];
+
+      if (loc.categorie === "Restaurante") {
+        return "Restaurant cu specific " + String(loc.tipRestaurant || "nespecificat").toLowerCase() + ".";
+      }
+
+      if (loc.categorie === "Ciorbării") {
+        return "Ciorbe, supe, plăcinte și preparate rapide de tip casual.";
+      }
+
+      if (loc.categorie === "Deserturi") {
+        return "Deserturi, clătite, prăjituri sau produse dulci.";
+      }
+
+      if (loc.categorie === "Băuturi") {
+        return "Cafea, ceai, bubble tea, băuturi reci sau consum pe loc.";
+      }
+
+      if (loc.categorie === "Fast Food") {
+        return "Preparate rapide, în special pizza sau produse de tip fast food.";
+      }
+
+      if (loc.categorie === "Cantine") {
+        return "Masă rapidă și accesibilă, cu preparate de cantină.";
+      }
+
+      if (loc.categorie === "Spectacole") {
+        return "Spectacole, concerte, teatru, operă, musical sau evenimente scenice.";
+      }
+
+      if (loc.categorie === "Cinematografe") {
+        return "Proiecții de film, cinematecă, cinema de artă sau programe culturale dedicate filmului.";
+      }
+
+      if (loc.categorie === "Cinematografe din mall-uri") {
+        return "Cinematograf comercial amplasat în centru comercial, pentru proiecții de film mainstream.";
+      }
+
+      if (loc.categorie === "Edificii religioase") {
+        return "Lăcaș de cult din București; nu există încă un scurt istoric separat introdus în fișier.";
+      }
+
+      if (loc.categorie === "Spații de distracții") {
+        return "Activități recreative, jocuri, experiențe interactive sau divertisment urban.";
+      }
+
+      if (loc.categorie === "Roți panoramice") {
+        return "Atracție de agrement cu vedere panoramică asupra zonei în care este amplasată.";
+      }
+
+      if (loc.categorie === "Cluburi") {
+        return "Nightlife, muzică, dans și socializare.";
+      }
+
+      if (loc.categorie === "Escape Room-uri") {
+        return "Joc de echipă cu indicii, enigme și obiectiv de evadare într-un timp limitat.";
+      }
+
+      if (loc.categorie === "Parcuri") {
+        return "Data dării în folosință nu este documentată clar în sursele uzuale.";
+      }
+
+      if (loc.categorie === "Păduri și rezervații") {
+        return "Spațiu natural, arie verde sau zonă de biodiversitate din București și împrejurimi.";
+      }
+
+      if (loc.categorie === "Cimitire") {
+        return "Spațiu funerar și memorial, relevant pentru istoria urbană și memoria locală.";
+      }
+
+      if (loc.categorie === "Librării") {
+        return "Carte nouă, albume, produse culturale și materiale de lectură.";
+      }
+
+      if (loc.categorie === "Anticariate") {
+        return "Carte veche, ediții second-hand, volume rare sau publicații de colecție.";
+      }
+
+      return loc.categorie + ".";
+    }
+
+    function popupContent(loc) {
+      const status = loc.status ? '<span class="popup-status">' + escapeHTML(loc.status) + '</span>' : "";
+      return (
+        '<span class="popup-title">' + escapeHTML(loc.nume) + '</span>' +
+        '<div class="popup-story">' + escapeHTML(popupInfo(loc)) + status + '</div>'
+      );
+    }
+
+    function renderMap(places) {
+      markerGroup.clearLayers();
+      const markers = [];
+
+      places.forEach(loc => {
+        const color = domainColors[loc.domeniu] || "#6a00ff";
+
+        const marker = L.circleMarker([loc.lat, loc.lng], {
+          radius: 5,
+          color: color,
+          fillColor: color,
+          weight: 1.5,
+          fillOpacity: 0.88
+        }).bindPopup(popupContent(loc));
+
+        marker.addTo(markerGroup);
+        markers.push(marker);
+      });
+
+      if (markers.length > 0) {
+        const group = L.featureGroup(markers);
+        map.fitBounds(group.getBounds().pad(0.16));
+      } else {
+        map.setView([44.4268, 26.1025], 12);
+      }
+    }
+
+    function placeExtra(loc) {
+      const extras = [];
+      if (loc.oras && loc.oras !== "București") extras.push(loc.oras);
+      if (loc.tipRestaurant) extras.push(loc.tipRestaurant);
+      if (loc.tipLoc) extras.push(loc.tipLoc);
+      return extras.length ? ' <span class="place-meta">— ' + extras.join(" · ") + '</span>' : "";
+    }
+
+    function renderPlaces(places) {
+      const container = document.getElementById("places");
+      container.innerHTML = "";
+
+      if (!places.length) {
+        container.innerHTML = '<div class="empty-state">Nu există locuri pentru filtrul selectat.</div>';
+      }
+
+      domainOrder.forEach(domain => {
+        const domainItems = places.filter(loc => loc.domeniu === domain);
+        if (!domainItems.length) return;
+
+        const domainGroup = document.createElement("section");
+        domainGroup.className = "domain-group";
+
+        const domainTitle = document.createElement("h3");
+        domainTitle.className = "domain-title";
+        domainTitle.textContent = domain;
+        domainGroup.appendChild(domainTitle);
+
+        categoryOrder.forEach(category => {
+          const categoryItems = domainItems
+            .filter(loc => loc.categorie === category)
+            .sort((a, b) => romanianCompare(a.nume, b.nume));
+
+          if (!categoryItems.length) return;
+
+          const categoryGroup = document.createElement("section");
+          categoryGroup.className = "category-group";
+
+          const categoryTitle = document.createElement("h4");
+          categoryTitle.className = "category-title";
+          categoryTitle.textContent = category;
+          categoryGroup.appendChild(categoryTitle);
+
+          categoryItems.forEach(loc => {
+            const div = document.createElement("div");
+            div.className = "place-item";
+            div.innerHTML = loc.nume + placeExtra(loc) + (loc.status ? ' <span class="place-status">— ' + loc.status + '</span>' : "");
+            categoryGroup.appendChild(div);
+          });
+
+          domainGroup.appendChild(categoryGroup);
+        });
+
+        container.appendChild(domainGroup);
+      });
+
+    }
+
+    function updateView() {
+      renderFilterControls();
+      const places = getFilteredPlaces();
+      renderMap(places);
+      renderLegend(places);
+      renderPlaces(places);
+    }
+
+    document.getElementById("filter-domain").addEventListener("change", event => {
+      filterState.domain = event.target.value;
+      filterState.category = "__all__";
+      filterState.restaurantType = "__all__";
+      updateView();
+    });
+
+    document.getElementById("filter-category").addEventListener("change", event => {
+      filterState.category = event.target.value;
+      filterState.restaurantType = "__all__";
+      updateView();
+    });
+
+    document.getElementById("filter-restaurant-type").addEventListener("change", event => {
+      filterState.restaurantType = event.target.value;
+      updateView();
+    });
+
+    document.getElementById("reset-filters").addEventListener("click", () => {
+      filterState.domain = "__all__";
+      filterState.category = "__all__";
+      filterState.restaurantType = "__all__";
+      updateView();
+    });
+
+    updateView();
+  </script>
+</body>
+</html>

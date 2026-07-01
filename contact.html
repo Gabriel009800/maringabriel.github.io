@@ -4,10 +4,179 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact - Marin Gabriel</title>
+
   <link rel="stylesheet" href="./style.css">
-  
   <link rel="icon" type="image/png" href="./favicon.png">
-  
+
+  <style>
+    .footer-secret-trigger {
+      cursor: pointer;
+      user-select: none;
+      display: inline-block;
+      transition: opacity 0.2s ease;
+    }
+
+    .footer-secret-trigger:hover {
+      opacity: 0.72;
+    }
+
+    .secret-box,
+    .secret-links-box {
+      position: fixed;
+      left: 50%;
+      bottom: 85px;
+      transform: translateX(-50%);
+      z-index: 9999;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 18px;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
+      display: none;
+      animation: secretFade 0.22s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .secret-box {
+      width: 270px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .secret-box p {
+      margin: 0 0 10px;
+      font-size: 13px;
+      color: #333;
+    }
+
+    .secret-code-row {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .secret-box input {
+      width: 150px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      text-align: center;
+      font-size: 16px;
+      letter-spacing: 3px;
+      outline: none;
+    }
+
+    .secret-box input:focus {
+      border-color: rgba(0, 0, 0, 0.35);
+    }
+
+    .secret-box button,
+    .secret-close {
+      border: none;
+      cursor: pointer;
+      border-radius: 12px;
+      background: #222;
+      color: white;
+      font-size: 14px;
+      padding: 10px 12px;
+    }
+
+    .secret-error {
+      margin-top: 8px;
+      font-size: 12px;
+      color: #b00020;
+      display: none;
+    }
+
+    .secret-links-box {
+      width: min(470px, calc(100vw - 32px));
+      max-height: calc(100vh - 130px);
+      overflow-y: auto;
+      padding: 22px 20px 20px;
+    }
+
+    .secret-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      border-radius: 50%;
+      font-size: 17px;
+      line-height: 32px;
+    }
+
+    .secret-category {
+      margin-bottom: 20px;
+      padding-bottom: 17px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .secret-category:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .secret-category h3 {
+      margin: 0 0 12px;
+      font-size: 15px;
+      color: #222;
+      font-weight: 700;
+    }
+
+    .secret-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .secret-icons a {
+      width: 54px;
+      height: 54px;
+      border-radius: 17px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      font-size: 26px;
+      background: #f3f3f3;
+      color: #111;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .secret-icons a:hover {
+      transform: translateY(-3px);
+      background: #e9e9e9;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    @keyframes secretFade {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .secret-box,
+      .secret-links-box {
+        bottom: 70px;
+      }
+
+      .secret-icons a {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -23,6 +192,7 @@
 <header class="page-hero">
 
   <p class="hero-subtitle">Datele prin care mă poți contacta</p>
+
 </header>
 
 <section class="contact-page">
@@ -44,23 +214,23 @@
 
     <div class="contact-card">
       <h3>WhatsApp</h3>
-      <a href="https://wa.me/40728115190" target="_blank">
+      <a href="https://wa.me/40728115190" target="_blank" rel="noopener noreferrer">
         0728 115 190
       </a>
     </div>
 
     <div class="contact-card">
       <h3>LinkedIn</h3>
-      <a href="https://www.linkedin.com/in/gabriel-marin-2090ab246" target="_blank">
+      <a href="https://www.linkedin.com/in/gabriel-marin-2090ab246" target="_blank" rel="noopener noreferrer">
         Vezi profilul
       </a>
     </div>
 
     <div class="contact-card">
       <h3>CV Europass</h3>
-<a href="cv.html" target="_blank">
-  Marin Gabriel
-</a>
+      <a href="cv.html" target="_blank">
+        Marin Gabriel
+      </a>
     </div>
 
   </div>
@@ -70,10 +240,192 @@
 <footer class="footer">
 
   <div class="footer-bottom">
-    <p>© 2026 Marin Gabriel. Toate drepturile rezervate.</p>
+    <p id="footerSecretTrigger" class="footer-secret-trigger">
+      © 2026 Marin Gabriel. Toate drepturile rezervate.
+    </p>
   </div>
 
 </footer>
+
+<div id="secretBox" class="secret-box">
+  <p>Introdu codul din 8 cifre</p>
+
+  <div class="secret-code-row">
+    <input
+      id="secretCodeInput"
+      type="text"
+      inputmode="numeric"
+      maxlength="8"
+      autocomplete="off"
+      placeholder="00000000"
+    >
+
+    <button id="secretCodeButton" type="button">✓</button>
+  </div>
+
+  <div id="secretError" class="secret-error">
+    Cod incorect
+  </div>
+</div>
+
+<div id="secretLinksBox" class="secret-links-box">
+  <button id="secretClose" class="secret-close" type="button">×</button>
+
+  <div class="secret-category">
+    <h3>Social Media</h3>
+
+    <div class="secret-icons">
+
+      <a
+        href="https://www.tiktok.com/@psihologia.desenelor?_r=1&_t=ZN-97YoKnY4X2s"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Psihologia desenelor animate"
+        aria-label="Psihologia desenelor animate"
+      >
+        🧠
+      </a>
+
+      <a
+        href="https://www.tiktok.com/@marin_gabriel_mcmxcviii?_t=8p7JwmWvHNJ&_r=1"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Povești istorice de groază"
+        aria-label="Povești istorice de groază"
+      >
+        🏚️
+      </a>
+
+      <a
+        href="https://www.instagram.com/gabriel.marin.mcmxcviii?igsh=MWJkdTF5dHF4c3E4bA%3D%3D"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Fotografii"
+        aria-label="Fotografii"
+      >
+        📷
+      </a>
+
+    </div>
+  </div>
+
+  <div class="secret-category">
+    <h3>Explorare urbană</h3>
+
+    <div class="secret-icons">
+
+      <a
+        href="explorator-bucuresti.html"
+        target="_blank"
+        title="Explorator București"
+        aria-label="Explorator București"
+      >
+        🧭
+      </a>
+
+    </div>
+  </div>
+
+  <div class="secret-category">
+    <h3>Postere cinema</h3>
+
+    <div class="secret-icons">
+
+      <a
+        href="lumea-prin-filme-197.html"
+        target="_blank"
+        title="Lumea prin filme"
+        aria-label="Lumea prin filme"
+      >
+        🎬
+      </a>
+
+      <a
+        href="lumea-prin-regizori-197.html"
+        target="_blank"
+        title="Lumea prin regizori"
+        aria-label="Lumea prin regizori"
+      >
+        🎥
+      </a>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const footerSecretTrigger = document.getElementById("footerSecretTrigger");
+  const secretBox = document.getElementById("secretBox");
+  const secretLinksBox = document.getElementById("secretLinksBox");
+  const secretCodeInput = document.getElementById("secretCodeInput");
+  const secretCodeButton = document.getElementById("secretCodeButton");
+  const secretError = document.getElementById("secretError");
+  const secretClose = document.getElementById("secretClose");
+
+  const correctSecretCode = "24022026";
+
+  footerSecretTrigger.addEventListener("click", () => {
+    secretLinksBox.style.display = "none";
+    secretBox.style.display = "block";
+    secretError.style.display = "none";
+    secretCodeInput.value = "";
+
+    setTimeout(() => {
+      secretCodeInput.focus();
+    }, 80);
+  });
+
+  secretCodeInput.addEventListener("input", () => {
+    secretCodeInput.value = secretCodeInput.value.replace(/\D/g, "").slice(0, 8);
+    secretError.style.display = "none";
+  });
+
+  function checkSecretCode() {
+    if (secretCodeInput.value === correctSecretCode) {
+      secretBox.style.display = "none";
+      secretLinksBox.style.display = "block";
+    } else {
+      secretError.style.display = "block";
+      secretCodeInput.value = "";
+      secretCodeInput.focus();
+    }
+  }
+
+  secretCodeButton.addEventListener("click", checkSecretCode);
+
+  secretCodeInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      checkSecretCode();
+    }
+
+    if (event.key === "Escape") {
+      secretBox.style.display = "none";
+      secretLinksBox.style.display = "none";
+    }
+  });
+
+  secretClose.addEventListener("click", () => {
+    secretLinksBox.style.display = "none";
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      secretBox.style.display = "none";
+      secretLinksBox.style.display = "none";
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    const clickedInsideSecretBox = secretBox.contains(event.target);
+    const clickedInsideLinksBox = secretLinksBox.contains(event.target);
+    const clickedFooterTrigger = footerSecretTrigger.contains(event.target);
+
+    if (!clickedInsideSecretBox && !clickedInsideLinksBox && !clickedFooterTrigger) {
+      secretBox.style.display = "none";
+    }
+  });
+</script>
 
 </body>
 </html>
