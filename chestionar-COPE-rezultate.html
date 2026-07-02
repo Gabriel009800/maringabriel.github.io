@@ -19,10 +19,32 @@ body{margin:0;color:var(--ink);background:radial-gradient(circle at top left, rg
 h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,3.8vw,3.5rem);line-height:1;letter-spacing:-.035em;margin:0 0 10px}
 h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.25rem,2vw,1.85rem);margin:0 0 10px} h3{margin:0 0 8px;font-size:1.06rem}
 p{margin:0 0 12px}.muted{color:var(--muted)}.section{margin-top:22px}.grid{display:grid;gap:18px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}
-.card{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(74,52,33,.07);padding:22px}.notice{background:#fff7ec;border:1px solid #ead8c4;border-left:6px solid var(--accent-2);padding:16px 18px;border-radius:18px;color:#46382d}.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.btn{border:0;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:11px 16px;background:var(--accent);color:white;font-weight:850;cursor:pointer;text-decoration:none;box-shadow:0 10px 18px rgba(122,78,45,.16)}.btn.secondary{background:#fff;color:var(--accent);border:1px solid var(--line);box-shadow:none}.btn.soft{background:var(--accent-soft);color:#5b3920;box-shadow:none}.btn:hover{transform:translateY(-1px);filter:brightness(1.03)}
-input,select,textarea{width:100%;border:1px solid var(--line);border-radius:14px;padding:12px 13px;background:#fff;font:inherit;outline:none}label{font-weight:750}.field{display:grid;gap:7px}.select-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:end}.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:var(--accent-soft);color:#5b3920;font-size:.84rem;font-weight:850}.pill.green{background:#edf6f1;color:#255f3f}.pill.yellow{background:#fff4db;color:#76510b}.pill.red{background:#f7e6e3;color:#8a2b21}.pill.gray{background:#f1ede8;color:#5d554e}
+.card{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(74,52,33,.07);padding:22px}.notice{background:#fff7ec;border:1px solid #ead8c4;border-left:6px solid var(--accent-2);padding:16px 18px;border-radius:18px;color:#46382d}.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.btn{border:0;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:11px 16px;background:var(--accent);color:white;font-weight:850;cursor:pointer;text-decoration:none;box-shadow:0 10px 18px rgba(122,78,45,.16)}.btn.secondary{background:#fff;color:var(--accent);border:1px solid var(--line);box-shadow:none}.btn.soft{background:var(--accent-soft);color:#5b3920;box-shadow:none}.btn.danger{background:#9b2c2c;color:#fff;box-shadow:0 10px 18px rgba(155,44,44,.14)}.btn:disabled{opacity:.48;cursor:not-allowed;transform:none;filter:none}.btn:hover{transform:translateY(-1px);filter:brightness(1.03)}
+input,select,textarea{width:100%;border:1px solid var(--line);border-radius:14px;padding:12px 13px;background:#fff;font:inherit;outline:none}label{font-weight:750}.field{display:grid;gap:7px}.select-row{display:grid;grid-template-columns:190px minmax(0,1fr) auto;gap:12px;align-items:end}.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:var(--accent-soft);color:#5b3920;font-size:.84rem;font-weight:850}.pill.green{background:#edf6f1;color:#255f3f}.pill.yellow{background:#fff4db;color:#76510b}.pill.red{background:#f7e6e3;color:#8a2b21}.pill.gray{background:#f1ede8;color:#5d554e}
 .stat{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;padding:17px;border:1px solid var(--line);border-radius:18px;background:#fffdf9}.big-number{font-family:Georgia,serif;font-size:2.15rem;line-height:1;color:var(--accent);white-space:nowrap}.metric-title{font-weight:850}.metric-note{display:block;margin-top:4px;color:var(--muted);font-size:.9rem}.factor-card{display:flex;flex-direction:column;gap:10px}.factor-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.factor-title{font-weight:900}.score-line{font-family:Georgia,serif;font-size:2rem;color:var(--accent);line-height:1}.bar{height:10px;border-radius:999px;background:#eadfd3;overflow:hidden}.bar span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent-2))}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px;background:#fff}table{width:100%;border-collapse:collapse;min-width:900px}th,td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#fbf4ec;color:#563820;font-size:.82rem;text-transform:uppercase;letter-spacing:.055em}tr:last-child td{border-bottom:0}.small{font-size:.9rem}.tiny{font-size:.82rem;color:var(--muted)}.report-text{font-family:Georgia,"Times New Roman",serif;font-size:1.05rem;line-height:1.72;color:#2b2723}.report-text p{text-align:justify}.report-box{background:#fffdf9;border:1px solid var(--line);border-radius:18px;padding:18px}.biblio ol{margin:8px 0 0 20px;padding:0}.biblio li{margin:0 0 8px}.hidden{display:none!important}
-@media(max-width:900px){.grid.two,.grid.three,.grid.four{grid-template-columns:1fr}.select-row{grid-template-columns:1fr}.page{width:min(100% - 22px,1160px);padding-top:18px}.hero{padding:24px;border-radius:24px}table{min-width:860px}}
+
+.independent-card{display:grid;grid-template-columns:minmax(0,1fr) 124px;gap:18px;align-items:start;min-height:188px}.independent-main{min-width:0}.independent-main strong{display:block;line-height:1.34;margin-bottom:6px}.independent-card .tiny{display:block;color:#2d2925;font-size:.88rem;line-height:1.58;margin:4px 0 7px}.independent-card small{display:block;color:#5e554d;font-size:.84rem;line-height:1.5;margin-top:6px}.independent-score{display:flex;flex-direction:column;align-items:flex-end;gap:8px;text-align:right;min-width:0}.independent-score .big-number{font-size:1.9rem;line-height:1.05;white-space:nowrap}.independent-score .pill{max-width:96px;justify-content:center;text-align:center;line-height:1.15;padding:7px 11px;white-space:normal}.independent-score .metric-note{margin-top:0;line-height:1.35}
+#scaleTable{min-width:1120px;table-layout:fixed}
+#scaleTable th:nth-child(1),#scaleTable td:nth-child(1){width:25%}
+#scaleTable th:nth-child(2),#scaleTable td:nth-child(2){width:10%}
+#scaleTable th:nth-child(3),#scaleTable td:nth-child(3){width:9%}
+#scaleTable th:nth-child(4),#scaleTable td:nth-child(4){width:8%}
+#scaleTable th:nth-child(5),#scaleTable td:nth-child(5){width:12%}
+#scaleTable th:nth-child(6),#scaleTable td:nth-child(6){width:36%}
+#scaleTable tbody tr{height:158px}
+#scaleTable tbody td{height:158px;vertical-align:middle}
+#scaleTable td:nth-child(1){line-height:1.38}
+#scaleTable td:nth-child(2),#scaleTable td:nth-child(3),#scaleTable td:nth-child(4){font-variant-numeric:tabular-nums}
+#scaleTable td:nth-child(5){text-align:center}
+#scaleTable td:nth-child(5) .pill{width:104px;min-height:40px;justify-content:center;text-align:center;white-space:normal;line-height:1.15;margin:0 auto}
+.norm-cell{min-width:360px;line-height:1.5}
+.norm-report{min-height:112px;display:flex;flex-direction:column;justify-content:center;gap:5px}
+.norm-row{display:block;padding:0}
+.norm-row strong{font-weight:850;color:#3f342b}
+.norm-interpret{display:block;margin-top:5px;padding-top:6px;border-top:1px dashed #ead8c4;color:#5b3920}
+.norm-note{min-height:112px;display:flex;align-items:center;color:#5b3920;line-height:1.6}
+.norm-muted{color:#6f675d}
+@media(max-width:900px){.grid.two,.grid.three,.grid.four{grid-template-columns:1fr}.select-row{grid-template-columns:1fr}.page{width:min(100% - 22px,1160px);padding-top:18px}.hero{padding:24px;border-radius:24px}table{min-width:860px}.independent-card{grid-template-columns:minmax(0,1fr) 112px}.independent-score .big-number{font-size:1.65rem}.norm-cell{min-width:330px}}
 @media print{body{background:white}.no-print,.actions,.select-row,#emptyState{display:none!important}.page{width:100%;padding:0}.hero,.card{box-shadow:none}.section{break-inside:avoid}.table-wrap{overflow:visible}table{min-width:0;font-size:.82rem}th,td{padding:7px}.report-text{font-size:1rem}}
   </style>
 </head>
@@ -37,10 +59,20 @@ input,select,textarea{width:100%;border:1px solid var(--line);border-radius:14px
   <section class="section card no-print">
     <div class="select-row">
       <div class="field">
+        <label for="resultFilter">Afișare</label>
+        <select id="resultFilter">
+          <option value="active">Active</option>
+          <option value="archived">Arhivate</option>
+          <option value="all">Toate</option>
+        </select>
+      </div>
+      <div class="field">
         <label for="submissionSelect">Rezultat salvat</label>
         <select id="submissionSelect"></select>
       </div>
       <div class="actions">
+        <button class="btn secondary" type="button" id="archiveBtn">Arhivează</button>
+        <button class="btn danger" type="button" id="deleteBtn">Șterge</button>
         <button class="btn secondary" type="button" id="importBtn">Importă JSON</button>
         <input class="hidden" type="file" id="jsonImport" accept="application/json,.json" />
         <button class="btn secondary" type="button" id="printBtn">Printează / PDF</button>
@@ -59,6 +91,7 @@ input,select,textarea{width:100%;border:1px solid var(--line);border-radius:14px
 
 <script>
 const STORAGE_KEY = "copeSubmissions_v1";
+const VIEW_KEY = "copeResultsView_v1";
 
 const ITEMS = [
   [1,"Încerc să mă dezvolt ca persoană ca rezultat al experienţei mele de viaţă."],[2,"Mă apuc de lucru sau de alte activităţi înlocuitoare pentru a-mi lua gândurile de la anumite lucruri."],[3,"Mă supăr şi-mi dau frâu liber emoţiilor."],[4,"Încerc să obţin sfaturi de la cineva în legătură cu ceea ce trebuie să fac."],[5,"Îmi concentrez eforturile pentru a face ceva în legătură cu situaţia stresantă."],[6,"Îmi zic: ,,nu-i adevărat!”."],[7,"Îmi plasez încrederea în Dumnezeu în această situaţie."],[8,"Râd de situaţia respectivă/stresantă."],[9,"Recunosc în mine că nu pot face faţă situaţiei şi nu mai încerc."],[10,"Mă abţin de la a face ceva prea repede."],[11,"Discut ceea ce simt cu cineva."],[12,"Folosesc alcool sau droguri pentru a mă simţi mai bine."],[13,"Mă obişnuiesc cu ideea că s-a întâmplat."],[14,"Discut cu cineva pentru a afla lucruri în plus despre situaţia stresantă."],[15,"Mă feresc să fiu distras de alte gânduri sau activităţi."],[16,"Visez cu ochii deschişi la alte lucruri."],[17,"Mă supăr şi sunt realmente conştient de asta."],[18,"Caut ajutor la Dumnezeu."],[19,"Îmi fac un plan de acţiune pentru situaţia stresantă."],[20,"Glumesc pe seama situaţiei."],[21,"Accept că s-a întâmplat şi că nu se poate schimba nimic."],[22,"Amân a face ceva în legătură cu problema până situaţia o permite."],[23,"Încerc să obţin sprijin emoţional de la prieteni sau rude."],[24,"Pur şi simplu renunţ la atingerea scopului."],[25,"Încerc acţiuni suplimentare pentru a scăpa de problemă."],[26,"Încerc să uit de mine pentru un timp consumând alcool sau luând droguri."],[27,"Refuz să cred că s-a întâmplat."],[28,"Îmi dau frâu liber simţămintelor."],[29,"Încerc să văd problema în lumină diferită, pentru a o face să pară mai pozitivă."],[30,"Vorbesc cu cineva care ar putea face ceva concret în legătură cu problema stresantă."],[31,"Dorm mai mult ca de obicei."],[32,"Încerc să-mi fac o strategie legată de ceea ce este de făcut."],[33,"Mă concentrez pe abordarea problemei şi, dacă este necesar, las alte lucruri deoparte, un timp."],[34,"Obţin compasiune şi înţelegere de la cineva."],[35,"Beau alcool sau iau droguri, pentru a mă gândi mai puţin la problemă."],[36,"Glumesc despre problemă."],[37,"Renunţ la încercarea de a obţine ce doresc."],[38,"Caut ceva bun în ceea ce se întâmplă."],[39,"Mă gândesc cum aş putea aborda problema cel mai bine."],[40,"Mă prefac că problema stresantă nu există în realitate."],[41,"Mă asigur că nu fac problema mai dificilă acţionând prea repede."],[42,"Încerc din răsputeri să nu las alte lucruri să interfereze cu eforturile mele în timp ce mă ocup de problemă."],[43,"Merg la film sau urmăresc programe la televizor pentru a mă gândi mai puţin la problemă."],[44,"Accept realitatea faptului că s-a întâmplat."],[45,"Întreb oamenii care au avut experienţe similare ce au făcut."],[46,"Simt mult disconfort emoţional şi mă trezesc exprimându-mi aceste sentimente în mare măsură."],[47,"Acţionez direct pentru a controla problema stresantă."],[48,"Îmi caut consolare în religia mea."],[49,"Mă oblig să aştept momentul propice pentru a face ceva."],[50,"Râd de situaţie."],[51,"Reduc cantitatea de efort consacrată rezolvării problemei."],[52,"Îi spun cuiva despre cum mă simt."],[53,"Consum alcool sau droguri pentru a mă ajuta să trec prin situaţie."],[54,"Învăţ să trăiesc cu situaţia stresantă."],[55,"Las la o parte alte activităţi pentru a mă concentra asupra problemei stresante."],[56,"Mă gândesc mult la ce paşi să fac în această situaţie."],[57,"Acţionez de parcă situaţia stresantă nu există."],[58,"Fac ceea ce e de făcut, pas cu pas."],[59,"Învăţ ceva din această experienţă."],[60,"Mă rog mai mult ca de obicei în această situaţie stresantă."]
@@ -107,6 +140,24 @@ function fmt(x,d=2){return Number.isFinite(Number(x)) ? Number(x).toFixed(d) : "
 function pct(x){return Math.max(0, Math.min(100, x)).toFixed(0)}
 function readStore(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]")}catch(e){return[]}}
 function writeStore(data){localStorage.setItem(STORAGE_KEY, JSON.stringify(data))}
+function makeSubmissionId(item,index){
+  const base = item?.createdAt ? new Date(item.createdAt).getTime() : Date.now();
+  return `cope_${base}_${index}_${Math.random().toString(16).slice(2)}`;
+}
+function ensureStoredIds(){
+  const data=readStore().filter(x=>x && typeof x==="object" && x.responses);
+  let changed=false;
+  const normalized=data.map((item,index)=>{
+    if(item.id) return item;
+    changed=true;
+    return {...item,id:makeSubmissionId(item,index)};
+  });
+  if(changed) writeStore(normalized);
+  return normalized;
+}
+function isArchived(item){return Boolean(item && (item.archived === true || item.archivedAt))}
+function selectedResultId(){return $("submissionSelect")?.value || ""}
+function resultLabel(s){return `${s.clientCode || "COPE"} · ${formatDate(s.testDate)} · ${formatDateTime(s.createdAt)}${isArchived(s) ? " · arhivat" : ""}`}
 function erf(x){const sign=x>=0?1:-1; x=Math.abs(x); const a1=.254829592,a2=-.284496736,a3=1.421413741,a4=-1.453152027,a5=1.061405429,p=.3275911; const t=1/(1+p*x); const y=1-(((((a5*t+a4)*t)+a3)*t+a2)*t+a1)*t*Math.exp(-x*x); return sign*y}
 function normCdf(z){return .5*(1+erf(z/Math.SQRT2))}
 function formatDate(v){if(!v)return"—"; const d=new Date(v+"T00:00:00"); return isNaN(d)?escapeHtml(v):d.toLocaleDateString("ro-RO")}
@@ -125,14 +176,121 @@ function normalizeSubmission(s){
   const computed=calculateScores(responses);
   return {...s, scaleScores:s.scaleScores||computed.scaleScores, factorScores:s.factorScores||computed.factorScores};
 }
-function renderSelector(){
-  const data=readStore().map(normalizeSubmission).sort((a,b)=>new Date(b.createdAt||0)-new Date(a.createdAt||0));
-  const select=$("submissionSelect"); select.innerHTML="";
-  if(!data.length){$("emptyState").classList.remove("hidden"); $("reportRoot").classList.add("hidden"); select.innerHTML='<option>Nu există rezultate salvate</option>'; return;}
+function renderSelector(preferredId){
+  const all=ensureStoredIds().map(normalizeSubmission).sort((a,b)=>new Date(b.createdAt||0)-new Date(a.createdAt||0));
+  const select=$("submissionSelect");
+  const filter=$("resultFilter")?.value || localStorage.getItem(VIEW_KEY) || "active";
+  if($("resultFilter")) $("resultFilter").value = filter;
+  if($("resultFilter")) localStorage.setItem(VIEW_KEY, filter);
+  select.innerHTML="";
+
+  const visible=all.filter(s=>{
+    if(filter==="all") return true;
+    if(filter==="archived") return isArchived(s);
+    return !isArchived(s);
+  });
+
+  if(!all.length){
+    $("emptyState").classList.remove("hidden");
+    $("emptyState").innerHTML = "<strong>Nu există încă rezultate COPE în acest browser.</strong><br>Completează chestionarul în același browser sau importă fișierul JSON primit de la client.";
+    $("reportRoot").classList.add("hidden");
+    select.disabled=true;
+    select.innerHTML='<option>Nu există rezultate salvate</option>';
+    updateActionButtons(null);
+    return;
+  }
+
+  if(!visible.length){
+    $("emptyState").classList.remove("hidden");
+    const msg = filter==="archived" ? "Nu există rezultate arhivate." : "Nu există rezultate active în această vedere.";
+    $("emptyState").innerHTML = `<strong>${msg}</strong><br>Schimbă filtrul de afișare pe „Toate” sau „Arhivate/Active”.`;
+    $("reportRoot").classList.add("hidden");
+    select.disabled=true;
+    select.innerHTML='<option>Niciun rezultat în această vedere</option>';
+    updateActionButtons(null);
+    return;
+  }
+
   $("emptyState").classList.add("hidden");
-  data.forEach((s,i)=>{const opt=document.createElement("option"); opt.value=s.id||String(i); opt.textContent=`${s.clientCode || "COPE"} · ${formatDate(s.testDate)} · ${formatDateTime(s.createdAt)}`; select.appendChild(opt)});
-  select.onchange=()=>renderReport(data.find(x=>(x.id||"")===select.value)||data[select.selectedIndex]);
-  renderReport(data[0]);
+  select.disabled=false;
+  const previous = preferredId || selectedResultId();
+  visible.forEach((s)=>{
+    const opt=document.createElement("option");
+    opt.value=s.id;
+    opt.textContent=resultLabel(s);
+    select.appendChild(opt);
+  });
+  if(previous && visible.some(s=>String(s.id)===String(previous))) select.value=previous;
+  const current=visible.find(x=>String(x.id)===String(select.value)) || visible[0];
+  select.onchange=()=>{
+    const next=visible.find(x=>String(x.id)===String(select.value)) || visible[0];
+    renderReport(next);
+    updateActionButtons(next);
+  };
+  renderReport(current);
+  updateActionButtons(current);
+}
+
+function updateActionButtons(item){
+  const archiveBtn=$("archiveBtn");
+  const deleteBtn=$("deleteBtn");
+  if(!archiveBtn || !deleteBtn) return;
+  if(!item){
+    archiveBtn.disabled=true;
+    deleteBtn.disabled=true;
+    archiveBtn.textContent="Arhivează";
+    return;
+  }
+  archiveBtn.disabled=false;
+  deleteBtn.disabled=false;
+  archiveBtn.textContent=isArchived(item) ? "Restaurează" : "Arhivează";
+}
+
+function updateSubmissionById(id, updater){
+  const data=ensureStoredIds();
+  const index=data.findIndex(x=>String(x.id)===String(id));
+  if(index<0){alert("Nu am găsit rezultatul selectat."); return null;}
+  data[index]=updater({...data[index]});
+  writeStore(data);
+  return data[index];
+}
+
+function toggleArchiveSelected(){
+  const id=selectedResultId();
+  if(!id) return;
+  const data=ensureStoredIds();
+  const current=data.find(x=>String(x.id)===String(id));
+  if(!current){alert("Nu am găsit rezultatul selectat."); return;}
+  const archived=isArchived(current);
+  const name=current.clientCode || "acest rezultat";
+  const ok=confirm(archived ? `Restaurezi rezultatul „${name}” în lista activă?` : `Arhivezi rezultatul „${name}”? Va dispărea din lista Active, dar îl vei găsi la Afișare → Arhivate.`);
+  if(!ok) return;
+  const updated=updateSubmissionById(id, item=>{
+    if(archived){
+      delete item.archived;
+      delete item.archivedAt;
+      item.restoredAt=new Date().toISOString();
+    } else {
+      item.archived=true;
+      item.archivedAt=new Date().toISOString();
+    }
+    return item;
+  });
+  renderSelector(updated?.id);
+}
+
+function deleteSelectedSubmission(){
+  const id=selectedResultId();
+  if(!id) return;
+  const data=ensureStoredIds();
+  const current=data.find(x=>String(x.id)===String(id));
+  if(!current){alert("Nu am găsit rezultatul selectat."); return;}
+  const name=current.clientCode || "acest rezultat";
+  const ok=confirm(`Ștergi definitiv rezultatul „${name}” din acest browser? Acțiunea nu poate fi anulată.`);
+  if(!ok) return;
+  const next=data.filter(x=>String(x.id)!==String(id));
+  writeStore(next);
+  renderSelector();
 }
 function makeNarrative(s, sortedScales, sortedFactors, flags){
   const topFactor=sortedFactors[0], lowFactor=sortedFactors[sortedFactors.length-1];
@@ -159,14 +317,17 @@ function renderReport(raw){
     const score=s.factorScores[f.id]; const lvl=levelByAverage(score.average); const comps=f.scales.map(id=>s.scaleScores[id].name).join(" · ");
     return `<article class="card factor-card"><div class="factor-head"><div><div class="factor-title">${escapeHtml(f.name)}</div><span class="tiny">${escapeHtml(f.description)}</span></div><span class="pill ${lvl.cls}">${lvl.label}</span></div><div><span class="score-line">${score.sum} / 48</span><span class="metric-note">medie ${fmt(score.average)}/4 · α≈${fmt(f.alpha,2)} · medie normativă aproximativă ${fmt(f.normMean)}/4</span></div><div class="bar"><span style="width:${pct(score.average/4*100)}%"></span></div><small>Scale componente: ${escapeHtml(comps)}.</small></article>`
   }).join("");
-  const independentCards = INDEPENDENT.map(id=>{const sc=s.scaleScores[id]; const lvl=levelByAverage(sc.average); const norm=NORMS[id]; const alpha = norm?.alpha ? ` · α≈${fmt(norm.alpha,2)}` : ""; const note = norm?.note ? `<small>${escapeHtml(norm.note)}</small>` : `<small>Scală complementară/heterogenă; nu are medii și deviații standard raportate în tabelul normativ folosit aici.</small>`; return `<article class="stat"><div><strong>${escapeHtml(sc.name)}</strong><br><span class="tiny">${escapeHtml(sc.short)}</span>${note}</div><div style="text-align:right"><div class="big-number">${sc.sum} / 16</div><span class="pill ${lvl.cls}">${lvl.label}</span><span class="metric-note">medie ${fmt(sc.average)}/4${alpha}</span></div></article>`}).join("");
+  const independentCards = INDEPENDENT.map(id=>{const sc=s.scaleScores[id]; const lvl=levelByAverage(sc.average); const norm=NORMS[id]; const alpha = norm?.alpha ? ` · α≈${fmt(norm.alpha,2)}` : ""; const note = norm?.note ? `<small>${escapeHtml(norm.note)}</small>` : `<small>Scală complementară/heterogenă; nu are medii și deviații standard raportate în tabelul normativ folosit aici.</small>`; return `<article class="stat independent-card"><div class="independent-main"><strong>${escapeHtml(sc.name)}</strong><span class="tiny">${escapeHtml(sc.short)}</span>${note}</div><div class="independent-score"><div class="big-number">${sc.sum} / 16</div><span class="pill ${lvl.cls}">${lvl.label}</span><span class="metric-note">medie ${fmt(sc.average)}/4${alpha}</span></div></article>`}).join("");
   const scaleRows = SCALES.map(scale=>{
     const sc=s.scaleScores[scale.id]; const lvl=levelByAverage(sc.average); const norm=NORMS[scale.id];
-    let normText="—";
-    if(norm?.m){const z=(sc.average-norm.m)/norm.sd; const t=50+10*z; const per=normCdf(z)*100; normText=`M=${fmt(norm.m)}; SD=${fmt(norm.sd)}; z≈${fmt(z)}; T≈${fmt(t,0)}; percentilă≈${fmt(per,0)}; α=${fmt(norm.alpha,2)}; saturație=${fmt(norm.loading,2)} — ${normLevel(z)}`;}
-    else if(norm?.note){normText=`${norm.note}`}
-    else {normText="Repere M/SD/α individuale indisponibile în tabelul utilizat; scala a fost tratată separat/heterogen în validarea românească."}
-    return `<tr><td><strong>${escapeHtml(sc.name)}</strong><br><span class="tiny">${escapeHtml(sc.short)}</span></td><td>${scale.items.join(", ")}</td><td>${sc.sum} / 16</td><td>${fmt(sc.average)}</td><td><span class="pill ${lvl.cls}">${lvl.label}</span></td><td class="small">${escapeHtml(normText)}</td></tr>`
+    let normHtml="—";
+    if(norm?.m){
+      const z=(sc.average-norm.m)/norm.sd; const t=50+10*z; const per=normCdf(z)*100;
+      normHtml=`<div class="norm-report"><span class="norm-row"><strong>Repere:</strong> M=${fmt(norm.m)} · SD=${fmt(norm.sd)}</span><span class="norm-row"><strong>Poziționare:</strong> z≈${fmt(z)} · T≈${fmt(t,0)} · percentilă≈${fmt(per,0)}</span><span class="norm-row"><strong>Fidelitate / CFA:</strong> α=${fmt(norm.alpha,2)} · saturație=${fmt(norm.loading,2)}</span><span class="norm-interpret">${escapeHtml(normLevel(z))}</span></div>`;
+    }
+    else if(norm?.note){normHtml=`<span class="norm-note">${escapeHtml(norm.note)}</span>`}
+    else {normHtml='<span class="norm-note">Repere M/SD/α individuale indisponibile în tabelul utilizat. Scala a fost tratată separat/heterogen în validarea românească.</span>'}
+    return `<tr><td><strong>${escapeHtml(sc.name)}</strong><br><span class="tiny">${escapeHtml(sc.short)}</span></td><td>${scale.items.join(", ")}</td><td>${sc.sum} / 16</td><td>${fmt(sc.average)}</td><td><span class="pill ${lvl.cls}">${lvl.label}</span></td><td class="small norm-cell">${normHtml}</td></tr>`
   }).join("");
   const rawRows = ITEMS.map(([nr,text])=>`<tr><td>${nr}</td><td>${escapeHtml(text)}</td><td>${escapeHtml(s.responses?.[nr] ?? "—")}</td></tr>`).join("");
   const corr = Object.entries(FACTOR_CORRELATIONS).map(([k,v])=>`${k}: r=${fmt(v,2)}`).join(" · ");
@@ -178,14 +339,14 @@ function renderReport(raw){
         <div class="stat"><div><strong>Data aplicării</strong><br><span class="muted">${formatDate(s.testDate)}</span></div></div>
         <div class="stat"><div><strong>Salvat</strong><br><span class="muted">${formatDateTime(s.createdAt)}</span></div></div>
       </div>
-      <p class="tiny" style="margin-top:12px">Vârsta: ${escapeHtml(s.age||"—")} · Versiune: COPE-60 RO digital · Răspunsuri pe scală Likert 1–4. Nu există itemi cu scorare inversă.</p>
+      <p class="tiny" style="margin-top:12px">Vârsta: ${escapeHtml(s.age||"—")} · Status: ${isArchived(s) ? "arhivat" : "activ"}${isArchived(s) && s.archivedAt ? " · Arhivat: " + formatDateTime(s.archivedAt) : ""} · Versiune: COPE-60 RO digital · Răspunsuri pe scală Likert 1–4. Nu există itemi cu scorare inversă.</p>
     </section>
 
     <section class="section grid four">
-      <div class="stat"><div><span class="metric-title">Factor dominant</span><span class="metric-note">media cea mai mare</span></div><div class="big-number" style="font-size:1.45rem">${fmt(sortedFactors[0].average)}</div></div>
+      <div class="stat"><div><span class="metric-title">Factor dominant</span><span class="metric-note">Media cea mai mare</span></div><div class="big-number" style="font-size:1.45rem">${fmt(sortedFactors[0].average)}</div></div>
       <div class="stat"><div><span class="metric-title">Scală dominantă</span><span class="metric-note">${escapeHtml(sortedScales[0].name)}</span></div><div class="big-number" style="font-size:1.45rem">${fmt(sortedScales[0].average)}</div></div>
-      <div class="stat"><div><span class="metric-title">Amplitudine profil</span><span class="metric-note">maxim minus minim între scale</span></div><div class="big-number" style="font-size:1.45rem">${fmt(sortedScales[0].average-sortedScales[sortedScales.length-1].average)}</div></div>
-      <div class="stat"><div><span class="metric-title">Puncte de atenție</span><span class="metric-note">criterii automate orientative</span></div><div class="big-number" style="font-size:1.45rem">${flags.length}</div></div>
+      <div class="stat"><div><span class="metric-title">Amplitudine profil</span><span class="metric-note">Diferență între scale</span></div><div class="big-number" style="font-size:1.45rem">${fmt(sortedScales[0].average-sortedScales[sortedScales.length-1].average)}</div></div>
+      <div class="stat"><div><span class="metric-title">Puncte de atenție</span><span class="metric-note">Criterii automate orientative</span></div><div class="big-number" style="font-size:1.45rem">${flags.length}</div></div>
     </section>
 
     <section class="section card">
@@ -206,7 +367,7 @@ function renderReport(raw){
 
     <section class="section card">
       <h2>Scorare pe cele 15 mecanisme de coping</h2>
-      <div class="table-wrap"><table><thead><tr><th>Scală COPE</th><th>Itemi</th><th>Scor brut</th><th>Medie</th><th>Nivel orientativ</th><th>Raportare la studiul RO</th></tr></thead><tbody>${scaleRows}</tbody></table></div>
+      <div class="table-wrap"><table id="scaleTable"><thead><tr><th>Scală COPE</th><th>Itemi</th><th>Scor brut</th><th>Medie</th><th>Nivel orientativ</th><th>Raportare la studiul RO</th></tr></thead><tbody>${scaleRows}</tbody></table></div>
     </section>
 
     <section class="section card">
@@ -233,7 +394,12 @@ function renderReport(raw){
 }
 function importJsonFile(file){const reader=new FileReader(); reader.onload=()=>{try{const parsed=JSON.parse(reader.result); const incoming=Array.isArray(parsed)?parsed:[parsed]; const valid=incoming.filter(x=>x && x.responses); if(!valid.length) throw new Error("Fișierul nu conține rezultate COPE valide."); const current=readStore(); const byId=new Map(current.map(x=>[x.id,x])); for(const item of valid){if(!item.id)item.id=`import_${Date.now()}_${Math.random().toString(16).slice(2)}`; byId.set(item.id,item)} writeStore(Array.from(byId.values()).sort((a,b)=>new Date(b.createdAt||0)-new Date(a.createdAt||0))); renderSelector(); alert(`Am importat ${valid.length} rezultat(e) COPE.`)}catch(err){alert("Import eșuat: "+err.message)}}; reader.readAsText(file)}
 document.addEventListener("DOMContentLoaded",()=>{
+  const savedView=localStorage.getItem(VIEW_KEY);
+  if(savedView && $("resultFilter")) $("resultFilter").value=savedView;
   renderSelector();
+  $("resultFilter").addEventListener("change",()=>renderSelector());
+  $("archiveBtn").addEventListener("click",toggleArchiveSelected);
+  $("deleteBtn").addEventListener("click",deleteSelectedSubmission);
   $("importBtn").addEventListener("click",()=>$("jsonImport").click());
   $("jsonImport").addEventListener("change",e=>{const file=e.target.files[0]; if(file) importJsonFile(file)});
   $("printBtn").addEventListener("click",()=>window.print());
