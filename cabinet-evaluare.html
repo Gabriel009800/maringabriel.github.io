@@ -15,9 +15,6 @@
   --accent:#7a4e2d;
   --accent-2:#b98250;
   --accent-soft:#f1e3d4;
-  --good:#255f3f;
-  --warn:#8a5a00;
-  --danger:#9b2c2c;
   --shadow:0 18px 50px rgba(74,52,33,.12);
   --radius:22px;
 }
@@ -29,262 +26,32 @@ body{
   background:
     radial-gradient(circle at top left, rgba(184,130,80,.14), transparent 36rem),
     linear-gradient(180deg,#fbf8f3 0%, var(--bg) 100%);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   line-height:1.55;
 }
 a{color:inherit}
-.page{
-  width:min(1120px, calc(100% - 36px));
-  margin:0 auto;
-  padding:34px 0 70px;
-}
+.page{width:min(1120px, calc(100% - 36px));margin:0 auto;padding:34px 0 70px}
 .hero{
   background:linear-gradient(135deg,rgba(255,250,244,.92),rgba(241,227,212,.76));
-  border:1px solid var(--line);
-  border-radius:30px;
-  box-shadow:var(--shadow);
-  padding:34px;
-  position:relative;
-  overflow:hidden;
+  border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);
+  padding:34px;position:relative;overflow:hidden;
 }
-.hero::after{
-  content:"";
-  position:absolute;
-  width:360px;height:360px;border-radius:50%;
-  right:-140px;top:-190px;
-  background:rgba(122,78,45,.08);
-}
-.kicker{
-  color:var(--accent);
-  font-size:.82rem;
-  font-weight:800;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  margin:0 0 8px;
-}
-h1{
-  font-family: Georgia, "Times New Roman", serif;
-  font-size:clamp(2rem,5vw,4.4rem);
-  line-height:.98;
-  letter-spacing:-.05em;
-  margin:0 0 16px;
-}
-h2{
-  font-family: Georgia, "Times New Roman", serif;
-  font-size:clamp(1.35rem,2.2vw,2rem);
-  margin:0 0 12px;
-}
-h3{margin:0 0 8px;font-size:1.05rem}
-p{margin:0 0 12px}
-.muted{color:var(--muted)}
-.grid{display:grid;gap:18px}
-.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
-.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
-.card{
-  background:rgba(255,255,255,.92);
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  box-shadow:0 10px 30px rgba(74,52,33,.07);
-  padding:22px;
-}
+.hero::after{content:"";position:absolute;width:360px;height:360px;border-radius:50%;right:-140px;top:-190px;background:rgba(122,78,45,.08)}
+.kicker{color:var(--accent);font-size:.82rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin:0 0 8px}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,5vw,4.4rem);line-height:.98;letter-spacing:-.05em;margin:0 0 16px}
+h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.35rem,2.2vw,2rem);margin:0 0 12px}
+p{margin:0 0 12px}.muted{color:var(--muted)}.grid{display:grid;gap:18px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(74,52,33,.07);padding:22px}
 .section{margin-top:22px}
-.notice{
-  background:#fff7ec;
-  border:1px solid #ead8c4;
-  border-left:6px solid var(--accent-2);
-  padding:16px 18px;
-  border-radius:18px;
-  color:#46382d;
-}
-label{font-weight:750}
-input[type="text"], input[type="number"], input[type="date"], input[type="password"], textarea, select{
-  width:100%;
-  border:1px solid var(--line);
-  border-radius:15px;
-  padding:13px 14px;
-  background:#fff;
-  font:inherit;
-  outline:none;
-  transition:.18s ease;
-}
-input:focus, textarea:focus, select:focus{
-  border-color:var(--accent-2);
-  box-shadow:0 0 0 4px rgba(184,130,80,.16);
-}
-textarea{min-height:92px;resize:vertical}
-.btn{
-  border:0;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  border-radius:999px;
-  padding:12px 18px;
-  background:var(--accent);
-  color:white;
-  font-weight:850;
-  cursor:pointer;
-  text-decoration:none;
-  transition:.18s ease;
-  box-shadow:0 10px 18px rgba(122,78,45,.16);
-}
-.btn:hover{transform:translateY(-1px);filter:brightness(1.03)}
-.btn.secondary{background:#fff;color:var(--accent);border:1px solid var(--line);box-shadow:none}
-.btn.soft{background:var(--accent-soft);color:#5b3920;box-shadow:none}
-.btn.danger{background:#9b2c2c}
-.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.progress-shell{
-  position:sticky;
-  top:0;
-  z-index:20;
-  padding:10px 0;
-  backdrop-filter:blur(18px);
-}
-.progress-card{
-  background:rgba(255,250,244,.88);
-  border:1px solid var(--line);
-  border-radius:999px;
-  padding:8px 12px;
-  display:flex;
-  align-items:center;
-  gap:12px;
-  box-shadow:0 8px 24px rgba(74,52,33,.08);
-}
-.progress-bar{
-  height:10px;
-  flex:1;
-  border-radius:999px;
-  background:#eadfd3;
-  overflow:hidden;
-}
-.progress-bar span{
-  display:block;
-  height:100%;
-  width:0%;
-  background:linear-gradient(90deg,var(--accent),var(--accent-2));
-  border-radius:999px;
-}
-small{font-size:.84rem;color:var(--muted)}
-.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px;background:#fff}
-table{width:100%;border-collapse:collapse;min-width:780px}
-th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-th{background:#fbf4ec;color:#563820;font-size:.86rem;text-transform:uppercase;letter-spacing:.06em}
-tr:last-child td{border-bottom:0}
-.pill{
-  display:inline-flex;align-items:center;gap:6px;
-  padding:6px 10px;border-radius:999px;
-  background:var(--accent-soft);color:#5b3920;
-  font-size:.84rem;font-weight:800;
-}
-.level-low{background:#edf6f1;color:#255f3f}
-.level-mid{background:#fff4db;color:#76510b}
-.level-high{background:#f7e6e3;color:#8a2b21}
-.hidden{display:none!important}
-.footer{
-  margin-top:26px;
-  color:var(--muted);
-  font-size:.9rem;
-}
-@media(max-width:760px){
-  .page{width:min(100% - 22px,1120px);padding-top:18px}
-  .hero{padding:24px;border-radius:24px}
-  .grid.two,.grid.three{grid-template-columns:1fr}
-  table{min-width:700px}
-}
-@media print{
-  body{background:white}
-  .no-print,.actions,.progress-shell,.password-shell{display:none!important}
-  .page{width:100%;padding:0}
-  .hero,.card{box-shadow:none}
-}
-
-.password-shell{
-  min-height:calc(100vh - 70px);
-  display:grid;
-  place-items:center;
-}
-.lock-card{
-  width:min(510px,100%);
-  background:rgba(255,255,255,.94);
-  border:1px solid var(--line);
-  border-radius:30px;
-  box-shadow:var(--shadow);
-  padding:30px;
-}
-.stat{
-  display:flex;
-  justify-content:space-between;
-  gap:18px;
-  align-items:center;
-  padding:16px;
-  border:1px solid var(--line);
-  border-radius:18px;
-  background:#fffdf9;
-}
-.big-number{
-  font-family:Georgia,serif;
-  font-size:2.4rem;
-  line-height:1;
-  color:var(--accent);
-}
-.portal-card{
-  display:flex;
-  justify-content:space-between;
-  gap:18px;
-  align-items:center;
-  text-decoration:none;
-  border:1px solid var(--line);
-  border-radius:24px;
-  background:#fff;
-  padding:22px;
-  transition:.18s ease;
-}
-.portal-card:hover{
-  transform:translateY(-2px);
-  box-shadow:0 14px 34px rgba(74,52,33,.10);
-  border-color:#d6bca0;
-}
-.portal-icon{
-  width:56px;height:56px;border-radius:18px;
-  display:grid;place-items:center;
-  background:var(--accent-soft);
-  color:var(--accent);
-  font-weight:950;
-  font-size:1.4rem;
-  flex:0 0 auto;
-}
-
-
-/* ajustări cabinet-evaluare */
-.portal-grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:16px;
-}
-.portal-card.vertical{
-  min-height:150px;
-  align-items:flex-start;
-}
-.portal-card.vertical .portal-icon{
-  font-size:1.65rem;
-}
-.portal-title{
-  font-size:1.18rem;
-  font-weight:850;
-}
-.stat.wide{
-  align-items:flex-start;
-}
-.credential-text{
-  display:block;
-  margin-top:4px;
-  color:var(--muted);
-  font-size:.9rem;
-}
-@media(max-width:760px){
-  .portal-grid{grid-template-columns:1fr}
-}
-</style>
+.stat{display:flex;justify-content:space-between;gap:18px;align-items:center;padding:16px;border:1px solid var(--line);border-radius:18px;background:#fffdf9}
+.big-number{font-family:Georgia,serif;font-size:2.4rem;line-height:1;color:var(--accent)}
+.portal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.portal-card{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;text-decoration:none;border:1px solid var(--line);border-radius:24px;background:#fff;padding:22px;transition:.18s ease;min-height:150px}
+.portal-card:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(74,52,33,.10);border-color:#d6bca0}
+.portal-icon{width:56px;height:56px;border-radius:18px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);font-weight:950;font-size:1.65rem;flex:0 0 auto}
+.portal-title{font-size:1.18rem;font-weight:850}.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:var(--accent-soft);color:#5b3920;font-size:.84rem;font-weight:800}.credential-text{display:block;margin-top:4px;color:var(--muted);font-size:.9rem}
+@media(max-width:760px){.page{width:min(100% - 22px,1120px);padding-top:18px}.hero{padding:24px;border-radius:24px}.grid.two,.grid.three,.portal-grid{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
   <main class="page">
@@ -296,19 +63,18 @@ tr:last-child td{border-bottom:0}
 
       <section class="section grid three">
         <div class="stat">
-          <div><strong>Număr teste disponibile</strong><br><small>de toate felurile</small></div>
+          <div><strong>Număr teste disponibile</strong><br><small>instrumente active în platformă</small></div>
           <div class="big-number" id="testCount">1</div>
         </div>
         <div class="stat">
-          <div><strong>Total răspunsuri primite</strong><br><small>chestionare completate de clienți</small></div>
+          <div><strong>Total răspunsuri salvate</strong><br><small>în acest browser</small></div>
           <div class="big-number" id="totalCount">0</div>
         </div>
-        <div class="stat wide">
+        <div class="stat">
           <div>
             <strong>Psiholog cu drept de liberă practică</strong>
             <span class="credential-text">Psihologie clinică și organizațională</span>
           </div>
-
         </div>
       </section>
 
@@ -316,10 +82,9 @@ tr:last-child td{border-bottom:0}
         <div class="card">
           <p class="kicker">Chestionare</p>
           <h2>Teste disponibile pentru client</h2>
-          <p class="muted">Trimite clientului linkul către formular. După completare, răspunsurile se salvează local în browserul în care a fost completat chestionarul și pot fi exportate/importate ca JSON.</p>
-
+          <p class="muted">Trimite clientului linkul către formular. După completare, răspunsurile pot fi trimise către pagina de rezultate sau exportate ca rezervă.</p>
           <div class="section portal-grid">
-            <a class="portal-card vertical" href="chestionar-COPE.html" target="_blank" rel="noopener">
+            <a class="portal-card" href="chestionar-COPE.html" target="_blank" rel="noopener">
               <span class="portal-icon">📝</span>
               <span style="flex:1">
                 <span class="portal-title">Chestionar COPE</span><br>
@@ -333,25 +98,17 @@ tr:last-child td{border-bottom:0}
         <div class="card">
           <p class="kicker">Rezultate</p>
           <h2>Scorare și interpretare</h2>
-          <p class="muted">Accesul la pagina de rezultate este protejat separat. Parola pentru rezultate este cea stabilită de tine.</p>
-
+          <p class="muted">Pagina de rezultate generează un profil interpretativ pe scale, factori și repere psihometrice din validarea românească.</p>
           <div class="section portal-grid">
-            <a class="portal-card vertical" href="chestionar-COPE-rezultate.html" target="_blank" rel="noopener">
+            <a class="portal-card" href="chestionar-COPE-rezultate.html" target="_blank" rel="noopener">
               <span class="portal-icon">📊</span>
               <span style="flex:1">
-                <span class="portal-title">Rezultate COPE</span><br>
-                <small>Scorare automată, profil pe scale, interpretare și export.</small>
+                <span class="portal-title">Chestionar COPE</span><br>
+                <small>Profil interpretativ, raport profesional și export.</small>
               </span>
-              <span class="pill">Protejat</span>
+              <span class="pill">Deschide</span>
             </a>
-
-      </section>
-
-      <section class="section card">
-        <h2>Import rapid rezultate</h2>
-        <p class="muted">Folosește această opțiune dacă un client îți trimite fișierul JSON exportat din pagina chestionar-COPE.</p>
-        <div class="actions">
-          <input type="file" id="jsonImport" accept="application/json,.json" />
+          </div>
         </div>
       </section>
     </section>
@@ -359,44 +116,9 @@ tr:last-child td{border-bottom:0}
 
 <script>
 const STORAGE_KEY = "copeSubmissions_v1";
-function $(id) { return document.getElementById(id); }
-function readStore() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); }
-  catch(e) { return []; }
-}
-function writeStore(data) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-}
-function refreshCounts() {
-  $("totalCount").textContent = readStore().length;
-}
-function importJsonFile(file) {
-  const reader = new FileReader();
-  reader.onload = () => {
-    try {
-      const parsed = JSON.parse(reader.result);
-      const incoming = Array.isArray(parsed) ? parsed : [parsed];
-      const valid = incoming.filter(x => x && x.questionnaire === "COPE" && x.responses && x.scaleScores);
-      if (!valid.length) throw new Error("Fișierul nu conține rezultate COPE valide.");
-      const current = readStore();
-      const byId = new Map(current.map(x => [x.id, x]));
-      for (const item of valid) byId.set(item.id || `import_${Date.now()}_${Math.random()}`, item);
-      writeStore(Array.from(byId.values()).sort((a,b)=> new Date(b.createdAt || 0) - new Date(a.createdAt || 0)));
-      refreshCounts();
-      alert(`Am importat ${valid.length} rezultat(e) COPE.`);
-    } catch(err) {
-      alert("Import eșuat: " + err.message);
-    }
-  };
-  reader.readAsText(file);
-}
-document.addEventListener("DOMContentLoaded", () => {
-  refreshCounts();
-  $("jsonImport").addEventListener("change", e => {
-    const file = e.target.files[0];
-    if (file) importJsonFile(file);
-  });
-});
+function readStore(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]")}catch(e){return[]}}
+function refreshCounts(){const el=document.getElementById("totalCount"); if(el) el.textContent=readStore().length;}
+document.addEventListener("DOMContentLoaded", refreshCounts);
 </script>
 </body>
 </html>
