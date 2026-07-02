@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>primul-razboi-mondial-desfasurarea-conflictului</title>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>primul-razboi-mondial-desfasurarea-conflictului</title>
+<style>
     :root {
       --bg: #171411;
       --paper: #f4ead7;
@@ -173,7 +174,7 @@
       z-index: 1;
       margin: 0;
       max-width: 900px;
-      font-size: clamp(2.6rem, 7vw, 6.8rem);
+      font-size: clamp(2.35rem, 5.9vw, 5.75rem);
       line-height: 0.92;
       letter-spacing: -0.07em;
       color: var(--ink);
@@ -193,7 +194,7 @@
       position: relative;
       z-index: 1;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
       gap: 14px;
       margin-top: 30px;
     }
@@ -454,6 +455,47 @@
       letter-spacing: -0.02em;
     }
 
+    .note-card p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      line-height: 1.58;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.96rem;
+    }
+
+    .note-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .lead {
+      color: var(--ink) !important;
+      font-weight: 650;
+    }
+
+    .memory-line {
+      margin-top: 12px;
+      padding: 13px 15px;
+      border-radius: 15px;
+      background: rgba(88, 107, 77, 0.12);
+      border: 1px solid rgba(88, 107, 77, 0.18);
+      color: #415138;
+      line-height: 1.5;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-weight: 700;
+    }
+
+    .micro-heading {
+      display: block;
+      margin-top: 12px;
+      margin-bottom: 4px;
+      color: var(--accent-dark);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.82rem;
+      font-weight: 850;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
     .tag {
       display: inline-flex;
       align-items: center;
@@ -532,7 +574,7 @@
 
     .summary-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
       gap: 12px;
     }
 
@@ -558,6 +600,89 @@
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       font-size: 0.91rem;
       line-height: 1.45;
+    }
+
+
+
+    /* OCD-friendly: textul de conținut este justificat, dar titlurile rămân aliniate normal. */
+    .subtitle,
+    .panel-note,
+    .stat-card span,
+    .info-item span,
+    .year-title p,
+    .note-card p,
+    .note-card li,
+    .lead,
+    .memory-line,
+    .callout,
+    .summary-card span,
+    .date-card span,
+    .date-card p,
+    .date-card li,
+    .date-band p {
+      text-align: justify;
+      text-align-last: left;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .date-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+      gap: 14px;
+    }
+
+    .date-card {
+      position: relative;
+      padding: 18px 18px 18px 20px;
+      border-radius: 20px;
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(33, 25, 21, 0.06);
+      overflow: hidden;
+    }
+
+    .date-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 6px;
+      background: linear-gradient(var(--accent), var(--gold));
+    }
+
+    .date-card strong {
+      display: block;
+      color: var(--accent-dark);
+      font-size: 1.05rem;
+      line-height: 1.15;
+      margin-bottom: 7px;
+    }
+
+    .date-card span,
+    .date-card p {
+      display: block;
+      color: var(--muted);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.93rem;
+      line-height: 1.5;
+    }
+
+    .date-band {
+      margin-bottom: 18px;
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: rgba(184, 92, 56, 0.1);
+      border: 1px solid rgba(184, 92, 56, 0.18);
+    }
+
+    .date-band p {
+      margin: 0;
+      color: var(--accent-dark);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-weight: 700;
+      line-height: 1.55;
     }
 
     .footer {
@@ -658,11 +783,13 @@
       .hero,
       .panel,
       .year-content,
-      .summary-card {
+      .summary-card,
+      .date-card {
         box-shadow: none;
       }
 
-      .year-card {
+      .year-card,
+      .date-card {
         break-inside: avoid;
       }
 
@@ -670,485 +797,528 @@
         position: static;
       }
     }
+  
+
+    /* Topbar comună pentru toate materialele despre Primul Război Mondial */
+    .topbar {
+      position: static !important;
+      top: auto !important;
+      z-index: auto !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      gap: 16px !important;
+      margin-bottom: 18px !important;
+      padding: 0 !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      backdrop-filter: none !important;
+      box-shadow: none !important;
+      flex-wrap: wrap !important;
+    }
+
+    .back-link,
+    .material-tag {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 243, 0.84);
+      color: #3c2a1e;
+      border-radius: 999px;
+      padding: 10px 15px;
+      text-decoration: none;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.25;
+      box-shadow: var(--shadow-small, 0 8px 20px rgba(69, 46, 25, 0.10));
+    }
+
+    .back-link:hover {
+      background: #fff6eb;
+    }
+
+    @media (max-width: 680px) {
+      .topbar {
+        align-items: flex-start !important;
+        flex-direction: column !important;
+      }
+    }
+
+    @media print {
+      body { background: white !important; }
+      body::before,
+      .topbar,
+      .footer { display: none !important; }
+    }
+  
+    /* Ajustare cerută: titlul din hero puțin mai mic. */
+    header.hero > h1,
+    .hero > h1 {
+      font-size: clamp(2.35rem, 5.9vw, 5.75rem) !important;
+      line-height: 0.94 !important;
+    }
+
   </style>
 </head>
 <body>
-  <main class="page">
-    <nav class="topbar" aria-label="Navigare material">
-      <div class="brand"><span class="brand-mark">I</span> Primul Război Mondial</div>
-      <div class="nav">
-        <a href="#fronturi">Fronturi</a>
-        <a href="#planuri">Planuri</a>
-        <a href="#timeline">1914–1918</a>
-        <a href="#sinteza">Sinteză</a>
-        <button class="print-btn" onclick="window.print()">Printează / PDF</button>
-      </div>
-    </nav>
+<main class="page">
+<div class="topbar">
+      <a class="back-link" href="evaluare_cu_material_primul_razboi_corectat.html">← Înapoi la materiale</a>
+      <span class="material-tag">Material ajutător · Istoria universală · Epoca contemporană</span>
+    </div>
+<header class="hero">
 
-    <header class="hero">
-      <p class="eyebrow">Material de istorie · clasa a VII-a / liceu</p>
-      <h1>Primul Război Mondial: desfășurarea conflictului</h1>
-      <p class="subtitle">
+<h1>Primul Război Mondial: desfășurarea conflictului</h1>
+<p class="subtitle">
         De la „campania marilor surprize” din 1914 până la capitularea Germaniei din 11 noiembrie 1918, războiul a evoluat prin blocarea fronturilor, epuizarea resurselor, intrarea unor noi puteri și prăbușirea imperiilor multinaționale.
       </p>
-      <section class="hero-grid" aria-label="Repere rapide">
-        <article class="stat-card">
-          <strong>1914</strong>
-          <span>Planul Schlieffen eșuează, Franța rezistă, Serbia surprinde Austro-Ungaria.</span>
-        </article>
-        <article class="stat-card">
-          <strong>1915</strong>
-          <span>Strategia periferică: Gallipoli, Salonic, Serbia și Frontul Italian.</span>
-        </article>
-        <article class="stat-card">
-          <strong>1916</strong>
-          <span>Campania epuizării: Verdun, Somme și presiunea resurselor.</span>
-        </article>
-        <article class="stat-card">
-          <strong>1917–1918</strong>
-          <span>Rusia iese din război, SUA intră, iar Puterile Centrale se prăbușesc.</span>
-        </article>
-      </section>
-    </header>
+<section aria-label="Repere rapide" class="hero-grid">
+<article class="stat-card">
+<strong>1871–1913</strong>
+<span>Sistemul de alianțe, rivalitățile imperiale și crizele balcanice pregătesc explozia din 1914.</span>
+</article>
+<article class="stat-card">
+<strong>1914</strong>
+<span>Asasinatul de la Sarajevo, declarațiile de război, Marna și blocarea Planului Schlieffen.</span>
+</article>
+<article class="stat-card">
+<strong>1915</strong>
+<span>Strategie periferică: Gallipoli, Salonic, intrarea Italiei, Bulgaria și ofensiva împotriva Serbiei.</span>
+</article>
+<article class="stat-card">
+<strong>1916</strong>
+<span>Campania epuizării: Verdun, Somme, Brusilov, Iutlanda, tancurile și intrarea României.</span>
+</article>
+<article class="stat-card">
+<strong>1917–1918</strong>
+<span>Rusia iese, SUA intră, Caporetto zguduie Italia, iar Puterile Centrale se prăbușesc.</span>
+</article>
+<article class="stat-card">
+<strong>1919–1920</strong>
+<span>Conferința de Pace și tratatele de după război redesenează harta Europei.</span>
+</article>
+</section>
+</header>
+<section class="panel" id="fronturi">
+<div class="panel-header">
+<h2>Fronturile războiului</h2>
+<p class="panel-note">Conflictul devine rapid un război continental și mondial, cu fronturi principale în Europa și operațiuni secundare pe alte continente și pe mări.</p>
+</div>
+<div class="info-list">
+<div class="info-item">
+<strong>Frontul de Vest</strong>
+<span>Între Elveția și Canalul Mânecii / Marea Nordului; aproximativ 500–700 km. Aici se blochează cel mai clar războiul de mișcare: după Marna și „cursa spre mare”, armatele sapă tranșee, se apără cu mitraliere, sârmă ghimpată și artilerie, iar câștigurile teritoriale devin foarte mici în raport cu pierderile.</span>
+</div>
+<div class="info-item">
+<strong>Frontul de Est</strong>
+<span>Între Carpații Orientali / Bucovina și Marea Baltică; aproximativ 1000 km. Spre deosebire de Vest, frontul este mai lung și mai mobil: armatele se pot retrage sau înainta pe distanțe mai mari, dar problemele logistice, distanțele și slăbiciunile interne ale Imperiului Rus vor conta decisiv.</span>
+</div>
+<div class="info-item">
+<strong>Frontul Balcanic</strong>
+<span>Zona Serbiei, apoi Macedonia/Salonic și, din 1916, spațiul românesc. Balcanii sunt importanți pentru că leagă Europa Centrală de Imperiul Otoman și pentru că fiecare stat mic intrat în conflict poate schimba echilibrul regional.</span>
+</div>
+<div class="info-item">
+<strong>Alte spații de luptă</strong>
+<span>Africa, Asia, Oceania, războiul pe mări, lupta submarină și primele forme ale războiului aerian. Războiul devine mondial nu doar prin numărul statelor implicate, ci și prin folosirea coloniilor, a rutelor comerciale și a resurselor globale.</span>
+</div>
+</div>
+</section>
+<section class="panel" id="planuri">
+<div class="panel-header">
+<h2>Planuri de război</h2>
+<p class="panel-note">Marile puteri intră în conflict cu planuri rigide, dar realitatea fronturilor le obligă rapid să improvizeze.</p>
+</div>
+<div class="content-grid">
+<article class="note-card full">
+<h4><span class="tag">IDEI</span> Cum trebuie înțelese planurile de război?</h4>
+<p class="lead">Înainte de 1914, statele majore au construit planuri pornind de la ideea că războiul va fi rapid, decisiv și câștigat prin mobilizare perfect sincronizată.</p>
+<p>Problema a fost că aceste planuri erau foarte rigide. Odată pornită mobilizarea, era greu să mai oprești mecanismul: trenurile, depozitele, unitățile și ordinele erau deja organizate pentru o anumită direcție de atac. De aceea, în primele săptămâni ale războiului, conducătorii militari au acționat adesea ca și cum realitatea trebuia să se potrivească planului, nu invers.</p>
+<div class="memory-line">Idee de reținut: planurile din 1914 au fost făcute pentru un război scurt, dar au produs un război lung.</div>
+</article>
+<article class="note-card">
+<h4><span class="tag">DE</span> Planul Schlieffen</h4>
+<p class="lead">Planul german urmărea evitarea unui război lung pe două fronturi.</p>
+<ul>
+<li>Germania considera că Rusia se va mobiliza mai lent din cauza distanțelor, infrastructurii și dimensiunii imperiului.</li>
+<li>De aceea, lovitura principală trebuia dată în Vest: Franța trebuia învinsă rapid, apoi armata germană urma să fie mutată împotriva Rusiei.</li>
+<li>Atacul prin Belgia trebuia să ocolească apărarea franceză de la frontieră și să permită o înaintare amplă spre Paris.</li>
+<li>Planul avea însă un risc major: încălcarea neutralității Belgiei a favorizat intrarea Marii Britanii în război.</li>
+</ul>
+<div class="memory-line">Pe scurt: Germania voia întâi Parisul, apoi Estul. Realitatea a fost inversă: Vestul s-a blocat, iar Estul a devenit rapid periculos.</div>
+</article>
+<article class="note-card">
+<h4><span class="tag">FR</span> Franța și Planul XVII</h4>
+<p class="lead">Franța dorea revanșa după înfrângerea din 1870–1871 și recuperarea prestigiului pierdut în fața Germaniei.</p>
+<ul>
+<li>Planul XVII punea accent pe mobilizare rapidă și pe ofensivă, mai ales în direcția Alsacia-Lorena.</li>
+<li>Conducerea franceză credea că elanul ofensiv și concentrarea rapidă a trupelor pot opri Germania.</li>
+<li>Lovitura germană prin Belgia a arătat însă limitele planului francez: direcția principală de atac nu a fost exact acolo unde francezii se așteptau.</li>
+<li>Rezistența franceză de pe Marna a fost decisivă deoarece a împiedicat transformarea Planului Schlieffen într-o victorie rapidă.</li>
+</ul>
+</article>
+<article class="note-card">
+<h4><span class="tag">RU</span> Rusia</h4>
+<p class="lead">Rusia avea avantajul unei armate foarte mari, dar dezavantajul unei mobilizări greu de coordonat.</p>
+<ul>
+<li>Intrarea rapidă a Rusiei în Prusia Orientală a surprins Germania, care mizase pe o mobilizare rusă lentă.</li>
+<li>Primele succese rusești au obligat Germania să trimită atenție și resurse spre Est mai repede decât ar fi dorit.</li>
+<li>Totuși, lipsa de coordonare, comunicațiile slabe și comanda dificilă au dus la înfrângeri grave, mai ales la Tannenberg și la Lacurile Mazuriene.</li>
+</ul>
+<div class="memory-line">Rusia a fost suficient de rapidă cât să strice calculul german, dar nu suficient de eficientă cât să câștige decisiv.</div>
+</article>
+<article class="note-card">
+<h4><span class="tag">AU</span> Austro-Ungaria și Balcanii</h4>
+<p class="lead">Pentru Austro-Ungaria, războiul începe ca o pedepsire a Serbiei, dar se transformă într-o criză imperială.</p>
+<ul>
+<li>Monarhia austro-ungară voia să elimine influența Serbiei în Balcani și să transmită un mesaj popoarelor slave din imperiu.</li>
+<li>Rezistența sârbă a arătat slăbiciunile Austro-Ungariei: comandă complicată, armată multietnică, moral inegal și dependență de sprijinul Germaniei.</li>
+<li>Pe termen lung, războiul a lovit chiar structura imperiului, deoarece ideea națională a devenit mai puternică decât loialitatea față de dinastie.</li>
+</ul>
+</article>
+<article class="note-card full">
+<h4><span class="tag">TERMENI</span> Dicționar de lucru</h4>
+<ul>
+<li><strong>Război de mișcare</strong> – fază în care armatele încearcă să înainteze rapid, să învăluie inamicul și să obțină o victorie decisivă.</li>
+<li><strong>Război de poziții</strong> – fază în care frontul se stabilizează, tranșeele domină lupta, iar ofensiva devine foarte costisitoare.</li>
+<li><strong>Strategie periferică</strong> – atacarea zonelor secundare ale inamicului pentru a evita blocajul de pe frontul principal.</li>
+<li><strong>Război de uzură</strong> – încercarea de a învinge prin consumarea treptată a oamenilor, muniției, economiei și moralului adversarului.</li>
+<li><strong>Defecțiune strategică</strong> – ieșirea sau slăbirea decisivă a unui aliat, schimbând echilibrul întregului război.</li>
+</ul>
+</article>
+</div>
+</section>
 
-    <section id="fronturi" class="panel">
-      <div class="panel-header">
-        <h2>Fronturile războiului</h2>
-        <p class="panel-note">Conflictul devine rapid un război continental și mondial, cu fronturi principale în Europa și operațiuni secundare pe alte continente și pe mări.</p>
-      </div>
-
-      <div class="map-grid">
-        <div class="front-map" role="img" aria-label="Hartă stilizată a fronturilor Primului Război Mondial">
-          <span class="map-label vest">Vest: 500–700 km</span>
-          <span class="map-label est">Est: aprox. 1000 km</span>
-          <span class="map-label balcani">Balcani: Serbia</span>
-        </div>
-        <div class="info-list">
-          <div class="info-item">
-            <strong>Frontul de Vest</strong>
-            <span>Între Elveția și Canalul Mânecii / Marea Nordului; aproximativ 500–700 km.</span>
-          </div>
-          <div class="info-item">
-            <strong>Frontul de Est</strong>
-            <span>Între Carpații Orientali / Bucovina și Marea Baltică; aproximativ 1000 km.</span>
-          </div>
-          <div class="info-item">
-            <strong>Frontul Balcanic</strong>
-            <span>Zona Serbiei, unde Austro-Ungaria se lovește de o rezistență neașteptată.</span>
-          </div>
-          <div class="info-item">
-            <strong>Alte spații de luptă</strong>
-            <span>Africa, Asia, Oceania, războiul pe mări, lupta submarină și primele forme ale războiului aerian.</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="planuri" class="panel">
-      <div class="panel-header">
-        <h2>Planuri de război</h2>
-        <p class="panel-note">Marile puteri intră în conflict cu planuri rigide, dar realitatea fronturilor le obligă rapid să improvizeze.</p>
-      </div>
-
-      <div class="content-grid">
-        <article class="note-card">
-          <h4><span class="tag">DE</span> Planul Schlieffen</h4>
-          <ul>
-            <li>Planul urmărea înfrângerea rapidă a Franței printr-o ofensivă prin Belgia.</li>
-            <li>Aspecte directe:
-              <ul class="sublist">
-                <li>fixarea Belgiei ca punct de inițiere a ofensivei terestre către Franța;</li>
-                <li>nimicirea Armatei Franceze între Verdun și Canalul Mânecii;</li>
-                <li>supunerea Franței prin ocuparea Parisului.</li>
-              </ul>
-            </li>
-            <li>Aspect indirect: în Est, apărarea germană era minimă, mizând pe ideea că Rusia se va mobiliza greu.</li>
-          </ul>
-        </article>
-
-        <article class="note-card">
-          <h4><span class="tag">DE</span> Germania</h4>
-          <ul>
-            <li>Se pregătește pentru o ofensivă intensă în Vest.</li>
-            <li>În Est mizează pe o defensivă minimă.</li>
-            <li>Calculul german se baza pe înfrângerea rapidă a Franței, înainte ca Rusia să poată acționa decisiv.</li>
-          </ul>
-        </article>
-
-        <article class="note-card">
-          <h4><span class="tag">FR</span> Franța</h4>
-          <ul>
-            <li>Se pregătește pentru apărare și acțiuni în regiunea Alsacia-Lorena.</li>
-            <li>Este însă lovită prin Belgia, direcția principală a ofensivei germane.</li>
-            <li>Planul XVII al generalului Joseph Joffre reprezenta schema de mobilizare și concentrare a armatei franceze.</li>
-          </ul>
-        </article>
-
-        <article class="note-card">
-          <h4><span class="tag">RU</span> Rusia</h4>
-          <ul>
-            <li>Se pregătește pentru atacarea rapidă a Germaniei.</li>
-            <li>Obține victorii inițiale la Goldap și Gumbinnen.</li>
-            <li>Ulterior, Germania revine în forță și produce înfrângeri grele Rusiei.</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section id="timeline" class="panel">
-      <div class="panel-header">
-        <h2>Desfășurarea conflictului</h2>
-        <p class="panel-note">Fiecare an are o logică proprie: surpriză, strategie periferică, epuizare, defecțiuni majore și victorie finală.</p>
-      </div>
-
-      <div class="timeline">
-        <article class="year-card" id="anul-1914">
-          <div class="year-badge">1914</div>
-          <div class="year-content">
-            <div class="year-title">
-              <h3>Campania marilor surprize</h3>
-              <p>Anul 1914 a fost numit astfel deoarece calculele inițiale ale marilor puteri au fost răsturnate de mobilizări rapide, rezistențe neașteptate și folosirea unor arme noi.</p>
-            </div>
-            <div class="content-grid">
-              <section class="note-card">
-                <h4><span class="tag">1</span> De ce „marile surprize”?</h4>
-                <ul>
-                  <li>Intrarea în război a Franței și Marii Britanii.</li>
-                  <li>Mobilizarea foarte rapidă a Armatei Rusiei.</li>
-                  <li>Rezistența Franței și năruirea Planului Schlieffen.</li>
-                  <li>Rezistența neașteptată a Serbiei.</li>
-                  <li>Folosirea noilor arme și revoluția tehnologică.</li>
-                  <li>Lupta submarină și aeriană.</li>
-                </ul>
-              </section>
-
-              <section class="note-card">
-                <h4><span class="tag">2</span> Serbia și Balcanii</h4>
-                <ul>
-                  <li>Serbia rezistă ofensivei austro-ungare.</li>
-                  <li>Austro-Ungaria ocupă Belgradul, dar după două săptămâni orașul este eliberat.</li>
-                  <li>Vor urma înfrângeri severe ale Austro-Ungariei.</li>
-                </ul>
-              </section>
-
-              <section class="note-card full">
-                <h4><span class="tag">3</span> Frontul de Vest: Marna, Flandra și Crăciunul din tranșee</h4>
-                <ul>
-                  <li>La începutul lunii septembrie 1914, Germania ajunge la aproximativ 32 km de Paris.</li>
-                  <li>Francezii încearcă o apărare disperată.</li>
-                  <li>Are loc <strong>Miracolul de pe Marna</strong>, bătălia pentru salvarea Parisului.</li>
-                  <li>La sfârșitul lui septembrie 1914, Germania renunță practic la Planul Schlieffen.</li>
-                  <li>Franța pune în aplicare Planul XVII al generalului Joseph Joffre.</li>
-                  <li>Germania continuă presiunea spre mare, încercând să obțină orașele-port franceze.</li>
-                  <li>În acest context începe <strong>Bătălia Flandrei</strong>, desfășurată în octombrie–noiembrie 1914.</li>
-                  <li>Pe front are loc și <strong>Armistițiul de Crăciun</strong>.</li>
-                </ul>
-              </section>
-
-              <section class="note-card full">
-                <h4><span class="tag">4</span> Frontul de Est: succese inițiale și înfrângeri grele</h4>
-                <ul>
-                  <li>Rusia obține victorii inițiale la Goldap și Gumbinnen.</li>
-                  <li>În cele din urmă, armata rusă este înfrântă la Tannenberg și la Lacurile Mazuriene.</li>
-                </ul>
-                <div class="callout">Ideea centrală: 1914 arată că războiul nu va fi scurt. Planurile ofensive se blochează, iar fronturile devin tot mai stabile și mai costisitoare.</div>
-              </section>
-            </div>
-          </div>
-        </article>
-
-        <article class="year-card" id="anul-1915">
-          <div class="year-badge">1915</div>
-          <div class="year-content">
-            <div class="year-title">
-              <h3>Campania strategiei periferice</h3>
-              <p>Strategia de bază a anului 1915 a fost păstrarea fronturilor principale și atacarea repetată a punctelor vulnerabile.</p>
-            </div>
-            <div class="content-grid">
-              <section class="note-card">
-                <h4><span class="tag">A</span> Antanta: Gallipoli</h4>
-                <ul>
-                  <li>În Peninsula Gallipoli, Antanta încearcă debarcarea în zona Strâmtorii Dardanele.</li>
-                  <li>Obiectivul era scoaterea Imperiului Otoman din război.</li>
-                  <li>Trupele veniseră în mare parte din colonii, mai ales din Australia și Noua Zeelandă.</li>
-                  <li>Germania își sprijină aliații, inclusiv Turcia, cu echipamente, instructori și artilerie.</li>
-                  <li>Sprijinul german contribuie la înfrângerea Antantei în debarcarea de la Gallipoli.</li>
-                </ul>
-              </section>
-
-              <section class="note-card">
-                <h4><span class="tag">A</span> Antanta: Salonic</h4>
-                <ul>
-                  <li>Are loc debarcarea din Salonic.</li>
-                  <li>Operațiunea este coordonată de generalul francez Maurice Sarrail.</li>
-                  <li>Scopul era deschiderea unei presiuni asupra Puterilor Centrale în zona balcanică.</li>
-                </ul>
-              </section>
-
-              <section class="note-card">
-                <h4><span class="tag">PC</span> Puterile Centrale</h4>
-                <ul>
-                  <li>Urmăresc scoaterea Serbiei din război.</li>
-                  <li>Obiectivul este favorizat de intrarea Bulgariei în război de partea Puterilor Centrale.</li>
-                  <li>Obțin victorii pe Frontul Italian.</li>
-                </ul>
-              </section>
-
-              <section class="note-card">
-                <h4><span class="tag">IT</span> Frontul Italian</h4>
-                <ul>
-                  <li>Italia are parte de înfrângeri repetate.</li>
-                  <li>Sunt amintite luptele de la Isonzo și Caporetto.</li>
-                  <li>La sfârșitul anului 1915, Puterile Centrale se află în superioritate.</li>
-                </ul>
-              </section>
-            </div>
-          </div>
-        </article>
-
-        <article class="year-card" id="anul-1916">
-          <div class="year-badge">1916</div>
-          <div class="year-content">
-            <div class="year-title">
-              <h3>Campania epuizării</h3>
-              <p>Strategia anului 1916 constă în concentrarea unor forțe uriașe pentru slăbirea și înfrângerea inamicului prin consum masiv de oameni și resurse.</p>
-            </div>
-            <div class="content-grid">
-              <section class="note-card">
-                <h4><span class="tag">V</span> Verdun</h4>
-                <ul>
-                  <li>Germania aplică strategia la Verdun, numit și „Abatorul de la Verdun”.</li>
-                  <li>Atacă masiv în apropierea localității Verdun.</li>
-                  <li>Germania se aștepta ca Franța să retragă trupe de pe alte fronturi pentru a trimite întăriri.</li>
-                  <li>Planul german era să atace apoi în punctele rămase descoperite.</li>
-                </ul>
-              </section>
-
-              <section class="note-card">
-                <h4><span class="tag">S</span> Somme</h4>
-                <ul>
-                  <li>Franța și aliații aplică aceeași logică în Campania de pe Somme.</li>
-                  <li>Războiul devine o confruntare a rezistenței materiale și umane.</li>
-                </ul>
-              </section>
-
-              <section class="note-card full">
-                <h4><span class="tag">R</span> De ce strategia favoriza Antanta?</h4>
-                <ul>
-                  <li>Anglo-francezii dispuneau de resurse foarte mari, provenite și din colonii.</li>
-                  <li>Germanii și austro-ungarii aveau resurse mai limitate.</li>
-                  <li>Pe termen lung, un război de uzură era mai greu de susținut de Puterile Centrale.</li>
-                </ul>
-              </section>
-
-              <section class="note-card full">
-                <h4><span class="tag">E</span> Frontul de Est</h4>
-                <ul>
-                  <li>Rusia are succese împotriva Austro-Ungariei.</li>
-                  <li>În schimb, are eșecuri în confruntările cu Germania.</li>
-                </ul>
-              </section>
-            </div>
-          </div>
-        </article>
-
-        <article class="year-card" id="anul-1917">
-          <div class="year-badge">1917</div>
-          <div class="year-content">
-            <div class="year-title">
-              <h3>Anul Marii Defecțiuni</h3>
-              <p>Anul 1917 schimbă decisiv raportul de forțe: Rusia iese din război, iar Statele Unite intră de partea Antantei.</p>
-            </div>
-            <div class="content-grid">
-              <section class="note-card full">
-                <h4><span class="tag">RU</span> Din perspectiva Antantei: ieșirea Rusiei din război</h4>
-                <ul>
-                  <li>La 2 martie 1917, țarul Nicolae al II-lea abdică.</li>
-                  <li>Sunt instaurate mai multe guverne provizorii:
-                    <ul class="sublist">
-                      <li>unul condus de Lvov;</li>
-                      <li>altul condus de Alexandr Kerenski.</li>
-                    </ul>
-                  </li>
-                  <li>Guvernele provizorii continuă războiul, dar cu mai puțină combativitate.</li>
-                  <li>Trupele părăsesc frontul în dezordine.</li>
-                  <li>Apar revolte ale țăranilor și manifestații ale muncitorilor.</li>
-                  <li>Bolșevicii au două încercări de preluare a puterii:
-                    <ul class="sublist">
-                      <li>5 iunie: prima încercare, eșuată;</li>
-                      <li>25 octombrie / 7 noiembrie 1917: Partidul Bolșevicilor, condus de Lenin, preia puterea.</li>
-                    </ul>
-                  </li>
-                  <li>Evenimentul este cunoscut drept Revoluția din Noiembrie, deși după calendarul vechi a avut loc în octombrie.</li>
-                  <li>Partidul Bolșevicilor decide ieșirea Rusiei din război.</li>
-                </ul>
-                <div class="callout">Pentru Germania, ieșirea Rusiei nu a fost un avantaj complet: trebuia menținută o armată de ocupație de aproximativ 500.000 de soldați pentru asigurarea transporturilor de cereale și petrol din spațiul rusesc.</div>
-              </section>
-
-              <section class="note-card full">
-                <h4><span class="tag">SUA</span> Din perspectiva Puterilor Centrale: intrarea SUA în război</h4>
-                <ul>
-                  <li>Inițial, aportul militar american este redus:
-                    <ul class="sublist">
-                      <li>în 1917: aproximativ 50 de avioane și 200.000 de soldați;</li>
-                      <li>la sfârșitul lui 1918: aproximativ 4 milioane de soldați, dintre care 2 milioane în Europa.</li>
-                    </ul>
-                  </li>
-                  <li>Cauze vizibile ale intrării SUA în război:
-                    <ul class="sublist">
-                      <li>războiul submarin total inițiat de Germania;</li>
-                      <li>scufundarea navelor comerciale ale țărilor neutre, inclusiv state scandinave și SUA;</li>
-                      <li>scufundarea navelor de pasageri, precum Lusitania.</li>
-                    </ul>
-                  </li>
-                  <li>Cauze mai puțin vizibile:
-                    <ul class="sublist">
-                      <li>Telegrama Zimmerman, care prevedea o alianță între Mexic și Germania împotriva SUA pentru redobândirea Texasului, New Mexico și Arizonei;</li>
-                      <li>interesul financiar al SUA, care sprijiniseră taberele prin împrumuturi și credite.</li>
-                    </ul>
-                  </li>
-                </ul>
-              </section>
-
-              <section class="note-card full">
-                <h4><span class="tag">$</span> Interesul financiar al SUA</h4>
-                <table class="mini-table">
-                  <thead>
-                    <tr>
-                      <th>Destinație</th>
-                      <th>1914</th>
-                      <th>1915</th>
-                      <th>1916 / 1917</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Regatul Unit</td>
-                      <td>924 mil. $</td>
-                      <td>1.991 mil. $</td>
-                      <td>3.214 mil. $ în 1916</td>
-                    </tr>
-                    <tr>
-                      <td>Germania</td>
-                      <td>169 mil. $</td>
-                      <td>1.159 mil. $</td>
-                      <td>—</td>
-                    </tr>
-                    <tr>
-                      <td>Rusia</td>
-                      <td>—</td>
-                      <td>—</td>
-                      <td>100 mil. $ în mai 1917</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div class="callout">SUA voiau să se asigure că va câștiga tabăra cu cele mai mari creanțe, pentru ca împrumuturile să poată fi rambursate. Sprijinul acordat Antantei fusese mult mai masiv.</div>
-              </section>
-            </div>
-          </div>
-        </article>
-
-        <article class="year-card" id="anul-1918">
-          <div class="year-badge">1918</div>
-          <div class="year-content">
-            <div class="year-title">
-              <h3>Anul Victoriei</h3>
-              <p>În 1918, Germania încearcă o ofensivă finală, dar prăbușirea aliaților săi și revoltele interne duc la capitulare.</p>
-            </div>
-            <div class="content-grid">
-              <section class="note-card">
-                <h4><span class="tag">1</span> Comandament unic</h4>
-                <ul>
-                  <li>Antanta alege un comandament unic pe Frontul de Vest.</li>
-                  <li>Acesta este condus de mareșalul francez Ferdinand Foch.</li>
-                </ul>
-              </section>
-
-              <section class="note-card">
-                <h4><span class="tag">2</span> Ofensiva germană finală</h4>
-                <ul>
-                  <li>În iunie, Germania lansează o mare ofensivă finală.</li>
-                  <li>A fost finală nu pentru Antantă, ci pentru Germania însăși.</li>
-                  <li>Are loc a doua bătălie de pe Marna, prima fiind la începutul războiului.</li>
-                </ul>
-              </section>
-
-              <section class="note-card">
-                <h4><span class="tag">3</span> Contraofensiva anglo-franceză</h4>
-                <ul>
-                  <li>Germanii se retrag după linia de apărare Siegfried.</li>
-                  <li>Retragerea nu era încă o catastrofă militară, deoarece Germania mai putea rezista.</li>
-                  <li>Problema reală va fi prăbușirea aliaților și izbucnirea revoltelor interne.</li>
-                </ul>
-              </section>
-
-              <section class="note-card">
-                <h4><span class="tag">4</span> Aliații Germaniei capitulează</h4>
-                <ul>
-                  <li>29 septembrie: Bulgaria.</li>
-                  <li>30 octombrie: Imperiul Otoman.</li>
-                  <li>3 noiembrie: Austro-Ungaria.</li>
-                </ul>
-              </section>
-
-              <section class="note-card full">
-                <h4><span class="tag">5</span> Cascada Tronurilor</h4>
-                <ul>
-                  <li>Are loc lupta de eliberare a popoarelor din estul Europei.</li>
-                  <li>Împăratul Austro-Ungariei încearcă să formeze un sistem al Confederației Dunărene.</li>
-                  <li>Ideea este învinsă de principiul națiunilor.</li>
-                  <li>Franz Joseph propusese o monarhie tetralistă, acordând puteri cehilor, slovacilor și românilor, în completarea celor aparținând deja ungurilor.</li>
-                  <li>Austro-Ungaria se destramă.</li>
-                </ul>
-              </section>
-
-              <section class="note-card full">
-                <h4><span class="tag">6</span> Revolte și capitulare</h4>
-                <ul>
-                  <li>Pe teritoriul Germaniei izbucnesc revolte ale marinarilor.</li>
-                  <li>Au loc revolte ale lucrătorilor din fabrici.</li>
-                  <li>Germania capitulează la <strong>11 noiembrie 1918</strong>.</li>
-                </ul>
-                <div class="callout">Ideea centrală: înfrângerea Germaniei nu vine doar dintr-o singură bătălie, ci dintr-o combinație de uzură militară, superioritatea resurselor Antantei, intrarea SUA, prăbușirea aliaților și revoluțiile interne.</div>
-              </section>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="sinteza" class="panel">
-      <div class="panel-header">
-        <h2>Sinteză rapidă</h2>
-        <p class="panel-note">Schema de mai jos poate fi folosită la recapitulare sau ca bază pentru întrebări de evaluare.</p>
-      </div>
-      <div class="summary-grid">
-        <article class="summary-card">
-          <strong>1914</strong>
-          <span>Surpriza mobilizării ruse, rezistența Franței și Serbiei, eșecul Planului Schlieffen.</span>
-        </article>
-        <article class="summary-card">
-          <strong>1915</strong>
-          <span>Atacuri periferice: Gallipoli, Salonic, Serbia, Frontul Italian; avantaj pentru Puterile Centrale.</span>
-        </article>
-        <article class="summary-card">
-          <strong>1916</strong>
-          <span>Verdun și Somme transformă războiul într-o confruntare de epuizare.</span>
-        </article>
-        <article class="summary-card">
-          <strong>1917</strong>
-          <span>Rusia iese din război, dar SUA intră de partea Antantei și schimbă balanța strategică.</span>
-        </article>
-        <article class="summary-card">
-          <strong>1918</strong>
-          <span>Ofensiva germană eșuează, aliații capitulează, Austro-Ungaria se destramă, Germania semnează armistițiul.</span>
-        </article>
-      </div>
-    </section>
-
-    <footer class="footer">
+<section class="panel" id="timeline">
+<div class="panel-header">
+<h2>Desfășurarea conflictului</h2>
+<p class="panel-note">Fiecare an are o logică proprie: surpriză, strategie periferică, epuizare, defecțiuni majore și victorie finală.</p>
+</div>
+<div class="timeline">
+<article class="year-card" id="anul-1914">
+<div class="year-badge">1914</div>
+<div class="year-content">
+<div class="year-title">
+<h3>Campania marilor surprize</h3>
+<p>Anul 1914 a fost numit astfel deoarece aproape toate calculele inițiale au fost contrazise: Rusia s-a mobilizat mai repede decât se așteptau germanii, Serbia a rezistat mai bine decât se așteptau austro-ungarii, iar Franța nu a fost scoasă rapid din război.</p>
+</div>
+<div class="content-grid">
+<section class="note-card full">
+<h4><span class="tag">1</span> De ce „marile surprize”?</h4>
+<p class="lead">În vara lui 1914, marile puteri intră în război cu o încredere exagerată în propriile planuri. Fiecare tabără speră că mobilizarea rapidă, atacul decisiv și moralul național vor rezolva conflictul înainte ca economia și societatea să fie epuizate.</p>
+<ul>
+<li><strong>Surpriza diplomatică:</strong> conflictul dintre Austro-Ungaria și Serbia se transformă rapid într-un război european prin sistemul alianțelor.</li>
+<li><strong>Surpriza britanică:</strong> încălcarea neutralității Belgiei favorizează intrarea Marii Britanii în război împotriva Germaniei.</li>
+<li><strong>Surpriza rusă:</strong> Rusia se mobilizează mai repede decât estimase Germania, obligând Berlinul să privească Estul cu teamă încă din primele săptămâni.</li>
+<li><strong>Surpriza franceză:</strong> Parisul nu cade, iar armata franceză reușește să oprească ofensiva germană pe Marna.</li>
+<li><strong>Surpriza sârbă:</strong> Serbia rezistă unor forțe mai mari și produce o criză de prestigiu pentru Austro-Ungaria.</li>
+<li><strong>Surpriza tehnologică:</strong> mitralierele, artileria grea, sârma ghimpată, submarinele și aviația schimbă felul în care se poate lupta.</li>
+</ul>
+<div class="memory-line">1914 începe ca un război al vitezei, dar se termină ca un război al blocajului.</div>
+</section>
+<section class="note-card">
+<h4><span class="tag">2</span> Serbia și Balcanii</h4>
+<p class="lead">Pentru Austro-Ungaria, Serbia părea un adversar mic, dar simbolic periculos.</p>
+<ul>
+<li>Serbia rezistă ofensivei austro-ungare și arată că războiul din Balcani nu va fi o simplă expediție de pedepsire.</li>
+<li>Austro-Ungaria ocupă Belgradul, dar după scurt timp orașul este eliberat.</li>
+<li>Înfrângerile austro-ungare afectează prestigiul imperiului și obligă Germania să ofere tot mai mult sprijin aliatului său.</li>
+</ul>
+<p>Importanța Balcanilor nu este doar locală. Zona controlează legătura spre Imperiul Otoman și poate deschide sau bloca drumuri strategice între Europa Centrală și Orient.</p>
+</section>
+<section class="note-card">
+<h4><span class="tag">3</span> Frontul de Est</h4>
+<p class="lead">Rusia creează prima mare problemă strategică pentru Germania.</p>
+<ul>
+<li>Armata rusă pătrunde în Prusia Orientală și obține succese inițiale, inclusiv în zona Gumbinnen.</li>
+<li>Germania reacționează prin reorganizarea comenzii și prin concentrarea forțelor împotriva armatelor ruse.</li>
+<li>Înfrângerile de la Tannenberg și Lacurile Mazuriene arată că Rusia poate mobiliza repede, dar coordonează greu operațiunile.</li>
+</ul>
+<div class="memory-line">Frontul de Est salvează indirect Franța, deoarece distrage atenția Germaniei, dar nu salvează Rusia de propriile slăbiciuni.</div>
+</section>
+<section class="note-card full">
+<h4><span class="tag">4</span> Frontul de Vest: Marna, Flandra și tranșeele</h4>
+<p class="lead">Cea mai importantă transformare a anului 1914 este trecerea de la ofensiva rapidă la frontul fix.</p>
+<ul>
+<li>Germania înaintează rapid prin Belgia și nordul Franței, ajungând aproape de Paris.</li>
+<li>În Bătălia de pe Marna, francezii și britanicii opresc ofensiva germană; Parisul este salvat, iar Planul Schlieffen eșuează.</li>
+<li>După Marna, ambele tabere încearcă să se depășească reciproc spre nord, într-o succesiune de manevre numită adesea „cursa spre mare”.</li>
+<li>În Flandra, luptele din octombrie–noiembrie 1914 confirmă că niciuna dintre tabere nu mai poate obține ușor o străpungere decisivă.</li>
+<li>Soldații sapă tranșee; frontul se stabilizează, iar războiul devine o confruntare de rezistență, logistică și moral.</li>
+<li>Armistițiul de Crăciun arată contrastul dintre suferința soldaților obișnuiți și logica nemiloasă a războiului total.</li>
+</ul>
+<div class="callout">Ideea centrală: 1914 dovedește că războiul nu va fi scurt. Planurile ofensive se blochează, iar fronturile devin tot mai stabile și mai costisitoare.</div>
+</section>
+</div>
+</div>
+</article>
+<article class="year-card" id="anul-1915">
+<div class="year-badge">1915</div>
+<div class="year-content">
+<div class="year-title">
+<h3>Campania strategiei periferice</h3>
+<p>În 1915, marile armate nu reușesc să rupă decisiv fronturile principale. De aceea, ambele tabere caută soluții la marginea conflictului: Dardanele, Balcani, Italia, Serbia și Frontul de Est.</p>
+</div>
+<div class="content-grid">
+<section class="note-card full">
+<h4><span class="tag">IDEE</span> De ce se numește „strategie periferică”?</h4>
+<p class="lead">Strategia periferică înseamnă atacarea unui punct secundar, cu speranța că efectul va fi major asupra întregului război.</p>
+<p>Pe Frontul de Vest, atacurile directe costă enorm și aduc câștiguri reduse. Antanta încearcă să lovească Imperiul Otoman, să deschidă o rută spre Rusia și să atragă sau să ajute statele balcanice. Puterile Centrale urmăresc în schimb să elimine Serbia, să consolideze legătura cu Imperiul Otoman și să împingă Rusia cât mai departe spre est.</p>
+<div class="memory-line">Când centrul frontului nu se rupe, comandanții caută margini vulnerabile.</div>
+</section>
+<section class="note-card">
+<h4><span class="tag">A</span> Gallipoli / Dardanele</h4>
+<p class="lead">Antanta încearcă să scoată Imperiul Otoman din război și să deschidă o cale de aprovizionare spre Rusia.</p>
+<ul>
+<li>Operațiunea începe cu încercarea flotei de a forța Strâmtoarea Dardanele.</li>
+<li>Când atacul naval eșuează, se trece la debarcarea trupelor în Peninsula Gallipoli.</li>
+<li>Participă trupe britanice, franceze și din imperiu, inclusiv australieni și neozeelandezi.</li>
+<li>Apărarea otomană, terenul dificil, lipsa de coordonare și aprovizionarea greoaie transformă campania într-un eșec pentru Antantă.</li>
+</ul>
+<p>Importanța campaniei nu este doar militară: Gallipoli devine un moment de memorie națională pentru Turcia, Australia și Noua Zeelandă.</p>
+</section>
+<section class="note-card">
+<h4><span class="tag">A</span> Salonic și Balcanii</h4>
+<p class="lead">Debarcarea de la Salonic urmărește menținerea unei presiuni asupra Puterilor Centrale în zona balcanică.</p>
+<ul>
+<li>Operațiunea este coordonată de generalul francez Maurice Sarrail.</li>
+<li>Scopul imediat este sprijinirea Serbiei și menținerea unei baze aliate în sudul Balcanilor.</li>
+<li>Pe termen lung, frontul de la Salonic va conta în prăbușirea Bulgariei în 1918.</li>
+</ul>
+</section>
+<section class="note-card">
+<h4><span class="tag">PC</span> Serbia și Bulgaria</h4>
+<p class="lead">Puterile Centrale reușesc să transforme avantajul diplomatic în avantaj militar.</p>
+<ul>
+<li>Intrarea Bulgariei de partea Puterilor Centrale permite atacarea Serbiei din mai multe direcții.</li>
+<li>Serbia este înfrântă și ocupată, iar armata sârbă se retrage greu, prin Albania, spre Adriatica.</li>
+<li>Prin eliminarea Serbiei, Germania și Austro-Ungaria obțin o legătură terestră mai sigură cu Imperiul Otoman.</li>
+</ul>
+<div class="memory-line">Pentru Puterile Centrale, 1915 este un an bun în Balcani.</div>
+</section>
+<section class="note-card">
+<h4><span class="tag">IT</span> Frontul Italian</h4>
+<p class="lead">Italia intră în război de partea Antantei, dar frontul italian devine rapid un front greu, montan și sângeros.</p>
+<ul>
+<li>Luptele se concentrează în zona Isonzo, unde ofensiva italiană obține rezultate reduse.</li>
+<li>Terenul muntos favorizează apărarea și face aprovizionarea foarte dificilă.</li>
+<li>În 1915, frontul italian este dominat mai ales de luptele de la Isonzo, cu ofensive dificile, pierderi mari și câștiguri teritoriale reduse.</li>
+</ul>
+</section>
+<section class="note-card full">
+<h4><span class="tag">E</span> Frontul de Est în 1915</h4>
+<p class="lead">În Est, Puterile Centrale au inițiativa și împing Rusia înapoi.</p>
+<ul>
+<li>Ofensiva germano-austro-ungară din zona Gorlice-Tarnów produce o retragere majoră a armatei ruse.</li>
+<li>Rusia pierde teritorii importante și resurse, dar nu este scoasă încă din război.</li>
+<li>Totuși, presiunea militară, pierderile și nemulțumirile sociale pregătesc criza internă care va exploda în 1917.</li>
+</ul>
+<div class="callout">Ideea centrală: 1915 nu aduce victoria finală, dar arată că războiul poate fi câștigat sau pierdut și prin fronturi secundare, alianțe regionale și controlul rutelor strategice.</div>
+</section>
+</div>
+</div>
+</article>
+<article class="year-card" id="anul-1916">
+<div class="year-badge">1916</div>
+<div class="year-content">
+<div class="year-title">
+<h3>Campania epuizării</h3>
+<p>În 1916, războiul devine o confruntare de uzură: fiecare tabără încearcă să consume oamenii, muniția, moralul și economia adversarului mai repede decât își consumă propriile resurse.</p>
+</div>
+<div class="content-grid">
+<section class="note-card full">
+<h4><span class="tag">IDEE</span> Ce înseamnă „epuizare”?</h4>
+<p class="lead">Epuizarea nu urmărește neapărat ocuparea rapidă a unei capitale, ci distrugerea capacității adversarului de a continua războiul.</p>
+<p>Pe Frontul de Vest, apărarea este mai puternică decât ofensiva. Mitralierele, artileria, tranșeele și sârma ghimpată fac ca atacurile frontale să coste enorm. De aceea, comandanții speră că pierderile repetate vor rupe, în cele din urmă, armata și moralul inamicului.</p>
+<div class="memory-line">În 1916, întrebarea nu mai este „cine înaintează repede?”, ci „cine rezistă mai mult?”.</div>
+</section>
+<section class="note-card">
+<h4><span class="tag">V</span> Verdun</h4>
+<p class="lead">Verdun devine simbolul sacrificiului și al războiului dus până la limită.</p>
+<ul>
+<li>Germania atacă masiv zona Verdun, un punct cu valoare militară și simbolică pentru Franța.</li>
+<li>Ideea germană era că francezii vor apăra Verdun cu orice preț, consumând rezerve uriașe.</li>
+<li>Forturile, artileria, rotația trupelor și rezistența franceză transformă lupta într-un „abator” al războiului modern.</li>
+<li>Rezultatul nu este o străpungere decisivă, ci o uzură teribilă pentru ambele tabere.</li>
+</ul>
+</section>
+<section class="note-card">
+<h4><span class="tag">S</span> Somme</h4>
+<p class="lead">Somme este răspunsul anglo-francez la presiunea germană de la Verdun.</p>
+<ul>
+<li>Ofensiva urmărește să slăbească Germania și să reducă presiunea asupra francezilor de la Verdun.</li>
+<li>Pregătirea de artilerie este uriașă, dar nu distruge complet apărarea germană.</li>
+<li>Infanteria avansează greu, cu pierderi foarte mari și câștiguri teritoriale limitate.</li>
+<li>În 1916 apar și tancurile pe câmpul de luptă, dar la început sunt puține și nesigure.</li>
+</ul>
+</section>
+<section class="note-card">
+<h4><span class="tag">E</span> Ofensiva Brusilov</h4>
+<p class="lead">Pe Frontul de Est, Rusia obține unul dintre cele mai mari succese ale sale din război.</p>
+<ul>
+<li>Generalul Aleksei Brusilov atacă Austro-Ungaria cu metode mai flexibile decât ofensivele anterioare.</li>
+<li>Austro-Ungaria suferă pierderi mari și devine tot mai dependentă de Germania.</li>
+<li>Succesul rus contribuie la impresia că Antanta poate câștiga și influențează decizia României de a intra în război.</li>
+<li>Totuși, și Rusia plătește un preț mare, iar epuizarea armatei va alimenta criza internă din 1917.</li>
+</ul>
+</section>
+<section class="note-card">
+<h4><span class="tag">RO</span> Intrarea României</h4>
+<p class="lead">Pentru spațiul românesc, 1916 este anul intrării în război de partea Antantei.</p>
+<ul>
+<li>România intră în război cu obiectivul unirii provinciilor românești aflate în Austro-Ungaria, mai ales Transilvania.</li>
+<li>Ofensiva inițială trece Carpații, dar armata română este atacată apoi din mai multe direcții: de Germania și Austro-Ungaria, dar și de Bulgaria și Imperiul Otoman în sud.</li>
+<li>Bucureștiul este ocupat la sfârșitul anului 1916, iar autoritățile se retrag la Iași.</li>
+<li>Frontul se stabilizează în Moldova, unde armata română va fi refăcută cu sprijin francez.</li>
+</ul>
+<div class="memory-line">România intră pentru Transilvania, dar primul rezultat este pierderea temporară a capitalei.</div>
+</section>
+<section class="note-card full">
+<h4><span class="tag">R</span> De ce strategia favoriza Antanta?</h4>
+<p class="lead">Un război lung avantaja tabăra cu mai multe resurse globale.</p>
+<ul>
+<li>Antanta avea acces la imperii coloniale, rute maritime, credite și resurse economice mai variate.</li>
+<li>Germania și Austro-Ungaria erau puternice militar, dar mai vulnerabile la blocadă, lipsuri alimentare și epuizarea industriei.</li>
+<li>Cu cât războiul dura mai mult, cu atât avantajul resurselor devenea mai important decât geniul tactic al unor bătălii izolate.</li>
+</ul>
+<div class="callout">Ideea centrală: 1916 transformă războiul într-un test de rezistență totală. Nu câștigă neapărat cine atacă mai spectaculos, ci cine poate continua mai mult.</div>
+</section>
+</div>
+</div>
+</article>
+<article class="year-card" id="anul-1917">
+<div class="year-badge">1917</div>
+<div class="year-content">
+<div class="year-title">
+<h3>Anul Marii Defecțiuni</h3>
+<p>Anul 1917 schimbă decisiv raportul de forțe: Rusia intră în revoluție și iese treptat din război, în timp ce Statele Unite intră de partea Antantei. Războiul nu se încheie imediat, dar balanța strategică se schimbă.</p>
+</div>
+<div class="content-grid">
+<section class="note-card full">
+<h4><span class="tag">RU</span> Ieșirea Rusiei din război</h4>
+<p class="lead">Pentru Antantă, Rusia era aliatul care ținea ocupată o parte importantă a armatei germane. Când Rusia se prăbușește intern, întregul echilibru al războiului este afectat.</p>
+<ul>
+<li>În martie 1917, țarul Nicolae al II-lea abdică, iar monarhia rusă se prăbușește.</li>
+<li>Guvernele provizorii încearcă să continue războiul, dar armata este demoralizată, iar disciplina se destramă.</li>
+<li>Pe front apar dezertări, refuzuri de luptă și neîncredere față de ofițeri.</li>
+<li>În orașe se intensifică protestele muncitorilor, iar la sate țăranii cer pământ și pace.</li>
+<li>Bolșevicii, conduși de Lenin, promit „pace, pâine și pământ”, iar în octombrie/noiembrie 1917 preiau puterea.</li>
+<li>Noul regim începe negocierile de pace cu Puterile Centrale, ceea ce va duce la ieșirea Rusiei din război.</li>
+</ul>
+<div class="memory-line">Rusia nu este învinsă doar pe front; este doborâtă de combinația dintre război, foamete, criză politică și revoluție.</div>
+</section>
+<section class="note-card full">
+<h4><span class="tag">SUA</span> Intrarea Statelor Unite</h4>
+<p class="lead">Pentru Puterile Centrale, intrarea SUA era periculoasă nu doar prin soldați, ci prin industrie, bani, transporturi și moral.</p>
+<ul>
+<li>Germania reia războiul submarin total, atacând nave comerciale și de pasageri care aprovizionau Antanta.</li>
+<li>Scufundarea unor nave și amenințarea rutelor maritime afectează interesele americane.</li>
+<li>Telegrama Zimmermann, prin care Germania sugera o alianță cu Mexicul împotriva SUA, provoacă indignare în opinia publică americană.</li>
+<li>Statele Unite declară război Germaniei în aprilie 1917.</li>
+<li>La început, contribuția militară americană este redusă; efectul decisiv apare prin mobilizarea economică și prin creșterea continuă a numărului de trupe trimise în Europa.</li>
+</ul>
+<div class="memory-line">SUA nu câștigă războiul singure, dar intrarea lor face ca timpul să lucreze clar împotriva Germaniei.</div>
+</section>
+<section class="note-card">
+<h4><span class="tag">FR</span> Criza moralului în Vest</h4>
+<p class="lead">1917 nu este un an simplu nici pentru Antantă.</p>
+<ul>
+<li>Pe Frontul de Vest, ofensivele costisitoare și rezultatele slabe alimentează oboseala soldaților.</li>
+<li>În armata franceză apar forme de refuz al atacurilor inutile, după eșecuri și pierderi repetate.</li>
+<li>Comandanții înțeleg tot mai clar că moralul soldaților este o resursă strategică, nu doar o problemă disciplinară.</li>
+</ul>
+</section>
+<section class="note-card">
+<h4><span class="tag">IT</span> Caporetto</h4>
+<p class="lead">Bătălia de la Caporetto este una dintre cele mai grele înfrângeri italiene din timpul războiului.</p>
+<ul>
+<li>Italia suferă o înfrângere grea în fața forțelor austro-germane.</li>
+<li>Retragerea italiană arată cât de vulnerabil poate deveni un front atunci când moralul, aprovizionarea și comanda cedează în același timp.</li>
+<li>Cu sprijin aliat, Italia își stabilizează apoi apărarea pe linia Piave.</li>
+</ul>
+</section>
+<section class="note-card full"><h4><span class="tag">$</span> Interesul economic al SUA</h4><p class="lead">Înainte de 1917, Statele Unite erau oficial neutre, dar economia americană ajunsese tot mai legată de Antantă.</p><ul><li>Exporturile, creditele și împrumuturile americane mergeau în mare parte spre Marea Britanie și Franța. De aceea, victoria Antantei devenea importantă și pentru recuperarea banilor investiți.</li><li>Războiul submarin total declanșat de Germania amenința transporturile maritime, comerțul și siguranța navelor aflate pe Atlantic.</li><li>Scufundarea navelor și pierderea de vieți omenești au făcut ca neutralitatea să fie tot mai greu de susținut în fața opiniei publice americane.</li><li>Telegrama Zimmermann a transformat tensiunea diplomatică într-o problemă de securitate națională, deoarece Germania propunea Mexicului o alianță împotriva Statelor Unite.</li><li>Intrarea SUA în război trebuie înțeleasă ca rezultat al mai multor factori: interese economice, protejarea comerțului maritim, reacția față de Germania și apropierea politică de Antantă.</li></ul><div class="callout">Ideea centrală: SUA nu schimbă imediat situația de pe front, dar schimbă calculul strategic. Germania înțelege că, într-un război lung, resursele Antantei vor deveni tot mai mari.</div></section>
+</div>
+</div>
+</article>
+<article class="year-card" id="anul-1918">
+<div class="year-badge">1918</div>
+<div class="year-content">
+<div class="year-title">
+<h3>Anul Victoriei</h3>
+<p>În 1918, Germania încearcă să câștige înainte ca forța americană să devină decisivă. Ofensiva germană eșuează, Antanta trece la contraofensivă, aliații Germaniei capitulează, iar imperiile multinaționale se prăbușesc.</p>
+</div>
+<div class="content-grid">
+<section class="note-card">
+<h4><span class="tag">1</span> Comandament unic</h4>
+<p class="lead">Antanta înțelege că războiul modern cere coordonare mai bună.</p>
+<ul>
+<li>Pe Frontul de Vest, Antanta acceptă un comandament unic.</li>
+<li>Acesta este condus de mareșalul francez Ferdinand Foch.</li>
+<li>Un comandament unic permite reacții mai rapide și evită fragmentarea deciziilor între francezi, britanici și americani.</li>
+</ul>
+</section>
+<section class="note-card">
+<h4><span class="tag">2</span> Ofensiva germană finală</h4>
+<p class="lead">Germania are o ultimă fereastră de oportunitate după ieșirea Rusiei din război.</p>
+<ul>
+<li>Trupe germane sunt mutate din Est spre Vest după pacea cu Rusia.</li>
+<li>Între martie și vara lui 1918, Germania lansează o serie de ofensive pentru a rupe frontul înainte ca americanii să ajungă în număr foarte mare.</li>
+<li>Ofensivele obțin inițial înaintări importante, dar nu distrug armata Antantei și consumă ultimele rezerve germane.</li>
+<li>A doua bătălie de pe Marna marchează oprirea elanului german.</li>
+</ul>
+</section>
+<section class="note-card">
+<h4><span class="tag">3</span> Contraofensiva Antantei</h4>
+<p class="lead">După epuizarea atacului german, Antanta trece la ofensivă.</p>
+<ul>
+<li>Superioritatea materială a Antantei devine tot mai vizibilă: artilerie, tancuri, avioane, transporturi, muniție și trupe proaspete.</li>
+<li>Germanii se retrag spre liniile defensive, inclusiv spre sistemul cunoscut ca linia Hindenburg/Siegfried.</li>
+<li>Retragerea nu înseamnă imediat prăbușire militară totală, dar arată că Germania nu mai poate reveni la inițiativa strategică.</li>
+</ul>
+</section>
+<section class="note-card">
+<h4><span class="tag">4</span> Aliații Germaniei capitulează</h4>
+<p class="lead">Germania nu cade singură; mai întâi se rupe sistemul alianței sale.</p>
+<ul>
+<li>29 septembrie: Bulgaria cere armistițiu, după ofensiva Antantei în Balcani.</li>
+<li>30 octombrie: Imperiul Otoman capitulează, după presiuni militare și epuizare internă.</li>
+<li>3 noiembrie: Austro-Ungaria semnează armistițiul, în timp ce imperiul se destramă național.</li>
+</ul>
+</section>
+<section class="note-card full">
+<h4><span class="tag">5</span> Cascada Tronurilor</h4>
+<p class="lead">„Cascada Tronurilor” înseamnă prăbușirea rapidă a vechilor monarhii imperiale sub presiunea războiului, a revoluțiilor și a principiului naționalităților.</p>
+<ul>
+<li>În Europa Centrală și de Est, popoarele aflate în imperii multinaționale cer autodeterminare și state proprii.</li>
+<li>Proiectele de reformă federală, trialistă sau confederală apar prea târziu pentru a salva Austro-Ungaria.</li>
+<li>Cehi, slovaci, polonezi, români, sloveni, croați și sârbi urmăresc formule politice noi, dincolo de vechea ordine imperială.</li>
+<li>Austro-Ungaria se destramă, iar harta Europei de Est va fi refăcută după război.</li>
+</ul>
+<div class="memory-line">Războiul nu schimbă doar frontierele; schimbă principiul de legitimitate: de la dinastie la națiune.</div>
+</section>
+<section class="note-card full">
+<h4><span class="tag">6</span> Revolte și capitulare</h4>
+<p class="lead">Înfrângerea Germaniei este militară, economică și politică în același timp.</p>
+<ul>
+<li>Blocada și lipsurile afectează populația civilă.</li>
+<li>În armată și marină crește sentimentul că războiul nu mai poate fi câștigat.</li>
+<li>Izbucnesc revolte ale marinarilor și mișcări ale muncitorilor în orașe.</li>
+<li>Împăratul Wilhelm al II-lea abdică, iar Germania devine republică.</li>
+<li>La <strong>11 noiembrie 1918</strong>, Germania semnează armistițiul.</li>
+</ul>
+<div class="callout">Ideea centrală: înfrângerea Germaniei nu vine dintr-o singură bătălie, ci dintr-o combinație de uzură militară, superioritatea resurselor Antantei, intrarea SUA, prăbușirea aliaților și revoluțiile interne.</div>
+</section>
+</div>
+</div>
+</article>
+</div>
+</section>
+<section class="panel" id="sinteza"><div class="panel-header"><h2>Cronologie finală: date-cheie</h2><p class="panel-note">Reperele de mai jos pot fi folosite la recapitulare, fixarea cronologiei și verificarea relațiilor cauză–efect.</p></div><div class="date-grid"><article class="date-card"><strong>28 iulie 1914</strong><span>Austro-Ungaria declară război Serbiei. Criza locală balcanică începe să se transforme într-un război european.</span></article><article class="date-card"><strong>1–4 august 1914</strong><span>Germania declară război Rusiei, apoi Franței; invadează Belgia, iar Marea Britanie intră în război împotriva Germaniei.</span></article><article class="date-card"><strong>26–30 august 1914</strong><span>Germania învinge Rusia la Tannenberg. Victoria salvează Prusia Orientală, dar nu anulează problema germană a războiului pe două fronturi.</span></article><article class="date-card"><strong>5–12 septembrie 1914</strong><span>Prima bătălie de pe Marna oprește înaintarea germană spre Paris. Eșecul acestei ofensive înseamnă sfârșitul speranței germane de victorie rapidă în Vest.</span></article><article class="date-card"><strong>octombrie–noiembrie 1914</strong><span>Bătălia Flandrei și „cursa spre mare” stabilizează frontul vestic. Tranșeele devin simbolul războiului de poziții.</span></article><article class="date-card"><strong>25 decembrie 1914</strong><span>Armistițiul de Crăciun arată contrastul dintre viața soldaților din tranșee și logica politică a războiului total.</span></article><article class="date-card"><strong>22 aprilie 1915</strong><span>La Ypres, gazele toxice sunt folosite pe scară largă. Războiul capătă o dimensiune tehnologică și psihologică tot mai dură.</span></article><article class="date-card"><strong>25 aprilie 1915</strong><span>Începe debarcarea de la Gallipoli. Antanta încearcă să forțeze Dardanelele și să scoată Imperiul Otoman din război.</span></article><article class="date-card"><strong>7 mai 1915</strong><span>Scufundarea vasului Lusitania crește ostilitatea opiniei publice americane față de Germania, deși SUA nu intră încă în război.</span></article><article class="date-card"><strong>23 mai 1915</strong><span>Italia declară război Austro-Ungariei. Se deschide Frontul Italian, dificil din cauza Alpilor, aprovizionării și pozițiilor fortificate.</span></article><article class="date-card"><strong>14 octombrie 1915</strong><span>Bulgaria intră activ împotriva Serbiei, de partea Puterilor Centrale. Serbia este atacată din mai multe direcții și se retrage dramatic.</span></article><article class="date-card"><strong>21 februarie–18 decembrie 1916</strong><span>Bătălia de la Verdun devine simbolul războiului de uzură: atacuri repetate, artilerie masivă, pierderi enorme și câștiguri teritoriale limitate.</span></article><article class="date-card"><strong>31 mai–1 iunie 1916</strong><span>Bătălia navală de la Iutlanda arată că Germania poate provoca pierderi Marii Britanii, dar nu poate rupe dominația navală britanică.</span></article><article class="date-card"><strong>4 iunie–20 septembrie 1916</strong><span>Ofensiva Brusilov lovește grav Austro-Ungaria. Este unul dintre cele mai mari succese rusești, dar consumă și resursele Rusiei.</span></article><article class="date-card"><strong>1 iulie–18 noiembrie 1916</strong><span>Bătălia de pe Somme arată costurile uriașe ale ofensivelor pe Frontul de Vest. Tancurile apar pentru prima dată în luptă în septembrie.</span></article><article class="date-card"><strong>27 august 1916</strong><span>România intră în război de partea Antantei. Obiectivul principal este unirea Transilvaniei cu Regatul României.</span></article><article class="date-card"><strong>6 decembrie 1916</strong><span>Bucureștiul este ocupat de Puterile Centrale. Guvernul și armata română se retrag în Moldova, unde frontul va fi reorganizat.</span></article><article class="date-card"><strong>1 februarie 1917</strong><span>Germania reia războiul submarin total. Scopul este sufocarea economică a Marii Britanii, dar riscul este atragerea SUA în război.</span></article><article class="date-card"><strong>2/15 martie 1917</strong><span>Țarul Nicolae al II-lea abdică. Rusia intră într-o etapă de instabilitate revoluționară și de slăbire a frontului.</span></article><article class="date-card"><strong>6 aprilie 1917</strong><span>Statele Unite declară război Germaniei. Inițial efectul militar este redus, dar pe termen lung resursele americane schimbă balanța.</span></article><article class="date-card"><strong>24 octombrie–19 noiembrie 1917</strong><span>Bătălia de la Caporetto produce o înfrângere grea Italiei. Frontul italian este salvat prin retragere, reorganizare și sprijin aliat.</span></article><article class="date-card"><strong>25 octombrie / 7 noiembrie 1917</strong><span>Bolșevicii preiau puterea în Rusia. Noul regim urmărește ieșirea din război, ceea ce schimbă radical situația Frontului de Est.</span></article><article class="date-card"><strong>3 martie 1918</strong><span>Pacea de la Brest-Litovsk scoate Rusia din război. Germania poate muta trupe spre Vest, dar trebuie să controleze teritorii întinse în Est.</span></article><article class="date-card"><strong>21 martie 1918</strong><span>Începe ofensiva germană de primăvară. Germania încearcă să câștige înainte ca trupele americane să devină decisive.</span></article><article class="date-card"><strong>15 iulie–6 august 1918</strong><span>A doua bătălie de pe Marna oprește elanul german. După acest moment, Germania pierde inițiativa strategică.</span></article><article class="date-card"><strong>8 august 1918</strong><span>Începe ofensiva de „O sută de zile” a Antantei. Armata germană este împinsă înapoi constant.</span></article><article class="date-card"><strong>15–29 septembrie 1918</strong><span>Ofensiva de pe Vardar rupe Frontul Macedonean. Bulgaria cere armistițiu la 29 septembrie.</span></article><article class="date-card"><strong>30 octombrie 1918</strong><span>Imperiul Otoman semnează Armistițiul de la Mudros. Puterile Centrale pierd legătura strategică orientală.</span></article><article class="date-card"><strong>3 noiembrie 1918</strong><span>Austro-Ungaria semnează armistițiul. În același timp, imperiul se destramă sub presiunea mișcărilor naționale.</span></article><article class="date-card"><strong>9 noiembrie 1918</strong><span>Wilhelm al II-lea abdică, iar Germania devine republică. Înfrângerea militară se transformă în schimbare politică internă.</span></article><article class="date-card"><strong>11 noiembrie 1918</strong><span>Germania semnează armistițiul. Luptele se opresc pe Frontul de Vest, dar pacea juridică va fi stabilită prin tratate ulterioare.</span></article><article class="date-card"><strong>18 ianuarie 1919</strong><span>Se deschide Conferința de Pace de la Paris. Învingătorii discută noua ordine europeană și condițiile impuse statelor învinse.</span></article><article class="date-card"><strong>28 iunie 1919</strong><span>Tratatul de la Versailles este semnat exact la cinci ani după asasinatul de la Sarajevo. Germania primește cele mai cunoscute condiții de pace.</span></article><article class="date-card"><strong>1919–1920</strong><span>Tratatele de la Saint-Germain, Neuilly, Trianon și Sèvres reglementează soarta Austriei, Bulgariei, Ungariei și Imperiului Otoman. Războiul se încheie militar în 1918, dar politic continuă prin tratate.</span></article></div></section>
+<footer class="footer">
       Material: „Primul Război Mondial – desfășurarea conflictului” · Titlu fereastră: primul-razboi-mondial-desfasurarea-conflictului
     </footer>
-  </main>
+</main>
 </body>
 </html>

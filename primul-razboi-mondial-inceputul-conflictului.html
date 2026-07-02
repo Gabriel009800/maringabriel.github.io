@@ -17,8 +17,11 @@
       --accent-soft: #f0e4d4;
       --line: rgba(91, 62, 36, 0.18);
       --line-strong: rgba(91, 62, 36, 0.34);
-      --shadow: 0 14px 36px rgba(69, 46, 25, 0.08);
-      --shadow-small: 0 8px 20px rgba(69, 46, 25, 0.045);
+      --outer-dark: #241208;
+      --outer-mid: #4a2a18;
+      --outer-warm: #7a4b2b;
+      --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+      --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
     }
 
     * { box-sizing: border-box; }
@@ -27,14 +30,32 @@
 
     body {
       margin: 0;
+      min-height: 100vh;
       background:
-        radial-gradient(circle at top left, rgba(189, 143, 83, 0.22), transparent 34%),
-        linear-gradient(180deg, #f7efe4 0%, var(--bg) 45%, #efe2d0 100%);
+        radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+        radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+        radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+        radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+        linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+      background-attachment: fixed;
       color: var(--ink);
       font-family: Georgia, "Times New Roman", serif;
     }
 
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+    }
+
     .page {
+      position: relative;
+      z-index: 1;
       width: min(1180px, calc(100% - 32px));
       margin: 0 auto;
       padding: 34px 0 70px;
@@ -537,7 +558,7 @@
     </div>
 
     <section class="hero">
-      <p class="eyebrow">Primul Război Mondial</p>
+  
       <h1>Începutul conflictului</h1>
       <p class="subtitle">
         Primul Război Mondial nu a izbucnit numai din cauza unui atentat. Asasinatul de la Sarajevo, din <strong>28 iunie 1914</strong>, a fost <strong>pretextul</strong> imediat, dar Europa se afla deja într-o stare de tensiune acumulată prin naționalism, imperialism, militarism, rivalități economice, crize diplomatice repetate și existența unor blocuri politico-militare opuse.
