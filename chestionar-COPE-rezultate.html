@@ -228,6 +228,15 @@ tr:last-child td{border-bottom:0}
   border-color:var(--accent-2);
   background:#fff8ef;
 }
+.result-actions{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.mini-btn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 10px;font-size:.78rem;font-weight:850;cursor:pointer;color:var(--accent)}
+.mini-btn.danger{color:var(--danger)}
+.archived-badge{display:inline-flex;margin-top:6px;padding:4px 8px;border-radius:999px;background:#f1eee9;color:var(--muted);font-size:.76rem;font-weight:850}
+.prose p{text-align:justify}
+.metric-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.metric{border:1px solid var(--line);border-radius:18px;background:#fff;padding:14px}
+.metric strong{display:block;font-size:1.35rem;color:var(--accent);font-family:Georgia,serif}
+@media(max-width:900px){.metric-grid{grid-template-columns:1fr 1fr}}
 .score-card{
   border:1px solid var(--line);
   border-radius:20px;
@@ -286,7 +295,7 @@ tr:last-child td{border-bottom:0}
     <section id="passwordShell" class="password-shell">
       <div class="lock-card">
         <p class="kicker">Acces rezultate</p>
-        <h1 style="font-size:clamp(2rem,4.2vw,3.2rem)">chestionar-COPE-rezultate</h1>
+        <h1 style="font-size:clamp(2rem,4.2vw,3.2rem)">Chestionar-COPE-Rezultate</h1>
         <p class="muted">Introduceți parola pentru vizualizarea scorării și interpretării.</p>
         <div class="section">
           <label for="passwordInput">Parolă</label>
@@ -313,15 +322,15 @@ tr:last-child td{border-bottom:0}
       <section class="section card no-print">
         <p class="kicker">Sincronizare gratuită</p>
         <h2>Preia automat rezultatele din Google Sheets</h2>
-        <p class="muted">Completează URL-ul aplicației Google Apps Script și cheia de administrator. Cheia de administrator nu se pune în GitHub; o introduci doar aici, în browserul tău.</p>
+        <p class="muted">Completează URL-ul aplicației Google Apps Script și cheia de administrator</p>
         <div class="sync-grid section">
           <div>
             <label for="remoteUrlInput">URL Google Apps Script</label>
-            <input id="remoteUrlInput" type="text" placeholder="https://script.google.com/macros/s/.../exec" />
+            <input id="remoteUrlInput" type="text" value="https://script.google.com/macros/s/AKfycbzzDYYMT_oetnoFAyNEShAWEeHrLxiiT9S9iEhP_kSs1rcHsZk_CkwdFN25UFyfGcmkBA/exec" placeholder="https://script.google.com/macros/s/.../exec" />
           </div>
           <div>
             <label for="adminKeyInput">Cheie admin</label>
-            <input id="adminKeyInput" type="password" placeholder="cheia ta privată" />
+            <input id="adminKeyInput" type="password" placeholder="introduceți încă o dată parola" />
           </div>
           <button class="btn" id="syncRemoteBtn" type="button">Sincronizează</button>
         </div>
@@ -342,6 +351,7 @@ tr:last-child td{border-bottom:0}
         <aside class="sidebar card no-print">
           <h2>Rezultate salvate</h2>
           <input id="searchBox" type="text" placeholder="Caută după cod client..." />
+          <label style="display:flex;gap:8px;align-items:center;margin-top:12px;font-weight:650"><input id="showArchived" type="checkbox" /> Arată arhivatele</label>
           <div id="resultList" class="result-list section"></div>
         </aside>
 
@@ -744,6 +754,25 @@ function scoreLine(score) {
   return `<span class="pill ${lvl.cls}">${lvl.label}</span>`;
 }
 
+
+function clamp(n, min, max) { return Math.max(min, Math.min(max, n)); }
+function normStats(scaleId, avg) {
+  const n = NORMS[scaleId];
+  if (!n || !Number.isFinite(avg)) return null;
+  const z = (avg - n.m) / n.sd;
+  const t = 50 + 10 * z;
+  const percentile = Math.round(100 / (1 + Math.exp(-1.702 * z)));
+  return {z, t, percentile, m:n.m, sd:n.sd, alpha:n.alpha};
+}
+function zInterpret(z) {
+  if (z >= 1) return "peste media eșantionului românesc";
+  if (z <= -1) return "sub media eșantionului românesc";
+  return "în zona medie a eșantionului românesc";
+}
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[ch] || ch));
+}
+
 function getScale(sub, id) {
   return sub.scaleScores?.[id] || {};
 }
@@ -752,11 +781,10 @@ function getFactor(sub, id) {
 }
 
 function normCell(scaleId, avg) {
-  const n = NORMS[scaleId];
-  if (!n) return "—";
-  const z = (avg - n.m) / n.sd;
-  const zText = `${z >= 0 ? "+" : ""}${z.toFixed(2)}`;
-  return `M=${n.m.toFixed(2)}; SD=${n.sd.toFixed(2)}; z≈${zText}; α=${n.alpha.toFixed(2)}`;
+  const st = normStats(scaleId, avg);
+  if (!st) return "—";
+  const zText = `${st.z >= 0 ? "+" : ""}${st.z.toFixed(2)}`;
+  return `M=${st.m.toFixed(2)}; SD=${st.sd.toFixed(2)}; z≈${zText}; T≈${st.t.toFixed(0)}; percentilă≈${st.percentile}; α=${st.alpha.toFixed(2)} — ${zInterpret(st.z)}`;
 }
 
 function factorComment(factorId, avg) {
@@ -785,20 +813,53 @@ function factorComment(factorId, avg) {
 
 function renderList() {
   const q = $("searchBox").value.trim().toLowerCase();
-  const list = allResults.filter(r => (r.clientCode || "").toLowerCase().includes(q));
+  const showArchived = $("showArchived")?.checked;
+  const list = allResults.filter(r => {
+    const matches = (r.clientCode || "").toLowerCase().includes(q);
+    const archivedOk = showArchived ? true : !r.archived;
+    return matches && archivedOk;
+  });
   if (!list.length) {
-    $("resultList").innerHTML = `<div class="notice">Nu există rezultate COPE salvate sau importate.</div>`;
+    $("resultList").innerHTML = `<div class="notice">Nu există rezultate COPE salvate${showArchived ? "" : " ne-arhivate"} sau importate.</div>`;
     return;
   }
   $("resultList").innerHTML = list.map(r => `
-    <button class="result-row ${r.id === selectedId ? "active" : ""}" data-id="${r.id}">
-      <strong>${r.clientCode || "Fără cod"}</strong><br>
-      <small>${r.testDate || "fără dată"} · ${formatDate(r.createdAt)}</small>
-    </button>
+    <div class="result-row ${r.id === selectedId ? "active" : ""}" data-id="${escapeHtml(r.id)}">
+      <strong>${escapeHtml(r.clientCode || "Fără cod")}</strong><br>
+      <small>${escapeHtml(r.testDate || "fără dată")} · ${escapeHtml(formatDate(r.createdAt))}</small>
+      ${r.archived ? `<span class="archived-badge">Arhivat</span>` : ""}
+      <div class="result-actions">
+        <button class="mini-btn open-result" type="button" data-id="${escapeHtml(r.id)}">Deschide</button>
+        <button class="mini-btn archive-result" type="button" data-id="${escapeHtml(r.id)}">${r.archived ? "Dezarhivează" : "Arhivează"}</button>
+        <button class="mini-btn danger delete-result" type="button" data-id="${escapeHtml(r.id)}">Șterge</button>
+      </div>
+    </div>
   `).join("");
-  document.querySelectorAll(".result-row").forEach(btn => {
-    btn.addEventListener("click", () => selectResult(btn.dataset.id));
-  });
+  document.querySelectorAll(".open-result").forEach(btn => btn.addEventListener("click", e => { e.stopPropagation(); selectResult(btn.dataset.id); }));
+  document.querySelectorAll(".archive-result").forEach(btn => btn.addEventListener("click", e => { e.stopPropagation(); toggleArchive(btn.dataset.id); }));
+  document.querySelectorAll(".delete-result").forEach(btn => btn.addEventListener("click", e => { e.stopPropagation(); deleteResult(btn.dataset.id); }));
+  document.querySelectorAll(".result-row").forEach(row => row.addEventListener("click", () => selectResult(row.dataset.id)));
+}
+
+function persistAllResults() {
+  writeStore(allResults);
+}
+function toggleArchive(id) {
+  const item = allResults.find(r => r.id === id);
+  if (!item) return;
+  item.archived = !item.archived;
+  persistAllResults();
+  if (item.archived && selectedId === id && !$("showArchived")?.checked) selectedId = null;
+  loadResults();
+}
+function deleteResult(id) {
+  const item = allResults.find(r => r.id === id);
+  if (!item) return;
+  if (!confirm(`Ștergi definitiv din acest browser rezultatul pentru ${item.clientCode || "client fără cod"}?`)) return;
+  allResults = allResults.filter(r => r.id !== id);
+  persistAllResults();
+  if (selectedId === id) selectedId = null;
+  loadResults();
 }
 
 function renderScaleTable(sub) {
@@ -871,18 +932,54 @@ function renderIndependent(sub) {
 
 function renderHighlights(sub) {
   const scaleArray = Object.values(sub.scaleScores || {}).sort((a,b)=>b.average-a.average);
-  const top = scaleArray.slice(0,3).map(s => `${s.name} (${s.average.toFixed(2)})`).join(", ");
+  const top = scaleArray.slice(0,3);
+  const low = scaleArray.slice(-3).reverse();
   const flags = [];
   const avoid = getFactor(sub, "avoidant");
   const substance = getScale(sub, "comportamente_nocive");
   const denial = getScale(sub, "negare");
-  if (avoid.average >= 2.75) flags.push("coping evitant peste zona moderată");
-  if (denial.average >= 2.75) flags.push("negare ridicată");
-  if (substance.average >= 2.25) flags.push("utilizare raportată a alcoolului/drogurilor/fumatului ca strategie de coping");
+  const problem = getFactor(sub, "problem_focused");
+  const emotion = getFactor(sub, "emotion_focused");
+  const support = getFactor(sub, "social_support");
+  if ((avoid.average || 0) >= 2.75) flags.push("coping evitant peste zona moderată");
+  if ((denial.average || 0) >= 2.75) flags.push("negare ridicată");
+  if ((substance.average || 0) >= 2.25) flags.push("utilizare raportată a alcoolului/drogurilor/fumatului ca strategie de coping");
+  const adaptiveIndex = (((problem.average || 0) + (emotion.average || 0) + (support.average || 0)) / 3) - (avoid.average || 0);
+  const dispersion = scaleArray.length ? Math.max(...scaleArray.map(s=>s.average)) - Math.min(...scaleArray.map(s=>s.average)) : 0;
   return `
-    <div class="summary-box">
-      <p><strong>Scale dominante:</strong> ${top || "—"}.</p>
+    <div class="summary-box prose">
+      <div class="metric-grid">
+        <div class="metric"><small>Indice adaptativ orientativ</small><strong>${adaptiveIndex.toFixed(2)}</strong><small>medie problemă/emoții/suport minus evitare</small></div>
+        <div class="metric"><small>Diferență între scale</small><strong>${dispersion.toFixed(2)}</strong><small>amplitudine între cea mai mare și cea mai mică medie</small></div>
+        <div class="metric"><small>Scală maximă</small><strong>${top[0]?.average.toFixed(2) || "—"}</strong><small>${escapeHtml(top[0]?.name || "—")}</small></div>
+        <div class="metric"><small>Scală minimă</small><strong>${low[0]?.average.toFixed(2) || "—"}</strong><small>${escapeHtml(low[0]?.name || "—")}</small></div>
+      </div>
+      <p><strong>Scale dominante:</strong> ${top.map(s => `${escapeHtml(s.name)} (${s.average.toFixed(2)}/4; ${s.sum}/16)`).join(", ") || "—"}.</p>
+      <p><strong>Scale reduse:</strong> ${low.map(s => `${escapeHtml(s.name)} (${s.average.toFixed(2)}/4; ${s.sum}/16)`).join(", ") || "—"}.</p>
       <p><strong>Puncte de atenție:</strong> ${flags.length ? flags.join("; ") : "nu apar semnale automate majore pe criteriile setate în această pagină"}.</p>
+    </div>
+  `;
+}
+
+function professionalInterpretation(sub) {
+  const factors = FACTORS.map(f => ({...f, score:getFactor(sub, f.id)})).sort((a,b)=>(b.score.average||0)-(a.score.average||0));
+  const scales = Object.values(sub.scaleScores || {}).sort((a,b)=>(b.average||0)-(a.average||0));
+  const topFactor = factors[0];
+  const avoid = getFactor(sub,"avoidant");
+  const problem = getFactor(sub,"problem_focused");
+  const support = getFactor(sub,"social_support");
+  const emotion = getFactor(sub,"emotion_focused");
+  const topScales = scales.slice(0,5).map(s=>`${escapeHtml(s.name.toLowerCase())} (${s.average.toFixed(2)})`).join(", ");
+  const riskText = (avoid.average||0) >= 3.25 ? "Profilul include un nivel ridicat al strategiilor evitante; clinic, acest rezultat merită explorat prin exemple concrete, deoarece evitarea poate reduce disconfortul pe termen scurt, dar poate menține problema pe termen lung." : (avoid.average||0) >= 2.5 ? "Strategiile evitante apar la nivel moderat; se recomandă clarificarea situațiilor în care persoana amână confruntarea cu problema și a costurilor funcționale ale acestei amânări." : "Strategiile evitante sunt reduse, ceea ce sugerează o tendință mai directă de confruntare a stresorilor.";
+  const resources = [];
+  if ((problem.average||0) >= 2.75) resources.push("orientare spre acțiune și planificare");
+  if ((support.average||0) >= 2.75) resources.push("disponibilitate de a utiliza sprijinul social");
+  if ((emotion.average||0) >= 2.75) resources.push("capacitate de acceptare, reinterpretare și reglare emoțională");
+  return `
+    <div class="prose">
+      <p>Rezultatul indică un profil în care factorul cel mai pronunțat este <strong>${escapeHtml(topFactor.name.toLowerCase())}</strong>, cu media ${topFactor.score.average.toFixed(2)}/4 și scor brut ${topFactor.score.sum}/${topFactor.score.max}. Cele mai prezente mecanisme specifice sunt: ${topScales}. Acest pattern trebuie citit ca preferință relativă de coping, nu ca diagnostic.</p>
+      <p>${riskText}</p>
+      <p><strong>Resurse clinice probabile:</strong> ${resources.length ? resources.join(", ") : "nu se desprinde automat o resursă dominantă; poate fi utilă investigarea strategiilor care au funcționat anterior"}. <strong>Direcții de explorare:</strong> exemple recente de stres, controlabilitatea situațiilor, costurile evitării, calitatea rețelei de sprijin și diferența dintre ceea ce persoana declară că face în general și ce face într-un episod concret.</p>
     </div>
   `;
 }
@@ -940,8 +1037,8 @@ function selectResult(id) {
     </section>
 
     <section class="section card">
-      <h2>Formulare orientativă pentru raport</h2>
-      <p>Profilul COPE indică utilizarea predominantă a următoarelor strategii: ${Object.values(sub.scaleScores).sort((a,b)=>b.average-a.average).slice(0,3).map(s=>s.name.toLowerCase()).join(", ")}. Factorul de coping focalizat pe problemă are media ${getFactor(sub,"problem_focused").average.toFixed(2)}, factorul focalizat pe emoții are media ${getFactor(sub,"emotion_focused").average.toFixed(2)}, factorul suport social are media ${getFactor(sub,"social_support").average.toFixed(2)}, iar copingul evitant are media ${getFactor(sub,"avoidant").average.toFixed(2)}. Interpretarea trebuie corelată cu situațiile de viață raportate, nivelul de stres, resursele disponibile și funcționarea curentă.</p>
+      <h2>Formulare profesională pentru raport</h2>
+      ${professionalInterpretation(sub)}
     </section>
   `;
 }
@@ -1008,7 +1105,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   $("searchBox").addEventListener("input", renderList);
-  const savedEndpoint = localStorage.getItem("copeRemoteEndpoint_v1") || window.COPE_REMOTE_ENDPOINT || "";
+  if ($("showArchived")) $("showArchived").addEventListener("change", renderList);
+  const DEFAULT_ENDPOINT = "https://script.google.com/macros/s/AKfycbzzDYYMT_oetnoFAyNEShAWEeHrLxiiT9S9iEhP_kSs1rcHsZk_CkwdFN25UFyfGcmkBA/exec";
+  const savedEndpoint = localStorage.getItem("copeRemoteEndpoint_v1") || window.COPE_REMOTE_ENDPOINT || window.COPE_WEB_APP_URL || window.COPE_APPS_SCRIPT_URL || DEFAULT_ENDPOINT;
   if ($("remoteUrlInput")) $("remoteUrlInput").value = savedEndpoint;
   if ($("syncRemoteBtn")) $("syncRemoteBtn").addEventListener("click", syncFromGoogleSheets);
 

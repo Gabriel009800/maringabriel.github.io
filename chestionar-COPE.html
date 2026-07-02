@@ -96,6 +96,25 @@ p{margin:0 0 12px}
   border-radius:18px;
   color:#46382d;
 }
+
+.instruction-text{
+  text-align:justify;
+  text-justify:inter-word;
+}
+
+.instruction-text p{
+  margin:0 0 12px;
+}
+
+.instruction-text p:last-child{
+  margin-bottom:0;
+}
+
+.scale-response{
+  text-align:justify;
+  text-justify:inter-word;
+  margin-top:14px;
+}
 label{font-weight:750}
 input[type="text"], input[type="number"], input[type="date"], input[type="password"], textarea, select{
   width:100%;
@@ -304,8 +323,8 @@ tr:last-child td{border-bottom:0}
 
     <section class="section notice">
       <h3>Instructaj</h3>
-      <p id="instruction"></p>
-      <p><strong>Scala de răspuns:</strong> 1 = De obicei nu fac asta deloc; 2 = De obicei fac asta în mică măsură; 3 = De obicei fac asta în măsură medie; 4 = De obicei fac asta în mare măsură.</p>
+      <div id="instruction" class="instruction-text"></div>
+      <p class="scale-response"><strong>Scala de răspuns:</strong> 1 = De obicei nu fac asta deloc; 2 = De obicei fac asta în mică măsură; 3 = De obicei fac asta în măsură medie; 4 = De obicei fac asta în mare măsură.</p>
     </section>
 
     <form id="copeForm" class="section">
@@ -791,7 +810,15 @@ const INDEPENDENT = [
 ];
 const STORAGE_KEY = "copeSubmissions_v1";
 const DRAFT_KEY = "copeDraft_v1";
-const INSTRUCTION = "Instructaj: Ne interesează cum reacţionează oamenii când se confruntă cu evenimente dificile şi stresante în viaţă. Există multe modalităţi de a încerca să faci faţă stresului. Acest chestionar vă solicită să indicaţi ce faceţi şi simţiţi, în general, când trăiţi experienţa unor evenimente stresante. Evident, diferitele evenimente duc la reacţii diferite, dar gândiţi-vă la ce faceţi de obicei când sunteţi sub stres deosebit. Apoi răspundeţi la fiecare din itemii următori, încercuind un număr pe formularul de răspuns pentru fiecare afirmaţie, folosind posibilităţile de alegere enunţate mai jos. Încercaţi, vă rugăm, să răspundeţi la fiecare item, separat de oricare altul. Alegeţi-vă răspunsurile cu grijă, şi faceţi răspunsurile dumneavoastră cât mai reale/adevărate. Vă rugăm să răspundeţi la fiecare item. Nu există răspunsuri ,,corecte” sau ,,greşite”, aşa că alegeţi cel mai exact răspuns pentru dumneavoastră, nu ceea ce credeţi că ,,majoritatea oamenilor” ar spune sau ar face. Indicaţi ce faceţi dumneavoastră de obicei când trăiţi experienţa unui eveniment stresant, având următoarele modalităţi de răspuns:";
+const INSTRUCTION = [
+  "Ne interesează cum reacţionează oamenii când se confruntă cu evenimente dificile şi stresante în viaţă.",
+  "Există multe modalităţi de a încerca să faci faţă stresului. Acest chestionar vă solicită să indicaţi ce faceţi şi simţiţi, în general, când trăiţi experienţa unor evenimente stresante.",
+  "Evident, diferitele evenimente duc la reacţii diferite, dar gândiţi-vă la ce faceţi de obicei când sunteţi sub stres deosebit.",
+  "Apoi răspundeţi la fiecare din itemii următori, încercuind un număr pe formularul de răspuns pentru fiecare afirmaţie, folosind posibilităţile de alegere enunţate mai jos.",
+  "Încercaţi, vă rugăm, să răspundeţi la fiecare item, separat de oricare altul. Alegeţi-vă răspunsurile cu grijă, şi faceţi răspunsurile dumneavoastră cât mai reale/adevărate.",
+  "Vă rugăm să răspundeţi la fiecare item. Nu există răspunsuri ,,corecte” sau ,,greşite”, aşa că alegeţi cel mai exact răspuns pentru dumneavoastră, nu ceea ce credeţi că ,,majoritatea oamenilor” ar spune sau ar face.",
+  "Indicaţi ce faceţi dumneavoastră de obicei când trăiţi experienţa unui eveniment stresant, având următoarele modalităţi de răspuns:"
+];
 
 let lastSubmission = null;
 
@@ -805,7 +832,7 @@ function todayISO() {
 }
 
 function renderItems() {
-  $("instruction").textContent = INSTRUCTION.replace(/^Instructaj:\s*/i, "");
+  $("instruction").innerHTML = INSTRUCTION.map(text => `<p>${text}</p>`).join("");
   $("testDate").value = todayISO();
   const container = $("itemsContainer");
   container.innerHTML = ITEMS.map(item => `
@@ -1015,7 +1042,7 @@ async function sendSubmissionToGoogleSheets(submission) {
     });
 
     if (status) {
-      status.innerHTML = "<strong>Cererea POST a fost trimisă.</strong><br>Verifică în Apps Script → Executions: trebuie să apară <strong>doPost</strong>, apoi rezultatul trebuie să apară în Google Sheets.";
+      status.innerHTML = "<strong>Cererea POST a fost trimisă.</strong>";
     }
   } catch (err) {
     if (status) {
