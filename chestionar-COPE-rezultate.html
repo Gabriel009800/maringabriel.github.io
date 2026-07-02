@@ -1,1 +1,1031 @@
-a
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chestionar COPE - rezultate</title>
+  <style>
+:root{
+  --bg:#f6f3ef;
+  --panel:#fffaf4;
+  --card:#ffffff;
+  --ink:#202020;
+  --muted:#6f675d;
+  --line:#e6ded4;
+  --accent:#7a4e2d;
+  --accent-2:#b98250;
+  --accent-soft:#f1e3d4;
+  --good:#255f3f;
+  --warn:#8a5a00;
+  --danger:#9b2c2c;
+  --shadow:0 18px 50px rgba(74,52,33,.12);
+  --radius:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(184,130,80,.14), transparent 36rem),
+    linear-gradient(180deg,#fbf8f3 0%, var(--bg) 100%);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  line-height:1.55;
+}
+a{color:inherit}
+.page{
+  width:min(1120px, calc(100% - 36px));
+  margin:0 auto;
+  padding:34px 0 70px;
+}
+.hero{
+  background:linear-gradient(135deg,rgba(255,250,244,.92),rgba(241,227,212,.76));
+  border:1px solid var(--line);
+  border-radius:30px;
+  box-shadow:var(--shadow);
+  padding:34px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  width:360px;height:360px;border-radius:50%;
+  right:-140px;top:-190px;
+  background:rgba(122,78,45,.08);
+}
+.kicker{
+  color:var(--accent);
+  font-size:.82rem;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  margin:0 0 8px;
+}
+h1{
+  font-family: Georgia, "Times New Roman", serif;
+  font-size:clamp(2rem,5vw,4.4rem);
+  line-height:.98;
+  letter-spacing:-.05em;
+  margin:0 0 16px;
+}
+h2{
+  font-family: Georgia, "Times New Roman", serif;
+  font-size:clamp(1.35rem,2.2vw,2rem);
+  margin:0 0 12px;
+}
+h3{margin:0 0 8px;font-size:1.05rem}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.grid{display:grid;gap:18px}
+.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{
+  background:rgba(255,255,255,.92);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:0 10px 30px rgba(74,52,33,.07);
+  padding:22px;
+}
+.section{margin-top:22px}
+.notice{
+  background:#fff7ec;
+  border:1px solid #ead8c4;
+  border-left:6px solid var(--accent-2);
+  padding:16px 18px;
+  border-radius:18px;
+  color:#46382d;
+}
+label{font-weight:750}
+input[type="text"], input[type="number"], input[type="date"], input[type="password"], textarea, select{
+  width:100%;
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:13px 14px;
+  background:#fff;
+  font:inherit;
+  outline:none;
+  transition:.18s ease;
+}
+input:focus, textarea:focus, select:focus{
+  border-color:var(--accent-2);
+  box-shadow:0 0 0 4px rgba(184,130,80,.16);
+}
+textarea{min-height:92px;resize:vertical}
+.btn{
+  border:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border-radius:999px;
+  padding:12px 18px;
+  background:var(--accent);
+  color:white;
+  font-weight:850;
+  cursor:pointer;
+  text-decoration:none;
+  transition:.18s ease;
+  box-shadow:0 10px 18px rgba(122,78,45,.16);
+}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.03)}
+.btn.secondary{background:#fff;color:var(--accent);border:1px solid var(--line);box-shadow:none}
+.btn.soft{background:var(--accent-soft);color:#5b3920;box-shadow:none}
+.btn.danger{background:#9b2c2c}
+.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.progress-shell{
+  position:sticky;
+  top:0;
+  z-index:20;
+  padding:10px 0;
+  backdrop-filter:blur(18px);
+}
+.progress-card{
+  background:rgba(255,250,244,.88);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:8px 12px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  box-shadow:0 8px 24px rgba(74,52,33,.08);
+}
+.progress-bar{
+  height:10px;
+  flex:1;
+  border-radius:999px;
+  background:#eadfd3;
+  overflow:hidden;
+}
+.progress-bar span{
+  display:block;
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  border-radius:999px;
+}
+small{font-size:.84rem;color:var(--muted)}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px;background:#fff}
+table{width:100%;border-collapse:collapse;min-width:780px}
+th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:#fbf4ec;color:#563820;font-size:.86rem;text-transform:uppercase;letter-spacing:.06em}
+tr:last-child td{border-bottom:0}
+.pill{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 10px;border-radius:999px;
+  background:var(--accent-soft);color:#5b3920;
+  font-size:.84rem;font-weight:800;
+}
+.level-low{background:#edf6f1;color:#255f3f}
+.level-mid{background:#fff4db;color:#76510b}
+.level-high{background:#f7e6e3;color:#8a2b21}
+.hidden{display:none!important}
+.footer{
+  margin-top:26px;
+  color:var(--muted);
+  font-size:.9rem;
+}
+@media(max-width:760px){
+  .page{width:min(100% - 22px,1120px);padding-top:18px}
+  .hero{padding:24px;border-radius:24px}
+  .grid.two,.grid.three{grid-template-columns:1fr}
+  table{min-width:700px}
+}
+@media print{
+  body{background:white}
+  .no-print,.actions,.progress-shell,.password-shell{display:none!important}
+  .page{width:100%;padding:0}
+  .hero,.card{box-shadow:none}
+}
+
+.dashboard{
+  display:grid;
+  grid-template-columns:330px minmax(0,1fr);
+  gap:20px;
+  align-items:start;
+}
+.sidebar{
+  position:sticky;
+  top:16px;
+}
+.result-list{
+  display:grid;
+  gap:10px;
+  max-height:68vh;
+  overflow:auto;
+  padding-right:4px;
+}
+.result-row{
+  text-align:left;
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:17px;
+  padding:13px;
+  cursor:pointer;
+  font:inherit;
+}
+.result-row:hover,.result-row.active{
+  border-color:var(--accent-2);
+  background:#fff8ef;
+}
+.score-card{
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:#fff;
+  padding:18px;
+}
+.score-value{
+  font-family:Georgia,serif;
+  font-size:2.25rem;
+  color:var(--accent);
+  line-height:1;
+}
+.bar-shell{
+  height:10px;
+  background:#eadfd3;
+  border-radius:999px;
+  overflow:hidden;
+  margin:12px 0 4px;
+}
+.bar-shell span{
+  display:block;height:100%;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  border-radius:999px;
+}
+.summary-box{
+  border-left:6px solid var(--accent-2);
+  background:#fff7ec;
+  padding:16px;
+  border-radius:16px;
+}
+@media(max-width:950px){
+  .dashboard{grid-template-columns:1fr}
+  .sidebar{position:static}
+  .result-list{max-height:none}
+}
+
+.sync-grid{
+  display:grid;
+  grid-template-columns:1.4fr .9fr auto;
+  gap:12px;
+  align-items:end;
+}
+.sync-status{
+  margin-top:10px;
+  color:var(--muted);
+  font-size:.92rem;
+}
+@media(max-width:900px){
+  .sync-grid{grid-template-columns:1fr}
+}
+
+</style>
+</head>
+<body>
+  <main class="page">
+    <section id="passwordShell" class="password-shell">
+      <div class="lock-card">
+        <p class="kicker">Acces rezultate</p>
+        <h1 style="font-size:clamp(2rem,4.2vw,3.2rem)">chestionar-COPE-rezultate</h1>
+        <p class="muted">Introduceți parola pentru vizualizarea scorării și interpretării.</p>
+        <div class="section">
+          <label for="passwordInput">Parolă</label>
+          <input id="passwordInput" type="password" autocomplete="current-password" placeholder="Introduceți parola" />
+        </div>
+        <div class="actions section">
+          <button class="btn" id="unlockBtn">Deschide rezultatele</button>
+        </div>
+        <p id="errorMsg" class="footer hidden" style="color:var(--danger);font-weight:800">Parolă incorectă.</p>
+      </div>
+    </section>
+
+    <section id="app" class="hidden">
+      <section class="hero">
+        <p class="kicker">Scorare automată</p>
+        <h1>Chestionar COPE — rezultate</h1>
+        <p class="muted">Profil al mecanismelor de coping, pe baza celor 15 scale COPE și a celor 4 factori utilizați în validarea românească: problemă, emoții, suport social și evitare.</p>
+      </section>
+
+      <section class="section notice">
+        <strong>Notă de interpretare.</strong> Scorurile pe scale sunt sume brute între 4 și 16, iar mediile sunt între 1 și 4. Nu există itemi cu scorare inversă. Interpretarea este orientativă și trebuie integrată cu interviul clinic, anamneza și obiectivul evaluării.
+      </section>
+
+      <section class="section card no-print">
+        <p class="kicker">Sincronizare gratuită</p>
+        <h2>Preia automat rezultatele din Google Sheets</h2>
+        <p class="muted">Completează URL-ul aplicației Google Apps Script și cheia de administrator. Cheia de administrator nu se pune în GitHub; o introduci doar aici, în browserul tău.</p>
+        <div class="sync-grid section">
+          <div>
+            <label for="remoteUrlInput">URL Google Apps Script</label>
+            <input id="remoteUrlInput" type="text" placeholder="https://script.google.com/macros/s/.../exec" />
+          </div>
+          <div>
+            <label for="adminKeyInput">Cheie admin</label>
+            <input id="adminKeyInput" type="password" placeholder="cheia ta privată" />
+          </div>
+          <button class="btn" id="syncRemoteBtn" type="button">Sincronizează</button>
+        </div>
+        <p id="syncStatus" class="sync-status">După sincronizare, selectezi clientul din lista din stânga și raportul apare automat.</p>
+      </section>
+
+      <section class="section card no-print">
+        <div class="actions">
+          <button class="btn secondary" id="importBtn">Importă JSON</button>
+          <input type="file" id="jsonImport" accept="application/json,.json" class="hidden" />
+          <button class="btn secondary" id="exportCsvBtn">Exportă CSV</button>
+          <button class="btn secondary" onclick="window.print()">Printează raportul selectat</button>
+          <button class="btn danger" id="deleteAllBtn">Șterge toate rezultatele locale</button>
+        </div>
+      </section>
+
+      <div class="dashboard section">
+        <aside class="sidebar card no-print">
+          <h2>Rezultate salvate</h2>
+          <input id="searchBox" type="text" placeholder="Caută după cod client..." />
+          <div id="resultList" class="result-list section"></div>
+        </aside>
+
+        <section id="detailPanel">
+          <div class="card">
+            <h2>Niciun rezultat selectat</h2>
+            <p class="muted">Selectează un rezultat din listă sau importă un fișier JSON exportat din chestionar-COPE.</p>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+<script src="cope-config.js"></script>
+<script>
+const PASSWORD = "kimkiduk";
+const STORAGE_KEY = "copeSubmissions_v1";
+const SCALES = [
+  {
+    "id": "reinterpretare_pozitiva",
+    "name": "Reinterpretare pozitivă și creștere personală",
+    "items": [
+      1,
+      29,
+      38,
+      59
+    ]
+  },
+  {
+    "id": "detasare_mentala",
+    "name": "Detașare mentală",
+    "items": [
+      2,
+      16,
+      31,
+      43
+    ]
+  },
+  {
+    "id": "detasare_comportamentala",
+    "name": "Detașare comportamentală",
+    "items": [
+      9,
+      24,
+      37,
+      51
+    ]
+  },
+  {
+    "id": "coping_religios",
+    "name": "Coping religios",
+    "items": [
+      7,
+      18,
+      48,
+      60
+    ]
+  },
+  {
+    "id": "coping_activ",
+    "name": "Coping activ",
+    "items": [
+      5,
+      25,
+      47,
+      58
+    ]
+  },
+  {
+    "id": "emotii_descarcare",
+    "name": "Concentrare pe emoții și descărcarea de emoții",
+    "items": [
+      3,
+      17,
+      28,
+      46
+    ]
+  },
+  {
+    "id": "suport_instrumental",
+    "name": "Utilizarea suportului social instrumental",
+    "items": [
+      4,
+      14,
+      30,
+      45
+    ]
+  },
+  {
+    "id": "suport_emotional",
+    "name": "Utilizarea suportului social emoțional",
+    "items": [
+      11,
+      23,
+      34,
+      52
+    ]
+  },
+  {
+    "id": "negare",
+    "name": "Negare",
+    "items": [
+      6,
+      27,
+      40,
+      57
+    ]
+  },
+  {
+    "id": "umor",
+    "name": "Umor",
+    "items": [
+      8,
+      20,
+      36,
+      50
+    ]
+  },
+  {
+    "id": "abtinere",
+    "name": "Abținere / reținere",
+    "items": [
+      10,
+      22,
+      41,
+      49
+    ]
+  },
+  {
+    "id": "comportamente_nocive",
+    "name": "Utilizarea comportamentelor nocive (fumat, alcool, droguri)",
+    "items": [
+      12,
+      26,
+      35,
+      53
+    ]
+  },
+  {
+    "id": "acceptare",
+    "name": "Acceptare",
+    "items": [
+      13,
+      21,
+      44,
+      54
+    ]
+  },
+  {
+    "id": "suprimare_activitati",
+    "name": "Suprimare de activități concurente",
+    "items": [
+      15,
+      33,
+      42,
+      55
+    ]
+  },
+  {
+    "id": "planificare",
+    "name": "Planificare",
+    "items": [
+      19,
+      32,
+      39,
+      56
+    ]
+  }
+];
+const NORMS = {
+  "reinterpretare_pozitiva": {
+    "m": 3.15,
+    "sd": 0.8,
+    "alpha": 0.58
+  },
+  "abtinere": {
+    "m": 2.63,
+    "sd": 0.91,
+    "alpha": 0.48
+  },
+  "acceptare": {
+    "m": 2.73,
+    "sd": 0.93,
+    "alpha": 0.74
+  },
+  "planificare": {
+    "m": 3.16,
+    "sd": 0.83,
+    "alpha": 0.76
+  },
+  "coping_activ": {
+    "m": 3.04,
+    "sd": 0.85,
+    "alpha": 0.61
+  },
+  "suprimare_activitati": {
+    "m": 2.77,
+    "sd": 0.88,
+    "alpha": 0.65
+  },
+  "suport_instrumental": {
+    "m": 2.99,
+    "sd": 0.89,
+    "alpha": 0.74
+  },
+  "suport_emotional": {
+    "m": 2.72,
+    "sd": 0.99,
+    "alpha": 0.78
+  },
+  "emotii_descarcare": {
+    "m": 2.39,
+    "sd": 0.94,
+    "alpha": 0.71
+  },
+  "negare": {
+    "m": 1.9,
+    "sd": 0.9,
+    "alpha": 0.64
+  },
+  "detasare_mentala": {
+    "m": 2.4,
+    "sd": 1.02,
+    "alpha": 0.54
+  },
+  "detasare_comportamentala": {
+    "m": 1.91,
+    "sd": 0.86,
+    "alpha": 0.63
+  }
+};
+const FACTORS = [
+  {
+    "id": "problem_focused",
+    "name": "Coping focalizat pe problemă",
+    "scales": [
+      "coping_activ",
+      "planificare",
+      "suprimare_activitati"
+    ],
+    "alpha": 0.84,
+    "description": "profil de acțiune, organizare și concentrare pe rezolvarea situației stresante."
+  },
+  {
+    "id": "emotion_focused",
+    "name": "Coping focalizat pe emoții",
+    "scales": [
+      "reinterpretare_pozitiva",
+      "abtinere",
+      "acceptare"
+    ],
+    "alpha": 0.72,
+    "description": "profil de reinterpretare, acceptare și reglare a reacției înainte de acțiune."
+  },
+  {
+    "id": "social_support",
+    "name": "Coping prin suport social",
+    "scales": [
+      "suport_instrumental",
+      "suport_emotional",
+      "emotii_descarcare"
+    ],
+    "alpha": 0.82,
+    "description": "profil de căutare a informației, sprijinului emoțional și exprimării trăirilor."
+  },
+  {
+    "id": "avoidant",
+    "name": "Coping evitant",
+    "scales": [
+      "negare",
+      "detasare_mentala",
+      "detasare_comportamentala"
+    ],
+    "alpha": 0.73,
+    "description": "profil de evitare, negare sau reducere a implicării în gestionarea stresorului."
+  }
+];
+const INDEPENDENT = [
+  "coping_religios",
+  "umor",
+  "comportamente_nocive"
+];
+
+let allResults = [];
+let selectedId = null;
+
+function $(id) { return document.getElementById(id); }
+
+function readStore() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); }
+  catch(e) { return []; }
+}
+function writeStore(data) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+function mergeResults(incoming) {
+  const valid = (Array.isArray(incoming) ? incoming : [incoming])
+    .filter(x => x && x.questionnaire === "COPE" && x.responses && x.scaleScores);
+  const current = readStore();
+  const byId = new Map(current.map(x => [x.id, x]));
+  for (const item of valid) {
+    byId.set(item.id || `remote_${Date.now()}_${Math.random()}`, item);
+  }
+  const merged = Array.from(byId.values()).sort((a,b)=> new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
+  writeStore(merged);
+  return {imported: valid.length, total: merged.length};
+}
+
+function getConfiguredEndpoint() {
+  return String(($("remoteUrlInput")?.value || window.COPE_REMOTE_ENDPOINT || "").trim());
+}
+
+function syncFromGoogleSheets() {
+  const endpoint = getConfiguredEndpoint();
+  const adminKey = $("adminKeyInput").value.trim();
+  const status = $("syncStatus");
+
+  if (!endpoint || endpoint.includes("LIPESTE_AICI")) {
+    status.textContent = "Lipsește URL-ul Google Apps Script. Îl primești după deploy în Apps Script.";
+    return;
+  }
+
+  if (!adminKey) {
+    status.textContent = "Introdu cheia de administrator.";
+    $("adminKeyInput").focus();
+    return;
+  }
+
+  localStorage.setItem("copeRemoteEndpoint_v1", endpoint);
+  status.textContent = "Se sincronizează din Google Sheets...";
+
+  const callbackName = "copeRemoteCallback_" + Date.now() + "_" + Math.random().toString(16).slice(2);
+  const script = document.createElement("script");
+
+  window[callbackName] = function(response) {
+    try {
+      if (!response || !response.ok) {
+        throw new Error(response?.error || "Răspuns invalid de la Google Apps Script.");
+      }
+      const result = mergeResults(response.results || []);
+      loadResults();
+      status.textContent = `Sincronizare reușită: ${result.imported} rezultat(e) preluate; ${result.total} rezultat(e) în panou.`;
+    } catch (err) {
+      status.textContent = "Sincronizare eșuată: " + err.message;
+    } finally {
+      delete window[callbackName];
+      script.remove();
+    }
+  };
+
+  const sep = endpoint.includes("?") ? "&" : "?";
+  script.src = endpoint + sep + new URLSearchParams({
+    action: "list",
+    adminKey,
+    callback: callbackName
+  }).toString();
+
+  script.onerror = function() {
+    status.textContent = "Nu am putut contacta Google Apps Script. Verifică URL-ul și deploy-ul.";
+    delete window[callbackName];
+    script.remove();
+  };
+
+  document.body.appendChild(script);
+}
+
+function showApp() {
+  sessionStorage.setItem("copeResultsAuth", "true");
+  $("passwordShell").classList.add("hidden");
+  $("app").classList.remove("hidden");
+  loadResults();
+}
+
+function unlock() {
+  if ($("passwordInput").value === PASSWORD) showApp();
+  else $("errorMsg").classList.remove("hidden");
+}
+
+function formatDate(value) {
+  if (!value) return "—";
+  const d = new Date(value);
+  if (Number.isNaN(d.getTime())) return value;
+  return d.toLocaleDateString("ro-RO", {year:"numeric", month:"2-digit", day:"2-digit", hour:"2-digit", minute:"2-digit"});
+}
+
+function level(avg) {
+  if (avg <= 1.75) return {label:"foarte scăzut", cls:"level-low"};
+  if (avg <= 2.50) return {label:"scăzut / moderat", cls:"level-low"};
+  if (avg <= 3.25) return {label:"moderat / ridicat", cls:"level-mid"};
+  return {label:"ridicat", cls:"level-high"};
+}
+
+function pctFromAverage(avg) {
+  return Math.max(0, Math.min(100, ((avg - 1) / 3) * 100));
+}
+
+function scoreLine(score) {
+  const lvl = level(score.average);
+  return `<span class="pill ${lvl.cls}">${lvl.label}</span>`;
+}
+
+function getScale(sub, id) {
+  return sub.scaleScores?.[id] || {};
+}
+function getFactor(sub, id) {
+  return sub.factorScores?.[id] || {};
+}
+
+function normCell(scaleId, avg) {
+  const n = NORMS[scaleId];
+  if (!n) return "—";
+  const z = (avg - n.m) / n.sd;
+  const zText = `${z >= 0 ? "+" : ""}${z.toFixed(2)}`;
+  return `M=${n.m.toFixed(2)}; SD=${n.sd.toFixed(2)}; z≈${zText}; α=${n.alpha.toFixed(2)}`;
+}
+
+function factorComment(factorId, avg) {
+  if (factorId === "problem_focused") {
+    if (avg >= 3.25) return "Indică tendință puternică de a interveni activ, de a planifica și de a reduce distragerile. Poate fi o resursă importantă când stresorul este controlabil.";
+    if (avg >= 2.5) return "Indică folosirea moderată a strategiilor orientate spre rezolvare. Merită analizat dacă aceste strategii sunt aplicate consecvent în situațiile importante.";
+    return "Indică utilizare redusă a strategiilor orientate spre acțiune și planificare. Poate sugera nevoie de clarificare a pașilor concreți în situații de stres.";
+  }
+  if (factorId === "emotion_focused") {
+    if (avg >= 3.25) return "Indică tendință accentuată de reinterpretare, acceptare și reglare a impulsului. Poate fi adaptativă, mai ales în situații cu control limitat.";
+    if (avg >= 2.5) return "Indică utilizare moderată a strategiilor de reglare emoțională. Interpretarea depinde de contextul stresorilor raportați.";
+    return "Indică folosire redusă a acceptării, reinterpretării sau reținerii. Poate fi utilă explorarea flexibilității emoționale.";
+  }
+  if (factorId === "social_support") {
+    if (avg >= 3.25) return "Indică apel frecvent la suport social, sfaturi și exprimarea trăirilor. Este importantă calitatea rețelei de sprijin și modul în care sprijinul este folosit.";
+    if (avg >= 2.5) return "Indică apel moderat la sprijin. Poate fi util să fie identificate persoanele și contextele în care suportul este eficient.";
+    return "Indică apel redus la suport social. Poate reflecta autonomie, dar și izolare sau dificultate de a cere ajutor.";
+  }
+  if (factorId === "avoidant") {
+    if (avg >= 3.25) return "Indică tendință ridicată de evitare, negare sau renunțare. Necesită explorare clinică atentă, mai ales dacă afectează funcționarea.";
+    if (avg >= 2.5) return "Indică utilizare moderată a evitării. Poate reduce temporar disconfortul, dar merită verificat dacă amână rezolvarea problemei.";
+    return "Indică nivel redus al strategiilor evitante, ceea ce poate sugera implicare mai directă în confruntarea stresorului.";
+  }
+  return "";
+}
+
+function renderList() {
+  const q = $("searchBox").value.trim().toLowerCase();
+  const list = allResults.filter(r => (r.clientCode || "").toLowerCase().includes(q));
+  if (!list.length) {
+    $("resultList").innerHTML = `<div class="notice">Nu există rezultate COPE salvate sau importate.</div>`;
+    return;
+  }
+  $("resultList").innerHTML = list.map(r => `
+    <button class="result-row ${r.id === selectedId ? "active" : ""}" data-id="${r.id}">
+      <strong>${r.clientCode || "Fără cod"}</strong><br>
+      <small>${r.testDate || "fără dată"} · ${formatDate(r.createdAt)}</small>
+    </button>
+  `).join("");
+  document.querySelectorAll(".result-row").forEach(btn => {
+    btn.addEventListener("click", () => selectResult(btn.dataset.id));
+  });
+}
+
+function renderScaleTable(sub) {
+  return `
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Scală COPE</th>
+            <th>Itemi</th>
+            <th>Scor brut</th>
+            <th>Medie</th>
+            <th>Nivel orientativ</th>
+            <th>Raportare la studiul RO</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${SCALES.map(scale => {
+            const s = getScale(sub, scale.id);
+            return `<tr>
+              <td><strong>${scale.name}</strong></td>
+              <td>${scale.items.join(", ")}</td>
+              <td>${s.sum ?? "—"} / 16</td>
+              <td>${(s.average ?? 0).toFixed ? s.average.toFixed(2) : "—"}</td>
+              <td>${s.average ? scoreLine(s) : "—"}</td>
+              <td><small>${s.average ? normCell(scale.id, s.average) : "—"}</small></td>
+            </tr>`;
+          }).join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+function renderFactors(sub) {
+  return `
+    <div class="grid two">
+      ${FACTORS.map(factor => {
+        const f = getFactor(sub, factor.id);
+        const percent = pctFromAverage(f.average || 1);
+        return `<article class="score-card">
+          <h3>${factor.name}</h3>
+          <div class="score-value">${f.sum ?? "—"}<small> / ${f.max ?? 48}</small></div>
+          <div class="bar-shell"><span style="width:${percent}%"></span></div>
+          <p>${scoreLine(f)} <small>medie ${(f.average || 0).toFixed(2)} · α≈${factor.alpha.toFixed(2)}</small></p>
+          <p class="muted">${factor.description}</p>
+          <p>${factorComment(factor.id, f.average || 0)}</p>
+        </article>`;
+      }).join("")}
+    </div>
+  `;
+}
+
+function renderIndependent(sub) {
+  return `
+    <div class="grid three">
+      ${INDEPENDENT.map(id => {
+        const s = getScale(sub, id);
+        const percent = pctFromAverage(s.average || 1);
+        return `<article class="score-card">
+          <h3>${s.name}</h3>
+          <div class="score-value">${s.sum}<small> / 16</small></div>
+          <div class="bar-shell"><span style="width:${percent}%"></span></div>
+          <p>${scoreLine(s)} <small>medie ${s.average.toFixed(2)}</small></p>
+        </article>`;
+      }).join("")}
+    </div>
+  `;
+}
+
+function renderHighlights(sub) {
+  const scaleArray = Object.values(sub.scaleScores || {}).sort((a,b)=>b.average-a.average);
+  const top = scaleArray.slice(0,3).map(s => `${s.name} (${s.average.toFixed(2)})`).join(", ");
+  const flags = [];
+  const avoid = getFactor(sub, "avoidant");
+  const substance = getScale(sub, "comportamente_nocive");
+  const denial = getScale(sub, "negare");
+  if (avoid.average >= 2.75) flags.push("coping evitant peste zona moderată");
+  if (denial.average >= 2.75) flags.push("negare ridicată");
+  if (substance.average >= 2.25) flags.push("utilizare raportată a alcoolului/drogurilor/fumatului ca strategie de coping");
+  return `
+    <div class="summary-box">
+      <p><strong>Scale dominante:</strong> ${top || "—"}.</p>
+      <p><strong>Puncte de atenție:</strong> ${flags.length ? flags.join("; ") : "nu apar semnale automate majore pe criteriile setate în această pagină"}.</p>
+    </div>
+  `;
+}
+
+function renderItemResponses(sub) {
+  const rows = Object.entries(sub.responses || {})
+    .sort((a,b)=>Number(a[0])-Number(b[0]))
+    .map(([nr,val]) => `<tr><td>${nr}</td><td>${val}</td></tr>`).join("");
+  return `
+    <details class="section">
+      <summary><strong>Vezi răspunsurile brute pe itemi</strong></summary>
+      <div class="table-wrap section">
+        <table style="min-width:340px">
+          <thead><tr><th>Item</th><th>Răspuns</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+    </details>
+  `;
+}
+
+function selectResult(id) {
+  selectedId = id;
+  renderList();
+  const sub = allResults.find(r => r.id === id);
+  if (!sub) return;
+  $("detailPanel").innerHTML = `
+    <section class="card">
+      <p class="kicker">Raport individual</p>
+      <h2>${sub.clientCode || "Fără cod client"}</h2>
+      <p class="muted">Data aplicării: ${sub.testDate || "—"} · Salvat: ${formatDate(sub.createdAt)} · Vârsta: ${sub.age || "—"}</p>
+      ${sub.contextNote ? `<p><strong>Context:</strong> ${sub.contextNote}</p>` : ""}
+    </section>
+
+    <section class="section card">
+      <h2>Sinteză rapidă</h2>
+      ${renderHighlights(sub)}
+    </section>
+
+    <section class="section card">
+      <h2>Cei 4 factori principali</h2>
+      ${renderFactors(sub)}
+    </section>
+
+    <section class="section card">
+      <h2>Scale independente / complementare</h2>
+      <p class="muted">În modelul românesc validat prin CFA, umorul, consumul de substanțe și copingul religios au fost tratate ca scale mai independente sau heterogene, de aceea sunt afișate separat.</p>
+      ${renderIndependent(sub)}
+    </section>
+
+    <section class="section card">
+      <h2>Scorare pe cele 15 mecanisme de coping</h2>
+      ${renderScaleTable(sub)}
+      ${renderItemResponses(sub)}
+    </section>
+
+    <section class="section card">
+      <h2>Formulare orientativă pentru raport</h2>
+      <p>Profilul COPE indică utilizarea predominantă a următoarelor strategii: ${Object.values(sub.scaleScores).sort((a,b)=>b.average-a.average).slice(0,3).map(s=>s.name.toLowerCase()).join(", ")}. Factorul de coping focalizat pe problemă are media ${getFactor(sub,"problem_focused").average.toFixed(2)}, factorul focalizat pe emoții are media ${getFactor(sub,"emotion_focused").average.toFixed(2)}, factorul suport social are media ${getFactor(sub,"social_support").average.toFixed(2)}, iar copingul evitant are media ${getFactor(sub,"avoidant").average.toFixed(2)}. Interpretarea trebuie corelată cu situațiile de viață raportate, nivelul de stres, resursele disponibile și funcționarea curentă.</p>
+    </section>
+  `;
+}
+
+function loadResults() {
+  allResults = readStore().sort((a,b)=> new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
+  renderList();
+  if (allResults.length) selectResult(selectedId || allResults[0].id);
+  else $("detailPanel").innerHTML = `<div class="card"><h2>Nu există rezultate COPE</h2><p class="muted">Completează un chestionar în pagina chestionar-COPE sau importă un fișier JSON.</p></div>`;
+}
+
+function exportCsv() {
+  if (!allResults.length) {
+    alert("Nu există rezultate de exportat.");
+    return;
+  }
+  const headers = ["id","clientCode","age","testDate","createdAt", ...SCALES.map(s=>s.name + " scor"), ...SCALES.map(s=>s.name + " medie")];
+  const rows = allResults.map(r => [
+    r.id, r.clientCode, r.age, r.testDate, r.createdAt,
+    ...SCALES.map(s => r.scaleScores?.[s.id]?.sum ?? ""),
+    ...SCALES.map(s => r.scaleScores?.[s.id]?.average ?? "")
+  ]);
+  const csv = [headers, ...rows].map(row => row.map(cell => `"${String(cell ?? "").replaceAll('"','""')}"`).join(",")).join("\n");
+  const blob = new Blob([csv], {type:"text/csv;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "rezultate_COPE.csv";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
+function importJsonFile(file) {
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const parsed = JSON.parse(reader.result);
+      const incoming = Array.isArray(parsed) ? parsed : [parsed];
+      const valid = incoming.filter(x => x && x.questionnaire === "COPE" && x.responses && x.scaleScores);
+      if (!valid.length) throw new Error("Fișierul nu conține rezultate COPE valide.");
+      const byId = new Map(readStore().map(x => [x.id, x]));
+      for (const item of valid) {
+        if (!item.id) item.id = `import_${Date.now()}_${Math.random().toString(16).slice(2)}`;
+        byId.set(item.id, item);
+      }
+      writeStore(Array.from(byId.values()));
+      loadResults();
+      alert(`Am importat ${valid.length} rezultat(e).`);
+    } catch(err) {
+      alert("Import eșuat: " + err.message);
+    }
+  };
+  reader.readAsText(file);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (sessionStorage.getItem("copeResultsAuth") === "true") showApp();
+
+  $("unlockBtn").addEventListener("click", unlock);
+  $("passwordInput").addEventListener("keydown", e => {
+    if (e.key === "Enter") unlock();
+  });
+
+  $("searchBox").addEventListener("input", renderList);
+  const savedEndpoint = localStorage.getItem("copeRemoteEndpoint_v1") || window.COPE_REMOTE_ENDPOINT || "";
+  if ($("remoteUrlInput")) $("remoteUrlInput").value = savedEndpoint;
+  if ($("syncRemoteBtn")) $("syncRemoteBtn").addEventListener("click", syncFromGoogleSheets);
+
+  $("importBtn").addEventListener("click", () => $("jsonImport").click());
+  $("jsonImport").addEventListener("change", e => {
+    const file = e.target.files[0];
+    if (file) importJsonFile(file);
+  });
+  $("exportCsvBtn").addEventListener("click", exportCsv);
+  $("deleteAllBtn").addEventListener("click", () => {
+    if (confirm("Ștergi toate rezultatele COPE salvate local în acest browser?")) {
+      writeStore([]);
+      selectedId = null;
+      loadResults();
+    }
+  });
+});
+</script>
+</body>
+</html>
