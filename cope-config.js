@@ -11,5 +11,5 @@
   - Cheia ADMIN_KEY NU se trece aici. O introduci doar în pagina de rezultate, când apeși „Sincronizează”.
 */
 
-window.COPE_REMOTE_ENDPOINT = "https://script.google.com/macros/s/URL-UL_TAU_NOU/exec";
+window.COPE_REMOTE_ENDPOINT = "https://script.google.com/macros/s/AKfycbzzDYYMT_oetnoFAyNEShAWEeHrLxiiT9S9iEhP_kSs1rcHsZk_CkwdFN25UFyfGcmkBA/exec";
 window.COPE_SUBMIT_KEY = "kimkiduk";
