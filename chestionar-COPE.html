@@ -913,41 +913,109 @@ function saveSubmission(submission) {
   writeStore(data);
 }
 
+function getConfiguredEndpoint() {
+  return String(
+    window.COPE_REMOTE_ENDPOINT ||
+    window.COPE_WEB_APP_URL ||
+    window.COPE_APPS_SCRIPT_URL ||
+    ""
+  ).trim();
+}
+
 function remoteIsConfigured() {
-  const endpoint = String(window.COPE_REMOTE_ENDPOINT || "").trim();
-  return endpoint && !endpoint.includes("LIPESTE_AICI");
+  const endpoint = getConfiguredEndpoint();
+  return endpoint && !endpoint.includes("LIPESTE_AICI") && endpoint.startsWith("https://script.google.com/macros/s/");
+}
+
+function postToGoogleAppsScript(endpoint, fields) {
+  return new Promise((resolve, reject) => {
+    const iframeName = "cope_post_iframe_" + Date.now() + "_" + Math.random().toString(16).slice(2);
+
+    const iframe = document.createElement("iframe");
+    iframe.name = iframeName;
+    iframe.style.display = "none";
+
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = endpoint;
+    form.target = iframeName;
+    form.enctype = "application/x-www-form-urlencoded";
+    form.style.display = "none";
+
+    Object.entries(fields).forEach(([name, value]) => {
+      const input = document.createElement("input");
+      input.type = "hidden";
+      input.name = name;
+      input.value = value == null ? "" : String(value);
+      form.appendChild(input);
+    });
+
+    let finished = false;
+    const cleanup = () => {
+      setTimeout(() => {
+        form.remove();
+        iframe.remove();
+      }, 800);
+    };
+
+    iframe.addEventListener("load", () => {
+      if (finished) return;
+      finished = true;
+      cleanup();
+      resolve();
+    });
+
+    document.body.appendChild(iframe);
+    document.body.appendChild(form);
+
+    try {
+      form.submit();
+      setTimeout(() => {
+        if (!finished) {
+          finished = true;
+          cleanup();
+          resolve();
+        }
+      }, 3500);
+    } catch (err) {
+      cleanup();
+      reject(err);
+    }
+  });
 }
 
 async function sendSubmissionToGoogleSheets(submission) {
   const status = $("remoteStatus");
-  const endpoint = String(window.COPE_REMOTE_ENDPOINT || "").trim();
+  const endpoint = getConfiguredEndpoint();
   const submitKey = String(window.COPE_SUBMIT_KEY || "").trim();
 
   if (!remoteIsConfigured()) {
     if (status) {
-      status.innerHTML = "<strong>Rezultatul a fost salvat doar local.</strong><br>Ca să ajungă automat în Google Sheets, completează mai întâi URL-ul aplicației Google Apps Script în fișierul <code>cope-config.js</code>.";
+      status.innerHTML = "<strong>Rezultatul a fost salvat doar local.</strong><br>Ca să ajungă automat în Google Sheets, completează URL-ul Web App din Google Apps Script în fișierul <code>cope-config.js</code>.";
+    }
+    return;
+  }
+
+  if (!submitKey || submitKey.includes("LIPESTE_AICI")) {
+    if (status) {
+      status.innerHTML = "<strong>Rezultatul a fost salvat doar local.</strong><br>Lipsește <code>COPE_SUBMIT_KEY</code> din <code>cope-config.js</code>.";
     }
     return;
   }
 
   if (status) {
-    status.innerHTML = "Se trimite automat în Google Sheets...";
+    status.innerHTML = "Se trimite automat în Google Sheets prin POST...";
   }
 
-  const body = new URLSearchParams();
-  body.append("action", "submit");
-  body.append("submitKey", submitKey);
-  body.append("payload", JSON.stringify(submission));
-
   try {
-    await fetch(endpoint, {
-      method: "POST",
-      mode: "no-cors",
-      body
+    await postToGoogleAppsScript(endpoint, {
+      action: "submit",
+      submitKey,
+      payload: JSON.stringify(submission)
     });
 
     if (status) {
-      status.innerHTML = "<strong>Rezultatul a fost trimis.</strong><br>Îl vei găsi în Google Sheets și îl poți sincroniza în pagina de rezultate.";
+      status.innerHTML = "<strong>Cererea POST a fost trimisă.</strong><br>Verifică în Apps Script → Executions: trebuie să apară <strong>doPost</strong>, apoi rezultatul trebuie să apară în Google Sheets.";
     }
   } catch (err) {
     if (status) {

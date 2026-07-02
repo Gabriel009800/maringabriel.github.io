@@ -652,7 +652,7 @@ function mergeResults(incoming) {
 }
 
 function getConfiguredEndpoint() {
-  return String(($("remoteUrlInput")?.value || window.COPE_REMOTE_ENDPOINT || "").trim());
+  return String(($("remoteUrlInput")?.value || window.COPE_REMOTE_ENDPOINT || window.COPE_WEB_APP_URL || window.COPE_APPS_SCRIPT_URL || "").trim());
 }
 
 function syncFromGoogleSheets() {
