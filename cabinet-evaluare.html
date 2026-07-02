@@ -291,8 +291,7 @@ tr:last-child td{border-bottom:0}
     <section id="dashboard">
       <section class="hero">
         <p class="kicker">Cabinet psihologic</p>
-        <h1>cabinet-evaluare</h1>
-        <p class="muted">Zonă de lucru pentru chestionare psihologice. Varianta aceasta este compatibilă cu GitHub Pages și trimite rezultatele gratuit într-un Google Sheet privat, prin Google Apps Script.</p>
+        <h1>Instrumente de evaluare</h1>
       </section>
 
       <section class="section grid three">
@@ -317,7 +316,7 @@ tr:last-child td{border-bottom:0}
         <div class="card">
           <p class="kicker">Chestionare</p>
           <h2>Teste disponibile pentru client</h2>
-          <p class="muted">Trimite clientului linkul către formular. După completare, răspunsurile se trimit automat în Google Sheets, dacă ai configurat fișierul <code>cope-config.js</code>. Exportul JSON rămâne doar variantă de rezervă.</p>
+          <p class="muted">Trimite clientului linkul către formular. După completare, răspunsurile se salvează local în browserul în care a fost completat chestionarul și pot fi exportate/importate ca JSON.</p>
 
           <div class="section portal-grid">
             <a class="portal-card vertical" href="chestionar-COPE.html" target="_blank" rel="noopener">
@@ -334,7 +333,7 @@ tr:last-child td{border-bottom:0}
         <div class="card">
           <p class="kicker">Rezultate</p>
           <h2>Scorare și interpretare</h2>
-          <p class="muted">Pagina de rezultate poate sincroniza datele din Google Sheets și generează raportul COPE direct pe site. Cheia de administrator nu se publică în GitHub.</p>
+          <p class="muted">Accesul la pagina de rezultate este protejat separat. Parola pentru rezultate este cea stabilită de tine.</p>
 
           <div class="section portal-grid">
             <a class="portal-card vertical" href="chestionar-COPE-rezultate.html" target="_blank" rel="noopener">
@@ -345,30 +344,16 @@ tr:last-child td{border-bottom:0}
               </span>
               <span class="pill">Protejat</span>
             </a>
-          </div>
 
-          <div class="section notice">
-            <strong>Important.</strong> Site-ul tău rămâne static pe GitHub, dar salvarea rezultatelor se face gratuit în Google Sheets. Clientul nu trebuie să îți trimită niciun document; tu apeși „Sincronizează” în pagina de rezultate și raportul apare automat.
-          </div>
-        </div>
       </section>
 
       <section class="section card">
-        <h2>Import rapid rezultate, rezervă</h2>
-        <p class="muted">Opțiunea aceasta rămâne doar ca plan B. Fluxul normal este: clientul completează testul → rezultatul intră în Google Sheets → tu sincronizezi din pagina de rezultate.</p>
+        <h2>Import rapid rezultate</h2>
+        <p class="muted">Folosește această opțiune dacă un client îți trimite fișierul JSON exportat din pagina chestionar-COPE.</p>
         <div class="actions">
           <input type="file" id="jsonImport" accept="application/json,.json" />
         </div>
       </section>
-
-
-      <section class="section card">
-        <p class="kicker">Configurare o singură dată</p>
-        <h2>Pașii pentru salvare automată gratuită</h2>
-        <p class="muted">1. Creezi un Google Sheet gol. 2. Deschizi Apps Script și lipești codul din fișierul <code>google-apps-script.js</code>. 3. Dai Deploy ca Web App. 4. Copiezi URL-ul în <code>cope-config.js</code>. După asta, clientul completează formularul, iar rezultatele ajung automat în Sheet.</p>
-      </section>
-
-      <p class="footer">Atenție: nu colecta nume complete sau date excesive în formular. Folosește cod client/inițiale. Pentru evaluări clinice oficiale și arhivare pe termen lung, soluția ideală rămâne o aplicație cu autentificare reală și stocare securizată.</p>
     </section>
   </main>
 
