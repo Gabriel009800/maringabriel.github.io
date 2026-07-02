@@ -23,6 +23,19 @@ p{margin:0 0 12px}.muted{color:var(--muted)}.section{margin-top:22px}.grid{displ
 input,select,textarea{width:100%;border:1px solid var(--line);border-radius:14px;padding:12px 13px;background:#fff;font:inherit;outline:none}label{font-weight:750}.field{display:grid;gap:7px}.select-row{display:grid;grid-template-columns:190px minmax(0,1fr) auto;gap:12px;align-items:end}.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:var(--accent-soft);color:#5b3920;font-size:.84rem;font-weight:850}.pill.green{background:#edf6f1;color:#255f3f}.pill.yellow{background:#fff4db;color:#76510b}.pill.red{background:#f7e6e3;color:#8a2b21}.pill.gray{background:#f1ede8;color:#5d554e}
 .stat{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;padding:17px;border:1px solid var(--line);border-radius:18px;background:#fffdf9}.big-number{font-family:Georgia,serif;font-size:2.15rem;line-height:1;color:var(--accent);white-space:nowrap}.metric-title{font-weight:850}.metric-note{display:block;margin-top:4px;color:var(--muted);font-size:.9rem}.factor-card{display:flex;flex-direction:column;gap:10px}.factor-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.factor-title{font-weight:900}.score-line{font-family:Georgia,serif;font-size:2rem;color:var(--accent);line-height:1}.bar{height:10px;border-radius:999px;background:#eadfd3;overflow:hidden}.bar span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent-2))}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px;background:#fff}table{width:100%;border-collapse:collapse;min-width:900px}th,td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#fbf4ec;color:#563820;font-size:.82rem;text-transform:uppercase;letter-spacing:.055em}tr:last-child td{border-bottom:0}.small{font-size:.9rem}.tiny{font-size:.82rem;color:var(--muted)}.report-text{font-family:Georgia,"Times New Roman",serif;font-size:1.05rem;line-height:1.72;color:#2b2723}.report-text p{text-align:justify}.report-box{background:#fffdf9;border:1px solid var(--line);border-radius:18px;padding:18px}.biblio ol{margin:8px 0 0 20px;padding:0}.biblio li{margin:0 0 8px}.hidden{display:none!important}
 
+
+/* Protecție cu parolă pentru pagina de rezultate */
+body.locked{overflow:hidden}
+body.locked .page{display:none!important}
+.auth-screen{display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at top left, rgba(184,130,80,.22), transparent 34rem),linear-gradient(180deg,#fbf8f3 0%, var(--bg) 100%)}
+body.locked .auth-screen{display:flex}
+.auth-card{width:min(430px, calc(100% - 20px));background:rgba(255,250,244,.98);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:28px;display:grid;gap:14px}
+.auth-card h2{font-size:clamp(1.7rem,4vw,2.4rem);margin:0}
+.auth-card .btn{width:100%;margin-top:2px}
+.auth-error{margin:0;color:var(--danger);font-weight:850;background:#f7e6e3;border:1px solid #e9c7c0;border-radius:14px;padding:10px 12px}
+@media print{.auth-screen{display:none!important}body.locked .page{display:block!important}}
+
+
 .independent-card{display:grid;grid-template-columns:minmax(0,1fr) 124px;gap:18px;align-items:start;min-height:188px}.independent-main{min-width:0}.independent-main strong{display:block;line-height:1.34;margin-bottom:6px}.independent-card .tiny{display:block;color:#2d2925;font-size:.88rem;line-height:1.58;margin:4px 0 7px}.independent-card small{display:block;color:#5e554d;font-size:.84rem;line-height:1.5;margin-top:6px}.independent-score{display:flex;flex-direction:column;align-items:flex-end;gap:8px;text-align:right;min-width:0}.independent-score .big-number{font-size:1.9rem;line-height:1.05;white-space:nowrap}.independent-score .pill{max-width:96px;justify-content:center;text-align:center;line-height:1.15;padding:7px 11px;white-space:normal}.independent-score .metric-note{margin-top:0;line-height:1.35}
 #scaleTable{min-width:1120px;table-layout:fixed}
 #scaleTable th:nth-child(1),#scaleTable td:nth-child(1){width:25%}
@@ -48,7 +61,22 @@ input,select,textarea{width:100%;border:1px solid var(--line);border-radius:14px
 @media print{body{background:white}.no-print,.actions,.select-row,#emptyState{display:none!important}.page{width:100%;padding:0}.hero,.card{box-shadow:none}.section{break-inside:avoid}.table-wrap{overflow:visible}table{min-width:0;font-size:.82rem}th,td{padding:7px}.report-text{font-size:1rem}}
   </style>
 </head>
-<body>
+<body class="locked">
+
+<section id="authScreen" class="auth-screen" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+  <form id="authForm" class="auth-card" autocomplete="off">
+    <p class="kicker">Acces protejat</p>
+    <h2 id="authTitle">Chestionar COPE</h2>
+    <p class="muted">Introdu parola pentru a vedea pagina de rezultate.</p>
+    <div class="field">
+      <label for="authPassword">Parolă</label>
+      <input id="authPassword" type="password" placeholder="Scrie parola" autocomplete="current-password" />
+    </div>
+    <p id="authError" class="auth-error hidden">Parolă greșită. Încearcă din nou.</p>
+    <button class="btn" type="submit">Intră</button>
+  </form>
+</section>
+
 <main class="page">
   <section class="hero">
     <p class="kicker">Scorare și interpretare</p>
@@ -90,6 +118,8 @@ input,select,textarea{width:100%;border:1px solid var(--line);border-radius:14px
 </main>
 
 <script>
+const ACCESS_PASSWORD = "kimkiduk";
+const ACCESS_SESSION_KEY = "copeResultsAccess_v1";
 const STORAGE_KEY = "copeSubmissions_v1";
 const VIEW_KEY = "copeResultsView_v1";
 
@@ -135,6 +165,33 @@ const FACTOR_CORRELATIONS = {
 const CFA = {n:1009, chi2:197.51, df:42, gfi:.947, agfi:.901, cfi:.839, rmsea:.061, hoelter:297, ageM:29.9, ageRange:"18–71", men:"35,6%", women:"64,6%"};
 
 function $(id){return document.getElementById(id)}
+
+function unlockPage(){
+  document.body.classList.remove("locked");
+  const authScreen=$("authScreen");
+  if(authScreen) authScreen.classList.add("hidden");
+}
+function setupAuthGate(){
+  const alreadyUnlocked=sessionStorage.getItem(ACCESS_SESSION_KEY)==="ok";
+  if(alreadyUnlocked){unlockPage(); return true;}
+  document.body.classList.add("locked");
+  const form=$("authForm"), input=$("authPassword"), error=$("authError");
+  if(input) setTimeout(()=>input.focus(),80);
+  if(form){
+    form.addEventListener("submit",e=>{
+      e.preventDefault();
+      if((input?.value || "") === ACCESS_PASSWORD){
+        sessionStorage.setItem(ACCESS_SESSION_KEY,"ok");
+        unlockPage();
+        renderSelector();
+      } else {
+        if(error) error.classList.remove("hidden");
+        if(input){input.value=""; input.focus();}
+      }
+    });
+  }
+  return false;
+}
 function escapeHtml(v){return String(v ?? "").replace(/[&<>"']/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]))}
 function fmt(x,d=2){return Number.isFinite(Number(x)) ? Number(x).toFixed(d) : "—"}
 function pct(x){return Math.max(0, Math.min(100, x)).toFixed(0)}
@@ -394,9 +451,10 @@ function renderReport(raw){
 }
 function importJsonFile(file){const reader=new FileReader(); reader.onload=()=>{try{const parsed=JSON.parse(reader.result); const incoming=Array.isArray(parsed)?parsed:[parsed]; const valid=incoming.filter(x=>x && x.responses); if(!valid.length) throw new Error("Fișierul nu conține rezultate COPE valide."); const current=readStore(); const byId=new Map(current.map(x=>[x.id,x])); for(const item of valid){if(!item.id)item.id=`import_${Date.now()}_${Math.random().toString(16).slice(2)}`; byId.set(item.id,item)} writeStore(Array.from(byId.values()).sort((a,b)=>new Date(b.createdAt||0)-new Date(a.createdAt||0))); renderSelector(); alert(`Am importat ${valid.length} rezultat(e) COPE.`)}catch(err){alert("Import eșuat: "+err.message)}}; reader.readAsText(file)}
 document.addEventListener("DOMContentLoaded",()=>{
+  const isUnlocked=setupAuthGate();
   const savedView=localStorage.getItem(VIEW_KEY);
   if(savedView && $("resultFilter")) $("resultFilter").value=savedView;
-  renderSelector();
+  if(isUnlocked) renderSelector();
   $("resultFilter").addEventListener("change",()=>renderSelector());
   $("archiveBtn").addEventListener("click",toggleArchiveSelected);
   $("deleteBtn").addEventListener("click",deleteSelectedSubmission);
