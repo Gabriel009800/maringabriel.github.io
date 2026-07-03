@@ -67,7 +67,7 @@ body.locked .auth-screen{display:flex}
 .norm-note{min-height:112px;display:flex;align-items:center;color:#5b3920;line-height:1.6}
 .norm-muted{color:#6f675d}
 @media(max-width:900px){.grid.two,.grid.three,.grid.four{grid-template-columns:1fr}.select-row{display:grid;grid-template-columns:1fr}.select-row .field,.select-row .actions{flex:auto;min-width:0}.page{width:min(100% - 22px,1160px);padding-top:18px}.hero{padding:24px;border-radius:24px}table{min-width:860px}.independent-card{grid-template-columns:minmax(0,1fr) 112px}.independent-score .big-number{font-size:1.65rem}.norm-cell{min-width:330px}}
-@media print{body{background:white}.no-print,.actions,.select-row,#emptyState{display:none!important}.page{width:100%;padding:0}.hero,.card{box-shadow:none}.section{break-inside:avoid}.table-wrap{overflow:visible}table{min-width:0;font-size:.82rem}th,td{padding:7px}.report-text{font-size:1rem}}
+@media print{body{background:white}.no-print,.actions,.select-row,#emptyState,.pdf-exclude{display:none!important}.page{width:100%;padding:0}.hero,.card{box-shadow:none}.section{break-inside:avoid}.pdf-final-notes-start{break-before:page;page-break-before:always}.table-wrap{overflow:visible}table{min-width:0;font-size:.82rem}th,td{padding:7px}.report-text{font-size:1rem}}
   </style>
 </head>
 <body class="locked">
@@ -118,7 +118,6 @@ body.locked .auth-screen{display:flex}
         <button class="btn secondary" type="button" id="importBtn">Importă JSON</button>
         <input class="hidden" type="file" id="jsonImport" accept="application/json,.json" />
         <button class="btn secondary" type="button" id="printBtn">Printează / PDF</button>
-        <button class="btn soft" type="button" id="downloadPdfBtn">Descarcă PDF raport</button>
         <button class="btn soft" type="button" id="copyReportBtn">Copiază formularea</button>
       </div>
     </div>
@@ -444,12 +443,12 @@ function renderReport(raw){
       <div class="table-wrap"><table id="scaleTable"><thead><tr><th>Scală COPE</th><th>Itemi</th><th>Scor brut</th><th>Medie</th><th>Nivel orientativ</th><th>Raportare la studiul RO</th></tr></thead><tbody>${scaleRows}</tbody></table></div>
     </section>
 
-    <section class="section card">
+    <section class="section card pdf-final-notes-start">
       <h2>Repere psihometrice utilizate</h2>
       <p class="muted">Modelul de interpretare folosește reperele publicate pentru adaptarea românească a COPE-60: N=${CFA.n}, vârsta medie ${CFA.ageM} ani, interval ${CFA.ageRange}, ${CFA.men} bărbați și ${CFA.women} femei. Soluția cu 4 factori corelați are χ²=${CFA.chi2}, df=${CFA.df}, GFI=${CFA.gfi}, AGFI=${CFA.agfi}, CFI=${CFA.cfi}, RMSEA=${CFA.rmsea}, Hoelter=${CFA.hoelter}. Corelații între factori: ${escapeHtml(corr)}.</p>
     </section>
 
-    <details class="section card"><summary><strong>Vezi răspunsurile brute pe itemi</strong></summary><div class="table-wrap section"><table><thead><tr><th>Nr.</th><th>Item</th><th>Răspuns</th></tr></thead><tbody>${rawRows}</tbody></table></div></details>
+    <details class="section card pdf-exclude"><summary><strong>Vezi răspunsurile brute pe itemi</strong></summary><div class="table-wrap section"><table><thead><tr><th>Nr.</th><th>Item</th><th>Răspuns</th></tr></thead><tbody>${rawRows}</tbody></table></div></details>
 
     <section class="section card">
       <h2>Limite de interpretare</h2>
@@ -611,6 +610,7 @@ function buildPrintableReportHtml(submission){
   const clone=reportRoot.cloneNode(true);
   clone.removeAttribute("id");
   clone.classList.remove("hidden");
+  clone.querySelectorAll(".pdf-exclude").forEach(el=>el.remove());
   clone.querySelectorAll("details").forEach(d=>d.setAttribute("open","open"));
 
   const title=makePdfDocumentTitle(submission);
@@ -646,7 +646,7 @@ th,td{padding:5px!important;word-break:break-word!important;overflow-wrap:anywhe
 .norm-cell{min-width:0!important}.norm-report,.norm-note{min-height:auto!important;display:block!important}
 .report-text{font-size:1rem!important;line-height:1.58!important}.report-text p{text-align:left!important}
 .big-number{font-size:1.5rem!important}.score-line{font-size:1.45rem!important}.pill{box-shadow:none!important}
-details{display:block!important}details>summary{display:none!important}
+.pdf-final-notes-start{break-before:page!important;page-break-before:always!important}.pdf-exclude{display:none!important}details{display:block!important}details>summary{display:none!important}
 @media print{.print-help{display:none!important}.print-shell{max-width:none!important}.card,.stat,.hero{break-inside:avoid-page}.biblio{break-inside:auto!important}}
 </style>
 </head>
