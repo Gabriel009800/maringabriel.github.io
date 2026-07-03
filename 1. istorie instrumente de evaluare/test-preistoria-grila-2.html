@@ -1,0 +1,1939 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <!-- Variantă optimizată: explicații pe întrebări, competențe expandabile și raport PDF prin salvare/printare -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testul grilă nr. 2 - Preistoria</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #f6f0e7;
+      color: #2f241c;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .test-page {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 42px 22px 70px;
+    }
+
+    .test-hero,
+    .result-box,
+    .evaluated-competencies {
+      background: #fffaf3;
+      border: 1px solid rgba(91, 62, 36, 0.18);
+      border-radius: 26px;
+      padding: 32px;
+      box-shadow: 0 14px 36px rgba(69, 46, 25, 0.08);
+      margin-bottom: 24px;
+    }
+
+    .test-hero h1,
+    .evaluated-competencies h2 {
+      margin: 0 0 10px;
+      color: #3c2a1e;
+      letter-spacing: -0.4px;
+    }
+
+    .test-hero h1 { font-size: 40px; }
+    .evaluated-competencies h2 { font-size: 30px; }
+
+    .test-hero p,
+    .result-box p,
+    .evaluated-competencies p,
+    .evaluated-competencies li {
+      margin: 0 0 10px;
+      color: #5b4a3d;
+      line-height: 1.65;
+      font-size: 17px;
+    }
+
+    .evaluated-competencies {
+      background: linear-gradient(180deg, #fffaf3 0%, #fbf1e5 100%);
+    }
+
+    .competency-accordion {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .competency-panel {
+      background: #ffffff;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .competency-source-link {
+      display: block;
+      padding: 15px 20px;
+      background: #3c2a1e;
+      color: #fffaf3 !important;
+      text-decoration: none !important;
+      font-size: 15.5px;
+      font-weight: 700;
+      line-height: 1.45;
+      border-bottom: 1px solid rgba(255, 250, 243, 0.18);
+      transition: transform 0.16s ease, background 0.16s ease, box-shadow 0.16s ease;
+    }
+
+    .competency-source-link:visited,
+    .competency-source-link:active {
+      color: #fffaf3 !important;
+      text-decoration: none !important;
+    }
+
+    .competency-source-link:hover {
+      color: #fffaf3 !important;
+      text-decoration: none !important;
+      background: #4a3324;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(69, 46, 25, 0.14);
+    }
+
+    .competency-toggle {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      color: #3c2a1e;
+      padding: 18px 20px;
+      text-align: left;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 18px;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .competency-toggle small {
+      font-size: 14px;
+      color: #7a5c3c;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .competency-arrow {
+      transition: transform 0.2s ease;
+      color: #7a5c3c;
+      font-size: 18px;
+    }
+
+    .competency-panel.open .competency-arrow { transform: rotate(180deg); }
+
+    .competency-details {
+      display: none;
+      padding: 0 20px 20px;
+      border-top: 1px solid rgba(91, 62, 36, 0.10);
+    }
+
+    .competency-panel.open .competency-details { display: block; }
+
+    .competency-details h3 {
+      margin: 18px 0 8px;
+      color: #3c2a1e;
+      font-size: 18px;
+    }
+
+    .competency-main-title {
+      margin: 24px 0 12px !important;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: #f3eadf;
+      border-left: 6px solid #7a5c3c;
+      color: #2f241c !important;
+      font-size: 18px !important;
+      font-weight: 800;
+      line-height: 1.45;
+      box-shadow: inset 0 0 0 1px rgba(91, 62, 36, 0.10);
+    }
+
+    .competency-details .competency-main-title:first-child {
+      margin-top: 18px !important;
+    }
+
+    .competency-subtitle {
+      margin-left: 8px !important;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #4a3324 !important;
+    }
+
+    .competency-details ul {
+      margin: 0 0 8px 24px;
+      padding: 0;
+    }
+
+    .question-card {
+      background: #ffffff;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 8px 20px rgba(69, 46, 25, 0.045);
+    }
+
+    .question-title {
+      margin: 0 0 14px;
+      color: #3c2a1e;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .question-competency { display: none; }
+
+    .option-label {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 9px 0;
+      color: #4c3b2e;
+      line-height: 1.45;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .option-label input { margin-top: 4px; }
+
+    .finish-box {
+      position: sticky;
+      bottom: 16px;
+      background: rgba(255, 250, 243, 0.96);
+      border: 1px solid rgba(91, 62, 36, 0.18);
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: 0 12px 30px rgba(69, 46, 25, 0.10);
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      margin-top: 24px;
+      backdrop-filter: blur(8px);
+    }
+
+    .finish-box span {
+      color: #5b4a3d;
+      font-size: 15px;
+    }
+
+    .finish-button,
+    .secondary-button {
+      border: 1px solid rgba(91, 62, 36, 0.22);
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 15px;
+      white-space: nowrap;
+    }
+
+    .finish-button {
+      background: #3c2a1e;
+      color: #fffaf3;
+    }
+
+    .secondary-button {
+      background: #f3eadf;
+      color: #3c2a1e;
+    }
+
+    .finish-button:hover,
+    .secondary-button:hover,
+    .explanation-toggle:hover,
+    .competency-toggle:hover { opacity: 0.9; }
+
+    .result-box {
+      display: none;
+      border-color: rgba(91, 62, 36, 0.28);
+    }
+
+    .result-box h2 {
+      margin: 0 0 16px;
+      color: #3c2a1e;
+      font-size: 32px;
+    }
+
+    .result-line {
+      font-size: 20px !important;
+      color: #2f241c !important;
+    }
+
+    .result-line strong { color: #120c08; }
+
+    .interpretation {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 18px;
+      background: #f3eadf;
+      color: #4c3b2e;
+      line-height: 1.65;
+      font-size: 17px;
+      text-align: justify;
+    }
+
+    .correct { color: #1d6b35; font-weight: 700; }
+    .wrong { color: #9a2c20; font-weight: 700; }
+    .missing { color: #7a5c3c; font-weight: 700; }
+
+    .result-actions {
+      margin-top: 28px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(91, 62, 36, 0.14);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .review-hint {
+      flex-basis: 100%;
+      margin-top: 6px !important;
+      font-size: 15px !important;
+      color: #6a5544 !important;
+    }
+
+    .question-card.review-mode { border-width: 2px; }
+
+    .question-card.review-correct-card {
+      border-color: rgba(29, 107, 53, 0.35);
+      background: #fbfffc;
+    }
+
+    .question-card.review-wrong-card {
+      border-color: rgba(154, 44, 32, 0.35);
+      background: #fffafa;
+    }
+
+    .question-card.review-missing-card {
+      border-color: rgba(122, 92, 60, 0.35);
+      background: #fffdf8;
+    }
+
+    .question-review-note {
+      margin: 0 0 14px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .question-review-note.correct {
+      background: rgba(29, 107, 53, 0.09);
+      color: #1d6b35;
+    }
+
+    .question-review-note.wrong {
+      background: rgba(154, 44, 32, 0.09);
+      color: #9a2c20;
+    }
+
+    .question-review-note.missing {
+      background: rgba(122, 92, 60, 0.12);
+      color: #6c4d2f;
+    }
+
+    .option-label.review-correct-option,
+    .option-label.review-selected-correct,
+    .option-label.review-selected-wrong {
+      border-radius: 12px;
+      padding: 10px 12px;
+      margin: 5px 0;
+    }
+
+    .option-label.review-correct-option {
+      background: rgba(29, 107, 53, 0.08);
+      outline: 1px solid rgba(29, 107, 53, 0.25);
+    }
+
+    .option-label.review-selected-correct {
+      background: rgba(29, 107, 53, 0.12);
+      outline: 2px solid rgba(29, 107, 53, 0.42);
+    }
+
+    .option-label.review-selected-wrong {
+      background: rgba(154, 44, 32, 0.10);
+      outline: 2px solid rgba(154, 44, 32, 0.38);
+    }
+
+    .review-badge {
+      margin-left: auto;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .review-badge.correct {
+      background: rgba(29, 107, 53, 0.14);
+      color: #1d6b35;
+    }
+
+    .review-badge.wrong {
+      background: rgba(154, 44, 32, 0.14);
+      color: #9a2c20;
+    }
+
+    .review-badge.missing {
+      background: rgba(122, 92, 60, 0.14);
+      color: #6c4d2f;
+    }
+
+    .explanation-wrap {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px dashed rgba(91, 62, 36, 0.22);
+    }
+
+    .explanation-toggle {
+      border: 1px solid rgba(91, 62, 36, 0.22);
+      border-radius: 999px;
+      padding: 10px 15px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 14px;
+      background: #fffaf3;
+      color: #3c2a1e;
+    }
+
+    .explanation-box {
+      margin-top: 12px;
+      padding: 16px;
+      border-radius: 16px;
+      background: #f8f0e7;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      color: #4c3b2e;
+      line-height: 1.62;
+      font-size: 15.5px;
+      text-align: justify;
+    }
+
+    .explanation-box p { margin: 0 0 10px; }
+
+    .option-explanations {
+      margin: 10px 0 0 20px;
+      padding: 0;
+    }
+
+    .option-explanations li {
+      margin-bottom: 8px;
+    }
+
+    .competency-lines {
+      margin-top: 10px;
+      margin-bottom: 18px;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .competency-lines p { margin: 8px 0; }
+
+    @media (max-width: 720px) {
+      .test-page { padding: 24px 14px 54px; }
+      .test-hero h1 { font-size: 32px; }
+      .evaluated-competencies h2 { font-size: 25px; }
+      .finish-box {
+        position: static;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .finish-button,
+      .secondary-button { width: 100%; }
+      .result-actions { display: grid; }
+      .competency-toggle { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<main class="test-page">
+  <section class="test-hero">
+    <h1>Testul grilă nr. 2</h1>
+    <p><strong>Disciplina:</strong> Istorie, clasa a V-a</p>
+    <p><strong>Unitatea de învățare:</strong> Preistoria</p>
+    <p><strong>Număr de întrebări:</strong> 40 grile</p>
+    <p><strong>Timp estimat:</strong> 40 minute</p>
+    <p>La final, apasă pe butonul <strong>Am terminat testul</strong>. Vei primi o interpretare automată a rezultatelor.</p>
+  </section>
+
+  <section class="evaluated-competencies">
+    <h2>Competențe evaluate:</h2>
+    <div class="competency-accordion">
+      <article class="competency-panel">
+        <a class="competency-source-link" href="https://www.ise.ro/wp-content/uploads/2017/01/Istorie.pdf" target="_blank" rel="noopener noreferrer">Competențe prevăzute în programa școlară pentru disciplina Istorie (clasa a V-a), conform Ordinului MEN nr. 3393 din 28 februarie 2017 privind aprobarea programelor şcolare pentru învăţământul gimnazial</a>
+        <button type="button" class="competency-toggle" onclick="toggleCompetencyPanel(this)" aria-expanded="false">
+          <span>Competențe specifice <small>(vezi mai mult)</small></span>
+          <span class="competency-arrow">▼</span>
+        </button>
+        <div class="competency-details">
+	      <h3 class="competency-main-title">CS1. Utilizarea în contexte diverse a coordonatelor şi reprezentărilor de timp şi spaţiu</h3>
+          <h3 class="competency-subtitle">CS1.1. Ordonarea pe criterii cronologice a faptelor / proceselor istorice</h3>
+          <ul>
+            <li>Plasarea unor evenimente / procese istorice pe axa cronologică</li>
+            <li>Realizarea unor frize cronologice</li>
+            <li>Utilizarea unităţilor folosite în măsurarea timpului </li>
+          </ul>
+          <h3 class="competency-subtitle">CS1.2. Identificarea diferenţelor temporale dintre evenimente şi procese istorice</h3>
+          <ul>
+            <li>Asocierea reperelor cronologice cu evenimente şi procese istorice</li>
+            <li>Identificarea relaţiilor cronologice între sursele istorice prezentate</li>
+            <li>Utilizarea reperelor cronologice în descrierea faptelor/proceselor istorice</li>
+          </ul>
+          <h3 class="competency-subtitle">CS1.3. Localizarea în timp şi în spaţiu a faptelor şi/sau a proceselor istorice</h3>
+          <ul>
+            <li>Exerciţii de lectură a hărţilor istorice</li>
+            <li>Plasarea pe hartă a unor evenimente şi procese istorice</li>
+            <li>Completarea pe hartă a unor informaţii</li>
+          </ul>
+	      <h3 class="competency-main-title">CS2. Utilizarea critică şi reflexivă a limbajului de specialitate şi a surselor istorice</h3>
+
+          <h3 class="competency-subtitle">CS2.1. Folosirea termenilor de specialitate în descrierea unui eveniment/proces istoric</h3>
+          <ul>
+            <li>Identificarea termenilor istorici în texte diferite</li>
+            <li>Elaborarea unor enunţuri simple / texte utilizând termeni istorici</li>
+            <li>Completarea unor texte lacunare folosind termenii adecvaţi dintr-o listă dată</li>
+          </ul>
+          <h3 class="competency-subtitle">CS2.2. Relatarea unui eveniment / proces istoric, utilizând informaţii din surse istorice</h3>
+          <ul>
+            <li>Identificarea informaţiilor oferite de surse cu privire la un fapt istoric</li>
+            <li>Descrierea unor surse referitoare la un fapt istoric, pe baza unui plan dat</li>
+            <li>Alcătuirea planului descrierii unui eveniment/ proces/ personaj istoric</li>
+          </ul>
+          <h3 class="competency-subtitle">CS2.3. Stabilirea de asemănări și deosebiri între fapte istorice, pe bază de surse diferite</h3>
+          <ul>
+            <li>Descrierea unor surse istorice în vederea stabilirii asemănărilor și deosebirilor</li>
+            <li>Compararea informaţiilor provenite din surse istorice diferite</li>
+            <li>Realizarea unor texte despre fapte / procese / personaje istorice, pe baza unor surse diferite, subliniind asemănările şi deosebirile</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="competency-panel">
+        <a class="competency-source-link" href="https://rm.coe.int/prems-108118-gbr-2507-quality-history-education-web-21x21/16808eace7" target="_blank" rel="noopener noreferrer">Competențe prevăzute în raportul Consiliului Europei (2018): “Quality History Education in the 21st Century”</a>
+        <button type="button" class="competency-toggle" onclick="toggleCompetencyPanel(this)" aria-expanded="false">
+          <span>Competențe transversale  <small>(vezi mai mult)</small></span>
+          <span class="competency-arrow">▼</span>
+        </button>
+        <div class="competency-details">
+          <h3 class="competency-main-title">CT1. Aplicarea gândirii critice și a instrumentelor analitice în vederea depistării manipulării</h3>
+          <h3 class="competency-subtitle">CT1.1. Selectarea și interpretarea informațiilor istorice digitale</h3>
+          <ul>
+            <li>Identificarea informațiilor istorice relevante din texte, imagini și materiale video</li>
+            <li>Diferențierea între date factuale, opinii, interpretări și speculații</li>
+            <li>Argumentarea selecției surselor utilizate în raport cu tema investigată</li>
+          </ul>
+          <h3 class="competency-subtitle">CT1.2. Evaluarea motivației, utilității și credibilității unei surse</h3>
+          <ul>
+            <li>Analizarea scopului autorului și a posibilelor interese ideologice sau politice</li>
+            <li>Identificarea indicatorilor de credibilitate: autor, instituție, dată, context, metodă</li>
+            <li>Explicarea modului în care contextul social poate influența obiectivitatea unei surse</li>
+          </ul>
+          <h3 class="competency-subtitle">CT1.3. Analizarea perspectivelor multiple și a interpretărilor divergente</h3>
+          <ul>
+            <li>Identificarea și compararea interpretărilor diferite ale aceluiași eveniment</li>
+            <li>Explicarea modului în care contextul istoric influențează interpretarea</li>
+            <li>Argumentarea riscurilor acceptării necritice a narațiunilor radicalizate</li>
+          </ul>
+          <h3 class="competency-subtitle">CT1.4. Analizarea critică a materialelor vizuale cu conținut istoric</h3>
+          <ul>
+            <li>Diferențierea între conținutul ilustrat direct și mesajul intenționat de autor</li>
+            <li>Identificarea tehnicilor vizuale de persuasiune: cadraj, selecția imaginilor, montaj</li>
+            <li>Argumentarea impactului emoțional sau ideologic al materialelor vizuale</li>
+          </ul>
+          <h3 class="competency-main-title">CT2. Creșterea gradului de conștientizare în legătură cu potențialul abuz al media digitale</h3>
+          <h3 class="competency-subtitle">CT2.1. Dezvoltarea unei atitudini critice față de utilizarea media digitale</h3>
+          <ul>
+            <li>Identificarea exemplelor de utilizare pozitivă și negativă a informației istorice în mediul digital: social media, bloguri, materiale video</li>
+            <li>Explicarea modului în care imaginile, algoritmii, titlurile manipulative și editările vizuale pot distorsiona percepția asupra trecutului</li>
+            <li>Demonstrarea comportamentelor responsabile și reflexive în utilizarea media digitale, evaluând riscul de manipulare, dezinformare sau propagandă istorică</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="resultBox" class="result-box"></section>
+
+  <form id="quizForm"></form>
+
+  <div class="finish-box">
+    <span>După ce ai bifat răspunsurile, apasă pe buton pentru interpretare.</span>
+    <div>
+      <button type="button" class="secondary-button" onclick="resetQuiz()">Șterge răspunsurile</button>
+      <button type="button" class="finish-button" onclick="finishQuiz()">Am terminat testul</button>
+    </div>
+  </div>
+</main>
+
+<script>
+  const questions = [
+    {
+        "id": 1,
+        "competency": "C1.1",
+        "text": "Alege varianta care prezintă corect succesiunea perioadelor din Preistorie:",
+        "options": {
+            "A": "Neolitic, Paleolitic, Mezolitic",
+            "B": "Mezolitic, Epoca Fierului, Paleolitic",
+            "C": "Epoca Pietrei, Epoca Bronzului, Epoca Fierului",
+            "D": "Epoca Metalelor, Neolitic, Paleolitic"
+        },
+        "answer": "C"
+    },
+    {
+        "id": 2,
+        "competency": "C1.1",
+        "text": "Neoliticul este o perioadă ce a durat:",
+        "options": {
+            "A": "Câteva secole",
+            "B": "Câteva mii de ani",
+            "C": "Milioane de ani",
+            "D": "Zeci de mii de ani"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 3,
+        "competency": "C1.1",
+        "text": "Ce eveniment a marcat începuturile Preistoriei?",
+        "options": {
+            "A": "Apariția agriculturii",
+            "B": "Folosirea primelor unelte din piatră",
+            "C": "Apariția scrisului",
+            "D": "Construirea primelor orașe"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 4,
+        "competency": "C1.1",
+        "text": "Oamenii au început să folosească în mod obișnuit fierul în:",
+        "options": {
+            "A": "Epoca Metalelor",
+            "B": "Mezolitic",
+            "C": "Neolitic",
+            "D": "Paleolitic"
+        },
+        "answer": "A"
+    },
+    {
+        "id": 5,
+        "competency": "C1.2",
+        "text": "Perioada cea mai îndelungată dintre cele menționate mai jos este:",
+        "options": {
+            "A": "Epoca Metalelor",
+            "B": "Neoliticul",
+            "C": "Paleoliticul",
+            "D": "Mezoliticul"
+        },
+        "answer": "C"
+    },
+    {
+        "id": 6,
+        "competency": "C1.2",
+        "text": "Care dintre evenimentele de mai jos s-a produs primul?",
+        "options": {
+            "A": "Primele picturi rupestre",
+            "B": "Primele orașe",
+            "C": "Primele vase de ceramică",
+            "D": "Prelucrarea bronzului"
+        },
+        "answer": "A"
+    },
+    {
+        "id": 7,
+        "competency": "C1.2",
+        "text": "Care dintre evenimentele de mai jos s-a produs cel mai recent?",
+        "options": {
+            "A": "Primele vârfuri de suliță",
+            "B": "Apariția arcului și săgeții",
+            "C": "Primele săbii din bronz",
+            "D": "Primele topoare cu mâner"
+        },
+        "answer": "C"
+    },
+    {
+        "id": 8,
+        "competency": "C1.2",
+        "text": "Primele lănci cu vârf de fier datează din:",
+        "options": {
+            "A": "Paleolitic",
+            "B": "Neolitic",
+            "C": "Epoca Metalelor",
+            "D": "Antichitate"
+        },
+        "answer": "C"
+    },
+    {
+        "id": 9,
+        "competency": "C1.3",
+        "text": "În ce regiune au fost inventate primele unelte din piatră cioplită?",
+        "options": {
+            "A": "Australia",
+            "B": "Europa",
+            "C": "Africa",
+            "D": "Asia"
+        },
+        "answer": "C"
+    },
+    {
+        "id": 10,
+        "competency": "C1.3",
+        "text": "Comerțul timpuriu se realiza între așezări aflate:",
+        "options": {
+            "A": "La distanțe mici, accesibile pe jos",
+            "B": "La distanțe mari, din motive strategice",
+            "C": "La distanțe medii, prin folosirea căruțelor trase de cai",
+            "D": "La distanțe medii, prin folosirea cămilelor"
+        },
+        "answer": "A"
+    },
+    {
+        "id": 11,
+        "competency": "C1.3",
+        "text": "Oamenii din Neolitic se orientau în alegerea locului pentru construirea unei așezări mai ales în funcție de:",
+        "options": {
+            "A": "Apropierea de apă și de sol fertil",
+            "B": "Prezența stâncilor abrupte",
+            "C": "Zone bogate în animale de vânat",
+            "D": "Depărtarea de alte triburi"
+        },
+        "answer": "A"
+    },
+    {
+        "id": 12,
+        "competency": "C1.3",
+        "text": "Revoluția neolitică a însemnat:",
+        "options": {
+            "A": "Inventarea agriculturii",
+            "B": "Inventarea scrierii",
+            "C": "Crearea primelor arme de fier",
+            "D": "Inventarea monedelor"
+        },
+        "answer": "A"
+    },
+    {
+        "id": 13,
+        "competency": "C2.1",
+        "text": "Oamenii care nu aveau așezări permanente și se deplasau în funcție de resursele de hrană se numeau:",
+        "options": {
+            "A": "Agricultori",
+            "B": "Meșteșugari",
+            "C": "Nomazi",
+            "D": "Păstori"
+        },
+        "answer": "C"
+    },
+    {
+        "id": 14,
+        "competency": "C2.1",
+        "text": "Un tip de rocă vulcanică, foarte ascuțită, folosită în Preistorie pentru vârfuri de suliță și lame, este:",
+        "options": {
+            "A": "Sarea",
+            "B": "Obsidianul",
+            "C": "Cărbunele",
+            "D": "Creta"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 15,
+        "competency": "C2.1",
+        "text": "Persoanele care produceau obiecte precum vase, unelte sau podoabe se numeau:",
+        "options": {
+            "A": "Meșteșugari",
+            "B": "Soldați",
+            "C": "Sclavi",
+            "D": "Speologi"
+        },
+        "answer": "A"
+    },
+    {
+        "id": 16,
+        "competency": "C2.1",
+        "text": "Termenul „idol” în Preistorie se referă la:",
+        "options": {
+            "A": "O unealtă pentru tăiat copaci",
+            "B": "O figurină cu rol religios sau simbolic",
+            "C": "O armă de vânătoare",
+            "D": "Un animal domesticit"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 17,
+        "competency": "C2.2",
+        "text": "Dacă într-o pictură rupestră apare o scenă cu oameni pescuind cu harpoane, aceasta sugerează că:",
+        "options": {
+            "A": "Oamenii nu vânau animale terestre",
+            "B": "Pescuitul era o activitate importantă",
+            "C": "Oamenii vânau balene",
+            "D": "Toți bizonii fuseseră omorâți și oamenii nu se mai puteau hrăni decât cu pești"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 18,
+        "competency": "C2.2",
+        "text": "Oase de animale găsite într-o peșteră, lângă niște pietre arse, ne indică faptul că oamenii:",
+        "options": {
+            "A": "Se hrăneau doar cu plante, iar animalele erau arse ca ofrandă către zei",
+            "B": "Găteau carnea și o consumau",
+            "C": "Practicau ritualuri religioase prin care se închinau la oasele animalelor vânate",
+            "D": "Folosiseră oasele pe post de torțe"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 19,
+        "competency": "C2.2",
+        "text": "Un schelet uman preistoric însoțit de oase de animale într-un mormânt sugerează că:",
+        "options": {
+            "A": "Omul acela murise din cauza unui meniu mult prea consistent (mâncase prea multă carne)",
+            "B": "Oamenii practicau sacrificii sau ofrande funerare ori purtau talismane din oase de animale pentru a avea noroc în viața de apoi",
+            "C": "Oasele provin din resturi alimentare aruncate ulterior în zona mormântului, fără legătură cu ritualul",
+            "D": "Depunerea oaselor reflectă o practică utilitară, fără semnificație religioasă sau simbolică"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 20,
+        "competency": "C2.2",
+        "text": "O bucată de os șlefuită și ascuțită, cu un capăt subțire, ar putea să fie mai degrabă:",
+        "options": {
+            "A": "O jucărie preistorică",
+            "B": "Un ac pentru cusut haine",
+            "C": "Un instrument muzical",
+            "D": "Un rest de mâncare"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 21,
+        "competency": "C2.3",
+        "text": "O figurină umană din lut și o pictură rupestră cu dansatori preistorici sugerează:",
+        "options": {
+            "A": "Activități comerciale intense",
+            "B": "Manifestări artistice și religioase",
+            "C": "Existența scrierii",
+            "D": "Construirea orașelor mari"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 22,
+        "competency": "C2.3",
+        "text": "O pictură rupestră ce prezintă oameni vânând și o unealtă din piatră găsită în același sit arată:",
+        "options": {
+            "A": "Că oamenii se ocupau doar cu agricultura",
+            "B": "Activități legate de procurarea hranei prin vânătoare",
+            "C": "Existența comerțului internațional",
+            "D": "Folosirea armelor de foc"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 23,
+        "competency": "C2.3",
+        "text": "Într-o regiune sunt descoperite colibe temporare și oase de animale mari. Aceasta sugerează:",
+        "options": {
+            "A": "Viață sedentară și agricultură",
+            "B": "Viață nomadă bazată pe vânătoare",
+            "C": "Practicarea comerțului cu oase de animale",
+            "D": "Construirea de orașe permanente"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 24,
+        "competency": "C2.3",
+        "text": "Urme ale unui cuptor de topit metale și unelte din piatră găsite în apropiere indică:",
+        "options": {
+            "A": "Continuarea folosirii pietrei alături de metale",
+            "B": "Lipsa metalelor",
+            "C": "Preferința oamenilor pentru unelte de piatră",
+            "D": "Practicarea metalurgiei bronzului"
+        },
+        "answer": "A"
+    },
+    {
+        "id": 25,
+        "competency": "C3.1",
+        "text": "Un site istoric afirmă: „Oamenii din Paleolitic erau organizați în triburi mici.” Aceasta este:",
+        "options": {
+            "A": "O informație bazată pe dovezi",
+            "B": "O glumă cu substrat istoric pe care nu o putem înțelege decât dacă avem o cultură generală bogată",
+            "C": "O interpretare exagerată",
+            "D": "O simplă părere"
+        },
+        "answer": "A"
+    },
+    {
+        "id": 26,
+        "competency": "C3.1",
+        "text": "Un influencer (care este și absolvent al Facultății de Istorie) afirmă: „Preistoricii trăiau într-o mai mare comuniune cu natura, astfel că trebuie să fi fost niște oameni mult mai blânzi, mai cuminți și mai înțelepți decât cei de azi.” Această afirmație:",
+        "options": {
+            "A": "Este o simplă opinie personală, fără valoare de adevăr istoric",
+            "B": "Este bazată pe izvoare istorice",
+            "C": "Are la bază experiența de cercetare a influencerului",
+            "D": "Este adevărată, cu atât mai mult pentru că, în mod indirect, critică societatea actuală care a pierdut contactul cu natura"
+        },
+        "answer": "A"
+    },
+    {
+        "id": 27,
+        "competency": "C3.1",
+        "text": "Pe un blog numit “Dacii paleolitici” citim: următoarea afirmație: „Primele unelte metalice au fost create în munții Carpați.” Aceasta este:",
+        "options": {
+            "A": "O informație istorică dovedită prin dovezi clare",
+            "B": "O speculație (presupunere) care nu poate fi dovedită din punct de vedere istoric",
+            "C": "O chestiune bine cunoscută de oamenii cinstiți, dar ascunsă de niște vicleni care nu vor să cunoaștem istoria adevărată",
+            "D": "Un fapt acceptat de toți istoricii"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 28,
+        "competency": "C3.2",
+        "text": "Cine este mai potrivit să interpreteze o pictură rupestră?",
+        "options": {
+            "A": "Autorul unei pagini web cu articole despre secrete din Preistorie",
+            "B": "Un foarte bun cunoscător al regiunii în care se află acea peșteră",
+            "C": "Un pasionat de graffiti modern",
+            "D": "Un istoric de artă care cunoaște bine simbolismul preistoric"
+        },
+        "answer": "D"
+    },
+    {
+        "id": 29,
+        "competency": "C3.2",
+        "text": "O broșură a unui muzeu explică modul de viață în Epoca Fierului și citează cercetări recent publicate. Aceasta este:",
+        "options": {
+            "A": "Propagandă politică",
+            "B": "O sursă demnă de a fi crezută",
+            "C": "Un zvon",
+            "D": "O legendă"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 30,
+        "competency": "C3.2",
+        "text": "Un site comercial afirmă: „Amuletele preistorice vindecau boli.” Ce interes ar putea mai degrabă să urmărească autorul?",
+        "options": {
+            "A": "Doar unul științific",
+            "B": "Comercial (încercarea de a vinde „produse-minune”, sugerând că vechimea istorică este însoțită de capacitatea de a vindeca bolile)",
+            "C": "Promovarea cunoașterii istorice",
+            "D": "Promovarea horoscopului"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 31,
+        "competency": "C3.3",
+        "text": "Un autor afirmă: „Oamenii din Paleolitic trăiau într-o stare de primitivism, având doar uneltele lor din piatră.” Ce riscuri pot apărea dacă acceptăm această afirmație?",
+        "options": {
+            "A": "Riscul de a ignora faptul că Paleoliticul a fost o perioadă lungă și complexă și nu poate fi redusă doar la uneltele de piatră",
+            "B": "Atât varianta A, cât și varianta C",
+            "C": "Riscul de a subestima complexitatea vieții sociale din Paleolitic",
+            "D": "Nu există riscuri"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 32,
+        "competency": "C3.3",
+        "text": "La ora de istorie, elevii învață că în Neolitic oamenii au început să practice agricultura și să domesticească animale. Totuși, un călugăr susține că recoltele și animalele domestice le-au fost oferite oamenilor ca un dar divin încă de la facerea lumii. Ce putem spune cel mai sigur despre situația aceasta?",
+        "options": {
+            "A": "Istoricul a oferit o explicație bazată pe cercetări științifice și surse istorice",
+            "B": "Călugărul prezintă o viziune religioasă care nu poate fi confirmată prin dovezi istorice",
+            "C": "Agricultura și domesticirea animalelor au fost, într-adevăr, minuni divine, conform religiei",
+            "D": "Variantele A și B sunt corecte"
+        },
+        "answer": "D"
+    },
+    {
+        "id": 33,
+        "competency": "C3.3",
+        "text": "Arheologul 1 afirmă că primele vase ceramice apar în jurul anului 6.500 î.Hr. Arheologul 2 susține că cele mai vechi vase de ceramică au fost găsite într-o altă zonă și datează din 10.000 î.Hr. Care explicație este cea mai plauzibilă?",
+        "options": {
+            "A": "Arheologul 1 a uitat să includă în lucrare toate dovezile",
+            "B": "Al doilea arheolog a adăugat mai multe mii de ani din orgoliu (ca să poată spune că el a descoperit ceva mai vechi, deci mai importantă)",
+            "C": "Cercetările arheologice nu sunt utile pentru a data ceramica",
+            "D": "Regiunile studiate au avut evoluții diferite, iar vasele de ceramică au apărut mai devreme în unele zone"
+        },
+        "answer": "D"
+    },
+    {
+        "id": 34,
+        "competency": "C3.4",
+        "text": "Într-o prezentare despre viața din Paleolitic, oamenii sunt reprezentați purtând haine extrem de curate și bine croite, având coafuri ordonate la fel ca în moda modernă și purtându-se ca oamenii de azi. Ce intenție credeți că a avut autorul?",
+        "options": {
+            "A": "Să redea cu exactitate vestimentația și îngrijirea oamenilor preistorici, demonstrată arheologic",
+            "B": "Să ofere informații corecte despre felul de a fi al primitivilor",
+            "C": "Variantele A și B sunt corecte",
+            "D": "Să facă personajele mai ușor de asociat cu omul modern, chiar dacă astfel prezintă o versiune falsă a istoriei"
+        },
+        "answer": "D"
+    },
+    {
+        "id": 35,
+        "competency": "C3.4",
+        "text": "Un poster despre Paleolitic folosește culori întunecate, umbre și animale amenințătoare în fundal. Care este scopul posibil?",
+        "options": {
+            "A": "Să prezinte calmul și siguranța din acea perioadă",
+            "B": "Să redea extrem de fidel realitatea din punct de vedere științific",
+            "C": "Să arate că oamenii nu se temeau de nimic",
+            "D": "Să creeze o atmosferă dramatică și periculoasă pentru a influența emoțional privitorul"
+        },
+        "answer": "D"
+    },
+    {
+        "id": 36,
+        "competency": "C3.4",
+        "text": "O carte cu ilustrații ne arată oameni din Paleolitic mereu murdari, cu părul dezordonat și îmbrăcați doar în haine sfâșiate. Ce trebuie să observăm critic?",
+        "options": {
+            "A": "Că autorul oferă o descriere corectă și sigură a felului în care arătau oamenii atunci",
+            "B": "Că autorul transmite o imagine obiectivă, adică neinfluențată de filme și cultura populară",
+            "C": "Că autorul încearcă să ne inoculeze o anumită percepție despre oamenii primitivi, astfel încât să credem că au fost mai sălbatici decât au fost în realitate",
+            "D": "Că autorul a folosit o fotografie reală din Paleolitic"
+        },
+        "answer": "C"
+    },
+    {
+        "id": 37,
+        "competency": "C4.1",
+        "text": "Un videoclip de pe TikTok se numește: „Adevărul ascuns! Marile piramide au fost construite de giganți preistorici, nu de oameni!” Ce strategie de manipulare observăm?",
+        "options": {
+            "A": "Prezentarea afirmației ca fiind susținută de cercetări și argumente științifice credibile",
+            "B": "Utilizarea unui titlu spectaculos și provocator pentru a atrage interesul publicului",
+            "C": "Redarea echilibrată a unor date arheologice verificate și interpretate obiectiv",
+            "D": "Trimiterea la studii academice și consens științific pentru a întări credibilitatea mesajului"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 38,
+        "competency": "C4.1",
+        "text": "Un videoclip prezintă oameni din Paleolitic care foloseau telefoane din piatră pentru a comunica între peșteri. Ce este greșit la acest conținut?",
+        "options": {
+            "A": "Telefoanele din piatră sunt o descoperire rară, întâlnită doar în anumite regiuni",
+            "B": "Tehnologia telefoanelor nu exista în Paleolitic",
+            "C": "Oamenii din Paleolitic comunicau doar prin scris, pe tăblițe de lut",
+            "D": "Telefoanele preistorice funcționau doar pe distanțe scurte"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 39,
+        "competency": "C4.1",
+        "text": "Într-un videoclip, povestitorul afirmă: „În Epoca Pietrei, oamenii nu aveau niciun fel de artă pentru că erau preocupați doar de supraviețuire.” Ce eroare observi?",
+        "options": {
+            "A": "Afirmarea unui adevăr istoric demonstrat pe deplin de cercetări",
+            "B": "Ignorarea dovezilor arheologice despre artă (picturi rupestre, statuete, podoabe), ceea ce duce la o concluzie falsă și excesiv de simplificată",
+            "C": "În Preistorie, oamenii foloseau foarte puține culori, motiv pentru care nu putem considera că picturile rupestre au fost o formă de artă",
+            "D": "Confuzie între Epoca Pietrei și Evul Mediu"
+        },
+        "answer": "B"
+    },
+    {
+        "id": 40,
+        "competency": "C4.1",
+        "text": "Un utilizator de TikTok editează o imagine cu picturi rupestre și adaugă siluete de extratereștri. Ce facem?",
+        "options": {
+            "A": "Analizăm imaginea și observăm că este editată, deci nu poate fi o sursă istorică autentică",
+            "B": "Conștientizăm că astfel de materiale pot crea impresia falsă a unor „dovezi” istorice și pot induce în eroare publicul",
+            "C": "Considerăm că autorul dezvăluie informații ascunse pe care istoricii le-au omis intenționat",
+            "D": "Variantele A și B sunt corecte"
+        },
+        "answer": "D"
+    }
+]
+
+  const questionExplanations = {
+  "1": {
+    "correct": "Ordinea generală a Preistoriei merge de la Epoca Pietrei spre Epoca Metalelor, iar în cadrul metalelor bronzul este anterior fierului.",
+    "options": {
+      "A": "Neoliticul vine după Paleolitic și Mezolitic, deci șirul începe cu o perioadă prea târzie.",
+      "B": "Mezoliticul și Paleoliticul sunt inversate, iar Epoca Fierului este introdusă înaintea unei etape mai vechi.",
+      "C": "Corect: Epoca Pietrei este urmată de Epoca Bronzului și apoi de Epoca Fierului.",
+      "D": "Epoca Metalelor este mai târzie decât Neoliticul și Paleoliticul, deci ordinea este inversată."
+    }
+  },
+  "2": {
+    "correct": "Neoliticul nu acoperă întreaga Preistorie, ci o etapă mai târzie a Epocii Pietrei, de ordinul câtorva mii de ani.",
+    "options": {
+      "A": "Câteva secole ar fi o perioadă prea scurtă pentru Neolitic.",
+      "B": "Corect: Neoliticul a durat câteva mii de ani, cu diferențe în funcție de regiune.",
+      "C": "Milioane de ani descriu mai degrabă durata foarte largă a Preistoriei, nu Neoliticul.",
+      "D": "Zeci de mii de ani este prea mult pentru Neolitic în sensul predat la clasa a V-a."
+    }
+  },
+  "3": {
+    "correct": "Începuturile Preistoriei sunt legate de apariția omului și de folosirea primelor unelte simple din piatră.",
+    "options": {
+      "A": "Agricultura apare mult mai târziu, în Neolitic.",
+      "B": "Corect: primele unelte din piatră marchează începuturile vieții umane preistorice.",
+      "C": "Apariția scrisului marchează sfârșitul Preistoriei, nu începutul ei.",
+      "D": "Primele orașe apar după sedentarizare și agricultură, deci mult mai târziu."
+    }
+  },
+  "4": {
+    "correct": "Fierul este specific etapei târzii a Epocii Metalelor, după folosirea bronzului.",
+    "options": {
+      "A": "Corect: folosirea obișnuită a fierului aparține Epocii Metalelor.",
+      "B": "Mezoliticul este o etapă a Epocii Pietrei, înaintea metalurgiei.",
+      "C": "Neoliticul este asociat mai ales cu agricultura, ceramica și sedentarizarea, nu cu fierul.",
+      "D": "Paleoliticul este mult prea vechi pentru folosirea obișnuită a fierului."
+    }
+  },
+  "5": {
+    "correct": "Paleoliticul este cea mai lungă perioadă a Preistoriei dintre variante, întinzându-se pe o durată mult mai mare decât Neoliticul sau Epoca Metalelor.",
+    "options": {
+      "A": "Epoca Metalelor este mai târzie și mult mai scurtă decât Paleoliticul.",
+      "B": "Neoliticul durează câteva mii de ani, deci este mai scurt.",
+      "C": "Corect: Paleoliticul este cea mai îndelungată etapă dintre cele enumerate.",
+      "D": "Mezoliticul este o perioadă de tranziție, mai scurtă decât Paleoliticul."
+    }
+  },
+  "6": {
+    "correct": "Picturile rupestre apar în Paleolitic, înaintea orașelor, ceramicii și prelucrării bronzului.",
+    "options": {
+      "A": "Corect: picturile rupestre sunt foarte vechi și apar înaintea celorlalte exemple.",
+      "B": "Primele orașe apar mult mai târziu, după sedentarizare.",
+      "C": "Vasele de ceramică sunt asociate mai ales cu Neoliticul, deci apar mai târziu.",
+      "D": "Prelucrarea bronzului aparține Epocii Metalelor, deci este mai recentă."
+    }
+  },
+  "7": {
+    "correct": "Săbiile din bronz apar în Epoca Bronzului, mai târziu decât sulițele, arcul cu săgeți sau topoarele primitive.",
+    "options": {
+      "A": "Vârfurile de suliță sunt mai vechi, legate de vânătoarea preistorică timpurie.",
+      "B": "Arcul și săgeata apar înaintea armelor metalice complexe.",
+      "C": "Corect: săbiile din bronz sunt cele mai recente dintre variantele date.",
+      "D": "Topoarele cu mâner apar înaintea săbiilor din bronz."
+    }
+  },
+  "8": {
+    "correct": "Vârfurile de fier țin de Epoca Metalelor, mai ales de etapa folosirii fierului.",
+    "options": {
+      "A": "Paleoliticul este prea vechi și folosește mai ales piatra, osul și lemnul.",
+      "B": "Neoliticul nu este caracterizat prin vârfuri de fier.",
+      "C": "Corect: fierul aparține Epocii Metalelor.",
+      "D": "Antichitatea este o perioadă istorică de după apariția scrisului; întrebarea cere cadrul preistoric al metalelor."
+    }
+  },
+  "9": {
+    "correct": "Cele mai vechi unelte din piatră cioplită sunt asociate cu Africa, unde apar cele mai timpurii urme ale evoluției umane.",
+    "options": {
+      "A": "Australia a fost populată mult mai târziu.",
+      "B": "Europa are descoperiri importante, dar nu este regiunea celor mai timpurii unelte cunoscute.",
+      "C": "Corect: Africa este asociată cu primele unelte din piatră cioplită.",
+      "D": "Asia are urme vechi, dar nu este răspunsul cel mai potrivit pentru începuturile uneltelor de piatră."
+    }
+  },
+  "10": {
+    "correct": "Comerțul timpuriu presupunea schimburi simple între comunități apropiate, pe distanțe care puteau fi parcurse pe jos.",
+    "options": {
+      "A": "Corect: schimburile timpurii se făceau mai ales pe distanțe mici.",
+      "B": "Distanțele mari presupun organizare și mijloace mai dezvoltate.",
+      "C": "Căruțele trase de cai apar într-un context istoric mai târziu și nu descriu începuturile comerțului.",
+      "D": "Cămilele nu reprezintă mijlocul caracteristic pentru schimburile timpurii din această lecție."
+    }
+  },
+  "11": {
+    "correct": "Așezările neolitice aveau nevoie de apă și pământ fertil, deoarece oamenii practicau agricultura și creșterea animalelor.",
+    "options": {
+      "A": "Corect: apa și solul fertil erau esențiale pentru agricultură și locuire stabilă.",
+      "B": "Stâncile abrupte puteau oferi adăpost, dar nu erau criteriul principal pentru o așezare agricolă.",
+      "C": "Zonele cu vânat sunt mai importante pentru grupurile nomade paleolitice.",
+      "D": "Depărtarea de alte triburi nu explică nevoile de bază ale unei comunități neolitice."
+    }
+  },
+  "12": {
+    "correct": "Revoluția neolitică desemnează trecerea la agricultură, domesticirea animalelor și viața sedentară.",
+    "options": {
+      "A": "Corect: agricultura este elementul central al Revoluției neolitice.",
+      "B": "Scrierea apare mai târziu și marchează trecerea spre istorie.",
+      "C": "Armele de fier apar în Epoca Metalelor, nu în Revoluția neolitică.",
+      "D": "Monedele apar mult mai târziu, în societăți istorice dezvoltate."
+    }
+  },
+  "13": {
+    "correct": "Nomazii sunt oamenii care se deplasează dintr-un loc în altul în funcție de hrană, apă, anotimpuri sau turme.",
+    "options": {
+      "A": "Agricultorii au nevoie de teren cultivat și sunt legați mai mult de așezări stabile.",
+      "B": "Meșteșugarii produc obiecte, dar termenul nu descrie modul de deplasare.",
+      "C": "Corect: oamenii fără așezări permanente, care se mută după resurse, sunt nomazi.",
+      "D": "Păstorii se ocupă de animale, dar nu acesta este termenul general cerut."
+    }
+  },
+  "14": {
+    "correct": "Obsidianul este o rocă vulcanică foarte tăioasă, folosită pentru lame și vârfuri de arme.",
+    "options": {
+      "A": "Sarea nu este folosită pentru lame sau vârfuri de suliță.",
+      "B": "Corect: obsidianul poate fi cioplit în muchii foarte ascuțite.",
+      "C": "Cărbunele nu are duritatea și forma potrivite pentru unelte tăioase.",
+      "D": "Creta este moale și nu se potrivește pentru arme sau lame."
+    }
+  },
+  "15": {
+    "correct": "Meșteșugarii sunt persoanele specializate în producerea de obiecte, precum vase, unelte, arme sau podoabe.",
+    "options": {
+      "A": "Corect: termenul descrie persoanele care produc obiecte printr-o tehnică specializată.",
+      "B": "Soldații se ocupă de luptă, nu de producerea vaselor și uneltelor.",
+      "C": "Sclavii desemnează o categorie socială lipsită de libertate, nu o ocupație tehnică.",
+      "D": "Speologii studiază peșterile; termenul este modern și nu descrie producătorii de obiecte."
+    }
+  },
+  "16": {
+    "correct": "Un idol este o figurină sau reprezentare cu semnificație religioasă, magică ori simbolică.",
+    "options": {
+      "A": "O unealtă pentru tăiat copaci ar fi un topor sau o lamă, nu un idol.",
+      "B": "Corect: idolul are rol religios sau simbolic.",
+      "C": "O armă de vânătoare are funcție practică, nu sens simbolic principal.",
+      "D": "Un animal domesticit nu este un obiect religios sau o figurină."
+    }
+  },
+  "17": {
+    "correct": "O imagine cu pescuit cu harpoane oferă o informație despre activitatea reprezentată: pescuitul era important pentru acea comunitate.",
+    "options": {
+      "A": "Faptul că pescuiau nu dovedește că nu vânau și animale terestre.",
+      "B": "Corect: scena indică importanța pescuitului.",
+      "C": "Harpoanele nu dovedesc automat vânătoarea de balene; varianta adaugă ceva neobservabil.",
+      "D": "Varianta inventează o explicație extremă și nejustificată de sursă."
+    }
+  },
+  "18": {
+    "correct": "Oasele de animale aflate lângă urme de foc sugerează prepararea și consumarea cărnii.",
+    "options": {
+      "A": "Prezența oaselor de animale contrazice ideea că oamenii se hrăneau doar cu plante.",
+      "B": "Corect: pietrele arse indică folosirea focului, iar oasele indică hrană animală.",
+      "C": "Poate exista ritual, dar sursa indică mai direct gătirea și consumul.",
+      "D": "Oasele nu sunt torțe; varianta este neplauzibilă."
+    }
+  },
+  "19": {
+    "correct": "Oasele de animale puse într-un mormânt pot sugera ofrande, sacrificii sau obiecte simbolice legate de ritualuri funerare.",
+    "options": {
+      "A": "Varianta este o glumă și nu interpretează istoric descoperirea.",
+      "B": "Corect: depunerea intenționată a oaselor lângă mort poate avea sens ritual sau simbolic.",
+      "C": "Resturile alimentare aruncate ulterior ar fi o ipoteză posibilă doar cu dovezi suplimentare; nu este concluzia cea mai potrivită.",
+      "D": "Varianta neagă semnificația simbolică deși contextul funerar tocmai o sugerează."
+    }
+  },
+  "20": {
+    "correct": "Un os șlefuit, ascuțit și subțire seamănă cu un ac folosit la cusut piei sau haine.",
+    "options": {
+      "A": "Forma descrisă este prea practică și ascuțită pentru a indica în primul rând o jucărie.",
+      "B": "Corect: osul prelucrat astfel putea funcționa ca ac.",
+      "C": "Un instrument muzical ar avea alte indicii, precum găuri, cavitate sau formă de fluier.",
+      "D": "Un rest de mâncare nu ar fi șlefuit și modelat intenționat."
+    }
+  },
+  "21": {
+    "correct": "Figurina și dansatorii indică reprezentări simbolice, artistice și posibil religioase, nu economie sau scriere.",
+    "options": {
+      "A": "Nu apar elemente de schimb sau comerț.",
+      "B": "Corect: ambele surse trimit la artă, simboluri și ritualuri.",
+      "C": "Nici figurina, nici pictura nu reprezintă scriere.",
+      "D": "Orașele mari nu rezultă din aceste două surse."
+    }
+  },
+  "22": {
+    "correct": "Pictura cu vânătoare și unealta de piatră indică activități de procurare a hranei prin vânătoare.",
+    "options": {
+      "A": "Agricultura nu este indicată de scena de vânătoare.",
+      "B": "Corect: cele două surse se leagă de vânătoare și obținerea hranei.",
+      "C": "Comerțul internațional nu rezultă din sursele menționate.",
+      "D": "Armele de foc sunt moderne, inexistente în Preistorie."
+    }
+  },
+  "23": {
+    "correct": "Colibele temporare și oasele de animale mari sugerează grupuri mobile care urmăreau vânatul.",
+    "options": {
+      "A": "Viața sedentară și agricultura ar fi sugerate mai degrabă de locuințe permanente și resturi de plante cultivate.",
+      "B": "Corect: colibele temporare și vânătoarea indică viață nomadă.",
+      "C": "Nu există indicii de schimb comercial cu oase.",
+      "D": "Orașele permanente ar presupune construcții stabile și organizare urbană."
+    }
+  },
+  "24": {
+    "correct": "Prezența unui cuptor de topit metale alături de unelte din piatră arată că tehnologiile vechi și noi puteau coexista.",
+    "options": {
+      "A": "Corect: oamenii puteau folosi piatra în continuare, chiar dacă începuseră prelucrarea metalelor.",
+      "B": "Cuptorul de topit metale contrazice lipsa metalelor.",
+      "C": "Nu indică neapărat o preferință pentru piatră, ci coexistența materialelor.",
+      "D": "Metalurgia poate fi sugerată, dar bronzul nu este precizat; varianta este prea specifică."
+    }
+  },
+  "25": {
+    "correct": "Organizarea în grupuri mici sau triburi este o afirmație istorică plauzibilă, susținută de interpretarea dovezilor despre modul de viață paleolitic.",
+    "options": {
+      "A": "Corect: afirmația se poate baza pe dovezi și interpretări istorice serioase.",
+      "B": "Nu este o glumă; are conținut istoric verificabil.",
+      "C": "Nu este o exagerare în sine, deoarece comunitățile mici sunt plauzibile pentru Paleolitic.",
+      "D": "Nu este doar o părere dacă este susținută de dovezi istorice."
+    }
+  },
+  "26": {
+    "correct": "Afirmația idealizează oamenii preistorici și proiectează o judecată modernă asupra lor, fără dovezi istorice clare.",
+    "options": {
+      "A": "Corect: este o opinie personală, nu o concluzie demonstrată istoric.",
+      "B": "Nu se bazează pe izvoare istorice directe care să dovedească blândețea sau înțelepciunea lor.",
+      "C": "Faptul că vorbitorul are studii nu transformă automat opinia în cercetare.",
+      "D": "O critică a societății actuale nu dovedește o realitate istorică despre Preistorie."
+    }
+  },
+  "27": {
+    "correct": "Afirmația despre primele unelte metalice create în Carpați este prezentată fără dovezi acceptate; deci este speculație.",
+    "options": {
+      "A": "Nu sunt oferite dovezi clare sau consens istoric.",
+      "B": "Corect: este o presupunere nedovedită istoric.",
+      "C": "Varianta folosește un limbaj conspiraționist, nu argumente istorice.",
+      "D": "Nu este un fapt acceptat de toți istoricii."
+    }
+  },
+  "28": {
+    "correct": "Interpretarea unei picturi rupestre cere cunoașterea artei preistorice, a simbolurilor și a contextului arheologic.",
+    "options": {
+      "A": "O pagină despre secrete poate fi nesigură și nu garantează competență științifică.",
+      "B": "Cunoașterea regiunii ajută, dar nu înlocuiește specializarea în interpretarea artei preistorice.",
+      "C": "Graffiti-ul modern este alt fenomen cultural și nu oferă automat competență pentru Paleolitic.",
+      "D": "Corect: istoricul de artă specializat este cel mai potrivit dintre variante."
+    }
+  },
+  "29": {
+    "correct": "O broșură de muzeu care citează cercetări recente are autoritate instituțională și trimite la surse verificabile.",
+    "options": {
+      "A": "Propaganda politică urmărește influențarea ideologică, ceea ce nu rezultă din enunț.",
+      "B": "Corect: muzeul și citarea cercetărilor sporesc credibilitatea sursei.",
+      "C": "Un zvon nu are surse clare și verificabile.",
+      "D": "O legendă este o povestire tradițională, nu o prezentare muzeală bazată pe cercetări."
+    }
+  },
+  "30": {
+    "correct": "Un site comercial care leagă amuletele de vindecare poate urmări vânzarea unor produse, nu informarea istorică obiectivă.",
+    "options": {
+      "A": "Interesul nu este doar științific, deoarece enunțul implică produse și vindecare.",
+      "B": "Corect: scopul probabil este comercial, prin promisiuni de tip „produs-minune”.",
+      "C": "Promovarea cunoașterii istorice nu se face prin afirmații medicale nedovedite.",
+      "D": "Horoscopul nu este tema centrală a enunțului."
+    }
+  },
+  "31": {
+    "correct": "Afirmația reduce Paleoliticul doar la unelte de piatră și ignoră complexitatea vieții sociale, a artei, a adaptării și a relațiilor de grup.",
+    "options": {
+      "A": "Aceasta este o observație corectă, dar nu singura.",
+      "B": "Corect: sunt valide atât riscul din A, cât și cel din C.",
+      "C": "Și această observație este corectă, dar întrebarea cere varianta care le include pe amândouă.",
+      "D": "Există riscuri clare: simplificarea și subestimarea unei perioade lungi și complexe."
+    }
+  },
+  "32": {
+    "correct": "Istoria lucrează cu dovezi și cercetări; afirmația religioasă exprimă credință, dar nu poate fi confirmată ca fapt istoric prin aceleași metode.",
+    "options": {
+      "A": "Este corect: explicația de la istorie se bazează pe cercetări și surse.",
+      "B": "Este corect: călugărul exprimă o viziune religioasă, nu o demonstrație istorică verificabilă.",
+      "C": "Aceasta este o afirmație de credință, nu un fapt dovedit istoric.",
+      "D": "Corect: A și B sunt ambele adevărate."
+    }
+  },
+  "33": {
+    "correct": "Descoperirile arheologice pot avea date diferite deoarece regiunile nu evoluează identic; unele tehnologii apar mai devreme în anumite zone.",
+    "options": {
+      "A": "Nu trebuie presupusă o omisiune fără dovezi.",
+      "B": "Varianta atacă intenția cercetătorului fără argumente.",
+      "C": "Arheologia este tocmai una dintre metodele utile pentru datarea ceramicii.",
+      "D": "Corect: diferențele regionale explică cel mai bine datele diferite."
+    }
+  },
+  "34": {
+    "correct": "Autorul poate moderniza imaginea trecutului pentru ca personajele să pară familiare, dar această alegere poate falsifica realitatea istorică.",
+    "options": {
+      "A": "Vestimentația și coafurile moderne nu pot fi demonstrate ca exacte pentru Paleolitic.",
+      "B": "Varianta acceptă necritic o reprezentare modernizată.",
+      "C": "Dacă A și B sunt greșite, nu poate fi corectă combinația lor.",
+      "D": "Corect: imaginea este adaptată pentru publicul modern, nu pentru fidelitate istorică."
+    }
+  },
+  "35": {
+    "correct": "Culorile întunecate, umbrele și animalele amenințătoare sunt tehnici vizuale care creează tensiune și emoție.",
+    "options": {
+      "A": "Elementele vizuale nu sugerează calm și siguranță.",
+      "B": "Un poster dramatic nu garantează redarea fidelă și științifică a realității.",
+      "C": "Animalele amenințătoare și umbrele transmit mai degrabă frică, nu lipsa fricii.",
+      "D": "Corect: scopul posibil este influențarea emoțională a privitorului."
+    }
+  },
+  "36": {
+    "correct": "Ilustrațiile pot transmite stereotipul omului preistoric „sălbatic”, iar elevul trebuie să observe că imaginea poate fi influențată de clișee moderne.",
+    "options": {
+      "A": "Nu putem ști sigur că toți oamenii arătau așa; este o reprezentare.",
+      "B": "Cultura populară poate influența exact acest tip de imagine.",
+      "C": "Corect: autorul poate induce o percepție exagerată despre „primitivism”.",
+      "D": "Nu există fotografii reale din Paleolitic."
+    }
+  },
+  "37": {
+    "correct": "Titlul folosește senzaționalul, misterul și ideea de „adevăr ascuns” pentru a atrage atenția, nu pentru a informa echilibrat.",
+    "options": {
+      "A": "Enunțul nu oferă cercetări credibile, ci doar o formulare spectaculoasă.",
+      "B": "Corect: titlul provocator este o tehnică de atragere a publicului.",
+      "C": "Nu există redare echilibrată a datelor arheologice.",
+      "D": "Nu se face trimitere la consens științific, ci la o afirmație senzaționalistă."
+    }
+  },
+  "38": {
+    "correct": "Telefoanele sunt o tehnologie modernă, imposibilă în Paleolitic; „telefoanele din piatră” sunt o invenție fictivă.",
+    "options": {
+      "A": "Nu sunt descoperiri rare, ci obiecte inexistente ca tehnologie paleolitică.",
+      "B": "Corect: tehnologia telefoanelor nu exista în Paleolitic.",
+      "C": "Paleoliticul este anterior scrierii pe tăblițe de lut.",
+      "D": "Nu existau telefoane preistorice care să funcționeze pe distanțe scurte."
+    }
+  },
+  "39": {
+    "correct": "Afirmația ignoră dovezi precum picturile rupestre, statuetele și podoabele, care arată existența manifestărilor artistice în Epoca Pietrei.",
+    "options": {
+      "A": "Nu este un adevăr demonstrat; este contrazis de dovezi arheologice.",
+      "B": "Corect: concluzia este falsă deoarece ignoră dovezile despre artă.",
+      "C": "Numărul culorilor nu anulează caracterul artistic al picturilor rupestre.",
+      "D": "Nu este vorba despre Evul Mediu, ci despre interpretarea greșită a Epocii Pietrei."
+    }
+  },
+  "40": {
+    "correct": "O imagine editată cu extratereștri trebuie analizată critic: nu este o sursă autentică și poate crea o falsă impresie de dovadă istorică.",
+    "options": {
+      "A": "Este corect: editarea imaginii trebuie observată și separată de sursa istorică autentică.",
+      "B": "Este corect: astfel de editări pot induce publicul în eroare.",
+      "C": "Varianta acceptă o narațiune conspiraționistă fără dovezi.",
+      "D": "Corect: atât A, cât și B exprimă reacții critice potrivite."
+    }
+  }
+};
+
+  const competencies = {
+    "C1.1": {
+      "title": "Ordonarea pe criterii cronologice a faptelor / proceselor istorice",
+      "group": "Utilizarea coordonatelor şi reprezentărilor de timp şi spaţiu"
+    },
+    "C1.2": {
+      "title": "Identificarea diferenţelor temporale dintre evenimente şi procese istorice",
+      "group": "Utilizarea coordonatelor şi reprezentărilor de timp şi spaţiu"
+    },
+    "C1.3": {
+      "title": "Localizarea în timp şi în spaţiu a faptelor şi/sau a proceselor istorice",
+      "group": "Utilizarea coordonatelor şi reprezentărilor de timp şi spaţiu"
+    },
+    "C2.1": {
+      "title": "Folosirea termenilor de specialitate în descrierea unui eveniment/proces istoric",
+      "group": "Utilizarea critică şi reflexivă a limbajului de specialitate şi a surselor istorice"
+    },
+    "C2.2": {
+      "title": "Relatarea unui eveniment / proces istoric, utilizând informaţii din surse istorice",
+      "group": "Utilizarea critică şi reflexivă a limbajului de specialitate şi a surselor istorice"
+    },
+    "C2.3": {
+      "title": "Stabilirea de asemănări și deosebiri între fapte istorice, pe bază de surse diferite",
+      "group": "Utilizarea critică şi reflexivă a limbajului de specialitate şi a surselor istorice"
+    },
+    "C3.1": {
+      "title": "Selectarea și interpretarea informațiilor istorice digitale",
+      "group": "Aplicarea gândirii critice și a instrumentelor analitice"
+    },
+    "C3.2": {
+      "title": "Evaluarea motivației, utilității și credibilității unei surse",
+      "group": "Aplicarea gândirii critice și a instrumentelor analitice"
+    },
+    "C3.3": {
+      "title": "Analizarea perspectivelor multiple și a interpretărilor divergente",
+      "group": "Aplicarea gândirii critice și a instrumentelor analitice"
+    },
+    "C3.4": {
+      "title": "Analizarea critică a materialelor vizuale cu conținut istoric",
+      "group": "Aplicarea gândirii critice și a instrumentelor analitice"
+    },
+    "C4.1": {
+      "title": "Dezvoltarea unei atitudini critice față de utilizarea media digitale",
+      "group": "Conștientizarea potențialului abuz al media digitale"
+    }
+  };
+
+  const resultAreas = [
+    {
+      title: "cerințele de cronologie și de reprezentare a spațiului istoric",
+      match: code => code.startsWith("C1.")
+    },
+    {
+      title: "cerințele de utilizare critică a limbajului de specialitate și a surselor istorice",
+      match: code => code.startsWith("C2.")
+    },
+    {
+      title: "cerințele de aplicare a gândirii critice și analitice",
+      match: code => code.startsWith("C3.") || code.startsWith("C4.")
+    }
+  ];
+
+  let reviewVisible = false;
+  let lastReportData = null;
+
+  function percent(value, total) {
+    if (total === 0) return "0%";
+    return ((value / total) * 100).toFixed(2).replace(".00", "") + "%";
+  }
+
+  function levelLabel(score) {
+    if (score >= 85) return "nivel foarte bun";
+    if (score >= 70) return "nivel bun";
+    if (score >= 50) return "nivel mediu";
+    if (score >= 30) return "nivel fragil";
+    return "necesită consolidare";
+  }
+
+  function generalFeedback(score) {
+    if (score >= 85) return "Rezultatul indică o stăpânire foarte bună a conținuturilor și a competențelor evaluate. Elevul poate lucra mai departe pe itemi de analiză și comparație, nu doar pe recunoașterea informațiilor.";
+    if (score >= 70) return "Rezultatul indică o înțelegere bună a temei Preistoria. Pentru progres, este utilă exersarea itemilor care cer interpretarea surselor și verificarea critică a informațiilor.";
+    if (score >= 50) return "Rezultatul indică un nivel mediu. Noțiunile principale sunt parțial înțelese, dar este nevoie de recapitulare, mai ales la competențele unde procentul este mai scăzut.";
+    if (score >= 30) return "Rezultatul indică un nivel fragil. Este recomandată reluarea lecției, lucrul cu axa cronologică, termenii de bază și exemple simple de surse istorice.";
+    return "Rezultatul indică nevoia de consolidare serioasă. Este recomandată reluarea unității Preistoria pas cu pas, cu accent pe cronologie, termeni istorici și diferențierea dintre informații factuale, opinii și speculații.";
+  }
+
+  function formatDateTime(date) {
+    return new Intl.DateTimeFormat("ro-RO", {
+      dateStyle: "full",
+      timeStyle: "medium"
+    }).format(date);
+  }
+
+  function escapeHtml(value) {
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+  function toggleCompetencyPanel(button) {
+    const panel = button.closest(".competency-panel");
+    const isOpen = panel.classList.toggle("open");
+    button.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    const small = button.querySelector("small");
+    if (small) small.textContent = isOpen ? "(restrânge)" : "(vezi mai mult)";
+  }
+
+  function renderQuiz() {
+    const form = document.getElementById("quizForm");
+    form.innerHTML = "";
+
+    questions.forEach(question => {
+      const card = document.createElement("article");
+      card.className = "question-card";
+      card.id = "question-" + question.id;
+      card.dataset.questionId = question.id;
+
+      const title = document.createElement("p");
+      title.className = "question-title";
+      title.textContent = question.id + ". " + question.text;
+      card.appendChild(title);
+
+      Object.entries(question.options).forEach(([letter, option]) => {
+        const label = document.createElement("label");
+        label.className = "option-label";
+
+        const input = document.createElement("input");
+        input.type = "radio";
+        input.name = "q" + question.id;
+        input.value = letter;
+
+        const span = document.createElement("span");
+        span.textContent = letter + ". " + option;
+
+        label.appendChild(input);
+        label.appendChild(span);
+        card.appendChild(label);
+      });
+
+      form.appendChild(card);
+    });
+  }
+
+  function finishQuiz() {
+    let correct = 0;
+    let wrong = 0;
+    let missing = 0;
+
+    const areaStats = resultAreas.map(area => ({
+      title: area.title,
+      match: area.match,
+      total: 0,
+      correct: 0
+    }));
+
+    questions.forEach(question => {
+      const selected = document.querySelector(`input[name="q${question.id}"]:checked`);
+      const area = areaStats.find(item => item.match(question.competency));
+
+      if (area) {
+        area.total += 1;
+      }
+
+      if (!selected) {
+        missing += 1;
+      } else if (selected.value === question.answer) {
+        correct += 1;
+        if (area) {
+          area.correct += 1;
+        }
+      } else {
+        wrong += 1;
+      }
+    });
+
+    const total = questions.length;
+    const totalPercent = (correct / total) * 100;
+    const completedAt = new Date();
+    const completedAtLabel = formatDateTime(completedAt);
+
+    lastReportData = {
+      title: "Testul grilă nr. 2",
+      discipline: "Istorie, clasa a V-a",
+      unit: "Preistoria",
+      numberOfQuestions: "40 grile",
+      estimatedTime: "40 minute",
+      completedAtLabel,
+      correct,
+      wrong,
+      missing,
+      total,
+      correctPercent: percent(correct, total),
+      wrongPercent: percent(wrong, total),
+      missingPercent: percent(missing, total),
+      feedback: generalFeedback(totalPercent),
+      areas: areaStats.map(area => ({
+        title: area.title,
+        correct: area.correct,
+        total: area.total,
+        percent: percent(area.correct, area.total)
+      }))
+    };
+
+    let html = `
+      <h2>Interpretarea rezultatului</h2>
+      <p class="result-line"><strong>Data și ora testului:</strong> ${completedAtLabel}</p>
+      <p class="result-line">Răspunsuri corecte: <strong>${correct} (${percent(correct, total)})</strong>. Răspunsuri greșite: <strong>${wrong} (${percent(wrong, total)})</strong>.</p>
+      <p class="result-line">Cerințe la care nu ai răspuns: <strong>${missing} (${percent(missing, total)})</strong>.</p>
+      <div class="interpretation">${generalFeedback(totalPercent)}</div>
+      <h3>Ai răspuns corect în proporție de:</h3>
+      <div class="competency-lines">
+    `;
+
+    areaStats.forEach(area => {
+      html += `
+        <p><strong>${percent(area.correct, area.total)}</strong> la ${area.title}</p>
+      `;
+    });
+
+    html += `
+      </div>
+      <div class="interpretation"><strong>Această fișă se poate salva sau imprima pentru urmărirea progresului.</strong> Rezultatul este orientativ și trebuie interpretat împreună cu participarea la ore, exercițiile scrise și evoluția elevului în timp.</div>
+      <div class="result-actions">
+        <button id="reviewToggleButton" type="button" class="secondary-button" onclick="toggleReview()">Arată răspunsurile corecte</button>
+        <button type="button" class="secondary-button" onclick="downloadPdfReport()">Descarcă raportul PDF</button>
+        <p id="reviewHint" class="review-hint">Răspunsurile nu mai apar ca listă separată. Se vor marca direct pe fiecare întrebare: ce ai bifat, dacă este corect sau greșit și care era varianta corectă. După afișare, apare și butonul „Vezi explicația” la fiecare întrebare.</p>
+      </div>
+    `;
+
+    clearReviewMarks();
+    reviewVisible = false;
+
+    const resultBox = document.getElementById("resultBox");
+    resultBox.innerHTML = html;
+    resultBox.style.display = "block";
+    resultBox.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function clearReviewMarks() {
+    document.querySelectorAll(".question-card").forEach(card => {
+      card.classList.remove("review-mode", "review-correct-card", "review-wrong-card", "review-missing-card");
+      const note = card.querySelector(".question-review-note");
+      if (note) note.remove();
+      const explanation = card.querySelector(".explanation-wrap");
+      if (explanation) explanation.remove();
+    });
+
+    document.querySelectorAll(".option-label").forEach(label => {
+      label.classList.remove("review-correct-option", "review-selected-correct", "review-selected-wrong");
+      const badge = label.querySelector(".review-badge");
+      if (badge) badge.remove();
+    });
+  }
+
+  function addBadge(label, text, kind) {
+    const badge = document.createElement("span");
+    badge.className = "review-badge " + kind;
+    badge.textContent = text;
+    label.appendChild(badge);
+  }
+
+  function buildExplanationHtml(question) {
+    const explanation = questionExplanations[question.id];
+    if (!explanation) {
+      return `<p><strong>Răspuns corect: ${question.answer}.</strong> Varianta corectă se potrivește cel mai bine cerinței, iar celelalte variante conțin informații incomplete, anacronice sau nejustificate.</p>`;
+    }
+
+    let html = `<p><strong>De ce răspunsul ${question.answer} este corect:</strong> ${escapeHtml(explanation.correct)}</p>`;
+    html += `<ul class="option-explanations">`;
+
+    Object.entries(question.options).forEach(([letter]) => {
+      const isCorrect = letter === question.answer;
+      const className = isCorrect ? "correct" : "wrong";
+      const optionExplanation = explanation.options && explanation.options[letter]
+        ? explanation.options[letter]
+        : (isCorrect ? explanation.correct : "Varianta nu răspunde corect cerinței.");
+      html += `<li><span class="${className}"><strong>${letter}.</strong></span> ${escapeHtml(optionExplanation)}</li>`;
+    });
+
+    html += `</ul>`;
+    return html;
+  }
+
+  function addExplanationButton(card, question) {
+    const wrap = document.createElement("div");
+    wrap.className = "explanation-wrap";
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "explanation-toggle";
+    button.setAttribute("aria-expanded", "false");
+    button.textContent = "Vezi explicația";
+    button.onclick = function() { toggleExplanation(button); };
+
+    const box = document.createElement("div");
+    box.className = "explanation-box";
+    box.hidden = true;
+    box.innerHTML = buildExplanationHtml(question);
+
+    wrap.appendChild(button);
+    wrap.appendChild(box);
+    card.appendChild(wrap);
+  }
+
+  function toggleExplanation(button) {
+    const wrap = button.closest(".explanation-wrap");
+    const box = wrap ? wrap.querySelector(".explanation-box") : null;
+    if (!box) return;
+
+    const isOpen = button.getAttribute("aria-expanded") === "true";
+    button.setAttribute("aria-expanded", isOpen ? "false" : "true");
+    box.hidden = isOpen;
+    button.textContent = isOpen ? "Vezi explicația" : "Ascunde explicația";
+  }
+
+  function applyReviewMarks() {
+    clearReviewMarks();
+
+    questions.forEach(question => {
+      const card = document.getElementById("question-" + question.id);
+      if (!card) return;
+
+      const selected = document.querySelector(`input[name="q${question.id}"]:checked`);
+      const chosen = selected ? selected.value : null;
+      const isCorrect = chosen === question.answer;
+
+      let noteText;
+      let noteClass;
+
+      card.classList.add("review-mode");
+
+      if (!chosen) {
+        noteText = `Nu ai bifat niciun răspuns. Varianta corectă era ${question.answer}.`;
+        noteClass = "missing";
+        card.classList.add("review-missing-card");
+      } else if (isCorrect) {
+        noteText = `Ai bifat ${chosen}. Răspuns corect.`;
+        noteClass = "correct";
+        card.classList.add("review-correct-card");
+      } else {
+        noteText = `Ai bifat ${chosen}, dar varianta corectă era ${question.answer}.`;
+        noteClass = "wrong";
+        card.classList.add("review-wrong-card");
+      }
+
+      const note = document.createElement("div");
+      note.className = "question-review-note " + noteClass;
+      note.textContent = noteText;
+
+      const title = card.querySelector(".question-title");
+      if (title) {
+        title.insertAdjacentElement("afterend", note);
+      } else {
+        card.prepend(note);
+      }
+
+      card.querySelectorAll(".option-label").forEach(label => {
+        const input = label.querySelector("input");
+        if (!input) return;
+
+        if (input.value === question.answer && input.value === chosen) {
+          label.classList.add("review-selected-correct");
+          addBadge(label, "ai bifat — corect", "correct");
+        } else if (input.value === chosen && input.value !== question.answer) {
+          label.classList.add("review-selected-wrong");
+          addBadge(label, "ai bifat — greșit", "wrong");
+        } else if (input.value === question.answer) {
+          label.classList.add("review-correct-option");
+          addBadge(label, "varianta corectă", "correct");
+        }
+      });
+
+      addExplanationButton(card, question);
+    });
+  }
+
+  function toggleReview() {
+    const button = document.getElementById("reviewToggleButton");
+    const hint = document.getElementById("reviewHint");
+
+    reviewVisible = !reviewVisible;
+
+    if (reviewVisible) {
+      applyReviewMarks();
+      if (button) button.textContent = "Ascunde răspunsurile corecte";
+      if (hint) hint.textContent = "Marcajele sunt afișate direct pe întrebări. Sub fiecare întrebare ai butonul „Vezi explicația”, care se deschide și se retrage la click.";
+      const firstQuestion = document.getElementById("question-1");
+      if (firstQuestion) firstQuestion.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      clearReviewMarks();
+      if (button) button.textContent = "Arată răspunsurile corecte";
+      if (hint) hint.textContent = "Răspunsurile nu mai apar ca listă separată. Se vor marca direct pe fiecare întrebare: ce ai bifat, dacă este corect sau greșit și care era varianta corectă. După afișare, apare și butonul „Vezi explicația” la fiecare întrebare.";
+    }
+  }
+
+  function buildReportHtml() {
+    if (!lastReportData) return "";
+    const data = lastReportData;
+    const areaLines = data.areas.map(area => `<p><strong>${escapeHtml(area.percent)}</strong> la ${escapeHtml(area.title)}</p>`).join("");
+
+    return `<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <title>Raport de evaluare - Preistoria</title>
+  <style>
+    @page { size: A4; margin: 18mm; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      color: #2f241c;
+      background: #ffffff;
+      margin: 0;
+      line-height: 1.55;
+      font-size: 12.5pt;
+    }
+    .report { max-width: 760px; margin: 0 auto; }
+    h1 { margin: 0 0 14px; font-size: 24pt; color: #3c2a1e; }
+    h2 { margin: 24px 0 8px; font-size: 16pt; color: #3c2a1e; }
+    p { margin: 0 0 8px; }
+    .box {
+      border: 1px solid #d8c6b5;
+      border-radius: 14px;
+      padding: 16px;
+      margin: 16px 0;
+      background: #fffaf3;
+    }
+    .result-line { font-size: 14pt; }
+    .note {
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 12px;
+      background: #f3eadf;
+      text-align: justify;
+    }
+    .print-hint {
+      margin: 0 0 14px;
+      color: #6a5544;
+      font-size: 10.5pt;
+    }
+    @media print {
+      .print-hint { display: none; }
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <main class="report">
+    <p class="print-hint">Pentru PDF: alege „Save as PDF” / „Salvează ca PDF” în fereastra de printare.</p>
+    <h1>Raport de evaluare</h1>
+    <div class="box">
+      <p><strong>${escapeHtml(data.title)}</strong></p>
+      <p><strong>Disciplina:</strong> ${escapeHtml(data.discipline)}</p>
+      <p><strong>Unitatea de învățare:</strong> ${escapeHtml(data.unit)}</p>
+      <p><strong>Număr de întrebări:</strong> ${escapeHtml(data.numberOfQuestions)}</p>
+      <p><strong>Timp estimat:</strong> ${escapeHtml(data.estimatedTime)}</p>
+      <p><strong>Data și ora testului:</strong> ${escapeHtml(data.completedAtLabel)}</p>
+    </div>
+
+    <h2>Rezultat general</h2>
+    <p class="result-line">Răspunsuri corecte: <strong>${data.correct} (${escapeHtml(data.correctPercent)})</strong>. Răspunsuri greșite: <strong>${data.wrong} (${escapeHtml(data.wrongPercent)})</strong>.</p>
+    <p class="result-line">Cerințe la care nu ai răspuns: <strong>${data.missing} (${escapeHtml(data.missingPercent)})</strong>.</p>
+
+    <div class="note">${escapeHtml(data.feedback)}</div>
+
+    <h2>Ai răspuns corect în proporție de:</h2>
+    ${areaLines}
+
+    <div class="note"><strong>Această fișă se poate salva sau imprima pentru urmărirea progresului.</strong> Rezultatul este orientativ și trebuie interpretat împreună cu participarea la ore, exercițiile scrise și evoluția elevului în timp.</div>
+  </main>
+  <script>
+    window.addEventListener("load", function() {
+      setTimeout(function() { window.print(); }, 300);
+    });
+  <\/script>
+</body>
+</html>`;
+  }
+
+  function downloadPdfReport() {
+    if (!lastReportData) {
+      alert("Mai întâi apasă pe «Am terminat testul», ca să se genereze raportul.");
+      return;
+    }
+
+    const reportWindow = window.open("", "_blank");
+    if (!reportWindow) {
+      alert("Browserul a blocat fereastra de raport. Permite pop-up-urile pentru această pagină și încearcă din nou.");
+      return;
+    }
+
+    reportWindow.document.open();
+    reportWindow.document.write(buildReportHtml());
+    reportWindow.document.close();
+    reportWindow.focus();
+  }
+
+  function resetQuiz() {
+    document.querySelectorAll("input[type='radio']").forEach(input => input.checked = false);
+    clearReviewMarks();
+    reviewVisible = false;
+    lastReportData = null;
+    const resultBox = document.getElementById("resultBox");
+    resultBox.style.display = "none";
+    resultBox.innerHTML = "";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  document.addEventListener("DOMContentLoaded", renderQuiz);
+</script>
+
+</body>
+</html>

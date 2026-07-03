@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <!-- Variantă optimizată: competențe clasa a VI-a, explicații pe întrebări și raport PDF prin salvare/printare -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testul grilă nr. 1 - Marile descoperiri geografice</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #f6f0e7;
+      color: #2f241c;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .test-page {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 42px 22px 70px;
+    }
+
+    .test-hero,
+    .result-box,
+    .evaluated-competencies {
+      background: #fffaf3;
+      border: 1px solid rgba(91, 62, 36, 0.18);
+      border-radius: 26px;
+      padding: 32px;
+      box-shadow: 0 14px 36px rgba(69, 46, 25, 0.08);
+      margin-bottom: 24px;
+    }
+
+    .test-hero h1,
+    .evaluated-competencies h2 {
+      margin: 0 0 10px;
+      color: #3c2a1e;
+      letter-spacing: -0.4px;
+    }
+
+    .test-hero h1 { font-size: 40px; }
+    .evaluated-competencies h2 { font-size: 30px; }
+
+    .test-hero p,
+    .result-box p,
+    .evaluated-competencies p,
+    .evaluated-competencies li {
+      margin: 0 0 10px;
+      color: #5b4a3d;
+      line-height: 1.65;
+      font-size: 17px;
+    }
+
+    .evaluated-competencies {
+      background: linear-gradient(180deg, #fffaf3 0%, #fbf1e5 100%);
+    }
+
+    .competency-accordion {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .competency-panel {
+      background: #ffffff;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .competency-source-link {
+      display: block;
+      padding: 15px 20px;
+      background: #3c2a1e;
+      color: #fffaf3 !important;
+      text-decoration: none !important;
+      font-size: 15.5px;
+      font-weight: 700;
+      line-height: 1.45;
+      border-bottom: 1px solid rgba(255, 250, 243, 0.18);
+      transition: transform 0.16s ease, background 0.16s ease, box-shadow 0.16s ease;
+    }
+
+    .competency-source-link:visited,
+    .competency-source-link:active {
+      color: #fffaf3 !important;
+      text-decoration: none !important;
+    }
+
+    .competency-source-link:hover {
+      color: #fffaf3 !important;
+      text-decoration: none !important;
+      background: #4a3324;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(69, 46, 25, 0.14);
+    }
+
+    .competency-toggle {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      color: #3c2a1e;
+      padding: 18px 20px;
+      text-align: left;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 18px;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .competency-toggle small {
+      font-size: 14px;
+      color: #7a5c3c;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .competency-arrow {
+      transition: transform 0.2s ease;
+      color: #7a5c3c;
+      font-size: 18px;
+    }
+
+    .competency-panel.open .competency-arrow { transform: rotate(180deg); }
+
+    .competency-details {
+      display: none;
+      padding: 0 20px 20px;
+      border-top: 1px solid rgba(91, 62, 36, 0.10);
+    }
+
+    .competency-panel.open .competency-details { display: block; }
+
+    .competency-details h3 {
+      margin: 18px 0 8px;
+      color: #3c2a1e;
+      font-size: 18px;
+    }
+
+    .competency-main-title {
+      margin: 24px 0 12px !important;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: #f3eadf;
+      border-left: 6px solid #7a5c3c;
+      color: #2f241c !important;
+      font-size: 18px !important;
+      font-weight: 800;
+      line-height: 1.45;
+      box-shadow: inset 0 0 0 1px rgba(91, 62, 36, 0.10);
+    }
+
+    .competency-details .competency-main-title:first-child {
+      margin-top: 18px !important;
+    }
+
+    .competency-subtitle {
+      margin-left: 8px !important;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #4a3324 !important;
+    }
+
+    .competency-details ul {
+      margin: 0 0 8px 24px;
+      padding: 0;
+    }
+
+    .question-card {
+      background: #ffffff;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 8px 20px rgba(69, 46, 25, 0.045);
+    }
+
+    .question-title {
+      margin: 0 0 14px;
+      color: #3c2a1e;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .question-competency { display: none; }
+
+    .option-label {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 9px 0;
+      color: #4c3b2e;
+      line-height: 1.45;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .option-label input { margin-top: 4px; }
+
+    .finish-box {
+      position: sticky;
+      bottom: 16px;
+      background: rgba(255, 250, 243, 0.96);
+      border: 1px solid rgba(91, 62, 36, 0.18);
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: 0 12px 30px rgba(69, 46, 25, 0.10);
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      margin-top: 24px;
+      backdrop-filter: blur(8px);
+    }
+
+    .finish-box span {
+      color: #5b4a3d;
+      font-size: 15px;
+    }
+
+    .finish-button,
+    .secondary-button {
+      border: 1px solid rgba(91, 62, 36, 0.22);
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 15px;
+      white-space: nowrap;
+    }
+
+    .finish-button {
+      background: #3c2a1e;
+      color: #fffaf3;
+    }
+
+    .secondary-button {
+      background: #f3eadf;
+      color: #3c2a1e;
+    }
+
+    .finish-button:hover,
+    .secondary-button:hover,
+    .explanation-toggle:hover,
+    .competency-toggle:hover { opacity: 0.9; }
+
+    .result-box {
+      display: none;
+      border-color: rgba(91, 62, 36, 0.28);
+    }
+
+    .result-box h2 {
+      margin: 0 0 16px;
+      color: #3c2a1e;
+      font-size: 32px;
+    }
+
+    .result-line {
+      font-size: 20px !important;
+      color: #2f241c !important;
+    }
+
+    .result-line strong { color: #120c08; }
+
+    .interpretation {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 18px;
+      background: #f3eadf;
+      color: #4c3b2e;
+      line-height: 1.65;
+      font-size: 17px;
+      text-align: justify;
+    }
+
+    .correct { color: #1d6b35; font-weight: 700; }
+    .wrong { color: #9a2c20; font-weight: 700; }
+    .missing { color: #7a5c3c; font-weight: 700; }
+
+    .result-actions {
+      margin-top: 28px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(91, 62, 36, 0.14);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .review-hint {
+      flex-basis: 100%;
+      margin-top: 6px !important;
+      font-size: 15px !important;
+      color: #6a5544 !important;
+    }
+
+    .question-card.review-mode { border-width: 2px; }
+
+    .question-card.review-correct-card {
+      border-color: rgba(29, 107, 53, 0.35);
+      background: #fbfffc;
+    }
+
+    .question-card.review-wrong-card {
+      border-color: rgba(154, 44, 32, 0.35);
+      background: #fffafa;
+    }
+
+    .question-card.review-missing-card {
+      border-color: rgba(122, 92, 60, 0.35);
+      background: #fffdf8;
+    }
+
+    .question-review-note {
+      margin: 0 0 14px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .question-review-note.correct {
+      background: rgba(29, 107, 53, 0.09);
+      color: #1d6b35;
+    }
+
+    .question-review-note.wrong {
+      background: rgba(154, 44, 32, 0.09);
+      color: #9a2c20;
+    }
+
+    .question-review-note.missing {
+      background: rgba(122, 92, 60, 0.12);
+      color: #6c4d2f;
+    }
+
+    .option-label.review-correct-option,
+    .option-label.review-selected-correct,
+    .option-label.review-selected-wrong {
+      border-radius: 12px;
+      padding: 10px 12px;
+      margin: 5px 0;
+    }
+
+    .option-label.review-correct-option {
+      background: rgba(29, 107, 53, 0.08);
+      outline: 1px solid rgba(29, 107, 53, 0.25);
+    }
+
+    .option-label.review-selected-correct {
+      background: rgba(29, 107, 53, 0.12);
+      outline: 2px solid rgba(29, 107, 53, 0.42);
+    }
+
+    .option-label.review-selected-wrong {
+      background: rgba(154, 44, 32, 0.10);
+      outline: 2px solid rgba(154, 44, 32, 0.38);
+    }
+
+    .review-badge {
+      margin-left: auto;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .review-badge.correct {
+      background: rgba(29, 107, 53, 0.14);
+      color: #1d6b35;
+    }
+
+    .review-badge.wrong {
+      background: rgba(154, 44, 32, 0.14);
+      color: #9a2c20;
+    }
+
+    .review-badge.missing {
+      background: rgba(122, 92, 60, 0.14);
+      color: #6c4d2f;
+    }
+
+    .explanation-wrap {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px dashed rgba(91, 62, 36, 0.22);
+    }
+
+    .explanation-toggle {
+      border: 1px solid rgba(91, 62, 36, 0.22);
+      border-radius: 999px;
+      padding: 10px 15px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 14px;
+      background: #fffaf3;
+      color: #3c2a1e;
+    }
+
+    .explanation-box {
+      margin-top: 12px;
+      padding: 16px;
+      border-radius: 16px;
+      background: #f8f0e7;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      color: #4c3b2e;
+      line-height: 1.62;
+      font-size: 15.5px;
+      text-align: justify;
+    }
+
+    .explanation-box p { margin: 0 0 10px; }
+
+    .option-explanations {
+      margin: 10px 0 0 20px;
+      padding: 0;
+    }
+
+    .option-explanations li {
+      margin-bottom: 8px;
+    }
+
+    .competency-lines {
+      margin-top: 10px;
+      margin-bottom: 18px;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .competency-lines p { margin: 8px 0; }
+
+    @media (max-width: 720px) {
+      .test-page { padding: 24px 14px 54px; }
+      .test-hero h1 { font-size: 32px; }
+      .evaluated-competencies h2 { font-size: 25px; }
+      .finish-box {
+        position: static;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .finish-button,
+      .secondary-button { width: 100%; }
+      .result-actions { display: grid; }
+      .competency-toggle { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<main class="test-page">
+  <section class="test-hero">
+    <h1>Testul grilă nr. 1</h1>
+    <p><strong>Disciplina:</strong> Istorie, clasa a VI-a</p>
+    <p><strong>Unitatea de învățare:</strong> Marile descoperiri geografice</p>
+    <p><strong>Număr de întrebări:</strong> 40 grile</p>
+    <p><strong>Timp estimat:</strong> 40 minute</p>
+    <p>La final, apasă pe butonul <strong>Am terminat testul</strong>. Vei primi o interpretare automată a rezultatelor.</p>
+  </section>
+
+  <section class="evaluated-competencies">
+    <h2>Competențe evaluate:</h2>
+    <div class="competency-accordion">
+      <article class="competency-panel">
+        <a class="competency-source-link" href="https://www.ise.ro/wp-content/uploads/2017/01/Istorie.pdf" target="_blank" rel="noopener noreferrer">Competențe prevăzute în programa școlară pentru disciplina Istorie (clasa a VI-a), conform Ordinului MEN nr. 3393 din 28 februarie 2017 privind aprobarea programelor şcolare pentru învăţământul gimnazial</a>
+        <button type="button" class="competency-toggle" onclick="toggleCompetencyPanel(this)" aria-expanded="false">
+          <span>Competențe specifice <small>(vezi mai mult)</small></span>
+          <span class="competency-arrow">▼</span>
+        </button>
+        <div class="competency-details">
+          <h3 class="competency-main-title">C1. Utilizarea în contexte diverse a coordonatelor şi reprezentărilor despre timp şi spaţiu</h3>
+          <h3 class="competency-subtitle">C1.1. Localizarea în spaţiu a lumii cunoscute în diferite perioade istorice</h3>
+          <ul>
+            <li>Examinarea spaţiilor istorice pe baza hărţilor</li>
+            <li>Compararea „lumii cunoscute” în diferite perioade istorice</li>
+            <li>Localizarea pe harta mută a spaţiilor istorice pe măsura extinderii ariei de cunoaştere</li>
+          </ul>
+          <h3 class="competency-subtitle">C1.2. Utilizarea coordonatelor temporale referitoare la faptele şi procesele istorice</h3>
+          <ul>
+            <li>Alcătuirea unor axe cronologice pe diverse domenii: social, cultural, economic, politic etc.</li>
+            <li>Stabilirea unor reprezentări ale timpului în diferite epoci istorice</li>
+            <li>Redactarea de texte cu informaţii oferite de surse</li>
+          </ul>
+
+          <h3 class="competency-main-title">C2. Utilizarea critică şi reflexivă a limbajului de specialitate şi a surselor istorice</h3>
+          <h3 class="competency-subtitle">C2.1. Utilizarea adecvată a termenilor istorici/limbajului de specialitate în prezentarea unui fapt/proces istoric</h3>
+          <ul>
+            <li>Alcătuirea unui glosar de termeni specifici</li>
+            <li>Folosirea termenilor istorici cunoscuţi în situaţii noi de comunicare</li>
+            <li>Realizarea unor texte folosind adecvat termenii istorici</li>
+          </ul>
+          <h3 class="competency-subtitle">C2.2. Utilizarea gândirii critice în analiza surselor de informare</h3>
+          <ul>
+            <li>Analiza surselor scrise sau vizuale pe baza unor cerinţe</li>
+            <li>Alcătuirea unor fişe de personaj istoric pe baza unor surse diverse</li>
+            <li>Compararea surselor istorice oficiale cu cele neoficiale</li>
+          </ul>
+          <h3 class="competency-subtitle">C2.3. Identificarea elementelor de cauzalitate prezente în surse variate</h3>
+          <ul>
+            <li>Stabilirea elementelor de cauzalitate într-o sursă istorică</li>
+            <li>Descoperirea cauzelor unui eveniment prin analiza contextului istoric</li>
+            <li>Recunoaşterea cauzelor unor evenimente istorice asemănătoare sau diferite</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="competency-panel">
+        <a class="competency-source-link" href="https://rm.coe.int/prems-108118-gbr-2507-quality-history-education-web-21x21/16808eace7" target="_blank" rel="noopener noreferrer">Competențe prevăzute în raportul Consiliului Europei (2018): “Quality History Education in the 21st Century”</a>
+        <button type="button" class="competency-toggle" onclick="toggleCompetencyPanel(this)" aria-expanded="false">
+          <span>Competențe transversale <small>(vezi mai mult)</small></span>
+          <span class="competency-arrow">▼</span>
+        </button>
+        <div class="competency-details">
+          <h3 class="competency-main-title">CT1. Aplicarea gândirii critice și a instrumentelor analitice în vederea depistării manipulării</h3>
+          <h3 class="competency-subtitle">CT1.1. Selectarea și interpretarea informațiilor istorice digitale</h3>
+          <ul>
+            <li>Identificarea informațiilor istorice relevante din texte, imagini și materiale video</li>
+            <li>Diferențierea între date factuale, opinii, interpretări și speculații</li>
+            <li>Argumentarea selecției surselor utilizate în raport cu tema investigată</li>
+          </ul>
+          <h3 class="competency-subtitle">CT1.2. Evaluarea motivației, utilității și credibilității unei surse</h3>
+          <ul>
+            <li>Analizarea scopului autorului și a posibilelor interese ideologice sau politice</li>
+            <li>Identificarea indicatorilor de credibilitate: autor, instituție, dată, context, metodă</li>
+            <li>Explicarea modului în care contextul social poate influența obiectivitatea unei surse</li>
+          </ul>
+          <h3 class="competency-subtitle">CT1.3. Analizarea perspectivelor multiple și a interpretărilor divergente</h3>
+          <ul>
+            <li>Identificarea și compararea interpretărilor diferite ale aceluiași eveniment</li>
+            <li>Explicarea modului în care contextul istoric influențează interpretarea</li>
+            <li>Argumentarea riscurilor acceptării necritice a narațiunilor radicalizate</li>
+          </ul>
+          <h3 class="competency-subtitle">CT1.4. Analizarea critică a materialelor vizuale cu conținut istoric</h3>
+          <ul>
+            <li>Diferențierea între conținutul ilustrat direct și mesajul intenționat de autor</li>
+            <li>Identificarea tehnicilor vizuale de persuasiune: cadraj, selecția imaginilor, montaj</li>
+            <li>Argumentarea impactului emoțional sau ideologic al materialelor vizuale</li>
+          </ul>
+          <h3 class="competency-main-title">CT2. Creșterea gradului de conștientizare în legătură cu potențialul abuz al media digitale</h3>
+          <h3 class="competency-subtitle">CT2.1. Dezvoltarea unei atitudini critice față de utilizarea media digitale</h3>
+          <ul>
+            <li>Identificarea exemplelor de utilizare pozitivă și negativă a informației istorice în mediul digital: social media, bloguri, materiale video</li>
+            <li>Explicarea modului în care imaginile, algoritmii, titlurile manipulative și editările vizuale pot distorsiona percepția asupra trecutului</li>
+            <li>Demonstrarea comportamentelor responsabile și reflexive în utilizarea media digitale, evaluând riscul de manipulare, dezinformare sau propagandă istorică</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="resultBox" class="result-box"></section>
+
+  <form id="quizForm"></form>
+
+  <div class="finish-box">
+    <span>După ce ai bifat răspunsurile, apasă pe buton pentru interpretare.</span>
+    <div>
+      <button type="button" class="secondary-button" onclick="resetQuiz()">Șterge răspunsurile</button>
+      <button type="button" class="finish-button" onclick="finishQuiz()">Am terminat testul</button>
+    </div>
+  </div>
+</main>
+
+<script>
+  const testMeta = {
+    title: "Testul grilă nr. 1",
+    discipline: "Istorie, clasa a VI-a",
+    unit: "Marile descoperiri geografice",
+    questionCount: "40 grile",
+    estimatedTime: "40 minute"
+  };
+
+  const questions = [
+  {
+    "id": 1,
+    "competency": "C1.1",
+    "text": "Doar următoarele continente erau cunoscute de către europeni în jurul anului 1400:",
+    "options": {
+      "A": "Europa, Asia, Australia",
+      "B": "Europa, Asia, Africa",
+      "C": "Europa, America, Asia, Africa",
+      "D": "Europa, America, Africa"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 2,
+    "competency": "C1.1",
+    "text": "Harta călătoriei lui Cristofor Columb arată debarcarea în:",
+    "options": {
+      "A": "Coastele estice ale Americii de Sud",
+      "B": "Arhipelagul Caraibe (America)",
+      "C": "Coastele estice ale Americii de Nord",
+      "D": "Țărmurile Indiei"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 3,
+    "competency": "C1.1",
+    "text": "Civilizația aztecă poate fi localizată pe hartă, cu aproximație, acolo unde astăzi se află teritoriul:",
+    "options": {
+      "A": "Venezuelei",
+      "B": "Statului Peru",
+      "C": "Mexicului",
+      "D": "Braziliei"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 4,
+    "competency": "C1.1",
+    "text": "Vasco da Gama este portughezul care a reușit să ajungă în:",
+    "options": {
+      "A": "America",
+      "B": "India, ocolind Africa",
+      "C": "India, ocolind America",
+      "D": "India, prin Oceanul Arctic"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 5,
+    "competency": "C1.1",
+    "text": "O hartă din anul 1540 nu va arăta de obicei:",
+    "options": {
+      "A": "Teritoriile încă neexplorate din profunzimea continentului american",
+      "B": "Teritoriile din centrul Asiei, continentul cu cea mai mare suprafață",
+      "C": "Coastele sudice ale Indiei",
+      "D": "Coastele Floridei"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 6,
+    "competency": "C1.1",
+    "text": "America a fost descoperită și explorată de către:",
+    "options": {
+      "A": "Navigatorii portughezi",
+      "B": "Navigatorii spanioli",
+      "C": "Navigatorii francezi",
+      "D": "Navigatorii englezi"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 7,
+    "competency": "C1.2",
+    "text": "Ordinea corectă a evenimentelor este:",
+    "options": {
+      "A": "Cucerirea aztecilor → Inventarea busolei → Descoperirea Americii",
+      "B": "Descoperirea Capului Bunei Speranțe → Descoperirea Americii → Cultivarea cartofilor în Europa",
+      "C": "Descoperirea Americii → Inventarea caravelei → Cucerirea incașilor",
+      "D": "Descoperirea Americii → Expediția lui Bartolomeo Diaz la capătul sudic al Africii → Plantarea porumbului în Europa"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 8,
+    "competency": "C1.2",
+    "text": "În ce secol are loc prima călătorie în jurul lumii?",
+    "options": {
+      "A": "Secolul XIII",
+      "B": "Secolul XIV",
+      "C": "Secolul XV",
+      "D": "Secolul XVI"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 9,
+    "competency": "C1.2",
+    "text": "În ce secol ajung în America Centrală primii europeni?",
+    "options": {
+      "A": "Secolul XII",
+      "B": "Secolul XIII",
+      "C": "Secolul XIV",
+      "D": "Secolul XV"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 10,
+    "competency": "C1.2",
+    "text": "În ce secol are loc cucerirea Imperiului Aztec?",
+    "options": {
+      "A": "Secolul XIII",
+      "B": "Secolul XIV",
+      "C": "Secolul XV",
+      "D": "Secolul XVI"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 11,
+    "competency": "C1.2",
+    "text": "Ce eveniment are loc cel mai devreme?",
+    "options": {
+      "A": "Primele schimburi comerciale între europeni și amerindieni",
+      "B": "Întemeierea primei colonii engleze pe continentul american",
+      "C": "Realizarea primului înconjur al lumii",
+      "D": "Primele transporturi cu sclavi între Africa și America"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 12,
+    "competency": "C1.2",
+    "text": "Ce eveniment are loc cel mai târziu?",
+    "options": {
+      "A": "Explorarea de către europeni a fluviului Nil",
+      "B": "Explorarea de către europeni a fluviului Amazon",
+      "C": "Explorarea de către europeni a fluviului Volga",
+      "D": "Explorarea de către europeni a fluviului Sena"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 13,
+    "competency": "C2.1",
+    "text": "Cum se numește procesul prin care europenii au cucerit și administrat teritorii din afara Europei?",
+    "options": {
+      "A": "Urbanizare",
+      "B": "Feudalizare",
+      "C": "Colonizare",
+      "D": "Romanizare"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 14,
+    "competency": "C2.1",
+    "text": "Termenul „conchistador” se referă la:",
+    "options": {
+      "A": "Călători medievali din Asia",
+      "B": "Războinici ai triburilor amerindiene",
+      "C": "Soldați-exploratori spanioli din secolele XVI–XVII",
+      "D": "Navigatori portughezi din Evul Mediu târziu"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 15,
+    "competency": "C2.1",
+    "text": "Ce termen desemnează populațiile amerindiene din Mexic, Peru și America Centrală, înainte de cucerirea europeană?",
+    "options": {
+      "A": "Triburi barbare",
+      "B": "Civilizații precolumbiene",
+      "C": "Popoare germanice",
+      "D": "Comunități asiatice"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 16,
+    "competency": "C2.1",
+    "text": "Ce desemnează termenul „caravelă”?",
+    "options": {
+      "A": "O fortificație medievală folosită pentru apărarea porturilor",
+      "B": "O navă ușoară, rapidă și manevrabilă, utilizată de portughezi în vremea marilor descoperiri geografice",
+      "C": "Un tip de armură purtată de conchistadori",
+      "D": "O monedă spaniolă folosită în comerțul atlantic"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 17,
+    "competency": "C2.2",
+    "text": "O hartă spaniolă din 1570 exagerează dimensiunile Americii de Sud. De ce?",
+    "options": {
+      "A": "Cartografii cunoșteau deja forma exactă a continentelor, dar preferau reprezentări artistice",
+      "B": "Variantele C și D sunt corecte",
+      "C": "Marinarii aveau acces limitat la informații și tehnici de măsurare",
+      "D": "Spiritul marilor descoperiri i-a făcut pe primii exploratori să creadă că teritoriile găsite de ei sunt mult mai mari decât erau în realitate"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 18,
+    "competency": "C2.2",
+    "text": "Într-o cronică spaniolă oficială de la 1500 este afirmat că „aztecii i-au primit cu bucurie pe spanioli și nu au existat conflicte între aceștia”. Cum analizăm critic afirmația?",
+    "options": {
+      "A": "Analizăm contextul: un autor spaniol ar fi putut înfrumuseța realitatea pentru a lăsa să se înțeleagă că spaniolii au fost oameni pașnici",
+      "B": "Cronicile de acum 500 de ani sunt surse sigure pentru că pe atunci oamenii erau mai religioși și mai sinceri",
+      "C": "Considerăm că aztecii erau un popor care nu purta războaie",
+      "D": "Afirmația este corectă deoarece aztecii aveau reputația de a fi foarte ospitalieri cu străinii"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 19,
+    "competency": "C2.2",
+    "text": "Un tablou din 1600 îl arată pe Francisco Pizarro, explorator spaniol, într-o manieră eroică. Ce putem înțelege de aici?",
+    "options": {
+      "A": "Pictorii erau obligați să reprezinte cât mai obiectiv și imparțial realitatea, deci tabloul descrie cu exactitate personajul istoric la care face referire",
+      "B": "Tabloul exprimă valori culturale și politice ale epocii, reprezentându-i ca eroi pe marii aventurieri",
+      "C": "Artistul nu urmărea să transmită un mesaj politic",
+      "D": "Pictorul a fost martor direct la aventurile lui Francisco Pizarro"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 20,
+    "competency": "C2.2",
+    "text": "Niște cronicari europeni îi descriu pe amerindieni ca fiind mult mai sălbatici și dezordonați decât erau în realitate. Ce ar trebui să înțelegem de aici?",
+    "options": {
+      "A": "Cronicarii descriau realitatea exact așa cum era, fără exagerări",
+      "B": "Exagerările pot reflecta prejudecățile europene ale epocii și dorința de a justifica cuceririle",
+      "C": "Amerindienii erau într-adevăr complet lipsiți de organizare, așa cum apare în orice sursă",
+      "D": "Sursele europene din acea vreme sunt mai credibile decât sursele de astăzi deoarece autorii trăiseră chiar în perioada respectivelor descoperiri"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 21,
+    "competency": "C2.3",
+    "text": "Conform surselor istorice, un motiv pentru cucerirea Imperiului Aztec a fost reprezentat de faptul că:",
+    "options": {
+      "A": "Archebuzele și muschetele europene erau mai eficiente decât cele ale amerindienilor",
+      "B": "Europenii au profitat de existența triburilor aflate în dușmănie cu aztecii și au încheiat alianțe cu acestea",
+      "C": "Aztecii doreau să fie cuceriți de către spanioli deoarece tânjeau să fie civilizați de către europeni",
+      "D": "Spaniolii își doreau în mod sincer să civilizeze continentul american; mai ales creștinarea acestuia constituia o prioritate"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 22,
+    "competency": "C2.3",
+    "text": "Un text ne menționează că „rivalitățile interne au slăbit Imperiul Aztec înainte de sosirea spaniolilor”. Ce putem înțelege de aici?",
+    "options": {
+      "A": "Neînțelegerile dintre azteci au făcut mai ușoară cucerirea spaniolă",
+      "B": "Spaniolii au avut, probabil, rolul de conciliatori",
+      "C": "Imperiul Incaș nu avea elite politice",
+      "D": "Ne este prezentată o cauză a convertirii populației la creștinism: europenii voiau să aducă pacea și armonia printre popoarele lumii"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 23,
+    "competency": "C2.3",
+    "text": "Două surse diferite prezintă motivele pentru care europenii au emigrat în America în timpul marilor descoperiri geografice: una vorbește despre bogății, iar cealaltă despre misiuni religioase. Ce concluzie corectă putem trage?",
+    "options": {
+      "A": "Doar bogățiile sunt cele care i-au motivat pe europeni să colonizeze America",
+      "B": "Ambele cauze pot fi valabile",
+      "C": "De fapt, credința în tărâmuri și obiecte miraculoase i-a făcut pe europeni să plece în America",
+      "D": "Europenii care plecau în America erau fie extrem de lacomi, fie extrem de religioși"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 24,
+    "competency": "C2.3",
+    "text": "O scrisoare a unui călugăr european din vremea marilor descoperiri geografice informează că: „Mulți amerindieni au murit din cauza slăbiciunii corpului lor”. Ce am putea înțelege de aici?",
+    "options": {
+      "A": "Amerindienii nu aveau o forță la fel de mare precum europenii și nu puteau să manevreze armele cu aceeași rapiditate",
+      "B": "Lipsa contactului anterior cu bolile din Europa a făcut ca rezistența la boli a amerindienilor să fie mai slabă decât a europenilor",
+      "C": "Europenii fuseseră întăriți în luptele cu amerindienii de o forță divină",
+      "D": "Călugărul folosește o explicație eronată, influențată de prejudecățile epocii sale"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 25,
+    "competency": "C3.1",
+    "text": "Un articol online afirmă: „Europenii i-au cucerit pe amerindieni datorită superiorității morale”. Ce tip de enunț este acesta?",
+    "options": {
+      "A": "Fapt istoric",
+      "B": "Opinie subiectivă",
+      "C": "Punct de vedere bazat pe realitatea istorică",
+      "D": "Fapt cronologic"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 26,
+    "competency": "C3.1",
+    "text": "Un videoclip scurt de pe o platformă socială afirmă: „Cucerirea aztecilor s-a petrecut fără nicio rezistență”. Ce tip de enunț este?",
+    "options": {
+      "A": "Fapt istoric",
+      "B": "Opinie bazată pe dovezi",
+      "C": "Dezinformare / afirmație falsă",
+      "D": "Analiză arheologică"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 27,
+    "competency": "C3.1",
+    "text": "Pentru a afla cum arăta orașul Tenochtitlán înainte de 1521, care sursă digitală este cea mai adecvată?",
+    "options": {
+      "A": "Un documentar vechi",
+      "B": "O imagine dintr-un manual vechi de istorie",
+      "C": "O reconstrucție 3D bazată pe surse arheologice",
+      "D": "Un anunț turistic pentru vizitarea Mexicului"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 28,
+    "competency": "C3.2",
+    "text": "Ce sursă este cea mai obiectivă și imparțială pentru a explica modul de viață al mayașilor înainte de sosirea europenilor?",
+    "options": {
+      "A": "Un film artistic despre civilizația mayașă",
+      "B": "Un jurnal european de călătorie din anul 1550",
+      "C": "Un documentar ce prezintă ruinele și obiectele arheologice ale civilizației maya",
+      "D": "O poveste scrisă de cineva care a avut contact direct cu exploratorii din America"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 29,
+    "competency": "C3.2",
+    "text": "Un articol online susține astfel: „Aztecii erau prea primitivi ca să poată construi orașe mari”. Acest articol este:",
+    "options": {
+      "A": "O interpretare validă istoric",
+      "B": "O speculație falsă și discriminatorie",
+      "C": "Un fapt demonstrat din punct de vedere istoric",
+      "D": "Variantele A și C sunt corecte"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 30,
+    "competency": "C3.2",
+    "text": "O imagine digitală, creată cu inteligența artificială, prezintă un explorator european cu armură strălucitoare discutând cu un grup de amerindieni murdari și care poartă haine sfâșiate. Ce putem observa?",
+    "options": {
+      "A": "Imaginea prezintă corect realitatea și decalajul de civilizație între europeni și amerindieni",
+      "B": "Este o interpretare artistică menită să exagereze contrastul dintre europeni și amerindieni",
+      "C": "Amerindienii sunt descriși astfel poate pentru a justifica cucerirea lor de către europeni",
+      "D": "Variantele B și C sunt corecte"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 31,
+    "competency": "C3.3",
+    "text": "Într-un articol online citim astfel: „Amerindienii trăiau în comuniune deplină cu natura și erau, prin urmare, cuminți și pașnici”. Cum ar trebui să analizăm critic acest articol?",
+    "options": {
+      "A": "Afirmația este corectă deoarece cineva care respectă natura nu poate fi un om rău",
+      "B": "Este o idealizare a realității: autorul folosește un clișeu cultural promovat des în filme",
+      "C": "Articolul exprimă o perspectivă modernă „spirituală” care este de obicei corectă",
+      "D": "Variantele A și C sunt corecte"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 32,
+    "competency": "C3.3",
+    "text": "O scrisoare a lui Hernán Cortés către rege prezintă cucerirea aztecilor ca fiind „rapidă, ușoară și ordonată”. Cum am putea analiza credibilitatea afirmațiilor lui?",
+    "options": {
+      "A": "Tonul optimist al relatării dovedește faptul că spunea adevărul",
+      "B": "Cortés era interesat să își justifice acțiunile în fața coroanei pentru a părea cât mai eficient, exagerându-și uneori realizările astfel încât să capete simpatie de la rege",
+      "C": "Scrisoarea reflectă în mod real ușurimea cu care europenii i-au înfrânt pe amerindieni",
+      "D": "Variantele A și C sunt corecte"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 33,
+    "competency": "C3.3",
+    "text": "Un soldat european care a luptat în America împotriva băștinașilor afirmă într-o scrisoare astfel: „Nu am fost primiți cu ostilitate; localnicii păreau fericiți”. Ce trebuie să analizăm critic?",
+    "options": {
+      "A": "Scrisoarea dovedește că întâlnirea a fost pașnică și nu există motive să punem la îndoială relatarea",
+      "B": "Interesul soldatului de a minimaliza oroarea luptelor, astfel încât să nu pară un criminal pentru cei de acasă care aud povești despre întâmplările din America",
+      "C": "Soldatul era probabil foarte obosit sau dezorientat și ar fi putut confunda reacțiile localnicilor",
+      "D": "Soldații depun jurământ de onoare și nu mint niciodată; prin urmare putem considera că scrisoarea este sinceră"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 34,
+    "competency": "C3.4",
+    "text": "Două documentare descriu sosirea lui Columb diferit: unul o vede ca „descoperire glorioasă”, altul ca „începutul unei tragedii”. Ce putem spune despre asta?",
+    "options": {
+      "A": "Este indicat să alegem documentarul cu cele mai multe vizualizări",
+      "B": "Trebuie să analizăm motivația, sursele și perspectiva fiecărui film dacă vrem să înțelegem deosebirile dintre ele",
+      "C": "Prezintă mai multă încredere documentarul mai vechi",
+      "D": "Descoperirea Americii a fost un eveniment glorios pentru incași, dar tragic pentru europeni"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 35,
+    "competency": "C3.4",
+    "text": "Un videoclip de pe TikTok afirmă astfel: „Europenii au cucerit America pentru că erau superiori biologic”. Cum analizăm critic acest lucru?",
+    "options": {
+      "A": "Superioritatea europeană este incontestabilă; acceptăm imediat conținutul videoclipului",
+      "B": "Videoclipul reprezintă o explicație rasistă și fără bază istorică",
+      "C": "Superioritatea europenilor este un fapt demonstrat genetic",
+      "D": "Variantele A și C sunt corecte"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 36,
+    "competency": "C3.4",
+    "text": "Două hărți istorice din aceeași perioadă prezintă Imperiul Incaș: una îl arată foarte mic, cealaltă foarte mare. Ce poate fi înțeles de aici?",
+    "options": {
+      "A": "Hărțile vechi sunt inexacte",
+      "B": "Cartografii aveau cunoștințe diferite și interese diferite",
+      "C": "Imperiul Incaș își modifica granițele foarte rapid",
+      "D": "Variantele A și B sunt corecte"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 37,
+    "competency": "C4.1",
+    "text": "Un site prezintă o imagine digitală editată astfel încât un soldat european cu privirea malefică să pară uriaș în fața unui oraș aztec care arde. Ce ne indică această editare?",
+    "options": {
+      "A": "Autorul site-ului este neutru și imparțial",
+      "B": "O tehnică vizuală prin care autorul urmărește să-i facă pe exploratorii europeni să pară mai cruzi și mai violenți decât erau în realitate",
+      "C": "O tehnică vizuală de exagerare pentru a crea impresia că europenii au fost niște „eroi” cuceritori",
+      "D": "O descriere fidelă a realității"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 38,
+    "competency": "C4.1",
+    "text": "O postare virală de pe TikTok afirmă astfel: „Toți europenii au fost invadatori răi și toți amerindienii au fost victime inocente”. Ce observăm?",
+    "options": {
+      "A": "O asumare onestă a trecutului colonial",
+      "B": "Folosirea unei explicații exagerat de simplificate și false",
+      "C": "O prezentare academică riguroasă",
+      "D": "Un punct de vedere personal, dar corect din punct de vedere istoric"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 39,
+    "competency": "C4.1",
+    "text": "Pe un blog este publicat un articol în care se susține că „incașii aveau nave oceanice secrete”. De ce sunt extrem de mici șansele ca această afirmație să fie corectă?",
+    "options": {
+      "A": "Nu există izvoare istorice credibile care să ateste acele nave",
+      "B": "Nu avem dovezi că incașii ar fi reușit vreodată să traverseze oceanul",
+      "C": "Variantele A și B sunt corecte",
+      "D": "De fapt, probabil au existat astfel de nave, dar marii preoți incași le-au distrus"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 40,
+    "competency": "C4.1",
+    "text": "Un videoclip editat folosește muzică dramatică și unghiuri întunecate pentru a prezenta sosirea lui Columb în America. Ce efect pot avea aceste tehnici?",
+    "options": {
+      "A": "Nu contribuie la stimularea curiozității în legătură cu expedițiile lui Columb",
+      "B": "Creează o stare emoțională puternică, influențând interpretarea istorică",
+      "C": "Nu afectează deloc modul în care percepem trecutul",
+      "D": "Înlocuiesc necesitatea surselor istorice"
+    },
+    "answer": "B"
+  }
+];
+
+  const questionExplanations = {
+  "1": {
+    "correct": "În jurul anului 1400, europenii cunoșteau în principal Europa, Asia și Africa. America nu fusese încă integrată în cunoașterea geografică europeană, iar Australia era necunoscută europenilor.",
+    "options": {
+      "A": "Greșit: Australia nu era cunoscută europenilor în jurul anului 1400.",
+      "B": "Corect: Europa, Asia și Africa formau lumea cunoscută de europeni înaintea marilor descoperiri geografice.",
+      "C": "Greșit: America nu fusese încă descoperită de europeni în sensul istoric al epocii moderne.",
+      "D": "Greșit: include America, dar exclude Asia, care era cunoscută prin comerț și relatări de călătorie."
+    }
+  },
+  "2": {
+    "correct": "Călătoria lui Columb din 1492 a dus la debarcarea în zona Caraibelor, deși el credea că ajunsese spre Asia/Indii.",
+    "options": {
+      "A": "Greșit: Columb nu a debarcat inițial pe coastele estice ale Americii de Sud.",
+      "B": "Corect: prima debarcare a avut loc în arhipelagul Caraibe.",
+      "C": "Greșit: nu coastele estice ale Americii de Nord reprezintă debarcarea inițială.",
+      "D": "Greșit: Columb a crezut că se află în apropierea Indiei, dar ajunsese în America."
+    }
+  },
+  "3": {
+    "correct": "Civilizația aztecă s-a dezvoltat în zona Mexicului de astăzi, mai ales în centrul actualului teritoriu mexican.",
+    "options": {
+      "A": "Greșit: Venezuela se află în America de Sud și nu corespunde nucleului civilizației aztece.",
+      "B": "Greșit: Peru este asociat mai ales cu civilizația incașă.",
+      "C": "Corect: aztecii sunt localizați în zona Mexicului actual.",
+      "D": "Greșit: Brazilia nu este spațiul civilizației aztece."
+    }
+  },
+  "4": {
+    "correct": "Vasco da Gama a ajuns în India pe ruta maritimă care ocolea Africa, deschizând portughezilor accesul direct la comerțul oriental.",
+    "options": {
+      "A": "Greșit: America este asociată mai ales cu expedițiile spaniole ale lui Columb și urmașilor săi.",
+      "B": "Corect: Vasco da Gama a ajuns în India ocolind Africa.",
+      "C": "Greșit: ruta spre India nu ocolea America.",
+      "D": "Greșit: Oceanul Arctic nu a fost ruta folosită de Vasco da Gama."
+    }
+  },
+  "5": {
+    "correct": "O hartă din 1540 putea reprezenta coaste și zone explorate, dar nu interiorul profund al continentului american, încă insuficient cunoscut europenilor.",
+    "options": {
+      "A": "Corect: teritoriile adânci din interiorul Americii erau încă slab explorate și cartografiate.",
+      "B": "Greșit: Asia era cunoscută de europeni cu mult înainte de 1540, chiar dacă hărțile nu erau perfecte.",
+      "C": "Greșit: coastele Indiei erau cunoscute prin navigația portugheză.",
+      "D": "Greșit: zone de coastă ale Floridei puteau apărea pe hărțile europene ale secolului al XVI-lea."
+    }
+  },
+  "6": {
+    "correct": "Descoperirea și explorarea Americii au fost inițial dominate de navigatorii spanioli, începând cu expedițiile lui Columb și continuând cu conchistadorii.",
+    "options": {
+      "A": "Greșit: portughezii au fost foarte importanți în explorarea Africii și a drumului spre India, nu în descoperirea inițială a Americii pentru europeni.",
+      "B": "Corect: explorarea Americii a fost legată în primul rând de Spania.",
+      "C": "Greșit: francezii au explorat mai târziu anumite zone, dar nu reprezintă răspunsul principal pentru începuturile descoperirii Americii.",
+      "D": "Greșit: englezii au colonizat și explorat mai târziu, mai ales în America de Nord."
+    }
+  },
+  "7": {
+    "correct": "Capul Bunei Speranțe a fost atins de Bartolomeo Diaz înainte de 1492, apoi Columb a ajuns în America, iar cultivarea pe scară largă a cartofului în Europa a venit ulterior.",
+    "options": {
+      "A": "Greșit: inventarea busolei este anterioară cuceririi aztecilor și descoperirii Americii.",
+      "B": "Corect: aceasta este ordinea cronologică potrivită.",
+      "C": "Greșit: caravela exista înainte de descoperirea Americii, nu după.",
+      "D": "Greșit: expediția lui Bartolomeo Diaz la sudul Africii a avut loc înaintea descoperirii Americii."
+    }
+  },
+  "8": {
+    "correct": "Prima călătorie în jurul lumii, începută de Magellan și finalizată de expediția sa, are loc în secolul al XVI-lea.",
+    "options": {
+      "A": "Greșit: secolul al XIII-lea este prea timpuriu pentru prima circumnavigație.",
+      "B": "Greșit: secolul al XIV-lea precedă marile expediții oceanice europene de acest tip.",
+      "C": "Greșit: secolul al XV-lea include descoperirea Americii, dar nu finalizarea primei călătorii în jurul lumii.",
+      "D": "Corect: prima circumnavigație se leagă de începutul secolului al XVI-lea."
+    }
+  },
+  "9": {
+    "correct": "Primii europeni ajung în America Centrală odată cu expedițiile spaniole începute după 1492, deci în secolul al XV-lea.",
+    "options": {
+      "A": "Greșit: secolul al XII-lea este mult prea timpuriu.",
+      "B": "Greșit: secolul al XIII-lea nu corespunde expedițiilor lui Columb.",
+      "C": "Greșit: secolul al XIV-lea este anterior descoperirii Americii de către Columb.",
+      "D": "Corect: 1492 aparține secolului al XV-lea."
+    }
+  },
+  "10": {
+    "correct": "Cucerirea Imperiului Aztec de către spanioli are loc în secolul al XVI-lea, în contextul expedițiilor lui Hernán Cortés.",
+    "options": {
+      "A": "Greșit: secolul al XIII-lea este cu mult înaintea cuceririi spaniole.",
+      "B": "Greșit: secolul al XIV-lea este anterior marilor descoperiri geografice.",
+      "C": "Greșit: secolul al XV-lea include descoperirea Americii, nu cucerirea Imperiului Aztec.",
+      "D": "Corect: cucerirea aztecilor se petrece în secolul al XVI-lea."
+    }
+  },
+  "11": {
+    "correct": "Primele contacte comerciale dintre europeni și amerindieni apar foarte devreme, imediat după sosirea europenilor în America.",
+    "options": {
+      "A": "Corect: schimburile inițiale apar înaintea colonizărilor engleze și înaintea consolidării traficului transatlantic.",
+      "B": "Greșit: prima colonie engleză stabilă apare mult mai târziu.",
+      "C": "Greșit: primul înconjur al lumii are loc după 1519, deci mai târziu decât primele contacte din America.",
+      "D": "Greșit: transporturile masive cu sclavi între Africa și America se dezvoltă ulterior."
+    }
+  },
+  "12": {
+    "correct": "Explorarea europeană a fluviului Nil în profunzime este mult mai târzie decât cunoașterea fluviilor europene și decât explorările timpurii ale Americii.",
+    "options": {
+      "A": "Corect: explorarea Nilului în sens modern european este cea mai târzie dintre exemple.",
+      "B": "Greșit: Amazonul a fost explorat de europeni în epoca marilor descoperiri.",
+      "C": "Greșit: Volga era cunoscută în spațiul european/eurasiatic de mai mult timp.",
+      "D": "Greșit: Sena era cunoscută europenilor încă din Antichitate și Evul Mediu."
+    }
+  },
+  "13": {
+    "correct": "Colonizarea înseamnă cucerirea, ocuparea și administrarea unor teritorii aflate în afara spațiului de origine al puterii cuceritoare.",
+    "options": {
+      "A": "Greșit: urbanizarea se referă la dezvoltarea orașelor.",
+      "B": "Greșit: feudalizarea ține de organizarea social-politică medievală, nu de cucerirea teritoriilor de peste mări.",
+      "C": "Corect: termenul potrivit este colonizare.",
+      "D": "Greșit: romanizarea se referă la răspândirea culturii romane în Antichitate."
+    }
+  },
+  "14": {
+    "correct": "Conchistadorii au fost soldați-exploratori spanioli implicați în cucerirea teritoriilor americane în secolele XVI–XVII.",
+    "options": {
+      "A": "Greșit: nu erau călători medievali asiatici.",
+      "B": "Greșit: nu desemnează războinici amerindieni, ci cuceritori spanioli.",
+      "C": "Corect: aceasta este definiția termenului conchistador.",
+      "D": "Greșit: navigatorii portughezi nu sunt numiți conchistadori."
+    }
+  },
+  "15": {
+    "correct": "Civilizațiile precolumbiene sunt societățile amerindiene existente înainte de sosirea și cucerirea europeană, precum aztecii, mayașii și incașii.",
+    "options": {
+      "A": "Greșit: „triburi barbare” este o formulare depreciativă și inexactă.",
+      "B": "Corect: termenul istoric potrivit este civilizații precolumbiene.",
+      "C": "Greșit: popoarele germanice aparțin istoriei Europei.",
+      "D": "Greșit: nu este vorba despre comunități asiatice."
+    }
+  },
+  "16": {
+    "correct": "Caravela era o navă ușoară, rapidă și manevrabilă, folosită în special de portughezi în expedițiile oceanice.",
+    "options": {
+      "A": "Greșit: nu este o fortificație.",
+      "B": "Corect: aceasta descrie corect caravela.",
+      "C": "Greșit: nu este un tip de armură.",
+      "D": "Greșit: nu este o monedă."
+    }
+  },
+  "17": {
+    "correct": "Hărțile din secolul al XVI-lea puteau exagera teritorii din cauza informațiilor incomplete, tehnicilor limitate și impresiei că noile spații erau mai mari decât în realitate.",
+    "options": {
+      "A": "Greșit: cartografii nu cunoșteau forma exactă a continentelor în 1570.",
+      "B": "Corect: atât limitările tehnice, cât și percepțiile exploratorilor explică exagerarea.",
+      "C": "Corect parțial: informațiile și metodele de măsurare erau limitate.",
+      "D": "Corect parțial: exploratorii puteau supraestima dimensiunile teritoriilor descoperite."
+    }
+  },
+  "18": {
+    "correct": "O cronică spaniolă oficială trebuie analizată în context: autorul putea avea interesul să prezinte cucerirea într-o lumină favorabilă spaniolilor.",
+    "options": {
+      "A": "Corect: analiza sursei ține cont de autor, context și posibilul interes politic.",
+      "B": "Greșit: vechimea sau religiozitatea autorilor nu garantează sinceritatea sursei.",
+      "C": "Greșit: aztecii aveau conflicte și practici militare; afirmația este simplificatoare.",
+      "D": "Greșit: ospitalitatea nu poate justifica negarea conflictelor istorice."
+    }
+  },
+  "19": {
+    "correct": "Un tablou eroic nu este o fotografie obiectivă a realității, ci poate transmite valori, interese și idealuri ale epocii în care a fost creat.",
+    "options": {
+      "A": "Greșit: pictorii nu erau obligați să fie obiectivi, iar arta poate idealiza.",
+      "B": "Corect: tabloul poate construi imaginea eroică a exploratorului.",
+      "C": "Greșit: arta istorică transmite adesea mesaje culturale sau politice.",
+      "D": "Greșit: pictorul nu trebuie să fi fost martor direct pentru a realiza tabloul."
+    }
+  },
+  "20": {
+    "correct": "Descrierile exagerate ale amerindienilor pot reflecta prejudecăți europene și pot servi justificării cuceririi și colonizării.",
+    "options": {
+      "A": "Greșit: cronicile pot conține exagerări și prejudecăți.",
+      "B": "Corect: sursa trebuie analizată critic, ținând cont de mentalitățile epocii.",
+      "C": "Greșit: nu putem generaliza că amerindienii erau lipsiți de organizare.",
+      "D": "Greșit: faptul că o sursă este contemporană evenimentelor nu o face automat mai credibilă."
+    }
+  },
+  "21": {
+    "correct": "Spaniolii au profitat de rivalitățile dintre azteci și alte grupuri amerindiene, încheind alianțe care au facilitat cucerirea.",
+    "options": {
+      "A": "Greșit: formularea sugerează greșit că amerindienii aveau archebuze și muschete comparabile.",
+      "B": "Corect: alianțele cu dușmanii aztecilor au fost un factor important.",
+      "C": "Greșit: ideea că aztecii doreau să fie cuceriți este falsă și eurocentrică.",
+      "D": "Greșit: justificarea prin „civilizare” și creștinare nu explică obiectiv cauza cuceririi."
+    }
+  },
+  "22": {
+    "correct": "Rivalitățile interne slăbesc un imperiu și pot face mai ușoară intervenția unei puteri externe.",
+    "options": {
+      "A": "Corect: tensiunile interne au facilitat cucerirea spaniolă.",
+      "B": "Greșit: spaniolii nu au venit ca simpli conciliatori neutri.",
+      "C": "Greșit: întrebarea este despre azteci, nu despre lipsa elitelor la incași.",
+      "D": "Greșit: aduce o justificare religioasă care nu rezultă din sursă."
+    }
+  },
+  "23": {
+    "correct": "Procesele istorice au de obicei cauze multiple: dorința de bogăție și misiunea religioasă au putut acționa simultan.",
+    "options": {
+      "A": "Greșit: reduce totul la o singură cauză.",
+      "B": "Corect: ambele explicații pot fi valabile în același timp.",
+      "C": "Greșit: introduce o cauză fantastică, nesusținută de surse.",
+      "D": "Greșit: simplifică excesiv motivațiile europenilor."
+    }
+  },
+  "24": {
+    "correct": "Amerindienii au fost puternic afectați de bolile aduse de europeni, față de care nu aveau imunitate anterioară.",
+    "options": {
+      "A": "Greșit: nu este vorba despre forță fizică sau mânuirea armelor.",
+      "B": "Corect: lipsa imunității explică mortalitatea ridicată.",
+      "C": "Greșit: introduce o explicație religioasă, nu istorică.",
+      "D": "Greșit: deși limbajul călugărului poate fi limitat de mentalitățile epocii, fenomenul bolilor rămâne o cauză reală."
+    }
+  },
+  "25": {
+    "correct": "Afirmația despre „superioritate morală” nu poate fi tratată ca fapt istoric; exprimă o judecată subiectivă și ideologică.",
+    "options": {
+      "A": "Greșit: nu este un fapt verificabil, ci o evaluare morală.",
+      "B": "Corect: este o opinie subiectivă.",
+      "C": "Greșit: nu se sprijină pe o realitate istorică demonstrabilă în această formă.",
+      "D": "Greșit: nu este o dată sau o succesiune cronologică."
+    }
+  },
+  "26": {
+    "correct": "Cucerirea aztecilor a întâmpinat rezistență și conflicte, deci afirmația că s-a produs fără nicio rezistență este falsă.",
+    "options": {
+      "A": "Greșit: nu este un fapt istoric corect.",
+      "B": "Greșit: nu este o opinie bazată pe dovezi, ci contrazice evenimentele cunoscute.",
+      "C": "Corect: este o afirmație falsă/dezinformatoare.",
+      "D": "Greșit: nu este analiză arheologică."
+    }
+  },
+  "27": {
+    "correct": "O reconstrucție 3D bazată pe surse arheologice poate ajuta la înțelegerea orașului Tenochtitlán, pentru că folosește dovezi materiale și cercetare.",
+    "options": {
+      "A": "Greșit: un documentar vechi poate fi util, dar nu este neapărat cea mai adecvată sursă.",
+      "B": "Greșit: o imagine dintr-un manual vechi poate fi depășită sau schematică.",
+      "C": "Corect: reconstrucția bazată pe surse arheologice combină vizualizarea cu dovezile.",
+      "D": "Greșit: un anunț turistic urmărește promovarea, nu analiza istorică."
+    }
+  },
+  "28": {
+    "correct": "Un documentar care prezintă ruine și obiecte arheologice este mai obiectiv decât o ficțiune sau o relatare izolată, deoarece se bazează pe dovezi materiale.",
+    "options": {
+      "A": "Greșit: filmul artistic poate inventa sau dramatiza.",
+      "B": "Greșit: un jurnal european poate conține observații utile, dar și prejudecăți.",
+      "C": "Corect: ruinele și artefactele oferă dovezi istorice verificabile.",
+      "D": "Greșit: o poveste legată de exploratori nu este automat imparțială."
+    }
+  },
+  "29": {
+    "correct": "Aztecii au construit orașe mari, iar afirmația că erau „prea primitivi” este falsă, discriminatorie și lipsită de bază istorică.",
+    "options": {
+      "A": "Greșit: nu este o interpretare validă, ci o prejudecată.",
+      "B": "Corect: articolul exprimă o speculație falsă și discriminatorie.",
+      "C": "Greșit: existența orașelor aztece contrazice afirmația.",
+      "D": "Greșit: A și C sunt greșite."
+    }
+  },
+  "30": {
+    "correct": "Imaginea AI exagerează contrastul vizual dintre europeni și amerindieni și poate justifica implicit cucerirea printr-o reprezentare dezechilibrată.",
+    "options": {
+      "A": "Greșit: imaginea nu garantează corectitudinea istorică; poate reproduce stereotipuri.",
+      "B": "Corect parțial: este o interpretare artistică ce exagerează contrastul.",
+      "C": "Corect parțial: reprezentarea amerindienilor poate servi justificării cuceririi.",
+      "D": "Corect: atât B, cât și C descriu critic imaginea."
+    }
+  },
+  "31": {
+    "correct": "Afirmația idealizează amerindienii printr-un clișeu modern, prezentându-i ca pașnici în mod uniform și ignorând diversitatea societăților lor.",
+    "options": {
+      "A": "Greșit: respectul pentru natură nu dovedește automat caracterul pașnic al tuturor oamenilor.",
+      "B": "Corect: este o idealizare bazată pe clișee culturale.",
+      "C": "Greșit: o perspectivă „spirituală” modernă nu este automat corectă istoric.",
+      "D": "Greșit: A și C sunt afirmații necritice."
+    }
+  },
+  "32": {
+    "correct": "Cortés avea interesul să își prezinte acțiunile favorabil în fața regelui, deci scrisoarea trebuie citită critic.",
+    "options": {
+      "A": "Greșit: tonul optimist nu dovedește adevărul.",
+      "B": "Corect: autorul putea exagera eficiența și ordinea cuceririi pentru a-și justifica acțiunile.",
+      "C": "Greșit: relatarea lui Cortés nu trebuie acceptată fără verificare.",
+      "D": "Greșit: A și C sunt concluzii necritice."
+    }
+  },
+  "33": {
+    "correct": "Soldatul putea avea interesul să minimalizeze violența sau ostilitatea pentru a-și proteja imaginea în fața celor de acasă.",
+    "options": {
+      "A": "Greșit: o scrisoare personală nu dovedește singură că întâlnirea a fost pașnică.",
+      "B": "Corect: trebuie analizat interesul autorului și felul în care își prezintă propriile fapte.",
+      "C": "Greșit: oboseala este posibilă, dar nu este cea mai importantă analiză critică propusă aici.",
+      "D": "Greșit: jurământul sau statutul de soldat nu garantează sinceritatea."
+    }
+  },
+  "34": {
+    "correct": "Documentarele pot avea perspective diferite; trebuie analizate sursele, motivația și punctul de vedere al fiecărui autor.",
+    "options": {
+      "A": "Greșit: numărul de vizualizări nu dovedește corectitudinea istorică.",
+      "B": "Corect: compararea perspectivelor cere verificarea surselor și a intenției autorului.",
+      "C": "Greșit: vechimea documentarului nu îl face automat mai credibil.",
+      "D": "Greșit: formularea inversează greșit consecințele pentru europeni și amerindieni."
+    }
+  },
+  "35": {
+    "correct": "Explicația prin „superioritate biologică” este rasistă și neștiințifică; cucerirea se explică prin factori istorici, militari, epidemiologici și politici.",
+    "options": {
+      "A": "Greșit: acceptarea imediată este necritică și rasistă.",
+      "B": "Corect: afirmația este rasistă și fără bază istorică.",
+      "C": "Greșit: nu există o superioritate genetică europeană care să explice cucerirea.",
+      "D": "Greșit: A și C sunt false."
+    }
+  },
+  "36": {
+    "correct": "Hărțile vechi puteau fi inexacte, iar diferențele pot apărea din niveluri diferite de cunoaștere sau din interesele cartografilor.",
+    "options": {
+      "A": "Corect parțial: hărțile vechi puteau fi inexacte.",
+      "B": "Corect parțial: cartografii puteau avea informații și scopuri diferite.",
+      "C": "Greșit: nu rezultă că granițele se schimbau foarte rapid.",
+      "D": "Corect: A și B explică mai bine diferența dintre hărți."
+    }
+  },
+  "37": {
+    "correct": "Editarea vizuală folosește disproporția, expresia facială și orașul arzând pentru a transmite o imagine puternic negativă despre soldatul european.",
+    "options": {
+      "A": "Greșit: editarea indică o intenție de influențare, nu neutralitate.",
+      "B": "Corect: este o tehnică vizuală de exagerare și încărcare emoțională.",
+      "C": "Greșit: imaginea nu îi face pe europeni eroi, ci îi prezintă amenințător.",
+      "D": "Greșit: nu este o descriere fidelă, ci o construcție vizuală."
+    }
+  },
+  "38": {
+    "correct": "Afirmația reduce un proces istoric complex la două etichete absolute: toți europenii răi și toți amerindienii inocenți.",
+    "options": {
+      "A": "Greșit: asumarea trecutului nu înseamnă simplificare totală.",
+      "B": "Corect: este o explicație simplificată excesiv și falsă.",
+      "C": "Greșit: nu este o prezentare academică riguroasă.",
+      "D": "Greșit: un punct de vedere personal nu devine automat corect istoric."
+    }
+  },
+  "39": {
+    "correct": "Afirmația despre nave oceanice secrete ale incașilor este foarte improbabilă deoarece nu există izvoare credibile și nu avem dovezi ale traversării oceanului de către aceștia.",
+    "options": {
+      "A": "Corect parțial: lipsesc izvoare credibile.",
+      "B": "Corect parțial: nu există dovezi ale traversării oceanului.",
+      "C": "Corect: A și B susțin împreună respingerea afirmației.",
+      "D": "Greșit: introduce o explicație conspiraționistă fără dovezi."
+    }
+  },
+  "40": {
+    "correct": "Muzica dramatică și unghiurile întunecate pot crea emoții puternice și pot influența felul în care publicul interpretează evenimentul istoric.",
+    "options": {
+      "A": "Greșit: astfel de tehnici pot chiar crește curiozitatea și tensiunea.",
+      "B": "Corect: tehnicile audio-vizuale influențează percepția asupra trecutului.",
+      "C": "Greșit: imaginea și sunetul pot afecta interpretarea istorică.",
+      "D": "Greșit: tehnicile vizuale nu înlocuiesc sursele istorice."
+    }
+  }
+};
+
+  const competencies = {
+    "C1.1": {
+      "title": "Localizarea în spaţiu a lumii cunoscute în diferite perioade istorice",
+      "group": "Utilizarea în contexte diverse a coordonatelor şi reprezentărilor despre timp şi spaţiu"
+    },
+    "C1.2": {
+      "title": "Utilizarea coordonatelor temporale referitoare la faptele şi procesele istorice",
+      "group": "Utilizarea în contexte diverse a coordonatelor şi reprezentărilor despre timp şi spaţiu"
+    },
+    "C2.1": {
+      "title": "Utilizarea adecvată a termenilor istorici/limbajului de specialitate în prezentarea unui fapt/proces istoric",
+      "group": "Utilizarea critică şi reflexivă a limbajului de specialitate şi a surselor istorice"
+    },
+    "C2.2": {
+      "title": "Utilizarea gândirii critice în analiza surselor de informare",
+      "group": "Utilizarea critică şi reflexivă a limbajului de specialitate şi a surselor istorice"
+    },
+    "C2.3": {
+      "title": "Identificarea elementelor de cauzalitate prezente în surse variate",
+      "group": "Utilizarea critică şi reflexivă a limbajului de specialitate şi a surselor istorice"
+    },
+    "C3.1": {
+      "title": "Selectarea și interpretarea informațiilor istorice digitale",
+      "group": "Aplicarea gândirii critice și a instrumentelor analitice"
+    },
+    "C3.2": {
+      "title": "Evaluarea motivației, utilității și credibilității unei surse",
+      "group": "Aplicarea gândirii critice și a instrumentelor analitice"
+    },
+    "C3.3": {
+      "title": "Analizarea perspectivelor multiple și a interpretărilor divergente",
+      "group": "Aplicarea gândirii critice și a instrumentelor analitice"
+    },
+    "C3.4": {
+      "title": "Analizarea critică a materialelor vizuale cu conținut istoric",
+      "group": "Aplicarea gândirii critice și a instrumentelor analitice"
+    },
+    "C4.1": {
+      "title": "Dezvoltarea unei atitudini critice față de utilizarea media digitale",
+      "group": "Conștientizarea potențialului abuz al media digitale"
+    }
+  };
+
+  const resultAreas = [
+    {
+      title: "cerințele de localizare în spațiu și utilizare a coordonatelor temporale",
+      match: code => code.startsWith("C1.")
+    },
+    {
+      title: "cerințele de utilizare a limbajului istoric, analiză critică a surselor și cauzalitate istorică",
+      match: code => code.startsWith("C2.")
+    },
+    {
+      title: "cerințele de aplicare a gândirii critice și analitice în mediul digital",
+      match: code => code.startsWith("C3.") || code.startsWith("C4.")
+    }
+  ];
+
+  let reviewVisible = false;
+  let lastResult = null;
+
+  function percent(value, total) {
+    if (total === 0) return "0%";
+    return ((value / total) * 100).toFixed(2).replace(".00", "") + "%";
+  }
+
+  function generalFeedback(score) {
+    if (score >= 85) return "Rezultatul indică o stăpânire foarte bună a conținuturilor și a competențelor evaluate. Elevul poate lucra mai departe pe itemi de analiză, cauzalitate și comparație, nu doar pe recunoașterea informațiilor.";
+    if (score >= 70) return "Rezultatul indică o înțelegere bună a temei Marile descoperiri geografice. Pentru progres, este utilă exersarea itemilor care cer interpretarea surselor, localizarea pe hartă și verificarea critică a informațiilor.";
+    if (score >= 50) return "Rezultatul indică un nivel mediu. Noțiunile principale sunt parțial înțelese, dar este nevoie de recapitulare, mai ales la competențele unde procentul este mai scăzut.";
+    if (score >= 30) return "Rezultatul indică un nivel fragil. Este recomandată reluarea lecției, lucrul cu harta, axa cronologică, termenii de bază și exemple simple de surse istorice.";
+    return "Rezultatul indică nevoia de consolidare serioasă. Este recomandată reluarea unității Marile descoperiri geografice pas cu pas, cu accent pe localizare geografică, cronologie, termeni istorici, cauzalitate și diferențierea dintre informații factuale, opinii și speculații.";
+  }
+
+  function escapeHtml(value) {
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+  function formatDateTime(date) {
+    return new Intl.DateTimeFormat("ro-RO", {
+      dateStyle: "medium",
+      timeStyle: "short"
+    }).format(date);
+  }
+
+  function toggleCompetencyPanel(button) {
+    const panel = button.closest(".competency-panel");
+    if (!panel) return;
+
+    const isOpen = panel.classList.toggle("open");
+    button.setAttribute("aria-expanded", isOpen ? "true" : "false");
+
+    const small = button.querySelector("small");
+    if (small) small.textContent = isOpen ? "(ascunde)" : "(vezi mai mult)";
+  }
+
+  function renderQuiz() {
+    const form = document.getElementById("quizForm");
+    form.innerHTML = "";
+
+    questions.forEach(question => {
+      const card = document.createElement("article");
+      card.className = "question-card";
+      card.id = "question-" + question.id;
+      card.dataset.questionId = question.id;
+
+      const title = document.createElement("p");
+      title.className = "question-title";
+      title.textContent = question.id + ". " + question.text;
+      card.appendChild(title);
+
+      Object.entries(question.options).forEach(([letter, option]) => {
+        const label = document.createElement("label");
+        label.className = "option-label";
+
+        const input = document.createElement("input");
+        input.type = "radio";
+        input.name = "q" + question.id;
+        input.value = letter;
+
+        const span = document.createElement("span");
+        span.textContent = letter + ". " + option;
+
+        label.appendChild(input);
+        label.appendChild(span);
+        card.appendChild(label);
+      });
+
+      form.appendChild(card);
+    });
+  }
+
+  function finishQuiz() {
+    let correct = 0;
+    let wrong = 0;
+    let missing = 0;
+
+    const areaStats = resultAreas.map(area => ({
+      title: area.title,
+      match: area.match,
+      total: 0,
+      correct: 0
+    }));
+
+    questions.forEach(question => {
+      const selected = document.querySelector(`input[name="q${question.id}"]:checked`);
+      const area = areaStats.find(item => item.match(question.competency));
+
+      if (area) area.total += 1;
+
+      if (!selected) {
+        missing += 1;
+      } else if (selected.value === question.answer) {
+        correct += 1;
+        if (area) area.correct += 1;
+      } else {
+        wrong += 1;
+      }
+    });
+
+    const total = questions.length;
+    const totalPercent = (correct / total) * 100;
+    const finishedAt = formatDateTime(new Date());
+
+    lastResult = {
+      correct,
+      wrong,
+      missing,
+      total,
+      totalPercent,
+      finishedAt,
+      feedback: generalFeedback(totalPercent),
+      areaStats
+    };
+
+    let html = `
+      <h2>Interpretarea rezultatului</h2>
+      <p class="result-line">Răspunsuri corecte: <strong>${correct} (${percent(correct, total)})</strong>. Răspunsuri greșite: <strong>${wrong} (${percent(wrong, total)})</strong>.</p>
+      <p class="result-line">Cerințe la care nu ai răspuns: <strong>${missing} (${percent(missing, total)})</strong>.</p>
+      <p class="result-line">Data și ora testului: <strong>${finishedAt}</strong>.</p>
+      <div class="interpretation">${generalFeedback(totalPercent)}</div>
+      <h3>Ai răspuns corect în proporție de:</h3>
+      <div class="competency-lines">
+    `;
+
+    areaStats.forEach(area => {
+      html += `
+        <p><strong>${percent(area.correct, area.total)}</strong> la ${area.title}</p>
+      `;
+    });
+
+    html += `
+      </div>
+      <div class="interpretation"><strong>Această fișă se poate salva sau imprima pentru urmărirea progresului.</strong> Rezultatul este orientativ și trebuie interpretat împreună cu participarea la ore, exercițiile scrise și evoluția elevului în timp.</div>
+      <div class="result-actions">
+        <button id="reviewToggleButton" type="button" class="secondary-button" onclick="toggleReview()">Arată răspunsurile corecte</button>
+        <button type="button" class="secondary-button" onclick="downloadPdfReport()">Descarcă raportul PDF</button>
+        <p id="reviewHint" class="review-hint">Răspunsurile nu mai apar ca listă separată. Se vor marca direct pe fiecare întrebare: ce ai bifat, dacă este corect sau greșit și care era varianta corectă. După afișare, poți apăsa pe „Vezi explicația”.</p>
+      </div>
+    `;
+
+    clearReviewMarks();
+    reviewVisible = false;
+
+    const resultBox = document.getElementById("resultBox");
+    resultBox.innerHTML = html;
+    resultBox.style.display = "block";
+    resultBox.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function clearReviewMarks() {
+    document.querySelectorAll(".question-card").forEach(card => {
+      card.classList.remove("review-mode", "review-correct-card", "review-wrong-card", "review-missing-card");
+      const note = card.querySelector(".question-review-note");
+      if (note) note.remove();
+      const explanation = card.querySelector(".explanation-wrap");
+      if (explanation) explanation.remove();
+    });
+
+    document.querySelectorAll(".option-label").forEach(label => {
+      label.classList.remove("review-correct-option", "review-selected-correct", "review-selected-wrong");
+      const badge = label.querySelector(".review-badge");
+      if (badge) badge.remove();
+    });
+  }
+
+  function addBadge(label, text, kind) {
+    const badge = document.createElement("span");
+    badge.className = "review-badge " + kind;
+    badge.textContent = text;
+    label.appendChild(badge);
+  }
+
+  function buildExplanation(question) {
+    const explanation = questionExplanations[String(question.id)];
+    const wrap = document.createElement("div");
+    wrap.className = "explanation-wrap";
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "explanation-toggle";
+    button.textContent = "Vezi explicația";
+
+    const box = document.createElement("div");
+    box.className = "explanation-box";
+    box.hidden = true;
+
+    const p = document.createElement("p");
+    p.innerHTML = "<strong>De ce răspunsul corect este corect:</strong> " + escapeHtml(explanation.correct);
+    box.appendChild(p);
+
+    const list = document.createElement("ul");
+    list.className = "option-explanations";
+
+    Object.entries(explanation.options).forEach(([letter, text]) => {
+      const item = document.createElement("li");
+      item.innerHTML = "<strong>" + escapeHtml(letter) + ".</strong> " + escapeHtml(text);
+      list.appendChild(item);
+    });
+
+    box.appendChild(list);
+
+    button.addEventListener("click", () => {
+      box.hidden = !box.hidden;
+      button.textContent = box.hidden ? "Vezi explicația" : "Ascunde explicația";
+    });
+
+    wrap.appendChild(button);
+    wrap.appendChild(box);
+    return wrap;
+  }
+
+  function applyReviewMarks() {
+    clearReviewMarks();
+
+    questions.forEach(question => {
+      const card = document.getElementById("question-" + question.id);
+      if (!card) return;
+
+      const selected = document.querySelector(`input[name="q${question.id}"]:checked`);
+      const chosen = selected ? selected.value : null;
+      const isCorrect = chosen === question.answer;
+
+      let noteText;
+      let noteClass;
+
+      card.classList.add("review-mode");
+
+      if (!chosen) {
+        noteText = `Nu ai bifat niciun răspuns. Varianta corectă era ${question.answer}.`;
+        noteClass = "missing";
+        card.classList.add("review-missing-card");
+      } else if (isCorrect) {
+        noteText = `Ai bifat ${chosen}. Răspuns corect.`;
+        noteClass = "correct";
+        card.classList.add("review-correct-card");
+      } else {
+        noteText = `Ai bifat ${chosen}, dar varianta corectă era ${question.answer}.`;
+        noteClass = "wrong";
+        card.classList.add("review-wrong-card");
+      }
+
+      const note = document.createElement("div");
+      note.className = "question-review-note " + noteClass;
+      note.textContent = noteText;
+
+      const title = card.querySelector(".question-title");
+      if (title) {
+        title.insertAdjacentElement("afterend", note);
+      } else {
+        card.prepend(note);
+      }
+
+      card.querySelectorAll(".option-label").forEach(label => {
+        const input = label.querySelector("input");
+        if (!input) return;
+
+        if (input.value === question.answer && input.value === chosen) {
+          label.classList.add("review-selected-correct");
+          addBadge(label, "ai bifat — corect", "correct");
+        } else if (input.value === chosen && input.value !== question.answer) {
+          label.classList.add("review-selected-wrong");
+          addBadge(label, "ai bifat — greșit", "wrong");
+        } else if (input.value === question.answer) {
+          label.classList.add("review-correct-option");
+          addBadge(label, "varianta corectă", "correct");
+        }
+      });
+
+      card.appendChild(buildExplanation(question));
+    });
+  }
+
+  function toggleReview() {
+    const button = document.getElementById("reviewToggleButton");
+    const hint = document.getElementById("reviewHint");
+
+    reviewVisible = !reviewVisible;
+
+    if (reviewVisible) {
+      applyReviewMarks();
+      if (button) button.textContent = "Ascunde răspunsurile corecte";
+      if (hint) hint.textContent = "Marcajele sunt afișate direct pe întrebări. Derulează prin test ca să vezi ce ai bifat, care era varianta corectă și explicația fiecărui item.";
+      const firstQuestion = document.getElementById("question-1");
+      if (firstQuestion) firstQuestion.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      clearReviewMarks();
+      if (button) button.textContent = "Arată răspunsurile corecte";
+      if (hint) hint.textContent = "Răspunsurile nu mai apar ca listă separată. Se vor marca direct pe fiecare întrebare: ce ai bifat, dacă este corect sau greșit și care era varianta corectă. După afișare, poți apăsa pe „Vezi explicația”.";
+    }
+  }
+
+  function downloadPdfReport() {
+    if (!lastResult) {
+      finishQuiz();
+    }
+
+    const result = lastResult;
+    const areaLines = result.areaStats.map(area => 
+      `<p><strong>${escapeHtml(percent(area.correct, area.total))}</strong> la ${escapeHtml(area.title)}</p>`
+    ).join("");
+
+    const reportHtml = `
+      <!DOCTYPE html>
+      <html lang="ro">
+      <head>
+        <meta charset="UTF-8">
+        <title>Raport de evaluare - ${escapeHtml(testMeta.title)}</title>
+        <style>
+          body {
+            font-family: Georgia, "Times New Roman", serif;
+            color: #2f241c;
+            margin: 36px;
+            line-height: 1.55;
+          }
+          h1 { font-size: 26px; margin-bottom: 18px; }
+          h2 { font-size: 20px; margin-top: 28px; }
+          p { font-size: 15px; margin: 8px 0; }
+          .box {
+            border: 1px solid #c8b6a2;
+            border-radius: 16px;
+            padding: 18px;
+            background: #fffaf3;
+            margin: 18px 0;
+          }
+          .note {
+            background: #f3eadf;
+            padding: 14px;
+            border-radius: 14px;
+            text-align: justify;
+          }
+          @media print {
+            button { display: none; }
+            body { margin: 24px; }
+          }
+        </style>
+      </head>
+      <body>
+        <h1>Raport de evaluare</h1>
+        <div class="box">
+          <p><strong>${escapeHtml(testMeta.title)}</strong></p>
+          <p><strong>Disciplina:</strong> ${escapeHtml(testMeta.discipline)}</p>
+          <p><strong>Unitatea de învățare:</strong> ${escapeHtml(testMeta.unit)}</p>
+          <p><strong>Număr de întrebări:</strong> ${escapeHtml(testMeta.questionCount)}</p>
+          <p><strong>Timp estimat:</strong> ${escapeHtml(testMeta.estimatedTime)}</p>
+          <p><strong>Data și ora testului:</strong> ${escapeHtml(result.finishedAt)}</p>
+        </div>
+
+        <h2>Rezultat general</h2>
+        <p>Răspunsuri corecte: <strong>${result.correct} (${escapeHtml(percent(result.correct, result.total))})</strong>. Răspunsuri greșite: <strong>${result.wrong} (${escapeHtml(percent(result.wrong, result.total))})</strong>.</p>
+        <p>Cerințe la care nu ai răspuns: <strong>${result.missing} (${escapeHtml(percent(result.missing, result.total))})</strong>.</p>
+
+        <div class="note">${escapeHtml(result.feedback)}</div>
+
+        <h2>Ai răspuns corect în proporție de:</h2>
+        ${areaLines}
+
+        <div class="note"><strong>Această fișă se poate salva sau imprima pentru urmărirea progresului.</strong> Rezultatul este orientativ și trebuie interpretat împreună cu participarea la ore, exercițiile scrise și evoluția elevului în timp.</div>
+
+        <script>
+          window.onload = function() {
+            window.focus();
+            window.print();
+          };
+        <\/script>
+      </body>
+      </html>
+    `;
+
+    const reportWindow = window.open("", "_blank");
+    if (!reportWindow) {
+      alert("Browserul a blocat fereastra de printare. Permite pop-up-urile pentru această pagină și încearcă din nou.");
+      return;
+    }
+
+    reportWindow.document.open();
+    reportWindow.document.write(reportHtml);
+    reportWindow.document.close();
+  }
+
+  function enableSingleClickUncheck() {
+    document.querySelectorAll(".option-label").forEach(label => {
+      const input = label.querySelector("input[type='radio']");
+      if (!input) return;
+
+      label.addEventListener("pointerdown", () => {
+        input.dataset.wasCheckedBeforeClick = input.checked ? "true" : "false";
+      });
+
+      label.addEventListener("click", () => {
+        if (input.dataset.wasCheckedBeforeClick === "true") {
+          setTimeout(() => {
+            input.checked = false;
+            input.dataset.wasCheckedBeforeClick = "false";
+          }, 0);
+        }
+      });
+    });
+  }
+
+  function resetQuiz() {
+    document.querySelectorAll("input[type='radio']").forEach(input => {
+      input.checked = false;
+      input.dataset.wasCheckedBeforeClick = "false";
+    });
+    clearReviewMarks();
+    reviewVisible = false;
+    lastResult = null;
+    const resultBox = document.getElementById("resultBox");
+    resultBox.style.display = "none";
+    resultBox.innerHTML = "";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    renderQuiz();
+    enableSingleClickUncheck();
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1943 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <!-- Variantă optimizată: test grilă civilizația greacă, explicații pe întrebări, competențe expandabile și raport PDF -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testul grilă nr. 1 - Civilizația greacă</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #f6f0e7;
+      color: #2f241c;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .test-page {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 42px 22px 70px;
+    }
+
+    .test-hero,
+    .result-box,
+    .evaluated-competencies {
+      background: #fffaf3;
+      border: 1px solid rgba(91, 62, 36, 0.18);
+      border-radius: 26px;
+      padding: 32px;
+      box-shadow: 0 14px 36px rgba(69, 46, 25, 0.08);
+      margin-bottom: 24px;
+    }
+
+    .test-hero h1,
+    .evaluated-competencies h2 {
+      margin: 0 0 10px;
+      color: #3c2a1e;
+      letter-spacing: -0.4px;
+    }
+
+    .test-hero h1 { font-size: 40px; }
+    .evaluated-competencies h2 { font-size: 30px; }
+
+    .test-hero p,
+    .result-box p,
+    .evaluated-competencies p,
+    .evaluated-competencies li {
+      margin: 0 0 10px;
+      color: #5b4a3d;
+      line-height: 1.65;
+      font-size: 17px;
+    }
+
+    .evaluated-competencies {
+      background: linear-gradient(180deg, #fffaf3 0%, #fbf1e5 100%);
+    }
+
+    .competency-accordion {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .competency-panel {
+      background: #ffffff;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .competency-source-link {
+      display: block;
+      padding: 15px 20px;
+      background: #3c2a1e;
+      color: #fffaf3 !important;
+      text-decoration: none !important;
+      font-size: 15.5px;
+      font-weight: 700;
+      line-height: 1.45;
+      border-bottom: 1px solid rgba(255, 250, 243, 0.18);
+      transition: transform 0.16s ease, background 0.16s ease, box-shadow 0.16s ease;
+    }
+
+    .competency-source-link:visited,
+    .competency-source-link:active {
+      color: #fffaf3 !important;
+      text-decoration: none !important;
+    }
+
+    .competency-source-link:hover {
+      color: #fffaf3 !important;
+      text-decoration: none !important;
+      background: #4a3324;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(69, 46, 25, 0.14);
+    }
+
+    .competency-toggle {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      color: #3c2a1e;
+      padding: 18px 20px;
+      text-align: left;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 18px;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .competency-toggle small {
+      font-size: 14px;
+      color: #7a5c3c;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .competency-arrow {
+      transition: transform 0.2s ease;
+      color: #7a5c3c;
+      font-size: 18px;
+    }
+
+    .competency-panel.open .competency-arrow { transform: rotate(180deg); }
+
+    .competency-details {
+      display: none;
+      padding: 0 20px 20px;
+      border-top: 1px solid rgba(91, 62, 36, 0.10);
+    }
+
+    .competency-panel.open .competency-details { display: block; }
+
+    .competency-details h3 {
+      margin: 18px 0 8px;
+      color: #3c2a1e;
+      font-size: 18px;
+    }
+
+    .competency-main-title {
+      margin: 24px 0 12px !important;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: #f3eadf;
+      border-left: 6px solid #7a5c3c;
+      color: #2f241c !important;
+      font-size: 18px !important;
+      font-weight: 800;
+      line-height: 1.45;
+      box-shadow: inset 0 0 0 1px rgba(91, 62, 36, 0.10);
+    }
+
+    .competency-details .competency-main-title:first-child {
+      margin-top: 18px !important;
+    }
+
+    .competency-subtitle {
+      margin-left: 8px !important;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #4a3324 !important;
+    }
+
+    .competency-details ul {
+      margin: 0 0 8px 24px;
+      padding: 0;
+    }
+
+    .question-card {
+      background: #ffffff;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 8px 20px rgba(69, 46, 25, 0.045);
+    }
+
+    .question-title {
+      margin: 0 0 14px;
+      color: #3c2a1e;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .question-competency { display: none; }
+
+    .option-label {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 9px 0;
+      color: #4c3b2e;
+      line-height: 1.45;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .option-label input { margin-top: 4px; }
+
+    .finish-box {
+      position: sticky;
+      bottom: 16px;
+      background: rgba(255, 250, 243, 0.96);
+      border: 1px solid rgba(91, 62, 36, 0.18);
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: 0 12px 30px rgba(69, 46, 25, 0.10);
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      margin-top: 24px;
+      backdrop-filter: blur(8px);
+    }
+
+    .finish-box span {
+      color: #5b4a3d;
+      font-size: 15px;
+    }
+
+    .finish-button,
+    .secondary-button {
+      border: 1px solid rgba(91, 62, 36, 0.22);
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 15px;
+      white-space: nowrap;
+    }
+
+    .finish-button {
+      background: #3c2a1e;
+      color: #fffaf3;
+    }
+
+    .secondary-button {
+      background: #f3eadf;
+      color: #3c2a1e;
+    }
+
+    .finish-button:hover,
+    .secondary-button:hover,
+    .explanation-toggle:hover,
+    .competency-toggle:hover { opacity: 0.9; }
+
+    .result-box {
+      display: none;
+      border-color: rgba(91, 62, 36, 0.28);
+    }
+
+    .result-box h2 {
+      margin: 0 0 16px;
+      color: #3c2a1e;
+      font-size: 32px;
+    }
+
+    .result-line {
+      font-size: 20px !important;
+      color: #2f241c !important;
+    }
+
+    .result-line strong { color: #120c08; }
+
+    .interpretation {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 18px;
+      background: #f3eadf;
+      color: #4c3b2e;
+      line-height: 1.65;
+      font-size: 17px;
+      text-align: justify;
+    }
+
+    .correct { color: #1d6b35; font-weight: 700; }
+    .wrong { color: #9a2c20; font-weight: 700; }
+    .missing { color: #7a5c3c; font-weight: 700; }
+
+    .result-actions {
+      margin-top: 28px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(91, 62, 36, 0.14);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .review-hint {
+      flex-basis: 100%;
+      margin-top: 6px !important;
+      font-size: 15px !important;
+      color: #6a5544 !important;
+    }
+
+    .question-card.review-mode { border-width: 2px; }
+
+    .question-card.review-correct-card {
+      border-color: rgba(29, 107, 53, 0.35);
+      background: #fbfffc;
+    }
+
+    .question-card.review-wrong-card {
+      border-color: rgba(154, 44, 32, 0.35);
+      background: #fffafa;
+    }
+
+    .question-card.review-missing-card {
+      border-color: rgba(122, 92, 60, 0.35);
+      background: #fffdf8;
+    }
+
+    .question-review-note {
+      margin: 0 0 14px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .question-review-note.correct {
+      background: rgba(29, 107, 53, 0.09);
+      color: #1d6b35;
+    }
+
+    .question-review-note.wrong {
+      background: rgba(154, 44, 32, 0.09);
+      color: #9a2c20;
+    }
+
+    .question-review-note.missing {
+      background: rgba(122, 92, 60, 0.12);
+      color: #6c4d2f;
+    }
+
+    .option-label.review-correct-option,
+    .option-label.review-selected-correct,
+    .option-label.review-selected-wrong {
+      border-radius: 12px;
+      padding: 10px 12px;
+      margin: 5px 0;
+    }
+
+    .option-label.review-correct-option {
+      background: rgba(29, 107, 53, 0.08);
+      outline: 1px solid rgba(29, 107, 53, 0.25);
+    }
+
+    .option-label.review-selected-correct {
+      background: rgba(29, 107, 53, 0.12);
+      outline: 2px solid rgba(29, 107, 53, 0.42);
+    }
+
+    .option-label.review-selected-wrong {
+      background: rgba(154, 44, 32, 0.10);
+      outline: 2px solid rgba(154, 44, 32, 0.38);
+    }
+
+    .review-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: auto;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .review-badge.correct {
+      background: rgba(29, 107, 53, 0.14);
+      color: #1d6b35;
+    }
+
+    .review-badge.wrong {
+      background: rgba(154, 44, 32, 0.14);
+      color: #9a2c20;
+    }
+
+    .review-badge.missing {
+      background: rgba(122, 92, 60, 0.14);
+      color: #6c4d2f;
+    }
+
+    .explanation-wrap {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px dashed rgba(91, 62, 36, 0.22);
+    }
+
+    .explanation-toggle {
+      border: 1px solid rgba(91, 62, 36, 0.22);
+      border-radius: 999px;
+      padding: 10px 15px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 14px;
+      background: #fffaf3;
+      color: #3c2a1e;
+    }
+
+    .explanation-box {
+      margin-top: 12px;
+      padding: 16px;
+      border-radius: 16px;
+      background: #f8f0e7;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      color: #4c3b2e;
+      line-height: 1.62;
+      font-size: 15.5px;
+      text-align: justify;
+    }
+
+    .explanation-box p { margin: 0 0 10px; }
+
+    .option-explanations {
+      margin: 10px 0 0 20px;
+      padding: 0;
+    }
+
+    .option-explanations li {
+      margin-bottom: 8px;
+    }
+
+    .competency-lines {
+      margin-top: 10px;
+      margin-bottom: 18px;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .competency-lines p { margin: 8px 0; }
+
+    @media (max-width: 720px) {
+      .test-page { padding: 24px 14px 54px; }
+      .test-hero h1 { font-size: 32px; }
+      .evaluated-competencies h2 { font-size: 25px; }
+      .finish-box {
+        position: static;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .finish-button,
+      .secondary-button { width: 100%; }
+      .result-actions { display: grid; }
+      .competency-toggle { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<main class="test-page">
+  <section class="test-hero">
+    <h1>Testul grilă nr. 1</h1>
+    <p><strong>Disciplina:</strong> Istorie, clasa a V-a</p>
+    <p><strong>Unitatea de învățare:</strong> Civilizația greacă și sinteza elenistică</p>
+    <p><strong>Număr de întrebări:</strong> 40 grile</p>
+    <p><strong>Timp estimat:</strong> 40 minute</p>
+    <p>La final, apasă pe butonul <strong>Am terminat testul</strong>. Vei primi o interpretare automată a rezultatelor.</p>
+  </section>
+
+  <section class="evaluated-competencies">
+    <h2>Competențe evaluate:</h2>
+    <div class="competency-accordion">
+      <article class="competency-panel">
+        <a class="competency-source-link" href="https://www.ise.ro/wp-content/uploads/2017/01/Istorie.pdf" target="_blank" rel="noopener noreferrer">Competențe prevăzute în programa școlară pentru disciplina Istorie (clasa a V-a), conform Ordinului MEN nr. 3393 din 28 februarie 2017 privind aprobarea programelor şcolare pentru învăţământul gimnazial</a>
+        <button type="button" class="competency-toggle" onclick="toggleCompetencyPanel(this)" aria-expanded="false">
+          <span>Competențe specifice <small>(vezi mai mult)</small></span>
+          <span class="competency-arrow">▼</span>
+        </button>
+        <div class="competency-details">
+	      <h3 class="competency-main-title">CS1. Utilizarea în contexte diverse a coordonatelor şi reprezentărilor de timp şi spaţiu</h3>
+          <h3 class="competency-subtitle">CS1.1. Ordonarea pe criterii cronologice a faptelor / proceselor istorice</h3>
+          <ul>
+            <li>Plasarea unor evenimente / procese istorice pe axa cronologică</li>
+            <li>Realizarea unor frize cronologice</li>
+            <li>Utilizarea unităţilor folosite în măsurarea timpului </li>
+          </ul>
+          <h3 class="competency-subtitle">CS1.2. Identificarea diferenţelor temporale dintre evenimente şi procese istorice</h3>
+          <ul>
+            <li>Asocierea reperelor cronologice cu evenimente şi procese istorice</li>
+            <li>Identificarea relaţiilor cronologice între sursele istorice prezentate</li>
+            <li>Utilizarea reperelor cronologice în descrierea faptelor/proceselor istorice</li>
+          </ul>
+          <h3 class="competency-subtitle">CS1.3. Localizarea în timp şi în spaţiu a faptelor şi/sau a proceselor istorice</h3>
+          <ul>
+            <li>Exerciţii de lectură a hărţilor istorice</li>
+            <li>Plasarea pe hartă a unor evenimente şi procese istorice</li>
+            <li>Completarea pe hartă a unor informaţii</li>
+          </ul>
+	      <h3 class="competency-main-title">CS2. Utilizarea critică şi reflexivă a limbajului de specialitate şi a surselor istorice</h3>
+
+          <h3 class="competency-subtitle">CS2.1. Folosirea termenilor de specialitate în descrierea unui eveniment/proces istoric</h3>
+          <ul>
+            <li>Identificarea termenilor istorici în texte diferite</li>
+            <li>Elaborarea unor enunţuri simple / texte utilizând termeni istorici</li>
+            <li>Completarea unor texte lacunare folosind termenii adecvaţi dintr-o listă dată</li>
+          </ul>
+          <h3 class="competency-subtitle">CS2.2. Relatarea unui eveniment / proces istoric, utilizând informaţii din surse istorice</h3>
+          <ul>
+            <li>Identificarea informaţiilor oferite de surse cu privire la un fapt istoric</li>
+            <li>Descrierea unor surse referitoare la un fapt istoric, pe baza unui plan dat</li>
+            <li>Alcătuirea planului descrierii unui eveniment/ proces/ personaj istoric</li>
+          </ul>
+          <h3 class="competency-subtitle">CS2.3. Stabilirea de asemănări și deosebiri între fapte istorice, pe bază de surse diferite</h3>
+          <ul>
+            <li>Descrierea unor surse istorice în vederea stabilirii asemănărilor și deosebirilor</li>
+            <li>Compararea informaţiilor provenite din surse istorice diferite</li>
+            <li>Realizarea unor texte despre fapte / procese / personaje istorice, pe baza unor surse diferite, subliniind asemănările şi deosebirile</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="competency-panel">
+        <a class="competency-source-link" href="https://rm.coe.int/prems-108118-gbr-2507-quality-history-education-web-21x21/16808eace7" target="_blank" rel="noopener noreferrer">Competențe prevăzute în raportul Consiliului Europei (2018): “Quality History Education in the 21st Century”</a>
+        <button type="button" class="competency-toggle" onclick="toggleCompetencyPanel(this)" aria-expanded="false">
+          <span>Competențe transversale  <small>(vezi mai mult)</small></span>
+          <span class="competency-arrow">▼</span>
+        </button>
+        <div class="competency-details">
+          <h3 class="competency-main-title">CT1. Aplicarea gândirii critice și a instrumentelor analitice în vederea depistării manipulării</h3>
+          <h3 class="competency-subtitle">CT1.1. Selectarea și interpretarea informațiilor istorice digitale</h3>
+          <ul>
+            <li>Identificarea informațiilor istorice relevante din texte, imagini și materiale video</li>
+            <li>Diferențierea între date factuale, opinii, interpretări și speculații</li>
+            <li>Argumentarea selecției surselor utilizate în raport cu tema investigată</li>
+          </ul>
+          <h3 class="competency-subtitle">CT1.2. Evaluarea motivației, utilității și credibilității unei surse</h3>
+          <ul>
+            <li>Analizarea scopului autorului și a posibilelor interese ideologice sau politice</li>
+            <li>Identificarea indicatorilor de credibilitate: autor, instituție, dată, context, metodă</li>
+            <li>Explicarea modului în care contextul social poate influența obiectivitatea unei surse</li>
+          </ul>
+          <h3 class="competency-subtitle">CT1.3. Analizarea perspectivelor multiple și a interpretărilor divergente</h3>
+          <ul>
+            <li>Identificarea și compararea interpretărilor diferite ale aceluiași eveniment</li>
+            <li>Explicarea modului în care contextul istoric influențează interpretarea</li>
+            <li>Argumentarea riscurilor acceptării necritice a narațiunilor radicalizate</li>
+          </ul>
+          <h3 class="competency-subtitle">CT1.4. Analizarea critică a materialelor vizuale cu conținut istoric</h3>
+          <ul>
+            <li>Diferențierea între conținutul ilustrat direct și mesajul intenționat de autor</li>
+            <li>Identificarea tehnicilor vizuale de persuasiune: cadraj, selecția imaginilor, montaj</li>
+            <li>Argumentarea impactului emoțional sau ideologic al materialelor vizuale</li>
+          </ul>
+          <h3 class="competency-main-title">CT2. Creșterea gradului de conștientizare în legătură cu potențialul abuz al media digitale</h3>
+          <h3 class="competency-subtitle">CT2.1. Dezvoltarea unei atitudini critice față de utilizarea media digitale</h3>
+          <ul>
+            <li>Identificarea exemplelor de utilizare pozitivă și negativă a informației istorice în mediul digital: social media, bloguri, materiale video</li>
+            <li>Explicarea modului în care imaginile, algoritmii, titlurile manipulative și editările vizuale pot distorsiona percepția asupra trecutului</li>
+            <li>Demonstrarea comportamentelor responsabile și reflexive în utilizarea media digitale, evaluând riscul de manipulare, dezinformare sau propagandă istorică</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="resultBox" class="result-box"></section>
+
+  <form id="quizForm"></form>
+
+  <div class="finish-box">
+    <span>După ce ai bifat răspunsurile, apasă pe buton pentru interpretare.</span>
+    <div>
+      <button type="button" class="secondary-button" onclick="resetQuiz()">Șterge răspunsurile</button>
+      <button type="button" class="finish-button" onclick="finishQuiz()">Am terminat testul</button>
+    </div>
+  </div>
+</main>
+
+<script>
+  const questions = [
+  {
+    "id": 1,
+    "competency": "C1.1",
+    "text": "Care șir prezintă corect o succesiune cronologică din istoria Greciei antice?",
+    "options": {
+      "A": "Bătălia de la Maraton → Marea colonizare greacă → cuceririle lui Alexandru Macedon",
+      "B": "Marea colonizare greacă → Bătălia de la Maraton → cuceririle lui Alexandru Macedon",
+      "C": "Cuceririle lui Alexandru Macedon → Războiul Troian → Bătălia de la Maraton",
+      "D": "Războiul peloponesiac → Jocurile Olimpice de la 776 î.Hr. → Marea colonizare greacă"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 2,
+    "competency": "C1.1",
+    "text": "Jocurile Olimpice antice au început, potrivit tradiției, în anul:",
+    "options": {
+      "A": "776 î.Hr.",
+      "B": "490 î.Hr.",
+      "C": "323 î.Hr.",
+      "D": "31 î.Hr."
+    },
+    "answer": "A"
+  },
+  {
+    "id": 3,
+    "competency": "C1.1",
+    "text": "Care eveniment este anterior Războiului Peloponesiac?",
+    "options": {
+      "A": "Moartea lui Alexandru Macedon",
+      "B": "Bătălia de la Maraton",
+      "C": "Cucerirea Persiei de către Alexandru",
+      "D": "Împărțirea Imperiului Macedonean între generalii săi"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 4,
+    "competency": "C1.1",
+    "text": "Începutul perioadei elenistice este legat, în mod obișnuit, de:",
+    "options": {
+      "A": "apariția primelor polisuri grecești",
+      "B": "victoria grecilor la Maraton",
+      "C": "moartea lui Alexandru Macedon, în 323 î.Hr.",
+      "D": "întemeierea Romei"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 5,
+    "competency": "C1.2",
+    "text": "Care dintre următoarele evenimente este cel mai vechi?",
+    "options": {
+      "A": "Bătălia de la Salamina",
+      "B": "Cuceririle lui Alexandru Macedon",
+      "C": "Marea colonizare greacă",
+      "D": "Războiul Peloponesiac"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 6,
+    "competency": "C1.2",
+    "text": "Care dintre evenimente s-a produs după Bătălia de la Maraton?",
+    "options": {
+      "A": "Primele jocuri olimpice",
+      "B": "Marea colonizare greacă",
+      "C": "Bătălia de la Salamina",
+      "D": "Războiul Troian"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 7,
+    "competency": "C1.2",
+    "text": "Care dintre următoarele repere este cel mai recent?",
+    "options": {
+      "A": "Marea colonizare greacă",
+      "B": "Bătălia de la Maraton",
+      "C": "Războiul Troian",
+      "D": "Moartea lui Alexandru Macedon"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 8,
+    "competency": "C1.2",
+    "text": "Care afirmație cronologică este corectă?",
+    "options": {
+      "A": "Războaiele medice au avut loc după moartea lui Alexandru Macedon.",
+      "B": "Marea colonizare greacă a avut loc înaintea războaielor medice.",
+      "C": "Războiul Peloponesiac a început înaintea Bătăliei de la Maraton.",
+      "D": "Perioada elenistică este anterioară Greciei clasice."
+    },
+    "answer": "B"
+  },
+  {
+    "id": 9,
+    "competency": "C1.3",
+    "text": "Mediul natural al Greciei antice era caracterizat mai ales prin:",
+    "options": {
+      "A": "câmpii întinse, fără ieșire la mare",
+      "B": "deșerturi și oaze izolate",
+      "C": "munți, insule și apropierea de mare",
+      "D": "păduri tropicale și fluvii uriașe"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 10,
+    "competency": "C1.3",
+    "text": "Histria, Tomis și Callatis erau colonii grecești întemeiate pe țărmul:",
+    "options": {
+      "A": "Mării Negre",
+      "B": "Oceanului Atlantic",
+      "C": "Mării Baltice",
+      "D": "Mării Roșii"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 11,
+    "competency": "C1.3",
+    "text": "Atena și Sparta pot fi localizate în lumea greacă astfel:",
+    "options": {
+      "A": "Atena în Egipt, Sparta în Asia Mică",
+      "B": "Atena în Mesopotamia, Sparta în Tracia",
+      "C": "Atena în Italia, Sparta în Fenicia",
+      "D": "Atena în Attica, Sparta în Pelopones"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 12,
+    "competency": "C1.3",
+    "text": "Un polis grec cuprindea, de regulă:",
+    "options": {
+      "A": "doar un templu izolat pe munte",
+      "B": "orașul propriu-zis și teritoriul agricol din jur",
+      "C": "un imperiu format din mai multe continente",
+      "D": "numai portul și corăbiile comerciale"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 13,
+    "competency": "C2.1",
+    "text": "Termenul care desemnează orașul-stat în lumea greacă este:",
+    "options": {
+      "A": "imperiu",
+      "B": "provincie",
+      "C": "polis",
+      "D": "satrapie"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 14,
+    "competency": "C2.1",
+    "text": "Agora era, în cadrul polisului:",
+    "options": {
+      "A": "spațiul public al discuțiilor, negoțului și adunărilor",
+      "B": "locul unde erau îngropați regii",
+      "C": "o armă folosită de hopliți",
+      "D": "o colonie întemeiată în Orient"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 15,
+    "competency": "C2.1",
+    "text": "Acropola desemna:",
+    "options": {
+      "A": "piața comercială de la intrarea în port",
+      "B": "un tip de vas ceramic folosit la depozitarea uleiului",
+      "C": "un regim politic bazat pe puterea poporului",
+      "D": "partea înaltă și fortificată a cetății, unde se aflau adesea temple"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 16,
+    "competency": "C2.1",
+    "text": "Democrația ateniană poate fi definită, simplificat, ca:",
+    "options": {
+      "A": "regim politic în care puterea aparține unui singur rege",
+      "B": "puterea unui grup foarte restrâns de aristocrați",
+      "C": "regim politic în care cetățenii participă la conducerea cetății",
+      "D": "conducerea cetății de către preoții zeului Zeus"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 17,
+    "competency": "C2.2",
+    "text": "Un vas grecesc decorat cu scene de navigație și schimburi de mărfuri poate indica faptul că grecii:",
+    "options": {
+      "A": "nu cunoșteau comerțul",
+      "B": "practicau navigația și comerțul",
+      "C": "trăiau exclusiv din vânătoare",
+      "D": "nu aveau preocupări artistice, ci erau preocupați preponderent de navigație și de comerț"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 18,
+    "competency": "C2.2",
+    "text": "Iliada și Odiseea sunt utile pentru înțelegerea lumii grecești deoarece:",
+    "options": {
+      "A": "sunt opere literare care păstrează mituri, valori și amintiri despre trecut",
+      "B": "sunt hărți militare exacte ale Greciei",
+      "C": "sunt legi scrise de Pericle pentru Atena",
+      "D": "sunt tratate științifice despre arhitectura templelor"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 19,
+    "competency": "C2.2",
+    "text": "O imagine a Partenonului de pe Acropola Atenei ne poate ajuta să înțelegem:",
+    "options": {
+      "A": "rolul arhitecturii și religiei în viața publică ateniană",
+      "B": "că Atena era condusă de o grupare misterioasă a arhitecților",
+      "C": "că acropola avea o însemnătate aparte pentru orașele grecești",
+      "D": "variantele A și C sunt corecte"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 20,
+    "competency": "C2.2",
+    "text": "O hartă cu multe colonii grecești pe țărmurile Mării Mediterane și ale Mării Negre sugerează:",
+    "options": {
+      "A": "izolarea completă a grecilor",
+      "B": "extinderea grecilor prin colonizare și schimburi maritime",
+      "C": "dispariția culturii grecești din Sparta și Atena, la momentul fondării acelor colonii",
+      "D": "lipsa contactelor comerciale între cetăți"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 21,
+    "competency": "C2.3",
+    "text": "Care este o diferență corectă între Atena și Sparta?",
+    "options": {
+      "A": "Atena este situată în Peninsula Pelopones, iar Sparta este situată în Peninsula Attica",
+      "B": "Sparta era un oraș democratic, iar Atena era condusă de un regim tiranic",
+      "C": "Atena este asociată cu democrația, Sparta cu organizarea militară și oligarhică",
+      "D": "Atena și Sparta aveau un sistem de educație la fel de brutal"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 22,
+    "competency": "C2.3",
+    "text": "Ce asemănare există între Bătălia de la Maraton și Bătălia de la Salamina?",
+    "options": {
+      "A": "Ambele au avut loc în timpul războaielor medice, împotriva perșilor",
+      "B": "Ambele au fost purtate între Atena și Sparta",
+      "C": "Ambele au fost câștigate de Alexandru Macedon",
+      "D": "Ambele au dus pe termen lung la întemeierea Romei"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 23,
+    "competency": "C2.3",
+    "text": "Care este o deosebire între bătăliile de la Maraton și Salamina?",
+    "options": {
+      "A": "Bătălia de la Maraton a avut loc după moartea lui Alexandru cel Mare, iar cea de la Salamina înainte",
+      "B": "la Maraton au câștigat perșii, iar la Salamina au câștigat romanii",
+      "C": "Nu există diferențe notabile între cele două bătălii",
+      "D": "la Maraton a fost o bătălie terestră, iar la Salamina a fost o bătălie navală"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 24,
+    "competency": "C2.3",
+    "text": "Ce deosebește Imperiul Macedonean de polisurile grecești clasice?",
+    "options": {
+      "A": "Imperiul Macedonean a fost o construcție politică vastă, condusă monarhic, în timp ce polisul era o cetate-stat",
+      "B": "Imperiul Macedonean își avea centrul politic în nordul Africii, în timp ce polisurile grecești erau răspândite cu precădere în Mesopotamia",
+      "C": "Polisul era mai mare decât orice imperiu antic",
+      "D": "Imperiul Macedonean era condus democratic, în timp ce polisurile grecești erau guvernate de niște tirani"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 25,
+    "competency": "C3.1",
+    "text": "Un articol online afirmă: „Zeus a existat sigur, pentru că apare în miturile grecilor”. Această afirmație este:",
+    "options": {
+      "A": "fapt istoric demonstrat",
+      "B": "interpretare religioasă sau mitologică",
+      "C": "interpretare bazată pe documente arheologice",
+      "D": "fapt istoric recunoscut de majoritatea istoricilor"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 26,
+    "competency": "C3.1",
+    "text": "Un material educativ prezintă ruine ale templelor grecești și citează arheologi. Această sursă este, în principiu:",
+    "options": {
+      "A": "falsă, pentru că templele nu pot fi fotografiate",
+      "B": "îndoielnică, deoarece trebuie să mergem personal să verificăm dacă ruinele unui templu există, altfel riscăm să fim înșelați cu imagini generate de AI",
+      "C": "cel mai probabil, o simplă reclamă la turism",
+      "D": "credibilă, deoarece folosește dovezi și specialiști"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 27,
+    "competency": "C3.1",
+    "text": "Un videoclip viral spune: „Spartanii au inventat toate sporturile moderne”. Cum clasificăm afirmația?",
+    "options": {
+      "A": "fapt istoric precis",
+      "B": "afirmație bazată pe inscripțiile antice",
+      "C": "exagerare sau speculație neverificată",
+      "D": "singura excepție o reprezintă fotbalul, care a fost inventat de chinezi"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 28,
+    "competency": "C3.2",
+    "text": "Cine poate evalua cel mai obiectiv autenticitatea unui vas grecesc antic?",
+    "options": {
+      "A": "un arheolog sau istoric al artei specializat în Grecia antică",
+      "B": "un influencer care vinde suveniruri cu zei greci",
+      "C": "un actor care a jucat într-un film despre Sparta",
+      "D": "un turist care a văzut multe poze pe internet"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 29,
+    "competency": "C3.2",
+    "text": "Pentru a afla informații echilibrate despre filosofii greci, cea mai potrivită sursă este:",
+    "options": {
+      "A": "un meme de pe internet, însoțit de comentarii",
+      "B": "un articol dintr-o revistă de istorie din zilele noastre",
+      "C": "o carte veche, din perioada comunistă, pe când se învăța mai mult decât astăzi",
+      "D": "o postare de pe social media care începe cu expresia „istoricii ascund adevărul”"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 30,
+    "competency": "C3.2",
+    "text": "Pe un blog citim următorul titlu: „Atena a fost construită de extratereștri”. Ce interes poate urmări autorul?",
+    "options": {
+      "A": "prezentarea versiunii ascunse de istorici",
+      "B": "prezentarea versiunii oficiale a istoricilor",
+      "C": "atragerea de clickuri prin senzaționalism",
+      "D": "atragerea de clickuri prin promovarea științei"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 31,
+    "competency": "C3.3",
+    "text": "Ce risc apare dacă acceptăm afirmația: „Toți grecii antici trăiau în democrație”?",
+    "options": {
+      "A": "îi supraestimăm pe grecii din Antichitate, căci pe atunci toți oamenii erau barbari și nu exista ideea de democrație",
+      "B": "Grecia Antică era un stat democratic, în mare măsură la fel ca Grecia de azi",
+      "C": "ignorăm faptul că unele polisuri erau conduse de oameni aleși prin vot",
+      "D": "ignorăm existența Spartei, a oligarhiei și a categoriilor fără drepturi politice"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 32,
+    "competency": "C3.3",
+    "text": "Afirmația „Spartanii nu făceau decât război” trebuie analizată critic deoarece:",
+    "options": {
+      "A": "reduce întreaga societate spartană la o singură trăsătură",
+      "B": "modelul politic spartan era democratic și pacifist, economia sa bazându-se pe comerțul naval",
+      "C": "dovedește că spartanii nu erau capabili să creeze artă sau cultură",
+      "D": "arată că cetățenii spartani erau imposibil de guvernat"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 33,
+    "competency": "C3.3",
+    "text": "Două surse îl prezintă pe Alexandru Macedon diferit: una ca erou civilizator, alta ca cuceritor violent. Ce concluzie este corectă?",
+    "options": {
+      "A": "ambele surse, fiind atât de contradictorii, trebuie respinse automat",
+      "B": "trebuie să fim mai prudenți cu sursele care laudă decât cu sursele care acuză",
+      "C": "sursele pot reflecta perspective și interese diferite",
+      "D": "în istorie nu sunt permise perspectivele diferite"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 34,
+    "competency": "C3.4",
+    "text": "O imagine generată cu AI (inteligență artificială) prezintă Partenonul lângă zgârie-nori de sticlă și soldați romani. Ce trebuie să observăm critic?",
+    "options": {
+      "A": "că putem emite un punct de vedere doar după ce verificăm cine este autorul și care este sursa sa",
+      "B": "că societățile Antichității au fost exemple de multidiversitate, întocmai după cum ne înfățișează imaginea generată",
+      "C": "că zgârie-norii de sticlă existau în Antichitate, dar din cauza fragilității sticlei nu au rezistat până în zilele noastre",
+      "D": "că imaginea amestecă elemente din civilizații diferite și poate induce în eroare"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 35,
+    "competency": "C3.4",
+    "text": "Un videoclip despre hopliți folosește muzică eroică și cadre încetinite. Ce efect poate avea?",
+    "options": {
+      "A": "nu influențează deloc privitorul",
+      "B": "poate glorifica războiul și influența emoțional interpretarea",
+      "C": "videoclipul poate fi folosit în reconstituiri istorice deoarece este foarte fidel realității",
+      "D": "dovedește că grecii obțineau ușor victorii militare"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 36,
+    "competency": "C3.4",
+    "text": "Un film îi arată pe toți bărbații greci din Antichitate având fizic perfect, ca al statuilor care înfățișează sportivi de elită. Ce ar trebui să înțelegem de aici?",
+    "options": {
+      "A": "că grecii antici nu îi tolerau pe cei care nu practicau sporturi de performanță",
+      "B": "că bărbații care nu arătau perfect erau puternic discriminați în societate",
+      "C": "variantele B și C sunt corecte",
+      "D": "că aceasta este o imagine idealizată, care simplifică realitatea"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 37,
+    "competency": "C4.1",
+    "text": "Un site publică titlul: „Adevărul ascuns: grecii au primit știința de la extratereștri!”. Ce strategie de manipulare observăm?",
+    "options": {
+      "A": "senzaționalism, care caută să stârnească uimire",
+      "B": "apel la conspirație",
+      "C": "analiză bazată pe izvoare istorice",
+      "D": "variantele A și B"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 38,
+    "competency": "C4.1",
+    "text": "Într-un videoclip auzim următorul lucru: „Iliada dovedește exact, pas cu pas, cum s-a desfășurat Războiul Troian”. Ce este problematic?",
+    "options": {
+      "A": "Iliada este o operă literară, deci nu poate fi un document istoric exact",
+      "B": "Iliada este un document juridic, nu militar",
+      "C": "Războiul Troian nu a existat",
+      "D": "Iliada este o operă literară de mare valoare, cu multe detalii, deci cu o probabilitate mare să fie precisă și exactă din punct de vedere istoric"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 39,
+    "competency": "C4.1",
+    "text": "Un blog afirmă: „Sparta dovedește că o societate perfectă trebuie să fie militarizată”. Ce observăm?",
+    "options": {
+      "A": "idealizare, adică înțelegere greșită a unui model istoric",
+      "B": "prezentare a unei realități istorice dure, dar necesare",
+      "C": "menționarea unui model politic democratic din Antichitate",
+      "D": "blogul are caracter neutru și analizează profesionist o problemă istorică"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 40,
+    "competency": "C4.1",
+    "text": "Găsești pe internet o hartă intitulată „Imperiul Atenian” și care cuprinde întreaga Peninsulă Balcanică, jumătatea de nord a Africii și Orientul Mijlociu. Cum ne raportăm la această hartă ca să stabilim dacă este corectă sau nu?",
+    "options": {
+      "A": "verificăm dacă este însoțită de numele autorului și de sursă",
+      "B": "verific informația și în alte surse, chiar dacă nu mai găsim hărți la fel de spectaculoase ca aceasta",
+      "C": "verific dacă alți cititori au aprobat harta prin like-uri sau prin comentarii",
+      "D": "verific pe site-uri conspiraționiste dacă această hartă mai apare și în alte locuri"
+    },
+    "answer": "B"
+  }
+];
+
+  const questionExplanations = {
+  "1": {
+    "correct": "Cronologia corectă este: Marea colonizare greacă, apoi războaiele medice, apoi cuceririle lui Alexandru Macedon.",
+    "options": {
+      "A": "Maraton este după colonizare, nu înaintea ei.",
+      "B": "Corect: colonizarea greacă precedă Maratonul, iar Alexandru aparține secolului al IV-lea î.Hr.",
+      "C": "Alexandru este mult mai târziu decât Războiul Troian și Maratonul.",
+      "D": "Jocurile Olimpice din 776 î.Hr. sunt mult mai vechi decât Războiul Peloponesiac."
+    }
+  },
+  "2": {
+    "correct": "Tradiția fixează începutul Jocurilor Olimpice antice în anul 776 î.Hr.",
+    "options": {
+      "A": "Corect: 776 î.Hr. este reperul tradițional pentru începutul Jocurilor Olimpice.",
+      "B": "490 î.Hr. este anul Bătăliei de la Maraton.",
+      "C": "323 î.Hr. este anul morții lui Alexandru Macedon.",
+      "D": "31 î.Hr. aparține epocii romane, nu începutului jocurilor grecești."
+    }
+  },
+  "3": {
+    "correct": "Bătălia de la Maraton, din 490 î.Hr., este anterioară Războiului Peloponesiac.",
+    "options": {
+      "A": "Moartea lui Alexandru este ulterioară Războiului Peloponesiac.",
+      "B": "Corect: Maratonul are loc înaintea Războiului Peloponesiac.",
+      "C": "Cucerirea Persiei de către Alexandru este ulterioară.",
+      "D": "Împărțirea imperiului urmează morții lui Alexandru, deci este mult mai târzie."
+    }
+  },
+  "4": {
+    "correct": "Perioada elenistică este legată de lumea creată după cuceririle lui Alexandru și începe, în mod obișnuit, după moartea lui în 323 î.Hr.",
+    "options": {
+      "A": "Primele polisuri sunt mai vechi decât perioada elenistică.",
+      "B": "Maratonul ține de războaiele medice, nu de începutul elenismului.",
+      "C": "Corect: 323 î.Hr. este reperul începutului perioadei elenistice.",
+      "D": "Întemeierea Romei aparține tradiției romane, nu începutului perioadei elenistice."
+    }
+  },
+  "5": {
+    "correct": "Dintre variante, Marea colonizare greacă este cea mai veche.",
+    "options": {
+      "A": "Salamina este în secolul al V-lea î.Hr.",
+      "B": "Alexandru aparține secolului al IV-lea î.Hr.",
+      "C": "Corect: Marea colonizare greacă începe în secolele VIII-VI î.Hr.",
+      "D": "Războiul Peloponesiac are loc în secolul al V-lea î.Hr."
+    }
+  },
+  "6": {
+    "correct": "Salamina are loc după Maraton, în același cadru general al războaielor medice.",
+    "options": {
+      "A": "Jocurile Olimpice din 776 î.Hr. sunt anterioare Maratonului.",
+      "B": "Colonizarea este anterioară războaielor medice.",
+      "C": "Corect: Salamina are loc după Maraton.",
+      "D": "Războiul Troian este plasat mult mai devreme în tradiția greacă."
+    }
+  },
+  "7": {
+    "correct": "Moartea lui Alexandru Macedon, în 323 î.Hr., este reperul cel mai recent dintre variante.",
+    "options": {
+      "A": "Colonizarea greacă este mult mai veche.",
+      "B": "Maratonul este în 490 î.Hr.",
+      "C": "Războiul Troian este plasat într-o epocă mult mai veche.",
+      "D": "Corect: 323 î.Hr. este cel mai târziu dintre repere."
+    }
+  },
+  "8": {
+    "correct": "Marea colonizare greacă are loc înaintea războaielor medice.",
+    "options": {
+      "A": "Războaiele medice sunt anterioare morții lui Alexandru.",
+      "B": "Corect: colonizarea precedă războaiele medice.",
+      "C": "Războiul Peloponesiac începe după Maraton.",
+      "D": "Perioada elenistică este ulterioară Greciei clasice."
+    }
+  },
+  "9": {
+    "correct": "Spațiul grecesc era dominat de munți, insule și mare, ceea ce a favorizat navigația și polisurile separate.",
+    "options": {
+      "A": "Grecia nu era o câmpie întinsă fără ieșire la mare.",
+      "B": "Deșerturile nu definesc mediul grecesc.",
+      "C": "Corect: munții, insulele și marea sunt trăsături esențiale.",
+      "D": "Pădurile tropicale și fluviile uriașe nu descriu Grecia antică."
+    }
+  },
+  "10": {
+    "correct": "Histria, Tomis și Callatis au fost colonii grecești pe țărmul Mării Negre.",
+    "options": {
+      "A": "Corect: ele se află în spațiul pontic, pe litoralul Mării Negre.",
+      "B": "Nu erau pe Oceanul Atlantic.",
+      "C": "Marea Baltică nu are legătură cu aceste colonii grecești.",
+      "D": "Marea Roșie aparține altui spațiu geografic."
+    }
+  },
+  "11": {
+    "correct": "Atena se afla în Attica, iar Sparta în Pelopones.",
+    "options": {
+      "A": "Egiptul și Asia Mică nu sunt localizările Atenei și Spartei.",
+      "B": "Mesopotamia și Tracia nu se potrivesc.",
+      "C": "Italia și Fenicia nu sunt localizările celor două cetăți.",
+      "D": "Corect: aceasta este localizarea lor de bază în lumea greacă."
+    }
+  },
+  "12": {
+    "correct": "Polisul cuprindea orașul și teritoriile din jur, inclusiv spații agricole.",
+    "options": {
+      "A": "Un polis nu era doar un templu izolat.",
+      "B": "Corect: polisul includea orașul și teritoriul agricol înconjurător.",
+      "C": "Polisul nu este același lucru cu un imperiu continental.",
+      "D": "Portul putea fi important, dar nu definește singur polisul."
+    }
+  },
+  "13": {
+    "correct": "Polis înseamnă oraș-stat, forma caracteristică de organizare politică în lumea greacă.",
+    "options": {
+      "A": "Imperiul este o formă politică mult mai vastă.",
+      "B": "Provincia este o unitate administrativă, nu oraș-stat grec.",
+      "C": "Corect: polisul este orașul-stat grec.",
+      "D": "Satrapia ține mai ales de organizarea persană."
+    }
+  },
+  "14": {
+    "correct": "Agora era centrul vieții publice, al discuțiilor, negoțului și adunărilor.",
+    "options": {
+      "A": "Corect: agora era spațiul public central al polisului.",
+      "B": "Regii nu erau îngropați în piața publică.",
+      "C": "Hopliții erau trupele pedestre dotate cu echipament greu.",
+      "D": "Coloniile erau orașele înființate de cei care părăseau polisul."
+    }
+  },
+  "15": {
+    "correct": "Acropola era zona înaltă și fortificată a cetății, unde se puteau afla temple importante.",
+    "options": {
+      "A": "Piața publică era agora, nu acropola.",
+      "B": "Vasul ceramic nu se numește acropolă.",
+      "C": "Democrația este regim politic, nu acropolă.",
+      "D": "Corect: acropola era partea înaltă și fortificată."
+    }
+  },
+  "16": {
+    "correct": "Democrația ateniană presupunea participarea cetățenilor la conducerea cetății.",
+    "options": {
+      "A": "Conducerea unui singur rege este monarhie.",
+      "B": "Puterea celor puțini este oligarhie.",
+      "C": "Corect: democrația este legată de participarea cetățenilor.",
+      "D": "Preoții nu definesc democrația ateniană."
+    }
+  },
+  "17": {
+    "correct": "Scenele de navigație și schimburi pe ceramică pot sugera activități comerciale și maritime.",
+    "options": {
+      "A": "Sursa indică tocmai comerț, nu lipsa lui.",
+      "B": "Corect: imaginea trimite la navigație și comerț.",
+      "C": "Nu reiese că grecii trăiau exclusiv din vânătoare.",
+      "D": "Ceramica decorată arată și o dimensiune meșteșugărească și artistică."
+    }
+  },
+  "18": {
+    "correct": "Iliada și Odiseea sunt opere literare care transmit mituri, valori și reprezentări despre trecutul grecilor.",
+    "options": {
+      "A": "Corect: ele sunt importante ca surse literare și culturale.",
+      "B": "Nu sunt hărți militare exacte.",
+      "C": "Nu sunt legi ateniene.",
+      "D": "Nu sunt tratate de arhitectură."
+    }
+  },
+  "19": {
+    "correct": "Partenonul și Acropola arată importanța religiei, arhitecturii și spațiului civic în lumea ateniană.",
+    "options": {
+      "A": "Afirmația este corectă, dar nu este singura variantă susținută de imagine.",
+      "B": "Atena nu era condusă de o grupare misterioasă a arhitecților.",
+      "C": "Afirmația este corectă: acropola avea o importanță aparte în cetatea greacă.",
+      "D": "Corect: atât A, cât și C sunt susținute de imagine."
+    }
+  },
+  "20": {
+    "correct": "Colonizarea greacă a extins contactele prin navigație, comerț și întemeierea de așezări noi.",
+    "options": {
+      "A": "Harta indică deschidere și contacte, nu izolare.",
+      "B": "Corect: coloniile arată expansiune și schimburi maritime.",
+      "C": "Colonizarea a răspândit cultura greacă, nu a dus la dispariția ei.",
+      "D": "Coloniile presupuneau contacte comerciale."
+    }
+  },
+  "21": {
+    "correct": "Atena și Sparta au avut modele diferite: Atena este asociată cu democrația, Sparta cu disciplina militară și oligarhia.",
+    "options": {
+      "A": "Localizarea este inversată: Atena era în Attica, iar Sparta în Pelopones.",
+      "B": "Sparta nu este modelul democrației, iar Atena nu era un regim tiranic în perioada democrației clasice.",
+      "C": "Corect: Atena și Sparta sunt asociate cu modele politice și sociale diferite.",
+      "D": "Educația spartană era mult mai militarizată; sistemele nu erau identice."
+    }
+  },
+  "22": {
+    "correct": "Maraton și Salamina aparțin războaielor medice, purtate între greci și perși.",
+    "options": {
+      "A": "Corect: ambele sunt confruntări din războaiele medice.",
+      "B": "Atena și Sparta s-au confruntat mai ales în Războiul Peloponesiac, nu în aceste bătălii.",
+      "C": "Alexandru Macedon a trăit mai târziu.",
+      "D": "Întemeierea Romei aparține unei tradiții mult mai vechi și nu rezultă din aceste bătălii."
+    }
+  },
+  "23": {
+    "correct": "Maratonul este o bătălie pe uscat, iar Salamina este o bătălie navală.",
+    "options": {
+      "A": "Ambele bătălii sunt anterioare lui Alexandru Macedon.",
+      "B": "Grecii au învins în ambele confruntări, nu perșii sau romanii.",
+      "C": "Există diferențe importante de loc, tip de luptă și context militar.",
+      "D": "Corect: Maratonul se desfășoară pe uscat, iar Salamina pe mare."
+    }
+  },
+  "24": {
+    "correct": "Imperiul Macedonean era o formațiune politică mult mai mare decât polisul, condusă de un rege și extinsă în Orient.",
+    "options": {
+      "A": "Corect: imperiul era vast și monarhic, iar polisul era o cetate-stat.",
+      "B": "Centrul Macedoniei nu era în nordul Africii, iar polisurile grecești nu erau răspândite cu precădere în Mesopotamia.",
+      "C": "Polisul era mai mic decât un imperiu, nu mai mare.",
+      "D": "Imperiul Macedonean era monarhic, nu democratic, iar polisurile aveau regimuri variate."
+    }
+  },
+  "25": {
+    "correct": "Miturile pot exprima credințe și valori, dar nu dovedesc direct existența istorică a zeilor.",
+    "options": {
+      "A": "Apariția într-un mit nu transformă afirmația într-un fapt istoric demonstrat.",
+      "B": "Corect: este o interpretare religioasă sau mitologică, nu o dovadă istorică directă.",
+      "C": "Miturile nu sunt documente arheologice.",
+      "D": "Istoricii pot studia credința în Zeus, dar nu tratează mitul ca dovadă a existenței istorice a zeului."
+    }
+  },
+  "26": {
+    "correct": "Ruinele și explicațiile specialiștilor cresc credibilitatea unei surse educative.",
+    "options": {
+      "A": "Templele și ruinele pot fi fotografiate și analizate.",
+      "B": "Verificarea critică este utilă, dar nu înseamnă că orice sursă trebuie respinsă dacă nu mergem personal la fața locului.",
+      "C": "Un material educativ cu specialiști nu este automat reclamă turistică.",
+      "D": "Corect: folosirea dovezilor materiale și a specialiștilor crește credibilitatea."
+    }
+  },
+  "27": {
+    "correct": "Afirmația este prea absolută și nu este susținută de dovezi; sporturile moderne au origini multiple.",
+    "options": {
+      "A": "Nu este un fapt istoric precis, pentru că formularea „toate sporturile moderne” este exagerată.",
+      "B": "Nu sunt indicate inscripții antice care să demonstreze ideea.",
+      "C": "Corect: afirmația este o exagerare neverificată.",
+      "D": "Mențiunea despre fotbal nu salvează afirmația generală și nu răspunde cerinței."
+    }
+  },
+  "28": {
+    "correct": "Autenticitatea unui vas antic se verifică prin expertiză arheologică, materială și artistică.",
+    "options": {
+      "A": "Corect: specialistul are pregătirea necesară pentru evaluarea autenticității.",
+      "B": "Un influencer poate avea interes comercial și nu este automat specialist.",
+      "C": "Un rol într-un film nu înseamnă competență istorică sau arheologică.",
+      "D": "Fotografiile văzute pe internet nu înlocuiesc expertiza."
+    }
+  },
+  "29": {
+    "correct": "O sursă actuală de istorie, care indică informațiile folosite și autorul, este mai verificabilă și mai echilibrată.",
+    "options": {
+      "A": "Un meme poate simplifica sau ironiza, dar nu este o sursă echilibrată.",
+      "B": "Corect: o revistă de istorie poate oferi informații verificate și contextualizate.",
+      "C": "Vechimea unei cărți nu garantează automat echilibrul sau actualitatea interpretării.",
+      "D": "Formula „istoricii ascund adevărul” este un semnal de senzaționalism sau conspiraționism."
+    }
+  },
+  "30": {
+    "correct": "Afirmațiile senzaționale despre extratereștri urmăresc adesea clickuri, nu informare istorică.",
+    "options": {
+      "A": "Formularea sugerează conspiraționism, nu o versiune istorică demonstrată.",
+      "B": "Istoricii nu prezintă Atena ca fiind construită de extratereștri.",
+      "C": "Corect: titlul este construit pentru senzaționalism și atragerea atenției.",
+      "D": "Nu este promovare a științei, ci o afirmație spectaculoasă fără dovezi."
+    }
+  },
+  "31": {
+    "correct": "Grecia antică nu a fost uniform democratică; Sparta era diferită, iar în Atena drepturile politice erau limitate la cetățeni.",
+    "options": {
+      "A": "Este o judecată depreciativă și greșită; ideea de democrație exista în Atena.",
+      "B": "Grecia antică nu era un stat unitar democratic asemenea Greciei de azi.",
+      "C": "Problema nu este că ignorăm votul, ci că generalizăm democrația la toată lumea greacă.",
+      "D": "Corect: afirmația generalizează greșit și ignoră diferențele dintre polisuri."
+    }
+  },
+  "32": {
+    "correct": "Sparta avea o cultură militară puternică, dar societatea ei nu poate fi redusă la o singură activitate.",
+    "options": {
+      "A": "Corect: afirmația simplifică excesiv societatea spartană.",
+      "B": "Sparta nu era un model democratic și pacifist bazat pe comerț naval.",
+      "C": "Afirmația nu dovedește lipsa totală a artei sau culturii.",
+      "D": "Sparta avea instituții și reguli stricte, deci varianta nu răspunde corect."
+    }
+  },
+  "33": {
+    "correct": "Sursele istorice pot avea perspective diferite, în funcție de autor, epocă, valori și scop.",
+    "options": {
+      "A": "Sursele contradictorii nu se resping automat; se compară și se contextualizează.",
+      "B": "Trebuie să fim prudenți cu toate sursele, indiferent dacă laudă sau acuză.",
+      "C": "Corect: diferențele dintre surse pot arăta perspective și interese diferite.",
+      "D": "În istorie există perspective diferite, iar analiza lor este importantă."
+    }
+  },
+  "34": {
+    "correct": "Imaginea combină elemente din epoci diferite și poate crea confuzii vizuale.",
+    "options": {
+      "A": "Verificarea autorului ajută, dar problema vizibilă este amestecul anacronic de elemente.",
+      "B": "Imaginea generată nu dovedește realitatea societăților antice.",
+      "C": "Zgârie-norii de sticlă nu existau în Antichitate.",
+      "D": "Corect: imaginea amestecă elemente grecești, romane și moderne."
+    }
+  },
+  "35": {
+    "correct": "Muzica și montajul pot influența emoțional, făcând războiul să pară mai eroic decât era.",
+    "options": {
+      "A": "Sunetul, ritmul și montajul pot influența interpretarea.",
+      "B": "Corect: tehnicile vizuale și muzica pot schimba percepția privitorului.",
+      "C": "Un videoclip stilizat nu este automat o reconstituire fidelă.",
+      "D": "Montajul nu dovedește ușurința victoriilor militare."
+    }
+  },
+  "36": {
+    "correct": "Imaginea idealizează și uniformizează lumea greacă, ignorând diversitatea socială, culorile, viața cotidiană și conflictele.",
+    "options": {
+      "A": "Nu rezultă că grecii nu tolerau oamenii care nu făceau sport de performanță.",
+      "B": "Nu putem deduce această discriminare doar din reprezentarea idealizată.",
+      "C": "B și C sunt concluzii forțate, nu răspunsuri corecte.",
+      "D": "Corect: filmul poate transforma un ideal artistic într-o imagine fals uniformă a realității."
+    }
+  },
+  "37": {
+    "correct": "Titlul folosește formula conspiraționistă „adevărul ascuns” și o explicație senzaționalistă.",
+    "options": {
+      "A": "Afirmația indică senzaționalism, dar nu surprinde singură și apelul la conspirație.",
+      "B": "Afirmația indică apel la conspirație, dar nu surprinde singură și senzaționalismul.",
+      "C": "Nu este o analiză bazată pe izvoare istorice.",
+      "D": "Corect: titlul folosește atât senzaționalismul, cât și apelul la conspirație."
+    }
+  },
+  "38": {
+    "correct": "O operă literară poate conține amintiri istorice, dar nu trebuie tratată ca document exact al evenimentelor.",
+    "options": {
+      "A": "Corect: este nevoie de analiză critică și comparație cu alte surse.",
+      "B": "Iliada este o operă literară, nu un document juridic.",
+      "C": "Problema nu se rezolvă prin negarea simplă a tradiției despre Războiul Troian.",
+      "D": "Un text cu multe detalii nu este neapărat precis sau exact din punct de vedere istoric."
+    }
+  },
+  "39": {
+    "correct": "Sparta este folosită ca model propagandistic, ignorând aspecte precum lipsa libertăților, dominația militară sau excluderile sociale.",
+    "options": {
+      "A": "Corect: este idealizare istorică folosită ideologic.",
+      "B": "Nu există un consens istoric potrivit căruia societatea perfectă trebuie să fie militarizată.",
+      "C": "Nu Sparta, ci Atena a fost un model politic democratic.",
+      "D": "Blogul apelează la simplificări excesive și nu utilizează un limbaj profesionist, bazat pe fapte istorice."
+    }
+  },
+  "40": {
+    "correct": "Hărțile fără autor și fără surse trebuie verificate înainte de a fi crezute sau distribuite.",
+    "options": {
+      "A": "O informație nu este corectă doar pentru că e însoțită de numele autorului și de sursă.",
+      "B": "Corect: verificarea în manual și surse credibile este reacția responsabilă; aspectul vizual nu garantează adevărul.",
+      "C": "Like-urile nu sunt criteriu de adevăr istoric.",
+      "D": "Acuzația conspiraționistă nu înlocuiește verificarea."
+    }
+  }
+};
+
+  const competencies = {
+    "C1.1": {
+      "title": "Ordonarea pe criterii cronologice a faptelor / proceselor istorice",
+      "group": "Utilizarea coordonatelor şi reprezentărilor de timp şi spaţiu"
+    },
+    "C1.2": {
+      "title": "Identificarea diferenţelor temporale dintre evenimente şi procese istorice",
+      "group": "Utilizarea coordonatelor şi reprezentărilor de timp şi spaţiu"
+    },
+    "C1.3": {
+      "title": "Localizarea în timp şi în spaţiu a faptelor şi/sau a proceselor istorice",
+      "group": "Utilizarea coordonatelor şi reprezentărilor de timp şi spaţiu"
+    },
+    "C2.1": {
+      "title": "Folosirea termenilor de specialitate în descrierea unui eveniment/proces istoric",
+      "group": "Utilizarea critică şi reflexivă a limbajului de specialitate şi a surselor istorice"
+    },
+    "C2.2": {
+      "title": "Relatarea unui eveniment / proces istoric, utilizând informaţii din surse istorice",
+      "group": "Utilizarea critică şi reflexivă a limbajului de specialitate şi a surselor istorice"
+    },
+    "C2.3": {
+      "title": "Stabilirea de asemănări și deosebiri între fapte istorice, pe bază de surse diferite",
+      "group": "Utilizarea critică şi reflexivă a limbajului de specialitate şi a surselor istorice"
+    },
+    "C3.1": {
+      "title": "Selectarea și interpretarea informațiilor istorice digitale",
+      "group": "Aplicarea gândirii critice și a instrumentelor analitice"
+    },
+    "C3.2": {
+      "title": "Evaluarea motivației, utilității și credibilității unei surse",
+      "group": "Aplicarea gândirii critice și a instrumentelor analitice"
+    },
+    "C3.3": {
+      "title": "Analizarea perspectivelor multiple și a interpretărilor divergente",
+      "group": "Aplicarea gândirii critice și a instrumentelor analitice"
+    },
+    "C3.4": {
+      "title": "Analizarea critică a materialelor vizuale cu conținut istoric",
+      "group": "Aplicarea gândirii critice și a instrumentelor analitice"
+    },
+    "C4.1": {
+      "title": "Dezvoltarea unei atitudini critice față de utilizarea media digitale",
+      "group": "Conștientizarea potențialului abuz al media digitale"
+    }
+  };
+
+  const resultAreas = [
+    {
+      title: "cerințele de cronologie și de reprezentare a spațiului istoric",
+      match: code => code.startsWith("C1.")
+    },
+    {
+      title: "cerințele de utilizare critică a limbajului de specialitate și a surselor istorice",
+      match: code => code.startsWith("C2.")
+    },
+    {
+      title: "cerințele de aplicare a gândirii critice și analitice",
+      match: code => code.startsWith("C3.") || code.startsWith("C4.")
+    }
+  ];
+
+  let reviewVisible = false;
+  let lastReportData = null;
+
+  function percent(value, total) {
+    if (total === 0) return "0%";
+    return ((value / total) * 100).toFixed(2).replace(".00", "") + "%";
+  }
+
+  function levelLabel(score) {
+    if (score >= 85) return "nivel foarte bun";
+    if (score >= 70) return "nivel bun";
+    if (score >= 50) return "nivel mediu";
+    if (score >= 30) return "nivel fragil";
+    return "necesită consolidare";
+  }
+
+  function generalFeedback(score) {
+    if (score >= 85) return "Rezultatul indică o stăpânire foarte bună a conținuturilor și a competențelor evaluate. Elevul poate lucra mai departe pe itemi de analiză și comparație, nu doar pe recunoașterea informațiilor.";
+    if (score >= 70) return "Rezultatul indică o înțelegere bună a temei Civilizația greacă și sinteza elenistică. Pentru progres, este utilă exersarea itemilor care cer interpretarea surselor și verificarea critică a informațiilor.";
+    if (score >= 50) return "Rezultatul indică un nivel mediu. Noțiunile principale sunt parțial înțelese, dar este nevoie de recapitulare, mai ales la competențele unde procentul este mai scăzut.";
+    if (score >= 30) return "Rezultatul indică un nivel fragil. Este recomandată reluarea lecției, lucrul cu axa cronologică, harta lumii grecești, termenii de bază și exemple simple de surse istorice.";
+    return "Rezultatul indică nevoia de consolidare serioasă. Este recomandată reluarea unității Civilizația greacă și sinteza elenistică pas cu pas, cu accent pe mediul natural, polis, Atena și Sparta, războaiele grecilor, Alexandru Macedon, termeni istorici și diferențierea dintre informații factuale, opinii și speculații.";
+  }
+
+  function formatDateTime(date) {
+    return new Intl.DateTimeFormat("ro-RO", {
+      dateStyle: "full",
+      timeStyle: "medium"
+    }).format(date);
+  }
+
+  function escapeHtml(value) {
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+  function toggleCompetencyPanel(button) {
+    const panel = button.closest(".competency-panel");
+    const isOpen = panel.classList.toggle("open");
+    button.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    const small = button.querySelector("small");
+    if (small) small.textContent = isOpen ? "(restrânge)" : "(vezi mai mult)";
+  }
+
+  function renderQuiz() {
+    const form = document.getElementById("quizForm");
+    form.innerHTML = "";
+
+    questions.forEach(question => {
+      const card = document.createElement("article");
+      card.className = "question-card";
+      card.id = "question-" + question.id;
+      card.dataset.questionId = question.id;
+
+      const title = document.createElement("p");
+      title.className = "question-title";
+      title.textContent = question.id + ". " + question.text;
+      card.appendChild(title);
+
+      Object.entries(question.options).forEach(([letter, option]) => {
+        const label = document.createElement("label");
+        label.className = "option-label";
+
+        const input = document.createElement("input");
+        input.type = "radio";
+        input.name = "q" + question.id;
+        input.value = letter;
+
+        const span = document.createElement("span");
+        span.textContent = letter + ". " + option;
+
+        label.appendChild(input);
+        label.appendChild(span);
+        card.appendChild(label);
+      });
+
+      form.appendChild(card);
+    });
+  }
+
+  function finishQuiz() {
+    let correct = 0;
+    let wrong = 0;
+    let missing = 0;
+
+    const areaStats = resultAreas.map(area => ({
+      title: area.title,
+      match: area.match,
+      total: 0,
+      correct: 0
+    }));
+
+    questions.forEach(question => {
+      const selected = document.querySelector(`input[name="q${question.id}"]:checked`);
+      const area = areaStats.find(item => item.match(question.competency));
+
+      if (area) {
+        area.total += 1;
+      }
+
+      if (!selected) {
+        missing += 1;
+      } else if (selected.value === question.answer) {
+        correct += 1;
+        if (area) {
+          area.correct += 1;
+        }
+      } else {
+        wrong += 1;
+      }
+    });
+
+    const total = questions.length;
+    const totalPercent = (correct / total) * 100;
+    const completedAt = new Date();
+    const completedAtLabel = formatDateTime(completedAt);
+
+    lastReportData = {
+      title: "Testul grilă nr. 1",
+      discipline: "Istorie, clasa a V-a",
+      unit: "Civilizația greacă și sinteza elenistică",
+      numberOfQuestions: "40 grile",
+      estimatedTime: "40 minute",
+      completedAtLabel,
+      correct,
+      wrong,
+      missing,
+      total,
+      correctPercent: percent(correct, total),
+      wrongPercent: percent(wrong, total),
+      missingPercent: percent(missing, total),
+      feedback: generalFeedback(totalPercent),
+      areas: areaStats.map(area => ({
+        title: area.title,
+        correct: area.correct,
+        total: area.total,
+        percent: percent(area.correct, area.total)
+      }))
+    };
+
+    let html = `
+      <h2>Interpretarea rezultatului</h2>
+      <p class="result-line"><strong>Data și ora testului:</strong> ${completedAtLabel}</p>
+      <p class="result-line">Răspunsuri corecte: <strong>${correct} (${percent(correct, total)})</strong>. Răspunsuri greșite: <strong>${wrong} (${percent(wrong, total)})</strong>.</p>
+      <p class="result-line">Cerințe la care nu ai răspuns: <strong>${missing} (${percent(missing, total)})</strong>.</p>
+      <div class="interpretation">${generalFeedback(totalPercent)}</div>
+      <h3>Ai răspuns corect în proporție de:</h3>
+      <div class="competency-lines">
+    `;
+
+    areaStats.forEach(area => {
+      html += `
+        <p><strong>${percent(area.correct, area.total)}</strong> la ${area.title}</p>
+      `;
+    });
+
+    html += `
+      </div>
+      <div class="interpretation"><strong>Această fișă se poate salva sau imprima pentru urmărirea progresului.</strong> Rezultatul este orientativ și trebuie interpretat împreună cu participarea la ore, exercițiile scrise și evoluția elevului în timp.</div>
+      <div class="result-actions">
+        <button id="reviewToggleButton" type="button" class="secondary-button" onclick="toggleReview()">Arată răspunsurile corecte</button>
+        <button type="button" class="secondary-button" onclick="downloadPdfReport()">Descarcă raportul PDF</button>
+        <p id="reviewHint" class="review-hint">Răspunsurile nu mai apar ca listă separată. Se vor marca direct pe fiecare întrebare: ce ai bifat, dacă este corect sau greșit și care era varianta corectă. După afișare, apare și butonul „Vezi explicația” la fiecare întrebare.</p>
+      </div>
+    `;
+
+    clearReviewMarks();
+    reviewVisible = false;
+
+    const resultBox = document.getElementById("resultBox");
+    resultBox.innerHTML = html;
+    resultBox.style.display = "block";
+    resultBox.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function clearReviewMarks() {
+    document.querySelectorAll(".question-card").forEach(card => {
+      card.classList.remove("review-mode", "review-correct-card", "review-wrong-card", "review-missing-card");
+      const note = card.querySelector(".question-review-note");
+      if (note) note.remove();
+      const explanation = card.querySelector(".explanation-wrap");
+      if (explanation) explanation.remove();
+    });
+
+    document.querySelectorAll(".option-label").forEach(label => {
+      label.classList.remove("review-correct-option", "review-selected-correct", "review-selected-wrong");
+      const badge = label.querySelector(".review-badge");
+      if (badge) badge.remove();
+    });
+  }
+
+  function addBadge(label, text, kind) {
+    const badge = document.createElement("span");
+    badge.className = "review-badge " + kind;
+    badge.textContent = "✓ " + text;
+    label.appendChild(document.createTextNode(" "));
+    label.appendChild(badge);
+  }
+
+  function buildExplanationHtml(question) {
+    const explanation = questionExplanations[question.id];
+    if (!explanation) {
+      return `<p><strong>Răspuns corect: ${question.answer}.</strong> Varianta corectă se potrivește cel mai bine cerinței, iar celelalte variante conțin informații incomplete, anacronice sau nejustificate.</p>`;
+    }
+
+    let html = `<p><strong>De ce răspunsul ${question.answer} este corect:</strong> ${escapeHtml(explanation.correct)}</p>`;
+    html += `<ul class="option-explanations">`;
+
+    Object.entries(question.options).forEach(([letter]) => {
+      const isCorrect = letter === question.answer;
+      const className = isCorrect ? "correct" : "wrong";
+      const optionExplanation = explanation.options && explanation.options[letter]
+        ? explanation.options[letter]
+        : (isCorrect ? explanation.correct : "Varianta nu răspunde corect cerinței.");
+      html += `<li><span class="${className}"><strong>${letter}.</strong></span> ${escapeHtml(optionExplanation)}</li>`;
+    });
+
+    html += `</ul>`;
+    return html;
+  }
+
+  function addExplanationButton(card, question) {
+    const wrap = document.createElement("div");
+    wrap.className = "explanation-wrap";
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "explanation-toggle";
+    button.setAttribute("aria-expanded", "false");
+    button.textContent = "Vezi explicația";
+    button.onclick = function() { toggleExplanation(button); };
+
+    const box = document.createElement("div");
+    box.className = "explanation-box";
+    box.hidden = true;
+    box.innerHTML = buildExplanationHtml(question);
+
+    wrap.appendChild(button);
+    wrap.appendChild(box);
+    card.appendChild(wrap);
+  }
+
+  function toggleExplanation(button) {
+    const wrap = button.closest(".explanation-wrap");
+    const box = wrap ? wrap.querySelector(".explanation-box") : null;
+    if (!box) return;
+
+    const isOpen = button.getAttribute("aria-expanded") === "true";
+    button.setAttribute("aria-expanded", isOpen ? "false" : "true");
+    box.hidden = isOpen;
+    button.textContent = isOpen ? "Vezi explicația" : "Ascunde explicația";
+  }
+
+  function applyReviewMarks() {
+    clearReviewMarks();
+
+    questions.forEach(question => {
+      const card = document.getElementById("question-" + question.id);
+      if (!card) return;
+
+      const selected = document.querySelector(`input[name="q${question.id}"]:checked`);
+      const chosen = selected ? selected.value : null;
+      const isCorrect = chosen === question.answer;
+
+      let noteText;
+      let noteClass;
+
+      card.classList.add("review-mode");
+
+      if (!chosen) {
+        noteText = `Nu ai bifat niciun răspuns. Varianta corectă era ${question.answer}.`;
+        noteClass = "missing";
+        card.classList.add("review-missing-card");
+      } else if (isCorrect) {
+        noteText = `Ai bifat ${chosen}. Răspuns corect.`;
+        noteClass = "correct";
+        card.classList.add("review-correct-card");
+      } else {
+        noteText = `Ai bifat ${chosen}, dar varianta corectă era ${question.answer}.`;
+        noteClass = "wrong";
+        card.classList.add("review-wrong-card");
+      }
+
+      const note = document.createElement("div");
+      note.className = "question-review-note " + noteClass;
+      note.textContent = noteText;
+
+      const title = card.querySelector(".question-title");
+      if (title) {
+        title.insertAdjacentElement("afterend", note);
+      } else {
+        card.prepend(note);
+      }
+
+      card.querySelectorAll(".option-label").forEach(label => {
+        const input = label.querySelector("input");
+        if (!input) return;
+
+        if (input.value === question.answer && input.value === chosen) {
+          label.classList.add("review-selected-correct");
+          addBadge(label, "ai bifat — corect", "correct");
+        } else if (input.value === chosen && input.value !== question.answer) {
+          label.classList.add("review-selected-wrong");
+          addBadge(label, "ai bifat — greșit", "wrong");
+        } else if (input.value === question.answer) {
+          label.classList.add("review-correct-option");
+          addBadge(label, "varianta corectă", "correct");
+        }
+      });
+
+      addExplanationButton(card, question);
+    });
+  }
+
+  function toggleReview() {
+    const button = document.getElementById("reviewToggleButton");
+    const hint = document.getElementById("reviewHint");
+
+    reviewVisible = !reviewVisible;
+
+    if (reviewVisible) {
+      applyReviewMarks();
+      if (button) button.textContent = "Ascunde răspunsurile corecte";
+      if (hint) hint.textContent = "Marcajele sunt afișate direct pe întrebări. Sub fiecare întrebare ai butonul „Vezi explicația”, care se deschide și se retrage la click.";
+      const firstQuestion = document.getElementById("question-1");
+      if (firstQuestion) firstQuestion.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      clearReviewMarks();
+      if (button) button.textContent = "Arată răspunsurile corecte";
+      if (hint) hint.textContent = "Răspunsurile nu mai apar ca listă separată. Se vor marca direct pe fiecare întrebare: ce ai bifat, dacă este corect sau greșit și care era varianta corectă. După afișare, apare și butonul „Vezi explicația” la fiecare întrebare.";
+    }
+  }
+
+  function buildReportHtml() {
+    if (!lastReportData) return "";
+    const data = lastReportData;
+    const areaLines = data.areas.map(area => `<p><strong>${escapeHtml(area.percent)}</strong> la ${escapeHtml(area.title)}</p>`).join("");
+
+    return `<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <title>Raport de evaluare - Civilizația greacă</title>
+  <style>
+    @page { size: A4; margin: 18mm; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      color: #2f241c;
+      background: #ffffff;
+      margin: 0;
+      line-height: 1.55;
+      font-size: 12.5pt;
+    }
+    .report { max-width: 760px; margin: 0 auto; }
+    h1 { margin: 0 0 14px; font-size: 24pt; color: #3c2a1e; }
+    h2 { margin: 24px 0 8px; font-size: 16pt; color: #3c2a1e; }
+    p { margin: 0 0 8px; }
+    .box {
+      border: 1px solid #d8c6b5;
+      border-radius: 14px;
+      padding: 16px;
+      margin: 16px 0;
+      background: #fffaf3;
+    }
+    .result-line { font-size: 14pt; }
+    .note {
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 12px;
+      background: #f3eadf;
+      text-align: justify;
+    }
+    .print-hint {
+      margin: 0 0 14px;
+      color: #6a5544;
+      font-size: 10.5pt;
+    }
+    @media print {
+      .print-hint { display: none; }
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <main class="report">
+    <p class="print-hint">Pentru PDF: alege „Save as PDF” / „Salvează ca PDF” în fereastra de printare.</p>
+    <h1>Raport de evaluare</h1>
+    <div class="box">
+      <p><strong>${escapeHtml(data.title)}</strong></p>
+      <p><strong>Disciplina:</strong> ${escapeHtml(data.discipline)}</p>
+      <p><strong>Unitatea de învățare:</strong> ${escapeHtml(data.unit)}</p>
+      <p><strong>Număr de întrebări:</strong> ${escapeHtml(data.numberOfQuestions)}</p>
+      <p><strong>Timp estimat:</strong> ${escapeHtml(data.estimatedTime)}</p>
+      <p><strong>Data și ora testului:</strong> ${escapeHtml(data.completedAtLabel)}</p>
+    </div>
+
+    <h2>Rezultat general</h2>
+    <p class="result-line">Răspunsuri corecte: <strong>${data.correct} (${escapeHtml(data.correctPercent)})</strong>. Răspunsuri greșite: <strong>${data.wrong} (${escapeHtml(data.wrongPercent)})</strong>.</p>
+    <p class="result-line">Cerințe la care nu ai răspuns: <strong>${data.missing} (${escapeHtml(data.missingPercent)})</strong>.</p>
+
+    <div class="note">${escapeHtml(data.feedback)}</div>
+
+    <h2>Ai răspuns corect în proporție de:</h2>
+    ${areaLines}
+
+    <div class="note"><strong>Această fișă se poate salva sau imprima pentru urmărirea progresului.</strong> Rezultatul este orientativ și trebuie interpretat împreună cu participarea la ore, exercițiile scrise și evoluția elevului în timp.</div>
+  </main>
+  <script>
+    window.addEventListener("load", function() {
+      setTimeout(function() { window.print(); }, 300);
+    });
+  <\/script>
+</body>
+</html>`;
+  }
+
+  function downloadPdfReport() {
+    if (!lastReportData) {
+      alert("Mai întâi apasă pe «Am terminat testul», ca să se genereze raportul.");
+      return;
+    }
+
+    const reportWindow = window.open("", "_blank");
+    if (!reportWindow) {
+      alert("Browserul a blocat fereastra de raport. Permite pop-up-urile pentru această pagină și încearcă din nou.");
+      return;
+    }
+
+    reportWindow.document.open();
+    reportWindow.document.write(buildReportHtml());
+    reportWindow.document.close();
+    reportWindow.focus();
+  }
+
+  function resetQuiz() {
+    document.querySelectorAll("input[type='radio']").forEach(input => input.checked = false);
+    clearReviewMarks();
+    reviewVisible = false;
+    lastReportData = null;
+    const resultBox = document.getElementById("resultBox");
+    resultBox.style.display = "none";
+    resultBox.innerHTML = "";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  document.addEventListener("DOMContentLoaded", renderQuiz);
+</script>
+
+</body>
+</html>
