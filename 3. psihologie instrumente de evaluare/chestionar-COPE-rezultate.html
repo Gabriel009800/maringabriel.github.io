@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chestionar COPE</title>
+  <style>
+:root{
+  --bg:#f6f3ef; --panel:#fffaf4; --card:#ffffff; --ink:#202020; --muted:#6f675d;
+  --line:#e6ded4; --accent:#7a4e2d; --accent-2:#b98250; --accent-soft:#f1e3d4;
+  --good:#255f3f; --warn:#8a5a00; --danger:#9b2c2c; --shadow:0 18px 50px rgba(74,52,33,.12); --radius:22px;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);background:radial-gradient(circle at top left, rgba(184,130,80,.14), transparent 36rem),linear-gradient(180deg,#fbf8f3 0%, var(--bg) 100%);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.58}
+.page{width:min(1160px, calc(100% - 36px));margin:0 auto;padding:34px 0 70px}
+.hero{background:linear-gradient(135deg,rgba(255,250,244,.94),rgba(241,227,212,.78));border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);padding:30px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;width:340px;height:340px;border-radius:50%;right:-135px;top:-185px;background:rgba(122,78,45,.08)}
+.kicker{color:var(--accent);font-size:.8rem;font-weight:850;letter-spacing:.14em;text-transform:uppercase;margin:0 0 8px}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,3.8vw,3.5rem);line-height:1;letter-spacing:-.035em;margin:0 0 10px}
+h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.25rem,2vw,1.85rem);margin:0 0 10px} h3{margin:0 0 8px;font-size:1.06rem}
+p{margin:0 0 12px}.muted{color:var(--muted)}.section{margin-top:22px}.grid{display:grid;gap:18px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(74,52,33,.07);padding:22px}.notice{background:#fff7ec;border:1px solid #ead8c4;border-left:6px solid var(--accent-2);padding:16px 18px;border-radius:18px;color:#46382d}.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.btn{border:0;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:11px 16px;background:var(--accent);color:white;font-weight:850;cursor:pointer;text-decoration:none;box-shadow:0 10px 18px rgba(122,78,45,.16)}.btn.secondary{background:#fff;color:var(--accent);border:1px solid var(--line);box-shadow:none}.btn.soft{background:var(--accent-soft);color:#5b3920;box-shadow:none}.btn.danger{background:#9b2c2c;color:#fff;box-shadow:0 10px 18px rgba(155,44,44,.14)}.btn:disabled{opacity:.48;cursor:not-allowed;transform:none;filter:none}.btn:hover{transform:translateY(-1px);filter:brightness(1.03)}
+input,select,textarea{width:100%;border:1px solid var(--line);border-radius:14px;padding:12px 13px;background:#fff;font:inherit;outline:none}label{font-weight:750}.field{display:grid;gap:7px}.select-row{display:grid;grid-template-columns:190px minmax(0,1fr) 220px auto;gap:12px;align-items:end}.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:var(--accent-soft);color:#5b3920;font-size:.84rem;font-weight:850}.pill.green{background:#edf6f1;color:#255f3f}.pill.yellow{background:#fff4db;color:#76510b}.pill.red{background:#f7e6e3;color:#8a2b21}.pill.gray{background:#f1ede8;color:#5d554e}
+.stat{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;padding:17px;border:1px solid var(--line);border-radius:18px;background:#fffdf9}.big-number{font-family:Georgia,serif;font-size:2.15rem;line-height:1;color:var(--accent);white-space:nowrap}.metric-title{font-weight:850}.metric-note{display:block;margin-top:4px;color:var(--muted);font-size:.9rem}.factor-card{display:flex;flex-direction:column;gap:10px}.factor-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.factor-title{font-weight:900}.score-line{font-family:Georgia,serif;font-size:2rem;color:var(--accent);line-height:1}.bar{height:10px;border-radius:999px;background:#eadfd3;overflow:hidden}.bar span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent-2))}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px;background:#fff}table{width:100%;border-collapse:collapse;min-width:900px}th,td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#fbf4ec;color:#563820;font-size:.82rem;text-transform:uppercase;letter-spacing:.055em}tr:last-child td{border-bottom:0}.small{font-size:.9rem}.tiny{font-size:.82rem;color:var(--muted)}.report-text{font-family:Georgia,"Times New Roman",serif;font-size:1.05rem;line-height:1.72;color:#2b2723}.report-text p{text-align:justify}.report-box{background:#fffdf9;border:1px solid var(--line);border-radius:18px;padding:18px}.biblio ol{margin:8px 0 0 20px;padding:0}.biblio li{margin:0 0 8px}.hidden{display:none!important}
+
+
+/* Protecție cu parolă pentru pagina de rezultate */
+body.locked{overflow:hidden}
+body.locked .page{display:none!important}
+.auth-screen{display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at top left, rgba(184,130,80,.22), transparent 34rem),linear-gradient(180deg,#fbf8f3 0%, var(--bg) 100%)}
+body.locked .auth-screen{display:flex}
+.auth-card{width:min(430px, calc(100% - 20px));background:rgba(255,250,244,.98);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:28px;display:grid;gap:14px}
+.auth-card h2{font-size:clamp(1.7rem,4vw,2.4rem);margin:0}
+.auth-card .btn{width:100%;margin-top:2px}
+.auth-error{margin:0;color:var(--danger);font-weight:850;background:#f7e6e3;border:1px solid #e9c7c0;border-radius:14px;padding:10px 12px}
+@media print{.auth-screen{display:none!important}body.locked .page{display:block!important}}
+
+
+.independent-card{display:grid;grid-template-columns:minmax(0,1fr) 124px;gap:18px;align-items:start;min-height:188px}.independent-main{min-width:0}.independent-main strong{display:block;line-height:1.34;margin-bottom:6px}.independent-card .tiny{display:block;color:#2d2925;font-size:.88rem;line-height:1.58;margin:4px 0 7px}.independent-card small{display:block;color:#5e554d;font-size:.84rem;line-height:1.5;margin-top:6px}.independent-score{display:flex;flex-direction:column;align-items:flex-end;gap:8px;text-align:right;min-width:0}.independent-score .big-number{font-size:1.9rem;line-height:1.05;white-space:nowrap}.independent-score .pill{max-width:96px;justify-content:center;text-align:center;line-height:1.15;padding:7px 11px;white-space:normal}.independent-score .metric-note{margin-top:0;line-height:1.35}
+#scaleTable{min-width:1120px;table-layout:fixed}
+#scaleTable th:nth-child(1),#scaleTable td:nth-child(1){width:25%}
+#scaleTable th:nth-child(2),#scaleTable td:nth-child(2){width:10%}
+#scaleTable th:nth-child(3),#scaleTable td:nth-child(3){width:9%}
+#scaleTable th:nth-child(4),#scaleTable td:nth-child(4){width:8%}
+#scaleTable th:nth-child(5),#scaleTable td:nth-child(5){width:12%}
+#scaleTable th:nth-child(6),#scaleTable td:nth-child(6){width:36%}
+#scaleTable tbody tr{height:158px}
+#scaleTable tbody td{height:158px;vertical-align:middle}
+#scaleTable td:nth-child(1){line-height:1.38}
+#scaleTable td:nth-child(2),#scaleTable td:nth-child(3),#scaleTable td:nth-child(4){font-variant-numeric:tabular-nums}
+#scaleTable td:nth-child(5){text-align:center}
+#scaleTable td:nth-child(5) .pill{width:104px;min-height:40px;justify-content:center;text-align:center;white-space:normal;line-height:1.15;margin:0 auto}
+.norm-cell{min-width:360px;line-height:1.5}
+.norm-report{min-height:112px;display:flex;flex-direction:column;justify-content:center;gap:5px}
+.norm-row{display:block;padding:0}
+.norm-row strong{font-weight:850;color:#3f342b}
+.norm-interpret{display:block;margin-top:5px;padding-top:6px;border-top:1px dashed #ead8c4;color:#5b3920}
+.norm-note{min-height:112px;display:flex;align-items:center;color:#5b3920;line-height:1.6}
+.norm-muted{color:#6f675d}
+@media(max-width:900px){.grid.two,.grid.three,.grid.four{grid-template-columns:1fr}.select-row{grid-template-columns:1fr}.page{width:min(100% - 22px,1160px);padding-top:18px}.hero{padding:24px;border-radius:24px}table{min-width:860px}.independent-card{grid-template-columns:minmax(0,1fr) 112px}.independent-score .big-number{font-size:1.65rem}.norm-cell{min-width:330px}}
+@media print{body{background:white}.no-print,.actions,.select-row,#emptyState{display:none!important}.page{width:100%;padding:0}.hero,.card{box-shadow:none}.section{break-inside:avoid}.table-wrap{overflow:visible}table{min-width:0;font-size:.82rem}th,td{padding:7px}.report-text{font-size:1rem}}
+  </style>
+</head>
+<body class="locked">
+
+<section id="authScreen" class="auth-screen" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+  <form id="authForm" class="auth-card" autocomplete="off">
+    <p class="kicker">Acces protejat</p>
+    <h2 id="authTitle">Chestionar COPE</h2>
+    <p class="muted">Introdu parola pentru a vedea pagina de rezultate.</p>
+    <div class="field">
+      <label for="authPassword">Parolă</label>
+      <input id="authPassword" type="password" placeholder="Scrie parola" autocomplete="current-password" />
+    </div>
+    <p id="authError" class="auth-error hidden">Parolă greșită. Încearcă din nou.</p>
+    <button class="btn" type="submit">Intră</button>
+  </form>
+</section>
+
+<main class="page">
+  <section class="hero">
+    <p class="kicker">Scorare și interpretare</p>
+    <h1>Chestionar COPE</h1>
+    <p class="muted" style="max-width:860px;font-size:.98rem">Profil al mecanismelor de coping pe baza celor 15 scale COPE și a modelului cu 4 factori susținut în validarea românească: coping focalizat pe problemă, coping focalizat pe emoții, coping prin suport social și coping evitant.</p>
+  </section>
+
+  <section class="section card no-print">
+    <div class="select-row">
+      <div class="field">
+        <label for="resultFilter">Afișare</label>
+        <select id="resultFilter">
+          <option value="active">Active</option>
+          <option value="archived">Arhivate</option>
+          <option value="all">Toate</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="submissionSelect">Rezultat salvat</label>
+        <select id="submissionSelect"></select>
+      </div>
+      <div class="field">
+        <label for="adminKey">Cheie admin Sheets</label>
+        <input id="adminKey" type="password" placeholder="ADMIN_KEY" autocomplete="off" />
+      </div>
+      <div class="actions">
+        <button class="btn secondary" type="button" id="syncRemoteBtn">Sincronizează din Sheets</button>
+        <button class="btn secondary" type="button" id="archiveBtn">Arhivează</button>
+        <button class="btn danger" type="button" id="deleteBtn">Șterge</button>
+        <button class="btn secondary" type="button" id="importBtn">Importă JSON</button>
+        <input class="hidden" type="file" id="jsonImport" accept="application/json,.json" />
+        <button class="btn secondary" type="button" id="printBtn">Printează / PDF</button>
+        <button class="btn soft" type="button" id="copyReportBtn">Copiază formularea</button>
+      </div>
+    </div>
+    <div id="remoteSyncStatus" class="notice hidden" style="margin-top:14px;"></div>
+  </section>
+
+  <section id="emptyState" class="section notice hidden">
+    <strong>Nu există încă rezultate COPE în acest browser.</strong><br>
+    Completează chestionarul în același browser sau importă fișierul JSON primit de la client.
+  </section>
+
+  <section id="reportRoot" class="hidden"></section>
+</main>
+
+<script src="cope-config.js"></script>
+<script>
+const ACCESS_PASSWORD = "kimkiduk";
+const ACCESS_SESSION_KEY = "copeResultsAccess_v1";
+const STORAGE_KEY = "copeSubmissions_v1";
+const VIEW_KEY = "copeResultsView_v1";
+
+const ITEMS = [
+  [1,"Încerc să mă dezvolt ca persoană ca rezultat al experienţei mele de viaţă."],[2,"Mă apuc de lucru sau de alte activităţi înlocuitoare pentru a-mi lua gândurile de la anumite lucruri."],[3,"Mă supăr şi-mi dau frâu liber emoţiilor."],[4,"Încerc să obţin sfaturi de la cineva în legătură cu ceea ce trebuie să fac."],[5,"Îmi concentrez eforturile pentru a face ceva în legătură cu situaţia stresantă."],[6,"Îmi zic: ,,nu-i adevărat!”."],[7,"Îmi plasez încrederea în Dumnezeu în această situaţie."],[8,"Râd de situaţia respectivă/stresantă."],[9,"Recunosc în mine că nu pot face faţă situaţiei şi nu mai încerc."],[10,"Mă abţin de la a face ceva prea repede."],[11,"Discut ceea ce simt cu cineva."],[12,"Folosesc alcool sau droguri pentru a mă simţi mai bine."],[13,"Mă obişnuiesc cu ideea că s-a întâmplat."],[14,"Discut cu cineva pentru a afla lucruri în plus despre situaţia stresantă."],[15,"Mă feresc să fiu distras de alte gânduri sau activităţi."],[16,"Visez cu ochii deschişi la alte lucruri."],[17,"Mă supăr şi sunt realmente conştient de asta."],[18,"Caut ajutor la Dumnezeu."],[19,"Îmi fac un plan de acţiune pentru situaţia stresantă."],[20,"Glumesc pe seama situaţiei."],[21,"Accept că s-a întâmplat şi că nu se poate schimba nimic."],[22,"Amân a face ceva în legătură cu problema până situaţia o permite."],[23,"Încerc să obţin sprijin emoţional de la prieteni sau rude."],[24,"Pur şi simplu renunţ la atingerea scopului."],[25,"Încerc acţiuni suplimentare pentru a scăpa de problemă."],[26,"Încerc să uit de mine pentru un timp consumând alcool sau luând droguri."],[27,"Refuz să cred că s-a întâmplat."],[28,"Îmi dau frâu liber simţămintelor."],[29,"Încerc să văd problema în lumină diferită, pentru a o face să pară mai pozitivă."],[30,"Vorbesc cu cineva care ar putea face ceva concret în legătură cu problema stresantă."],[31,"Dorm mai mult ca de obicei."],[32,"Încerc să-mi fac o strategie legată de ceea ce este de făcut."],[33,"Mă concentrez pe abordarea problemei şi, dacă este necesar, las alte lucruri deoparte, un timp."],[34,"Obţin compasiune şi înţelegere de la cineva."],[35,"Beau alcool sau iau droguri, pentru a mă gândi mai puţin la problemă."],[36,"Glumesc despre problemă."],[37,"Renunţ la încercarea de a obţine ce doresc."],[38,"Caut ceva bun în ceea ce se întâmplă."],[39,"Mă gândesc cum aş putea aborda problema cel mai bine."],[40,"Mă prefac că problema stresantă nu există în realitate."],[41,"Mă asigur că nu fac problema mai dificilă acţionând prea repede."],[42,"Încerc din răsputeri să nu las alte lucruri să interfereze cu eforturile mele în timp ce mă ocup de problemă."],[43,"Merg la film sau urmăresc programe la televizor pentru a mă gândi mai puţin la problemă."],[44,"Accept realitatea faptului că s-a întâmplat."],[45,"Întreb oamenii care au avut experienţe similare ce au făcut."],[46,"Simt mult disconfort emoţional şi mă trezesc exprimându-mi aceste sentimente în mare măsură."],[47,"Acţionez direct pentru a controla problema stresantă."],[48,"Îmi caut consolare în religia mea."],[49,"Mă oblig să aştept momentul propice pentru a face ceva."],[50,"Râd de situaţie."],[51,"Reduc cantitatea de efort consacrată rezolvării problemei."],[52,"Îi spun cuiva despre cum mă simt."],[53,"Consum alcool sau droguri pentru a mă ajuta să trec prin situaţie."],[54,"Învăţ să trăiesc cu situaţia stresantă."],[55,"Las la o parte alte activităţi pentru a mă concentra asupra problemei stresante."],[56,"Mă gândesc mult la ce paşi să fac în această situaţie."],[57,"Acţionez de parcă situaţia stresantă nu există."],[58,"Fac ceea ce e de făcut, pas cu pas."],[59,"Învăţ ceva din această experienţă."],[60,"Mă rog mai mult ca de obicei în această situaţie stresantă."]
+];
+
+const SCALES = [
+  {id:"reinterpretare_pozitiva", name:"Reinterpretare pozitivă și creștere personală", items:[1,29,38,59], short:"capacitatea de a extrage sens, beneficiu sau creștere personală din situația stresantă"},
+  {id:"detasare_mentala", name:"Detașare mentală", items:[2,16,31,43], short:"tendința de a evita temporar confruntarea prin activități sau gânduri de distragere"},
+  {id:"detasare_comportamentala", name:"Detașare comportamentală", items:[9,24,37,51], short:"reducerea efortului sau renunțarea la implicarea în rezolvarea stresorului"},
+  {id:"coping_religios", name:"Coping religios", items:[7,18,48,60], short:"apelul la credință, rugăciune sau consolare religioasă"},
+  {id:"coping_activ", name:"Coping activ", items:[5,25,47,58], short:"acțiuni concrete pentru controlul sau reducerea stresorului"},
+  {id:"emotii_descarcare", name:"Concentrare pe emoții și descărcarea de emoții", items:[3,17,28,46], short:"conștientizarea și exprimarea emoțiilor generate de stres"},
+  {id:"suport_instrumental", name:"Utilizarea suportului social instrumental", items:[4,14,30,45], short:"căutarea de sfaturi, informații sau ajutor practic"},
+  {id:"suport_emotional", name:"Utilizarea suportului social emoțional", items:[11,23,34,52], short:"căutarea de înțelegere, compasiune și sprijin afectiv"},
+  {id:"negare", name:"Negare", items:[6,27,40,57], short:"refuzul de a accepta realitatea stresorului"},
+  {id:"umor", name:"Umor", items:[8,20,36,50], short:"folosirea glumei sau a ironiei pentru raportarea la situație"},
+  {id:"abtinere", name:"Abținere / reținere", items:[10,22,41,49], short:"amânarea acțiunii până când circumstanțele permit intervenția"},
+  {id:"comportamente_nocive", name:"Utilizarea comportamentelor nocive (fumat, alcool, droguri)", items:[12,26,35,53], short:"apelul la substanțe sau comportamente nocive pentru reducerea disconfortului"},
+  {id:"acceptare", name:"Acceptare", items:[13,21,44,54], short:"recunoașterea realității stresorului și adaptarea la situație"},
+  {id:"suprimare_activitati", name:"Suprimare de activități concurente", items:[15,33,42,55], short:"limitarea distragerilor pentru a menține focalizarea pe problemă"},
+  {id:"planificare", name:"Planificare", items:[19,32,39,56], short:"gândirea pașilor, strategiilor și modalităților de acțiune"}
+];
+
+const FACTORS = [
+  {id:"problem_focused", name:"Coping focalizat pe problemă", scales:["coping_activ","planificare","suprimare_activitati"], alpha:.84, normMean:2.99, description:"profil de acțiune, organizare și concentrare pe rezolvarea situației stresante"},
+  {id:"emotion_focused", name:"Coping focalizat pe emoții", scales:["reinterpretare_pozitiva","abtinere","acceptare"], alpha:.72, normMean:2.84, description:"profil de reinterpretare, acceptare și reglare a reacției înainte de acțiune"},
+  {id:"social_support", name:"Coping prin suport social", scales:["suport_instrumental","suport_emotional","emotii_descarcare"], alpha:.82, normMean:2.70, description:"profil de căutare a informației, sprijinului emoțional și exprimării trăirilor"},
+  {id:"avoidant", name:"Coping evitant", scales:["negare","detasare_mentala","detasare_comportamentala"], alpha:.73, normMean:2.07, description:"profil de evitare, negare sau reducere a implicării în gestionarea stresorului"}
+];
+const INDEPENDENT = ["coping_religios","umor","comportamente_nocive"];
+const NORMS = {
+  reinterpretare_pozitiva:{m:3.15,sd:.80,alpha:.58,loading:.62,factor:"emoții"}, abtinere:{m:2.63,sd:.91,alpha:.48,loading:.65,factor:"emoții"}, acceptare:{m:2.73,sd:.93,alpha:.74,loading:.38,factor:"emoții"},
+  planificare:{m:3.16,sd:.83,alpha:.76,loading:.81,factor:"problemă"}, coping_activ:{m:3.04,sd:.85,alpha:.61,loading:.77,factor:"problemă"}, suprimare_activitati:{m:2.77,sd:.88,alpha:.65,loading:.75,factor:"problemă"},
+  suport_instrumental:{m:2.99,sd:.89,alpha:.74,loading:.99,factor:"suport social"}, suport_emotional:{m:2.72,sd:.99,alpha:.78,loading:.60,factor:"suport social"}, emotii_descarcare:{m:2.39,sd:.94,alpha:.71,loading:.46,factor:"suport social"},
+  negare:{m:1.90,sd:.90,alpha:.64,loading:.63,factor:"evitare"}, detasare_mentala:{m:2.40,sd:1.02,alpha:.54,loading:.56,factor:"evitare"}, detasare_comportamentala:{m:1.91,sd:.86,alpha:.63,loading:.58,factor:"evitare"},
+  comportamente_nocive:{alpha:.92,note:"α raportat ca valoare maximă în studiul românesc; scala nu a fost inclusă în CFA"}
+};
+const FACTOR_CORRELATIONS = {
+  "emoții-problemă":.85, "emoții-suport social":.51, "emoții-evitare":.43, "problemă-suport social":.46, "problemă-evitare":.11, "suport social-evitare":.22
+};
+const CFA = {n:1009, chi2:197.51, df:42, gfi:.947, agfi:.901, cfi:.839, rmsea:.061, hoelter:297, ageM:29.9, ageRange:"18–71", men:"35,6%", women:"64,6%"};
+
+function $(id){return document.getElementById(id)}
+
+function unlockPage(){
+  document.body.classList.remove("locked");
+  const authScreen=$("authScreen");
+  if(authScreen) authScreen.classList.add("hidden");
+}
+function setupAuthGate(){
+  const alreadyUnlocked=sessionStorage.getItem(ACCESS_SESSION_KEY)==="ok";
+  if(alreadyUnlocked){unlockPage(); return true;}
+  document.body.classList.add("locked");
+  const form=$("authForm"), input=$("authPassword"), error=$("authError");
+  if(input) setTimeout(()=>input.focus(),80);
+  if(form){
+    form.addEventListener("submit",e=>{
+      e.preventDefault();
+      if((input?.value || "") === ACCESS_PASSWORD){
+        sessionStorage.setItem(ACCESS_SESSION_KEY,"ok");
+        unlockPage();
+        renderSelector();
+      } else {
+        if(error) error.classList.remove("hidden");
+        if(input){input.value=""; input.focus();}
+      }
+    });
+  }
+  return false;
+}
+function escapeHtml(v){return String(v ?? "").replace(/[&<>"']/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]))}
+function fmt(x,d=2){return Number.isFinite(Number(x)) ? Number(x).toFixed(d) : "—"}
+function pct(x){return Math.max(0, Math.min(100, x)).toFixed(0)}
+function readStore(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]")}catch(e){return[]}}
+function writeStore(data){localStorage.setItem(STORAGE_KEY, JSON.stringify(data))}
+function makeSubmissionId(item,index){
+  const base = item?.createdAt ? new Date(item.createdAt).getTime() : Date.now();
+  return `cope_${base}_${index}_${Math.random().toString(16).slice(2)}`;
+}
+function ensureStoredIds(){
+  const data=readStore().filter(x=>x && typeof x==="object" && x.responses);
+  let changed=false;
+  const normalized=data.map((item,index)=>{
+    if(item.id) return item;
+    changed=true;
+    return {...item,id:makeSubmissionId(item,index)};
+  });
+  if(changed) writeStore(normalized);
+  return normalized;
+}
+function isArchived(item){return Boolean(item && (item.archived === true || item.archivedAt))}
+function selectedResultId(){return $("submissionSelect")?.value || ""}
+function resultLabel(s){return `${s.clientCode || "COPE"} · ${formatDate(s.testDate)} · ${formatDateTime(s.createdAt)}${isArchived(s) ? " · arhivat" : ""}`}
+function erf(x){const sign=x>=0?1:-1; x=Math.abs(x); const a1=.254829592,a2=-.284496736,a3=1.421413741,a4=-1.453152027,a5=1.061405429,p=.3275911; const t=1/(1+p*x); const y=1-(((((a5*t+a4)*t)+a3)*t+a2)*t+a1)*t*Math.exp(-x*x); return sign*y}
+function normCdf(z){return .5*(1+erf(z/Math.SQRT2))}
+function formatDate(v){if(!v)return"—"; const d=new Date(v+"T00:00:00"); return isNaN(d)?escapeHtml(v):d.toLocaleDateString("ro-RO")}
+function formatDateTime(v){if(!v)return"—"; const d=new Date(v); return isNaN(d)?escapeHtml(v):d.toLocaleString("ro-RO",{dateStyle:"medium",timeStyle:"short"})}
+function levelByAverage(avg){if(avg < 1.75) return {label:"foarte scăzut", cls:"red"}; if(avg < 2.50) return {label:"scăzut", cls:"yellow"}; if(avg < 3.25) return {label:"mediu", cls:"green"}; return {label:"ridicat", cls:"green"}}
+function normLevel(z){if(!Number.isFinite(z)) return "nu există repere normative în tabelul românesc"; if(z <= -2) return "mult sub media eșantionului românesc"; if(z <= -1) return "sub media eșantionului românesc"; if(z < 1) return "în zona medie a eșantionului românesc"; if(z < 2) return "peste media eșantionului românesc"; return "mult peste media eșantionului românesc"}
+function calculateScores(responses){
+  const scaleScores={};
+  for(const scale of SCALES){const values=scale.items.map(n=>Number(responses[n]||0)); const sum=values.reduce((a,b)=>a+b,0); scaleScores[scale.id]={...scale,sum,average:+(sum/4).toFixed(2),max:16,min:4}}
+  const factorScores={};
+  for(const factor of FACTORS){const all=factor.scales.flatMap(id=>scaleScores[id].items); const sum=factor.scales.reduce((a,id)=>a+scaleScores[id].sum,0); factorScores[factor.id]={...factor,sum,average:+(sum/all.length).toFixed(2),max:48,min:12,items:all}}
+  return {scaleScores,factorScores};
+}
+function normalizeSubmission(s){
+  const responses=s.responses || {};
+  const computed=calculateScores(responses);
+  return {...s, scaleScores:s.scaleScores||computed.scaleScores, factorScores:s.factorScores||computed.factorScores};
+}
+function renderSelector(preferredId){
+  const all=ensureStoredIds().map(normalizeSubmission).sort((a,b)=>new Date(b.createdAt||0)-new Date(a.createdAt||0));
+  const select=$("submissionSelect");
+  const filter=$("resultFilter")?.value || localStorage.getItem(VIEW_KEY) || "active";
+  if($("resultFilter")) $("resultFilter").value = filter;
+  if($("resultFilter")) localStorage.setItem(VIEW_KEY, filter);
+  select.innerHTML="";
+
+  const visible=all.filter(s=>{
+    if(filter==="all") return true;
+    if(filter==="archived") return isArchived(s);
+    return !isArchived(s);
+  });
+
+  if(!all.length){
+    $("emptyState").classList.remove("hidden");
+    $("emptyState").innerHTML = "<strong>Nu există încă rezultate COPE în acest browser.</strong><br>Completează chestionarul în același browser sau importă fișierul JSON primit de la client.";
+    $("reportRoot").classList.add("hidden");
+    select.disabled=true;
+    select.innerHTML='<option>Nu există rezultate salvate</option>';
+    updateActionButtons(null);
+    return;
+  }
+
+  if(!visible.length){
+    $("emptyState").classList.remove("hidden");
+    const msg = filter==="archived" ? "Nu există rezultate arhivate." : "Nu există rezultate active în această vedere.";
+    $("emptyState").innerHTML = `<strong>${msg}</strong><br>Schimbă filtrul de afișare pe „Toate” sau „Arhivate/Active”.`;
+    $("reportRoot").classList.add("hidden");
+    select.disabled=true;
+    select.innerHTML='<option>Niciun rezultat în această vedere</option>';
+    updateActionButtons(null);
+    return;
+  }
+
+  $("emptyState").classList.add("hidden");
+  select.disabled=false;
+  const previous = preferredId || selectedResultId();
+  visible.forEach((s)=>{
+    const opt=document.createElement("option");
+    opt.value=s.id;
+    opt.textContent=resultLabel(s);
+    select.appendChild(opt);
+  });
+  if(previous && visible.some(s=>String(s.id)===String(previous))) select.value=previous;
+  const current=visible.find(x=>String(x.id)===String(select.value)) || visible[0];
+  select.onchange=()=>{
+    const next=visible.find(x=>String(x.id)===String(select.value)) || visible[0];
+    renderReport(next);
+    updateActionButtons(next);
+  };
+  renderReport(current);
+  updateActionButtons(current);
+}
+
+function updateActionButtons(item){
+  const archiveBtn=$("archiveBtn");
+  const deleteBtn=$("deleteBtn");
+  if(!archiveBtn || !deleteBtn) return;
+  if(!item){
+    archiveBtn.disabled=true;
+    deleteBtn.disabled=true;
+    archiveBtn.textContent="Arhivează";
+    return;
+  }
+  archiveBtn.disabled=false;
+  deleteBtn.disabled=false;
+  archiveBtn.textContent=isArchived(item) ? "Restaurează" : "Arhivează";
+}
+
+function updateSubmissionById(id, updater){
+  const data=ensureStoredIds();
+  const index=data.findIndex(x=>String(x.id)===String(id));
+  if(index<0){alert("Nu am găsit rezultatul selectat."); return null;}
+  data[index]=updater({...data[index]});
+  writeStore(data);
+  return data[index];
+}
+
+function toggleArchiveSelected(){
+  const id=selectedResultId();
+  if(!id) return;
+  const data=ensureStoredIds();
+  const current=data.find(x=>String(x.id)===String(id));
+  if(!current){alert("Nu am găsit rezultatul selectat."); return;}
+  const archived=isArchived(current);
+  const name=current.clientCode || "acest rezultat";
+  const ok=confirm(archived ? `Restaurezi rezultatul „${name}” în lista activă?` : `Arhivezi rezultatul „${name}”? Va dispărea din lista Active, dar îl vei găsi la Afișare → Arhivate.`);
+  if(!ok) return;
+  const updated=updateSubmissionById(id, item=>{
+    if(archived){
+      delete item.archived;
+      delete item.archivedAt;
+      item.restoredAt=new Date().toISOString();
+    } else {
+      item.archived=true;
+      item.archivedAt=new Date().toISOString();
+    }
+    return item;
+  });
+  renderSelector(updated?.id);
+}
+
+function deleteSelectedSubmission(){
+  const id=selectedResultId();
+  if(!id) return;
+  const data=ensureStoredIds();
+  const current=data.find(x=>String(x.id)===String(id));
+  if(!current){alert("Nu am găsit rezultatul selectat."); return;}
+  const name=current.clientCode || "acest rezultat";
+  const ok=confirm(`Ștergi definitiv rezultatul „${name}” din acest browser? Acțiunea nu poate fi anulată.`);
+  if(!ok) return;
+  const next=data.filter(x=>String(x.id)!==String(id));
+  writeStore(next);
+  renderSelector();
+}
+function makeNarrative(s, sortedScales, sortedFactors, flags){
+  const topFactor=sortedFactors[0], lowFactor=sortedFactors[sortedFactors.length-1];
+  const topScales=sortedScales.slice(0,5).map(x=>`${x.name} (${fmt(x.average)}/4)`).join(", ");
+  const lowScales=[...sortedScales].reverse().slice(0,3).map(x=>`${x.name} (${fmt(x.average)}/4)`).join(", ");
+  let avoidText = s.factorScores.avoidant.average >= 2.5 ? "Strategiile evitante sunt relativ prezente și pot indica tendința de a reduce contactul cu stresorul, de a amâna confruntarea sau de a limita implicarea comportamentală." : "Strategiile evitante apar la un nivel redus în acest profil, ceea ce poate sugera o confruntare mai directă a stresorilor sau, alternativ, o raportare mai restrictivă la conduitele de evitare.";
+  let supportText = s.factorScores.social_support.average < 2 ? "Scorul redus la suport social poate reflecta autonomie, dar poate sugera și dificultate în solicitarea sprijinului ori o rețea de suport insuficient activată." : "Scorul la suport social sugerează disponibilitatea de a solicita informații, ajutor practic sau susținere emoțională în situații de stres.";
+  const warning = flags.length ? `Puncte de atenție clinică: ${flags.join("; ")}.` : "Nu apar automat puncte majore de atenție pe criteriile setate în această pagină; interpretarea rămâne dependentă de interviu, context și observație clinică.";
+  return `<p>Rezultatul indică un profil în care factorul relativ cel mai pronunțat este <strong>${escapeHtml(topFactor.name)}</strong>, cu media ${fmt(topFactor.average)}/4 și scor brut ${topFactor.sum}/48. Factorul cel mai redus este <strong>${escapeHtml(lowFactor.name)}</strong>, cu media ${fmt(lowFactor.average)}/4 și scor brut ${lowFactor.sum}/48. Acest pattern trebuie citit ca preferință relativă de coping, nu ca diagnostic.</p><p>Cele mai prezente mecanisme specifice sunt: ${escapeHtml(topScales)}. Cele mai reduse mecanisme sunt: ${escapeHtml(lowScales)}.</p><p>${escapeHtml(avoidText)} ${escapeHtml(supportText)}</p><p>${escapeHtml(warning)}</p><p>Direcții utile de explorare în interviu: exemple recente de stres, controlabilitatea situațiilor, costurile evitării, calitatea rețelei de sprijin, diferența dintre strategia declarată „în general” și conduita dintr-un episod concret, precum și resursele care au funcționat anterior.</p>`;
+}
+function renderReport(raw){
+  const s=normalizeSubmission(raw);
+  const scales=Object.values(s.scaleScores);
+  const factors=Object.values(s.factorScores);
+  const sortedScales=[...scales].sort((a,b)=>b.average-a.average||b.sum-a.sum);
+  const sortedFactors=[...factors].sort((a,b)=>b.average-a.average||b.sum-a.sum);
+  const flags=[];
+  if((s.scaleScores.comportamente_nocive?.average||0)>=2.5) flags.push("utilizare crescută a alcoolului/drogurilor/comportamentelor nocive ca strategie de coping");
+  if((s.factorScores.avoidant?.average||0)>=2.5) flags.push("nivel crescut al copingului evitant");
+  if((s.factorScores.social_support?.average||0)<1.75) flags.push("apel redus la suport social");
+  const reportNarrative=makeNarrative(s,sortedScales,sortedFactors,flags);
+  const root=$("reportRoot"); root.classList.remove("hidden");
+  const factorCards = FACTORS.map(f=>{
+    const score=s.factorScores[f.id]; const lvl=levelByAverage(score.average); const comps=f.scales.map(id=>s.scaleScores[id].name).join(" · ");
+    return `<article class="card factor-card"><div class="factor-head"><div><div class="factor-title">${escapeHtml(f.name)}</div><span class="tiny">${escapeHtml(f.description)}</span></div><span class="pill ${lvl.cls}">${lvl.label}</span></div><div><span class="score-line">${score.sum} / 48</span><span class="metric-note">medie ${fmt(score.average)}/4 · α≈${fmt(f.alpha,2)} · medie normativă aproximativă ${fmt(f.normMean)}/4</span></div><div class="bar"><span style="width:${pct(score.average/4*100)}%"></span></div><small>Scale componente: ${escapeHtml(comps)}.</small></article>`
+  }).join("");
+  const independentCards = INDEPENDENT.map(id=>{const sc=s.scaleScores[id]; const lvl=levelByAverage(sc.average); const norm=NORMS[id]; const alpha = norm?.alpha ? ` · α≈${fmt(norm.alpha,2)}` : ""; const note = norm?.note ? `<small>${escapeHtml(norm.note)}</small>` : `<small>Scală complementară/heterogenă; nu are medii și deviații standard raportate în tabelul normativ folosit aici.</small>`; return `<article class="stat independent-card"><div class="independent-main"><strong>${escapeHtml(sc.name)}</strong><span class="tiny">${escapeHtml(sc.short)}</span>${note}</div><div class="independent-score"><div class="big-number">${sc.sum} / 16</div><span class="pill ${lvl.cls}">${lvl.label}</span><span class="metric-note">medie ${fmt(sc.average)}/4${alpha}</span></div></article>`}).join("");
+  const scaleRows = SCALES.map(scale=>{
+    const sc=s.scaleScores[scale.id]; const lvl=levelByAverage(sc.average); const norm=NORMS[scale.id];
+    let normHtml="—";
+    if(norm?.m){
+      const z=(sc.average-norm.m)/norm.sd; const t=50+10*z; const per=normCdf(z)*100;
+      normHtml=`<div class="norm-report"><span class="norm-row"><strong>Repere:</strong> M=${fmt(norm.m)} · SD=${fmt(norm.sd)}</span><span class="norm-row"><strong>Poziționare:</strong> z≈${fmt(z)} · T≈${fmt(t,0)} · percentilă≈${fmt(per,0)}</span><span class="norm-row"><strong>Fidelitate / CFA:</strong> α=${fmt(norm.alpha,2)} · saturație=${fmt(norm.loading,2)}</span><span class="norm-interpret">${escapeHtml(normLevel(z))}</span></div>`;
+    }
+    else if(norm?.note){normHtml=`<span class="norm-note">${escapeHtml(norm.note)}</span>`}
+    else {normHtml='<span class="norm-note">Repere M/SD/α individuale indisponibile în tabelul utilizat. Scala a fost tratată separat/heterogen în validarea românească.</span>'}
+    return `<tr><td><strong>${escapeHtml(sc.name)}</strong><br><span class="tiny">${escapeHtml(sc.short)}</span></td><td>${scale.items.join(", ")}</td><td>${sc.sum} / 16</td><td>${fmt(sc.average)}</td><td><span class="pill ${lvl.cls}">${lvl.label}</span></td><td class="small norm-cell">${normHtml}</td></tr>`
+  }).join("");
+  const rawRows = ITEMS.map(([nr,text])=>`<tr><td>${nr}</td><td>${escapeHtml(text)}</td><td>${escapeHtml(s.responses?.[nr] ?? "—")}</td></tr>`).join("");
+  const corr = Object.entries(FACTOR_CORRELATIONS).map(([k,v])=>`${k}: r=${fmt(v,2)}`).join(" · ");
+  root.innerHTML = `
+    <section class="section card">
+      <h2>Raport individual</h2>
+      <div class="grid three">
+        <div class="stat"><div><strong>Cod client / inițiale</strong><br><span class="muted">${escapeHtml(s.clientCode||"—")}</span></div></div>
+        <div class="stat"><div><strong>Data aplicării</strong><br><span class="muted">${formatDate(s.testDate)}</span></div></div>
+        <div class="stat"><div><strong>Salvat</strong><br><span class="muted">${formatDateTime(s.createdAt)}</span></div></div>
+      </div>
+      <p class="tiny" style="margin-top:12px">Vârsta: ${escapeHtml(s.age||"—")} · Status: ${isArchived(s) ? "arhivat" : "activ"}${isArchived(s) && s.archivedAt ? " · Arhivat: " + formatDateTime(s.archivedAt) : ""} · Versiune: COPE-60 RO digital · Răspunsuri pe scală Likert 1–4. Nu există itemi cu scorare inversă.</p>
+    </section>
+
+    <section class="section grid four">
+      <div class="stat"><div><span class="metric-title">Factor dominant</span><span class="metric-note">Media cea mai mare</span></div><div class="big-number" style="font-size:1.45rem">${fmt(sortedFactors[0].average)}</div></div>
+      <div class="stat"><div><span class="metric-title">Scală dominantă</span><span class="metric-note">${escapeHtml(sortedScales[0].name)}</span></div><div class="big-number" style="font-size:1.45rem">${fmt(sortedScales[0].average)}</div></div>
+      <div class="stat"><div><span class="metric-title">Amplitudine profil</span><span class="metric-note">Diferență între scale</span></div><div class="big-number" style="font-size:1.45rem">${fmt(sortedScales[0].average-sortedScales[sortedScales.length-1].average)}</div></div>
+      <div class="stat"><div><span class="metric-title">Puncte de atenție</span><span class="metric-note">Criterii automate orientative</span></div><div class="big-number" style="font-size:1.45rem">${flags.length}</div></div>
+    </section>
+
+    <section class="section card">
+      <h2>Sinteză profesională</h2>
+      <div id="reportText" class="report-box report-text">${reportNarrative}</div>
+    </section>
+
+    <section class="section">
+      <h2>Cei 4 factori principali</h2>
+      <div class="grid two">${factorCards}</div>
+    </section>
+
+    <section class="section card">
+      <h2>Scale independente / complementare</h2>
+      <p class="muted">În validarea românească, copingul religios, umorul și consumul de substanțe au fost tratate ca scale mai independente sau heterogene, nefiind incluse în analiza factorială confirmatorie principală.</p>
+      <div class="grid three">${independentCards}</div>
+    </section>
+
+    <section class="section card">
+      <h2>Scorare pe cele 15 mecanisme de coping</h2>
+      <div class="table-wrap"><table id="scaleTable"><thead><tr><th>Scală COPE</th><th>Itemi</th><th>Scor brut</th><th>Medie</th><th>Nivel orientativ</th><th>Raportare la studiul RO</th></tr></thead><tbody>${scaleRows}</tbody></table></div>
+    </section>
+
+    <section class="section card">
+      <h2>Repere psihometrice utilizate</h2>
+      <p class="muted">Modelul de interpretare folosește reperele publicate pentru adaptarea românească a COPE-60: N=${CFA.n}, vârsta medie ${CFA.ageM} ani, interval ${CFA.ageRange}, ${CFA.men} bărbați și ${CFA.women} femei. Soluția cu 4 factori corelați are χ²=${CFA.chi2}, df=${CFA.df}, GFI=${CFA.gfi}, AGFI=${CFA.agfi}, CFI=${CFA.cfi}, RMSEA=${CFA.rmsea}, Hoelter=${CFA.hoelter}. Corelații între factori: ${escapeHtml(corr)}.</p>
+    </section>
+
+    <details class="section card"><summary><strong>Vezi răspunsurile brute pe itemi</strong></summary><div class="table-wrap section"><table><thead><tr><th>Nr.</th><th>Item</th><th>Răspuns</th></tr></thead><tbody>${rawRows}</tbody></table></div></details>
+
+    <section class="section card">
+      <h2>Limite de interpretare</h2>
+      <p class="muted">Scorurile descriu frecvența strategiilor de coping declarate de persoană și nu constituie diagnostic. Reperele normative pe baza M/SD sunt orientative și provin dintr-un eșantion românesc non-clinic, de conveniență. Percentilele și scorurile T sunt aproximări calculate pe baza distribuției normale, deoarece studiul citat raportează medii și deviații standard, nu tabele de percentile.</p>
+    </section>
+
+    <section class="section card biblio">
+      <h2>Bibliografie</h2>
+      <ol>
+        <li>Carver, C. S., Scheier, M. F., &amp; Weintraub, J. K. (1989). <em>Assessing coping strategies: A theoretically based approach</em>. Journal of Personality and Social Psychology, 56, 267–283.</li>
+        <li>Crașovan, D. I., &amp; Sava, F. A. (2013). <em>Translation, adaptation, and validation on Romanian population of COPE Questionnaire for coping mechanisms analysis</em>. Cognition, Brain, Behavior, 17(1), 61–76.</li>
+        <li>Carver, C. S., &amp; Connor-Smith, J. (2010). Personality and coping. <em>Annual Review of Psychology</em>, 61, 679–704.</li>
+        <li>Lazarus, R. S., &amp; Folkman, S. (1987). Transactional theory and research on emotion and coping. <em>European Journal of Personality</em>, 1, 141–169.</li>
+      </ol>
+    </section>`;
+}
+
+function getConfiguredEndpoint(){
+  return String(window.COPE_REMOTE_ENDPOINT || window.COPE_WEB_APP_URL || window.COPE_APPS_SCRIPT_URL || "").trim();
+}
+function remoteResultsApiConfigured(){
+  const endpoint = getConfiguredEndpoint();
+  return endpoint && !endpoint.includes("LIPESTE_AICI") && endpoint.startsWith("https://script.google.com/macros/s/");
+}
+function setRemoteSyncStatus(message, isError=false){
+  const box=$("remoteSyncStatus");
+  if(!box) return;
+  box.classList.remove("hidden");
+  box.innerHTML=message;
+  box.style.borderLeftColor = isError ? "var(--danger)" : "var(--accent-2)";
+}
+function jsonpRequest(endpoint, params){
+  return new Promise((resolve, reject)=>{
+    const callbackName = "copeRemoteCallback_" + Date.now() + "_" + Math.random().toString(16).slice(2);
+    const url = new URL(endpoint);
+    Object.entries({...params, callback: callbackName, t: Date.now()}).forEach(([key,value])=>{
+      url.searchParams.set(key, value == null ? "" : String(value));
+    });
+
+    const script=document.createElement("script");
+    let done=false;
+    const cleanup=()=>{
+      delete window[callbackName];
+      script.remove();
+    };
+
+    window[callbackName]=(data)=>{
+      if(done) return;
+      done=true;
+      cleanup();
+      resolve(data);
+    };
+
+    script.onerror=()=>{
+      if(done) return;
+      done=true;
+      cleanup();
+      reject(new Error("Nu am putut citi răspunsul de la Apps Script. Verifică deploy-ul și suportul pentru callback/JSONP."));
+    };
+
+    script.src=url.toString();
+    document.body.appendChild(script);
+
+    setTimeout(()=>{
+      if(done) return;
+      done=true;
+      cleanup();
+      reject(new Error("Sincronizarea a expirat. Verifică Web App URL și cheia admin."));
+    }, 12000);
+  });
+}
+function parseRemoteSubmission(item){
+  if(!item) return null;
+  if(item.responses) return item;
+  if(typeof item.payload === "string"){
+    try { return JSON.parse(item.payload); } catch(e) { return null; }
+  }
+  if(typeof item.json === "string"){
+    try { return JSON.parse(item.json); } catch(e) { return null; }
+  }
+  return null;
+}
+function extractRemoteSubmissions(response){
+  const raw = Array.isArray(response)
+    ? response
+    : (response?.submissions || response?.results || response?.items || response?.data || []);
+  return raw.map(parseRemoteSubmission).filter(x=>x && x.responses);
+}
+function mergeRemoteSubmissions(incoming){
+  const current=ensureStoredIds();
+  const byId=new Map(current.map(x=>[String(x.id || makeSubmissionId(x,0)), x]));
+  let added=0, updated=0;
+  incoming.forEach((item,index)=>{
+    const id=String(item.id || makeSubmissionId(item,index));
+    const normalized={...item, id};
+    if(byId.has(id)) updated++;
+    else added++;
+    byId.set(id, {...byId.get(id), ...normalized});
+  });
+  const merged=Array.from(byId.values()).sort((a,b)=>new Date(b.createdAt||0)-new Date(a.createdAt||0));
+  writeStore(merged);
+  return {added, updated, total: merged.length};
+}
+async function syncRemoteSubmissions(){
+  if(!remoteResultsApiConfigured()){
+    setRemoteSyncStatus("<strong>Sincronizarea nu este configurată.</strong><br>Fișierul <code>cope-config.js</code> trebuie să fie în același folder cu pagina de rezultate și să conțină URL-ul Web App.", true);
+    return;
+  }
+  const adminKey=String($("adminKey")?.value || "").trim();
+  if(!adminKey){
+    setRemoteSyncStatus("<strong>Lipsește cheia admin.</strong><br>Scrie ADMIN_KEY din Apps Script, apoi apasă din nou „Sincronizează din Sheets”.", true);
+    $("adminKey")?.focus();
+    return;
+  }
+  setRemoteSyncStatus("Se citesc rezultatele din Google Sheets...");
+  try{
+    const response=await jsonpRequest(getConfiguredEndpoint(), {action:"list", adminKey});
+    if(response && response.ok === false) throw new Error(response.error || "Apps Script a refuzat cererea.");
+    const incoming=extractRemoteSubmissions(response);
+    if(!incoming.length){
+      setRemoteSyncStatus("<strong>Nu am primit rezultate COPE din Google Sheets.</strong><br>Verifică dacă foaia are rânduri salvate și dacă Apps Script folosește codul actualizat.");
+      return;
+    }
+    const merged=mergeRemoteSubmissions(incoming);
+    renderSelector(incoming[0]?.id);
+    setRemoteSyncStatus(`<strong>Sincronizare reușită.</strong><br>Rezultate noi: ${merged.added}. Actualizate/deja existente: ${merged.updated}. Total local: ${merged.total}.`);
+  } catch(err){
+    setRemoteSyncStatus("<strong>Sincronizarea a eșuat.</strong><br>" + escapeHtml(err.message), true);
+  }
+}
+
+function importJsonFile(file){const reader=new FileReader(); reader.onload=()=>{try{const parsed=JSON.parse(reader.result); const incoming=Array.isArray(parsed)?parsed:[parsed]; const valid=incoming.filter(x=>x && x.responses); if(!valid.length) throw new Error("Fișierul nu conține rezultate COPE valide."); const current=readStore(); const byId=new Map(current.map(x=>[x.id,x])); for(const item of valid){if(!item.id)item.id=`import_${Date.now()}_${Math.random().toString(16).slice(2)}`; byId.set(item.id,item)} writeStore(Array.from(byId.values()).sort((a,b)=>new Date(b.createdAt||0)-new Date(a.createdAt||0))); renderSelector(); alert(`Am importat ${valid.length} rezultat(e) COPE.`)}catch(err){alert("Import eșuat: "+err.message)}}; reader.readAsText(file)}
+document.addEventListener("DOMContentLoaded",()=>{
+  const isUnlocked=setupAuthGate();
+  const savedView=localStorage.getItem(VIEW_KEY);
+  if(savedView && $("resultFilter")) $("resultFilter").value=savedView;
+  if(isUnlocked) renderSelector();
+  $("resultFilter").addEventListener("change",()=>renderSelector());
+  $("archiveBtn").addEventListener("click",toggleArchiveSelected);
+  $("deleteBtn").addEventListener("click",deleteSelectedSubmission);
+  $("syncRemoteBtn").addEventListener("click",syncRemoteSubmissions);
+  $("importBtn").addEventListener("click",()=>$("jsonImport").click());
+  $("jsonImport").addEventListener("change",e=>{const file=e.target.files[0]; if(file) importJsonFile(file)});
+  $("printBtn").addEventListener("click",()=>window.print());
+  $("copyReportBtn").addEventListener("click",async()=>{const text=$("reportText")?.innerText||""; if(!text)return; try{await navigator.clipboard.writeText(text); alert("Formularea profesională a fost copiată.")}catch(e){alert("Nu am putut copia automat textul.")}});
+});
+</script>
+</body>
+</html>
