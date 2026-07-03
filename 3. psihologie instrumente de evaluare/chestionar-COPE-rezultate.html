@@ -118,6 +118,7 @@ body.locked .auth-screen{display:flex}
         <button class="btn secondary" type="button" id="importBtn">Importă JSON</button>
         <input class="hidden" type="file" id="jsonImport" accept="application/json,.json" />
         <button class="btn secondary" type="button" id="printBtn">Printează / PDF</button>
+        <button class="btn soft" type="button" id="downloadPdfBtn">Descarcă PDF raport</button>
         <button class="btn soft" type="button" id="copyReportBtn">Copiază formularea</button>
       </div>
     </div>
@@ -580,6 +581,123 @@ async function syncRemoteSubmissions(){
   }
 }
 
+
+function getSelectedSubmissionForPdf(){
+  const id=selectedResultId();
+  if(!id) return null;
+  return ensureStoredIds().map(normalizeSubmission).find(x=>String(x.id)===String(id)) || null;
+}
+function safePdfNamePart(value){
+  return String(value || "COPE")
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-zA-Z0-9_-]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 48) || "COPE";
+}
+function makePdfDocumentTitle(submission){
+  const client=safePdfNamePart(submission?.clientCode || "COPE");
+  const date=safePdfNamePart(submission?.testDate || new Date().toISOString().slice(0,10));
+  return `raport-COPE-${client}-${date}`;
+}
+function collectPageStylesForPdf(){
+  return Array.from(document.querySelectorAll("style"))
+    .map(style=>style.textContent || "")
+    .join("\n\n");
+}
+function buildPrintableReportHtml(submission){
+  const reportRoot=$("reportRoot");
+  if(!reportRoot || reportRoot.classList.contains("hidden")) throw new Error("Nu există un raport afișat pentru export.");
+
+  const clone=reportRoot.cloneNode(true);
+  clone.removeAttribute("id");
+  clone.classList.remove("hidden");
+  clone.querySelectorAll("details").forEach(d=>d.setAttribute("open","open"));
+
+  const title=makePdfDocumentTitle(submission);
+  const styles=collectPageStylesForPdf();
+  const client=escapeHtml(submission?.clientCode || "—");
+  const testDate=formatDate(submission?.testDate);
+  const savedAt=formatDateTime(submission?.createdAt);
+
+  return `<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${escapeHtml(title)}</title>
+<style>
+${styles}
+@page{size:A4;margin:10mm}
+html,body{margin:0!important;padding:0!important;background:#fff!important;color:#202020!important}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.5}
+.print-shell{width:100%;max-width:190mm;margin:0 auto;background:#fff;padding:0}
+.print-help{margin:0 0 14px;padding:10px 12px;border:1px solid #ead8c4;border-radius:12px;background:#fff7ec;color:#46382d;font-size:.9rem}
+.print-header{background:#fff!important;border:1px solid #ddd!important;border-radius:18px!important;box-shadow:none!important;padding:18px!important;margin:0 0 14px!important}
+.print-header h1{font-size:2rem!important;margin:0 0 6px!important}
+.no-print,.actions,.select-row,#emptyState,.auth-screen{display:none!important}
+.hero,.card,.stat{box-shadow:none!important;background:#fff!important;border-color:#ddd!important}
+.section{margin-top:14px!important;break-inside:auto!important;page-break-inside:auto!important}
+.grid.two,.grid.three,.grid.four{grid-template-columns:1fr!important}
+.table-wrap{overflow:visible!important;border-color:#ddd!important}
+table{width:100%!important;min-width:0!important;table-layout:fixed!important;font-size:.70rem!important}
+th,td{padding:5px!important;word-break:break-word!important;overflow-wrap:anywhere!important}
+#scaleTable{min-width:0!important;table-layout:fixed!important}
+#scaleTable tbody tr,#scaleTable tbody td{height:auto!important;vertical-align:top!important}
+.norm-cell{min-width:0!important}.norm-report,.norm-note{min-height:auto!important;display:block!important}
+.report-text{font-size:1rem!important;line-height:1.58!important}.report-text p{text-align:left!important}
+.big-number{font-size:1.5rem!important}.score-line{font-size:1.45rem!important}.pill{box-shadow:none!important}
+details{display:block!important}details>summary{display:none!important}
+@media print{.print-help{display:none!important}.print-shell{max-width:none!important}.card,.stat,.hero{break-inside:avoid-page}.biblio{break-inside:auto!important}}
+</style>
+</head>
+<body>
+  <main class="print-shell">
+    <div class="print-help"><strong>Pentru PDF:</strong> în fereastra de printare alege „Save as PDF” / „Salvare ca PDF”, apoi salvează fișierul.</div>
+    <section class="print-header card">
+      <p class="kicker">Scorare și interpretare</p>
+      <h1>Chestionar COPE</h1>
+      <p class="muted">Raport individual pentru ${client} · Data aplicării: ${testDate} · Salvat: ${savedAt}</p>
+    </section>
+    ${clone.outerHTML}
+  </main>
+</body>
+</html>`;
+}
+function downloadPdfReport(){
+  const submission=getSelectedSubmissionForPdf();
+  if(!submission){
+    alert("Selectează mai întâi un rezultat COPE.");
+    return;
+  }
+  let html="";
+  try{
+    html=buildPrintableReportHtml(submission);
+  }catch(err){
+    alert(err?.message || "Nu există un raport afișat pentru export.");
+    return;
+  }
+
+  const printWindow=window.open("", "_blank", "noopener,noreferrer,width=980,height=800");
+  if(!printWindow){
+    alert("Browserul a blocat fereastra de export. Permite pop-up-uri pentru această pagină sau folosește butonul «Printează / PDF». ");
+    return;
+  }
+
+  printWindow.document.open();
+  printWindow.document.write(html);
+  printWindow.document.close();
+
+  const runPrint=()=>{
+    try{
+      printWindow.focus();
+      printWindow.print();
+    }catch(e){
+      alert("S-a deschis raportul într-o filă nouă. Apasă Ctrl+P și alege «Save as PDF» / «Salvare ca PDF».");
+    }
+  };
+  setTimeout(runPrint, 650);
+}
+
 function importJsonFile(file){const reader=new FileReader(); reader.onload=()=>{try{const parsed=JSON.parse(reader.result); const incoming=Array.isArray(parsed)?parsed:[parsed]; const valid=incoming.filter(x=>x && x.responses); if(!valid.length) throw new Error("Fișierul nu conține rezultate COPE valide."); const current=readStore(); const byId=new Map(current.map(x=>[x.id,x])); for(const item of valid){if(!item.id)item.id=`import_${Date.now()}_${Math.random().toString(16).slice(2)}`; byId.set(item.id,item)} writeStore(Array.from(byId.values()).sort((a,b)=>new Date(b.createdAt||0)-new Date(a.createdAt||0))); renderSelector(); alert(`Am importat ${valid.length} rezultat(e) COPE.`)}catch(err){alert("Import eșuat: "+err.message)}}; reader.readAsText(file)}
 document.addEventListener("DOMContentLoaded",()=>{
   const isUnlocked=setupAuthGate();
@@ -593,6 +711,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   $("importBtn").addEventListener("click",()=>$("jsonImport").click());
   $("jsonImport").addEventListener("change",e=>{const file=e.target.files[0]; if(file) importJsonFile(file)});
   $("printBtn").addEventListener("click",()=>window.print());
+  $("downloadPdfBtn").addEventListener("click",downloadPdfReport);
   $("copyReportBtn").addEventListener("click",async()=>{const text=$("reportText")?.innerText||""; if(!text)return; try{await navigator.clipboard.writeText(text); alert("Formularea profesională a fost copiată.")}catch(e){alert("Nu am putut copia automat textul.")}});
 });
 </script>
