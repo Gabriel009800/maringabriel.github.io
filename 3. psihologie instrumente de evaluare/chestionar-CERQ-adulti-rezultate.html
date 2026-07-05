@@ -3,122 +3,446 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rezultate CERQ - adulți</title>
+  <title>Chestionar CERQ adulți - rezultate</title>
   <style>
 
 :root{
-  --bg:#f6f3ef;--panel:#fffaf4;--card:#ffffff;--ink:#202020;--muted:#6f675d;
-  --line:#e6ded4;--accent:#7a4e2d;--accent-2:#b98250;--accent-soft:#f1e3d4;
-  --good:#255f3f;--warn:#8a5a00;--danger:#9b2c2c;--shadow:0 18px 50px rgba(74,52,33,.12);--radius:22px;
+  --bg:#f6f3ef;
+  --panel:#fffaf4;
+  --card:#ffffff;
+  --ink:#202020;
+  --muted:#6f675d;
+  --line:#e6ded4;
+  --accent:#7a4e2d;
+  --accent-2:#b98250;
+  --accent-soft:#f1e3d4;
+  --good:#255f3f;
+  --warn:#8a5a00;
+  --danger:#9b2c2c;
+  --shadow:0 18px 50px rgba(74,52,33,.12);
+  --radius:22px;
 }
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;color:var(--ink);background:radial-gradient(circle at top left,rgba(184,130,80,.14),transparent 36rem),linear-gradient(180deg,#fbf8f3 0%,var(--bg) 100%);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.58}
-a{color:inherit}.page{width:min(1120px,calc(100% - 36px));margin:0 auto;padding:34px 0 70px}
-.hero{background:linear-gradient(135deg,rgba(255,250,244,.92),rgba(241,227,212,.76));border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);padding:34px;position:relative;overflow:hidden}.hero::after{content:"";position:absolute;width:360px;height:360px;border-radius:50%;right:-140px;top:-190px;background:rgba(122,78,45,.08)}
-.kicker{color:var(--accent);font-size:.82rem;font-weight:850;letter-spacing:.14em;text-transform:uppercase;margin:0 0 8px}h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,5vw,4.4rem);line-height:.98;letter-spacing:-.05em;margin:0 0 16px}h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.35rem,2.2vw,2rem);margin:0 0 12px}h3{margin:0 0 8px;font-size:1.05rem}p{margin:0 0 12px}.muted{color:var(--muted)}.section{margin-top:22px}.grid{display:grid;gap:18px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}
-.card{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(74,52,33,.07);padding:22px}.notice{background:#fff7ec;border:1px solid #ead8c4;border-left:6px solid var(--accent-2);padding:16px 18px;border-radius:18px;color:#46382d}.danger-note{background:#fff6f5;border-color:#efcbc6;border-left-color:var(--danger)}
-label{font-weight:750}input[type="text"],input[type="number"],input[type="date"],input[type="password"],textarea,select{width:100%;border:1px solid var(--line);border-radius:15px;padding:13px 14px;background:#fff;font:inherit;outline:none;transition:.18s ease}input:focus,textarea:focus,select:focus{border-color:var(--accent-2);box-shadow:0 0 0 4px rgba(184,130,80,.16)}textarea{min-height:92px;resize:vertical}
-.btn{border:0;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:12px 18px;background:var(--accent);color:white;font-weight:850;cursor:pointer;text-decoration:none;transition:.18s ease;box-shadow:0 10px 18px rgba(122,78,45,.16)}.btn:hover{transform:translateY(-1px);filter:brightness(1.03)}.btn.secondary{background:#fff;color:var(--accent);border:1px solid var(--line);box-shadow:none}.btn.soft{background:var(--accent-soft);color:#5b3920;box-shadow:none}.btn.danger{background:#9b2c2c;color:#fff}.btn:disabled{opacity:.5;cursor:not-allowed}.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.hidden{display:none!important}small,.small{font-size:.9rem;color:var(--muted)}.tiny{font-size:.82rem;color:var(--muted)}
-.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:var(--accent-soft);color:#5b3920;font-size:.84rem;font-weight:850}.pill.green{background:#edf6f1;color:#255f3f}.pill.yellow{background:#fff4db;color:#76510b}.pill.red{background:#f7e6e3;color:#8a2b21}.pill.gray{background:#f1ede8;color:#5d554e}.pill.blue{background:#eef2ff;color:#344071}
-.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px;background:#fff}table{width:100%;border-collapse:collapse;min-width:880px}th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#fbf4ec;color:#563820;font-size:.84rem;text-transform:uppercase;letter-spacing:.055em}tr:last-child td{border-bottom:0}.bar{height:10px;border-radius:999px;background:#eadfd3;overflow:hidden}.bar span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent-2))}.big-number{font-family:Georgia,serif;font-size:2.1rem;line-height:1;color:var(--accent);white-space:nowrap}.report-text{font-family:Georgia,"Times New Roman",serif;font-size:1.05rem;line-height:1.72;color:#2b2723}.report-text p{text-align:justify}.report-box{background:#fffdf9;border:1px solid var(--line);border-radius:18px;padding:18px}
-@media(max-width:830px){.page{width:min(100% - 22px,1120px);padding-top:18px}.hero{padding:24px;border-radius:24px}.grid.two,.grid.three,.grid.four{grid-template-columns:1fr}table{min-width:760px}}
-@media print{body{background:white}.no-print,.actions,.progress-shell,.auth-screen,.pdf-exclude{display:none!important}.page{width:100%;padding:0}.hero,.card{box-shadow:none}.section{break-inside:avoid}.table-wrap{overflow:visible}table{min-width:0;font-size:.82rem}th,td{padding:7px}.report-text{font-size:1rem}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(184,130,80,.14), transparent 36rem),
+    linear-gradient(180deg,#fbf8f3 0%, var(--bg) 100%);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  line-height:1.55;
+}
+a{color:inherit}.page{width:min(1120px, calc(100% - 36px));margin:0 auto;padding:34px 0 70px}
+.hero{
+  background:linear-gradient(135deg,rgba(255,250,244,.92),rgba(241,227,212,.76));
+  border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);padding:34px;position:relative;overflow:hidden;
+}
+.hero::after{content:"";position:absolute;width:360px;height:360px;border-radius:50%;right:-140px;top:-190px;background:rgba(122,78,45,.08)}
+.kicker{color:var(--accent);font-size:.82rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin:0 0 8px}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,5vw,4.4rem);line-height:.98;letter-spacing:-.05em;margin:0 0 16px}
+h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.35rem,2.2vw,2rem);margin:0 0 12px}h3{margin:0 0 8px;font-size:1.05rem}p{margin:0 0 12px}.muted{color:var(--muted)}
+.grid{display:grid;gap:18px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(74,52,33,.07);padding:22px}.section{margin-top:22px}
+.notice{background:#fff7ec;border:1px solid #ead8c4;border-left:6px solid var(--accent-2);padding:16px 18px;border-radius:18px;color:#46382d}.hidden{display:none!important}
+label{font-weight:750}input[type="text"], input[type="number"], input[type="date"], input[type="password"], textarea, select{width:100%;border:1px solid var(--line);border-radius:15px;padding:13px 14px;background:#fff;font:inherit;outline:none;transition:.18s ease}
+input:focus, textarea:focus, select:focus{border-color:var(--accent-2);box-shadow:0 0 0 4px rgba(184,130,80,.16)}textarea{min-height:92px;resize:vertical}
+.btn{border:0;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:12px 18px;background:var(--accent);color:white;font-weight:850;cursor:pointer;text-decoration:none;transition:.18s ease;box-shadow:0 10px 18px rgba(122,78,45,.16)}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.03)}.btn.secondary{background:#fff;color:var(--accent);border:1px solid var(--line);box-shadow:none}.btn.soft{background:var(--accent-soft);color:#5b3920;box-shadow:none}.btn.danger{background:#9b2c2c}.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.progress-shell{position:sticky;top:0;z-index:20;padding:10px 0;backdrop-filter:blur(18px)}.progress-card{background:rgba(255,250,244,.88);border:1px solid var(--line);border-radius:999px;padding:8px 12px;display:flex;align-items:center;gap:12px;box-shadow:0 8px 24px rgba(74,52,33,.08)}.progress-bar{height:10px;flex:1;border-radius:999px;background:#eadfd3;overflow:hidden}.progress-bar span{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:999px}small{font-size:.84rem;color:var(--muted)}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px;background:#fff}table{width:100%;border-collapse:collapse;min-width:780px}th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#fbf4ec;color:#563820;font-size:.86rem;text-transform:uppercase;letter-spacing:.06em}tr:last-child td{border-bottom:0}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:var(--accent-soft);color:#5b3920;font-size:.84rem;font-weight:800}.level-low{background:#edf6f1;color:#255f3f}.level-mid{background:#fff4db;color:#76510b}.level-high{background:#f7e6e3;color:#8a2b21}.footer{margin-top:26px;color:var(--muted);font-size:.9rem}
+@media(max-width:760px){.page{width:min(100% - 22px,1120px);padding-top:18px}.hero{padding:24px;border-radius:24px}.grid.two,.grid.three{grid-template-columns:1fr}table{min-width:700px}}
+@media print{body{background:white}.no-print,.actions,.progress-shell,.password-shell,.toolbar{display:none!important}.page{width:100%;padding:0}.hero,.card{box-shadow:none}}
 
 
-body.locked{overflow:hidden}body.locked .page{display:none!important}.auth-screen{display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at top left,rgba(184,130,80,.22),transparent 34rem),linear-gradient(180deg,#fbf8f3 0%,var(--bg) 100%)}body.locked .auth-screen{display:flex}.auth-card{width:min(430px,calc(100% - 20px));background:rgba(255,250,244,.98);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:28px;display:grid;gap:14px}.auth-card h2{font-size:clamp(1.7rem,4vw,2.4rem);margin:0}.auth-card .btn{width:100%;margin-top:2px}.auth-error{margin:0;color:var(--danger);font-weight:850;background:#f7e6e3;border:1px solid #e9c7c0;border-radius:14px;padding:10px 12px}.select-row{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end}.select-row .field:nth-child(1){flex:0 1 230px}.select-row .field:nth-child(2){flex:1 1 320px}.select-row .actions{flex:1 1 520px;align-self:flex-end;min-width:280px}.field{display:grid;gap:8px;min-width:0}.stat{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;padding:17px;border:1px solid var(--line);border-radius:18px;background:#fffdf9}.factor-card{display:flex;flex-direction:column;gap:10px}.factor-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.factor-title{font-weight:900}.score-line{font-family:Georgia,serif;font-size:2rem;color:var(--accent);line-height:1}.norm-cell{min-width:350px;line-height:1.5}.norm-report{display:flex;flex-direction:column;justify-content:center;gap:5px}.norm-row{display:block}.norm-row strong{font-weight:850;color:#3f342b}.norm-interpret{display:block;margin-top:5px;padding-top:6px;border-top:1px dashed #ead8c4;color:#5b3920}.profile-card{min-height:170px}.profile-card ul{margin:8px 0 0 20px;padding:0}.profile-card li{margin:0 0 8px}@media(max-width:900px){.select-row{display:grid;grid-template-columns:1fr}.select-row .field,.select-row .actions{flex:auto;min-width:0}.grid.two,.grid.three,.grid.four{grid-template-columns:1fr}.norm-cell{min-width:320px}}@media print{.auth-screen{display:none!important}body.locked .page{display:block!important}.select-row,#emptyState{display:none!important}}
+.toolbar{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:18px;box-shadow:0 10px 30px rgba(74,52,33,.07);padding:18px;margin-top:18px}.toolbar-grid{display:grid;grid-template-columns:220px minmax(280px,1fr) auto;gap:14px;align-items:end}.toolbar label{font-size:.78rem;font-weight:850;color:#4b382c;display:block;margin-bottom:6px}.toolbar select{height:44px;padding:10px 12px}.toolbar-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.mini-card{border:1px solid var(--line);border-radius:16px;background:#fffdf9;padding:14px}.mini-card b{display:block;font-size:.78rem;color:#2a211b}.mini-card span{display:block;margin-top:4px;color:#5e534b}.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}.stat{background:#fffdf9;border:1px solid var(--line);border-radius:16px;padding:15px;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:start}.stat b{font-size:.82rem}.stat strong{font-family:Georgia,"Times New Roman",serif;font-size:1.18rem;color:#7a4e2d}.stat small{grid-column:1/-1}.summary-box{border:1px solid var(--line);border-radius:18px;background:#fffdf9;padding:18px;line-height:1.75;color:#40342b}.summary-box p{margin:0 0 12px}.summary-box p:last-child{margin-bottom:0}.scale-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.scale-card{border:1px solid var(--line);border-radius:18px;background:#fff;padding:18px;box-shadow:0 10px 30px rgba(74,52,33,.06)}.scale-top{display:flex;align-items:start;justify-content:space-between;gap:12px}.scale-card h3{font-size:1rem}.desc{color:var(--muted);font-size:.92rem;line-height:1.5}.badge{display:inline-flex;align-items:center;justify-content:center;min-width:70px;border-radius:999px;padding:7px 11px;font-size:.78rem;font-weight:950}.badge.low{background:#edf6f1;color:#255f3f}.badge.medium{background:#fff4db;color:#76510b}.badge.high{background:#f7e6e3;color:#8a2b21}.score-line{display:flex;justify-content:space-between;align-items:end;margin:18px 0 8px}.score-number{font-family:Georgia,"Times New Roman",serif;font-size:2rem;color:#7a4e2d}.score-sub{color:var(--muted);font-size:.9rem}.bar{width:100%;height:12px;border-radius:999px;background:#eadfd3;overflow:hidden}.bar span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:999px}.twocol{display:grid;grid-template-columns:1fr 1fr;gap:18px}.callout{border:1px solid var(--line);border-radius:18px;background:#fff;padding:20px;box-shadow:0 10px 30px rgba(74,52,33,.06)}.callout h2{margin-bottom:10px}.callout ul{margin:0;padding-left:20px}.callout li{margin:8px 0}.raw-item{display:grid;grid-template-columns:72px minmax(0,1fr) 90px;gap:12px;padding:12px;border-bottom:1px solid var(--line);align-items:center}.raw-item:last-child{border-bottom:0}.raw-no{font-weight:900;color:#7a4e2d}.raw-text{line-height:1.45}.raw-score{text-align:center;font-weight:900;background:#f1e3d4;color:#5b3920;border-radius:999px;padding:7px 10px}.empty-state{text-align:center;padding:42px;background:#fffdf9;border:1px solid var(--line);border-radius:22px}.interpretation-limits-card{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(74,52,33,.07);padding:22px}.interpretation-limits-card p{color:var(--muted);font-size:1.02rem;line-height:1.75}.details-card summary{cursor:pointer;font-family:Georgia,"Times New Roman",serif;font-size:1.55rem;font-weight:800;list-style:none}.details-card summary::-webkit-details-marker{display:none}.details-card summary::after{content:"＋";float:right;color:#7a4e2d}.details-card[open] summary::after{content:"−"}.details-card{padding:22px}.details-intro{color:var(--muted);margin-top:12px;line-height:1.65}.raw-list{margin-top:16px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fffdf9}
+@media(max-width:900px){.toolbar-grid,.stats-grid,.mini-grid,.scale-grid,.twocol{grid-template-columns:1fr}.toolbar-actions{justify-content:flex-start}.raw-item{grid-template-columns:1fr}.raw-score{width:max-content}.score-number{font-size:1.65rem}}
+@media print{.toolbar,.no-print{display:none!important}.scale-grid,.twocol{grid-template-columns:1fr 1fr!important}.raw-list{break-inside:avoid}.scale-card,.callout,.card,.interpretation-limits-card{break-inside:avoid}}
 
   </style>
 </head>
-<body class="locked">
-<section id="authScreen" class="auth-screen" role="dialog" aria-modal="true" aria-labelledby="authTitle">
-  <form id="authForm" class="auth-card" autocomplete="off">
-    <p class="kicker">Acces protejat</p><h2 id="authTitle">Rezultate CERQ – adulți</h2><p class="muted">Introdu parola pentru a vedea pagina de rezultate pentru varianta adulți.</p>
-    <div class="field"><label for="authPassword">Parolă</label><input id="authPassword" type="password" placeholder="Scrie parola" autocomplete="current-password" /></div>
-    <p id="authError" class="auth-error hidden">Parolă greșită. Încearcă din nou.</p><button class="btn" type="submit">Intră</button>
-  </form>
-</section>
+<body>
 <main class="page">
-  <section class="hero"><p class="kicker">Scorare și interpretare</p><h1>Rezultate CERQ – adulți</h1><p class="muted" style="max-width:900px;font-size:.98rem">Profil al strategiilor cognitive de reglare emoțională pentru varianta CERQ – adulți, pe baza celor 9 scale CERQ. Scorarea folosește structura CERQ-36 și reperele clinice/non-clinice din standardizarea românească.</p></section>
-  <section class="section card no-print">
+  <section class="hero">
+    <p class="kicker">Scorare și interpretare</p>
+    <h1>Chestionar CERQ adulți</h1>
+    <p class="muted">Raport profesional pentru cele 9 scale CERQ: auto-învinovățire, acceptare, ruminare, refocalizare pozitivă, planificare, reevaluare pozitivă, punere în perspectivă, catastrofare și învinovățirea altora.</p>
+  </section>
+
+  <section class="toolbar no-print">
     <p class="muted" style="margin-bottom:14px;">Importă fișierul JSON primit pe email de la client, apoi generează raportul.</p>
-    <div class="select-row">
-      <div class="field"><label for="resultFilter">Afișare</label><select id="resultFilter"><option value="active">Active</option><option value="archived">Arhivate</option><option value="all">Toate</option></select></div>
-      <div class="field"><label for="submissionSelect">Rezultat salvat</label><select id="submissionSelect"></select></div>
-      <div class="actions"><button class="btn secondary" type="button" id="archiveBtn">Arhivează</button><button class="btn danger" type="button" id="deleteBtn">Șterge</button><button class="btn secondary" type="button" id="importBtn">Importă JSON</button><input class="hidden" type="file" id="jsonImport" accept="application/json,.json" /><button class="btn secondary" type="button" id="printBtn">Printează / PDF</button><button class="btn soft" type="button" id="copyReportBtn">Copiază raportul</button></div>
+    <div class="toolbar-grid">
+      <div>
+        <label for="viewFilter">Afișare</label>
+        <select id="viewFilter"><option value="active">Active</option><option value="archived">Arhivate</option><option value="all">Toate</option></select>
+      </div>
+      <div>
+        <label for="savedSelect">Rezultat salvat</label>
+        <select id="savedSelect"><option value="">Nu există rezultate salvate</option></select>
+      </div>
+      <div class="toolbar-actions">
+        <button class="btn soft" type="button" id="archiveBtn">Arhivează</button>
+        <button class="btn danger" type="button" id="deleteBtn">Șterge</button>
+        <button class="btn soft" type="button" id="importBtn">Importă JSON</button>
+        <button class="btn secondary" type="button" id="printBtn">Printează / PDF</button>
+        <a class="btn secondary" id="copyFormLink" href="chestionar-CERQ-adulti.html">Copiază formularul</a>
+        <input id="fileInput" type="file" accept="application/json,.json" class="hidden" />
+      </div>
     </div>
   </section>
-  <section id="emptyState" class="section notice hidden"><strong>Nu există încă rezultate CERQ – adulți în acest browser.</strong><br>Importă fișierul JSON primit de la client pentru varianta adulți.</section>
-  <section id="reportRoot" class="hidden"></section>
+
+  <div id="resultRoot" class="section"></div>
+  <p class="footer no-print">Raport generat local în browser. Datele rămân în browserul curent, cu excepția fișierelor JSON importate/exportate manual.</p>
 </main>
+
 <script>
-const ACCESS_PASSWORD="kimkiduk";
-const ACCESS_SESSION_KEY="cerqResultsAccess_adulti_v1";
-const STORAGE_KEY="cerqSubmissions_adulti_v1";
-const VIEW_KEY="cerqResultsView_adulti_v1";
-const PAGE_VARIANT="adulti";
-const PAGE_VARIANT_LABEL="CERQ - adulți";
-const ITEMS = [[1, "Item CERQ 1"], [2, "Item CERQ 2"], [3, "Item CERQ 3"], [4, "Item CERQ 4"], [5, "Item CERQ 5"], [6, "Item CERQ 6"], [7, "Item CERQ 7"], [8, "Item CERQ 8"], [9, "Item CERQ 9"], [10, "Item CERQ 10"], [11, "Item CERQ 11"], [12, "Item CERQ 12"], [13, "Item CERQ 13"], [14, "Item CERQ 14"], [15, "Item CERQ 15"], [16, "Item CERQ 16"], [17, "Item CERQ 17"], [18, "Item CERQ 18"], [19, "Item CERQ 19"], [20, "Item CERQ 20"], [21, "Item CERQ 21"], [22, "Item CERQ 22"], [23, "Item CERQ 23"], [24, "Item CERQ 24"], [25, "Item CERQ 25"], [26, "Item CERQ 26"], [27, "Item CERQ 27"], [28, "Item CERQ 28"], [29, "Item CERQ 29"], [30, "Item CERQ 30"], [31, "Item CERQ 31"], [32, "Item CERQ 32"], [33, "Item CERQ 33"], [34, "Item CERQ 34"], [35, "Item CERQ 35"], [36, "Item CERQ 36"]];
-const SCALES = [{"id": "auto_invinovatire", "name": "Auto-învinovățire", "items": [1, 10, 19, 28], "short": "tendința de a atribui propria vină pentru evenimentul negativ", "kind": "vulnerabilitate"}, {"id": "acceptare", "name": "Acceptare", "items": [2, 11, 20, 29], "short": "recunoașterea faptului că evenimentul s-a produs și încercarea de a trăi cu realitatea acestuia", "kind": "contextual"}, {"id": "ruminatie", "name": "Ruminație", "items": [3, 12, 21, 30], "short": "revenirea repetată asupra sentimentelor și gândurilor legate de eveniment", "kind": "vulnerabilitate"}, {"id": "refocalizare_pozitiva", "name": "Refocalizare pozitivă", "items": [4, 13, 22, 31], "short": "orientarea atenției către lucruri plăcute sau neutre, pentru reducerea încărcării emoționale", "kind": "resursa"}, {"id": "refocalizare_planificare", "name": "Refocalizare pe planificare", "items": [5, 14, 23, 32], "short": "gândirea pașilor concreți care pot fi urmați pentru gestionarea situației", "kind": "resursa"}, {"id": "reevaluare_pozitiva", "name": "Reevaluare pozitivă", "items": [6, 15, 24, 33], "short": "atribuirea unui sens pozitiv evenimentului, în termeni de învățare sau dezvoltare personală", "kind": "resursa"}, {"id": "punere_perspectiva", "name": "Punere în perspectivă", "items": [7, 16, 25, 34], "short": "relativizarea evenimentului și compararea lui cu alte situații posibile", "kind": "resursa"}, {"id": "catastrofare", "name": "Catastrofare", "items": [8, 17, 26, 35], "short": "accentuarea caracterului amenințător, nedrept sau foarte grav al evenimentului", "kind": "vulnerabilitate"}, {"id": "invinovatire_altii", "name": "Învinovățirea altora", "items": [9, 18, 27, 36], "short": "atribuirea responsabilității pentru eveniment altor persoane sau circumstanțe externe", "kind": "vulnerabilitate"}];
-const NORMS = {"auto_invinovatire": {"clinicalMean": 11.54, "clinicalSd": 3.45, "clinicalN": 178, "nonClinicalMean": 9.66, "nonClinicalSd": 2.82, "nonClinicalN": 1059, "t": 6.89, "sig": ".000", "diff": 1.88, "alphaAdolescents": 0.66, "alphaAdults": 0.69, "alphaPsychiatric": 0.81, "testRetest": 0.62}, "acceptare": {"clinicalMean": 12.44, "clinicalSd": 2.88, "clinicalN": 170, "nonClinicalMean": 11.66, "nonClinicalSd": 3.28, "nonClinicalN": 1076, "t": 3.22, "sig": ".001", "diff": 0.78, "alphaAdolescents": 0.59, "alphaAdults": 0.71, "alphaPsychiatric": 0.48, "testRetest": 0.34}, "ruminatie": {"clinicalMean": 13.59, "clinicalSd": 3.9, "clinicalN": 176, "nonClinicalMean": 11.02, "nonClinicalSd": 3.36, "nonClinicalN": 1068, "t": 8.25, "sig": ".000", "diff": 2.57, "alphaAdolescents": 0.63, "alphaAdults": 0.76, "alphaPsychiatric": 0.65, "testRetest": 0.47}, "refocalizare_pozitiva": {"clinicalMean": 9.87, "clinicalSd": 4.07, "clinicalN": 179, "nonClinicalMean": 11.19, "nonClinicalSd": 3.82, "nonClinicalN": 1084, "t": 4.22, "sig": ".000", "diff": -1.31, "alphaAdolescents": 0.79, "alphaAdults": 0.83, "alphaPsychiatric": 0.84, "testRetest": 0.18}, "refocalizare_planificare": {"clinicalMean": 12.82, "clinicalSd": 3.54, "clinicalN": 173, "nonClinicalMean": 14.33, "nonClinicalSd": 3.42, "nonClinicalN": 1080, "t": 5.38, "sig": ".000", "diff": -1.52, "alphaAdolescents": 0.69, "alphaAdults": 0.8, "alphaPsychiatric": 0.73, "testRetest": 0.56}, "reevaluare_pozitiva": {"clinicalMean": 9.98, "clinicalSd": 3.95, "clinicalN": 175, "nonClinicalMean": 14.02, "nonClinicalSd": 3.59, "nonClinicalN": 1083, "t": 12.7, "sig": ".000", "diff": -4.04, "alphaAdolescents": 0.69, "alphaAdults": 0.8, "alphaPsychiatric": 0.81, "testRetest": 0.64}, "punere_perspectiva": {"clinicalMean": 10.45, "clinicalSd": 3.6, "clinicalN": 179, "nonClinicalMean": 12.83, "nonClinicalSd": 3.91, "nonClinicalN": 1083, "t": 7.64, "sig": ".000", "diff": -2.39, "alphaAdolescents": 0.71, "alphaAdults": 0.75, "alphaPsychiatric": 0.73, "testRetest": 0.53}, "catastrofare": {"clinicalMean": 13.47, "clinicalSd": 3.85, "clinicalN": 176, "nonClinicalMean": 8.1, "nonClinicalSd": 3.27, "nonClinicalN": 1084, "t": 17.49, "sig": ".000", "diff": 5.37, "alphaAdolescents": 0.64, "alphaAdults": 0.76, "alphaPsychiatric": 0.78, "testRetest": 0.42}, "invinovatire_altii": {"clinicalMean": 10.86, "clinicalSd": 4.23, "clinicalN": 182, "nonClinicalMean": 7.86, "nonClinicalSd": 2.75, "nonClinicalN": 1080, "t": 9.24, "sig": ".000", "diff": 3.0, "alphaAdolescents": 0.72, "alphaAdults": 0.75, "alphaPsychiatric": 0.75, "testRetest": 0.28}};
-const VALIDATION_NOTE = {title:"Standardizare românească CERQ", sample:"Adolescenți N=368, adulți N=1071, pacienți psihiatrici N=182", note:"CERQ evaluează strategii cognitive de reglare emoțională; scorurile se interpretează contextual și nu stabilesc diagnostic."};
-function $(id){return document.getElementById(id)}
-function unlockPage(){document.body.classList.remove("locked");const a=$("authScreen");if(a)a.classList.add("hidden")}
-function setupAuthGate(){const already=sessionStorage.getItem(ACCESS_SESSION_KEY)==="ok";if(already){unlockPage();return true}document.body.classList.add("locked");const form=$("authForm"),input=$("authPassword"),error=$("authError");if(input)setTimeout(()=>input.focus(),80);if(form)form.addEventListener("submit",e=>{e.preventDefault();if((input?.value||"")===ACCESS_PASSWORD){sessionStorage.setItem(ACCESS_SESSION_KEY,"ok");unlockPage();renderSelector()}else{if(error)error.classList.remove("hidden");if(input){input.value="";input.focus()}}});return false}
-function escapeHtml(v){return String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]))}
-function fmt(x,d=2){return Number.isFinite(Number(x))?Number(x).toFixed(d):"—"}
-function pct(x){return Math.max(0,Math.min(100,x)).toFixed(0)}
-function erf(x){const sign=x>=0?1:-1;x=Math.abs(x);const a1=.254829592,a2=-.284496736,a3=1.421413741,a4=-1.453152027,a5=1.061405429,p=.3275911;const t=1/(1+p*x);const y=1-(((((a5*t+a4)*t)+a3)*t+a2)*t+a1)*t*Math.exp(-x*x);return sign*y}
-function normCdf(z){return .5*(1+erf(z/Math.SQRT2))}
-function readStore(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]")}catch(e){return[]}}
-function writeStore(data){localStorage.setItem(STORAGE_KEY,JSON.stringify(data))}
-function makeSubmissionId(item,index){const base=item?.createdAt?new Date(item.createdAt).getTime():Date.now();return `cerq_${base}_${index}_${Math.random().toString(16).slice(2)}`}
-function ensureStoredIds(){const data=readStore().filter(x=>x&&typeof x==="object"&&x.responses);let changed=false;const normalized=data.map((item,index)=>{if(item.id)return item;changed=true;return {...item,id:makeSubmissionId(item,index)}});if(changed)writeStore(normalized);return normalized}
-function isArchived(item){return Boolean(item&&(item.archived===true||item.archivedAt))}
-function formatDate(v){if(!v)return"—";const d=new Date(v+"T00:00:00");return isNaN(d)?escapeHtml(v):d.toLocaleDateString("ro-RO")}
-function formatDateTime(v){if(!v)return"—";const d=new Date(v);return isNaN(d)?escapeHtml(v):d.toLocaleString("ro-RO",{dateStyle:"medium",timeStyle:"short"})}
-function isAdolescentVariant(s){return ["adolescenti","copii"].includes(String(s?.formVariant||"").toLowerCase())}
-function matchesPageVariant(s){if(PAGE_VARIANT==="adolescenti")return isAdolescentVariant(s);return String(s?.formVariant||"").toLowerCase()==="adulti"}
-function variantLabel(s){if(isAdolescentVariant(s))return "CERQ - adolescenți";return s?.formLabel || (s?.formVariant==="adulti"?"CERQ - adulți":"CERQ")}
-function resultLabel(s){return `${variantLabel(s)} · ${s.clientCode||"CERQ"} · ${formatDate(s.testDate)} · ${formatDateTime(s.createdAt)}${isArchived(s)?" · arhivat":""}`}
-function selectedResultId(){return $("submissionSelect")?.value||""}
-function levelByAverage(avg){if(avg<1.8)return{label:"foarte scăzut",cls:"red"};if(avg<2.6)return{label:"scăzut",cls:"yellow"};if(avg<3.4)return{label:"mediu",cls:"green"};if(avg<4.2)return{label:"ridicat",cls:"green"};return{label:"foarte ridicat",cls:"red"}}
-function normLevel(z,kind){if(!Number.isFinite(z))return"fără reper";const direction=kind==="resursa"?"resursă mai prezentă":"strategie mai prezentă";if(z<=-2)return"mult sub media non-clinică";if(z<=-1)return"sub media non-clinică";if(z<1)return"în zona medie non-clinică";if(z<2)return`${direction} decât media non-clinică`;return`${direction} mult peste media non-clinică`}
-function calculateScores(responses){const scaleScores={};for(const scale of SCALES){const values=scale.items.map(n=>Number(responses[n]||0));const sum=values.reduce((a,b)=>a+b,0);scaleScores[scale.id]={...scale,sum,average:+(sum/scale.items.length).toFixed(2),max:scale.items.length*5,min:scale.items.length}}return {scaleScores}}
-function normalizeSubmission(s){const computed=calculateScores(s.responses||{});return {...s,scaleScores:s.scaleScores||computed.scaleScores}}
-function renderSelector(preferredId){const all=ensureStoredIds().map(normalizeSubmission).filter(matchesPageVariant).sort((a,b)=>new Date(b.createdAt||0)-new Date(a.createdAt||0));const select=$("submissionSelect");const filter=$("resultFilter")?.value||localStorage.getItem(VIEW_KEY)||"active";if($("resultFilter"))$("resultFilter").value=filter;if($("resultFilter"))localStorage.setItem(VIEW_KEY,filter);select.innerHTML="";const visible=all.filter(s=>filter==="all"?true:filter==="archived"?isArchived(s):!isArchived(s));if(!all.length){$("emptyState").classList.remove("hidden");$("reportRoot").classList.add("hidden");select.disabled=true;return}if(!visible.length){$("emptyState").innerHTML=`<strong>Nu există rezultate CERQ – adulți ${filter==="archived"?"arhivate":"active"}.</strong><br>Schimbă filtrul sau importă un JSON.`;$("emptyState").classList.remove("hidden");$("reportRoot").classList.add("hidden");select.disabled=true;return}$("emptyState").classList.add("hidden");select.disabled=false;for(const s of visible){const opt=document.createElement("option");opt.value=s.id;opt.textContent=resultLabel(s);select.appendChild(opt)}if(preferredId&&visible.some(s=>s.id===preferredId))select.value=preferredId;else select.value=visible[0].id;renderReport(visible.find(s=>s.id===select.value))}
-function barWidth(score){return pct(((score-4)/(20-4))*100)}
-function zFromNorm(score,norm){return norm&&norm.nonClinicalSd?((score-norm.nonClinicalMean)/norm.nonClinicalSd):NaN}
-function profileLists(scaleScores){const arr=Object.values(scaleScores);const resources=arr.filter(x=>x.kind==="resursa").sort((a,b)=>b.sum-a.sum).slice(0,3);const risks=arr.filter(x=>x.kind==="vulnerabilitate").sort((a,b)=>b.sum-a.sum).slice(0,3);return {resources,risks}}
-function scaleInterpretation(score,norm,scale){const z=zFromNorm(score.sum,norm);const percentile=Number.isFinite(z)?Math.round(normCdf(z)*100):null;let line=`${normLevel(z,scale.kind)}`;if(percentile!==null)line+=` · aproximativ percentila ${percentile} raportat la eșantionul non-clinic.`;if(scale.kind==="vulnerabilitate"&&z>=1)line+=" Se recomandă explorare clinică atentă, mai ales dacă se asociază cu distres actual.";if(scale.kind==="resursa"&&z>=1)line+=" Poate funcționa ca resursă de autoreglare.";if(scale.id==="acceptare")line+=" Acceptarea se interpretează contextual: poate fi adaptativă sau poate însoți resemnarea, în funcție de situație.";return line}
-function renderReport(raw){if(!raw)return;const s=normalizeSubmission(raw);const scaleArr=Object.values(s.scaleScores);const pl=profileLists(s.scaleScores);const topAll=[...scaleArr].sort((a,b)=>b.sum-a.sum).slice(0,3);const scaleRows=scaleArr.map(sc=>{const norm=NORMS[sc.id]||{};const lvl=levelByAverage(sc.average);const z=zFromNorm(sc.sum,norm);return `<tr><td><strong>${escapeHtml(sc.name)}</strong><br><span class="tiny">${escapeHtml(sc.short)}</span></td><td>${sc.items.join(", ")}</td><td><strong>${sc.sum}</strong> / 20<div class="bar" style="margin-top:8px"><span style="width:${barWidth(sc.sum)}%"></span></div></td><td>${fmt(sc.average)} / 5</td><td><span class="pill ${lvl.cls}">${lvl.label}</span></td><td class="norm-cell"><div class="norm-report"><span class="norm-row"><strong>Non-clinic:</strong> M=${fmt(norm.nonClinicalMean)}, SD=${fmt(norm.nonClinicalSd)}, N=${norm.nonClinicalN||"—"}</span><span class="norm-row"><strong>Clinic:</strong> M=${fmt(norm.clinicalMean)}, SD=${fmt(norm.clinicalSd)}, N=${norm.clinicalN||"—"}</span><span class="norm-row"><strong>z non-clinic:</strong> ${fmt(z)} · ${isAdolescentVariant(s)?"α adolescenți":"α adulți"}=${fmt(isAdolescentVariant(s)?norm.alphaAdolescents:norm.alphaAdults,2)} · test-retest=${fmt(norm.testRetest,2)}</span><span class="norm-interpret">${escapeHtml(scaleInterpretation(sc,norm,sc))}</span></div></td></tr>`}).join("");
-const resourceLis=pl.resources.map(x=>`<li><strong>${escapeHtml(x.name)}:</strong> ${x.sum}/20, medie ${fmt(x.average)}.</li>`).join("");
-const riskLis=pl.risks.map(x=>`<li><strong>${escapeHtml(x.name)}:</strong> ${x.sum}/20, medie ${fmt(x.average)}.</li>`).join("");
-const topText=topAll.map(x=>`${x.name} (${x.sum}/20)`).join(", ");
-$("reportRoot").classList.remove("hidden");$("reportRoot").innerHTML=`
-<section class="section grid three">
-  <div class="stat"><div><strong>Client</strong><br><small>${escapeHtml(s.clientCode||"—")}</small></div><div class="big-number">CERQ</div></div>
-  <div class="stat"><div><strong>Data aplicării</strong><br><small>${formatDate(s.testDate)}</small></div><div class="big-number">36</div></div>
-  <div class="stat"><div><strong>Variantă</strong><br><small>${escapeHtml(variantLabel(s))}</small></div><div class="big-number">9</div></div>
-</section>
-<section class="section card report-text" id="printableReport">
-  <h2>Raport interpretativ CERQ</h2>
-  <p><strong>Cod client:</strong> ${escapeHtml(s.clientCode||"—")} · <strong>Variantă:</strong> ${escapeHtml(variantLabel(s))} · <strong>Vârstă:</strong> ${escapeHtml(s.age||"—")} · <strong>Data:</strong> ${formatDate(s.testDate)} · <strong>Status:</strong> ${isArchived(s)?"arhivat":"activ"}.</p>
-  <p><strong>Profil general:</strong> cele mai ridicate scoruri brute sunt ${escapeHtml(topText)}. Acest profil indică strategiile cognitive cel mai frecvent raportate de persoană atunci când se confruntă cu evenimente negative sau stresante.</p>
-  <p><strong>Observații/context:</strong> ${escapeHtml(s.contextNote||"—")}</p>
-  <p class="tiny">Rezultatul nu reprezintă diagnostic. Interpretarea trebuie corelată cu interviul clinic, contextul stresorului, intensitatea simptomelor și istoricul persoanei.</p>
-</section>
-<section class="section grid two">
-  <div class="card profile-card"><p class="kicker">Resurse cognitive</p><h2>Strategii adaptative dominante</h2><ul>${resourceLis}</ul><p class="muted">Scorurile ridicate aici pot sugera capacitate de planificare, reevaluare pozitivă, reorientare a atenției sau punere în perspectivă.</p></div>
-  <div class="card profile-card"><p class="kicker">Zone de vulnerabilitate</p><h2>Strategii de urmărit clinic</h2><ul>${riskLis}</ul><p class="muted">Scorurile ridicate la auto-învinovățire, ruminație, catastrofare sau învinovățirea altora trebuie interpretate împreună cu nivelul de distres și simptomele actuale.</p></div>
-</section>
-<section class="section card"><h2>Scoruri pe scale</h2><div class="table-wrap"><table id="scaleTable"><thead><tr><th>Scală CERQ</th><th>Itemi</th><th>Scor brut</th><th>Medie</th><th>Nivel orientativ</th><th>Raportare la standardizarea RO</th></tr></thead><tbody>${scaleRows}</tbody></table></div></section>
-<section class="section card"><h2>Note psihometrice</h2><p class="muted">${escapeHtml(VALIDATION_NOTE.sample)}. Valorile α Cronbach folosite în tabel provin din standardizarea românească; pentru varianta adolescenți este afișată coloana adolescenți, iar pentru varianta adulți coloana adulți. Pentru interpretare, este importantă diferențierea dintre refocalizarea pe planificare și reevaluarea pozitivă, care pot fi apropiate empiric, dar rămân concepte distincte.</p></section>
-<section class="section card"><h2>Bibliografie</h2><ol><li>Perțe, A., &amp; Miclea, M. (2011). <em>The standardization of the Cognitive Emotional Regulation Questionnaire (CERQ) on Romanian population</em>. Cognition, Brain, Behavior, 15(1), 111–130.</li><li>Garnefski, N., Kraaij, V., &amp; Spinhoven, P. (2002). <em>Manual for the use of the Cognitive Emotion Regulation Questionnaire</em>.</li></ol></section>`}
-function archiveSelected(){const id=selectedResultId();if(!id)return;const data=readStore();const index=data.findIndex(x=>x.id===id);if(index===-1)return;const archived=!isArchived(data[index]);data[index]={...data[index],archived,archivedAt:archived?new Date().toISOString():null};writeStore(data);renderSelector(id)}
-function deleteSelected(){const id=selectedResultId();if(!id)return;if(!confirm("Ștergi definitiv acest rezultat CERQ din browser?"))return;writeStore(readStore().filter(x=>x.id!==id));renderSelector()}
-function importJsonFile(file){const reader=new FileReader();reader.onload=()=>{try{const parsed=JSON.parse(reader.result);const incoming=Array.isArray(parsed)?parsed:[parsed];const valid=incoming.filter(x=>x&&x.responses&&Object.keys(x.responses).length>=36&&matchesPageVariant(x));if(!valid.length)throw new Error("Fișierul nu conține rezultate CERQ valide pentru varianta adulți.");const current=readStore();const byId=new Map(current.map(x=>[x.id,x]));for(const item of valid){if(!item.id)item.id=`import_${Date.now()}_${Math.random().toString(16).slice(2)}`;item.questionnaire=item.questionnaire||"CERQ";if(isAdolescentVariant(item)){item.formVariant="adolescenti";item.formLabel="CERQ - adolescenți";}byId.set(item.id,item)}writeStore(Array.from(byId.values()).sort((a,b)=>new Date(b.createdAt||0)-new Date(a.createdAt||0)));renderSelector(valid[0].id);alert(`Am importat ${valid.length} rezultat(e) CERQ – adulți.`)}catch(err){alert("Import eșuat: "+err.message)}};reader.readAsText(file)}
-function copyReport(){const text=$("reportRoot")?.innerText||"";if(!text.trim()){alert("Nu există raport de copiat.");return}navigator.clipboard.writeText(text).then(()=>alert("Raportul a fost copiat."),()=>alert("Nu am putut copia automat. Selectează raportul manual."))}
-document.addEventListener("DOMContentLoaded",()=>{const saved=localStorage.getItem(VIEW_KEY);if(saved&&$("resultFilter"))$("resultFilter").value=saved;const unlocked=setupAuthGate();if(unlocked)renderSelector();$("submissionSelect").addEventListener("change",()=>{const all=ensureStoredIds().map(normalizeSubmission).filter(matchesPageVariant);renderReport(all.find(s=>s.id===selectedResultId()))});$("resultFilter").addEventListener("change",()=>renderSelector());$("archiveBtn").addEventListener("click",archiveSelected);$("deleteBtn").addEventListener("click",deleteSelected);$("importBtn").addEventListener("click",()=>$("jsonImport").click());$("jsonImport").addEventListener("change",e=>{const f=e.target.files?.[0];if(f)importJsonFile(f);e.target.value=""});$("printBtn").addEventListener("click",()=>window.print());$("copyReportBtn").addEventListener("click",copyReport)});
+const CONFIG = {
+  "instrument": "CERQ",
+  "variant": "adulti",
+  "variantLabel": "CERQ adulți",
+  "storageKey": "cerq-adulti-rezultate-cope-model-v1",
+  "latestKey": "cerq-adulti-ultimul-rezultat-cope-model-v1",
+  "filePrefix": "cerq-adulti",
+  "formFile": "chestionar-CERQ-adulti.html"
+};
+const DEFAULT_ITEM_TEXTS = [
+  "Mă gândesc că eu sunt responsabil(ă) pentru ceea ce s-a întâmplat.",
+  "Mă gândesc că trebuie să accept faptul că s-a întâmplat.",
+  "Mă gândesc din nou și din nou la ceea ce simt în legătură cu evenimentul.",
+  "Mă gândesc la lucruri mai plăcute decât situația prin care am trecut.",
+  "Mă gândesc la ce aș putea face concret pentru a gestiona situația.",
+  "Mă gândesc că pot învăța ceva din această experiență.",
+  "Mă gândesc că există lucruri mai grave în viață decât ceea ce mi s-a întâmplat.",
+  "Mă gândesc că situația este mult mai rea decât pare sau decât pot suporta.",
+  "Mă gândesc că alții sunt de vină pentru ceea ce s-a întâmplat.",
+  "Mă critic pentru felul în care am reacționat sau pentru ce s-a întâmplat.",
+  "Îmi spun că nu mai pot schimba ceea ce s-a întâmplat.",
+  "Revin mereu cu gândul la cauzele și consecințele evenimentului.",
+  "Îmi mut atenția către activități, persoane sau amintiri care îmi fac bine.",
+  "Încerc să stabilesc pașii pe care îi am de făcut mai departe.",
+  "Încerc să văd partea de dezvoltare personală sau de maturizare din experiență.",
+  "Pun situația într-un context mai larg, ca să nu o văd ca fiind absolută.",
+  "Mă gândesc că este una dintre cele mai rele situații care mi se puteau întâmpla.",
+  "Consider că responsabilitatea aparține în mare parte altor persoane.",
+  "Îmi reproșez deciziile sau comportamentul din acea situație.",
+  "Încerc să mă împac cu ideea că lucrurile s-au petrecut așa.",
+  "Mă gândesc foarte mult la cât de supărat(ă), rănit(ă) sau afectat(ă) sunt.",
+  "Încerc să mă gândesc la experiențe plăcute, ca să îmi schimb starea.",
+  "Caut soluții și variante realiste pentru a rezolva sau limita problema.",
+  "Încerc să găsesc un sens pozitiv sau o lecție în ceea ce s-a întâmplat.",
+  "Îmi spun că, raportat la alte probleme, situația poate fi mai puțin gravă.",
+  "Mă gândesc că urmările vor fi foarte grave sau imposibil de gestionat.",
+  "Îi consider pe ceilalți responsabili pentru suferința sau dificultatea mea.",
+  "Mă acuz pe mine pentru ceea ce s-a întâmplat sau pentru consecințe.",
+  "Îmi spun că trebuie să merg mai departe și să accept realitatea situației.",
+  "Analizez repetat ce s-a întâmplat și nu reușesc să mă desprind de gânduri.",
+  "Mă concentrez pe lucruri pozitive, chiar dacă problema nu este rezolvată.",
+  "Îmi fac un plan despre cum voi acționa dacă situația continuă sau se repetă.",
+  "Mă gândesc că experiența mă poate ajuta să devin mai puternic(ă).",
+  "Încerc să privesc situația de la distanță și să îi reduc importanța.",
+  "Mă gândesc că este un dezastru sau că nu va mai fi bine.",
+  "Mă gândesc că problema a apărut din cauza altora, nu din cauza mea."
+];
+const CERQ_SCALES = [
+  {
+    "id": "selfBlame",
+    "name": "Auto-învinovățire",
+    "short": "Auto-învinovățire",
+    "group": "vulnerability",
+    "items": [
+      1,
+      10,
+      19,
+      28
+    ],
+    "description": "tendința de a atribui cauza evenimentelor negative propriei persoane"
+  },
+  {
+    "id": "acceptance",
+    "name": "Acceptare",
+    "short": "Acceptare",
+    "group": "adaptive",
+    "items": [
+      2,
+      11,
+      20,
+      29
+    ],
+    "description": "tendința de a accepta ceea ce s-a întâmplat și de a integra situația"
+  },
+  {
+    "id": "rumination",
+    "name": "Ruminare",
+    "short": "Ruminare",
+    "group": "vulnerability",
+    "items": [
+      3,
+      12,
+      21,
+      30
+    ],
+    "description": "revenirea repetată asupra gândurilor și emoțiilor legate de eveniment"
+  },
+  {
+    "id": "positiveRefocusing",
+    "name": "Refocalizare pozitivă",
+    "short": "Refocalizare pozitivă",
+    "group": "adaptive",
+    "items": [
+      4,
+      13,
+      22,
+      31
+    ],
+    "description": "orientarea atenției spre teme sau activități mai plăcute"
+  },
+  {
+    "id": "planning",
+    "name": "Refocalizare pe planificare",
+    "short": "Planificare",
+    "group": "adaptive",
+    "items": [
+      5,
+      14,
+      23,
+      32
+    ],
+    "description": "gândirea unor pași concreți pentru gestionarea situației"
+  },
+  {
+    "id": "positiveReappraisal",
+    "name": "Reevaluare pozitivă",
+    "short": "Reevaluare pozitivă",
+    "group": "adaptive",
+    "items": [
+      6,
+      15,
+      24,
+      33
+    ],
+    "description": "atribuirea unei semnificații de învățare, creștere sau dezvoltare"
+  },
+  {
+    "id": "perspective",
+    "name": "Punere în perspectivă",
+    "short": "Perspectivă",
+    "group": "adaptive",
+    "items": [
+      7,
+      16,
+      25,
+      34
+    ],
+    "description": "compararea situației cu alte evenimente pentru a-i reduce impactul perceput"
+  },
+  {
+    "id": "catastrophizing",
+    "name": "Catastrofare",
+    "short": "Catastrofare",
+    "group": "vulnerability",
+    "items": [
+      8,
+      17,
+      26,
+      35
+    ],
+    "description": "accentuarea gravității sau anticiparea celor mai negative consecințe"
+  },
+  {
+    "id": "otherBlame",
+    "name": "Învinovățirea altora",
+    "short": "Învinovățirea altora",
+    "group": "vulnerability",
+    "items": [
+      9,
+      18,
+      27,
+      36
+    ],
+    "description": "atribuirea responsabilității altor persoane sau circumstanțe externe"
+  }
+];
+const $ = sel => document.querySelector(sel);
+const byId = id => document.getElementById(id);
+function escapeHTML(s) { return String(s ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m])); }
+function getStore() { try { return JSON.parse(localStorage.getItem(CONFIG.storageKey) || '[]'); } catch(e) { return []; } }
+function setStore(arr) { localStorage.setItem(CONFIG.storageKey, JSON.stringify(arr)); }
+function formatDate(iso) { if(!iso) return '-'; const d = new Date(String(iso).slice(0,10) + 'T00:00:00'); return Number.isNaN(d.getTime()) ? iso : d.toLocaleDateString('ro-RO'); }
+function pct(score) { return Math.max(0, Math.min(100, (score / 20) * 100)); }
+function level(score) { if(score <= 8) return {key:'low', label:'scăzut'}; if(score <= 14) return {key:'medium', label:'mediu'}; return {key:'high', label:'ridicat'}; }
+function mean(arr) { return arr.length ? arr.reduce((a,b)=>a+b,0)/arr.length : 0; }
+function scorePayload(data) {
+  const answers = data.answers || [];
+  return CERQ_SCALES.map(scale => {
+    const vals = scale.items.map(n => Number(answers[n-1] || 0));
+    const total = vals.reduce((a,b)=>a+b,0);
+    const avg = total / 4;
+    const lv = level(total);
+    return {...scale, values: vals, total, avg, level: lv};
+  });
+}
+function topN(scales, filterFn, n=3) { return scales.filter(filterFn).sort((a,b)=>b.total-a.total).slice(0,n); }
+function makeSummary(data, scored) {
+  const sorted = [...scored].sort((a,b)=>b.total-a.total);
+  const dominant = sorted[0];
+  const second = sorted[1];
+  const adaptive = scored.filter(s => s.group === 'adaptive');
+  const vuln = scored.filter(s => s.group === 'vulnerability');
+  const adaptMean = mean(adaptive.map(s=>s.avg));
+  const vulnMean = mean(vuln.map(s=>s.avg));
+  const strengths = topN(scored, s => s.group === 'adaptive', 3);
+  const watch = topN(scored, s => s.group === 'vulnerability' && s.total >= 12, 4);
+  const watchText = watch.length ? watch.map(s => `${s.name} (${s.total}/20)`).join(', ') : 'nu apar scoruri ridicate pe scalele de vulnerabilitate';
+  return `
+    <p>Rezultatul indică un profil în care scala relativ cea mai pronunțată este <strong>${escapeHTML(dominant.name)}</strong>, cu scorul ${dominant.total}/20 și media ${dominant.avg.toFixed(2)}/5. Următoarea scală ca intensitate este <strong>${escapeHTML(second.name)}</strong>, cu scorul ${second.total}/20.</p>
+    <p>Media strategiilor adaptative este ${adaptMean.toFixed(2)}/5, iar media strategiilor de vulnerabilitate este ${vulnMean.toFixed(2)}/5. Diferența dintre cele două oferă o imagine orientativă asupra raportului dintre resursele cognitive și mecanismele care pot întreține distresul.</p>
+    <p>Resursele cognitive cele mai vizibile sunt: ${strengths.map(s => `${s.name} (${s.total}/20)`).join(', ')}. Zonele care merită urmărite clinic sunt: ${watchText}.</p>
+    <p>Interpretarea trebuie legată de contextul aplicării, nivelul actual de stres, istoricul persoanei și funcționarea din ultimele săptămâni. Scorurile nu reprezintă diagnostic.</p>
+  `;
+}
+function normalizeImported(obj) {
+  if (!obj || typeof obj !== 'object') throw new Error('Fișier invalid.');
+  let answers = obj.answers;
+  if (!Array.isArray(answers) && obj.responses && typeof obj.responses === 'object') {
+    answers = Array.from({length:36}, (_, i) => Number(obj.responses[i+1] || obj.responses[`q${i+1}`] || 0));
+  }
+  if (!Array.isArray(answers) || answers.length < 36) throw new Error('JSON-ul nu conține 36 de răspunsuri.');
+  const now = new Date();
+  return {
+    id: obj.id || `${CONFIG.variant}-${Date.now()}-${Math.random().toString(16).slice(2)}`,
+    instrument: obj.instrument || 'CERQ',
+    variant: obj.variant || CONFIG.variant,
+    variantLabel: obj.variantLabel || CONFIG.variantLabel,
+    clientCode: obj.clientCode || obj.client || obj.cod || 'Import JSON',
+    age: obj.age ?? obj.clientAge ?? null,
+    applicationDate: obj.applicationDate || obj.testDate || obj.date || now.toISOString().slice(0,10),
+    notes: obj.notes || obj.contextNote || '',
+    answers: answers.slice(0,36).map(Number),
+    itemTexts: obj.itemTexts || DEFAULT_ITEM_TEXTS,
+    archived: Boolean(obj.archived),
+    savedAtISO: obj.savedAtISO || now.toISOString(),
+    savedAtLabel: obj.savedAtLabel || now.toLocaleDateString('ro-RO') + ', ' + now.toLocaleTimeString('ro-RO', {hour:'2-digit', minute:'2-digit'})
+  };
+}
+function saveImported(data) { const arr = getStore().filter(x => x.id !== data.id); arr.unshift(data); setStore(arr.slice(0,100)); localStorage.setItem(CONFIG.latestKey, JSON.stringify(data)); refreshSavedSelect(data.id); render(data); }
+function filteredStore() { const filter = byId('viewFilter').value; return getStore().filter(x => x.variant === CONFIG.variant || !x.variant).filter(x => filter === 'all' ? true : filter === 'archived' ? x.archived : !x.archived); }
+function refreshSavedSelect(selectedId) {
+  const arr = filteredStore();
+  const sel = byId('savedSelect');
+  if (!arr.length) { sel.innerHTML = '<option value="">Nu există rezultate salvate</option>'; return; }
+  sel.innerHTML = arr.map(x => `<option value="${escapeHTML(x.id)}">${escapeHTML(x.clientCode || 'Fără cod')} · ${formatDate(x.applicationDate)} · ${escapeHTML(x.savedAtLabel || '')}${x.archived ? ' · arhivat' : ''}</option>`).join('');
+  if (selectedId && arr.some(x => x.id === selectedId)) sel.value = selectedId;
+}
+function renderEmpty() {
+  byId('resultRoot').innerHTML = `
+    <section class="empty-state">
+      <h2>Nu este selectat niciun rezultat</h2>
+      <p class="muted">Importă fișierul JSON primit de la client sau selectează un rezultat salvat din lista de mai sus.</p>
+      <div class="actions" style="justify-content:center;margin-top:16px;"><a class="btn soft" href="${CONFIG.formFile}">Deschide formularul</a><button class="btn" type="button" onclick="document.getElementById('fileInput').click()">Importă JSON</button></div>
+    </section>`;
+}
+function scaleCard(s) {
+  return `<article class="scale-card">
+    <div class="scale-top"><div><h3>${escapeHTML(s.name)}</h3><div class="desc">${escapeHTML(s.description)}</div></div><span class="badge ${s.level.key}">${s.level.label}</span></div>
+    <div class="score-line"><div><span class="score-number">${s.total} / 20</span><div class="score-sub">medie ${s.avg.toFixed(2)}/5 · itemi ${s.items.join(', ')}</div></div></div>
+    <div class="bar"><span style="width:${pct(s.total)}%"></span></div>
+  </article>`;
+}
+function render(data) {
+  if (!data) return renderEmpty();
+  const itemTexts = data.itemTexts || DEFAULT_ITEM_TEXTS;
+  const scored = scorePayload(data);
+  const sorted = [...scored].sort((a,b)=>b.total-a.total);
+  const dominant = sorted[0];
+  const minS = sorted[sorted.length-1];
+  const amplitude = dominant.total - minS.total;
+  const adaptive = scored.filter(s => s.group === 'adaptive');
+  const vuln = scored.filter(s => s.group === 'vulnerability');
+  const adaptMean = mean(adaptive.map(s=>s.avg));
+  const vulnMean = mean(vuln.map(s=>s.avg));
+  const watch = vuln.filter(s => s.total >= 12).sort((a,b)=>b.total-a.total);
+  const strengths = adaptive.sort((a,b)=>b.total-a.total).slice(0,3);
+  byId('resultRoot').innerHTML = `
+    <section class="card">
+      <h2>Raport individual</h2>
+      <div class="mini-grid">
+        <div class="mini-card"><b>Cod client / inițiale</b><span>${escapeHTML(data.clientCode || '-')}</span></div>
+        <div class="mini-card"><b>Data aplicării</b><span>${formatDate(data.applicationDate)}</span></div>
+        <div class="mini-card"><b>Salvat</b><span>${escapeHTML(data.savedAtLabel || '-')}</span></div>
+      </div>
+      <small>Vârstă: ${escapeHTML(data.age || '-')} · Variantă: ${escapeHTML(data.variantLabel || CONFIG.variantLabel)} · Răspunsuri pe scală Likert 1–5. Nu există itemi inversați.</small>
+      <div class="stats-grid">
+        <div class="stat"><b>Scală dominantă</b><strong>${dominant.total}/20</strong><small>${escapeHTML(dominant.name)}</small></div>
+        <div class="stat"><b>Media adaptativă</b><strong>${adaptMean.toFixed(2)}</strong><small>Acceptare, refocalizare, planificare, reevaluare, perspectivă</small></div>
+        <div class="stat"><b>Media vulnerabilitate</b><strong>${vulnMean.toFixed(2)}</strong><small>Auto-învinovățire, ruminare, catastrofare, învinovățirea altora</small></div>
+        <div class="stat"><b>Amplitudine profil</b><strong>${amplitude}</strong><small>Diferență între scala cea mai mare și cea mai mică</small></div>
+      </div>
+    </section>
+
+    <section class="section card">
+      <h2>Sinteză profesională</h2>
+      <div class="summary-box">${makeSummary(data, scored)}</div>
+    </section>
+
+    <section class="section">
+      <h2>Cele 9 scale CERQ</h2>
+      <div class="scale-grid">${scored.map(scaleCard).join('')}</div>
+    </section>
+
+    <section class="section twocol">
+      <article class="callout">
+        <p class="kicker">Resurse cognitive</p>
+        <h2>Strategii adaptive dominante</h2>
+        <ul>${strengths.map(s => `<li><strong>${escapeHTML(s.name)}:</strong> ${s.total}/20, medie ${s.avg.toFixed(2)}.</li>`).join('')}</ul>
+        <p class="muted" style="margin-top:12px;">Scorurile ridicate aici pot sugera acceptare, planificare, reevaluare pozitivă, reorientarea atenției sau punere în perspectivă.</p>
+      </article>
+      <article class="callout">
+        <p class="kicker">Zone de vulnerabilitate</p>
+        <h2>Strategii de urmărit clinic</h2>
+        <ul>${(watch.length ? watch : vuln.sort((a,b)=>b.total-a.total).slice(0,3)).map(s => `<li><strong>${escapeHTML(s.name)}:</strong> ${s.total}/20, medie ${s.avg.toFixed(2)}.</li>`).join('')}</ul>
+        <p class="muted" style="margin-top:12px;">Scorurile crescute la auto-învinovățire, ruminare, catastrofare sau învinovățirea altora trebuie interpretate împreună cu nivelul de distres și simptomele actuale.</p>
+      </article>
+    </section>
+
+    <details class="section card details-card">
+      <summary>Vezi răspunsurile brute pe itemi</summary>
+      <p class="details-intro">Răspunsurile de mai jos sunt afișate pentru verificare și transparență. Ele reprezintă răspunsurile brute introduse la fiecare item.</p>
+      <div class="raw-list">${(data.answers || []).map((v, i) => `<div class="raw-item"><div class="raw-no">Item ${i+1}</div><div class="raw-text">${escapeHTML(itemTexts[i] || 'Item ' + (i+1))}</div><div class="raw-score">${escapeHTML(v)} / 5</div></div>`).join('')}</div>
+    </details>
+
+    <article class="section interpretation-limits-card">
+      <p class="kicker">Precauții</p>
+      <h2>Limite de interpretare</h2>
+      <p>Scorurile descriu frecvența strategiilor de coping declarate de persoană și nu constituie diagnostic. Reperele normative pe baza M/SD sunt orientative și provin dintr-un eșantion românesc non-clinic, de conveniență. Percentilele și scorurile T sunt aproximări calculate pe baza distribuției normale, deoarece studiul citat raportează medii și deviații standard, nu tabele de percentile.</p>
+    </article>
+  `;
+}
+function selectedResult() { const id = byId('savedSelect').value; return getStore().find(x => x.id === id); }
+function boot() {
+  refreshSavedSelect();
+  let data = null;
+  const params = new URLSearchParams(location.search);
+  const id = params.get('id');
+  if (id) data = getStore().find(x => x.id === id);
+  if (!data) { try { const latest = JSON.parse(localStorage.getItem(CONFIG.latestKey) || 'null'); if (latest && latest.variant === CONFIG.variant) data = latest; } catch(e) {} }
+  if (!data) data = filteredStore()[0];
+  if (data) { refreshSavedSelect(data.id); render(data); } else renderEmpty();
+}
+document.addEventListener('DOMContentLoaded', () => {
+  boot();
+  byId('viewFilter').addEventListener('change', () => { refreshSavedSelect(); render(filteredStore()[0]); });
+  byId('savedSelect').addEventListener('change', () => render(selectedResult()));
+  byId('importBtn').addEventListener('click', () => byId('fileInput').click());
+  byId('fileInput').addEventListener('change', async e => {
+    const file = e.target.files && e.target.files[0]; if (!file) return;
+    try { const text = await file.text(); const data = normalizeImported(JSON.parse(text)); saveImported(data); } catch(err) { alert(err.message || 'Nu am putut importa fișierul JSON.'); } finally { e.target.value = ''; }
+  });
+  byId('printBtn').addEventListener('click', () => window.print());
+  byId('archiveBtn').addEventListener('click', () => { const data = selectedResult(); if (!data) return; data.archived = !data.archived; const arr = getStore().map(x => x.id === data.id ? data : x); setStore(arr); refreshSavedSelect(data.id); render(data); });
+  byId('deleteBtn').addEventListener('click', () => { const data = selectedResult(); if (!data) return; if (!confirm('Ștergi acest rezultat din browser?')) return; setStore(getStore().filter(x => x.id !== data.id)); refreshSavedSelect(); render(filteredStore()[0]); });
+  byId('copyFormLink').addEventListener('click', async e => { if (navigator.clipboard) { e.preventDefault(); const url = new URL(CONFIG.formFile, location.href).href; await navigator.clipboard.writeText(url); alert('Linkul formularului a fost copiat.'); } });
+});
 </script>
 </body>
 </html>
