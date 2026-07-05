@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chestionar CERQ adulți - rezultate</title>
+  <style>
+
+:root{
+  --bg:#f6f3ef; --panel:#fffaf4; --card:#ffffff; --ink:#202020; --muted:#6f675d;
+  --line:#e6ded4; --accent:#7a4e2d; --accent-2:#b98250; --accent-soft:#f1e3d4;
+  --good:#255f3f; --warn:#8a5a00; --danger:#9b2c2c; --shadow:0 18px 50px rgba(74,52,33,.12); --radius:22px;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);background:radial-gradient(circle at top left, rgba(184,130,80,.14), transparent 36rem),linear-gradient(180deg,#fbf8f3 0%, var(--bg) 100%);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.58}
+a{color:inherit}.page{width:min(1160px, calc(100% - 36px));margin:0 auto;padding:34px 0 70px}
+.hero{background:linear-gradient(135deg,rgba(255,250,244,.94),rgba(241,227,212,.78));border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);padding:30px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;width:340px;height:340px;border-radius:50%;right:-135px;top:-185px;background:rgba(122,78,45,.08)}
+.kicker{color:var(--accent);font-size:.8rem;font-weight:850;letter-spacing:.14em;text-transform:uppercase;margin:0 0 8px}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,3.8vw,3.5rem);line-height:1;letter-spacing:-.035em;margin:0 0 10px}
+h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.25rem,2vw,1.85rem);margin:0 0 10px} h3{margin:0 0 8px;font-size:1.06rem}
+p{margin:0 0 12px}.muted{color:var(--muted)}.section{margin-top:22px}.grid{display:grid;gap:18px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(74,52,33,.07);padding:22px}.notice{background:#fff7ec;border:1px solid #ead8c4;border-left:6px solid var(--accent-2);padding:16px 18px;border-radius:18px;color:#46382d}.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.btn{border:0;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:11px 16px;background:var(--accent);color:white;font-weight:850;cursor:pointer;text-decoration:none;box-shadow:0 10px 18px rgba(122,78,45,.16)}.btn.secondary{background:#fff;color:var(--accent);border:1px solid var(--line);box-shadow:none}.btn.soft{background:var(--accent-soft);color:#5b3920;box-shadow:none}.btn.danger{background:#9b2c2c;color:#fff;box-shadow:0 10px 18px rgba(155,44,44,.14)}.btn:disabled{opacity:.48;cursor:not-allowed;transform:none;filter:none}.btn:hover{transform:translateY(-1px);filter:brightness(1.03)}
+input,select,textarea{width:100%;border:1px solid var(--line);border-radius:14px;padding:12px 13px;background:#fff;font:inherit;outline:none} label{font-weight:750;display:block;line-height:1.2;white-space:normal}.field{display:grid;gap:8px;min-width:0}
+.select-row{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end}.select-row .field:nth-child(1){flex:0 1 230px}.select-row .field:nth-child(2){flex:1 1 320px}.select-row .field:nth-child(3){flex:0 1 280px}.select-row .actions{flex:1 1 520px;align-self:flex-end;min-width:280px}.select-row .btn{white-space:nowrap}
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:7px 14px;border-radius:999px;background:var(--accent-soft);color:#5b3920;font-size:.84rem;font-weight:850;white-space:nowrap;line-height:1.15;text-align:center;min-width:136px;flex:0 0 auto}.pill.green{background:#edf6f1;color:#255f3f}.pill.yellow{background:#fff4db;color:#76510b}.pill.red{background:#f7e6e3;color:#8a2b21}.pill.gray{background:#f1ede8;color:#5d554e}
+.stat{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;padding:17px;border:1px solid var(--line);border-radius:18px;background:#fffdf9}.big-number{font-family:Georgia,serif;font-size:2.15rem;line-height:1;color:var(--accent);white-space:nowrap}.metric-title{font-weight:850}.metric-note{display:block;margin-top:4px;color:var(--muted);font-size:.9rem}.tiny{font-size:.82rem;color:var(--muted)}.small{font-size:.9rem}.hidden{display:none!important}
+.factor-card{display:flex;flex-direction:column;gap:10px}.factor-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.factor-title{font-weight:900}.score-line{font-family:Georgia,serif;font-size:2rem;color:var(--accent);line-height:1}.bar{height:10px;border-radius:999px;background:#eadfd3;overflow:hidden}.bar span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px;background:#fff}table{width:100%;border-collapse:collapse;min-width:900px}th,td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#fbf4ec;color:#563820;font-size:.82rem;text-transform:uppercase;letter-spacing:.055em}tr:last-child td{border-bottom:0}
+.report-text{font-family:Georgia,"Times New Roman",serif;font-size:1.05rem;line-height:1.72;color:#2b2723}.report-text p{text-align:justify}.report-box{background:#fffdf9;border:1px solid var(--line);border-radius:18px;padding:18px}.biblio ol{margin:8px 0 0 20px;padding:0}.biblio li{margin:0 0 8px}
+/* Protecție cu parolă pentru pagina de rezultate */
+body.locked{overflow:hidden} body.locked .page{display:none!important}.auth-screen{display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at top left, rgba(184,130,80,.22), transparent 34rem),linear-gradient(180deg,#fbf8f3 0%, var(--bg) 100%)}body.locked .auth-screen{display:flex}.auth-card{width:min(430px, calc(100% - 20px));background:rgba(255,250,244,.98);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:28px;display:grid;gap:14px}.auth-card h2{font-size:clamp(1.7rem,4vw,2.4rem);margin:0}.auth-card .btn{width:100%;margin-top:2px}.auth-error{margin:0;color:var(--danger);font-weight:850;background:#f7e6e3;border:1px solid #e9c7c0;border-radius:14px;padding:10px 12px}
+#scaleTable{min-width:1120px;table-layout:fixed}#scaleTable th:nth-child(1),#scaleTable td:nth-child(1){width:23%}#scaleTable th:nth-child(2),#scaleTable td:nth-child(2){width:10%}#scaleTable th:nth-child(3),#scaleTable td:nth-child(3){width:10%}#scaleTable th:nth-child(4),#scaleTable td:nth-child(4){width:9%}#scaleTable th:nth-child(5),#scaleTable td:nth-child(5){width:14%;text-align:center}#scaleTable th:nth-child(6),#scaleTable td:nth-child(6){width:34%}#scaleTable tbody tr{height:150px}#scaleTable tbody td{height:150px;vertical-align:middle}#scaleTable td:nth-child(2),#scaleTable td:nth-child(3),#scaleTable td:nth-child(4){font-variant-numeric:tabular-nums}#scaleTable td:nth-child(5){overflow:hidden}#scaleTable td:nth-child(5) .pill{width:128px;min-height:40px;justify-content:center;text-align:center;white-space:nowrap;line-height:1.15;margin:0 auto;font-size:.8rem;padding:7px 12px}.norm-cell{min-width:320px;line-height:1.5}.norm-report{min-height:104px;display:flex;flex-direction:column;justify-content:center;gap:5px}.norm-row{display:block;padding:0}.norm-row strong{font-weight:850;color:#3f342b}.norm-interpret{display:block;margin-top:5px;padding-top:6px;border-top:1px dashed #ead8c4;color:#5b3920}.norm-muted{color:#6f675d}
+.raw-list{margin-top:16px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fffdf9}.raw-item{display:grid;grid-template-columns:72px minmax(0,1fr) 90px;gap:12px;padding:12px;border-bottom:1px solid var(--line);align-items:center}.raw-item:last-child{border-bottom:0}.raw-no{font-weight:900;color:#7a4e2d}.raw-text{line-height:1.45}.raw-score{text-align:center;font-weight:900;background:#f1e3d4;color:#5b3920;border-radius:999px;padding:7px 10px}.details-card summary{cursor:pointer;font-family:Georgia,"Times New Roman",serif;font-size:1.55rem;font-weight:800;list-style:none}.details-card summary::-webkit-details-marker{display:none}.details-card summary::after{content:"＋";float:right;color:#7a4e2d}.details-card[open] summary::after{content:"−"}.details-intro{color:var(--muted);margin-top:12px;line-height:1.65}.footer{margin-top:26px;color:var(--muted);font-size:.9rem}
+@media(max-width:900px){.grid.two,.grid.three,.grid.four{grid-template-columns:1fr}.select-row{display:grid;grid-template-columns:1fr}.select-row .field,.select-row .actions{flex:auto;min-width:0}.page{width:min(100% - 22px,1160px);padding-top:18px}.hero{padding:24px;border-radius:24px}table{min-width:860px}.norm-cell{min-width:330px}.raw-item{grid-template-columns:1fr}.raw-score{width:max-content}.score-line{font-size:1.7rem}}
+@media print{.auth-screen{display:none!important}body.locked .page{display:block!important}body{background:white}.no-print,.actions,.select-row,#emptyState,.pdf-exclude{display:none!important}.page{width:100%;padding:0}.hero,.card{box-shadow:none}.section{break-inside:avoid}.pdf-final-notes-start{break-before:page;page-break-before:always}.table-wrap{overflow:visible}table{min-width:0;font-size:.82rem}th,td{padding:7px}.report-text{font-size:1rem}}
+
+  </style>
+</head>
+<body class="locked">
+<section id="authScreen" class="auth-screen" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+  <form id="authForm" class="auth-card" autocomplete="off">
+    <p class="kicker">Acces protejat</p>
+    <h2 id="authTitle">Chestionar CERQ adulți</h2>
+    <p class="muted">Introdu parola pentru a vedea pagina de rezultate.</p>
+    <div class="field">
+      <label for="authPassword">Parolă</label>
+      <input id="authPassword" type="password" placeholder="Scrie parola" autocomplete="current-password" />
+    </div>
+    <p id="authError" class="auth-error hidden">Parolă greșită. Încearcă din nou.</p>
+    <button class="btn" type="submit">Intră</button>
+  </form>
+</section>
+
+<main class="page">
+  <section class="hero">
+    <p class="kicker">Scorare și interpretare</p>
+    <h1>Chestionar CERQ adulți</h1>
+    <p class="muted" style="max-width:900px;font-size:.98rem">Raport profesional pentru cele 9 scale CERQ: auto-învinovățire, acceptare, ruminare, refocalizare pozitivă, planificare, reevaluare pozitivă, punere în perspectivă, catastrofare și învinovățirea altora.</p>
+  </section>
+
+  <section class="section card no-print">
+    <p class="muted" style="margin-bottom:14px;">Importă fișierul JSON primit pe email de la client, apoi generează raportul.</p>
+    <div class="select-row">
+      <div class="field">
+        <label for="resultFilter">Afișare</label>
+        <select id="resultFilter"><option value="active">Active</option><option value="archived">Arhivate</option><option value="all">Toate</option></select>
+      </div>
+      <div class="field">
+        <label for="submissionSelect">Rezultat salvat</label>
+        <select id="submissionSelect"></select>
+      </div>
+      <div class="actions">
+        <button class="btn secondary" type="button" id="archiveBtn">Arhivează</button>
+        <button class="btn danger" type="button" id="deleteBtn">Șterge</button>
+        <button class="btn secondary" type="button" id="importBtn">Importă JSON</button>
+        <input class="hidden" type="file" id="jsonImport" accept="application/json,.json" />
+        <button class="btn secondary" type="button" id="printBtn">Printează / PDF</button>
+        <button class="btn soft" type="button" id="copyReportBtn">Copiază sinteza</button>
+        <a class="btn soft" href="chestionar-CERQ-adulti.html">Deschide formularul</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="emptyState" class="section notice hidden">
+    <strong>Nu există încă rezultate CERQ în acest browser.</strong><br>
+    Completează chestionarul în același browser sau importă fișierul JSON primit de la client.
+  </section>
+
+  <section id="reportRoot" class="hidden"></section>
+  <p class="footer no-print">Raport generat local în browser. Datele rămân în browserul curent, cu excepția fișierelor JSON importate/exportate manual.</p>
+</main>
+
+<script>
+
+const ACCESS_PASSWORD = "kimkiduk";
+const ACCESS_SESSION_KEY = "cerqResultsAccess_v2";
+const CONFIG = {"instrument": "CERQ", "variant": "adulti", "variantLabel": "CERQ adulți", "storageKey": "cerq-adulti-rezultate-cope-model-v1", "latestKey": "cerq-adulti-ultimul-rezultat-cope-model-v1", "filePrefix": "cerq-adulti", "formFile": "chestionar-CERQ-adulti.html"};
+const DEFAULT_ITEM_TEXTS = ["Mă gândesc că eu sunt responsabil(ă) pentru ceea ce s-a întâmplat.", "Mă gândesc că trebuie să accept faptul că s-a întâmplat.", "Mă gândesc din nou și din nou la ceea ce simt în legătură cu evenimentul.", "Mă gândesc la lucruri mai plăcute decât situația prin care am trecut.", "Mă gândesc la ce aș putea face concret pentru a gestiona situația.", "Mă gândesc că pot învăța ceva din această experiență.", "Mă gândesc că există lucruri mai grave în viață decât ceea ce mi s-a întâmplat.", "Mă gândesc că situația este mult mai rea decât pare sau decât pot suporta.", "Mă gândesc că alții sunt de vină pentru ceea ce s-a întâmplat.", "Mă critic pentru felul în care am reacționat sau pentru ce s-a întâmplat.", "Îmi spun că nu mai pot schimba ceea ce s-a întâmplat.", "Revin mereu cu gândul la cauzele și consecințele evenimentului.", "Îmi mut atenția către activități, persoane sau amintiri care îmi fac bine.", "Încerc să stabilesc pașii pe care îi am de făcut mai departe.", "Încerc să văd partea de dezvoltare personală sau de maturizare din experiență.", "Pun situația într-un context mai larg, ca să nu o văd ca fiind absolută.", "Mă gândesc că este una dintre cele mai rele situații care mi se puteau întâmpla.", "Consider că responsabilitatea aparține în mare parte altor persoane.", "Îmi reproșez deciziile sau comportamentul din acea situație.", "Încerc să mă împac cu ideea că lucrurile s-au petrecut așa.", "Mă gândesc foarte mult la cât de supărat(ă), rănit(ă) sau afectat(ă) sunt.", "Încerc să mă gândesc la experiențe plăcute, ca să îmi schimb starea.", "Caut soluții și variante realiste pentru a rezolva sau limita problema.", "Încerc să găsesc un sens pozitiv sau o lecție în ceea ce s-a întâmplat.", "Îmi spun că, raportat la alte probleme, situația poate fi mai puțin gravă.", "Mă gândesc că urmările vor fi foarte grave sau imposibil de gestionat.", "Îi consider pe ceilalți responsabili pentru suferința sau dificultatea mea.", "Mă acuz pe mine pentru ceea ce s-a întâmplat sau pentru consecințe.", "Îmi spun că trebuie să merg mai departe și să accept realitatea situației.", "Analizez repetat ce s-a întâmplat și nu reușesc să mă desprind de gânduri.", "Mă concentrez pe lucruri pozitive, chiar dacă problema nu este rezolvată.", "Îmi fac un plan despre cum voi acționa dacă situația continuă sau se repetă.", "Mă gândesc că experiența mă poate ajuta să devin mai puternic(ă).", "Încerc să privesc situația de la distanță și să îi reduc importanța.", "Mă gândesc că este un dezastru sau că nu va mai fi bine.", "Mă gândesc că problema a apărut din cauza altora, nu din cauza mea."];
+const CERQ_SCALES = [{"id": "selfBlame", "name": "Auto-învinovățire", "short": "Auto-învinovățire", "group": "vulnerability", "items": [1, 10, 19, 28], "description": "tendința de a atribui cauza evenimentelor negative propriei persoane"}, {"id": "acceptance", "name": "Acceptare", "short": "Acceptare", "group": "adaptive", "items": [2, 11, 20, 29], "description": "tendința de a accepta ceea ce s-a întâmplat și de a integra situația"}, {"id": "rumination", "name": "Ruminare", "short": "Ruminare", "group": "vulnerability", "items": [3, 12, 21, 30], "description": "revenirea repetată asupra gândurilor și emoțiilor legate de eveniment"}, {"id": "positiveRefocusing", "name": "Refocalizare pozitivă", "short": "Refocalizare pozitivă", "group": "adaptive", "items": [4, 13, 22, 31], "description": "orientarea atenției spre teme sau activități mai plăcute"}, {"id": "planning", "name": "Refocalizare pe planificare", "short": "Planificare", "group": "adaptive", "items": [5, 14, 23, 32], "description": "gândirea unor pași concreți pentru gestionarea situației"}, {"id": "positiveReappraisal", "name": "Reevaluare pozitivă", "short": "Reevaluare pozitivă", "group": "adaptive", "items": [6, 15, 24, 33], "description": "atribuirea unei semnificații de învățare, creștere sau dezvoltare"}, {"id": "perspective", "name": "Punere în perspectivă", "short": "Perspectivă", "group": "adaptive", "items": [7, 16, 25, 34], "description": "compararea situației cu alte evenimente pentru a-i reduce impactul perceput"}, {"id": "catastrophizing", "name": "Catastrofare", "short": "Catastrofare", "group": "vulnerability", "items": [8, 17, 26, 35], "description": "accentuarea gravității sau anticiparea celor mai negative consecințe"}, {"id": "otherBlame", "name": "Învinovățirea altora", "short": "Învinovățirea altora", "group": "vulnerability", "items": [9, 18, 27, 36], "description": "atribuirea responsabilității altor persoane sau circumstanțe externe"}];
+const NORMS = {"selfBlame": {"m": 9.66, "sd": 2.82, "n": 1059, "alphaAdult": 0.69, "alphaAdolescent": 0.66}, "acceptance": {"m": 11.66, "sd": 3.28, "n": 1076, "alphaAdult": 0.71, "alphaAdolescent": 0.59}, "rumination": {"m": 11.02, "sd": 3.36, "n": 1068, "alphaAdult": 0.76, "alphaAdolescent": 0.63}, "positiveRefocusing": {"m": 11.19, "sd": 3.82, "n": 1084, "alphaAdult": 0.83, "alphaAdolescent": 0.79}, "planning": {"m": 14.33, "sd": 3.42, "n": 1080, "alphaAdult": 0.8, "alphaAdolescent": 0.69}, "positiveReappraisal": {"m": 14.02, "sd": 3.59, "n": 1083, "alphaAdult": 0.8, "alphaAdolescent": 0.69}, "perspective": {"m": 12.83, "sd": 3.91, "n": 1083, "alphaAdult": 0.75, "alphaAdolescent": 0.71}, "catastrophizing": {"m": 8.1, "sd": 3.27, "n": 1084, "alphaAdult": 0.76, "alphaAdolescent": 0.64}, "otherBlame": {"m": 7.86, "sd": 2.75, "n": 1080, "alphaAdult": 0.75, "alphaAdolescent": 0.72}};
+
+function byId(id){return document.getElementById(id)}
+function escapeHTML(s){return String(s ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function fmt(x,d=2){return Number.isFinite(Number(x)) ? Number(x).toFixed(d) : '—'}
+function pct(x){return Math.max(0, Math.min(100, x)).toFixed(0)}
+function formatDate(iso){if(!iso)return '—'; const d=new Date(String(iso).slice(0,10)+'T00:00:00'); return Number.isNaN(d.getTime()) ? escapeHTML(iso) : d.toLocaleDateString('ro-RO')}
+function formatDateTime(v){if(!v)return '—'; const d=new Date(v); return Number.isNaN(d.getTime()) ? escapeHTML(v) : d.toLocaleString('ro-RO',{dateStyle:'medium',timeStyle:'short'})}
+function getStore(){try{return JSON.parse(localStorage.getItem(CONFIG.storageKey)||'[]')}catch(e){return[]}}
+function setStore(arr){localStorage.setItem(CONFIG.storageKey, JSON.stringify(arr))}
+function mean(arr){return arr.length ? arr.reduce((a,b)=>a+b,0)/arr.length : 0}
+function erf(x){const sign=x>=0?1:-1; x=Math.abs(x); const a1=.254829592,a2=-.284496736,a3=1.421413741,a4=-1.453152027,a5=1.061405429,p=.3275911; const t=1/(1+p*x); const y=1-(((((a5*t+a4)*t)+a3)*t+a2)*t+a1)*t*Math.exp(-x*x); return sign*y}
+function normCdf(z){return .5*(1+erf(z/Math.SQRT2))}
+function percentileLabel(p){
+  if(!Number.isFinite(Number(p))) return '—';
+  p = Number(p);
+  if(p < 1) return '<1';
+  if(p > 99) return '>99';
+  return String(Math.round(p));
+}
+function normLevel(z){if(!Number.isFinite(z)) return 'nu există repere normative'; if(z <= -2) return 'mult sub media eșantionului românesc'; if(z <= -1) return 'sub media eșantionului românesc'; if(z < 1) return 'în zona medie a eșantionului românesc'; if(z < 2) return 'peste media eșantionului românesc'; return 'mult peste media eșantionului românesc'}
+function levelForScale(scale,total,z){
+  /* Culoarea etichetei trebuie să țină cont și de sensul clinic al scalei.
+     Pentru scalele adaptive, scorurile mari sunt favorabile (verde), iar cele mici sunt nefavorabile (roșu).
+     Pentru scalele de vulnerabilitate, scorurile mici sunt favorabile (verde), iar cele mari sunt nefavorabile (roșu).
+     Zona medie rămâne galbenă. */
+  if(!Number.isFinite(z)){
+    if(total <= 8) return {label:'scăzut', cls: scale.group === 'vulnerability' ? 'green' : 'red'};
+    if(total <= 14) return {label:'mediu', cls:'yellow'};
+    return {label:'ridicat', cls: scale.group === 'vulnerability' ? 'red' : 'green'};
+  }
+  if(z >= 2) return {label:'foarte ridicat', cls: scale.group === 'vulnerability' ? 'red' : 'green'};
+  if(z >= 1) return {label:'ridicat', cls: scale.group === 'vulnerability' ? 'red' : 'green'};
+  if(z <= -2) return {label:'foarte scăzut', cls: scale.group === 'vulnerability' ? 'green' : 'red'};
+  if(z <= -1) return {label:'scăzut', cls: scale.group === 'vulnerability' ? 'green' : 'red'};
+  return {label:'mediu', cls:'yellow'};
+}
+function unlockPage(){document.body.classList.remove('locked'); const authScreen=byId('authScreen'); if(authScreen) authScreen.classList.add('hidden')}
+function setupAuthGate(){
+  const alreadyUnlocked=sessionStorage.getItem(ACCESS_SESSION_KEY)==='ok';
+  if(alreadyUnlocked){unlockPage(); return true;}
+  document.body.classList.add('locked');
+  const form=byId('authForm'), input=byId('authPassword'), error=byId('authError');
+  if(input) setTimeout(()=>input.focus(),80);
+  if(form){form.addEventListener('submit',e=>{e.preventDefault(); if((input?.value || '') === ACCESS_PASSWORD){sessionStorage.setItem(ACCESS_SESSION_KEY,'ok'); unlockPage(); boot()} else {if(error) error.classList.remove('hidden'); if(input){input.value=''; input.focus()}}})}
+  return false;
+}
+function isArchived(item){return Boolean(item && (item.archived === true || item.archivedAt))}
+function selectedResultId(){return byId('submissionSelect')?.value || ''}
+function normalizeImported(obj){
+  if(!obj || typeof obj !== 'object') throw new Error('Fișier invalid.');
+  let answers=obj.answers;
+  if(!Array.isArray(answers) && obj.responses && typeof obj.responses === 'object') answers = Array.from({length:36}, (_,i)=>Number(obj.responses[i+1] || obj.responses[`q${i+1}`] || 0));
+  if(!Array.isArray(answers) || answers.length < 36) throw new Error('JSON-ul nu conține 36 de răspunsuri CERQ.');
+  const now=new Date();
+  return {
+    id: obj.id || `${CONFIG.variant}-${Date.now()}-${Math.random().toString(16).slice(2)}`,
+    instrument: obj.instrument || 'CERQ', variant: obj.variant || CONFIG.variant, variantLabel: obj.variantLabel || CONFIG.variantLabel,
+    clientCode: obj.clientCode || obj.client || obj.cod || 'Import JSON', age: obj.age ?? obj.clientAge ?? null,
+    applicationDate: obj.applicationDate || obj.testDate || obj.date || now.toISOString().slice(0,10), notes: obj.notes || obj.contextNote || '',
+    answers: answers.slice(0,36).map(Number), itemTexts: obj.itemTexts || DEFAULT_ITEM_TEXTS,
+    archived: Boolean(obj.archived), archivedAt: obj.archivedAt || null,
+    savedAtISO: obj.savedAtISO || obj.createdAt || now.toISOString(), savedAtLabel: obj.savedAtLabel || (now.toLocaleDateString('ro-RO')+', '+now.toLocaleTimeString('ro-RO',{hour:'2-digit',minute:'2-digit'}))
+  };
+}
+function normalizedStore(){return getStore().filter(x=>x && typeof x==='object' && (Array.isArray(x.answers) || x.responses)).map(x=>{try{return normalizeImported(x)}catch(e){return null}}).filter(Boolean)}
+function resultLabel(s){return `${s.clientCode || 'CERQ'} · ${formatDate(s.applicationDate)} · ${s.savedAtLabel || formatDateTime(s.savedAtISO)}${isArchived(s) ? ' · arhivat' : ''}`}
+function filteredStore(){
+  const filter=byId('resultFilter')?.value || 'active';
+  return normalizedStore().filter(x=>x.variant === CONFIG.variant || !x.variant).filter(x=> filter==='all' ? true : filter==='archived' ? isArchived(x) : !isArchived(x)).sort((a,b)=>new Date(b.savedAtISO||0)-new Date(a.savedAtISO||0));
+}
+function refreshSelector(preferredId){
+  const arr=filteredStore(); const sel=byId('submissionSelect'); const empty=byId('emptyState'); const root=byId('reportRoot');
+  if(!sel) return null;
+  if(!arr.length){sel.innerHTML='<option value="">Nu există rezultate salvate</option>'; if(root) root.classList.add('hidden'); if(empty){empty.classList.remove('hidden'); empty.innerHTML='<strong>Nu există încă rezultate CERQ în această vedere.</strong><br>Completează chestionarul în același browser sau importă fișierul JSON primit de la client.'} updateActionButtons(null); return null;}
+  sel.innerHTML=arr.map(x=>`<option value="${escapeHTML(x.id)}">${escapeHTML(resultLabel(x))}</option>`).join('');
+  if(preferredId && arr.some(x=>String(x.id)===String(preferredId))) sel.value=preferredId;
+  if(empty) empty.classList.add('hidden');
+  const current=arr.find(x=>String(x.id)===String(sel.value)) || arr[0]; sel.value=current.id; updateActionButtons(current); return current;
+}
+function selectedResult(){const id=selectedResultId(); return normalizedStore().find(x=>String(x.id)===String(id)) || null}
+function updateActionButtons(item){const arch=byId('archiveBtn'), del=byId('deleteBtn'); if(!arch||!del)return; if(!item){arch.disabled=true;del.disabled=true;return} arch.disabled=false; del.disabled=false; arch.textContent=isArchived(item)?'Restaurează':'Arhivează'}
+function updateById(id, updater){const arr=getStore(); const index=arr.findIndex(x=>String(x.id)===String(id)); if(index<0)return null; const item={...arr[index]}; updater(item); arr[index]=item; setStore(arr); return item}
+function toggleArchiveSelected(){const item=selectedResult(); if(!item)return; const ok=confirm(isArchived(item)?`Restaurezi rezultatul „${item.clientCode || 'CERQ'}” în lista activă?`:`Arhivezi rezultatul „${item.clientCode || 'CERQ'}”?`); if(!ok)return; updateById(item.id, x=>{if(isArchived(item)){delete x.archived; delete x.archivedAt;} else {x.archived=true; x.archivedAt=new Date().toISOString();}}); const next=refreshSelector(item.id); if(next) renderReport(next)}
+function deleteSelected(){const item=selectedResult(); if(!item)return; if(!confirm(`Ștergi definitiv din acest browser rezultatul „${item.clientCode || 'CERQ'}”?`))return; setStore(getStore().filter(x=>String(x.id)!==String(item.id))); const next=refreshSelector(); if(next) renderReport(next); else renderEmpty()}
+function importJsonFile(file){const reader=new FileReader(); reader.onload=()=>{try{const parsed=JSON.parse(reader.result); const incoming=Array.isArray(parsed)?parsed:[parsed]; const valid=incoming.map(normalizeImported); const current=getStore().filter(x=>x && x.id); const byIdMap=new Map(current.map(x=>[String(x.id),x])); for(const item of valid) byIdMap.set(String(item.id), item); setStore(Array.from(byIdMap.values()).sort((a,b)=>new Date(b.savedAtISO||0)-new Date(a.savedAtISO||0)).slice(0,100)); localStorage.setItem(CONFIG.latestKey, JSON.stringify(valid[0])); const next=refreshSelector(valid[0].id); if(next) renderReport(next); alert(`Am importat ${valid.length} rezultat(e) CERQ.`)}catch(err){alert('Import eșuat: '+err.message)}}; reader.readAsText(file)}
+function scorePayload(data){
+  const answers=data.answers || [];
+  return CERQ_SCALES.map(scale=>{
+    const vals=scale.items.map(n=>Number(answers[n-1] || 0));
+    const total=vals.reduce((a,b)=>a+b,0); const avg=total/4; const norm=NORMS[scale.id]; const z=norm ? (total-norm.m)/norm.sd : NaN;
+    return {...scale, values:vals, total, avg, level:levelForScale(scale,total,z), norm, z, t:Number.isFinite(z)?50+10*z:NaN, percentile:Number.isFinite(z)?normCdf(z)*100:NaN};
+  });
+}
+function topText(scales,n=3){return scales.slice(0,n).map(s=>`${s.name} (${s.total}/20)`).join(', ')}
+function makeNarrative(data, scored){
+  const sorted=[...scored].sort((a,b)=>b.total-a.total); const dominant=sorted[0]; const second=sorted[1];
+  const adaptive=scored.filter(s=>s.group==='adaptive'); const vuln=scored.filter(s=>s.group==='vulnerability');
+  const adaptiveMean=mean(adaptive.map(s=>s.avg)); const vulnMean=mean(vuln.map(s=>s.avg)); const diff=adaptiveMean-vulnMean;
+  const strengths=[...adaptive].sort((a,b)=>b.total-a.total).slice(0,3);
+  const watch=[...vuln].sort((a,b)=>b.total-a.total).filter(s=>s.total>=12);
+  const watchFallback=[...vuln].sort((a,b)=>b.total-a.total).slice(0,3);
+  const watchText=(watch.length?watch:watchFallback).map(s=>`${s.name} (${s.total}/20)`).join(', ');
+  const balance = diff >= .75 ? 'profilul este orientat mai mult spre strategii cognitive adaptative decât spre strategii asociate frecvent cu vulnerabilitatea emoțională' : diff <= -.75 ? 'profilul este marcat de o pondere mai mare a strategiilor de vulnerabilitate, ceea ce merită explorat în interviul clinic' : 'profilul este relativ echilibrat între resurse cognitive și strategii care pot întreține distresul';
+  return `<p>Rezultatul CERQ indică un profil în care scala relativ cea mai pronunțată este <strong>${escapeHTML(dominant.name)}</strong>, cu scorul ${dominant.total}/20 și media ${fmt(dominant.avg)}/5. Următoarea scală ca intensitate este <strong>${escapeHTML(second.name)}</strong>, cu scorul ${second.total}/20.</p><p>Media strategiilor considerate adaptative este ${fmt(adaptiveMean)}/5, iar media strategiilor de vulnerabilitate este ${fmt(vulnMean)}/5; ${escapeHTML(balance)}. Diferența trebuie citită ca orientare relativă a profilului, nu ca diagnostic.</p><p>Resursele cognitive cele mai vizibile sunt: ${escapeHTML(topText(strengths,3))}. Zonele de urmărit clinic sunt: ${escapeHTML(watchText)}.</p><p>Interpretarea se recomandă a fi legată de evenimentul de referință, nivelul actual de distres, durata problemelor, funcționarea din ultimele săptămâni și eventualele simptome anxioase sau depresive. Scorurile CERQ descriu modul declarat de reglare cognitivă după evenimente negative.</p>`;
+}
+function profileCards(scored){
+  const adaptive=scored.filter(s=>s.group==='adaptive'); const vuln=scored.filter(s=>s.group==='vulnerability');
+  const adaptiveSum=adaptive.reduce((a,b)=>a+b.total,0); const vulnSum=vuln.reduce((a,b)=>a+b.total,0); const adaptiveMean=mean(adaptive.map(s=>s.avg)); const vulnMean=mean(vuln.map(s=>s.avg));
+  const adaptiveTop=[...adaptive].sort((a,b)=>b.total-a.total).slice(0,3).map(s=>s.name).join(' · ');
+  const vulnTop=[...vuln].sort((a,b)=>b.total-a.total).slice(0,3).map(s=>s.name).join(' · ');
+  const adaptivePill = adaptiveMean >= 3.5 ? 'ridicat' : adaptiveMean >= 2.25 ? 'mediu' : 'scăzut';
+  const vulnPill = vulnMean >= 3.5 ? 'ridicat' : vulnMean >= 2.25 ? 'mediu' : 'scăzut';
+  const vulnCls = vulnMean >= 3.5 ? 'red' : vulnMean >= 2.25 ? 'yellow' : 'green';
+  const adaptiveCls = adaptiveMean < 2.25 ? 'yellow' : 'green';
+  return `<article class="card factor-card"><div class="factor-head"><div><div class="factor-title">Strategii cognitive adaptative</div><span class="tiny">acceptare, refocalizare pozitivă, planificare, reevaluare pozitivă și punere în perspectivă</span></div><span class="pill ${adaptiveCls}">${adaptivePill}</span></div><div><span class="score-line">${adaptiveSum} / 100</span><span class="metric-note">medie ${fmt(adaptiveMean)}/5 · dominante: ${escapeHTML(adaptiveTop)}</span></div><div class="bar"><span style="width:${pct(adaptiveSum)}%"></span></div><small>Scorul ridicat poate indica resurse cognitive utile pentru procesarea evenimentelor negative, în funcție de context.</small></article><article class="card factor-card"><div class="factor-head"><div><div class="factor-title">Strategii de vulnerabilitate</div><span class="tiny">auto-învinovățire, ruminare, catastrofare și învinovățirea altora</span></div><span class="pill ${vulnCls}">${vulnPill}</span></div><div><span class="score-line">${vulnSum} / 80</span><span class="metric-note">medie ${fmt(vulnMean)}/5 · dominante: ${escapeHTML(vulnTop)}</span></div><div class="bar"><span style="width:${pct(vulnSum/80*100)}%"></span></div><small>Scorul crescut indică zone care pot menține distresul și merită explorate clinic, fără a reprezenta diagnostic.</small></article>`;
+}
+function scaleCard(s){
+  return `<article class="card factor-card"><div class="factor-head"><div><div class="factor-title">${escapeHTML(s.name)}</div><span class="tiny">${escapeHTML(s.description)}</span></div><span class="pill ${s.level.cls}">${s.level.label}</span></div><div><span class="score-line">${s.total} / 20</span><span class="metric-note">medie ${fmt(s.avg)}/5 · itemi ${s.items.join(', ')}</span></div><div class="bar"><span style="width:${pct(s.total/20*100)}%"></span></div><small>${s.group==='adaptive'?'Strategie inclusă în zona resurselor cognitive adaptative.':'Strategie inclusă în zona vulnerabilităților cognitive de urmărit clinic.'}</small></article>`;
+}
+function scaleTableRows(scored){
+  return scored.map(s=>{
+    const norm=s.norm; const alpha = CONFIG.variant === 'adolescenti' ? norm.alphaAdolescent : norm.alphaAdult;
+    const normHtml=`<div class="norm-report"><span class="norm-row"><strong>Repere:</strong> M=${fmt(norm.m)} · SD=${fmt(norm.sd)} · N=${norm.n}</span><span class="norm-row"><strong>Poziționare:</strong> z≈${fmt(s.z)} · T≈${fmt(s.t,0)} · percentilă≈${percentileLabel(s.percentile)}</span><span class="norm-row"><strong>Fidelitate:</strong> α ${CONFIG.variant === 'adolescenti' ? 'adolescenți' : 'adulți'}≈${fmt(alpha,2)}</span><span class="norm-interpret">${escapeHTML(normLevel(s.z))}</span></div>`;
+    return `<tr><td><strong>${escapeHTML(s.name)}</strong><br><span class="tiny">${escapeHTML(s.description)}</span></td><td>${s.items.join(', ')}</td><td>${s.total} / 20</td><td>${fmt(s.avg)}</td><td><span class="pill ${s.level.cls}">${s.level.label}</span></td><td class="small norm-cell">${normHtml}</td></tr>`;
+  }).join('');
+}
+function rawRows(data){const itemTexts=data.itemTexts || DEFAULT_ITEM_TEXTS; return (data.answers || []).map((v,i)=>`<div class="raw-item"><div class="raw-no">Item ${i+1}</div><div class="raw-text">${escapeHTML(itemTexts[i] || 'Item '+(i+1))}</div><div class="raw-score">${escapeHTML(v)} / 5</div></div>`).join('')}
+function renderEmpty(){const root=byId('reportRoot'); if(root){root.classList.remove('hidden'); root.innerHTML=`<section class="notice"><strong>Nu este selectat niciun rezultat CERQ.</strong><br>Importă fișierul JSON primit de la client sau selectează un rezultat salvat.</section>`}}
+function renderReport(data){
+  if(!data) return renderEmpty();
+  const scored=scorePayload(data); const sorted=[...scored].sort((a,b)=>b.total-a.total); const dominant=sorted[0]; const minS=sorted[sorted.length-1];
+  const adaptive=scored.filter(s=>s.group==='adaptive'); const vuln=scored.filter(s=>s.group==='vulnerability'); const adaptiveMean=mean(adaptive.map(s=>s.avg)); const vulnMean=mean(vuln.map(s=>s.avg));
+  const flags=[]; if(scored.find(s=>s.id==='catastrophizing').total>=15) flags.push('catastrofare ridicată'); if(scored.find(s=>s.id==='rumination').total>=15) flags.push('ruminare ridicată'); if(scored.find(s=>s.id==='selfBlame').total>=15) flags.push('auto-învinovățire ridicată'); if(adaptiveMean<2.25) flags.push('resurse adaptive declarate reduse');
+  const root=byId('reportRoot'); root.classList.remove('hidden');
+  root.innerHTML=`
+    <section class="section card">
+      <h2>Raport individual</h2>
+      <div class="grid three">
+        <div class="stat"><div><strong>Cod client / inițiale</strong><br><span class="muted">${escapeHTML(data.clientCode||'—')}</span></div></div>
+        <div class="stat"><div><strong>Data aplicării</strong><br><span class="muted">${formatDate(data.applicationDate)}</span></div></div>
+        <div class="stat"><div><strong>Salvat</strong><br><span class="muted">${escapeHTML(data.savedAtLabel || formatDateTime(data.savedAtISO))}</span></div></div>
+      </div>
+      <p class="tiny" style="margin-top:12px">Vârsta: ${escapeHTML(data.age||'—')} · Status: ${isArchived(data) ? 'arhivat' : 'activ'}${isArchived(data) && data.archivedAt ? ' · Arhivat: ' + formatDateTime(data.archivedAt) : ''} · Variantă: ${escapeHTML(data.variantLabel || CONFIG.variantLabel)} · Răspunsuri pe scală Likert 1–5. Nu există itemi cu scorare inversă.</p>
+    </section>
+
+    <section class="section grid four">
+      <div class="stat"><div><span class="metric-title">Scală dominantă</span><span class="metric-note">${escapeHTML(dominant.name)}</span></div><div class="big-number" style="font-size:1.45rem">${dominant.total}/20</div></div>
+      <div class="stat"><div><span class="metric-title">Media adaptativă</span><span class="metric-note">5 scale cognitive</span></div><div class="big-number" style="font-size:1.45rem">${fmt(adaptiveMean)}</div></div>
+      <div class="stat"><div><span class="metric-title">Media vulnerabilitate</span><span class="metric-note">4 scale de urmărit</span></div><div class="big-number" style="font-size:1.45rem">${fmt(vulnMean)}</div></div>
+      <div class="stat"><div><span class="metric-title">Amplitudine profil</span><span class="metric-note">Diferență între scale</span></div><div class="big-number" style="font-size:1.45rem">${dominant.total-minS.total}</div></div>
+    </section>
+
+    <section class="section card">
+      <h2>Sinteză profesională</h2>
+      <div id="reportText" class="report-box report-text">${makeNarrative(data,scored)}</div>
+    </section>
+
+    <section class="section">
+      <h2>Indici de lectură clinică</h2>
+      <div class="grid two">${profileCards(scored)}</div>
+    </section>
+
+    <section class="section">
+      <h2>Cele 9 scale CERQ</h2>
+      <div class="grid two">${scored.map(scaleCard).join('')}</div>
+    </section>
+
+    <section class="section card">
+      <h2>Scorare și raportare normativă</h2>
+      <div class="table-wrap"><table id="scaleTable"><thead><tr><th>Scală CERQ</th><th>Itemi</th><th>Scor brut</th><th>Medie</th><th>Nivel normativ</th><th>Raportare la studiul RO</th></tr></thead><tbody>${scaleTableRows(scored)}</tbody></table></div>
+    </section>
+
+    <section class="section card pdf-final-notes-start">
+      <h2>Repere psihometrice utilizate</h2>
+      <p class="muted">Interpretarea folosește reperele publicate pentru standardizarea românească a CERQ: chestionar cu 36 de itemi, organizați în 9 subscale a câte 4 itemi. Pentru poziționarea orientativă au fost folosite mediile și deviațiile standard raportate pentru eșantionul non-clinic românesc din comparația clinic / non-clinic; coeficienții α sunt cei raportați separat pentru adulți și adolescenți.</p>
+    </section>
+
+    <details class="section card details-card pdf-exclude">
+      <summary>Vezi răspunsurile brute pe itemi</summary>
+      <p class="details-intro">Răspunsurile de mai jos sunt afișate pentru verificare și transparență. Ele reprezintă răspunsurile brute introduse la fiecare item.</p>
+      <div class="raw-list">${rawRows(data)}</div>
+    </details>
+
+    <section class="section card">
+      <h2>Limite de interpretare</h2>
+      <p class="muted">Scorurile descriu frecvența strategiilor de coping declarate de persoană și nu constituie diagnostic. Reperele normative pe baza M/SD sunt orientative și provin dintr-un eșantion românesc non-clinic, de conveniență. Percentilele și scorurile T sunt aproximări calculate pe baza distribuției normale, deoarece studiul citat raportează medii și deviații standard, nu tabele de percentile.</p>
+    </section>
+
+    <section class="section card biblio">
+      <h2>Bibliografie</h2>
+      <ol>
+        <li>Perțe, A., &amp; Miclea, M. (2011). <em>The standardization of the Cognitive Emotional Regulation Questionnaire (CERQ) on Romanian population</em>. Cognition, Brain, Behavior, 15(1), 111–130.</li>
+        <li>Garnefski, N., Kraaij, V., &amp; Spinhoven, P. (2002). <em>Manual for the use of the Cognitive Emotion Regulation Questionnaire</em>. Leiderdorp: DATEC.</li>
+        <li>Garnefski, N., Kraaij, V., &amp; Spinhoven, P. (2001). Negative life events, cognitive emotion regulation and emotional problems. <em>Personality and Individual Differences</em>, 30, 1311–1327.</li>
+      </ol>
+    </section>`;
+}
+function boot(){const current=refreshSelector(); if(current) renderReport(current); else renderEmpty()}
+document.addEventListener('DOMContentLoaded',()=>{
+  const unlocked=setupAuthGate(); if(unlocked) boot();
+  const on=(id,event,handler)=>{const el=byId(id); if(el) el.addEventListener(event,handler)};
+  on('resultFilter','change',()=>{const current=refreshSelector(); if(current) renderReport(current); else renderEmpty()});
+  on('submissionSelect','change',()=>{const current=selectedResult(); updateActionButtons(current); renderReport(current)});
+  on('archiveBtn','click',toggleArchiveSelected); on('deleteBtn','click',deleteSelected);
+  on('importBtn','click',()=>byId('jsonImport')?.click());
+  on('jsonImport','change',e=>{const file=e.target.files && e.target.files[0]; if(file) importJsonFile(file); e.target.value=''});
+  on('printBtn','click',()=>window.print());
+  on('copyReportBtn','click',async()=>{const text=byId('reportText')?.innerText || ''; if(!text)return; try{await navigator.clipboard.writeText(text); alert('Sinteza profesională a fost copiată.')}catch(e){alert('Nu am putut copia automat textul.')}});
+});
+
+</script>
+</body>
+</html>
