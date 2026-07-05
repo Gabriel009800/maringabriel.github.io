@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LUMEA PRIN FILME - Poster 100x75 cm</title>
+
+<style>
+  :root {
+    --ink: #173f28;
+    --paper: #edf3d4;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #d9d9d9;
+    font-family: Arial, sans-serif;
+  }
+
+  .toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding: 12px;
+    background: #ffffff;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .toolbar button {
+    border: 1px solid var(--ink);
+    background: var(--ink);
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+  }
+
+  .toolbar button.secondary {
+    background: white;
+    color: var(--ink);
+  }
+
+  .sheet {
+    width: min(96vw, 1200px);
+    margin: 20px auto;
+    background: white;
+    box-shadow: 0 10px 35px rgba(0,0,0,.25);
+  }
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  @page {
+    size: 100cm 75cm;
+    margin: 0;
+  }
+
+  @media print {
+    html, body {
+      width: 100cm;
+      height: 75cm;
+      margin: 0;
+      padding: 0;
+      background: transparent;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .toolbar {
+      display: none !important;
+    }
+
+    .sheet {
+      width: 100cm;
+      height: 75cm;
+      margin: 0;
+      padding: 0;
+      box-shadow: none;
+      background: transparent;
+    }
+
+    svg {
+      width: 100cm;
+      height: 75cm;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="toolbar">
+  <button onclick="window.print()">PDF / Print</button>
+  <button class="secondary" onclick="downloadSVG()">Descarcă SVG vectorial</button>
+  <button class="secondary" onclick="downloadPNG300()">Descarcă PNG 300 DPI</button>
+</div>
+
+<div class="sheet">
+<svg id="poster" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10000 7500" width="100cm" height="75cm" role="img" aria-label="Lumea prin filme poster">
+  <style>
+    .ink { fill: #173f28; stroke: #173f28; }
+    .stroke {
+      fill: none;
+      stroke: #173f28;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .title {
+      font-family: Impact, Haettenschweiler, "Arial Narrow", Arial, sans-serif;
+      font-size: 620px;
+      letter-spacing: 60px;
+      fill: #173f28;
+    }
+
+    .subtitle {
+      font-family: "Arial Narrow", Arial, sans-serif;
+      font-size: 150px;
+      font-weight: 900;
+      letter-spacing: 28px;
+      fill: #173f28;
+    }
+
+    .country-label {
+      font-family: "Arial Narrow", Arial, sans-serif;
+      font-weight: 900;
+      font-size: 34px;
+      letter-spacing: 0.5px;
+      fill: #173f28;
+    }
+
+    .country-number {
+      font-family: "Arial Narrow", Arial, sans-serif;
+      font-weight: 900;
+      font-size: 31px;
+      fill: #173f28;
+    }
+
+    .small-text {
+      font-family: "Arial Narrow", Arial, sans-serif;
+      font-weight: 900;
+      fill: #173f28;
+    }
+
+    .movieBox {
+      fill: none;
+      stroke: #173f28;
+      stroke-width: 9;
+    }
+
+    .thin { stroke-width: 9; }
+    .medium { stroke-width: 14; }
+    .heavy { stroke-width: 22; }
+  </style>
+
+  <!-- fundal poster -->
+  <rect x="0" y="0" width="10000" height="7500" fill="#edf3d4"/>
+
+  <!-- chenar -->
+  <rect x="65" y="65" width="9870" height="7370" class="stroke heavy"/>
+  <rect x="120" y="120" width="9760" height="7260" class="stroke thin"/>
+
+  <!-- clapperboard stânga sus -->
+  <g transform="translate(230,225)" class="stroke medium">
+    <rect x="0" y="220" width="620" height="430" rx="10"/>
+    <path d="M0 220 L620 220"/>
+    <path d="M40 290 H580"/>
+    <path d="M40 380 H580"/>
+    <path d="M40 470 H580"/>
+    <path d="M40 560 H580"/>
+    <path d="M145 220 V650"/>
+    <path d="M310 220 V650"/>
+    <path d="M475 220 V650"/>
+    <path d="M20 185 L590 0 L635 130 L65 315 Z" fill="none"/>
+    <path d="M115 155 L205 60"/>
+    <path d="M265 105 L355 20"/>
+    <path d="M420 55 L505 -25"/>
+  </g>
+
+  <text x="1030" y="370" class="small-text" font-size="88">FIECARE FILM</text>
+  <text x="1030" y="530" class="small-text" font-size="88">O CĂLĂTORIE</text>
+  <text x="1030" y="690" class="small-text" font-size="88">FIECARE ȚARĂ</text>
+  <text x="1030" y="850" class="small-text" font-size="88">O POVESTE.</text>
+
+  <!-- titlu -->
+  <text x="5000" y="690" text-anchor="middle" class="title">LUMEA PRIN FILME</text>
+  <text x="5000" y="940" text-anchor="middle" class="subtitle">★ 197 ȚĂRI. 197 POVEȘTI. O SINGURĂ PASIUNE. ★</text>
+
+  <!-- film reel dreapta sus -->
+  <g transform="translate(8000,170)" class="stroke medium">
+    <circle cx="480" cy="250" r="250"/>
+    <circle cx="480" cy="250" r="70"/>
+    <circle cx="480" cy="95" r="55"/>
+    <circle cx="630" cy="250" r="55"/>
+    <circle cx="480" cy="405" r="55"/>
+    <circle cx="330" cy="250" r="55"/>
+    <path d="M690 260 C950 150 1200 180 1530 270"/>
+    <path d="M690 360 C950 250 1200 280 1530 370"/>
+    <path d="M760 260 L760 360"/>
+    <path d="M900 220 L900 320"/>
+    <path d="M1040 195 L1040 295"/>
+    <path d="M1180 200 L1180 300"/>
+    <path d="M1320 235 L1320 335"/>
+    <path d="M1460 270 L1460 370"/>
+  </g>
+
+  <!-- gridul țărilor este generat din JS aici -->
+  <g id="countryGrid"></g>
+
+  <!-- siglă jos stânga, refăcută pentru lizibilitate: text mare, orizontal, elemente simple -->
+  <g transform="translate(700,6710)">
+    <circle cx="0" cy="0" r="430" fill="none" stroke="#173f28" stroke-width="18"/>
+    <circle cx="0" cy="0" r="350" fill="none" stroke="#173f28" stroke-width="10"/>
+
+    <!-- text mare, ușor de citit -->
+    <text x="0" y="-285" text-anchor="middle" class="small-text" font-size="88" letter-spacing="5">DESCOPERĂ</text>
+    <text x="0" y="345" text-anchor="middle" class="small-text" font-size="88" letter-spacing="5">URMĂREȘTE</text>
+
+    <!-- globe simplificat -->
+    <g class="stroke medium">
+      <circle cx="0" cy="-45" r="170"/>
+      <path d="M-170 -45 H170"/>
+      <path d="M-145 -115 C-50 -80 50 -80 145 -115"/>
+      <path d="M-145 25 C-50 -10 50 -10 145 25"/>
+      <path d="M0 -215 C-58 -165 -88 -105 -88 -45 C-88 15 -58 75 0 125"/>
+      <path d="M0 -215 C58 -165 88 -105 88 -45 C88 15 58 75 0 125"/>
+    </g>
+
+    <!-- continente stilizate, puține și groase, ca să nu se piardă la print -->
+    <path d="M-95 -100 C-55 -150 20 -145 35 -95 C-5 -105 -35 -80 -24 -35 C-78 -10 -122 -45 -95 -100Z" fill="#173f28"/>
+    <path d="M55 -140 C125 -105 142 -48 92 -12 C95 -72 54 -82 55 -140Z" fill="#173f28"/>
+    <path d="M-112 22 C-70 58 -20 82 48 66 C18 125 -70 130 -112 22Z" fill="#173f28"/>
+
+    <!-- bandă centrală pentru textul-cheie -->
+    <rect x="-285" y="135" width="570" height="120" rx="28" fill="#edf3d4" stroke="#173f28" stroke-width="12"/>
+    <text x="0" y="222" text-anchor="middle" class="small-text" font-size="96" letter-spacing="5">ÎNȚELEGE</text>
+
+    <text x="-255" y="60" text-anchor="middle" class="small-text" font-size="100">★</text>
+    <text x="255" y="60" text-anchor="middle" class="small-text" font-size="100">★</text>
+  </g>
+
+  <!-- legendă jos dreapta, text reașezat ca să nu iasă din casetă -->
+  <g transform="translate(7780,6240)">
+    <rect x="0" y="0" width="1900" height="820" rx="80" fill="none" stroke="#173f28" stroke-width="12"/>
+
+    <rect x="130" y="105" width="160" height="240" class="movieBox"/>
+    <text x="370" y="155" class="small-text" font-size="64">LIPEȘTE POSTERUL MINI</text>
+    <text x="370" y="255" class="small-text" font-size="64">AL FILMULUI DIN ȚARA</text>
+    <text x="370" y="355" class="small-text" font-size="64">RESPECTIVĂ.</text>
+
+    <g transform="translate(130,410)" class="stroke medium">
+      <rect x="0" y="85" width="175" height="125" rx="6"/>
+      <path d="M0 85 H175"/>
+      <path d="M8 55 L166 0 L184 58 L26 112 Z"/>
+      <path d="M38 45 L65 25"/>
+      <path d="M92 25 L118 5"/>
+      <path d="M145 10 L166 -5"/>
+    </g>
+    <text x="370" y="500" class="small-text" font-size="64">UN SINGUR FILM PENTRU</text>
+    <text x="370" y="600" class="small-text" font-size="64">FIECARE ȚARĂ.</text>
+
+    <text x="210" y="750" text-anchor="middle" class="small-text" font-size="185">☆</text>
+    <text x="370" y="710" class="small-text" font-size="64">DESCOPERĂ LUMEA PRIN</text>
+    <text x="370" y="795" class="small-text" font-size="64">POVEȘTI CARE MERITĂ SPUSE.</text>
+  </g>
+
+  <!-- motto jos -->
+  <text x="5000" y="7280" text-anchor="middle" class="subtitle" font-size="105" letter-spacing="34">★  UN FILM TE POATE DUCE ORIUNDE.  ★</text>
+</svg>
+</div>
+
+<script>
+const countries = [
+  "Afghanistan",
+  "Albania",
+  "Algeria",
+  "Andorra",
+  "Angola",
+  "Antigua and Barbuda",
+  "Argentina",
+  "Armenia",
+  "Australia",
+  "Austria",
+  "Azerbaijan",
+  "Bahamas",
+  "Bahrain",
+  "Bangladesh",
+  "Barbados",
+  "Belarus",
+  "Belgium",
+  "Belize",
+  "Benin",
+  "Bhutan",
+  "Bolivia",
+  "Bosnia and Herzegovina",
+  "Botswana",
+  "Brazil",
+  "Brunei",
+  "Bulgaria",
+  "Burkina Faso",
+  "Burundi",
+  "Cabo Verde",
+  "Cambodia",
+  "Cameroon",
+  "Canada",
+  "Central African Republic",
+  "Chad",
+  "Chile",
+  "China",
+  "Colombia",
+  "Comoros",
+  "Congo",
+  "Costa Rica",
+  "Côte d'Ivoire",
+  "Croatia",
+  "Cuba",
+  "Cyprus",
+  "Czechia",
+  "Democratic Republic of the Congo",
+  "Denmark",
+  "Djibouti",
+  "Dominica",
+  "Dominican Republic",
+  "Ecuador",
+  "Egypt",
+  "El Salvador",
+  "Equatorial Guinea",
+  "Eritrea",
+  "Estonia",
+  "Eswatini",
+  "Ethiopia",
+  "Fiji",
+  "Finland",
+  "France",
+  "Gabon",
+  "Gambia",
+  "Georgia",
+  "Germany",
+  "Ghana",
+  "Greece",
+  "Grenada",
+  "Guatemala",
+  "Guinea",
+  "Guinea-Bissau",
+  "Guyana",
+  "Haiti",
+  "Honduras",
+  "Hungary",
+  "Iceland",
+  "India",
+  "Indonesia",
+  "Iran",
+  "Iraq",
+  "Ireland",
+  "Israel",
+  "Italy",
+  "Jamaica",
+  "Japan",
+  "Jordan",
+  "Kazakhstan",
+  "Kenya",
+  "Kiribati",
+  "Kuwait",
+  "Kyrgyzstan",
+  "Laos",
+  "Latvia",
+  "Lebanon",
+  "Lesotho",
+  "Liberia",
+  "Libya",
+  "Liechtenstein",
+  "Lithuania",
+  "Luxembourg",
+  "Madagascar",
+  "Malawi",
+  "Malaysia",
+  "Maldives",
+  "Mali",
+  "Malta",
+  "Marshall Islands",
+  "Mauritania",
+  "Mauritius",
+  "Mexico",
+  "Micronesia",
+  "Moldova",
+  "Monaco",
+  "Mongolia",
+  "Montenegro",
+  "Morocco",
+  "Mozambique",
+  "Myanmar",
+  "Namibia",
+  "Nauru",
+  "Nepal",
+  "Netherlands",
+  "New Zealand",
+  "Nicaragua",
+  "Niger",
+  "Nigeria",
+  "North Korea",
+  "North Macedonia",
+  "Norway",
+  "Oman",
+  "Pakistan",
+  "Palau",
+  "Panama",
+  "Papua New Guinea",
+  "Paraguay",
+  "Peru",
+  "Philippines",
+  "Poland",
+  "Portugal",
+  "Qatar",
+  "Romania",
+  "Russia",
+  "Rwanda",
+  "Saint Kitts and Nevis",
+  "Saint Lucia",
+  "Saint Vincent and the Grenadines",
+  "Samoa",
+  "San Marino",
+  "São Tomé and Príncipe",
+  "Saudi Arabia",
+  "Senegal",
+  "Serbia",
+  "Seychelles",
+  "Sierra Leone",
+  "Singapore",
+  "Slovakia",
+  "Slovenia",
+  "Solomon Islands",
+  "Somalia",
+  "South Africa",
+  "South Korea",
+  "South Sudan",
+  "Spain",
+  "Sri Lanka",
+  "Sudan",
+  "Suriname",
+  "Sweden",
+  "Switzerland",
+  "Syria",
+  "Tajikistan",
+  "Tanzania",
+  "Thailand",
+  "Timor-Leste",
+  "Togo",
+  "Tonga",
+  "Trinidad and Tobago",
+  "Tunisia",
+  "Turkey",
+  "Turkmenistan",
+  "Tuvalu",
+  "Uganda",
+  "Ukraine",
+  "United Arab Emirates",
+  "United Kingdom",
+  "United States",
+  "Uruguay",
+  "Uzbekistan",
+  "Vanuatu",
+  "Vatican City",
+  "Venezuela",
+  "Vietnam",
+  "Yemen",
+  "Zambia",
+  "Zimbabwe",
+  "Palestine",
+  "Kosovo",
+  "Taiwan"
+];
+
+const abbreviations = {
+  "Antigua and Barbuda": "Antigua & Barb.",
+  "Bosnia and Herzegovina": "Bosnia & Herz.",
+  "Central African Republic": "Cent. African Rep.",
+  "Democratic Republic of the Congo": "DR Congo",
+  "Dominican Republic": "Dominican Rep.",
+  "Equatorial Guinea": "Equat. Guinea",
+  "Guinea-Bissau": "Guinea-Bissau",
+  "Liechtenstein": "Liechtenstein",
+  "Marshall Islands": "Marshall Isl.",
+  "North Macedonia": "N. Macedonia",
+  "Papua New Guinea": "Papua N. Guinea",
+  "Saint Kitts and Nevis": "St Kitts & Nevis",
+  "Saint Vincent and the Grenadines": "St Vincent & Gren.",
+  "São Tomé and Príncipe": "São Tomé & Prínc.",
+  "Solomon Islands": "Solomon Isl.",
+  "South Africa": "South Africa",
+  "South Korea": "South Korea",
+  "South Sudan": "South Sudan",
+  "Trinidad and Tobago": "Trinidad & Tobago",
+  "United Arab Emirates": "U.A. Emirates",
+  "United Kingdom": "United Kingdom",
+  "United States": "United States",
+  "Vatican City": "Vatican City"
+};
+
+const NS = "http://www.w3.org/2000/svg";
+
+function E(tag, attrs = {}, parent = null) {
+  const el = document.createElementNS(NS, tag);
+  for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
+  if (parent) parent.appendChild(el);
+  return el;
+}
+
+function safeLabel(country) {
+  let label = abbreviations[country] || country;
+  label = label.toUpperCase();
+
+  // Ultima protecție: nu micșorează textul, ci taie elegant cu punct.
+  // Practic nu se activează la lista de mai sus, fiindcă numele lungi sunt deja abreviate.
+  if (label.length > 20) label = label.slice(0, 19).trim() + ".";
+  return label;
+}
+
+function renderCountries() {
+  const grid = document.getElementById("countryGrid");
+  grid.innerHTML = "";
+
+  const cols = 19;
+  const startX = 270;
+  const startY = 1120;
+  const colStep = 500;
+  const rowStep = 500;
+  const tileW = 455;
+
+  // Casete pentru mini-postere în format vertical 2:3.
+  // Exemplu: 270 × 405 unități SVG = raport exact 2:3.
+  const boxW = 270;
+  const boxH = 405;
+
+  const totalRows = Math.ceil(countries.length / cols);
+  const lastCount = countries.length % cols;
+  const lastRow = totalRows - 1;
+  const lastOffset = lastCount ? Math.floor((cols - lastCount) / 2) : 0;
+
+  countries.forEach((country, i) => {
+    const n = i + 1;
+    let row = Math.floor(i / cols);
+    let col = i % cols;
+
+    if (row === lastRow && lastCount !== 0) col += lastOffset;
+
+    const x = startX + col * colStep;
+    const y = startY + row * rowStep;
+    const boxX = x + (tileW - boxW) / 2;
+    const boxY = y;
+    const cx = x + tileW / 2;
+
+    const g = E("g", {}, grid);
+
+    E("rect", {
+      x: boxX,
+      y: boxY,
+      width: boxW,
+      height: boxH,
+      class: "movieBox"
+    }, g);
+
+    E("text", {
+      x: cx,
+      y: boxY + boxH + 43,
+      "text-anchor": "middle",
+      class: "country-label"
+    }, g).textContent = `${n}. ${safeLabel(country)}`;
+  });
+}
+
+renderCountries();
+
+function downloadSVG() {
+  const svg = document.getElementById("poster");
+  const clone = svg.cloneNode(true);
+  clone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+  clone.setAttribute("width", "100cm");
+  clone.setAttribute("height", "75cm");
+
+  const source = `<?xml version="1.0" encoding="UTF-8"?>\n` + new XMLSerializer().serializeToString(clone);
+  const blob = new Blob([source], { type: "image/svg+xml;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "lumea-prin-filme-100x75cm-casete-2x3.svg";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+
+  URL.revokeObjectURL(url);
+}
+
+function downloadPNG300() {
+  const svg = document.getElementById("poster");
+  const clone = svg.cloneNode(true);
+  clone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+  clone.setAttribute("width", "11811");
+  clone.setAttribute("height", "8858");
+
+  const source = new XMLSerializer().serializeToString(clone);
+  const blob = new Blob([source], { type: "image/svg+xml;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+
+  const img = new Image();
+
+  img.onload = function () {
+    const canvas = document.createElement("canvas");
+    canvas.width = 11811;
+    canvas.height = 8858;
+
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#edf3d4";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+    URL.revokeObjectURL(url);
+
+    canvas.toBlob(function (pngBlob) {
+      const pngUrl = URL.createObjectURL(pngBlob);
+      const a = document.createElement("a");
+      a.href = pngUrl;
+      a.download = "lumea-prin-filme-100x75cm-casete-2x3-300dpi.png";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(pngUrl);
+    }, "image/png");
+  };
+
+  img.onerror = function () {
+    URL.revokeObjectURL(url);
+    alert("Exportul PNG nu a reușit. Folosește varianta SVG sau PDF, care este oricum mai bună pentru print.");
+  };
+
+  img.src = url;
+}
+</script>
+
+</body>
+</html>

@@ -5,35 +5,88 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Marin Gabriel</title>
   <link rel="stylesheet" href="style.css">
-  
   <link rel="icon" type="image/png" href="/favicon.png?v=3">
-  
-<link rel="icon" type="image/png" href="./favicon.png">
-  
+  <link rel="icon" type="image/png" href="./favicon.png">
+
+  <style>
+    .projects-preview {
+      width: min(1100px, calc(100% - 32px));
+      margin: 42px auto;
+    }
+
+    .projects-preview h2 {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .project-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(0,0,0,.10);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.08);
+      transition: .18s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px rgba(0,0,0,.12);
+    }
+
+    .project-kicker {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      opacity: .75;
+    }
+
+    .project-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.45rem;
+    }
+
+    .project-card p {
+      margin: 0;
+      line-height: 1.6;
+      opacity: .85;
+    }
+
+    @media (max-width: 760px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
-
-<body>
-
-<nav class="menu">
-<a href="index.html">Acasă</a>
-  <a href="psihologie.html">Psihologie</a>
-  <a href="meditatii.html">Meditații</a>
-  <a href="intrebari.html">Întrebări</a>
-<a href="contact.html" target="_blank">Contact</a>
-</nav>
-
-
 
 <body class="home-page">
 
+<nav class="menu">
+  <a href="index.html">Acasă</a>
+  <a href="psihologie.html">Psihologie</a>
+  <a href="meditatii.html">Meditații</a>
+  <a href="intrebari.html">Întrebări</a>
+  <a href="contact.html" target="_blank">Contact</a>
+</nav>
+
 <section class="intro">
   <div class="profile-card">
-<img src="poza.jpg" alt="Marin Gabriel" class="profile-photo">
-
+    <img src="poza.jpg" alt="Marin Gabriel" class="profile-photo">
     <h2>Marin Gabriel</h2>
     <p>Profesor și psiholog clinician</p>
   </div>
- 
 
   <p>
     Fie că lucrăm pentru echilibrul tău sau pentru examene, adaptăm fiecare sesiune astfel
@@ -41,99 +94,75 @@
   </p>
 </section>
 
+<section class="services">
+  <h2>Servicii cu care te pot ajuta</h2>
 
-
-
-
-  <section class="services">
-    <h2>Servicii cu care te pot ajuta</h2>
-
-    <div class="services-grid">
-      <div class="service">
-<h3><a href="psihologie.html">Psihologie</a></h3>
-        <p>
-          Consiliere psihologică, evaluare și sprijin în gestionarea dificultăților personale sau profesionale
-        </p>
-      </div>
-
-      <div class="service">
-<h3><a href="meditatii.html">Meditații</a></h3>
-        <p>
-          Pregătire la istorie pentru elevi, într-un mod clar, structurat și potrivit nivelului fiecăruia
-        </p>
-      </div>
+  <div class="services-grid">
+    <div class="service">
+      <h3><a href="psihologie.html">Psihologie</a></h3>
+      <p>
+        Consiliere psihologică, evaluare și sprijin în gestionarea dificultăților personale sau profesionale.
+      </p>
     </div>
-  </section>
 
-  <section class="about-preview">
-    <h2>Despre mine</h2>
+    <div class="service">
+      <h3><a href="meditatii.html">Meditații</a></h3>
+      <p>
+        Pregătire la istorie pentru elevi, într-un mod clar, structurat și potrivit nivelului fiecăruia.
+      </p>
+    </div>
+  </div>
+</section>
 
-    <p>
-      Viziunea mea este modelată de o experiență hibridă, la intersecția dintre studiul minții și cel al istoriei. După ce am absolvit Istoria în 2020 și Psihologia în 2023 la Universitatea din București, am ales să aprofundez studiile prin programe de master în istoria mentalităților și în psihologie clinică.
-    </p>
+<section class="projects-preview" id="proiecte">
+  <h2>Proiecte speciale</h2>
 
-    <p>
-      Această dublă specializare este completată de activitatea mea de profesor de istorie, un rol care mi-a șlefuit capacitatea de a asculta activ și de a structura informația pe înțelesul tuturor. Experiența de la catedră mă ajută astăzi, în cabinet, să traduc conceptele psihologice complexe în soluții clare și să fiu atent la nevoile unice ale fiecărei persoane.
-    </p>
-  </section>
+  <div class="projects-grid">
+    <a class="project-card" href="5.%20pagini%20adaugate%20dupa%20cifru/lumea-prin-filme-197.html" target="_blank" rel="noopener">
+      <span class="project-kicker">Poster interactiv</span>
+      <h3>Lumea prin filme</h3>
+      <p>197 de țări, 197 de povești, un poster 100 × 75 cm pregătit pentru print, SVG și PNG.</p>
+    </a>
+
+    <a class="project-card" href="5.%20pagini%20adaugate%20dupa%20cifru/lumea-prin-regizori-197.html" target="_blank" rel="noopener">
+      <span class="project-kicker">Poster interactiv</span>
+      <h3>Lumea prin regizori</h3>
+      <p>197 de regizori, 197 de viziuni, într-un poster mare, pregătit pentru export și printare.</p>
+    </a>
+  </div>
+</section>
+
+<section class="about-preview">
+  <h2>Despre mine</h2>
+
+  <p>
+    Viziunea mea este modelată de o experiență hibridă, la intersecția dintre studiul minții și cel al istoriei. După ce am absolvit Istoria în 2020 și Psihologia în 2023 la Universitatea din București, am ales să aprofundez studiile prin programe de master în istoria mentalităților și în psihologie clinică.
+  </p>
+
+  <p>
+    Această dublă specializare este completată de activitatea mea de profesor de istorie, un rol care mi-a șlefuit capacitatea de a asculta activ și de a structura informația pe înțelesul tuturor. Experiența de la catedră mă ajută astăzi, în cabinet, să traduc conceptele psihologice complexe în soluții clare și să fiu atent la nevoile unice ale fiecărei persoane.
+  </p>
+</section>
 
 <footer class="footer">
-
   <div class="footer-top">
-    
     <div class="footer-left">
       <h2>Marin Gabriel</h2>
       <p>Profesor și psiholog clinician</p>
       <p>București, România</p>
     </div>
 
- <div class="footer-right">
-  <p><strong>Email:</strong> 
-    <a href="mailto:cabinet@maringabriel.ro">
-      cabinet@maringabriel.ro
-    </a>
-  </p>
-
-  <p><strong>WhatsApp:</strong> 
-    <a href="https://wa.me/40728115190" target="_blank">
-      0728 115 190
-    </a>
-  </p>
-
-
-  
-  
-  <p>
-<a href="cv.html" target="_blank">
-  CV Europass
-</a>
-</p>
-
-<p>
-  <a href="https://www.linkedin.com/in/gabriel-marin-2090ab246" target="_blank">
-    LinkedIn
-  </a>
-</p>
-
-
-
-
-
-  
-  
-  
-  
-  
-  
-  
-</div>
-
+    <div class="footer-right">
+      <p><strong>Email:</strong> <a href="mailto:cabinet@maringabriel.ro">cabinet@maringabriel.ro</a></p>
+      <p><strong>WhatsApp:</strong> <a href="https://wa.me/40728115190" target="_blank">0728 115 190</a></p>
+      <p><a href="cv.html" target="_blank">CV Europass</a></p>
+      <p><a href="https://www.linkedin.com/in/gabriel-marin-2090ab246" target="_blank">LinkedIn</a></p>
+    </div>
   </div>
 
   <div class="footer-bottom">
     <p>© 2026 Marin Gabriel. Toate drepturile rezervate.</p>
   </div>
-
 </footer>
 
 </body>

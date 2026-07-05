@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chestionar CERQ - adulți</title>
+  <style>
+
+:root{
+  --bg:#f6f3ef;--panel:#fffaf4;--card:#ffffff;--ink:#202020;--muted:#6f675d;
+  --line:#e6ded4;--accent:#7a4e2d;--accent-2:#b98250;--accent-soft:#f1e3d4;
+  --good:#255f3f;--warn:#8a5a00;--danger:#9b2c2c;--shadow:0 18px 50px rgba(74,52,33,.12);--radius:22px;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);background:radial-gradient(circle at top left,rgba(184,130,80,.14),transparent 36rem),linear-gradient(180deg,#fbf8f3 0%,var(--bg) 100%);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.58}
+a{color:inherit}.page{width:min(1120px,calc(100% - 36px));margin:0 auto;padding:34px 0 70px}
+.hero{background:linear-gradient(135deg,rgba(255,250,244,.92),rgba(241,227,212,.76));border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);padding:34px;position:relative;overflow:hidden}.hero::after{content:"";position:absolute;width:360px;height:360px;border-radius:50%;right:-140px;top:-190px;background:rgba(122,78,45,.08)}
+.kicker{color:var(--accent);font-size:.82rem;font-weight:850;letter-spacing:.14em;text-transform:uppercase;margin:0 0 8px}h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,5vw,4.4rem);line-height:.98;letter-spacing:-.05em;margin:0 0 16px}h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.35rem,2.2vw,2rem);margin:0 0 12px}h3{margin:0 0 8px;font-size:1.05rem}p{margin:0 0 12px}.muted{color:var(--muted)}.section{margin-top:22px}.grid{display:grid;gap:18px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(74,52,33,.07);padding:22px}.notice{background:#fff7ec;border:1px solid #ead8c4;border-left:6px solid var(--accent-2);padding:16px 18px;border-radius:18px;color:#46382d}.danger-note{background:#fff6f5;border-color:#efcbc6;border-left-color:var(--danger)}
+label{font-weight:750}input[type="text"],input[type="number"],input[type="date"],input[type="password"],textarea,select{width:100%;border:1px solid var(--line);border-radius:15px;padding:13px 14px;background:#fff;font:inherit;outline:none;transition:.18s ease}input:focus,textarea:focus,select:focus{border-color:var(--accent-2);box-shadow:0 0 0 4px rgba(184,130,80,.16)}textarea{min-height:92px;resize:vertical}
+.btn{border:0;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:12px 18px;background:var(--accent);color:white;font-weight:850;cursor:pointer;text-decoration:none;transition:.18s ease;box-shadow:0 10px 18px rgba(122,78,45,.16)}.btn:hover{transform:translateY(-1px);filter:brightness(1.03)}.btn.secondary{background:#fff;color:var(--accent);border:1px solid var(--line);box-shadow:none}.btn.soft{background:var(--accent-soft);color:#5b3920;box-shadow:none}.btn.danger{background:#9b2c2c;color:#fff}.btn:disabled{opacity:.5;cursor:not-allowed}.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.hidden{display:none!important}small,.small{font-size:.9rem;color:var(--muted)}.tiny{font-size:.82rem;color:var(--muted)}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:var(--accent-soft);color:#5b3920;font-size:.84rem;font-weight:850}.pill.green{background:#edf6f1;color:#255f3f}.pill.yellow{background:#fff4db;color:#76510b}.pill.red{background:#f7e6e3;color:#8a2b21}.pill.gray{background:#f1ede8;color:#5d554e}.pill.blue{background:#eef2ff;color:#344071}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px;background:#fff}table{width:100%;border-collapse:collapse;min-width:880px}th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#fbf4ec;color:#563820;font-size:.84rem;text-transform:uppercase;letter-spacing:.055em}tr:last-child td{border-bottom:0}.bar{height:10px;border-radius:999px;background:#eadfd3;overflow:hidden}.bar span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent-2))}.big-number{font-family:Georgia,serif;font-size:2.1rem;line-height:1;color:var(--accent);white-space:nowrap}.report-text{font-family:Georgia,"Times New Roman",serif;font-size:1.05rem;line-height:1.72;color:#2b2723}.report-text p{text-align:justify}.report-box{background:#fffdf9;border:1px solid var(--line);border-radius:18px;padding:18px}
+@media(max-width:830px){.page{width:min(100% - 22px,1120px);padding-top:18px}.hero{padding:24px;border-radius:24px}.grid.two,.grid.three,.grid.four{grid-template-columns:1fr}table{min-width:760px}}
+@media print{body{background:white}.no-print,.actions,.progress-shell,.auth-screen,.pdf-exclude{display:none!important}.page{width:100%;padding:0}.hero,.card{box-shadow:none}.section{break-inside:avoid}.table-wrap{overflow:visible}table{min-width:0;font-size:.82rem}th,td{padding:7px}.report-text{font-size:1rem}}
+
+.progress-shell{position:sticky;top:0;z-index:20;padding:10px 0;backdrop-filter:blur(18px)}.progress-card{background:rgba(255,250,244,.88);border:1px solid var(--line);border-radius:999px;padding:8px 12px;display:flex;align-items:center;gap:12px;box-shadow:0 8px 24px rgba(74,52,33,.08)}.progress-bar{height:10px;flex:1;border-radius:999px;background:#eadfd3;overflow:hidden}.progress-bar span{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:999px}
+.client-fields{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:14px}.instruction-card{background:#fff8ef;padding:20px 22px}.instruction-text{text-align:justify;text-justify:inter-word;font-size:1.03rem;line-height:1.76;letter-spacing:.004em;color:#3f342b}.instruction-text p{margin:0 0 10px}.scale-response{text-align:justify;text-justify:inter-word;margin-top:14px;padding:12px 14px;border:1px solid #ead8c4;border-radius:14px;background:rgba(255,255,255,.68);font-size:.98rem;line-height:1.68}
+.item-card{display:grid;grid-template-columns:42px minmax(0,1fr) auto;gap:14px;align-items:center;padding:18px;border:1px solid var(--line);border-radius:20px;background:#fff}.item-no{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--accent-soft);color:#5b3920;font-weight:900}.item-text{font-size:1rem}.likert{display:grid;grid-template-columns:repeat(5,44px);gap:8px}.likert label{position:relative;display:grid;place-items:center;height:44px;border:1px solid var(--line);border-radius:14px;cursor:pointer;background:#fffaf5;font-weight:900}.likert input{position:absolute;opacity:0}.likert label:has(input:checked){border-color:var(--accent);background:var(--accent);color:#fff}.scale-head{display:grid;grid-template-columns:42px minmax(0,1fr) auto;gap:14px;margin:0 0 8px;color:var(--muted);font-size:.84rem;font-weight:850}.biblio-card{background:#fffdf9}.biblio-card ol{margin:8px 0 0 20px;padding:0}.biblio-card li{margin:0 0 8px;color:#44372c}
+@media(max-width:830px){.client-fields{grid-template-columns:1fr}.item-card{grid-template-columns:38px minmax(0,1fr);align-items:start}.likert{grid-column:1 / -1;grid-template-columns:repeat(5,1fr)}.scale-head{display:none}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <p class="kicker">Cabinet individual de psihologie</p>
+      <h1>Chestionarul CERQ – adulți</h1>
+      <p class="muted">Formular digital pentru evaluarea strategiilor cognitive de reglare emoțională la adulți, după evenimente negative sau stresante.</p>
+    </section>
+
+    <div class="progress-shell no-print">
+      <div class="progress-card">
+        <strong id="progressText">0 / 36 răspunsuri</strong>
+        <div class="progress-bar" aria-hidden="true"><span id="progressBar"></span></div>
+        <small id="progressPercent">0%</small>
+      </div>
+    </div>
+
+
+    <section class="section card">
+      <h2>Date de identificare</h2>
+      <p class="muted">Se recomandă folosirea unui cod de client/pacient, nu a numelui complet, dacă formularul este completat online.</p>
+      <div class="client-fields">
+        <div><label for="clientCode">Cod client / inițiale *</label><input id="clientCode" type="text" required placeholder="Ex.: CERQ-001 sau A.B." /></div>
+        <div><label for="clientAge">Vârsta</label><input id="clientAge" type="number" min="13" max="100" placeholder="opțional" /></div>
+        <div><label for="testDate">Data aplicării</label><input id="testDate" type="date" /></div>
+      </div>
+      <div class="section"><label for="contextNote">Observații / eveniment avut în vedere</label><textarea id="contextNote" placeholder="Ex.: evaluare inițială, eveniment stresant recent, retestare etc."></textarea></div>
+    </section>
+
+    <section class="section notice instruction-card">
+      <h3>Instructaj</h3>
+      <div id="instruction" class="instruction-text"></div>
+      <p class="scale-response"><strong>Scala de răspuns:</strong> 1 = aproape niciodată; 2 = rar; 3 = uneori; 4 = des; 5 = aproape întotdeauna.</p>
+    </section>
+
+    <form id="cerqForm" class="section">
+      <div class="scale-head" aria-hidden="true"><span>Nr.</span><span>Item</span><span>Răspuns</span></div>
+      <div id="itemsContainer" class="grid"></div>
+      <section class="section card">
+        <label style="display:flex; gap:10px; align-items:flex-start; font-weight:650;">
+          <input id="consent" type="checkbox" required style="margin-top:5px;" />
+          <span>Confirm că am răspuns la itemi cât mai sincer și înțeleg că rezultatele trebuie interpretate în context profesional, de către psiholog.</span>
+        </label>
+        <div class="actions section">
+          <button class="btn" type="submit">Finalizează și descarcă răspunsurile</button>
+          <button class="btn secondary" type="button" id="saveDraftBtn">Salvează progresul</button>
+          <button class="btn secondary" type="button" id="restoreDraftBtn">Reia progresul salvat</button>
+          <button class="btn secondary" type="reset">Resetează formularul</button>
+        </div>
+      </section>
+    </form>
+
+    <section id="successPanel" class="section card hidden">
+      <h2>Răspunsurile au fost descărcate</h2>
+      <p class="muted">Formularul a fost finalizat, iar fișierul JSON cu răspunsurile a fost descărcat pe dispozitivul dumneavoastră.</p>
+      <div class="notice" style="margin:14px 0;"><strong>Următorul pas:</strong><br>Trimite documentul descărcat la adresa <strong>cabinet@maringabriel.ro</strong> pentru a primi rezultatele chestionarului completat.</div>
+      <div class="actions"><button class="btn secondary" type="button" id="downloadLastBtn">Descarcă din nou fișierul JSON</button><a class="btn soft" href="mailto:cabinet@maringabriel.ro?subject=R%C4%83spunsuri%20Chestionar%20CERQ&body=Bun%C4%83%20ziua%2C%0A%0AV%C4%83%20trimit%20ata%C8%99at%20fi%C8%99ierul%20JSON%20desc%C4%83rcat%20dup%C4%83%20completarea%20Chestionarului%20CERQ.%0A%0AMul%C8%9Bumesc.">Deschide email către cabinet</a></div>
+    </section>
+
+    <section class="section card biblio-card">
+      <h2>Bibliografie relevantă</h2>
+      <ol>
+        <li>Perțe, A., &amp; Miclea, M. (2011). <em>The standardization of the Cognitive Emotional Regulation Questionnaire (CERQ) on Romanian population</em>. Cognition, Brain, Behavior, 15(1), 111–130.</li>
+        <li>Garnefski, N., Kraaij, V., &amp; Spinhoven, P. (2002). <em>Manual for the use of the Cognitive Emotion Regulation Questionnaire</em>.</li>
+      </ol>
+      <small>Notă: rezultatele chestionarului se interpretează în context profesional. Instrumentul descrie strategii cognitive de reglare emoțională, nu stabilește un diagnostic clinic.</small>
+    </section>
+  </main>
+<script>
+const ITEMS = [
+  {
+    "nr": 1,
+    "text": "Simt că eu sunt de vină pentru ceea ce s-a întâmplat."
+  },
+  {
+    "nr": 2,
+    "text": "Mă gândesc că trebuie să accept ce s-a întâmplat."
+  },
+  {
+    "nr": 3,
+    "text": "Adesea, mă gândesc la ceea ce simt față de ce mi s-a întâmplat."
+  },
+  {
+    "nr": 4,
+    "text": "Mă gândesc la lucruri mai frumoase decât ceea ce mi s-a întâmplat."
+  },
+  {
+    "nr": 5,
+    "text": "Mă gândesc la ce ar fi cel mai bine să fac."
+  },
+  {
+    "nr": 6,
+    "text": "Mă gândesc că pot învăța ceva din situația respectivă."
+  },
+  {
+    "nr": 7,
+    "text": "Mă gândesc că totul putea fi mult mai rău."
+  },
+  {
+    "nr": 8,
+    "text": "Adesea, mă gândesc că ceea ce mi s-a întâmplat este mult mai rău decât ceea ce li s-a întâmplat altora."
+  },
+  {
+    "nr": 9,
+    "text": "Cred că alții sunt de vină pentru ceea ce s-a întâmplat."
+  },
+  {
+    "nr": 10,
+    "text": "Simt că eu sunt cel/cea care e responsabil(ă) pentru ceea ce s-a întâmplat."
+  },
+  {
+    "nr": 11,
+    "text": "Mă gândesc că trebuie să accept situația."
+  },
+  {
+    "nr": 12,
+    "text": "Mă preocupă ce gândesc și ce simt legat de ceea ce mi s-a întâmplat."
+  },
+  {
+    "nr": 13,
+    "text": "Mă gândesc la lucruri plăcute care nu au nicio legătură cu situația respectivă."
+  },
+  {
+    "nr": 14,
+    "text": "Mă gândesc la cum pot face față cel mai bine situației."
+  },
+  {
+    "nr": 15,
+    "text": "Mă gândesc că pot deveni un om mai puternic ca urmare a ceea ce s-a întâmplat."
+  },
+  {
+    "nr": 16,
+    "text": "Mă gândesc că alți oameni trec prin experiențe mult mai rele."
+  },
+  {
+    "nr": 17,
+    "text": "Mă gândesc în continuu la cât de groaznic e ceea ce mi s-a întâmplat."
+  },
+  {
+    "nr": 18,
+    "text": "Consider că alții sunt responsabili pentru ceea ce s-a întâmplat."
+  },
+  {
+    "nr": 19,
+    "text": "Mă gândesc la ceea ce am greșit eu în această situație."
+  },
+  {
+    "nr": 20,
+    "text": "Mă gândesc că nu pot schimba nimic legat de ceea ce mi s-a întâmplat."
+  },
+  {
+    "nr": 21,
+    "text": "Vreau să înțeleg de ce simt ceea ce simt în legătură cu ceea ce mi s-a întâmplat."
+  },
+  {
+    "nr": 22,
+    "text": "Mă gândesc la ceva frumos în loc să mă gândesc la ceea ce s-a întâmplat."
+  },
+  {
+    "nr": 23,
+    "text": "Mă gândesc cum să schimb situația."
+  },
+  {
+    "nr": 24,
+    "text": "Mă gândesc că situația are și părți bune."
+  },
+  {
+    "nr": 25,
+    "text": "Mă gândesc că nu a fost chiar atât de rău în comparație cu alte lucruri."
+  },
+  {
+    "nr": 26,
+    "text": "Adesea, mă gândesc că ceea ce mi s-a întâmplat e cel mai rău lucru care i se poate întâmpla cuiva."
+  },
+  {
+    "nr": 27,
+    "text": "Mă gândesc la greșelile făcute de ceilalți în situația respectivă."
+  },
+  {
+    "nr": 28,
+    "text": "Mă gândesc că, de fapt, eu sunt de vină pentru ceea ce s-a întâmplat."
+  },
+  {
+    "nr": 29,
+    "text": "Mă gândesc că trebuie să învăț să trăiesc cu asta."
+  },
+  {
+    "nr": 30,
+    "text": "Mă gândesc mult la sentimentele pe care mi le-a declanșat situația."
+  },
+  {
+    "nr": 31,
+    "text": "Mă gândesc la experiențe plăcute."
+  },
+  {
+    "nr": 32,
+    "text": "Mă gândesc la un plan pentru ce ar fi cel mai bine să fac."
+  },
+  {
+    "nr": 33,
+    "text": "Caut părțile bune ale situației."
+  },
+  {
+    "nr": 34,
+    "text": "Îmi spun că sunt și lucruri mai rele în viață."
+  },
+  {
+    "nr": 35,
+    "text": "Mă gândesc mereu la cât de groaznică a fost situația."
+  },
+  {
+    "nr": 36,
+    "text": "Consider că, de fapt, alții sunt de vină pentru ceea ce s-a întâmplat."
+  }
+];
+const SCALES = [
+  {
+    "id": "auto_invinovatire",
+    "name": "Auto-învinovățire",
+    "items": [
+      1,
+      10,
+      19,
+      28
+    ],
+    "short": "tendința de a atribui propria vină pentru evenimentul negativ",
+    "kind": "vulnerabilitate"
+  },
+  {
+    "id": "acceptare",
+    "name": "Acceptare",
+    "items": [
+      2,
+      11,
+      20,
+      29
+    ],
+    "short": "recunoașterea faptului că evenimentul s-a produs și încercarea de a trăi cu realitatea acestuia",
+    "kind": "contextual"
+  },
+  {
+    "id": "ruminatie",
+    "name": "Ruminație",
+    "items": [
+      3,
+      12,
+      21,
+      30
+    ],
+    "short": "revenirea repetată asupra sentimentelor și gândurilor legate de eveniment",
+    "kind": "vulnerabilitate"
+  },
+  {
+    "id": "refocalizare_pozitiva",
+    "name": "Refocalizare pozitivă",
+    "items": [
+      4,
+      13,
+      22,
+      31
+    ],
+    "short": "orientarea atenției către lucruri plăcute sau neutre, pentru reducerea încărcării emoționale",
+    "kind": "resursa"
+  },
+  {
+    "id": "refocalizare_planificare",
+    "name": "Refocalizare pe planificare",
+    "items": [
+      5,
+      14,
+      23,
+      32
+    ],
+    "short": "gândirea pașilor concreți care pot fi urmați pentru gestionarea situației",
+    "kind": "resursa"
+  },
+  {
+    "id": "reevaluare_pozitiva",
+    "name": "Reevaluare pozitivă",
+    "items": [
+      6,
+      15,
+      24,
+      33
+    ],
+    "short": "atribuirea unui sens pozitiv evenimentului, în termeni de învățare sau dezvoltare personală",
+    "kind": "resursa"
+  },
+  {
+    "id": "punere_perspectiva",
+    "name": "Punere în perspectivă",
+    "items": [
+      7,
+      16,
+      25,
+      34
+    ],
+    "short": "relativizarea evenimentului și compararea lui cu alte situații posibile",
+    "kind": "resursa"
+  },
+  {
+    "id": "catastrofare",
+    "name": "Catastrofare",
+    "items": [
+      8,
+      17,
+      26,
+      35
+    ],
+    "short": "accentuarea caracterului amenințător, nedrept sau foarte grav al evenimentului",
+    "kind": "vulnerabilitate"
+  },
+  {
+    "id": "invinovatire_altii",
+    "name": "Învinovățirea altora",
+    "items": [
+      9,
+      18,
+      27,
+      36
+    ],
+    "short": "atribuirea responsabilității pentru eveniment altor persoane sau circumstanțe externe",
+    "kind": "vulnerabilitate"
+  }
+];
+const DRAFT_KEY = "cerqDraft_v1";
+const INSTRUCTION = [
+  "Toți oamenii se confruntă din când în când cu evenimente negative sau neplăcute și fiecare reacționează la ele în modul său propriu.",
+  "Prin întrebările de mai jos, vi se cere să indicați la ce vă gândiți, de regulă, atunci când trăiți evenimente negative sau neplăcute.",
+  "Nu există răspunsuri corecte sau greșite. Răspundeți cât mai sincer, în funcție de experiența dumneavoastră obișnuită."
+];
+let lastSubmission = null;
+function $(id){return document.getElementById(id)}
+function todayISO(){const d=new Date();const local=new Date(d.getTime()-d.getTimezoneOffset()*60000);return local.toISOString().slice(0,10)}
+function renderItems(){
+  $("instruction").innerHTML = INSTRUCTION.map(text=>`<p>${text}</p>`).join("");
+  $("testDate").value = todayISO();
+  const container=$("itemsContainer");
+  container.innerHTML = ITEMS.map(item=>`
+    <article class="item-card">
+      <div class="item-no">${item.nr}</div>
+      <div class="item-text">${item.text}</div>
+      <div class="likert" role="radiogroup" aria-label="Răspuns item ${item.nr}">
+        ${[1,2,3,4,5].map(value=>`<label title="${value}"><input required type="radio" name="q${item.nr}" value="${value}" />${value}</label>`).join("")}
+      </div>
+    </article>`).join("");
+}
+function getResponses(){const responses={};for(const item of ITEMS){const selected=document.querySelector(`input[name="q${item.nr}"]:checked`);if(!selected)return null;responses[item.nr]=Number(selected.value)}return responses}
+function getPartialResponses(){const responses={};for(const item of ITEMS){const selected=document.querySelector(`input[name="q${item.nr}"]:checked`);if(selected)responses[item.nr]=Number(selected.value)}return responses}
+function calculateScores(responses){const scaleScores={};for(const scale of SCALES){const values=scale.items.map(n=>Number(responses[n]||0));const sum=values.reduce((a,b)=>a+b,0);scaleScores[scale.id]={id:scale.id,name:scale.name,items:scale.items,short:scale.short,kind:scale.kind,sum,average:+(sum/scale.items.length).toFixed(2),max:scale.items.length*5,min:scale.items.length}}return {scaleScores}}
+function makeSubmission(responses){const scores=calculateScores(responses);const now=new Date();const code=$("clientCode").value.trim()||`CERQ-${now.getTime()}`;return {id:`cerq_${now.getTime()}_${Math.random().toString(16).slice(2)}`,questionnaire:"CERQ",formVariant:"adulti",formLabel:"CERQ - adulți",version:"CERQ-36 adulți RO",clientCode:code,age:$("clientAge").value.trim(),testDate:$("testDate").value||todayISO(),contextNote:$("contextNote").value.trim(),createdAt:now.toISOString(),responses,...scores}}
+function updateProgress(){const answered=Object.keys(getPartialResponses()).length;const percent=Math.round(answered/ITEMS.length*100);$("progressText").textContent=`${answered} / ${ITEMS.length} răspunsuri`;$("progressBar").style.width=`${percent}%`;$("progressPercent").textContent=`${percent}%`}
+function saveDraft(){const draft={clientCode:$("clientCode").value,clientAge:$("clientAge").value,testDate:$("testDate").value,contextNote:$("contextNote").value,responses:getPartialResponses()};localStorage.setItem(DRAFT_KEY,JSON.stringify(draft));alert("Progresul a fost salvat în acest browser.")}
+function restoreDraft(){const raw=localStorage.getItem(DRAFT_KEY);if(!raw){alert("Nu există progres salvat în acest browser.");return}const draft=JSON.parse(raw);$("clientCode").value=draft.clientCode||"";$("clientAge").value=draft.clientAge||"";$("testDate").value=draft.testDate||todayISO();$("contextNote").value=draft.contextNote||"";for(const [nr,value] of Object.entries(draft.responses||{})){const input=document.querySelector(`input[name="q${nr}"][value="${value}"]`);if(input)input.checked=true}updateProgress()}
+function downloadJson(data){const fileName=`${(data.clientCode||"CERQ").replace(/[^a-z0-9_-]+/gi,"_")}_${data.testDate||"data"}.json`;const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download=fileName;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)}
+document.addEventListener("DOMContentLoaded",()=>{renderItems();updateProgress();document.addEventListener("change",e=>{if(e.target.matches('input[type="radio"]'))updateProgress()});$("saveDraftBtn").addEventListener("click",saveDraft);$("restoreDraftBtn").addEventListener("click",restoreDraft);$("downloadLastBtn").addEventListener("click",()=>{if(lastSubmission)downloadJson(lastSubmission)});$("cerqForm").addEventListener("reset",()=>{setTimeout(updateProgress,0);$("successPanel").classList.add("hidden")});$("cerqForm").addEventListener("submit",e=>{e.preventDefault();if(!$("clientCode").value.trim()){$("clientCode").focus();alert("Completează codul clientului / inițialele.");return}if(!$("consent").checked){alert("Confirmarea finală este obligatorie.");return}const responses=getResponses();if(!responses){alert("Te rog să răspunzi la toți cei 36 de itemi.");return}const submission=makeSubmission(responses);lastSubmission=submission;localStorage.removeItem(DRAFT_KEY);downloadJson(submission);$("successPanel").classList.remove("hidden");$("successPanel").scrollIntoView({behavior:"smooth",block:"center"})})});
+</script>
+</body>
+</html>
