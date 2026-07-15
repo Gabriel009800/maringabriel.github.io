@@ -17,16 +17,31 @@ a{color:inherit}.page{width:min(1120px,calc(100% - 36px));margin:0 auto;padding:
 .kicker{color:var(--accent);font-size:.82rem;font-weight:850;letter-spacing:.14em;text-transform:uppercase;margin:0 0 8px}h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,5vw,4.4rem);line-height:.98;letter-spacing:-.05em;margin:0 0 16px}h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.35rem,2.2vw,2rem);margin:0 0 12px}p{margin:0 0 12px}.muted{color:var(--muted)}.section{margin-top:22px}.grid{display:grid;gap:18px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
 .card{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(74,52,33,.07);padding:22px}.notice{background:#fff7ec;border:1px solid #ead8c4;border-left:6px solid var(--accent-2);padding:16px 18px;border-radius:18px;color:#46382d}
 .big-number{font-family:Georgia,serif;font-size:2.1rem;line-height:1;color:var(--accent);white-space:nowrap}.stat{display:flex;justify-content:space-between;gap:18px;align-items:center;padding:16px;border:1px solid var(--line);border-radius:18px;background:#fffdf9}
-.pill{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:8px 14px;border-radius:999px;background:var(--accent-soft);color:#5b3920;font-size:.9rem;font-weight:850;white-space:nowrap}
+.pill,.count-badge,.item-count{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;white-space:nowrap;font-weight:850}.pill{padding:8px 14px;background:var(--accent-soft);color:#5b3920;font-size:.9rem}.count-badge{padding:6px 11px;background:#fff;color:var(--accent);border:1px solid #ddc7b2;font-size:.82rem}.item-count{padding:5px 9px;background:#f7f2ec;color:#6c5b4d;border:1px solid var(--line);font-size:.78rem}
 .credential-text{display:block;margin-top:4px;color:var(--muted);font-size:.9rem}
-.portal-grid{display:grid;grid-template-columns:1fr;gap:14px}
-.portal-card{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:18px;align-items:center;text-decoration:none;border:1px solid var(--line);border-radius:24px;background:#fff;padding:20px 22px;transition:.18s ease;min-height:128px}
-.portal-card:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(74,52,33,.10);border-color:#d6bca0}
-.portal-icon{width:72px;height:72px;border-radius:22px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);font-weight:950;font-size:2rem;flex:0 0 auto}
-.portal-body{min-width:0}.portal-title{display:block;font-size:1.22rem;font-weight:850;margin-bottom:4px}.portal-meta{display:block;color:#5c534b;font-size:.95rem;line-height:1.65}
-@media(max-width:830px){.page{width:min(100% - 22px,1120px);padding-top:18px}.hero{padding:24px;border-radius:24px}.grid.two,.grid.three{grid-template-columns:1fr}}
-@media(max-width:640px){.portal-card{grid-template-columns:1fr;align-items:start}.portal-icon{width:60px;height:60px;border-radius:18px;font-size:1.7rem}.pill{justify-self:start}}
-@media print{body{background:white}.page{width:100%;padding:0}.hero,.card{box-shadow:none}}
+
+.catalog-list{display:grid;gap:14px;margin-top:18px}
+details{min-width:0}summary{list-style:none}summary::-webkit-details-marker{display:none}
+.category-window{border:1px solid var(--line);border-radius:22px;background:#fffdf9;overflow:hidden;transition:.18s ease}
+.category-window[open]{border-color:#d8b99b;box-shadow:0 12px 30px rgba(74,52,33,.08)}
+.category-summary{display:grid;grid-template-columns:48px minmax(0,1fr) auto 22px;gap:14px;align-items:center;padding:17px 18px;cursor:pointer;user-select:none}
+.category-summary:hover{background:#fff8ef}.category-number{width:48px;height:48px;border-radius:16px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);font-family:Georgia,serif;font-size:1.25rem;font-weight:900}.category-title{font-size:1.08rem;font-weight:900;line-height:1.3}.chevron{font-size:1.1rem;color:var(--accent);transition:transform .18s ease}.category-window[open]>.category-summary .chevron,.subcategory-window[open]>.subcategory-summary .chevron{transform:rotate(90deg)}
+.category-content{padding:0 16px 16px;border-top:1px solid var(--line)}
+.subcategory-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;padding-top:14px;align-items:start}
+.subcategory-window{border:1px solid var(--line);border-radius:17px;background:#fff;overflow:hidden}
+.subcategory-window[open]{border-color:#d8b99b;box-shadow:0 8px 22px rgba(74,52,33,.07)}
+.subcategory-summary{display:grid;grid-template-columns:minmax(0,1fr) auto 18px;gap:9px;align-items:center;padding:13px 14px;cursor:pointer;user-select:none}
+.subcategory-summary:hover{background:#fff9f2}.subcategory-title{font-size:.94rem;font-weight:850;line-height:1.35}.subcategory-content{padding:12px;border-top:1px solid var(--line);background:#fffdfb}.empty-state{margin:0;color:var(--muted);font-size:.88rem;padding:4px 2px}
+
+.test-list,.results-grid{display:grid;gap:10px}.results-grid{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:18px}
+.test-card,.portal-card{display:grid;grid-template-columns:54px minmax(0,1fr) auto;gap:13px;align-items:center;text-decoration:none;border:1px solid var(--line);border-radius:18px;background:#fff;padding:13px 14px;transition:.18s ease;min-height:92px}
+.test-card:hover,.portal-card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(74,52,33,.09);border-color:#d6bca0}
+.test-icon,.portal-icon{width:54px;height:54px;border-radius:17px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);font-weight:950;font-size:1.45rem;flex:0 0 auto}
+.test-body,.portal-body{min-width:0}.test-title,.portal-title{display:block;font-size:1rem;font-weight:900;margin-bottom:2px;line-height:1.3}.test-purpose,.portal-meta{display:block;color:#5c534b;font-size:.86rem;line-height:1.45}.test-actions{display:flex;flex-direction:column;align-items:flex-end;gap:7px}
+
+@media(max-width:830px){.page{width:min(100% - 22px,1120px);padding-top:18px}.hero{padding:24px;border-radius:24px}.grid.two,.grid.three,.results-grid{grid-template-columns:1fr}.subcategory-grid{grid-template-columns:1fr}}
+@media(max-width:640px){.category-summary{grid-template-columns:42px minmax(0,1fr) auto 18px;padding:14px}.category-number{width:42px;height:42px;border-radius:14px}.count-badge{font-size:.76rem;padding:5px 8px}.test-card,.portal-card{grid-template-columns:48px minmax(0,1fr);align-items:start}.test-icon,.portal-icon{width:48px;height:48px;border-radius:15px;font-size:1.3rem}.test-actions{grid-column:2;flex-direction:row;align-items:center;justify-content:flex-start}.pill{padding:7px 12px}}
+@media print{body{background:white}.page{width:100%;padding:0}.hero,.card{box-shadow:none}.category-window:not([open]) .category-content,.subcategory-window:not([open]) .subcategory-content{display:none}}
   </style>
 </head>
 <body>
@@ -38,33 +53,23 @@ a{color:inherit}.page{width:min(1120px,calc(100% - 36px));margin:0 auto;padding:
       </section>
 
       <section class="section grid three">
-        <div class="stat"><div><strong>Număr formulare disponibile</strong><br><small>instrumente active în platformă</small></div><div class="big-number" id="testCount">3</div></div>
+        <div class="stat"><div><strong>Număr formulare disponibile</strong><br><small>instrumente active în platformă</small></div><div class="big-number" id="testCount">0</div></div>
         <div class="stat"><div><strong>Total răspunsuri salvate</strong><br><small>în acest browser</small></div><div class="big-number" id="totalCount">0</div></div>
         <div class="stat"><div><strong>Psiholog cu drept de liberă practică</strong><span class="credential-text">Psihologie clinică și organizațională</span></div></div>
       </section>
 
-      <section class="section grid two">
-        <div class="card">
-          <p class="kicker">Chestionare</p>
-          <h2>Teste disponibile pentru client</h2>
-          <p class="muted">Trimite clientului linkul potrivit. După completare, răspunsurile pot fi trimise către pagina de rezultate sau exportate ca rezervă.</p>
-          <div class="section portal-grid">
-            <a class="portal-card" href="3.%20psihologie%20instrumente%20de%20evaluare/chestionar-COPE.html" target="_blank" rel="noopener"><span class="portal-icon">📝</span><span class="portal-body"><span class="portal-title">Chestionar COPE</span><span class="portal-meta">Formular client · 60 itemi · răspunsuri 1–4.</span></span><span class="pill">Deschide</span></a>
-            <a class="portal-card" href="3.%20psihologie%20instrumente%20de%20evaluare/chestionar-CERQ-adulti.html" target="_blank" rel="noopener"><span class="portal-icon">🧠</span><span class="portal-body"><span class="portal-title">Chestionar CERQ adulți</span><span class="portal-meta">Formular adulți · 36 itemi · răspunsuri 1–5.</span></span><span class="pill">Deschide</span></a>
-            <a class="portal-card" href="3.%20psihologie%20instrumente%20de%20evaluare/chestionar-CERQ-adolescenti.html" target="_blank" rel="noopener"><span class="portal-icon">🧒</span><span class="portal-body"><span class="portal-title">Chestionar CERQ copii</span><span class="portal-meta">Formular adolescenți · 36 itemi · răspunsuri 1–5.</span></span><span class="pill">Deschide</span></a>
-          </div>
-        </div>
+      <section class="section card">
+        <p class="kicker">Chestionare</p>
+        <h2>Categorii de evaluare</h2>
+        <p class="muted">Apasă pe o categorie, apoi pe subcategoria dorită. Numărul testelor disponibile este afișat înainte de deschidere.</p>
+        <div id="catalog" class="catalog-list" aria-live="polite"></div>
+      </section>
 
-        <div class="card">
-          <p class="kicker">Rezultate</p>
-          <h2>Scorare și interpretare</h2>
-          <p class="muted">Paginile de rezultate generează profil interpretativ, raport profesional și export/printare PDF.</p>
-          <div class="section portal-grid">
-            <a class="portal-card" href="3.%20psihologie%20instrumente%20de%20evaluare/chestionar-COPE-rezultate.html" target="_blank" rel="noopener"><span class="portal-icon">📊</span><span class="portal-body"><span class="portal-title">Rezultate COPE</span><span class="portal-meta">Profil pe scale, factori și repere psihometrice.</span></span><span class="pill">Deschide</span></a>
-            <a class="portal-card" href="3.%20psihologie%20instrumente%20de%20evaluare/chestionar-CERQ-adulti-rezultate.html" target="_blank" rel="noopener"><span class="portal-icon">📈</span><span class="portal-body"><span class="portal-title">Rezultate CERQ – adulți</span><span class="portal-meta">Scorare și interpretare pentru formularul adulți.</span></span><span class="pill">Deschide</span></a>
-            <a class="portal-card" href="3.%20psihologie%20instrumente%20de%20evaluare/chestionar-CERQ-adolescenti-rezultate.html" target="_blank" rel="noopener"><span class="portal-icon">📉</span><span class="portal-body"><span class="portal-title">Rezultate CERQ – copii</span><span class="portal-meta">Scorare și interpretare pentru formularul adolescenți.</span></span><span class="pill">Deschide</span></a>
-          </div>
-        </div>
+      <section class="section card">
+        <p class="kicker">Rezultate</p>
+        <h2>Scorare și interpretare</h2>
+        <p class="muted">Apasă pe o categorie, apoi pe subcategoria dorită. Numărul paginilor de scorare disponibile este afișat înainte de deschidere.</p>
+        <div id="resultsCatalog" class="catalog-list" aria-live="polite"></div>
       </section>
 
       <section class="section notice"><strong>Notă:</strong> datele salvate local sunt disponibile doar în browserul în care au fost importate.</section>
@@ -72,8 +77,164 @@ a{color:inherit}.page{width:min(1120px,calc(100% - 36px));margin:0 auto;padding:
   </main>
 
 <script>
+const catalogData=[
+  {
+    title:"Evaluare clinică și psihopatologie",
+    subcategories:[
+      {title:"Depresie",tests:[]},
+      {title:"Anxietate",tests:[]},
+      {title:"Stres și distres",tests:[]},
+      {title:"PTSD și traumă",tests:[]},
+      {title:"Tulburare obsesiv-compulsivă",tests:[]},
+      {title:"Psihoză și schizofrenie",tests:[]},
+      {title:"Tulburare bipolară",tests:[]},
+      {title:"Tulburări de personalitate",tests:[]},
+      {title:"Tulburări alimentare",tests:[]},
+      {title:"Consum de alcool și substanțe",tests:[]},
+      {title:"Somn",tests:[]},
+      {title:"Risc suicidar și autoagresivitate",tests:[]},
+      {title:"Furie și agresivitate",tests:[]},
+      {title:"Simptome somatice",tests:[]},
+      {title:"Disociere",tests:[]}
+    ]
+  },
+  {
+    title:"Neurodezvoltare și evaluarea copilului",
+    subcategories:[
+      {title:"Autism",tests:[]},
+      {title:"ADHD",tests:[]},
+      {title:"Dezvoltarea copilului",tests:[]},
+      {title:"Comportamentul copilului",tests:[]}
+    ]
+  },
+  {
+    title:"Personalitate, emoții și relații",
+    subcategories:[
+      {title:"Personalitate generală",tests:[]},
+      {title:"Reglare emoțională",tests:[
+        {title:"Scala DERS",purpose:"Reglare emoțională",items:36,icon:"🌊",href:"3.%20psihologie%20instrumente%20de%20evaluare/chestionar-DERS.html",resultsTitle:"Rezultate DERS",resultsIcon:"📉",resultsHref:"3.%20psihologie%20instrumente%20de%20evaluare/chestionar-DERS-rezultate.html"},
+        {title:"Chestionar CERQ adulți",purpose:"Strategii cognitive",items:36,icon:"🧠",href:"3.%20psihologie%20instrumente%20de%20evaluare/chestionar-CERQ-adulti.html",resultsTitle:"Rezultate CERQ – adulți",resultsIcon:"📈",resultsHref:"3.%20psihologie%20instrumente%20de%20evaluare/chestionar-CERQ-adulti-rezultate.html"},
+        {title:"Chestionar CERQ copii",purpose:"Strategii cognitive",items:36,icon:"🧒",href:"3.%20psihologie%20instrumente%20de%20evaluare/chestionar-CERQ-adolescenti.html",resultsTitle:"Rezultate CERQ – copii",resultsIcon:"📉",resultsHref:"3.%20psihologie%20instrumente%20de%20evaluare/chestionar-CERQ-adolescenti-rezultate.html"}
+      ]},
+      {title:"Stimă de sine și imagine de sine",tests:[]},
+      {title:"Atașament și relații",tests:[]},
+      {title:"Coping și reziliență",tests:[
+        {title:"Chestionar COPE",purpose:"Strategii de coping",items:60,icon:"📝",href:"3.%20psihologie%20instrumente%20de%20evaluare/chestionar-COPE.html",resultsTitle:"Rezultate COPE",resultsIcon:"📊",resultsHref:"3.%20psihologie%20instrumente%20de%20evaluare/chestionar-COPE-rezultate.html"}
+      ]}
+    ]
+  },
+  {
+    title:"Evaluare cognitivă și neuropsihologică",
+    subcategories:[
+      {title:"Inteligență",tests:[]},
+      {title:"Atenție și funcții executive",tests:[]},
+      {title:"Memorie",tests:[]},
+      {title:"Evaluare neuropsihologică",tests:[]}
+    ]
+  },
+  {
+    title:"Funcționare, stare de bine și domenii aplicate",
+    subcategories:[
+      {title:"Burnout",tests:[]},
+      {title:"Calitatea vieții și funcționarea cotidiană",tests:[]},
+      {title:"Orientare școlară și vocațională",tests:[]},
+      {title:"Psihologia muncii",tests:[]},
+      {title:"Evaluare medico-legală sau criminalistică",tests:[]}
+    ]
+  }
+];
+
 function safeCount(key){try{return (JSON.parse(localStorage.getItem(key)||"[]")||[]).length}catch(e){return 0}}
-document.addEventListener("DOMContentLoaded",()=>{document.getElementById("testCount").textContent="3";document.getElementById("totalCount").textContent=String(safeCount("copeSubmissions_v1")+safeCount("cerqSubmissions_v1")+safeCount("cerqSubmissions_adulti_v1")+safeCount("cerqSubmissions_adolescenti_v1"));});
+function countLabel(n){return `${n} ${n===1?"test":"teste"}`}
+function escapeHtml(value){return String(value).replace(/[&<>'"]/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[ch]))}
+
+function testCard(test){
+  return `<a class="test-card" href="${escapeHtml(test.href)}" target="_blank" rel="noopener">
+    <span class="test-icon">${test.icon}</span>
+    <span class="test-body">
+      <span class="test-title">${escapeHtml(test.title)}</span>
+      <span class="test-purpose">${escapeHtml(test.purpose)}</span>
+    </span>
+    <span class="test-actions"><span class="item-count">${test.items} itemi</span><span class="pill">Deschide</span></span>
+  </a>`;
+}
+
+function resultCard(test){
+  return `<a class="test-card" href="${escapeHtml(test.resultsHref)}" target="_blank" rel="noopener">
+    <span class="test-icon">${test.resultsIcon || "📊"}</span>
+    <span class="test-body">
+      <span class="test-title">${escapeHtml(test.resultsTitle || `Rezultate ${test.title}`)}</span>
+      <span class="test-purpose">${escapeHtml(test.purpose)}</span>
+    </span>
+    <span class="test-actions"><span class="item-count">Scorare</span><span class="pill">Deschide</span></span>
+  </a>`;
+}
+
+function renderAccordionCatalog(rootId,{results=false}={}){
+  const root=document.getElementById(rootId);
+  const getTests=sub=>results ? sub.tests.filter(test=>test.resultsHref) : sub.tests;
+
+  root.innerHTML=catalogData.map((category,index)=>{
+    const categoryCount=category.subcategories.reduce((sum,sub)=>sum+getTests(sub).length,0);
+    const subcategories=category.subcategories.map(sub=>{
+      const available=getTests(sub);
+      const content=available.length
+        ? `<div class="test-list">${available.map(results?resultCard:testCard).join("")}</div>`
+        : `<p class="empty-state">Momentan nu există ${results?"pagini de scorare":"teste"} disponibile.</p>`;
+      return `<details class="subcategory-window">
+        <summary class="subcategory-summary">
+          <span class="subcategory-title">${escapeHtml(sub.title)}</span>
+          <span class="count-badge">${countLabel(available.length)}</span>
+          <span class="chevron" aria-hidden="true">›</span>
+        </summary>
+        <div class="subcategory-content">${content}</div>
+      </details>`;
+    }).join("");
+
+    return `<details class="category-window">
+      <summary class="category-summary">
+        <span class="category-number">${index+1}</span>
+        <span class="category-title">${escapeHtml(category.title)}</span>
+        <span class="count-badge">${countLabel(categoryCount)}</span>
+        <span class="chevron" aria-hidden="true">›</span>
+      </summary>
+      <div class="category-content"><div class="subcategory-grid">${subcategories}</div></div>
+    </details>`;
+  }).join("");
+
+  const categories=[...root.querySelectorAll(".category-window")];
+  categories.forEach(category=>{
+    category.addEventListener("toggle",()=>{
+      if(!category.open)return;
+      categories.forEach(other=>{if(other!==category)other.open=false});
+    });
+    const subcategories=[...category.querySelectorAll(".subcategory-window")];
+    subcategories.forEach(subcategory=>{
+      subcategory.addEventListener("toggle",()=>{
+        if(!subcategory.open)return;
+        subcategories.forEach(other=>{if(other!==subcategory)other.open=false});
+      });
+    });
+  });
+}
+
+function renderCatalog(){
+  const total=catalogData.reduce((sum,category)=>sum+category.subcategories.reduce((s,sub)=>s+sub.tests.length,0),0);
+  document.getElementById("testCount").textContent=String(total);
+  renderAccordionCatalog("catalog");
+  renderAccordionCatalog("resultsCatalog",{results:true});
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+  renderCatalog();
+  document.getElementById("totalCount").textContent=String(
+    safeCount("copeSubmissions_v1")+
+    safeCount("dersSubmissions_v1")+
+    safeCount("cerqSubmissions_v1")+
+    safeCount("cerqSubmissions_adulti_v1")+
+    safeCount("cerqSubmissions_adolescenti_v1")
+  );
+});
 </script>
 </body>
 </html>

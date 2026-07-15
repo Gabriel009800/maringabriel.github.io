@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rezultate DERS</title>
+  <style>
+:root{
+  --bg:#f6f3ef; --panel:#fffaf4; --card:#ffffff; --ink:#202020; --muted:#6f675d;
+  --line:#e6ded4; --accent:#7a4e2d; --accent-2:#b98250; --accent-soft:#f1e3d4;
+  --good:#255f3f; --warn:#8a5a00; --danger:#9b2c2c; --shadow:0 18px 50px rgba(74,52,33,.12); --radius:22px;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);background:radial-gradient(circle at top left, rgba(184,130,80,.14), transparent 36rem),linear-gradient(180deg,#fbf8f3 0%, var(--bg) 100%);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.58}
+.page{width:min(1160px, calc(100% - 36px));margin:0 auto;padding:34px 0 70px}
+.hero{background:linear-gradient(135deg,rgba(255,250,244,.94),rgba(241,227,212,.78));border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);padding:30px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;width:340px;height:340px;border-radius:50%;right:-135px;top:-185px;background:rgba(122,78,45,.08)}
+.kicker{color:var(--accent);font-size:.8rem;font-weight:850;letter-spacing:.14em;text-transform:uppercase;margin:0 0 8px}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,3.8vw,3.5rem);line-height:1;letter-spacing:-.035em;margin:0 0 10px}
+h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.25rem,2vw,1.85rem);margin:0 0 10px} h3{margin:0 0 8px;font-size:1.06rem}
+p{margin:0 0 12px}.muted{color:var(--muted)}.section{margin-top:22px}.grid{display:grid;gap:18px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(74,52,33,.07);padding:22px}.notice{background:#fff7ec;border:1px solid #ead8c4;border-left:6px solid var(--accent-2);padding:16px 18px;border-radius:18px;color:#46382d}.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.btn{border:0;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:11px 16px;background:var(--accent);color:white;font-weight:850;cursor:pointer;text-decoration:none;box-shadow:0 10px 18px rgba(122,78,45,.16)}.btn.secondary{background:#fff;color:var(--accent);border:1px solid var(--line);box-shadow:none}.btn.soft{background:var(--accent-soft);color:#5b3920;box-shadow:none}.btn.danger{background:#9b2c2c;color:#fff;box-shadow:0 10px 18px rgba(155,44,44,.14)}.btn:disabled{opacity:.48;cursor:not-allowed;transform:none;filter:none}.btn:hover{transform:translateY(-1px);filter:brightness(1.03)}
+input,select,textarea{width:100%;border:1px solid var(--line);border-radius:14px;padding:12px 13px;background:#fff;font:inherit;outline:none}
+label{font-weight:750;display:block;line-height:1.2;white-space:normal}
+.field{display:grid;gap:8px;min-width:0}
+.select-row{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end}
+.select-row .field:nth-child(1){flex:0 1 230px}
+.select-row .field:nth-child(2){flex:1 1 320px}
+.select-row .field:nth-child(3){flex:0 1 280px}
+.select-row .actions{flex:1 1 520px;align-self:flex-end;min-width:280px}
+.select-row .btn{white-space:nowrap}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:var(--accent-soft);color:#5b3920;font-size:.84rem;font-weight:850}.pill.green{background:#edf6f1;color:#255f3f}.pill.yellow{background:#fff4db;color:#76510b}.pill.red{background:#f7e6e3;color:#8a2b21}.pill.gray{background:#f1ede8;color:#5d554e}
+.stat{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;padding:17px;border:1px solid var(--line);border-radius:18px;background:#fffdf9}.big-number{font-family:Georgia,serif;font-size:2.15rem;line-height:1;color:var(--accent);white-space:nowrap}.metric-title{font-weight:850}.metric-note{display:block;margin-top:4px;color:var(--muted);font-size:.9rem}.factor-card{display:flex;flex-direction:column;gap:10px}.factor-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.factor-title{font-weight:900}.score-line{font-family:Georgia,serif;font-size:2rem;color:var(--accent);line-height:1}.bar{height:10px;border-radius:999px;background:#eadfd3;overflow:hidden}.bar span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent-2))}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px;background:#fff}table{width:100%;border-collapse:collapse;min-width:900px}th,td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#fbf4ec;color:#563820;font-size:.82rem;text-transform:uppercase;letter-spacing:.055em}tr:last-child td{border-bottom:0}.small{font-size:.9rem}.tiny{font-size:.82rem;color:var(--muted)}.report-text{font-family:Georgia,"Times New Roman",serif;font-size:1.05rem;line-height:1.72;color:#2b2723}.report-text p{text-align:justify}.report-box{background:#fffdf9;border:1px solid var(--line);border-radius:18px;padding:18px}.biblio ol{margin:8px 0 0 20px;padding:0}.biblio li{margin:0 0 8px}.hidden{display:none!important}
+
+
+/* Protecție cu parolă pentru pagina de rezultate */
+body.locked{overflow:hidden}
+body.locked .page{display:none!important}
+.auth-screen{display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at top left, rgba(184,130,80,.22), transparent 34rem),linear-gradient(180deg,#fbf8f3 0%, var(--bg) 100%)}
+body.locked .auth-screen{display:flex}
+.auth-card{width:min(430px, calc(100% - 20px));background:rgba(255,250,244,.98);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:28px;display:grid;gap:14px}
+.auth-card h2{font-size:clamp(1.7rem,4vw,2.4rem);margin:0}
+.auth-card .btn{width:100%;margin-top:2px}
+.auth-error{margin:0;color:var(--danger);font-weight:850;background:#f7e6e3;border:1px solid #e9c7c0;border-radius:14px;padding:10px 12px}
+@media print{.auth-screen{display:none!important}body.locked .page{display:block!important}}
+
+
+.independent-card{display:grid;grid-template-columns:minmax(0,1fr) 124px;gap:18px;align-items:start;min-height:188px}.independent-main{min-width:0}.independent-main strong{display:block;line-height:1.34;margin-bottom:6px}.independent-card .tiny{display:block;color:#2d2925;font-size:.88rem;line-height:1.58;margin:4px 0 7px}.independent-card small{display:block;color:#5e554d;font-size:.84rem;line-height:1.5;margin-top:6px}.independent-score{display:flex;flex-direction:column;align-items:flex-end;gap:8px;text-align:right;min-width:0}.independent-score .big-number{font-size:1.9rem;line-height:1.05;white-space:nowrap}.independent-score .pill{max-width:96px;justify-content:center;text-align:center;line-height:1.15;padding:7px 11px;white-space:normal}.independent-score .metric-note{margin-top:0;line-height:1.35}
+#scaleTable{min-width:1320px;table-layout:fixed}
+#scaleTable th:nth-child(1),#scaleTable td:nth-child(1){width:22%}
+#scaleTable th:nth-child(2),#scaleTable td:nth-child(2){width:8%}
+#scaleTable th:nth-child(3),#scaleTable td:nth-child(3){width:8%}
+#scaleTable th:nth-child(4),#scaleTable td:nth-child(4){width:8%}
+#scaleTable th:nth-child(5),#scaleTable td:nth-child(5){width:7%}
+#scaleTable th:nth-child(6),#scaleTable td:nth-child(6){width:11%}
+#scaleTable th:nth-child(7),#scaleTable td:nth-child(7){width:36%}
+#scaleTable tbody tr{height:218px}
+#scaleTable tbody td{height:218px;vertical-align:middle}
+#scaleTable td:nth-child(1){line-height:1.38}
+#scaleTable td:nth-child(2),#scaleTable td:nth-child(3),#scaleTable td:nth-child(4),#scaleTable td:nth-child(5){font-variant-numeric:tabular-nums}
+#scaleTable td:nth-child(5),#scaleTable td:nth-child(6){text-align:center}
+#scaleTable td:nth-child(6) .pill{width:104px;min-height:40px;justify-content:center;text-align:center;white-space:normal;line-height:1.15;margin:0 auto}
+.norm-cell{min-width:0;line-height:1.58;font-size:.9rem}
+.norm-report{display:block;padding:4px 0 2px}
+.norm-row{display:block;margin:0 0 9px;padding:0;line-height:1.58}
+.norm-row:last-of-type{margin-bottom:0}
+.norm-row strong{display:inline-block;min-width:142px;font-weight:900;color:#3f342b}
+.norm-interpret{display:block;margin-top:9px;padding-top:9px;border-top:1px dashed #ead8c4;color:#5b3920;line-height:1.58}
+.norm-note{min-height:112px;display:flex;align-items:center;color:#5b3920;line-height:1.6}
+.norm-muted{color:#6f675d}
+@media(max-width:900px){.grid.two,.grid.three,.grid.four{grid-template-columns:1fr}.select-row{display:grid;grid-template-columns:1fr}.select-row .field,.select-row .actions{flex:auto;min-width:0}.page{width:min(100% - 22px,1160px);padding-top:18px}.hero{padding:24px;border-radius:24px}table{min-width:860px}.independent-card{grid-template-columns:minmax(0,1fr) 112px}.independent-score .big-number{font-size:1.65rem}.norm-cell{min-width:330px}}
+@media print{body{background:white}.no-print,.actions,.select-row,#emptyState,.pdf-exclude{display:none!important}.page{width:100%;padding:0}.hero,.card{box-shadow:none}.section{break-inside:avoid}.pdf-final-notes-start{break-before:page;page-break-before:always}.table-wrap{overflow:visible}table{min-width:0;font-size:.82rem}th,td{padding:7px}.report-text{font-size:1rem}}
+  
+/* Ajustări DERS: tabel cu 7 coloane și bloc psihometric extins */
+#scaleTable{width:100%;min-width:0;table-layout:fixed;font-size:.93rem}
+#scaleTable th,#scaleTable td{word-break:break-word;overflow-wrap:anywhere}
+#scaleTable th:nth-child(1),#scaleTable td:nth-child(1){width:24%}
+#scaleTable th:nth-child(2),#scaleTable td:nth-child(2){width:9%}
+#scaleTable th:nth-child(3),#scaleTable td:nth-child(3){width:8%}
+#scaleTable th:nth-child(4),#scaleTable td:nth-child(4){width:9%}
+#scaleTable th:nth-child(5),#scaleTable td:nth-child(5){width:7%}
+#scaleTable th:nth-child(6),#scaleTable td:nth-child(6){width:11%}
+#scaleTable th:nth-child(7),#scaleTable td:nth-child(7){width:32%}
+#scaleTable tbody tr,#scaleTable tbody td{height:auto;min-height:0}
+#scaleTable tbody td{vertical-align:middle}
+@media print{
+  #scaleTable{width:100%!important;min-width:0!important;table-layout:fixed!important;font-size:.70rem!important}
+  #scaleTable th,#scaleTable td{height:auto!important;min-height:0!important;vertical-align:top!important;padding:5px!important}
+}
+</style>
+</head>
+<body class="locked">
+<section id="authScreen" class="auth-screen" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+  <form id="authForm" class="auth-card" autocomplete="off">
+    <p class="kicker">Acces protejat</p>
+    <h2 id="authTitle">Rezultate DERS</h2>
+    <p class="muted">Introdu parola pentru a vedea pagina de scorare și interpretare.</p>
+    <div class="field"><label for="authPassword">Parolă</label><input id="authPassword" type="password" placeholder="Scrie parola" autocomplete="current-password" /></div>
+    <p id="authError" class="auth-error hidden">Parolă greșită. Încearcă din nou.</p>
+    <button class="btn" type="submit">Intră</button>
+  </form>
+</section>
+
+<main class="page">
+  <section class="hero">
+    <p class="kicker">Scorare și interpretare</p>
+    <h1>Scala DERS</h1>
+    <p class="muted" style="max-width:900px;font-size:.98rem">Profil al dificultăților de reglare emoțională pe scor total și șase dimensiuni: nonacceptare, scopuri, impuls, conștientizare, strategii și claritate emoțională.</p>
+  </section>
+
+  <section class="section card no-print">
+    <p class="muted" style="margin-bottom:14px;">Importă fișierul JSON primit de la client, apoi generează raportul.</p>
+    <div class="select-row">
+      <div class="field"><label for="resultFilter">Afișare</label><select id="resultFilter"><option value="active">Active</option><option value="archived">Arhivate</option><option value="all">Toate</option></select></div>
+      <div class="field"><label for="submissionSelect">Rezultat salvat</label><select id="submissionSelect"></select></div>
+      <div class="actions">
+        <button class="btn secondary" type="button" id="archiveBtn">Arhivează</button>
+        <button class="btn danger" type="button" id="deleteBtn">Șterge</button>
+        <button class="btn secondary" type="button" id="importBtn">Importă JSON</button>
+        <input class="hidden" type="file" id="jsonImport" accept="application/json,.json" />
+        <button class="btn secondary" type="button" id="printBtn">Printează / PDF</button>
+        <button class="btn soft" type="button" id="copyReportBtn">Copiază formularea</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="emptyState" class="section notice hidden"><strong>Nu există încă rezultate DERS în acest browser.</strong><br>Importă fișierul JSON primit de la client.</section>
+  <section id="reportRoot" class="hidden"></section>
+</main>
+
+<script>
+const ACCESS_PASSWORD="kimkiduk";
+const ACCESS_SESSION_KEY="dersResultsAccess_v1";
+const STORAGE_KEY="dersSubmissions_v1";
+const VIEW_KEY="dersResultsView_v1";
+const ITEMS=[[1, "Îmi este clar ceea ce simt."], [2, "Sunt atent(ă) la ceea ce simt."], [3, "Îmi trăiesc emoțiile ca fiind copleșitoare și greu de controlat."], [4, "Nu am nicio idee despre cum mă simt."], [5, "Îmi este greu să înțeleg ceea ce simt."], [6, "Sunt atent(ă) la propriile mele emoții."], [7, "Știu exact cum mă simt."], [8, "Îmi pasă de ceea ce simt."], [9, "Sunt confuz(ă) în legătură cu ceea ce simt."], [10, "Când sunt afectat(ă) emoțional, îmi recunosc emoțiile."], [11, "Când sunt afectat(ă) emoțional, mă supăr pe mine pentru că simt astfel."], [12, "Când sunt afectat(ă) emoțional, mă simt jenat(ă) pentru că simt astfel."], [13, "Când sunt afectat(ă) emoțional, îmi este greu să-mi îndeplinesc sarcinile."], [14, "Când sunt afectat(ă) emoțional, simt că îmi pierd controlul."], [15, "Când sunt afectat(ă) emoțional, cred că voi rămâne în această stare mult timp."], [16, "Când sunt afectat(ă) emoțional, cred că voi ajunge să mă simt foarte deprimat(ă)."], [17, "Când sunt afectat(ă) emoțional, cred că emoțiile mele sunt valide și importante."], [18, "Când sunt afectat(ă) emoțional, îmi este greu să mă concentrez asupra altor lucruri."], [19, "Când sunt afectat(ă) emoțional, simt că nu mai dețin controlul."], [20, "Când sunt afectat(ă) emoțional, reușesc totuși să-mi duc la bun sfârșit activitățile."], [21, "Când sunt afectat(ă) emoțional, îmi este rușine de mine pentru că simt astfel."], [22, "Când sunt afectat(ă) emoțional, știu că voi găsi, în cele din urmă, o modalitate de a mă simți mai bine."], [23, "Când sunt afectat(ă) emoțional, mă simt slab(ă)."], [24, "Când sunt afectat(ă) emoțional, simt că îmi pot păstra controlul asupra comportamentului meu."], [25, "Când sunt afectat(ă) emoțional, mă simt vinovat(ă) pentru că simt astfel."], [26, "Când sunt afectat(ă) emoțional, îmi este greu să mă concentrez."], [27, "Când sunt afectat(ă) emoțional, îmi este greu să-mi controlez comportamentul."], [28, "Când sunt afectat(ă) emoțional, cred că nu există nimic ce pot face pentru a mă simți mai bine."], [29, "Când sunt afectat(ă) emoțional, mă irit pe mine pentru că simt astfel."], [30, "Când sunt afectat(ă) emoțional, încep să mă simt foarte rău în legătură cu mine însumi/însămi."], [31, "Când sunt afectat(ă) emoțional, cred că singurul lucru pe care îl pot face este să rămân blocat(ă) în starea mea."], [32, "Când sunt afectat(ă) emoțional, îmi pierd controlul asupra comportamentului meu."], [33, "Când sunt afectat(ă) emoțional, îmi este greu să mă gândesc la altceva."], [34, "Când sunt afectat(ă) emoțional, îmi acord timp pentru a înțelege ce simt cu adevărat."], [35, "Când sunt afectat(ă) emoțional, îmi ia mult timp să mă simt mai bine."], [36, "Când sunt afectat(ă) emoțional, emoțiile mele sunt copleșitoare."]];
+const REVERSED_ITEMS=[1, 2, 6, 7, 8, 10, 17, 20, 22, 24, 34];
+const SCALES=[
+  {
+    "id": "nonacceptance",
+    "name": "Nonacceptarea răspunsurilor emoționale",
+    "items": [
+      11,
+      12,
+      21,
+      23,
+      25,
+      29
+    ],
+    "alpha": 0.81,
+    "alpha_original": 0.85,
+    "loading_range": ".38–.71",
+    "variance": 27.30,
+    "short": "tendința de a judeca, respinge sau trăi cu rușine și vinovăție propriile reacții emoționale"
+  },
+  {
+    "id": "goals",
+    "name": "Dificultăți în comportamentul orientat spre scop",
+    "items": [
+      13,
+      18,
+      20,
+      26,
+      33
+    ],
+    "alpha": 0.857,
+    "alpha_original": 0.89,
+    "loading_range": ".49–.84",
+    "variance": 5.35,
+    "short": "dificultatea de a rămâne concentrat(ă) și de a finaliza sarcini când apare afectarea emoțională"
+  },
+  {
+    "id": "impulse",
+    "name": "Dificultăți de control al impulsurilor",
+    "items": [
+      3,
+      14,
+      19,
+      24,
+      27,
+      32
+    ],
+    "alpha": 0.838,
+    "alpha_original": 0.86,
+    "loading_range": ".45–.88",
+    "variance": 4.87,
+    "short": "dificultatea de a menține controlul comportamental în contextul emoțiilor intense"
+  },
+  {
+    "id": "awareness",
+    "name": "Lipsa conștientizării emoționale",
+    "items": [
+      2,
+      6,
+      8,
+      10,
+      17,
+      34
+    ],
+    "alpha": 0.658,
+    "alpha_original": 0.80,
+    "loading_range": ".41–.67",
+    "variance": 8.28,
+    "structure_note": "structură cu rezerve; dimensiunea a avut corelații nesemnificative cu celelalte scale",
+    "short": "atenție redusă acordată emoțiilor și dificultăți de recunoaștere a experienței afective"
+  },
+  {
+    "id": "strategies",
+    "name": "Acces limitat la strategii de reglare emoțională",
+    "items": [
+      15,
+      16,
+      22,
+      28,
+      30,
+      31,
+      35,
+      36
+    ],
+    "alpha": 0.863,
+    "alpha_original": 0.88,
+    "loading_range": ".44–.60",
+    "variance": 6.45,
+    "alpha_note": "α=.863 în studiul românesc după eliminarea itemului 22 (7 itemi)",
+    "short": "percepția că există puține modalități eficiente de a diminua sau gestiona starea emoțională"
+  },
+  {
+    "id": "clarity",
+    "name": "Lipsa clarității emoționale",
+    "items": [
+      1,
+      4,
+      5,
+      7,
+      9
+    ],
+    "alpha": 0.758,
+    "alpha_original": 0.84,
+    "loading_range": ".46–.79",
+    "variance": 3.68,
+    "short": "dificultatea de a identifica, diferenția și înțelege cu precizie ceea ce se simte"
+  }
+];
+const PSYCHOMETRICS={n:278,women:"86%",men:"14%",ageRange:"20–27",ageM:21.54,ageSD:.93,psychStudents:"56,5%",otherStudents:"43,5%",variance:"56%",kmo:.874,chi2:4750.724,df:630,totalAlpha:.910};
+const FACTOR_CORRELATIONS={"nonacceptare–conștientizare":.08,"nonacceptare–strategii":.60,"nonacceptare–scopuri":.43,"nonacceptare–impuls":.53,"nonacceptare–claritate":.26,"conștientizare–strategii":.04,"conștientizare–scopuri":-.01,"conștientizare–impuls":.07,"conștientizare–claritate":.04,"strategii–scopuri":.59,"strategii–impuls":.54,"strategii–claritate":.45,"scopuri–impuls":.46,"scopuri–claritate":.36,"impuls–claritate":.33};
+function $(id){return document.getElementById(id)}
+function unlockPage(){document.body.classList.remove("locked");$("authScreen")?.classList.add("hidden")}
+function setupAuthGate(){const ok=sessionStorage.getItem(ACCESS_SESSION_KEY)==="ok";if(ok){unlockPage();return true}document.body.classList.add("locked");const form=$("authForm"),input=$("authPassword"),error=$("authError");setTimeout(()=>input?.focus(),80);form?.addEventListener("submit",e=>{e.preventDefault();if((input?.value||"")===ACCESS_PASSWORD){sessionStorage.setItem(ACCESS_SESSION_KEY,"ok");unlockPage();renderSelector()}else{error?.classList.remove("hidden");if(input){input.value="";input.focus()}}});return false}
+function escapeHtml(v){return String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]))}
+function fmt(x,d=2){return Number.isFinite(Number(x))?Number(x).toFixed(d):"—"}
+function pct(x){return Math.max(0,Math.min(100,x)).toFixed(0)}
+function rangePosition(avg){return Math.max(0,Math.min(100,((Number(avg)-1)/4)*100))}
+function readStore(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]")}catch(e){return[]}}
+function writeStore(data){localStorage.setItem(STORAGE_KEY,JSON.stringify(data))}
+function makeSubmissionId(item,index){const base=item?.createdAt?new Date(item.createdAt).getTime():Date.now();return `ders_${base}_${index}_${Math.random().toString(16).slice(2)}`}
+function ensureStoredIds(){const data=readStore().filter(x=>x&&typeof x==="object"&&x.responses);let changed=false;const normalized=data.map((x,i)=>{if(x.id)return x;changed=true;return {...x,id:makeSubmissionId(x,i)}});if(changed)writeStore(normalized);return normalized}
+function isArchived(item){return Boolean(item&&(item.archived===true||item.archivedAt))}
+function selectedResultId(){return $("submissionSelect")?.value||""}
+function formatDate(v){if(!v)return"—";const d=new Date(v+"T00:00:00");return isNaN(d)?escapeHtml(v):d.toLocaleDateString("ro-RO")}
+function formatDateTime(v){if(!v)return"—";const d=new Date(v);return isNaN(d)?escapeHtml(v):d.toLocaleString("ro-RO",{dateStyle:"medium",timeStyle:"short"})}
+function resultLabel(s){return `${s.clientCode||"DERS"} · ${formatDate(s.testDate)} · ${formatDateTime(s.createdAt)}${isArchived(s)?" · arhivat":""}`}
+function levelByAverage(avg){if(avg<2)return{label:"redus",cls:"green"};if(avg<3)return{label:"moderat",cls:"yellow"};if(avg<4)return{label:"ridicat",cls:"red"};return{label:"foarte ridicat",cls:"red"}}
+function scoreItem(n,raw){return REVERSED_ITEMS.includes(Number(n))?6-Number(raw):Number(raw)}
+function calculateScores(responses){const scoredResponses={};ITEMS.forEach(([n])=>{scoredResponses[n]=scoreItem(n,responses[n])});const scaleScores={};for(const scale of SCALES){const vals=scale.items.map(n=>scoredResponses[n]);const sum=vals.reduce((a,b)=>a+b,0);scaleScores[scale.id]={...scale,sum,average:+(sum/scale.items.length).toFixed(2),min:scale.items.length,max:scale.items.length*5}}const total=Object.values(scoredResponses).reduce((a,b)=>a+b,0);const strategiesROItems=SCALES.find(x=>x.id==="strategies").items.filter(n=>n!==22);const strategiesROSum=strategiesROItems.reduce((a,n)=>a+scoredResponses[n],0);return{scoredResponses,scaleScores,totalScore:{sum:total,average:+(total/ITEMS.length).toFixed(2),min:36,max:180},strategiesRO7:{items:strategiesROItems,sum:strategiesROSum,average:+(strategiesROSum/strategiesROItems.length).toFixed(2),min:7,max:35}}}
+function normalizeSubmission(s){return {...s,...calculateScores(s.responses||{})}}
+function renderSelector(preferredId){const all=ensureStoredIds().map(normalizeSubmission).sort((a,b)=>new Date(b.createdAt||0)-new Date(a.createdAt||0));const select=$("submissionSelect");const filter=$("resultFilter")?.value||localStorage.getItem(VIEW_KEY)||"active";if($("resultFilter")){$("resultFilter").value=filter;localStorage.setItem(VIEW_KEY,filter)}select.innerHTML="";const visible=all.filter(s=>filter==="all"?true:filter==="archived"?isArchived(s):!isArchived(s));if(!all.length){$("emptyState").classList.remove("hidden");$("emptyState").innerHTML="<strong>Nu există încă rezultate DERS în acest browser.</strong><br>Importă fișierul JSON primit de la client.";$("reportRoot").classList.add("hidden");select.disabled=true;select.innerHTML="<option>Nu există rezultate salvate</option>";updateActionButtons(null);return}if(!visible.length){$("emptyState").classList.remove("hidden");$("emptyState").innerHTML=`<strong>${filter==="archived"?"Nu există rezultate arhivate.":"Nu există rezultate active în această vedere."}</strong><br>Schimbă filtrul de afișare.`;$("reportRoot").classList.add("hidden");select.disabled=true;select.innerHTML="<option>Niciun rezultat în această vedere</option>";updateActionButtons(null);return}$("emptyState").classList.add("hidden");select.disabled=false;const previous=preferredId||selectedResultId();visible.forEach(s=>{const opt=document.createElement("option");opt.value=s.id;opt.textContent=resultLabel(s);select.appendChild(opt)});if(previous&&visible.some(s=>String(s.id)===String(previous)))select.value=previous;const current=visible.find(x=>String(x.id)===String(select.value))||visible[0];select.onchange=()=>{const next=visible.find(x=>String(x.id)===String(select.value))||visible[0];renderReport(next);updateActionButtons(next)};renderReport(current);updateActionButtons(current)}
+function updateActionButtons(item){const a=$("archiveBtn"),d=$("deleteBtn");if(!a||!d)return;if(!item){a.disabled=true;d.disabled=true;a.textContent="Arhivează";return}a.disabled=false;d.disabled=false;a.textContent=isArchived(item)?"Restaurează":"Arhivează"}
+function updateSubmissionById(id,updater){const data=ensureStoredIds();const i=data.findIndex(x=>String(x.id)===String(id));if(i<0){alert("Nu am găsit rezultatul selectat.");return null}data[i]=updater({...data[i]});writeStore(data);return data[i]}
+function toggleArchiveSelected(){const id=selectedResultId();if(!id)return;const data=ensureStoredIds();const current=data.find(x=>String(x.id)===String(id));if(!current)return;const archived=isArchived(current);if(!confirm(archived?`Restaurezi rezultatul „${current.clientCode||"DERS"}”?`:`Arhivezi rezultatul „${current.clientCode||"DERS"}”?`))return;const updated=updateSubmissionById(id,item=>{if(archived){delete item.archived;delete item.archivedAt;item.restoredAt=new Date().toISOString()}else{item.archived=true;item.archivedAt=new Date().toISOString()}return item});renderSelector(updated?.id)}
+function deleteSelectedSubmission(){const id=selectedResultId();if(!id)return;const data=ensureStoredIds();const current=data.find(x=>String(x.id)===String(id));if(!current)return;if(!confirm(`Ștergi definitiv rezultatul „${current.clientCode||"DERS"}” din acest browser?`))return;writeStore(data.filter(x=>String(x.id)!==String(id)));renderSelector()}
+function makeNarrative(s,sorted,flags){const top=sorted[0],low=sorted[sorted.length-1],overall=levelByAverage(s.totalScore.average);const topThree=sorted.slice(0,3).map(x=>`${x.name} (${fmt(x.average)}/5)`).join(", ");const lowTwo=[...sorted].reverse().slice(0,2).map(x=>`${x.name} (${fmt(x.average)}/5)`).join(", ");const warning=flags.length?`Puncte de explorat prioritar: ${flags.join("; ")}.`:"Nu sunt activate automat puncte de atenție majoră pe pragurile descriptive ale acestei pagini.";return `<p>Scorul total DERS este <strong>${s.totalScore.sum}/180</strong>, cu o medie de ${fmt(s.totalScore.average)}/5, încadrată descriptiv la nivel <strong>${overall.label}</strong>. Un scor mai mare indică mai multe dificultăți declarate de reglare emoțională; această încadrare nu reprezintă un prag clinic sau normativ.</p><p>Dimensiunea relativ cea mai accentuată este <strong>${escapeHtml(top.name)}</strong> (${top.sum}/${top.max}; media ${fmt(top.average)}/5), iar cea mai redusă este <strong>${escapeHtml(low.name)}</strong> (${low.sum}/${low.max}; media ${fmt(low.average)}/5). Cele mai ridicate trei dimensiuni sunt: ${escapeHtml(topThree)}. Cele mai reduse sunt: ${escapeHtml(lowTwo)}.</p><p>${escapeHtml(warning)}</p><p>În interviu pot fi explorate situațiile în care emoțiile interferează cu sarcinile, controlul comportamental, acceptarea trăirilor, claritatea identificării emoțiilor și convingerea că există strategii eficiente de reglare. Scala de conștientizare necesită prudență suplimentară în versiunea românească, având o consistență internă mai redusă și corelații slabe cu celelalte dimensiuni.</p>`}
+function renderReport(raw){const s=normalizeSubmission(raw);const scales=Object.values(s.scaleScores);const sorted=[...scales].sort((a,b)=>b.average-a.average||b.sum-a.sum);const flags=[];if(s.totalScore.average>=3.5)flags.push("nivel global ridicat al dificultăților de reglare emoțională");if(s.scaleScores.impulse.average>=3.5)flags.push("dificultăți crescute de control al impulsurilor");if(s.scaleScores.strategies.average>=3.5)flags.push("acces perceput ca limitat la strategii eficiente");if(s.scaleScores.goals.average>=3.5)flags.push("interferență emoțională crescută cu sarcinile și obiectivele");if(s.scaleScores.nonacceptance.average>=3.5)flags.push("nonacceptare accentuată a reacțiilor emoționale");const narrative=makeNarrative(s,sorted,flags);const totalLvl=levelByAverage(s.totalScore.average);const root=$("reportRoot");root.classList.remove("hidden");const cards=SCALES.map(scale=>{const sc=s.scaleScores[scale.id],lvl=levelByAverage(sc.average);return `<article class="card factor-card"><div class="factor-head"><div><div class="factor-title">${escapeHtml(sc.name)}</div><span class="tiny">${escapeHtml(sc.short)}</span></div><span class="pill ${lvl.cls}">${lvl.label}</span></div><div><span class="score-line">${sc.sum} / ${sc.max}</span><span class="metric-note">medie ${fmt(sc.average)}/5 · α RO≈${fmt(sc.alpha,3)}</span></div><div class="bar"><span style="width:${pct(sc.average/5*100)}%"></span></div><small>Itemi: ${sc.items.join(", ")}${sc.alpha_note?` · ${escapeHtml(sc.alpha_note)}`:""}.</small></article>`}).join("");const rows=SCALES.map(scale=>{
+  const sc=s.scaleScores[scale.id],lvl=levelByAverage(sc.average),rev=scale.items.filter(n=>REVERSED_ITEMS.includes(n));
+  const reliability=scale.id==="strategies"?`αRO=${fmt(sc.alpha,3)} · αorig=${fmt(scale.alpha_original,2)}`:`αRO=${fmt(sc.alpha,3)} · αorig=${fmt(scale.alpha_original,2)}`;
+  const loadings=`λ≈${escapeHtml(scale.loading_range)}`;
+  const itemCount=scale.id==="strategies"?"8 it. std. / 7 it.":`${scale.items.length} it.`;
+  const noteBits=[];
+  const normHtml=`<div class="norm-report">
+    <span class="norm-row"><strong>Eșantion:</strong> N=${PSYCHOMETRICS.n} · ${PSYCHOMETRICS.ageRange} ani</span>
+    <span class="norm-row"><strong>Fidelitate:</strong> ${reliability}</span>
+    <span class="norm-row"><strong>Saturații λ:</strong> ${loadings}</span>
+    <span class="norm-row"><strong>Structură:</strong> var.=${fmt(scale.variance,2)}% · ${itemCount}</span>
+    ${noteBits.length ? `<span class="norm-interpret">${escapeHtml(noteBits.join(" · "))}</span>` : ""}
+  </div>`;
+  return `<tr><td><strong>${escapeHtml(sc.name)}</strong><br><span class="tiny">${escapeHtml(sc.short)}</span></td><td>${sc.items.join(", ")}</td><td>${rev.length?rev.join(", "):"—"}</td><td>${sc.sum} / ${sc.max}</td><td>${fmt(sc.average)}</td><td><span class="pill ${lvl.cls}">${lvl.label}</span></td><td class="small norm-cell">${normHtml}</td></tr>`
+}).join("");const rawRows=ITEMS.map(([nr,text])=>`<tr><td>${nr}</td><td>${escapeHtml(text)}</td><td>${escapeHtml(s.responses?.[nr]??"—")}</td><td>${escapeHtml(s.scoredResponses?.[nr]??"—")}${REVERSED_ITEMS.includes(nr)?" (inversat)":""}</td></tr>`).join("");const corr=Object.entries(FACTOR_CORRELATIONS).map(([k,v])=>`${k}: r=${fmt(v,2)}`).join(" · ");root.innerHTML=`
+<section class="section card"><h2>Raport individual</h2><div class="grid three"><div class="stat"><div><strong>Cod client / inițiale</strong><br><span class="muted">${escapeHtml(s.clientCode||"—")}</span></div></div><div class="stat"><div><strong>Data aplicării</strong><br><span class="muted">${formatDate(s.testDate)}</span></div></div><div class="stat"><div><strong>Salvat</strong><br><span class="muted">${formatDateTime(s.createdAt)}</span></div></div></div><p class="tiny" style="margin-top:12px">Vârsta: ${escapeHtml(s.age||"—")} · Status: ${isArchived(s)?"arhivat":"activ"}${isArchived(s)&&s.archivedAt?" · Arhivat: "+formatDateTime(s.archivedAt):""} · Versiune: DERS-36 RO digital · Răspunsuri Likert 1–5 · Itemi inverși: ${REVERSED_ITEMS.join(", ")}.</p></section>
+<section class="section grid four"><div class="stat"><div><span class="metric-title">Scor total</span><span class="metric-note">DERS-36</span></div><div class="big-number" style="font-size:1.45rem">${s.totalScore.sum}/180</div></div><div class="stat"><div><span class="metric-title">Medie totală</span><span class="metric-note">Nivel descriptiv ${totalLvl.label}</span></div><div class="big-number" style="font-size:1.45rem">${fmt(s.totalScore.average)}/5</div></div><div class="stat"><div><span class="metric-title">Dimensiune maximă</span><span class="metric-note">${escapeHtml(sorted[0].name)}</span></div><div class="big-number" style="font-size:1.45rem">${fmt(sorted[0].average)}</div></div><div class="stat"><div><span class="metric-title">Puncte de atenție</span><span class="metric-note">criterii descriptive</span></div><div class="big-number" style="font-size:1.45rem">${flags.length}</div></div></section>
+<section class="section card"><h2>Sinteză profesională</h2><div id="reportText" class="report-box report-text">${narrative}</div></section>
+<section class="section"><h2>Cele 6 dimensiuni DERS</h2><div class="grid two">${cards}</div></section>
+<section class="section card"><h2>Scorare pe dimensiuni</h2><div class="table-wrap"><table id="scaleTable"><thead><tr><th>Dimensiune</th><th>Itemi</th><th>Itemi inverși</th><th>Scor brut</th><th>Medie</th><th>Nivel descriptiv</th><th>Repere psihometrice RO</th></tr></thead><tbody>${rows}</tbody></table></div></section>
+<section class="section card pdf-final-notes-start"><h2>Repere psihometrice utilizate</h2><p class="muted">Adaptarea românească a fost analizată pe N=${PSYCHOMETRICS.n} participanți, cu vârste între ${PSYCHOMETRICS.ageRange} ani (M=${PSYCHOMETRICS.ageM}; SD=${PSYCHOMETRICS.ageSD}). Eșantionul a inclus ${PSYCHOMETRICS.psychStudents} studenți la psihologie și ${PSYCHOMETRICS.otherStudents} studenți din alte domenii. Soluția cu șase factori a explicat ${PSYCHOMETRICS.variance} din varianță, KMO=${PSYCHOMETRICS.kmo}, Bartlett χ²(${PSYCHOMETRICS.df})=${PSYCHOMETRICS.chi2}, p&lt;.001. Consistența internă pentru scorul total a fost α=${PSYCHOMETRICS.totalAlpha}. Corelații între dimensiuni: ${escapeHtml(corr)}.</p></section>
+<details class="section card pdf-exclude"><summary><strong>Vezi răspunsurile brute și scorate pe itemi</strong></summary><div class="table-wrap section"><table><thead><tr><th>Nr.</th><th>Item</th><th>Răspuns brut</th><th>Scor utilizat</th></tr></thead><tbody>${rawRows}</tbody></table></div></details>
+<section class="section card"><h2>Limite de interpretare</h2><p class="muted">Studiul românesc furnizat raportează structură factorială și fidelitate, dar nu oferă medii normative, deviații standard, percentile sau praguri clinice pentru interpretarea individuală. Categoriile „redus/moderat/ridicat/foarte ridicat” din această pagină sunt benzi descriptive ale scalei 1–5, nu norme populaționale. Eșantionul românesc a fost restrâns la studenți de 20–27 de ani. Scala de conștientizare trebuie interpretată prudent, iar pentru scala Strategii studiul a obținut α=.863 după eliminarea itemului 22. DERS nu stabilește singură un diagnostic.</p></section>
+<section class="section card biblio"><h2>Bibliografie</h2><ol><li>Gratz, K. L., &amp; Roemer, L. (2004). <em>Multidimensional assessment of emotion regulation and dysregulation: Development, factor structure, and initial validation of the Difficulties in Emotion Regulation Scale</em>. Journal of Psychopathology and Behavioral Assessment, 26(1), 41–54.</li><li>Bostan, C. M., &amp; Zaharia, D. V. (2016). <em>Emotional dysregulation – factor structure and consistency in the Romanian version of the Difficulties in Emotion Regulation Scale (DERS)</em>. Analele Științifice ale Universității „Alexandru Ioan Cuza” din Iași. Psihologie, 2, 57–77.</li></ol></section>`}
+function importJsonFile(file){const reader=new FileReader();reader.onload=()=>{try{const parsed=JSON.parse(reader.result);const incoming=Array.isArray(parsed)?parsed:[parsed];const valid=incoming.filter(x=>x&&x.responses&&(x.questionnaire==="DERS"||Object.keys(x.responses).length===36));if(!valid.length)throw new Error("Fișierul nu conține rezultate DERS valide.");const current=readStore();const byId=new Map(current.map(x=>[x.id,x]));for(const item of valid){if(!item.id)item.id=`import_${Date.now()}_${Math.random().toString(16).slice(2)}`;byId.set(item.id,item)}writeStore(Array.from(byId.values()).sort((a,b)=>new Date(b.createdAt||0)-new Date(a.createdAt||0)));renderSelector();alert(`Am importat ${valid.length} rezultat(e) DERS.`)}catch(err){alert("Import eșuat: "+err.message)}};reader.readAsText(file)}
+document.addEventListener("DOMContentLoaded",()=>{const on=(id,event,handler)=>$(id)?.addEventListener(event,handler);const unlocked=setupAuthGate();const saved=localStorage.getItem(VIEW_KEY);if(saved&&$("resultFilter"))$("resultFilter").value=saved;if(unlocked)renderSelector();on("resultFilter","change",()=>renderSelector());on("archiveBtn","click",toggleArchiveSelected);on("deleteBtn","click",deleteSelectedSubmission);on("importBtn","click",()=>$("jsonImport").click());on("jsonImport","change",e=>{const file=e.target.files[0];if(file)importJsonFile(file)});on("printBtn","click",()=>window.print());on("copyReportBtn","click",async()=>{const text=$("reportText")?.innerText||"";if(!text)return;try{await navigator.clipboard.writeText(text);alert("Formularea profesională a fost copiată.")}catch(e){alert("Nu am putut copia automat textul.")}})});
+</script>
+</body>
+</html>
