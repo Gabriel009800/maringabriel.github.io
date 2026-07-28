@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rezultate elevi - Marile descoperiri geografice – Testul grilă CT (varianta A)</title>
+  <style>
+    :root{
+      --bg:#f6f3ef;--panel:#fffaf4;--card:#fff;--ink:#25211d;--muted:#6f675d;
+      --line:#e6ded4;--accent:#72462a;--accent-2:#b77c48;--accent-soft:#f1e3d4;
+      --good:#255f3f;--good-soft:#edf6f1;--warn:#8a5a00;--warn-soft:#fff4db;
+      --danger:#9b2c2c;--danger-soft:#f7e6e3;--shadow:0 18px 50px rgba(74,52,33,.11);
+      --radius:22px
+    }
+    *{box-sizing:border-box}html{scroll-behavior:smooth}
+    body{margin:0;color:var(--ink);background:radial-gradient(circle at top left,rgba(183,124,72,.15),transparent 38rem),linear-gradient(180deg,#fbf8f3 0%,var(--bg) 100%);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.55}
+    button,input,select{font:inherit}.page{width:min(1180px,calc(100% - 34px));margin:auto;padding:34px 0 70px}
+    .hero,.card{background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(74,52,33,.07);padding:22px}
+    .hero{padding:30px;background:linear-gradient(135deg,rgba(255,250,244,.96),rgba(241,227,212,.82));box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .hero::after{content:"";position:absolute;width:340px;height:340px;border-radius:50%;right:-140px;top:-190px;background:rgba(114,70,42,.08)}
+    .kicker{position:relative;z-index:1;color:var(--accent);font-size:.78rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;margin:0 0 8px}
+    h1,h2{font-family:Georgia,"Times New Roman",serif;letter-spacing:-.025em}h1{position:relative;z-index:1;font-size:clamp(2rem,4vw,3.5rem);line-height:1;margin:0 0 12px}h2{font-size:clamp(1.35rem,2.5vw,2rem);margin:0 0 12px}h3{margin:0 0 8px}.muted{color:var(--muted)}p{margin:0 0 11px}.section{margin-top:22px}.hidden{display:none!important}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.btn{border:0;border-radius:999px;padding:11px 16px;background:var(--accent);color:#fff;font-weight:850;cursor:pointer;box-shadow:0 9px 18px rgba(114,70,42,.16)}.btn:hover{transform:translateY(-1px);filter:brightness(1.03)}.btn.secondary{background:#fff;color:var(--accent);border:1px solid var(--line);box-shadow:none}.btn.soft{background:var(--accent-soft);color:#5b3920;box-shadow:none}.btn.danger{background:var(--danger);color:#fff}.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+    .import-layout{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:center}.drop-zone{border:2px dashed rgba(114,70,42,.3);border-radius:18px;padding:20px;background:#fffdf9;transition:.15s}.drop-zone.drag{border-color:var(--accent);background:var(--accent-soft)}.drop-zone strong{display:block;margin-bottom:4px}.status{margin-top:12px;min-height:1.4em;font-weight:750}.status.good{color:var(--good)}.status.bad{color:var(--danger)}
+    .filters{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px}.field{display:grid;gap:7px}.field label{font-weight:800;color:#49382d}.field input,.field select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:13px;background:#fff;outline:none}.field input:focus,.field select:focus{border-color:var(--accent-2);box-shadow:0 0 0 3px rgba(183,124,72,.14)}
+    .stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.stat{padding:17px;border:1px solid var(--line);border-radius:18px;background:#fffdf9}.stat strong{display:block;color:var(--muted);font-size:.84rem;text-transform:uppercase;letter-spacing:.04em}.stat b{display:block;margin:5px 0 4px;color:var(--accent);font-family:Georgia,serif;font-size:2.1rem;line-height:1}.stat small{color:var(--muted)}
+    .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px;background:#fff}table{width:100%;border-collapse:collapse;min-width:980px}th,td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#fbf4ec;color:#563820;font-size:.78rem;text-transform:uppercase;letter-spacing:.055em;position:sticky;top:0;z-index:1}tr:last-child td{border-bottom:0}.student-row{cursor:pointer}.student-row:hover{background:#fffaf4}.student-row.selected{background:var(--accent-soft)}.score-pill,.level-pill{display:inline-flex;align-items:center;justify-content:center;padding:5px 9px;border-radius:999px;font-weight:850;white-space:nowrap}.score-pill{background:var(--accent-soft);color:#5b3920}.level-pill.good{background:var(--good-soft);color:var(--good)}.level-pill.warn{background:var(--warn-soft);color:#76510b}.level-pill.bad{background:var(--danger-soft);color:var(--danger)}
+    .empty{text-align:center;padding:36px 20px;color:var(--muted)}.small{font-size:.9rem}.tiny{font-size:.82rem;color:var(--muted)}
+    .result-hero{background:linear-gradient(135deg,#fffaf4,#f1e3d4);border:1px solid var(--line);border-radius:24px;padding:25px}.result-title-row{display:flex;justify-content:space-between;gap:22px;align-items:center}.identity-line{font-weight:800}.score-orb{width:122px;height:122px;border-radius:50%;display:grid;place-items:center;flex:0 0 auto;background:#fff;border:10px solid rgba(114,70,42,.16);box-shadow:inset 0 0 0 2px var(--accent),0 12px 28px rgba(74,52,33,.1);font-family:Georgia,serif;font-size:2rem;font-weight:900;color:var(--accent)}
+    .competency-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}.competency-card{padding:18px;border:1px solid var(--line);border-radius:18px;background:#fff}.competency-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.competency-score{font-family:Georgia,serif;color:var(--accent);font-size:1.7rem;white-space:nowrap}.bar{height:10px;border-radius:999px;background:#eadfd3;overflow:hidden;margin:14px 0 10px}.bar span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:999px}.report-box{padding:18px;border:1px solid var(--line);border-radius:18px;background:#fffdf9;font-family:Georgia,"Times New Roman",serif;font-size:1.04rem;line-height:1.72}.report-box p{text-align:justify}
+    .answer-state{font-weight:850}.answer-state.correct{color:var(--good)}.answer-state.wrong{color:var(--danger)}.answer-state.missing{color:var(--warn)}details.explanation{margin-top:8px}details.explanation summary{cursor:pointer;color:var(--accent);font-weight:800}.explanation-body{margin-top:8px;padding:12px;border-radius:12px;background:#fbf4ec;color:#4c3b2e}
+    .selected-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.footer-note{text-align:center;margin-top:24px;color:var(--muted);font-size:.88rem}
+    .result-choice-panel{margin-top:18px;padding:22px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(135deg,rgba(255,250,244,.98),rgba(241,227,212,.72));box-shadow:0 10px 26px rgba(74,52,33,.07)}
+    .result-choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}.result-choice{min-height:84px;padding:16px 18px;border:1px solid rgba(114,70,42,.22);border-radius:18px;background:#fff;color:#3e2d22;font-weight:850;text-align:left;cursor:pointer;box-shadow:0 8px 20px rgba(74,52,33,.06)}.result-choice:hover{transform:translateY(-1px)}
+    .pdf-download-list{display:grid;gap:11px;margin-top:15px}.pdf-download-row{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:88px;padding:14px 16px 14px 19px;border:1px solid rgba(114,70,42,.18);border-radius:18px;background:rgba(255,255,255,.88)}.pdf-download-row h3{margin:0 0 4px;font-size:1rem}.pdf-download-row p{margin:0;color:var(--muted);font-size:.88rem}.pdf-icon-button{display:inline-flex;width:62px;height:62px;flex:0 0 62px;flex-direction:column;align-items:center;justify-content:center;gap:1px;border:0;border-radius:50%;background:var(--accent);color:#fff;cursor:pointer;box-shadow:0 9px 18px rgba(114,70,42,.22)}.pdf-icon-button svg{width:23px;height:23px;fill:currentColor}.pdf-icon-button span{font-size:.66rem;font-weight:900;letter-spacing:.05em}
+    .detail-block{scroll-margin-top:18px}.summary-feedback{color:#4d3b2f;line-height:1.5}.profile-feedback{color:var(--muted);line-height:1.55}
+    .bibliography a{color:var(--accent);overflow-wrap:anywhere}
+    @media(max-width:900px){.stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.competency-grid{grid-template-columns:1fr}.filters{grid-template-columns:1fr}.import-layout{grid-template-columns:1fr}.result-title-row{align-items:flex-start}.score-orb{width:100px;height:100px;font-size:1.65rem}}
+    @media(max-width:700px){.result-choice-grid{grid-template-columns:1fr}.pdf-download-row{padding-left:14px}}
+    @media(max-width:560px){.page{width:min(100% - 22px,1180px);padding-top:18px}.hero,.card{padding:18px}.stats-grid{grid-template-columns:1fr}.result-title-row{flex-direction:column}.score-orb{align-self:center}.actions .btn{width:100%}}
+    @media print{body{background:#fff}.no-print,#listSection,#summarySection,#importSection,#filterSection,.selected-actions,.footer-note{display:none!important}.page{width:100%;padding:0}.hero,.card,.result-hero{box-shadow:none}.section{break-inside:avoid}.table-wrap{overflow:visible}table{min-width:0;font-size:.8rem}th,td{padding:7px}.competency-grid{grid-template-columns:repeat(3,1fr)}}
+  
+    .bibliography-title {
+      display: block;
+    }
+
+    .bibliography-link {
+      display: block;
+      margin-top: 4px;
+      color: var(--accent);
+      font-weight: 800;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .bibliography-link:hover,
+    .bibliography-link:focus {
+      text-decoration: none;
+      filter: brightness(0.9);
+    }
+
+  </style>
+</head>
+<body>
+<main class="page">
+  <section class="hero">
+    <p class="kicker">Centralizare și interpretare</p>
+    <h1>Rezultate elevi <br>Testul grilă CT (varianta A)</h1>
+    <p class="muted" style="position:relative;z-index:1;max-width:850px">Importă unul sau mai multe fișiere JSON descărcate de elevi. Rezultatele rămân salvate în acest browser și pot fi consultate individual.</p>
+  </section>
+
+  <section id="importSection" class="section card no-print">
+    <div class="import-layout">
+      <div id="dropZone" class="drop-zone">
+        <strong>Importă rezultatele elevilor</strong>
+        <p class="muted">Poți selecta simultan mai multe fișiere JSON sau le poți trage în această zonă.</p>
+      </div>
+      <div class="actions">
+        <button id="importButton" class="btn" type="button">Importă JSON</button>
+        <input id="jsonInput" class="hidden" type="file" accept="application/json,.json" multiple />
+        <button id="clearAllButton" class="btn danger" type="button">Șterge toate rezultatele</button>
+      </div>
+    </div>
+    <p id="importStatus" class="status" aria-live="polite"></p>
+  </section>
+
+  <section id="summarySection" class="section stats-grid no-print">
+    <div class="stat"><strong>Elevi importați</strong><b id="totalStudents">0</b><small>rezultate salvate</small></div>
+    <div class="stat"><strong>Media generală</strong><b id="averageScore">0%</b><small>pentru rezultatele afișate</small></div>
+    <div class="stat"><strong>Cel mai mare scor</strong><b id="bestScore">—</b><small id="bestStudent">niciun rezultat</small></div>
+    <div class="stat"><strong>Rată completare</strong><b id="completionRate">0%</b><small>itemi completați</small></div>
+  </section>
+
+  <section id="filterSection" class="section card no-print">
+    <div class="filters">
+      <div class="field"><label for="searchInput">Caută elevul</label><input id="searchInput" type="search" placeholder="Nume, cod de testare, școală sau clasă" /></div>
+      <div class="field"><label for="schoolFilter">Școala</label><select id="schoolFilter"><option value="">Toate școlile</option></select></div>
+      <div class="field"><label for="classFilter">Clasa</label><select id="classFilter"><option value="">Toate clasele</option></select></div>
+    </div>
+  </section>
+
+  <section id="listSection" class="section card no-print">
+    <h2>Rezultatele elevilor</h2>
+    <p class="muted">Apasă pe un rând pentru a vedea raportul complet al elevului.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Elev</th><th>Cod de testare</th><th>Școala</th><th>Clasa</th><th>Scor</th><th>Procent</th><th>Nivel</th><th>Data</th></tr></thead>
+        <tbody id="studentsBody"></tbody>
+      </table>
+      <div id="emptyList" class="empty">Nu există rezultate importate.</div>
+    </div>
+  </section>
+
+  <section id="studentReport" class="section hidden">
+    <section class="result-hero">
+      <div class="result-title-row">
+        <div>
+          <p class="kicker">Rezultat individual</p>
+          <h2 id="studentTitle">Elev</h2>
+          <p id="studentIdentity" class="identity-line"></p>
+          <p id="studentDate" class="muted"></p>
+        </div>
+        <div id="scoreOrb" class="score-orb">0%</div>
+      </div>
+      <div class="selected-actions no-print">
+        <button id="downloadStudentJsonButton" class="btn secondary" type="button">Descarcă JSON</button>
+        <button id="deleteStudentButton" class="btn danger" type="button">Șterge rezultatul</button>
+      </div>
+    </section>
+
+    <section class="result-choice-panel no-print">
+      <h2>Test finalizat</h2>
+      <p id="teacherCompletionScore" class="muted"></p>
+      <div class="result-choice-grid">
+        <button id="teacherReviewButton" class="result-choice" type="button">Arată răspunsurile și explicațiile</button>
+        <button id="teacherDetailsButton" class="result-choice" type="button">Vezi rezultate detaliate</button>
+      </div>
+      <div class="pdf-download-list">
+        <div class="pdf-download-row">
+          <div><h3>Descarcă răspunsurile trimise</h3><p>Întrebările și variantele bifate, într-un document pregătit pentru PDF.</p></div>
+          <button id="teacherAnswersPdfButton" class="pdf-icon-button" type="button" aria-label="Descarcă răspunsurile trimise în PDF"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h8l4 4v5h-2V7h-3V4H6v16h6v2H4V2h2zm9 11h2.5a2.5 2.5 0 0 1 0 5H17v3h-2v-8zm2 2v1h.5a.5.5 0 0 0 0-1H17zm-9-2h3a3 3 0 0 1 0 6H10v2H8v-8zm2 2v2h1a1 1 0 0 0 0-2h-1zm10-2h4v2h-2v1h2v2h-2v3h-2v-8z"/></svg><span>PDF</span></button>
+        </div>
+        <div class="pdf-download-row">
+          <div><h3>Descarcă rezultatele</h3><p>Punctajul general, profilul pe competențe și interpretarea rezultatului.</p></div>
+          <button id="teacherResultsPdfButton" class="pdf-icon-button" type="button" aria-label="Descarcă rezultatele în PDF"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h8l4 4v5h-2V7h-3V4H6v16h6v2H4V2h2zm9 11h2.5a2.5 2.5 0 0 1 0 5H17v3h-2v-8zm2 2v1h.5a.5.5 0 0 0 0-1H17zm-9-2h3a3 3 0 0 1 0 6H10v2H8v-8zm2 2v2h1a1 1 0 0 0 0-2h-1zm10-2h4v2h-2v1h2v2h-2v3h-2v-8z"/></svg><span>PDF</span></button>
+        </div>
+      </div>
+    </section>
+
+    <div id="teacherDetailedResults" class="hidden detail-block">
+      <section id="studentStats" class="section stats-grid"></section>
+      <section class="section card">
+        <h2>Profil pe competențe</h2>
+        <p class="muted">Aici apare diagnosticul explicativ pentru fiecare competență.</p>
+        <div id="competencyCards" class="competency-grid"></div>
+      </section>
+      <section class="section card">
+        <h2>Sinteza rezultatelor</h2>
+        <div class="table-wrap"><table><thead><tr><th>Competență</th><th>Scor</th><th>Procent</th><th>Nivel</th><th>Recomandare practică</th></tr></thead><tbody id="teacherCompetencySummary"></tbody></table></div>
+      </section>
+      <section class="section card"><h2>Interpretare generală</h2><div id="generalInterpretation" class="report-box"></div></section>
+    </div>
+
+    <section id="teacherAnswersSection" class="section card hidden detail-block">
+      <h2>Răspunsuri individuale</h2>
+      <div class="table-wrap"><table><thead><tr><th>Nr.</th><th>Cod</th><th>Întrebare</th><th>Răspuns elev</th><th>Răspuns corect</th><th>Evaluare</th></tr></thead><tbody id="answersBody"></tbody></table></div>
+    </section>
+  </section>
+
+
+  <section class="section card bibliography">
+    <h2>Bibliografie</h2>
+    <ol>
+      <li>
+        Ministerul Educației Naționale, <em>Programa școlară pentru disciplina Istorie, clasele a V-a–a VIII-a</em>,
+        aprobată prin Ordinul MEN nr. 3393 din 28 februarie 2017.
+      </li>
+      <li>
+        <span class="bibliography-title">Consiliul Europei (2018), <em>Quality History Education in the 21st Century</em>.</span>
+        <a class="bibliography-link" href="https://rm.coe.int/prems-108118-gbr-2507-quality-history-education-web-21x21/16808eace7" target="_blank" rel="noopener noreferrer">https://rm.coe.int/prems-108118-gbr-2507-quality-history-education-web-21x21/16808eace7</a>
+      </li>
+    </ol>
+  </section>
+
+  <p class="footer-note">Pagina funcționează local, fără trimiterea rezultatelor către un server.</p>
+</main>
+
+<script>
+const STORAGE_KEY = "cls6TestMarileDescopeririGeograficeCTVarATeacherResults_v1";
+let results = loadResults();
+let selectedId = null;
+
+const $ = (id) => document.getElementById(id);
+
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>'"]/g, (char) => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#039;",'"':"&quot;"}[char]));
+}
+
+function loadResults() {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveResults() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(results));
+}
+
+function normalizeResult(raw) {
+  if (!raw || typeof raw !== "object") throw new Error("Fișierul nu conține un rezultat valid.");
+  if (!raw.score || !Array.isArray(raw.answers)) throw new Error("Lipsesc scorul sau răspunsurile.");
+
+  const total = Number(raw.score.total ?? raw.test?.totalQuestions ?? raw.answers.length);
+  const correct = Number(raw.score.correct ?? raw.answers.filter((item) => item.isCorrect === true).length);
+  const missing = Number(raw.score.missing ?? raw.answers.filter((item) => !item.selected).length);
+  const wrong = Number(raw.score.wrong ?? Math.max(0, total - correct - missing));
+  const percent = Number(raw.score.percent ?? (total ? Math.round(correct * 100 / total) : 0));
+  const completedAt = raw.completedAt || new Date().toISOString();
+  const student = raw.student || {};
+
+  const normalized = {
+    ...raw,
+    test: {
+      title: raw.test?.title || "Testul grilă CT (varianta A)",
+      unit: raw.test?.unit || "Marile descoperiri geografice",
+      discipline: raw.test?.discipline || "Istorie, clasa a V-a",
+      totalQuestions: total
+    },
+    student: {
+      name: student.name || "Elev neidentificat",
+      testCode: student.testCode || student.nickname || "—",
+      nickname: student.testCode || student.nickname || "—",
+      school: student.school || "—",
+      className: student.className || "—"
+    },
+    score: {
+      ...raw.score,
+      correct, wrong, missing, total, percent,
+      level: raw.score.level || { label: levelLabel(percent) }
+    },
+    completedAt,
+    completedAtLabel: raw.completedAtLabel || formatDate(completedAt),
+    competencies: Array.isArray(raw.competencies) ? raw.competencies : [],
+    interpretation: raw.interpretation || "Nu există o interpretare generală în fișierul importat.",
+    answers: raw.answers.map((answer, index) => ({ id: answer.id ?? index + 1, ...answer }))
+  };
+
+  normalized._id = makeId(normalized);
+  return normalized;
+}
+
+function levelLabel(percent) {
+  if (percent >= 90) return "Excelent";
+  if (percent >= 75) return "Foarte bine";
+  if (percent >= 60) return "Bine";
+  if (percent >= 45) return "În formare";
+  return "Necesită consolidare";
+}
+
+function makeId(result) {
+  return [result.student.name,result.student.testCode || result.student.nickname,result.student.school,result.student.className,result.completedAt,result.score.correct,result.score.total].join("|");
+}
+
+function formatDate(value) {
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? String(value || "—") : date.toLocaleString("ro-RO");
+}
+
+function levelClass(percent) {
+  if (percent >= 75) return "good";
+  if (percent >= 45) return "warn";
+  return "bad";
+}
+
+async function importFiles(fileList) {
+  const files = [...fileList].filter((file) => file.name.toLowerCase().endsWith(".json"));
+  if (!files.length) return setStatus("Selectează cel puțin un fișier JSON.", false);
+
+  let imported = 0, replaced = 0, failed = 0;
+  for (const file of files) {
+    try {
+      const raw = JSON.parse(await file.text());
+      const normalized = normalizeResult(raw);
+      const index = results.findIndex((item) => item._id === normalized._id);
+      if (index >= 0) { results[index] = normalized; replaced++; }
+      else { results.push(normalized); imported++; }
+    } catch (error) {
+      console.warn(file.name, error); failed++;
+    }
+  }
+
+  results.sort((a,b) => new Date(b.completedAt) - new Date(a.completedAt));
+  saveResults();
+  refreshAll();
+  setStatus(`Import finalizat: ${imported} rezultate noi, ${replaced} actualizate${failed ? `, ${failed} fișiere respinse` : ""}.`, failed === 0);
+}
+
+function setStatus(message, good=true) {
+  const el = $("importStatus");
+  el.textContent = message;
+  el.className = `status ${good ? "good" : "bad"}`;
+}
+
+function filteredResults() {
+  const query = $("searchInput").value.trim().toLocaleLowerCase("ro");
+  const school = $("schoolFilter").value;
+  const className = $("classFilter").value;
+  return results.filter((result) => {
+    const haystack = [result.student.name,result.student.testCode || result.student.nickname,result.student.school,result.student.className].join(" ").toLocaleLowerCase("ro");
+    return (!query || haystack.includes(query)) && (!school || result.student.school === school) && (!className || result.student.className === className);
+  });
+}
+
+function refreshFilters() {
+  const currentSchool = $("schoolFilter").value;
+  const currentClass = $("classFilter").value;
+  const schools = [...new Set(results.map((r) => r.student.school).filter(Boolean))].sort((a,b) => a.localeCompare(b,"ro"));
+  const classes = [...new Set(results.map((r) => r.student.className).filter(Boolean))].sort((a,b) => a.localeCompare(b,"ro"));
+  $("schoolFilter").innerHTML = `<option value="">Toate școlile</option>${schools.map((v) => `<option value="${escapeHtml(v)}">${escapeHtml(v)}</option>`).join("")}`;
+  $("classFilter").innerHTML = `<option value="">Toate clasele</option>${classes.map((v) => `<option value="${escapeHtml(v)}">${escapeHtml(v)}</option>`).join("")}`;
+  if (schools.includes(currentSchool)) $("schoolFilter").value = currentSchool;
+  if (classes.includes(currentClass)) $("classFilter").value = currentClass;
+}
+
+function refreshSummary(list) {
+  const total = list.length;
+  const average = total ? Math.round(list.reduce((sum,r) => sum + r.score.percent,0) / total) : 0;
+  const best = total ? [...list].sort((a,b) => b.score.percent - a.score.percent)[0] : null;
+  const answered = list.reduce((sum,r) => sum + (r.score.total - r.score.missing),0);
+  const possible = list.reduce((sum,r) => sum + r.score.total,0);
+  $("totalStudents").textContent = total;
+  $("averageScore").textContent = `${average}%`;
+  $("bestScore").textContent = best ? `${best.score.correct}/${best.score.total}` : "—";
+  $("bestStudent").textContent = best ? `${best.student.name} · ${best.score.percent}%` : "niciun rezultat";
+  $("completionRate").textContent = `${possible ? Math.round(answered * 100 / possible) : 0}%`;
+}
+
+function refreshList() {
+  const list = filteredResults();
+  refreshSummary(list);
+  $("studentsBody").innerHTML = list.map((result) => `
+    <tr class="student-row ${result._id === selectedId ? "selected" : ""}" data-id="${escapeHtml(result._id)}">
+      <td><strong>${escapeHtml(result.student.name)}</strong></td>
+      <td>${escapeHtml(result.student.testCode || result.student.nickname)}</td>
+      <td>${escapeHtml(result.student.school)}</td>
+      <td>${escapeHtml(result.student.className)}</td>
+      <td><span class="score-pill">${result.score.correct}/${result.score.total}</span></td>
+      <td><strong>${result.score.percent}%</strong></td>
+      <td><span class="level-pill ${levelClass(result.score.percent)}">${escapeHtml(result.score.level?.label || levelLabel(result.score.percent))}</span></td>
+      <td class="small">${escapeHtml(result.completedAtLabel)}</td>
+    </tr>`).join("");
+  $("emptyList").classList.toggle("hidden", list.length > 0);
+  document.querySelectorAll(".student-row").forEach((row) => row.addEventListener("click", () => selectResult(row.dataset.id)));
+}
+
+function refreshAll() {
+  refreshFilters();
+  refreshList();
+  if (selectedId && !results.some((r) => r._id === selectedId)) {
+    selectedId = null;
+    $("studentReport").classList.add("hidden");
+  }
+}
+
+function selectResult(id) {
+  selectedId = id;
+  const result = results.find((item) => item._id === id);
+  if (!result) return;
+  renderStudent(result);
+  refreshList();
+  $("studentReport").classList.remove("hidden");
+  $("studentReport").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+function competencyProfileText(item) {
+  return item.profileFeedback || item.interpretation || "Nu există feedback explicativ în fișierul importat.";
+}
+
+function competencySummaryText(item) {
+  if (item.summaryFeedback) return item.summaryFeedback;
+  const percent = Number(item.percent) || 0;
+  const code = item.code || "";
+  const fallback = {
+    "CT1.1": percent < 45 ? "Prioritate: diferențierea faptelor de opinii, ipoteze și dezinformare." : "Consolidează clasificarea afirmațiilor prin raportare la dovezi.",
+    "CT1.2": percent < 45 ? "Prioritate: verificarea autorului, surselor, datei și metodei." : "Compară sursele după credibilitate și scop.",
+    "CT1.3": percent < 45 ? "Prioritate: identificarea perspectivei și interesului autorului." : "Formulează concluzii echilibrate din perspective diferite.",
+    "CT1.4": percent < 45 ? "Prioritate: analiza critică a hărților și documentarelor." : "Explică diferențele de perspectivă și limitele vizuale.",
+    "CT2.1": percent < 45 ? "Prioritate: verificarea conținutului istoric înainte de distribuire." : "Numește tehnica de manipulare și verifică informația."
+  };
+  return fallback[code] || "Continuă exersarea competenței.";
+}
+
+function renderStudent(result) {
+  $("studentTitle").textContent = result.student.name;
+  $("studentIdentity").textContent = `Cod de testare: ${result.student.testCode || result.student.nickname} · Școala: ${result.student.school} · Clasa: ${result.student.className}`;
+  $("studentDate").textContent = `Finalizat la ${result.completedAtLabel}`;
+  $("scoreOrb").textContent = `${result.score.percent}%`;
+  $("teacherCompletionScore").textContent = `Test finalizat · Punctaj general: ${result.score.correct}/${result.score.total}`;
+  const stats = [
+    ["Scor",`${result.score.correct}/${result.score.total}`,"răspunsuri corecte"],
+    ["Corecte",result.score.correct,`${Math.round(result.score.correct*100/result.score.total)||0}% din test`],
+    ["Greșite",result.score.wrong,`${Math.round(result.score.wrong*100/result.score.total)||0}% din test`],
+    ["Necompletate",result.score.missing,`${Math.round(result.score.missing*100/result.score.total)||0}% din test`]
+  ];
+  $("studentStats").innerHTML = stats.map(([title,value,note]) => `<div class="stat"><strong>${escapeHtml(title)}</strong><b>${escapeHtml(value)}</b><small>${escapeHtml(note)}</small></div>`).join("");
+  $("competencyCards").innerHTML = result.competencies.length ? result.competencies.map((item) => `
+    <article class="competency-card">
+      <div class="competency-head"><div><strong>${escapeHtml(item.code || "Competență")}</strong><p class="small">${escapeHtml(item.short || item.title || "")}</p></div><span class="competency-score">${item.correct}/${item.total}</span></div>
+      <div class="bar"><span style="width:${Math.max(0,Math.min(100,Number(item.percent)||0))}%"></span></div>
+      <p><span class="level-pill ${levelClass(Number(item.percent)||0)}">${escapeHtml(item.level?.label || levelLabel(Number(item.percent)||0))}</span></p>
+      <p class="small profile-feedback">${escapeHtml(competencyProfileText(item))}</p>
+    </article>`).join("") : `<p class="muted">Fișierul importat nu conține rezultate separate pe competențe.</p>`;
+  $("teacherCompetencySummary").innerHTML = result.competencies.map((item) => `<tr><td><strong>${escapeHtml(item.title || item.code || "Competență")}</strong></td><td>${item.correct}/${item.total}</td><td>${item.percent}%</td><td><span class="level-pill ${levelClass(Number(item.percent)||0)}">${escapeHtml(item.level?.label || levelLabel(Number(item.percent)||0))}</span></td><td class="summary-feedback">${escapeHtml(competencySummaryText(item))}</td></tr>`).join("");
+  $("generalInterpretation").innerHTML = `<p>${escapeHtml(result.interpretation)}</p>`;
+  $("answersBody").innerHTML = result.answers.map((answer) => {
+    const state = answer.isCorrect === true ? ["Corect","correct"] : answer.isCorrect === false ? ["Greșit","wrong"] : ["Necompletat","missing"];
+    const selectedText = answer.selectedText || answer.options?.[answer.selected] || "—";
+    const correctText = answer.correctText || answer.options?.[answer.correctAnswer] || "—";
+    const explanation = answer.explanation?.correct || "Explicația nu este inclusă în acest fișier JSON.";
+    const optionDetails = answer.explanation?.options ? Object.entries(answer.explanation.options).map(([letter,text]) => `<p><strong>${escapeHtml(letter)}.</strong> ${escapeHtml(text)}</p>`).join("") : "";
+    return `<tr>
+      <td>${escapeHtml(answer.id)}</td><td>${escapeHtml(answer.code || "—")}</td><td><strong>${escapeHtml(answer.question || "—")}</strong><details class="explanation"><summary>Vezi explicația</summary><div class="explanation-body"><p>${escapeHtml(explanation)}</p>${optionDetails}</div></details></td>
+      <td>${escapeHtml(answer.selected || "—")}. ${escapeHtml(selectedText)}</td><td>${escapeHtml(answer.correctAnswer || "—")}. ${escapeHtml(correctText)}</td><td><span class="answer-state ${state[1]}">${state[0]}</span></td>
+    </tr>`;
+  }).join("");
+  $("teacherDetailedResults").classList.add("hidden");
+  $("teacherAnswersSection").classList.add("hidden");
+  $("teacherDetailsButton").textContent = "Vezi rezultate detaliate";
+  $("teacherReviewButton").textContent = "Arată răspunsurile și explicațiile";
+}
+
+function currentResult() { return results.find((item) => item._id === selectedId) || null; }
+
+function downloadBlob(content,mimeType,fileName) {
+  const blob = new Blob([content],{type:mimeType});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");a.href=url;a.download=fileName;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),500);
+}
+
+function safeName(value) { return String(value || "elev").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-zA-Z0-9]+/g,"-").replace(/^-|-$/g,"").toLowerCase(); }
+
+function downloadSelectedJson() {
+  const result = currentResult(); if (!result) return;
+  const copy = {...result}; delete copy._id;
+  downloadBlob(JSON.stringify(copy,null,2),"application/json;charset=utf-8",`rezultat-${safeName(result.student.name)}.json`);
+}
+
+function deleteSelected() {
+  const result = currentResult(); if (!result) return;
+  if (!confirm(`Ștergi rezultatul elevului ${result.student.name}?`)) return;
+  results = results.filter((item) => item._id !== selectedId);selectedId=null;saveResults();refreshAll();$("studentReport").classList.add("hidden");
+}
+
+function clearAll() {
+  if (!results.length) return;
+  if (!confirm("Ștergi toate rezultatele importate din acest browser?")) return;
+  results=[];selectedId=null;saveResults();refreshAll();$("studentReport").classList.add("hidden");setStatus("Toate rezultatele au fost șterse.",true);
+}
+
+function toggleTeacherDetails() {
+  const panel = $("teacherDetailedResults");
+  const show = panel.classList.contains("hidden");
+  panel.classList.toggle("hidden", !show);
+  $("teacherDetailsButton").textContent = show ? "Ascunde rezultatele detaliate" : "Vezi rezultate detaliate";
+  if (show) panel.scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+function toggleTeacherAnswers() {
+  const panel = $("teacherAnswersSection");
+  const show = panel.classList.contains("hidden");
+  panel.classList.toggle("hidden", !show);
+  $("teacherReviewButton").textContent = show ? "Ascunde răspunsurile și explicațiile" : "Arată răspunsurile și explicațiile";
+  if (show) panel.scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+function printableDocument(title, body) {
+  return `<!DOCTYPE html><html lang="ro"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(title)}</title><style>*{box-sizing:border-box}body{margin:0;color:#25211d;font-family:Arial,sans-serif;line-height:1.5}.page{width:min(980px,calc(100% - 36px));margin:auto;padding:28px 0}.hero,.card{border:1px solid #e6ded4;border-radius:18px;padding:20px;margin-bottom:16px}.hero{background:linear-gradient(135deg,#fffaf4,#f1e3d4)}h1,h2{font-family:Georgia,serif}p{margin:0 0 9px}.muted{color:#6f675d}.score{font-family:Georgia,serif;font-size:2rem;color:#72462a;font-weight:bold}.answer{padding:13px 0;border-bottom:1px solid #e6ded4;break-inside:avoid}.choice{padding:8px 10px;margin-top:6px;background:#fbf4ec;border-radius:10px}.competency{padding:13px 0;border-bottom:1px solid #e6ded4}.competency span{display:block;color:#72462a;font-weight:bold;margin:4px 0}table{width:100%;border-collapse:collapse}th,td{padding:9px;border-bottom:1px solid #e6ded4;text-align:left;vertical-align:top}th{background:#fbf4ec}@page{size:A4;margin:14mm}@media print{.page{width:100%;padding:0}}</style></head><body><main class="page">${body}</main></body></html>`;
+}
+
+function openTeacherPdf(kind) {
+  const result = currentResult(); if (!result) return;
+  const identity = `${escapeHtml(result.student.name)} · cod ${escapeHtml(result.student.testCode || result.student.nickname)} · ${escapeHtml(result.student.school)} · clasa ${escapeHtml(result.student.className)}`;
+  let body;
+  if (kind === "answers") {
+    body = `<section class="hero"><h1>Răspunsuri trimise</h1><p>${identity}</p><p class="muted">${escapeHtml(result.completedAtLabel)}</p></section><section class="card">${result.answers.map((a)=>`<article class="answer"><strong>${a.id}. ${escapeHtml(a.question||"")}</strong><div class="choice"><b>Răspuns trimis:</b> ${escapeHtml(a.selected||"—")}. ${escapeHtml(a.selectedText||a.options?.[a.selected]||"Niciun răspuns bifat")}</div></article>`).join("")}</section>`;
+  } else {
+    body = `<section class="hero"><h1>Rezultatele testului</h1><p>${identity}</p><p class="muted">${escapeHtml(result.completedAtLabel)}</p><p class="score">${result.score.correct}/${result.score.total} · ${result.score.percent}%</p></section><section class="card"><h2>Profil pe competențe</h2>${result.competencies.map((item)=>`<div class="competency"><strong>${escapeHtml(item.title||item.code)}</strong><span>${item.correct}/${item.total} · ${item.percent}% · ${escapeHtml(item.level?.label||levelLabel(item.percent))}</span><p>${escapeHtml(competencyProfileText(item))}</p><p><b>Recomandare:</b> ${escapeHtml(competencySummaryText(item))}</p></div>`).join("")}</section><section class="card"><h2>Interpretare generală</h2><p>${escapeHtml(result.interpretation)}</p></section>`;
+  }
+  const w = window.open("","_blank"); if (!w) return alert("Permite ferestrele pop-up pentru a genera PDF-ul.");
+  w.document.open(); w.document.write(printableDocument(kind === "answers" ? "Răspunsuri trimise" : "Rezultate", body)); w.document.close(); w.focus(); setTimeout(()=>w.print(),300);
+}
+
+$("teacherDetailsButton").addEventListener("click",toggleTeacherDetails);
+$("teacherReviewButton").addEventListener("click",toggleTeacherAnswers);
+$("teacherAnswersPdfButton").addEventListener("click",()=>openTeacherPdf("answers"));
+$("teacherResultsPdfButton").addEventListener("click",()=>openTeacherPdf("results"));
+
+$("importButton").addEventListener("click",()=>$("jsonInput").click());
+$("jsonInput").addEventListener("change",(event)=>{importFiles(event.target.files);event.target.value="";});
+$("clearAllButton").addEventListener("click",clearAll);
+$("searchInput").addEventListener("input",refreshList);$("schoolFilter").addEventListener("change",refreshList);$("classFilter").addEventListener("change",refreshList);
+$("downloadStudentJsonButton").addEventListener("click",downloadSelectedJson);$("deleteStudentButton").addEventListener("click",deleteSelected);
+
+const dropZone=$("dropZone");
+["dragenter","dragover"].forEach((name)=>dropZone.addEventListener(name,(event)=>{event.preventDefault();dropZone.classList.add("drag");}));
+["dragleave","drop"].forEach((name)=>dropZone.addEventListener(name,(event)=>{event.preventDefault();dropZone.classList.remove("drag");}));
+dropZone.addEventListener("drop",(event)=>importFiles(event.dataTransfer.files));
+
+refreshAll();
+</script>
+</body>
+</html>

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chestionar DERS</title>
+  <style>
+:root{
+  --bg:#f6f3ef;
+  --panel:#fffaf4;
+  --card:#ffffff;
+  --ink:#202020;
+  --muted:#6f675d;
+  --line:#e6ded4;
+  --accent:#7a4e2d;
+  --accent-2:#b98250;
+  --accent-soft:#f1e3d4;
+  --good:#255f3f;
+  --warn:#8a5a00;
+  --danger:#9b2c2c;
+  --shadow:0 18px 50px rgba(74,52,33,.12);
+  --radius:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(184,130,80,.14), transparent 36rem),
+    linear-gradient(180deg,#fbf8f3 0%, var(--bg) 100%);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  line-height:1.55;
+}
+a{color:inherit}
+.page{
+  width:min(1120px, calc(100% - 36px));
+  margin:0 auto;
+  padding:34px 0 70px;
+}
+.hero{
+  background:linear-gradient(135deg,rgba(255,250,244,.92),rgba(241,227,212,.76));
+  border:1px solid var(--line);
+  border-radius:30px;
+  box-shadow:var(--shadow);
+  padding:34px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  width:360px;height:360px;border-radius:50%;
+  right:-140px;top:-190px;
+  background:rgba(122,78,45,.08);
+}
+.kicker{
+  color:var(--accent);
+  font-size:.82rem;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  margin:0 0 8px;
+}
+h1{
+  font-family: Georgia, "Times New Roman", serif;
+  font-size:clamp(2rem,5vw,4.4rem);
+  line-height:.98;
+  letter-spacing:-.05em;
+  margin:0 0 16px;
+}
+h2{
+  font-family: Georgia, "Times New Roman", serif;
+  font-size:clamp(1.35rem,2.2vw,2rem);
+  margin:0 0 12px;
+}
+h3{margin:0 0 8px;font-size:1.05rem}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.grid{display:grid;gap:18px}
+.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{
+  background:rgba(255,255,255,.92);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:0 10px 30px rgba(74,52,33,.07);
+  padding:22px;
+}
+.section{margin-top:22px}
+.notice{
+  background:#fff7ec;
+  border:1px solid #ead8c4;
+  border-left:6px solid var(--accent-2);
+  padding:16px 18px;
+  border-radius:18px;
+  color:#46382d;
+}
+
+.instruction-card{
+  background:#fff8ef;
+  padding:20px 22px;
+}
+.instruction-card h3{
+  font-size:1.14rem;
+  margin-bottom:10px;
+}
+.instruction-text{
+  text-align:justify;
+  text-justify:inter-word;
+  font-size:1.03rem;
+  line-height:1.76;
+  letter-spacing:.004em;
+  color:#3f342b;
+}
+.instruction-text p{
+  margin:0 0 10px;
+}
+.instruction-text p:last-child{
+  margin-bottom:0;
+}
+.scale-response{
+  text-align:justify;
+  text-justify:inter-word;
+  margin-top:14px;
+  padding:12px 14px;
+  border:1px solid #ead8c4;
+  border-radius:14px;
+  background:rgba(255,255,255,.68);
+  font-size:.98rem;
+  line-height:1.68;
+}
+.biblio-card{
+  background:#fffdf9;
+}
+.biblio-card ol{
+  margin:8px 0 0 20px;
+  padding:0;
+}
+.biblio-card li{
+  margin:0 0 8px;
+  color:#44372c;
+}
+.biblio-card small{
+  display:block;
+  margin-top:8px;
+  line-height:1.55;
+}
+label{font-weight:750}
+input[type="text"], input[type="number"], input[type="date"], input[type="password"], textarea, select{
+  width:100%;
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:13px 14px;
+  background:#fff;
+  font:inherit;
+  outline:none;
+  transition:.18s ease;
+}
+input:focus, textarea:focus, select:focus{
+  border-color:var(--accent-2);
+  box-shadow:0 0 0 4px rgba(184,130,80,.16);
+}
+textarea{min-height:92px;resize:vertical}
+.btn{
+  border:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border-radius:999px;
+  padding:12px 18px;
+  background:var(--accent);
+  color:white;
+  font-weight:850;
+  cursor:pointer;
+  text-decoration:none;
+  transition:.18s ease;
+  box-shadow:0 10px 18px rgba(122,78,45,.16);
+}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.03)}
+.btn.secondary{background:#fff;color:var(--accent);border:1px solid var(--line);box-shadow:none}
+.btn.soft{background:var(--accent-soft);color:#5b3920;box-shadow:none}
+.btn.danger{background:#9b2c2c}
+.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.progress-shell{
+  position:sticky;
+  top:0;
+  z-index:20;
+  padding:10px 0;
+  backdrop-filter:blur(18px);
+}
+.progress-card{
+  background:rgba(255,250,244,.88);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:8px 12px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  box-shadow:0 8px 24px rgba(74,52,33,.08);
+}
+.progress-bar{
+  height:10px;
+  flex:1;
+  border-radius:999px;
+  background:#eadfd3;
+  overflow:hidden;
+}
+.progress-bar span{
+  display:block;
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  border-radius:999px;
+}
+small{font-size:.84rem;color:var(--muted)}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px;background:#fff}
+table{width:100%;border-collapse:collapse;min-width:780px}
+th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:#fbf4ec;color:#563820;font-size:.86rem;text-transform:uppercase;letter-spacing:.06em}
+tr:last-child td{border-bottom:0}
+.pill{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 10px;border-radius:999px;
+  background:var(--accent-soft);color:#5b3920;
+  font-size:.84rem;font-weight:800;
+}
+.level-low{background:#edf6f1;color:#255f3f}
+.level-mid{background:#fff4db;color:#76510b}
+.level-high{background:#f7e6e3;color:#8a2b21}
+.hidden{display:none!important}
+.footer{
+  margin-top:26px;
+  color:var(--muted);
+  font-size:.9rem;
+}
+@media(max-width:760px){
+  .page{width:min(100% - 22px,1120px);padding-top:18px}
+  .hero{padding:24px;border-radius:24px}
+  .grid.two,.grid.three{grid-template-columns:1fr}
+  table{min-width:700px}
+}
+@media print{
+  body{background:white}
+  .no-print,.actions,.progress-shell,.password-shell{display:none!important}
+  .page{width:100%;padding:0}
+  .hero,.card{box-shadow:none}
+}
+
+.client-fields{
+  display:grid;
+  grid-template-columns:1.2fr .8fr .8fr;
+  gap:14px;
+}
+.item-card{
+  display:grid;
+  grid-template-columns:42px minmax(0,1fr) auto;
+  gap:14px;
+  align-items:center;
+  padding:18px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:#fff;
+}
+.item-no{
+  width:42px;height:42px;border-radius:50%;
+  display:grid;place-items:center;
+  background:var(--accent-soft);
+  color:#5b3920;
+  font-weight:900;
+}
+.item-text{font-size:1rem}
+.likert{
+  display:grid;
+  grid-template-columns:repeat(5,44px);
+  gap:8px;
+}
+.likert label{
+  position:relative;
+  display:grid;
+  place-items:center;
+  height:44px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  cursor:pointer;
+  background:#fffaf5;
+  font-weight:900;
+}
+.likert input{
+  position:absolute;
+  opacity:0;
+}
+.likert label:has(input:checked){
+  border-color:var(--accent);
+  background:var(--accent);
+  color:#fff;
+}
+.scale-head{
+  display:grid;
+  grid-template-columns:42px minmax(0,1fr) auto;
+  gap:14px;
+  margin:0 0 8px;
+  color:var(--muted);
+  font-size:.84rem;
+  font-weight:850;
+}
+@media(max-width:830px){
+  .client-fields{grid-template-columns:1fr}
+  .item-card{grid-template-columns:38px minmax(0,1fr);align-items:start}
+  .likert{grid-column:1 / -1;grid-template-columns:repeat(5,1fr)}
+  .scale-head{display:none}
+}
+</style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <p class="kicker">Cabinet individual de psihologie</p>
+      <h1>Scala DERS</h1>
+      <p class="muted">Scala Dificultăților în Reglarea Emoțională · formular digital cu 36 de itemi.</p>
+    </section>
+
+    <div class="progress-shell no-print">
+      <div class="progress-card">
+        <strong id="progressText">0 / 36 răspunsuri</strong>
+        <div class="progress-bar" aria-hidden="true"><span id="progressBar"></span></div>
+        <small id="progressPercent">0%</small>
+      </div>
+    </div>
+
+    <section class="section card">
+      <h2>Date de identificare</h2>
+      <p class="muted">Se recomandă folosirea unui cod de client/pacient, nu a numelui complet, dacă formularul este completat online.</p>
+      <div class="client-fields">
+        <div>
+          <label for="clientCode">Cod client / inițiale *</label>
+          <input id="clientCode" type="text" required placeholder="Ex.: DERS-001 sau A.B." />
+        </div>
+        <div>
+          <label for="clientAge">Vârsta</label>
+          <input id="clientAge" type="number" min="10" max="100" placeholder="opțional" />
+        </div>
+        <div>
+          <label for="testDate">Data aplicării</label>
+          <input id="testDate" type="date" />
+        </div>
+      </div>
+      <div class="section">
+        <label for="contextNote">Observații / contextul aplicării</label>
+        <textarea id="contextNote" placeholder="Ex.: evaluare inițială, monitorizarea progresului, retestare etc."></textarea>
+      </div>
+    </section>
+
+    <section class="section notice instruction-card">
+      <h3>Instrucțiuni</h3>
+      <div id="instruction" class="instruction-text"></div>
+      <p class="scale-response"><strong>Scala de răspuns:</strong> 1 = Aproape niciodată; 2 = Uneori; 3 = Aproape jumătate din timp; 4 = De cele mai multe ori; 5 = Aproape întotdeauna.</p>
+    </section>
+
+    <form id="dersForm" class="section">
+      <div class="scale-head" aria-hidden="true">
+        <span>Nr.</span><span>Item</span><span>Răspuns</span>
+      </div>
+      <div id="itemsContainer" class="grid"></div>
+
+      <section class="section card">
+        <label style="display:flex; gap:10px; align-items:flex-start; font-weight:650;">
+          <input id="consent" type="checkbox" required style="margin-top:5px;" />
+          <span>Confirm că am răspuns la itemi cât mai sincer și înțeleg că rezultatele trebuie interpretate în context profesional, de către psiholog.</span>
+        </label>
+        <div class="actions section">
+          <button class="btn" type="submit">Finalizează și descarcă răspunsurile</button>
+          <button class="btn secondary" type="button" id="saveDraftBtn">Salvează progresul</button>
+          <button class="btn secondary" type="button" id="restoreDraftBtn">Reia progresul salvat</button>
+          <button class="btn secondary" type="reset">Resetează formularul</button>
+        </div>
+      </section>
+    </form>
+
+    <section id="successPanel" class="section card hidden">
+      <h2>Răspunsurile au fost descărcate</h2>
+      <p class="muted">Formularul a fost finalizat, iar fișierul JSON cu răspunsurile a fost descărcat pe dispozitiv.</p>
+      <div class="notice" style="margin:14px 0;">
+        <strong>Următorul pas:</strong><br>
+        Trimite documentul descărcat la adresa <strong>cabinet@maringabriel.ro</strong> pentru scorare și interpretare.
+      </div>
+      <div class="actions">
+        <button class="btn secondary" type="button" id="downloadLastBtn">Descarcă din nou fișierul JSON</button>
+        <a class="btn soft" href="mailto:cabinet@maringabriel.ro?subject=R%C4%83spunsuri%20Scala%20DERS&body=Bun%C4%83%20ziua%2C%0A%0AV%C4%83%20trimit%20ata%C8%99at%20fi%C8%99ierul%20JSON%20desc%C4%83rcat%20dup%C4%83%20completarea%20Scalei%20DERS.%0A%0AMul%C8%9Bumesc.">Deschide email către cabinet</a>
+      </div>
+    </section>
+
+    <section class="section card biblio-card">
+      <h2>Bibliografie relevantă</h2>
+      <ol>
+        <li>Gratz, K. L., &amp; Roemer, L. (2004). <em>Multidimensional assessment of emotion regulation and dysregulation: Development, factor structure, and initial validation of the Difficulties in Emotion Regulation Scale</em>. Journal of Psychopathology and Behavioral Assessment, 26(1), 41–54.</li>
+        <li>Bostan, C. M., &amp; Zaharia, D. V. (2016). <em>Emotional dysregulation – factor structure and consistency in the Romanian version of the Difficulties in Emotion Regulation Scale (DERS)</em>. Analele Științifice ale Universității „Alexandru Ioan Cuza” din Iași. Psihologie, 2, 57–77.</li>
+      </ol>
+      <small>Notă: DERS evaluează dificultăți declarate de reglare emoțională. Scorurile nu stabilesc singure un diagnostic clinic.</small>
+    </section>
+  </main>
+
+<script>
+const ITEMS = [
+  {
+    "nr": 1,
+    "text": "Îmi este clar ceea ce simt.",
+    "reverse": true
+  },
+  {
+    "nr": 2,
+    "text": "Sunt atent(ă) la ceea ce simt.",
+    "reverse": true
+  },
+  {
+    "nr": 3,
+    "text": "Îmi trăiesc emoțiile ca fiind copleșitoare și greu de controlat.",
+    "reverse": false
+  },
+  {
+    "nr": 4,
+    "text": "Nu am nicio idee despre cum mă simt.",
+    "reverse": false
+  },
+  {
+    "nr": 5,
+    "text": "Îmi este greu să înțeleg ceea ce simt.",
+    "reverse": false
+  },
+  {
+    "nr": 6,
+    "text": "Sunt atent(ă) la propriile mele emoții.",
+    "reverse": true
+  },
+  {
+    "nr": 7,
+    "text": "Știu exact cum mă simt.",
+    "reverse": true
+  },
+  {
+    "nr": 8,
+    "text": "Îmi pasă de ceea ce simt.",
+    "reverse": true
+  },
+  {
+    "nr": 9,
+    "text": "Sunt confuz(ă) în legătură cu ceea ce simt.",
+    "reverse": false
+  },
+  {
+    "nr": 10,
+    "text": "Când sunt afectat(ă) emoțional, îmi recunosc emoțiile.",
+    "reverse": true
+  },
+  {
+    "nr": 11,
+    "text": "Când sunt afectat(ă) emoțional, mă supăr pe mine pentru că simt astfel.",
+    "reverse": false
+  },
+  {
+    "nr": 12,
+    "text": "Când sunt afectat(ă) emoțional, mă simt jenat(ă) pentru că simt astfel.",
+    "reverse": false
+  },
+  {
+    "nr": 13,
+    "text": "Când sunt afectat(ă) emoțional, îmi este greu să-mi îndeplinesc sarcinile.",
+    "reverse": false
+  },
+  {
+    "nr": 14,
+    "text": "Când sunt afectat(ă) emoțional, simt că îmi pierd controlul.",
+    "reverse": false
+  },
+  {
+    "nr": 15,
+    "text": "Când sunt afectat(ă) emoțional, cred că voi rămâne în această stare mult timp.",
+    "reverse": false
+  },
+  {
+    "nr": 16,
+    "text": "Când sunt afectat(ă) emoțional, cred că voi ajunge să mă simt foarte deprimat(ă).",
+    "reverse": false
+  },
+  {
+    "nr": 17,
+    "text": "Când sunt afectat(ă) emoțional, cred că emoțiile mele sunt valide și importante.",
+    "reverse": true
+  },
+  {
+    "nr": 18,
+    "text": "Când sunt afectat(ă) emoțional, îmi este greu să mă concentrez asupra altor lucruri.",
+    "reverse": false
+  },
+  {
+    "nr": 19,
+    "text": "Când sunt afectat(ă) emoțional, simt că nu mai dețin controlul.",
+    "reverse": false
+  },
+  {
+    "nr": 20,
+    "text": "Când sunt afectat(ă) emoțional, reușesc totuși să-mi duc la bun sfârșit activitățile.",
+    "reverse": true
+  },
+  {
+    "nr": 21,
+    "text": "Când sunt afectat(ă) emoțional, îmi este rușine de mine pentru că simt astfel.",
+    "reverse": false
+  },
+  {
+    "nr": 22,
+    "text": "Când sunt afectat(ă) emoțional, știu că voi găsi, în cele din urmă, o modalitate de a mă simți mai bine.",
+    "reverse": true
+  },
+  {
+    "nr": 23,
+    "text": "Când sunt afectat(ă) emoțional, mă simt slab(ă).",
+    "reverse": false
+  },
+  {
+    "nr": 24,
+    "text": "Când sunt afectat(ă) emoțional, simt că îmi pot păstra controlul asupra comportamentului meu.",
+    "reverse": true
+  },
+  {
+    "nr": 25,
+    "text": "Când sunt afectat(ă) emoțional, mă simt vinovat(ă) pentru că simt astfel.",
+    "reverse": false
+  },
+  {
+    "nr": 26,
+    "text": "Când sunt afectat(ă) emoțional, îmi este greu să mă concentrez.",
+    "reverse": false
+  },
+  {
+    "nr": 27,
+    "text": "Când sunt afectat(ă) emoțional, îmi este greu să-mi controlez comportamentul.",
+    "reverse": false
+  },
+  {
+    "nr": 28,
+    "text": "Când sunt afectat(ă) emoțional, cred că nu există nimic ce pot face pentru a mă simți mai bine.",
+    "reverse": false
+  },
+  {
+    "nr": 29,
+    "text": "Când sunt afectat(ă) emoțional, mă irit pe mine pentru că simt astfel.",
+    "reverse": false
+  },
+  {
+    "nr": 30,
+    "text": "Când sunt afectat(ă) emoțional, încep să mă simt foarte rău în legătură cu mine însumi/însămi.",
+    "reverse": false
+  },
+  {
+    "nr": 31,
+    "text": "Când sunt afectat(ă) emoțional, cred că singurul lucru pe care îl pot face este să rămân blocat(ă) în starea mea.",
+    "reverse": false
+  },
+  {
+    "nr": 32,
+    "text": "Când sunt afectat(ă) emoțional, îmi pierd controlul asupra comportamentului meu.",
+    "reverse": false
+  },
+  {
+    "nr": 33,
+    "text": "Când sunt afectat(ă) emoțional, îmi este greu să mă gândesc la altceva.",
+    "reverse": false
+  },
+  {
+    "nr": 34,
+    "text": "Când sunt afectat(ă) emoțional, îmi acord timp pentru a înțelege ce simt cu adevărat.",
+    "reverse": true
+  },
+  {
+    "nr": 35,
+    "text": "Când sunt afectat(ă) emoțional, îmi ia mult timp să mă simt mai bine.",
+    "reverse": false
+  },
+  {
+    "nr": 36,
+    "text": "Când sunt afectat(ă) emoțional, emoțiile mele sunt copleșitoare.",
+    "reverse": false
+  }
+];
+const REVERSED_ITEMS = [1, 2, 6, 7, 8, 10, 17, 20, 22, 24, 34];
+const SCALES = [
+  {
+    "id": "nonacceptance",
+    "name": "Nonacceptarea răspunsurilor emoționale",
+    "items": [
+      11,
+      12,
+      21,
+      23,
+      25,
+      29
+    ],
+    "alpha": 0.81,
+    "short": "tendința de a judeca, respinge sau trăi cu rușine și vinovăție propriile reacții emoționale"
+  },
+  {
+    "id": "goals",
+    "name": "Dificultăți în comportamentul orientat spre scop",
+    "items": [
+      13,
+      18,
+      20,
+      26,
+      33
+    ],
+    "alpha": 0.857,
+    "short": "dificultatea de a rămâne concentrat(ă) și de a finaliza sarcini când apare afectarea emoțională"
+  },
+  {
+    "id": "impulse",
+    "name": "Dificultăți de control al impulsurilor",
+    "items": [
+      3,
+      14,
+      19,
+      24,
+      27,
+      32
+    ],
+    "alpha": 0.838,
+    "short": "dificultatea de a menține controlul comportamental în contextul emoțiilor intense"
+  },
+  {
+    "id": "awareness",
+    "name": "Lipsa conștientizării emoționale",
+    "items": [
+      2,
+      6,
+      8,
+      10,
+      17,
+      34
+    ],
+    "alpha": 0.658,
+    "short": "atenție redusă acordată emoțiilor și dificultăți de recunoaștere a experienței afective"
+  },
+  {
+    "id": "strategies",
+    "name": "Acces limitat la strategii de reglare emoțională",
+    "items": [
+      15,
+      16,
+      22,
+      28,
+      30,
+      31,
+      35,
+      36
+    ],
+    "alpha": 0.863,
+    "alpha_note": "α=.863 în studiul românesc după eliminarea itemului 22 (7 itemi)",
+    "short": "percepția că există puține modalități eficiente de a diminua sau gestiona starea emoțională"
+  },
+  {
+    "id": "clarity",
+    "name": "Lipsa clarității emoționale",
+    "items": [
+      1,
+      4,
+      5,
+      7,
+      9
+    ],
+    "alpha": 0.758,
+    "short": "dificultatea de a identifica, diferenția și înțelege cu precizie ceea ce se simte"
+  }
+];
+const DRAFT_KEY = "dersDraft_v1";
+const INSTRUCTION = [
+  "Vă rugăm să indicați în ce măsură fiecare afirmație este adevărată în cazul dumneavoastră.",
+  "Răspundeți raportându-vă la felul în care vă simțiți și reacționați în mod obișnuit. Alegeți câte un singur răspuns pentru fiecare afirmație.",
+  "Nu există răspunsuri «corecte» sau «greșite». Este important ca răspunsurile să fie cât mai sincere și cât mai apropiate de experiența dumneavoastră."
+];
+let lastSubmission = null;
+function $(id){return document.getElementById(id)}
+function todayISO(){const d=new Date();const offset=d.getTimezoneOffset();return new Date(d.getTime()-offset*60000).toISOString().slice(0,10)}
+function scoreItem(n,raw){return REVERSED_ITEMS.includes(Number(n)) ? 6-Number(raw) : Number(raw)}
+function renderItems(){
+  $("instruction").innerHTML=INSTRUCTION.map(t=>`<p>${t}</p>`).join("");
+  $("testDate").value=todayISO();
+  $("itemsContainer").innerHTML=ITEMS.map(item=>`<article class="item-card"><div class="item-no">${item.nr}</div><div class="item-text">${item.text}</div><div class="likert" role="radiogroup" aria-label="Răspuns item ${item.nr}">${[1,2,3,4,5].map(value=>`<label title="${value}"><input required type="radio" name="q${item.nr}" value="${value}" />${value}</label>`).join("")}</div></article>`).join("");
+}
+function getResponses(){const responses={};for(const item of ITEMS){const selected=document.querySelector(`input[name="q${item.nr}"]:checked`);if(!selected)return null;responses[item.nr]=Number(selected.value)}return responses}
+function getPartialResponses(){const responses={};for(const item of ITEMS){const selected=document.querySelector(`input[name="q${item.nr}"]:checked`);if(selected)responses[item.nr]=Number(selected.value)}return responses}
+function calculateScores(responses){
+  const scoredResponses={}; ITEMS.forEach(item=>{scoredResponses[item.nr]=scoreItem(item.nr,responses[item.nr])});
+  const scaleScores={};
+  for(const scale of SCALES){const vals=scale.items.map(n=>scoredResponses[n]);const sum=vals.reduce((a,b)=>a+b,0);scaleScores[scale.id]={...scale,sum,average:+(sum/scale.items.length).toFixed(2),min:scale.items.length,max:scale.items.length*5}}
+  const total=Object.values(scoredResponses).reduce((a,b)=>a+b,0);
+  const strategiesROItems=SCALES.find(x=>x.id==="strategies").items.filter(n=>n!==22);
+  const strategiesROSum=strategiesROItems.reduce((a,n)=>a+scoredResponses[n],0);
+  return {scoredResponses,scaleScores,totalScore:{sum:total,average:+(total/ITEMS.length).toFixed(2),min:36,max:180},strategiesRO7:{items:strategiesROItems,sum:strategiesROSum,average:+(strategiesROSum/strategiesROItems.length).toFixed(2),min:7,max:35}};
+}
+function makeSubmission(responses){const now=new Date();const code=$("clientCode").value.trim()||`DERS-${now.getTime()}`;return {id:`ders_${now.getTime()}_${Math.random().toString(16).slice(2)}`,questionnaire:"DERS",version:"DERS-36 RO digital",clientCode:code,age:$("clientAge").value.trim(),testDate:$("testDate").value||todayISO(),contextNote:$("contextNote").value.trim(),createdAt:now.toISOString(),responses,...calculateScores(responses)}}
+function updateProgress(){const answered=Object.keys(getPartialResponses()).length;const percent=Math.round(answered/ITEMS.length*100);$("progressText").textContent=`${answered} / ${ITEMS.length} răspunsuri`;$("progressBar").style.width=`${percent}%`;$("progressPercent").textContent=`${percent}%`}
+function saveDraft(){localStorage.setItem(DRAFT_KEY,JSON.stringify({clientCode:$("clientCode").value,clientAge:$("clientAge").value,testDate:$("testDate").value,contextNote:$("contextNote").value,responses:getPartialResponses()}));alert("Progresul a fost salvat în acest browser.")}
+function restoreDraft(){const raw=localStorage.getItem(DRAFT_KEY);if(!raw){alert("Nu există progres salvat în acest browser.");return}try{const d=JSON.parse(raw);$("clientCode").value=d.clientCode||"";$("clientAge").value=d.clientAge||"";$("testDate").value=d.testDate||todayISO();$("contextNote").value=d.contextNote||"";for(const [nr,value] of Object.entries(d.responses||{})){const input=document.querySelector(`input[name="q${nr}"][value="${value}"]`);if(input)input.checked=true}updateProgress()}catch(e){alert("Progresul salvat nu a putut fi citit.")}}
+function downloadJson(data){const fileName=`${(data.clientCode||"DERS").replace(/[^a-z0-9_-]+/gi,"_")}_${data.testDate||"data"}.json`;const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download=fileName;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)}
+document.addEventListener("DOMContentLoaded",()=>{renderItems();updateProgress();document.addEventListener("change",e=>{if(e.target.matches('input[type="radio"]'))updateProgress()});$("saveDraftBtn").addEventListener("click",saveDraft);$("restoreDraftBtn").addEventListener("click",restoreDraft);$("downloadLastBtn").addEventListener("click",()=>{if(lastSubmission)downloadJson(lastSubmission)});$("dersForm").addEventListener("reset",()=>{setTimeout(updateProgress,0);$("successPanel").classList.add("hidden")});$("dersForm").addEventListener("submit",e=>{e.preventDefault();if(!$("clientCode").value.trim()){$("clientCode").focus();alert("Completează codul clientului / inițialele.");return}if(!$("consent").checked){alert("Confirmarea finală este obligatorie.");return}const responses=getResponses();if(!responses){alert("Te rog să răspunzi la toți cei 36 de itemi.");return}const submission=makeSubmission(responses);lastSubmission=submission;localStorage.removeItem(DRAFT_KEY);downloadJson(submission);$("successPanel").classList.remove("hidden");$("successPanel").scrollIntoView({behavior:"smooth",block:"center"})})});
+</script>
+</body>
+</html>

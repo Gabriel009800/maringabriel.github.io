@@ -4,7 +4,7 @@
   <!-- Variantă standalone, fără dependență de style.css -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Evaluare - Marin Gabriel</title>
+  <title>Istorie – evaluare | Marin Gabriel</title>
 
   <style>
     body {
@@ -254,6 +254,65 @@
       background: #ead8c4;
     }
 
+
+
+    /* Rândurile testelor: titlu, competență și cele două pagini asociate */
+    .test-link {
+      display: grid;
+      grid-template-columns: minmax(180px, 0.7fr) minmax(300px, 1.3fr) auto;
+      align-items: center;
+      cursor: default;
+    }
+
+    .test-title {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.35;
+      color: #3c2a1e;
+    }
+
+    .test-competence {
+      font-size: 12.5px;
+      font-weight: 400;
+      line-height: 1.45;
+      color: #6f6257;
+    }
+
+    .test-competence strong {
+      color: #5a4635;
+      font-weight: 700;
+    }
+
+    .test-actions {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    .test-action-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 76px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(91, 62, 36, 0.24);
+      background: #fffaf3;
+      color: #3c2a1e;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1;
+      transition: 0.18s ease;
+    }
+
+    .test-action-link:hover {
+      background: #3c2a1e;
+      color: #fffaf3;
+      border-color: #3c2a1e;
+    }
+
     @media (max-width: 760px) {
       .evaluation-page {
         padding: 30px 14px 56px;
@@ -293,6 +352,18 @@
       .materials-empty {
         margin-left: 0;
       }
+
+
+      .test-link {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .test-actions {
+        justify-content: flex-start;
+      }
+
     }
   </style>
 </head>
@@ -302,10 +373,10 @@
 <main class="evaluation-page">
 
   <section class="evaluation-hero">
-    <h1>Evaluare</h1>
+    <h1>Istorie – evaluare</h1>
     <p>
-      Această secțiune este dedicată instrumentelor de evaluare pentru disciplina Istorie.
-      Alege clasa, apoi unitatea de învățare. Dacă există teste disponibile, acestea vor apărea sub unitatea selectată.
+      Alege clasa și unitatea de învățare, apoi deschide grila sau pagina de rezultate pentru testul dorit.
+      În dreptul fiecărui test este precizată, cu text discret, competența generală vizată.
       Dacă apeși din nou pe aceeași unitate, lista de teste se închide.
     </p>
   </section>
@@ -343,20 +414,67 @@
         "name": "Preistoria",
         "tests": [
           {
-            "title": "Testul grilă nr. 1",
-            "url": "1.%20istorie%20instrumente%20de%20evaluare/test-preistoria-grila-1.html"
+            "title": "CG1 – Varianta A",
+            "competenceCode": "CG1",
+            "competence": "Utilizarea în contexte diverse a coordonatelor şi reprezentărilor de timp şi spaţiu",
+            "gridUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-5-test-preistoria-CG1-var-A-grila.html",
+            "resultsUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-5-test-preistoria-CG1-var-A-rezultate.html"
           },
           {
-            "title": "Testul grilă nr. 2",
-            "url": "1.%20istorie%20instrumente%20de%20evaluare/test-preistoria-grila-2.html"
+            "title": "CG1 – Varianta B",
+            "competenceCode": "CG1",
+            "competence": "Utilizarea în contexte diverse a coordonatelor şi reprezentărilor de timp şi spaţiu",
+            "gridUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-5-test-preistoria-CG1-var-B-grila.html",
+            "resultsUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-5-test-preistoria-CG1-var-B-rezultate.html"
           },
           {
-            "title": "Testul grilă nr. 3",
-            "url": "1.%20istorie%20instrumente%20de%20evaluare/test-preistoria-grila-3.html"
+            "title": "CG1 – Varianta C",
+            "competenceCode": "CG1",
+            "competence": "Utilizarea în contexte diverse a coordonatelor şi reprezentărilor de timp şi spaţiu",
+            "gridUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-5-test-preistoria-CG1-var-C-grila.html",
+            "resultsUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-5-test-preistoria-CG1-var-C-rezultate.html"
           },
           {
-            "title": "Roata destinului",
-            "url": "1.%20istorie%20instrumente%20de%20evaluare/roata-destinului-preistoria.html"
+            "title": "CG2 – Varianta A",
+            "competenceCode": "CG2",
+            "competence": "Utilizarea critică şi reflexivă a limbajului de specialitate şi a surselor istorice",
+            "gridUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-5-test-preistoria-CG2-var-A-grila.html",
+            "resultsUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-5-test-preistoria-CG2-var-A-rezultate.html"
+          },
+          {
+            "title": "CG2 – Varianta B",
+            "competenceCode": "CG2",
+            "competence": "Utilizarea critică şi reflexivă a limbajului de specialitate şi a surselor istorice",
+            "gridUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-5-test-preistoria-CG2-var-B-grila.html",
+            "resultsUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-5-test-preistoria-CG2-var-B-rezultate.html"
+          },
+          {
+            "title": "CG2 – Varianta C",
+            "competenceCode": "CG2",
+            "competence": "Utilizarea critică şi reflexivă a limbajului de specialitate şi a surselor istorice",
+            "gridUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-5-test-preistoria-CG2-var-C-grila.html",
+            "resultsUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-5-test-preistoria-CG2-var-C-rezultate.html"
+          },
+          {
+            "title": "CT – Varianta A",
+            "competenceCode": "CT",
+            "competence": "Dezvoltarea gândirii critice pentru demontarea mecanismelor de manipulare în mediile digitale",
+            "gridUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-5-test-preistoria-CT-var-A-grila.html",
+            "resultsUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-5-test-preistoria-CT-var-A-rezultate.html"
+          },
+          {
+            "title": "CT – Varianta B",
+            "competenceCode": "CT",
+            "competence": "Dezvoltarea gândirii critice pentru demontarea mecanismelor de manipulare în mediile digitale",
+            "gridUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-5-test-preistoria-CT-var-B-grila.html",
+            "resultsUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-5-test-preistoria-CT-var-B-rezultate.html"
+          },
+          {
+            "title": "CT – Varianta C",
+            "competenceCode": "CT",
+            "competence": "Dezvoltarea gândirii critice pentru demontarea mecanismelor de manipulare în mediile digitale",
+            "gridUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-5-test-preistoria-CT-var-C-grila.html",
+            "resultsUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-5-test-preistoria-CT-var-C-rezultate.html"
           }
         ]
       },
@@ -365,11 +483,28 @@
         "tests": []
       },
       {
-        "name": "Civilizația greacă",
+        "name": "Grecia antică",
         "tests": [
           {
-            "title": "Testul grilă nr. 1",
-            "url": "1.%20istorie%20instrumente%20de%20evaluare/test-civilizatia-greaca-grila-1.html"
+            "title": "CG1 – Varianta A",
+            "competenceCode": "CG1",
+            "competence": "Utilizarea în contexte diverse a coordonatelor şi reprezentărilor de timp şi spaţiu",
+            "gridUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-5-test-grecia-antica-CG1-var-A-grila.html",
+            "resultsUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-5-test-grecia-antica-CG1-var-A-rezultate.html"
+          },
+          {
+            "title": "CG2 – Varianta A",
+            "competenceCode": "CG2",
+            "competence": "Utilizarea critică şi reflexivă a limbajului de specialitate şi a surselor istorice",
+            "gridUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-5-test-grecia-antica-CG2-var-A-grila.html",
+            "resultsUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-5-test-grecia-antica-CG2-var-A-rezultate.html"
+          },
+          {
+            "title": "CT – Varianta A",
+            "competenceCode": "CT",
+            "competence": "Dezvoltarea gândirii critice pentru demontarea mecanismelor de manipulare în mediile digitale",
+            "gridUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-5-test-grecia-antica-CT-var-A-grila.html",
+            "resultsUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-5-test-grecia-antica-CT-var-A-rezultate.html"
           }
         ]
       },
@@ -384,11 +519,28 @@
     ],
     "VI": [
       {
-        "name": "Călători și călătorii: Europa și Lumea Nouă",
+        "name": "Marile descoperiri geografice",
         "tests": [
           {
-            "title": "Testul grilă nr. 1",
-            "url": "1.%20istorie%20instrumente%20de%20evaluare/test-marile-descoperiri-grila-1.html"
+            "title": "CG1 – Varianta A",
+            "competenceCode": "CG1",
+            "competence": "Utilizarea în contexte diverse a coordonatelor şi reprezentărilor de timp şi spaţiu",
+            "gridUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-6-test-marile-descoperiri-geografice-CG1-var-A-grila.html",
+            "resultsUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-6-test-marile-descoperiri-geografice-CG1-var-A-rezultate.html"
+          },
+          {
+            "title": "CG2 – Varianta A",
+            "competenceCode": "CG2",
+            "competence": "Utilizarea critică şi reflexivă a limbajului de specialitate şi a surselor istorice",
+            "gridUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-6-test-marile-descoperiri-geografice-CG2-var-A-grila.html",
+            "resultsUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-6-test-marile-descoperiri-geografice-CG2-var-A-rezultate.html"
+          },
+          {
+            "title": "CT – Varianta A",
+            "competenceCode": "CT",
+            "competence": "Dezvoltarea gândirii critice pentru demontarea mecanismelor de manipulare în mediile digitale",
+            "gridUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-6-test-marile-descoperiri-geografice-CT-var-A-grila.html",
+            "resultsUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-6-test-marile-descoperiri-geografice-CT-var-A-rezultate.html"
           }
         ]
       },
@@ -407,17 +559,34 @@
     ],
     "VII": [
       {
-        "name": "Lumea la începutul secolului al XIX-lea și începutul secolului al XX-lea",
-        "tests": []
+        "name": "Primul Război Mondial",
+        "tests": [
+          {
+            "title": "CG1 – Varianta A",
+            "competenceCode": "CG1",
+            "competence": "Utilizarea în contexte diverse a coordonatelor şi reprezentărilor de timp şi spaţiu",
+            "gridUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-7-test-primul-razboi-mondial-CG1-var-A-grila.html",
+            "resultsUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-7-test-primul-razboi-mondial-CG1-var-A-rezultate.html"
+          },
+          {
+            "title": "CG2 – Varianta A",
+            "competenceCode": "CG2",
+            "competence": "Utilizarea critică şi reflexivă a limbajului de specialitate şi a surselor istorice",
+            "gridUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-7-test-primul-razboi-mondial-CG2-var-A-grila.html",
+            "resultsUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-7-test-primul-razboi-mondial-CG2-var-A-rezultate.html"
+          },
+          {
+            "title": "CT – Varianta A",
+            "competenceCode": "CT",
+            "competence": "Dezvoltarea gândirii critice pentru demontarea mecanismelor de manipulare în mediile digitale",
+            "gridUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-7-test-primul-razboi-mondial-CT-var-A-grila.html",
+            "resultsUrl": "1.%20istorie%20instrumente%20de%20evaluare/cls-7-test-primul-razboi-mondial-CT-var-A-rezultate.html"
+          }
+        ]
       },
       {
         "name": "Lumea interbelică: o lume în schimbare",
-        "tests": [
-          {
-            "title": "Testul grilă nr. 1",
-            "url": "1.%20istorie%20instrumente%20de%20evaluare/test-primul-razboi-mondial-grila-1.html"
-          }
-        ]
+        "tests": []
       },
       {
         "name": "Lumea în război",
@@ -1316,13 +1485,19 @@
           testsPanel.innerHTML = `<div class="no-tests">Deocamdată nu există teste disponibile pentru această unitate de învățare.</div>`;
         } else {
           unit.tests.forEach(test => {
-            const link = document.createElement("a");
-            link.className = "test-link";
-            link.href = test.url;
-            link.target = "_blank";
-            link.rel = "noopener";
-            link.innerHTML = `<span>${test.title}</span><span>Deschide testul</span>`;
-            testsPanel.appendChild(link);
+            const row = document.createElement("div");
+            row.className = "test-link";
+            row.innerHTML = `
+              <div class="test-title">${test.title}</div>
+              <div class="test-competence">
+                ${test.competence}
+              </div>
+              <div class="test-actions">
+                <a class="test-action-link" href="${test.gridUrl}" target="_blank" rel="noopener">Grilă</a>
+                <a class="test-action-link" href="${test.resultsUrl}" target="_blank" rel="noopener">Rezultate</a>
+              </div>
+            `;
+            testsPanel.appendChild(row);
           });
         }
 
