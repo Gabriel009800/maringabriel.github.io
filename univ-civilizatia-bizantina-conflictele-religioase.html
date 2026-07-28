@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Civilizația bizantină: conflictele religioase">
+  <title>civilizatia-bizantina-conflictele-religioase</title>
+  <style>
+
+:root {
+  --bg: #f6f0e7;
+  --paper: #fffaf3;
+  --paper-2: #ffffff;
+  --ink: #2f241c;
+  --title: #3c2a1e;
+  --muted: #5b4a3d;
+  --accent: #7a4f2a;
+  --accent-2: #9b6a3c;
+  --accent-soft: #f0e4d4;
+  --line: rgba(91, 62, 36, 0.18);
+  --line-strong: rgba(91, 62, 36, 0.34);
+  --outer-dark: #241208;
+  --outer-mid: #4a2a18;
+  --outer-warm: #7a4b2b;
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+  --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+    radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+}
+.page {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 34px 0 70px;
+}
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.back-link, .tag { display: inline-flex; align-items: center; border: 1px solid var(--line); background: rgba(255, 250, 243, 0.84); color: var(--title); border-radius: 999px; padding: 10px 15px; text-decoration: none; font-size: 15px; font-weight: 700; box-shadow: var(--shadow-small); }
+.back-link:hover { background: #fff6eb; }
+.hero, .section, .nav-card, .final-box { background: rgba(255, 250, 243, 0.96); border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow); }
+.hero { padding: 38px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.hero::after { content: var(--hero-year); position: absolute; right: 26px; bottom: -22px; font-size: 110px; font-weight: 900; letter-spacing: -4px; color: rgba(122, 79, 42, 0.08); pointer-events: none; }
+.eyebrow { margin: 0 0 8px; font-size: 16px; color: var(--accent); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; }
+h1 { margin: 0; font-size: clamp(38px, 5vw, 62px); line-height: 1.04; color: var(--title); letter-spacing: -1.4px; text-align: left; text-align-last: auto; }
+.subtitle { margin: 18px 0 0; max-width: 980px; font-size: 19px; line-height: 1.78; color: var(--muted); text-align: justify; text-align-last: left; }
+.summary-grid, .three-col, .two-col, .term-grid, .quick-grid, .cause-grid, .four-col { display: grid; gap: 14px; }
+.summary-grid { grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+.summary-card, .info-card, .wide-card, .term-card, .quick-card, .source-note, .micro-card, .warning-box { background: var(--paper-2); border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); text-align: justify; text-align-last: left; }
+.summary-card { padding: 16px; min-height: 132px; }
+.summary-card strong, .quick-card strong, .term-card strong, .micro-card strong { display: block; color: var(--title); font-size: 17px; margin-bottom: 8px; text-align: left; text-align-last: auto; }
+.summary-card span, .quick-card span, .term-card span, .micro-card span { display: block; color: var(--muted); font-size: 15.5px; line-height: 1.56; text-align: justify; text-align-last: left; }
+.nav-card { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 18px 20px; margin-bottom: 24px; }
+.nav-card b { color: var(--title); margin-right: 2px; }
+.nav-card a, .mini-btn { color: var(--title); background: var(--accent-soft); border: 1px solid rgba(91, 62, 36, 0.16); border-radius: 999px; text-decoration: none; padding: 8px 12px; font-weight: 700; font-size: 14px; cursor: pointer; font-family: inherit; }
+.nav-card a:hover, .mini-btn:hover { background: #e5d2bb; }
+.section { padding: 30px; margin-bottom: 24px; }
+h2 { margin: 0 0 14px; color: var(--title); font-size: clamp(28px, 3vw, 38px); line-height: 1.15; text-align: left; text-align-last: auto; }
+h3 { margin: 0 0 12px; color: var(--title); font-size: 22px; line-height: 1.22; text-align: left; text-align-last: auto; }
+h4 { margin: 16px 0 8px; color: var(--title); font-size: 18px; text-align: left; text-align-last: auto; }
+.section-intro, p, li, dd { font-size: 17px; line-height: 1.72; color: var(--muted); text-align: justify; text-align-last: left; hyphens: auto; }
+.section-intro { margin: 0 0 20px; max-width: 1000px; }
+.three-col { grid-template-columns: repeat(3, 1fr); }
+.two-col { grid-template-columns: repeat(2, 1fr); }
+.four-col { grid-template-columns: repeat(4, 1fr); }
+.cause-grid { grid-template-columns: 1.1fr 0.9fr; }
+.term-grid { grid-template-columns: repeat(4, 1fr); }
+.quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+.info-card, .wide-card, .term-card, .quick-card, .micro-card, .warning-box, .source-note { padding: 20px; }
+.wide-card { margin-top: 14px; }
+.wide-card p:last-child, .info-card p:last-child { margin-bottom: 0; }
+.clean, .number-list { margin: 0; padding-left: 22px; }
+.clean li, .number-list li { margin: 0 0 9px; padding-left: 2px; }
+.clean li:last-child, .number-list li:last-child { margin-bottom: 0; }
+.mini-title { display: inline; color: var(--title); font-weight: 800; background: transparent; border: 0; border-radius: 0; padding: 0; margin-right: 5px; white-space: normal; text-align: inherit; }
+.date-pill { display: inline-block; color: var(--title); font-weight: 800; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.13); border-radius: 999px; padding: 2px 9px; margin-right: 5px; white-space: nowrap; text-align: left; }
+.definition, .note { margin-top: 18px; background: #fff8ef; border: 1px solid rgba(122, 79, 42, 0.22); border-left: 6px solid rgba(122, 79, 42, 0.48); border-radius: 18px; padding: 18px 20px; color: var(--muted); font-size: 17px; line-height: 1.7; text-align: justify; text-align-last: left; }
+.definition strong, .note strong { color: var(--title); }
+details { background: #fffdf9; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); margin-top: 14px; overflow: hidden; }
+details[open] { background: #fffaf3; }
+summary { cursor: pointer; list-style: none; padding: 18px 20px; font-size: 19px; font-weight: 800; color: var(--title); display: flex; justify-content: space-between; align-items: center; gap: 18px; text-align: left; text-align-last: auto; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "Deschide"; color: var(--muted); font-size: 14px; font-weight: 700; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 999px; padding: 7px 11px; white-space: nowrap; }
+details[open] > summary::after { content: "Ascunde"; }
+.details-body { border-top: 1px solid rgba(91, 62, 36, 0.12); padding: 18px 20px 20px; text-align: justify; text-align-last: left; }
+.details-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.nested-details { margin-top: 10px; box-shadow: none; background: #ffffff; }
+.nested-details summary { font-size: 17px; padding: 14px 16px; }
+.key-line { display: grid; grid-template-columns: 220px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px dashed rgba(91, 62, 36, 0.18); }
+.key-line:last-child { border-bottom: 0; }
+.key-line strong { color: var(--title); text-align: left; text-align-last: auto; }
+.key-line span { color: var(--muted); line-height: 1.65; text-align: justify; text-align-last: left; }
+.timeline { position: relative; display: grid; gap: 14px; margin-top: 18px; }
+.event { display: grid; grid-template-columns: 132px 1fr; gap: 18px; align-items: stretch; background: #ffffff; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); overflow: hidden; }
+.date { background: linear-gradient(180deg, #7a4f2a, #5b351b); color: #fffaf3; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px; font-size: 18px; line-height: 1.25; font-weight: 900; letter-spacing: 0.2px; }
+.event > div:last-child { padding: 17px 18px 18px 0; text-align: justify; text-align-last: left; }
+.event h3 { margin-bottom: 6px; }
+.event p { margin: 0; }
+.small-muted { font-size: 15px; color: #725c49; line-height: 1.6; text-align: justify; text-align-last: left; }
+.warning-box { background: #fff7ec; border-color: rgba(122, 79, 42, 0.22); margin-top: 16px; }
+.final-box { padding: 28px; background: linear-gradient(135deg, #fffaf3, #f4e4d1); border-color: rgba(91, 62, 36, 0.25); }
+.final-box p { margin-bottom: 0; }
+.table-wrap { overflow-x: auto; margin-top: 14px; border-radius: 18px; border: 1px solid rgba(91,62,36,.14); background: #fff; box-shadow: var(--shadow-small); }
+table { width: 100%; border-collapse: collapse; min-width: 740px; }
+th, td { padding: 13px 14px; border-bottom: 1px solid rgba(91,62,36,.12); color: var(--muted); font-size: 16px; line-height: 1.55; vertical-align: top; text-align: justify; }
+th { background: #f3eadf; color: var(--title); text-align: left; font-weight: 800; }
+tr:last-child td { border-bottom: 0; }
+@media (max-width: 980px) {
+  .summary-grid, .three-col, .term-grid, .quick-grid, .four-col { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .cause-grid, .details-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .page { width: min(100% - 22px, 1180px); padding-top: 22px; }
+  .hero, .section, .final-box { padding: 22px; border-radius: 22px; }
+  .summary-grid, .term-grid, .quick-grid, .four-col { grid-template-columns: 1fr; }
+  .event { grid-template-columns: 1fr; }
+  .date { min-height: 66px; }
+  .event > div:last-child { padding: 0 16px 16px; }
+  .key-line { grid-template-columns: 1fr; gap: 6px; }
+  summary { align-items: flex-start; flex-direction: column; }
+  .hero::after { font-size: 82px; }
+}
+
+.related-card { display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:16px 20px; margin:-10px 0 24px; background:rgba(255,250,243,.90); border:1px solid var(--line); border-radius:22px; box-shadow:var(--shadow-small); }
+.related-card b { color:var(--title); }
+.related-card a { color:var(--title); background:#f3eadf; border:1px solid rgba(91,62,36,.16); border-radius:999px; text-decoration:none; padding:8px 12px; font-weight:700; font-size:14px; }
+.related-card a:hover { background:#e5d2bb; }
+.badge-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
+.badge { display:inline-flex; align-items:center; color:var(--title); background:#f3eadf; border:1px solid rgba(91,62,36,.14); border-radius:999px; padding:6px 10px; font-weight:700; font-size:14px; }
+blockquote { margin:16px 0 0; padding:16px 20px; background:#fff8ef; border-left:6px solid rgba(122,79,42,.48); border-radius:16px; color:var(--muted); font-size:17px; line-height:1.7; }
+.mini-table table { min-width:560px; }
+@media print {
+  body { background:#fff !important; }
+  body::before { display:none; }
+  .page { width:100%; padding:0; }
+  .topbar, .nav-card, .related-card { display:none !important; }
+  .hero, .section, .final-box { box-shadow:none; border:1px solid #cbb9a8; break-inside:avoid-page; }
+  details { break-inside:avoid-page; }
+  details > summary::after { display:none; }
+}
+
+
+@media (max-width: 680px) {
+  .subtitle, .section-intro, p, li, dd,
+  .summary-card span, .quick-card span, .term-card span, .micro-card span,
+  .details-body, .key-line span, .event > div:last-child, th, td,
+  .definition, .note, blockquote {
+    text-align: left;
+    text-align-last: auto;
+    hyphens: none;
+  }
+}
+
+
+td { text-align: left; text-align-last: auto; }
+
+  
+
+/* Extensii pentru seria „Civilizația bizantină” */
+.series-links { display:flex; gap:9px; flex-wrap:wrap; margin-top:20px; }
+.series-links a { color:var(--title); background:#fff; border:1px solid rgba(91,62,36,.16); border-radius:999px; padding:9px 13px; text-decoration:none; font-weight:800; box-shadow:0 8px 20px rgba(0,0,0,.10); }
+.series-links a[aria-current="page"] { background:var(--accent); color:#fffaf3; }
+.series-links a:hover { transform:translateY(-1px); }
+.quote-box { margin-top:15px; padding:18px 20px; background:#fffdf9; border:1px solid rgba(91,62,36,.15); border-left:6px solid var(--accent-2); border-radius:18px; color:var(--muted); font-size:17px; line-height:1.72; text-align:justify; text-align-last:left; }
+.step-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:18px; }
+.step-card { background:#fff; border:1px solid rgba(91,62,36,.14); border-radius:20px; padding:18px; box-shadow:var(--shadow-small); }
+.step-card::before { content:attr(data-step); display:inline-flex; width:34px; height:34px; align-items:center; justify-content:center; border-radius:50%; background:var(--accent); color:#fff; font-weight:900; margin-bottom:11px; }
+.step-card strong { display:block; color:var(--title); font-size:17px; margin-bottom:7px; }
+.step-card span { color:var(--muted); font-size:15.5px; line-height:1.58; }
+.status-strip { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:16px; }
+.status-item { background:linear-gradient(135deg,#fff,#fff7ec); border:1px solid rgba(91,62,36,.14); border-radius:18px; padding:16px; }
+.status-item b { display:block; color:var(--title); margin-bottom:6px; }
+.status-item span { color:var(--muted); line-height:1.55; font-size:15.5px; }
+footer { margin-top:24px; color:rgba(255,250,243,.80); text-align:center; font-size:14px; line-height:1.6; }
+@media (max-width:980px) { .step-grid { grid-template-columns:repeat(2,1fr); } .status-strip { grid-template-columns:1fr; } }
+@media (max-width:680px) { .step-grid { grid-template-columns:1fr; } .series-links a { width:100%; text-align:center; } h1 { font-size:clamp(34px,10vw,52px); } }
+</style>
+</head>
+<body id="top" style="--hero-year: '1054';">
+  <main class="page">
+    <div class="topbar">
+      <a class="back-link" href="index.html">← Înapoi la materiale</a>
+      <span class="tag">Material ajutător · Evul Mediu · Civilizația bizantină</span>
+    </div>
+    <section class="hero">
+      <p class="eyebrow">Istorie universală · Antichitate târzie și Evul Mediu</p>
+      <h1>Civilizația bizantină: conflictele religioase</h1>
+      <p class="subtitle">O prezentare amplă a luptelor hristologice, conciliilor ecumenice, compromisurilor imperiale, războaielor iconoclaste, crizei fotiene, Marii Schisme și tentativelor de unire cu Roma. Accentul cade pe relația dintre doctrină, autoritate, geografie și interesele politice ale statului.</p>
+      <div class="series-links"><a href="civilizatia-bizantina-diplomatie-si-conflict.html">Diplomație și conflict</a><a href="civilizatia-bizantina-conflictele-religioase.html" aria-current="page">Conflictele religioase</a><a href="civilizatia-bizantina-politica-interna.html">Politica internă</a></div>
+    </section>
+    <div class="related-card"><b>Materiale conexe:</b><a href="civilizatia-bizantina-diplomatie-si-conflict.html">Diplomație și conflict</a><a href="civilizatia-bizantina-politica-interna.html">Politica internă</a></div>
+    <nav class="nav-card" aria-label="Cuprinsul paginii">
+      <b>Cuprins:</b><a href="#repere">Repere</a><a href="#cronologie">Cronologie</a><a href="#hristologie">Hristologie</a><a href="#compromisuri">Compromisuri</a><a href="#iconoclasm">Iconoclasm</a><a href="#fotie">Fotie</a><a href="#schisma">Schisma</a><a href="#uniri">Uniri</a><a href="#sinteza">Sinteză</a>
+      <button class="mini-btn" type="button" data-action="open">Deschide explicațiile</button>
+      <button class="mini-btn" type="button" data-action="close">Închide explicațiile</button>
+    </nav>
+    
+<section class="section" id="repere">
+  <h2>I. Religie, doctrină și putere imperială</h2>
+  <p class="section-intro">În Bizanț, disputele teologice nu erau chestiuni exclusiv religioase. Ele afectau legitimitatea împăratului, unitatea provinciilor, relațiile cu Roma, loialitatea armatei, fiscalitatea și diplomația. Conciliile ecumenice au definit doctrina, dar au produs și separări durabile.</p>
+  <div class="summary-grid">
+    <div class="summary-card"><strong>325–681</strong><span>Luptele hristologice: natura lui Hristos, persoana și voințele sale.</span></div>
+    <div class="summary-card"><strong>726/730–843</strong><span>Iconoclasmul: conflict asupra imaginilor sacre, monahismului și autorității imperiale.</span></div>
+    <div class="summary-card"><strong>858–880</strong><span>Criza fotiană: jurisdicție, autoritate papală și rivalitate în Bulgaria.</span></div>
+    <div class="summary-card"><strong>1054–1439</strong><span>Ruptura dintre Est și Vest, 1204 și tentativele de unire de la Lyon și Florența.</span></div>
+  </div>
+  <div class="three-col">
+    <article class="info-card"><h3>Împăratul</h3><p>Convoca sinoade, confirma hotărâri, exila episcopi și urmărea unitatea doctrinară ca premisă a unității politice. Nu era preot, dar se considera protectorul Bisericii și „egal al apostolilor”.</p></article>
+    <article class="info-card"><h3>Patriarhul</h3><p>Conducea Biserica din Constantinopol, încorona împăratul și putea deveni un rival moral sau politic. Raportul cu tronul oscila între cooperare, subordonare și conflict.</p></article>
+    <article class="info-card"><h3>Conciliul</h3><p>Aduna episcopi pentru a defini doctrina. Hotărârile deveneau norme bisericești și imperiale, dar acceptarea lor putea varia în funcție de regiune și tradiție.</p></article>
+  </div>
+  <div class="definition"><strong>Distincție esențială:</strong> „ortodox” înseamnă aici doctrina considerată corectă de Biserica imperială. Comunitățile condamnate nu au dispărut; multe au format Biserici orientale cu tradiții proprii.</div>
+</section>
+
+<section class="section" id="cronologie">
+  <h2>II. Cronologia marilor conflicte religioase</h2>
+  <div class="timeline">
+    <article class="event"><div class="date">325</div><div><h3>Primul Conciliu de la Niceea</h3><p>Arianismul este condamnat, iar Fiul este proclamat <em>homoousios</em>, „de o ființă” cu Tatăl.</p></div></article>
+    <article class="event"><div class="date">381</div><div><h3>Primul Conciliu de la Constantinopol</h3><p>Niceea este reafirmată, doctrina despre Duhul Sfânt este precizată, iar Constantinopolul primește un rang ecleziastic superior.</p></div></article>
+    <article class="event"><div class="date">431</div><div><h3>Conciliul de la Efes</h3><p>Nestorie este condamnat; Maria este recunoscută drept <em>Theotokos</em>, Născătoare de Dumnezeu.</p></div></article>
+    <article class="event"><div class="date">449</div><div><h3>„Sinodul tâlhăresc” de la Efes</h3><p>Eutihie este reabilitat prin proceduri contestate. Hotărârile vor fi respinse la Calcedon.</p></div></article>
+    <article class="event"><div class="date">451</div><div><h3>Conciliul de la Calcedon</h3><p>Hristos este definit ca o singură persoană în două naturi complete, divină și umană, fără amestecare sau separare.</p></div></article>
+    <article class="event"><div class="date">482</div><div><h3><em>Henotikon</em></h3><p>Împăratul Zenon încearcă un compromis cu adversarii Calcedonului. Documentul produce ruptura acaciană cu Roma, între 484 și 519.</p></div></article>
+    <article class="event"><div class="date">553</div><div><h3>Al Doilea Conciliu de la Constantinopol</h3><p>Condamnarea „Celor Trei Capitole” încearcă să apropie monofiziții, dar provoacă noi tensiuni în Occident.</p></div></article>
+    <article class="event"><div class="date">680–681</div><div><h3>Al Treilea Conciliu de la Constantinopol</h3><p>Monotelitismul este condamnat; sunt afirmate două voințe ale lui Hristos, corespunzătoare celor două naturi.</p></div></article>
+    <article class="event"><div class="date">726/730</div><div><h3>Începutul iconoclasmului</h3><p>Leon al III-lea restrânge cultul imaginilor. Conflictul se radicalizează sub Constantin V.</p></div></article>
+    <article class="event"><div class="date">754</div><div><h3>Sinodul iconoclast de la Hieria</h3><p>Venerarea icoanelor este condamnată, fără participarea patriarhilor marilor scaune apostolice.</p></div></article>
+    <article class="event"><div class="date">787</div><div><h3>Al Doilea Conciliu de la Niceea</h3><p>Icoanele sunt restaurate; venerarea acordată imaginii este deosebită de adorarea rezervată lui Dumnezeu.</p></div></article>
+    <article class="event"><div class="date">815–843</div><div><h3>A doua fază iconoclastă</h3><p>Leon V reintroduce iconoclasmul; împărăteasa Teodora restabilește definitiv icoanele în 843.</p></div></article>
+    <article class="event"><div class="date">858–867</div><div><h3>Prima fază a crizei fotiene</h3><p>Depunerea lui Ignatie, alegerea lui Fotie și intervenția papei Nicolae I declanșează excomunicări și dispute de jurisdicție.</p></div></article>
+    <article class="event"><div class="date">16 iul. 1054</div><div><h3>Excomunicarea de la Sfânta Sofia</h3><p>Cardinalul Humbert depune bula împotriva lui Mihail Cerularie; sinodul patriarhal îi excomunică pe legații papali.</p></div></article>
+    <article class="event"><div class="date">1204</div><div><h3>Cucerirea latină a Constantinopolului</h3><p>Violența cruciaților, jefuirea bisericilor și instalarea unui patriarh latin transformă ruptura ecleziastică într-o ostilitate populară profundă.</p></div></article>
+    <article class="event"><div class="date">1274</div><div><h3>Unirea de la Lyon</h3><p>Mihail VIII acceptă primatul papal și <em>Filioque</em> pentru protecție diplomatică; unirea este respinsă de majoritatea clerului și populației.</p></div></article>
+    <article class="event"><div class="date">1438–1439</div><div><h3>Conciliul de la Ferrara–Florența</h3><p>Delegația bizantină acceptă o formulă de unire pentru a obține ajutor militar, dar acordul nu este aplicat durabil în Răsărit.</p></div></article>
+  </div>
+</section>
+
+<section class="section" id="hristologie">
+  <h2>III. Luptele hristologice: întrebarea despre natura lui Hristos</h2>
+  <p class="section-intro">Hristologia încearcă să explice cum poate Iisus Hristos să fie în același timp deplin Dumnezeu și deplin om. Termeni precum „natură”, „persoană”, „ființă” și „voință” au fost definiți prin controverse succesive.</p>
+  <div class="table-wrap"><table><thead><tr><th>Controversă</th><th>Afirmație principală</th><th>Răspuns conciliar</th><th>Consecințe</th></tr></thead><tbody>
+    <tr><td>Arianism</td><td>Fiul este o creatură supremă, dar nu este coetern și consubstanțial cu Tatăl.</td><td>Niceea, 325: Fiul este <em>homoousios</em> cu Tatăl.</td><td>Conflict de durată între împărați, episcopi și regatele germanice ariene.</td></tr>
+    <tr><td>Nestorianism</td><td>Accent puternic pe distincția dintre umanitatea și divinitatea lui Hristos; contestarea titlului <em>Theotokos</em>.</td><td>Efes, 431: o singură persoană; Maria este Născătoare de Dumnezeu.</td><td>Biserica Răsăritului se dezvoltă în Imperiul Persan și până în Asia Centrală și China.</td></tr>
+    <tr><td>Monofizitism eutihian</td><td>După întrupare ar exista o singură natură, cea umană fiind absorbită de cea divină.</td><td>Calcedon, 451: două naturi unite într-o singură persoană.</td><td>Opoziție puternică în Egipt, Siria și Armenia; apar Bisericile ortodoxe orientale necalcedoniene.</td></tr>
+    <tr><td>Monotelitism</td><td>Două naturi, dar o singură voință.</td><td>Constantinopol III, 680–681: două voințe și două lucrări, în armonie.</td><td>Eșecul unui compromis imperial menit să refacă unitatea religioasă.</td></tr>
+  </tbody></table></div>
+  <details open><summary>Arianismul și politica imperială</summary><div class="details-body"><p>Condamnarea din 325 nu a încheiat disputa. Constantin și succesorii săi au sprijinit alternativ episcopi niceeni sau arieni. Împăratul Constanțiu II a favorizat formule anti-niceene, iar Teodosie I a impus ortodoxia niceeană la Constantinopol în 381. Conflictul arată dependența doctrinei oficiale de politica imperială.</p></div></details>
+  <details><summary>Nestorie, Chiril al Alexandriei și Efesul</summary><div class="details-body"><p>Disputa nu privea simplu existența a „doi Hristoși”, ci modul în care trebuie înțeleasă unitatea persoanei și distincția naturilor. Chiril al Alexandriei a apărat titlul <em>Theotokos</em> ca garanție că persoana născută din Maria este cu adevărat Cuvântul întrupat. Procedurile conciliului au fost însă conflictuale și profund politizate.</p></div></details>
+  <details><summary>Calcedonul și problema provinciilor orientale</summary><div class="details-body"><p>Formula calcedoniană a devenit baza doctrinară a Bizanțului, Romei și, mai târziu, a majorității Bisericilor europene. Mulți creștini egipteni, sirieni și armeni au respins-o sau au interpretat-o ca pe o apropiere de nestorianism. Diferențele teologice s-au suprapus peste rivalități regionale și nemulțumiri față de Constantinopol.</p></div></details>
+</section>
+
+<section class="section" id="compromisuri">
+  <h2>IV. Compromisurile imperiale și limitele lor</h2>
+  <p class="section-intro">Împărații au încercat să refacă unitatea prin formule doctrinare intermediare. De regulă, compromisurile nu au mulțumit nici tabăra calcedoniană, nici comunitățile necalcedoniene și au creat conflicte suplimentare cu Roma.</p>
+  <div class="three-col">
+    <article class="info-card"><h3><em>Henotikon</em>, 482</h3><p>Zenon evită formulările controversate ale Calcedonului și condamnă atât pe Nestorie, cât și pe Eutihie. Papa Felix III respinge documentul, iar schisma acaciană durează până în 519.</p></article>
+    <article class="info-card"><h3>Cele Trei Capitole, 553</h3><p>Iustinian condamnă autori asociați tradiției antiohiene pentru a convinge monofiziții că Bizanțul nu este nestorian. Măsura provoacă rezistență în Italia și Africa.</p></article>
+    <article class="info-card"><h3>Monotelitismul, sec. VII</h3><p>Heraclius și patriarhul Sergios propun o singură voință în Hristos. Roma și teologi precum Maxim Mărturisitorul se opun, iar doctrina este condamnată în 680–681.</p></article>
+  </div>
+  <div class="warning-box"><strong>Consecință politică:</strong> când arabii au cucerit Siria și Egiptul, o parte a populațiilor locale era deja înstrăinată de politica religioasă imperială. Aceasta nu explică singură cucerirea, dar a limitat coeziunea internă.</div>
+</section>
+
+<section class="section" id="iconoclasm">
+  <h2>V. Războaiele iconoclaste, 726/730–843</h2>
+  <p class="section-intro">Iconoclaștii respingeau sau limitau reprezentările sacre; iconodulii apărau venerarea icoanelor. Conflictul a avut dimensiuni teologice, politice, sociale și economice și a afectat relațiile cu monahismul, papalitatea și provinciile.</p>
+  <div class="cause-grid">
+    <article class="info-card"><h3>Cauze și contexte</h3><ul class="clean"><li><span class="mini-title">Teologie:</span> teama că venerarea imaginilor ar deveni idolatrie.</li><li><span class="mini-title">Criză militară:</span> înfrângerile în fața arabilor erau interpretate de unii ca pedeapsă divină.</li><li><span class="mini-title">Autoritate:</span> împărații urmăreau controlul practicilor religioase și al influentelor mănăstiri.</li><li><span class="mini-title">Context regional:</span> tradiții diferite față de imagini în provinciile orientale și contactul cu islamul.</li></ul></article>
+    <article class="info-card"><h3>Termeni</h3><p><strong>Iconoclast</strong> înseamnă „distrugător de icoane”; <strong>iconodul</strong> sau iconofil desemnează apărătorul icoanelor. Iconodulii deosebeau <em>proskynesis</em>, venerarea relativă, de <em>latreia</em>, adorarea rezervată numai lui Dumnezeu.</p></article>
+  </div>
+  <div class="timeline">
+    <article class="event"><div class="date">726/730</div><div><h3>Leon III</h3><p>Politica împotriva imaginilor este introdusă treptat. Data exactă și natura primelor edicte sunt discutate, dar conflictul devine oficial în anii 730.</p></div></article>
+    <article class="event"><div class="date">741–775</div><div><h3>Constantin V</h3><p>Radicalizează iconoclasmul, convoacă sinodul de la Hieria în 754 și limitează puterea monahismului iconodul. Propaganda ulterioară l-a prezentat extrem de negativ.</p></div></article>
+    <article class="event"><div class="date">787</div><div><h3>Niceea II</h3><p>Împărăteasa Irina convoacă al șaptelea conciliu ecumenic. Icoanele, crucea și relicvele pot fi venerate, dar nu adorate.</p></div></article>
+    <article class="event"><div class="date">815</div><div><h3>Leon V reintroduce iconoclasmul</h3><p>În contextul dificultăților militare, succesul vechilor împărați iconoclaști este reinterpretat drept dovadă a corectitudinii politicii lor.</p></div></article>
+    <article class="event"><div class="date">843</div><div><h3>Triumful Ortodoxiei</h3><p>Regenta Teodora restabilește definitiv cultul icoanelor. Evenimentul este comemorat în prima duminică a Postului Mare.</p></div></article>
+  </div>
+  <details open><summary>Impactul asupra artei</summary><div class="details-body"><p>O parte a imaginilor a fost distrusă, acoperită sau înlocuită cu simboluri precum crucea. După 843, arta figurativă cunoaște o mare dezvoltare, dar devine și mai atent reglementată teologic. Mozaicurile, frescele și icoanele transmit doctrina într-o societate în care imaginea avea rol liturgic și pedagogic.</p></div></details>
+  <details><summary>Impactul asupra relațiilor cu Roma</summary><div class="details-body"><p>Papii au respins iconoclasmul și au contestat intervenția imperială. Pierderea controlului bizantin în Italia și apropierea papalității de franci au creat un nou echilibru occidental, culminând cu încoronarea lui Carol cel Mare în 800.</p></div></details>
+</section>
+
+<section class="section" id="fotie">
+  <h2>VI. Criza fotiană și competiția pentru lumea slavă</h2>
+  <p class="section-intro">Așa-numita „schismă fotiană” a fost o criză complexă de legitimitate patriarhală, jurisdicție și autoritate papală. Ea a lăsat un vocabular polemic care va reapărea în secolul al XI-lea.</p>
+  <div class="step-grid">
+    <article class="step-card" data-step="1"><strong>858</strong><span>Patriarhul Ignatie este depus; savantul Fotie trece rapid prin treptele clericale și este ales patriarh.</span></article>
+    <article class="step-card" data-step="2"><strong>863</strong><span>Papa Nicolae I îl consideră nelegitim pe Fotie și îl susține pe Ignatie.</span></article>
+    <article class="step-card" data-step="3"><strong>867</strong><span>Fotie condamnă pretențiile romane, practicile latine și adaosul <em>Filioque</em>; un sinod îl anatemizează pe papă.</span></article>
+    <article class="step-card" data-step="4"><strong>869–870</strong><span>Fotie este depus; conciliul susținut de Roma îl condamnă. Bulgaria este însă atribuită jurisdicției Constantinopolului.</span></article>
+    <article class="step-card" data-step="5"><strong>879–880</strong><span>Fotie este restaurat și reconciliat temporar cu Roma printr-un nou conciliu la Constantinopol.</span></article>
+  </div>
+  <div class="definition"><strong>Miza bulgară:</strong> Boris I a oscilat între Roma și Constantinopol pentru a obține cât mai multă autonomie ecleziastică. Rivalitatea misionară a transformat jurisdicția bisericească într-un instrument de politică externă.</div>
+</section>
+
+<section class="section" id="schisma">
+  <h2>VII. Marea Schismă dintre Răsărit și Occident</h2>
+  <p class="section-intro">Anul 1054 este reperul simbolic al rupturii, nu o separare produsă într-o singură zi. Diferențele s-au acumulat timp de secole, iar instituțiile și comunitățile au continuat uneori să comunice și după excomunicări.</p>
+  <div class="table-wrap"><table><thead><tr><th>Domeniu</th><th>Poziția occidentală</th><th>Poziția răsăriteană</th><th>Miza</th></tr></thead><tbody>
+    <tr><td>Autoritate</td><td>Primatul papei tinde spre jurisdicție universală.</td><td>Primatul Romei este înțeles mai ales onorific, în cadrul colegialității patriarhilor.</td><td>Cine poate judeca episcopi și decide pentru întreaga Biserică?</td></tr>
+    <tr><td><em>Filioque</em></td><td>Duhul Sfânt purcede de la Tatăl „și de la Fiul”.</td><td>Crezul ecumenic păstrează formula „de la Tatăl”; adaosul unilateral este respins.</td><td>Teologie trinitară și autoritatea de a modifica Crezul.</td></tr>
+    <tr><td>Liturghie</td><td>Azimă în Euharistie, posturi și discipline occidentale.</td><td>Pâine dospită și tradiții liturgice grecești.</td><td>Diferențe legitime transformate în acuzații polemice.</td></tr>
+    <tr><td>Cler</td><td>Celibat obligatoriu pentru preoții latini.</td><td>Preoții parohi se pot căsători înainte de hirotonire; episcopii sunt celibatari.</td><td>Practici disciplinare diferite.</td></tr>
+    <tr><td>Politică</td><td>Papalitatea se sprijină pe franci și apoi pe împărații romano-germani.</td><td>Constantinopolul revendică moștenirea politică romană și conducerea Răsăritului.</td><td>Două centre de universalitate creștină.</td></tr>
+  </tbody></table></div>
+  <div class="timeline">
+    <article class="event"><div class="date">1053–1054</div><div><h3>Conflictul Cerularie–Humbert</h3><p>În sudul Italiei, normanzii și practicile latine provoacă tensiuni. Patriarhul Mihail Cerularie închide unele biserici latine; legații papei Leon IX sosesc la Constantinopol.</p></div></article>
+    <article class="event"><div class="date">16 iul. 1054</div><div><h3>Bula pe altar</h3><p>Cardinalul Humbert depune o bulă de excomunicare împotriva patriarhului. Papa murise deja, ceea ce complica autoritatea juridică a delegației.</p></div></article>
+    <article class="event"><div class="date">24 iul. 1054</div><div><h3>Răspunsul sinodului</h3><p>Sinodul constantinopolitan îi condamnă pe legați, nu întreaga Biserică occidentală. Totuși, episodul devine simbolul rupturii.</p></div></article>
+  </div>
+  <div class="warning-box"><strong>Nuanță importantă:</strong> separarea a devenit profundă prin evoluții ulterioare, mai ales cucerirea și jefuirea Constantinopolului de către cruciați în 1204. De aceea, 1054 este începutul convențional al schismei definitive, nu singura sa cauză.</div>
+</section>
+
+<section class="section" id="uniri">
+  <h2>VIII. Cruciada a IV-a și tentativele de unire</h2>
+  <p class="section-intro">După 1204, împărații bizantini au asociat uneori unirea bisericească cu obținerea ajutorului militar occidental. Clerul și populația au perceput însă compromisurile drept cedări impuse de o nevoie politică.</p>
+  <div class="three-col">
+    <article class="info-card"><h3>1204: ruptura populară</h3><p>Cruciații jefuiesc Sfânta Sofia și mănăstirile, profanează relicve și instalează un patriarh latin. Amintirea ocupației latine alimentează ostilitatea față de Roma.</p></article>
+    <article class="info-card"><h3>Lyon, 1274</h3><p>Mihail VIII Paleologul acceptă unirea pentru a împiedica o nouă invazie occidentală condusă de Carol de Anjou. Opoziția internă este masivă, iar unirea este abandonată după 1282.</p></article>
+    <article class="info-card"><h3>Florența, 1439</h3><p>În fața otomanilor, Ioan VIII și numeroși episcopi semnează decretul <em>Laetentur Caeli</em>. Marcu al Efesului refuză, iar acordul nu obține acceptarea largă în Răsărit.</p></article>
+  </div>
+  <details open><summary>Ridicarea anatemelor în 1965</summary><div class="details-body"><p>Papa Paul VI și patriarhul ecumenic Athenagoras au retras din memoria Bisericilor sentințele reciproce din 1054. Gestul a înlăturat condamnările personale și a deschis dialogul modern, dar nu a restabilit comuniunea euharistică deplină.</p></div></details>
+</section>
+
+<section class="section" id="sinteza">
+  <h2>IX. Sinteză: doctrină, politică și geografie</h2>
+  <div class="status-strip">
+    <div class="status-item"><b>Doctrină</b><span>Conciliile au creat un vocabular precis despre Treime, persoana și naturile lui Hristos, voință și reprezentarea sacrului.</span></div>
+    <div class="status-item"><b>Politică</b><span>Împăratul urmărea uniformitatea pentru stabilitatea statului, dar intervenția sa putea radicaliza opoziția regională și monahală.</span></div>
+    <div class="status-item"><b>Geografie</b><span>Alexandria, Antiohia, Roma și Constantinopolul apărau tradiții și jurisdicții diferite; pierderile teritoriale au transformat echilibrul Bisericii.</span></div>
+  </div>
+  <div class="final-box"><h2>Ideea de reținut</h2><p>Conflictele religioase bizantine au definit creștinismul medieval, dar au și fragmentat lumea creștină. Încercarea statului de a impune unitatea a produs formule doctrinare durabile, însă nu a putut elimina diversitatea regională, rivalitatea dintre scaunele episcopale sau diferențele dintre Răsărit și Occident.</p></div>
+</section>
+
+    <footer>Material structurat și dezvoltat după documentele Word furnizate · Seria „Civilizația bizantină”</footer>
+  </main>
+<script>
+  document.querySelector('[data-action="open"]').addEventListener('click', () => document.querySelectorAll('details').forEach(d => d.open = true));
+  document.querySelector('[data-action="close"]').addEventListener('click', () => document.querySelectorAll('details').forEach(d => d.open = false));
+</script>
+</body>
+</html>

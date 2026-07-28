@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Apariția tiparului în Țările Române, de la Macarie și Coresi la Biblia de la București și Blaj."/>
+<title>ro-cultura-moderna-aparitia-tiparului</title>
+<style>
+
+
+:root {
+  --bg: #f6f0e7;
+  --paper: #fffaf3;
+  --paper-2: #ffffff;
+  --ink: #2f241c;
+  --title: #3c2a1e;
+  --muted: #5b4a3d;
+  --accent: #7a4f2a;
+  --accent-2: #9b6a3c;
+  --accent-soft: #f0e4d4;
+  --line: rgba(91, 62, 36, 0.18);
+  --line-strong: rgba(91, 62, 36, 0.34);
+  --outer-dark: #241208;
+  --outer-mid: #4a2a18;
+  --outer-warm: #7a4b2b;
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+  --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+    radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+}
+.page {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 34px 0 70px;
+}
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.back-link, .tag { display: inline-flex; align-items: center; border: 1px solid var(--line); background: rgba(255, 250, 243, 0.84); color: var(--title); border-radius: 999px; padding: 10px 15px; text-decoration: none; font-size: 15px; font-weight: 700; box-shadow: var(--shadow-small); }
+.back-link:hover { background: #fff6eb; }
+.hero, .section, .nav-card, .final-box { background: rgba(255, 250, 243, 0.96); border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow); }
+.hero { padding: 38px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.hero::after { content: var(--hero-year); position: absolute; right: 26px; bottom: -22px; font-size: 110px; font-weight: 900; letter-spacing: -4px; color: rgba(122, 79, 42, 0.08); pointer-events: none; }
+.eyebrow { margin: 0 0 8px; font-size: 16px; color: var(--accent); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; }
+h1 { margin: 0; font-size: clamp(38px, 5vw, 62px); line-height: 1.04; color: var(--title); letter-spacing: -1.4px; text-align: left; text-align-last: auto; }
+.subtitle { margin: 18px 0 0; max-width: 980px; font-size: 19px; line-height: 1.78; color: var(--muted); text-align: justify; text-align-last: left; }
+.summary-grid, .three-col, .two-col, .term-grid, .quick-grid, .cause-grid, .four-col { display: grid; gap: 14px; }
+.summary-grid { grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+.summary-card, .info-card, .wide-card, .term-card, .quick-card, .source-note, .micro-card, .warning-box { background: var(--paper-2); border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); text-align: justify; text-align-last: left; }
+.summary-card { padding: 16px; min-height: 132px; }
+.summary-card strong, .quick-card strong, .term-card strong, .micro-card strong { display: block; color: var(--title); font-size: 17px; margin-bottom: 8px; text-align: left; text-align-last: auto; }
+.summary-card span, .quick-card span, .term-card span, .micro-card span { display: block; color: var(--muted); font-size: 15.5px; line-height: 1.56; text-align: justify; text-align-last: left; }
+.nav-card { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 18px 20px; margin-bottom: 24px; }
+.nav-card b { color: var(--title); margin-right: 2px; }
+.nav-card a, .mini-btn { color: var(--title); background: var(--accent-soft); border: 1px solid rgba(91, 62, 36, 0.16); border-radius: 999px; text-decoration: none; padding: 8px 12px; font-weight: 700; font-size: 14px; cursor: pointer; font-family: inherit; }
+.nav-card a:hover, .mini-btn:hover { background: #e5d2bb; }
+.section { padding: 30px; margin-bottom: 24px; }
+h2 { margin: 0 0 14px; color: var(--title); font-size: clamp(28px, 3vw, 38px); line-height: 1.15; text-align: left; text-align-last: auto; }
+h3 { margin: 0 0 12px; color: var(--title); font-size: 22px; line-height: 1.22; text-align: left; text-align-last: auto; }
+h4 { margin: 16px 0 8px; color: var(--title); font-size: 18px; text-align: left; text-align-last: auto; }
+.section-intro, p, li, dd { font-size: 17px; line-height: 1.72; color: var(--muted); text-align: justify; text-align-last: left; hyphens: auto; }
+.section-intro { margin: 0 0 20px; max-width: 1000px; }
+.three-col { grid-template-columns: repeat(3, 1fr); }
+.two-col { grid-template-columns: repeat(2, 1fr); }
+.four-col { grid-template-columns: repeat(4, 1fr); }
+.cause-grid { grid-template-columns: 1.1fr 0.9fr; }
+.term-grid { grid-template-columns: repeat(4, 1fr); }
+.quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+.info-card, .wide-card, .term-card, .quick-card, .micro-card, .warning-box, .source-note { padding: 20px; }
+.wide-card { margin-top: 14px; }
+.wide-card p:last-child, .info-card p:last-child { margin-bottom: 0; }
+.clean, .number-list { margin: 0; padding-left: 22px; }
+.clean li, .number-list li { margin: 0 0 9px; padding-left: 2px; }
+.clean li:last-child, .number-list li:last-child { margin-bottom: 0; }
+.mini-title { display: inline; color: var(--title); font-weight: 800; background: transparent; border: 0; border-radius: 0; padding: 0; margin-right: 5px; white-space: normal; text-align: inherit; }
+.date-pill { display: inline-block; color: var(--title); font-weight: 800; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.13); border-radius: 999px; padding: 2px 9px; margin-right: 5px; white-space: nowrap; text-align: left; }
+.definition, .note { margin-top: 18px; background: #fff8ef; border: 1px solid rgba(122, 79, 42, 0.22); border-left: 6px solid rgba(122, 79, 42, 0.48); border-radius: 18px; padding: 18px 20px; color: var(--muted); font-size: 17px; line-height: 1.7; text-align: justify; text-align-last: left; }
+.definition strong, .note strong { color: var(--title); }
+details { background: #fffdf9; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); margin-top: 14px; overflow: hidden; }
+details[open] { background: #fffaf3; }
+summary { cursor: pointer; list-style: none; padding: 18px 20px; font-size: 19px; font-weight: 800; color: var(--title); display: flex; justify-content: space-between; align-items: center; gap: 18px; text-align: left; text-align-last: auto; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "Deschide"; color: var(--muted); font-size: 14px; font-weight: 700; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 999px; padding: 7px 11px; white-space: nowrap; }
+details[open] > summary::after { content: "Ascunde"; }
+.details-body { border-top: 1px solid rgba(91, 62, 36, 0.12); padding: 18px 20px 20px; text-align: justify; text-align-last: left; }
+.details-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.nested-details { margin-top: 10px; box-shadow: none; background: #ffffff; }
+.nested-details summary { font-size: 17px; padding: 14px 16px; }
+.key-line { display: grid; grid-template-columns: 220px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px dashed rgba(91, 62, 36, 0.18); }
+.key-line:last-child { border-bottom: 0; }
+.key-line strong { color: var(--title); text-align: left; text-align-last: auto; }
+.key-line span { color: var(--muted); line-height: 1.65; text-align: justify; text-align-last: left; }
+.timeline { position: relative; display: grid; gap: 14px; margin-top: 18px; }
+.event { display: grid; grid-template-columns: 132px 1fr; gap: 18px; align-items: stretch; background: #ffffff; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); overflow: hidden; }
+.date { background: linear-gradient(180deg, #7a4f2a, #5b351b); color: #fffaf3; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px; font-size: 18px; line-height: 1.25; font-weight: 900; letter-spacing: 0.2px; }
+.event > div:last-child { padding: 17px 18px 18px 0; text-align: justify; text-align-last: left; }
+.event h3 { margin-bottom: 6px; }
+.event p { margin: 0; }
+.small-muted { font-size: 15px; color: #725c49; line-height: 1.6; text-align: justify; text-align-last: left; }
+.warning-box { background: #fff7ec; border-color: rgba(122, 79, 42, 0.22); margin-top: 16px; }
+.final-box { padding: 28px; background: linear-gradient(135deg, #fffaf3, #f4e4d1); border-color: rgba(91, 62, 36, 0.25); }
+.final-box p { margin-bottom: 0; }
+.table-wrap { overflow-x: auto; margin-top: 14px; border-radius: 18px; border: 1px solid rgba(91,62,36,.14); background: #fff; box-shadow: var(--shadow-small); }
+table { width: 100%; border-collapse: collapse; min-width: 740px; }
+th, td { padding: 13px 14px; border-bottom: 1px solid rgba(91,62,36,.12); color: var(--muted); font-size: 16px; line-height: 1.55; vertical-align: top; text-align: justify; }
+th { background: #f3eadf; color: var(--title); text-align: left; font-weight: 800; }
+tr:last-child td { border-bottom: 0; }
+@media (max-width: 980px) {
+  .summary-grid, .three-col, .term-grid, .quick-grid, .four-col { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .cause-grid, .details-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .page { width: min(100% - 22px, 1180px); padding-top: 22px; }
+  .hero, .section, .final-box { padding: 22px; border-radius: 22px; }
+  .summary-grid, .term-grid, .quick-grid, .four-col { grid-template-columns: 1fr; }
+  .event { grid-template-columns: 1fr; }
+  .date { min-height: 66px; }
+  .event > div:last-child { padding: 0 16px 16px; }
+  .key-line { grid-template-columns: 1fr; gap: 6px; }
+  summary { align-items: flex-start; flex-direction: column; }
+  .hero::after { font-size: 82px; }
+}
+
+
+/* Extensii pentru această sinteză */
+.tool-row { display:flex; gap:10px; flex-wrap:wrap; margin-top:18px; }
+.tool-row button { border:1px solid rgba(91,62,36,.18); background:#f3eadf; color:var(--title); border-radius:999px; padding:9px 13px; font:700 14px Georgia,"Times New Roman",serif; cursor:pointer; }
+.tool-row button:hover { background:#e5d2bb; }
+.metric { font-size:34px; line-height:1; color:var(--accent); font-weight:900; display:block; margin-bottom:8px; }
+.ribbon { display:inline-block; margin-bottom:10px; padding:5px 10px; border-radius:999px; background:#efe0cf; border:1px solid rgba(91,62,36,.15); color:var(--accent); font-size:13px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; }
+.compare-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.compare-head { background:linear-gradient(180deg,#7a4f2a,#5b351b); color:#fffaf3; padding:15px 18px; font-weight:900; font-size:18px; }
+.compare-body { padding:18px; }
+.compare-card { background:#fff; border:1px solid rgba(91,62,36,.14); border-radius:20px; overflow:hidden; box-shadow:var(--shadow-small); }
+.quote { margin:16px 0 0; padding:18px 20px; border-left:6px solid rgba(122,79,42,.55); background:#fff8ef; border-radius:0 18px 18px 0; color:var(--muted); font-size:17px; line-height:1.7; font-style:italic; }
+.badge-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+.badge { display:inline-flex; padding:6px 10px; border-radius:999px; background:#f3eadf; border:1px solid rgba(91,62,36,.14); color:var(--title); font-size:13.5px; font-weight:700; }
+.kicker { color:var(--accent); font-weight:800; text-transform:uppercase; letter-spacing:.06em; font-size:14px; margin:0 0 8px; }
+.checklist { list-style:none; margin:0; padding:0; }
+.checklist li { position:relative; padding-left:28px; margin-bottom:10px; }
+.checklist li::before { content:"✓"; position:absolute; left:0; top:0; color:var(--accent); font-weight:900; }
+.redflag { list-style:none; margin:0; padding:0; }
+.redflag li { position:relative; padding-left:28px; margin-bottom:10px; }
+.redflag li::before { content:"!"; position:absolute; left:4px; top:0; color:#8b3e2f; font-weight:900; }
+.progress { position:fixed; left:0; top:0; height:4px; background:#d3a46f; width:0; z-index:99; box-shadow:0 1px 5px rgba(0,0,0,.25); }
+@media (max-width:980px){ .compare-grid{grid-template-columns:1fr;} }
+@media print {
+  body { background:#fff; }
+  body::before, .progress, .topbar, .nav-card, .tool-row { display:none !important; }
+  .page { width:100%; padding:0; }
+  .hero,.section,.final-box { box-shadow:none; border:1px solid #bbb; break-inside:avoid; }
+  details { break-inside:avoid; }
+  details > .details-body { display:block !important; }
+  summary::after { display:none; }
+}
+
+.data-strip { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:18px; }
+.data-item { background:#fff; border:1px solid rgba(91,62,36,.14); border-radius:18px; padding:16px; box-shadow:var(--shadow-small); }
+.data-item b { display:block; color:var(--accent); font-size:24px; line-height:1.05; margin-bottom:7px; text-align:left; }
+.data-item span { display:block; color:var(--muted); font-size:14.5px; line-height:1.5; text-align:justify; }
+.period-band { display:grid; grid-template-columns:160px 1fr; border:1px solid rgba(91,62,36,.14); border-radius:20px; overflow:hidden; background:#fff; box-shadow:var(--shadow-small); margin-top:13px; }
+.period-band .period-date { display:flex; align-items:center; justify-content:center; padding:18px; background:linear-gradient(180deg,#7a4f2a,#5b351b); color:#fffaf3; text-align:center; font-weight:900; font-size:18px; }
+.period-band .period-copy { padding:17px 19px; }
+.period-band h3 { margin-bottom:7px; }
+.period-band p { margin:0; }
+.concept-chain { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:16px; }
+.concept-chain span { background:#fff; border:1px solid rgba(91,62,36,.16); border-radius:999px; padding:8px 11px; color:var(--title); font-weight:700; font-size:14px; box-shadow:var(--shadow-small); }
+.concept-chain i { color:var(--accent); font-style:normal; font-weight:900; }
+.source-box { margin-top:16px; background:#fffdf8; border:1px solid rgba(91,62,36,.16); border-radius:20px; padding:20px; }
+.source-box h3 { margin-bottom:8px; }
+.source-box p:last-child { margin-bottom:0; }
+.dense-table table { min-width:980px; }
+.dense-table th, .dense-table td { font-size:15.2px; line-height:1.48; padding:11px 12px; }
+.correction { background:#f8efe5; border:1px solid rgba(122,79,42,.24); border-left:6px solid #7a4f2a; border-radius:18px; padding:17px 19px; margin-top:15px; }
+.correction strong { color:var(--title); }
+.smallcaps { font-variant:small-caps; letter-spacing:.03em; }
+@media (max-width:980px){ .data-strip{grid-template-columns:repeat(2,1fr);} .period-band{grid-template-columns:130px 1fr;} }
+@media (max-width:680px){ .data-strip{grid-template-columns:1fr;} .period-band{grid-template-columns:1fr;} .period-band .period-date{min-height:62px;} }
+
+
+/* Structură editorială pe părți tematice */
+.part-divider {
+  position: relative;
+  margin: 38px 0 22px;
+  padding: 24px 28px;
+  border-radius: 24px;
+  color: #fffaf3;
+  background: linear-gradient(135deg, rgba(83,45,22,.98), rgba(128,78,40,.96));
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.part-divider::after {
+  content: attr(data-mark);
+  position: absolute;
+  right: 22px;
+  bottom: -22px;
+  font-size: 92px;
+  line-height: 1;
+  font-weight: 900;
+  color: rgba(255,255,255,.09);
+  pointer-events: none;
+}
+.part-divider .part-kicker {
+  margin: 0 0 6px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-weight: 900;
+  color: #f0d3b1;
+}
+.part-divider h2 { margin: 0 0 8px; color: #fffaf3; font-size: clamp(27px,3vw,38px); }
+.part-divider p { margin: 0; max-width: 940px; color: rgba(255,250,243,.88); }
+.section-label {
+  display: inline-flex;
+  margin: 0 0 9px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(91,62,36,.14);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.nav-card { align-items: stretch; }
+.nav-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 6px 0;
+  border-bottom: 1px dashed rgba(91,62,36,.16);
+}
+.nav-group:last-child { border-bottom: 0; }
+.nav-group > span {
+  min-width: 165px;
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.reform-overview { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 16px; }
+.reform-domain {
+  padding: 20px;
+  background: #fff;
+  border: 1px solid rgba(91,62,36,.14);
+  border-radius: 20px;
+  box-shadow: var(--shadow-small);
+}
+.reform-domain h3 { display:flex; align-items:center; gap:9px; margin-bottom:10px; }
+.reform-icon {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:34px; height:34px; border-radius:50%; background:var(--accent-soft);
+  color:var(--accent); font-size:16px; flex:0 0 auto;
+}
+.reform-domain p { margin:0; }
+.ruler-profile {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 0;
+  margin-top: 15px;
+  border: 1px solid rgba(91,62,36,.15);
+  border-radius: 22px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: var(--shadow-small);
+}
+.ruler-side {
+  padding: 22px;
+  background: linear-gradient(180deg,#754825,#4e2b17);
+  color:#fffaf3;
+}
+.ruler-side .years { display:block; margin-bottom:8px; color:#f0d3b1; font-weight:800; font-size:14px; }
+.ruler-side strong { display:block; font-size:20px; line-height:1.22; }
+.ruler-main { padding: 21px 22px; }
+.ruler-main h3 { margin-bottom: 9px; }
+.ruler-main p { margin: 0 0 11px; }
+.ruler-main p:last-child { margin-bottom:0; }
+.reform-list { list-style:none; padding:0; margin:12px 0 0; }
+.reform-list li { position:relative; padding: 10px 0 10px 31px; margin:0; border-top:1px dashed rgba(91,62,36,.16); }
+.reform-list li::before { content:'◆'; position:absolute; left:4px; top:11px; color:var(--accent); font-size:13px; }
+.reform-list strong { color:var(--title); }
+.reform-verdict {
+  margin-top: 13px;
+  padding: 13px 15px;
+  border-radius: 16px;
+  background:#fff8ef;
+  border-left:5px solid rgba(122,79,42,.5);
+}
+.reform-table td:first-child { min-width: 150px; color:var(--title); font-weight:800; }
+.reform-table td:nth-child(2) { min-width: 145px; }
+@media (max-width:980px){
+  .reform-overview{grid-template-columns:repeat(2,1fr)}
+  .ruler-profile{grid-template-columns:150px 1fr}
+}
+@media (max-width:680px){
+  .nav-group > span{min-width:100%;}
+  .reform-overview{grid-template-columns:1fr}
+  .ruler-profile{grid-template-columns:1fr}
+  .ruler-side{padding:17px 19px}
+}
+
+
+/* Extensii specifice paginii despre Transilvania */
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 5px;
+  width: 0;
+  z-index: 9999;
+  background: linear-gradient(90deg, #e4b575, #fff0c9);
+  box-shadow: 0 2px 8px rgba(0,0,0,.25);
+}
+.section-label {
+  display: inline-block;
+  margin-bottom: 9px;
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+.nav-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.nav-group + .nav-group {
+  padding-top: 12px;
+  margin-top: 2px;
+  border-top: 1px dashed rgba(91,62,36,.16);
+}
+.nav-group > span {
+  min-width: 165px;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.part-divider {
+  position: relative;
+  overflow: hidden;
+  margin: 28px 0 22px;
+  padding: 28px 30px;
+  border: 1px solid rgba(255,250,243,.18);
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 90% 15%, rgba(255,255,255,.13), transparent 30%),
+    linear-gradient(135deg, #5f3b22, #2d190d);
+  box-shadow: var(--shadow);
+}
+.part-divider::after {
+  content: attr(data-mark);
+  position: absolute;
+  right: 24px;
+  bottom: -34px;
+  color: rgba(255,250,243,.09);
+  font-size: 126px;
+  line-height: 1;
+  font-weight: 900;
+}
+.part-divider .part-kicker {
+  margin: 0 0 7px;
+  color: #e9c79e;
+  font-weight: 900;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+.part-divider h2 {
+  margin: 0 0 8px;
+  color: #fffaf3;
+  font-size: clamp(27px,3vw,38px);
+}
+.part-divider p {
+  margin: 0;
+  max-width: 960px;
+  color: rgba(255,250,243,.88);
+}
+.metric {
+  font-size: 34px;
+  line-height: 1;
+  color: var(--accent);
+  font-weight: 900;
+  display: block;
+  margin-bottom: 8px;
+}
+.period-band {
+  display: grid;
+  grid-template-columns: 185px 1fr;
+  gap: 18px;
+  margin-top: 13px;
+  overflow: hidden;
+  border: 1px solid rgba(91,62,36,.14);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: var(--shadow-small);
+}
+.period-date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: linear-gradient(180deg,#7a4f2a,#5b351b);
+  color: #fffaf3;
+  font-size: 18px;
+  line-height: 1.25;
+  font-weight: 900;
+  text-align: center;
+}
+.period-copy {
+  padding: 17px 18px 17px 0;
+}
+.period-copy h3 {
+  margin: 0 0 5px;
+}
+.period-copy p {
+  margin: 0;
+}
+.concept-chain {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+.concept-chain span {
+  padding: 8px 12px;
+  border: 1px solid rgba(91,62,36,.15);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--title);
+  font-weight: 800;
+  box-shadow: var(--shadow-small);
+}
+.concept-chain i {
+  color: var(--accent);
+  font-style: normal;
+  font-weight: 900;
+}
+.source-box, .correction {
+  margin-top: 16px;
+  padding: 19px 21px;
+  border: 1px solid rgba(91,62,36,.18);
+  border-radius: 19px;
+  background: #fff9f1;
+  color: var(--muted);
+  font-size: 16.5px;
+  line-height: 1.68;
+}
+.correction {
+  border-left: 6px solid #8c5f34;
+}
+.source-box h3 {
+  margin-bottom: 7px;
+}
+.estates-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 13px;
+}
+.estate {
+  overflow: hidden;
+  border: 1px solid rgba(91,62,36,.14);
+  border-radius: 19px;
+  background: #fff;
+  box-shadow: var(--shadow-small);
+}
+.estate-head {
+  padding: 14px 16px;
+  background: #f3eadf;
+  color: var(--title);
+  font-size: 17px;
+  font-weight: 900;
+}
+.estate-body {
+  padding: 16px;
+}
+.estate-body p {
+  margin: 0;
+  font-size: 15.8px;
+}
+.profile {
+  display: grid;
+  grid-template-columns: 175px 1fr;
+  overflow: hidden;
+  margin-top: 15px;
+  border: 1px solid rgba(91,62,36,.14);
+  border-radius: 21px;
+  background: #fff;
+  box-shadow: var(--shadow-small);
+}
+.profile-side {
+  padding: 20px;
+  background: linear-gradient(180deg,#7a4f2a,#5b351b);
+  color: #fffaf3;
+}
+.profile-side strong {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 18px;
+}
+.profile-side span {
+  display: block;
+  color: rgba(255,250,243,.82);
+  line-height: 1.55;
+}
+.profile-main {
+  padding: 21px;
+}
+.profile-main h3 {
+  margin-bottom: 8px;
+}
+.profile-main p:first-of-type {
+  margin-top: 0;
+}
+.profile-main p:last-child {
+  margin-bottom: 0;
+}
+.balance-grid {
+  display: grid;
+  grid-template-columns: 1fr 72px 1fr;
+  gap: 14px;
+  align-items: stretch;
+  margin-top: 15px;
+}
+.balance-side, .balance-center {
+  border: 1px solid rgba(91,62,36,.14);
+  border-radius: 20px;
+  box-shadow: var(--shadow-small);
+}
+.balance-side {
+  padding: 20px;
+  background: #fff;
+}
+.balance-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0e4d4;
+  color: var(--accent);
+  font-size: 30px;
+  font-weight: 900;
+}
+.claim-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 13px;
+  margin-top: 15px;
+}
+.claim {
+  padding: 18px;
+  border: 1px solid rgba(91,62,36,.14);
+  border-radius: 19px;
+  background: #fff;
+  box-shadow: var(--shadow-small);
+}
+.claim strong {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--title);
+  font-size: 17px;
+}
+.claim p {
+  margin: 0;
+  font-size: 15.8px;
+}
+.checklist {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.checklist li {
+  position: relative;
+  margin-bottom: 9px;
+  padding-left: 25px;
+}
+.checklist li::before {
+  content: "◆";
+  position: absolute;
+  left: 0;
+  top: 1px;
+  color: var(--accent);
+  font-size: 12px;
+}
+.compare-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 14px;
+}
+.compare-card {
+  overflow: hidden;
+  border: 1px solid rgba(91,62,36,.14);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: var(--shadow-small);
+}
+.compare-head {
+  padding: 15px 18px;
+  background: linear-gradient(180deg,#7a4f2a,#5b351b);
+  color: #fffaf3;
+  font-size: 18px;
+  font-weight: 900;
+}
+.compare-body {
+  padding: 18px;
+}
+.quote {
+  margin: 16px 0 0;
+  padding: 18px 20px;
+  border-left: 6px solid rgba(122,79,42,.55);
+  border-radius: 0 18px 18px 0;
+  background: #fff8ef;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.7;
+  font-style: italic;
+}
+.tool-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+.tool-row button {
+  border: 1px solid rgba(91,62,36,.18);
+  border-radius: 999px;
+  padding: 9px 13px;
+  background: #f3eadf;
+  color: var(--title);
+  font: 700 14px Georgia,"Times New Roman",serif;
+  cursor: pointer;
+}
+.tool-row button:hover {
+  background: #e5d2bb;
+}
+@media (max-width:980px) {
+  .estates-grid, .claim-grid, .compare-grid { grid-template-columns: repeat(2,1fr); }
+  .balance-grid { grid-template-columns: 1fr; }
+  .balance-center { min-height: 58px; }
+}
+@media (max-width:680px) {
+  .period-band, .profile { grid-template-columns: 1fr; }
+  .period-copy { padding: 0 16px 16px; }
+  .estates-grid, .claim-grid, .compare-grid { grid-template-columns: 1fr; }
+  .nav-group > span { min-width: 100%; }
+}
+@media print {
+  body { background:#fff; }
+  body::before, .progress, .topbar, .tool-row { display:none !important; }
+  .page { width:100%; padding:0; }
+  .hero, .section, .final-box, .part-divider { box-shadow:none; break-inside:avoid; }
+  details { break-inside:avoid; }
+  details > * { display:block !important; }
+  summary::after { display:none; }
+}
+
+
+
+/* Extensii pentru pagina despre conflictele militare */
+.progress {
+  position: fixed;
+  inset: 0 auto auto 0;
+  width: 0;
+  height: 5px;
+  z-index: 9999;
+  background: linear-gradient(90deg,#dca861,#fff0c7);
+  box-shadow: 0 2px 8px rgba(0,0,0,.28);
+}
+.section-label {
+  display:inline-block;
+  margin-bottom:9px;
+  color:var(--accent);
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+.nav-group {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+  width:100%;
+}
+.nav-group + .nav-group {
+  padding-top:12px;
+  margin-top:2px;
+  border-top:1px dashed rgba(91,62,36,.16);
+}
+.nav-group > span {
+  min-width:170px;
+  color:var(--accent);
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+.part-divider {
+  position:relative;
+  overflow:hidden;
+  margin:28px 0 22px;
+  padding:29px 31px;
+  border:1px solid rgba(255,250,243,.18);
+  border-radius:26px;
+  background:
+    radial-gradient(circle at 91% 14%,rgba(255,255,255,.13),transparent 31%),
+    linear-gradient(135deg,#633d22,#2d190d);
+  box-shadow:var(--shadow);
+}
+.part-divider::after {
+  content:attr(data-mark);
+  position:absolute;
+  right:24px;
+  bottom:-35px;
+  color:rgba(255,250,243,.09);
+  font-size:128px;
+  line-height:1;
+  font-weight:900;
+}
+.part-divider .part-kicker {
+  margin:0 0 7px;
+  color:#e9c79e;
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+.part-divider h2 { margin:0 0 8px; color:#fffaf3; }
+.part-divider p { margin:0; max-width:970px; color:rgba(255,250,243,.88); }
+.metric {
+  display:block;
+  margin-bottom:8px;
+  color:var(--accent);
+  font-size:33px;
+  line-height:1;
+  font-weight:900;
+}
+.war-header {
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:18px;
+  overflow:hidden;
+  margin:16px 0;
+  border:1px solid rgba(91,62,36,.14);
+  border-radius:22px;
+  background:#fff;
+  box-shadow:var(--shadow-small);
+}
+.war-date {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:22px 15px;
+  background:linear-gradient(180deg,#7a4f2a,#4e2d17);
+  color:#fffaf3;
+  font-size:23px;
+  line-height:1.18;
+  font-weight:900;
+  text-align:center;
+}
+.war-copy { padding:20px 21px 20px 0; }
+.war-copy h3 { margin-bottom:7px; }
+.war-copy p { margin:0; }
+.actor-grid, .campaign-grid, .treaty-grid, .impact-grid, .claim-grid {
+  display:grid;
+  gap:14px;
+}
+.actor-grid { grid-template-columns:repeat(3,1fr); }
+.campaign-grid { grid-template-columns:repeat(2,1fr); }
+.treaty-grid { grid-template-columns:repeat(3,1fr); }
+.impact-grid { grid-template-columns:repeat(4,1fr); }
+.claim-grid { grid-template-columns:repeat(3,1fr); }
+.actor, .campaign-card, .treaty-card, .impact-card, .claim {
+  padding:19px;
+  border:1px solid rgba(91,62,36,.14);
+  border-radius:20px;
+  background:#fff;
+  box-shadow:var(--shadow-small);
+}
+.actor strong, .campaign-card strong, .treaty-card strong, .impact-card strong, .claim strong {
+  display:block;
+  margin-bottom:7px;
+  color:var(--title);
+  font-size:17px;
+}
+.actor p, .campaign-card p, .treaty-card p, .impact-card p, .claim p {
+  margin:0;
+  font-size:15.9px;
+}
+.operation {
+  display:grid;
+  grid-template-columns:142px 1fr;
+  gap:16px;
+  overflow:hidden;
+  margin-top:13px;
+  border:1px solid rgba(91,62,36,.14);
+  border-radius:20px;
+  background:#fff;
+  box-shadow:var(--shadow-small);
+}
+.operation .op-date {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+  background:#f0e4d4;
+  color:var(--title);
+  font-weight:900;
+  text-align:center;
+}
+.operation .op-body { padding:16px 18px 16px 0; }
+.operation .op-body h3 { margin:0 0 5px; font-size:19px; }
+.operation .op-body p { margin:0; font-size:16.3px; }
+.causal-chain {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+.causal-chain span {
+  padding:8px 12px;
+  border:1px solid rgba(91,62,36,.15);
+  border-radius:999px;
+  background:#fff;
+  color:var(--title);
+  font-weight:800;
+  box-shadow:var(--shadow-small);
+}
+.causal-chain i { color:var(--accent); font-style:normal; font-weight:900; }
+.correction, .source-box, .strategic-box {
+  margin-top:17px;
+  padding:19px 21px;
+  border:1px solid rgba(91,62,36,.18);
+  border-radius:19px;
+  background:#fff9f1;
+  color:var(--muted);
+  font-size:16.5px;
+  line-height:1.68;
+}
+.correction { border-left:6px solid #8b5b31; }
+.strategic-box { background:#f5eee5; }
+.source-box h3, .strategic-box h3 { margin-bottom:7px; }
+.frontier {
+  display:grid;
+  grid-template-columns:1fr 64px 1fr;
+  gap:14px;
+  align-items:stretch;
+  margin-top:16px;
+}
+.frontier-side, .frontier-center {
+  border:1px solid rgba(91,62,36,.14);
+  border-radius:20px;
+  box-shadow:var(--shadow-small);
+}
+.frontier-side { padding:20px; background:#fff; }
+.frontier-center {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#f0e4d4;
+  color:var(--accent);
+  font-size:28px;
+  font-weight:900;
+}
+.quote {
+  margin:16px 0 0;
+  padding:18px 20px;
+  border-left:6px solid rgba(122,79,42,.55);
+  border-radius:0 18px 18px 0;
+  background:#fff8ef;
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.7;
+  font-style:italic;
+}
+.checklist {
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+.checklist li {
+  position:relative;
+  margin-bottom:9px;
+  padding-left:25px;
+}
+.checklist li::before {
+  content:"◆";
+  position:absolute;
+  left:0;
+  top:1px;
+  color:var(--accent);
+  font-size:12px;
+}
+.tool-row {
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+.tool-row button {
+  border:1px solid rgba(91,62,36,.18);
+  border-radius:999px;
+  padding:9px 13px;
+  background:#f3eadf;
+  color:var(--title);
+  font:700 14px Georgia,"Times New Roman",serif;
+  cursor:pointer;
+}
+.tool-row button:hover { background:#e5d2bb; }
+@media (max-width:980px) {
+  .actor-grid,.treaty-grid,.claim-grid { grid-template-columns:repeat(2,1fr); }
+  .impact-grid { grid-template-columns:repeat(2,1fr); }
+  .frontier { grid-template-columns:1fr; }
+  .frontier-center { min-height:56px; }
+}
+@media (max-width:680px) {
+  .war-header,.operation { grid-template-columns:1fr; }
+  .war-copy,.operation .op-body { padding:0 16px 17px; }
+  .actor-grid,.campaign-grid,.treaty-grid,.impact-grid,.claim-grid { grid-template-columns:1fr; }
+  .nav-group > span { min-width:100%; }
+}
+@media print {
+  body { background:#fff; }
+  body::before,.progress,.topbar,.tool-row { display:none!important; }
+  .page { width:100%; padding:0; }
+  .hero,.section,.final-box,.part-divider { box-shadow:none; break-inside:avoid; }
+  details { break-inside:avoid; }
+  details > * { display:block!important; }
+  summary::after { display:none; }
+}
+
+
+.progress{position:fixed;inset:0 auto auto 0;width:0;height:5px;z-index:9999;background:linear-gradient(90deg,#dca861,#fff0c7);box-shadow:0 2px 8px rgba(0,0,0,.28)}
+.section-label{display:inline-block;margin-bottom:9px;color:var(--accent);font-size:13px;font-weight:900;letter-spacing:.09em;text-transform:uppercase}
+.nav-group{display:flex;align-items:center;gap:8px;flex-wrap:wrap;width:100%}
+.nav-group+.nav-group{padding-top:12px;margin-top:2px;border-top:1px dashed rgba(91,62,36,.16)}
+.nav-group>span{min-width:172px;color:var(--accent);font-size:14px;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
+.part-divider{position:relative;overflow:hidden;margin:28px 0 22px;padding:29px 31px;border:1px solid rgba(255,250,243,.18);border-radius:26px;background:radial-gradient(circle at 91% 14%,rgba(255,255,255,.13),transparent 31%),linear-gradient(135deg,#633d22,#2d190d);box-shadow:var(--shadow)}
+.part-divider::after{content:attr(data-mark);position:absolute;right:24px;bottom:-35px;color:rgba(255,250,243,.09);font-size:128px;line-height:1;font-weight:900}
+.part-divider .part-kicker{margin:0 0 7px;color:#e9c79e;font-size:14px;font-weight:900;letter-spacing:.09em;text-transform:uppercase}
+.part-divider h2{margin:0 0 8px;color:#fffaf3}.part-divider p{margin:0;max-width:970px;color:rgba(255,250,243,.88)}
+.metric{display:block;margin-bottom:8px;color:var(--accent);font-size:33px;line-height:1;font-weight:900}
+.profile{display:grid;grid-template-columns:190px 1fr;overflow:hidden;margin-top:15px;border:1px solid rgba(91,62,36,.14);border-radius:21px;background:#fff;box-shadow:var(--shadow-small)}
+.profile-side{padding:20px;background:linear-gradient(180deg,#7a4f2a,#4e2d17);color:#fffaf3}
+.profile-side strong{display:block;margin-bottom:7px;font-size:18px}.profile-side span{display:block;color:rgba(255,250,243,.82);line-height:1.55}
+.profile-main{padding:21px}.profile-main h3{margin-bottom:8px}.profile-main p:first-of-type{margin-top:0}.profile-main p:last-child{margin-bottom:0}
+.claim-grid,.work-grid,.impact-grid,.compare-grid{display:grid;gap:14px}
+.claim-grid{grid-template-columns:repeat(3,1fr)}.work-grid{grid-template-columns:repeat(2,1fr)}.impact-grid{grid-template-columns:repeat(4,1fr)}.compare-grid{grid-template-columns:repeat(3,1fr)}
+.claim,.work-card,.impact-card,.compare-card{padding:19px;border:1px solid rgba(91,62,36,.14);border-radius:20px;background:#fff;box-shadow:var(--shadow-small)}
+.claim strong,.work-card strong,.impact-card strong,.compare-card strong{display:block;margin-bottom:7px;color:var(--title);font-size:17px}
+.claim p,.work-card p,.impact-card p,.compare-card p{margin:0;font-size:15.9px}
+.era{display:grid;grid-template-columns:176px 1fr;gap:18px;overflow:hidden;margin:14px 0;border:1px solid rgba(91,62,36,.14);border-radius:21px;background:#fff;box-shadow:var(--shadow-small)}
+.era-date{display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(180deg,#7a4f2a,#4e2d17);color:#fffaf3;font-size:21px;line-height:1.2;font-weight:900;text-align:center}
+.era-copy{padding:18px 20px 18px 0}.era-copy h3{margin:0 0 6px}.era-copy p{margin:0}
+.causal-chain{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:18px}
+.causal-chain span{padding:8px 12px;border:1px solid rgba(91,62,36,.15);border-radius:999px;background:#fff;color:var(--title);font-weight:800;box-shadow:var(--shadow-small)}
+.causal-chain i{color:var(--accent);font-style:normal;font-weight:900}
+.correction,.source-box,.quote{margin-top:17px;padding:19px 21px;border:1px solid rgba(91,62,36,.18);border-radius:19px;background:#fff9f1;color:var(--muted);font-size:16.5px;line-height:1.68}
+.correction{border-left:6px solid #8b5b31}.quote{border-left:6px solid rgba(122,79,42,.55);font-style:italic}
+.source-box h3{margin-bottom:7px}
+.checklist{margin:0;padding:0;list-style:none}.checklist li{position:relative;margin-bottom:9px;padding-left:25px}.checklist li::before{content:"◆";position:absolute;left:0;top:1px;color:var(--accent);font-size:12px}
+.tool-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.tool-row button{border:1px solid rgba(91,62,36,.18);border-radius:999px;padding:9px 13px;background:#f3eadf;color:var(--title);font:700 14px Georgia,"Times New Roman",serif;cursor:pointer}.tool-row button:hover{background:#e5d2bb}
+.ideology{display:grid;grid-template-columns:150px 1fr;gap:14px;margin-top:13px;overflow:hidden;border:1px solid rgba(91,62,36,.14);border-radius:19px;background:#fff;box-shadow:var(--shadow-small)}
+.ideology-name{display:flex;align-items:center;justify-content:center;padding:16px;background:#f0e4d4;color:var(--title);font-weight:900;text-align:center}.ideology-copy{padding:16px 18px 16px 0}.ideology-copy p{margin:0}
+@media(max-width:980px){.claim-grid,.compare-grid{grid-template-columns:repeat(2,1fr)}.impact-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:680px){.profile,.era,.ideology{grid-template-columns:1fr}.profile-main,.era-copy,.ideology-copy{padding:0 16px 17px}.claim-grid,.work-grid,.impact-grid,.compare-grid{grid-template-columns:1fr}.nav-group>span{min-width:100%}}
+@media print{body{background:#fff}body::before,.progress,.topbar,.tool-row{display:none!important}.page{width:100%;padding:0}.hero,.section,.final-box,.part-divider{box-shadow:none;break-inside:avoid}details{break-inside:avoid}details>*{display:block!important}summary::after{display:none}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<main class="page">
+  <div class="topbar"><a class="back-link" href="javascript:history.back()">← Înapoi</a><span class="tag">Cultura română modernă · sinteză amplă</span></div>
+  <header class="hero" style="--hero-year:'1508–1825'">
+    <p class="eyebrow">De la Liturghierul lui Macarie la Lexiconul de la Buda</p>
+    <h1>Apariția tiparului în cultura română modernă</h1>
+    <p class="subtitle">O istorie detaliată a apariției și dezvoltării tiparului în Țara Românească, Moldova și Transilvania: cultura manuscrisă, Macarie tipograful, primele cărți slavone, diaconul Coresi, marile tiparnițe ale secolului al XVII-lea, Biblia de la București, Antim Ivireanul, Blajul și efectele tiparului asupra limbii, școlii, dreptului și identității.</p>
+    <div class="summary-grid"><div class="summary-card"><span class="metric">1508</span><strong>Prima carte</strong><span>Liturghierul slavon deschide istoria tiparului cunoscut în Țările Române.</span></div><div class="summary-card"><span class="metric">1556–1583</span><strong>Coresi</strong><span>Brașovul devine principalul centru al cărții românești din secolul al XVI-lea.</span></div><div class="summary-card"><span class="metric">1640–1688</span><strong>Marile sinteze</strong><span>Pravile, Cazania lui Varlaam, Noul Testament și Biblia de la București.</span></div><div class="summary-card"><span class="metric">1750–1825</span><strong>Blaj și Buda</strong><span>Tiparul intră în programul iluminist, școlar și filologic.</span></div></div>
+    <div class="tool-row"><button type="button" onclick="toggleAll(true)">Deschide toate explicațiile</button><button type="button" onclick="toggleAll(false)">Închide toate explicațiile</button><button type="button" onclick="window.print()">Printează / salvează PDF</button></div>
+  </header>
+  <nav class="nav-card" aria-label="Cuprins"><div class="nav-group"><span>Începuturi</span><a href="#context">Context european</a><a href="#macarie">Macarie</a><a href="#primele-carti">Primele cărți</a></div><div class="nav-group"><span>Secolul XVI</span><a href="#ljubavic">Ljubavić</a><a href="#coresi">Coresi</a><a href="#transilvania">Centre transilvănene</a></div><div class="nav-group"><span>Secolul XVII</span><a href="#matei-basarab">Matei Basarab</a><a href="#moldova">Moldova</a><a href="#antim">Antim și Biblia</a></div><div class="nav-group"><span>Impact</span><a href="#blaj">Blaj</a><a href="#impact">Efecte</a><a href="#cronologie">Cronologie</a><a href="#glosar">Glosar</a><a href="#retinut">De reținut</a></div></nav>
+  
+<section class="part-divider" data-mark="I"><p class="part-kicker">De la manuscris la carte multiplicată</p><h2>Revoluția tiparului și intrarea spațiului românesc în cultura cărții</h2><p>Tiparul nu a înlocuit imediat manuscrisul. Timp de două secole, copiștii, călugării, tipografii, domnii și negustorii au lucrat într-o cultură mixtă, în care cartea manuscrisă și cartea tipărită s-au completat.</p></section>
+
+<section class="section" id="context"><div class="section-label">Context european</div><h2>De ce invenția lui Gutenberg a schimbat Europa</h2>
+<p class="section-intro">În jurul anilor 1450, atelierul lui Johannes Gutenberg de la Mainz a combinat literele mobile metalice, presa, cerneala grasă și procedeele de turnare într-un sistem eficient de reproducere. Noutatea esențială nu era existența cărților, ci posibilitatea realizării rapide a unor tiraje aproape identice.</p>
+<div class="claim-grid">
+<article class="claim"><strong>Scăderea costului</strong><p>Un text putea fi reprodus în sute de exemplare fără copierea manuală integrală. Cartea rămânea scumpă, dar devenea accesibilă unui public mai larg.</p></article>
+<article class="claim"><strong>Standardizarea textului</strong><p>Edițiile tipărite fixau o formă relativ stabilă a textului, a ortografiei și a organizării în pagină.</p></article>
+<article class="claim"><strong>Circulația ideilor</strong><p>Textele religioase, juridice, științifice și politice puteau traversa rapid frontierele și alimenta Reforma, Renașterea și administrația modernă.</p></article>
+<article class="claim"><strong>Noua meserie a tipografului</strong><p>Tipograful era simultan tehnician, editor, corector, comerciant și uneori traducător sau autor.</p></article>
+<article class="claim"><strong>Piață și patronaj</strong><p>Atelierele aveau nevoie fie de cumpărători numeroși, fie de un protector: principe, episcop, mănăstire, oraș sau negustor.</p></article>
+<article class="claim"><strong>Control și cenzură</strong><p>Puterea politică și Bisericile au înțeles repede că tiparul poate răspândi atât doctrina oficială, cât și contestarea.</p></article>
+</div>
+<details open><summary>Ce exista înaintea tiparului în Țările Române</summary><div class="details-body"><p>Cancelariile și mănăstirile produceau hrisoave, pomelnice, cărți liturgice și cronici. Textele erau copiate în slavonă, greacă, latină și, treptat, în română. Centre precum Neamț, Putna, Bistrița, Tismana și Cozia aveau scriptoria și biblioteci.</p><p>Manuscrisul oferea unicitate și posibilitatea ornamentării, dar era lent și predispus la variații. Tiparul a introdus multiplicarea, fără să elimine imediat caligrafia și miniatura.</p></div></details>
+</section>
+
+<section class="section" id="macarie"><div class="section-label">Veneția – Cetinje – Țara Românească</div><h2>Macarie tipograful și începutul tiparului sud-est european</h2>
+<p class="section-intro">Macarie tipograful, călugăr de origine sârbă, s-a format în mediul venețian și a lucrat la tiparnița de la Cetinje, în Zeta. După dispariția acelui centru sub presiunea cuceririi otomane, experiența sa tehnică a devenit disponibilă curții muntene.</p>
+<div class="profile"><div class="profile-side"><strong>Macarie tipograful</strong><span>activ la Cetinje din 1493<br/>chemat de Radu cel Mare<br/>tipărituri muntene: 1508–1512</span></div><div class="profile-main"><h3>Un artizan itinerant al culturii ortodoxe</h3><p>El aducea matrițe, cunoștințe despre turnarea literelor, compoziția paginii și corectură. Caracterele chirilice și ornamentica imitau aspectul manuscriselor liturgice, ceea ce făcea noua tehnologie acceptabilă publicului bisericesc.</p><p>Activitatea sa arată că începuturile tiparului românesc au fost parte a unei rețele balcanice și adriatice, nu un fenomen izolat.</p></div></div>
+<div class="correction"><strong>Două persoane diferite:</strong> Macarie tipograful, activ la începutul secolului al XVI-lea în Țara Românească, nu trebuie confundat cu episcopul și cronicarul moldovean Macarie, mort în 1558. Cronicarul a scris despre epoca lui Petru Rareș și a tradus texte juridico-religioase, dar nu este autorul Liturghierului din 1508.</div>
+</section>
+
+<section class="section" id="primele-carti"><div class="section-label">1508–1512</div><h2>Triada tipăriturilor lui Macarie</h2>
+<div class="era"><div class="era-date">1508</div><div class="era-copy"><h3>Liturghierul slavon</h3><p>Prima carte tipărită cunoscută pe teritoriul Țărilor Române. Conținea rânduiala principalelor slujbe liturgice și răspundea nevoii de uniformizare a cultului. Inițiativa aparținea lui Radu cel Mare, iar finalizarea este legată și de domnia lui Mihnea cel Rău.</p></div></div>
+<div class="era"><div class="era-date">1510</div><div class="era-copy"><h3>Octoihul</h3><p>Cartea cuprinde cântările bisericești organizate după cele opt glasuri. Tipărirea ei arată continuitatea atelierului și existența unei comenzi ecleziastice consistente.</p></div></div>
+<div class="era"><div class="era-date">1512</div><div class="era-copy"><h3>Tetraevangheliarul</h3><p>Reunea cele patru Evanghelii pentru uz liturgic. Ediția se remarcă prin compoziția solemnă, inițiale ornamentate și legătura dintre tehnica venețiană și tradiția bizantino-slavă.</p></div></div>
+<details open><summary>Unde a funcționat prima tiparniță?</summary><div class="details-body"><p>Tradiția istoriografică a legat tipăriturile de Mănăstirea Dealu, aflată lângă Târgoviște, dar localizarea exactă a atelierului a fost discutată. Unele formule din cărți indică Târgoviștea ca centru domnesc, fără a descrie clădirea în care era instalată presa.</p><p>Formularea prudentă este că primele cărți au fost tipărite în mediul curții și al complexului monastic de la Târgoviște–Dealu.</p></div></details>
+</section>
+
+<section class="part-divider" data-mark="II"><p class="part-kicker">Secolul al XVI-lea</p><h2>De la tiparul slavon la cartea în limba română</h2><p>Prima etapă a servit cultului slavon. A doua a adus traduceri românești, concurență confesională și un public tot mai larg, mai ales în Transilvania.</p></section>
+
+<section class="section" id="ljubavic"><div class="section-label">Reînnoirea atelierului muntean</div><h2>Dimitrije Ljubavić și tiparnița de la Târgoviște</h2>
+<p class="section-intro">După o întrerupere de câteva decenii, tiparul este reluat în Țara Românească sub Radu Paisie și Mircea Ciobanul. Dimitrije Ljubavić, provenit dintr-o familie de tipografi sârbi, a organizat un nou atelier.</p>
+<div class="work-grid">
+<article class="work-card"><strong>Molitvenicul, 1545</strong><p>Carte de rugăciuni și rânduieli, destinată clerului. Ediția continua tradiția slavonă și oferea texte uniforme pentru practica parohială.</p></article>
+<article class="work-card"><strong>Apostolul, 1547</strong><p>Conținea Faptele Apostolilor și Epistolele. Tipărirea sa presupunea un atelier matur, cu caractere, corectură și finanțare stabile.</p></article>
+</div>
+<p>Atelierul familiei Ljubavić a menținut legăturile culturale dintre Țara Românească, Serbia și Veneția și a pregătit terenul pentru renașterea tiparului din secolul al XVII-lea.</p>
+</section>
+
+<section class="section" id="coresi"><div class="section-label">Brașov, 1556–1583</div><h2>Diaconul Coresi și transformarea limbii române în limbă de carte</h2>
+<p class="section-intro">Coresi, format probabil în mediul tipografic de la Târgoviște, s-a stabilit la Brașov, oraș comercial și centru al Reformei. Aici a tipărit în slavonă și română, beneficiind de hârtie, meșteșugari, rețele comerciale și sprijinul unor autorități urbane.</p>
+<div class="profile"><div class="profile-side"><strong>Diaconul Coresi</strong><span>tipograf, traducător și editor<br/>activ mai ales la Brașov<br/>peste trei decenii de activitate</span></div><div class="profile-main"><h3>Mai mult decât un simplu meșteșugar</h3><p>Coresi și colaboratorii săi selectau manuscrise, comparau versiuni, adaptau traduceri și pregăteau textele pentru un public românofon. Limba edițiilor se sprijinea în mare măsură pe graiul sud-est transilvănean și muntean, dar prelua elemente din mai multe regiuni.</p><p>Tipăriturile sale au circulat în Transilvania, Țara Românească și Moldova, contribuind la perceperea unei limbi comune.</p></div></div>
+<div class="claim-grid">
+<article class="claim"><strong>Întrebare creștinească, 1559–1560</strong><p>Catehism în română, legat de mediul Reformei și de nevoia instruirii directe a credincioșilor.</p></article>
+<article class="claim"><strong>Tetraevanghelul românesc, 1561</strong><p>Una dintre cele mai importante traduceri timpurii ale Evangheliilor în română.</p></article>
+<article class="claim"><strong>Psaltirea și Liturghierul</strong><p>Au extins utilizarea limbii române în rugăciune și cult, deși slavona a continuat să fie folosită.</p></article>
+<article class="claim"><strong>Cazaniile</strong><p>Culegerile de predici explicau textul biblic și îl apropiau de publicul laic.</p></article>
+<article class="claim"><strong>Evanghelia cu învățătură, 1581</strong><p>Lucrare amplă, realizată cu sprijinul protopopilor Iane și Mihai, importantă pentru limba literară.</p></article>
+<article class="claim"><strong>Circulație interregională</strong><p>Cărțile erau cumpărate de parohii și comunități din toate cele trei țări românești.</p></article>
+</div>
+<details open><summary>A creat Coresi singur limba română literară?</summary><div class="details-body"><p>Nu. Limba literară s-a format printr-un proces lung, la care au contribuit traducători anonimi, copiști, tipografi, ierarhi și autori din mai multe regiuni. Coresi a avut însă o influență excepțională deoarece edițiile sale au multiplicat și răspândit anumite forme lingvistice.</p></div></details>
+</section>
+
+<section class="section" id="transilvania"><div class="section-label">Rețea de centre</div><h2>Sibiu, Brașov, Orăștie și Alba Iulia</h2>
+<div class="era"><div class="era-date">1528–1530</div><div class="era-copy"><h3>Primele tipărituri sibiene</h3><p>Sibiul a avut unul dintre cele mai vechi ateliere din regiune, legat de mediul urban săsesc. Aici au fost tipărite texte latine și germane și, potrivit unor mărturii, un catehism românesc în 1544, astăzi pierdut.</p></div></div>
+<div class="era"><div class="era-date">1582</div><div class="era-copy"><h3>Palia de la Orăștie</h3><p>Prima traducere tipărită în română a unor cărți din Vechiul Testament, Geneza și Exodul. Lucrarea arată interesul mediilor protestante pentru accesul direct la Scriptură.</p></div></div>
+<div class="era"><div class="era-date">1648</div><div class="era-copy"><h3>Noul Testament de la Bălgrad</h3><p>Tipărit la Alba Iulia sub mitropolitul Simion Ștefan, este o capodoperă a limbii române vechi. Predoslovia formulează limpede idealul unei limbi înțelese de românii din toate regiunile.</p></div></div>
+<div class="quote">Ideea că „cuvintele trebuie să fie ca banii” — bune dacă circulă și sunt înțelese pretutindeni — rezumă programul de unificare lingvistică al Noului Testament de la 1648.</div>
+</section>
+
+<section class="part-divider" data-mark="III"><p class="part-kicker">Secolul al XVII-lea</p><h2>Tiparul ca instrument de guvernare, drept și identitate confesională</h2><p>Domnii Matei Basarab și Vasile Lupu au refăcut atelierele, au invitat meșteri și au finanțat cărți juridice, liturgice și didactice.</p></section>
+
+<section class="section" id="matei-basarab"><div class="section-label">Țara Românească</div><h2>Câmpulung, Govora, Târgoviște și epoca lui Matei Basarab</h2>
+<p class="section-intro">Domnia lui Matei Basarab a creat o rețea de tiparnițe și a legat cartea de reforma Bisericii și a justiției. Tehnicieni și matrițe au sosit inclusiv din Kiev, prin relațiile cu mitropolitul Petru Movilă.</p>
+<div class="work-grid">
+<article class="work-card"><strong>Pravila de la Govora, 1640</strong><p>Prima culegere de legi bisericești și laice tipărită în română în Țara Românească. A circulat și într-o versiune destinată Transilvaniei.</p></article>
+<article class="work-card"><strong>Îndreptarea legii, 1652</strong><p>Cod juridic amplu tipărit la Târgoviște, care combina dreptul bizantin, norme canonice și practici locale.</p></article>
+</div>
+<p>Tiparul juridic transforma norma dintr-o tradiție greu accesibilă într-un reper mai stabil pentru judecători, clerici și dregători.</p>
+</section>
+
+<section class="section" id="moldova"><div class="section-label">Moldova lui Vasile Lupu</div><h2>Iașul, Varlaam și primele mari tipărituri moldovenești</h2>
+<p class="section-intro">În jurul anilor 1642–1643, Vasile Lupu a instalat la Mănăstirea Trei Ierarhi din Iași o tiparniță sprijinită de mediul cultural al Kievului. Mitropolitul Varlaam a folosit-o pentru un program pastoral și cultural în limba română.</p>
+<div class="work-grid">
+<article class="work-card"><strong>Carte românească de învățătură, 1643</strong><p>Cunoscută drept Cazania lui Varlaam, cuprinde predici pentru duminici și sărbători. Adresarea către „toată seminția românească” exprimă conștiința unității de limbă și credință.</p></article>
+<article class="work-card"><strong>Cartea românească de învățătură de la pravilele împărătești, 1646</strong><p>Pravila lui Vasile Lupu este o colecție juridică inspirată din dreptul bizantin și din manuale occidentale, adaptată necesităților Moldovei.</p></article>
+<article class="work-card"><strong>Șapte Taine, 1644</strong><p>Lucrare teologică legată de dezbaterile confesionale ale epocii și de consolidarea doctrinei ortodoxe.</p></article>
+<article class="work-card"><strong>Răspunsul împotriva Catehismului calvinesc, 1645</strong><p>Arată că tiparul era și armă polemică într-un spațiu traversat de competiția confesiunilor.</p></article>
+</div>
+</section>
+
+<section class="section" id="antim"><div class="section-label">Sfârșitul secolului al XVII-lea</div><h2>Biblia de la București și Antim Ivireanul</h2>
+<div class="era"><div class="era-date">1688</div><div class="era-copy"><h3>Biblia de la București</h3><p>Prima traducere integrală tipărită a Bibliei în limba română, realizată în vremea lui Șerban Cantacuzino și publicată sub Constantin Brâncoveanu. A sintetizat tradiții lingvistice muntene, moldovene și transilvănene.</p></div></div>
+<div class="profile"><div class="profile-side"><strong>Antim Ivireanul</strong><span>tipograf, gravor, autor și mitropolit<br/>activ la București, Snagov, Râmnic, Târgoviște</span></div><div class="profile-main"><h3>Tiparul ca misiune culturală internațională</h3><p>Originar din Iviria, Antim a tipărit în română, greacă, slavonă și arabă. A pregătit caractere, a ilustrat cărți și a format ucenici. Tipăriturile arabe au sprijinit comunitățile ortodoxe din Orient.</p><p>Prin cărțile liturgice românești, a contribuit decisiv la înlocuirea slavonei cu româna în cult. <em>Didahiile</em> sale sunt totodată o operă majoră de oratorie și critică socială.</p></div></div>
+</section>
+
+<section class="section" id="blaj"><div class="section-label">Secolul al XVIII-lea</div><h2>Blajul, tiparul greco-catolic și cultura iluministă</h2>
+<p class="section-intro">Tipografia de la Blaj a devenit centrul editorial al românilor uniți din Transilvania. Ea a publicat cărți liturgice, manuale, catehisme, gramatici și lucrări polemice.</p>
+<div class="claim-grid">
+<article class="claim"><strong>Floarea adevărului, 1750</strong><p>Lucrare colectivă a călugărilor de la Blaj, care argumenta unirea cu Roma și folosea un aparat de trimiteri neobișnuit de bogat pentru epocă.</p></article>
+<article class="claim"><strong>Manuale și cărți școlare</strong><p>Rețeaua de școli avea nevoie de abecedare, catehisme și texte accesibile elevilor și dascălilor.</p></article>
+<article class="claim"><strong>Gramatici și dicționare</strong><p>Tiparul a făcut posibil programul lingvistic al Școlii Ardelene și trecerea spre alfabetul latin.</p></article>
+</div>
+</section>
+
+<section class="part-divider" data-mark="IV"><p class="part-kicker">Impact cultural</p><h2>Cum a schimbat tiparul limba, Biserica, dreptul și memoria</h2><p>Cartea tipărită a creat o infrastructură a culturii: texte repetabile, rețele de distribuție, profesii specializate și un public capabil să compare idei.</p></section>
+
+<section class="section" id="impact"><div class="section-label">Transformări de durată</div><h2>Efectele apariției tiparului</h2>
+<div class="impact-grid">
+<article class="impact-card"><strong>Limba română</strong><p>Traducerile au fixat vocabularul religios, juridic și administrativ și au redus diferențele dintre tradițiile regionale.</p></article>
+<article class="impact-card"><strong>Alfabetizare</strong><p>Școlile și parohiile au primit mai multe manuale și cărți, deși alfabetizarea de masă a rămas un proces lent.</p></article>
+<article class="impact-card"><strong>Confesiune</strong><p>Ortodoxii, reformații, luteranii, catolicii și greco-catolicii au folosit tiparul pentru doctrină, catehizare și polemică.</p></article>
+<article class="impact-card"><strong>Drept și administrație</strong><p>Pravilele și formularele au făcut normele mai stabile și mai ușor de consultat.</p></article>
+<article class="impact-card"><strong>Memorie istorică</strong><p>Cronicile și cărțile de istorie au depășit cercul îngust al manuscriselor și au alimentat conștiința originii comune.</p></article>
+<article class="impact-card"><strong>Profesii culturale</strong><p>Au apărut tipografi, corectori, gravori, traducători, legători, librari și negustori de carte.</p></article>
+<article class="impact-card"><strong>Comerț regional</strong><p>Cărțile circulau peste granițele politice, unind centre precum Brașov, Târgoviște, Iași, Alba Iulia și Blaj.</p></article>
+<article class="impact-card"><strong>Putere politică</strong><p>Domnii și ierarhii și-au proiectat prestigiul prin prefețe, steme, dedicații și finanțarea edițiilor.</p></article>
+</div>
+</section>
+
+<section class="section" id="cronologie"><div class="section-label">Repere</div><h2>Cronologie extinsă</h2>
+<div class="table-wrap"><table><thead><tr><th>An</th><th>Centru / personalitate</th><th>Tipăritură sau semnificație</th></tr></thead><tbody>
+<tr><td>c. 1450</td><td>Mainz — Gutenberg</td><td>Consolidarea tiparului european cu litere mobile metalice.</td></tr>
+<tr><td>1493–1496</td><td>Cetinje — Macarie</td><td>Activitate tipografică slavonă în spațiul sud-slav.</td></tr>
+<tr><td>1508</td><td>Târgoviște–Dealu</td><td>Liturghierul slavon, prima carte tipărită cunoscută în Țările Române.</td></tr>
+<tr><td>1510</td><td>Macarie</td><td>Octoihul.</td></tr>
+<tr><td>1512</td><td>Macarie</td><td>Tetraevangheliarul.</td></tr>
+<tr><td>1545</td><td>Târgoviște — Ljubavić</td><td>Molitvenicul.</td></tr>
+<tr><td>1547</td><td>Târgoviște — Ljubavić</td><td>Apostolul.</td></tr>
+<tr><td>1556–1583</td><td>Brașov — Coresi</td><td>Etapa majoră a tipăriturilor românești și slavone.</td></tr>
+<tr><td>1561</td><td>Brașov</td><td>Tetraevanghelul românesc.</td></tr>
+<tr><td>1581</td><td>Brașov</td><td>Evanghelia cu învățătură.</td></tr>
+<tr><td>1582</td><td>Orăștie</td><td>Palia de la Orăștie.</td></tr>
+<tr><td>1640</td><td>Govora</td><td>Pravila de la Govora.</td></tr>
+<tr><td>1643</td><td>Iași — Varlaam</td><td>Cazania.</td></tr>
+<tr><td>1646</td><td>Iași</td><td>Pravila lui Vasile Lupu.</td></tr>
+<tr><td>1648</td><td>Alba Iulia</td><td>Noul Testament de la Bălgrad.</td></tr>
+<tr><td>1652</td><td>Târgoviște</td><td>Îndreptarea legii.</td></tr>
+<tr><td>1688</td><td>București</td><td>Biblia de la București.</td></tr>
+<tr><td>1690–1716</td><td>Antim Ivireanul</td><td>Ateliere și tipărituri românești, grecești, slavone și arabe.</td></tr>
+<tr><td>1750</td><td>Blaj</td><td>Floarea adevărului.</td></tr>
+<tr><td>1825</td><td>Buda</td><td>Lexiconul românesc-latinesc-unguresc-nemțesc.</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section" id="glosar"><div class="section-label">Concepte</div><h2>Glosar</h2>
+<div class="term-grid">
+<div class="term-card"><strong>Incunabul</strong><span>Carte tipărită în Europa până la sfârșitul anului 1500.</span></div>
+<div class="term-card"><strong>Tiparniță</strong><span>Atelier și presă pentru imprimarea cărților.</span></div>
+<div class="term-card"><strong>Zaț</strong><span>Text compus din litere mobile și pregătit pentru imprimare.</span></div>
+<div class="term-card"><strong>Colofon</strong><span>Însemnare finală cu date despre autor, tipograf, loc, patron și an.</span></div>
+<div class="term-card"><strong>Chirilică</strong><span>Familie de alfabete folosite pentru slavonă și pentru româna veche.</span></div>
+<div class="term-card"><strong>Slavonă</strong><span>Limbă de cult și cancelarie folosită timp îndelungat în Țările Române.</span></div>
+<div class="term-card"><strong>Tetraevangheliar</strong><span>Volum care cuprinde cele patru Evanghelii.</span></div>
+<div class="term-card"><strong>Octoih</strong><span>Carte de cântări organizate după cele opt glasuri bisericești.</span></div>
+<div class="term-card"><strong>Cazanie</strong><span>Culegere de predici și explicații ale Evangheliilor.</span></div>
+<div class="term-card"><strong>Pravilă</strong><span>Culegere de norme juridice și canonice.</span></div>
+<div class="term-card"><strong>Predoslovie</strong><span>Prefață sau cuvânt introductiv al unei cărți vechi.</span></div>
+<div class="term-card"><strong>Scriptorium</strong><span>Atelier monastic de copiere și ornamentare a manuscriselor.</span></div>
+</div>
+</section>
+
+<section class="section" id="retinut"><div class="section-label">Sinteză</div><h2>Relații cauzale de reținut</h2>
+<div class="two-col">
+<article class="info-card"><h3>De la tehnică la cultură</h3><ul class="checklist"><li>Veneția și Cetinje → formarea lui Macarie;</li><li>patronajul lui Radu cel Mare → Liturghierul din 1508;</li><li>Reforma și mediul urban brașovean → tipăriturile românești ale lui Coresi;</li><li>concurența confesională → traduceri și catehisme în limbile credincioșilor;</li><li>centralizarea domnească → pravile și cărți oficiale.</li></ul></article>
+<article class="info-card"><h3>De la carte la identitate</h3><ul class="checklist"><li>tiraje mai mari → circulație interregională;</li><li>texte repetabile → stabilizare lingvistică;</li><li>școli + manuale → alfabetizare;</li><li>Biblia și cazaniile → româna în cult;</li><li>gramatici și dicționare → program cultural modern.</li></ul></article>
+</div>
+</section>
+
+<section class="final-box"><h2>Ideea de reținut</h2><p>Tiparul a intrat în Țările Române la începutul secolului al XVI-lea prin rețelele ortodoxe sud-slave și venețiene. Primele cărți au fost slavone și liturgice, dar atelierele lui Coresi au accelerat trecerea la română. În secolul al XVII-lea, tiparul a devenit instrument de guvernare, drept, educație și apărare confesională. Prin Biblia de la București, Cazania lui Varlaam, Noul Testament de la Bălgrad și tipăriturile de la Blaj, cartea a contribuit la formarea unei limbi literare și a unei conștiințe culturale comune.</p></section>
+
+</main>
+
+<script>
+function toggleAll(openState){document.querySelectorAll('details').forEach(d=>d.open=openState);}
+window.addEventListener('scroll',()=>{const h=document.documentElement,max=h.scrollHeight-h.clientHeight,p=document.getElementById('progress');if(p)p.style.width=(max>0?(h.scrollTop/max)*100:0)+'%';});
+</script>
+
+</body>
+</html>

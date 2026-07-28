@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Europa medievală: religie și cultură">
+<title>univ-europa-medievala-religie-si-cultura</title>
+<style>
+
+:root {
+  --bg: #f6f0e7;
+  --paper: #fffaf3;
+  --paper-2: #ffffff;
+  --ink: #2f241c;
+  --title: #3c2a1e;
+  --muted: #5b4a3d;
+  --accent: #7a4f2a;
+  --accent-2: #9b6a3c;
+  --accent-soft: #f0e4d4;
+  --line: rgba(91, 62, 36, 0.18);
+  --line-strong: rgba(91, 62, 36, 0.34);
+  --outer-dark: #241208;
+  --outer-mid: #4a2a18;
+  --outer-warm: #7a4b2b;
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+  --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+    radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+}
+.page {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 34px 0 70px;
+}
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.back-link, .tag { display: inline-flex; align-items: center; border: 1px solid var(--line); background: rgba(255, 250, 243, 0.84); color: var(--title); border-radius: 999px; padding: 10px 15px; text-decoration: none; font-size: 15px; font-weight: 700; box-shadow: var(--shadow-small); }
+.back-link:hover { background: #fff6eb; }
+.hero, .section, .nav-card, .final-box { background: rgba(255, 250, 243, 0.96); border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow); }
+.hero { padding: 38px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.hero::after { content: var(--hero-year); position: absolute; right: 26px; bottom: -22px; font-size: 110px; font-weight: 900; letter-spacing: -4px; color: rgba(122, 79, 42, 0.08); pointer-events: none; }
+.eyebrow { margin: 0 0 8px; font-size: 16px; color: var(--accent); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; }
+h1 { margin: 0; font-size: clamp(38px, 5vw, 62px); line-height: 1.04; color: var(--title); letter-spacing: -1.4px; text-align: left; text-align-last: auto; }
+.subtitle { margin: 18px 0 0; max-width: 980px; font-size: 19px; line-height: 1.78; color: var(--muted); text-align: justify; text-align-last: left; }
+.summary-grid, .three-col, .two-col, .term-grid, .quick-grid, .cause-grid, .four-col { display: grid; gap: 14px; }
+.summary-grid { grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+.summary-card, .info-card, .wide-card, .term-card, .quick-card, .source-note, .micro-card, .warning-box { background: var(--paper-2); border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); text-align: justify; text-align-last: left; }
+.summary-card { padding: 16px; min-height: 132px; }
+.summary-card strong, .quick-card strong, .term-card strong, .micro-card strong { display: block; color: var(--title); font-size: 17px; margin-bottom: 8px; text-align: left; text-align-last: auto; }
+.summary-card span, .quick-card span, .term-card span, .micro-card span { display: block; color: var(--muted); font-size: 15.5px; line-height: 1.56; text-align: justify; text-align-last: left; }
+.nav-card { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 18px 20px; margin-bottom: 24px; }
+.nav-card b { color: var(--title); margin-right: 2px; }
+.nav-card a, .mini-btn { color: var(--title); background: var(--accent-soft); border: 1px solid rgba(91, 62, 36, 0.16); border-radius: 999px; text-decoration: none; padding: 8px 12px; font-weight: 700; font-size: 14px; cursor: pointer; font-family: inherit; }
+.nav-card a:hover, .mini-btn:hover { background: #e5d2bb; }
+.section { padding: 30px; margin-bottom: 24px; }
+h2 { margin: 0 0 14px; color: var(--title); font-size: clamp(28px, 3vw, 38px); line-height: 1.15; text-align: left; text-align-last: auto; }
+h3 { margin: 0 0 12px; color: var(--title); font-size: 22px; line-height: 1.22; text-align: left; text-align-last: auto; }
+h4 { margin: 16px 0 8px; color: var(--title); font-size: 18px; text-align: left; text-align-last: auto; }
+.section-intro, p, li, dd { font-size: 17px; line-height: 1.72; color: var(--muted); text-align: justify; text-align-last: left; hyphens: auto; }
+.section-intro { margin: 0 0 20px; max-width: 1000px; }
+.three-col { grid-template-columns: repeat(3, 1fr); }
+.two-col { grid-template-columns: repeat(2, 1fr); }
+.four-col { grid-template-columns: repeat(4, 1fr); }
+.cause-grid { grid-template-columns: 1.1fr 0.9fr; }
+.term-grid { grid-template-columns: repeat(4, 1fr); }
+.quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+.info-card, .wide-card, .term-card, .quick-card, .micro-card, .warning-box, .source-note { padding: 20px; }
+.wide-card { margin-top: 14px; }
+.wide-card p:last-child, .info-card p:last-child { margin-bottom: 0; }
+.clean, .number-list { margin: 0; padding-left: 22px; }
+.clean li, .number-list li { margin: 0 0 9px; padding-left: 2px; }
+.clean li:last-child, .number-list li:last-child { margin-bottom: 0; }
+.mini-title { display: inline; color: var(--title); font-weight: 800; background: transparent; border: 0; border-radius: 0; padding: 0; margin-right: 5px; white-space: normal; text-align: inherit; }
+.date-pill { display: inline-block; color: var(--title); font-weight: 800; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.13); border-radius: 999px; padding: 2px 9px; margin-right: 5px; white-space: nowrap; text-align: left; }
+.definition, .note { margin-top: 18px; background: #fff8ef; border: 1px solid rgba(122, 79, 42, 0.22); border-left: 6px solid rgba(122, 79, 42, 0.48); border-radius: 18px; padding: 18px 20px; color: var(--muted); font-size: 17px; line-height: 1.7; text-align: justify; text-align-last: left; }
+.definition strong, .note strong { color: var(--title); }
+details { background: #fffdf9; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); margin-top: 14px; overflow: hidden; }
+details[open] { background: #fffaf3; }
+summary { cursor: pointer; list-style: none; padding: 18px 20px; font-size: 19px; font-weight: 800; color: var(--title); display: flex; justify-content: space-between; align-items: center; gap: 18px; text-align: left; text-align-last: auto; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "Deschide"; color: var(--muted); font-size: 14px; font-weight: 700; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 999px; padding: 7px 11px; white-space: nowrap; }
+details[open] > summary::after { content: "Ascunde"; }
+.details-body { border-top: 1px solid rgba(91, 62, 36, 0.12); padding: 18px 20px 20px; text-align: justify; text-align-last: left; }
+.details-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.nested-details { margin-top: 10px; box-shadow: none; background: #ffffff; }
+.nested-details summary { font-size: 17px; padding: 14px 16px; }
+.key-line { display: grid; grid-template-columns: 220px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px dashed rgba(91, 62, 36, 0.18); }
+.key-line:last-child { border-bottom: 0; }
+.key-line strong { color: var(--title); text-align: left; text-align-last: auto; }
+.key-line span { color: var(--muted); line-height: 1.65; text-align: justify; text-align-last: left; }
+.timeline { position: relative; display: grid; gap: 14px; margin-top: 18px; }
+.event { display: grid; grid-template-columns: 132px 1fr; gap: 18px; align-items: stretch; background: #ffffff; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); overflow: hidden; }
+.date { background: linear-gradient(180deg, #7a4f2a, #5b351b); color: #fffaf3; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px; font-size: 18px; line-height: 1.25; font-weight: 900; letter-spacing: 0.2px; }
+.event > div:last-child { padding: 17px 18px 18px 0; text-align: justify; text-align-last: left; }
+.event h3 { margin-bottom: 6px; }
+.event p { margin: 0; }
+.small-muted { font-size: 15px; color: #725c49; line-height: 1.6; text-align: justify; text-align-last: left; }
+.warning-box { background: #fff7ec; border-color: rgba(122, 79, 42, 0.22); margin-top: 16px; }
+.final-box { padding: 28px; background: linear-gradient(135deg, #fffaf3, #f4e4d1); border-color: rgba(91, 62, 36, 0.25); }
+.final-box p { margin-bottom: 0; }
+.table-wrap { overflow-x: auto; margin-top: 14px; border-radius: 18px; border: 1px solid rgba(91,62,36,.14); background: #fff; box-shadow: var(--shadow-small); }
+table { width: 100%; border-collapse: collapse; min-width: 740px; }
+th, td { padding: 13px 14px; border-bottom: 1px solid rgba(91,62,36,.12); color: var(--muted); font-size: 16px; line-height: 1.55; vertical-align: top; text-align: justify; }
+th { background: #f3eadf; color: var(--title); text-align: left; font-weight: 800; }
+tr:last-child td { border-bottom: 0; }
+@media (max-width: 980px) {
+  .summary-grid, .three-col, .term-grid, .quick-grid, .four-col { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .cause-grid, .details-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .page { width: min(100% - 22px, 1180px); padding-top: 22px; }
+  .hero, .section, .final-box { padding: 22px; border-radius: 22px; }
+  .summary-grid, .term-grid, .quick-grid, .four-col { grid-template-columns: 1fr; }
+  .event { grid-template-columns: 1fr; }
+  .date { min-height: 66px; }
+  .event > div:last-child { padding: 0 16px 16px; }
+  .key-line { grid-template-columns: 1fr; gap: 6px; }
+  summary { align-items: flex-start; flex-direction: column; }
+  .hero::after { font-size: 82px; }
+}
+
+.related-card { display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:16px 20px; margin:-10px 0 24px; background:rgba(255,250,243,.90); border:1px solid var(--line); border-radius:22px; box-shadow:var(--shadow-small); }
+.related-card b { color:var(--title); }
+.related-card a { color:var(--title); background:#f3eadf; border:1px solid rgba(91,62,36,.16); border-radius:999px; text-decoration:none; padding:8px 12px; font-weight:700; font-size:14px; }
+.related-card a:hover { background:#e5d2bb; }
+.badge-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
+.badge { display:inline-flex; align-items:center; color:var(--title); background:#f3eadf; border:1px solid rgba(91,62,36,.14); border-radius:999px; padding:6px 10px; font-weight:700; font-size:14px; }
+blockquote { margin:16px 0 0; padding:16px 20px; background:#fff8ef; border-left:6px solid rgba(122,79,42,.48); border-radius:16px; color:var(--muted); font-size:17px; line-height:1.7; }
+.mini-table table { min-width:560px; }
+@media print {
+  body { background:#fff !important; }
+  body::before { display:none; }
+  .page { width:100%; padding:0; }
+  .topbar, .nav-card, .related-card { display:none !important; }
+  .hero, .section, .final-box { box-shadow:none; border:1px solid #cbb9a8; break-inside:avoid-page; }
+  details { break-inside:avoid-page; }
+  details > summary::after { display:none; }
+}
+
+
+@media (max-width: 680px) {
+  .subtitle, .section-intro, p, li, dd,
+  .summary-card span, .quick-card span, .term-card span, .micro-card span,
+  .details-body, .key-line span, .event > div:last-child, th, td,
+  .definition, .note, blockquote {
+    text-align: left;
+    text-align-last: auto;
+    hyphens: none;
+  }
+}
+
+
+td { text-align: left; text-align-last: auto; }
+
+  
+
+/* Extensii pentru seria „Civilizația bizantină” */
+.series-links { display:flex; gap:9px; flex-wrap:wrap; margin-top:20px; }
+.series-links a { color:var(--title); background:#fff; border:1px solid rgba(91,62,36,.16); border-radius:999px; padding:9px 13px; text-decoration:none; font-weight:800; box-shadow:0 8px 20px rgba(0,0,0,.10); }
+.series-links a[aria-current="page"] { background:var(--accent); color:#fffaf3; }
+.series-links a:hover { transform:translateY(-1px); }
+.quote-box { margin-top:15px; padding:18px 20px; background:#fffdf9; border:1px solid rgba(91,62,36,.15); border-left:6px solid var(--accent-2); border-radius:18px; color:var(--muted); font-size:17px; line-height:1.72; text-align:justify; text-align-last:left; }
+.step-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:18px; }
+.step-card { background:#fff; border:1px solid rgba(91,62,36,.14); border-radius:20px; padding:18px; box-shadow:var(--shadow-small); }
+.step-card::before { content:attr(data-step); display:inline-flex; width:34px; height:34px; align-items:center; justify-content:center; border-radius:50%; background:var(--accent); color:#fff; font-weight:900; margin-bottom:11px; }
+.step-card strong { display:block; color:var(--title); font-size:17px; margin-bottom:7px; }
+.step-card span { color:var(--muted); font-size:15.5px; line-height:1.58; }
+.status-strip { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:16px; }
+.status-item { background:linear-gradient(135deg,#fff,#fff7ec); border:1px solid rgba(91,62,36,.14); border-radius:18px; padding:16px; }
+.status-item b { display:block; color:var(--title); margin-bottom:6px; }
+.status-item span { color:var(--muted); line-height:1.55; font-size:15.5px; }
+footer { margin-top:24px; color:rgba(255,250,243,.80); text-align:center; font-size:14px; line-height:1.6; }
+@media (max-width:980px) { .step-grid { grid-template-columns:repeat(2,1fr); } .status-strip { grid-template-columns:1fr; } }
+@media (max-width:680px) { .step-grid { grid-template-columns:1fr; } .series-links a { width:100%; text-align:center; } h1 { font-size:clamp(34px,10vw,52px); } }
+
+
+/* Extensii pentru seria „Europa medievală” */
+.series-links{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}.series-links a{color:var(--title);background:#fff;border:1px solid rgba(91,62,36,.16);border-radius:999px;padding:9px 13px;text-decoration:none;font-weight:800;box-shadow:0 8px 20px rgba(0,0,0,.10)}.series-links a[aria-current="page"]{background:var(--accent);color:#fffaf3}.series-links a:hover{transform:translateY(-1px)}
+.chapter-banner{margin:18px 0;padding:18px 20px;border-radius:20px;background:linear-gradient(135deg,#fff7ec,#f0e4d4);border:1px solid rgba(91,62,36,.18);box-shadow:var(--shadow-small)}.chapter-banner strong{display:block;color:var(--title);font-size:20px;margin-bottom:6px}.chapter-banner span{display:block;color:var(--muted);font-size:16px;line-height:1.62}
+.fact-check{margin-top:16px;padding:18px 20px;background:#fff7ec;border:1px solid rgba(122,79,42,.26);border-left:6px solid #8a4c2a;border-radius:18px;color:var(--muted);font-size:16px;line-height:1.68}.fact-check strong{color:var(--title)}
+.catalogue{columns:3 260px;column-gap:18px;margin-top:12px}.catalogue-group{break-inside:avoid;background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:16px;margin:0 0 14px;box-shadow:var(--shadow-small)}.catalogue-group h4{margin:0 0 8px}.catalogue-group ul{margin:0;padding-left:20px}.catalogue-group li{font-size:15.5px;line-height:1.5;margin-bottom:5px}
+.verse{padding:16px 18px;margin:12px 0;background:#fffdf9;border-left:5px solid var(--accent-2);border-radius:0 16px 16px 0;color:var(--muted);font-style:italic;line-height:1.7}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px}.flow-item{position:relative;padding:16px;background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;box-shadow:var(--shadow-small)}.flow-item b{display:block;color:var(--title);margin-bottom:6px}.flow-item span{font-size:15px;color:var(--muted);line-height:1.5}.flow-item:not(:last-child)::after{content:'→';position:absolute;right:-14px;top:50%;transform:translateY(-50%);font-size:22px;color:var(--accent);font-weight:900;z-index:3}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}.badge{display:inline-flex;padding:6px 10px;border-radius:999px;background:#f3eadf;border:1px solid rgba(91,62,36,.13);color:var(--title);font-weight:800;font-size:13px}
+.source-map{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.source-map article{background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:17px;box-shadow:var(--shadow-small)}.source-map strong{display:block;color:var(--title);margin-bottom:6px}.source-map span{color:var(--muted);font-size:15.5px;line-height:1.55}
+footer{margin-top:24px;color:rgba(255,250,243,.80);text-align:center;font-size:14px;line-height:1.6}
+@media(max-width:980px){.flow{grid-template-columns:repeat(2,1fr)}.flow-item::after{display:none}.source-map{grid-template-columns:1fr}.catalogue{columns:2 240px}}
+@media(max-width:680px){.flow{grid-template-columns:1fr}.catalogue{columns:1}.series-links a{width:100%;text-align:center}h1{font-size:clamp(34px,10vw,52px)}}
+</style>
+</head>
+<body id="top" style="--hero-year:'1122';">
+<main class="page">
+<div class="topbar"><a class="back-link" href="index.html">← Înapoi la materiale</a><span class="tag">Material ajutător · Istorie universală · Europa medievală</span></div>
+<section class="hero"><p class="eyebrow">Istorie universală · Evul Mediu european</p><h1>Europa medievală: religie și cultură</h1><p class="subtitle">Biserica medievală, reforma gregoriană și conflictul învestiturii, schisme și erezii, Renașterea carolingiană, viața cotidiană, arta romanică, gotică și românească.</p><div class="series-links"><a href="univ-europa-medievala-migratii-si-regate-barbare.html">Migrații și regate barbare</a><a href="univ-europa-medievala-formarea-statelor-medievale.html">Formarea statelor medievale</a><a href="univ-europa-medievala-religie-si-cultura.html" aria-current="page">Religie și cultură</a></div></section>
+<div class="related-card"><b>Materiale conexe:</b><a href="univ-europa-medievala-migratii-si-regate-barbare.html">Migrații și regate barbare</a><a href="univ-europa-medievala-formarea-statelor-medievale.html">Formarea statelor medievale</a></div>
+<nav class="nav-card" aria-label="Cuprinsul paginii"><b>Cuprins:</b><a href="#biserica">Biserica</a><a href="#gregoriana">Reforma gregoriană</a><a href="#investitura">Învestitura</a><a href="#schisme">Schisme</a><a href="#cotidian">Cotidian</a><a href="#carolingiana">Renașterea carolingiană</a><a href="#romanic">Romanic</a><a href="#gotic">Gotic</a><a href="#simbol">Simbol</a><a href="#romaneasca">Arta românească</a><a href="#comparatie">Comparație</a><a href="#surse">Documente</a><button class="mini-btn" type="button" data-action="open">Deschide explicațiile</button><button class="mini-btn" type="button" data-action="close">Închide explicațiile</button></nav>
+
+<section class="section" id="biserica">
+<h2>I. Biserica în societatea medievală</h2>
+<p class="section-intro">În lipsa unui stat puternic, Biserica occidentală a devenit instituția cu cea mai mare continuitate: administra școli, mănăstiri, opere de caritate și tribunale, legitima regii și oferea un limbaj comun unei Europe fragmentate.</p>
+<div class="summary-grid"><div class="summary-card"><strong>Credință</strong><span>Explica lumea, ordinea socială, suferința și mântuirea.</span></div><div class="summary-card"><strong>Instituție</strong><span>Episcopii și abații erau mari proprietari și actori politici.</span></div><div class="summary-card"><strong>Cultură</strong><span>Clerul păstra latina, manuscrisele, școlile și memoria juridică.</span></div><div class="summary-card"><strong>Artă</strong><span>Biserica finanța arhitectura, sculptura, pictura, vitraliile și orfevrăria.</span></div></div>
+<div class="chapter-banner"><strong>Reînnoirea spirituală de la începutul mileniului al II-lea</strong><span>Creșterea populației, extinderea agriculturii și dezvoltarea orașelor au fost însoțite de fervoare religioasă. Programul ecleziastic urmărea refacerea materială după invazii, purificarea morală și consolidarea doctrinei prin meditație, ascetism și viață monahală.</span></div>
+</section>
+
+<section class="section" id="gregoriana">
+<h2>II. Reforma gregoriană</h2>
+<p class="section-intro">Reforma gregoriană este mișcarea de emancipare și centralizare a Bisericii latine asociată cu Grigore VII, papă între 1073 și 1085, și cu cele 27 de propoziții ale <em>Dictatus Papae</em> din 1075.</p>
+<div class="four-col"><article class="micro-card"><strong>Investitura laică</strong><span>Regii și nobilii nu mai trebuiau să numească ori să consacre episcopi.</span></article><article class="micro-card"><strong>Simonia</strong><span>Cumpărarea și vânzarea funcțiilor ecleziastice erau condamnate.</span></article><article class="micro-card"><strong>Celibat</strong><span>Clericii latini trebuiau separați de căsătorie și moștenirile familiale.</span></article><article class="micro-card"><strong>Primatul papal</strong><span>Papa pretindea autoritate asupra Bisericii și dreptul de a judeca suveranii.</span></article></div>
+<div class="note"><strong>Scopul general:</strong> eliberarea Bisericii de controlul laic, moralizarea clerului și transformarea papalității într-un centru de comandă al creștinătății occidentale.</div>
+<details open><summary>Ce afirma Dictatus Papae?</summary><div class="details-body"><p>Documentul susținea unicitatea Bisericii Romane, dreptul papei de a depune episcopi, folosirea exclusivă a însemnelor imperiale și capacitatea de a elibera supușii unui conducător nedrept de fidelitate. Formula „infallibilității” trebuie înțeleasă în contextul autorității doctrinare medievale, nu identic cu definiția dogmatică din 1870.</p></div></details>
+</section>
+
+<section class="section" id="investitura">
+<h2>III. Conflictul pentru învestitură, 1075–1122</h2>
+<p class="section-intro">Învestitura era ceremonia prin care episcopul primea funcția. Inelul și toiagul simbolizau puterea spirituală, iar sceptrul, feuda și regaliile exprimau drepturile temporale. Cine controla episcopii controla teritorii, venituri, cetăți și o parte esențială a administrației.</p>
+<div class="flow"><div class="flow-item"><b>Reformă</b><span>Papalitatea interzice numirea laică.</span></div><div class="flow-item"><b>Ruptură</b><span>Henric IV contestă pe Grigore VII.</span></div><div class="flow-item"><b>Excomunicare</b><span>Fidelitatea politică a principilor este pusă sub semnul întrebării.</span></div><div class="flow-item"><b>Canossa</b><span>Iertare religioasă, fără pace politică durabilă.</span></div><div class="flow-item"><b>Worms</b><span>Separarea compromisă a spiritualului de temporal.</span></div></div>
+<div class="timeline"><article class="event"><div class="date">1075</div><div><h3>Interdicția învestiturii laice</h3><p>Grigore VII afirmă că numai autoritatea ecleziastică poate conferi inelul și toiagul.</p></div></article><article class="event"><div class="date">ian. 1076</div><div><h3>Sinodul de la Worms</h3><p>Henric IV și episcopii fideli declară că Grigore nu mai este papă. Conflictul devine deschis.</p></div></article><article class="event"><div class="date">feb. 1076</div><div><h3>Excomunicarea</h3><p>Papa îl excomunică pe Henric și îi dezleagă pe supuși de jurământ. Principii germani amenință să aleagă un alt rege.</p></div></article><article class="event"><div class="date">ian. 1077</div><div><h3>Drumul la Canossa</h3><p>Henric traversează Alpii și așteaptă trei zile la castelul Matildei de Toscana. Papa îi acordă iertarea, anulând temporar arma excomunicării.</p></div></article><article class="event"><div class="date">1077–1080</div><div><h3>Războiul civil german</h3><p>Principii aleg anti-regele Rudolf de Rheinfelden. Conflictul se reia, iar Henric este excomunicat a doua oară.</p></div></article><article class="event"><div class="date">1080–1084</div><div><h3>Antipapa Clement III</h3><p>Henric îl impune pe Guibert de Ravenna, ocupă Roma și este încoronat împărat. Grigore VII este salvat de normanzi și moare în exil la Salerno.</p></div></article><article class="event"><div class="date">1111</div><div><h3>Eșecul compromisului radical</h3><p>Henric V și Pascal II încearcă să separe complet episcopatele de bunurile regale, dar opoziția principilor și episcopilor face proiectul imposibil.</p></div></article><article class="event"><div class="date">23 sept. 1122</div><div><h3>Concordatul de la Worms</h3><p>Henric V renunță la învestitura cu inel și toiag; alegerile devin canonice. Împăratul acordă regaliile temporale prin sceptru și păstrează un rol mai mare la alegerile germane decât în Italia și Burgundia.</p></div></article></div>
+<div class="table-wrap"><table><thead><tr><th>Actor</th><th>Ce urmărea</th><th>Ce a obținut</th><th>Ce a pierdut</th></tr></thead><tbody><tr><td>Papalitatea</td><td>Independența alegerii episcopilor și superioritate morală</td><td>Investitura spirituală și o Biserică mai centralizată</td><td>Nu elimină influența politică a monarhilor asupra alegerilor</td></tr><tr><td>Împăratul</td><td>Episcopi-administratori fideli și controlul bunurilor ecleziastice</td><td>Regaliile temporale și participare politică</td><td>Monopolul ottonian asupra Bisericii imperiale</td></tr><tr><td>Principii</td><td>Autonomie față de rege</td><td>Profită de războiul civil și slăbirea coroanei</td><td>Risc de excomunicare și instabilitate</td></tr></tbody></table></div>
+<div class="final-box"><h2>Moștenire</h2><p>Conflictul a separat mai clar autoritatea spirituală de puterea temporală, a întărit papalitatea și dreptul canonic, dar a slăbit centralizarea Germaniei. Tensiuni similare au apărut în Anglia — cazul Thomas Becket — și în Franța, unde monarhia a negociat altfel controlul Bisericii.</p></div>
+</section>
+
+<section class="section" id="schisme">
+<h2>IV. Schisme, erezii și Conciliul de la Konstanz</h2>
+<div class="two-col"><article class="info-card"><h3>Marea Schismă Occidentală, 1378–1417</h3><p>Papi rivali la Roma și Avignon, apoi un al treilea pretendent de la Pisa, divizează creștinătatea latină și subminează prestigiul pontifical.</p></article><article class="info-card"><h3>Conciliul de la Konstanz, 1414–1418</h3><p>Sprijinit de Sigismund, înlătură ori neutralizează pretendenții și îl alege pe Martin V în 1417, restabilind unitatea formală.</p></article></div>
+<details open><summary>Jan Hus și războaiele husite</summary><div class="details-body"><p>Jan Hus critică abuzurile clerului și susține reformarea Bisericii. Deși primește o scrisoare de siguranță, este condamnat și ars în 1415. Execuția provoacă revolta Boemiei și războaiele husite. Sigismund este acceptat ca rege abia după recunoașterea unor practici ale hușiților moderați.</p></div></details>
+<div class="note"><strong>Conciliarismul:</strong> conciliul a afirmat temporar că adunarea generală a Bisericii poate avea autoritate asupra papei. Ideea nu a devenit regimul permanent al catolicismului, dar a marcat criza monarhiei papale medievale.</div>
+</section>
+
+<section class="section" id="cotidian">
+<h2>V. Viața cotidiană, mentalitățile și cultura urbană</h2>
+<div class="two-col"><article class="info-card"><h3>Locuința și familia rurală</h3><p>Casa țărănească era de obicei din lemn, cu o singură încăpere pentru părinți, copii și bunici; iarna putea adăposti animale. Bărbații și femeile lucrau la câmp și în activități artizanale, iar copiii păzeau vitele.</p></article><article class="info-card"><h3>Alimentația și sociabilitatea</h3><p>Cerealele, legumele și peștele formau baza alimentației; porcul era sacrificat în preajma Crăciunului. Moara, cârciuma și liturghia de duminică erau principalele locuri de întâlnire și schimb de informații.</p></article></div>
+<div class="chapter-banner"><strong>Imaginarul rural</strong><span>Lumea era dominată de reprezentări religioase și de o cultură vizuală. Picturile și sculpturile bisericilor explicau credința unei populații în mare parte analfabete. Schimbarea era adesea privită cu suspiciune, iar nobilul, clericul și orășeanul erau percepuți drept „ceilalți”.</span></div>
+<details><summary>Orașul ca spațiu de cultură</summary><div class="details-body"><p>Orașele ofereau libertatea de producție, schimb, acumulare și instrucție. Reședințele episcopale au salvat unele centre antice; din secolul al XI-lea apar orașe noi. Catedralele, primăriile și șantierele publice reunesc meșteșugari, arhitecți, sculptori, negustori și clerici. Bogăția patriciatului contrastează cu sărăcia lucrătorilor și a cerșetorilor.</p></div></details>
+</section>
+
+<section class="section" id="carolingiana">
+<h2>VI. Renașterea carolingiană</h2>
+<p class="section-intro">Carol cel Mare a folosit Biserica pentru coeziunea imperiului și a susținut un program de reformă școlară, liturgică și textuală. Cultura era latină și creștină, dar recupera patrimoniul greco-roman.</p>
+<div class="three-col"><article class="info-card"><h3>Limba și scrierea</h3><p>Este impusă o latină mai uniformă și minuscula carolingiană, lizibilă și eficientă pentru copierea cărților.</p></article><article class="info-card"><h3>Școlile</h3><p>Sunt formați clerici, funcționari ai cancelariei și dascăli; școlile monastice și episcopale devin centre de instruire.</p></article><article class="info-card"><h3>Genuri cultivate</h3><p>Teologie, hagiografie, didactică, istorie, poezie și literatură. Copiștii mănăstirilor conservă numeroase texte latine antice.</p></article></div>
+<div class="verse">Carol cultiva artele liberale, a studiat gramatica cu Petru din Pisa și retorica, dialectica și astronomia cu Alcuin. Potrivit biografului Einhard, încerca să exerseze scrisul chiar și în orele de odihnă și asculta cu plăcere <em>Despre cetatea lui Dumnezeu</em> a lui Augustin.</div>
+</section>
+
+<section class="section" id="romanic">
+<h2>VII. Stilul romanic, secolele X–XIII</h2>
+<p class="section-intro">Romanicul este primul limbaj artistic relativ unitar al creștinătății occidentale. Revalorifică tradiția romană și integrează influențe bizantine, arabe și barbare. Arhitectura domină, dar este inseparabilă de sculptură, pictură, miniatură și orfevrărie.</p>
+<div class="table-wrap"><table><thead><tr><th>Element</th><th>Caracteristică</th><th>Funcție / efect</th></tr></thead><tbody><tr><td>Masivitate</td><td>Ziduri foarte groase, piatră, volume compacte</td><td>Stabilitate și aspect de fortăreață.</td></tr><tr><td>Ferestre</td><td>Înguste, evazate spre interior, terminate în arc rotund</td><td>Lumină controlată și siguranță.</td></tr><tr><td>Bolți și arcade</td><td>Semicirculare; bolți în leagăn ori în cruce</td><td>Acoperirea spațiilor de piatră.</td></tr><tr><td>Contraforturi</td><td>Îngroșări exterioare ale zidului</td><td>Preiau împingerile bolților.</td></tr><tr><td>Portal și ancadramente</td><td>Intrare adâncită, arce concentrice și reliefuri</td><td>Marchează trecerea spre spațiul sacru.</td></tr><tr><td>Plan</td><td>Cruce latină, plan treflat, uneori biabsidal și complex</td><td>Organizează pelerinajul și liturghia.</td></tr><tr><td>Turnuri și clopotnițe</td><td>Pătrate sau octogonale; alipite ori separate</td><td>Semn urban și religios vizibil.</td></tr><tr><td>Interior</td><td>Narthex, nave segmentate, cripte și deambulatorii</td><td>Circulația pelerinilor și cultul relicvelor.</td></tr><tr><td>Decor</td><td>Sculptură pe portaluri și capiteluri, pictură apocaliptică</td><td>Educație morală și reprezentarea răului și judecății.</td></tr><tr><td>Acoperiș</td><td>Șarpantă de lemn sau metal în unele edificii; bolți de piatră în altele</td><td>Adaptare regională și evoluție tehnică.</td></tr></tbody></table></div>
+<div class="definition"><strong>Spațiul altarului:</strong> un altar putea fi așezat deasupra mormântului cu moaște, iar altarul principal era luminat și destinat ceremoniilor. Raclele erau înconjurate de orfevrărie și obiecte prețioase. Divinitatea era reprezentată măreață și severă, iar monștrii sculptați simbolizau obstacolele mântuirii.</div>
+<details><summary>Dicționar de arhitectură romanică</summary><div class="details-body"><div class="key-line"><strong>Absidiolă</strong><span>Mică absidă adăugată spre răsărit, rezervată cultului.</span></div><div class="key-line"><strong>Catedrală</strong><span>Biserică episcopală, de regulă într-un mare oraș.</span></div><div class="key-line"><strong>Deambulatoriu</strong><span>Spațiu de circulație în jurul corului.</span></div><div class="key-line"><strong>Cor</strong><span>Partea naosului rezervată clerului și cântăreților.</span></div><div class="key-line"><strong>Narthex</strong><span>Pridvor interior sau vestibul occidental al bisericii.</span></div></div></details>
+<details><summary>Catalogul complet al construcțiilor romanice din document</summary><div class="details-body"><div class="catalogue"><article class="catalogue-group"><h4>Franța — Burgundia și Provence</h4><ul><li>Biserica Cluny — Cluny</li><li>Saint-Bénigne — Dijon</li><li>Catedrala din Autun</li><li>Saint-Philibert — Tournus</li><li>Saint-Trophime — Arles</li><li>Abația Sénanque — Gordes</li><li>Catedrala Fréjus</li><li>Abația Silvacane</li><li>Abația Montmajour — Arles</li></ul></article><article class="catalogue-group"><h4>Franța — Aquitania și Auvergne</h4><ul><li>Saint-Front — Périgueux</li><li>Notre-Dame-la-Grande — Poitiers</li><li>Catedrala Saint-Pierre — Angoulême</li><li>Sainte-Croix — Bordeaux</li><li>Sainte-Foy — Conques</li><li>Saint-Sernin — Toulouse</li><li>Notre-Dame-du-Port — Clermont-Ferrand</li><li>Saint-Austremoine — Issoire</li><li>Notre-Dame — Orcival</li><li>Sainte-Trinité de Lessay</li><li>Saint-Étienne — Caen</li></ul></article><article class="catalogue-group"><h4>Germania</h4><ul><li>Catedrala Bamberg</li><li>Bazilica din Bonn</li><li>Biserici romanice din Köln</li><li>Catedrala Freising</li><li>Palatul imperial din Goslar</li><li>Sf. Mihail — Hildesheim</li><li>Catedrala Mainz</li><li>Schottenkirche — Regensburg</li><li>Catedrala Trier</li><li>Catedrala Worms</li><li>Abația Maria Laach</li></ul></article><article class="catalogue-group"><h4>Austria</h4><ul><li>Catedrala Gurk</li><li>Abația Ossiach</li><li>Virgilkapelle — Viena</li><li>Complexul benedictin Millstatt</li><li>Stiftskirche Geras</li><li>Stiftskirche Göß</li><li>Abația Lambach</li><li>Biserica Schöngrabern</li></ul></article><article class="catalogue-group"><h4>Irlanda</h4><ul><li>Capela Cormac — Cashel</li><li>Biserica Aghadoe</li><li>Catedrala Clonfert</li><li>Biserica Freshford</li><li>Biserica Killeshin</li><li>Biserica Maghera</li><li>Turnul / biserica Timahoe</li><li>St Saviour — Glendalough</li></ul></article><article class="catalogue-group"><h4>Italia</h4><ul><li>San Clemente a Casauria</li><li>San Liberatore a Maiella</li><li>Sant’Antimo — Montalcino</li><li>Santa Maria Arabona</li><li>Sant’Ambrogio — Milano</li><li>San Lorenzo — Milano</li><li>Duomo Vecchio — Brescia</li><li>San Michele Maggiore — Pavia</li><li>San Nicola — Bari</li><li>San Miniato al Monte — Florența</li><li>San Paolo a Ripa d’Arno — Pisa</li><li>Duomo di Monza</li><li>Santa Maria Assunta — Aquileia</li></ul></article><article class="catalogue-group"><h4>Spania</h4><ul><li>San Isidoro — León</li><li>Catedrala Zamora</li><li>Catedrala Veche din Salamanca</li><li>Santo Domingo — Soria</li><li>Santo Domingo de Silos</li><li>San Martín de Tours — Frómista</li><li>Aguilar de Campoo</li><li>San Juan de Ortega</li><li>Mănăstirea Leyre</li><li>San Juan de la Peña</li><li>Catedrala Tarragona</li><li>Santa Maria de Ripoll</li><li>Catedrala Lugo</li><li>San Juan de Portomarín</li></ul></article><article class="catalogue-group"><h4>Portugalia</h4><ul><li>Mănăstirea Pombeiro</li><li>Catedrala Porto</li><li>Biserica Cedofeita</li><li>Domus Municipalis — Bragança</li><li>Castelul Almourol</li><li>Catedrala Lisabona</li></ul></article><article class="catalogue-group"><h4>Marea Britanie</h4><ul><li>Catedrala Durham</li><li>Catedrala Rochester</li><li>St Bartholomew — Londra</li><li>Turnul Londrei</li><li>Castelul Conisbrough</li></ul></article><article class="catalogue-group"><h4>Belgia și Țările de Jos</h4><ul><li>Notre-Dame de Tournai</li><li>Colegiata Sainte-Gertrude — Nivelles</li><li>Saint Servatius — Maastricht</li><li>Sf. Remigius — Klimmen</li><li>Sf. Amelberga — Susteren</li><li>Biserica din Oirschot</li><li>Sf. Ioan — Utrecht</li></ul></article><article class="catalogue-group"><h4>Europa Centrală și Balcani</h4><ul><li>Biserica din Ócsa</li><li>Catedrala Pécs</li><li>Palatul regal Esztergom</li><li>Sf. Gheorghe — Ják</li><li>Sf. Iacob — Lébény</li><li>Sf. Gheorghe — Praga</li><li>Sf. Bartolomeu — Kondrac</li><li>Castelul Landštejn</li><li>Sf. Iacob — Církvice</li><li>Mănăstirea Studenica</li><li>Visoki Dečani</li><li>Sf. Anastasia — Zadar</li><li>Sf. Benedict — Split</li><li>Sf. Petru și Sf. Maria — Rab</li><li>Sfinții Petru și Pavel — Bulgaria</li></ul></article><article class="catalogue-group"><h4>Elveția și Polonia</h4><ul><li>Grossmünster — Zürich</li><li>Biserica Saint-Sulpice — Vaud</li><li>Catedrala Sf. Maria și Sf. Alexie — Tum, Polonia</li></ul></article></div><div class="warning-box"><h3>Exemple datate din material</h3><p>Maria Laach — 1093; Sf. Maria și Sf. Alexie, Polonia — 1161; Sainte-Trinité de Lessay — 1056; Santa Maria del Mar — 1350 (clădire în principal gotică, de aceea este o includere problematică în lista romanică); Sainte-Foy — 1170; Angoulême — 1128; Conisbrough — secolul XII; Santa Maria, Italia — secolul XI; St Michael, Germania — secolul XI; Palatul Aachen — nucleu carolingian, sec. VIII–IX, nu sec. XI; Gurk — 1174; Tournai — secolul XII; Sfinții Petru și Pavel, Bulgaria — secolul XII; Clonfert — secolul XII; Catedrala Lisabona — 1147.</p></div></div></details>
+</section>
+
+<section class="section" id="gotic">
+<h2>VIII. Stilul gotic, secolele XII–XV</h2>
+<p class="section-intro">Goticul se desprinde din romanic la Saint-Denis, lângă Paris, și se răspândește în marile orașe. Este „miracolul francez” susținut de monarhie, episcopi și prosperitatea comunelor.</p>
+<div class="table-wrap"><table><thead><tr><th>Element</th><th>Caracteristică</th><th>Efect</th></tr></thead><tbody><tr><td>Înălțime</td><td>Construcții foarte înalte și ritm vertical</td><td>Sugerează ascensiunea spre divinitate.</td></tr><tr><td>Ogivă</td><td>Arc frânt și bolți pe nervuri încrucișate</td><td>Distribuie presiunea și permite travei variabile.</td></tr><tr><td>Arce butante</td><td>Arce exterioare sprijinite pe culee, adesea cu pinacluri</td><td>Eliberează zidul și permite ferestre mari.</td></tr><tr><td>Rozete și vitralii</td><td>Ferestre circulare și sticlă colorată cu scene religioase</td><td>Creează lumină colorată și atmosferă de meditație.</td></tr><tr><td>Stâlpi fasciculari</td><td>Mănunchiuri de colonete continuate în nervurile bolții</td><td>Accentuează verticalitatea.</td></tr><tr><td>Plan</td><td>Cruce latină, cor dezvoltat și capele radiale</td><td>Integrează liturghia, pelerinajul și memoria donatorilor.</td></tr><tr><td>Decor</td><td>Sculptură abundentă; pictura murală mai redusă în regiunile dominate de vitralii</td><td>Personajele devin mai umane și narative.</td></tr></tbody></table></div>
+<div class="two-col"><article class="info-card"><h3>De la întuneric la lumină</h3><p>Criptele și moaștele sunt aduse în zone mai luminoase; mormintele regilor și episcopilor se integrează în spațiul ceremonial.</p></article><article class="info-card"><h3>Umanismul gotic</h3><p>Arta prezintă omul real în lupta sa cu mizeria, măreția destinului uman și posibilitatea descoperirii lui Dumnezeu în om. Țărani, preoți și cavaleri apar alături de personajele biblice.</p></article></div>
+<details><summary>Exemple reprezentative adăugate pentru orientare</summary><div class="details-body"><p>Saint-Denis, Notre-Dame de Paris, Chartres, Reims, Amiens, Sainte-Chapelle, Canterbury, Salisbury, Westminster, Köln, Strasbourg, Praga, Burgos și Milano. Unele au faze constructive romanice și gotice, ceea ce arată tranziția lentă dintre stiluri.</p></div></details>
+</section>
+
+<section class="section" id="simbol">
+<h2>IX. Simbolul și funcția pedagogică a artei</h2>
+<p class="section-intro">Pentru grecii antici, simbolul era un obiect rupt în două ale cărui jumătăți permiteau recunoașterea. Pentru omul medieval, lumea vizibilă era semnul unei realități ascunse. Arta traducea tainele Scripturii pentru o societate care nu avea acces direct la carte.</p>
+<div class="two-col"><article class="info-card"><h3>Romanicul</h3><p>Preferă locuri monastice și îndepărtate, contemplă măreția divină și subliniază judecata, răul și misterul.</p></article><article class="info-card"><h3>Goticul</h3><p>Este urban, conectat la universități și la noile idei; umanizează chipurile, gesturile și viața cotidiană.</p></article></div>
+</section>
+
+<section class="section" id="romaneasca">
+<h2>X. Arta medievală românească: spațiu al sintezelor</h2>
+<p class="section-intro">Transilvania a integrat autoritatea maghiară și catolicismul, iar Țara Românească și Moldova au prelucrat moștenirea bizantină și ortodoxia balcanică. Monumentele durabile apar în arhitectură, pictură religioasă și artele minore.</p>
+<details open><summary>Curtea de Argeș și Cozia</summary><div class="details-body"><div class="two-col"><article class="info-card"><h3>Biserica domnească de la Curtea de Argeș</h3><p>Plan în cruce greacă înscrisă, pronaos, naos dreptunghiular și trei abside. Fresca cuprinde unsprezece cicluri: sărbători, viața Sf. Ioan și a lui Iisus, copilăria, pildele, minunile, aparițiile după răstignire, Sf. Nicolae și martirii. Ansamblul concentrează tehnica și arta epocii lui Basarab I.</p></article><article class="info-card"><h3>Cozia</h3><p>Ctitoria lui Mircea cel Bătrân devine model pentru secole. Influență sârbească din secolul XIV, naos cu turlă, fațade din straturi alternate de piatră și cărămidă. Fresca prezintă 26 de sfinți pustnici, ansamblu unic în pictura medievală românească.</p></article></div></div></details>
+<details><summary>Stilul moldovenesc și pictura exterioară</summary><div class="details-body"><p>În vremea lui Ștefan cel Mare se dezvoltă planul triconc, încăperi numeroase pe axă longitudinală și policromia fațadelor cu cărămizi și discuri smălțuite, decorate cu stema Moldovei și simboluri.</p><p>În domniile lui Petru Rareș — 1527–1538 și 1541–1546 — pictura exterioară atinge apogeul. Absidele prezintă ierarhia cerească și pământească; fațadele laterale includ Imnul Acatist, Asediul Constantinopolului, Arborele lui Ieseu, regii iudei și înțelepții antici; vestul este dominat de Judecata de Apoi. Turcii și tătarii apar între damnați, exprimând mesajul antiotoman și speranța salvării Moldovei.</p></div></details>
+<details><summary>Artele minore</summary><div class="details-body"><p>Evangheliarul realizat în 1429 de Gavril, fiul lui Uric, la comanda soției lui Alexandru cel Bun, este decorat cu frontispicii, chenare și miniaturile celor patru evangheliști. Manuscrisul ilustrează legătura dintre carte, curtea domnească și tradiția bizantină.</p></div></details>
+</section>
+
+<section class="section" id="comparatie">
+<h2>XI. Romanic și gotic — comparație rapidă</h2>
+<div class="table-wrap"><table><thead><tr><th>Criteriu</th><th>Romanic</th><th>Gotic</th></tr></thead><tbody><tr><td>Perioadă</td><td>Sec. X–XIII</td><td>Sec. XII–XV</td></tr><tr><td>Mediu</td><td>Monastic, rural, pelerinaj</td><td>Urban, episcopal, universitar</td></tr><tr><td>Arc</td><td>Semicircular</td><td>Frânt / ogival</td></tr><tr><td>Zid</td><td>Gros, portant</td><td>Eliberat de arce butante</td></tr><tr><td>Lumină</td><td>Ferestre mici, interior mai întunecat</td><td>Ferestre mari, vitralii și lumină colorată</td></tr><tr><td>Mesaj</td><td>Judecată, mister, răul ca obstacol</td><td>Mântuire, umanizare, narațiune</td></tr></tbody></table></div>
+<div class="final-box"><h2>Concluzie</h2><p>Religia medievală nu a fost doar credință privată: a organizat legitimitatea politică, timpul, educația și arta. Reforma gregoriană și conflictul învestiturii au separat mai clar cele două autorități, iar catedralele romanice și gotice au transformat teologia în piatră, lumină și imagine.</p></div>
+</section>
+
+<section class="section" id="surse"><h2>XII. Documente integrate</h2><div class="source-map"><article><strong>„Reforma gregoriană”</strong><span>Dictatus Papae, investitură, simonie, celibat, Canossa și Worms.</span></article><article><strong>„Arta medievală”</strong><span>Reînnoire spirituală, romanic, gotic, simbolism, umanism și arta medievală românească.</span></article><article><strong>„Stilul Romanic”</strong><span>Caracteristicile tehnice și catalogul complet al construcțiilor reprezentative.</span></article><article><strong>„Stilul Gotic”</strong><span>Înălțime, ogivă, culee, arce butante, pinacluri, rozete, vitralii, bolți și plan.</span></article><article><strong>„Civilizația medievală”</strong><span>Viața cotidiană rurală, mentalități, orașe și cultura vizuală.</span></article><article><strong>„Franța medievală” și „Imperiul Romano-German”</strong><span>Renașterea carolingiană, Biserica, Konstanz, Jan Hus și raportul dintre religie și putere.</span></article></div></section>
+
+<footer>Material amplu, structurat după toate documentele Word furnizate · Seria „Europa medievală”</footer>
+</main>
+<script>
+const openBtn=document.querySelector('[data-action="open"]');const closeBtn=document.querySelector('[data-action="close"]');
+if(openBtn)openBtn.addEventListener('click',()=>document.querySelectorAll('details').forEach(d=>d.open=true));
+if(closeBtn)closeBtn.addEventListener('click',()=>document.querySelectorAll('details').forEach(d=>d.open=false));
+</script>
+</body></html>

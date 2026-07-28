@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cuprul, bronzul și fierul în spațiul carpato-dunărean">
+  <title>Preistoria: epoca metalelor - Material ajutător de istorie</title>
+  <style>
+    :root {
+      --bg: #f6f0e7;
+      --paper: #fffaf3;
+      --paper-2: #ffffff;
+      --ink: #2f241c;
+      --muted: #695747;
+      --accent: #6f3f24;
+      --accent-2: #a66a3f;
+      --line: rgba(91, 62, 36, 0.18);
+      --soft: #f1e4d3;
+      --note: #fff1cf;
+      --good: #eaf2e6;
+      --shadow: 0 14px 36px rgba(69, 46, 25, 0.08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: Georgia, "Times New Roman", serif; line-height: 1.72; }
+    a { color: var(--accent); }
+    .page { width: min(1120px, calc(100% - 28px)); margin: 0 auto; padding: 26px 0 70px; }
+    .topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; }
+    .back { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 700; background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 10px 15px; box-shadow: 0 7px 18px rgba(69,46,25,.05); }
+    .category { color: var(--muted); font-size: 14px; text-align: right; }
+    .hero { background: linear-gradient(135deg, #fffaf3 0%, #f8ead7 100%); border: 1px solid var(--line); border-radius: 28px; padding: clamp(27px, 5vw, 55px); box-shadow: var(--shadow); margin-bottom: 24px; }
+    .eyebrow { display: inline-block; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .09em; background: var(--accent); color: white; padding: 7px 11px; border-radius: 999px; margin-bottom: 17px; }
+    h1 { font-size: clamp(34px, 6vw, 58px); line-height: 1.05; letter-spacing: -.035em; margin: 0 0 15px; color: #3c2a1e; }
+    .subtitle { font-size: clamp(18px, 2.4vw, 23px); color: var(--accent); font-weight: 700; margin: 0 0 17px; }
+    .lead { font-size: 18px; color: var(--muted); margin: 0; max-width: 900px; text-align: justify; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 24px; align-items: start; }
+    .content, .side-card { background: var(--paper); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); }
+    .content { padding: clamp(23px, 4vw, 43px); }
+    .sidebar { position: sticky; top: 18px; display: grid; gap: 16px; }
+    .side-card { padding: 20px; }
+    .side-card h2 { margin: 0 0 11px; font-size: 18px; }
+    .toc a { display: block; padding: 7px 0; border-bottom: 1px dashed var(--line); text-decoration: none; font-size: 14px; line-height: 1.35; }
+    .toc a:last-child { border-bottom: none; }
+    section { scroll-margin-top: 20px; margin-bottom: 34px; }
+    section:last-child { margin-bottom: 0; }
+    h2 { font-size: 29px; line-height: 1.2; margin: 0 0 17px; color: #3c2a1e; }
+    h3 { font-size: 21px; margin: 23px 0 9px; color: var(--accent); }
+    p { margin: 0 0 15px; text-align: justify; }
+    ul, ol { padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .callout { border-left: 5px solid var(--accent-2); background: var(--note); padding: 16px 18px; border-radius: 0 15px 15px 0; margin: 19px 0; }
+    .callout.good { background: var(--good); }
+    .callout strong { color: #4a2e1b; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; margin: 17px 0; }
+    .mini-card { background: var(--paper-2); border: 1px solid var(--line); border-radius: 17px; padding: 17px; }
+    .mini-card h3 { margin-top: 0; }
+    .timeline { border-left: 3px solid var(--accent-2); margin: 18px 0 22px 9px; padding-left: 23px; }
+    .event { position: relative; margin-bottom: 17px; }
+    .event::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); position: absolute; left: -30px; top: 7px; box-shadow: 0 0 0 4px var(--paper); }
+    .event b { color: var(--accent); }
+    table { width: 100%; border-collapse: collapse; margin: 18px 0 23px; background: white; font-size: 15px; }
+    th, td { border: 1px solid var(--line); padding: 11px 12px; vertical-align: top; text-align: left; }
+    th { background: var(--soft); color: #3c2a1e; }
+    .keywords { display: flex; flex-wrap: wrap; gap: 8px; }
+    .keywords span { border: 1px solid var(--line); background: var(--soft); border-radius: 999px; padding: 7px 10px; font-size: 13px; font-weight: 700; }
+    .questions { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 19px 22px; }
+    .bibliography { font-size: 14px; color: var(--muted); }
+    .footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 26px; }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; grid-row: 1; }
+      .toc { display: none; }
+    }
+    @media (max-width: 650px) {
+      .page { width: min(100% - 18px, 1120px); padding-top: 12px; }
+      .topbar { align-items: flex-start; }
+      .category { display: none; }
+      .hero, .content, .side-card { border-radius: 20px; }
+      .grid-2 { grid-template-columns: 1fr; }
+      table { display: block; overflow-x: auto; white-space: normal; }
+      h2 { font-size: 25px; }
+    }
+    @media print {
+      body { background: white; }
+      .page { width: 100%; padding: 0; }
+      .topbar, .sidebar { display: none; }
+      .layout { display: block; }
+      .hero, .content { box-shadow: none; border-color: #bbb; }
+      .hero { break-after: avoid; }
+      section, table { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a class="back" href="../evaluare.html">← Înapoi la Evaluare</a>
+      <div class="category">Material ajutător · Istoria românilor · Preistoria</div>
+    </div>
+
+    <header class="hero">
+      <span class="eyebrow">Istoria românilor · Preistoria</span>
+      <h1>Preistoria: epoca metalelor</h1>
+      <p class="subtitle">Cuprul, bronzul și fierul în spațiul carpato-dunărean</p>
+      <p class="lead">Materialul explică apariția metalurgiei, principalele culturi ale epocii bronzului și fierului, rolul resurselor și legătura dintre tehnologie, schimburi și diferențiere socială.</p>
+    </header>
+
+    <div class="layout">
+      <article class="content">
+        
+<section id="context">
+  <h2>1. De la piatră la metal</h2>
+  <p>Folosirea metalelor nu a înlocuit imediat piatra. Cuprul, bronzul și fierul au fost introduse treptat, în funcție de accesul la minereuri, tehnologia cuptoarelor și rețelele de schimb. Mult timp, uneltele de piatră, os și lemn au coexistat cu obiectele metalice.</p>
+  <p>În spațiul carpato-dunărean, resursele de cupru, aur, sare și lemn au favorizat dezvoltarea meșteșugurilor și conectarea la circuite comerciale largi. Controlul acestor resurse a contribuit la diferențiere socială și la apariția elitelor războinice.</p>
+</section>
+<section id="dezvoltare">
+  <h2>2. Eneoliticul: cuprul și marile culturi agricole</h2>
+  <p>Eneoliticul, numit și epoca cuprului, păstrează economia agricolă neolitică, dar adaugă metalurgia timpurie. Cuprul era prelucrat prin batere și apoi prin topire, însă rămânea relativ moale. Obiectele metalice aveau atât funcție practică, cât și prestigiu social.</p>
+  <p>Culturile Gumelnița-Karanovo VI și Cucuteni-Tripolie au dezvoltat așezări complexe, ceramică elaborată și rețele de schimb. Aurul de la Varna, în aria balcanică apropiată, demonstrează că regiunea sud-est europeană participa la forme timpurii de ierarhizare socială.</p>
+
+  <h2>3. Epoca bronzului</h2>
+  <p>Bronzul este un aliaj, de regulă între cupru și staniu. Producerea lui presupunea cunoașterea proporțiilor, temperaturilor și turnării în tipare. Deoarece staniul era rar, metalurgia a stimulat schimburile pe distanțe mari.</p>
+  <h3>Culturi și regiuni</h3>
+  <ul>
+    <li><strong>Wietenberg</strong> – Transilvania; ceramică specifică, metalurgie și așezări fortificate.</li>
+    <li><strong>Monteoru</strong> – zona subcarpatică și estul Carpaților; necropole și relații comerciale extinse.</li>
+    <li><strong>Otomani-Füzesabony</strong> – nord-vest; așezări fortificate și meșteșuguri sofisticate.</li>
+    <li><strong>Gârla Mare</strong> – zona Dunării; ceramică bogat decorată și figurine antropomorfe.</li>
+    <li><strong>Noua-Sabatinovka-Coslogeni</strong> – bronzul târziu; comunități cu economie pastorală și legături estice.</li>
+  </ul>
+  <h3>Societate și război</h3>
+  <p>Armele, depozitele de bronz și fortificațiile indică o competiție crescută. Spadele, topoarele, vârfurile de lance și piesele de harnașament nu erau doar instrumente militare, ci simboluri ale statutului. Depozitele pot reprezenta rezerve de metal, ofrande, bunuri ascunse sau stocuri ale meșteșugarilor.</p>
+
+  <h2>4. Prima epocă a fierului: Hallstatt</h2>
+  <p>Începând cu sfârșitul mileniului al II-lea și începutul mileniului I î.Hr., fierul a devenit tot mai important. El era mai răspândit decât staniul, dar necesita temperaturi și tehnici diferite. La început, fierul a fost rar și prestigios; apoi a permis producerea unui număr mai mare de unelte și arme.</p>
+  <p>Complexul cultural Basarabi, răspândit în secolele VIII-VII î.Hr., este cunoscut prin ceramică decorată cu motive geometrice. În această perioadă se intensifică relațiile cu lumea greacă, scitică și central-europeană. În secolele următoare, izvoarele scrise vor menționa geții și tracii nordici.</p>
+
+  <h2>5. Economia metalelor</h2>
+  <table>
+    <thead><tr><th>Metal</th><th>Avantaje</th><th>Limite și efecte</th></tr></thead>
+    <tbody>
+      <tr><td>Cupru</td><td>Poate fi topit și turnat; aspect prestigios</td><td>Moale; coexistă cu uneltele de piatră</td></tr>
+      <tr><td>Bronz</td><td>Mai dur, potrivit pentru arme și unelte</td><td>Necesită staniu și schimburi pe distanțe mari</td></tr>
+      <tr><td>Fier</td><td>Minereu mai răspândit; rezistență după prelucrare corectă</td><td>Tehnologie de reducere și forjare mai dificilă</td></tr>
+      <tr><td>Aur și argint</td><td>Prestigiu, podoabe, ofrande</td><td>Accentuează diferențierea socială</td></tr>
+    </tbody>
+  </table>
+</section>
+<section id="cronologie">
+  <h2>6. Cronologie orientativă</h2>
+  <div class="timeline">
+    <div class="event"><b>cca 5000-3500 î.Hr.</b> – eneoliticul și metalurgia cuprului.</div>
+    <div class="event"><b>cca 3500-2500 î.Hr.</b> – tranziții regionale către epoca bronzului.</div>
+    <div class="event"><b>cca 2500/2200-1200 î.Hr.</b> – epoca bronzului, cu diferențe regionale.</div>
+    <div class="event"><b>cca 1200-450 î.Hr.</b> – prima epocă a fierului, convențional Hallstatt.</div>
+    <div class="event"><b>după cca 450 î.Hr.</b> – a doua epocă a fierului, La Tène; dezvoltarea societății geto-dacice.</div>
+  </div>
+</section>
+<section id="interpretare">
+  <h2>7. Metalurgia și schimbarea socială</h2>
+  <p>Metalurgia a încurajat specializarea meșteșugărească. Minerii, topitorii, turnătorii și fierarii aveau cunoștințe greu de dobândit, iar produsele lor puteau fi controlate de elite. În același timp, nu trebuie presupus că fiecare schimbare de metal a provocat automat o revoluție socială: agricultura, demografia, clima și conflictele au fost la fel de importante.</p>
+  <p>Carpații nu au fost o periferie izolată. Chihlimbarul, sarea, metalul, ceramica și modelele de arme arată contacte cu Balcanii, stepa nord-pontică, Europa Centrală și Marea Egee.</p>
+</section>
+<section id="sinteza">
+  <h2>8. Sinteză</h2>
+  <div class="callout good"><strong>Ideea principală:</strong> epoca metalelor a schimbat tehnologia, schimburile și ierarhiile sociale, dar evoluția a fost treptată. Spațiul carpato-dunărean a participat activ la rețelele europene ale cuprului, bronzului și fierului.</div>
+</section>
+        <section id="verificare">
+          <h2>Întrebări de verificare</h2>
+          <div class="questions"><ol><li>De ce piatra a continuat să fie folosită după apariția metalelor?</li><li>Ce condiții tehnologice erau necesare pentru producerea bronzului?</li><li>Numește trei culturi ale epocii bronzului și regiunile lor principale.</li><li>Cum a influențat metalurgia diferențierea socială?</li><li>De ce depozitele de bronz pot avea interpretări multiple?</li></ol></div>
+        </section>
+        <section id="bibliografie">
+          <h2>Bibliografie orientativă</h2>
+          <ul class="bibliography"><li>Academia Română, Istoria Românilor, vol. I: Moștenirea timpurilor îndepărtate.</li><li>Mircea Petrescu-Dîmbovița și Alexandru Vulpe (coord.), Istoria Românilor, vol. I.</li><li>Dumitru Berciu, Contribuții la problemele neoliticului în România.</li><li>Vladimir Dumitrescu, Arta culturii Cucuteni.</li><li>Sinteze și cataloage ale muzeelor de istorie și arheologie din România.</li></ul>
+        </section>
+      </article>
+
+      <aside class="sidebar">
+        <div class="side-card">
+          <h2>Termeni-cheie</h2>
+          <div class="keywords"><span>Eneolitic</span><span>cupru</span><span>bronz</span><span>fier</span><span>Wietenberg</span><span>Monteoru</span><span>Basarabi</span><span>metalurgie</span></div>
+        </div>
+        <div class="side-card toc">
+          <h2>Cuprins</h2>
+          <a href="#context">Context și delimitări</a>
+          <a href="#dezvoltare">Dezvoltarea temei</a>
+          <a href="#cronologie">Cronologie</a>
+          <a href="#interpretare">Interpretare istorică</a>
+          <a href="#sinteza">Sinteză</a>
+          <a href="#verificare">Întrebări</a>
+        </div>
+      </aside>
+    </div>
+    <footer class="footer">© 2026 Marin Gabriel · Material educațional pentru disciplina Istorie</footer>
+  </main>
+</body>
+</html>

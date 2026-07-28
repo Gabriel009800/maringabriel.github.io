@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>civilizatia-greaca-modele-culturale</title>
+  <style>
+    :root {
+      --bg: #f6f0e7;
+      --paper: #fffaf3;
+      --paper-2: #ffffff;
+      --ink: #2f241c;
+      --title: #3c2a1e;
+      --muted: #5b4a3d;
+      --accent: #7a4f2a;
+      --accent-2: #9b6a3c;
+      --accent-soft: #f0e4d4;
+      --line: rgba(91, 62, 36, 0.18);
+      --line-strong: rgba(91, 62, 36, 0.34);
+      --outer-dark: #241208;
+      --outer-mid: #4a2a18;
+      --outer-warm: #7a4b2b;
+      --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+      --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+        radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+        radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+        radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+        linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+      background-attachment: fixed;
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0 70px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .back-link,
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 243, 0.84);
+      color: var(--title);
+      border-radius: 999px;
+      padding: 10px 15px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      box-shadow: var(--shadow-small);
+    }
+
+    .back-link:hover { background: #fff6eb; }
+
+    .hero,
+    .section,
+    .nav-card,
+    .final-box {
+      background: rgba(255, 250, 243, 0.96);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 38px;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "PAIDEIA";
+      position: absolute;
+      right: 26px;
+      bottom: -22px;
+      font-size: 110px;
+      font-weight: 900;
+      letter-spacing: -4px;
+      color: rgba(122, 79, 42, 0.08);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      font-size: 16px;
+      color: var(--accent);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: left;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 1.04;
+      color: var(--title);
+      letter-spacing: -1.4px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    .subtitle {
+      margin: 18px 0 0;
+      max-width: 980px;
+      font-size: 19px;
+      line-height: 1.78;
+      color: var(--muted);
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .summary-grid,
+    .three-col,
+    .two-col,
+    .term-grid,
+    .quick-grid,
+    .cause-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .summary-grid {
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: 26px;
+    }
+
+    .summary-card,
+    .info-card,
+    .wide-card,
+    .term-card,
+    .quick-card,
+    .source-note,
+    .micro-card,
+    .warning-box {
+      background: var(--paper-2);
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 20px;
+      box-shadow: var(--shadow-small);
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .summary-card {
+      padding: 16px;
+      min-height: 132px;
+    }
+
+    .summary-card strong,
+    .quick-card strong,
+    .term-card strong,
+    .micro-card strong {
+      display: block;
+      color: var(--title);
+      font-size: 17px;
+      margin-bottom: 8px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    .summary-card span,
+    .quick-card span,
+    .term-card span,
+    .micro-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.56;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .nav-card {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 18px 20px;
+      margin-bottom: 24px;
+    }
+
+    .nav-card b {
+      color: var(--title);
+      margin-right: 2px;
+    }
+
+    .nav-card a,
+    .mini-btn {
+      color: var(--title);
+      background: var(--accent-soft);
+      border: 1px solid rgba(91, 62, 36, 0.16);
+      border-radius: 999px;
+      text-decoration: none;
+      padding: 8px 12px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .nav-card a:hover,
+    .mini-btn:hover { background: #e5d2bb; }
+
+    .section {
+      padding: 30px;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      color: var(--title);
+      font-size: clamp(28px, 3vw, 38px);
+      line-height: 1.15;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    h3 {
+      margin: 0 0 12px;
+      color: var(--title);
+      font-size: 22px;
+      line-height: 1.22;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    h4 {
+      margin: 16px 0 8px;
+      color: var(--title);
+      font-size: 18px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    .section-intro,
+    p,
+    li,
+    dd {
+      font-size: 17px;
+      line-height: 1.72;
+      color: var(--muted);
+      text-align: justify;
+      text-align-last: left;
+      hyphens: auto;
+    }
+
+    .section-intro {
+      margin: 0 0 20px;
+      max-width: 1000px;
+    }
+
+    .three-col { grid-template-columns: repeat(3, 1fr); }
+    .two-col { grid-template-columns: repeat(2, 1fr); }
+    .cause-grid { grid-template-columns: 1.1fr 0.9fr; }
+    .term-grid { grid-template-columns: repeat(4, 1fr); }
+    .quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+
+    .info-card,
+    .wide-card,
+    .term-card,
+    .quick-card,
+    .micro-card,
+    .warning-box {
+      padding: 20px;
+    }
+
+    .wide-card { margin-top: 14px; }
+    .wide-card p:last-child,
+    .info-card p:last-child { margin-bottom: 0; }
+
+    .clean,
+    .number-list {
+      margin: 0;
+      padding-left: 22px;
+    }
+
+    .clean li,
+    .number-list li {
+      margin: 0 0 9px;
+      padding-left: 2px;
+    }
+
+    .clean li:last-child,
+    .number-list li:last-child { margin-bottom: 0; }
+
+    .mini-title {
+      display: inline;
+      color: var(--title);
+      font-weight: 800;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      padding: 0;
+      margin-right: 5px;
+      white-space: normal;
+      text-align: inherit;
+    }
+
+    .date-pill {
+      display: inline-block;
+      color: var(--title);
+      font-weight: 800;
+      background: #f3eadf;
+      border: 1px solid rgba(91, 62, 36, 0.13);
+      border-radius: 999px;
+      padding: 2px 9px;
+      margin-right: 5px;
+      white-space: nowrap;
+      text-align: left;
+    }
+
+    .definition,
+    .note {
+      margin-top: 18px;
+      background: #fff8ef;
+      border: 1px solid rgba(122, 79, 42, 0.22);
+      border-left: 6px solid rgba(122, 79, 42, 0.48);
+      border-radius: 18px;
+      padding: 18px 20px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .definition strong,
+    .note strong { color: var(--title); }
+
+    details {
+      background: #fffdf9;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 20px;
+      box-shadow: var(--shadow-small);
+      margin-top: 14px;
+      overflow: hidden;
+    }
+
+    details[open] { background: #fffaf3; }
+
+    summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 18px 20px;
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--title);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    summary::after {
+      content: "Deschide";
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+      background: #f3eadf;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 999px;
+      padding: 7px 11px;
+      white-space: nowrap;
+    }
+
+    details[open] > summary::after { content: "Ascunde"; }
+
+    .details-body {
+      border-top: 1px solid rgba(91, 62, 36, 0.12);
+      padding: 18px 20px 20px;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .nested-details {
+      margin-top: 10px;
+      box-shadow: none;
+      background: #ffffff;
+    }
+
+    .nested-details summary {
+      font-size: 17px;
+      padding: 14px 16px;
+    }
+
+    .key-line {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px dashed rgba(91, 62, 36, 0.18);
+    }
+
+    .key-line:last-child { border-bottom: 0; }
+
+    .key-line strong {
+      color: var(--title);
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    .key-line span {
+      color: var(--muted);
+      line-height: 1.65;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .event {
+      display: grid;
+      grid-template-columns: 132px 1fr;
+      gap: 18px;
+      align-items: stretch;
+      background: #ffffff;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 20px;
+      box-shadow: var(--shadow-small);
+      overflow: hidden;
+    }
+
+    .date {
+      background: linear-gradient(180deg, #7a4f2a, #5b351b);
+      color: #fffaf3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 14px;
+      font-size: 18px;
+      line-height: 1.25;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+    }
+
+    .event > div:last-child {
+      padding: 17px 18px 18px 0;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .event h3 { margin-bottom: 6px; }
+    .event p { margin: 0; }
+
+    .small-muted {
+      font-size: 15px;
+      color: #725c49;
+      line-height: 1.6;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .warning-box {
+      background: #fff7ec;
+      border-color: rgba(122, 79, 42, 0.22);
+      margin-top: 16px;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .final-box {
+      padding: 28px;
+      background: linear-gradient(135deg, #fffaf3, #f4e4d1);
+      border-color: rgba(91, 62, 36, 0.25);
+    }
+
+    .final-box p { margin-bottom: 0; }
+
+
+
+    .compare-table-wrap {
+      overflow-x: auto;
+      margin-top: 16px;
+      border-radius: 20px;
+      box-shadow: var(--shadow-small);
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      background: #ffffff;
+    }
+
+    table.compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      background: #ffffff;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .compare-table th,
+    .compare-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(91, 62, 36, 0.12);
+      vertical-align: top;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .compare-table th {
+      background: #f3eadf;
+      color: var(--title);
+      font-size: 16px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    .compare-table tr:last-child td { border-bottom: 0; }
+
+    .figure-card {
+      margin-top: 18px;
+      background: #ffffff;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 20px;
+      box-shadow: var(--shadow-small);
+      overflow: hidden;
+    }
+
+    .figure-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #eef2e4;
+    }
+
+    .figure-caption {
+      margin: 0;
+      padding: 14px 16px;
+      font-size: 15px;
+      line-height: 1.55;
+      color: #725c49;
+      background: #fffaf3;
+      border-top: 1px solid rgba(91, 62, 36, 0.12);
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .badge-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 16px 0 0;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      color: var(--title);
+      background: #f3eadf;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-weight: 800;
+      font-size: 14px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    .quote-box {
+      margin-top: 16px;
+      padding: 20px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #fff8ef, #f1dfc9);
+      border: 1px solid rgba(122, 79, 42, 0.18);
+      box-shadow: var(--shadow-small);
+      color: var(--title);
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1.55;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .small-list-title {
+      display: block;
+      color: var(--title);
+      font-weight: 900;
+      margin: 12px 0 6px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    @media (max-width: 980px) {
+      .summary-grid,
+      .three-col,
+      .term-grid,
+      .quick-grid { grid-template-columns: repeat(2, 1fr); }
+      .two-col,
+      .cause-grid,
+      .details-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .page { width: min(100% - 22px, 1180px); padding-top: 22px; }
+      .hero,
+      .section,
+      .final-box { padding: 22px; border-radius: 22px; }
+      .summary-grid,
+      .term-grid,
+      .quick-grid { grid-template-columns: 1fr; }
+      .event { grid-template-columns: 1fr; }
+      .date { min-height: 66px; }
+      .event > div:last-child { padding: 0 16px 16px; }
+      .key-line { grid-template-columns: 1fr; gap: 6px; }
+      summary { align-items: flex-start; flex-direction: column; }
+      .hero::after { font-size: 82px; }
+    }
+  
+  
+
+    .concept-band {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .concept-pill {
+      background: #ffffff;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 18px;
+      padding: 15px;
+      box-shadow: var(--shadow-small);
+      text-align: center;
+      color: var(--title);
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .concept-pill span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .mini-table-wrap {
+      overflow-x: auto;
+      margin-top: 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      box-shadow: var(--shadow-small);
+      background: #fff;
+    }
+
+    table.mini-table {
+      width: 100%;
+      min-width: 700px;
+      border-collapse: collapse;
+      background: #fff;
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.55;
+    }
+
+    .mini-table th,
+    .mini-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(91, 62, 36, 0.12);
+      vertical-align: top;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .mini-table th {
+      background: #f3eadf;
+      color: var(--title);
+      text-align: left;
+      text-align-last: auto;
+      font-weight: 900;
+    }
+
+    .mini-table tr:last-child td { border-bottom: 0; }
+
+    .section-divider {
+      height: 1px;
+      background: rgba(91, 62, 36, 0.14);
+      margin: 18px 0;
+    }
+
+    @media (max-width: 980px) {
+      .concept-band { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 680px) {
+      .concept-band { grid-template-columns: 1fr; }
+    }
+
+  </style>
+</head>
+<body>
+  <main class="page" id="top">
+    <div class="topbar">
+      <a class="back-link" href="index.html">← Înapoi la materiale</a>
+      <span class="tag">Material ajutător · Civilizația greacă · Modele culturale</span>
+    </div>
+
+    <section class="hero">
+      <p class="eyebrow">Civilizația greacă</p>
+      <h1>Modele culturale: educație, religie, știință, filosofie și artă</h1>
+      <p class="subtitle">
+        Cultura greacă a fost construită în jurul ideii de <strong>polis</strong>, dar fiecare cetate a produs un model propriu de om și de viață publică. <strong>Sparta</strong> a privilegiat disciplina, austeritatea și supunerea față de stat, în timp ce <strong>Atena</strong> a dezvoltat idealul educației civice, al cultivării spiritului, al dezbaterii și al participării la viața cetății. Dincolo de diferențele dintre cetăți, lumea greacă a creat forme culturale durabile: religie civică, jocuri panhelenice, filosofie, știință, teatru, literatură, arhitectură și sculptură.
+      </p>
+
+      <div class="summary-grid">
+        <div class="summary-card">
+          <strong>Modelul spartan</strong>
+          <span>Educație de stat, disciplină militară, austeritate, rezistență fizică și integrarea individului în comunitatea războinicilor.</span>
+        </div>
+        <div class="summary-card">
+          <strong>Modelul atenian</strong>
+          <span>Paideia, alfabetizare, muzică, gimnastică, retorică, filosofie, formarea cetățeanului capabil să participe la viața publică.</span>
+        </div>
+        <div class="summary-card">
+          <strong>Religia</strong>
+          <span>Religie politeistă, civică și ritualică, cu zei antropomorfi, temple, sanctuare, eroi, oracole și întreceri dedicate divinităților.</span>
+        </div>
+        <div class="summary-card">
+          <strong>Creația culturală</strong>
+          <span>Știință ioniană, filosofie clasică, artă a proporției, teatru dionisiac și literatură epică, lirică, tragică și comică.</span>
+        </div>
+      </div>
+    </section>
+
+    <nav class="nav-card" aria-label="Cuprins">
+      <b>Cuprins:</b>
+      <a href="#educatia-spartana">I. Educația spartană</a>
+      <a href="#educatia-ateniana">II. Educația ateniană</a>
+      <a href="#religia">III. Religia</a>
+      <a href="#stiinta-filosofia">IV. Știința și filosofia</a>
+      <a href="#arta">V. Arta</a>
+      <a href="#teatru-literatura">VI. Teatrul și literatura</a>
+      <a href="#sinteza">VII. Sinteză</a>
+    </nav>
+
+    <section class="section" id="context-cultural">
+      <h2>Context general: ce înseamnă „model cultural” în lumea greacă?</h2>
+      <p class="section-intro">
+        Prin model cultural înțelegem ansamblul de valori, reguli, practici educative, forme religioase și creații artistice prin care o societate își formează membrii și își transmite idealurile. În Grecia antică nu a existat un singur tip de cultură, ci mai multe modele locale, legate de organizarea fiecărei cetăți. Cele mai cunoscute sunt modelul spartan și modelul atenian.
+      </p>
+      <div class="concept-band">
+        <div class="concept-pill">Agoge<span>educația publică spartană, orientată spre război și disciplină</span></div>
+        <div class="concept-pill">Paideia<span>formarea ateniană a omului cultivat și a cetățeanului activ</span></div>
+        <div class="concept-pill">Polis<span>comunitatea civică în care cultura, religia și politica se întâlnesc</span></div>
+        <div class="concept-pill">Mousikē<span>muzică, poezie, dans, memorie culturală și educație a sensibilității</span></div>
+        <div class="concept-pill">Gymnastikē<span>pregătire fizică, autocontrol, rezistență și ideal al corpului armonios</span></div>
+      </div>
+      <div class="definition"><strong>Ideea-cheie:</strong> Sparta și Atena nu reprezintă doar două sisteme politice diferite, ci și două idealuri culturale diferite: cetățeanul-soldat și cetățeanul cultivat.</div>
+    </section>
+
+    <section class="section" id="educatia-spartana">
+      <h2>I. Educația spartană</h2>
+      <p class="section-intro">
+        Educația spartană era subordonată statului și avea ca scop formarea unui corp de cetățeni-soldați capabili să apere cetatea, să mențină disciplina internă și să controleze populațiile supuse. În centrul ei se afla <strong>agoge</strong>, sistemul de educație publică prin care băieții spartani erau integrați treptat în comunitatea militară.
+      </p>
+
+      <div class="three-col">
+        <article class="info-card">
+          <h3>Contextul educației spartane</h3>
+          <ul class="clean">
+            <li><span class="mini-title">Necesitatea militară</span> Sparta avea nevoie de o armată disciplinată, deoarece domina o populație supusă numeric importantă.</li>
+            <li><span class="mini-title">Controlul hiloților</span> Hiloții lucrau pământurile spartanilor și erau esențiali economic, dar reprezentau și o amenințare permanentă de revoltă.</li>
+            <li><span class="mini-title">Supremația regională</span> Educația urmărea menținerea autorității Spartei în Pelopones și în Liga Peloponesiacă.</li>
+            <li><span class="mini-title">Cultura austeră</span> Luxul, vorbirea excesivă și preocupările individualiste erau descurajate în favoarea rezistenței, curajului și supunerii.</li>
+          </ul>
+        </article>
+        <article class="info-card">
+          <h3>Agoge: logica formării</h3>
+          <p>Agoge nu era o simplă școală, ci un mod de viață. Ea urmărea să rupă dependența copilului de familie și să îl integreze într-o comunitate de vârstă, disciplină și luptă. Băiatul spartan era educat să suporte frigul, foamea, durerea, oboseala, pedeapsa și presiunea grupului.</p>
+          <p>Scopul nu era dezvoltarea liberă a personalității, ci formarea unui om util cetății: tăcut, rezistent, ascultător, curajos și solidar cu ceilalți spartani.</p>
+        </article>
+        <article class="info-card">
+          <h3>Criptia</h3>
+          <p><strong>Criptia</strong>, termen legat de ideea de „ascuns”, era asociată în tradiția antică cu supravegherea și intimidarea hiloților. Ea funcționa ca probă de inițiere pentru tinerii spartani și ca instrument de control social.</p>
+          <p>Într-o formulare atentă, criptia trebuie înțeleasă ca o practică dură, plasată între educație militară, ritual de trecere și politică de teroare asupra populației supuse.</p>
+        </article>
+      </div>
+
+      <h3 style="margin-top: 22px;">Etapele educației spartane</h3>
+      <div class="timeline">
+        <article class="event"><div class="date">0-7 ani</div><div><h3>Copilăria în familie</h3><p>Copiii erau crescuți de mame până în jurul vârstei de 7 ani. Tradiția transmisă de autorii antici afirmă că nou-născuții considerați inapți erau respinși de comunitate, episod legat de Muntele Taiget; interpretarea modernă tratează această informație cu prudență, dar ea arată cât de puternic era idealul selecției și al utilității militare în imaginarul spartan.</p></div></article>
+        <article class="event"><div class="date">7-12 ani</div><div><h3>Intrarea în agoge</h3><p>Băieții erau preluați de stat, organizați în grupuri și supravegheați de instructori. În această etapă se deprindeau cu ascultarea, viața simplă, alimentația redusă, mersul desculț, hainele puține și rezistența la disconfort.</p></div></article>
+        <article class="event"><div class="date">12-20 ani</div><div><h3>Întărirea disciplinei</h3><p>Exercițiile fizice și deprinderile de luptă deveneau mai intense. Se încurajau curajul, autocontrolul, vorbirea scurtă și răspunsul laconic. Tinerii erau formați să suporte pedeapsa fără plângere și să pună onoarea grupului deasupra interesului personal.</p></div></article>
+        <article class="event"><div class="date">20-30 ani</div><div><h3>Cetățean-soldat în devenire</h3><p>Tinerii intrau în structurile militare și în viața comună a bărbaților. Ei puteau participa la mesele comune, numite <em>syssitia</em>, unde solidaritatea militară era întărită prin disciplină, egalitate formală și control social.</p></div></article>
+        <article class="event"><div class="date">30-60 ani</div><div><h3>Cetățean deplin și militar activ</h3><p>La aproximativ 30 de ani, bărbatul spartan era considerat cetățean deplin și putea trăi mai stabil în familie, deși rămânea obligat față de comunitatea militară. Serviciul militar și disciplina publică continuau până la vârste înaintate.</p></div></article>
+      </div>
+
+      <details open><summary>Educația fetelor spartane</summary><div class="details-body">
+        <p>Fetele spartane aveau o educație mai vizibilă și mai fizică decât femeile din multe alte cetăți grecești. Ele făceau exerciții corporale, alergări, lupte sau aruncări, deoarece societatea spartană considera că mamele puternice vor naște copii puternici și vor putea administra gospodăria în absența bărbaților plecați la război.</p>
+        <ul class="clean">
+          <li>Fetele erau pregătite pentru gospodărie, dar nu erau reduse exclusiv la spațiul domestic.</li>
+          <li>Aveau mai multă libertate de mișcare decât femeile ateniene, mai ales din cauza militarizării vieții masculine.</li>
+          <li>Nu aveau drepturi politice propriu-zise: nu votau, nu ocupau magistraturi și nu participau ca cetățeni la adunarea politică.</li>
+          <li>Prin administrarea proprietăților familiale, femeile spartane puteau avea o influență economică importantă.</li>
+        </ul>
+      </div></details>
+
+      <div class="wide-card">
+        <h3>Caracteristici definitorii ale modelului spartan</h3>
+        <div class="details-grid">
+          <div class="micro-card"><strong>Austeritate</strong><span>Viața simplă era prezentată ca virtute. Hrana, îmbrăcămintea și confortul erau limitate pentru a forma rezistență.</span></div>
+          <div class="micro-card"><strong>Supunere</strong><span>Individul trebuia să se supună statului, legilor, vârstnicilor, comandanților și disciplinei colective.</span></div>
+          <div class="micro-card"><strong>Comunitate</strong><span>Mesele comune, antrenamentele și viața de grup reduceau individualismul și întăreau solidaritatea militară.</span></div>
+          <div class="micro-card"><strong>Laconism</strong><span>Vorbirea scurtă, precisă și severă era considerată semn de autocontrol și superioritate morală.</span></div>
+        </div>
+        <div class="definition"><strong>Concluzie:</strong> educația spartană producea un tip de cultură orientat spre ordine, război și stabilitate socială. Ea era eficientă militar, dar limita creativitatea individuală, libertatea intelectuală și dezvoltarea artistică.</div>
+      </div>
+    </section>
+
+    <section class="section" id="educatia-ateniana">
+      <h2>II. Educația ateniană</h2>
+      <p class="section-intro">
+        Educația ateniană urmărea formarea omului liber capabil să participe la viața cetății. Idealul atenian nu era doar forța, ci echilibrul dintre corp, minte, vorbire, morală și gust artistic. Acest ideal este numit adesea <strong>paideia</strong>, adică formarea completă a omului cultivat.
+      </p>
+
+      <div class="three-col">
+        <article class="info-card">
+          <h3>Paideia</h3>
+          <p>Paideia însemna educație, cultură, formare morală și integrare civică. Un atenian bine educat trebuia să știe să citească, să scrie, să socotească, să cânte, să recite poezie, să practice exerciții fizice și, mai târziu, să vorbească în public.</p>
+        </article>
+        <article class="info-card">
+          <h3>Kalokagathia</h3>
+          <p>Idealul omului frumos și bun unea armonia corpului cu noblețea caracterului. Corpul era format prin gimnastică, iar sufletul prin muzică, poezie, memorie culturală, respect față de zei, legi și părinți.</p>
+        </article>
+        <article class="info-card">
+          <h3>Educație și cetățenie</h3>
+          <p>În Atena democratică, educația avea și o funcție politică: cetățeanul trebuia să poată asculta argumente, judeca propuneri, vorbi în adunare și apăra cetatea. De aceea, retorica și filosofia devin foarte importante.</p>
+        </article>
+      </div>
+
+      <h3 style="margin-top: 22px;">Etapele educației ateniene</h3>
+      <div class="timeline">
+        <article class="event"><div class="date">0-7 ani</div><div><h3>Copilăria în familie</h3><p>Copiii erau crescuți în casă, mai ales sub supravegherea mamei și a femeilor din familie. În această etapă se învățau primele norme de comportament, respectul față de familie și rolurile sociale de bază.</p></div></article>
+        <article class="event"><div class="date">7-12/14 ani</div><div><h3>Școala elementară</h3><p>Băieții începeau școala. Învățau scrisul, cititul, calculul, gramatica, muzica și recitarea textelor. Un pedagog, de regulă sclav al familiei, îl însoțea pe copil la școală și supraveghea comportamentul lui.</p></div></article>
+        <article class="event"><div class="date">12/14-16 ani</div><div><h3>Palestrele și gimnaziile</h3><p>Exercițiile fizice treceau pe primul plan. În palestre, tinerii practicau lupte, alergare, aruncarea discului, aruncarea suliței și alte exerciții. Scopul era formarea unui corp sănătos și disciplinat.</p></div></article>
+        <article class="event"><div class="date">16-18 ani</div><div><h3>Studii superioare pentru cei bogați</h3><p>Fiii familiilor bogate puteau continua studiile prin filosofie, retorică, matematică, muzică sau pregătire cu sofiști. Copiii familiilor sărace intrau adesea mai devreme în muncă, în meșteșuguri, comerț sau activități familiale.</p></div></article>
+        <article class="event"><div class="date">18-20 ani</div><div><h3>Efebia</h3><p>Efebia era pregătirea militară și civică a tinerilor atenieni. Ei nu trăiau obligatoriu în cazărmi, dar erau chemați la locuri stabilite, efectuau instrucție și erau pregătiți pentru apărarea cetății.</p></div></article>
+      </div>
+
+      <details open><summary>Ce se învăța în educația ateniană?</summary><div class="details-body">
+        <div class="details-grid">
+          <div class="micro-card"><strong>Grammata</strong><span>Citit, scris, calcul, gramatică, memorarea textelor importante și deprinderea exprimării corecte.</span></div>
+          <div class="micro-card"><strong>Mousikē</strong><span>Muzică, poezie, cânt, ritm, mitologie și formarea sensibilității morale prin exemple literare.</span></div>
+          <div class="micro-card"><strong>Gymnastikē</strong><span>Pregătire fizică în palestre și gimnazii: forță, coordonare, disciplină, rezistență și autocontrol.</span></div>
+          <div class="micro-card"><strong>Retorică</strong><span>Arta de a vorbi convingător, esențială pentru procese, adunări publice și viața democratică.</span></div>
+        </div>
+        <p>Educația ateniană nu era publică și obligatorie în sens modern. Ea depindea de avere, statut social, sex și apartenența la corpul cetățenilor. Băieții cetățenilor erau principalii beneficiari ai paideiei.</p>
+      </div></details>
+
+      <details open><summary>Educația fetelor ateniene și limitele modelului atenian</summary><div class="details-body">
+        <p>Fetele ateniene nu urmau, în mod obișnuit, același parcurs educativ ca băieții. Ele rămâneau sub îndrumarea mamei și erau pregătite pentru viața domestică: administrarea casei, țesut, organizarea gospodăriei, creșterea copiilor și participarea la ritualurile religioase familiale sau civice.</p>
+        <ul class="clean">
+          <li>Viața lor era legată de <strong>gineceu</strong>, spațiul feminin al casei.</li>
+          <li>Nu participau la viața politică: nu votau, nu vorbeau în Ecclesia și nu ocupau magistraturi.</li>
+          <li>Educația lor putea varia în funcție de familie; unele femei din medii înstărite puteau primi o cultură mai rafinată, dar aceasta nu devenea drept politic.</li>
+          <li>Modelul atenian era mai deschis intelectual decât cel spartan, dar era totuși limitat social: femeile, sclavii și metecii erau excluși de la cetățenia politică deplină.</li>
+        </ul>
+      </div></details>
+
+      <div class="definition"><strong>Concluzie:</strong> educația ateniană a creat condițiile pentru dezvoltarea filosofiei, teatrului, oratoriei, istoriei și științei, dar beneficiile sale erau distribuite inegal: cetățeanul bărbat, liber și de origine ateniană era figura centrală a acestui model.</div>
+    </section>
+
+    <section class="section" id="religia">
+      <h2>III. Religia greacă</h2>
+      <p class="section-intro">
+        Religia greacă era politeistă, ritualică și profund legată de viața cetății. Ea nu se limita la credință personală, ci organiza calendarul public, sărbătorile, sacrificiile, jocurile, jurămintele, educația, artele și literatura. Fiecare polis avea culte proprii, dar existau și sanctuare panhelenice care îi uneau simbolic pe greci.
+      </p>
+
+      <div class="three-col">
+        <article class="info-card">
+          <h3>Rolul religiei în polis</h3>
+          <ul class="clean">
+            <li><span class="mini-title">Factor de unitate</span> Ritualurile comune confirmau solidaritatea comunității.</li>
+            <li><span class="mini-title">Ordine simbolică</span> Zeii explicau ceea ce părea misterios, primejdios sau greu de înțeles.</li>
+            <li><span class="mini-title">Legătură cu arta</span> Templele, statuile, teatrul, imnurile și jocurile se dezvoltau în contexte religioase.</li>
+            <li><span class="mini-title">Funcție civică</span> Participarea la culte era o formă de apartenență la cetate.</li>
+          </ul>
+        </article>
+        <article class="info-card">
+          <h3>Divinitățile</h3>
+          <p>Zeii greci erau antropomorfi: aveau înfățișare omenească și manifestau pasiuni omenești, dar rămâneau nemuritori și superiori oamenilor. Ei erau considerați prezenți în viața cetății, în natură, în război, în familie, în agricultură, în mare, în dragoste, în meșteșuguri și în cunoaștere.</p>
+          <p>Caracteristicile lor principale erau omniprezența, nemurirea, invizibilitatea obișnuită și puterea de a interveni în destinul oamenilor.</p>
+        </article>
+        <article class="info-card">
+          <h3>Templele și sanctuarele</h3>
+          <p>Templul era casa simbolică a zeului și adăpostea statuia divinității. Ceremoniile se desfășurau în general în fața templului, la altar, unde se aduceau ofrande: miere, prăjituri, parfumuri, vin, ulei sau animale sacrificate.</p>
+        </article>
+      </div>
+
+      <details open><summary>Cultul eroilor</summary><div class="details-body">
+        <p>Eroii erau personaje aflate între oameni și zei. Ei proveneau din rândul oamenilor remarcabili sau al semizeilor și erau venerați pentru fapte fondatoare, civilizatoare sau salvatoare.</p>
+        <div class="details-grid">
+          <div class="micro-card"><strong>Prometeu</strong><span>Aduce oamenilor focul și devine simbol al cunoașterii și al îndrăznelii.</span></div>
+          <div class="micro-card"><strong>Deucalion</strong><span>Este asociat cu refacerea lumii după potop și cu supraviețuirea umanității.</span></div>
+          <div class="micro-card"><strong>Heracle</strong><span>Prin cele douăsprezece munci, învinge monștri și primejdii care amenință lumea oamenilor.</span></div>
+          <div class="micro-card"><strong>Triptolemos</strong><span>Erou civilizator, legat de răspândirea agriculturii și de cultul Demetrei.</span></div>
+        </div>
+      </div></details>
+
+      <details open><summary>Sanctuare, oracole și jocuri panhelenice</summary><div class="details-body">
+        <div class="key-line"><strong>Delphi</strong><span>Sanctuar dedicat lui Apollo, faimos pentru oracol. Aici aveau loc și Jocurile Pythice, cu întreceri muzicale, poetice și sportive.</span></div>
+        <div class="key-line"><strong>Olympia</strong><span>Sanctuar dedicat lui Zeus. Jocurile Olimpice se organizau din patru în patru ani și reprezentau una dintre cele mai importante forme de unitate simbolică a grecilor.</span></div>
+        <div class="key-line"><strong>Dodona</strong><span>Sanctuar oracular din Epir, asociat cu Zeus, unde voința divină era interpretată prin semne naturale.</span></div>
+        <div class="key-line"><strong>Alte jocuri</strong><span>Pe lângă Olympia și Delphi, grecii aveau Jocurile Istmice, legate de Poseidon, și Jocurile Nemeene, legate de Zeus.</span></div>
+      </div></details>
+
+      <div class="warning-box">
+        <h3>Religie și cultură</h3>
+        <p>La greci, religia nu era separată strict de cultură. Tragedia se naște din sărbătorile lui Dionysos, sculptura produce statui ale zeilor și eroilor, arhitectura construiește temple, iar întrecerile sportive sunt dedicate divinităților.</p>
+      </div>
+    </section>
+
+    <section class="section" id="stiinta-filosofia">
+      <h2>IV. Știința și filosofia</h2>
+      <p class="section-intro">
+        Grecii au început să explice lumea nu doar prin mit, ci și prin rațiune, observație, calcul și argument. În special în Ionia, pe țărmul Asiei Mici, apar primele încercări de a identifica principiile naturii. Știința și filosofia nu erau încă separate complet: același gânditor putea fi matematician, astronom, filosof și observator al naturii.
+      </p>
+
+      <div class="two-col">
+        <article class="info-card">
+          <h3>Știința</h3>
+          <div class="mini-table-wrap">
+            <table class="mini-table">
+              <thead><tr><th>Domeniu</th><th>Reprezentanți și contribuții</th></tr></thead>
+              <tbody>
+                <tr><td>Matematică</td><td><strong>Thales din Milet</strong> este legat de geometrie și de predicția unei eclipse; <strong>Pitagora</strong> și școala sa pun accent pe număr, proporție și relații matematice; <strong>Euclid</strong>, în epoca elenistică, sistematizează geometria plană.</td></tr>
+                <tr><td>Astronomie</td><td><strong>Aristarh din Samos</strong> propune un model heliocentric; <strong>Ptolemeu din Alexandria</strong>, mai târziu, sistematizează modelul geocentric care va domina mult timp gândirea europeană.</td></tr>
+                <tr><td>Geografie</td><td>Colonizarea și cuceririle lui Alexandru cel Mare lărgesc orizontul geografic. <strong>Eratostene</strong> calculează circumferința Pământului, iar <strong>Strabon</strong> și <strong>Ptolemeu</strong> consemnează cunoștințe geografice importante.</td></tr>
+                <tr><td>Medicină</td><td><strong>Hipocrate</strong> susține explicarea naturală a bolilor, nu doar prin intervenție divină. În epoca elenistică se dezvoltă studii asupra creierului, nervilor, măduvei spinării și circulației sângelui.</td></tr>
+                <tr><td>Mecanică și hidraulică</td><td><strong>Arhimede</strong> pune bazele unor principii de mecanică și hidrostatică, devenind simbolul savantului capabil să combine teoria cu aplicația practică.</td></tr>
+                <tr><td>Istorie</td><td><strong>Herodot</strong> relatează războaiele greco-persane, <strong>Tucidide</strong> analizează Războiul Peloponesiac cu atenție critică, iar <strong>Xenofon</strong> descrie evenimente militare și admiră ordinea spartană.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="info-card">
+          <h3>Filosofia</h3>
+          <p>Filosofia greacă se dezvoltă din întrebări despre natură, ordine, adevăr, suflet, virtute, politică și cunoaștere. Ea trece de la problema originii universului la problema omului și a cetății.</p>
+          <div class="key-line"><strong>Etapa cosmologică</strong><span>Gânditorii caută principiul de bază al lumii: apa la Thales, apeironul la Anaximandru, aerul la Anaximene, focul și devenirea la Heraclit, atomii la Democrit.</span></div>
+          <div class="key-line"><strong>Pitagoreicii</strong><span>Considerau că numărul și armonia matematică pot explica structura realității. Muzica, matematica și cosmologia erau legate.</span></div>
+          <div class="key-line"><strong>Sofiştii</strong><span>Profesorii de retorică și argumentare pregăteau tinerii pentru viața publică, dar erau criticați pentru relativism și pentru faptul că predau arta convingerii contra plată.</span></div>
+          <div class="key-line"><strong>Socrate</strong><span>Mută centrul filosofiei spre om, morală și viața examinată. Metoda sa se baza pe dialog, întrebări și demascarea contradicțiilor.</span></div>
+          <div class="key-line"><strong>Platon</strong><span>Întemeiază Academia, dezvoltă teoria Ideilor și imaginează modele de educație și organizare politică în care filosofia conduce cetatea.</span></div>
+          <div class="key-line"><strong>Aristotel</strong><span>Întemeiază Lyceul și sistematizează logica, biologia, etica, politica, retorica, poetica și metafizica.</span></div>
+        </article>
+      </div>
+
+      <div class="definition"><strong>Ideea-cheie:</strong> știința greacă transformă curiozitatea în explicație rațională, iar filosofia transformă întrebarea despre lume într-o întrebare despre om, virtute și cetate.</div>
+    </section>
+
+    <section class="section" id="arta">
+      <h2>V. Arta greacă</h2>
+      <p class="section-intro">
+        Arta greacă urmărește armonia, proporția, echilibrul și idealizarea corpului uman. În secolul al V-lea î.Hr., după războaiele medice, Atena devine unul dintre cele mai importante centre artistice ale lumii grecești, mai ales prin programul de reconstrucție și înfrumusețare a Acropolei.
+      </p>
+
+      <details open><summary>Arhitectura</summary><div class="details-body">
+        <p>Templul este monumentul caracteristic arhitecturii grecești. El nu era o biserică în sens modern, ci locuința simbolică a zeului. Ritualurile principale se desfășurau în exterior, la altar.</p>
+        <div class="details-grid">
+          <div class="micro-card"><strong>Frontoane</strong><span>Fațadele triunghiulare din partea superioară a templului, adesea decorate cu statui și scene mitologice.</span></div>
+          <div class="micro-card"><strong>Friză</strong><span>Bandă decorativă cu reliefuri, procesiuni, scene sacre sau episoade eroice.</span></div>
+          <div class="micro-card"><strong>Coloane</strong><span>Elementele verticale ale templului; capitelurile permit identificarea ordinelor doric, ionic și corintic.</span></div>
+          <div class="micro-card"><strong>Acropole</strong><span>Zona înaltă și sacră a Atenei, unde au fost ridicate edificii majore, între care Parthenonul, Erechtheionul și Propileele.</span></div>
+        </div>
+        <div class="section-divider"></div>
+        <h4>Ordinele arhitecturale</h4>
+        <div class="mini-table-wrap">
+          <table class="mini-table">
+            <thead><tr><th>Ordin</th><th>Trăsături</th><th>Impresie culturală</th></tr></thead>
+            <tbody>
+              <tr><td>Doric</td><td>Coloană robustă, capitel simplu, impresie de forță și sobrietate.</td><td>Se potrivește idealului de echilibru sever și monumentalitate.</td></tr>
+              <tr><td>Ionic</td><td>Capitel cu volute, proporții mai suple, decor mai rafinat.</td><td>Exprimă eleganță, mișcare și finețe ornamentală.</td></tr>
+              <tr><td>Corintic</td><td>Capitel bogat decorat cu frunze de acant, formă mai ornamentală.</td><td>Devine frecvent mai ales în perioadele târzii și în lumea elenistică și romană.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div></details>
+
+      <details open><summary>Sculptura și pictura</summary><div class="details-body">
+        <p>Sculptura greacă pornește de la influențe orientale, dar ajunge să creeze un ideal propriu al corpului uman: proporție, mișcare, echilibru și expresivitate. În timp, figura rigidă arhaică este înlocuită de corpul dinamic, apoi de expresia dramatică elenistică.</p>
+        <div class="mini-table-wrap">
+          <table class="mini-table">
+            <thead><tr><th>Artist / lucrare</th><th>Semnificație culturală</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Myron</strong> – Discobolul</td><td>Surprinde corpul în mișcare și tensiunea momentului athletic.</td></tr>
+              <tr><td><strong>Phidias</strong> – Athena Parthenos, Zeus din Olympia</td><td>Reprezintă idealul monumental, religios și civic al epocii clasice; lucrările din aur și fildeș exprimau prestigiul cetății.</td></tr>
+              <tr><td><strong>Policlet</strong> – Doriforul</td><td>Propune un canon al proporțiilor corpului masculin, legând frumusețea de măsură și echilibru.</td></tr>
+              <tr><td><strong>Praxiteles</strong> – Afrodita din Cnidos</td><td>Accentuează grația, frumusețea și naturalismul corpului.</td></tr>
+              <tr><td><strong>Lysip</strong> – portrete ale lui Alexandru Macedon</td><td>Contribuie la dezvoltarea portretului și la imaginea conducătorului carismatic.</td></tr>
+              <tr><td><strong>Laocoon și fiii săi</strong>, <strong>Gal murind</strong></td><td>Exemple elenistice ale expresivității dramatice: suferință, tensiune, patos și realism emoțional.</td></tr>
+              <tr><td><strong>Polignot</strong></td><td>Pictor cunoscut pentru fresce cu subiecte mitologice și istorice; pictura greacă s-a păstrat mai puțin decât sculptura, dar era foarte apreciată.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div></details>
+
+      <details open><summary>Ceramica</summary><div class="details-body">
+        <p>Ceramica era folosită frecvent în viața zilnică pentru păstrarea și transportul lichidelor, cerealelor, uleiului, vinului sau parfumurilor, dar și în contexte funerare și ritualice. Vasele grecești au devenit o sursă importantă pentru istoria mitologiei, muncii, jocurilor publice, teatrului și vieții cotidiene.</p>
+        <ul class="clean">
+          <li>Scenele pictate puteau fi mitologice, cotidiene, funerare, sportive sau inspirate din poemele homerice.</li>
+          <li>Tehnica figurilor negre folosea siluete negre pe fondul roșcat natural al vasului, cu detalii incizate.</li>
+          <li>Tehnica figurilor roșii, apărută ulterior, lăsa personajele în culoarea roșcată a lutului pe un fond închis, permițând detalii anatomice și vestimentare mai fine.</li>
+          <li>Din secolul al IV-lea î.Hr., se acordă o atenție sporită vaselor de dimensiuni mai mici și scenelor inspirate din tragedii.</li>
+        </ul>
+      </div></details>
+    </section>
+
+    <section class="section" id="teatru-literatura">
+      <h2>VI. Teatrul și literatura</h2>
+      <p class="section-intro">
+        Teatrul și literatura au fost forme esențiale prin care grecii și-au exprimat miturile, valorile, conflictele morale și tensiunile politice. Ele nu erau simple divertismente, ci acte publice de memorie, educație și reflecție asupra cetății.
+      </p>
+
+      <div class="two-col">
+        <article class="info-card">
+          <h3>Teatrul</h3>
+          <p>Tragedia greacă își are originea în serbările religioase dedicate lui Dionysos. Reprezentațiile includeau recitări poetice, dansuri, procesiuni și coruri. Spectacolele se desfășurau în aer liber, de obicei de dimineață până seara.</p>
+          <div class="key-line"><strong>Spațiul teatral</strong><span>Teatrul era amenajat pe panta unei coline. Spectatorii stăteau în <em>theatron</em>, corul evolua în <em>orchestra</em>, iar actorii foloseau spațiul scenei, numit <em>skene</em>.</span></div>
+          <div class="key-line"><strong>Evoluția corului</strong><span>Inițial, corul avea rol central. Apoi apare un actor care dialoghează cu el, apoi doi și trei actori, ceea ce permite dezvoltarea conflictului dramatic.</span></div>
+          <div class="key-line"><strong>Costume și decoruri</strong><span>În timp, se introduc măști, costume, decoruri și convenții scenice care fac personajele ușor recognoscibile pentru public.</span></div>
+          <div class="key-line"><strong>Comedia</strong><span>Se dezvoltă în secolul al V-lea î.Hr. din procesiuni vesele, numite <em>komos</em>, în care erau satirizate viciile, slăbiciunile oamenilor și viața politică.</span></div>
+          <p><span class="mini-title">Reprezentanți:</span> tragedia este ilustrată de Eschil, Sofocle și Euripide, iar comedia de Aristofan.</p>
+        </article>
+        <article class="info-card">
+          <h3>Literatura</h3>
+          <p>Literatura greacă a început prin epopee și mit, apoi s-a diversificat prin poezie lirică, tragedie, comedie, istoriografie, dialog filosofic și discurs politic.</p>
+          <ul class="clean">
+            <li><strong>Homer</strong> – <em>Iliada</em> și <em>Odiseea</em>, poeme epice despre eroism, onoare, război, întoarcere și destin.</li>
+            <li><strong>Hesiod</strong> – <em>Munci și zile</em> și <em>Teogonia</em>, texte despre munca țăranului, dreptate, zei și originea lumii.</li>
+            <li><strong>Tirteu</strong> – poezie războinică, asociată cu idealul curajului și al disciplinei militare.</li>
+            <li><strong>Pindar</strong> – ode dedicate învingătorilor la jocuri, celebrând gloria, excelența și memoria aristocratică.</li>
+            <li><strong>Sappho</strong> – poezie lirică despre iubire, emoție și experiență personală, legată de insula Lesbos.</li>
+          </ul>
+          <div class="definition"><strong>Rol educativ:</strong> literatura oferea modele de comportament, exemple morale, mituri fondatoare și un limbaj comun pentru întreaga lume greacă.</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="sinteza">
+      <h2>VII. Sinteză finală: Sparta și Atena ca modele culturale</h2>
+      <p class="section-intro">
+        Sparta și Atena reprezintă două răspunsuri diferite la aceeași problemă: cum trebuie format omul pentru a servi cetatea? Sparta formează cetățeanul-soldat, Atena formează cetățeanul cultivat. Ambele modele au produs valori importante, dar ambele au avut limite clare.
+      </p>
+
+      <div class="compare-table-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr><th>Criteriu</th><th>Sparta</th><th>Atena</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Ideal cultural</strong></td><td>Disciplina militară, curajul, rezistența, supunerea față de stat.</td><td>Paideia: educație intelectuală, morală, fizică, artistică și civică.</td></tr>
+            <tr><td><strong>Tipul de om format</strong></td><td>Cetățean-soldat, laconic, auster, pregătit pentru război.</td><td>Cetățean capabil să vorbească, să judece, să participe la viața publică și să aprecieze arta.</td></tr>
+            <tr><td><strong>Instituția educativă centrală</strong></td><td>Agoge, organizată de stat.</td><td>Școala privată, familia, palestra, gimnaziul, efebia și, pentru elite, filosofia și retorica.</td></tr>
+            <tr><td><strong>Relația individ-stat</strong></td><td>Individul este subordonat comunității militare.</td><td>Individul este format pentru cetate, dar are mai mult spațiu pentru exprimare, cultură și dezbatere.</td></tr>
+            <tr><td><strong>Educația băieților</strong></td><td>Preluați de stat de la 7 ani, crescuți în disciplină severă.</td><td>Educați prin scris, citit, matematică, muzică, gimnastică, retorică și efebie.</td></tr>
+            <tr><td><strong>Educația fetelor</strong></td><td>Pregătire fizică mai vizibilă; rol important în gospodărie și în reproducerea corpului civic.</td><td>Educație domestică, desfășurată mai ales în gineceu; pregătire pentru administrarea casei și viața familială.</td></tr>
+            <tr><td><strong>Valori dominante</strong></td><td>Austeritate, obediență, curaj, solidaritate militară, control social.</td><td>Armonie, măsură, respect, elocință, competiție culturală, participare civică.</td></tr>
+            <tr><td><strong>Raportarea la artă și cultură</strong></td><td>Artă și cultură mai sobre, subordonate idealului militar și stabilității sociale.</td><td>Dezvoltare intensă a teatrului, filosofiei, arhitecturii, sculpturii, retoricii și istoriografiei.</td></tr>
+            <tr><td><strong>Religie</strong></td><td>Religia întărește disciplina, coeziunea și identitatea cetății războinice.</td><td>Religia se leagă de festivaluri, teatru, procesiuni, arhitectură și competiții civice.</td></tr>
+            <tr><td><strong>Limite</strong></td><td>Rigiditate, control violent asupra hiloților, limitarea libertății individuale și a creativității.</td><td>Excluderea femeilor, sclavilor și metecilor din viața politică; acces inegal la educație; dependență de avere și statut.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="final-box" style="margin-top: 22px;">
+        <h3>Concluzie generală</h3>
+        <p>Moștenirea culturală greacă nu vine dintr-un singur model, ci din tensiunea dintre mai multe forme de viață. Sparta a arătat forța disciplinei și a solidarității militare, dar cu prețul libertății individuale. Atena a creat un model cultural al educației, dezbaterii, artei și filosofiei, dar democrația și paideia ateniană au rămas limitate la o parte restrânsă a populației. Împreună, aceste modele explică de ce civilizația greacă a devenit un reper major pentru cultura europeană.</p>
+        <div class="controls">
+          <button class="mini-btn" type="button" onclick="window.print()">Printează / salvează PDF</button>
+          <a class="mini-btn" href="#top">Înapoi sus</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll('details').forEach((detail) => {
+      detail.addEventListener('toggle', () => {
+        if (detail.open) {
+          detail.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

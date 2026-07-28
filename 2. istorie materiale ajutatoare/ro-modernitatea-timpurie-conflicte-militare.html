@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Conflictele militare ale modernității timpurii: războaiele ruso-austro-otomane, campaniile din Principate și tratatele din 1699–1812."/>
+<title>ro-modernitatea-timpurie-conflicte-militare</title>
+<style>
+
+
+:root {
+  --bg: #f6f0e7;
+  --paper: #fffaf3;
+  --paper-2: #ffffff;
+  --ink: #2f241c;
+  --title: #3c2a1e;
+  --muted: #5b4a3d;
+  --accent: #7a4f2a;
+  --accent-2: #9b6a3c;
+  --accent-soft: #f0e4d4;
+  --line: rgba(91, 62, 36, 0.18);
+  --line-strong: rgba(91, 62, 36, 0.34);
+  --outer-dark: #241208;
+  --outer-mid: #4a2a18;
+  --outer-warm: #7a4b2b;
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+  --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+    radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+}
+.page {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 34px 0 70px;
+}
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.back-link, .tag { display: inline-flex; align-items: center; border: 1px solid var(--line); background: rgba(255, 250, 243, 0.84); color: var(--title); border-radius: 999px; padding: 10px 15px; text-decoration: none; font-size: 15px; font-weight: 700; box-shadow: var(--shadow-small); }
+.back-link:hover { background: #fff6eb; }
+.hero, .section, .nav-card, .final-box { background: rgba(255, 250, 243, 0.96); border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow); }
+.hero { padding: 38px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.hero::after { content: var(--hero-year); position: absolute; right: 26px; bottom: -22px; font-size: 110px; font-weight: 900; letter-spacing: -4px; color: rgba(122, 79, 42, 0.08); pointer-events: none; }
+.eyebrow { margin: 0 0 8px; font-size: 16px; color: var(--accent); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; }
+h1 { margin: 0; font-size: clamp(38px, 5vw, 62px); line-height: 1.04; color: var(--title); letter-spacing: -1.4px; text-align: left; text-align-last: auto; }
+.subtitle { margin: 18px 0 0; max-width: 980px; font-size: 19px; line-height: 1.78; color: var(--muted); text-align: justify; text-align-last: left; }
+.summary-grid, .three-col, .two-col, .term-grid, .quick-grid, .cause-grid, .four-col { display: grid; gap: 14px; }
+.summary-grid { grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+.summary-card, .info-card, .wide-card, .term-card, .quick-card, .source-note, .micro-card, .warning-box { background: var(--paper-2); border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); text-align: justify; text-align-last: left; }
+.summary-card { padding: 16px; min-height: 132px; }
+.summary-card strong, .quick-card strong, .term-card strong, .micro-card strong { display: block; color: var(--title); font-size: 17px; margin-bottom: 8px; text-align: left; text-align-last: auto; }
+.summary-card span, .quick-card span, .term-card span, .micro-card span { display: block; color: var(--muted); font-size: 15.5px; line-height: 1.56; text-align: justify; text-align-last: left; }
+.nav-card { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 18px 20px; margin-bottom: 24px; }
+.nav-card b { color: var(--title); margin-right: 2px; }
+.nav-card a, .mini-btn { color: var(--title); background: var(--accent-soft); border: 1px solid rgba(91, 62, 36, 0.16); border-radius: 999px; text-decoration: none; padding: 8px 12px; font-weight: 700; font-size: 14px; cursor: pointer; font-family: inherit; }
+.nav-card a:hover, .mini-btn:hover { background: #e5d2bb; }
+.section { padding: 30px; margin-bottom: 24px; }
+h2 { margin: 0 0 14px; color: var(--title); font-size: clamp(28px, 3vw, 38px); line-height: 1.15; text-align: left; text-align-last: auto; }
+h3 { margin: 0 0 12px; color: var(--title); font-size: 22px; line-height: 1.22; text-align: left; text-align-last: auto; }
+h4 { margin: 16px 0 8px; color: var(--title); font-size: 18px; text-align: left; text-align-last: auto; }
+.section-intro, p, li, dd { font-size: 17px; line-height: 1.72; color: var(--muted); text-align: justify; text-align-last: left; hyphens: auto; }
+.section-intro { margin: 0 0 20px; max-width: 1000px; }
+.three-col { grid-template-columns: repeat(3, 1fr); }
+.two-col { grid-template-columns: repeat(2, 1fr); }
+.four-col { grid-template-columns: repeat(4, 1fr); }
+.cause-grid { grid-template-columns: 1.1fr 0.9fr; }
+.term-grid { grid-template-columns: repeat(4, 1fr); }
+.quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+.info-card, .wide-card, .term-card, .quick-card, .micro-card, .warning-box, .source-note { padding: 20px; }
+.wide-card { margin-top: 14px; }
+.wide-card p:last-child, .info-card p:last-child { margin-bottom: 0; }
+.clean, .number-list { margin: 0; padding-left: 22px; }
+.clean li, .number-list li { margin: 0 0 9px; padding-left: 2px; }
+.clean li:last-child, .number-list li:last-child { margin-bottom: 0; }
+.mini-title { display: inline; color: var(--title); font-weight: 800; background: transparent; border: 0; border-radius: 0; padding: 0; margin-right: 5px; white-space: normal; text-align: inherit; }
+.date-pill { display: inline-block; color: var(--title); font-weight: 800; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.13); border-radius: 999px; padding: 2px 9px; margin-right: 5px; white-space: nowrap; text-align: left; }
+.definition, .note { margin-top: 18px; background: #fff8ef; border: 1px solid rgba(122, 79, 42, 0.22); border-left: 6px solid rgba(122, 79, 42, 0.48); border-radius: 18px; padding: 18px 20px; color: var(--muted); font-size: 17px; line-height: 1.7; text-align: justify; text-align-last: left; }
+.definition strong, .note strong { color: var(--title); }
+details { background: #fffdf9; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); margin-top: 14px; overflow: hidden; }
+details[open] { background: #fffaf3; }
+summary { cursor: pointer; list-style: none; padding: 18px 20px; font-size: 19px; font-weight: 800; color: var(--title); display: flex; justify-content: space-between; align-items: center; gap: 18px; text-align: left; text-align-last: auto; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "Deschide"; color: var(--muted); font-size: 14px; font-weight: 700; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 999px; padding: 7px 11px; white-space: nowrap; }
+details[open] > summary::after { content: "Ascunde"; }
+.details-body { border-top: 1px solid rgba(91, 62, 36, 0.12); padding: 18px 20px 20px; text-align: justify; text-align-last: left; }
+.details-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.nested-details { margin-top: 10px; box-shadow: none; background: #ffffff; }
+.nested-details summary { font-size: 17px; padding: 14px 16px; }
+.key-line { display: grid; grid-template-columns: 220px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px dashed rgba(91, 62, 36, 0.18); }
+.key-line:last-child { border-bottom: 0; }
+.key-line strong { color: var(--title); text-align: left; text-align-last: auto; }
+.key-line span { color: var(--muted); line-height: 1.65; text-align: justify; text-align-last: left; }
+.timeline { position: relative; display: grid; gap: 14px; margin-top: 18px; }
+.event { display: grid; grid-template-columns: 132px 1fr; gap: 18px; align-items: stretch; background: #ffffff; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); overflow: hidden; }
+.date { background: linear-gradient(180deg, #7a4f2a, #5b351b); color: #fffaf3; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px; font-size: 18px; line-height: 1.25; font-weight: 900; letter-spacing: 0.2px; }
+.event > div:last-child { padding: 17px 18px 18px 0; text-align: justify; text-align-last: left; }
+.event h3 { margin-bottom: 6px; }
+.event p { margin: 0; }
+.small-muted { font-size: 15px; color: #725c49; line-height: 1.6; text-align: justify; text-align-last: left; }
+.warning-box { background: #fff7ec; border-color: rgba(122, 79, 42, 0.22); margin-top: 16px; }
+.final-box { padding: 28px; background: linear-gradient(135deg, #fffaf3, #f4e4d1); border-color: rgba(91, 62, 36, 0.25); }
+.final-box p { margin-bottom: 0; }
+.table-wrap { overflow-x: auto; margin-top: 14px; border-radius: 18px; border: 1px solid rgba(91,62,36,.14); background: #fff; box-shadow: var(--shadow-small); }
+table { width: 100%; border-collapse: collapse; min-width: 740px; }
+th, td { padding: 13px 14px; border-bottom: 1px solid rgba(91,62,36,.12); color: var(--muted); font-size: 16px; line-height: 1.55; vertical-align: top; text-align: justify; }
+th { background: #f3eadf; color: var(--title); text-align: left; font-weight: 800; }
+tr:last-child td { border-bottom: 0; }
+@media (max-width: 980px) {
+  .summary-grid, .three-col, .term-grid, .quick-grid, .four-col { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .cause-grid, .details-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .page { width: min(100% - 22px, 1180px); padding-top: 22px; }
+  .hero, .section, .final-box { padding: 22px; border-radius: 22px; }
+  .summary-grid, .term-grid, .quick-grid, .four-col { grid-template-columns: 1fr; }
+  .event { grid-template-columns: 1fr; }
+  .date { min-height: 66px; }
+  .event > div:last-child { padding: 0 16px 16px; }
+  .key-line { grid-template-columns: 1fr; gap: 6px; }
+  summary { align-items: flex-start; flex-direction: column; }
+  .hero::after { font-size: 82px; }
+}
+
+
+/* Extensii pentru această sinteză */
+.tool-row { display:flex; gap:10px; flex-wrap:wrap; margin-top:18px; }
+.tool-row button { border:1px solid rgba(91,62,36,.18); background:#f3eadf; color:var(--title); border-radius:999px; padding:9px 13px; font:700 14px Georgia,"Times New Roman",serif; cursor:pointer; }
+.tool-row button:hover { background:#e5d2bb; }
+.metric { font-size:34px; line-height:1; color:var(--accent); font-weight:900; display:block; margin-bottom:8px; }
+.ribbon { display:inline-block; margin-bottom:10px; padding:5px 10px; border-radius:999px; background:#efe0cf; border:1px solid rgba(91,62,36,.15); color:var(--accent); font-size:13px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; }
+.compare-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.compare-head { background:linear-gradient(180deg,#7a4f2a,#5b351b); color:#fffaf3; padding:15px 18px; font-weight:900; font-size:18px; }
+.compare-body { padding:18px; }
+.compare-card { background:#fff; border:1px solid rgba(91,62,36,.14); border-radius:20px; overflow:hidden; box-shadow:var(--shadow-small); }
+.quote { margin:16px 0 0; padding:18px 20px; border-left:6px solid rgba(122,79,42,.55); background:#fff8ef; border-radius:0 18px 18px 0; color:var(--muted); font-size:17px; line-height:1.7; font-style:italic; }
+.badge-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+.badge { display:inline-flex; padding:6px 10px; border-radius:999px; background:#f3eadf; border:1px solid rgba(91,62,36,.14); color:var(--title); font-size:13.5px; font-weight:700; }
+.kicker { color:var(--accent); font-weight:800; text-transform:uppercase; letter-spacing:.06em; font-size:14px; margin:0 0 8px; }
+.checklist { list-style:none; margin:0; padding:0; }
+.checklist li { position:relative; padding-left:28px; margin-bottom:10px; }
+.checklist li::before { content:"✓"; position:absolute; left:0; top:0; color:var(--accent); font-weight:900; }
+.redflag { list-style:none; margin:0; padding:0; }
+.redflag li { position:relative; padding-left:28px; margin-bottom:10px; }
+.redflag li::before { content:"!"; position:absolute; left:4px; top:0; color:#8b3e2f; font-weight:900; }
+.progress { position:fixed; left:0; top:0; height:4px; background:#d3a46f; width:0; z-index:99; box-shadow:0 1px 5px rgba(0,0,0,.25); }
+@media (max-width:980px){ .compare-grid{grid-template-columns:1fr;} }
+@media print {
+  body { background:#fff; }
+  body::before, .progress, .topbar, .nav-card, .tool-row { display:none !important; }
+  .page { width:100%; padding:0; }
+  .hero,.section,.final-box { box-shadow:none; border:1px solid #bbb; break-inside:avoid; }
+  details { break-inside:avoid; }
+  details > .details-body { display:block !important; }
+  summary::after { display:none; }
+}
+
+.data-strip { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:18px; }
+.data-item { background:#fff; border:1px solid rgba(91,62,36,.14); border-radius:18px; padding:16px; box-shadow:var(--shadow-small); }
+.data-item b { display:block; color:var(--accent); font-size:24px; line-height:1.05; margin-bottom:7px; text-align:left; }
+.data-item span { display:block; color:var(--muted); font-size:14.5px; line-height:1.5; text-align:justify; }
+.period-band { display:grid; grid-template-columns:160px 1fr; border:1px solid rgba(91,62,36,.14); border-radius:20px; overflow:hidden; background:#fff; box-shadow:var(--shadow-small); margin-top:13px; }
+.period-band .period-date { display:flex; align-items:center; justify-content:center; padding:18px; background:linear-gradient(180deg,#7a4f2a,#5b351b); color:#fffaf3; text-align:center; font-weight:900; font-size:18px; }
+.period-band .period-copy { padding:17px 19px; }
+.period-band h3 { margin-bottom:7px; }
+.period-band p { margin:0; }
+.concept-chain { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:16px; }
+.concept-chain span { background:#fff; border:1px solid rgba(91,62,36,.16); border-radius:999px; padding:8px 11px; color:var(--title); font-weight:700; font-size:14px; box-shadow:var(--shadow-small); }
+.concept-chain i { color:var(--accent); font-style:normal; font-weight:900; }
+.source-box { margin-top:16px; background:#fffdf8; border:1px solid rgba(91,62,36,.16); border-radius:20px; padding:20px; }
+.source-box h3 { margin-bottom:8px; }
+.source-box p:last-child { margin-bottom:0; }
+.dense-table table { min-width:980px; }
+.dense-table th, .dense-table td { font-size:15.2px; line-height:1.48; padding:11px 12px; }
+.correction { background:#f8efe5; border:1px solid rgba(122,79,42,.24); border-left:6px solid #7a4f2a; border-radius:18px; padding:17px 19px; margin-top:15px; }
+.correction strong { color:var(--title); }
+.smallcaps { font-variant:small-caps; letter-spacing:.03em; }
+@media (max-width:980px){ .data-strip{grid-template-columns:repeat(2,1fr);} .period-band{grid-template-columns:130px 1fr;} }
+@media (max-width:680px){ .data-strip{grid-template-columns:1fr;} .period-band{grid-template-columns:1fr;} .period-band .period-date{min-height:62px;} }
+
+
+/* Structură editorială pe părți tematice */
+.part-divider {
+  position: relative;
+  margin: 38px 0 22px;
+  padding: 24px 28px;
+  border-radius: 24px;
+  color: #fffaf3;
+  background: linear-gradient(135deg, rgba(83,45,22,.98), rgba(128,78,40,.96));
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.part-divider::after {
+  content: attr(data-mark);
+  position: absolute;
+  right: 22px;
+  bottom: -22px;
+  font-size: 92px;
+  line-height: 1;
+  font-weight: 900;
+  color: rgba(255,255,255,.09);
+  pointer-events: none;
+}
+.part-divider .part-kicker {
+  margin: 0 0 6px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-weight: 900;
+  color: #f0d3b1;
+}
+.part-divider h2 { margin: 0 0 8px; color: #fffaf3; font-size: clamp(27px,3vw,38px); }
+.part-divider p { margin: 0; max-width: 940px; color: rgba(255,250,243,.88); }
+.section-label {
+  display: inline-flex;
+  margin: 0 0 9px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(91,62,36,.14);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.nav-card { align-items: stretch; }
+.nav-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 6px 0;
+  border-bottom: 1px dashed rgba(91,62,36,.16);
+}
+.nav-group:last-child { border-bottom: 0; }
+.nav-group > span {
+  min-width: 165px;
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.reform-overview { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 16px; }
+.reform-domain {
+  padding: 20px;
+  background: #fff;
+  border: 1px solid rgba(91,62,36,.14);
+  border-radius: 20px;
+  box-shadow: var(--shadow-small);
+}
+.reform-domain h3 { display:flex; align-items:center; gap:9px; margin-bottom:10px; }
+.reform-icon {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:34px; height:34px; border-radius:50%; background:var(--accent-soft);
+  color:var(--accent); font-size:16px; flex:0 0 auto;
+}
+.reform-domain p { margin:0; }
+.ruler-profile {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 0;
+  margin-top: 15px;
+  border: 1px solid rgba(91,62,36,.15);
+  border-radius: 22px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: var(--shadow-small);
+}
+.ruler-side {
+  padding: 22px;
+  background: linear-gradient(180deg,#754825,#4e2b17);
+  color:#fffaf3;
+}
+.ruler-side .years { display:block; margin-bottom:8px; color:#f0d3b1; font-weight:800; font-size:14px; }
+.ruler-side strong { display:block; font-size:20px; line-height:1.22; }
+.ruler-main { padding: 21px 22px; }
+.ruler-main h3 { margin-bottom: 9px; }
+.ruler-main p { margin: 0 0 11px; }
+.ruler-main p:last-child { margin-bottom:0; }
+.reform-list { list-style:none; padding:0; margin:12px 0 0; }
+.reform-list li { position:relative; padding: 10px 0 10px 31px; margin:0; border-top:1px dashed rgba(91,62,36,.16); }
+.reform-list li::before { content:'◆'; position:absolute; left:4px; top:11px; color:var(--accent); font-size:13px; }
+.reform-list strong { color:var(--title); }
+.reform-verdict {
+  margin-top: 13px;
+  padding: 13px 15px;
+  border-radius: 16px;
+  background:#fff8ef;
+  border-left:5px solid rgba(122,79,42,.5);
+}
+.reform-table td:first-child { min-width: 150px; color:var(--title); font-weight:800; }
+.reform-table td:nth-child(2) { min-width: 145px; }
+@media (max-width:980px){
+  .reform-overview{grid-template-columns:repeat(2,1fr)}
+  .ruler-profile{grid-template-columns:150px 1fr}
+}
+@media (max-width:680px){
+  .nav-group > span{min-width:100%;}
+  .reform-overview{grid-template-columns:1fr}
+  .ruler-profile{grid-template-columns:1fr}
+  .ruler-side{padding:17px 19px}
+}
+
+
+/* Extensii specifice paginii despre Transilvania */
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 5px;
+  width: 0;
+  z-index: 9999;
+  background: linear-gradient(90deg, #e4b575, #fff0c9);
+  box-shadow: 0 2px 8px rgba(0,0,0,.25);
+}
+.section-label {
+  display: inline-block;
+  margin-bottom: 9px;
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+.nav-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.nav-group + .nav-group {
+  padding-top: 12px;
+  margin-top: 2px;
+  border-top: 1px dashed rgba(91,62,36,.16);
+}
+.nav-group > span {
+  min-width: 165px;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.part-divider {
+  position: relative;
+  overflow: hidden;
+  margin: 28px 0 22px;
+  padding: 28px 30px;
+  border: 1px solid rgba(255,250,243,.18);
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 90% 15%, rgba(255,255,255,.13), transparent 30%),
+    linear-gradient(135deg, #5f3b22, #2d190d);
+  box-shadow: var(--shadow);
+}
+.part-divider::after {
+  content: attr(data-mark);
+  position: absolute;
+  right: 24px;
+  bottom: -34px;
+  color: rgba(255,250,243,.09);
+  font-size: 126px;
+  line-height: 1;
+  font-weight: 900;
+}
+.part-divider .part-kicker {
+  margin: 0 0 7px;
+  color: #e9c79e;
+  font-weight: 900;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+.part-divider h2 {
+  margin: 0 0 8px;
+  color: #fffaf3;
+  font-size: clamp(27px,3vw,38px);
+}
+.part-divider p {
+  margin: 0;
+  max-width: 960px;
+  color: rgba(255,250,243,.88);
+}
+.metric {
+  font-size: 34px;
+  line-height: 1;
+  color: var(--accent);
+  font-weight: 900;
+  display: block;
+  margin-bottom: 8px;
+}
+.period-band {
+  display: grid;
+  grid-template-columns: 185px 1fr;
+  gap: 18px;
+  margin-top: 13px;
+  overflow: hidden;
+  border: 1px solid rgba(91,62,36,.14);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: var(--shadow-small);
+}
+.period-date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: linear-gradient(180deg,#7a4f2a,#5b351b);
+  color: #fffaf3;
+  font-size: 18px;
+  line-height: 1.25;
+  font-weight: 900;
+  text-align: center;
+}
+.period-copy {
+  padding: 17px 18px 17px 0;
+}
+.period-copy h3 {
+  margin: 0 0 5px;
+}
+.period-copy p {
+  margin: 0;
+}
+.concept-chain {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+.concept-chain span {
+  padding: 8px 12px;
+  border: 1px solid rgba(91,62,36,.15);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--title);
+  font-weight: 800;
+  box-shadow: var(--shadow-small);
+}
+.concept-chain i {
+  color: var(--accent);
+  font-style: normal;
+  font-weight: 900;
+}
+.source-box, .correction {
+  margin-top: 16px;
+  padding: 19px 21px;
+  border: 1px solid rgba(91,62,36,.18);
+  border-radius: 19px;
+  background: #fff9f1;
+  color: var(--muted);
+  font-size: 16.5px;
+  line-height: 1.68;
+}
+.correction {
+  border-left: 6px solid #8c5f34;
+}
+.source-box h3 {
+  margin-bottom: 7px;
+}
+.estates-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 13px;
+}
+.estate {
+  overflow: hidden;
+  border: 1px solid rgba(91,62,36,.14);
+  border-radius: 19px;
+  background: #fff;
+  box-shadow: var(--shadow-small);
+}
+.estate-head {
+  padding: 14px 16px;
+  background: #f3eadf;
+  color: var(--title);
+  font-size: 17px;
+  font-weight: 900;
+}
+.estate-body {
+  padding: 16px;
+}
+.estate-body p {
+  margin: 0;
+  font-size: 15.8px;
+}
+.profile {
+  display: grid;
+  grid-template-columns: 175px 1fr;
+  overflow: hidden;
+  margin-top: 15px;
+  border: 1px solid rgba(91,62,36,.14);
+  border-radius: 21px;
+  background: #fff;
+  box-shadow: var(--shadow-small);
+}
+.profile-side {
+  padding: 20px;
+  background: linear-gradient(180deg,#7a4f2a,#5b351b);
+  color: #fffaf3;
+}
+.profile-side strong {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 18px;
+}
+.profile-side span {
+  display: block;
+  color: rgba(255,250,243,.82);
+  line-height: 1.55;
+}
+.profile-main {
+  padding: 21px;
+}
+.profile-main h3 {
+  margin-bottom: 8px;
+}
+.profile-main p:first-of-type {
+  margin-top: 0;
+}
+.profile-main p:last-child {
+  margin-bottom: 0;
+}
+.balance-grid {
+  display: grid;
+  grid-template-columns: 1fr 72px 1fr;
+  gap: 14px;
+  align-items: stretch;
+  margin-top: 15px;
+}
+.balance-side, .balance-center {
+  border: 1px solid rgba(91,62,36,.14);
+  border-radius: 20px;
+  box-shadow: var(--shadow-small);
+}
+.balance-side {
+  padding: 20px;
+  background: #fff;
+}
+.balance-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0e4d4;
+  color: var(--accent);
+  font-size: 30px;
+  font-weight: 900;
+}
+.claim-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 13px;
+  margin-top: 15px;
+}
+.claim {
+  padding: 18px;
+  border: 1px solid rgba(91,62,36,.14);
+  border-radius: 19px;
+  background: #fff;
+  box-shadow: var(--shadow-small);
+}
+.claim strong {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--title);
+  font-size: 17px;
+}
+.claim p {
+  margin: 0;
+  font-size: 15.8px;
+}
+.checklist {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.checklist li {
+  position: relative;
+  margin-bottom: 9px;
+  padding-left: 25px;
+}
+.checklist li::before {
+  content: "◆";
+  position: absolute;
+  left: 0;
+  top: 1px;
+  color: var(--accent);
+  font-size: 12px;
+}
+.compare-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 14px;
+}
+.compare-card {
+  overflow: hidden;
+  border: 1px solid rgba(91,62,36,.14);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: var(--shadow-small);
+}
+.compare-head {
+  padding: 15px 18px;
+  background: linear-gradient(180deg,#7a4f2a,#5b351b);
+  color: #fffaf3;
+  font-size: 18px;
+  font-weight: 900;
+}
+.compare-body {
+  padding: 18px;
+}
+.quote {
+  margin: 16px 0 0;
+  padding: 18px 20px;
+  border-left: 6px solid rgba(122,79,42,.55);
+  border-radius: 0 18px 18px 0;
+  background: #fff8ef;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.7;
+  font-style: italic;
+}
+.tool-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+.tool-row button {
+  border: 1px solid rgba(91,62,36,.18);
+  border-radius: 999px;
+  padding: 9px 13px;
+  background: #f3eadf;
+  color: var(--title);
+  font: 700 14px Georgia,"Times New Roman",serif;
+  cursor: pointer;
+}
+.tool-row button:hover {
+  background: #e5d2bb;
+}
+@media (max-width:980px) {
+  .estates-grid, .claim-grid, .compare-grid { grid-template-columns: repeat(2,1fr); }
+  .balance-grid { grid-template-columns: 1fr; }
+  .balance-center { min-height: 58px; }
+}
+@media (max-width:680px) {
+  .period-band, .profile { grid-template-columns: 1fr; }
+  .period-copy { padding: 0 16px 16px; }
+  .estates-grid, .claim-grid, .compare-grid { grid-template-columns: 1fr; }
+  .nav-group > span { min-width: 100%; }
+}
+@media print {
+  body { background:#fff; }
+  body::before, .progress, .topbar, .tool-row { display:none !important; }
+  .page { width:100%; padding:0; }
+  .hero, .section, .final-box, .part-divider { box-shadow:none; break-inside:avoid; }
+  details { break-inside:avoid; }
+  details > * { display:block !important; }
+  summary::after { display:none; }
+}
+
+
+
+/* Extensii pentru pagina despre conflictele militare */
+.progress {
+  position: fixed;
+  inset: 0 auto auto 0;
+  width: 0;
+  height: 5px;
+  z-index: 9999;
+  background: linear-gradient(90deg,#dca861,#fff0c7);
+  box-shadow: 0 2px 8px rgba(0,0,0,.28);
+}
+.section-label {
+  display:inline-block;
+  margin-bottom:9px;
+  color:var(--accent);
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+.nav-group {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+  width:100%;
+}
+.nav-group + .nav-group {
+  padding-top:12px;
+  margin-top:2px;
+  border-top:1px dashed rgba(91,62,36,.16);
+}
+.nav-group > span {
+  min-width:170px;
+  color:var(--accent);
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+.part-divider {
+  position:relative;
+  overflow:hidden;
+  margin:28px 0 22px;
+  padding:29px 31px;
+  border:1px solid rgba(255,250,243,.18);
+  border-radius:26px;
+  background:
+    radial-gradient(circle at 91% 14%,rgba(255,255,255,.13),transparent 31%),
+    linear-gradient(135deg,#633d22,#2d190d);
+  box-shadow:var(--shadow);
+}
+.part-divider::after {
+  content:attr(data-mark);
+  position:absolute;
+  right:24px;
+  bottom:-35px;
+  color:rgba(255,250,243,.09);
+  font-size:128px;
+  line-height:1;
+  font-weight:900;
+}
+.part-divider .part-kicker {
+  margin:0 0 7px;
+  color:#e9c79e;
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+.part-divider h2 { margin:0 0 8px; color:#fffaf3; }
+.part-divider p { margin:0; max-width:970px; color:rgba(255,250,243,.88); }
+.metric {
+  display:block;
+  margin-bottom:8px;
+  color:var(--accent);
+  font-size:33px;
+  line-height:1;
+  font-weight:900;
+}
+.war-header {
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:18px;
+  overflow:hidden;
+  margin:16px 0;
+  border:1px solid rgba(91,62,36,.14);
+  border-radius:22px;
+  background:#fff;
+  box-shadow:var(--shadow-small);
+}
+.war-date {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:22px 15px;
+  background:linear-gradient(180deg,#7a4f2a,#4e2d17);
+  color:#fffaf3;
+  font-size:23px;
+  line-height:1.18;
+  font-weight:900;
+  text-align:center;
+}
+.war-copy { padding:20px 21px 20px 0; }
+.war-copy h3 { margin-bottom:7px; }
+.war-copy p { margin:0; }
+.actor-grid, .campaign-grid, .treaty-grid, .impact-grid, .claim-grid {
+  display:grid;
+  gap:14px;
+}
+.actor-grid { grid-template-columns:repeat(3,1fr); }
+.campaign-grid { grid-template-columns:repeat(2,1fr); }
+.treaty-grid { grid-template-columns:repeat(3,1fr); }
+.impact-grid { grid-template-columns:repeat(4,1fr); }
+.claim-grid { grid-template-columns:repeat(3,1fr); }
+.actor, .campaign-card, .treaty-card, .impact-card, .claim {
+  padding:19px;
+  border:1px solid rgba(91,62,36,.14);
+  border-radius:20px;
+  background:#fff;
+  box-shadow:var(--shadow-small);
+}
+.actor strong, .campaign-card strong, .treaty-card strong, .impact-card strong, .claim strong {
+  display:block;
+  margin-bottom:7px;
+  color:var(--title);
+  font-size:17px;
+}
+.actor p, .campaign-card p, .treaty-card p, .impact-card p, .claim p {
+  margin:0;
+  font-size:15.9px;
+}
+.operation {
+  display:grid;
+  grid-template-columns:142px 1fr;
+  gap:16px;
+  overflow:hidden;
+  margin-top:13px;
+  border:1px solid rgba(91,62,36,.14);
+  border-radius:20px;
+  background:#fff;
+  box-shadow:var(--shadow-small);
+}
+.operation .op-date {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+  background:#f0e4d4;
+  color:var(--title);
+  font-weight:900;
+  text-align:center;
+}
+.operation .op-body { padding:16px 18px 16px 0; }
+.operation .op-body h3 { margin:0 0 5px; font-size:19px; }
+.operation .op-body p { margin:0; font-size:16.3px; }
+.causal-chain {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+.causal-chain span {
+  padding:8px 12px;
+  border:1px solid rgba(91,62,36,.15);
+  border-radius:999px;
+  background:#fff;
+  color:var(--title);
+  font-weight:800;
+  box-shadow:var(--shadow-small);
+}
+.causal-chain i { color:var(--accent); font-style:normal; font-weight:900; }
+.correction, .source-box, .strategic-box {
+  margin-top:17px;
+  padding:19px 21px;
+  border:1px solid rgba(91,62,36,.18);
+  border-radius:19px;
+  background:#fff9f1;
+  color:var(--muted);
+  font-size:16.5px;
+  line-height:1.68;
+}
+.correction { border-left:6px solid #8b5b31; }
+.strategic-box { background:#f5eee5; }
+.source-box h3, .strategic-box h3 { margin-bottom:7px; }
+.frontier {
+  display:grid;
+  grid-template-columns:1fr 64px 1fr;
+  gap:14px;
+  align-items:stretch;
+  margin-top:16px;
+}
+.frontier-side, .frontier-center {
+  border:1px solid rgba(91,62,36,.14);
+  border-radius:20px;
+  box-shadow:var(--shadow-small);
+}
+.frontier-side { padding:20px; background:#fff; }
+.frontier-center {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#f0e4d4;
+  color:var(--accent);
+  font-size:28px;
+  font-weight:900;
+}
+.quote {
+  margin:16px 0 0;
+  padding:18px 20px;
+  border-left:6px solid rgba(122,79,42,.55);
+  border-radius:0 18px 18px 0;
+  background:#fff8ef;
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.7;
+  font-style:italic;
+}
+.checklist {
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+.checklist li {
+  position:relative;
+  margin-bottom:9px;
+  padding-left:25px;
+}
+.checklist li::before {
+  content:"◆";
+  position:absolute;
+  left:0;
+  top:1px;
+  color:var(--accent);
+  font-size:12px;
+}
+.tool-row {
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+.tool-row button {
+  border:1px solid rgba(91,62,36,.18);
+  border-radius:999px;
+  padding:9px 13px;
+  background:#f3eadf;
+  color:var(--title);
+  font:700 14px Georgia,"Times New Roman",serif;
+  cursor:pointer;
+}
+.tool-row button:hover { background:#e5d2bb; }
+@media (max-width:980px) {
+  .actor-grid,.treaty-grid,.claim-grid { grid-template-columns:repeat(2,1fr); }
+  .impact-grid { grid-template-columns:repeat(2,1fr); }
+  .frontier { grid-template-columns:1fr; }
+  .frontier-center { min-height:56px; }
+}
+@media (max-width:680px) {
+  .war-header,.operation { grid-template-columns:1fr; }
+  .war-copy,.operation .op-body { padding:0 16px 17px; }
+  .actor-grid,.campaign-grid,.treaty-grid,.impact-grid,.claim-grid { grid-template-columns:1fr; }
+  .nav-group > span { min-width:100%; }
+}
+@media print {
+  body { background:#fff; }
+  body::before,.progress,.topbar,.tool-row { display:none!important; }
+  .page { width:100%; padding:0; }
+  .hero,.section,.final-box,.part-divider { box-shadow:none; break-inside:avoid; }
+  details { break-inside:avoid; }
+  details > * { display:block!important; }
+  summary::after { display:none; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<main class="page">
+  <div class="topbar">
+    <a class="back-link" href="javascript:history.back()">← Înapoi</a>
+    <span class="tag">Istoria României · Problema Orientală · 1683–1812</span>
+  </div>
+
+  <header class="hero" style="--hero-year:'1683–1812'">
+    <p class="eyebrow">Principatele Române între trei imperii</p>
+    <h1>Modernitatea timpurie: conflicte militare</h1>
+    <p class="subtitle">O analiză amplă a războaielor ruso-austro-otomane care au transformat statutul Transilvaniei, al Moldovei și al Țării Românești. Sunt urmărite cauzele geopolitice, strategiile militare, campaniile desfășurate pe teritoriile românești, tratatele de pace, ocupațiile, anexările, administrațiile provizorii și efectele sociale. Firul central este trecerea de la dominația otomană aproape necontestată la competiția dintre Poartă, Rusia și Monarhia Habsburgică.</p>
+
+    <div class="summary-grid">
+      <div class="summary-card"><span class="metric">1683–1699</span><strong>Marele Război Turcesc</strong><span>Înfrângerea expansiunii otomane și intrarea Transilvaniei în sistemul habsburgic.</span></div>
+      <div class="summary-card"><span class="metric">1711–1739</span><strong>Prut, Passarowitz, Belgrad</strong><span>Începutul regimului fanariot, transformarea Hotinului în raia și disputa pentru Oltenia și Banat.</span></div>
+      <div class="summary-card"><span class="metric">1768–1792</span><strong>Ascensiunea Rusiei</strong><span>Küçük Kaynarca, anexarea Bucovinei și mutarea frontierei ruse la Nistru.</span></div>
+      <div class="summary-card"><span class="metric">1806–1812</span><strong>Pierderea Basarabiei</strong><span>Războiul purtat în context napoleonian se încheie prin cedarea teritoriului dintre Prut și Nistru.</span></div>
+    </div>
+
+    <div class="tool-row">
+      <button type="button" onclick="toggleAll(true)">Deschide toate explicațiile</button>
+      <button type="button" onclick="toggleAll(false)">Închide toate explicațiile</button>
+      <button type="button" onclick="window.print()">Printează / salvează PDF</button>
+    </div>
+  </header>
+
+  <nav class="nav-card" aria-label="Cuprins">
+    <div class="nav-group"><span>Cadru strategic</span><a href="#problema-orientala">Problema Orientală</a><a href="#spatiu">De ce aici?</a><a href="#armate">Armate și logistică</a><a href="#raiale">Raiale și fortificații</a></div>
+    <div class="nav-group"><span>1683–1739</span><a href="#marele-razboi">Marele Război Turcesc</a><a href="#prut">Campania de la Prut</a><a href="#passarowitz">Războiul din 1716–1718</a><a href="#oltenia">Oltenia habsburgică</a><a href="#belgrad">Războiul din 1735–1739</a></div>
+    <div class="nav-group"><span>1768–1792</span><a href="#razboiul-1768">Războiul din 1768–1774</a><a href="#kuciuk">Küçük Kaynarca</a><a href="#bucovina">Bucovina, 1775</a><a href="#razboiul-1787">Războiul din 1787–1792</a><a href="#sistova-iasi">Șiștov și Iași</a></div>
+    <div class="nav-group"><span>1806–1812</span><a href="#cauze-1806">Declanșarea</a><a href="#campanii-1806">Campaniile</a><a href="#bucuresti-1812">Pacea de la București</a><a href="#basarabia">Basarabia</a></div>
+    <div class="nav-group"><span>Analiză</span><a href="#civili">Civili și economie</a><a href="#boieri">Elite și proiecte</a><a href="#comparatie">Comparație</a><a href="#cronologie">Cronologie</a><a href="#glosar">Glosar</a><a href="#corecturi">Corecturi</a></div>
+  </nav>
+
+  <section class="part-divider" data-mark="I">
+    <p class="part-kicker">Spațiul românesc în sistemul european</p>
+    <h2>De ce au devenit Principatele câmp de luptă</h2>
+    <p>Războaiele nu au fost episoade izolate, ci etape ale unei competiții pentru Dunărea de Jos, Marea Neagră, Balcani și moștenirea teritorială a Imperiului Otoman.</p>
+  </section>
+
+  <section class="section" id="problema-orientala">
+    <div class="section-label">Concept central</div>
+    <h2>Problema Orientală: declinul otoman și rivalitatea marilor puteri</h2>
+    <p class="section-intro">Prin „Problema Orientală” se înțelege ansamblul conflictelor, negocierilor și proiectelor provocate de slăbirea treptată a Imperiului Otoman. Nici Rusia, nici Austria nu urmăreau numai „eliberarea creștinilor”. Ambele imperii căutau teritorii, fortărețe, rute comerciale și influență politică. Puterile occidentale interveneau diplomatic pentru a împiedica o singură putere să controleze strâmtorile și Balcanii.</p>
+
+    <div class="actor-grid">
+      <article class="actor"><strong>Imperiul Otoman</strong><p>Urmărea să păstreze linia Dunării, accesul la Marea Neagră și controlul asupra statelor tributare. Principatele furnizau hrană, animale, bani și culoare de trecere pentru armate.</p></article>
+      <article class="actor"><strong>Monarhia Habsburgică</strong><p>Dorea securizarea Ungariei, împingerea frontierei spre sud și legarea Transilvaniei de Banat, Serbia și, după 1772, de Galiția.</p></article>
+      <article class="actor"><strong>Imperiul Rus</strong><p>Urmărea accesul la Marea Neagră, eliminarea Hanatului Crimeii, protejarea intereselor ortodoxe și extinderea frontierei spre Bug, Nistru și Dunăre.</p></article>
+    </div>
+
+    <details open><summary>Eliberare creștină sau expansiune imperială?</summary><div class="details-body">
+      <p>Discursul religios era important: Rusia se prezenta drept protectoare a ortodocșilor, iar Habsburgii drept apărători ai creștinătății catolice. Totuși, obiectivele strategice erau concrete. Rusia urmărea porturi, navigație și baze militare; Austria urmărea fortificații, provincii fiscale și o frontieră mai ușor de apărat.</p>
+      <p>Locuitorii Principatelor puteau vedea intervenția creștină ca pe o șansă de reducere a dominației otomane. Experiența ocupațiilor arăta însă că armatele „eliberatoare” rechiziționau hrană, impuneau contribuții și puteau anexa teritorii.</p>
+    </div></details>
+
+    <div class="causal-chain"><span>slăbirea Porții</span><i>→</i><span>rivalitate austro-rusă</span><i>→</i><span>războaie repetate</span><i>→</i><span>ocupații în Principate</span><i>→</i><span>tratate și anexări</span><i>→</i><span>schimbarea statutului internațional</span></div>
+  </section>
+
+  <section class="section" id="spatiu">
+    <div class="section-label">Geografie militară</div>
+    <h2>De ce Moldova și Țara Românească erau inevitabil implicate</h2>
+    <p class="section-intro">Principatele formau culoarul dintre Carpați, Nistru și Dunărea de Jos. Cine controla trecerile carpatice, vadurile și cetățile dunărene putea muta trupe între Europa Centrală, stepa pontică și Balcani.</p>
+
+    <div class="impact-grid">
+      <article class="impact-card"><strong>Dunărea</strong><p>Era obstacol defensiv, arteră de transport și linie de fortificații. Brăila, Giurgiu, Turnu, Silistra, Rusciuc și Ismail controlau traversările și aprovizionarea.</p></article>
+      <article class="impact-card"><strong>Prutul și Nistrul</strong><p>Constituiau axe de marș pentru armatele ruse. Nistrul a devenit în 1792 frontieră ruso-otomană, iar Prutul în 1812 frontieră ruso-moldavă.</p></article>
+      <article class="impact-card"><strong>Carpații</strong><p>Trecerile legau Transilvania habsburgică de Moldova și Țara Românească. Austria putea pătrunde prin Oituz, Bran, Turnu Roșu sau Pasul Buzăului.</p></article>
+      <article class="impact-card"><strong>Câmpiile și porturile</strong><p>Câmpiile furnizau cereale, fân și cai. Porturile dunărene și pontice conectau campaniile terestre cu flotele și depozitele.</p></article>
+    </div>
+
+    <div class="strategic-box"><h3>Principatele ca „zonă tampon”</h3><p>Ele nu erau provincii otomane propriu-zise, dar se aflau sub suzeranitatea Porții. Autonomia internă permitea existența domnilor, boierimii și dreptului local, însă politica externă era limitată. Această poziție intermediară le făcea utile ca tampon, dar și vulnerabile: Poarta le folosea pentru apărare, iar rivalii ei le tratau ca punct de intrare spre Balcani.</p></div>
+  </section>
+
+  <section class="section" id="armate">
+    <div class="section-label">Războiul în secolul al XVIII-lea</div>
+    <h2>Armate, arme și logistică</h2>
+    <p class="section-intro">Victoria nu depindea numai de bătălii. Armatele trebuiau să transporte tunuri, pulbere și hrană pe drumuri slabe, să traverseze râuri și să evite epidemiile. În multe campanii, foametea, bolile și dezertarea produceau pierderi comparabile cu luptele.</p>
+
+    <div class="treaty-grid">
+      <article class="treaty-card"><strong>Armata otomană</strong><p>Combina ieniceri, spahii, artilerie, trupe provinciale, tătari crimeeni și contingente auxiliare. Cetățile dunărene ofereau garnizoane și depozite. Mobilizarea mare era puternică, dar coordonarea putea fi dificilă.</p></article>
+      <article class="treaty-card"><strong>Armata habsburgică</strong><p>Se baza pe infanterie de linie, cavalerie, artilerie și rețeaua Graniței Militare. Inginerii, cartografia și administrația depozitelor au fost esențiale în asediile de la Timișoara și Belgrad.</p></article>
+      <article class="treaty-card"><strong>Armata rusă</strong><p>Reformele lui Petru I și ale succesorilor au creat regimente permanente și artilerie puternică. În secolul al XVIII-lea, comandanți precum Rumianțev, Suvorov și Kutuzov au dezvoltat marșuri rapide și formații flexibile.</p></article>
+    </div>
+
+    <details><summary>Cine plătea războiul?</summary><div class="details-body">
+      <p>În mod practic, populația locală suporta o mare parte a costurilor. Satele livrau grâne, vite, fân, lemn, care și cai. Orașele erau obligate să găzduiască soldați, să amenajeze spitale și să repare drumuri. Moneda se devaloriza, comerțul era întrerupt, iar muncile agricole erau abandonate.</p>
+      <p>Chiar și atunci când comandamentul promitea plata, compensațiile veneau târziu sau deloc. De aici fuga populației în păduri, peste munți ori în alte provincii, precum și opoziția față de orice armată străină.</p>
+    </div></details>
+  </section>
+
+  <section class="section" id="raiale">
+    <div class="section-label">Noduri militare</div>
+    <h2>Raiale, cetăți și capete de pod otomane</h2>
+    <p class="section-intro">O raia era un teritoriu administrat direct de otomani în jurul unei cetăți strategice, distinct de restul Principatului autonom. În aceste zone, garnizoana, fiscalitatea și justiția depindeau direct de autoritățile otomane.</p>
+
+    <div class="claim-grid">
+      <article class="claim"><strong>Turnu</strong><p>Controla un vad important al Dunării și drumul spre centrul Țării Românești.</p></article>
+      <article class="claim"><strong>Giurgiu</strong><p>Proteja legătura cu Rusciuc și accesul spre București; a fost asediat în mai multe războaie.</p></article>
+      <article class="claim"><strong>Brăila</strong><p>Port cerealier și fortăreață majoră; lega Dunărea de rutele maritime și de aprovizionarea otomană.</p></article>
+      <article class="claim"><strong>Chilia și Cetatea Albă</strong><p>Controlau gurile Dunării și litoralul nord-vestic al Mării Negre.</p></article>
+      <article class="claim"><strong>Tighina/Bender</strong><p>Fortăreață pe Nistru, esențială pentru apărarea drumului dintre Crimeea, Bugeac și Moldova.</p></article>
+      <article class="claim"><strong>Hotin</strong><p>După criza din 1711–1713, zona a fost desprinsă din controlul domnesc moldovenesc și organizată ca raia otomană de frontieră.</p></article>
+    </div>
+
+    <div class="definition"><strong>Importanța militară:</strong> stăpânirea unei cetăți nu însemna doar control local. Ea oferea depozite, poduri, porturi, informații și posibilitatea de a susține o armată mai departe în interior.</div>
+  </section>
+
+  <section class="part-divider" data-mark="II">
+    <p class="part-kicker">Primul mare recul otoman</p>
+    <h2>Marele Război Turcesc și schimbarea statutului Transilvaniei</h2>
+    <p>Între 1683 și 1699, ofensiva habsburgică a mutat centrul de putere în Europa Centrală. Transilvania a intrat sub controlul Vienei înainte ca tratatul de la Karlowitz să confirme noua realitate internațională.</p>
+  </section>
+
+  <section class="section" id="marele-razboi">
+    <div class="section-label">1683–1699</div>
+    <h2>De la asediul Vienei la Pacea de la Karlowitz</h2>
+
+    <div class="war-header">
+      <div class="war-date">1683<br/>–<br/>1699</div>
+      <div class="war-copy"><h3>Marele Război Turcesc</h3><p>Conflictul a opus Imperiul Otoman unei coaliții formate în jurul Habsburgilor, Poloniei-Lituaniei, Veneției și, ulterior, Rusiei. El a încheiat perioada marilor cuceriri otomane în Europa Centrală și a inaugurat expansiunea habsburgică spre Dunăre.</p></div>
+    </div>
+
+    <div class="operation"><div class="op-date">12 sept. 1683</div><div class="op-body"><h3>Ridicarea asediului Vienei</h3><p>Armata de ajutor condusă de regele polon Ioan al III-lea Sobieski și de comandanții imperiali învinge forțele marelui vizir Kara Mustafa. Înfrângerea obligă Poarta să treacă în defensivă.</p></div></div>
+    <div class="operation"><div class="op-date">1684</div><div class="op-body"><h3>Formarea Ligii Sfinte</h3><p>Papa Inocențiu al XI-lea sprijină coaliția dintre Habsburgi, Polonia și Veneția. Rusia aderă mai târziu, deschizând presiunea dinspre Marea Neagră.</p></div></div>
+    <div class="operation"><div class="op-date">1686</div><div class="op-body"><h3>Cucerirea Budei</h3><p>După aproape un secol și jumătate de stăpânire otomană, Buda cade în mâinile armatei imperiale. Campaniile se deplasează spre Serbia și Transilvania.</p></div></div>
+    <div class="operation"><div class="op-date">1687–1691</div><div class="op-body"><h3>Preluarea Transilvaniei</h3><p>Trupele habsburgice intră în principat, impun acorduri de staționare și obțin recunoașterea autorității imperiale. Diploma Leopoldină din 1691 stabilește noul cadru politic.</p></div></div>
+    <div class="operation"><div class="op-date">11 sept. 1697</div><div class="op-body"><h3>Bătălia de la Zenta</h3><p>Principele Eugeniu de Savoia surprinde armata otomană în timpul traversării Tisei și obține victoria decisivă care împinge Poarta spre negocieri.</p></div></div>
+    <div class="operation"><div class="op-date">26 ian. 1699</div><div class="op-body"><h3>Pacea de la Karlowitz</h3><p>Tratatul recunoaște marile câștiguri habsburgice în Ungaria și Transilvania și marchează trecerea de la ofensiva otomană la defensiva strategică.</p></div></div>
+
+    <details open><summary>Cum a trecut efectiv Transilvania sub Habsburgi</summary><div class="details-body">
+      <p>Schimbarea nu s-a produs într-o singură zi la Karlowitz. Trupele imperiale au ocupat treptat principatul după 1686. Acordurile din 1687–1688 și Diploma Leopoldină din 4 decembrie 1691 au organizat administrația habsburgică, au confirmat Dieta, privilegiile nobilimii, sașilor și secuilor și cele patru confesiuni recepte.</p>
+      <p>Pacea din 1699 a oferit recunoaștere internațională unei situații deja create militar și juridic. De aceea este corect să spunem că „Transilvania trece sub dominația Austriei” prin procesul 1687–1699, nu exclusiv printr-un singur articol al tratatului.</p>
+    </div></details>
+
+    <div class="frontier">
+      <article class="frontier-side"><h3>Înainte de război</h3><p>Principatul Transilvaniei era autonom, cu principe ales, dar recunoștea suzeranitatea Porții și plătea tribut.</p></article>
+      <div class="frontier-center">→</div>
+      <article class="frontier-side"><h3>După război</h3><p>Transilvania devine principat separat în cadrul Monarhiei Habsburgice, guvernat în numele împăratului și protejat de armata imperială.</p></article>
+    </div>
+  </section>
+
+  <section class="part-divider" data-mark="III">
+    <p class="part-kicker">Rusia pătrunde în spațiul moldovenesc</p>
+    <h2>Campania de la Prut, începutul fanarioților și fortificarea Hotinului</h2>
+    <p>Alianța lui Dimitrie Cantemir cu Petru cel Mare a fost prima încercare majoră de desprindere a Moldovei cu sprijin rus. Eșecul ei a determinat Poarta să reducă încrederea în domnii pământeni.</p>
+  </section>
+
+  <section class="section" id="prut">
+    <div class="section-label">1710–1711</div>
+    <h2>Războiul ruso-otoman și campania de la Prut</h2>
+
+    <div class="war-header">
+      <div class="war-date">1710<br/>–<br/>1711</div>
+      <div class="war-copy"><h3>Încercarea lui Petru cel Mare de a coborî spre Dunăre</h3><p>După victoria Rusiei asupra Suediei la Poltava, regele suedez Carol al XII-lea s-a refugiat în Imperiul Otoman și a încurajat Poarta să declare război. Petru I a sperat într-o ridicare a creștinilor balcanici și într-o aprovizionare rapidă prin Moldova.</p></div>
+    </div>
+
+    <div class="campaign-grid">
+      <article class="campaign-card"><strong>Tratatul de la Luțk — 13 aprilie 1711</strong><p>Dimitrie Cantemir se alia în secret cu Rusia. Țarul promitea integritatea Moldovei, domnie ereditară familiei Cantemir și protecție împotriva răzbunării otomane. Moldova urma să participe militar și să aprovizioneze campania.</p></article>
+      <article class="campaign-card"><strong>Calculul lui Cantemir</strong><p>Domnul spera că puterea rusă va elimina suzeranitatea otomană. Planul depindea însă de o victorie rapidă și de participarea boierilor, dintre care unii au rămas rezervați sau ostili.</p></article>
+      <article class="campaign-card"><strong>Poziția lui Brâncoveanu</strong><p>Domnul Țării Românești a evitat angajarea totală, încercând să nu provoace Poarta înainte de clarificarea rezultatului. Marele spătar Toma Cantacuzino a trecut totuși de partea Rusiei și a participat la acțiunea asupra Brăilei.</p></article>
+      <article class="campaign-card"><strong>Problema logistică</strong><p>Armata rusă a intrat într-o țară afectată de secetă și lipsă de provizii. Depozitele promise nu erau suficiente, iar cavaleria tătară a limitat aprovizionarea și comunicațiile.</p></article>
+    </div>
+
+    <div class="operation"><div class="op-date">iun.–iul. 1711</div><div class="op-body"><h3>Înaintarea prin Moldova</h3><p>Petru I și Cantemir concentrează trupe în zona Iași–Prut. Mobilizarea locală este mai redusă decât se sperase, iar armata rusă nu reușește să forțeze o decizie înaintea sosirii marelui vizir.</p></div></div>
+    <div class="operation"><div class="op-date">7–14 iul. 1711</div><div class="op-body"><h3>Acțiunea de la Brăila</h3><p>Detașamentul rus al generalului Rönne, sprijinit de Toma Cantacuzino, cucerește temporar cetatea. Succesul local nu poate salva armata principală încercuită pe Prut.</p></div></div>
+    <div class="operation"><div class="op-date">18–22 iul. 1711</div><div class="op-body"><h3>Stănilești</h3><p>Armata ruso-moldoveană este încercuită de forțele marelui vizir Baltacı Mehmed Pașa. Lipsa hranei și a apei îl obligă pe Petru să negocieze.</p></div></div>
+    <div class="operation"><div class="op-date">23 iul. 1711</div><div class="op-body"><h3>Tratatul de la Prut</h3><p>Rusia restituie Azovul, acceptă demolarea unor fortificații și reducerea implicării în afacerile poloneze. Armata rusă primește dreptul de retragere.</p></div></div>
+
+    <details open><summary>Consecințele pentru Moldova</summary><div class="details-body">
+      <p>Dimitrie Cantemir pleacă în Rusia cu familia și cu o parte dintre susținători. Poarta consideră că domnii pământeni pot folosi autonomia pentru a se alia cu adversarii. În Moldova este instalat în 1711 Nicolae Mavrocordat, iar în Țara Românească regimul fanariot începe în 1716, după înlăturarea ultimilor domni pământeni ai epocii.</p>
+      <p>Poarta întărește controlul strategic asupra nordului Moldovei. În urma aranjamentelor din 1711–1713, Hotinul și teritoriul înconjurător sunt transformate într-o raia administrată direct, cu cetate reconstruită și garnizoană otomană.</p>
+    </div></details>
+
+    <div class="correction"><strong>Nu numai „Vadul Hușilor”:</strong> pacea este cunoscută mai exact drept Tratatul de la Prut, semnat lângă tabăra de la Stănilești la 23 iulie 1711. Acordul a fost confirmat și detaliat prin tratatul ruso-otoman de la Adrianopol din 1713. Transformarea Hotinului în raia aparține acestui proces de securizare a frontierei.</div>
+  </section>
+
+  <section class="part-divider" data-mark="IV">
+    <p class="part-kicker">Apogeul expansiunii habsburgice spre sud-est</p>
+    <h2>Passarowitz, administrația austriacă în Oltenia și reculul de la Belgrad</h2>
+    <p>În 1718, Viena ajunge la Dunărea de Jos și preia Banatul, Serbia de nord și Oltenia. Două decenii mai târziu, o campanie nereușită obligă Austria să se retragă.</p>
+  </section>
+
+  <section class="section" id="passarowitz">
+    <div class="section-label">1716–1718</div>
+    <h2>Războiul austro-otoman și Pacea de la Passarowitz</h2>
+
+    <div class="war-header">
+      <div class="war-date">1716<br/>–<br/>1718</div>
+      <div class="war-copy"><h3>Ofensiva principelui Eugeniu de Savoia</h3><p>Conflictul a pornit din războiul dintre Imperiul Otoman și Veneția. Monarhia Habsburgică a intervenit pentru a apăra echilibrul creat prin Karlowitz și pentru a extinde frontiera spre Belgrad, Timișoara și Dunăre.</p></div>
+    </div>
+
+    <div class="operation"><div class="op-date">5 aug. 1716</div><div class="op-body"><h3>Petrovaradin</h3><p>Eugeniu de Savoia învinge armata marelui vizir. Victoria deschide drumul spre Banat și slăbește apărarea otomană.</p></div></div>
+    <div class="operation"><div class="op-date">oct. 1716</div><div class="op-body"><h3>Căderea Timișoarei</h3><p>Ultimul mare centru otoman din Banat capitulează după un asediu organizat cu artilerie și lucrări de geniu.</p></div></div>
+    <div class="operation"><div class="op-date">16 aug. 1717</div><div class="op-body"><h3>Victoria de la Belgrad</h3><p>Armata imperială sparge încercuirea și obligă garnizoana Belgradului să capituleze. Prestigiul militar al Habsburgilor atinge un vârf.</p></div></div>
+    <div class="operation"><div class="op-date">21 iul. 1718</div><div class="op-body"><h3>Pacea de la Passarowitz</h3><p>Poarta cedează Habsburgilor Banatul Timișoarei, Serbia de nord cu Belgradul și Oltenia. Marea Britanie și Provinciile Unite mediază negocierile.</p></div></div>
+
+    <div class="treaty-grid">
+      <article class="treaty-card"><strong>Banatul</strong><p>Devine domeniu al Coroanei administrat direct de Viena, nu este reintegrat imediat în Regatul Ungariei. Se organizează colonizări, lucrări hidrotehnice și administrație militară.</p></article>
+      <article class="treaty-card"><strong>Serbia de nord</strong><p>Belgradul și teritoriile învecinate formează un regat habsburgic de frontieră, esențial pentru controlul Dunării și Savei.</p></article>
+      <article class="treaty-card"><strong>Oltenia</strong><p>Teritoriul dintre Olt, Dunăre și Carpați este desprins temporar din Țara Românească și administrat ca „Valahia austriacă” sau Banatul Craiovei.</p></article>
+    </div>
+  </section>
+
+  <section class="section" id="oltenia">
+    <div class="section-label">1718–1739</div>
+    <h2>Oltenia sub administrație habsburgică</h2>
+    <p class="section-intro">Stăpânirea austriacă nu a fost numai o ocupație militară. Viena a încercat să transforme Oltenia într-o provincie fiscală ordonată, dar s-a lovit de structurile boierești, de rezistența populației și de dificultatea controlului unei frontiere expuse.</p>
+
+    <div class="claim-grid">
+      <article class="claim"><strong>Administrație directă</strong><p>Conducerea era exercitată prin autorități imperiale și militare, iar boierii locali aveau o influență mai redusă decât sub domnia munteană.</p></article>
+      <article class="claim"><strong>Conscripții și fiscalitate</strong><p>Au fost înregistrate gospodăriile și proprietățile pentru o impozitare regulată. Standardizarea a redus unele arbitrarități, dar nivelul contribuțiilor a rămas apăsător.</p></article>
+      <article class="claim"><strong>Control bisericesc</strong><p>Autoritățile catolice au încercat să supravegheze organizarea religioasă, fără a putea înlocui caracterul ortodox al populației.</p></article>
+      <article class="claim"><strong>Frontieră militară</strong><p>Oltul și Dunărea necesitau garnizoane, fortificații și aprovizionare. Provincia era greu de apărat în cazul unei contraofensive otomane.</p></article>
+      <article class="claim"><strong>Rezistență și fugă</strong><p>Rechizițiile și conflictul cu administrația au stimulat fuga peste Olt, haiducia și opoziția elitelor locale.</p></article>
+      <article class="claim"><strong>Moștenire administrativă</strong><p>Conscripțiile și proiectele de regularizare au oferit informații importante despre populație, sate și resurse, chiar dacă regimul a fost temporar.</p></article>
+    </div>
+
+    <details open><summary>De ce nu a rămas Oltenia la Habsburgi</summary><div class="details-body">
+      <p>Oltenia era separată de nucleul habsburgic prin munți și de Banat printr-o frontieră greu de apărat. Veniturile nu compensau costurile militare, iar populația nu era integrată politic. În războiul următor, înfrângerile habsburgice din Serbia au făcut imposibilă menținerea teritoriului.</p>
+    </div></details>
+  </section>
+
+  <section class="section" id="belgrad">
+    <div class="section-label">1735–1739</div>
+    <h2>Războiul ruso-austro-otoman și Pacea de la Belgrad</h2>
+
+    <div class="war-header">
+      <div class="war-date">1735/1737<br/>–<br/>1739</div>
+      <div class="war-copy"><h3>Rusia atacă, Austria intră târziu și pierde avantajele din 1718</h3><p>Războiul ruso-otoman a început în 1735, în principal din cauza Crimeii și Azovului. Austria s-a alăturat Rusiei în 1737, dar planificarea slabă, epidemiile și înfrângerile au transformat alianța într-un eșec habsburgic.</p></div>
+    </div>
+
+    <div class="campaign-grid">
+      <article class="campaign-card"><strong>Obiectivele Rusiei</strong><p>Cucerirea Azovului, reducerea raidurilor tătare și obținerea unei poziții la Marea Neagră. Armatele ruse au pătruns în Crimeea, au ocupat Oceakovul și au înaintat spre Moldova.</p></article>
+      <article class="campaign-card"><strong>Obiectivele Austriei</strong><p>Păstrarea și extinderea teritoriilor dobândite în 1718. Viena spera la o campanie rapidă în Serbia și Bosnia, sprijinită de ofensiva rusă.</p></article>
+      <article class="campaign-card"><strong>Campania din Moldova</strong><p>În 1739, armata rusă a trecut Nistrul, a învins la Stăuceni și a ocupat Hotinul și Iașul. Succesul nu a putut fi exploatat după retragerea Austriei din război.</p></article>
+      <article class="campaign-card"><strong>Înfrângerea habsburgică</strong><p>Bătălia de la Grocka din iulie 1739 și asedierea Belgradului au determinat negociatorii imperiali să accepte condiții severe.</p></article>
+    </div>
+
+    <div class="operation"><div class="op-date">18 sept. 1739</div><div class="op-body"><h3>Pacea de la Belgrad</h3><p>Austria restituie Porții Serbia de nord cu Belgradul și posesiunile din nordul Bosniei; Oltenia revine Țării Românești, aflată sub suzeranitate otomană. Frontiera habsburgică se retrage la Sava și Dunăre.</p></div></div>
+    <div class="operation"><div class="op-date">3 oct. 1739</div><div class="op-body"><h3>Pacea ruso-otomană de la Niș</h3><p>Rusia păstrează Azovul în condiții restrictive: fără fortificații puternice și fără flotă militară liberă pe Marea Neagră. Cuceririle din Moldova sunt evacuate.</p></div></div>
+
+    <div class="correction"><strong>Data corectă a războiului austriac:</strong> conflictul ruso-otoman începe în 1735, dar Monarhia Habsburgică intră efectiv în război în 1737. De aceea formula cea mai precisă este „războiul ruso-otoman din 1735–1739 și războiul austro-otoman din 1737–1739”.</div>
+  </section>
+
+  <section class="part-divider" data-mark="V">
+    <p class="part-kicker">Rusia devine puterea dominantă la Marea Neagră</p>
+    <h2>Războiul din 1768–1774, Küçük Kaynarca și anexarea Bucovinei</h2>
+    <p>Victoria Rusiei schimbă raportul de forțe. Principatele rămân formal sub suzeranitate otomană, dar Rusia capătă mijloace diplomatice de intervenție, iar Austria profită pentru a ocupa nord-vestul Moldovei.</p>
+  </section>
+
+  <section class="section" id="razboiul-1768">
+    <div class="section-label">1768–1774</div>
+    <h2>Războiul ruso-otoman purtat pe teritoriul Moldovei și al Țării Românești</h2>
+
+    <div class="war-header">
+      <div class="war-date">1768<br/>–<br/>1774</div>
+      <div class="war-copy"><h3>De la criza poloneză la victoria rusă</h3><p>Conflictul a fost declanșat în contextul intervenției ruse în Polonia și al incidentelor de frontieră. Poarta a declarat război sperând să oprească expansiunea rusă, dar armata otomană a suferit înfrângeri terestre și navale decisive.</p></div>
+    </div>
+
+    <div class="operation"><div class="op-date">1769</div><div class="op-body"><h3>Ocuparea Principatelor</h3><p>Armatele ruse trec Nistrul, ocupă Hotinul și intră în Iași și București. Administrațiile locale sunt subordonate comandamentului militar, iar boierii trimit memorii către Rusia și puterile europene.</p></div></div>
+    <div class="operation"><div class="op-date">7 iul. 1770</div><div class="op-body"><h3>Bătălia de la Larga</h3><p>Armata lui Piotr Rumianțev învinge forțe otomane și tătare în sudul Basarabiei istorice, demonstrând eficiența formațiilor defensive ruse.</p></div></div>
+    <div class="operation"><div class="op-date">21 iul. 1770</div><div class="op-body"><h3>Bătălia de la Kagul</h3><p>O armată rusă numeric inferioară obține o victorie majoră asupra marelui vizir. Cetățile din zona Dunării devin vulnerabile.</p></div></div>
+    <div class="operation"><div class="op-date">5–7 iul. 1770</div><div class="op-body"><h3>Victoria navală de la Çeșme</h3><p>Flota rusă distruge o mare parte a flotei otomane în Marea Egee. Războiul nu mai este doar unul de frontieră, ci o criză generală a puterii otomane.</p></div></div>
+    <div class="operation"><div class="op-date">1771–1773</div><div class="op-body"><h3>Negocieri și reluarea luptelor</h3><p>Rusia ocupă Crimeea, iar încercările de pace eșuează din cauza condițiilor privind independența hanatului și drepturile ruse la Marea Neagră.</p></div></div>
+
+    <details><summary>Viața Principatelor sub ocupația rusă</summary><div class="details-body">
+      <p>Comandamentul rus a organizat aprovizionarea, a perceput contribuții și a folosit administrația locală. Boierimea a văzut în prezența rusă o ocazie pentru domnii pământene, limitarea tributului și garantarea autonomiei. În același timp, rechizițiile, epidemiile și stagnarea comerțului au apăsat populația.</p>
+      <p>Memoriile politice redactate în timpul ocupației au formulat idei precum unirea Moldovei cu Țara Românească, neutralitatea, independența sub garanția marilor puteri și alegerea domnilor de către țară.</p>
+    </div></details>
+  </section>
+
+  <section class="section" id="kuciuk">
+    <div class="section-label">21 iulie 1774</div>
+    <h2>Pacea de la Küçük Kaynarca</h2>
+    <p class="section-intro">Tratatul a fost una dintre cele mai grele înfrângeri diplomatice ale Porții. Rusia obținea acces strategic la Marea Neagră și un limbaj juridic pe care îl va folosi pentru a interveni în problemele supușilor creștini și ale Principatelor.</p>
+
+    <div class="treaty-grid">
+      <article class="treaty-card"><strong>Crimeea</strong><p>Hanatul Crimeii era declarat independent de Poartă din punct de vedere politic, păstrând legătura religioasă cu sultanul-calif. În practică, dependența față de Rusia a crescut, iar anexarea a urmat în 1783.</p></article>
+      <article class="treaty-card"><strong>Marea Neagră</strong><p>Rusia primea Azov, Kerci, Enikale, Kinburn și teritorii strategice, precum și drepturi de navigație comercială prin apele otomane.</p></article>
+      <article class="treaty-card"><strong>Influență religioasă</strong><p>Articolele privind o biserică ortodoxă la Constantinopol și reprezentările diplomatice au fost interpretate extensiv de Rusia ca bază pentru protecția ortodocșilor.</p></article>
+      <article class="treaty-card"><strong>Principatele</strong><p>Poarta promitea respectarea privilegiilor, ușurări fiscale și o perioadă de scutire după război. Rusia putea face reprezentări diplomatice în favoarea lor.</p></article>
+      <article class="treaty-card"><strong>Comerț</strong><p>Negustorii și vasele ruse primeau privilegii care facilitau pătrunderea economică în bazinul pontic și dunărean.</p></article>
+      <article class="treaty-card"><strong>Echilibru european</strong><p>Rusia devenea putere pontică, iar Principatele intrau mai profund în sistemul diplomatic european.</p></article>
+    </div>
+
+    <div class="correction"><strong>„Protectorat rus” — formulare care trebuie nuanțată:</strong> tratatul din 1774 nu instituia formal un protectorat juridic complet asupra Moldovei și Țării Românești. El oferea Rusiei drepturi de reprezentare și o influență diplomatică de facto, extinsă ulterior prin convenții și tratate.</div>
+  </section>
+
+  <section class="section" id="bucovina">
+    <div class="section-label">1774–1776</div>
+    <h2>Ocuparea și anexarea Bucovinei de către Austria</h2>
+    <p class="section-intro">Anexarea nord-vestului Moldovei nu a fost rezultatul unei victorii militare austriece împotriva Moldovei. Viena a profitat de slăbiciunea Porții după războiul ruso-otoman și de rolul său diplomatic pentru a obține un coridor între Galiția, anexată în 1772, și Transilvania.</p>
+
+    <div class="operation"><div class="op-date">toamna 1774</div><div class="op-body"><h3>Ocupația militară</h3><p>Trupele habsburgice intră în nord-vestul Moldovei și ocupă zona Cernăuți–Suceava. Autoritățile prezintă acțiunea drept o rectificare strategică de frontieră.</p></div></div>
+    <div class="operation"><div class="op-date">7 mai 1775</div><div class="op-body"><h3>Convenția austro-otomană</h3><p>Poarta acceptă cedarea teritoriului către Austria. Moldova, deși pierde pământul, nu participă ca parte suverană la negociere.</p></div></div>
+    <div class="operation"><div class="op-date">1776</div><div class="op-body"><h3>Delimitarea frontierei</h3><p>Comisiile stabilesc noua graniță. Teritoriul dobândește treptat denumirea administrativă de Bucovina.</p></div></div>
+
+    <div class="impact-grid">
+      <article class="impact-card"><strong>Pierdere teritorială</strong><p>Moldova pierde Cernăuțiul, Suceava, Putna și o zonă strategică de legătură între Carpați și Nistru.</p></article>
+      <article class="impact-card"><strong>Memorie istorică</strong><p>Teritoriul cuprindea vechea capitală și mormântul lui Ștefan cel Mare, ceea ce amplifica impactul simbolic.</p></article>
+      <article class="impact-card"><strong>Reorganizare imperială</strong><p>Austria introduce administrație militară, apoi civilă, recensăminte, colonizări și integrare economică în Monarhia Habsburgică.</p></article>
+      <article class="impact-card"><strong>Protestul lui Grigore III Ghica</strong><p>Domnul Moldovei s-a opus cedării. Uciderea sa în 1777 a fost asociată în memoria politică cu protestul, deși decizia Porții a avut și alte cauze de putere și neîncredere.</p></article>
+    </div>
+  </section>
+
+  <section class="part-divider" data-mark="VI">
+    <p class="part-kicker">Ultimul mare război al secolului al XVIII-lea</p>
+    <h2>Focșani, Râmnic, Ismail și mutarea frontierei la Nistru</h2>
+    <p>Rusia și Austria atacă din nou Imperiul Otoman. Principatele sunt ocupate, armatele se întâlnesc la Focșani și Râmnic, iar pacea confirmă anexarea Crimeii și avansul Rusiei până la Nistru.</p>
+  </section>
+
+  <section class="section" id="razboiul-1787">
+    <div class="section-label">1787–1792</div>
+    <h2>Războiul ruso-austro-otoman</h2>
+
+    <div class="war-header">
+      <div class="war-date">1787<br/>–<br/>1792</div>
+      <div class="war-copy"><h3>Consecința anexării Crimeii și a competiției pentru Balcani</h3><p>Poarta a încercat să inverseze pierderile din 1774 și anexarea Crimeii de către Rusia din 1783. Ecaterina a II-a urmărea consolidarea dominației pontice, iar Iosif al II-lea a intrat în război ca aliat al Rusiei.</p></div>
+    </div>
+
+    <div class="campaign-grid">
+      <article class="campaign-card"><strong>Planul rusesc</strong><p>O armată opera între Nistru și Dunăre, alta în zona Crimeii și Caucazului. Flota controla litoralul nordic al Mării Negre.</p></article>
+      <article class="campaign-card"><strong>Planul austriac</strong><p>Forțe habsburgice pătrundeau din Transilvania și Banat spre Țara Românească, Serbia și Bosnia. Coordonarea cu rușii era esențială, dar dificilă.</p></article>
+      <article class="campaign-card"><strong>Ocupația Principatelor</strong><p>Moldova și Țara Românească au devenit zone de concentrare, spitale și depozite. Orașele au suportat garnizoane, iar satele au furnizat transport și hrană.</p></article>
+      <article class="campaign-card"><strong>Comandanți</strong><p>Alexandr Suvorov, prințul de Coburg, Grigori Potemkin și Ernst Gideon von Laudon au condus principalele operațiuni aliate.</p></article>
+    </div>
+
+    <div class="operation"><div class="op-date">1 aug. 1789</div><div class="op-body"><h3>Bătălia de la Focșani</h3><p>Suvorov și prințul de Coburg reunesc rapid forțele ruse și austriece și înving armata otomană. Victoria securizează legătura dintre Moldova și Țara Românească.</p></div></div>
+    <div class="operation"><div class="op-date">22 sept. 1789</div><div class="op-body"><h3>Bătălia de la Râmnic</h3><p>Aliații obțin o victorie decisivă asupra marelui vizir. Suvorov primește titlul „Rîmnikski”, iar Coburg devine o figură centrală a campaniei.</p></div></div>
+    <div class="operation"><div class="op-date">oct. 1789</div><div class="op-body"><h3>Cucerirea Belgradului</h3><p>Armata lui Laudon ocupă fortăreața, dar Austria este presată de probleme interne, războiul cu Prusia iminent și revoluția din Țările de Jos austriece.</p></div></div>
+    <div class="operation"><div class="op-date">22 dec. 1790</div><div class="op-body"><h3>Asaltul Ismailului</h3><p>Suvorov cucerește puternica cetate de la Dunăre după un atac extrem de sângeros. Evenimentul accelerează negocierile de pace.</p></div></div>
+
+    <details><summary>De ce Austria a ieșit înaintea Rusiei din război</summary><div class="details-body">
+      <p>Moartea lui Iosif al II-lea în 1790, tulburările din provinciile habsburgice, tensiunile cu Prusia și teama de extinderea Revoluției Franceze au făcut războiul prea costisitor. Leopold al II-lea a preferat stabilizarea monarhiei și o pace apropiată de situația de dinaintea conflictului.</p>
+    </div></details>
+  </section>
+
+  <section class="section" id="sistova-iasi">
+    <div class="section-label">1791–1792</div>
+    <h2>Păcile de la Șiștov și Iași</h2>
+
+    <div class="two-col">
+      <article class="info-card"><h3>Pacea de la Șiștov — 4 august 1791</h3><p>Încheie războiul austro-otoman. Austria restituie cea mai mare parte a cuceririlor și obține doar ajustări minore de frontieră. Principatele nu intră sub dominație habsburgică, iar armata imperială se retrage.</p></article>
+      <article class="info-card"><h3>Pacea de la Iași — 9 ianuarie 1792</h3><p>Încheie războiul ruso-otoman. Poarta recunoaște anexarea Crimeii de către Rusia și cedează Yedisanul, teritoriul dintre Bugul de Sud și Nistru. Frontiera ruso-otomană europeană ajunge la Nistru.</p></article>
+    </div>
+
+    <div class="frontier">
+      <article class="frontier-side"><h3>După 1774</h3><p>Rusia controlează puncte pe litoral și influențează Crimeea; frontiera terestră principală se află mai la est, în zona Bugului și Niprului.</p></article>
+      <div class="frontier-center">→</div>
+      <article class="frontier-side"><h3>După 1792</h3><p>Rusia ajunge la Nistru, în vecinătatea directă a Moldovei. Bugeacul și cetățile otomane dintre Nistru și Dunăre rămân încă sub Poartă până în 1812.</p></article>
+    </div>
+
+    <div class="correction"><strong>Date corecte:</strong> tratatul austro-otoman se numește Pacea de la Șiștov/Sistova și a fost semnat în <strong>1791</strong>, nu în 1891. Pacea de la Iași a fost semnată la 29 decembrie 1791 stil vechi / 9 ianuarie 1792 stil nou.</div>
+  </section>
+
+  <section class="part-divider" data-mark="VII">
+    <p class="part-kicker">Război în umbra lui Napoleon</p>
+    <h2>1806–1812: ocupația rusă și pierderea Basarabiei</h2>
+    <p>Ultimul conflict din documentul de bază a fost influențat direct de rivalitatea dintre Rusia, Franța napoleoniană și Imperiul Otoman. Negocierile au fost grăbite de apropiata invazie franceză a Rusiei.</p>
+  </section>
+
+  <section class="section" id="cauze-1806">
+    <div class="section-label">Declanșarea războiului</div>
+    <h2>De ce a început conflictul din 1806</h2>
+    <p class="section-intro">După războaiele din secolul al XVIII-lea, Rusia obținuse dreptul de a urmări situația Principatelor. În 1802, un hatișerif otoman a stabilit domnii de șapte ani și a limitat schimbarea lor arbitrară. În 1806, sub influență franceză, Poarta i-a înlocuit pe domnii considerați favorabili Rusiei, oferind țarului pretextul intervenției.</p>
+
+    <div class="claim-grid">
+      <article class="claim"><strong>Depunerea domnilor</strong><p>Constantin Ipsilanti în Țara Românească și Alexandru Moruzi în Moldova au fost înlăturați fără acordul Rusiei, încălcând înțelegerea din 1802 în interpretarea Petersburgului.</p></article>
+      <article class="claim"><strong>Influența Franței</strong><p>Ambasadorul francez Horace Sébastiani încuraja Poarta să reducă influența rusă și să se apropie de Napoleon.</p></article>
+      <article class="claim"><strong>Invazia rusă</strong><p>În noiembrie 1806, armata generalului Michelson trece Nistrul și ocupă Moldova și Țara Românească înaintea declarației formale de război.</p></article>
+      <article class="claim"><strong>Reacția otomană</strong><p>Poarta declară război și mobilizează cetățile dunărene. Conflictul se extinde în Caucaz și pe mare.</p></article>
+      <article class="claim"><strong>Calculul Rusiei</strong><p>Țarul spera să obțină garanții permanente sau teritorii la Dunăre fără a provoca intervenția generală a puterilor europene.</p></article>
+      <article class="claim"><strong>Problema europeană</strong><p>Războiul ruso-otoman se intersecta cu campaniile lui Napoleon, alianțele schimbătoare și presiunea britanică asupra Constantinopolului.</p></article>
+    </div>
+  </section>
+
+  <section class="section" id="campanii-1806">
+    <div class="section-label">1806–1811</div>
+    <h2>Campaniile, ocupația și administrația rusă</h2>
+
+    <div class="operation"><div class="op-date">1806–1807</div><div class="op-body"><h3>Ocuparea rapidă a Principatelor</h3><p>Rușii intră în Iași și București și încearcă să cucerească cetățile dunărene. Bătăliile de la Obilești și din jurul Ismailului arată că fortificațiile otomane pot întârzia înaintarea.</p></div></div>
+    <div class="operation"><div class="op-date">aug. 1807</div><div class="op-body"><h3>Armistițiul de la Slobozia</h3><p>După înțelegerea ruso-franceză de la Tilsit, ostilitățile sunt suspendate. Rusia nu evacuează complet Principatele, iar negocierile nu produc o pace definitivă.</p></div></div>
+    <div class="operation"><div class="op-date">1809–1810</div><div class="op-body"><h3>Reluarea ofensivei</h3><p>Armatele ruse trec Dunărea și ocupă mai multe cetăți. Victoria de la Batin din 1810 permite cucerirea Rusciucului și slăbește apărarea otomană.</p></div></div>
+    <div class="operation"><div class="op-date">1811</div><div class="op-body"><h3>Strategia lui Kutuzov</h3><p>Mihail Kutuzov retrage deliberat o parte a forțelor la nord de Dunăre, atrage armata otomană într-o poziție vulnerabilă și o încercuiește în zona Slobozia–Rusciuc. Marele vizir este obligat să negocieze.</p></div></div>
+
+    <div class="impact-grid">
+      <article class="impact-card"><strong>Administrație</strong><p>Divanurile funcționează sub control militar rus. Se cer registre fiscale, provizii și transporturi pentru armată.</p></article>
+      <article class="impact-card"><strong>Rechiziții</strong><p>Cerealele, vitele, caii, lemnul și căruțele sunt preluate sistematic. Unele plăți se fac prin chitanțe greu de recuperat.</p></article>
+      <article class="impact-card"><strong>Epidemii</strong><p>Mișcarea trupelor și concentrarea populației favorizează tifosul, dizenteria și ciuma, agravând pierderile civile.</p></article>
+      <article class="impact-card"><strong>Comerț</strong><p>Blocarea porturilor și nesiguranța drumurilor afectează exportul de cereale și aprovizionarea orașelor.</p></article>
+    </div>
+
+    <details><summary>De ce a renunțat Rusia la cereri mai mari</summary><div class="details-body">
+      <p>În 1811–1812, Rusia știa că Napoleon pregătește invazia. Țarul nu își permitea un război pe două fronturi. Deși negociatorii ruși ceruseră inițial frontiera la Dunăre sau anexarea ambelor Principate, presiunea timpului i-a determinat să accepte Prutul.</p>
+    </div></details>
+  </section>
+
+  <section class="section" id="bucuresti-1812">
+    <div class="section-label">28 mai 1812</div>
+    <h2>Pacea de la București</h2>
+    <p class="section-intro">Tratatul a fost semnat la Hanul lui Manuc și ratificat cu puțin timp înaintea invaziei napoleoniene. El a încheiat șase ani de ocupație și a produs cea mai mare pierdere teritorială a Moldovei din epocă.</p>
+
+    <div class="treaty-grid">
+      <article class="treaty-card"><strong>Noua frontieră</strong><p>Prutul devine graniță între Imperiul Rus și Moldova aflată sub suzeranitate otomană. Gurile Dunării și brațul Chilia sunt incluse în noua configurație rusă.</p></article>
+      <article class="treaty-card"><strong>Teritoriul cedat</strong><p>Rusia primește partea Moldovei dintre Prut și Nistru, împreună cu Bugeacul și cetățile Hotin, Bender, Chilia și Cetatea Albă.</p></article>
+      <article class="treaty-card"><strong>Serbia</strong><p>Tratatul prevedea amnistie și o formă de autonomie pentru sârbi, deși aplicarea imediată a fost incompletă.</p></article>
+      <article class="treaty-card"><strong>Caucaz</strong><p>Rusia își consolidează o parte dintre cuceririle din Georgia, iar alte puncte sunt restituite Porții.</p></article>
+      <article class="treaty-card"><strong>Evacuarea</strong><p>Armata rusă evacuează teritoriile rămase la vest de Prut, iar domniile fanariote sunt restabilite pentru încă nouă ani.</p></article>
+      <article class="treaty-card"><strong>Context napoleonian</strong><p>Ratificarea are loc cu puțin timp înainte ca armata lui Napoleon să treacă Niemenul în iunie 1812.</p></article>
+    </div>
+
+    <div class="quote">În 1812, numele „Basarabia”, folosit anterior mai ales pentru Bugeacul sudic, a fost extins de administrația rusă asupra întregului teritoriu anexat dintre Prut și Nistru.</div>
+  </section>
+
+  <section class="section" id="basarabia">
+    <div class="section-label">Consecințe teritoriale și politice</div>
+    <h2>Ce a însemnat pierderea Basarabiei pentru Moldova</h2>
+
+    <div class="impact-grid">
+      <article class="impact-card"><strong>Ruptură teritorială</strong><p>Moldova pierde aproape jumătate din teritoriul aflat atunci sub domnia sa și accesul direct la Nistru și la o parte importantă a gurilor Dunării.</p></article>
+      <article class="impact-card"><strong>Pierdere demografică</strong><p>Sate, târguri și comunități diverse intră sub administrație rusă. Familiile și proprietățile boierești sunt împărțite de noua frontieră.</p></article>
+      <article class="impact-card"><strong>Schimbare strategică</strong><p>Rusia devine vecină directă pe Prut, la distanță redusă de Iași. Moldova rămasă se transformă într-o zonă tampon și mai îngustă.</p></article>
+      <article class="impact-card"><strong>Administrație nouă</strong><p>Autoritățile ruse organizează provincia Basarabia, inițial cu unele particularități locale, apoi printr-o centralizare și rusificare progresivă.</p></article>
+    </div>
+
+    <details open><summary>De ce Poarta putea ceda un teritoriu moldovenesc</summary><div class="details-body">
+      <p>Moldova nu era provincie otomană, dar nu avea suveranitate externă deplină. Poarta negocia tratatele internaționale în numele spațiului aflat sub suzeranitatea sa și a cedat teritoriul pentru a încheia războiul. Din perspectiva elitei moldovenești, actul era o încălcare a autonomiei și integrității tradiționale.</p>
+    </div></details>
+  </section>
+
+  <section class="part-divider" data-mark="VIII">
+    <p class="part-kicker">Războiul văzut de jos și din cancelarii</p>
+    <h2>Costuri sociale, reacții politice și transformarea ideii de autonomie</h2>
+    <p>Tratatele modificau frontierele, dar războiul era trăit prin rechiziții, refugiu, epidemii și schimbarea autorităților. Boierii au răspuns prin memorii și proiecte care au pregătit programul național modern.</p>
+  </section>
+
+  <section class="section" id="civili">
+    <div class="section-label">Istorie socială a războiului</div>
+    <h2>Populația civilă între armată, fiscalitate și epidemii</h2>
+
+    <div class="claim-grid">
+      <article class="claim"><strong>Rechiziții alimentare</strong><p>Armata avea nevoie zilnic de pâine, carne, rachiu, fân și ovăz. Zonele de trecere puteau fi golite de rezerve în câteva săptămâni.</p></article>
+      <article class="claim"><strong>Transport forțat</strong><p>Țăranii erau obligați să pună la dispoziție căruțe, boi și cai pentru tunuri, muniții și răniți.</p></article>
+      <article class="claim"><strong>Încartiruire</strong><p>Casele și hanurile găzduiau soldați. Conflictele, furturile și consumarea rezervelor provocau tensiuni continue.</p></article>
+      <article class="claim"><strong>Refugiu și depopulare</strong><p>Locuitorii se retrăgeau în păduri, munți, peste Olt, Nistru sau Dunăre. Unele sate apăreau temporar pustii în conscripții.</p></article>
+      <article class="claim"><strong>Ciumă și tifos</strong><p>Taberele aglomerate și circulația trupelor răspândeau boli. Carantinele și cordoanele sanitare deveneau instrumente militare și administrative.</p></article>
+      <article class="claim"><strong>Reconstrucție dificilă</strong><p>După pace, domnia trebuia să repopuleze satele, să refacă poduri și mori și să negocieze scutiri de dări.</p></article>
+    </div>
+
+    <details><summary>Au existat și efecte modernizatoare?</summary><div class="details-body">
+      <p>Ocupațiile au adus cartografie, drumuri militare, registre, spitale, poștă și practici administrative mai regulate. Totuși, aceste inovații erau create în primul rând pentru nevoile armatelor. Ele puteau fi păstrate după război, dar nu compensau automat pierderile populației.</p>
+    </div></details>
+  </section>
+
+  <section class="section" id="boieri">
+    <div class="section-label">Diplomație locală</div>
+    <h2>Boierimea între colaborare, neutralitate și proiecte politice</h2>
+    <p class="section-intro">Elite locale nu au reacționat unitar. Unele grupuri au susținut Poarta pentru a păstra ordinea existentă; altele au negociat cu Rusia sau Austria, sperând la domnii pământene, autonomie mai largă ori independență.</p>
+
+    <div class="two-col">
+      <article class="info-card"><h3>Colaborarea cu armatele străine</h3><p>Boierii cunoșteau drumurile, resursele și rețelele locale. Ei puteau furniza informații, provizii și legitimitate politică. În schimb, cereau protecție, funcții sau garanții asupra proprietăților.</p></article>
+      <article class="info-card"><h3>Memoriile către marile puteri</h3><p>În timpul războaielor din 1768–1774 și 1787–1792, proiectele boierești au cerut domni aleși, limitarea obligațiilor față de Poartă, unirea Principatelor și garanții colective europene.</p></article>
+    </div>
+
+    <div class="causal-chain"><span>ocupație străină</span><i>→</i><span>contact diplomatic</span><i>→</i><span>memorii și proiecte</span><i>→</i><span>ideea garanțiilor</span><i>→</i><span>autonomie și unire</span></div>
+
+    <div class="definition"><strong>Contradicția fundamentală:</strong> Rusia și Austria puteau fi invocate drept protectoare creștine, dar erau și puteri anexatoare. Experiența Olteniei, Bucovinei și Basarabiei a demonstrat că înlocuirea dominației otomane nu însemna neapărat independență românească.</div>
+  </section>
+
+  <section class="section" id="comparatie">
+    <div class="section-label">Analiză comparativă</div>
+    <h2>Războaiele și tratatele într-un singur tablou</h2>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Conflict</th><th>Teatrul românesc</th><th>Tratat</th><th>Consecință principală</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1683–1699</strong></td><td>Transilvania, Banat, Ungaria, Serbia</td><td>Karlowitz, 26 ianuarie 1699</td><td>Confirmarea stăpânirii habsburgice asupra Transilvaniei și reculul major al Porții.</td></tr>
+        <tr><td><strong>1710–1711</strong></td><td>Moldova, Prut, Brăila</td><td>Prut, 23 iulie 1711; Adrianopol, 1713</td><td>Eșecul alianței Cantemir–Petru I, fanarioți și raiaua Hotinului.</td></tr>
+        <tr><td><strong>1716–1718</strong></td><td>Banat, Serbia, Oltenia</td><td>Passarowitz, 21 iulie 1718</td><td>Austria primește Banatul, Belgradul și Oltenia.</td></tr>
+        <tr><td><strong>1735/1737–1739</strong></td><td>Moldova, Serbia, Oltenia</td><td>Belgrad, 18 septembrie; Niș, 3 octombrie 1739</td><td>Oltenia revine Țării Românești; Austria pierde Belgradul; Rusia evacuează Moldova.</td></tr>
+        <tr><td><strong>1768–1774</strong></td><td>Moldova, Țara Românească, Bugeac</td><td>Küçük Kaynarca, 21 iulie 1774</td><td>Rusia devine putere pontică și dobândește influență diplomatică în Principate.</td></tr>
+        <tr><td><strong>1774–1776</strong></td><td>Nord-vestul Moldovei</td><td>Convenții austro-otomane</td><td>Austria anexează Bucovina.</td></tr>
+        <tr><td><strong>1787–1792</strong></td><td>Moldova, Țara Românească, Dunărea</td><td>Șiștov, 1791; Iași, 1792</td><td>Rusia ajunge la Nistru și confirmă anexarea Crimeii.</td></tr>
+        <tr><td><strong>1806–1812</strong></td><td>Ambele Principate, cetățile Dunării</td><td>București, 28 mai 1812</td><td>Rusia anexează teritoriul Moldovei dintre Prut și Nistru.</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="three-col">
+      <article class="info-card"><h3>Linia habsburgică</h3><p>Karlowitz → Passarowitz → Belgrad. Austria avansează spre Dunăre, apoi renunță la Oltenia și Serbia, păstrând Transilvania și Banatul.</p></article>
+      <article class="info-card"><h3>Linia rusă</h3><p>Prut → Küçük Kaynarca → Iași → București. Rusia trece de la un eșec în 1711 la frontiera pe Nistru în 1792 și pe Prut în 1812.</p></article>
+      <article class="info-card"><h3>Linia românească</h3><p>Principatele trec de la rolul de state tributare tampon la teritorii supravegheate de marile puteri, pierzând Oltenia temporar, Bucovina și Basarabia.</p></article>
+    </div>
+  </section>
+
+  <section class="section" id="cronologie">
+    <div class="section-label">Repere esențiale</div>
+    <h2>Cronologie extinsă a conflictelor</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Data</th><th>Eveniment</th><th>Semnificație</th></tr></thead>
+      <tbody>
+        <tr><td>12 sept. 1683</td><td>Ridicarea asediului Vienei</td><td>Începutul marii contraofensive antiotomane.</td></tr>
+        <tr><td>1684</td><td>Liga Sfântă</td><td>Coaliție habsburgico-polonezo-venețiană, sprijinită papal.</td></tr>
+        <tr><td>1686</td><td>Cucerirea Budei</td><td>Habsburgii pătrund spre Transilvania și Balcani.</td></tr>
+        <tr><td>1687–1688</td><td>Ocupația militară a Transilvaniei</td><td>Autoritatea habsburgică se impune înaintea păcii generale.</td></tr>
+        <tr><td>4 dec. 1691</td><td>Diploma Leopoldină</td><td>Organizează Transilvania în cadrul Monarhiei Habsburgice.</td></tr>
+        <tr><td>11 sept. 1697</td><td>Zenta</td><td>Victoria decisivă a lui Eugeniu de Savoia.</td></tr>
+        <tr><td>26 ian. 1699</td><td>Karlowitz</td><td>Recul major otoman și confirmarea stăpânirii habsburgice.</td></tr>
+        <tr><td>13 apr. 1711</td><td>Tratatul de la Luțk</td><td>Alianța secretă dintre Dimitrie Cantemir și Petru I.</td></tr>
+        <tr><td>7–14 iul. 1711</td><td>Acțiunea de la Brăila</td><td>Succes ruso-muntean local, fără efect asupra campaniei principale.</td></tr>
+        <tr><td>18–22 iul. 1711</td><td>Stănilești</td><td>Încercuirea armatei ruso-moldovene.</td></tr>
+        <tr><td>23 iul. 1711</td><td>Tratatul de la Prut</td><td>Retragerea Rusiei și eșecul proiectului lui Cantemir.</td></tr>
+        <tr><td>1713</td><td>Tratatul de la Adrianopol</td><td>Confirmă pacea ruso-otomană și securizarea Hotinului.</td></tr>
+        <tr><td>1716</td><td>Începutul fanarioților în Țara Românească</td><td>Poarta reduce încrederea în domnii pământeni.</td></tr>
+        <tr><td>5 aug. 1716</td><td>Petrovaradin</td><td>Victorie habsburgică decisivă.</td></tr>
+        <tr><td>oct. 1716</td><td>Cucerirea Timișoarei</td><td>Banatul iese de sub administrația otomană.</td></tr>
+        <tr><td>16 aug. 1717</td><td>Cucerirea Belgradului</td><td>Apogeul campaniei lui Eugeniu de Savoia.</td></tr>
+        <tr><td>21 iul. 1718</td><td>Passarowitz</td><td>Banatul, Serbia de nord și Oltenia trec la Habsburgi.</td></tr>
+        <tr><td>1735</td><td>Începutul războiului ruso-otoman</td><td>Rusia atacă sistemul Crimeii și Azovului.</td></tr>
+        <tr><td>1737</td><td>Intrarea Austriei în război</td><td>Conflictul devine ruso-austro-otoman.</td></tr>
+        <tr><td>iul. 1739</td><td>Grocka</td><td>Înfrângere habsburgică și criza Belgradului.</td></tr>
+        <tr><td>1739</td><td>Ocuparea Hotinului și Iașului de către ruși</td><td>Succes evacuat după pacea separată a Austriei.</td></tr>
+        <tr><td>18 sept. 1739</td><td>Pacea de la Belgrad</td><td>Oltenia revine Țării Românești.</td></tr>
+        <tr><td>3 oct. 1739</td><td>Pacea de la Niș</td><td>Rusia păstrează Azovul cu restricții.</td></tr>
+        <tr><td>1768</td><td>Începutul noului război ruso-otoman</td><td>Criza poloneză și rivalitatea pontică declanșează conflictul.</td></tr>
+        <tr><td>1769</td><td>Ocuparea Principatelor</td><td>Administrație militară rusă și memorii boierești.</td></tr>
+        <tr><td>7 iul. 1770</td><td>Larga</td><td>Victorie rusă asupra forțelor otomano-tătare.</td></tr>
+        <tr><td>21 iul. 1770</td><td>Kagul</td><td>Înfrângere majoră a armatei otomane.</td></tr>
+        <tr><td>5–7 iul. 1770</td><td>Çeșme</td><td>Flota otomană este grav lovită.</td></tr>
+        <tr><td>21 iul. 1774</td><td>Küçük Kaynarca</td><td>Rusia devine putere majoră la Marea Neagră.</td></tr>
+        <tr><td>toamna 1774</td><td>Ocupația austriacă în nordul Moldovei</td><td>Pregătirea anexării Bucovinei.</td></tr>
+        <tr><td>7 mai 1775</td><td>Convenția privind Bucovina</td><td>Poarta acceptă cedarea către Austria.</td></tr>
+        <tr><td>1783</td><td>Anexarea Crimeii de către Rusia</td><td>Cauză directă a războiului următor.</td></tr>
+        <tr><td>1787</td><td>Începutul războiului ruso-otoman</td><td>Poarta încearcă să inverseze pierderile.</td></tr>
+        <tr><td>1788</td><td>Austria intră în război</td><td>Principatele devin teatru comun de operațiuni.</td></tr>
+        <tr><td>1 aug. 1789</td><td>Focșani</td><td>Victorie ruso-austriacă.</td></tr>
+        <tr><td>22 sept. 1789</td><td>Râmnic</td><td>Înfrângerea marelui vizir.</td></tr>
+        <tr><td>oct. 1789</td><td>Belgradul ocupat de Austria</td><td>Succes restituit la pace.</td></tr>
+        <tr><td>22 dec. 1790</td><td>Cucerirea Ismailului</td><td>Victorie rusă extrem de sângeroasă.</td></tr>
+        <tr><td>4 aug. 1791</td><td>Pacea de la Șiștov</td><td>Austria iese din război cu ajustări minore.</td></tr>
+        <tr><td>9 ian. 1792</td><td>Pacea de la Iași</td><td>Frontiera Rusiei ajunge la Nistru.</td></tr>
+        <tr><td>1802</td><td>Hatișeriful pentru Principate</td><td>Domnii de șapte ani și garanții interpretate de Rusia.</td></tr>
+        <tr><td>nov. 1806</td><td>Invazia rusă</td><td>Ocuparea Moldovei și a Țării Românești.</td></tr>
+        <tr><td>aug. 1807</td><td>Armistițiul de la Slobozia</td><td>Oprire temporară a luptelor.</td></tr>
+        <tr><td>1810</td><td>Batin și căderea Rusciucului</td><td>Poziția otomană la Dunăre este slăbită.</td></tr>
+        <tr><td>1811</td><td>Operațiunile lui Kutuzov</td><td>Armata otomană este încercuită și obligată să negocieze.</td></tr>
+        <tr><td>28 mai 1812</td><td>Pacea de la București</td><td>Teritoriul dintre Prut și Nistru este anexat de Rusia.</td></tr>
+        <tr><td>24 iun. 1812</td><td>Invazia napoleoniană a Rusiei</td><td>Arată urgența cu care Petersburgul încheiase pacea.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="section" id="glosar">
+    <div class="section-label">Concepte și termeni</div>
+    <h2>Glosar</h2>
+    <div class="term-grid">
+      <div class="term-card"><strong>Problema Orientală</strong><span>Competiția pentru teritoriile, influența și moștenirea politică a Imperiului Otoman în declin.</span></div>
+      <div class="term-card"><strong>Suzeranitate</strong><span>Control extern superior exercitat asupra unui stat care își păstrează o anumită autonomie internă.</span></div>
+      <div class="term-card"><strong>Principat tributar</strong><span>Stat care plătește tribut și acceptă limite externe, fără a fi provincie administrată direct.</span></div>
+      <div class="term-card"><strong>Raia</strong><span>District militar și administrativ otoman organizat în jurul unei cetăți.</span></div>
+      <div class="term-card"><strong>Capitulație</strong><span>În acest context, fie acord de predare militară, fie privilegiu diplomatic și comercial acordat străinilor.</span></div>
+      <div class="term-card"><strong>Rechiziție</strong><span>Preluarea obligatorie de bunuri, animale sau servicii pentru nevoile armatei.</span></div>
+      <div class="term-card"><strong>Încartiruire</strong><span>Obligația populației de a găzdui militari.</span></div>
+      <div class="term-card"><strong>Cordon sanitar</strong><span>Linie militară și administrativă destinată controlului epidemiilor și circulației.</span></div>
+      <div class="term-card"><strong>Uti possidetis</strong><span>Principiu de negociere prin care fiecare parte păstrează teritoriile controlate la momentul păcii.</span></div>
+      <div class="term-card"><strong>Stil vechi / stil nou</strong><span>Diferența dintre calendarul iulian și cel gregorian, care explică date duble pentru unele tratate.</span></div>
+      <div class="term-card"><strong>Bugeac</strong><span>Zona de stepă din sudul teritoriului dintre Prut, Nistru și Dunăre, administrată direct de otomani înainte de 1812.</span></div>
+      <div class="term-card"><strong>Yedisan</strong><span>Regiunea dintre Nistru și Bugul de Sud, cedată Rusiei prin Pacea de la Iași.</span></div>
+      <div class="term-card"><strong>Basarabia</strong><span>Nume extins după 1812 de administrația rusă de la Bugeacul istoric la întregul teritoriu dintre Prut și Nistru.</span></div>
+      <div class="term-card"><strong>Protectorat de facto</strong><span>Influență și intervenție practică fără instituirea formală completă a unui protectorat juridic.</span></div>
+      <div class="term-card"><strong>Graniță militară</strong><span>Sistem habsburgic de teritorii și comunități militarizate pentru apărarea frontierei.</span></div>
+      <div class="term-card"><strong>Hatișerif</strong><span>Act solemn emis de sultan, cu prevederi administrative sau privilegii.</span></div>
+      <div class="term-card"><strong>Divan</strong><span>Consiliu administrativ și judecătoresc al Principatului.</span></div>
+      <div class="term-card"><strong>Fanariot</strong><span>Domn provenit din cercurile grecești creștine ale Fanarului constantinopolitan, numit de Poartă.</span></div>
+      <div class="term-card"><strong>Armistițiu</strong><span>Oprire temporară a luptelor, fără încheierea definitivă a războiului.</span></div>
+      <div class="term-card"><strong>Tratat de pace</strong><span>Acord internațional care încheie războiul și stabilește frontiere, obligații și drepturi.</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="corecturi">
+    <div class="section-label">Verificarea documentului de bază</div>
+    <h2>Corecturi și nuanțări necesare</h2>
+    <p class="section-intro">Tabelul Word a fost păstrat integral ca succesiune de teme, dar unele date și formule au fost corectate pentru precizie istorică.</p>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Formula din notițe</th><th>Forma dezvoltată și corectată</th></tr></thead>
+      <tbody>
+        <tr><td>„Transilvania trece sub dominația Austriei prin Karlowitz”</td><td>Preluarea militară și juridică are loc treptat între 1687 și 1691; Karlowitz confirmă internațional situația în 1699.</td></tr>
+        <tr><td>„Vadul Hușilor, 1711”</td><td>Tratatul este cunoscut drept Pacea de la Prut, semnată lângă Stănilești la 23 iulie 1711 și confirmată la Adrianopol în 1713.</td></tr>
+        <tr><td>„Hotinul — raia turcească”</td><td>Transformarea Hotinului într-un district otoman direct este consecința strategică a crizei din 1711–1713, nu un simplu articol teritorial formulat izolat.</td></tr>
+        <tr><td>„Războiul austro-turc 1735–1739”</td><td>Războiul ruso-otoman începe în 1735; Austria intră în 1737. Pentru componenta austriacă: 1737–1739.</td></tr>
+        <tr><td>„Protectoratul rus în 1774”</td><td>Küçük Kaynarca oferă Rusiei influență și drepturi de reprezentare; protectoratul formal complet nu este instituit atunci.</td></tr>
+        <tr><td>„Șiștov 1891”</td><td>Data corectă este 4 august 1791.</td></tr>
+        <tr><td>„Rusia anexează teritoriul de la est de Nistru”</td><td>Prin Pacea de la Iași, Rusia anexează Yedisanul dintre Bugul de Sud și Nistru, iar Nistrul devine frontieră.</td></tr>
+        <tr><td>„Rusia ocupă Basarabia în 1812”</td><td>Mai precis, Rusia anexează partea Moldovei dintre Prut și Nistru, împreună cu Bugeacul, iar numele Basarabia este extins asupra întregii provincii.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="section" id="surse">
+    <div class="section-label">Bibliografie orientativă</div>
+    <h2>Surse și lucrări utile pentru aprofundare</h2>
+    <div class="two-col">
+      <article class="info-card"><h3>Tratate și repere</h3><ul class="checklist">
+        <li>Pacea de la Karlowitz, 1699;</li>
+        <li>Tratatul de la Prut, 1711, și Tratatul de la Adrianopol, 1713;</li>
+        <li>Pacea de la Passarowitz, 1718;</li>
+        <li>Păcile de la Belgrad și Niș, 1739;</li>
+        <li>Pacea de la Küçük Kaynarca, 1774;</li>
+        <li>Păcile de la Șiștov, 1791, și Iași, 1792;</li>
+        <li>Pacea de la București, 1812.</li>
+      </ul></article>
+      <article class="info-card"><h3>Direcții de lectură</h3><ul class="checklist">
+        <li>istorii ale Imperiului Otoman și ale Monarhiei Habsburgice;</li>
+        <li>studii despre expansiunea Rusiei la Marea Neagră;</li>
+        <li>istorii ale Moldovei și Țării Românești în secolul fanariot;</li>
+        <li>studii despre război, fiscalitate și populație în Europa de Sud-Est;</li>
+        <li>ediții ale memoriilor și proiectelor boierești din secolele XVIII–XIX.</li>
+      </ul></article>
+    </div>
+    <div class="source-box"><h3>Principiu metodologic</h3><p>Tratatele arată schimbările juridice, dar nu explică singure experiența istorică. Pentru o înțelegere completă trebuie corelate cu jurnalul campaniilor, rapoartele consulare, registrele fiscale, conscripțiile, memoriile boierești și mărturiile despre epidemii și refugiu.</p></div>
+  </section>
+
+  <section class="final-box">
+    <h2>Ideea de reținut</h2>
+    <p>Între 1683 și 1812, spațiul românesc a trecut de la marginea defensivă a Imperiului Otoman la centrul rivalității dintre trei imperii. Austria a preluat Transilvania și Banatul, a stăpânit temporar Oltenia și a anexat Bucovina. Rusia a eșuat pe Prut în 1711, dar a revenit prin victorii succesive, a ajuns la Nistru în 1792 și la Prut în 1812. Moldova și Țara Românească și-au păstrat instituțiile interne, însă războaiele, ocupațiile și tratatele au redus teritoriul, au mărit dependența diplomatică și au stimulat proiectele de autonomie, unire și garanție europeană.</p>
+  </section>
+</main>
+
+<script>
+function toggleAll(openState) {
+  document.querySelectorAll('details').forEach(d => d.open = openState);
+}
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const max = h.scrollHeight - h.clientHeight;
+  const progress = document.getElementById('progress');
+  if (progress) progress.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+});
+</script>
+
+</body>
+</html>
