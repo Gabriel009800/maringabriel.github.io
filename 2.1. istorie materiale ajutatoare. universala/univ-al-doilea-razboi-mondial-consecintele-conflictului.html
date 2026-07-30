@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>al-doilea-razboi-mondial-consecintele-conflictului</title>
+  <style>
+:root {
+  --bg: #f6f0e7;
+  --paper: #fffaf3;
+  --paper-2: #ffffff;
+  --ink: #2f241c;
+  --title: #3c2a1e;
+  --muted: #5b4a3d;
+  --accent: #7a4f2a;
+  --accent-2: #9b6a3c;
+  --accent-soft: #f0e4d4;
+  --line: rgba(91, 62, 36, 0.18);
+  --line-strong: rgba(91, 62, 36, 0.34);
+  --outer-dark: #241208;
+  --outer-mid: #4a2a18;
+  --outer-warm: #7a4b2b;
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+  --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+    radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+}
+.page {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 34px 0 70px;
+}
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.back-link, .tag { display: inline-flex; align-items: center; border: 1px solid var(--line); background: rgba(255, 250, 243, 0.84); color: var(--title); border-radius: 999px; padding: 10px 15px; text-decoration: none; font-size: 15px; font-weight: 700; box-shadow: var(--shadow-small); }
+.back-link:hover { background: #fff6eb; }
+.hero, .section, .nav-card, .final-box { background: rgba(255, 250, 243, 0.96); border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow); }
+.hero { padding: 38px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.hero::after { content: var(--hero-year); position: absolute; right: 26px; bottom: -22px; font-size: 110px; font-weight: 900; letter-spacing: -4px; color: rgba(122, 79, 42, 0.08); pointer-events: none; }
+.eyebrow { margin: 0 0 8px; font-size: 16px; color: var(--accent); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; }
+h1 { margin: 0; font-size: clamp(38px, 5vw, 62px); line-height: 1.04; color: var(--title); letter-spacing: -1.4px; text-align: left; text-align-last: auto; }
+.subtitle { margin: 18px 0 0; max-width: 980px; font-size: 19px; line-height: 1.78; color: var(--muted); text-align: justify; text-align-last: left; }
+.summary-grid, .three-col, .two-col, .term-grid, .quick-grid, .cause-grid, .four-col { display: grid; gap: 14px; }
+.summary-grid { grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+.summary-card, .info-card, .wide-card, .term-card, .quick-card, .source-note, .micro-card, .warning-box { background: var(--paper-2); border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); text-align: justify; text-align-last: left; }
+.summary-card { padding: 16px; min-height: 132px; }
+.summary-card strong, .quick-card strong, .term-card strong, .micro-card strong { display: block; color: var(--title); font-size: 17px; margin-bottom: 8px; text-align: left; text-align-last: auto; }
+.summary-card span, .quick-card span, .term-card span, .micro-card span { display: block; color: var(--muted); font-size: 15.5px; line-height: 1.56; text-align: justify; text-align-last: left; }
+.nav-card { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 18px 20px; margin-bottom: 24px; }
+.nav-card b { color: var(--title); margin-right: 2px; }
+.nav-card a, .mini-btn { color: var(--title); background: var(--accent-soft); border: 1px solid rgba(91, 62, 36, 0.16); border-radius: 999px; text-decoration: none; padding: 8px 12px; font-weight: 700; font-size: 14px; cursor: pointer; font-family: inherit; }
+.nav-card a:hover, .mini-btn:hover { background: #e5d2bb; }
+.section { padding: 30px; margin-bottom: 24px; }
+h2 { margin: 0 0 14px; color: var(--title); font-size: clamp(28px, 3vw, 38px); line-height: 1.15; text-align: left; text-align-last: auto; }
+h3 { margin: 0 0 12px; color: var(--title); font-size: 22px; line-height: 1.22; text-align: left; text-align-last: auto; }
+h4 { margin: 16px 0 8px; color: var(--title); font-size: 18px; text-align: left; text-align-last: auto; }
+.section-intro, p, li, dd { font-size: 17px; line-height: 1.72; color: var(--muted); text-align: justify; text-align-last: left; hyphens: auto; }
+.section-intro { margin: 0 0 20px; max-width: 1000px; }
+.three-col { grid-template-columns: repeat(3, 1fr); }
+.two-col { grid-template-columns: repeat(2, 1fr); }
+.four-col { grid-template-columns: repeat(4, 1fr); }
+.cause-grid { grid-template-columns: 1.1fr 0.9fr; }
+.term-grid { grid-template-columns: repeat(4, 1fr); }
+.quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+.info-card, .wide-card, .term-card, .quick-card, .micro-card, .warning-box, .source-note { padding: 20px; }
+.wide-card { margin-top: 14px; }
+.wide-card p:last-child, .info-card p:last-child { margin-bottom: 0; }
+.clean, .number-list { margin: 0; padding-left: 22px; }
+.clean li, .number-list li { margin: 0 0 9px; padding-left: 2px; }
+.clean li:last-child, .number-list li:last-child { margin-bottom: 0; }
+.mini-title { display: inline; color: var(--title); font-weight: 800; background: transparent; border: 0; border-radius: 0; padding: 0; margin-right: 5px; white-space: normal; text-align: inherit; }
+.date-pill { display: inline-block; color: var(--title); font-weight: 800; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.13); border-radius: 999px; padding: 2px 9px; margin-right: 5px; white-space: nowrap; text-align: left; }
+.definition, .note { margin-top: 18px; background: #fff8ef; border: 1px solid rgba(122, 79, 42, 0.22); border-left: 6px solid rgba(122, 79, 42, 0.48); border-radius: 18px; padding: 18px 20px; color: var(--muted); font-size: 17px; line-height: 1.7; text-align: justify; text-align-last: left; }
+.definition strong, .note strong { color: var(--title); }
+details { background: #fffdf9; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); margin-top: 14px; overflow: hidden; }
+details[open] { background: #fffaf3; }
+summary { cursor: pointer; list-style: none; padding: 18px 20px; font-size: 19px; font-weight: 800; color: var(--title); display: flex; justify-content: space-between; align-items: center; gap: 18px; text-align: left; text-align-last: auto; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "Deschide"; color: var(--muted); font-size: 14px; font-weight: 700; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 999px; padding: 7px 11px; white-space: nowrap; }
+details[open] > summary::after { content: "Ascunde"; }
+.details-body { border-top: 1px solid rgba(91, 62, 36, 0.12); padding: 18px 20px 20px; text-align: justify; text-align-last: left; }
+.details-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.nested-details { margin-top: 10px; box-shadow: none; background: #ffffff; }
+.nested-details summary { font-size: 17px; padding: 14px 16px; }
+.key-line { display: grid; grid-template-columns: 220px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px dashed rgba(91, 62, 36, 0.18); }
+.key-line:last-child { border-bottom: 0; }
+.key-line strong { color: var(--title); text-align: left; text-align-last: auto; }
+.key-line span { color: var(--muted); line-height: 1.65; text-align: justify; text-align-last: left; }
+.timeline { position: relative; display: grid; gap: 14px; margin-top: 18px; }
+.event { display: grid; grid-template-columns: 132px 1fr; gap: 18px; align-items: stretch; background: #ffffff; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); overflow: hidden; }
+.date { background: linear-gradient(180deg, #7a4f2a, #5b351b); color: #fffaf3; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px; font-size: 18px; line-height: 1.25; font-weight: 900; letter-spacing: 0.2px; }
+.event > div:last-child { padding: 17px 18px 18px 0; text-align: justify; text-align-last: left; }
+.event h3 { margin-bottom: 6px; }
+.event p { margin: 0; }
+.small-muted { font-size: 15px; color: #725c49; line-height: 1.6; text-align: justify; text-align-last: left; }
+.warning-box { background: #fff7ec; border-color: rgba(122, 79, 42, 0.22); margin-top: 16px; }
+.final-box { padding: 28px; background: linear-gradient(135deg, #fffaf3, #f4e4d1); border-color: rgba(91, 62, 36, 0.25); }
+.final-box p { margin-bottom: 0; }
+.table-wrap { overflow-x: auto; margin-top: 14px; border-radius: 18px; border: 1px solid rgba(91,62,36,.14); background: #fff; box-shadow: var(--shadow-small); }
+table { width: 100%; border-collapse: collapse; min-width: 740px; }
+th, td { padding: 13px 14px; border-bottom: 1px solid rgba(91,62,36,.12); color: var(--muted); font-size: 16px; line-height: 1.55; vertical-align: top; text-align: justify; }
+th { background: #f3eadf; color: var(--title); text-align: left; font-weight: 800; }
+tr:last-child td { border-bottom: 0; }
+@media (max-width: 980px) {
+  .summary-grid, .three-col, .term-grid, .quick-grid, .four-col { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .cause-grid, .details-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .page { width: min(100% - 22px, 1180px); padding-top: 22px; }
+  .hero, .section, .final-box { padding: 22px; border-radius: 22px; }
+  .summary-grid, .term-grid, .quick-grid, .four-col { grid-template-columns: 1fr; }
+  .event { grid-template-columns: 1fr; }
+  .date { min-height: 66px; }
+  .event > div:last-child { padding: 0 16px 16px; }
+  .key-line { grid-template-columns: 1fr; gap: 6px; }
+  summary { align-items: flex-start; flex-direction: column; }
+  .hero::after { font-size: 82px; }
+}
+</style>
+</head>
+<body style="--hero-year: '1945';">
+  <main class="page">
+    <div class="topbar">
+      <a class="back-link" href="evaluare_cu_material_al_doilea_razboi_corectat.html">← Înapoi la materiale</a>
+      <span class="tag">Material ajutător · Istoria universală · Al Doilea Război Mondial</span>
+    </div>
+    <section class="hero">
+      <p class="eyebrow">Istoria universală · Epoca contemporană</p>
+      <h1>Al Doilea Război Mondial: consecințele conflictului</h1>
+      <p class="subtitle">Consecințele celui de-al Doilea Război Mondial au fost globale: pierderi umane uriașe, Holocaustul și alte crime de masă, distrugeri materiale, redesenarea frontierelor, ocuparea Germaniei și Japoniei, apariția ONU, începutul Războiului Rece, decolonizarea și intrarea lumii în epoca nucleară.</p>
+      <div class="summary-grid"><div class="summary-card"><strong>Pierderi</strong><span>Aproximativ 70-85 de milioane de morți, inclusiv un număr enorm de civili.</span></div><div class="summary-card"><strong>Justiție</strong><span>Nürnberg și Tokyo formulează un nou limbaj al responsabilității penale internaționale.</span></div><div class="summary-card"><strong>Ordine mondială</strong><span>ONU, Bretton Woods, Planul Marshall și alianțele militare reorganizează lumea.</span></div><div class="summary-card"><strong>Război Rece</strong><span>SUA și URSS devin superputeri rivale, iar Europa este împărțită în blocuri.</span></div></div>
+    </section>
+    <nav class="nav-card" aria-label="Cuprins"><b>Cuprins:</b><a href="#cronologie">Cronologie</a><a href="#bilant-detaliat">Bilanț</a><a href="#pierderi-detaliu">Pierderi</a><a href="#holocaust-consecinte">Holocaust</a><a href="#frontiere-detaliu">Frontiere</a><a href="#rece-detaliu">Războiul Rece</a><a href="#romania-consecinte">România</a><a href="#decolonizare">Decolonizare</a><a href="#tehnologie-consecinte">Tehnologie</a><a href="#memorie-detaliu">Memorie</a></nav>
+    <section class="section" id="cronologie"><h2>Cronologie postbelică: 1945-1955</h2><p class="section-intro">Consecințele războiului nu se încheie odată cu capitulările din 1945. Ele se prelungesc în justiție internațională, reconstrucție, ocupație militară, începutul Războiului Rece și reorganizarea ordinii mondiale.</p><div class="timeline"><article class="event"><div class="date">4-11 feb.<br>1945</div><div><h3>Yalta</h3><p>Cei Trei Mari discută Germania, Polonia, Europa de Est și viitoarea Organizație a Națiunilor Unite.</p></div></article><article class="event"><div class="date">8/9 mai<br>1945</div><div><h3>Sfârșitul războiului în Europa</h3><p>Germania capitulează. Europa este distrusă material, demografic și politic.</p></div></article><article class="event"><div class="date">26 iun.<br>1945</div><div><h3>Carta ONU</h3><p>La San Francisco este semnată Carta Organizației Națiunilor Unite; ONU intră în vigoare la 24 octombrie 1945.</p></div></article><article class="event"><div class="date">17 iul.-<br>2 aug. 1945</div><div><h3>Potsdam</h3><p>SUA, Marea Britanie și URSS decid principiile ocupației Germaniei: demilitarizare, denazificare, democratizare, descentralizare și despăgubiri.</p></div></article><article class="event"><div class="date">6/9 aug.<br>1945</div><div><h3>Hiroshima și Nagasaki</h3><p>Bombardamentele atomice inaugurează epoca nucleară și schimbă definitiv raportul dintre știință, stat și război.</p></div></article><article class="event"><div class="date">2 sept.<br>1945</div><div><h3>Capitularea Japoniei</h3><p>Documentul de capitulare este semnat pe USS Missouri. Japonia intră sub ocupație americană.</p></div></article><article class="event"><div class="date">20 nov. 1945-<br>1 oct. 1946</div><div><h3>Procesul de la Nürnberg</h3><p>Lideri naziști sunt judecați pentru crime împotriva păcii, crime de război și crime împotriva umanității.</p></div></article><article class="event"><div class="date">1946-1948</div><div><h3>Procesul de la Tokyo</h3><p>Lideri militari și politici japonezi sunt judecați pentru agresiune și crime de război.</p></div></article><article class="event"><div class="date">10 feb.<br>1947</div><div><h3>Tratatele de pace de la Paris</h3><p>Sunt semnate tratate cu Italia, România, Bulgaria, Ungaria și Finlanda. Frontierele Europei de Est sunt confirmate în mare parte sub presiune sovietică.</p></div></article><article class="event"><div class="date">1947</div><div><h3>Doctrina Truman și Planul Marshall</h3><p>SUA formulează politica de containment și lansează ajutorul economic pentru reconstrucția Europei occidentale.</p></div></article><article class="event"><div class="date">1948</div><div><h3>Blocada Berlinului</h3><p>URSS blochează accesul terestru spre Berlinul de Vest; podul aerian occidental devine simbol al începutului Războiului Rece.</p></div></article><article class="event"><div class="date">1949</div><div><h3>Două Germanii și NATO</h3><p>Apar Republica Federală Germania și Republica Democrată Germană. NATO este creat ca alianță militară occidentală.</p></div></article><article class="event"><div class="date">1951-1952</div><div><h3>Tratatele cu Japonia</h3><p>Tratatul de la San Francisco și acordurile de securitate stabilesc reintegrarea Japoniei în ordinea postbelică condusă de SUA.</p></div></article><article class="event"><div class="date">1955</div><div><h3>Pactul de la Varșovia</h3><p>URSS și statele comuniste est-europene creează alianța militară care răspunde NATO. Bipolaritatea devine instituționalizată.</p></div></article></div></section><section class="section" id="umane"><h2>I. Pierderi umane, distrugeri și traume sociale</h2><p class="section-intro">Al Doilea Război Mondial a fost cel mai distructiv conflict din istorie. A implicat armate de masă, civili, economii întregi, bombardamente asupra orașelor, genocid, foamete, deportări și strămutări forțate.</p><div class="three-col"><article class="info-card"><h3>Pierderi demografice</h3><p>Estimările variază, dar războiul a provocat aproximativ 70-85 de milioane de morți, incluzând militari și civili. URSS, China, Polonia, Germania, Japonia și alte state au suferit pierderi uriașe. Civilii au reprezentat o parte foarte mare a victimelor.</p></article><article class="info-card"><h3>Holocaust și crime de masă</h3><p>Germania nazistă și colaboratorii săi au ucis aproximativ șase milioane de evrei. Alte grupuri persecutate au inclus romi și sinti, persoane cu dizabilități, prizonieri sovietici, polonezi, opozanți politici, homosexuali și martori ai lui Iehova.</p></article><article class="info-card"><h3>Orașe distruse</h3><p>Varșovia, Stalingrad, Leningrad, Berlin, Hamburg, Dresda, Tokyo, Hiroshima, Nagasaki, Manila și multe alte orașe au devenit simboluri ale distrugerii urbane. Reconstrucția a durat ani sau decenii.</p></article></div><details open><summary>Refugiați, deportați și strămutați</summary><div class="details-body"><p>După 1945, Europa a fost traversată de milioane de refugiați: supraviețuitori ai lagărelor, prizonieri de război, muncitori forțați, germani expulzați din Europa Centrală și de Est, polonezi mutați spre vest, evrei fără comunități de întoarcere și populații afectate de schimbarea frontierelor.</p><p>Strămutările au schimbat compoziția etnică a Europei. Germania a pierdut teritorii în est, Polonia s-a deplasat spre vest, iar frontierele Europei Centrale au fost reorganizate sub influența directă a URSS.</p></div></details></section><section class="section" id="politice"><h2>II. Noua ordine politică: două superputeri și începutul Războiului Rece</h2><p class="section-intro">Europa a ieșit slăbită din război, iar SUA și URSS au devenit principalele superputeri. Alianța de război s-a transformat rapid în rivalitate ideologică, militară și geopolitică.</p><div class="two-col"><article class="info-card"><h3>Occidentul</h3><p>Statele Unite au ieșit din război cu o economie puternică, superioritate industrială și armă nucleară. Marea Britanie și Franța au rămas puteri importante, dar mult mai slăbite. Planul Marshall a legat reconstrucția Europei occidentale de leadershipul american.</p></article><article class="info-card"><h3>Estul Europei</h3><p>URSS a impus regimuri comuniste în Europa de Est prin ocupație militară, control politic, partide comuniste locale, epurări și presiuni asupra instituțiilor. România, Bulgaria, Polonia, Ungaria, Cehoslovacia și Germania de Est intră în zona sovietică.</p></article></div><details open><summary>Conferințele de la Yalta și Potsdam</summary><div class="details-body"><p>La Yalta, liderii SUA, Marii Britanii și URSS discută organizarea Europei postbelice. Problemele centrale sunt Germania, Polonia, reparațiile, ONU și intrarea URSS în războiul împotriva Japoniei. La Potsdam, după capitularea Germaniei, se stabilesc principiile ocupației: demilitarizare, denazificare, democratizare, descentralizare și despăgubiri.</p><p>Diferențele dintre Aliați devin tot mai clare: Occidentul dorește reconstrucție și pluralism politic în zonele sale, în timp ce URSS urmărește securizarea frontierelor prin state-satelit.</p></div></details><details open><summary>Germania divizată</summary><div class="details-body"><p>Germania este împărțită în zone de ocupație americană, britanică, franceză și sovietică. Berlinul este și el împărțit. În 1949 apar două state: Republica Federală Germania în vest și Republica Democrată Germană în est. Divizarea Germaniei devine simbolul Europei împărțite.</p></div></details></section><section class="section" id="teritoriale"><h2>III. Consecințe teritoriale</h2><p class="section-intro">Frontierele postbelice au confirmat victoria Aliaților și extinderea influenței sovietice în Europa de Est. Unele state au fost restaurate, altele au pierdut teritorii, iar milioane de oameni au fost mutați.</p><div class="table-wrap"><table><thead><tr><th>Spațiu</th><th>Schimbări principale</th><th>Semnificație</th></tr></thead><tbody><tr><td>Germania</td><td>Pierde teritorii la est de Oder-Neisse; este împărțită în zone de ocupație și apoi în două state.</td><td>Devine centrul confruntării dintre Occident și URSS.</td></tr><tr><td>Polonia</td><td>Pierde teritorii în est în favoarea URSS și primește teritorii germane în vest și nord.</td><td>Statul polonez este mutat geografic spre vest.</td></tr><tr><td>URSS</td><td>Controlează statele baltice, Basarabia, nordul Bucovinei și alte teritorii obținute sau confirmate în 1939-1945.</td><td>Devine superputere continentală cu zonă de securitate în Europa de Est.</td></tr><tr><td>Italia</td><td>Pierde coloniile, cedează teritorii la frontiera estică și intră în proces de democratizare republicană.</td><td>Fascismul este înlăturat, iar Italia intră treptat în tabăra occidentală.</td></tr><tr><td>Japonia</td><td>Pierde imperiul colonial: Coreea, Taiwan, Manciuria, insule din Pacific și controlul asupra teritoriilor ocupate.</td><td>Este demilitarizată și reconstruită sub ocupație americană.</td></tr><tr><td>România</td><td>Recuperează nordul Transilvaniei prin tratatele postbelice, dar pierde definitiv Basarabia, nordul Bucovinei și ținutul Herța în favoarea URSS; Cadrilaterul rămâne la Bulgaria.</td><td>Intră în zona de influență sovietică și va fi comunizată după război.</td></tr></tbody></table></div></section><section class="section" id="justitie"><h2>IV. Justiție internațională și drepturile omului</h2><p class="section-intro">După 1945 apare ideea că liderii statelor pot fi judecați pentru agresiune, crime de război și crime împotriva umanității. Această schimbare marchează începutul justiției penale internaționale moderne.</p><div class="three-col"><article class="info-card"><h3>Nürnberg</h3><p>Procesul principal de la Nürnberg, 1945-1946, judecă lideri ai Germaniei naziste. Sunt formulate capete de acuzare precum crime împotriva păcii, crime de război și crime împotriva umanității. Procese ulterioare analizează medici, judecători, industriași, militari și funcționari.</p></article><article class="info-card"><h3>Tokyo</h3><p>Tribunalul Militar Internațional pentru Extremul Orient, 1946-1948, judecă lideri japonezi pentru agresiune și crime de război. Procesul evidențiază dimensiunea asiatică a războiului și violențele comise în China, Asia de Sud-Est și Pacific.</p></article><article class="info-card"><h3>Drepturile omului</h3><p>Experiența Holocaustului, a războiului total și a deportărilor contribuie la adoptarea Declarației Universale a Drepturilor Omului în 1948 și a Convenției pentru prevenirea și pedepsirea crimei de genocid.</p></article></div><details open><summary>Concepte juridice-cheie</summary><div class="details-body"><div class="key-line"><strong>Crimă împotriva păcii</strong><span>Planificarea și declanșarea unui război de agresiune.</span></div><div class="key-line"><strong>Crimă de război</strong><span>Încălcarea regulilor războiului: uciderea prizonierilor, masacre, deportări, tratamente inumane, distrugeri nejustificate militar.</span></div><div class="key-line"><strong>Crimă împotriva umanității</strong><span>Atacuri sistematice împotriva civililor: exterminare, deportare, persecuție, sclavie, ucidere în masă.</span></div><div class="key-line"><strong>Genocid</strong><span>Intenția de a distruge total sau parțial un grup național, etnic, rasial sau religios.</span></div></div></details></section><section class="section" id="economice"><h2>V. Reconstrucție economică și instituții internaționale</h2><p class="section-intro">Războiul a distrus infrastructuri, orașe, industrii și rețele comerciale. Reconstrucția a impus noi instituții economice și o nouă arhitectură a cooperării internaționale.</p><div class="details-grid"><div class="micro-card"><strong>Bretton Woods</strong><span>În 1944 sunt create bazele Fondului Monetar Internațional și ale Băncii Mondiale, menite să stabilizeze economia internațională postbelică.</span></div><div class="micro-card"><strong>Planul Marshall</strong><span>Din 1948, SUA finanțează reconstrucția Europei occidentale. Ajutorul economic are și rol politic: limitează atractivitatea comunismului.</span></div><div class="micro-card"><strong>Economia de război</strong><span>Experiența mobilizării totale a accelerat producția de masă, tehnologia, cercetarea științifică și rolul statului în economie.</span></div><div class="micro-card"><strong>Decolonizarea</strong><span>Imperiile europene ies slăbite, iar mișcările de independență din Asia și Africa capătă forță. India devine independentă în 1947, iar valul se extinde în deceniile următoare.</span></div></div></section><section class="section" id="nuclear"><h2>VI. Epoca nucleară, memorie și educație istorică</h2><p class="section-intro">Războiul a schimbat nu doar harta lumii, ci și raportul oamenilor cu tehnologia, statul, memoria și responsabilitatea morală.</p><div class="two-col"><article class="info-card"><h3>Epoca nucleară</h3><p>Hiroshima și Nagasaki arată că omenirea intră într-o epocă în care distrugerea poate fi instantanee și masivă. După 1945, cursa nucleară dintre SUA și URSS devine una dintre dimensiunile centrale ale Războiului Rece.</p></article><article class="info-card"><h3>Memoria războiului</h3><p>Memoria războiului diferă de la o țară la alta: eliberare, ocupație, rezistență, colaborare, genocid, bombardamente, deportare, victorie sau traumă. De aceea, educația istorică trebuie să distingă între fapte, propagandă, mituri naționale și responsabilități documentate.</p></article></div><details open><summary>De ce rămâne Al Doilea Război Mondial un reper central?</summary><div class="details-body"><p>Războiul a produs instituții, frontiere, alianțe, traume și concepte care au organizat lumea postbelică: ONU, NATO, Pactul de la Varșovia, Războiul Rece, drepturile omului, justiția internațională, memoria Holocaustului, decolonizarea și echilibrul nuclear.</p><p>El a demonstrat că modernitatea tehnologică poate fi folosită atât pentru reconstrucție, cât și pentru distrugere în masă. De aceea, studierea războiului nu înseamnă doar memorarea unor bătălii, ci înțelegerea felului în care instituțiile, ideologiile și deciziile politice pot transforma societăți întregi.</p></div></details></section>
+
+
+<section class="section" id="bilant-detaliat">
+  <h2>Bilanț detaliat al consecințelor</h2>
+  <p class="section-intro">Consecințele războiului nu pot fi reduse la capitularea Germaniei și Japoniei. Războiul a produs o nouă ordine mondială, a schimbat frontiere, a provocat pierderi umane uriașe, a creat instituții internaționale și a declanșat Războiul Rece.</p>
+  <div class="table-wrap"><table><thead><tr><th>Domeniu</th><th>Consecințe principale</th><th>Exemple cu date</th></tr></thead><tbody>
+    <tr><td>Demografic</td><td>Zeci de milioane de morți, răniți, orfani, văduve, supraviețuitori ai lagărelor și populații strămutate.</td><td>Holocaustul; asediul Leningradului; Stalingrad; bombardamentele asupra Germaniei și Japoniei; refugiații postbelici.</td></tr>
+    <tr><td>Politic</td><td>Prăbușirea Germaniei naziste, Italiei fasciste și Japoniei militariste; ascensiunea SUA și URSS.</td><td>8/9 mai 1945, capitularea Germaniei; 2 septembrie 1945, capitularea Japoniei; 1949, apar RFG și RDG.</td></tr>
+    <tr><td>Teritorial</td><td>Schimbarea frontierelor în Europa și Asia; expulzări și mutări de populație.</td><td>Linia Oder-Neisse; Polonia mutată spre vest; statele baltice în URSS; Japonia pierde imperiul colonial.</td></tr>
+    <tr><td>Juridic</td><td>Apariția justiției penale internaționale moderne.</td><td>Nürnberg, 1945-1946; Tokyo, 1946-1948; Convenția pentru genocid, 1948; Declarația Universală a Drepturilor Omului, 1948.</td></tr>
+    <tr><td>Economic</td><td>Reconstrucție, noi instituții financiare și divizarea economică a Europei.</td><td>Bretton Woods, 1944; Planul Marshall, 1948; CAER, 1949.</td></tr>
+    <tr><td>Militar</td><td>Epoca nucleară, alianțe militare permanente, cursa înarmărilor.</td><td>Hiroshima și Nagasaki, august 1945; NATO, 1949; Pactul de la Varșovia, 1955.</td></tr>
+    <tr><td>Colonial</td><td>Slăbirea imperiilor europene și accelerarea decolonizării.</td><td>Independența Indiei și Pakistanului, 1947; războaiele din Indochina și Indonezia; mișcări anticoloniale în Africa.</td></tr>
+  </tbody></table></div>
+</section>
+
+<section class="section" id="pierderi-detaliu">
+  <h2>I.a. Pierderi umane și forme ale distrugerii</h2>
+  <p class="section-intro">Războiul a fost total: frontul și spatele frontului s-au confundat, iar civilii au fost loviți direct prin bombardamente, ocupație, genocid, deportări, foamete și muncă forțată.</p>
+  <div class="three-col">
+    <article class="info-card"><h3>Morți militari</h3><p>Armata Roșie, Wehrmachtul, armatele Chinei, Japoniei, SUA, Marii Britanii, Poloniei, României, Italiei, Ungariei și ale altor state au suferit pierderi enorme. Frontul de Est a fost cel mai sângeros teatru european.</p></article>
+    <article class="info-card"><h3>Morți civili</h3><p>Civilii au murit în orașe bombardate, sate incendiate, ghetouri, lagăre, deportări, foamete și represalii. În Europa de Est și Asia, ocupația militară a fost adesea însoțită de teroare sistematică.</p></article>
+    <article class="info-card"><h3>Traume postbelice</h3><p>Supraviețuitorii s-au confruntat cu pierderea familiilor, distrugerea comunităților, dizlocarea, boala, sărăcia și imposibilitatea întoarcerii acasă. Pentru evrei, romi, polonezi, ucraineni, belaruși, chinezi, coreeni și alte grupuri, războiul a lăsat traume colective de lungă durată.</p></article>
+  </div>
+  <details open><summary>Exemple de distrugere urbană</summary><div class="details-body"><p><strong>Varșovia</strong> a fost devastată după insurecția din 1944. <strong>Stalingradul</strong> a devenit ruină în luptele din 1942-1943. <strong>Leningradul</strong> a fost supus unui asediu prelungit, cu foamete masivă. <strong>Hamburg</strong> și <strong>Dresda</strong> au fost afectate de bombardamente aliate. <strong>Tokyo</strong> a fost lovit prin bombardamente incendiare în 1945. <strong>Hiroshima</strong> și <strong>Nagasaki</strong> au devenit simboluri ale epocii nucleare.</p></div></details>
+</section>
+
+<section class="section" id="holocaust-consecinte">
+  <h2>I.b. Holocaustul, genocidul și memoria victimelor</h2>
+  <p class="section-intro">Holocaustul este una dintre consecințele centrale ale războiului, dar și unul dintre scopurile politicii naziste radicalizate în timpul conflictului. El a distrus comunități evreiești vechi de secole și a obligat lumea postbelică să regândească dreptul internațional.</p>
+  <div class="details-grid">
+    <div class="micro-card"><strong>Evrei</strong><span>Aproximativ șase milioane de evrei au fost uciși prin execuții, ghetouri, deportări, camere de gazare, muncă forțată, foamete și boli.</span></div>
+    <div class="micro-card"><strong>Romi și sinti</strong><span>Comunități rome și sinti au fost persecutate, deportate și ucise în lagăre și prin execuții mobile.</span></div>
+    <div class="micro-card"><strong>Persoane cu dizabilități</strong><span>Programul T4 și alte politici de „eutanasie” au vizat oameni considerați „nevrednici de viață”.</span></div>
+    <div class="micro-card"><strong>Prizonieri sovietici și civili est-europeni</strong><span>Milioane au murit prin înfometare, execuții, muncă forțată și condiții de detenție.</span></div>
+  </div>
+  <details open><summary>Impactul asupra dreptului internațional</summary><div class="details-body"><p>După 1945, termenii „crimă împotriva umanității” și „genocid” capătă importanță juridică majoră. Juristul Raphael Lemkin, care a formulat conceptul de genocid, influențează Convenția din 1948 pentru prevenirea și pedepsirea crimei de genocid. Holocaustul devine astfel nu doar un eveniment istoric, ci un reper juridic și moral al lumii contemporane.</p></div></details>
+</section>
+
+<section class="section" id="frontiere-detaliu">
+  <h2>II.a. Frontiere și reorganizări teritoriale</h2>
+  <p class="section-intro">Harta politică a Europei și Asiei a fost remodelată. Unele modificări au confirmat realități militare create de URSS, altele au pedepsit statele învinse, iar altele au încercat să creeze o ordine mai stabilă.</p>
+  <div class="timeline">
+    <article class="event"><div class="date">1945</div><div><h3>Germania ocupată</h3><p>Germania este împărțită în patru zone de ocupație: americană, britanică, franceză și sovietică. Berlinul este împărțit separat, deși se află în zona sovietică.</p></div></article>
+    <article class="event"><div class="date">1945</div><div><h3>Linia Oder-Neisse</h3><p>Frontiera estică a Germaniei este mutată spre vest. Teritoriile germane de la est de Oder și Neisse sunt administrate de Polonia și URSS, iar populația germană este expulzată sau fuge.</p></div></article>
+    <article class="event"><div class="date">1945-1947</div><div><h3>Tratatele de pace</h3><p>Tratatele postbelice confirmă schimbări teritoriale pentru Italia, România, Ungaria, Bulgaria și Finlanda. România recuperează nordul Transilvaniei, dar pierde Basarabia, nordul Bucovinei și ținutul Herța în favoarea URSS; Cadrilaterul rămâne Bulgariei.</p></div></article>
+    <article class="event"><div class="date">1945</div><div><h3>Japonia fără imperiu</h3><p>Japonia pierde Coreea, Taiwan, Manciuria, insulele din Pacific și teritoriile ocupate. Coreea este împărțită temporar la paralela 38, ceea ce va pregăti conflictul din 1950.</p></div></article>
+  </div>
+</section>
+
+<section class="section" id="rece-detaliu">
+  <h2>II.b. Începutul Războiului Rece</h2>
+  <p class="section-intro">Alianța dintre SUA, Marea Britanie și URSS a fost o alianță de necesitate împotriva Axei. După înfrângerea Germaniei și Japoniei, diferențele ideologice și strategice au reapărut rapid.</p>
+  <div class="two-col">
+    <article class="info-card"><h3>Logica americană</h3><p>SUA urmăreau reconstrucție economică, piețe deschise, instituții internaționale și limitarea comunismului. Planul Marshall, NATO și sprijinul pentru Europa Occidentală au transformat Statele Unite în liderul lumii occidentale.</p></article>
+    <article class="info-card"><h3>Logica sovietică</h3><p>URSS urmărea securizarea frontierelor prin control asupra Europei de Est. Experiența invaziilor din 1812, 1914 și 1941 a fost folosită pentru a justifica o zonă-tampon, dar în practică aceasta a însemnat regimuri comuniste impuse sau controlate de Moscova.</p></article>
+  </div>
+  <details open><summary>Momente-cheie ale începutului Războiului Rece</summary><div class="details-body"><div class="timeline"><article class="event"><div class="date">1946</div><div><h3>Discursul despre „Cortina de Fier”</h3><p>Winston Churchill descrie divizarea Europei între estul controlat de sovietici și vestul liber-democratic.</p></div></article><article class="event"><div class="date">1947</div><div><h3>Doctrina Truman</h3><p>SUA anunță sprijinirea statelor amenințate de comunism, în special Grecia și Turcia.</p></div></article><article class="event"><div class="date">1948-1949</div><div><h3>Blocada Berlinului</h3><p>URSS blochează accesul terestru spre Berlinul de Vest. Occidentul organizează podul aerian, iar divizarea Germaniei se adâncește.</p></div></article><article class="event"><div class="date">1949</div><div><h3>NATO și cele două Germanii</h3><p>Se creează NATO; apar Republica Federală Germania și Republica Democrată Germană.</p></div></article></div></div></details>
+</section>
+
+<section class="section" id="romania-consecinte">
+  <h2>III.a. Consecințe pentru România</h2>
+  <p class="section-intro">Pentru România, războiul a însemnat pierderi teritoriale, schimbare de alianță, ocupație sovietică, pierderi umane, despăgubiri, comunizare și reconfigurarea completă a regimului politic.</p>
+  <div class="details-grid">
+    <div class="micro-card"><strong>1940</strong><span>România pierde Basarabia, nordul Bucovinei, nordul Transilvaniei și Cadrilaterul, ceea ce provoacă prăbușirea autorității regelui Carol al II-lea și ascensiunea lui Ion Antonescu.</span></div>
+    <div class="micro-card"><strong>1941-1944</strong><span>România luptă alături de Germania împotriva URSS, recuperează Basarabia și nordul Bucovinei, apoi continuă războiul dincolo de Nistru, inclusiv în Transnistria și la Stalingrad.</span></div>
+    <div class="micro-card"><strong>23 august 1944</strong><span>România întoarce armele împotriva Germaniei. Actul schimbă situația strategică din Balcani, dar nu împiedică intrarea țării sub control sovietic.</span></div>
+    <div class="micro-card"><strong>1947</strong><span>Tratatul de pace de la Paris confirmă revenirea nordului Transilvaniei la România, dar și pierderea Basarabiei și nordului Bucovinei. În același an, monarhia este abolită.</span></div>
+  </div>
+</section>
+
+<section class="section" id="decolonizare">
+  <h2>IV.a. Decolonizarea și schimbarea raportului global de putere</h2>
+  <p class="section-intro">Al Doilea Război Mondial a slăbit marile imperii coloniale europene. Popoarele coloniale au contribuit la efortul de război și au cerut apoi drepturi politice, autonomie și independență.</p>
+  <div class="three-col">
+    <article class="info-card"><h3>Asia</h3><p>Japonia a distrus temporar prestigiul imperial al puterilor europene în Asia de Sud-Est. După 1945, Olanda, Franța și Marea Britanie nu mai pot reveni ușor la ordinea colonială. India și Pakistan devin independente în 1947; Indonezia își proclamă independența în 1945; Vietnamul intră într-un nou ciclu de conflict.</p></article>
+    <article class="info-card"><h3>Africa</h3><p>Războiul accelerează mișcările naționaliste. Deși majoritatea independențelor africane vin mai târziu, în anii 1950-1960, slăbirea Franței, Marii Britanii, Belgiei și Italiei începe în perioada imediat postbelică.</p></article>
+    <article class="info-card"><h3>Orientul Mijlociu</h3><p>Declinul puterilor europene și tensiunile dintre promisiuni, mandate și mișcări naționale modifică regiunea. Problema Palestinei și crearea statului Israel în 1948 sunt legate de contextul postbelic și de trauma Holocaustului.</p></article>
+  </div>
+</section>
+
+<section class="section" id="tehnologie-consecinte">
+  <h2>V.a. Consecințe tehnologice și militare</h2>
+  <p class="section-intro">Războiul a accelerat cercetarea științifică și militară. Unele inovații au fost folosite pentru distrugere, dar după război au influențat medicina, transporturile, comunicațiile și explorarea spațiului.</p>
+  <div class="details-grid">
+    <div class="micro-card"><strong>Radarul</strong><span>A fost esențial în Bătălia Angliei și în războiul naval, contribuind la detectarea avioanelor și submarinelor.</span></div>
+    <div class="micro-card"><strong>Rachetele V1 și V2</strong><span>Armele germane au anticipat tehnologia rachetelor postbelice, dar în război au avut efect mai ales terorist și propagandistic.</span></div>
+    <div class="micro-card"><strong>Energia nucleară</strong><span>Proiectul Manhattan a dus la bomba atomică și la intrarea omenirii în epoca nucleară.</span></div>
+    <div class="micro-card"><strong>Avioanele cu reacție</strong><span>Germania a folosit Me 262, dar prea târziu pentru a schimba războiul. După 1945, aviația militară intră în epoca jetului.</span></div>
+    <div class="micro-card"><strong>Medicina</strong><span>Penicilina, chirurgia de urgență, transfuziile, trierea răniților și tratamentele pentru șoc au progresat în condiții de război.</span></div>
+    <div class="micro-card"><strong>Calculul și criptografia</strong><span>Războiul codurilor, inclusiv spargerea Enigma și lucrul de la Bletchley Park, a accelerat dezvoltarea calculului modern.</span></div>
+  </div>
+</section>
+
+<section class="section" id="memorie-detaliu">
+  <h2>VI.a. Memorie, responsabilitate și educație istorică</h2>
+  <p class="section-intro">După 1945, memoria războiului a devenit parte a identității naționale, a politicii și a educației. Dar memoria diferă: pentru unii, războiul este eliberare; pentru alții, ocupație, deportare, foamete, bombardament, genocid sau începutul dictaturii comuniste.</p>
+  <details open><summary>De ce trebuie studiat cu atenție?</summary><div class="details-body"><p>Al Doilea Război Mondial arată cum pot eșua instituțiile internaționale, cum propaganda poate pregăti violența, cum statele pot transforma birocrația în instrument de exterminare și cum războiul modern lovește civilii la fel de mult ca armatele. Studierea lui cere date, cronologie, cauzalitate și responsabilitate, nu doar liste de bătălii.</p><p>O prezentare profesionistă trebuie să distingă între cauze de durată și cauze imediate, între fronturi și teatre de operațiuni, între înfrângeri militare și crime de stat, între mituri naționale și documente istorice.</p></div></details>
+</section>
+
+<section class="section" id="surse">
+  <h2>Surse orientative pentru aprofundare</h2>
+  <p class="section-intro">Pentru verificare și aprofundare pot fi consultate manualele de istorie universală, enciclopediile istorice, arhivele muzeale și sintezele academice despre Al Doilea Război Mondial.</p>
+  <div class="details-grid">
+    <div class="source-note"><h3>Instituții și arhive</h3><p>United States Holocaust Memorial Museum, Imperial War Museums, The National WWII Museum, National Archives, Yad Vashem, Bundesarchiv, ONU.</p></div>
+    <div class="source-note"><h3>Teme de verificat</h3><p>Versailles, Societatea Națiunilor, Pactul Anti-Comintern, Pactul de Oțel, Pactul Tripartit, Pactul Molotov-Ribbentrop, campaniile militare 1939-1945, conferințele de la Teheran, Yalta și Potsdam, procesele de la Nürnberg și Tokyo.</p></div>
+  </div>
+</section>
+
+    <section class="final-box"><h2>Ideea de reținut</h2><p>Războiul a închis epoca dominației europene clasice și a deschis lumea postbelică: bipolară, nucleară, instituționalizată prin ONU, dar divizată de Războiul Rece. Consecințele sale nu sunt doar militare, ci demografice, morale, juridice, economice și memoriale.</p></section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Revoluția Franceză: desfășurarea revoluției">
+<title>univ-revolutia-franceza-desfasurarea-revolutiei</title>
+<style>
+
+:root {
+  --bg: #f6f0e7;
+  --paper: #fffaf3;
+  --paper-2: #ffffff;
+  --ink: #2f241c;
+  --title: #3c2a1e;
+  --muted: #5b4a3d;
+  --accent: #7a4f2a;
+  --accent-2: #9b6a3c;
+  --accent-soft: #f0e4d4;
+  --line: rgba(91, 62, 36, 0.18);
+  --line-strong: rgba(91, 62, 36, 0.34);
+  --outer-dark: #241208;
+  --outer-mid: #4a2a18;
+  --outer-warm: #7a4b2b;
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+  --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+    radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+}
+.page {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 34px 0 70px;
+}
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.back-link, .tag { display: inline-flex; align-items: center; border: 1px solid var(--line); background: rgba(255, 250, 243, 0.84); color: var(--title); border-radius: 999px; padding: 10px 15px; text-decoration: none; font-size: 15px; font-weight: 700; box-shadow: var(--shadow-small); }
+.back-link:hover { background: #fff6eb; }
+.hero, .section, .nav-card, .final-box { background: rgba(255, 250, 243, 0.96); border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow); }
+.hero { padding: 38px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.hero::after { content: var(--hero-year); position: absolute; right: 26px; bottom: -22px; font-size: 110px; font-weight: 900; letter-spacing: -4px; color: rgba(122, 79, 42, 0.08); pointer-events: none; }
+.eyebrow { margin: 0 0 8px; font-size: 16px; color: var(--accent); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; }
+h1 { margin: 0; font-size: clamp(38px, 5vw, 62px); line-height: 1.04; color: var(--title); letter-spacing: -1.4px; text-align: left; text-align-last: auto; }
+.subtitle { margin: 18px 0 0; max-width: 980px; font-size: 19px; line-height: 1.78; color: var(--muted); text-align: justify; text-align-last: left; }
+.summary-grid, .three-col, .two-col, .term-grid, .quick-grid, .cause-grid, .four-col { display: grid; gap: 14px; }
+.summary-grid { grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+.summary-card, .info-card, .wide-card, .term-card, .quick-card, .source-note, .micro-card, .warning-box { background: var(--paper-2); border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); text-align: justify; text-align-last: left; }
+.summary-card { padding: 16px; min-height: 132px; }
+.summary-card strong, .quick-card strong, .term-card strong, .micro-card strong { display: block; color: var(--title); font-size: 17px; margin-bottom: 8px; text-align: left; text-align-last: auto; }
+.summary-card span, .quick-card span, .term-card span, .micro-card span { display: block; color: var(--muted); font-size: 15.5px; line-height: 1.56; text-align: justify; text-align-last: left; }
+.nav-card { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 18px 20px; margin-bottom: 24px; }
+.nav-card b { color: var(--title); margin-right: 2px; }
+.nav-card a, .mini-btn { color: var(--title); background: var(--accent-soft); border: 1px solid rgba(91, 62, 36, 0.16); border-radius: 999px; text-decoration: none; padding: 8px 12px; font-weight: 700; font-size: 14px; cursor: pointer; font-family: inherit; }
+.nav-card a:hover, .mini-btn:hover { background: #e5d2bb; }
+.section { padding: 30px; margin-bottom: 24px; }
+h2 { margin: 0 0 14px; color: var(--title); font-size: clamp(28px, 3vw, 38px); line-height: 1.15; text-align: left; text-align-last: auto; }
+h3 { margin: 0 0 12px; color: var(--title); font-size: 22px; line-height: 1.22; text-align: left; text-align-last: auto; }
+h4 { margin: 16px 0 8px; color: var(--title); font-size: 18px; text-align: left; text-align-last: auto; }
+.section-intro, p, li, dd { font-size: 17px; line-height: 1.72; color: var(--muted); text-align: justify; text-align-last: left; hyphens: auto; }
+.section-intro { margin: 0 0 20px; max-width: 1000px; }
+.three-col { grid-template-columns: repeat(3, 1fr); }
+.two-col { grid-template-columns: repeat(2, 1fr); }
+.four-col { grid-template-columns: repeat(4, 1fr); }
+.cause-grid { grid-template-columns: 1.1fr 0.9fr; }
+.term-grid { grid-template-columns: repeat(4, 1fr); }
+.quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+.info-card, .wide-card, .term-card, .quick-card, .micro-card, .warning-box, .source-note { padding: 20px; }
+.wide-card { margin-top: 14px; }
+.wide-card p:last-child, .info-card p:last-child { margin-bottom: 0; }
+.clean, .number-list { margin: 0; padding-left: 22px; }
+.clean li, .number-list li { margin: 0 0 9px; padding-left: 2px; }
+.clean li:last-child, .number-list li:last-child { margin-bottom: 0; }
+.mini-title { display: inline; color: var(--title); font-weight: 800; background: transparent; border: 0; border-radius: 0; padding: 0; margin-right: 5px; white-space: normal; text-align: inherit; }
+.date-pill { display: inline-block; color: var(--title); font-weight: 800; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.13); border-radius: 999px; padding: 2px 9px; margin-right: 5px; white-space: nowrap; text-align: left; }
+.definition, .note { margin-top: 18px; background: #fff8ef; border: 1px solid rgba(122, 79, 42, 0.22); border-left: 6px solid rgba(122, 79, 42, 0.48); border-radius: 18px; padding: 18px 20px; color: var(--muted); font-size: 17px; line-height: 1.7; text-align: justify; text-align-last: left; }
+.definition strong, .note strong { color: var(--title); }
+details { background: #fffdf9; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); margin-top: 14px; overflow: hidden; }
+details[open] { background: #fffaf3; }
+summary { cursor: pointer; list-style: none; padding: 18px 20px; font-size: 19px; font-weight: 800; color: var(--title); display: flex; justify-content: space-between; align-items: center; gap: 18px; text-align: left; text-align-last: auto; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "Deschide"; color: var(--muted); font-size: 14px; font-weight: 700; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 999px; padding: 7px 11px; white-space: nowrap; }
+details[open] > summary::after { content: "Ascunde"; }
+.details-body { border-top: 1px solid rgba(91, 62, 36, 0.12); padding: 18px 20px 20px; text-align: justify; text-align-last: left; }
+.details-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.nested-details { margin-top: 10px; box-shadow: none; background: #ffffff; }
+.nested-details summary { font-size: 17px; padding: 14px 16px; }
+.key-line { display: grid; grid-template-columns: 220px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px dashed rgba(91, 62, 36, 0.18); }
+.key-line:last-child { border-bottom: 0; }
+.key-line strong { color: var(--title); text-align: left; text-align-last: auto; }
+.key-line span { color: var(--muted); line-height: 1.65; text-align: justify; text-align-last: left; }
+.timeline { position: relative; display: grid; gap: 14px; margin-top: 18px; }
+.event { display: grid; grid-template-columns: 132px 1fr; gap: 18px; align-items: stretch; background: #ffffff; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); overflow: hidden; }
+.date { background: linear-gradient(180deg, #7a4f2a, #5b351b); color: #fffaf3; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px; font-size: 18px; line-height: 1.25; font-weight: 900; letter-spacing: 0.2px; }
+.event > div:last-child { padding: 17px 18px 18px 0; text-align: justify; text-align-last: left; }
+.event h3 { margin-bottom: 6px; }
+.event p { margin: 0; }
+.small-muted { font-size: 15px; color: #725c49; line-height: 1.6; text-align: justify; text-align-last: left; }
+.warning-box { background: #fff7ec; border-color: rgba(122, 79, 42, 0.22); margin-top: 16px; }
+.final-box { padding: 28px; background: linear-gradient(135deg, #fffaf3, #f4e4d1); border-color: rgba(91, 62, 36, 0.25); }
+.final-box p { margin-bottom: 0; }
+.table-wrap { overflow-x: auto; margin-top: 14px; border-radius: 18px; border: 1px solid rgba(91,62,36,.14); background: #fff; box-shadow: var(--shadow-small); }
+table { width: 100%; border-collapse: collapse; min-width: 740px; }
+th, td { padding: 13px 14px; border-bottom: 1px solid rgba(91,62,36,.12); color: var(--muted); font-size: 16px; line-height: 1.55; vertical-align: top; text-align: justify; }
+th { background: #f3eadf; color: var(--title); text-align: left; font-weight: 800; }
+tr:last-child td { border-bottom: 0; }
+@media (max-width: 980px) {
+  .summary-grid, .three-col, .term-grid, .quick-grid, .four-col { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .cause-grid, .details-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .page { width: min(100% - 22px, 1180px); padding-top: 22px; }
+  .hero, .section, .final-box { padding: 22px; border-radius: 22px; }
+  .summary-grid, .term-grid, .quick-grid, .four-col { grid-template-columns: 1fr; }
+  .event { grid-template-columns: 1fr; }
+  .date { min-height: 66px; }
+  .event > div:last-child { padding: 0 16px 16px; }
+  .key-line { grid-template-columns: 1fr; gap: 6px; }
+  summary { align-items: flex-start; flex-direction: column; }
+  .hero::after { font-size: 82px; }
+}
+
+.related-card { display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:16px 20px; margin:-10px 0 24px; background:rgba(255,250,243,.90); border:1px solid var(--line); border-radius:22px; box-shadow:var(--shadow-small); }
+.related-card b { color:var(--title); }
+.related-card a { color:var(--title); background:#f3eadf; border:1px solid rgba(91,62,36,.16); border-radius:999px; text-decoration:none; padding:8px 12px; font-weight:700; font-size:14px; }
+.related-card a:hover { background:#e5d2bb; }
+.badge-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
+.badge { display:inline-flex; align-items:center; color:var(--title); background:#f3eadf; border:1px solid rgba(91,62,36,.14); border-radius:999px; padding:6px 10px; font-weight:700; font-size:14px; }
+blockquote { margin:16px 0 0; padding:16px 20px; background:#fff8ef; border-left:6px solid rgba(122,79,42,.48); border-radius:16px; color:var(--muted); font-size:17px; line-height:1.7; }
+.mini-table table { min-width:560px; }
+@media print {
+  body { background:#fff !important; }
+  body::before { display:none; }
+  .page { width:100%; padding:0; }
+  .topbar, .nav-card, .related-card { display:none !important; }
+  .hero, .section, .final-box { box-shadow:none; border:1px solid #cbb9a8; break-inside:avoid-page; }
+  details { break-inside:avoid-page; }
+  details > summary::after { display:none; }
+}
+
+
+@media (max-width: 680px) {
+  .subtitle, .section-intro, p, li, dd,
+  .summary-card span, .quick-card span, .term-card span, .micro-card span,
+  .details-body, .key-line span, .event > div:last-child, th, td,
+  .definition, .note, blockquote {
+    text-align: left;
+    text-align-last: auto;
+    hyphens: none;
+  }
+}
+
+
+td { text-align: left; text-align-last: auto; }
+
+  
+
+/* Extensii pentru seria „Civilizația bizantină” */
+.series-links { display:flex; gap:9px; flex-wrap:wrap; margin-top:20px; }
+.series-links a { color:var(--title); background:#fff; border:1px solid rgba(91,62,36,.16); border-radius:999px; padding:9px 13px; text-decoration:none; font-weight:800; box-shadow:0 8px 20px rgba(0,0,0,.10); }
+.series-links a[aria-current="page"] { background:var(--accent); color:#fffaf3; }
+.series-links a:hover { transform:translateY(-1px); }
+.quote-box { margin-top:15px; padding:18px 20px; background:#fffdf9; border:1px solid rgba(91,62,36,.15); border-left:6px solid var(--accent-2); border-radius:18px; color:var(--muted); font-size:17px; line-height:1.72; text-align:justify; text-align-last:left; }
+.step-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:18px; }
+.step-card { background:#fff; border:1px solid rgba(91,62,36,.14); border-radius:20px; padding:18px; box-shadow:var(--shadow-small); }
+.step-card::before { content:attr(data-step); display:inline-flex; width:34px; height:34px; align-items:center; justify-content:center; border-radius:50%; background:var(--accent); color:#fff; font-weight:900; margin-bottom:11px; }
+.step-card strong { display:block; color:var(--title); font-size:17px; margin-bottom:7px; }
+.step-card span { color:var(--muted); font-size:15.5px; line-height:1.58; }
+.status-strip { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:16px; }
+.status-item { background:linear-gradient(135deg,#fff,#fff7ec); border:1px solid rgba(91,62,36,.14); border-radius:18px; padding:16px; }
+.status-item b { display:block; color:var(--title); margin-bottom:6px; }
+.status-item span { color:var(--muted); line-height:1.55; font-size:15.5px; }
+footer { margin-top:24px; color:rgba(255,250,243,.80); text-align:center; font-size:14px; line-height:1.6; }
+@media (max-width:980px) { .step-grid { grid-template-columns:repeat(2,1fr); } .status-strip { grid-template-columns:1fr; } }
+@media (max-width:680px) { .step-grid { grid-template-columns:1fr; } .series-links a { width:100%; text-align:center; } h1 { font-size:clamp(34px,10vw,52px); } }
+
+
+/* Extensii pentru seria „Europa medievală” */
+.series-links{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}.series-links a{color:var(--title);background:#fff;border:1px solid rgba(91,62,36,.16);border-radius:999px;padding:9px 13px;text-decoration:none;font-weight:800;box-shadow:0 8px 20px rgba(0,0,0,.10)}.series-links a[aria-current="page"]{background:var(--accent);color:#fffaf3}.series-links a:hover{transform:translateY(-1px)}
+.chapter-banner{margin:18px 0;padding:18px 20px;border-radius:20px;background:linear-gradient(135deg,#fff7ec,#f0e4d4);border:1px solid rgba(91,62,36,.18);box-shadow:var(--shadow-small)}.chapter-banner strong{display:block;color:var(--title);font-size:20px;margin-bottom:6px}.chapter-banner span{display:block;color:var(--muted);font-size:16px;line-height:1.62}
+.fact-check{margin-top:16px;padding:18px 20px;background:#fff7ec;border:1px solid rgba(122,79,42,.26);border-left:6px solid #8a4c2a;border-radius:18px;color:var(--muted);font-size:16px;line-height:1.68}.fact-check strong{color:var(--title)}
+.catalogue{columns:3 260px;column-gap:18px;margin-top:12px}.catalogue-group{break-inside:avoid;background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:16px;margin:0 0 14px;box-shadow:var(--shadow-small)}.catalogue-group h4{margin:0 0 8px}.catalogue-group ul{margin:0;padding-left:20px}.catalogue-group li{font-size:15.5px;line-height:1.5;margin-bottom:5px}
+.verse{padding:16px 18px;margin:12px 0;background:#fffdf9;border-left:5px solid var(--accent-2);border-radius:0 16px 16px 0;color:var(--muted);font-style:italic;line-height:1.7}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px}.flow-item{position:relative;padding:16px;background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;box-shadow:var(--shadow-small)}.flow-item b{display:block;color:var(--title);margin-bottom:6px}.flow-item span{font-size:15px;color:var(--muted);line-height:1.5}.flow-item:not(:last-child)::after{content:'→';position:absolute;right:-14px;top:50%;transform:translateY(-50%);font-size:22px;color:var(--accent);font-weight:900;z-index:3}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}.badge{display:inline-flex;padding:6px 10px;border-radius:999px;background:#f3eadf;border:1px solid rgba(91,62,36,.13);color:var(--title);font-weight:800;font-size:13px}
+.source-map{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.source-map article{background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:17px;box-shadow:var(--shadow-small)}.source-map strong{display:block;color:var(--title);margin-bottom:6px}.source-map span{color:var(--muted);font-size:15.5px;line-height:1.55}
+footer{margin-top:24px;color:rgba(255,250,243,.80);text-align:center;font-size:14px;line-height:1.6}
+@media(max-width:980px){.flow{grid-template-columns:repeat(2,1fr)}.flow-item::after{display:none}.source-map{grid-template-columns:1fr}.catalogue{columns:2 240px}}
+@media(max-width:680px){.flow{grid-template-columns:1fr}.catalogue{columns:1}.series-links a{width:100%;text-align:center}h1{font-size:clamp(34px,10vw,52px)}}
+
+/* Extensii pentru seria „Revoluția Franceză” */
+.phase-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}.phase-card{background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:17px;box-shadow:var(--shadow-small)}.phase-card b{display:block;color:var(--title);font-size:17px;margin-bottom:6px}.phase-card span{display:block;color:var(--muted);font-size:15.5px;line-height:1.55}.document-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}.document-card{background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:20px;padding:20px;box-shadow:var(--shadow-small)}.document-card h3{margin-bottom:5px}.document-card .doc-meta{display:block;color:var(--accent);font-weight:800;font-size:14px;margin-bottom:10px}.article-list{counter-reset:art;list-style:none;margin:0;padding:0}.article-list li{counter-increment:art;position:relative;padding:12px 12px 12px 54px;margin:0;border-bottom:1px dashed rgba(91,62,36,.16)}.article-list li:last-child{border-bottom:0}.article-list li::before{content:counter(art);position:absolute;left:8px;top:11px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#f3eadf;color:var(--title);font-weight:900}.axis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.axis-card{background:linear-gradient(135deg,#fff,#fff8ef);border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:17px;box-shadow:var(--shadow-small)}.axis-card strong{display:block;color:var(--title);margin-bottom:6px}.axis-card span{color:var(--muted);font-size:15.5px;line-height:1.55}.red-note{margin-top:16px;padding:18px 20px;background:#fff6ef;border:1px solid rgba(132,52,38,.24);border-left:6px solid #833d2e;border-radius:18px;color:var(--muted);font-size:16.5px;line-height:1.68}.red-note strong{color:var(--title)}.quote-line{margin:12px 0;padding:15px 18px;background:#fffdf9;border-left:5px solid var(--accent-2);border-radius:0 16px 16px 0;color:var(--muted);font-style:italic;line-height:1.7}.people-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px}.person-chip{background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:16px;padding:14px;box-shadow:var(--shadow-small)}.person-chip b{display:block;color:var(--title);margin-bottom:5px}.person-chip span{font-size:14.5px;line-height:1.48;color:var(--muted)}
+@media(max-width:980px){.phase-grid{grid-template-columns:repeat(2,1fr)}.document-grid,.axis-grid{grid-template-columns:1fr}.people-strip{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:680px){.phase-grid,.document-grid,.axis-grid,.people-strip{grid-template-columns:1fr}.article-list li{padding-left:48px}}
+</style>
+</head>
+<body id="top" style="--hero-year:'1799';">
+<main class="page">
+<div class="topbar"><a class="back-link" href="index.html">← Înapoi la materiale</a><span class="tag">Material ajutător · Istorie universală · Revoluția Franceză</span></div>
+<section class="hero"><p class="eyebrow">Istorie universală · 1789–1799 · Revoluție și Republică</p><h1>Revoluția Franceză: desfășurarea revoluției</h1><p class="subtitle">De la Bastilia și abolirea privilegiilor la monarhia constituțională, Republică, Teroare, reacția thermidoriană, Directorat și lovitura de stat de la 18 Brumar.</p><div class="series-links"><a href="univ-revolutia-franceza-cauzele-revolutiei.html">Cauzele revoluției</a><a href="univ-revolutia-franceza-desfasurarea-revolutiei.html" aria-current="page">Desfășurarea revoluției</a><a href="univ-revolutia-franceza-documente-revolutionare.html">Documente revoluționare</a></div></section>
+<div class="related-card"><b>Seria Revoluția Franceză:</b><a href="univ-revolutia-franceza-cauzele-revolutiei.html">Cauzele revoluției</a><a href="univ-revolutia-franceza-desfasurarea-revolutiei.html" aria-current="page">Desfășurarea revoluției</a><a href="univ-revolutia-franceza-documente-revolutionare.html">Documente revoluționare</a></div>
+<nav class="nav-card" aria-label="Cuprinsul paginii"><b>Cuprins:</b><a href="#periodizare">Periodizare</a><a href="#1789">1789</a><a href="#reforme">Reforme</a><a href="#monarhie">Monarhia constituțională</a><a href="#1792">Căderea monarhiei</a><a href="#girondini">Girondinii</a><a href="#teroare">Teroarea</a><a href="#thermidor">Thermidor</a><a href="#directorat">Directoratul</a><a href="#razboaie">Războaie</a><a href="#actori">Actori</a><a href="#bilant">Bilanț</a><button class="mini-btn" type="button" data-action="open">Deschide explicațiile</button><button class="mini-btn" type="button" data-action="close">Închide explicațiile</button></nav>
+
+<section class="section" id="periodizare">
+<h2>I. Periodizarea Revoluției Franceze</h2>
+<p class="section-intro">Între 1789 și 1799, Franța a trecut de la monarhia absolută la monarhie constituțională, apoi la republică democratică proiectată, dictatură revoluționară, republică moderată și, în final, regim consular.</p>
+<div class="phase-grid"><article class="phase-card"><b>1789–1791</b><span>Adunarea Națională Constituantă: desființarea privilegiilor și monarhia constituțională.</span></article><article class="phase-card"><b>1791–1792</b><span>Adunarea Legislativă: război, radicalizare și căderea monarhiei.</span></article><article class="phase-card"><b>1792–1795</b><span>Convenția Națională: Republica, Girondinii, Montagnarzii, Teroarea și Thermidorul.</span></article><article class="phase-card"><b>1795–1799</b><span>Directoratul: republică cenzitară, instabilitate și ascensiunea lui Napoleon Bonaparte.</span></article></div>
+<div class="fact-check"><strong>Corecție cronologică:</strong> Convenția Națională a funcționat între septembrie 1792 și octombrie 1795, iar Directoratul între noiembrie 1795 și noiembrie 1799. Calendarul republican a fost adoptat în 1793, cu început retroactiv la 22 septembrie 1792, și a rămas oficial până la sfârșitul anului 1805.</div>
+</section>
+
+<section class="section" id="1789">
+<h2>II. Anul 1789: revoluția juridică și revoluția populară</h2>
+<div class="timeline"><article class="event"><div class="date">5 mai</div><div><h3>Stările Generale</h3><p>Criza financiară deschide disputa asupra reprezentării și votului.</p></div></article><article class="event"><div class="date">17–20 iunie</div><div><h3>Adunarea Națională și Jurământul</h3><p>Deputații afirmă că națiunea, nu ordinul social, este sursa suveranității.</p></div></article><article class="event"><div class="date">14 iulie</div><div><h3>Bastilia</h3><p>Insurecția pariziană salvează Adunarea de amenințarea militară și creează o nouă putere municipală.</p></div></article><article class="event"><div class="date">iulie–august</div><div><h3>Marea Spaimă</h3><p>Țăranii atacă arhivele și reședințele senioriale, grăbind abolirea privilegiilor.</p></div></article><article class="event"><div class="date">4–11 august</div><div><h3>Decretele feudale</h3><p>Adunarea desființează privilegiile de ordin și deschide procesul eliminării drepturilor senioriale.</p></div></article><article class="event"><div class="date">26 august</div><div><h3>Declarația Drepturilor</h3><p>Libertatea, egalitatea în drepturi, proprietatea, securitatea și rezistența la opresiune devin principii constituționale.</p></div></article><article class="event"><div class="date">5–6 octombrie</div><div><h3>Marșul femeilor la Versailles</h3><p>Criza pâinii aduce familia regală la Paris, sub supravegherea directă a capitalei.</p></div></article></div>
+<div class="note"><strong>Două revoluții simultane:</strong> deputații construiau o ordine juridică nouă; mulțimile urbane și țăranii schimbau raportul efectiv de forțe.</div>
+</section>
+
+<section class="section" id="reforme">
+<h2>III. Opera Adunării Constituante, 1789–1791</h2>
+<div class="table-wrap"><table><thead><tr><th>Domeniu</th><th>Măsură</th><th>Semnificație</th></tr></thead><tbody><tr><td>Societate</td><td>Abolirea privilegiilor, titlurilor nobiliare și drepturilor feudale</td><td>Înlocuirea ordinii pe stări cu egalitatea civilă.</td></tr><tr><td>Administrație</td><td>83 de departamente, împărțite în districte, cantoane și comune</td><td>Uniformizarea teritorială și slăbirea particularismelor provinciale.</td></tr><tr><td>Justiție</td><td>Judecători aleși, reorganizarea instanțelor, juriu în cauze penale</td><td>Justiție națională, publică și mai uniformă.</td></tr><tr><td>Biserică</td><td>Naționalizarea averilor, Constituția Civilă a Clerului</td><td>Resurse pentru stat, dar și o ruptură religioasă profundă.</td></tr><tr><td>Economie</td><td>Eliminarea corporațiilor și Legea Le Chapelier</td><td>Libertate economică, dar interzicerea sindicatelor și grevelor.</td></tr><tr><td>Finanțe</td><td>Assignate garantate de bunurile naționale</td><td>Monedă de hârtie care a finanțat statul, apoi a suferit inflație.</td></tr><tr><td>Armată</td><td>Gardă Națională și reorganizare</td><td>Integrarea cetățenilor proprietari în apărarea noii ordini.</td></tr></tbody></table></div>
+<details open><summary>Constituția Civilă a Clerului, 12 iulie 1790</summary><div class="details-body"><p>Diecezele au fost adaptate departamentelor, episcopii și preoții urmau să fie aleși, iar clericii salarizați de stat. Jurământul obligatoriu față de Constituție a divizat Biserica între clerul „constituțional” și cel „refractar”. Condamnarea papală a transformat reforma administrativă într-un conflict de conștiință și într-o sursă majoră de contrarevoluție.</p></div></details>
+</section>
+
+<section class="section" id="monarhie">
+<h2>IV. Monarhia constituțională, 1791–1792</h2>
+<div class="two-col"><article class="info-card"><h3>Constituția din 3 septembrie 1791</h3><ul class="clean"><li>suveranitatea aparține națiunii;</li><li>legislativ unicameral ales prin sufragiu cenzitar indirect;</li><li>regele exercită executivul prin miniștri;</li><li>veto regal suspensiv;</li><li>instanțe independente și funcții publice deschise juridic cetățenilor.</li></ul></article><article class="info-card"><h3>Limitele sistemului</h3><ul class="clean"><li>distincția între cetățeni activi și pasivi;</li><li>neîncrederea dintre rege și Adunare;</li><li>ruptura religioasă;</li><li>emigrația nobiliară și presiunea externă;</li><li>criza economică și mobilizarea sans-culotă.</li></ul></article></div>
+<div class="timeline"><article class="event"><div class="date">20–21 iun. 1791</div><div><h3>Fuga la Varennes</h3><p>Ludovic XVI încearcă să ajungă la o zonă militară fidelă, este recunoscut și readus la Paris. Încrederea în monarhia constituțională se prăbușește.</p></div></article><article class="event"><div class="date">17 iul. 1791</div><div><h3>Champ-de-Mars</h3><p>Garda Națională trage asupra unei demonstrații republicane, adâncind ruptura dintre liberalii constituționali și radicali.</p></div></article><article class="event"><div class="date">1 oct. 1791</div><div><h3>Adunarea Legislativă</h3><p>Noua adunare preia puterea legislativă; niciun membru al Constituantei nu poate fi reales.</p></div></article></div>
+<div class="fact-check"><strong>Grupările politice:</strong> iacobinii nu erau pur și simplu „radicalii” de la început, iar cordilierii nu erau moderați. Cluburile s-au divizat și radicalizat în timp. Girondinii au susținut războiul și republica moderată; Montagnarzii, sprijiniți de sans-culottes, au dominat etapa radicală.</div>
+</section>
+
+<section class="section" id="1792">
+<h2>V. Războiul și căderea monarhiei, 1792</h2>
+<div class="timeline"><article class="event"><div class="date">20 aprilie</div><div><h3>Războiul cu Austria</h3><p>Franța declară război „regelui Boemiei și Ungariei”. Girondinii speră să răspândească Revoluția; curtea speră că înfrângerea va restaura autoritatea regală.</p></div></article><article class="event"><div class="date">11 iulie</div><div><h3>„Patria în primejdie”</h3><p>Înfrângerile și invazia mobilizează voluntarii. Cântecul compus de Rouget de Lisle ajunge la Paris cu voluntarii din Marsilia și devine <em>La Marseillaise</em>.</p></div></article><article class="event"><div class="date">25 iulie</div><div><h3>Manifestul de la Brunswick</h3><p>Amenințarea cu represalii împotriva Parisului, dacă familia regală este atacată, confirmă suspiciunea de trădare.</p></div></article><article class="event"><div class="date">10 august</div><div><h3>Asaltul Tuileriilor</h3><p>Insurecția pariziană răstoarnă efectiv monarhia; regele este suspendat și încarcerat.</p></div></article><article class="event"><div class="date">2–6 sept.</div><div><h3>Masacrele din septembrie</h3><p>Teama de invazie și conspirație produce uciderea a peste o mie de deținuți, inclusiv clerici refractari.</p></div></article><article class="event"><div class="date">20–21 sept.</div><div><h3>Valmy și Republica</h3><p>Armata franceză oprește prusacii la Valmy; a doua zi Convenția abolește monarhia și proclamă Republica.</p></div></article></div>
+</section>
+
+<section class="section" id="girondini">
+<h2>VI. Convenția girondină, septembrie 1792 – iunie 1793</h2>
+<div class="three-col"><article class="info-card"><h3>Convenția Națională</h3><p>Aleasă prin sufragiu masculin larg, deși participarea a fost redusă. Girondinii, Montagnarzii și „Câmpia” se confruntă asupra războiului, Parisului și economiei.</p></article><article class="info-card"><h3>Procesul regelui</h3><p>Documente găsite în „dulapul de fier” întăresc acuzația de conspirație. Ludovic Capet este condamnat și executat la 21 ianuarie 1793.</p></article><article class="info-card"><h3>Criza din 1793</h3><p>Prima Coaliție, revolta din Vendée, înfrângerile, inflația și conflictul cu sans-culottes slăbesc Gironda.</p></article></div>
+<div class="timeline"><article class="event"><div class="date">10 martie 1793</div><div><h3>Tribunalul Revoluționar</h3><p>Instanță extraordinară pentru infracțiuni politice; devine unul dintre instrumentele Terorii.</p></div></article><article class="event"><div class="date">6 aprilie</div><div><h3>Comitetul Salvării Publice</h3><p>Organ executiv de război și criză, treptat dominat de Montagnarzi.</p></div></article><article class="event"><div class="date">31 mai–2 iunie</div><div><h3>Căderea Girondinilor</h3><p>Presiunea secțiunilor pariziene și a Gărzii Naționale elimină conducerea girondină din Convenție.</p></div></article></div>
+</section>
+
+<section class="section" id="teroare">
+<h2>VII. Convenția montagnardă și Teroarea, 1793–1794</h2>
+<p class="section-intro">Guvernul revoluționar a justificat măsurile excepționale prin războiul extern, războiul civil, foamete și conspirația internă. Teroarea a combinat mobilizarea națională, controlul economic și represiunea politică.</p>
+<div class="table-wrap"><table><thead><tr><th>Instituție / act</th><th>Data</th><th>Rol</th></tr></thead><tbody><tr><td>Constituția anului I</td><td>24 iunie 1793</td><td>Sufragiu universal masculin și drepturi sociale; ratificată, dar suspendată din cauza războiului.</td></tr><tr><td>Levée en masse</td><td>23 august 1793</td><td>Mobilizarea întregii societăți: tinerii luptă, ceilalți produc și susțin armata.</td></tr><tr><td>Legea suspecților</td><td>17 septembrie 1793</td><td>Lărgește categoriile celor arestabili pentru ostilitate sau insuficientă loialitate.</td></tr><tr><td>Maximum general</td><td>29 septembrie 1793</td><td>Controlează prețurile și salariile pentru aprovizionarea orașelor și armatei.</td></tr><tr><td>Guvern revoluționar</td><td>10 octombrie 1793</td><td>Constituția este amânată; comitetele conduc până la pace.</td></tr><tr><td>Legea din 22 Prairial</td><td>10 iunie 1794</td><td>Reduce garanțiile procesuale și accelerează condamnările.</td></tr></tbody></table></div>
+<details open><summary>Cum funcționa mobilizarea generală?</summary><div class="details-body"><p>Decretul declara poporul francez „în rechiziție permanentă” până la alungarea dușmanilor. Tinerii mergeau pe front; bărbații căsătoriți fabricau arme și transportau provizii; femeile confecționau corturi și uniforme și îngrijeau răniții; copiii pregăteau scame pentru pansamente; bătrânii susțineau moral mobilizarea. Documentul de curs surprinde corect caracterul total al efortului, deși rolurile reale au fost mai diverse.</p></div></details>
+<div class="two-col"><article class="warning-box"><h3>Represiune</h3><p>Tribunalul Revoluționar, comitetele de supraveghere și reprezentanții în misiune au condamnat sau executat mii de persoane. Nu toți adversarii au fost ghilotinați „fără proces”, dar procedurile au devenit rapide și garanțiile foarte slabe.</p></article><article class="warning-box"><h3>Rivalități interne</h3><p>Hébertiștii, favorabili radicalizării și decreștinării, sunt executați în martie 1794; dantoniștii, favorabili indulgenței, în aprilie. Robespierre și aliații săi rămân tot mai izolați.</p></article></div>
+<div class="timeline"><article class="event"><div class="date">27 iulie 1794</div><div><h3>9 Thermidor</h3><p>Robespierre este arestat după un conflict în Convenție. Este executat la 28 iulie, împreună cu Saint-Just, Couthon și susținători.</p></div></article></div>
+</section>
+
+<section class="section" id="thermidor">
+<h2>VIII. Reacția thermidoriană, 1794–1795</h2>
+<div class="three-col"><article class="info-card"><h3>Demontarea Terorii</h3><p>Comitetul Salvării Publice este limitat, Tribunalul Revoluționar reorganizat, iar Clubul Iacobin închis.</p></article><article class="info-card"><h3>Reacția socială</h3><p>„Teroarea albă” lovește foști iacobini; tinerii bogați și noile elite afișează ostentativ averea.</p></article><article class="info-card"><h3>Criză economică</h3><p>Eliminarea controlului prețurilor agravează inflația și foametea; insurecțiile populare din Germinal și Prairial sunt reprimate.</p></article></div>
+<details open><summary>Constituția anului III, 22 august 1795</summary><div class="details-body"><ul class="clean"><li>reintroduce sufragiul cenzitar indirect;</li><li>creează un legislativ bicameral: Consiliul celor Cinci Sute și Consiliul Bătrânilor;</li><li>încredințează executivul unui Directorat de cinci membri;</li><li>include o Declarație a Drepturilor și Îndatoririlor;</li><li>urmărește să împiedice atât dictatura unei adunări, cât și revenirea monarhiei.</li></ul></div></details>
+</section>
+
+<section class="section" id="directorat">
+<h2>IX. Directoratul, 1795–1799</h2>
+<div class="two-col"><article class="info-card"><h3>Instituții</h3><p>Consiliul celor Cinci Sute propunea proiecte; Consiliul Bătrânilor le accepta sau respingea; cinci directori exercitau executivul. Un director era înlocuit anual, pentru a evita concentrarea puterii.</p></article><article class="info-card"><h3>Slăbiciuni</h3><p>Regimul depindea de armată, se confrunta cu inflație, corupție, monarhiști, neo-iacobini și o bază electorală restrânsă.</p></article></div>
+<div class="fact-check"><strong>Corecție instituțională:</strong> Consiliul Bătrânilor nu era o curte constituțională; el aproba sau respingea proiectele primite de la Cinci Sute. Directorii numeau miniștrii, dar aceștia nu formau un guvern parlamentar. Înalta Curte judeca anumite crime politice, fără a funcționa ca actuala Curte de Casație.</div>
+<div class="timeline"><article class="event"><div class="date">5 oct. 1795</div><div><h3>13 Vendémiaire</h3><p>Bonaparte reprimă insurecția regalistă din Paris, devenind indispensabil regimului.</p></div></article><article class="event"><div class="date">1796–1797</div><div><h3>Campania din Italia</h3><p>Victoriile lui Bonaparte aduc prestigiu, resurse și republici-surori, dar sporesc autonomia generalului.</p></div></article><article class="event"><div class="date">4 sept. 1797</div><div><h3>18 Fructidor</h3><p>Directorii și armata anulează rezultatele favorabile regaliștilor, arătând fragilitatea legalității.</p></div></article><article class="event"><div class="date">1798–1799</div><div><h3>Egipt și a doua Coaliție</h3><p>Expediția egipteană și reluarea războiului provoacă noi crize militare și politice.</p></div></article><article class="event"><div class="date">9 nov. 1799</div><div><h3>18 Brumar</h3><p>Bonaparte, Sieyès și aliații răstoarnă Directoratul. Constituția anului VIII creează Consulatul și încheie etapa revoluționară propriu-zisă.</p></div></article></div>
+</section>
+
+<section class="section" id="razboaie">
+<h2>X. Revoluția în război</h2>
+<div class="table-wrap"><table><thead><tr><th>Etapă</th><th>Adversari</th><th>Momente</th><th>Efect intern</th></tr></thead><tbody><tr><td>1792</td><td>Austria și Prusia</td><td>Valmy, Jemappes</td><td>Căderea monarhiei și proclamarea Republicii.</td></tr><tr><td>Prima Coaliție, 1793–1797</td><td>Marea Britanie, Austria, Prusia, Spania, Provinciile Unite, state italiene</td><td>criza din 1793, mobilizarea generală, victoriile din 1794–1797</td><td>Teroare, centralizare și armată de masă.</td></tr><tr><td>A doua Coaliție, 1798–1802</td><td>Marea Britanie, Austria, Rusia, Imperiul Otoman și aliați</td><td>Egipt, pierderi în Italia, revenirea lui Bonaparte</td><td>Discreditarea Directoratului și lovitura de la Brumar.</td></tr></tbody></table></div>
+<div class="definition"><strong>Noua armată:</strong> recrutarea în masă, promovarea după merit și mobilizarea economică au creat un tip de război național, mult mai larg decât războaiele dinastice ale Vechiului Regim.</div>
+</section>
+
+<section class="section" id="actori">
+<h2>XI. Grupări și personalități</h2>
+<div class="people-strip"><article class="person-chip"><b>La Fayette</b><span>Monarhist constituțional, comandant al Gărzii Naționale.</span></article><article class="person-chip"><b>Mirabeau</b><span>Orator al Constituantei, favorabil compromisului cu regele.</span></article><article class="person-chip"><b>Brissot</b><span>Lider girondin și susținător al războiului revoluționar.</span></article><article class="person-chip"><b>Marat</b><span>Publicist radical, apropiat de sans-culottes; asasinat în 1793.</span></article><article class="person-chip"><b>Danton</b><span>Figură a insurecției din 1792 și a guvernării de criză; executat în 1794.</span></article><article class="person-chip"><b>Robespierre</b><span>Montagnard, membru al Comitetului Salvării Publice și simbol al Terorii.</span></article><article class="person-chip"><b>Saint-Just</b><span>Teoretician radical și reprezentant în misiune.</span></article><article class="person-chip"><b>Olympe de Gouges</b><span>Autoarea Declarației Drepturilor Femeii și Cetățenei.</span></article><article class="person-chip"><b>Sans-culottes</b><span>Militanți populari urbani pentru prețuri controlate și democrație directă.</span></article><article class="person-chip"><b>Bonaparte</b><span>General al Directoratului, apoi autor al loviturii de la 18 Brumar.</span></article></div>
+</section>
+
+<section class="section" id="bilant">
+<h2>XII. Bilanțul Revoluției</h2>
+<div class="two-col"><article class="info-card"><h3>Transformări durabile</h3><ul class="clean"><li>abolirea ordinii juridice pe stări și a privilegiilor;</li><li>egalitatea civilă și cariere deschise talentului;</li><li>suveranitatea națională și constituții scrise;</li><li>uniformizarea administrației și justiției;</li><li>naționalizarea averilor ecleziastice și secularizarea statului;</li><li>mobilizarea politică a maselor și naționalismul modern.</li></ul></article><article class="warning-box"><h3>Contradicții</h3><ul class="clean"><li>drepturile universale au coexistat cu sufragiul restrâns și excluderea femeilor;</li><li>libertatea economică a însemnat și interzicerea asociațiilor muncitorești;</li><li>Republica a recurs la teroare, război și dictatură de urgență;</li><li>abolirea sclaviei din 1794 a fost anulată de Napoleon în 1802;</li><li>instabilitatea a pregătit autoritatea personală a lui Bonaparte.</li></ul></article></div>
+<div class="final-box"><h2>Concluzie</h2><p>Revoluția a distrus Vechiul Regim și a schimbat vocabularul politic al Europei. Cetățenia, națiunea, drepturile și constituția au devenit repere indispensabile, chiar dacă aplicarea lor a fost limitată, conflictuală și adesea violentă.</p></div>
+</section>
+
+<footer>Material amplu și corectat istoric · Seria „Revoluția Franceză”</footer>
+</main>
+<script>
+const openBtn=document.querySelector('[data-action="open"]');const closeBtn=document.querySelector('[data-action="close"]');
+if(openBtn)openBtn.addEventListener('click',()=>document.querySelectorAll('details').forEach(d=>d.open=true));
+if(closeBtn)closeBtn.addEventListener('click',()=>document.querySelectorAll('details').forEach(d=>d.open=false));
+</script>
+</body></html>

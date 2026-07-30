@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crime de stat înfăptuite de statele lumii în Al Doilea Război Mondial</title>
+  <style>
+
+    :root {
+      --bg: #f6f0e7;
+      --paper: #fffaf3;
+      --paper-2: #ffffff;
+      --ink: #2f241c;
+      --title: #3c2a1e;
+      --muted: #5b4a3d;
+      --accent: #7a4f2a;
+      --accent-2: #9b6a3c;
+      --accent-soft: #f0e4d4;
+      --line: rgba(91, 62, 36, 0.18);
+      --line-strong: rgba(91, 62, 36, 0.34);
+      --outer-dark: #241208;
+      --outer-mid: #4a2a18;
+      --outer-warm: #7a4b2b;
+      --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+      --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+        radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+        radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+        radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+        linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+      background-attachment: fixed;
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0 70px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .back-link,
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 243, 0.84);
+      color: var(--title);
+      border-radius: 999px;
+      padding: 10px 15px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      box-shadow: var(--shadow-small);
+    }
+
+    .back-link:hover { background: #fff6eb; }
+
+    .hero,
+    .section,
+    .nav-card,
+    .final-box {
+      background: rgba(255, 250, 243, 0.96);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 38px;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: attr(data-watermark);
+      position: absolute;
+      right: 26px;
+      bottom: -22px;
+      font-size: 110px;
+      font-weight: 900;
+      letter-spacing: -4px;
+      color: rgba(122, 79, 42, 0.08);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      font-size: 16px;
+      color: var(--accent);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: left;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 1.04;
+      color: var(--title);
+      letter-spacing: -1.4px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    .subtitle {
+      margin: 18px 0 0;
+      max-width: 980px;
+      font-size: 19px;
+      line-height: 1.78;
+      color: var(--muted);
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .summary-grid,
+    .three-col,
+    .two-col,
+    .term-grid,
+    .quick-grid,
+    .cause-grid,
+    .four-col {
+      display: grid;
+      gap: 14px;
+    }
+
+    .summary-grid { grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+    .three-col { grid-template-columns: repeat(3, 1fr); }
+    .two-col { grid-template-columns: repeat(2, 1fr); }
+    .four-col { grid-template-columns: repeat(4, 1fr); }
+    .cause-grid { grid-template-columns: 1.1fr 0.9fr; }
+    .term-grid { grid-template-columns: repeat(4, 1fr); }
+    .quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+
+    .summary-card,
+    .info-card,
+    .wide-card,
+    .term-card,
+    .quick-card,
+    .source-note,
+    .micro-card,
+    .warning-box,
+    .quote-card {
+      background: var(--paper-2);
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 20px;
+      box-shadow: var(--shadow-small);
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .summary-card { padding: 16px; min-height: 132px; }
+
+    .summary-card strong,
+    .quick-card strong,
+    .term-card strong,
+    .micro-card strong {
+      display: block;
+      color: var(--title);
+      font-size: 17px;
+      margin-bottom: 8px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    .summary-card span,
+    .quick-card span,
+    .term-card span,
+    .micro-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.56;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .nav-card {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 18px 20px;
+      margin-bottom: 24px;
+    }
+
+    .nav-card b { color: var(--title); margin-right: 2px; }
+
+    .nav-card a,
+    .mini-btn {
+      color: var(--title);
+      background: var(--accent-soft);
+      border: 1px solid rgba(91, 62, 36, 0.16);
+      border-radius: 999px;
+      text-decoration: none;
+      padding: 8px 12px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .nav-card a:hover,
+    .mini-btn:hover { background: #e5d2bb; }
+
+    .section { padding: 30px; margin-bottom: 24px; }
+
+    h2 {
+      margin: 0 0 14px;
+      color: var(--title);
+      font-size: clamp(28px, 3vw, 38px);
+      line-height: 1.15;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    h3 {
+      margin: 0 0 12px;
+      color: var(--title);
+      font-size: 22px;
+      line-height: 1.22;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    h4 {
+      margin: 16px 0 8px;
+      color: var(--title);
+      font-size: 18px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    .section-intro,
+    p,
+    li,
+    dd {
+      font-size: 17px;
+      line-height: 1.72;
+      color: var(--muted);
+      text-align: justify;
+      text-align-last: left;
+      hyphens: auto;
+    }
+
+    .section-intro { margin: 0 0 20px; max-width: 1000px; }
+
+    .info-card,
+    .wide-card,
+    .term-card,
+    .quick-card,
+    .micro-card,
+    .warning-box,
+    .quote-card { padding: 20px; }
+
+    .wide-card { margin-top: 14px; }
+    .wide-card p:last-child,
+    .info-card p:last-child { margin-bottom: 0; }
+
+    .clean,
+    .number-list { margin: 0; padding-left: 22px; }
+
+    .clean li,
+    .number-list li { margin: 0 0 9px; padding-left: 2px; }
+
+    .clean li:last-child,
+    .number-list li:last-child { margin-bottom: 0; }
+
+    .mini-title {
+      display: inline;
+      color: var(--title);
+      font-weight: 800;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      padding: 0;
+      margin-right: 5px;
+      white-space: normal;
+      text-align: inherit;
+    }
+
+    .date-pill {
+      display: inline-block;
+      color: var(--title);
+      font-weight: 800;
+      background: #f3eadf;
+      border: 1px solid rgba(91, 62, 36, 0.13);
+      border-radius: 999px;
+      padding: 2px 9px;
+      margin-right: 5px;
+      white-space: nowrap;
+      text-align: left;
+    }
+
+    .definition,
+    .note {
+      margin-top: 18px;
+      background: #fff8ef;
+      border: 1px solid rgba(122, 79, 42, 0.22);
+      border-left: 6px solid rgba(122, 79, 42, 0.48);
+      border-radius: 18px;
+      padding: 18px 20px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .definition strong,
+    .note strong { color: var(--title); }
+
+    details {
+      background: #fffdf9;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 20px;
+      box-shadow: var(--shadow-small);
+      margin-top: 14px;
+      overflow: hidden;
+    }
+
+    details[open] { background: #fffaf3; }
+
+    summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 18px 20px;
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--title);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    summary::after {
+      content: "Deschide";
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+      background: #f3eadf;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 999px;
+      padding: 7px 11px;
+      white-space: nowrap;
+    }
+
+    details[open] > summary::after { content: "Ascunde"; }
+
+    .details-body {
+      border-top: 1px solid rgba(91, 62, 36, 0.12);
+      padding: 18px 20px 20px;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .nested-details { margin-top: 10px; box-shadow: none; background: #ffffff; }
+
+    .nested-details summary { font-size: 17px; padding: 14px 16px; }
+
+    .key-line {
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px dashed rgba(91, 62, 36, 0.18);
+    }
+
+    .key-line:last-child { border-bottom: 0; }
+
+    .key-line strong { color: var(--title); text-align: left; text-align-last: auto; }
+
+    .key-line span { color: var(--muted); line-height: 1.65; text-align: justify; text-align-last: left; }
+
+    .timeline { position: relative; display: grid; gap: 14px; margin-top: 18px; }
+
+    .event {
+      display: grid;
+      grid-template-columns: 132px 1fr;
+      gap: 18px;
+      align-items: stretch;
+      background: #ffffff;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 20px;
+      box-shadow: var(--shadow-small);
+      overflow: hidden;
+    }
+
+    .date {
+      background: linear-gradient(180deg, #7a4f2a, #5b351b);
+      color: #fffaf3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 14px;
+      font-size: 18px;
+      line-height: 1.25;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+    }
+
+    .event > div:last-child { padding: 17px 18px 18px 0; text-align: justify; text-align-last: left; }
+
+    .event h3 { margin-bottom: 6px; }
+    .event p { margin: 0; }
+
+    .small-muted {
+      font-size: 15px;
+      color: #725c49;
+      line-height: 1.6;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .warning-box { background: #fff7ec; border-color: rgba(122, 79, 42, 0.22); margin-top: 16px; }
+
+    .quote-card { background: linear-gradient(135deg, #fffdf9, #f8eddf); }
+
+    .source-note { margin-top: 14px; padding: 16px; background: #fffdf9; }
+    .source-note a { color: var(--accent); font-weight: 700; text-decoration: none; }
+    .source-note a:hover { text-decoration: underline; }
+
+    .controls { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+
+    .final-box { padding: 28px; background: linear-gradient(135deg, #fffaf3, #f4e4d1); border-color: rgba(91, 62, 36, 0.25); }
+
+    .final-box p { margin-bottom: 0; }
+
+    @media (max-width: 980px) {
+      .summary-grid,
+      .three-col,
+      .term-grid,
+      .quick-grid,
+      .four-col { grid-template-columns: repeat(2, 1fr); }
+      .two-col,
+      .cause-grid,
+      .details-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .page { width: min(100% - 22px, 1180px); padding-top: 22px; }
+      .hero,
+      .section,
+      .final-box { padding: 22px; border-radius: 22px; }
+      .summary-grid,
+      .term-grid,
+      .quick-grid,
+      .four-col { grid-template-columns: 1fr; }
+      .event { grid-template-columns: 1fr; }
+      .date { min-height: 66px; }
+      .event > div:last-child { padding: 0 16px 16px; }
+      .key-line { grid-template-columns: 1fr; gap: 6px; }
+      summary { align-items: flex-start; flex-direction: column; }
+      .hero::after { font-size: 82px; }
+    }
+
+  
+    .source-list { margin: 0; padding-left: 22px; }
+    .source-list li { margin-bottom: 8px; }
+    .source-list a { color: var(--accent); font-weight: 700; text-decoration: none; }
+    .source-list a:hover { text-decoration: underline; }
+    .divider-note { margin-top: 14px; }
+    .case-label { display:inline-block; font-weight:800; color:var(--title); background:#f3eadf; border:1px solid rgba(91,62,36,.13); border-radius:999px; padding:2px 9px; margin:0 4px 4px 0; }
+    .dense-list li { margin-bottom: 11px; }
+    .quote-box { margin-top: 14px; background:#fff8ef; border:1px dashed rgba(122,79,42,.28); border-radius:18px; padding:16px 18px; }
+  
+    .fact-table { width: 100%; border-collapse: collapse; margin-top: 14px; overflow: hidden; border-radius: 18px; box-shadow: var(--shadow-small); background: #fffdf9; }
+    .fact-table th, .fact-table td { border: 1px solid rgba(91,62,36,.16); padding: 12px 14px; vertical-align: top; color: var(--muted); font-size: 16px; line-height: 1.58; text-align: justify; text-align-last: left; }
+    .fact-table th { background: #f3eadf; color: var(--title); font-weight: 900; text-align: left; text-align-last: auto; }
+    .chapter-note { margin: 12px 0 0; font-size: 15.5px; color: #725c49; line-height: 1.6; }
+    .badge-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .badge { display:inline-flex; align-items:center; border:1px solid rgba(91,62,36,.16); background:#f3eadf; color:var(--title); border-radius:999px; padding:6px 10px; font-weight:800; font-size:14px; }
+    .reading-box { background:#fffdf9; border:1px dashed rgba(122,79,42,.32); border-radius:18px; padding:18px 20px; margin-top:14px; }
+    .reading-box p { margin-top: 0; }
+    .reading-box p:last-child { margin-bottom: 0; }
+    @media (max-width: 680px) { .fact-table, .fact-table tbody, .fact-table tr, .fact-table th, .fact-table td { display:block; width:100%; } .fact-table th { border-bottom:0; } }
+</style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a class="back-link" href="#">← Înapoi la materiale</a>
+      <span class="tag">Material ajutător · Istorie universală · Crime de stat</span>
+    </div>
+
+    <section class="hero" data-watermark="1939-1945">
+      <p class="eyebrow">Material ajutător · Istorie universală · Al Doilea Război Mondial</p>
+      <h1>Crime de stat înfăptuite de statele lumii în Al Doilea Război Mondial</h1>
+      <p class="subtitle">Material amplu despre cazuri din afara Germaniei naziste și a Imperiului Japonez: Katyn și represiunea sovietică, Italia fascistă, masacrele maghiare din Transilvania de Nord, Ustașa, Vichy, deportări, foametea din Bengal și bombardamentele strategice. România este lăsată separat.</p>
+      <div class="summary-grid">
+        <div class="summary-card"><strong>Katyn și URSS</strong><span>Execuții ale elitei poloneze, deportări, represiuni și negare de stat.</span></div>
+        <div class="summary-card"><strong>Italia fascistă</strong><span>Crime coloniale, represalii în Grecia și Iugoslavia, lagăre precum Rab și Gonars.</span></div>
+        <div class="summary-card"><strong>Transilvania de Nord</strong><span>Ip, Treznea, Sărmașu și Moisei, tratate ca episoade comise de autorități sau forțe maghiare.</span></div>
+        <div class="summary-card"><strong>Cazuri comparate</strong><span>Ustașa, Vichy, Bengal, bombardamente strategice și problema responsabilității statelor.</span></div>
+      </div>
+    </section>
+
+    <nav class="nav-card" aria-label="Cuprins">
+      <b>Cuprins:</b>
+      <a href="#cadru">I. Cadru</a>
+      <a href="#sovietic">II. URSS</a>
+      <a href="#italia">III. Italia</a>
+      <a href="#ungaria">IV. Ungaria</a>
+      <a href="#croatia">V. Croația</a>
+      <a href="#vichy">VI. Vichy</a>
+      <a href="#alte">VII. Alte cazuri</a>
+      <a href="#bengal">VIII. Bengal</a>
+      <a href="#bombardamente">IX. Bombardamente</a>
+      <a href="#comparatie">X. Comparație</a>
+      <a href="#dosare">XI. Dosare</a>
+      <a href="#surse">Surse</a>
+    </nav>
+
+    
+<section class="section" id="cadru">
+  <h2>I. Cadru general: crime de stat dincolo de Germania nazistă și Japonia</h2>
+  <p class="section-intro">Al Doilea Război Mondial a fost marcat de crime comise de mai multe state și regimuri. Materialul de față tratează cazuri din afara Germaniei naziste și a Imperiului Japonez. România este lăsată separat, pentru un material dedicat; aici apar episoade din Transilvania de Nord numai în legătură cu autorități și forțe maghiare.</p>
+  <div class="three-col">
+    <article class="info-card"><h3>Nu toate crimele sunt identice</h3><p>Katyn, Jasenovac, represaliile italiene, masacrele maghiare, Vichy, foametea din Bengal și bombardamentele strategice au mecanisme diferite. Unele sunt genocidare, altele crime de război, represalii, complicități la genocid sau politici care produc moarte în masă.</p></article>
+    <article class="info-card"><h3>Responsabilitate de stat</h3><p>Ne interesează rolul instituțiilor: ordine politice, poliții, armate, administrații, tribunale, lagăre, transporturi, politici alimentare, deportări și cenzură. O crimă de stat nu cere ca fiecare cetățean să participe, ci ca aparatul public să fie implicat.</p></article>
+    <article class="info-card"><h3>Memorie și comparație</h3><p>Comparația nu trebuie să relativizeze Holocaustul. Ea ajută la înțelegerea modurilor în care state diferite au produs sau au tolerat violență masivă împotriva civililor, prizonierilor și grupurilor vulnerabile.</p></article>
+  </div>
+</section>
+
+<section class="section" id="sovietic">
+  <h2>II. Uniunea Sovietică: Katyn, deportări și violență politică</h2>
+  <p class="section-intro">URSS a fost victima invaziei naziste și a avut un rol decisiv în înfrângerea Germaniei, dar a comis și crime de stat. Acestea trebuie analizate separat de propaganda nazistă și fără a le folosi pentru a minimaliza Holocaustul.</p>
+  <details open><summary>Masacrul de la Katyn</summary><div class="details-body">
+<p>Katyn desemnează o serie de execuții ale prizonierilor polonezi, mai ales ofițeri, polițiști, funcționari, intelectuali și membri ai elitei, ordonate de conducerea sovietică și executate de NKVD în 1940. Scopul a fost distrugerea unei părți importante din conducerea potențială a Poloniei.</p><div class="key-line"><strong>Victime</strong><span>Ofițeri de carieră și rezervă, polițiști, preoți, profesori, medici, juriști, ingineri, funcționari și alți membri ai elitei poloneze.</span></div><div class="key-line"><strong>Mecanism</strong><span>Prizonierii au fost selectați, transportați și executați în locuri precum Katyn, Kalinin/Tver, Harkiv și alte locații.</span></div><div class="key-line"><strong>Negare</strong><span>URSS a negat responsabilitatea și a atribuit crima naziștilor timp de decenii, ceea ce a transformat Katyn într-un simbol al minciunii de stat.</span></div><div class="key-line"><strong>Semnificație</strong><span>Katyn nu a fost doar ucidere de prizonieri, ci distrugere deliberată a unei elite naționale.</span></div>
+  </div></details>
+  <details open><summary>Deportări sovietice și represiuni în teritoriile ocupate</summary><div class="details-body">
+<p>În zonele anexate sau controlate de URSS între 1939 și 1941, autoritățile sovietice au arestat, deportat sau executat persoane considerate ostile: funcționari, militari, proprietari, membri de partide, polițiști, refugiați, intelectuali și familiile lor. Deportările au dus oameni în Siberia, Kazahstan și alte regiuni îndepărtate.</p><div class="details-grid">
+        <div class="micro-card"><strong>Polonia de est</strong><span>Arestări, deportări și sovietizare forțată după invazia din 1939.</span></div>
+        <div class="micro-card"><strong>Țările baltice</strong><span>Elita politică, militară și economică a fost vizată prin arestări și deportări.</span></div>
+        <div class="micro-card"><strong>Basarabia și Bucovina de Nord</strong><span>Cazul aparține materialului despre România/URSS și poate fi dezvoltat separat.</span></div>
+        <div class="micro-card"><strong>Prizonieri</strong><span>În 1941, înaintea avansului german, NKVD a ucis prizonieri în mai multe închisori evacuate în grabă.</span></div>
+      </div>
+  </div></details>
+</section>
+
+<section class="section" id="italia">
+  <h2>III. Italia fascistă: colonii, Balcani și represiuni</h2>
+  <p class="section-intro">Italia fascistă a fost mult timp prezentată în memoria populară ca un regim mai „blând” decât Germania nazistă. Această imagine ascunde crime coloniale, represalii, lagăre de internare, folosirea gazelor în Etiopia și violențe împotriva civililor în Balcani.</p>
+  <details open><summary>Etiopia: război colonial și represiune</summary><div class="details-body">
+<p>În războiul din Etiopia și în ocupația ulterioară, regimul fascist italian a folosit violență colonială extremă: bombardamente, arme chimice, execuții, represalii și distrugerea comunităților suspectate de rezistență. Masacrul de la Addis Abeba după atentatul asupra lui Graziani a devenit simbol al terorii coloniale.</p><div class="key-line"><strong>Arme chimice</strong><span>Folosirea gazelor a încălcat normele internaționale și a arătat disprețul colonial față de populațiile africane.</span></div><div class="key-line"><strong>Represalii</strong><span>După acte de rezistență, autoritățile italiene au pedepsit colectiv civili, clerici și comunități întregi.</span></div><div class="key-line"><strong>Rasism colonial</strong><span>Propaganda fascistă prezenta africanii ca inferiori și legitima segregarea, violența și dominarea.</span></div><div class="key-line"><strong>Memorie</strong><span>Crimele coloniale italiene au fost mult timp mai puțin discutate decât cele germane sau japoneze.</span></div>
+  </div></details>
+  <details open><summary>Grecia, Iugoslavia și lagărele italiene</summary><div class="details-body">
+<p>În Balcani, autoritățile italiene au folosit internări, represalii anti-partizane, incendieri de sate și control brutal al populației. Cazuri precum Domenikon în Grecia sau lagărele Rab și Gonars în spațiul iugoslav arată că ocupația italiană a putut fi dură și letală.</p><table class="fact-table"><thead><tr><th>Caz</th><th>Explicație</th></tr></thead><tbody>
+<tr><td>Domenikon</td><td>Represalie italiană în Grecia împotriva civililor, ca răspuns la acțiuni partizane.</td></tr>
+<tr><td>Rab</td><td>Lagăr de internare pentru civili, mai ales sloveni și croați, cu supraaglomerare, foame și mortalitate.</td></tr>
+<tr><td>Gonars</td><td>Lagăr italian pentru civili sloveni și croați, parte a politicii de control și deportare.</td></tr>
+<tr><td>Iugoslavia ocupată</td><td>Operațiuni anti-partizane, internări, deportări și represalii împotriva populației civile.</td></tr>
+</tbody></table>
+  </div></details>
+</section>
+
+<section class="section" id="ungaria">
+  <h2>IV. Ungaria horthystă și masacrele din Transilvania de Nord</h2>
+  <p class="section-intro">După Dictatul de la Viena din 1940, Transilvania de Nord a intrat sub administrație maghiară. În acest context au avut loc episoade de violență împotriva civililor români și evrei. Materialul nu tratează aici responsabilitatea statului român, care va fi abordată separat.</p>
+  <details open><summary>Ip și Treznea</summary><div class="details-body">
+<p>Masacrele de la Ip și Treznea au avut loc în 1940, în contextul intrării trupelor maghiare și al tensiunilor naționale. Civili români și evrei au fost uciși în acțiuni de represalie, intimidare și violență etnică.</p><div class="key-line"><strong>Ip</strong><span>După o explozie interpretată ca sabotaj, civili români au fost uciși într-o represalie colectivă.</span></div><div class="key-line"><strong>Treznea</strong><span>Intrarea trupelor maghiare a fost urmată de uciderea unor civili români și evrei.</span></div><div class="key-line"><strong>Mecanism</strong><span>Suspiciune, revanșism, militarizare și etnicizare a responsabilității.</span></div><div class="key-line"><strong>Semnificație</strong><span>Cazurile arată cum schimbarea violentă de administrație poate transforma civilii în ținte.</span></div>
+  </div></details>
+  <details open><summary>Sărmașu și Moisei</summary><div class="details-body">
+<p>În 1944, pe fondul prăbușirii frontului și al retragerii, violența a reapărut în forme extreme. La Sărmașu și Moisei au fost uciși civili și prizonieri, iar dimensiunea etnică și antisemită a violenței este esențială pentru înțelegerea cazurilor.</p><div class="details-grid">
+        <div class="micro-card"><strong>Sărmașu</strong><span>Evreii și românii au fost vizați într-un context de retragere, antisemitism și represiune.</span></div>
+        <div class="micro-card"><strong>Moisei</strong><span>Execuții ale unor civili și prizonieri în toamna anului 1944.</span></div>
+        <div class="micro-card"><strong>Civili</strong><span>Victimele nu erau combatanți pe câmpul de luptă, ci persoane aflate sub control militar sau administrativ.</span></div>
+        <div class="micro-card"><strong>Memorie locală</strong><span>Aceste episoade au rămas importante în memoria comunităților din Transilvania de Nord.</span></div>
+      </div>
+  </div></details>
+</section>
+
+<section class="section" id="croatia">
+  <h2>V. Statul Independent Croația și regimul Ustașa</h2>
+  <p class="section-intro">Statul Independent Croația, aliat al Axei, a comis crime împotriva sârbilor, evreilor, romilor și opozanților politici. Violența Ustașa a avut o logică proprie de purificare națională și religioasă, nu doar un simplu rol auxiliar față de Germania nazistă.</p>
+  <details open><summary>Jasenovac și sistemul Ustașa</summary><div class="details-body">
+<p>Jasenovac a fost cel mai cunoscut lagăr al regimului Ustașa. Acolo au fost uciși sârbi, evrei, romi și opozanți croați. Violența a inclus execuții, muncă forțată, foamete, abuzuri și brutalitate extremă.</p><div class="key-line"><strong>Sârbi</strong><span>Au fost ținta principală a politicilor Ustașa de convertire, expulzare și ucidere.</span></div><div class="key-line"><strong>Evrei</strong><span>Au fost persecutați în cadrul politicilor antisemite și al colaborării cu Axa.</span></div><div class="key-line"><strong>Romi</strong><span>Au fost deportați și uciși în lagăre și masacre.</span></div><div class="key-line"><strong>Opozanți</strong><span>Croați antifasciști, comuniști sau persoane care refuzau regimul au fost de asemenea persecutați.</span></div>
+  </div></details>
+  <details open><summary>Masacre rurale și convertiri forțate</summary><div class="details-body">
+<p>Regimul Ustașa nu s-a limitat la lagăre. În sate și comunități, violența a luat forma masacrelor, expulzărilor și convertiriilor forțate. Scopul era remodelarea etnică și religioasă a spațiului controlat.</p><div class="details-grid">
+        <div class="micro-card"><strong>Masacre locale</strong><span>Comunități sârbe au fost atacate, locuințe distruse și locuitori uciși.</span></div>
+        <div class="micro-card"><strong>Convertiri</strong><span>Unii sârbi ortodocși au fost constrânși să treacă la catolicism ca metodă de supraviețuire sau control.</span></div>
+        <div class="micro-card"><strong>Deportări</strong><span>Populațiile considerate nedorite au fost mutate, internate sau trimise spre moarte.</span></div>
+        <div class="micro-card"><strong>Memorie conflictuală</strong><span>Numărul victimelor și interpretarea Jasenovac rămân teme sensibile în memoria Balcanilor.</span></div>
+      </div>
+  </div></details>
+</section>
+
+<section class="section" id="vichy">
+  <h2>VI. Regimul de la Vichy și colaborarea administrativă</h2>
+  <p class="section-intro">Vichy arată cum un stat poate participa la persecuție fără a fi inițiatorul principal al genocidului. Administrația franceză a adoptat legi antisemite, a internat evrei, a colaborat cu deportările și a folosit poliția proprie pentru arestări.</p>
+  <details open><summary>Legi, poliție și deportări</summary><div class="details-body">
+<p>Regimul de la Vichy a adoptat propriile norme antisemite și a participat la identificarea, excluderea și arestarea evreilor. Cazul Vel d’Hiv arată participarea poliției franceze la arestarea în masă a evreilor, inclusiv copii, care au fost apoi deportați.</p><div class="key-line"><strong>Legislație</strong><span>Excluderea evreilor din profesii și viața publică a fost realizată prin norme ale statului francez de la Vichy.</span></div><div class="key-line"><strong>Internare</strong><span>Taberele din Franța au funcționat ca spații de detenție și tranzit.</span></div><div class="key-line"><strong>Drancy</strong><span>A devenit principalul centru de tranzit pentru deportări spre Auschwitz.</span></div><div class="key-line"><strong>Memorie</strong><span>Asumarea responsabilității Vichy a fost dificilă și târzie în memoria publică franceză.</span></div>
+  </div></details>
+</section>
+
+<section class="section" id="alte">
+  <h2>VII. Alte cazuri: Slovacia, Bulgaria, Finlanda, SUA și imperiile coloniale</h2>
+  <p class="section-intro">Pentru o imagine globală, este util să se observe varietatea situațiilor: unele state au colaborat activ la deportări, altele au protejat parțial cetățeni, iar unele democrații au comis propriile încălcări grave ale drepturilor.</p>
+  <div class="two-col">
+    <article class="info-card"><h3>Slovacia și deportările</h3><p>Statul slovac aliat Axei a participat la deportarea evreilor. Cazul arată cum un stat mic, dependent de Germania, a avut totuși inițiativă și responsabilitate proprie în persecuție.</p></article>
+    <article class="info-card"><h3>Bulgaria: protecție și deportare</h3><p>Bulgaria este un caz ambivalent: o parte a evreilor cetățeni bulgari au fost salvați de deportare, dar evrei din teritoriile ocupate de Bulgaria, precum Tracia și Macedonia, au fost deportați.</p></article>
+    <article class="info-card"><h3>Internarea japonezilor americani</h3><p>În Statele Unite, cetățeni și rezidenți de origine japoneză au fost internați în lagăre după Pearl Harbor. Nu a fost genocid, dar a fost o încălcare de stat a drepturilor civile bazată pe suspiciune rasializată.</p></article>
+    <article class="info-card"><h3>Imperii coloniale și război</h3><p>Imperiile au mobilizat resurse și oameni din colonii, uneori prin coerciție, muncă forțată, rechiziții sau politici care au agravat foametea și vulnerabilitatea populațiilor.</p></article>
+  </div>
+</section>
+
+<section class="section" id="bengal">
+  <h2>VIII. Foametea din Bengal și responsabilitatea imperială</h2>
+  <p class="section-intro">Foametea din Bengal din 1943 este un caz dificil: nu trebuie prezentată simplist ca genocid intenționat fără dezbatere, dar nici redusă la dezastru natural. Ea s-a produs prin combinația dintre război, inflație, pierderea Birmaniei, criză de transport, speculă, priorități militare și decizii coloniale întârziate sau insuficiente.</p>
+  <details open><summary>De ce este un caz important?</summary><div class="details-body">
+<p>Bengal arată că responsabilitatea de stat poate exista și atunci când moartea nu este produsă prin execuție directă. Deciziile privind aprovizionarea, transportul, controlul prețurilor, distribuția și prioritățile militare pot transforma vulnerabilitatea socială în catastrofă.</p><div class="key-line"><strong>Cauze multiple</strong><span>Război, inflație, speculă, pierderea importurilor de orez din Birmania, perturbări de transport și administrație colonială ineficientă.</span></div><div class="key-line"><strong>Politici controversate</strong><span>Deciziile privind bărci, transport, stocuri și priorități militare au afectat accesul la hrană.</span></div><div class="key-line"><strong>Rasism imperial</strong><span>Atitudinile coloniale au influențat întârzierea reacției și lipsa de empatie față de populația indiană.</span></div><div class="key-line"><strong>Dezbatere</strong><span>Istoricii discută gradul de vinovăție, neglijență, rasism și intenție, ceea ce face cazul util pentru nuanțarea termenilor.</span></div>
+  </div></details>
+</section>
+
+<section class="section" id="bombardamente">
+  <h2>IX. Bombardamente strategice, orașe și civili</h2>
+  <p class="section-intro">Bombardamentele strategice ale Aliaților nu sunt echivalente cu Holocaustul și nu au avut aceeași logică genocidară. Totuși, ele ridică probleme despre țintirea orașelor, proporționalitate, necesitate militară și moartea civililor în războiul total.</p>
+  <details open><summary>Europa: Hamburg și Dresda</summary><div class="details-body">
+<p>Bombardamentele asupra orașelor germane au urmărit distrugerea industriei, infrastructurii și moralului. Atacurile incendiare au produs furtuni de foc și victime civile numeroase. Dezbaterea se concentrează pe raportul dintre obiectivul militar și costul uman.</p><div class="details-grid">
+        <div class="micro-card"><strong>Hamburg</strong><span>Operațiunea Gomorrah a produs distrugeri masive și furtuni de foc.</span></div>
+        <div class="micro-card"><strong>Dresda</strong><span>Bombardamentul din februarie 1945 rămâne controversat din cauza momentului, distrugerii și victimelor civile.</span></div>
+        <div class="micro-card"><strong>Război total</strong><span>Orașul industrial devine țintă, iar civilii devin vulnerabili.</span></div>
+        <div class="micro-card"><strong>Memorie</strong><span>Propaganda nazistă și apoi memoria postbelică au folosit selectiv aceste episoade.</span></div>
+      </div>
+  </div></details>
+  <details open><summary>Pacific: Tokyo, Hiroshima și Nagasaki</summary><div class="details-body">
+<p>În Japonia, bombardamentele incendiare și apoi bombele atomice au produs moarte civilă masivă. Ele sunt discutate prin întrebări despre scurtarea războiului, evitarea unei invazii, demonstrarea puterii nucleare, proporționalitate și efectele pe termen lung ale radiațiilor.</p><div class="key-line"><strong>Tokyo</strong><span>Bombardamentele incendiare au distrus cartiere întregi construite din materiale inflamabile.</span></div><div class="key-line"><strong>Hiroshima</strong><span>Prima bombă atomică folosită în război a ucis instantaneu și a produs efecte medicale pe termen lung.</span></div><div class="key-line"><strong>Nagasaki</strong><span>A doua bombă atomică a amplificat presiunea pentru capitulare și a devenit simbol al erei nucleare.</span></div><div class="key-line"><strong>Dezbatere morală</strong><span>Chiar dacă au fost acțiuni ale învingătorilor, ele trebuie discutate critic în raport cu civilii și dreptul războiului.</span></div>
+  </div></details>
+</section>
+
+<section class="section" id="comparatie">
+  <h2>X. Compararea cazurilor: cum evităm relativizarea?</h2>
+  <p class="section-intro">Comparația istorică trebuie să explice diferențele, nu să șteargă specificul. Holocaustul are caracter genocidar central și sistematic; Katyn este distrugerea unei elite prin ordin politic; Jasenovac este violență genocidară locală; Vichy este complicitate administrativă; Bengal arată responsabilitate prin politici și neglijență imperială; bombardamentele strategice ridică problema civililor în războiul total.</p>
+  <table class="fact-table"><thead><tr><th>Caz</th><th>Tip dominant de crimă / problemă</th><th>Mecanism</th></tr></thead><tbody>
+<tr><td>Katyn</td><td>Crimă de stat, crimă de război, distrugere de elită</td><td>Ordin politic, NKVD, execuții, negare oficială.</td></tr>
+<tr><td>Italia fascistă</td><td>Crime coloniale, represalii, internări</td><td>Armată, administrație colonială, lagăre, represalii anti-partizane.</td></tr>
+<tr><td>Ungaria în Transilvania de Nord</td><td>Masacre și crime împotriva civililor</td><td>Trupe, administrație, tensiuni etnice, represalii și retragere militară.</td></tr>
+<tr><td>Ustașa</td><td>Violență genocidară și lagăre</td><td>Regim aliat Axei, lagăre, masacre, convertiri și deportări.</td></tr>
+<tr><td>Vichy</td><td>Complicitate la persecuție și deportare</td><td>Legi, poliție, internare, predare către deportare.</td></tr>
+<tr><td>Bengal</td><td>Catastrofă de foamete agravată politic</td><td>Război, priorități imperiale, transport, inflație, reacție insuficientă.</td></tr>
+<tr><td>Bombardamente strategice</td><td>Moarte civilă masivă și problemă de proporționalitate</td><td>Aviație, ținte urbane, industrie, moral, infrastructură.</td></tr>
+</tbody></table>
+</section>
+
+
+    <section class="section" id="dosare">
+  <h2>XI. Dosare foarte detaliate: alte state, alte mecanisme ale crimei</h2>
+  <p class="section-intro">Această secțiune dezvoltă cazurile care pot fi folosite ca fișe separate de lucru. România rămâne în afara materialului, cu excepția menționării Transilvaniei de Nord în legătură cu acțiuni ale autorităților și forțelor maghiare.</p>
+
+  <details open><summary>1. Katyn: anatomia unei crime de elită</summary><div class="details-body">
+    <p>Katyn este important deoarece nu vizează distrugerea întregii populații poloneze, ci eliminarea unei elite capabile să refacă statul polonez. În logica sovietică, ofițerii, funcționarii și intelectualii erau purtători ai unei ordini politice ostile. Crima a avut și o dimensiune simbolică: distrugerea memoriei statului polonez.</p>
+    <div class="key-line"><strong>Selecție socială</strong><span>Victimele nu au fost alese la întâmplare, ci pentru poziția lor militară, administrativă, profesională sau culturală.</span></div>
+    <div class="key-line"><strong>Execuție birocratică</strong><span>Liste, transporturi, închisori, semnături și rapoarte au transformat uciderea în operațiune administrativă.</span></div>
+    <div class="key-line"><strong>Propagandă</strong><span>Descoperirea de către germani în 1943 a fost instrumentalizată propagandistic, iar negarea sovietică a creat decenii de confuzie oficială.</span></div>
+    <div class="key-line"><strong>Memorie</strong><span>Pentru Polonia, Katyn înseamnă nu doar moarte, ci și minciună impusă, imposibilitatea doliului public și falsificarea istoriei.</span></div>
+  </div></details>
+
+  <details open><summary>2. Italia fascistă: de la Etiopia la Balcani</summary><div class="details-body">
+    <p>Crimele Italiei fasciste arată continuitatea dintre colonialism și războiul european. În Etiopia, violența a fost rasial-colonială; în Grecia și Iugoslavia, a fost anti-partizană și de ocupație. În ambele cazuri, statul a folosit armata, lagărele, represaliile și discursul civilizator pentru a justifica dominația.</p>
+    <table class="fact-table"><thead><tr><th>Spațiu</th><th>Forme de crimă</th><th>Mecanism</th></tr></thead><tbody>
+      <tr><td>Etiopia</td><td>Arme chimice, execuții, represalii, masacre.</td><td>Război colonial, rasism, răzbunare după rezistență și control prin teroare.</td></tr>
+      <tr><td>Libia</td><td>Lagăre și represiuni coloniale înainte de războiul mondial.</td><td>Deportări, înfometare și control al populației beduine.</td></tr>
+      <tr><td>Grecia</td><td>Represalii, execuții, foamete agravată de ocupație.</td><td>Control anti-partizan și exploatare economică.</td></tr>
+      <tr><td>Iugoslavia</td><td>Internări, lagăre, incendieri de sate, represalii.</td><td>Politică de ocupație împotriva rezistenței slovene, croate și muntenegrene.</td></tr>
+    </tbody></table>
+  </div></details>
+
+  <details open><summary>3. Transilvania de Nord: violență etnică și schimbare de administrație</summary><div class="details-body">
+    <p>În Transilvania de Nord, violența trebuie citită în contextul Dictatului de la Viena, al revizionismului, al intrării armatei maghiare și al tensiunilor dintre comunități. Masacrele nu sunt simple „incidente locale”, ci episoade în care civilii devin ținte din cauza identității, suspiciunii și represaliilor.</p>
+    <table class="fact-table"><thead><tr><th>Caz</th><th>An</th><th>Victime vizate</th><th>Explicație didactică</th></tr></thead><tbody>
+      <tr><td>Ip</td><td>1940</td><td>Civili români.</td><td>Represalie colectivă după o explozie interpretată ca act ostil; exemplu de pedepsire a comunității pentru o vină atribuită.</td></tr>
+      <tr><td>Treznea</td><td>1940</td><td>Civili români și evrei.</td><td>Violență produsă la intrarea trupelor maghiare, legată de tensiuni etnice și militare.</td></tr>
+      <tr><td>Sărmașu</td><td>1944</td><td>Evrei și români.</td><td>Crimă comisă pe fondul retragerii și al radicalizării antisemite și antiromânești.</td></tr>
+      <tr><td>Moisei</td><td>1944</td><td>Civili și prizonieri.</td><td>Execuții în contextul retragerii militare, când controlul și răzbunarea se combină.</td></tr>
+    </tbody></table>
+  </div></details>
+
+  <details open><summary>4. Ustașa: stat aliat Axei, genocid local</summary><div class="details-body">
+    <p>Regimul Ustașa arată că violența genocidară nu a aparținut doar Germaniei naziste. Statul Independent Croația a avut propriile proiecte de purificare etnică și religioasă. Sârbii, evreii și romii au fost vizați prin ucidere, convertire, deportare, lagăre și expulzare.</p>
+    <div class="details-grid">
+      <div class="micro-card"><strong>Jasenovac</strong><span>Lagăr-simbol al regimului, cu ucideri, muncă forțată, foamete și brutalitate extremă.</span></div>
+      <div class="micro-card"><strong>Sârbi</strong><span>Vizați prin masacre rurale, convertiri forțate, expulzări și lagăre.</span></div>
+      <div class="micro-card"><strong>Evrei și romi</strong><span>Persecutați în cadrul politicilor rasiale ale regimului și ale Axei.</span></div>
+      <div class="micro-card"><strong>Opozanți</strong><span>Croați antifasciști, comuniști și alți adversari au fost închiși sau uciși.</span></div>
+    </div>
+  </div></details>
+
+  <details open><summary>5. Vichy și lecția administrației colaboratoare</summary><div class="details-body">
+    <p>Vichy arată că un stat nu trebuie să fie ocupantul principal pentru a deveni complice. Prin legi, poliție, registre și tabere, administrația locală poate face persecutarea mai eficientă. Cazul este util pentru tema responsabilității funcționarului.</p>
+    <div class="key-line"><strong>Lege</strong><span>Norme antisemite adoptate de statul francez, nu doar impuse direct de Germania.</span></div>
+    <div class="key-line"><strong>Poliție</strong><span>Arestări și razii executate de forțe franceze.</span></div>
+    <div class="key-line"><strong>Tranzit</strong><span>Drancy și alte tabere au funcționat ca spații de adunare pentru deportări.</span></div>
+    <div class="key-line"><strong>Memorie</strong><span>După război, mitul unei Franțe unanim rezistente a întârziat asumarea responsabilității Vichy.</span></div>
+  </div></details>
+
+  <details open><summary>6. Bengal: crimă directă sau responsabilitate prin politică?</summary><div class="details-body">
+    <p>Foametea din Bengal este utilă pentru a înțelege diferența dintre ucidere directă și responsabilitate politică. Nu există consens simplu că ar fi fost genocid intenționat, dar există o dezbatere serioasă despre modul în care politicile imperiale, rasismul, prioritățile militare și reacția întârziată au agravat moartea în masă.</p>
+    <div class="details-grid">
+      <div class="micro-card"><strong>Război</strong><span>Pierderea Birmaniei și teama de invazie japoneză au afectat aprovizionarea și transporturile.</span></div>
+      <div class="micro-card"><strong>Piață</strong><span>Specula, inflația și panica au făcut hrana inaccesibilă pentru milioane de oameni săraci.</span></div>
+      <div class="micro-card"><strong>Politică</strong><span>Deciziile coloniale privind transportul, stocurile și prioritățile militare au agravat situația.</span></div>
+      <div class="micro-card"><strong>Dezbatere</strong><span>Întrebarea centrală este gradul de neglijență, rasism și responsabilitate, nu doar existența unei cauze naturale.</span></div>
+    </div>
+  </div></details>
+
+  <details open><summary>7. Bombardamentele strategice: comparație fără echivalare</summary><div class="details-body">
+    <p>Bombardamentele strategice ale Aliaților trebuie discutate critic, dar fără a le transforma în echivalent al Holocaustului. Ele nu urmăreau distrugerea unui grup etnic ca atare, însă au făcut din orașe spații de moarte civilă masivă. Aici tema este proporționalitatea și limitele războiului total.</p>
+    <table class="fact-table"><thead><tr><th>Caz</th><th>Țintă / context</th><th>Problemă morală</th></tr></thead><tbody>
+      <tr><td>Hamburg</td><td>Oraș industrial german bombardat intens în 1943.</td><td>Furtuni de foc, moarte civilă, distrugerea infrastructurii urbane.</td></tr>
+      <tr><td>Dresda</td><td>Bombardament în februarie 1945, aproape de finalul războiului.</td><td>Disputa privind necesitatea militară și amploarea distrugerii.</td></tr>
+      <tr><td>Tokyo</td><td>Bombardamente incendiare asupra unei metropole dense.</td><td>Civili prinși în incendii masive și colaps urban.</td></tr>
+      <tr><td>Hiroshima și Nagasaki</td><td>Folosirea armelor nucleare pentru a forța capitularea Japoniei.</td><td>Moarte instantanee, radiații, traumă pe termen lung și începutul erei nucleare.</td></tr>
+    </tbody></table>
+  </div></details>
+</section>
+
+    <section class="section" id="surse">
+      <h2>Surse orientative pentru documentare</h2>
+      <p class="section-intro">Lista este orientativă și poate fi completată cu documente de arhivă, manuale, atlase istorice, mărturii și materiale muzeale. Materialul de față este redactat pentru uz didactic, nu ca înlocuitor al unei monografii academice.</p>
+      <ul class="source-list">
+        <li>Lucrări și documente despre Katyn, NKVD, deportările sovietice și memoria poloneză.</li>
+        <li>Studii despre Italia fascistă în Etiopia, Grecia, Iugoslavia, lagărele Rab și Gonars și violența colonială.</li>
+        <li>Documente, studii și memorialistică despre Ip, Treznea, Sărmașu și Moisei în Transilvania de Nord.</li>
+        <li>Studii despre Statul Independent Croația, Jasenovac, Vichy, Drancy, Vel d’Hiv, Bengal și bombardamentele strategice ale Aliaților.</li>
+      </ul>
+    </section>
+
+    <section class="final-box">
+      <h2>Idee de final pentru elevi</h2>
+      <p>Crimele de stat din Al Doilea Război Mondial trebuie analizate prin întrebări despre ideologie, instituții, ordine, complicitate, victime și memorie. O crimă de masă nu este produsă doar de lideri, ci și de administrații, funcționari, poliții, armate, medici, economii de război și societăți care acceptă dezumanizarea.</p>
+    </section>
+  </main>
+</body>
+</html>

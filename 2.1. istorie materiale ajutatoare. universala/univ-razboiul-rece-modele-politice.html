@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Războiul Rece: modele politice democratice, autoritare și totalitare">
+<title>univ-razboiul-rece-modele-politice</title>
+<style>
+:root{
+  --bg:#f6f0e7;--paper:#fffaf3;--paper-2:#fff;--ink:#2f241c;--title:#3c2a1e;
+  --muted:#5b4a3d;--accent:#7a4f2a;--accent-2:#9b6a3c;--accent-soft:#f0e4d4;
+  --line:rgba(91,62,36,.18);--line-strong:rgba(91,62,36,.34);
+  --shadow:0 26px 70px rgba(0,0,0,.28);--shadow-small:0 12px 30px rgba(0,0,0,.16);
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{
+  margin:0;min-height:100vh;color:var(--ink);font-family:Georgia,"Times New Roman",serif;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(132,78,40,.72),transparent 34%),
+    radial-gradient(circle at 50% 100%,rgba(112,63,31,.44),transparent 36%),
+    radial-gradient(circle at 0 50%,rgba(29,13,6,.92),transparent 42%),
+    radial-gradient(circle at 100% 50%,rgba(29,13,6,.92),transparent 42%),
+    linear-gradient(180deg,#32190c 0%,#4a2a18 46%,#1e0e05 100%);
+  background-attachment:fixed;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(circle at center,transparent 0%,rgba(0,0,0,.10) 48%,rgba(0,0,0,.44) 100%),
+    linear-gradient(90deg,rgba(0,0,0,.20),transparent 18%,transparent 82%,rgba(0,0,0,.20));
+}
+.page{position:relative;z-index:1;width:min(1180px,calc(100% - 32px));margin:0 auto;padding:34px 0 70px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px;flex-wrap:wrap}
+.back-link,.tag{display:inline-flex;align-items:center;border:1px solid var(--line);background:rgba(255,250,243,.86);color:var(--title);border-radius:999px;padding:10px 15px;text-decoration:none;font-size:15px;font-weight:700;box-shadow:var(--shadow-small)}
+.back-link:hover{background:#fff6eb}
+.hero,.section,.nav-card,.final-box,.related-card{background:rgba(255,250,243,.96);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow)}
+.hero{padding:38px;margin-bottom:24px;position:relative;overflow:hidden}
+.hero::after{content:var(--hero-year);position:absolute;right:24px;bottom:-22px;font-size:104px;font-weight:900;letter-spacing:-5px;color:rgba(122,79,42,.075);pointer-events:none}
+.eyebrow{margin:0 0 8px;font-size:16px;color:var(--accent);font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+h1{margin:0;font-size:clamp(38px,5vw,62px);line-height:1.04;color:var(--title);letter-spacing:-1.4px}
+.subtitle{margin:18px 0 0;max-width:1000px;font-size:19px;line-height:1.78;color:var(--muted);text-align:justify;text-align-last:left}
+.badge-row,.series-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.badge,.series-links a{display:inline-flex;align-items:center;color:var(--title);background:#fff;border:1px solid rgba(91,62,36,.15);border-radius:999px;padding:8px 12px;font-weight:800;font-size:14px;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,.09)}
+.badge.accent{background:var(--accent);color:#fffaf3}
+.related-card{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:16px 20px;margin:-10px 0 24px;border-radius:22px;box-shadow:var(--shadow-small)}
+.related-card b{color:var(--title)}
+.related-card a{color:var(--title);background:#f3eadf;border:1px solid rgba(91,62,36,.16);border-radius:999px;text-decoration:none;padding:8px 12px;font-weight:700;font-size:14px}
+.nav-card{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:18px 20px;margin-bottom:24px}
+.nav-card b{color:var(--title)}
+.nav-card a,.mini-btn{color:var(--title);background:var(--accent-soft);border:1px solid rgba(91,62,36,.16);border-radius:999px;text-decoration:none;padding:8px 12px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit}
+.nav-card a:hover,.mini-btn:hover{background:#e5d2bb}
+.section{padding:30px;margin-bottom:24px}
+h2{margin:0 0 14px;color:var(--title);font-size:clamp(28px,3vw,38px);line-height:1.15}
+h3{margin:0 0 12px;color:var(--title);font-size:22px;line-height:1.22}
+h4{margin:16px 0 8px;color:var(--title);font-size:18px}
+p,li,dd,.section-intro{font-size:17px;line-height:1.72;color:var(--muted);text-align:justify;text-align-last:left;hyphens:auto}
+.section-intro{margin:0 0 20px;max-width:1030px}
+.summary-grid,.three-col,.two-col,.four-col,.term-grid,.quick-grid,.cause-grid,.profile-grid,.principle-grid,.institution-grid,.compare-grid{display:grid;gap:14px}
+.summary-grid,.quick-grid{grid-template-columns:repeat(4,1fr);margin-top:22px}
+.three-col,.profile-grid{grid-template-columns:repeat(3,1fr)}
+.two-col,.cause-grid,.compare-grid{grid-template-columns:repeat(2,1fr)}
+.four-col,.term-grid,.principle-grid,.institution-grid{grid-template-columns:repeat(4,1fr)}
+.summary-card,.info-card,.wide-card,.term-card,.quick-card,.micro-card,.warning-box,.source-note,.profile-card,.principle-card,.institution-card{
+  background:var(--paper-2);border:1px solid rgba(91,62,36,.14);border-radius:20px;box-shadow:var(--shadow-small);text-align:justify;text-align-last:left;padding:20px
+}
+.summary-card{min-height:132px;padding:16px}
+.summary-card strong,.quick-card strong,.term-card strong,.micro-card strong,.principle-card strong,.institution-card strong{display:block;color:var(--title);font-size:17px;margin-bottom:8px;text-align:left}
+.summary-card span,.quick-card span,.term-card span,.micro-card span,.principle-card span,.institution-card span{display:block;color:var(--muted);font-size:15.5px;line-height:1.58}
+.profile-card h3{margin-bottom:4px}.profile-card .life{display:block;color:var(--accent);font-weight:800;margin-bottom:10px}.profile-card p{font-size:16px;margin:8px 0}.profile-card ul{margin:8px 0 0;padding-left:20px}.profile-card li{font-size:15.5px;line-height:1.56;margin-bottom:5px}
+.clean,.number-list{margin:0;padding-left:22px}.clean li,.number-list li{margin:0 0 9px;padding-left:2px}
+.date-pill{display:inline-block;color:var(--title);font-weight:800;background:#f3eadf;border:1px solid rgba(91,62,36,.13);border-radius:999px;padding:2px 9px;margin-right:5px;white-space:nowrap}
+.definition,.note,.fact-check,.quote-box{margin-top:18px;background:#fff8ef;border:1px solid rgba(122,79,42,.22);border-left:6px solid rgba(122,79,42,.48);border-radius:18px;padding:18px 20px;color:var(--muted);font-size:17px;line-height:1.7;text-align:justify;text-align-last:left}
+.definition strong,.note strong,.fact-check strong,.quote-box strong{color:var(--title)}
+.fact-check{background:#fff5e8;border-left-color:#8b3f28}
+.quote-box{font-style:italic}
+details{background:#fffdf9;border:1px solid rgba(91,62,36,.14);border-radius:20px;box-shadow:var(--shadow-small);margin-top:14px;overflow:hidden}
+details[open]{background:#fffaf3}
+summary{cursor:pointer;list-style:none;padding:18px 20px;font-size:19px;font-weight:800;color:var(--title);display:flex;justify-content:space-between;align-items:center;gap:18px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"Deschide";color:var(--muted);font-size:14px;font-weight:700;background:#f3eadf;border:1px solid rgba(91,62,36,.14);border-radius:999px;padding:7px 11px;white-space:nowrap}
+details[open]>summary::after{content:"Ascunde"}
+.details-body{border-top:1px solid rgba(91,62,36,.12);padding:18px 20px 20px}
+.key-line{display:grid;grid-template-columns:220px 1fr;gap:14px;padding:14px 0;border-bottom:1px dashed rgba(91,62,36,.18)}
+.key-line:last-child{border-bottom:0}.key-line strong{color:var(--title)}.key-line span{color:var(--muted);line-height:1.65}
+.timeline{display:grid;gap:14px;margin-top:18px}
+.event{display:grid;grid-template-columns:136px 1fr;gap:18px;align-items:stretch;background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:20px;box-shadow:var(--shadow-small);overflow:hidden}
+.date{background:linear-gradient(180deg,#7a4f2a,#5b351b);color:#fffaf3;display:flex;align-items:center;justify-content:center;text-align:center;padding:14px;font-size:18px;line-height:1.25;font-weight:900}
+.event>div:last-child{padding:17px 18px 18px 0}.event h3{margin-bottom:6px}.event p{margin:0}
+.warning-box{background:#fff7ec;border-color:rgba(122,79,42,.22);margin-top:16px}
+.final-box{padding:28px;background:linear-gradient(135deg,#fffaf3,#f4e4d1);border-color:rgba(91,62,36,.25)}
+.final-box p{margin-bottom:0}
+.table-wrap{overflow-x:auto;margin-top:14px;border-radius:18px;border:1px solid rgba(91,62,36,.14);background:#fff;box-shadow:var(--shadow-small)}
+table{width:100%;border-collapse:collapse;min-width:780px}
+th,td{padding:13px 14px;border-bottom:1px solid rgba(91,62,36,.12);color:var(--muted);font-size:16px;line-height:1.55;vertical-align:top;text-align:left}
+th{background:#f3eadf;color:var(--title);font-weight:800}tr:last-child td{border-bottom:0}
+.model-dem{border-top:6px solid #8d6b2f}.model-auth{border-top:6px solid #8b4f34}.model-total{border-top:6px solid #5a3424}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px}
+.flow-item{position:relative;padding:16px;background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;box-shadow:var(--shadow-small)}
+.flow-item b{display:block;color:var(--title);margin-bottom:6px}.flow-item span{font-size:15px;color:var(--muted);line-height:1.5}
+.flow-item:not(:last-child)::after{content:"→";position:absolute;right:-14px;top:50%;transform:translateY(-50%);font-size:22px;color:var(--accent);font-weight:900;z-index:3}
+.small{font-size:15px;color:#725c49;line-height:1.58}
+footer{margin-top:24px;color:rgba(255,250,243,.82);text-align:center;font-size:14px;line-height:1.6}
+@media(max-width:980px){
+  .summary-grid,.three-col,.four-col,.term-grid,.quick-grid,.profile-grid,.principle-grid,.institution-grid{grid-template-columns:repeat(2,1fr)}
+  .two-col,.cause-grid,.compare-grid{grid-template-columns:1fr}
+  .flow{grid-template-columns:repeat(2,1fr)}.flow-item::after{display:none}
+}
+@media(max-width:680px){
+  .page{width:min(100% - 22px,1180px);padding-top:22px}
+  .hero,.section,.final-box{padding:22px;border-radius:22px}
+  .summary-grid,.three-col,.four-col,.term-grid,.quick-grid,.profile-grid,.principle-grid,.institution-grid,.flow{grid-template-columns:1fr}
+  .event{grid-template-columns:1fr}.date{min-height:66px}.event>div:last-child{padding:0 16px 16px}
+  .key-line{grid-template-columns:1fr;gap:6px}summary{align-items:flex-start;flex-direction:column}.hero::after{font-size:72px}
+  .subtitle,p,li,dd,.section-intro,.details-body,.key-line span,.event>div:last-child,.definition,.note,.fact-check,.quote-box{text-align:left;text-align-last:auto;hyphens:none}
+}
+@media print{
+  body{background:#fff!important}body::before{display:none}.page{width:100%;padding:0}
+  .topbar,.nav-card,.related-card{display:none!important}
+  .hero,.section,.final-box{box-shadow:none;border:1px solid #cbb9a8;break-inside:avoid-page}
+  details{break-inside:avoid-page}summary::after{display:none}
+}
+</style>
+</head>
+<body id="top" style="--hero-year:'1945–1991';">
+<main class="page">
+<div class="topbar">
+  <a class="back-link" href="index.html">← Înapoi la materiale</a>
+  <span class="tag">Material ajutător · Istorie universală · Războiul Rece</span>
+</div>
+
+<section class="hero">
+  <p class="eyebrow">Istorie universală · Epoca contemporană</p>
+  <h1>Războiul Rece: modele politice</h1>
+  <p class="subtitle">O analiză comparativă a democrațiilor occidentale, regimurilor autoritare și totalitarismului comunist: instituții, partide, lideri, economie, propagandă, drepturi sociale și raportul dintre viața publică și viața privată.</p>
+  <div class="badge-row">
+    <span class="badge accent">1945–1991</span>
+    <span class="badge">SUA</span><span class="badge">Franța</span><span class="badge">RFG</span>
+    <span class="badge">URSS</span><span class="badge">Autoritarism</span><span class="badge">Totalitarism</span>
+  </div>
+</section>
+
+<div class="related-card">
+  <b>Axele materialului:</b>
+  <a href="#modele">Comparația regimurilor</a>
+  <a href="#democratii">Democrațiile occidentale</a>
+  <a href="#urss">Modelul sovietic</a>
+  <a href="#viata">Viața publică și privată</a>
+</div>
+
+<nav class="nav-card" aria-label="Cuprinsul paginii">
+  <b>Cuprins:</b>
+  <a href="#introducere">Context</a><a href="#modele">Modele politice</a><a href="#democratii">Democrație</a>
+  <a href="#sua">SUA</a><a href="#franta">Franța</a><a href="#rfg">RFG</a>
+  <a href="#autoritarism">Autoritarism</a><a href="#totalitarism">Totalitarism</a><a href="#urss">URSS</a>
+  <a href="#viata">Viață publică și privată</a><a href="#cronologie">Cronologie</a><a href="#sinteza">Sinteză</a>
+  <button class="mini-btn" type="button" data-action="open">Deschide explicațiile</button>
+  <button class="mini-btn" type="button" data-action="close">Închide explicațiile</button>
+</nav>
+
+<section class="section" id="introducere">
+<h2>I. Lumea politică a Războiului Rece</h2>
+<p class="section-intro">După 1945, confruntarea dintre Statele Unite și Uniunea Sovietică a fost și o competiție între modele de organizare a statului și societății. Occidentul liberal se legitima prin alegeri, pluralism și drepturi individuale; blocul sovietic prin partidul unic, planificare și promisiunea egalității sociale. Între cele două au existat numeroase regimuri autoritare, sprijinite adesea de una dintre superputeri din rațiuni strategice.</p>
+<div class="summary-grid">
+  <article class="summary-card"><strong>Democrație liberală</strong><span>Alegeri competitive, pluralism, separarea puterilor, opoziție legală și libertăți civile.</span></article>
+  <article class="summary-card"><strong>Autoritarism</strong><span>Putere concentrată, pluralism limitat și alegeri controlate, dar fără mobilizarea totală a societății.</span></article>
+  <article class="summary-card"><strong>Totalitarism</strong><span>Partid unic, ideologie oficială, economie dirijată, propagandă, poliție politică și control social extins.</span></article>
+  <article class="summary-card"><strong>Stat social</strong><span>În ambele blocuri, legitimitatea s-a legat și de muncă, educație, sănătate, pensii și nivelul de trai.</span></article>
+</div>
+<div class="definition"><strong>Ideea centrală:</strong> Războiul Rece nu a fost doar o confruntare militară indirectă. A fost o competiție pentru demonstrarea superiorității unui mod de viață: cine oferea mai multă libertate, securitate, prosperitate, egalitate și prestigiu internațional.</div>
+</section>
+
+<section class="section" id="modele">
+<h2>II. Democrație, autoritarism și totalitarism</h2>
+<div class="three-col">
+  <article class="info-card model-dem"><h3>Democrația</h3><ul class="clean">
+    <li>puterea se dobândește și se pierde prin alegeri libere;</li><li>există mai multe partide și presă independentă;</li>
+    <li>instituțiile se controlează reciproc;</li><li>drepturile cetățenești limitează acțiunea statului;</li>
+    <li>economia este predominant de piață, completată de politici sociale.</li>
+  </ul></article>
+  <article class="info-card model-auth"><h3>Autoritarismul</h3><ul class="clean">
+    <li>conducătorii nu pot fi înlocuiți real prin vot;</li><li>alegerile lipsesc sau sunt formale;</li>
+    <li>pluralismul și separarea puterilor sunt restrânse;</li><li>regimul invocă ordinea, patriotismul, naționalismul ori justiția socială;</li>
+    <li>pot supraviețui instituții tradiționale, Biserici, proprietate privată și spații sociale relativ autonome.</li>
+  </ul></article>
+  <article class="info-card model-total"><h3>Totalitarismul</h3><ul class="clean">
+    <li>partid unic și structură politică piramidală;</li><li>doctrină oficială prezentată ca adevăr absolut;</li>
+    <li>economie de comandă și control asupra profesiilor;</li><li>cultul liderului, cenzură, poliție politică și teroare;</li>
+    <li>mobilizarea obligatorie a populației și încercarea de a crea „omul nou”.</li>
+  </ul></article>
+</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Criteriu</th><th>Democrație liberală</th><th>Regim autoritar</th><th>Regim totalitar</th></tr></thead>
+<tbody>
+<tr><td>Legitimitate</td><td>Vot, constituție, stat de drept</td><td>Ordine, națiune, armată, tradiție</td><td>Ideologie revoluționară și partid unic</td></tr>
+<tr><td>Opoziție</td><td>Legală și capabilă să câștige alegeri</td><td>Tolerată limitat sau reprimată selectiv</td><td>Eliminată sistematic</td></tr>
+<tr><td>Economie</td><td>Piață și stat social</td><td>Mixtă, adesea clientelară</td><td>Planificare centrală și proprietate de stat</td></tr>
+<tr><td>Presa</td><td>Plurală, cu limite juridice</td><td>Cenzurată și intimidată</td><td>Instrument direct al partidului-stat</td></tr>
+<tr><td>Viață privată</td><td>Protejată juridic, deși imperfect</td><td>Supravegheată mai ales politic</td><td>Subordonată obiectivelor colective și ideologice</td></tr>
+<tr><td>Exemple în epocă</td><td>SUA, Franța, RFG</td><td>Spania franchistă, Grecia coloneilor, Chile</td><td>URSS stalinistă și statele-satelit</td></tr>
+</tbody></table></div>
+<details><summary>Autoritarismul nu este identic cu totalitarismul</summary><div class="details-body"><p>Un regim autoritar urmărește în primul rând obediența politică și conservarea puterii. Totalitarismul încearcă, în plus, să refacă societatea conform unei ideologii, să monopolizeze educația, cultura, economia și comunicarea și să pătrundă sistematic în viața privată. În practică, granița poate fi mobilă: unele regimuri devin mai represive sau, dimpotrivă, se liberalizează.</p></div></details>
+</section>
+
+<section class="section" id="democratii">
+<h2>III. Modelul democratic occidental</h2>
+<p class="section-intro">Democrațiile occidentale nu au avut o singură formă instituțională. SUA au rămas o republică prezidențială federală; RFG a construit un parlamentarism federal prudent; Franța a trecut de la instabilitatea parlamentară a Republicii a IV-a la semiprezidențialismul Republicii a V-a.</p>
+<div class="institution-grid">
+  <article class="institution-card"><strong>Alegeri</strong><span>Guvernanții primesc mandate limitate, iar opoziția poate alterna la putere.</span></article>
+  <article class="institution-card"><strong>Constituție</strong><span>Competențele instituțiilor și drepturile cetățenilor sunt definite juridic.</span></article>
+  <article class="institution-card"><strong>Contraputeri</strong><span>Parlament, instanțe, presă, sindicate și societate civilă reduc arbitrariul executivului.</span></article>
+  <article class="institution-card"><strong>Compromis social</strong><span>Capitalismul este temperat prin protecție socială, educație publică și drepturi ale muncii.</span></article>
+</div>
+<div class="note"><strong>Limite istorice:</strong> democrațiile occidentale au coexistat cu segregare rasială, colonialism, discriminare, supraveghere anticomunistă și intervenții externe. Ele s-au transformat prin proteste, reforme și controlul public al instituțiilor.</div>
+</section>
+
+<section class="section" id="sua">
+<h2>IV. Statele Unite: democrația prezidențială și politica de containment</h2>
+<div class="two-col">
+  <article class="info-card"><h3>Arhitectura instituțională</h3><ul class="clean">
+    <li><strong>Puterea legislativă:</strong> Congres bicameral — Camera Reprezentanților și Senatul.</li>
+    <li><strong>Puterea executivă:</strong> președintele și administrația federală; comandă forțele armate și conduce politica externă în limitele controlului congresional.</li>
+    <li><strong>Puterea judecătorească:</strong> instanțe federale și Curtea Supremă, capabilă să verifice constituționalitatea.</li>
+    <li><strong>Federalism:</strong> competențe împărțite între guvernul federal și state.</li>
+  </ul></article>
+  <article class="info-card"><h3>Sistemul de partide</h3><p>Competiția a fost dominată de Partidul Democrat și Partidul Republican. Bazele lor electorale s-au modificat puternic în secolul al XX-lea: New Deal-ul, mișcarea pentru drepturi civile, suburbanizarea, religia și realinierea Sudului au schimbat distribuția grupurilor sociale între cele două partide.</p><p><strong>Simboluri:</strong> măgarul pentru democrați și elefantul pentru republicani.</p></article>
+</div>
+<div class="fact-check"><strong>Corecții față de documentul de lucru:</strong> Constituția federală a fost redactată în 1787, nu în 1776; listele de electorat atribuite republicanilor și democraților erau inversate în mare parte. De asemenea, HUAC și campania senatorului Joseph McCarthy au fost fenomene distincte, deși asociate aceluiași climat anticomunist.</div>
+
+<h3>Președinții și marile direcții ale Războiului Rece</h3>
+<div class="timeline">
+  <article class="event"><div class="date">1945–1953</div><div><h3>Harry S. Truman</h3><p>Finalul războiului mondial, folosirea bombelor atomice, Doctrina Truman, Planul Marshall, Actul Securității Naționale din 1947, Podul Aerian al Berlinului, recunoașterea Israelului, fondarea NATO și desegregarea forțelor armate. A fixat strategia de <em>containment</em>.</p></div></article>
+  <article class="event"><div class="date">1953–1961</div><div><h3>Dwight D. Eisenhower</h3><p>A încheiat armistițiul din Coreea, a mizat pe descurajarea nucleară, alianțe și operațiuni secrete. A susținut infrastructura autostrăzilor și, după Sputnik, extinderea programelor științifice și spațiale. La final a avertizat asupra „complexului militar-industrial”.</p></div></article>
+  <article class="event"><div class="date">1961–1963</div><div><h3>John F. Kennedy</h3><p>Programul New Frontier, Golful Porcilor, Zidul Berlinului și Criza rachetelor din Cuba. A susținut cursa spațială și a făcut pași spre legislația drepturilor civile. A fost asasinat la Dallas în 1963.</p></div></article>
+  <article class="event"><div class="date">1963–1969</div><div><h3>Lyndon B. Johnson</h3><p>Great Society, Medicare, Medicaid, Civil Rights Act din 1964 și Voting Rights Act din 1965. În exterior, a escaladat masiv războiul din Vietnam, provocând polarizare socială și proteste.</p></div></article>
+  <article class="event"><div class="date">1969–1974</div><div><h3>Richard Nixon</h3><p>Vietnamizare, apropiere de China, destindere cu URSS și SALT I. Afacerea Watergate a demonstrat rolul presei, Congresului și justiției ca mecanisme de control; Nixon a demisionat în 1974.</p></div></article>
+  <article class="event"><div class="date">1974–1981</div><div><h3>Gerald Ford și Jimmy Carter</h3><p>Ford a continuat destinderea și a semnat Actul Final de la Helsinki. Carter a pus drepturile omului în centrul discursului extern și a mediat acordurile de la Camp David, dar criza ostaticilor din Iran și invazia sovietică din Afganistan au afectat mandatul său.</p></div></article>
+  <article class="event"><div class="date">1981–1989</div><div><h3>Ronald Reagan</h3><p>A mărit cheltuielile militare, a lansat Inițiativa de Apărare Strategică și a sprijinit forțe anticomuniste. Ulterior a negociat cu Gorbaciov, iar tratatul INF din 1987 a eliminat o categorie de rachete nucleare.</p></div></article>
+  <article class="event"><div class="date">1989–1993</div><div><h3>George H. W. Bush</h3><p>A gestionat diplomatic prăbușirea regimurilor est-europene, reunificarea Germaniei și dizolvarea URSS, evitând transformarea sfârșitului Războiului Rece într-o confruntare militară directă.</p></div></article>
+</div>
+
+<details><summary>Containment, rollback și destindere</summary><div class="details-body">
+<div class="three-col">
+  <article class="info-card"><h3>Containment</h3><p>Strategia formulată de George F. Kennan urmărea limitarea extinderii influenței sovietice prin ajutor economic, alianțe, descurajare și intervenții politice ori militare.</p></article>
+  <article class="info-card"><h3>Rollback</h3><p>Nu doar oprirea extinderii, ci reducerea controlului comunist. A fost invocat retoric de Eisenhower și aplicat selectiv mai ales în epoca Reagan.</p></article>
+  <article class="info-card"><h3>Destindere</h3><p>Reducerea tensiunilor prin negocieri, controlul armamentelor și contacte diplomatice, asociată mai ales cu Nixon, Kissinger, Ford și acordurile din anii 1970.</p></article>
+</div></div></details>
+<details><summary>McCarthyismul și limitele libertății în democrație</summary><div class="details-body"><p>În anii 1940–1950, teama de infiltrare comunistă a produs anchete, liste negre, concedieri și acuzații adesea insuficient probate. Senatorul Joseph McCarthy a devenit simbolul fenomenului, în timp ce Comisia pentru Activități Antiamericane a Camerei Reprezentanților era o instituție separată. Declinul campaniei a arătat și capacitatea televiziunii, Senatului, instanțelor și opiniei publice de a limita abuzul.</p></div></details>
+</section>
+
+<section class="section" id="franta">
+<h2>V. Franța: de la Republica a IV-a la Republica a V-a</h2>
+<div class="compare-grid">
+  <article class="info-card"><h3>Republica a IV-a (1946–1958)</h3><ul class="clean">
+    <li>regim parlamentar cu executiv dependent de Adunarea Națională;</li>
+    <li>Parlament bicameral: Adunarea Națională și Consiliul Republicii;</li>
+    <li>succesiune rapidă a guvernelor și coaliții fragile;</li>
+    <li>reconstrucție economică și începuturile integrării europene;</li>
+    <li>crizele din Indochina și Algeria au delegitimat regimul.</li>
+  </ul></article>
+  <article class="info-card"><h3>Republica a V-a (din 1958)</h3><ul class="clean">
+    <li>regim semiprezidențial cu executiv întărit;</li>
+    <li>președintele numește prim-ministrul, poate dizolva Adunarea și convoca referendumuri;</li>
+    <li>din 1962, președintele este ales prin vot direct;</li>
+    <li>guvernul răspunde politic în fața Adunării Naționale;</li>
+    <li>posibilitatea „coabitării” când majoritatea parlamentară este adversă președintelui.</li>
+  </ul></article>
+</div>
+<div class="fact-check"><strong>Corecție:</strong> Constituția din 1946 nu a creat un parlament unicameral, iar președintele Republicii a IV-a avea un mandat de șapte ani, nu de șase. Instabilitatea a provenit în principal din fragmentarea partidelor și dependența guvernelor de majorități parlamentare schimbătoare.</div>
+
+<div class="three-col">
+  <article class="info-card"><h3>Gaulliștii</h3><p>UNR, apoi UDR și RPR au susținut executivul puternic, independența națională, dirijismul și o viziune suveranistă asupra Europei.</p></article>
+  <article class="info-card"><h3>Stânga</h3><p>PCF a fost o mare forță comunistă occidentală, iar Partidul Socialist, reorganizat sub François Mitterrand, a devenit principalul partid al stângii democratice.</p></article>
+  <article class="info-card"><h3>Centru și dreapta liberală</h3><p>Republicanii Independenți și UDF au susținut integrarea europeană, economia de piață și reforme sociale moderate.</p></article>
+</div>
+
+<div class="timeline">
+  <article class="event"><div class="date">1958–1969</div><div><h3>Charles de Gaulle</h3><p>A fondat Republica a V-a, a încheiat războiul din Algeria, a dezvoltat forța nucleară franceză și a urmărit autonomie față de cele două blocuri. În 1966 a retras Franța din structura militară integrată a NATO. Criza din mai 1968 și eșecul referendumului din 1969 au dus la demisia sa.</p></div></article>
+  <article class="event"><div class="date">1969–1974</div><div><h3>Georges Pompidou</h3><p>A continuat modernizarea industrială, a păstrat nucleul instituțional gaullist și a acceptat aderarea Regatului Unit la Comunitatea Economică Europeană.</p></div></article>
+  <article class="event"><div class="date">1974–1981</div><div><h3>Valéry Giscard d’Estaing</h3><p>A redus majoratul la 18 ani, a susținut legalizarea întreruperii de sarcină și modernizarea socială, dar a fost confruntat cu șocurile petroliere și creșterea șomajului.</p></div></article>
+  <article class="event"><div class="date">1981–1995</div><div><h3>François Mitterrand</h3><p>Primul președinte socialist al Republicii a V-a. A inițiat naționalizări, descentralizare și reforme sociale, apoi a adoptat austeritatea economică. A cunoscut două perioade de coabitare și a consolidat cooperarea franco-germană și integrarea europeană.</p></div></article>
+</div>
+<div class="note"><strong>Sediile simbolice:</strong> Palatul Élysée este reședința președintelui, iar Hôtel de Matignon sediul prim-ministrului și al guvernului.</div>
+</section>
+
+<section class="section" id="rfg">
+<h2>VI. Republica Federală Germania: democrație parlamentară și economie socială de piață</h2>
+<p class="section-intro">După înfrângerea nazismului, Germania occidentală a fost supusă denazificării, demilitarizării și democratizării. Legea Fundamentală din 1949 a construit instituții menite să evite atât dictatura, cât și instabilitatea extremă a Republicii de la Weimar.</p>
+<div class="institution-grid">
+  <article class="institution-card"><strong>Bundestag</strong><span>Camera aleasă direct, acordă sau retrage încrederea cancelarului și votează legile federale.</span></article>
+  <article class="institution-card"><strong>Bundesrat</strong><span>Reprezintă guvernele landurilor și participă la legiferarea care afectează federația.</span></article>
+  <article class="institution-card"><strong>Cancelar</strong><span>Șeful efectiv al executivului, ales de Bundestag; stabilește liniile generale ale politicii.</span></article>
+  <article class="institution-card"><strong>Președinte federal</strong><span>Șef al statului cu rol predominant reprezentativ, ales de Adunarea Federală.</span></article>
+</div>
+<div class="definition"><strong>Mecanism de stabilitate:</strong> moțiunea constructivă de neîncredere permite demiterea cancelarului numai dacă Bundestagul alege simultan un succesor. Curtea Constituțională Federală protejează ordinea democratică și drepturile fundamentale.</div>
+
+<div class="three-col">
+  <article class="info-card"><h3>CDU/CSU</h3><p>Creștin-democrație, conservatorism moderat, integrare occidentală și europeană. Lideri centrali: Adenauer, Erhard și Kohl.</p></article>
+  <article class="info-card"><h3>SPD</h3><p>Social-democrație. După Programul de la Bad Godesberg din 1959, a acceptat economia de piață și integrarea occidentală. Lideri: Brandt și Schmidt.</p></article>
+  <article class="info-card"><h3>FDP și Verzii</h3><p>FDP a fost deseori partidul de coaliție liberal. Verzii, organizați federal în 1980, au adus în Parlament ecologismul, pacifismul și noile mișcări sociale.</p></article>
+</div>
+<div class="fact-check"><strong>Corecții:</strong> CDU a fost constituită în 1945, nu în 1949; Verzii s-au fondat la nivel federal în 1980, nu în 1986. Wilhelm Pieck nu a fost lider al SPD în RFG, ci comunist și primul președinte al RDG.</div>
+
+<div class="timeline">
+  <article class="event"><div class="date">1949–1963</div><div><h3>Konrad Adenauer</h3><p>A orientat RFG spre Occident, a susținut Planul Marshall, reconcilierea cu Franța, CECO, NATO și crearea Bundeswehrului. Acordul de la Luxemburg din 1952 a stabilit reparații către Israel și organizațiile evreiești.</p></div></article>
+  <article class="event"><div class="date">1963–1969</div><div><h3>Ludwig Erhard și Kurt Georg Kiesinger</h3><p>Erhard a fost asociat „economiei sociale de piață” și miracolului economic. Kiesinger a condus prima mare coaliție CDU/CSU–SPD, într-un context de încetinire economică și proteste studențești.</p></div></article>
+  <article class="event"><div class="date">1969–1974</div><div><h3>Willy Brandt</h3><p><em>Ostpolitik</em>: tratatele cu URSS și Polonia, acordul cvadripartit asupra Berlinului și Tratatul fundamental cu RDG. Gestul de la Varșovia a simbolizat asumarea trecutului și reconcilierea.</p></div></article>
+  <article class="event"><div class="date">1974–1982</div><div><h3>Helmut Schmidt</h3><p>A gestionat șocurile petroliere, terorismul RAF și criza rachetelor europene. A susținut cooperarea economică occidentală și relația strânsă cu Franța.</p></div></article>
+  <article class="event"><div class="date">1982–1990</div><div><h3>Helmut Kohl</h3><p>A consolidat integrarea europeană, a susținut Acordul Schengen și, în 1989–1990, a negociat reunificarea Germaniei în cadrul occidental și european.</p></div></article>
+</div>
+</section>
+
+<section class="section" id="autoritarism">
+<h2>VII. Regimurile autoritare în epoca Războiului Rece</h2>
+<p class="section-intro">Autoritarismul a fost frecvent în Europa sudică, America Latină, Africa, Orientul Mijlociu și Asia. Superputerile au tolerat sau au sprijinit asemenea regimuri atunci când acestea păreau utile împotriva adversarului ideologic.</p>
+<div class="three-col">
+  <article class="profile-card"><h3>Spania franchistă</h3><span class="life">1939–1975</span><p>Dictatură naționalistă, conservatoare și anticomunistă condusă de Francisco Franco. Partidele au fost interzise, opoziția reprimată, iar Biserica și armata au avut rol major. Tranziția democratică a început după moartea dictatorului.</p></article>
+  <article class="profile-card"><h3>Grecia coloneilor</h3><span class="life">1967–1974</span><p>Lovitură militară, suspendarea libertăților, cenzură și represiune. Criza cipriotă a accelerat prăbușirea juntei și revenirea la democrație.</p></article>
+  <article class="profile-card"><h3>Chile</h3><span class="life">1973–1990</span><p>Regimul lui Augusto Pinochet a combinat represiunea politică, disparițiile și tortura cu reforme economice de piață. A fost sprijinit internațional în logica anticomunistă.</p></article>
+  <article class="profile-card"><h3>Portugalia</h3><span class="life">Estado Novo, 1933–1974</span><p>Regim corporatist și colonial asociat lui Salazar și Caetano. Războaiele coloniale și Revoluția Garoafelor au dus la democratizare.</p></article>
+  <article class="profile-card"><h3>Dictaturi postcoloniale</h3><span class="life">Africa și Asia</span><p>Mobutu în Zair, Suharto în Indonezia și regimul lui Ian Smith ori al lui Mugabe în Zimbabwe ilustrează forme diferite de personalism, partid dominant, armată și clientelism.</p></article>
+  <article class="profile-card"><h3>Monarhii autoritare</h3><span class="life">Arabia Saudită</span><p>Monarhia saudită combină legitimitatea dinastică și religioasă, distribuirea veniturilor petroliere și participarea politică foarte limitată.</p></article>
+</div>
+<div class="fact-check"><strong>Corecție cronologică:</strong> regimul lui Franco a condus Spania între 1939 și 1975, nu între 1927 și 1971. Exemplele autoritare diferă mult între ele și nu trebuie tratate ca un singur tip identic.</div>
+</section>
+
+<section class="section" id="totalitarism">
+<h2>VIII. Trăsăturile totalitarismului comunist</h2>
+<div class="principle-grid">
+  <article class="principle-card"><strong>Partid unic</strong><span>Monopol politic, ierarhie piramidală și fuziune între partid și stat.</span></article>
+  <article class="principle-card"><strong>Ideologie oficială</strong><span>Marxism-leninism, limbaj standardizat și interpretare obligatorie a istoriei.</span></article>
+  <article class="principle-card"><strong>Economie de comandă</strong><span>Planuri cincinale, proprietate de stat, colectivizare și norme de producție.</span></article>
+  <article class="principle-card"><strong>Propagandă</strong><span>Presa, școala și cultura glorifică partidul, statul și liderul.</span></article>
+  <article class="principle-card"><strong>Teroare</strong><span>Poliție politică, arestări, deportări, procese politice și lagăre.</span></article>
+  <article class="principle-card"><strong>Mobilizare</strong><span>Mitinguri, organizații de masă, muncă „patriotică” și activități obligatorii.</span></article>
+  <article class="principle-card"><strong>Inamic social</strong><span>Țărani înstăriți, disidenți, intelectuali, rivali de partid și persoane religioase.</span></article>
+  <article class="principle-card"><strong>Omul nou</strong><span>Modelul cetățeanului disciplinat, productiv, colectivist și loial ideologic.</span></article>
+</div>
+<details><summary>Curente comuniste postbelice</summary><div class="details-body"><p>Leninismul și stalinismul au oferit modelul inițial. Ulterior s-au afirmat variante distincte: troțkismul, titoismul iugoslav, maoismul chinez, castrismul cubanez și forme național-comuniste precum ceaușismul. Toate revendicau moștenirea marxistă, dar diferă prin raportul față de Moscova, rolul țărănimii, politica externă și gradul de personalizare a puterii.</p></div></details>
+</section>
+
+<section class="section" id="urss">
+<h2>IX. Uniunea Sovietică: instituții formale și puterea reală</h2>
+<div class="two-col">
+  <article class="info-card"><h3>Structura partidului-stat</h3>
+    <div class="key-line"><strong>Congresul PCUS</strong><span>For formal suprem; se întrunea periodic și aproba direcția generală.</span></div>
+    <div class="key-line"><strong>Comitetul Central</strong><span>Conducerea partidului între congrese.</span></div>
+    <div class="key-line"><strong>Politburo</strong><span>Nucleul real al deciziei politice și strategice.</span></div>
+    <div class="key-line"><strong>Secretariatul</strong><span>Controlul cadrelor, numirilor și aparatului de partid.</span></div>
+    <div class="key-line"><strong>Secretarul general</strong><span>Liderul de facto al sistemului, mai ales din epoca Stalin.</span></div>
+  </article>
+  <article class="info-card"><h3>Instituțiile de stat</h3>
+    <div class="key-line"><strong>Sovietul Suprem</strong><span>Parlament bicameral — Sovietul Uniunii și Sovietul Naționalităților — care formal adopta legi.</span></div>
+    <div class="key-line"><strong>Prezidiul</strong><span>Organ permanent între sesiunile Sovietului Suprem.</span></div>
+    <div class="key-line"><strong>Consiliul de Miniștri</strong><span>Guvernul și administrația economică.</span></div>
+    <div class="key-line"><strong>Gosplan</strong><span>Elabora planurile economice și repartiza obiectivele de producție.</span></div>
+    <div class="key-line"><strong>KGB și armata</strong><span>Securitate internă, spionaj, control al disidenței și putere militară globală.</span></div>
+  </article>
+</div>
+<div class="definition"><strong>Realitatea constituțională:</strong> Sovietul Suprem, alegerile și drepturile proclamate aveau funcții legitimatoare. Deciziile esențiale erau luate în conducerea PCUS, iar „centralismul democratic” obliga nivelurile inferioare să execute hotărârile centrului.</div>
+
+<h3>Evoluția poliției politice</h3>
+<div class="flow">
+  <article class="flow-item"><b>Ceka, 1917</b><span>Creată de Felix Dzerjinski pentru combaterea contrarevoluției.</span></article>
+  <article class="flow-item"><b>GPU / OGPU</b><span>Reorganizări din 1922–1923, cu extinderea supravegherii și represiunii.</span></article>
+  <article class="flow-item"><b>NKVD, 1934</b><span>Instrument central al Marii Terori, deportărilor și Gulagului.</span></article>
+  <article class="flow-item"><b>MGB, 1946</b><span>Minister separat al securității statului în perioada stalinistă târzie.</span></article>
+  <article class="flow-item"><b>KGB, 1954</b><span>Contrainformații, spionaj extern, supraveghere și combaterea disidenței.</span></article>
+</div>
+
+<h3>Liderii URSS și transformările sistemului</h3>
+<div class="timeline">
+  <article class="event"><div class="date">1924–1953</div><div><h3>Iosif Stalin</h3><p>Colectivizare forțată, planuri cincinale, industrializare accelerată, Marea Teroare și Gulag. Constituția din 1936 proclama drepturi sociale, dar puterea reală era concentrată în partid și în jurul liderului. După 1945, sovietizarea Europei de Est și Blocada Berlinului au consolidat divizarea continentului.</p></div></article>
+  <article class="event"><div class="date">1953–1964</div><div><h3>Nikita Hrușciov</h3><p>Discursul secret din 1956 și destalinizarea, eliberarea unor deținuți, „dezghețul” cultural, campania Pământurilor Virgine și reorganizarea economică prin sovnarhozuri. A susținut coexistența pașnică, dar a reprimat revoluția maghiară și a provocat Criza rachetelor din Cuba. A fost înlăturat de conducerea partidului în 1964.</p></div></article>
+  <article class="event"><div class="date">1964–1982</div><div><h3>Leonid Brejnev</h3><p>Stabilitate birocratică și stagnare economică. Doctrina Brejnev afirma dreptul URSS de a interveni când regimul socialist al unui stat aliat era amenințat; invazia Cehoslovaciei din 1968 a încheiat Primăvara de la Praga. În anii 1970 a existat și destindere, urmată de invazia Afganistanului în 1979.</p></div></article>
+  <article class="event"><div class="date">1982–1985</div><div><h3>Andropov și Cernenko</h3><p>Succesiune rapidă, încercări limitate de disciplinare economică și continuitatea gerontocrației, fără reforme capabile să rezolve stagnarea structurală.</p></div></article>
+  <article class="event"><div class="date">1985–1991</div><div><h3>Mihail Gorbaciov</h3><p><em>Perestroika</em>, <em>glasnost</em> și „noua gândire” în politica externă. A renunțat la intervenția automată în statele est-europene, a negociat dezarmarea cu SUA și a tolerat revoluțiile din 1989. Reformele au slăbit monopolul PCUS, iar crizele naționale și economice au dus la destrămarea URSS în decembrie 1991.</p></div></article>
+</div>
+<div class="fact-check"><strong>Corecție:</strong> Blocada sovietică din 1948–1949 a vizat accesul occidental către Berlinul de Vest, nu Berlinul de Est. CSI a fost creată de Rusia, Ucraina și Belarus în decembrie 1991; Gorbaciov nu a „fondat-o”, iar apariția ei a consfințit dispariția URSS.</div>
+</section>
+
+<section class="section" id="viata">
+<h2>X. Viața publică, munca și spațiul privat</h2>
+<p class="section-intro">Legitimitatea modelelor politice s-a măsurat și prin viața cotidiană. Reducerea timpului de muncă, extinderea educației, protecția socială și accesul la consum au lărgit spațiul vieții private. În regimurile comuniste, drepturile sociale coexistau cu controlul locului de muncă, locuinței, informației și comportamentului public.</p>
+
+<div class="two-col">
+  <article class="info-card"><h3>Extinderea timpului liber</h3><ul class="clean">
+    <li>în secolul al XIX-lea, zilele de 10–16 ore și săptămâna de șase zile erau frecvente;</li>
+    <li>mișcarea pentru ziua de opt ore a culminat simbolic cu protestele de la Haymarket din 1886;</li>
+    <li>OIM a consacrat în 1919 ziua de opt ore și săptămâna de 48 de ore ca standard internațional;</li>
+    <li>New Deal-ul și legislația americană au generalizat săptămâna de 40 de ore;</li>
+    <li>Franța a adoptat săptămâna de 40 de ore în 1936, iar URSS a generalizat săptămâna de cinci zile în anii 1960.</li>
+  </ul></article>
+  <article class="info-card"><h3>Drepturi sociale și ale muncii</h3><ul class="clean">
+    <li>concediu, salariu minim, pensie și ajutor de șomaj;</li>
+    <li>organizare sindicală, negociere colectivă, grevă și boicot;</li>
+    <li>protecția securității și sănătății în muncă;</li>
+    <li>combaterea discriminării salariale, rasiale, religioase, sexuale și de vârstă;</li>
+    <li>asigurări sociale, educație și servicii publice.</li>
+  </ul></article>
+</div>
+
+<details><summary>Legislația socială americană menționată în documente</summary><div class="details-body">
+<div class="table-wrap"><table>
+<thead><tr><th>Act</th><th>An</th><th>Semnificație</th></tr></thead>
+<tbody>
+<tr><td>Clayton Antitrust Act</td><td>1914</td><td>A limitat folosirea legislației antitrust împotriva sindicatelor și acțiunilor colective.</td></tr>
+<tr><td>National Labor Relations Act</td><td>1935</td><td>A protejat organizarea sindicală și negocierea colectivă; a creat NLRB.</td></tr>
+<tr><td>Social Security Act</td><td>1935</td><td>A creat baza sistemului federal de pensii și protecție socială.</td></tr>
+<tr><td>Fair Labor Standards Act</td><td>1938</td><td>Salariu minim, plata orelor suplimentare, limitarea muncii copiilor și standardul de 40 de ore.</td></tr>
+<tr><td>Equal Pay Act</td><td>1963</td><td>A interzis diferențierea salarială pe criteriul sexului pentru muncă egală.</td></tr>
+<tr><td>Civil Rights Act, Titlul VII</td><td>1964</td><td>A interzis discriminarea în angajare.</td></tr>
+<tr><td>Age Discrimination in Employment Act</td><td>1967</td><td>A protejat angajații în vârstă de minimum 40 de ani.</td></tr>
+<tr><td>Occupational Safety and Health Act</td><td>1970</td><td>A creat standarde federale de securitate și sănătate în muncă.</td></tr>
+</tbody></table></div>
+</div></details>
+
+<div class="compare-grid">
+  <article class="info-card"><h3>Viața privată în democrație</h3><p>După programul de muncă, individul dispune în principiu de un spațiu autonom: familie, prieteni, călătorii, pasiuni, religie și asociații. Presa poate funcționa ca „a patra putere” și „câine de pază al democrației”, deși concentrarea proprietății, propaganda și dezinformarea pot limita pluralismul real.</p></article>
+  <article class="info-card"><h3>Viața privată în comunism</h3><p>Locul de muncă, sindicatul oficial, organizațiile de tineret și cartierul deveneau canale de mobilizare și supraveghere. Manifestațiile, munca patriotică și ritualurile politice erau obligatorii. Politicile pronataliste, penuria locuințelor și controlul informației puteau restrânge sever autonomia familiei.</p></article>
+</div>
+
+<details><summary>Tabelul orientativ privind nivelul de trai din document</summary><div class="details-body">
+<p>Tabelul de curs compară SUA, Marea Britanie și Franța între 1900 și 2000 și indică aceeași tendință generală: creșterea speranței de viață, alfabetizării, absolvirii liceului și accesului la electricitate, concomitent cu scăderea mortalității infantile și a timpului de muncă.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Indicator</th><th>SUA 1900 → 2000</th><th>Marea Britanie 1900 → 2000</th><th>Franța 1900 → 2000</th></tr></thead>
+<tbody>
+<tr><td>Speranța de viață</td><td>47 → 77 ani</td><td>47 → 77 ani</td><td>45 → 79 ani</td></tr>
+<tr><td>Alfabetizare</td><td>89% → aproximativ universală</td><td>97% → aproximativ universală</td><td>95% → aproximativ universală</td></tr>
+<tr><td>Absolvirea liceului</td><td>6% → 85%</td><td>5% → 75%</td><td>3% → 80%</td></tr>
+<tr><td>Acces la electricitate</td><td>10% → aproape universal</td><td>10% → aproape universal</td><td>15% → aproape universal</td></tr>
+<tr><td>Ore de muncă / săptămână</td><td>60 → 40</td><td>60 → 40</td><td>60 → 40</td></tr>
+</tbody></table></div>
+<div class="fact-check"><strong>Notă metodologică:</strong> cifrele sunt orientative și provin din materialul de curs. Indicatorii istorici diferă după definiție și sursă; mortalitatea infantilă se exprimă de regulă la 1.000 de născuți vii, nu la un milion.</div>
+</div></details>
+</section>
+
+<section class="section" id="cronologie">
+<h2>XI. Cronologie comparată: 1945–1991</h2>
+<div class="timeline">
+  <article class="event"><div class="date">1945–1949</div><div><h3>Formarea celor două blocuri</h3><p>ONU, Doctrina Truman, Planul Marshall, Blocada Berlinului, NATO, constituirea RFG și RDG; în URSS se consolidează controlul asupra Europei de Est.</p></div></article>
+  <article class="event"><div class="date">1953–1958</div><div><h3>Destalinizare și reorganizare occidentală</h3><p>Moartea lui Stalin, Hrușciov, revolta est-germană, revoluția maghiară, integrarea RFG în NATO și fondarea Republicii a V-a în Franța.</p></div></article>
+  <article class="event"><div class="date">1961–1968</div><div><h3>Crize și contestare</h3><p>Zidul Berlinului, Criza rachetelor din Cuba, drepturile civile în SUA, războiul din Vietnam, mișcările studențești și Primăvara de la Praga.</p></div></article>
+  <article class="event"><div class="date">1969–1979</div><div><h3>Destindere și crize sociale</h3><p>Ostpolitik, SALT, Helsinki, Watergate, șocurile petroliere, terorism politic și, la final, invazia sovietică din Afganistan.</p></div></article>
+  <article class="event"><div class="date">1980–1985</div><div><h3>Noua confruntare</h3><p>Solidaritatea în Polonia, Reagan, Inițiativa de Apărare Strategică, criza eurorachetelor și stagnarea sovietică.</p></div></article>
+  <article class="event"><div class="date">1985–1991</div><div><h3>Reforme și prăbușirea blocului sovietic</h3><p>Gorbaciov, glasnost, perestroika, tratatul INF, revoluțiile din 1989, reunificarea Germaniei și dizolvarea URSS.</p></div></article>
+</div>
+</section>
+
+<section class="section" id="sinteza">
+<h2>XII. Sinteză pentru evaluare</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Model / stat</th><th>Instituții-cheie</th><th>Fapte istorice demonstrative</th><th>Concluzie</th></tr></thead>
+<tbody>
+<tr><td>SUA</td><td>Președinte, Congres, Curtea Supremă, federalism</td><td>Containment, drepturile civile, Watergate, alternanța partidelor</td><td>Executiv puternic, dar limitat prin contraputeri și alegeri.</td></tr>
+<tr><td>Franța</td><td>Președinte, guvern, Parlament, Consiliu Constituțional</td><td>Criza Republicii a IV-a, Constituția din 1958, coabitarea</td><td>Semiprezidențialismul combină legitimitatea prezidențială cu răspunderea parlamentară.</td></tr>
+<tr><td>RFG</td><td>Cancelar, Bundestag, Bundesrat, Curtea Constituțională</td><td>Westbindung, miracol economic, Ostpolitik, reunificare</td><td>Parlamentarism federal stabil și economie socială de piață.</td></tr>
+<tr><td>Autoritarism</td><td>Conducător, armată, partid dominant, administrație</td><td>Franco, coloneii greci, Pinochet</td><td>Pluralism limitat și reprimare politică fără control total uniform asupra societății.</td></tr>
+<tr><td>URSS</td><td>PCUS, Politburo, Soviet Suprem, Gosplan, KGB</td><td>Stalinism, 1956, 1968, Afganistan, perestroika</td><td>Instituțiile formale erau subordonate partidului unic și aparatului coercitiv.</td></tr>
+</tbody></table></div>
+
+<div class="final-box">
+<h3>Concluzie generală</h3>
+<p>Competiția politică a Războiului Rece a opus libertatea electorală și economia de piață promisiunii comuniste de egalitate și planificare. Democrațiile au demonstrat o capacitate mai mare de corectare prin alegeri, presă, protest și justiție, dar au rămas marcate de inegalități și intervenții externe. Sistemul sovietic a obținut industrializare, putere militară și drepturi sociale declarate, însă monopolul partidului, represiunea și rigiditatea economică au blocat adaptarea. Autoritarismele au ocupat spațiul intermediar, justificând limitarea libertăților prin ordine și anticomunism.</p>
+</div>
+</section>
+
+<footer>Material de sinteză · Istorie universală · Războiul Rece și modelele politice</footer>
+</main>
+
+<script>
+const allDetails=[...document.querySelectorAll("details")];
+document.querySelectorAll("[data-action]").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    const open=btn.dataset.action==="open";
+    allDetails.forEach(d=>d.open=open);
+  });
+});
+</script>
+</body>
+</html>

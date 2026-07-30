@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Civilizația bizantină: diplomație și conflict">
+  <title>civilizatia-bizantina-diplomatie-si-conflict</title>
+  <style>
+
+:root {
+  --bg: #f6f0e7;
+  --paper: #fffaf3;
+  --paper-2: #ffffff;
+  --ink: #2f241c;
+  --title: #3c2a1e;
+  --muted: #5b4a3d;
+  --accent: #7a4f2a;
+  --accent-2: #9b6a3c;
+  --accent-soft: #f0e4d4;
+  --line: rgba(91, 62, 36, 0.18);
+  --line-strong: rgba(91, 62, 36, 0.34);
+  --outer-dark: #241208;
+  --outer-mid: #4a2a18;
+  --outer-warm: #7a4b2b;
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+  --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+    radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+}
+.page {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 34px 0 70px;
+}
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.back-link, .tag { display: inline-flex; align-items: center; border: 1px solid var(--line); background: rgba(255, 250, 243, 0.84); color: var(--title); border-radius: 999px; padding: 10px 15px; text-decoration: none; font-size: 15px; font-weight: 700; box-shadow: var(--shadow-small); }
+.back-link:hover { background: #fff6eb; }
+.hero, .section, .nav-card, .final-box { background: rgba(255, 250, 243, 0.96); border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow); }
+.hero { padding: 38px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.hero::after { content: var(--hero-year); position: absolute; right: 26px; bottom: -22px; font-size: 110px; font-weight: 900; letter-spacing: -4px; color: rgba(122, 79, 42, 0.08); pointer-events: none; }
+.eyebrow { margin: 0 0 8px; font-size: 16px; color: var(--accent); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; }
+h1 { margin: 0; font-size: clamp(38px, 5vw, 62px); line-height: 1.04; color: var(--title); letter-spacing: -1.4px; text-align: left; text-align-last: auto; }
+.subtitle { margin: 18px 0 0; max-width: 980px; font-size: 19px; line-height: 1.78; color: var(--muted); text-align: justify; text-align-last: left; }
+.summary-grid, .three-col, .two-col, .term-grid, .quick-grid, .cause-grid, .four-col { display: grid; gap: 14px; }
+.summary-grid { grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+.summary-card, .info-card, .wide-card, .term-card, .quick-card, .source-note, .micro-card, .warning-box { background: var(--paper-2); border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); text-align: justify; text-align-last: left; }
+.summary-card { padding: 16px; min-height: 132px; }
+.summary-card strong, .quick-card strong, .term-card strong, .micro-card strong { display: block; color: var(--title); font-size: 17px; margin-bottom: 8px; text-align: left; text-align-last: auto; }
+.summary-card span, .quick-card span, .term-card span, .micro-card span { display: block; color: var(--muted); font-size: 15.5px; line-height: 1.56; text-align: justify; text-align-last: left; }
+.nav-card { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 18px 20px; margin-bottom: 24px; }
+.nav-card b { color: var(--title); margin-right: 2px; }
+.nav-card a, .mini-btn { color: var(--title); background: var(--accent-soft); border: 1px solid rgba(91, 62, 36, 0.16); border-radius: 999px; text-decoration: none; padding: 8px 12px; font-weight: 700; font-size: 14px; cursor: pointer; font-family: inherit; }
+.nav-card a:hover, .mini-btn:hover { background: #e5d2bb; }
+.section { padding: 30px; margin-bottom: 24px; }
+h2 { margin: 0 0 14px; color: var(--title); font-size: clamp(28px, 3vw, 38px); line-height: 1.15; text-align: left; text-align-last: auto; }
+h3 { margin: 0 0 12px; color: var(--title); font-size: 22px; line-height: 1.22; text-align: left; text-align-last: auto; }
+h4 { margin: 16px 0 8px; color: var(--title); font-size: 18px; text-align: left; text-align-last: auto; }
+.section-intro, p, li, dd { font-size: 17px; line-height: 1.72; color: var(--muted); text-align: justify; text-align-last: left; hyphens: auto; }
+.section-intro { margin: 0 0 20px; max-width: 1000px; }
+.three-col { grid-template-columns: repeat(3, 1fr); }
+.two-col { grid-template-columns: repeat(2, 1fr); }
+.four-col { grid-template-columns: repeat(4, 1fr); }
+.cause-grid { grid-template-columns: 1.1fr 0.9fr; }
+.term-grid { grid-template-columns: repeat(4, 1fr); }
+.quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+.info-card, .wide-card, .term-card, .quick-card, .micro-card, .warning-box, .source-note { padding: 20px; }
+.wide-card { margin-top: 14px; }
+.wide-card p:last-child, .info-card p:last-child { margin-bottom: 0; }
+.clean, .number-list { margin: 0; padding-left: 22px; }
+.clean li, .number-list li { margin: 0 0 9px; padding-left: 2px; }
+.clean li:last-child, .number-list li:last-child { margin-bottom: 0; }
+.mini-title { display: inline; color: var(--title); font-weight: 800; background: transparent; border: 0; border-radius: 0; padding: 0; margin-right: 5px; white-space: normal; text-align: inherit; }
+.date-pill { display: inline-block; color: var(--title); font-weight: 800; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.13); border-radius: 999px; padding: 2px 9px; margin-right: 5px; white-space: nowrap; text-align: left; }
+.definition, .note { margin-top: 18px; background: #fff8ef; border: 1px solid rgba(122, 79, 42, 0.22); border-left: 6px solid rgba(122, 79, 42, 0.48); border-radius: 18px; padding: 18px 20px; color: var(--muted); font-size: 17px; line-height: 1.7; text-align: justify; text-align-last: left; }
+.definition strong, .note strong { color: var(--title); }
+details { background: #fffdf9; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); margin-top: 14px; overflow: hidden; }
+details[open] { background: #fffaf3; }
+summary { cursor: pointer; list-style: none; padding: 18px 20px; font-size: 19px; font-weight: 800; color: var(--title); display: flex; justify-content: space-between; align-items: center; gap: 18px; text-align: left; text-align-last: auto; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "Deschide"; color: var(--muted); font-size: 14px; font-weight: 700; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 999px; padding: 7px 11px; white-space: nowrap; }
+details[open] > summary::after { content: "Ascunde"; }
+.details-body { border-top: 1px solid rgba(91, 62, 36, 0.12); padding: 18px 20px 20px; text-align: justify; text-align-last: left; }
+.details-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.nested-details { margin-top: 10px; box-shadow: none; background: #ffffff; }
+.nested-details summary { font-size: 17px; padding: 14px 16px; }
+.key-line { display: grid; grid-template-columns: 220px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px dashed rgba(91, 62, 36, 0.18); }
+.key-line:last-child { border-bottom: 0; }
+.key-line strong { color: var(--title); text-align: left; text-align-last: auto; }
+.key-line span { color: var(--muted); line-height: 1.65; text-align: justify; text-align-last: left; }
+.timeline { position: relative; display: grid; gap: 14px; margin-top: 18px; }
+.event { display: grid; grid-template-columns: 132px 1fr; gap: 18px; align-items: stretch; background: #ffffff; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); overflow: hidden; }
+.date { background: linear-gradient(180deg, #7a4f2a, #5b351b); color: #fffaf3; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px; font-size: 18px; line-height: 1.25; font-weight: 900; letter-spacing: 0.2px; }
+.event > div:last-child { padding: 17px 18px 18px 0; text-align: justify; text-align-last: left; }
+.event h3 { margin-bottom: 6px; }
+.event p { margin: 0; }
+.small-muted { font-size: 15px; color: #725c49; line-height: 1.6; text-align: justify; text-align-last: left; }
+.warning-box { background: #fff7ec; border-color: rgba(122, 79, 42, 0.22); margin-top: 16px; }
+.final-box { padding: 28px; background: linear-gradient(135deg, #fffaf3, #f4e4d1); border-color: rgba(91, 62, 36, 0.25); }
+.final-box p { margin-bottom: 0; }
+.table-wrap { overflow-x: auto; margin-top: 14px; border-radius: 18px; border: 1px solid rgba(91,62,36,.14); background: #fff; box-shadow: var(--shadow-small); }
+table { width: 100%; border-collapse: collapse; min-width: 740px; }
+th, td { padding: 13px 14px; border-bottom: 1px solid rgba(91,62,36,.12); color: var(--muted); font-size: 16px; line-height: 1.55; vertical-align: top; text-align: justify; }
+th { background: #f3eadf; color: var(--title); text-align: left; font-weight: 800; }
+tr:last-child td { border-bottom: 0; }
+@media (max-width: 980px) {
+  .summary-grid, .three-col, .term-grid, .quick-grid, .four-col { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .cause-grid, .details-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .page { width: min(100% - 22px, 1180px); padding-top: 22px; }
+  .hero, .section, .final-box { padding: 22px; border-radius: 22px; }
+  .summary-grid, .term-grid, .quick-grid, .four-col { grid-template-columns: 1fr; }
+  .event { grid-template-columns: 1fr; }
+  .date { min-height: 66px; }
+  .event > div:last-child { padding: 0 16px 16px; }
+  .key-line { grid-template-columns: 1fr; gap: 6px; }
+  summary { align-items: flex-start; flex-direction: column; }
+  .hero::after { font-size: 82px; }
+}
+
+.related-card { display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:16px 20px; margin:-10px 0 24px; background:rgba(255,250,243,.90); border:1px solid var(--line); border-radius:22px; box-shadow:var(--shadow-small); }
+.related-card b { color:var(--title); }
+.related-card a { color:var(--title); background:#f3eadf; border:1px solid rgba(91,62,36,.16); border-radius:999px; text-decoration:none; padding:8px 12px; font-weight:700; font-size:14px; }
+.related-card a:hover { background:#e5d2bb; }
+.badge-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
+.badge { display:inline-flex; align-items:center; color:var(--title); background:#f3eadf; border:1px solid rgba(91,62,36,.14); border-radius:999px; padding:6px 10px; font-weight:700; font-size:14px; }
+blockquote { margin:16px 0 0; padding:16px 20px; background:#fff8ef; border-left:6px solid rgba(122,79,42,.48); border-radius:16px; color:var(--muted); font-size:17px; line-height:1.7; }
+.mini-table table { min-width:560px; }
+@media print {
+  body { background:#fff !important; }
+  body::before { display:none; }
+  .page { width:100%; padding:0; }
+  .topbar, .nav-card, .related-card { display:none !important; }
+  .hero, .section, .final-box { box-shadow:none; border:1px solid #cbb9a8; break-inside:avoid-page; }
+  details { break-inside:avoid-page; }
+  details > summary::after { display:none; }
+}
+
+
+@media (max-width: 680px) {
+  .subtitle, .section-intro, p, li, dd,
+  .summary-card span, .quick-card span, .term-card span, .micro-card span,
+  .details-body, .key-line span, .event > div:last-child, th, td,
+  .definition, .note, blockquote {
+    text-align: left;
+    text-align-last: auto;
+    hyphens: none;
+  }
+}
+
+
+td { text-align: left; text-align-last: auto; }
+
+  
+
+/* Extensii pentru seria „Civilizația bizantină” */
+.series-links { display:flex; gap:9px; flex-wrap:wrap; margin-top:20px; }
+.series-links a { color:var(--title); background:#fff; border:1px solid rgba(91,62,36,.16); border-radius:999px; padding:9px 13px; text-decoration:none; font-weight:800; box-shadow:0 8px 20px rgba(0,0,0,.10); }
+.series-links a[aria-current="page"] { background:var(--accent); color:#fffaf3; }
+.series-links a:hover { transform:translateY(-1px); }
+.quote-box { margin-top:15px; padding:18px 20px; background:#fffdf9; border:1px solid rgba(91,62,36,.15); border-left:6px solid var(--accent-2); border-radius:18px; color:var(--muted); font-size:17px; line-height:1.72; text-align:justify; text-align-last:left; }
+.step-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:18px; }
+.step-card { background:#fff; border:1px solid rgba(91,62,36,.14); border-radius:20px; padding:18px; box-shadow:var(--shadow-small); }
+.step-card::before { content:attr(data-step); display:inline-flex; width:34px; height:34px; align-items:center; justify-content:center; border-radius:50%; background:var(--accent); color:#fff; font-weight:900; margin-bottom:11px; }
+.step-card strong { display:block; color:var(--title); font-size:17px; margin-bottom:7px; }
+.step-card span { color:var(--muted); font-size:15.5px; line-height:1.58; }
+.status-strip { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:16px; }
+.status-item { background:linear-gradient(135deg,#fff,#fff7ec); border:1px solid rgba(91,62,36,.14); border-radius:18px; padding:16px; }
+.status-item b { display:block; color:var(--title); margin-bottom:6px; }
+.status-item span { color:var(--muted); line-height:1.55; font-size:15.5px; }
+footer { margin-top:24px; color:rgba(255,250,243,.80); text-align:center; font-size:14px; line-height:1.6; }
+@media (max-width:980px) { .step-grid { grid-template-columns:repeat(2,1fr); } .status-strip { grid-template-columns:1fr; } }
+@media (max-width:680px) { .step-grid { grid-template-columns:1fr; } .series-links a { width:100%; text-align:center; } h1 { font-size:clamp(34px,10vw,52px); } }
+</style>
+</head>
+<body id="top" style="--hero-year: '1453';">
+  <main class="page">
+    <div class="topbar">
+      <a class="back-link" href="index.html">← Înapoi la materiale</a>
+      <span class="tag">Material ajutător · Evul Mediu · Civilizația bizantină</span>
+    </div>
+    <section class="hero">
+      <p class="eyebrow">Istorie universală · Antichitate târzie și Evul Mediu</p>
+      <h1>Civilizația bizantină: diplomație și conflict</h1>
+      <p class="subtitle">De la fondarea Noii Rome și războaiele cu perșii la expansiunea arabă, conflictele bulgare, cruciade, statele succesoare și asediul otoman din 1453, materialul urmărește felul în care Bizanțul a combinat armata, fortificațiile, ceremonialul, convertirea, comerțul și alianțele pentru a supraviețui într-un spațiu geopolitic extrem de instabil.</p>
+      <div class="series-links"><a href="civilizatia-bizantina-diplomatie-si-conflict.html" aria-current="page">Diplomație și conflict</a><a href="civilizatia-bizantina-conflictele-religioase.html">Conflictele religioase</a><a href="civilizatia-bizantina-politica-interna.html">Politica internă</a></div>
+    </section>
+    <div class="related-card"><b>Materiale conexe:</b><a href="civilizatia-bizantina-conflictele-religioase.html">Conflictele religioase</a><a href="civilizatia-bizantina-politica-interna.html">Politica internă</a></div>
+    <nav class="nav-card" aria-label="Cuprinsul paginii">
+      <b>Cuprins:</b><a href="#repere">Repere</a><a href="#doctrina">Diplomație</a><a href="#cronologie">Cronologie</a><a href="#iustinian">Iustinian și arabii</a><a href="#bulgari">Bulgari și ruși</a><a href="#occident">Occident</a><a href="#niceea">Niceea</a><a href="#otomani">Otomanii</a>
+      <button class="mini-btn" type="button" data-action="open">Deschide explicațiile</button>
+      <button class="mini-btn" type="button" data-action="close">Închide explicațiile</button>
+    </nav>
+    
+<section class="section" id="repere">
+  <h2>I. Repere generale: un imperiu la intersecția lumilor</h2>
+  <p class="section-intro">Bizanțul a supraviețuit mai bine de un mileniu într-un spațiu expus simultan presiunilor persane, arabe, slave, bulgare, turce, normande, latine și otomane. Forța sa nu a rezultat numai din armată și fortificații, ci și dintr-o diplomație capabilă să transforme timpul, ceremonialul, religia, comerțul și rivalitățile adversarilor în resurse strategice.</p>
+  <div class="summary-grid">
+    <div class="summary-card"><strong>330–610</strong><span>Noua Romă, apărarea frontierelor romane și tentativa de restaurare a lui Iustinian.</span></div>
+    <div class="summary-card"><strong>610–867</strong><span>Războaie cu perșii și arabii, reorganizare militară, conflict cu bulgarii.</span></div>
+    <div class="summary-card"><strong>867–1204</strong><span>Expansiune macedoneană, apoi presiunea selgiucidă, normandă și cruciată.</span></div>
+    <div class="summary-card"><strong>1204–1453</strong><span>Fragmentare, restaurarea din 1261 și reducerea treptată sub ofensiva otomană.</span></div>
+  </div>
+  <div class="three-col">
+    <article class="info-card"><h3>Poziție strategică</h3><p>Constantinopolul controla Bosforul, legătura dintre Marea Neagră și Mediterana și rutele dintre Europa și Asia. Această poziție oferea venituri comerciale, dar transforma imperiul într-o țintă permanentă.</p></article>
+    <article class="info-card"><h3>Capitală fortificată</h3><p>Zidurile lui Theodosius al II-lea, flota și accesul la mare au permis Constantinopolului să reziste multor asedii. Căderea orașului în 1204 și 1453 a necesitat împrejurări excepționale.</p></article>
+    <article class="info-card"><h3>Diplomație flexibilă</h3><p>Bizantinii foloseau tributuri, subsidii, titluri, căsătorii, convertiri, alianțe, informații și privilegii comerciale. Scopul era evitarea unui război costisitor sau izolarea adversarului principal.</p></article>
+  </div>
+  <div class="definition"><strong>Ideea centrală:</strong> războiul bizantin urmărea conservarea imperiului, nu numai cucerirea. O victorie diplomatică putea fi mai valoroasă decât o campanie, deoarece economisea oameni, bani și timp.</div>
+</section>
+
+<section class="section" id="doctrina">
+  <h2>II. Ideologia și instrumentele diplomației bizantine</h2>
+  <p class="section-intro">În concepția oficială, ordinea politică a lumii forma o ierarhie în fruntea căreia se afla basileul romanilor. Relațiile externe erau prezentate ca raporturi între centrul legitim al lumii creștine și conducători situați pe trepte diferite de prestigiu.</p>
+  <div class="two-col">
+    <article class="info-card"><h3>Ierarhia statelor</h3><p>Împărații de la Constantinopol se considerau continuatorii legitimi ai Romei. Încoronarea lui Carol cel Mare ca „împărat al romanilor” la 25 decembrie 800 a provocat o dispută de legitimitate; Bizanțul a recunoscut în 812 rangul imperial al lui Carol, fără a abandona propria pretenție romană.</p></article>
+    <article class="info-card"><h3>Cartea ceremoniilor</h3><p>În secolul al X-lea, ceremonialul curții clasifica solii și suveranii după formule, daruri, locul audienței și titlurile acordate. Califul, emirii, prinții armeni, țarul bulgar și conducătorii occidentali erau integrați simbolic într-o ordine condusă de Constantinopol.</p></article>
+  </div>
+  <div class="table-wrap"><table><thead><tr><th>Instrument</th><th>Mod de folosire</th><th>Scop strategic</th><th>Exemplu</th></tr></thead><tbody>
+    <tr><td>Subsidii și tributuri</td><td>Plăți către căpetenii sau state vecine</td><td>Cumpărarea păcii, divizarea coalițiilor, câștigarea timpului</td><td>Plăți către huni, avari, pecenegi ori conducători arabi, în funcție de epocă.</td></tr>
+    <tr><td>Titluri și demnități</td><td>Acordarea unor ranguri bizantine conducătorilor străini</td><td>Crearea unei dependențe simbolice și a prestigiului personal</td><td><em>Patrikios</em>, <em>magistros</em>, <em>kouropalates</em> sau alte titluri onorifice.</td></tr>
+    <tr><td>Căsătorii diplomatice</td><td>Unirea familiilor imperiale ori aristocratice</td><td>Alianțe, legitimare și pacificarea frontierelor</td><td>Căsătoria prințesei Anna Porfirogeneta cu Vladimir al Kievului, după convertirea acestuia.</td></tr>
+    <tr><td>Misiune creștină</td><td>Trimiterea de clerici, călugări și traducători</td><td>Extinderea influenței religioase și culturale</td><td>Misiunea lui Chiril și Metodiu în Moravia; creștinarea Bulgariei și a Rusiei kievene.</td></tr>
+    <tr><td>Comerț și privilegii</td><td>Acces la porturi, cartiere și scutiri vamale</td><td>Obținerea sprijinului naval sau financiar</td><td>Privilegiile acordate Veneției în 1082 de Alexios I Comnenul.</td></tr>
+    <tr><td>Informații și ceremonii</td><td>Negustori, soli, interpreți, spioni, daruri și audiențe spectaculoase</td><td>Cunoașterea adversarului și impresionarea delegațiilor</td><td>Tronuri mecanice, lei aurii, purpură și ritualuri menite să proiecteze puterea imperială.</td></tr>
+  </tbody></table></div>
+  <div class="quote-box"><strong>Principiul practic:</strong> a-i determina pe adversari să lupte între ei, a converti un conducător, a acorda un titlu sau a subvenționa un aliat putea fi mai eficient decât trimiterea unei armate peste o frontieră îndepărtată.</div>
+</section>
+
+<section class="section" id="cronologie">
+  <h2>III. Cronologia diplomației și a conflictelor</h2>
+  <p class="section-intro">Reperele de mai jos urmăresc transformarea Imperiului Roman de Răsărit într-un stat medieval greco-creștin și schimbarea succesivă a principalelor frontiere de război.</p>
+  <div class="timeline">
+    <article class="event"><div class="date">11 mai 330</div><div><h3>Inaugurarea Constantinopolului</h3><p>Constantin cel Mare transformă Byzantion în Noua Romă. Capitala este mai aproape de Dunăre, Asia Mică, frontiera persană și marile rute comerciale.</p></div></article>
+    <article class="event"><div class="date">395</div><div><h3>Separarea conducerii imperiale</h3><p>Arcadius primește Orientul, iar Honorius Occidentul. Cele două părți rămân formal romane, dar evoluează politic și militar diferit.</p></div></article>
+    <article class="event"><div class="date">527–565</div><div><h3>Iustinian și <em>renovatio imperii</em></h3><p>Belisarie și Narses recuceresc Africa vandală, Italia ostrogotă și o parte din sudul Hispaniei. Costurile războaielor și epidemia slăbesc însă resursele statului.</p></div></article>
+    <article class="event"><div class="date">602–628</div><div><h3>Ultimul mare război romano-persan</h3><p>Perșii sasanizi ocupă Siria, Palestina și Egiptul; Heraclius contraatacă și obține victoria, dar ambele imperii rămân epuizate înaintea expansiunii arabe.</p></div></article>
+    <article class="event"><div class="date">636</div><div><h3>Yarmouk</h3><p>Armata bizantină este înfrântă de califatul arab. Siria și Palestina sunt pierdute, iar Egiptul cade în anii 639–642.</p></div></article>
+    <article class="event"><div class="date">674–678</div><div><h3>Primul mare asediu arab</h3><p>Constantinopolul rezistă datorită zidurilor, flotei și focului grecesc. Pacea ulterioară confirmă supraviețuirea imperiului.</p></div></article>
+    <article class="event"><div class="date">717–718</div><div><h3>Al doilea asediu arab</h3><p>Leon al III-lea apără capitala, sprijinit și de presiunea bulgară asupra asediatorilor. Eșecul califatului limitează expansiunea spre Balcani.</p></div></article>
+    <article class="event"><div class="date">681</div><div><h3>Recunoașterea statului bulgar</h3><p>După înfrângerea împăratului Constantin IV, Bizanțul recunoaște Primul Țarat Bulgar la sudul Dunării și acceptă plata unui tribut.</p></div></article>
+    <article class="event"><div class="date">864–865</div><div><h3>Creștinarea Bulgariei</h3><p>Boris I adoptă creștinismul. Rivalitatea dintre Roma și Constantinopol este folosită diplomatic pentru obținerea unei Biserici autonome.</p></div></article>
+    <article class="event"><div class="date">960–961</div><div><h3>Recucerirea Cretei</h3><p>Nikefor II Focas elimină emiratul cretan, reducând pirateria și refăcând securitatea maritimă în estul Mediteranei.</p></div></article>
+    <article class="event"><div class="date">971</div><div><h3>Înfrângerea Rusiei kievene</h3><p>Ioan I Tzimiskes îl obligă pe Sviatoslav să părăsească Bulgaria. Bizanțul recuperează temporar controlul asupra regiunii dunărene.</p></div></article>
+    <article class="event"><div class="date">988</div><div><h3>Alianța cu Vladimir al Kievului</h3><p>Vladimir oferă ajutor militar lui Vasile II, se botează și se căsătorește cu Anna Porfirogeneta. Creștinarea Rusiei extinde influența bizantină în Europa de Est.</p></div></article>
+    <article class="event"><div class="date">1014–1018</div><div><h3>Cucerirea Bulgariei</h3><p>Victoria lui Vasile II la Kleidion în 1014 este urmată de anexarea statului bulgar în 1018. Frontiera dunăreană este restabilită.</p></div></article>
+    <article class="event"><div class="date">1071</div><div><h3>Manzikert</h3><p>Roman IV Diogenes este învins și capturat de Alp Arslan. Războiul civil bizantin permite turcilor selgiucizi să ocupe rapid mare parte din Anatolia.</p></div></article>
+    <article class="event"><div class="date">1081–1118</div><div><h3>Alexios I Comnenul</h3><p>Împăratul combină reforma militară, alianțele cu Veneția, folosirea pecenegilor și cumanilor și apelul către Occident, care contribuie la declanșarea Primei Cruciade.</p></div></article>
+    <article class="event"><div class="date">1204</div><div><h3>Cucerirea latină</h3><p>Cruciada a IV-a ocupă și jefuiește Constantinopolul. Imperiul se fragmentează între state grecești succesoare și formațiuni latine.</p></div></article>
+    <article class="event"><div class="date">1211</div><div><h3>Antiohia pe Meandru</h3><p>Teodor I Laskaris, împăratul de la Niceea, îl învinge pe sultanul selgiucid Kaykhusraw I și consolidează rezistența bizantină în vestul Anatoliei.</p></div></article>
+    <article class="event"><div class="date">25 iul. 1261</div><div><h3>Recucerirea Constantinopolului</h3><p>Generalul Alexios Strategopoulos ocupă orașul pentru Mihail VIII Paleologul. Imperiul este restaurat, dar cu resurse teritoriale și economice mult reduse.</p></div></article>
+    <article class="event"><div class="date">1354</div><div><h3>Otomanii pătrund stabil în Europa</h3><p>Cucerirea Gallipoliului oferă otomanilor o bază permanentă în Tracia. Războaiele civile bizantine au facilitat intervenția lor.</p></div></article>
+    <article class="event"><div class="date">6 apr.–29 mai 1453</div><div><h3>Ultimul asediu</h3><p>Mehmed II folosește artilerie grea, flotă și o armată superioară numeric. Constantin XI moare în apărarea capitalei, iar Imperiul Bizantin încetează să existe.</p></div></article>
+  </div>
+</section>
+
+<section class="section" id="iustinian">
+  <h2>IV. De la Iustinian la războaiele arabo-bizantine</h2>
+  <p class="section-intro">Secolele al VI-lea și al VII-lea schimbă radical dimensiunea și natura statului. Expansiunea maximală a lui Iustinian este urmată de pierderea provinciilor orientale și de concentrarea imperiului în Asia Mică și Balcani.</p>
+  <div class="three-col">
+    <article class="info-card"><h3>Africa, 533–534</h3><p>Belisarie distruge Regatul Vandal după luptele de la Ad Decimum și Tricamarum. Cartagina și bogatele provincii africane revin sub administrație imperială.</p></article>
+    <article class="info-card"><h3>Italia, 535–554</h3><p>Războiul gotic recucerește Roma, Ravenna și peninsula, dar distruge orașele, agricultura și finanțele. Longobarzii invadează Italia în 568 și reduc rapid stăpânirea bizantină.</p></article>
+    <article class="info-card"><h3>Frontiera persană</h3><p>Pacea și războiul alternează cu Imperiul Sasanid. Iustinian plătește subsidii, fortifică frontierele și negociază pentru a putea concentra forțe în Occident.</p></article>
+  </div>
+  <details open><summary>De ce au fost pierderile secolului al VII-lea atât de importante?</summary><div class="details-body"><p>Siria, Palestina și Egiptul erau provincii populate, urbanizate și fiscal profitabile. Pierderea lor a redus veniturile, grânele și accesul la vechile centre culturale. În același timp, imperiul a devenit mai omogen lingvistic și religios, cu Asia Mică drept nucleu militar și fiscal.</p></div></details>
+  <details><summary>Focul grecesc și apărarea navală</summary><div class="details-body"><p>Amestecul incendiar proiectat prin sifoane putea arde pe apă și era folosit în special împotriva flotelor. Formula era secretă. Importanța sa nu trebuie izolată de ziduri, marină, aprovizionare și alianțe, dar a devenit un simbol al superiorității tehnice bizantine.</p></div></details>
+</section>
+
+<section class="section" id="bulgari">
+  <h2>V. Bulgari, slavi, ruși și diplomația convertirii</h2>
+  <p class="section-intro">În Balcani, Bizanțul nu a putut elimina permanent noile puteri. A încercat să le integreze în sfera sa culturală prin creștinism, alfabet, titluri, comerț și căsătorii.</p>
+  <div class="table-wrap"><table><thead><tr><th>Partener / adversar</th><th>Conflict</th><th>Instrument diplomatic</th><th>Rezultat istoric</th></tr></thead><tbody>
+    <tr><td>Primul Țarat Bulgar</td><td>Războaie repetate din secolele VII–XI; amenințarea lui Krum și Simeon I</td><td>Tribut, tratate, misiune creștină, dispute asupra titlului de țar</td><td>Creștinarea Bulgariei; cucerirea sa de Vasile II în 1018.</td></tr>
+    <tr><td>Slavii</td><td>Incursiuni și așezări în Balcani</td><td>Integrare administrativă, colonizare, creștinare și recrutare</td><td>Transformarea etnică a Balcanilor și extinderea culturii bizantino-slave.</td></tr>
+    <tr><td>Moravia</td><td>Competiție cu misionarii latini</td><td>Misiunea lui Chiril și Metodiu, din 863</td><td>Traduceri liturgice slave și fundamentul culturii scrise slavone.</td></tr>
+    <tr><td>Rus de la Kiev</td><td>Atacuri asupra Constantinopolului în secolele IX–X</td><td>Tratate comerciale, servicii militare, botez și căsătorie dinastică</td><td>Creștinarea din 988 și recrutarea gărzii varege.</td></tr>
+    <tr><td>Pecenegi și cumani</td><td>Presiune la Dunăre și în Balcani</td><td>Subsidii, alianțe temporare și folosirea unui grup împotriva altuia</td><td>Victoria de la Lebounion din 1091, obținută cu sprijin cuman.</td></tr>
+  </tbody></table></div>
+  <div class="definition"><strong>Diplomația religioasă:</strong> convertirea unui conducător nu era doar un succes misionar. Ea crea episcopii, cler educat la Constantinopol, modele juridice, artă și scriere, legând noul stat de prestigiul imperial.</div>
+</section>
+
+<section class="section" id="occident">
+  <h2>VI. Bizanțul, Occidentul și cruciadele</h2>
+  <p class="section-intro">Relațiile cu Occidentul au oscilat între imitație, rivalitate, alianță și ostilitate. Disputa asupra moștenirii romane, Marea Schismă, interesele comerciale italiene și cruciadele au adâncit neîncrederea.</p>
+  <div class="two-col">
+    <article class="info-card"><h3>Imperiul carolingian</h3><p>Încoronarea lui Carol cel Mare în 800 a creat doi pretendenți la universalitatea romană. Tratatul din 812 a permis un compromis: Carol era recunoscut împărat, iar Veneția și Dalmația rămâneau în sfera bizantină.</p></article>
+    <article class="info-card"><h3>Normanzii</h3><p>În secolul al XI-lea, normanzii cuceresc posesiunile bizantine din sudul Italiei; Bari cade în 1071. Robert Guiscard atacă apoi Balcanii, obligându-l pe Alexios I să caute sprijin venețian.</p></article>
+  </div>
+  <details open><summary>Prima Cruciadă și jurămintele de vasalitate</summary><div class="details-body"><p>Alexios I a cerut ajutor occidental împotriva selgiucizilor, dar sosirea marilor armate cruciate a creat o situație dificilă. Împăratul a cerut liderilor să jure că vor restitui fostele teritorii bizantine. Cooperarea a permis recuperări în vestul Anatoliei, însă disputa privind Antiohia a deteriorat relațiile.</p></div></details>
+  <details><summary>Privilegiile comerciale italiene</summary><div class="details-body"><p>Hrisobulul din 1082 acordat Veneției a oferit scutiri și avantaje comerciale în schimbul ajutorului naval. Pe termen scurt, alianța a fost necesară; pe termen lung, venețienii, genovezii și pisanii au dominat o parte a comerțului, diminuând veniturile și autonomia economică bizantină.</p></div></details>
+  <details><summary>Cruciada a IV-a: de la alianță la catastrofă</summary><div class="details-body"><p>Cruciații, îndatorați Veneției, au acceptat intervenția în conflictele dinastice bizantine. Neplata promisiunilor lui Alexios IV, revoltele din Constantinopol și interesele venețiene au dus la asaltul din aprilie 1204. Jefuirea capitalei a distrus patrimoniu, administrație și încrederea dintre creștinii răsăriteni și occidentali.</p></div></details>
+</section>
+
+<section class="section" id="niceea">
+  <h2>VII. Fragmentarea din 1204 și restaurarea bizantină</h2>
+  <p class="section-intro">După pierderea capitalei, elita bizantină creează mai multe centre de rezistență. Niceea devine principalul stat succesor și baza restaurării din 1261.</p>
+  <div class="table-wrap"><table><thead><tr><th>Stat</th><th>Centru</th><th>Fondator / dinastie</th><th>Rol</th></tr></thead><tbody>
+    <tr><td>Imperiul de la Niceea</td><td>Niceea și vestul Anatoliei</td><td>Teodor I Laskaris</td><td>Principalul rival al Imperiului Latin; reconstruiește administrația și patriarhia.</td></tr>
+    <tr><td>Despotatul Epirului</td><td>Arta, apoi Ioannina</td><td>Mihail I Komnen Doukas</td><td>Centru occidental grec, cu ambiții de recucerire a Constantinopolului.</td></tr>
+    <tr><td>Imperiul de Trapezunt</td><td>Trapezunt</td><td>Alexios I Megas Komnenos</td><td>Stat pontic comercial, supraviețuiește până în 1461.</td></tr>
+    <tr><td>Imperiul Latin</td><td>Constantinopol</td><td>Balduin I de Flandra</td><td>Monarhie latină sprijinită de structuri feudale și de Veneția; dispare în 1261.</td></tr>
+  </tbody></table></div>
+  <div class="timeline">
+    <article class="event"><div class="date">1204</div><div><h3>Teodor I Laskaris</h3><p>Refugiat în Asia Mică, organizează rezistența la Niceea și este încoronat împărat, oferind continuitate instituțiilor bizantine.</p></div></article>
+    <article class="event"><div class="date">1211</div><div><h3>Antiohia pe Meandru</h3><p>Victoria asupra Sultanatului de Rum protejează nucleul niceean și confirmă legitimitatea lui Teodor I.</p></div></article>
+    <article class="event"><div class="date">1259</div><div><h3>Pelagonia</h3><p>Mihail VIII Paleologul învinge coaliția Epirului, principatului Ahaia și Siciliei, izolând Imperiul Latin.</p></div></article>
+    <article class="event"><div class="date">1261</div><div><h3>Restaurarea</h3><p>Alexios Strategopoulos recucerește capitala aproape fără luptă. Mihail VIII reorganizează curtea, patriarhia și apărarea, dar imperiul nu mai dispune de resursele vechi.</p></div></article>
+  </div>
+</section>
+
+<section class="section" id="otomani">
+  <h2>VIII. Expansiunea otomană și sfârșitul imperiului</h2>
+  <p class="section-intro">În secolele al XIV-lea și al XV-lea, războaiele civile, fragmentarea teritorială, dependența de mercenari și superioritatea otomană reduc Bizanțul la Constantinopol, împrejurimi și câteva posesiuni.</p>
+  <div class="four-col">
+    <article class="micro-card"><strong>Războaie civile</strong><span>Conflictele din 1321–1328 și 1341–1347 consumă resurse și permit intervenția sârbă, bulgară, genoveză și otomană.</span></article>
+    <article class="micro-card"><strong>Gallipoli, 1354</strong><span>Otomanii obțin o bază europeană stabilă și se extind în Tracia și Balcani.</span></article>
+    <article class="micro-card"><strong>Vasalitate</strong><span>Împărații bizantini ajung să plătească tribut și să ofere contingente sultanilor.</span></article>
+    <article class="micro-card"><strong>Ajutor occidental</strong><span>Unirile bisericești și apelurile diplomatice obțin sprijin limitat, insuficient pentru restaurarea puterii.</span></article>
+  </div>
+  <div class="table-wrap"><table><thead><tr><th>Dată</th><th>Eveniment</th><th>Efect asupra Bizanțului</th></tr></thead><tbody>
+    <tr><td>1369</td><td>Adrianopolul devine capitală otomană europeană</td><td>Constantinopolul este înconjurat tot mai strâns dinspre Tracia.</td></tr>
+    <tr><td>1394–1402</td><td>Blocada lui Baiazid I</td><td>Orașul rezistă datorită zidurilor și ajutorului naval; înfrângerea otomană la Ankara oferă un răgaz.</td></tr>
+    <tr><td>1422</td><td>Asediul lui Murad II</td><td>Un nou avertisment că apărarea depinde de crizele interne otomane și de ajutor extern.</td></tr>
+    <tr><td>1452</td><td>Construirea fortăreței Rumeli Hisarı</td><td>Mehmed II controlează Bosforul și limitează aprovizionarea capitalei.</td></tr>
+    <tr><td>29 mai 1453</td><td>Căderea Constantinopolului</td><td>Sfârșitul statului bizantin; orașul devine capitala Imperiului Otoman.</td></tr>
+  </tbody></table></div>
+  <div class="final-box"><h2>Ideea de reținut</h2><p>Bizanțul a supraviețuit nu fiindcă a câștigat toate războaiele, ci fiindcă a știut să negocieze după înfrângeri, să cumpere timp, să convertească adversari, să creeze alianțe și să exploateze rivalitățile. Când resursele economice, controlul Anatoliei și capacitatea diplomatică au fost erodate, zidurile Constantinopolului nu au mai fost suficiente.</p></div>
+</section>
+
+    <footer>Material structurat și dezvoltat după documentele Word furnizate · Seria „Civilizația bizantină”</footer>
+  </main>
+<script>
+  document.querySelector('[data-action="open"]').addEventListener('click', () => document.querySelectorAll('details').forEach(d => d.open = true));
+  document.querySelector('[data-action="close"]').addEventListener('click', () => document.querySelectorAll('details').forEach(d => d.open = false));
+</script>
+</body>
+</html>

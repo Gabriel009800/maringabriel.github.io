@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Civilizația arabă: expansiunea islamului</title>
+<style>
+:root{
+  --bg:#f5efe4;
+  --paper:#fffaf2;
+  --ink:#2c241b;
+  --muted:#6f6255;
+  --accent:#8a4f22;
+  --accent2:#b9793a;
+  --line:#dccbb6;
+  --card:#fff6e8;
+  --soft:#efe0c8;
+  --green:#647a4a;
+  --red:#9b3f2f;
+  --blue:#4a6478;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family: Georgia, 'Times New Roman', serif;
+  background:
+    radial-gradient(circle at top left, rgba(185,121,58,.18), transparent 28rem),
+    linear-gradient(180deg,#f7efe2 0%,#f3eadc 55%,#efe3d1 100%);
+  color:var(--ink);
+  line-height:1.65;
+}
+a{color:#6f3b16;text-decoration:none;border-bottom:1px dotted rgba(111,59,22,.35)}
+a:hover{border-bottom-style:solid}
+.wrapper{width:min(1180px, calc(100% - 32px)); margin:0 auto 56px;}
+.hero{
+  margin:28px auto 22px;
+  background:linear-gradient(135deg,rgba(255,250,242,.97),rgba(248,233,210,.97));
+  border:1px solid var(--line);
+  border-radius:26px;
+  padding:34px;
+  box-shadow:0 18px 55px rgba(83,55,28,.14);
+  position:relative;
+  overflow:hidden;
+}
+.hero:after{
+  content:"";
+  position:absolute;
+  right:-90px; top:-90px;
+  width:260px; height:260px;
+  border-radius:50%;
+  background:rgba(138,79,34,.12);
+}
+.kicker{letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-size:.82rem;font-weight:bold;margin:0 0 8px;}
+h1{font-size:clamp(2.1rem,5vw,4.3rem);line-height:1.03;margin:.1em 0 .25em;color:#2b2118;}
+.subtitle{font-size:1.16rem;color:var(--muted);max-width:900px;margin:0;}
+.badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
+.badge{border:1px solid var(--line);background:#fffaf2;border-radius:999px;padding:7px 12px;font-size:.92rem;color:#4a3d31;}
+.nav{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0 26px;
+}
+.nav a{display:block;border:1px solid var(--line);border-radius:18px;background:rgba(255,250,242,.8);padding:14px 16px;color:#3b2d22;box-shadow:0 8px 22px rgba(75,50,24,.08);}
+.nav small{display:block;color:var(--muted);font-size:.82rem;margin-top:4px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin:20px 0;}
+.card{
+  background:rgba(255,250,242,.92);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:22px;
+  box-shadow:0 10px 30px rgba(73,47,22,.08);
+}
+.card h3{margin:.1em 0 .5em;font-size:1.25rem;color:#4a2a14;}
+.card p{margin:.55em 0;color:#44372c;}
+section{
+  margin:26px 0;
+  background:rgba(255,250,242,.86);
+  border:1px solid var(--line);
+  border-radius:26px;
+  padding:28px;
+  box-shadow:0 12px 34px rgba(73,47,22,.07);
+}
+h2{font-size:clamp(1.55rem,3vw,2.35rem);margin:.1em 0 .55em;color:#3b2617;}
+h3{font-size:1.28rem;margin:1.25em 0 .4em;color:#4a2d18;}
+h4{font-size:1.05rem;margin:1em 0 .25em;color:#623817;}
+.lead{font-size:1.08rem;color:#4b4036;}
+.note{background:#f1e3cc;border-left:5px solid var(--accent2);padding:14px 16px;border-radius:14px;margin:16px 0;color:#4b3d2d;}
+.warn{background:#f6e6de;border-left:5px solid var(--red);padding:14px 16px;border-radius:14px;margin:16px 0;color:#4b2e29;}
+.timeline{position:relative;margin:22px 0 8px;padding-left:22px;}
+.timeline:before{content:"";position:absolute;left:6px;top:4px;bottom:4px;width:3px;background:linear-gradient(var(--accent2),var(--green));border-radius:999px;}
+.event{position:relative;background:#fff6e8;border:1px solid var(--line);border-radius:18px;padding:14px 16px;margin:12px 0;}
+.event:before{content:"";position:absolute;left:-22px;top:20px;width:13px;height:13px;background:var(--accent);border:3px solid #f8ead8;border-radius:50%;}
+.event b{color:#6f3b16;}
+table{width:100%;border-collapse:collapse;margin:18px 0;border-radius:18px;overflow:hidden;background:#fffaf2;font-size:.96rem;}
+th,td{border:1px solid var(--line);padding:11px 12px;vertical-align:top;}
+th{background:#ead8be;color:#3d291a;text-align:left;}
+tr:nth-child(even) td{background:#fff5e5;}
+ul,ol{padding-left:1.35rem;}
+li{margin:.35em 0;}
+details{border:1px solid var(--line);border-radius:18px;background:#fff6e8;margin:12px 0;padding:14px 16px;}
+summary{cursor:pointer;font-weight:bold;color:#623817;}
+details p, details ul, details table{margin-top:12px;}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+@media(max-width:800px){.split{grid-template-columns:1fr}.hero,section{padding:22px}.wrapper{width:min(100% - 20px,1180px)}}
+.footer{font-size:.92rem;color:var(--muted);text-align:center;margin:34px 0 10px;}
+.pill{display:inline-block;background:#ead8be;border-radius:999px;padding:3px 9px;font-size:.86rem;margin:2px 4px 2px 0;color:#523520;}
+.sourcebox{background:#f1eadf;border:1px dashed #cbb79b;border-radius:18px;padding:16px;color:#5a4b3b;font-size:.95rem;}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <header class="hero">
+    <p class="kicker">Civilizația arabă — II</p>
+    <h1>Civilizația arabă: expansiunea islamului</h1>
+    <p class="subtitle">De la Califii bine-călăuziți la Omeiazi, Abbasizi, Al-Andalus și cruciade: cuceriri, state, conflicte și contacte culturale.</p>
+    <div class="badges"><span class="badge">632–1258</span><span class="badge">Rashidun • Omeiazi • Abbasizi</span><span class="badge">Al-Andalus</span><span class="badge">Cruciade</span></div>
+  </header>
+  <nav class="nav"><a href="civilizatia-araba-fondarea-islamului.html"><b>Fondarea islamului</b><small>Arabia preislamică, Muhammad, Hegira, Coranul</small></a><a href="civilizatia-araba-expansiunea-islamului.html"><b>Expansiunea islamului</b><small>Califii, cuceriri, arabi în Europa, cruciade</small></a><a href="civilizatia-araba-cultura-si-filosofie.html"><b>Cultură și filosofie</b><small>Științe, biblioteci, Avicenna, Averroes, transmitere culturală</small></a></nav>
+  
+<section id="intro">
+  <h2>Ideea generală</h2>
+  <p class="lead">Expansiunea islamului a fost una dintre cele mai rapide transformări geopolitice din istoria medievală. Între 632 și 750, statul islamic a trecut de la Arabia la un imperiu întins din Peninsula Iberică până la Asia Centrală și Valea Indusului. Această extindere s-a produs prin cucerire militară, diplomație, organizare fiscală, orașe-garnizoană, comerț și integrarea treptată a populațiilor cucerite.</p>
+  <div class="grid">
+    <div class="card"><h3>632–661</h3><p>Califii bine-călăuziți: unitatea comunității, cucerirea Siriei, Palestinei, Egiptului, Irakului și Persiei.</p></div>
+    <div class="card"><h3>661–750</h3><p>Omeiazii: capitala la Damasc, expansiune spre Iberia, Maghreb, Transoxiana și Sind.</p></div>
+    <div class="card"><h3>750–1258</h3><p>Abbasizii: capitala la Bagdad, apogeu cultural, dar și fragmentare politică.</p></div>
+    <div class="card"><h3>Europa</h3><p>Al-Andalus, Sicilia, Poitiers/Tours, cruciadele, statele latine și transferurile culturale.</p></div>
+  </div>
+</section>
+
+<section id="califi">
+  <h2>1. Califii bine-călăuziți și problema succesiunii</h2>
+  <p>După moartea lui Muhammad în 632, comunitatea musulmană a trebuit să rezolve o problemă fundamentală: cine conduce umma? Titlul de calif, <i>khalifa</i>, înseamnă succesor sau locțiitor al Profetului în conducerea comunității, nu profet nou.</p>
+  <table>
+    <tr><th>Calif</th><th>Domnie</th><th>Relație cu Muhammad</th><th>Realizări și probleme</th></tr>
+    <tr><td>Abu Bakr</td><td>632–634</td><td>Socru și apropiat al Profetului</td><td>Stabilizează Arabia după războaiele Ridda; lansează primele campanii spre Siria și Irak; începe consolidarea politică a califatului.</td></tr>
+    <tr><td>Umar ibn al-Khattab</td><td>634–644</td><td>Companion important</td><td>Cuceriri decisive: Yarmuk, Ierusalim, Egipt, Mesopotamia; organizare fiscală, diwan, orașe-garnizoană, calendar islamic.</td></tr>
+    <tr><td>Uthman ibn Affan</td><td>644–656</td><td>Ginere al Profetului</td><td>Standardizarea textului coranic; extindere navală; tensiuni privind nepotismul; asasinat în 656.</td></tr>
+    <tr><td>Ali ibn Abi Talib</td><td>656–661</td><td>Văr și ginere, soțul Fatimei</td><td>Primul război civil islamic: Bătălia Cămilei, Siffin, apariția kharijiților; asasinat în 661.</td></tr>
+  </table>
+  <details><summary>Suniți și șiiți: diferența de bază</summary>
+    <p>Diferența pornește din disputa privind succesiunea legitimă. Pentru tradiția sunnită, liderul comunității poate fi ales sau acceptat de comunitate, iar autoritatea se sprijină pe Coran și sunna. Pentru tradiția șiită, conducerea legitimă aparține liniei lui Ali și Fatima, familia Profetului, prin imami cu autoritate spirituală specială.</p>
+    <p>Scindarea devine definitivă prin acumularea conflictelor politice și religioase: asasinarea lui Ali în 661, instaurarea Omeiazilor și tragedia de la Karbala din 680, când Husayn, fiul lui Ali, este ucis.</p>
+  </details>
+</section>
+
+<section id="rashidun">
+  <h2>2. Cuceririle Rashidun: 632–661</h2>
+  <p class="lead">Primele cuceriri au lovit două imperii epuizate: Bizanțul și Persia sasanidă. Războaiele bizantino-sasanide din 602–628 slăbiseră financiar, militar și demografic ambele state, ceea ce a creat o fereastră istorică pentru expansiunea arabă.</p>
+  <div class="timeline">
+    <div class="event"><b>629</b> — Bătălia de la Mu'tah: primul conflict major între musulmani și forțe bizantine/aliați arabi creștini, încă în timpul vieții lui Muhammad.</div>
+    <div class="event"><b>632–633</b> — Războaiele Ridda: Abu Bakr readuce sub autoritatea Medinei triburile arabe care contestau noul centru politic.</div>
+    <div class="event"><b>634</b> — Încep campaniile sistematice în Siria și Irak.</div>
+    <div class="event"><b>636</b> — Yarmuk: victorie decisivă împotriva Bizanțului; Siria și Palestina devin vulnerabile.</div>
+    <div class="event"><b>636/637</b> — Qadisiyyah: înfrângerea decisivă a perșilor sasanizi; arabii intră în Mesopotamia.</div>
+    <div class="event"><b>637</b> — Ctesifon, capitala sasanidă, este ocupată.</div>
+    <div class="event"><b>638</b> — Ierusalimul este predat califului Umar; orașul intră sub stăpânire islamică.</div>
+    <div class="event"><b>639–642</b> — Amr ibn al-As cucerește Egiptul; Alexandria cade în 642.</div>
+    <div class="event"><b>642</b> — Nihavand: „victoria victoriilor” împotriva Persiei; prăbușirea efectivă a statului sasanid.</div>
+    <div class="event"><b>650–654</b> — Extindere în Iranul de sud, Khurasan și regiunile orientale ale fostului imperiu sasanid.</div>
+  </div>
+  <table>
+    <tr><th>Regiune</th><th>Date-cheie</th><th>Conducători / figuri</th><th>Rezultat</th></tr>
+    <tr><td>Siria-Palestina</td><td>634–640</td><td>Khalid ibn al-Walid, Abu Ubayda, califul Umar</td><td>Bizanțul pierde provinciile orientale; se formează provincia Bilad al-Sham.</td></tr>
+    <tr><td>Mesopotamia și Persia</td><td>636–654</td><td>Sa'd ibn Abi Waqqas, alți comandanți rashidun</td><td>Imperiul Sasanid este înlocuit de dominația islamică.</td></tr>
+    <tr><td>Egipt</td><td>639–642</td><td>Amr ibn al-As</td><td>Bizanțul pierde o provincie fiscală și cerealieră esențială.</td></tr>
+    <tr><td>Africa de Nord</td><td>643–647, apoi 670–710</td><td>Comandanți arabi și, mai târziu, omeiazi</td><td>Avans treptat spre Tripolitania, Ifriqiya și Maghreb.</td></tr>
+  </table>
+</section>
+
+<section id="omeiazi">
+  <h2>3. Califatul Omeiad: 661–750</h2>
+  <p>După asasinarea lui Ali, Mu'awiya ibn Abi Sufyan întemeiază dinastia Omeiadă, cu capitala la Damasc. Califatul devine monarhie ereditară, iar administrația se transformă într-un aparat imperial. Omeiazii păstrează limba arabă ca limbă a administrației și extind califatul până la limite greu de administrat.</p>
+  <div class="grid">
+    <div class="card"><h3>Capitală</h3><p>Damasc, centru politic apropiat de frontiera bizantină și de provincia siriană, baza puterii omeiade.</p></div>
+    <div class="card"><h3>Ideologie imperială</h3><p>Califul devine suveran dinastic; el conduce un imperiu multietnic, dar elitele arabe rămân privilegiate.</p></div>
+    <div class="card"><h3>Reforme</h3><p>Sub Abd al-Malik (685–705): arabizarea administrației, monedă islamică proprie, monumentalizare religioasă, inclusiv Cupola Stâncii.</p></div>
+    <div class="card"><h3>Crize</h3><p>Tensiuni cu mawali, șiiți, kharijiți, triburi arabe rivale și populații non-arabe convertite.</p></div>
+  </div>
+  <h3>Cuceriri și limite</h3>
+  <table>
+    <tr><th>Direcție</th><th>Perioadă</th><th>Evenimente</th><th>Semnificație</th></tr>
+    <tr><td>Maghreb</td><td>670–710</td><td>Kairouan este fondat în 670; Cartagina cade definitiv în 698; berberii sunt integrați treptat.</td><td>Deschide drumul spre Iberia.</td></tr>
+    <tr><td>Iberia</td><td>711–718</td><td>Tariq ibn Ziyad trece strâmtoarea Gibraltar; bătălia de la Guadalete; regatul vizigot se prăbușește.</td><td>Nașterea Al-Andalusului.</td></tr>
+    <tr><td>Franța</td><td>720–732</td><td>Raiduri spre Aquitania și valea Loarei; oprire la Tours/Poitiers de către Carol Martel.</td><td>Limita nordică a expansiunii musulmane occidentale.</td></tr>
+    <tr><td>Asia Centrală</td><td>675–751</td><td>Transoxiana, Samarkand, Bukhara; bătălia de la Talas în 751 împotriva Chinei Tang.</td><td>Islamul se deschide către lumea turcică și persană orientală.</td></tr>
+    <tr><td>Sind / Valea Indusului</td><td>711–713</td><td>Muhammad ibn Qasim cucerește Sindul.</td><td>Primul contact politic islamic stabil cu subcontinentul indian.</td></tr>
+    <tr><td>Bizanț</td><td>674–678; 717–718</td><td>Două mari asedii arabe ale Constantinopolului.</td><td>Bizanțul rezistă, iar expansiunea arabă spre Balcani este blocată.</td></tr>
+  </table>
+  <details><summary>Asediile Constantinopolului</summary>
+    <p><b>674–678:</b> în timpul lui Mu'awiya I, flota arabă atacă repetat Constantinopolul. Bizantinii rezistă sub Constantin al IV-lea și folosesc focul grecesc. Urmează un tratat de pace.</p>
+    <p><b>717–718:</b> sub califul Sulayman și generalul Maslama ibn Abd al-Malik, arabii încearcă o ofensivă terestră și navală. Împăratul Leon al III-lea Isaurul rezistă, flota arabă este distrusă, iar foametea, bolile și atacurile bulgarilor contribuie la eșecul asediului.</p>
+  </details>
+  <details><summary>De ce au căzut Omeiazii?</summary>
+    <ul>
+      <li>Discriminarea musulmanilor non-arabi, numiți <i>mawali</i>, mai ales în Persia și Khurasan.</li>
+      <li>Nemulțumirea șiiților, care considerau că legitimitatea aparține familiei lui Ali.</li>
+      <li>Luxul curții și percepția că dinastia devenise prea laică și autoritară.</li>
+      <li>Revolta abbasidă din 746–750, condusă în Khurasan de Abu Muslim.</li>
+      <li>Bătălia de la Zab, 750: Marwan al II-lea este înfrânt, iar Abu al-Abbas as-Saffah devine primul calif abbasid.</li>
+    </ul>
+  </details>
+</section>
+
+<section id="abbasizi">
+  <h2>4. Califatul Abbasid și fragmentarea lumii islamice</h2>
+  <p>Abbasizii se revendicau de la Abbas ibn Abd al-Muttalib, unchiul Profetului. Ei au mutat centrul lumii islamice spre Mesopotamia și Persia. În 762, califul al-Mansur întemeiază Bagdadul, oraș circular, capitală politică și culturală a lumii abbaside.</p>
+  <div class="timeline">
+    <div class="event"><b>750</b> — Începutul dinastiei abbaside.</div>
+    <div class="event"><b>756</b> — Abd al-Rahman I, supraviețuitor omeiad, întemeiază Emiratul de Córdoba în Al-Andalus.</div>
+    <div class="event"><b>762</b> — Fondarea Bagdadului de către al-Mansur.</div>
+    <div class="event"><b>786–809</b> — Domnia lui Harun al-Rashid, asociată cu prestigiul cultural și diplomatic abbasid.</div>
+    <div class="event"><b>813–833</b> — Al-Ma'mun sprijină traducerile, astronomia, filosofia și Casa Înțelepciunii.</div>
+    <div class="event"><b>836–892</b> — Capitala administrativă este mutată temporar la Samarra.</div>
+    <div class="event"><b>929</b> — Emiratul de Córdoba devine Califatul de Córdoba, rival cu Bagdadul.</div>
+    <div class="event"><b>969</b> — Fatimizii întemeiază Cairo; Al-Azhar devine centru religios și intelectual.</div>
+    <div class="event"><b>1055</b> — Selgiucizii intră în Bagdad; califul abbasid rămâne autoritate religioasă, dar puterea militară reală trece la sultani.</div>
+    <div class="event"><b>1258</b> — Mongolii lui Hülegü cuceresc Bagdadul; sfârșitul califatului abbasid clasic.</div>
+  </div>
+  <table>
+    <tr><th>Centru politic</th><th>Perioadă</th><th>Caracteristici</th></tr>
+    <tr><td>Bagdad</td><td>762–1258</td><td>Capitală abbasidă, centru al traducerilor, comerțului, administrației și culturii urbane.</td></tr>
+    <tr><td>Samarra</td><td>836–892</td><td>Capitală temporară, asociată cu armata turcă și cu tensiunile dintre califi și militari.</td></tr>
+    <tr><td>Córdoba</td><td>756–1031; califat din 929</td><td>Centru omeiad occidental, rival al Bagdadului, cu dezvoltare urbană și culturală remarcabilă.</td></tr>
+    <tr><td>Cairo</td><td>969–1171 sub fatimizi</td><td>Centru șiit ismailit, fondarea Al-Azhar, rivalitate simbolică cu Bagdadul sunnit.</td></tr>
+  </table>
+</section>
+
+<section id="europa">
+  <h2>5. Arabii în Europa: Al-Andalus, Sicilia, Poitiers și contactele culturale</h2>
+  <p class="lead">Contactul dintre lumea islamică și Europa latină nu a fost doar militar. El a însemnat și comerț, traduceri, arhitectură, agricultură, medicină, filosofie, matematică, navigație și circulația obiectelor de lux.</p>
+  <div class="timeline">
+    <div class="event"><b>711</b> — Tariq ibn Ziyad trece în Iberia. Numele Gibraltar vine din <i>Jabal Tariq</i>, „muntele lui Tariq”.</div>
+    <div class="event"><b>722</b> — Covadonga: început simbolic al rezistenței creștine asturiene.</div>
+    <div class="event"><b>732</b> — Tours/Poitiers: Carol Martel oprește un raid musulman spre nordul Galiei.</div>
+    <div class="event"><b>778</b> — Carol cel Mare trece Pirineii; campania se leagă de formarea treptată a Mărcii Hispanice.</div>
+    <div class="event"><b>801</b> — Barcelona este cucerită de franci și devine un centru al frontierei carolingiene.</div>
+    <div class="event"><b>827–902</b> — Cucerirea musulmană a Siciliei, transformată într-un centru agricol și comercial mediteranean.</div>
+    <div class="event"><b>929–1031</b> — Califatul de Córdoba: apogeul politic al Al-Andalusului.</div>
+    <div class="event"><b>1085</b> — Toledo este cucerit de Alfonso VI; devine centru major al traducerilor arabe-latine.</div>
+    <div class="event"><b>1492</b> — Căderea Granadei: sfârșitul ultimului stat musulman din Peninsula Iberică.</div>
+  </div>
+  <h3>Zonele principale de contact</h3>
+  <table>
+    <tr><th>Zonă</th><th>Tip de contact</th><th>Contribuții</th></tr>
+    <tr><td>Spania musulmană / Al-Andalus</td><td>Coexistență, conflict, traduceri, comerț, arhitectură.</td><td>Córdoba, Sevilla, Toledo, Granada; filosofie aristotelică, medicină, matematică, agricultură irigată.</td></tr>
+    <tr><td>Sicilia</td><td>Contact arab, bizantin, latin și normand.</td><td>Administrație, agricultură, artă decorativă, arhitectură normando-arabo-bizantină.</td></tr>
+    <tr><td>Statele cruciate</td><td>Război, diplomație, comerț levantin.</td><td>Transfer de mărfuri, tehnici, cunoștințe geografice și medicale.</td></tr>
+    <tr><td>Porturile italiene</td><td>Comerț cu Levantul.</td><td>Veneția, Genova, Pisa; mirodenii, textile, informații, hărți.</td></tr>
+  </table>
+</section>
+
+<section id="cruciade">
+  <h2>6. Cruciadele și lumea islamică</h2>
+  <p>Cruciadele apar într-un context de slăbire bizantină după Manzikert (1071), expansiune selgiucidă în Anatolia și apelul papei Urban al II-lea la Clermont, în 1095. Ele au fost expediții militare religioase, dar și fenomene politice, sociale, economice și maritime.</p>
+  <table>
+    <tr><th>Cruciadă</th><th>Ani</th><th>Scop principal</th><th>Rezultat</th></tr>
+    <tr><td>I</td><td>1096–1099</td><td>Cucerirea Ierusalimului</td><td>Ierusalimul este cucerit în 1099; se formează state cruciate.</td></tr>
+    <tr><td>II</td><td>1147–1149</td><td>Răspuns la căderea Edessei în 1144</td><td>Eșec; Damasc nu este cucerit.</td></tr>
+    <tr><td>III</td><td>1189–1192</td><td>Răspuns la recucerirea Ierusalimului de către Saladin în 1187</td><td>Acces pentru pelerini; Ierusalimul rămâne musulman.</td></tr>
+    <tr><td>IV</td><td>1202–1204</td><td>Inițial Orientul, apoi Constantinopol</td><td>Constantinopolul este jefuit; se creează Imperiul Latin.</td></tr>
+    <tr><td>V</td><td>1217–1221</td><td>Egiptul ca poartă spre Ierusalim</td><td>Eșec la Damietta.</td></tr>
+    <tr><td>VI</td><td>1228–1229</td><td>Recuperarea diplomatică a locurilor sfinte</td><td>Frederic al II-lea obține temporar Ierusalimul prin tratat.</td></tr>
+    <tr><td>VII</td><td>1248–1254</td><td>Campanie în Egipt</td><td>Ludovic al IX-lea este capturat; eșec.</td></tr>
+    <tr><td>VIII</td><td>1270</td><td>Tunis</td><td>Eșec; Ludovic al IX-lea moare.</td></tr>
+  </table>
+  <h3>State cruciate și ordine militare</h3>
+  <div class="grid">
+    <div class="card"><h3>Regatul Ierusalimului</h3><p>1099–1291; capitala la Ierusalim până în 1187, apoi la Acre. Cel mai prestigios stat latin din Orient.</p></div>
+    <div class="card"><h3>Comitatul Edessei</h3><p>1098–1144; primul stat cruciat întemeiat, dar și primul pierdut, cucerit de Zengi.</p></div>
+    <div class="card"><h3>Principatul Antiohiei</h3><p>1098–1268; spațiu strategic între Bizanț, Armenia și Siria musulmană.</p></div>
+    <div class="card"><h3>Comitatul Tripoli</h3><p>1109–1289; stat de coastă, comercial, influențat de mediul levantin.</p></div>
+    <div class="card"><h3>Templierii</h3><p>Ordin militar-religios cu rol de protecție a pelerinilor și apoi de putere financiară europeană.</p></div>
+    <div class="card"><h3>Ioaniții / Ospitalierii</h3><p>Ordin pornit din asistență medicală și caritabilă, devenit forță militară și navală.</p></div>
+    <div class="card"><h3>Teutonii</h3><p>Ordin german, activ în Țara Sfântă și apoi în Europa Centrală și Baltică.</p></div>
+  </div>
+</section>
+
+  <p class="footer">Material didactic — seria „Civilizația arabă”. Structurat pentru recapitulare, predare și aprofundare.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cuprul, bronzul și fierul: tehnologii, schimburi și transformări sociale">
+  <title>Preistoria: Epoca metalelor - Material ajutător de istorie</title>
+  <style>
+    :root {
+      --bg: #f6f0e7;
+      --paper: #fffaf3;
+      --paper-2: #ffffff;
+      --ink: #2f241c;
+      --muted: #695747;
+      --accent: #6f3f24;
+      --accent-2: #a66a3f;
+      --line: rgba(91, 62, 36, 0.18);
+      --soft: #f1e4d3;
+      --note: #fff1cf;
+      --good: #eaf2e6;
+      --shadow: 0 14px 36px rgba(69, 46, 25, 0.08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: Georgia, "Times New Roman", serif; line-height: 1.72; }
+    a { color: var(--accent); }
+    .page { width: min(1120px, calc(100% - 28px)); margin: 0 auto; padding: 26px 0 70px; }
+    .topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; }
+    .back { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 700; background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 10px 15px; box-shadow: 0 7px 18px rgba(69,46,25,.05); }
+    .category { color: var(--muted); font-size: 14px; text-align: right; }
+    .hero { background: linear-gradient(135deg, #fffaf3 0%, #f8ead7 100%); border: 1px solid var(--line); border-radius: 28px; padding: clamp(27px, 5vw, 55px); box-shadow: var(--shadow); margin-bottom: 24px; }
+    .eyebrow { display: inline-block; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .09em; background: var(--accent); color: white; padding: 7px 11px; border-radius: 999px; margin-bottom: 17px; }
+    h1 { font-size: clamp(34px, 6vw, 58px); line-height: 1.05; letter-spacing: -.035em; margin: 0 0 15px; color: #3c2a1e; }
+    .subtitle { font-size: clamp(18px, 2.4vw, 23px); color: var(--accent); font-weight: 700; margin: 0 0 17px; }
+    .lead { font-size: 18px; color: var(--muted); margin: 0; max-width: 900px; text-align: justify; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 24px; align-items: start; }
+    .content, .side-card { background: var(--paper); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); }
+    .content { padding: clamp(23px, 4vw, 43px); }
+    .sidebar { position: sticky; top: 18px; display: grid; gap: 16px; }
+    .side-card { padding: 20px; }
+    .side-card h2 { margin: 0 0 11px; font-size: 18px; }
+    .toc a { display: block; padding: 7px 0; border-bottom: 1px dashed var(--line); text-decoration: none; font-size: 14px; line-height: 1.35; }
+    .toc a:last-child { border-bottom: none; }
+    section { scroll-margin-top: 20px; margin-bottom: 34px; }
+    section:last-child { margin-bottom: 0; }
+    h2 { font-size: 29px; line-height: 1.2; margin: 0 0 17px; color: #3c2a1e; }
+    h3 { font-size: 21px; margin: 23px 0 9px; color: var(--accent); }
+    p { margin: 0 0 15px; text-align: justify; }
+    ul, ol { padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .callout { border-left: 5px solid var(--accent-2); background: var(--note); padding: 16px 18px; border-radius: 0 15px 15px 0; margin: 19px 0; }
+    .callout.good { background: var(--good); }
+    .callout strong { color: #4a2e1b; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; margin: 17px 0; }
+    .mini-card { background: var(--paper-2); border: 1px solid var(--line); border-radius: 17px; padding: 17px; }
+    .mini-card h3 { margin-top: 0; }
+    .timeline { border-left: 3px solid var(--accent-2); margin: 18px 0 22px 9px; padding-left: 23px; }
+    .event { position: relative; margin-bottom: 17px; }
+    .event::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); position: absolute; left: -30px; top: 7px; box-shadow: 0 0 0 4px var(--paper); }
+    .event b { color: var(--accent); }
+    table { width: 100%; border-collapse: collapse; margin: 18px 0 23px; background: white; font-size: 15px; }
+    th, td { border: 1px solid var(--line); padding: 11px 12px; vertical-align: top; text-align: left; }
+    th { background: var(--soft); color: #3c2a1e; }
+    .keywords { display: flex; flex-wrap: wrap; gap: 8px; }
+    .keywords span { border: 1px solid var(--line); background: var(--soft); border-radius: 999px; padding: 7px 10px; font-size: 13px; font-weight: 700; }
+    .questions { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 19px 22px; }
+    .bibliography { font-size: 14px; color: var(--muted); }
+    .footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 26px; }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; grid-row: 1; }
+      .toc { display: none; }
+    }
+    @media (max-width: 650px) {
+      .page { width: min(100% - 18px, 1120px); padding-top: 12px; }
+      .topbar { align-items: flex-start; }
+      .category { display: none; }
+      .hero, .content, .side-card { border-radius: 20px; }
+      .grid-2 { grid-template-columns: 1fr; }
+      table { display: block; overflow-x: auto; white-space: normal; }
+      h2 { font-size: 25px; }
+    }
+    @media print {
+      body { background: white; }
+      .page { width: 100%; padding: 0; }
+      .topbar, .sidebar { display: none; }
+      .layout { display: block; }
+      .hero, .content { box-shadow: none; border-color: #bbb; }
+      .hero { break-after: avoid; }
+      section, table { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a class="back" href="../evaluare.html">← Înapoi la Evaluare</a>
+      <div class="category">Material ajutător · Istorie universală · Preistoria</div>
+    </div>
+
+    <header class="hero">
+      <span class="eyebrow">Istorie universală · Preistoria</span>
+      <h1>Preistoria: Epoca metalelor</h1>
+      <p class="subtitle">Cuprul, bronzul și fierul: tehnologii, schimburi și transformări sociale</p>
+      <p class="lead">O sinteză amplă despre apariția metalurgiei, tehnicile de prelucrare, rețelele de materii prime, societățile Epocii Bronzului și diversitatea regională a Epocii Fierului.</p>
+    </header>
+
+    <div class="layout">
+      <article class="content">
+        
+<section id="context">
+  <h2>1. Ce este „Epoca metalelor”?</h2>
+  <p><strong>Epoca metalelor</strong> este o denumire convențională pentru perioadele în care prelucrarea cuprului, bronzului și fierului a devenit importantă în economie și societate. Schema clasică – Epoca Cuprului, Epoca Bronzului, Epoca Fierului – a fost formulată pentru Europa și Orientul Apropiat și nu poate fi aplicată mecanic întregii lumi.</p>
+  <div class="callout"><strong>Important:</strong> folosirea unui obiect metalic izolat nu înseamnă că o societate a intrat în „Epoca metalelor”. Arheologii urmăresc producția regulată, răspândirea tehnologiei, rolul economic al metalului și transformările sociale asociate. Piatra, osul și lemnul au continuat să fie utilizate mult timp.</div>
+</section>
+
+<section id="dezvoltare">
+  <h2>2. De la metal nativ la metalurgie</h2>
+  <p>Aurul și cuprul nativ puteau fi găsite în stare aproape pură și prelucrate prin lovire la rece. Metalurgia propriu-zisă a apărut când oamenii au învățat să extragă metalul din minereu prin încălzire controlată. Aceasta presupunea cunoașterea minereurilor, construirea cuptoarelor, controlul temperaturii și colaborarea dintre mineri, cărbunari, topitori și meșteșugari.</p>
+  <h3>Cuprul și Eneoliticul</h3>
+  <p>Cuprul este maleabil și poate fi retopit, dar în formă pură este relativ moale. În Balcani și Anatolia, metalurgia cuprului s-a dezvoltat timpuriu. Necropola de la Varna, din mileniul V î.Hr., conține cantități impresionante de aur și obiecte care sugerează diferențe sociale pronunțate. Totuși, cuprul nu a înlocuit imediat uneltele de piatră.</p>
+
+  <h2>3. Bronzul: aliaj, specializare și schimb la mare distanță</h2>
+  <p><strong>Bronzul</strong> este, în forma sa clasică, un aliaj de cupru și staniu. Este mai dur și mai potrivit pentru turnare decât cuprul pur. Înaintea răspândirii staniului s-au folosit și aliaje cu arsen, care puteau apărea accidental sau intenționat, dar erau periculoase pentru meșteșugari.</p>
+  <p>Producția bronzului lega regiuni îndepărtate deoarece zăcămintele de cupru și staniu se găseau rar în același loc. Minele, porturile, caravanele și centrele de turnare au creat rețele care transportau lingouri, arme, podoabe și idei tehnice. Metalul putea fi topit și reciclat, astfel încât obiectele descoperite reprezintă doar o parte a producției reale.</p>
+  <div class="grid-2">
+    <div class="mini-card"><h3>Tehnici</h3><p>Ciocănirea, recoacerea, turnarea în tipare deschise sau bivalve și procedeul cerii pierdute au permis realizarea unor forme din ce în ce mai complexe.</p></div>
+    <div class="mini-card"><h3>Specialiști</h3><p>Metalurgia necesita experiență și putea conferi prestigiu. Meșteșugarii puteau lucra pentru gospodării, comunități, palate sau elite războinice, în funcție de tipul societății.</p></div>
+  </div>
+
+  <h2>4. Societățile Epocii Bronzului</h2>
+  <p>În Mesopotamia, Egipt, Anatolia, Levant, lumea egeeană, valea Indusului și China, metalurgia s-a integrat în societăți urbane și state complexe. Palatele și templele organizau producția, colectau tribut și întrețineau armate. Scrierea permitea administrarea resurselor, dar numeroase societăți ale Epocii Bronzului au rămas fără state sau fără texte proprii.</p>
+  <p>În Europa, mormintele, depozitele de bronz și fortificațiile indică apariția unor elite și a unor rețele regionale. Carele, caii, săbiile, sulițele și armurile au schimbat prestigiul și războiul, însă efectul lor a depins de organizare, logistică și teren, nu numai de materialul armelor.</p>
+
+  <h2>5. Comerțul și primele economii interconectate</h2>
+  <p>Cuprul din Cipru, staniul din mai multe zone europene și asiatice, aurul, chihlimbarul, lapislazuliul și fildeșul circulau pe distanțe foarte mari. Epave precum cea de la Uluburun, din secolul al XIV-lea î.Hr., ilustrează transportul mediteranean de lingouri, produse de lux și materii prime.</p>
+  <p>Schimbul nu era doar comercial în sens modern. Darurile diplomatice, tributul, prada, căsătoriile aristocratice și redistribuirea palatială contribuiau la circulația bunurilor. Controlul rutelor și al metalelor putea întări puterea conducătorilor.</p>
+
+  <h2>6. Criza de la sfârșitul Epocii Bronzului</h2>
+  <p>În estul Mediteranei, în jurul secolelor XIII–XII î.Hr., mai multe palate și orașe au fost distruse sau abandonate, iar rețelele internaționale s-au redus. Au fost propuse cauze precum războaiele, revoltele interne, seceta, cutremurele, migrațiile, schimbările comerciale și fragilitatea sistemelor palatiale.</p>
+  <p>Nu a existat un singur „colaps” identic pretutindeni. Egiptul a supraviețuit, deși slăbit; unele orașe au continuat; alte regiuni au cunoscut reorganizare, depopulare sau apariția unor comunități noi. Explicațiile actuale preferă combinațiile de factori și efectele în lanț.</p>
+
+  <h2>7. Fierul și noile tehnologii</h2>
+  <p>Fierul este abundent, dar extragerea lui este mai dificilă decât topirea cuprului. Primele obiecte de fier puteau proveni din meteoriți, însă producția pe scară largă a necesitat cuptoare capabile să reducă minereul și meșteșugari care să lucreze masa poroasă de metal rezultată. Prin forjare și carburare se puteau obține unelte rezistente.</p>
+  <p>Fierul timpuriu nu era automat superior celui mai bun bronz. Avantajele sale au crescut prin perfecționarea tehnicii și prin accesul mai larg la minereu. Pe termen lung, uneltele de fier au susținut defrișarea, agricultura și producția meșteșugărească, iar armele de fier au devenit mai accesibile.</p>
+
+  <h2>8. Epoca Fierului și diversitatea regională</h2>
+  <table>
+    <thead><tr><th>Regiune</th><th>Repere generale</th><th>Particularități</th></tr></thead>
+    <tbody>
+      <tr><td>Orientul Apropiat</td><td>Fierul se răspândește mai ales după cca 1200 î.Hr.</td><td>Imperiile neoasirian, neobabilonian și persan au folosit armate și administrații extinse; bronzul a continuat să fie important.</td></tr>
+      <tr><td>Europa centrală și occidentală</td><td>Hallstatt și La Tène, aproximativ primul mileniu î.Hr.</td><td>Centre fortificate, elite, comerț cu lumea mediteraneană și dezvoltarea culturilor asociate populațiilor celtice.</td></tr>
+      <tr><td>India</td><td>Fierul se extinde în mileniul I î.Hr.</td><td>Uneltele au contribuit la exploatarea câmpiei Gangelui, alături de schimbări agricole și politice.</td></tr>
+      <tr><td>China</td><td>Bronzul rămâne prestigios; fierul se extinde în epocile Zhou târzie și Han</td><td>Turnarea fierului și producția organizată au atins niveluri tehnice distincte de cele occidentale.</td></tr>
+      <tr><td>Africa subsahariană</td><td>Cronologii și origini discutate, diferite regional</td><td>În unele zone, fierul a fost produs fără o etapă locală amplă a bronzului; schema europeană a „celor trei epoci” nu se potrivește.</td></tr>
+      <tr><td>Americile</td><td>Metalurgii dezvoltate mai ales pentru aur, argint, cupru și aliaje</td><td>Nu a existat o Epocă a Fierului precolumbiană comparabilă cu Eurasia; societățile complexe nu depindeau de aceeași succesiune tehnologică.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>9. Metalul, puterea și inegalitatea</h2>
+  <p>Metalul putea marca statutul prin arme, podoabe, vase și obiecte ceremoniale. Mormintele bogate arată că unele persoane controlau bunuri rare și muncă specializată. Totuși, nu metalul a „creat” singur ierarhia. Proprietatea asupra pământului, controlul surplusului, războiul, religia și rețelele de rudenie au avut roluri la fel de importante.</p>
+  <p>Depozitele de obiecte pot reprezenta rezerve de metal, ofrande, bunuri ascunse în criză sau material destinat reciclării. Interpretarea depinde de context: locul depunerii, selecția obiectelor, urmele de fragmentare și relația cu așezările.</p>
+
+  <h2>10. Cum reconstruiesc arheologii metalurgia?</h2>
+  <p>Analiza zgurii, cuptoarelor, creuzetelor și tiparelor arată etapele producției. Metalografia studiază structura internă și tratamentele termice. Analizele izotopice pot compara metalul cu zăcăminte posibile, deși reciclarea și amestecarea complică rezultatele. Arheologia experimentală testează cât combustibil, timp și pricepere necesitau diferite procedee.</p>
+</section>
+
+<section id="cronologie">
+  <h2>11. Cronologie orientativă</h2>
+  <div class="timeline">
+    <div class="event"><b>mileniile IX–VI î.Hr.</b> – obiecte timpurii din cupru nativ în unele regiuni ale Asiei de Sud-Vest.</div>
+    <div class="event"><b>mileniile VI–V î.Hr.</b> – dezvoltarea metalurgiei cuprului în Balcani și Anatolia.</div>
+    <div class="event"><b>cca 4500–4000 î.Hr.</b> – necropola de la Varna ilustrează acumularea aurului și diferențierea socială.</div>
+    <div class="event"><b>mileniul III î.Hr.</b> – bronzul cu staniu și rețelele metalurgice se extind în mari părți ale Eurasiei.</div>
+    <div class="event"><b>mileniul II î.Hr.</b> – apogeul multor civilizații ale Epocii Bronzului și al schimburilor interregionale.</div>
+    <div class="event"><b>cca 1200 î.Hr.</b> – criza sistemelor palatiale din estul Mediteranei și răspândirea treptată a fierului.</div>
+    <div class="event"><b>primul mileniu î.Hr.</b> – Epoca Fierului în numeroase regiuni europene și asiatice; formarea unor state și imperii extinse.</div>
+  </div>
+</section>
+
+<section id="interpretare">
+  <h2>12. Idei care trebuie evitate</h2>
+  <table>
+    <thead><tr><th>Simplificare</th><th>Interpretare corectă</th></tr></thead>
+    <tbody>
+      <tr><td>Fiecare metal a înlocuit complet tehnologia precedentă.</td><td>Piatra, lemnul, osul, cuprul, bronzul și fierul au coexistat mult timp.</td></tr>
+      <tr><td>Bronzul a apărut peste tot în același moment.</td><td>Cronologiile sunt regionale, iar unele societăți au sărit peste etape ale schemei clasice.</td></tr>
+      <tr><td>Fierul timpuriu era întotdeauna mai bun decât bronzul.</td><td>Calitatea depindea de minereu și tehnică; bronzul de calitate putea depăși fierul slab prelucrat.</td></tr>
+      <tr><td>Metalurgia produce automat state și războaie.</td><td>Metalul oferă posibilități, dar instituțiile politice și relațiile sociale determină folosirea lui.</td></tr>
+      <tr><td>„Colapsul din 1200 î.Hr.” a avut o singură cauză.</td><td>Dovezile indică procese regionale și combinații de stres climatic, conflict, migrație și fragilitate economică.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="sinteza">
+  <h2>13. Sinteză</h2>
+  <div class="callout good"><strong>Ideea principală:</strong> metalurgia a transformat producția, schimburile, prestigiul și războiul, dar nu a evoluat într-o succesiune identică pretutindeni. Cuprul, bronzul și fierul trebuie studiate în contexte regionale, împreună cu instituțiile, resursele și rețelele sociale care le-au dat valoare.</div>
+</section>
+        <section id="verificare">
+          <h2>Întrebări de verificare</h2>
+          <div class="questions"><ol><li>De ce un obiect metalic izolat nu este suficient pentru a defini o „Epocă a metalelor”?</li><li>Ce avantaje oferea bronzul și de ce necesita rețele comerciale extinse?</li><li>Cum putea metalurgia să contribuie la specializare și diferențiere socială?</li><li>De ce criza din jurul anului 1200 î.Hr. nu trebuie explicată printr-o singură cauză?</li><li>De ce fierul timpuriu nu era automat superior bronzului?</li><li>Dă două exemple care arată limitele aplicării universale a sistemului Cupru–Bronz–Fier.</li></ol></div>
+        </section>
+        <section id="bibliografie">
+          <h2>Bibliografie orientativă</h2>
+          <ul class="bibliography"><li>Chris Scarre (coord.), The Human Past: World Prehistory and the Development of Human Societies.</li><li>Brian M. Fagan, World Prehistory: A Brief Introduction.</li><li>Graeme Barker, The Agricultural Revolution in Prehistory: Why Did Foragers Become Farmers?</li><li>Peter Bellwood, First Farmers: The Origins of Agricultural Societies.</li><li>V. Gordon Childe, Man Makes Himself; lucrare clasică în care a fost popularizat conceptul de „revoluție neolitică”.</li><li>Barry Cunliffe, Europe Between the Oceans, 9000 BC–AD 1000.</li><li>Robert J. Wenke și Deborah I. Olszewski, Patterns in Prehistory: Humankind’s First Three Million Years.</li><li>A. F. Harding, European Societies in the Bronze Age.</li><li>Kristian Kristiansen și Thomas B. Larsson, The Rise of Bronze Age Society.</li><li>Eric H. Cline, 1177 B.C.: The Year Civilization Collapsed.</li></ul>
+        </section>
+      </article>
+
+      <aside class="sidebar">
+        <div class="side-card">
+          <h2>Termeni-cheie</h2>
+          <div class="keywords"><span>metalurgie</span><span>cupru</span><span>Eneolitic</span><span>bronz</span><span>staniu</span><span>fier</span><span>Varna</span><span>Epoca Bronzului</span></div>
+        </div>
+        <div class="side-card toc">
+          <h2>Cuprins</h2>
+          <a href="#context">Context și delimitări</a>
+          <a href="#dezvoltare">Dezvoltarea temei</a>
+          <a href="#cronologie">Cronologie</a>
+          <a href="#interpretare">Interpretare istorică</a>
+          <a href="#sinteza">Sinteză</a>
+          <a href="#verificare">Întrebări</a>
+        </div>
+      </aside>
+    </div>
+    <footer class="footer">© 2026 Marin Gabriel · Material educațional pentru disciplina Istorie</footer>
+  </main>
+</body>
+</html>

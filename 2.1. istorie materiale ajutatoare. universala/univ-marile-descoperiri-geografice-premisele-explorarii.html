@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>marile-descoperiri-geografice-premisele-explorarii</title>
+  <style>
+:root {
+  --bg: #f6f0e7; --paper: #fffaf3; --paper-2: #ffffff; --ink: #2f241c; --title: #3c2a1e;
+  --muted: #5b4a3d; --accent: #7a4f2a; --accent-2: #9b6a3c; --accent-soft: #f0e4d4;
+  --line: rgba(91, 62, 36, 0.18); --line-strong: rgba(91, 62, 36, 0.34);
+  --outer-dark: #241208; --outer-mid: #4a2a18; --outer-warm: #7a4b2b;
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.28); --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+    radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+  background-attachment: fixed; color: var(--ink); font-family: Georgia, "Times New Roman", serif;
+}
+body::before { content:""; position:fixed; inset:0; z-index:0; pointer-events:none; background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,.10) 48%, rgba(0,0,0,.44) 100%), linear-gradient(90deg, rgba(0,0,0,.20), transparent 18%, transparent 82%, rgba(0,0,0,.20)); }
+.page { position:relative; z-index:1; width:min(1180px, calc(100% - 32px)); margin:0 auto; padding:34px 0 70px; }
+.topbar { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:18px; flex-wrap:wrap; }
+.back-link, .tag { display:inline-flex; align-items:center; border:1px solid var(--line); background:rgba(255,250,243,.84); color:var(--title); border-radius:999px; padding:10px 15px; text-decoration:none; font-size:15px; font-weight:700; box-shadow:var(--shadow-small); }
+.back-link:hover { background:#fff6eb; }
+.hero, .section, .nav-card, .final-box { background: rgba(255,250,243,.96); border:1px solid var(--line); border-radius:28px; box-shadow:var(--shadow); }
+.hero { padding:38px; margin-bottom:24px; position:relative; overflow:hidden; }
+.hero::after { content: attr(data-year); position:absolute; right:26px; bottom:-22px; font-size:105px; font-weight:900; letter-spacing:-4px; color:rgba(122,79,42,.08); pointer-events:none; }
+.eyebrow { margin:0 0 8px; font-size:16px; color:var(--accent); font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+h1 { margin:0; font-size:clamp(38px, 5vw, 62px); line-height:1.04; color:var(--title); letter-spacing:-1.4px; }
+.subtitle { margin:18px 0 0; max-width:1000px; font-size:19px; line-height:1.78; color:var(--muted); text-align:justify; }
+.summary-grid, .three-col, .two-col, .four-col, .five-col, .term-grid, .cause-grid, .details-grid, .mini-grid { display:grid; gap:14px; }
+.summary-grid { grid-template-columns: repeat(4, 1fr); margin-top:26px; }
+.three-col { grid-template-columns: repeat(3, 1fr); }
+.two-col { grid-template-columns: repeat(2, 1fr); }
+.four-col { grid-template-columns: repeat(4, 1fr); }
+.five-col { grid-template-columns: repeat(5, 1fr); }
+.cause-grid { grid-template-columns: 1.1fr .9fr; }
+.term-grid { grid-template-columns: repeat(4, 1fr); }
+.mini-grid { grid-template-columns: repeat(2, 1fr); }
+.summary-card, .info-card, .wide-card, .term-card, .micro-card, .warning-box, .source-note, .table-wrap, .expedition-card { background:var(--paper-2); border:1px solid rgba(91,62,36,.14); border-radius:20px; box-shadow:var(--shadow-small); text-align:justify; }
+.summary-card { padding:16px; min-height:132px; }
+.summary-card strong, .term-card strong, .micro-card strong { display:block; color:var(--title); font-size:17px; margin-bottom:8px; text-align:left; }
+.summary-card span, .term-card span, .micro-card span { display:block; color:var(--muted); font-size:15.5px; line-height:1.56; text-align:justify; }
+.nav-card { display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:18px 20px; margin-bottom:24px; }
+.nav-card b { color:var(--title); margin-right:2px; }
+.nav-card a, .mini-btn { color:var(--title); background:var(--accent-soft); border:1px solid rgba(91,62,36,.16); border-radius:999px; text-decoration:none; padding:8px 12px; font-weight:700; font-size:14px; cursor:pointer; font-family:inherit; }
+.nav-card a:hover, .mini-btn:hover { background:#e5d2bb; }
+.section { padding:30px; margin-bottom:24px; }
+h2 { margin:0 0 14px; color:var(--title); font-size:clamp(28px, 3vw, 38px); line-height:1.15; }
+h3 { margin:0 0 12px; color:var(--title); font-size:22px; line-height:1.22; }
+h4 { margin:16px 0 8px; color:var(--title); font-size:18px; }
+.section-intro, p, li, dd { font-size:17px; line-height:1.72; color:var(--muted); text-align:justify; hyphens:auto; }
+.section-intro { margin:0 0 20px; max-width:1000px; }
+.info-card, .wide-card, .term-card, .micro-card, .warning-box, .source-note, .table-wrap, .expedition-card { padding:20px; }
+.wide-card { margin-top:14px; }
+.clean, .number-list { margin:0; padding-left:22px; }
+.clean li, .number-list li { margin:0 0 9px; padding-left:2px; }
+.mini-title { display:inline; color:var(--title); font-weight:800; margin-right:5px; }
+.date-pill { display:inline-block; color:var(--title); font-weight:800; background:#f3eadf; border:1px solid rgba(91,62,36,.13); border-radius:999px; padding:2px 9px; margin-right:5px; white-space:nowrap; }
+.definition, .note { margin-top:18px; background:#fff8ef; border:1px solid rgba(122,79,42,.22); border-left:6px solid rgba(122,79,42,.48); border-radius:18px; padding:18px 20px; color:var(--muted); font-size:17px; line-height:1.7; text-align:justify; }
+.definition strong, .note strong { color:var(--title); }
+details { background:#fffdf9; border:1px solid rgba(91,62,36,.14); border-radius:20px; box-shadow:var(--shadow-small); margin-top:14px; overflow:hidden; }
+details[open] { background:#fffaf3; }
+summary { cursor:pointer; list-style:none; padding:18px 20px; font-size:19px; font-weight:800; color:var(--title); display:flex; justify-content:space-between; align-items:center; gap:18px; text-align:left; }
+summary::-webkit-details-marker { display:none; }
+summary::after { content:"Deschide"; color:var(--muted); font-size:14px; font-weight:700; background:#f3eadf; border:1px solid rgba(91,62,36,.14); border-radius:999px; padding:7px 11px; white-space:nowrap; }
+details[open] > summary::after { content:"Ascunde"; }
+.details-body { border-top:1px solid rgba(91,62,36,.12); padding:18px 20px 20px; text-align:justify; }
+.details-grid { grid-template-columns: repeat(2, 1fr); }
+.key-line { display:grid; grid-template-columns:220px 1fr; gap:14px; padding:13px 0; border-bottom:1px dashed rgba(91,62,36,.18); }
+.key-line:last-child { border-bottom:0; }
+.key-line strong { color:var(--title); text-align:left; }
+.key-line span { color:var(--muted); line-height:1.65; text-align:justify; }
+.timeline { position:relative; display:grid; gap:14px; margin-top:18px; }
+.event { display:grid; grid-template-columns:150px 1fr; gap:18px; align-items:stretch; background:#ffffff; border:1px solid rgba(91,62,36,.14); border-radius:20px; box-shadow:var(--shadow-small); overflow:hidden; }
+.date { background:linear-gradient(180deg, #7a4f2a, #5b351b); color:#fffaf3; display:flex; align-items:center; justify-content:center; text-align:center; padding:14px; font-size:18px; line-height:1.25; font-weight:900; letter-spacing:.2px; }
+.event > div:last-child { padding:17px 18px 18px 0; text-align:justify; }
+.event h3 { margin-bottom:6px; }
+.event p { margin:0; }
+.table-wrap { overflow:auto; margin-top:16px; }
+table { width:100%; border-collapse:collapse; min-width:760px; }
+th, td { border-bottom:1px solid rgba(91,62,36,.13); padding:12px 13px; vertical-align:top; text-align:left; }
+th { color:var(--title); background:#f3eadf; font-size:16px; }
+td { color:var(--muted); font-size:16px; line-height:1.58; }
+tr:last-child td { border-bottom:0; }
+.exp-meta { display:grid; grid-template-columns: repeat(4, 1fr); gap:10px; margin:14px 0; }
+.exp-meta div { background:#fff8ef; border:1px solid rgba(91,62,36,.12); border-radius:14px; padding:10px 12px; color:var(--muted); font-size:15.5px; line-height:1.45; }
+.exp-meta strong { display:block; color:var(--title); font-size:14px; margin-bottom:4px; }
+.small-muted { font-size:15px; color:#725c49; line-height:1.6; }
+.warning-box { background:#fff7ec; border-color:rgba(122,79,42,.22); margin-top:16px; }
+.final-box { padding:28px; background:linear-gradient(135deg, #fffaf3, #f4e4d1); border-color:rgba(91,62,36,.25); }
+.final-box p { margin-bottom:0; }
+@media (max-width: 980px) {
+  .summary-grid, .three-col, .term-grid, .four-col, .five-col { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .cause-grid, .details-grid, .mini-grid { grid-template-columns:1fr; }
+  .exp-meta { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 680px) {
+  .page { width:min(100% - 22px, 1180px); padding-top:22px; }
+  .hero, .section, .final-box { padding:22px; border-radius:22px; }
+  .summary-grid, .term-grid, .four-col, .five-col { grid-template-columns:1fr; }
+  .event { grid-template-columns:1fr; }
+  .date { min-height:66px; }
+  .event > div:last-child { padding:0 16px 16px; }
+  .key-line { grid-template-columns:1fr; gap:6px; }
+  summary { align-items:flex-start; flex-direction:column; }
+  .hero::after { font-size:82px; }
+  .exp-meta { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a class="back-link" href="#">← Înapoi la materiale</a>
+      <span class="tag">Material ajutător · Istorie universală · Epoca modernă timpurie</span>
+    </div>
+    <section class="hero" data-year="1453">
+      <p class="eyebrow">Marile descoperiri geografice</p>
+      <h1>Premisele explorării</h1>
+      <p class="subtitle">Cum au ajuns europenii să treacă de la navigația de coastă și comerțul mediteranean la traversări oceanice, rute globale și proiecte coloniale. Materialul explică mijloacele de transport, cunoștințele geografice, instrumentele nautice, cauzele economice și politice ale expansiunii.</p>
+      <div class="summary-grid">
+        <div class="summary-card"><strong>Interval principal</strong><span>Secolele XV-XVI: de la explorarea Atlanticului african la legarea Europei de America, Africa, Asia și Pacific.</span></div>
+        <div class="summary-card"><strong>Miza centrală</strong><span>Rute maritime, mirodenii, metale prețioase, misiune religioasă, prestigiu politic și control comercial.</span></div>
+        <div class="summary-card"><strong>Actori principali</strong><span>Portugalia și Spania deschid cursa; Anglia, Franța și Țările de Jos intră ulterior în competiție.</span></div>
+        <div class="summary-card"><strong>Efect global</strong><span>Se formează o lume conectată atlantic și oceanic, dar și un sistem colonial violent și inegal.</span></div>
+      </div>
+    </section>
+    <nav class="nav-card" aria-label="Cuprins"><b>Cuprins:</b><a href="#context">I. Lumea înainte</a><a href="#transport">II. Transport</a><a href="#geografie">III. Geografie</a><a href="#instrumente">IV. Instrumente</a><a href="#cauze">V. Cauze</a><a href="#atlantic">VI. Atlanticul</a><a href="#sinteza">VII. Sinteză</a></nav>
+    
+<section class="section" id="context">
+  <h2>I. Lumea înainte de explorările oceanice</h2>
+  <p class="section-intro">Marile descoperiri nu au început într-un vid. Europenii aveau deja experiență de navigație mediteraneană, rută caravanieră spre Asia, contacte cu lumea islamică, hărți portulan, legende geografice, cunoștințe antice despre sfericitatea Pământului și o economie tot mai dependentă de produse orientale. Noutatea secolului al XV-lea nu a fost dorința de a călători, ci capacitatea de a transforma călătoria în proiect de stat, finanțat de monarhii, negustori, bancheri și ordine religioase.</p>
+  <div class="three-col">
+    <article class="info-card"><h3>Drumurile terestre</h3><p>Înaintea rutelor oceanice, legătura cu Asia se făcea printr-o combinație de drumuri terestre și maritime: caravane prin Asia Centrală, drumuri spre Marea Neagră, Levant și Egipt, apoi transport mediteranean spre Veneția, Genova sau Barcelona. Aceste trasee erau lente, scumpe și vulnerabile la războaie, taxe, intermediari și schimbări politice.</p></article>
+    <article class="info-card"><h3>Marea Mediterană</h3><p>Mediterana era încă în secolele XIII-XV principalul spațiu comercial european. Galerele venețiene și genoveze transportau mirodenii, mătase, coloranți, metale și produse de lux. Totuși, Mediterana nu oferea acces direct la sursa mirodeniilor, ci doar la porturile intermediare ale comerțului oriental.</p></article>
+    <article class="info-card"><h3>Atlanticul necunoscut</h3><p>Atlanticul era perceput mult timp ca o mare dificilă: curenți, furtuni, lipsa reperelor de coastă, teamă de distanțe, dificultăți de aprovizionare. Insulele atlantice — Canare, Madeira, Azore, Capul Verde — au devenit treptat laboratoare de navigație, colonizare, plantație și cunoaștere a vânturilor.</p></article>
+  </div>
+  <div class="note"><strong>Ideea-cheie:</strong> explorările au devenit posibile când interesul economic, concurența politică, tehnica navală, cartografia, calculul astronomic și experiența de navigație s-au combinat într-un sistem coerent.</div>
+</section>
+<section class="section" id="transport">
+  <h2>II. Mijloacele de transport înainte de explorările oceanice</h2>
+  <p class="section-intro">Europenii nu au trecut direct de la drumuri medievale la traversări oceanice. Între ele a existat o evoluție a corăbiilor, a tehnicilor de navigație, a porturilor și a sistemelor comerciale.</p>
+  <div class="table-wrap"><table><thead><tr><th>Mijloc / sistem</th><th>Perioadă de folosire</th><th>Avantaje</th><th>Limite istorice</th></tr></thead><tbody>
+    <tr><td>Caravana terestră</td><td>Antichitate – Ev Mediu – epoca modernă timpurie</td><td>Permitea traversarea deșerturilor și stepelor; conecta piețele Asiei Centrale, Persiei, Levantului și Europei.</td><td>Costuri mari, ritm lent, taxe multiple, dependență de stabilitatea politică a zonelor traversate.</td></tr>
+    <tr><td>Galera mediteraneană</td><td>Antichitate – sec. XVI</td><td>Foarte utilă pe mări închise; putea combina velele cu vâslele; bună pentru război și comerț regional.</td><td>Depindea de echipaje numeroase, provizii dese și porturi apropiate; era slab adaptată oceanelor deschise.</td></tr>
+    <tr><td>Coca / cog-ul nordic</td><td>Sec. XII-XV</td><td>Navă robustă pentru Marea Nordului și Marea Baltică; folosită de negustorii Hansei.</td><td>Mai puțin manevrabilă în vânturi variabile; potrivită pentru comerț regional, nu pentru explorări lungi.</td></tr>
+    <tr><td>Caraca / nau</td><td>Sec. XV-XVI</td><td>Navă mare, capabilă să transporte provizii, oameni, arme și mărfuri pe distanțe lungi; folosită pe rutele spre India.</td><td>Mai greoaie decât caravela; necesita porturi și infrastructură; vulnerabilă în ape necunoscute.</td></tr>
+    <tr><td>Caravela</td><td>Sec. XV-XVI</td><td>Manevrabilă, adaptată vânturilor atlantice, bună pentru explorarea coastelor africane; putea naviga mai bine împotriva vântului cu vele latine.</td><td>Capacitate de transport mai mică; pentru comerț de masă va fi completată de nave mai mari.</td></tr>
+    <tr><td>Galeonul</td><td>Sec. XVI-XVII</td><td>Combină transportul oceanic cu puterea militară; devine navă-cheie pentru convoaiele spaniole și războaiele maritime.</td><td>Costisitor, dependent de artilerie și de porturi fortificate; simbolizează militarizarea comerțului oceanic.</td></tr>
+  </tbody></table></div>
+  <div class="three-col">
+    <article class="info-card"><h3>Cabotajul</h3><p>Navigația de coastă, numită cabotaj, presupunea deplasarea din port în port, cu țărmul ca reper. Portughezii au explorat treptat coasta Africii folosind această metodă, combinând observația directă cu înregistrarea curenților și vânturilor.</p></article>
+    <article class="info-card"><h3>Navigația de larg</h3><p>Navigația oceanică cerea abandonarea reperelor vizuale de coastă. Marinarii trebuiau să folosească busola, stelele, Soarele, estimarea vitezei, curenții și experiența colectivă a rutelor.</p></article>
+    <article class="info-card"><h3>Portul ca infrastructură</h3><p>Lisabona, Sevilla, Cádiz, Genova, Veneția, Anvers și Amsterdam nu erau doar locuri de plecare, ci centre de finanțare, depozitare, recrutare, construcție navală, cartografie și redistribuire comercială.</p></article>
+  </div>
+</section>
+<section class="section" id="geografie">
+  <h2>III. Cunoștințe geografice și limitele lor</h2>
+  <p class="section-intro">Europenii știau, în mediile educate, că Pământul este sferic. Problema nu era forma Pământului, ci dimensiunea oceanelor, poziția continentelor, lipsa unor hărți exacte și imposibilitatea calculării precise a longitudinii pe mare.</p>
+  <div class="two-col">
+    <article class="info-card"><h3>Moștenirea antică și medievală</h3><ul class="clean"><li><strong>Claudiu Ptolemeu</strong> oferise un model cartografic influent, redescoperit în Europa renascentistă.</li><li><strong>Mappae mundi</strong> medievale combinau geografia cu teologia, reprezentând lumea ca spațiu moral și religios.</li><li><strong>Portulanele</strong> erau hărți maritime practice, cu linii de direcție, utile pentru Mediterana și Atlanticul apropiat.</li><li><strong>Atlasul catalan</strong> din 1375 arată interesul pentru Africa, Asia și rutele comerciale.</li></ul></article>
+    <article class="info-card"><h3>Informația orientală și islamică</h3><p>Geografia europeană a fost influențată de traduceri greco-arabe, de astronomia islamică, de instrumente precum astrolabul și de contactele cu lumea mediteraneană. Comerțul cu Orientul a adus nu doar mărfuri, ci și informații despre India, China, Oceanul Indian și Africa de Est.</p></article>
+  </div>
+  <details open><summary>Ce știau europenii și ce nu știau?</summary><div class="details-body"><div class="details-grid">
+    <article class="info-card"><h3>Știau</h3><ul class="clean"><li>că Pământul este sferic;</li><li>că Asia produce mirodenii, mătase și produse de lux;</li><li>că Africa poate fi navigată de-a lungul coastelor;</li><li>că Atlanticul are insule utile ca escale;</li><li>că stelele și Soarele pot ajuta la calculul latitudinii.</li></ul></article>
+    <article class="info-card"><h3>Nu știau exact</h3><ul class="clean"><li>lățimea reală a Atlanticului;</li><li>existența Americii ca masă continentală între Europa și Asia;</li><li>mărimea reală a Oceanului Pacific;</li><li>cum să calculeze precis longitudinea pe mare;</li><li>complexitatea societăților amerindiene.</li></ul></article>
+  </div></div></details>
+</section>
+<section class="section" id="instrumente">
+  <h2>IV. Revoluția tehnică a navigației</h2>
+  <p class="section-intro">Instrumentele nu au făcut singure descoperirile, dar au redus incertitudinea. Ele au transformat marea dintr-un spațiu al hazardului total într-un spațiu calculabil, chiar dacă încă periculos.</p>
+  <div class="four-col">
+    <article class="term-card"><strong>Busola</strong><span>Folosită în Europa din Evul Mediu târziu, permitea menținerea direcției când cerul era acoperit sau coasta nu se vedea.</span></article>
+    <article class="term-card"><strong>Astrolabul marin</strong><span>Măsura înălțimea Soarelui sau a stelelor deasupra orizontului și ajuta la calculul latitudinii.</span></article>
+    <article class="term-card"><strong>Quadrantul și bastonul lui Iacob</strong><span>Instrumente pentru măsurarea unghiurilor cerești, folosite de navigatori înaintea sextantului modern.</span></article>
+    <article class="term-card"><strong>Portulanul</strong><span>Hartă practică de navigație cu linii de direcție și porturi, foarte utilă în Mediterana și pe coastele atlantice.</span></article>
+    <article class="term-card"><strong>Sonda cu plumb</strong><span>Măsura adâncimea apei și putea aduce mostre de fund marin, ajutând la apropierea de coastă.</span></article>
+    <article class="term-card"><strong>Clepsidra și jurnalul de bord</strong><span>Ajutau la estimarea timpului, vitezei, distanței și poziției prin navigație estimată.</span></article>
+    <article class="term-card"><strong>Caravela</strong><span>Navă manevrabilă, cu vele adaptate vânturilor variabile, decisivă pentru explorarea treptată a Africii.</span></article>
+    <article class="term-card"><strong>Volta do mar</strong><span>Tehnică portugheză de folosire a vânturilor și curenților oceanici prin rute curbe, nu prin întoarcere directă.</span></article>
+  </div>
+  <div class="warning-box"><h3>Atenție la sextant</h3><p>Sextantul este un instrument de mare precizie al secolului al XVIII-lea. Pentru secolele XV-XVI, mai corect este să vorbim despre astrolab marin, quadrant, bastonul lui Iacob, busolă, portulane, tabele astronomice și navigație estimată. El poate fi menționat ca perfecționare ulterioară, nu ca instrument obișnuit al lui Columb sau Vasco da Gama.</p></div>
+</section>
+<section class="section" id="cauze">
+  <h2>V. Cauzele explorărilor</h2>
+  <p class="section-intro">Expansiunea europeană a fost produsul mai multor presiuni: economice, politice, religioase, tehnice și mentale. Nicio cauză nu explică singură procesul.</p>
+  <div class="table-wrap"><table><thead><tr><th>Tip de cauză</th><th>Detalii</th><th>Exemple / date</th></tr></thead><tbody>
+    <tr><td>Economică</td><td>Europenii căutau mirodenii, mătase, pietre prețioase, aur, argint, zahăr, sclavi și piețe noi. Costul mirodeniilor creștea prin lanțurile lungi de intermediari.</td><td>piper, cuișoare, scorțișoară, nucșoară; rute spre India și Insulele Mirodeniilor.</td></tr>
+    <tr><td>Politică</td><td>Monarhiile iberice se consolidează și pot finanța proiecte maritime. Portugalia și Spania transformă explorarea într-o politică de stat.</td><td>1415 Ceuta; 1469 căsătoria Ferdinand-Isabella; 1492 căderea Granadei.</td></tr>
+    <tr><td>Geopolitică</td><td>Expansiunea otomană și controlul unor zone-cheie din Orientul Mediteranei încurajează căutarea rutelor alternative spre Asia.</td><td>1453 cucerirea Constantinopolului; rivalitatea cu Veneția și intermediarii orientali.</td></tr>
+    <tr><td>Religioasă</td><td>Ideea de cruciadă, convertirea necreștinilor, căutarea unor aliați creștini contra islamului și misiunea catolică însoțesc expansiunea.</td><td>misiuni franciscane, dominicane și apoi iezuite; mitul Preotului Ioan.</td></tr>
+    <tr><td>Tehnico-științifică</td><td>Nave mai bune, instrumente de orientare, hărți, experiență atlantică și cunoașterea vânturilor fac posibilă navigația de larg.</td><td>caravela, portulane, astrolab marin, busolă, volta do mar.</td></tr>
+    <tr><td>Socială și mentală</td><td>Renașterea, spiritul de curiozitate, cultura onoarei nobiliare și dorința de îmbogățire creează un tip de aventurier, negustor și conquistador.</td><td>Columb, da Gama, Cortés, Pizarro, Magellan, Drake.</td></tr>
+  </tbody></table></div>
+</section>
+<section class="section" id="atlantic">
+  <h2>VI. Atlanticul ca laborator al expansiunii</h2>
+  <p class="section-intro">Înainte de cucerirea Americii, europenii au experimentat colonizarea în insule. Acolo au testat plantațiile, munca forțată, introducerea sclavilor africani, administrarea de la distanță și integrarea teritoriilor oceanice în economia europeană.</p>
+  <div class="timeline">
+    <article class="event"><div class="date">1312-1336</div><div><h3>Redescoperirea Insulelor Canare</h3><p>Navigatorii genovezi, catalani, mallorcani și portughezi intră treptat în contact cu arhipelagul. Canarele devin un precedent pentru colonizare atlantică.</p></div></article><article class="event"><div class="date">1415</div><div><h3>Ceuta</h3><p>Portugalia cucerește Ceuta, punct de acces spre comerțul nord-african și început simbolic al expansiunii maritime portugheze.</p></div></article><article class="event"><div class="date">1419-1420</div><div><h3>Madeira</h3><p>João Gonçalves Zarco și Tristão Vaz Teixeira explorează Madeira; insula devine spațiu de colonizare, zahăr și agricultură atlantică.</p></div></article><article class="event"><div class="date">1427-1432</div><div><h3>Azore</h3><p>Portughezii integrează Azorele în sistemul lor atlantic, folosindu-le ca escală și spațiu de colonizare.</p></div></article><article class="event"><div class="date">1456-1460</div><div><h3>Capul Verde</h3><p>Arhipelagul devine nod atlantic între Europa, Africa și apoi America, cu un rol major în comerțul de sclavi.</p></div></article><article class="event"><div class="date">1470-1480</div><div><h3>São Tomé și Príncipe</h3><p>Insulele din Golful Guineei sunt integrate în cultura zahărului, anticipând modelul de plantație folosit ulterior în America.</p></div></article>
+  </div>
+</section>
+<section class="section" id="sinteza"><h2>VII. Sinteză: de la cunoaștere la expansiune</h2><div class="two-col"><article class="info-card"><h3>Ce s-a schimbat?</h3><p>Explorarea a devenit sistematică. Nu mai era vorba doar de călătorii individuale, ci de proiecte finanțate, consemnate, repetate și exploatate economic. Hărțile se corectau după fiecare expediție, porturile se adaptau, iar monarhiile transformau descoperirea în drept de stăpânire.</p></article><article class="info-card"><h3>Ce a rămas fragil?</h3><p>Navigația rămânea periculoasă: furtuni, scorbut, lipsă de apă, erori de calcul, revolte, necunoașterea coastelor, ostilitate locală și dependență de vânturi. Succesul explorării era un amestec de știință, noroc, violență, informație și rezistență fizică.</p></article></div></section>
+
+<section class="section" id="cunostinte-detaliu">
+  <h2>VIII. Dosare de aprofundare: ce însemna „a cunoaște lumea” înainte de 1492?</h2>
+  <p class="section-intro">Cunoașterea geografică a europenilor era un amestec de observație practică, texte antice, relatări de călătorie, informație arabă, portulane comerciale, mituri religioase și speculații. De aceea, un navigator putea ști corect că Pământul este rotund, dar putea greși enorm în privința distanței până la Asia.</p>
+  <div class="table-wrap"><table><thead><tr><th>Tip de cunoaștere</th><th>Ce oferea</th><th>Limita principală</th><th>Exemplu</th></tr></thead><tbody>
+    <tr><td>Cunoaștere practică de navigator</td><td>Direcții de vânt, curenți, porturi, adâncimi, locuri de aprovizionare.</td><td>Era fragmentară și transmisă prin experiență, nu prin hărți globale exacte.</td><td>Roteiros portugheze, jurnale de bord, portulane.</td></tr>
+    <tr><td>Cunoaștere savantă antică</td><td>Ideea sfericității Pământului, coordonate, tradiția ptolemeică.</td><td>Dimensiuni și distanțe adesea greșite; Asia putea fi imaginată mai aproape de Europa decât era.</td><td>Geografia lui Ptolemeu, redescoperită și tipărită în Renaștere.</td></tr>
+    <tr><td>Cunoaștere islamică și mediteraneană</td><td>Astronomie, matematică, instrumente, descrieri comerciale și geografice.</td><td>Informația ajungea în Europa prin traduceri, contacte și intermediari, uneori parțial sau selectiv.</td><td>Astrolabul, tabele astronomice, geografi arabi.</td></tr>
+    <tr><td>Relatări de călătorie</td><td>Descrieri ale Asiei, Mongoliei, Chinei, Indiei și ale bogățiilor orientale.</td><td>Amestecau observația directă cu exagerări, zvonuri și imaginație.</td><td>Marco Polo, Carpini, Rubrouck, Odoric de Pordenone.</td></tr>
+    <tr><td>Mituri geografice</td><td>Motivație religioasă și politică pentru explorare.</td><td>Puteau produce așteptări false și interpretări greșite ale realităților întâlnite.</td><td>Preotul Ioan, insule fabuloase, Eldorado mai târziu.</td></tr>
+  </tbody></table></div>
+  <div class="two-col">
+    <article class="info-card"><h3>Problema latitudinii</h3><p>Latitudinea putea fi aproximată prin înălțimea Soarelui la amiază sau prin observarea stelei polare în emisfera nordică. De aceea, portughezii au putut dezvolta treptat navigația pe paralele și revenirea prin curenții Atlanticului. Totuși, în emisfera sudică, steaua polară dispărea, ceea ce impunea adaptări și observarea altor repere cerești.</p></article>
+    <article class="info-card"><h3>Problema longitudinii</h3><p>Longitudinea era mult mai dificil de calculat, deoarece presupunea compararea timpului local cu timpul unui meridian de referință. Soluția tehnică sigură va veni abia în secolul al XVIII-lea, prin cronometre maritime performante. În secolele XV-XVI, navigatorii se bazau pe estimări, viteză, direcție, experiență și corectări succesive.</p></article>
+  </div>
+</section>
+<section class="section" id="nave-detaliu">
+  <h2>IX. Anatomia progresului naval: de ce contează fiecare inovație?</h2>
+  <p class="section-intro">Nava oceanică era o combinație de lemn, vele, frânghii, cârmă, busolă, echipaj, provizii și experiență. O mică îmbunătățire tehnică putea schimba radical distanțele posibile.</p>
+  <div class="details-grid">
+    <article class="info-card"><h3>Velele latine</h3><p>Velele triunghiulare, folosite mult în Mediterana, permiteau navigarea mai eficientă cu vânt lateral sau parțial potrivnic. Ele au făcut caravelele mai manevrabile în explorarea coastelor africane, unde vânturile nu erau mereu favorabile.</p></article>
+    <article class="info-card"><h3>Velele pătrate</h3><p>Velele pătrate erau excelente când vântul bătea din spate. Marile nave comerciale le-au combinat cu vele latine, rezultând o adaptare la drumuri lungi și la regimuri diferite de vânt.</p></article>
+    <article class="info-card"><h3>Cârma de etambou</h3><p>Cârma fixată la pupa a îmbunătățit controlul navei față de vâslele laterale de cârmire. A devenit esențială pentru nave mai grele și pentru manevre oceanice.</p></article>
+    <article class="info-card"><h3>Castelul de la pupa și prora</h3><p>Structurile ridicate ofereau spațiu și avantaj defensiv, dar puteau îngreuna nava. Evoluția navelor oceanice a presupus un echilibru între capacitate de marfă, stabilitate și viteză.</p></article>
+    <article class="info-card"><h3>Artileria navală</h3><p>Tunurile montate pe nave au transformat corabia într-un instrument militar. Comerțul oceanic și războiul au devenit inseparabile: forturile, convoaiele și navele armate au apărat monopolurile comerciale.</p></article>
+    <article class="info-card"><h3>Proviziile</h3><p>O expediție lungă cerea apă, pesmeți, carne sărată, vin, ulei, leguminoase, piese de schimb, lemn, pânze, frânghii și instrumente. Lipsa alimentelor proaspete producea boli precum scorbutul, înțeles greu înainte de medicina modernă.</p></article>
+  </div>
+</section>
+<section class="section" id="comparatii-maritime">
+  <h2>X. Europa și alte lumi maritime</h2>
+  <p class="section-intro">Europa nu era singura lume cu navigație avansată. Oceanul Indian, China, lumea arabă și Asia de Sud-Est aveau tradiții maritime vechi. Diferența a fost că statele europene au transformat navigația într-un proiect de expansiune militară, comercială și colonială peste oceane.</p>
+  <div class="table-wrap"><table><thead><tr><th>Spațiu maritim</th><th>Caracteristici</th><th>Raport cu expansiunea europeană</th></tr></thead><tbody>
+    <tr><td>Oceanul Indian</td><td>Rețea comercială veche între Africa de Est, Arabia, India, Asia de Sud-Est și China. Folosea musonii și porturi cosmopolite.</td><td>Portughezii nu au creat comerțul indian, ci au intrat violent într-un sistem existent și au încercat să-l taxeze.</td></tr>
+    <tr><td>China Ming</td><td>Expedițiile lui Zheng He (1405-1433) au demonstrat capacități maritime impresionante.</td><td>China nu a transformat aceste expediții într-un sistem colonial global permanent; prioritățile politice s-au schimbat.</td></tr>
+    <tr><td>Lumea arabă și persană</td><td>Negustori, navigatori și geografi legați de Marea Roșie, Golful Persic și Oceanul Indian.</td><td>Au fost concurenți și intermediari ai europenilor în comerțul cu mirodenii.</td></tr>
+    <tr><td>Polinezia</td><td>Navigație oceanică remarcabilă pe distanțe uriașe, folosind stelele, valurile, păsările și memoria rutelor.</td><td>Demonstrează că traversarea oceanică nu era exclusiv europeană; europenii au integrat însă oceanul într-un sistem imperial scris, militarizat și cartografiat.</td></tr>
+  </tbody></table></div>
+</section>
+
+
+<!-- EXTINDERE-2026-07-10-START -->
+<section class="section" id="corectii-contextuale">
+  <h2>VIII. Clarificări istorice esențiale</h2>
+  <p class="section-intro">Pentru a înțelege corect începutul marilor explorări, trebuie separat ceea ce aparține secolelor XV-XVI de ceea ce aparține navigației mai târzii. Exploratorii din vremea lui Columb, Dias sau Vasco da Gama nu navigau cu tehnica secolului al XVIII-lea, ci cu un ansamblu mai vechi de practici, instrumente și calcule aproximative.</p>
+  <div class="table-wrap"><table><thead><tr><th>Problemă</th><th>Formulare corectă</th><th>Explicație</th></tr></thead><tbody>
+    <tr><td>Sextantul</td><td>Sextantul este instrument al secolului al XVIII-lea.</td><td>În secolele XV-XVI, navigatorii foloseau mai ales busola, astrolabul marin, quadrantul, bastonul lui Iacob, portulane, tabele astronomice, clepsidra, sonda cu plumb și navigația estimată. Sextantul devine important abia mai târziu, când navigația astronomică se perfecționează.</td></tr>
+    <tr><td>„Drumul spre India era blocat”</td><td>Ruta nu era complet blocată, dar era scumpă, controlată de intermediari și vulnerabilă politic.</td><td>După 1453, Constantinopolul intră sub control otoman, iar schimburile cu Orientul continuă prin negustori musulmani, venețieni și genovezi. Monarhiile atlantice doreau să ocolească acest sistem de taxe, intermedieri și dependențe.</td></tr>
+    <tr><td>Sfericitatea Pământului</td><td>Oamenii educați ai Europei știau că Pământul este sferic.</td><td>Miza expediției lui Columb nu era demonstrarea formei Pământului, ci estimarea greșită a distanței până la Asia spre vest și necunoașterea continentelor americane ca obstacol intermediar.</td></tr>
+    <tr><td>Magellan-Elcano</td><td>Expediția a demonstrat practic posibilitatea circumnavigației și dimensiunea reală a oceanelor.</td><td>Nu a „descoperit” ideea că Pământul este rotund; a arătat printr-un parcurs complet că se poate înconjura globul pe mare, cu costuri uriașe.</td></tr>
+    <tr><td>Caravela și caraca</td><td>Caravela era excelentă pentru explorare; caraca / nau era mai potrivită pentru încărcături mari.</td><td>Nu toate navele expedițiilor oceanice erau caravele. Pe rutele comerciale lungi spre India au fost folosite și nave mari, mai lente, dar cu capacitate superioară de transport.</td></tr>
+  </tbody></table></div>
+</section>
+
+<section class="section" id="transporturi-detaliate">
+  <h2>IX. Mijloacele de transport înaintea expansiunii oceanice</h2>
+  <p class="section-intro">Europa medievală nu era izolată. Mărfurile circulau, dar circulația era lentă, scumpă și fragmentată. Marile descoperiri au apărut într-o lume în care transportul era deja organizat, însă nu era încă global.</p>
+  <div class="three-col">
+    <article class="info-card"><h3>Transport terestru</h3><p>Pe uscat, mărfurile erau transportate cu caravane, cai, catâri, care și căruțe. Drumurile erau inegale, nesigure și scumpe. Taxele locale, vămi interne, tâlhăria și starea drumurilor făceau transportul terestru potrivit pentru mărfuri de valoare mare și volum mic: mirodenii, mătase, pietre prețioase, metale, documente și obiecte de lux.</p></article>
+    <article class="info-card"><h3>Transport fluvial</h3><p>Râurile erau mai ieftine decât drumurile. Rinul, Dunărea, Sena, Loara, Tamisa, Ronul sau Padul legau regiunile agricole de orașe și porturi. Totuși, cataractele, vadurile, morile, taxele și schimbarea vaselor limitau transportul continuu pe distanțe foarte mari.</p></article>
+    <article class="info-card"><h3>Transport mediteranean</h3><p>Mediterana era dominată de negustori italieni, catalani, provensali, bizantini și musulmani. Galerele erau utile pentru navigație costieră, război și comerț rapid, dar depindeau de echipaje numeroase și nu erau ideale pentru traversări oceanice lungi.</p></article>
+    <article class="info-card"><h3>Transport atlantic nordic</h3><p>În nordul Europei, corăbiile de tip cog, apoi hulk, transportau lemn, grâne, pește, sare, lână și produse ale Ligii Hanseatice. Aceste nave erau robuste, dar nu aveau încă flexibilitatea caravelei pentru explorarea coastelor africane.</p></article>
+    <article class="info-card"><h3>Navigație de cabotaj</h3><p>Cea mai sigură metodă era urmărirea coastelor. Navigatorul vedea repere, putea ancora, se aproviziona și evita largul necunoscut. Explorarea portugheză a Africii a început tocmai prin împingerea treptată a cabotajului spre sud.</p></article>
+    <article class="info-card"><h3>Navigație de larg</h3><p>Traversarea oceanică presupunea încredere în vânturi, curenți, cer, instrumente și memorie. Tehnica portugheză <em>volta do mar</em> a fost decisivă: întoarcerea nu se făcea pe același drum, ci prin folosirea curbelor de vânt din Atlantic.</p></article>
+  </div>
+</section>
+
+<section class="section" id="cronologie-premise-extinsa">
+  <h2>X. Cronologie extinsă a premiselor explorării</h2>
+  <p class="section-intro">Expansiunea atlantică a fost pregătită de transformări lente: contacte cu Asia, Reconquista, experiența insulară, acumularea de capital și perfecționarea navigației.</p>
+  <div class="timeline">
+    <article class="event"><div class="date">711</div><div><h3>Intrarea musulmanilor în Peninsula Iberică</h3><p>Peninsula Iberică devine spațiu de contact și conflict între creștini, musulmani și evrei. Pe termen lung, Reconquista va crea elite militare, religioase și politice orientate spre expansiune.</p></div></article>
+    <article class="event"><div class="date">c. 1000</div><div><h3>Contactele nordice cu Vinland</h3><p>Navigația scandinavă ajunge în Groenlanda și America de Nord, dar fără continuitate colonială europeană largă.</p></div></article>
+    <article class="event"><div class="date">1095-1291</div><div><h3>Cruciadele</h3><p>Cruciadele dezvoltă contacte cu Orientul, rute comerciale, produse noi și o mentalitate de expansiune religioasă și militară.</p></div></article>
+    <article class="event"><div class="date">1271-1295</div><div><h3>Marco Polo în Asia</h3><p>Relatările sale popularizează imaginea Chinei, a Mongoliei și a bogățiilor orientale, chiar dacă informația era amestecată cu elemente greu de verificat.</p></div></article>
+    <article class="event"><div class="date">1291</div><div><h3>Frații Vivaldi</h3><p>Navigatori genovezi încearcă o rută atlantică spre India, semn că ideea ocolirii Africii exista înainte de succesul portughez.</p></div></article>
+    <article class="event"><div class="date">1312-1336</div><div><h3>Canarele revin în orizontul european</h3><p>Arhipelagul devine spațiu de explorare, cucerire și colonizare atlantică timpurie.</p></div></article>
+    <article class="event"><div class="date">1415</div><div><h3>Ceuta</h3><p>Portugalia pătrunde militar în nordul Africii și obține contact cu rute comerciale sahariene.</p></div></article>
+    <article class="event"><div class="date">1419-1420</div><div><h3>Madeira</h3><p>Insula devine laborator pentru colonizare, zahăr, muncă dependentă și agricultură de export.</p></div></article>
+    <article class="event"><div class="date">1434</div><div><h3>Depășirea Capului Bojador</h3><p>Gil Eanes trece de un reper considerat periculos, deschizând explorarea sistematică a Africii occidentale.</p></div></article>
+    <article class="event"><div class="date">1453</div><div><h3>Constantinopolul otoman</h3><p>Schimbarea echilibrului în estul Mediteranei încurajează monarhiile atlantice să caute rute alternative spre Asia.</p></div></article>
+    <article class="event"><div class="date">1479</div><div><h3>Tratatul de la Alcáçovas</h3><p>Castilia și Portugalia reglementează o parte a rivalității atlantice: Canarele rămân Castiliei, iar Portugalia își consolidează drepturile asupra Madeira, Azore, Capul Verde și coastei Guineei.</p></div></article>
+    <article class="event"><div class="date">1492</div><div><h3>Granada și Columb</h3><p>Căderea Granadei încheie Reconquista, iar prima călătorie a lui Columb deschide contactul transatlantic permanent.</p></div></article>
+  </div>
+</section>
+<!-- EXTINDERE-2026-07-10-END -->
+<section class="final-box"><h2>Ideea de reținut</h2><p>Premisele explorării au fost complexe: dorința de profit, presiunea geopolitică, credința religioasă, consolidarea statelor, perfecționarea navelor, cartografia și acumularea treptată de experiență atlantică. Marile descoperiri au fost o revoluție a distanțelor: lumea a devenit conectată, dar această conectare a fost profund inegală.</p></section>
+
+  </main>
+</body>
+</html>

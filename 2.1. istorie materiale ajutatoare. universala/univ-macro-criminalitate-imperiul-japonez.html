@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crime de stat înfăptuite de Imperiul Japonez în Al Doilea Război Mondial</title>
+  <style>
+
+    :root {
+      --bg: #f6f0e7;
+      --paper: #fffaf3;
+      --paper-2: #ffffff;
+      --ink: #2f241c;
+      --title: #3c2a1e;
+      --muted: #5b4a3d;
+      --accent: #7a4f2a;
+      --accent-2: #9b6a3c;
+      --accent-soft: #f0e4d4;
+      --line: rgba(91, 62, 36, 0.18);
+      --line-strong: rgba(91, 62, 36, 0.34);
+      --outer-dark: #241208;
+      --outer-mid: #4a2a18;
+      --outer-warm: #7a4b2b;
+      --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+      --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+        radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+        radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+        radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+        linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+      background-attachment: fixed;
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0 70px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .back-link,
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 243, 0.84);
+      color: var(--title);
+      border-radius: 999px;
+      padding: 10px 15px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      box-shadow: var(--shadow-small);
+    }
+
+    .back-link:hover { background: #fff6eb; }
+
+    .hero,
+    .section,
+    .nav-card,
+    .final-box {
+      background: rgba(255, 250, 243, 0.96);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 38px;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: attr(data-watermark);
+      position: absolute;
+      right: 26px;
+      bottom: -22px;
+      font-size: 110px;
+      font-weight: 900;
+      letter-spacing: -4px;
+      color: rgba(122, 79, 42, 0.08);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      font-size: 16px;
+      color: var(--accent);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: left;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 1.04;
+      color: var(--title);
+      letter-spacing: -1.4px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    .subtitle {
+      margin: 18px 0 0;
+      max-width: 980px;
+      font-size: 19px;
+      line-height: 1.78;
+      color: var(--muted);
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .summary-grid,
+    .three-col,
+    .two-col,
+    .term-grid,
+    .quick-grid,
+    .cause-grid,
+    .four-col {
+      display: grid;
+      gap: 14px;
+    }
+
+    .summary-grid { grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+    .three-col { grid-template-columns: repeat(3, 1fr); }
+    .two-col { grid-template-columns: repeat(2, 1fr); }
+    .four-col { grid-template-columns: repeat(4, 1fr); }
+    .cause-grid { grid-template-columns: 1.1fr 0.9fr; }
+    .term-grid { grid-template-columns: repeat(4, 1fr); }
+    .quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+
+    .summary-card,
+    .info-card,
+    .wide-card,
+    .term-card,
+    .quick-card,
+    .source-note,
+    .micro-card,
+    .warning-box,
+    .quote-card {
+      background: var(--paper-2);
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 20px;
+      box-shadow: var(--shadow-small);
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .summary-card { padding: 16px; min-height: 132px; }
+
+    .summary-card strong,
+    .quick-card strong,
+    .term-card strong,
+    .micro-card strong {
+      display: block;
+      color: var(--title);
+      font-size: 17px;
+      margin-bottom: 8px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    .summary-card span,
+    .quick-card span,
+    .term-card span,
+    .micro-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.56;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .nav-card {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 18px 20px;
+      margin-bottom: 24px;
+    }
+
+    .nav-card b { color: var(--title); margin-right: 2px; }
+
+    .nav-card a,
+    .mini-btn {
+      color: var(--title);
+      background: var(--accent-soft);
+      border: 1px solid rgba(91, 62, 36, 0.16);
+      border-radius: 999px;
+      text-decoration: none;
+      padding: 8px 12px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .nav-card a:hover,
+    .mini-btn:hover { background: #e5d2bb; }
+
+    .section { padding: 30px; margin-bottom: 24px; }
+
+    h2 {
+      margin: 0 0 14px;
+      color: var(--title);
+      font-size: clamp(28px, 3vw, 38px);
+      line-height: 1.15;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    h3 {
+      margin: 0 0 12px;
+      color: var(--title);
+      font-size: 22px;
+      line-height: 1.22;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    h4 {
+      margin: 16px 0 8px;
+      color: var(--title);
+      font-size: 18px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    .section-intro,
+    p,
+    li,
+    dd {
+      font-size: 17px;
+      line-height: 1.72;
+      color: var(--muted);
+      text-align: justify;
+      text-align-last: left;
+      hyphens: auto;
+    }
+
+    .section-intro { margin: 0 0 20px; max-width: 1000px; }
+
+    .info-card,
+    .wide-card,
+    .term-card,
+    .quick-card,
+    .micro-card,
+    .warning-box,
+    .quote-card { padding: 20px; }
+
+    .wide-card { margin-top: 14px; }
+    .wide-card p:last-child,
+    .info-card p:last-child { margin-bottom: 0; }
+
+    .clean,
+    .number-list { margin: 0; padding-left: 22px; }
+
+    .clean li,
+    .number-list li { margin: 0 0 9px; padding-left: 2px; }
+
+    .clean li:last-child,
+    .number-list li:last-child { margin-bottom: 0; }
+
+    .mini-title {
+      display: inline;
+      color: var(--title);
+      font-weight: 800;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      padding: 0;
+      margin-right: 5px;
+      white-space: normal;
+      text-align: inherit;
+    }
+
+    .date-pill {
+      display: inline-block;
+      color: var(--title);
+      font-weight: 800;
+      background: #f3eadf;
+      border: 1px solid rgba(91, 62, 36, 0.13);
+      border-radius: 999px;
+      padding: 2px 9px;
+      margin-right: 5px;
+      white-space: nowrap;
+      text-align: left;
+    }
+
+    .definition,
+    .note {
+      margin-top: 18px;
+      background: #fff8ef;
+      border: 1px solid rgba(122, 79, 42, 0.22);
+      border-left: 6px solid rgba(122, 79, 42, 0.48);
+      border-radius: 18px;
+      padding: 18px 20px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .definition strong,
+    .note strong { color: var(--title); }
+
+    details {
+      background: #fffdf9;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 20px;
+      box-shadow: var(--shadow-small);
+      margin-top: 14px;
+      overflow: hidden;
+    }
+
+    details[open] { background: #fffaf3; }
+
+    summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 18px 20px;
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--title);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    summary::after {
+      content: "Deschide";
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+      background: #f3eadf;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 999px;
+      padding: 7px 11px;
+      white-space: nowrap;
+    }
+
+    details[open] > summary::after { content: "Ascunde"; }
+
+    .details-body {
+      border-top: 1px solid rgba(91, 62, 36, 0.12);
+      padding: 18px 20px 20px;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .nested-details { margin-top: 10px; box-shadow: none; background: #ffffff; }
+
+    .nested-details summary { font-size: 17px; padding: 14px 16px; }
+
+    .key-line {
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px dashed rgba(91, 62, 36, 0.18);
+    }
+
+    .key-line:last-child { border-bottom: 0; }
+
+    .key-line strong { color: var(--title); text-align: left; text-align-last: auto; }
+
+    .key-line span { color: var(--muted); line-height: 1.65; text-align: justify; text-align-last: left; }
+
+    .timeline { position: relative; display: grid; gap: 14px; margin-top: 18px; }
+
+    .event {
+      display: grid;
+      grid-template-columns: 132px 1fr;
+      gap: 18px;
+      align-items: stretch;
+      background: #ffffff;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 20px;
+      box-shadow: var(--shadow-small);
+      overflow: hidden;
+    }
+
+    .date {
+      background: linear-gradient(180deg, #7a4f2a, #5b351b);
+      color: #fffaf3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 14px;
+      font-size: 18px;
+      line-height: 1.25;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+    }
+
+    .event > div:last-child { padding: 17px 18px 18px 0; text-align: justify; text-align-last: left; }
+
+    .event h3 { margin-bottom: 6px; }
+    .event p { margin: 0; }
+
+    .small-muted {
+      font-size: 15px;
+      color: #725c49;
+      line-height: 1.6;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .warning-box { background: #fff7ec; border-color: rgba(122, 79, 42, 0.22); margin-top: 16px; }
+
+    .quote-card { background: linear-gradient(135deg, #fffdf9, #f8eddf); }
+
+    .source-note { margin-top: 14px; padding: 16px; background: #fffdf9; }
+    .source-note a { color: var(--accent); font-weight: 700; text-decoration: none; }
+    .source-note a:hover { text-decoration: underline; }
+
+    .controls { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+
+    .final-box { padding: 28px; background: linear-gradient(135deg, #fffaf3, #f4e4d1); border-color: rgba(91, 62, 36, 0.25); }
+
+    .final-box p { margin-bottom: 0; }
+
+    @media (max-width: 980px) {
+      .summary-grid,
+      .three-col,
+      .term-grid,
+      .quick-grid,
+      .four-col { grid-template-columns: repeat(2, 1fr); }
+      .two-col,
+      .cause-grid,
+      .details-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .page { width: min(100% - 22px, 1180px); padding-top: 22px; }
+      .hero,
+      .section,
+      .final-box { padding: 22px; border-radius: 22px; }
+      .summary-grid,
+      .term-grid,
+      .quick-grid,
+      .four-col { grid-template-columns: 1fr; }
+      .event { grid-template-columns: 1fr; }
+      .date { min-height: 66px; }
+      .event > div:last-child { padding: 0 16px 16px; }
+      .key-line { grid-template-columns: 1fr; gap: 6px; }
+      summary { align-items: flex-start; flex-direction: column; }
+      .hero::after { font-size: 82px; }
+    }
+
+  
+    .source-list { margin: 0; padding-left: 22px; }
+    .source-list li { margin-bottom: 8px; }
+    .source-list a { color: var(--accent); font-weight: 700; text-decoration: none; }
+    .source-list a:hover { text-decoration: underline; }
+    .divider-note { margin-top: 14px; }
+    .case-label { display:inline-block; font-weight:800; color:var(--title); background:#f3eadf; border:1px solid rgba(91,62,36,.13); border-radius:999px; padding:2px 9px; margin:0 4px 4px 0; }
+    .dense-list li { margin-bottom: 11px; }
+    .quote-box { margin-top: 14px; background:#fff8ef; border:1px dashed rgba(122,79,42,.28); border-radius:18px; padding:16px 18px; }
+  
+    .fact-table { width: 100%; border-collapse: collapse; margin-top: 14px; overflow: hidden; border-radius: 18px; box-shadow: var(--shadow-small); background: #fffdf9; }
+    .fact-table th, .fact-table td { border: 1px solid rgba(91,62,36,.16); padding: 12px 14px; vertical-align: top; color: var(--muted); font-size: 16px; line-height: 1.58; text-align: justify; text-align-last: left; }
+    .fact-table th { background: #f3eadf; color: var(--title); font-weight: 900; text-align: left; text-align-last: auto; }
+    .chapter-note { margin: 12px 0 0; font-size: 15.5px; color: #725c49; line-height: 1.6; }
+    .badge-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .badge { display:inline-flex; align-items:center; border:1px solid rgba(91,62,36,.16); background:#f3eadf; color:var(--title); border-radius:999px; padding:6px 10px; font-weight:800; font-size:14px; }
+    .reading-box { background:#fffdf9; border:1px dashed rgba(122,79,42,.32); border-radius:18px; padding:18px 20px; margin-top:14px; }
+    .reading-box p { margin-top: 0; }
+    .reading-box p:last-child { margin-bottom: 0; }
+    @media (max-width: 680px) { .fact-table, .fact-table tbody, .fact-table tr, .fact-table th, .fact-table td { display:block; width:100%; } .fact-table th { border-bottom:0; } }
+</style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a class="back-link" href="#">← Înapoi la materiale</a>
+      <span class="tag">Material ajutător · Istorie universală · Crime de stat</span>
+    </div>
+
+    <section class="hero" data-watermark="1931-1945">
+      <p class="eyebrow">Material ajutător · Istorie universală · Al Doilea Război Mondial</p>
+      <h1>Crime de stat înfăptuite de Imperiul Japonez în Al Doilea Război Mondial</h1>
+      <p class="subtitle">Material amplu despre violențele produse de Imperiul Japonez în Asia-Pacific: Nanjing, China ocupată, Unitatea 731, Coreea colonială, muncă forțată, „femei de confort”, prizonieri de război, Bataan, Burma-Thailanda, Sook Ching, Manila, Sandakan și memoria postbelică.</p>
+      <div class="summary-grid">
+        <div class="summary-card"><strong>China ocupată</strong><span>Nanjing, campanii de pacificare, execuții, violuri, jafuri, distrugerea satelor și experimente biologice.</span></div>
+        <div class="summary-card"><strong>Exploatare</strong><span>Muncă forțată, romusha, prizonieri aliați, șantiere, mine, căi ferate, aerodromuri și industrie militară.</span></div>
+        <div class="summary-card"><strong>Violență sexuală</strong><span>Sistemul militar al „femeilor de confort”, cu victime din Coreea, China, Filipine, Indonezia și alte teritorii.</span></div>
+        <div class="summary-card"><strong>Justiție parțială</strong><span>Procesele postbelice au condamnat unele crime, dar responsabilitatea pentru Unitatea 731 și memoria publică au rămas controversate.</span></div>
+      </div>
+    </section>
+
+    <nav class="nav-card" aria-label="Cuprins">
+      <b>Cuprins:</b>
+      <a href="#cadru">I. Cadru</a>
+      <a href="#cronologie">II. Cronologie</a>
+      <a href="#china">III. China</a>
+      <a href="#coreea">IV. Coreea</a>
+      <a href="#pow">V. Prizonieri</a>
+      <a href="#seasia">VI. Asia-Pacific</a>
+      <a href="#institutii">VII. Instituții</a>
+      <a href="#justitie">VIII. Justiție</a>
+      <a href="#dosare">IX. Dosare</a>
+      <a href="#surse">Surse</a>
+    </nav>
+
+    
+<section class="section" id="cadru">
+  <h2>I. Cadru general: imperiu, militarism și război total în Asia-Pacific</h2>
+  <p class="section-intro">Crimele Imperiului Japonez trebuie analizate în contextul imperialismului din Asia de Est, al militarizării statului, al războiului din China, al ocupațiilor din Coreea, Manciuria, Asia de Sud-Est și Pacific și al unei culturi militare care a disprețuit capitularea și a tratat populațiile ocupate ca resurse.</p>
+  <div class="three-col">
+    <article class="info-card"><h3>Imperiu colonial</h3><p>Japonia controla Coreea, Taiwanul, Manciuria și, în timpul războiului, teritorii vaste din China, Asia de Sud-Est și Pacific. Ocupația a însemnat muncă forțată, mobilizare, confiscări, propagandă și violență împotriva civililor.</p></article>
+    <article class="info-card"><h3>Militarism</h3><p>Armata și marina au dobândit o autonomie enormă. Disciplina brutală din interiorul armatei a fost proiectată asupra prizonierilor și civililor, iar propaganda a justificat expansiunea ca „eliberare” a Asiei de colonialismul occidental.</p></article>
+    <article class="info-card"><h3>Dezumanizare</h3><p>Prizonierii de război, chinezii, coreenii, filipinezii, malaezienii, indonezienii și alte populații au fost tratați adesea ca inferioare, suspecte sau exploatabile. Această dezumanizare a permis masacre, muncă forțată și experimente medicale.</p></article>
+  </div>
+  <div class="definition"><strong>Ideea-cheie:</strong> în cazul Japoniei imperiale, crimele de stat nu se concentrează într-un singur tip de instituție precum lagărul nazist, ci într-o rețea de ocupație militară: garnizoane, poliție militară, lagăre pentru prizonieri, șantiere, bordeluri militare, laboratoare biologice, închisori și administrații coloniale.</div>
+</section>
+
+<section class="section" id="cronologie">
+  <h2>II. Cronologie: de la Manciuria la capitulare</h2>
+  <p class="section-intro">Cronologia arată extinderea violenței din China către întreg spațiul Asia-Pacific.</p>
+  <div class="timeline">
+        <article class="event"><div class="date">1931</div><div><h3>Manciuria</h3><p>Armata japoneză ocupă Manciuria și creează statul-marionetă Manchukuo. Regiunea devine zonă de experiment imperial, militar și polițienesc.</p></div></article>
+        <article class="event"><div class="date">1932-1936</div><div><h3>Rețeaua biologică</h3><p>Se dezvoltă structuri de cercetare militară pentru bacteriologie și război biologic, asociate ulterior cu Unitatea 731 și alte unități.</p></div></article>
+        <article class="event"><div class="date">1937</div><div><h3>Războiul total în China</h3><p>Incidentul de la Podul Marco Polo duce la război deschis. Nanjing devine simbol al masacrului, violului și jafului.</p></div></article>
+        <article class="event"><div class="date">1938-1942</div><div><h3>Campanii de pacificare</h3><p>În nordul Chinei, operațiunile anti-gherilă devin politici de ardere, ucidere și jefuire, sintetizate în formula „ucide tot, arde tot, jefuiește tot”.</p></div></article>
+        <article class="event"><div class="date">1941</div><div><h3>Pacificul</h3><p>Atacul de la Pearl Harbor și ofensivele japoneze extind războiul spre Filipine, Malaya, Singapore, Indonezia, Birmania și Pacific.</p></div></article>
+        <article class="event"><div class="date">1942</div><div><h3>Bataan și lagărele POW</h3><p>Prizonierii americani și filipinezi sunt supuși marșului morții și detenției dure. Prizonierii aliați sunt folosiți la muncă forțată.</p></div></article>
+        <article class="event"><div class="date">1942-1945</div><div><h3>Muncă forțată și „femei de confort”</h3><p>Populații din Coreea, China, Asia de Sud-Est și prizonieri aliați sunt mobilizați, deportați sau constrânși pentru muncă, servicii militare și exploatare sexuală.</p></div></article>
+        <article class="event"><div class="date">1944-1945</div><div><h3>Colaps și masacre finale</h3><p>Pe măsură ce Japonia pierde teritorii, apar masacre precum Manila și marșuri ale morții precum Sandakan.</p></div></article>
+        <article class="event"><div class="date">1945</div><div><h3>Înfrângere și justiție parțială</h3><p>Capitularea aduce procese la Tokyo și procese locale, dar unele crime, mai ales cele biologice, rămân insuficient pedepsite.</p></div></article>
+      </div>
+</section>
+
+<section class="section" id="china">
+  <h2>III. China ocupată: Nanjing, pacificări și război biologic</h2>
+  <p class="section-intro">China a fost principalul spațiu al violenței japoneze înainte de extinderea războiului în Pacific. Ocupația a combinat masacre, violuri, jafuri, distrugeri, experimente biologice, muncă forțată și campanii anti-gherilă.</p>
+  <details open><summary>Masacrul de la Nanjing</summary><div class="details-body">
+<p>După cucerirea orașului Nanjing în 1937, trupele japoneze au comis ucideri în masă, violuri, jafuri, incendieri și abuzuri împotriva civililor și prizonierilor chinezi. Nanjing este important pentru că arată colapsul deliberat al distincției dintre luptător și civil, dintre victorie militară și pedepsirea populației.</p><div class="key-line"><strong>Prizonieri</strong><span>Soldați chinezi capturați, uneori îmbrăcați civil sau dezarmați, au fost executați în grupuri mari.</span></div><div class="key-line"><strong>Civili</strong><span>Populația civilă a fost supusă violenței, violurilor, jafurilor și uciderilor arbitrare.</span></div><div class="key-line"><strong>Zona de siguranță</strong><span>Străini rămași în oraș au încercat să protejeze civilii printr-o zonă de refugiu, documentând o parte a atrocităților.</span></div><div class="key-line"><strong>Memorie</strong><span>Nanjing rămâne un punct central al tensiunilor dintre China și Japonia privind recunoașterea crimelor.</span></div>
+  </div></details>
+  <details open><summary>Politica „Three Alls”: ucide tot, arde tot, jefuiește tot</summary><div class="details-body">
+<p>În regiunile unde gherila chineză era activă, armata japoneză a folosit politici de pacificare extrem de violente. Scopul era separarea partizanilor de populația civilă prin distrugerea satelor, confiscarea resurselor, intimidare și execuții. Chiar dacă formula este cunoscută propagandistic, ea surprinde logica de teren: populația civilă era tratată ca mediu al inamicului.</p><div class="details-grid">
+        <div class="micro-card"><strong>Arderea satelor</strong><span>Case, hambare, recolte și adăposturi erau distruse pentru a lipsi gherila de sprijin.</span></div>
+        <div class="micro-card"><strong>Execuții</strong><span>Bărbați, femei sau bătrâni puteau fi uciși ca represalie pentru acțiuni de rezistență.</span></div>
+        <div class="micro-card"><strong>Confiscări</strong><span>Hrana, animalele, hainele și uneltele erau luate, producând foamete și dependență.</span></div>
+        <div class="micro-card"><strong>Deportări</strong><span>Populațiile erau mutate sau concentrate pentru control și supraveghere.</span></div>
+      </div>
+  </div></details>
+  <details open><summary>Unitatea 731 și rețeaua biologică</summary><div class="details-body">
+<p>Unitatea 731, asociată cu armata japoneză din Manciuria, a desfășurat experimente pe oameni și cercetări pentru războiul biologic. Victimele au fost în principal chinezi, dar și coreeni, ruși și alte persoane capturate. Experimentele au inclus infectarea deliberată, testarea armelor biologice și intervenții medicale fără consimțământ. Pentru predare, este important să se explice mecanismul fără detalii grafice inutile.</p><table class="fact-table"><thead><tr><th>Element</th><th>Explicație</th></tr></thead><tbody>
+<tr><td>Loc</td><td>Pingfang, lângă Harbin, în Manciuria ocupată, cu unități asociate și în alte orașe.</td></tr>
+<tr><td>Autoritate</td><td>Armata Kwantung și structuri medicale militare, sub conducerea unor ofițeri și medici.</td></tr>
+<tr><td>Victime</td><td>Prizonieri chinezi, coreeni, ruși, mongoli și alte persoane, dehumanizate de personalul militar.</td></tr>
+<tr><td>Scop</td><td>Dezvoltarea armelor biologice și testarea efectelor bolilor, frigului, rănilor și altor factori asupra corpului uman.</td></tr>
+<tr><td>Impunitate</td><td>După război, unii responsabili au evitat pedeapsa completă deoarece informațiile obținute au fost considerate utile militar.</td></tr>
+</tbody></table><div class="note"><strong>Legătură cu responsabilitatea profesională:</strong> cazul Unității 731 arată cum medicina, dacă este subordonată militarismului și rasismului, poate deveni instrument al crimei.</div>
+  </div></details>
+</section>
+
+<section class="section" id="coreea">
+  <h2>IV. Coreea colonială, mobilizare forțată și exploatare sexuală</h2>
+  <p class="section-intro">Coreea fusese anexată de Japonia în 1910, înaintea războiului mondial. În anii 1930-1945, colonizarea s-a intensificat: asimilare culturală, mobilizare pentru industrie și armată, muncă forțată și exploatarea femeilor în sistemul militar al „stațiilor de confort”.</p>
+  <div class="two-col">
+    <article class="info-card"><h3>Asimilare și control</h3><ul class="clean dense-list"><li>Presiune pentru folosirea limbii japoneze și pentru adoptarea numelor japoneze.</li><li>Controlul educației, presei și organizațiilor publice.</li><li>Mobilizare economică în fabrici, mine și infrastructuri de război.</li><li>Reprimarea activismului național coreean și a rezistenței politice.</li></ul></article>
+    <article class="info-card"><h3>„Femeile de confort”</h3><ul class="clean dense-list"><li>Sistem de exploatare sexuală legat de armata japoneză.</li><li>Victime din Coreea, China, Filipine, Indonezia și alte teritorii ocupate.</li><li>Recrutare prin coerciție, înșelare, presiune economică sau intermediari locali.</li><li>Traumă postbelică, stigmatizare și dispute privind recunoașterea oficială.</li></ul></article>
+  </div>
+  <div class="warning-box"><h3>Precizare</h3><p>Termenul „femei de confort” este un eufemism. Pentru o formulare mai corectă, se poate vorbi despre femei constrânse în sistemul militar de exploatare sexuală al Japoniei imperiale.</p></div>
+</section>
+
+<section class="section" id="pow">
+  <h2>V. Prizonieri de război, civili internați și muncă forțată</h2>
+  <p class="section-intro">Imperiul Japonez a încălcat frecvent normele privind tratamentul prizonierilor. Prizonierii aliați și populațiile ocupate au fost forțați să muncească în condiții extreme: căi ferate, mine, porturi, aerodromuri, șantiere și marșuri de evacuare.</p>
+  <details open><summary>Marșul morții de la Bataan</summary><div class="details-body">
+<p>După capitularea forțelor americane și filipineze din peninsula Bataan în 1942, prizonierii au fost obligați să parcurgă distanțe lungi în condiții de căldură, foame, sete, boală și violență. Mulți au murit pe drum sau ulterior în lagăre.</p><div class="key-line"><strong>Victime</strong><span>Prizonieri filipinezi și americani, slăbiți de lupte și lipsuri.</span></div><div class="key-line"><strong>Condiții</strong><span>Lipsă de apă, hrană, îngrijire medicală și protecție.</span></div><div class="key-line"><strong>Violență</strong><span>Bătăi, execuții arbitrare și abandonarea celor epuizați.</span></div><div class="key-line"><strong>Semnificație</strong><span>Bataan a devenit simbol al disprețului față de prizonierii care se predaseră.</span></div>
+  </div></details>
+  <details open><summary>Calea ferată Burma-Thailanda</summary><div class="details-body">
+<p>Prizonieri aliați și muncitori asiatici au fost folosiți la construirea unei căi ferate strategice între Thailanda și Birmania. Condițiile de junglă, bolile, alimentația insuficientă, pedepsele și ritmul forțat au dus la mortalitate ridicată.</p><div class="details-grid">
+        <div class="micro-card"><strong>Prizonieri aliați</strong><span>Britanici, australieni, olandezi, americani și alții au fost folosiți în muncă epuizantă.</span></div>
+        <div class="micro-card"><strong>Romusha</strong><span>Muncitori asiatici recrutați sau constrânși au suferit mortalitate foarte mare și sunt adesea mai puțin vizibili în memoria occidentală.</span></div>
+        <div class="micro-card"><strong>Boală</strong><span>Malarie, dizenterie, holeră, malnutriție și epuizare.</span></div>
+        <div class="micro-card"><strong>Memorie</strong><span>Cazul arată diferența dintre memoria prizonierilor occidentali și memoria muncitorilor asiatici.</span></div>
+      </div>
+  </div></details>
+  <details open><summary>Sandakan și marșurile morții</summary><div class="details-body">
+<p>În Borneo, prizonierii aliați de la Sandakan au fost supuși foametei, muncii și apoi marșurilor forțate spre Ranau. Puțini au supraviețuit. Cazul arată cum, spre finalul războiului, evacuările și retragerile japoneze au devenit adesea condamnări la moarte.</p><div class="key-line"><strong>Lagăr</strong><span>Sandakan a fost folosit pentru prizonieri de război, în special australieni și britanici.</span></div><div class="key-line"><strong>Marșuri</strong><span>Prizonierii epuizați au fost forțați să meargă prin junglă, fără hrană și îngrijire.</span></div><div class="key-line"><strong>Execuții</strong><span>Cei care nu puteau continua erau uciși sau abandonați.</span></div><div class="key-line"><strong>Memorie</strong><span>Sandakan este unul dintre cele mai dramatice episoade ale prizonierilor aliați în Pacific.</span></div>
+  </div></details>
+</section>
+
+<section class="section" id="seasia">
+  <h2>VI. Asia de Sud-Est și Pacific: ocupație, masacre și represiune</h2>
+  <p class="section-intro">Ofensiva japoneză a ocupat teritorii cu populații diverse. În multe locuri, Japonia s-a prezentat ca eliberatoare a Asiei, dar ocupația a adus muncă forțată, foamete, violență polițienească și masacre.</p>
+  <details open><summary>Sook Ching în Singapore și Malaya</summary><div class="details-body">
+<p>După cucerirea Singapore, autoritățile japoneze au desfășurat operațiuni de „curățare” împotriva chinezilor considerați anti-japonezi. Screeningul populației a dus la execuții, dispariții și teroare comunitară.</p><div class="key-line"><strong>Țintă</strong><span>Bărbați chinezi, activiști, voluntari, persoane suspectate de sprijin pentru China sau de opoziție.</span></div><div class="key-line"><strong>Metodă</strong><span>Adunare, interogare sumară, marcaje, separare și execuție.</span></div><div class="key-line"><strong>Funcție</strong><span>Intimidarea comunității chineze și distrugerea potențialului de rezistență.</span></div><div class="key-line"><strong>Memorie</strong><span>Episod central în memoria Singapore despre ocupația japoneză.</span></div>
+  </div></details>
+  <details open><summary>Masacrul de la Manila</summary><div class="details-body">
+<p>În 1945, în timpul luptei pentru Manila, trupele japoneze au ucis civili, au incendiat clădiri, au comis violuri și au distrus cartiere întregi. Masacrul arată violența extremă a retragerii și refuzul de a proteja civilii într-un oraș devenit câmp de luptă.</p><div class="details-grid">
+        <div class="micro-card"><strong>Civili</strong><span>Femei, copii, bătrâni, clerici, refugiați și personal medical au fost victime.</span></div>
+        <div class="micro-card"><strong>Distrugere urbană</strong><span>Clădiri, biserici, spitale și cartiere au fost devastate.</span></div>
+        <div class="micro-card"><strong>Retragere</strong><span>Violența a crescut pe fondul colapsului militar japonez.</span></div>
+        <div class="micro-card"><strong>Justiție</strong><span>Masacrul a fost inclus în acuzațiile postbelice împotriva unor comandanți japonezi.</span></div>
+      </div>
+  </div></details>
+  <details open><summary>Indonezia, Vietnam, Birmania și Filipine</summary><div class="details-body">
+<p>În teritoriile ocupate, Japonia a mobilizat populații pentru muncă, armată, construcții și aprovizionare. Ocupația a produs foamete, inflație, violențe ale poliției militare, detenții și represiuni împotriva rezistenței. În unele regiuni, prăbușirea autorităților coloniale europene a creat și mișcări naționale care vor deveni decisive după război.</p><table class="fact-table"><thead><tr><th>Regiune</th><th>Forme de violență și control</th></tr></thead><tbody>
+<tr><td>Indonezia</td><td>Mobilizare a muncitorilor romusha, rechiziții, foamete, represiune și propagandă imperială.</td></tr>
+<tr><td>Vietnam / Indochina</td><td>Ocupație japoneză peste structuri franceze, criză alimentară și foamete în 1944-1945.</td></tr>
+<tr><td>Birmania</td><td>Război, muncă forțată, lupte de gherilă, represiuni și distrugerea infrastructurii.</td></tr>
+<tr><td>Filipine</td><td>Ocupație militară, poliție brutală, rezistență, represalii și masacre, culminând cu Manila.</td></tr>
+</tbody></table>
+  </div></details>
+</section>
+
+<section class="section" id="institutii">
+  <h2>VII. Instituții ale violenței: armata, Kempeitai, administrații coloniale</h2>
+  <p class="section-intro">În cazul japonez, violența a fost produsă prin structuri militare și coloniale mai mult decât printr-un sistem centralizat de exterminare de tip nazist. Instituțiile-cheie au fost armata, marina, poliția militară, administrațiile de ocupație, companiile și rețelele medicale militare.</p>
+  <div class="three-col">
+    <article class="info-card"><h3>Armata imperială</h3><p>A condus ocupații, campanii de pacificare, lagăre, marșuri, execuții și mobilizarea muncii. Cultura disciplinară internă, adesea violentă, a fost proiectată asupra prizonierilor și civililor.</p></article>
+    <article class="info-card"><h3>Kempeitai</h3><p>Poliția militară japoneză a investigat, arestat, torturat și intimidat persoane suspectate de rezistență, spionaj sau opoziție în teritoriile ocupate.</p></article>
+    <article class="info-card"><h3>Companii și șantiere</h3><p>Mine, căi ferate, porturi, aerodromuri și industrii au beneficiat de muncă forțată, implicând administrații locale, intermediari și structuri militare.</p></article>
+  </div>
+</section>
+
+<section class="section" id="justitie">
+  <h2>VIII. Justiție postbelică, memorie și controverse</h2>
+  <p class="section-intro">După război, Tribunalul de la Tokyo și alte procese locale au judecat lideri și comandanți japonezi. Totuși, justiția a fost incompletă: unele crime au fost slab documentate, unele responsabilități au fost negociate politic, iar memoria publică rămâne contestată.</p>
+  <div class="two-col">
+    <article class="info-card"><h3>Ce s-a judecat</h3><ul class="clean dense-list"><li>Război de agresiune.</li><li>Masacre și tratament brutal al prizonierilor.</li><li>Execuții, tortură și muncă forțată.</li><li>Responsabilitatea comandanților pentru crimele subordonaților.</li><li>Unele crime împotriva civililor din teritoriile ocupate.</li></ul></article>
+    <article class="info-card"><h3>Ce a rămas problematic</h3><ul class="clean dense-list"><li>Gradul de responsabilitate al împăratului și al cercurilor de comandă.</li><li>Imunitatea sau protecția acordată unor specialiști ai Unității 731.</li><li>Minimalizarea unor crime în manuale sau discurs public.</li><li>Disputele diplomatice privind „femeile de confort”.</li><li>Diferența dintre memoria națională japoneză și memoria victimelor din China, Coreea și Asia de Sud-Est.</li></ul></article>
+  </div>
+  <details open><summary>Întrebări de sinteză pentru lecție</summary><div class="details-body"><ol class="number-list"><li>De ce cazul japonez trebuie analizat pe regiuni, nu doar printr-un singur simbol?</li><li>Ce diferențe există între masacru, muncă forțată, exploatare sexuală și experiment medical criminal?</li><li>În ce fel cultura militară a influențat tratamentul prizonierilor?</li><li>De ce memoria crimelor japoneze rămâne atât de controversată în Asia de Est?</li><li>Cum se compară justiția de la Tokyo cu cea de la Nürnberg?</li></ol></div></details>
+</section>
+
+
+    <section class="section" id="dosare">
+  <h2>IX. Dosare foarte detaliate: cum funcționa violența Imperiului Japonez</h2>
+  <p class="section-intro">În cazul Japoniei imperiale, violența era răspândită prin ocupație militară, poliție, muncă forțată, lagăre pentru prizonieri, laboratoare biologice și administrații coloniale. Această secțiune oferă mai multe exemple concrete.</p>
+
+  <details open><summary>1. De ce s-au produs atâtea crime împotriva prizonierilor?</summary><div class="details-body">
+    <p>Cultura militară japoneză punea accent pe onoare, supunere și sacrificiu. Capitularea era privită ca rușine, iar prizonierii inamici erau adesea considerați inferiori moral. Această mentalitate nu explică totul, dar ajută la înțelegerea tratamentului brutal aplicat prizonierilor aliați și asiatici.</p>
+    <div class="key-line"><strong>Disprețul față de predare</strong><span>Soldații care se predau erau considerați lipsiți de onoare, ceea ce facilita abuzurile.</span></div>
+    <div class="key-line"><strong>Lipsa resurselor</strong><span>Armata japoneză nu planifica suficient hrana, transportul și îngrijirea pentru mase mari de prizonieri.</span></div>
+    <div class="key-line"><strong>Disciplină violentă</strong><span>Violența acceptată în interiorul armatei era transferată asupra prizonierilor și civililor.</span></div>
+    <div class="key-line"><strong>Război de ocupație</strong><span>Prizonierii erau folosiți ca forță de muncă pentru proiecte militare, adesea în condiții letale.</span></div>
+  </div></details>
+
+  <details open><summary>2. Tipuri de spații de detenție și exploatare</summary><div class="details-body">
+    <table class="fact-table"><thead><tr><th>Tip</th><th>Cine era ținut acolo?</th><th>Funcție</th></tr></thead><tbody>
+      <tr><td>Lagăre pentru prizonieri de război</td><td>Militari americani, britanici, australieni, olandezi, filipinezi și alții.</td><td>Detenție, muncă forțată, transfer spre șantiere, mine sau căi ferate.</td></tr>
+      <tr><td>Lagăre pentru civili internați</td><td>Coloniști occidentali, misionari, funcționari, femei și copii din teritoriile ocupate.</td><td>Izolare, control și folosire ca pârghie politică.</td></tr>
+      <tr><td>Șantiere de muncă forțată</td><td>Prizonieri aliați și muncitori asiatici romusha.</td><td>Construcție de căi ferate, drumuri, aerodromuri, porturi și fortificații.</td></tr>
+      <tr><td>Închisori Kempeitai</td><td>Suspecți de rezistență, spionaj, activism anti-japonez sau încălcarea ordinelor.</td><td>Interogatorii, tortură, intimidare și execuții.</td></tr>
+      <tr><td>Stații militare de exploatare sexuală</td><td>Femei și fete constrânse, înșelate sau recrutate sub presiune.</td><td>Control sexual militarizat, prevenirea bolilor în logica armatei, exploatare sistematică.</td></tr>
+      <tr><td>Unități biologice</td><td>Prizonieri și civili folosiți ca subiecți fără consimțământ.</td><td>Experimente și dezvoltarea armelor biologice.</td></tr>
+    </tbody></table>
+  </div></details>
+
+  <details open><summary>3. Unitatea 731 nu era izolată: o rețea de război biologic</summary><div class="details-body">
+    <p>Unitatea 731 este cea mai cunoscută, dar cercetarea istorică indică o rețea mai largă de unități pentru prevenție epidemică, purificarea apei și cercetări biologice militare. Denumirile tehnice ascundeau experimente pe oameni și pregătirea armelor biologice.</p>
+    <div class="details-grid">
+      <div class="micro-card"><strong>Pingfang / Harbin</strong><span>Centrul cel mai cunoscut, asociat cu experimente pe oameni și dezvoltarea armelor biologice.</span></div>
+      <div class="micro-card"><strong>Nanjing</strong><span>Unități asociate au funcționat în China ocupată, legând ocupația de cercetarea bacteriologică militară.</span></div>
+      <div class="micro-card"><strong>Guangzhou</strong><span>Rețeaua s-a extins și în sudul Chinei, ceea ce arată amploarea instituțională.</span></div>
+      <div class="micro-card"><strong>Imunitate</strong><span>După război, unii cercetători au evitat pedepse proporționale, deoarece datele au fost dorite de puteri militare.</span></div>
+    </div>
+    <div class="note"><strong>Formulare potrivită:</strong> nu este nevoie de detalii grafice pentru a înțelege gravitatea. Esențial este că statul militar a transformat oameni captivi în material experimental.</div>
+  </div></details>
+
+  <details open><summary>4. „Femeile de confort”: sistem militar, nu episod izolat</summary><div class="details-body">
+    <p>Sistemul a fost justificat de armata japoneză prin controlul trupelor, prevenirea violurilor „neorganizate” și limitarea bolilor, dar în realitate a produs exploatare sexuală coercitivă. Femeile proveneau din Coreea, China, Filipine, Indonezia, Taiwan, Malaya, Birmania și alte zone.</p>
+    <div class="key-line"><strong>Recrutare</strong><span>Unele victime au fost răpite, altele înșelate cu promisiuni de muncă, altele constrânse de sărăcie, autorități locale, intermediari sau presiune militară.</span></div>
+    <div class="key-line"><strong>Control</strong><span>Femeile erau adesea ținute sub pază, mutate între unități, lipsite de libertate reală și supuse violenței.</span></div>
+    <div class="key-line"><strong>Traumă</strong><span>După război, supraviețuitoarele au trăit cu stigmat social, probleme medicale și dificultăți de recunoaștere publică.</span></div>
+    <div class="key-line"><strong>Memorie</strong><span>Subiectul rămâne sensibil în relațiile Japoniei cu Coreea de Sud, China, Filipine și alte state afectate.</span></div>
+  </div></details>
+
+  <details open><summary>5. Cazuri pe regiuni: de ce ocupația nu a fost uniformă</summary><div class="details-body">
+    <table class="fact-table"><thead><tr><th>Regiune</th><th>Forme de violență</th><th>Ce trebuie subliniat</th></tr></thead><tbody>
+      <tr><td>China</td><td>Masacre, execuții, violuri, distrugeri, pacificări, război biologic.</td><td>China a fost centrul violenței japoneze de durată, nu doar un front secundar.</td></tr>
+      <tr><td>Coreea</td><td>Asimilare, muncă forțată, recrutări, exploatare sexuală.</td><td>Colonizarea a precedat războiul mondial și a modelat relațiile postbelice.</td></tr>
+      <tr><td>Filipine</td><td>Bataan, ocupație brutală, rezistență, represalii, Manila.</td><td>Populația civilă a fost prinsă între ocupație, rezistență și luptele finale.</td></tr>
+      <tr><td>Singapore și Malaya</td><td>Sook Ching, muncă forțată, represiune împotriva comunității chineze.</td><td>Identitatea etnică a devenit criteriu de suspiciune politică.</td></tr>
+      <tr><td>Indonezia</td><td>Romusha, rechiziții, foamete, mobilizare politică.</td><td>Ocupația a slăbit colonialismul olandez, dar a produs suferință masivă.</td></tr>
+      <tr><td>Birmania-Thailanda</td><td>Calea ferată, prizonieri aliați, muncitori asiatici, boală și epuizare.</td><td>Memoria occidentală trebuie completată cu memoria muncitorilor asiatici.</td></tr>
+      <tr><td>Borneo</td><td>Sandakan, marșuri ale morții, execuții și colaps militar.</td><td>Finalul războiului a fost deosebit de violent pentru prizonieri.</td></tr>
+    </tbody></table>
+  </div></details>
+
+  <details open><summary>6. Justiția de la Tokyo: de ce a fost incompletă?</summary><div class="details-body">
+    <p>Tribunalul de la Tokyo a judecat lideri japonezi pentru război de agresiune și crime de război, iar procesele locale au urmărit comandanți și gardieni. Totuși, justiția a fost influențată de începutul Războiului Rece, de interesele americane în ocuparea Japoniei și de dorința de stabilitate politică.</p>
+    <div class="key-line"><strong>Împăratul</strong><span>Rolul lui Hirohito a rămas controversat, deoarece nu a fost judecat.</span></div>
+    <div class="key-line"><strong>Unitatea 731</strong><span>Unii responsabili au primit protecție în schimbul datelor experimentale, ceea ce a compromis justiția morală.</span></div>
+    <div class="key-line"><strong>Victime asiatice</strong><span>Unele suferințe ale civililor asiatici au fost mai puțin vizibile decât tratamentul prizonierilor occidentali.</span></div>
+    <div class="key-line"><strong>Memorie</strong><span>Manualele, muzeele și discursul politic japonez au generat dezbateri despre asumare, negare sau minimalizare.</span></div>
+  </div></details>
+</section>
+
+    <section class="section" id="surse">
+      <h2>Surse orientative pentru documentare</h2>
+      <p class="section-intro">Lista este orientativă și poate fi completată cu documente de arhivă, manuale, atlase istorice, mărturii și materiale muzeale. Materialul de față este redactat pentru uz didactic, nu ca înlocuitor al unei monografii academice.</p>
+      <ul class="source-list">
+        <li>The National WWII Museum: materiale despre războiul din Pacific, Bataan, prizonierii de război și ocupația japoneză.</li>
+        <li>Lucrări și sinteze istorice despre Nanjing, China ocupată, Unitatea 731, campaniile japoneze și Tribunalul de la Tokyo.</li>
+        <li>Documente ale Tribunalului Militar Internațional pentru Extremul Orient și procese locale de crime de război.</li>
+        <li>Studii despre Coreea colonială, „femeile de confort”, romusha, Sook Ching, Sandakan și memoria postbelică din Asia de Est.</li>
+      </ul>
+    </section>
+
+    <section class="final-box">
+      <h2>Idee de final pentru elevi</h2>
+      <p>Crimele de stat din Al Doilea Război Mondial trebuie analizate prin întrebări despre ideologie, instituții, ordine, complicitate, victime și memorie. O crimă de masă nu este produsă doar de lideri, ci și de administrații, funcționari, poliții, armate, medici, economii de război și societăți care acceptă dezumanizarea.</p>
+    </section>
+  </main>
+</body>
+</html>

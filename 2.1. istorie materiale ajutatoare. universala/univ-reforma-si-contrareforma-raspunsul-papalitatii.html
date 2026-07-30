@@ -1,0 +1,349 @@
+<!DOCTYPE html><html lang="ro"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>reforma-si-contrareforma-raspunsul-papalitatii</title><style>
+:root {
+  --bg: #f6f0e7; --paper: #fffaf3; --paper-2: #ffffff; --ink: #2f241c;
+  --title: #3c2a1e; --muted: #5b4a3d; --accent: #7a4f2a; --accent-2: #9b6a3c;
+  --accent-soft: #f0e4d4; --line: rgba(91,62,36,.18); --line-strong: rgba(91,62,36,.34);
+  --shadow: 0 26px 70px rgba(0,0,0,.28); --shadow-small: 0 12px 30px rgba(0,0,0,.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin:0; min-height:100vh; color:var(--ink); font-family:Georgia,"Times New Roman",serif;
+  background: radial-gradient(circle at 50% 0%,rgba(132,78,40,.72),transparent 34%),
+  radial-gradient(circle at 50% 100%,rgba(112,63,31,.44),transparent 36%),
+  radial-gradient(circle at 0 50%,rgba(29,13,6,.92),transparent 42%),
+  radial-gradient(circle at 100% 50%,rgba(29,13,6,.92),transparent 42%),
+  linear-gradient(180deg,#32190c 0%,#4a2a18 46%,#1e0e05 100%); background-attachment:fixed; }
+body::before { content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:radial-gradient(circle at center,transparent 0%,rgba(0,0,0,.10) 48%,rgba(0,0,0,.44) 100%),
+  linear-gradient(90deg,rgba(0,0,0,.20),transparent 18%,transparent 82%,rgba(0,0,0,.20)); }
+#reading-progress { position:fixed; left:0; top:0; height:4px; width:0; z-index:20; background:#d9b480; box-shadow:0 1px 5px rgba(0,0,0,.35); }
+.page { position:relative; z-index:1; width:min(1180px,calc(100% - 32px)); margin:0 auto; padding:34px 0 70px; }
+.topbar { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:18px; flex-wrap:wrap; }
+.top-actions { display:flex; align-items:center; gap:9px; flex-wrap:wrap; }
+.back-link,.tag,.tool-btn { display:inline-flex; align-items:center; border:1px solid var(--line); background:rgba(255,250,243,.88); color:var(--title); border-radius:999px; padding:10px 15px; text-decoration:none; font-size:14px; font-weight:700; box-shadow:var(--shadow-small); font-family:inherit; cursor:pointer; }
+.back-link:hover,.tool-btn:hover { background:#fff6eb; }
+.hero,.section,.nav-card,.final-box { background:rgba(255,250,243,.96); border:1px solid var(--line); border-radius:28px; box-shadow:var(--shadow); }
+.hero { padding:38px; margin-bottom:24px; position:relative; overflow:hidden; }
+.hero::after { content:var(--hero-year); position:absolute; right:26px; bottom:-22px; font-size:108px; font-weight:900; letter-spacing:-4px; color:rgba(122,79,42,.075); pointer-events:none; }
+.eyebrow,.section-kicker { margin:0 0 8px; font-size:15px; color:var(--accent); font-weight:800; letter-spacing:.08em; text-transform:uppercase; text-align:left; }
+h1 { margin:0; max-width:980px; font-size:clamp(38px,5vw,62px); line-height:1.04; color:var(--title); letter-spacing:-1.4px; text-align:left; }
+h2 { margin:0 0 14px; color:var(--title); font-size:clamp(28px,3vw,38px); line-height:1.15; text-align:left; }
+h3 { margin:0 0 12px; color:var(--title); font-size:22px; line-height:1.22; text-align:left; }
+h4 { margin:16px 0 8px; color:var(--title); font-size:18px; text-align:left; }
+.subtitle,.section-intro,p,li,dd,td { color:var(--muted); text-align:justify; text-align-last:left; hyphens:auto; }
+.subtitle { margin:18px 0 0; max-width:1000px; font-size:19px; line-height:1.78; }
+.section-intro,p,li,dd { font-size:17px; line-height:1.72; }
+.section-intro { margin:0 0 20px; max-width:1040px; }
+.summary-grid,.three-col,.two-col,.four-col,.term-grid,.quick-grid,.details-grid { display:grid; gap:14px; }
+.summary-grid { grid-template-columns:repeat(4,1fr); margin-top:26px; }
+.three-col { grid-template-columns:repeat(3,1fr); }
+.two-col { grid-template-columns:repeat(2,1fr); }
+.four-col,.term-grid,.quick-grid { grid-template-columns:repeat(4,1fr); }
+.details-grid { grid-template-columns:repeat(2,1fr); gap:12px; }
+.summary-card,.info-card,.wide-card,.term-card,.quick-card,.micro-card,.warning-box,.source-note,.fact-card { background:var(--paper-2); border:1px solid rgba(91,62,36,.14); border-radius:20px; box-shadow:var(--shadow-small); text-align:justify; text-align-last:left; }
+.summary-card { padding:16px; min-height:132px; }
+.info-card,.wide-card,.term-card,.quick-card,.micro-card,.warning-box,.source-note,.fact-card { padding:20px; }
+.wide-card { margin-top:14px; }
+.summary-card strong,.term-card strong,.quick-card strong,.micro-card strong,.fact-card strong { display:block; color:var(--title); font-size:17px; margin-bottom:8px; text-align:left; }
+.summary-card span,.term-card span,.quick-card span,.micro-card span,.fact-card span { display:block; color:var(--muted); font-size:15.5px; line-height:1.58; }
+.nav-card { display:flex; gap:9px; align-items:center; flex-wrap:wrap; padding:18px 20px; margin-bottom:24px; }
+.nav-card b { color:var(--title); }
+.nav-card a,.mini-btn { color:var(--title); background:var(--accent-soft); border:1px solid rgba(91,62,36,.16); border-radius:999px; text-decoration:none; padding:8px 12px; font-weight:700; font-size:14px; cursor:pointer; font-family:inherit; }
+.nav-card a:hover,.mini-btn:hover { background:#e5d2bb; }
+.section { padding:30px; margin-bottom:24px; }
+.clean,.number-list { margin:0; padding-left:22px; }
+.clean li,.number-list li { margin:0 0 9px; padding-left:2px; }
+.date-pill { display:inline-block; color:var(--title); font-weight:800; background:#f3eadf; border:1px solid rgba(91,62,36,.13); border-radius:999px; padding:2px 9px; margin-right:5px; white-space:nowrap; }
+.definition,.note,.correction { margin-top:18px; background:#fff8ef; border:1px solid rgba(122,79,42,.22); border-left:6px solid rgba(122,79,42,.48); border-radius:18px; padding:18px 20px; color:var(--muted); font-size:17px; line-height:1.7; text-align:justify; }
+.correction { background:#fff4e8; border-left-color:#a65f32; }
+.definition strong,.note strong,.correction strong { color:var(--title); }
+details { background:#fffdf9; border:1px solid rgba(91,62,36,.14); border-radius:20px; box-shadow:var(--shadow-small); margin-top:14px; overflow:hidden; }
+details[open] { background:#fffaf3; }
+summary { cursor:pointer; list-style:none; padding:18px 20px; font-size:19px; font-weight:800; color:var(--title); display:flex; justify-content:space-between; align-items:center; gap:18px; text-align:left; }
+summary::-webkit-details-marker { display:none; }
+summary::after { content:"Deschide"; color:var(--muted); font-size:14px; background:#f3eadf; border:1px solid rgba(91,62,36,.14); border-radius:999px; padding:7px 11px; white-space:nowrap; }
+details[open]>summary::after { content:"Ascunde"; }
+.details-body { border-top:1px solid rgba(91,62,36,.12); padding:18px 20px 20px; }
+.key-line { display:grid; grid-template-columns:220px 1fr; gap:14px; padding:14px 0; border-bottom:1px dashed rgba(91,62,36,.18); }
+.key-line:last-child { border-bottom:0; }
+.key-line strong { color:var(--title); text-align:left; }
+.key-line span { color:var(--muted); line-height:1.65; text-align:justify; }
+.timeline { display:grid; gap:14px; margin-top:18px; }
+.event { display:grid; grid-template-columns:138px 1fr; gap:18px; align-items:stretch; background:#fff; border:1px solid rgba(91,62,36,.14); border-radius:20px; box-shadow:var(--shadow-small); overflow:hidden; }
+.date { background:linear-gradient(180deg,#7a4f2a,#5b351b); color:#fffaf3; display:flex; align-items:center; justify-content:center; text-align:center; padding:14px; font-size:18px; line-height:1.25; font-weight:900; }
+.event>div:last-child { padding:17px 18px 18px 0; }
+.event h3 { margin-bottom:6px; }
+.event p { margin:0; }
+.table-wrap { overflow-x:auto; margin-top:14px; border-radius:18px; border:1px solid rgba(91,62,36,.14); background:#fff; box-shadow:var(--shadow-small); }
+table { width:100%; border-collapse:collapse; min-width:760px; }
+th,td { padding:13px 14px; border-bottom:1px solid rgba(91,62,36,.12); font-size:16px; line-height:1.55; vertical-align:top; }
+th { background:#f3eadf; color:var(--title); text-align:left; font-weight:800; }
+tr:last-child td { border-bottom:0; }
+.date-list { display:grid; gap:10px; }
+.date-row { display:grid; grid-template-columns:150px 1fr; gap:16px; padding:14px 16px; background:#fff; border:1px solid rgba(91,62,36,.13); border-radius:16px; box-shadow:var(--shadow-small); }
+.date-row strong { color:var(--title); text-align:left; }
+.date-row span { color:var(--muted); line-height:1.6; text-align:justify; }
+.final-box { padding:28px; background:linear-gradient(135deg,#fffaf3,#f4e4d1); }
+.final-box p:last-child { margin-bottom:0; }
+.small-muted { font-size:15px; color:#725c49; line-height:1.6; }
+.crosslinks { display:flex; gap:10px; flex-wrap:wrap; margin-top:16px; }
+.crosslinks a { text-decoration:none; color:var(--title); font-weight:800; background:#fff; border:1px solid var(--line); padding:10px 13px; border-radius:14px; }
+@media(max-width:980px){.summary-grid,.three-col,.four-col,.term-grid,.quick-grid{grid-template-columns:repeat(2,1fr)}.two-col,.details-grid{grid-template-columns:1fr}}
+@media(max-width:680px){.page{width:min(100% - 22px,1180px);padding-top:22px}.hero,.section,.final-box{padding:22px;border-radius:22px}.summary-grid,.three-col,.four-col,.term-grid,.quick-grid{grid-template-columns:1fr}.event{grid-template-columns:1fr}.date{min-height:66px}.event>div:last-child{padding:0 16px 16px}.key-line,.date-row{grid-template-columns:1fr;gap:6px}summary{align-items:flex-start;flex-direction:column}.hero::after{font-size:78px}}
+@media print { body{background:white!important}.page{width:100%;padding:0}.topbar,.nav-card,#reading-progress{display:none!important}.hero,.section,.final-box{box-shadow:none;border:1px solid #aaa;break-inside:avoid}.section{break-before:auto}details{break-inside:avoid}details:not([open])>.details-body{display:block}.hero::after{display:none} }
+
+.chapter-note{margin:16px 0;padding:16px 18px;border-radius:16px;background:#f7efe4;border:1px solid rgba(91,62,36,.16);font-size:16px;line-height:1.65;color:var(--muted)}
+.hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.hero-meta span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 11px;color:var(--muted);font-size:14px;font-weight:700}
+</style></head>
+<body style="--hero-year:'1563';"><div id="reading-progress"></div><main class="page">
+<div class="topbar"><a class="back-link" href="evaluare_cu_material_reforma_si_contrareforma.html">← Înapoi la materiale</a><div class="top-actions"><span class="tag">Material ajutător · Epoca modernă timpurie</span><button class="tool-btn" onclick="toggleAll(true)">Deschide tot</button><button class="tool-btn" onclick="toggleAll(false)">Închide tot</button><button class="tool-btn" onclick="window.print()">Tipărește</button></div></div>
+<section class="hero"><p class="eyebrow">Reforma Catolică · secolele XVI–XVII</p><h1>Reforma și Contrareforma: răspunsul papalității</h1><p class="subtitle">Conciliul de la Trento, noile ordine religioase, seminariile, Inchiziția, Indexul, misiunile și disciplina parohială sunt prezentate ca părți ale aceluiași proces: reconstruirea autorității și identității catolice după fragmentarea Europei.</p><div class="hero-meta"><span>Material extins</span><span>Cronologie comentată</span><span>Exemple și clarificări</span><span>Versiune pentru studiu</span></div><div class="summary-grid"><div class="summary-card"><strong>Trento</strong><span>25 de sesiuni între 1545 și 1563 definesc doctrina și disciplina postmedievală.</span></div><div class="summary-card"><strong>Iezuiți</strong><span>Școala, misiunea și consilierea politică creează o rețea catolică globală.</span></div><div class="summary-card"><strong>Control</strong><span>Inchiziția romană și Indexul încearcă să limiteze erezia și circulația ideilor.</span></div><div class="summary-card"><strong>Pastorală</strong><span>Seminarii, catehisme, vizitații și noi forme de cult reformează viața parohiei.</span></div></div></section>
+<nav class="nav-card" aria-label="Cuprins"><b>Cuprins:</b><a href="#definitie">Definiție</a><a href="#inainte">Înainte de Trento</a><a href="#papi">Papi</a><a href="#trento">Trento</a><a href="#comparatie">Doctrine</a><a href="#ordine">Ordine</a><a href="#control">Inchiziție</a><a href="#pastorala">Pastorală</a><a href="#misiuni">Misiuni</a><a href="#transilvania">Transilvania</a><a href="#rezultate">Bilanț</a><a href="#cronologie">Cronologie</a><a href="#trento-sesiuni">Trento detaliat</a><a href="#papi-extins">Papi</a><a href="#ordine-extinse">Ordine extinse</a><a href="#pastorala-extinsa">Pastorală</a><a href="#recatolicizare-extinsa">Recatolicizare</a><a href="#misiuni-extinse">Misiuni detaliat</a><a href="#transilvania-extinsa">Transilvania extins</a><a href="#clarificari-contra">Clarificări</a><a href="#control-extins">Control detaliat</a><a href="#mistica-sfinti">Mistică și sfinți</a></nav>
+<section class="section" id="definitie"><p class="section-kicker">Reformă internă și contraofensivă</p><h2>I. Ce înseamnă Reforma Catolică?</h2><p class="section-intro">Expresia „Contrareformă” pune accentul pe reacția împotriva protestantismului. „Reforma Catolică” evidențiază faptul că în interiorul Bisericii existau, înainte de 1517, inițiative de disciplinare, spiritualitate și educație. Cele două dimensiuni s-au unit după 1540: papalitatea a corectat abuzuri, a definit doctrina și a construit instituții capabile să recâștige teritorii și suflete.</p>
+<div class="four-col"><div class="micro-card"><strong>Doctrină</strong><span>Trento clarifică Scriptura și Tradiția, justificarea, sacramentele, Euharistia, sfinții și imaginile.</span></div><div class="micro-card"><strong>Disciplină</strong><span>Episcopilor li se cere rezidență, clerului pregătire, iar diecezelor seminarii și vizitații.</span></div><div class="micro-card"><strong>Instituții</strong><span>Inchiziția romană, Indexul și noile congregații întăresc controlul doctrinar.</span></div><div class="micro-card"><strong>Mobilizare</strong><span>Iezuiții, capucinii, ursulinele și carmelitele folosesc școala, predica, misiunea și mistica.</span></div></div></section>
+
+<section class="section" id="inainte"><p class="section-kicker">Rădăcinile reformei din interior</p><h2>II. Înainte de Trento: inițiativele catolice de reînnoire</h2><div class="timeline"><article class="event"><div class="date">1497</div><div><h3>Oratoriul Iubirii Divine</h3><p>La Genova și apoi la Roma apar cercuri de clerici și laici preocupați de rugăciune, caritate și reforma vieții personale.</p></div></article><article class="event"><div class="date">1512–1517</div><div><h3>Al V-lea Conciliu de la Lateran</h3><p>Discută disciplina clerului și reforma instituțiilor, dar nu reușește să răspundă suficient crizei iminente.</p></div></article><article class="event"><div class="date">1524</div><div><h3>Teatinii</h3><p>Gaetano de Thiene și Gian Pietro Carafa creează un ordin de clerici regulari care urmărește formarea și exemplul pastoral.</p></div></article><article class="event"><div class="date">1528</div><div><h3>Capucinii</h3><p>Ramură reformată a franciscanilor, capucinii promovează austeritatea, predica populară, caritatea și îngrijirea bolnavilor.</p></div></article><article class="event"><div class="date">1534–1535</div><div><h3>Iezuiții și ursulinele</h3><p>Ignațiu de Loyola și companionii fac primele voturi la Paris în 1534; Angela Merici întemeiază Compania Sfintei Ursula în 1535 pentru educația fetelor.</p></div></article><article class="event"><div class="date">1537</div><div><h3><em>Consilium de emendanda ecclesia</em></h3><p>Comisia numită de papa Paul al III-lea recunoaște public abuzuri administrative, pluralismul beneficiilor și nevoia reformei curiei.</p></div></article></div></section>
+
+<section class="section" id="papi"><p class="section-kicker">Instituționalizarea răspunsului</p><h2>III. Papalitatea între condamnare și reformă</h2><div class="table-wrap"><table><thead><tr><th>Papă</th><th>Pontificat</th><th>Măsuri și semnificație</th></tr></thead><tbody>
+<tr><td>Leon al X-lea</td><td>1513–1521</td><td>Condamnă 41 de propoziții ale lui Luther prin <em>Exsurge Domine</em> (15 iunie 1520) și îl excomunică la 3 ianuarie 1521.</td></tr>
+<tr><td>Adrian al VI-lea</td><td>1522–1523</td><td>Recunoaște abuzurile curiei la Dieta de la Nürnberg, dar pontificatul scurt nu permite reforme ample.</td></tr>
+<tr><td>Paul al III-lea</td><td>1534–1549</td><td>Aprobă Societatea lui Isus în 1540, creează Inchiziția romană în 1542 și convoacă Trento în 1545.</td></tr>
+<tr><td>Iuliu al III-lea</td><td>1550–1555</td><td>Redeschide conciliul în 1551; sunt definite Euharistia, penitența și ungerea bolnavilor.</td></tr>
+<tr><td>Paul al IV-lea</td><td>1555–1559</td><td>Accent represiv: extinde Inchiziția și publică primul Index papal general în 1559.</td></tr>
+<tr><td>Pius al IV-lea</td><td>1559–1565</td><td>Încheie Conciliul de la Trento în 1563 și promulgă profesiunea de credință tridentină în 1564.</td></tr>
+<tr><td>Pius al V-lea</td><td>1566–1572</td><td>Publică Catehismul Roman (1566), Breviarul reformat (1568) și Misalul Roman (1570).</td></tr>
+<tr><td>Grigore al XIII-lea</td><td>1572–1585</td><td>Sprijină colegiile, diplomația confesională și introduce calendarul gregorian în 1582.</td></tr>
+<tr><td>Sixt al V-lea</td><td>1585–1590</td><td>Reorganizează curia prin congregații permanente în 1588 și transformă urbanistic Roma.</td></tr>
+</tbody></table></div></section>
+
+<section class="section" id="trento"><p class="section-kicker">Conciliul decisiv</p><h2>IV. Conciliul de la Trento, 1545–1563</h2><p class="section-intro">Conciliul s-a reunit în 25 de sesiuni, întrerupte de războaie, epidemii și conflicte dintre papă, împărat și principii. Nu a fost o singură ședință continuă, ci trei mari perioade, fiecare cu propriile priorități.</p>
+<div class="three-col"><article class="info-card"><h3>Prima perioadă: 1545–1547</h3><p>Deschisă la 13 decembrie 1545 sub Paul al III-lea. La 8 aprilie 1546 sunt definite Scriptura și Tradiția; la 7 iunie, păcatul originar; la 13 ianuarie 1547, justificarea; la 3 martie 1547, sacramentele.</p></article><article class="info-card"><h3>A doua perioadă: 1551–1552</h3><p>Sub Iuliu al III-lea, conciliul tratează Euharistia (11 octombrie 1551), penitența și ungerea bolnavilor (25 noiembrie 1551). Prezența unor delegați protestanți nu produce reconcilierea.</p></article><article class="info-card"><h3>A treia perioadă: 1562–1563</h3><p>Sub Pius al IV-lea sunt definite jertfa Liturghiei, hirotonirea, căsătoria, Purgatoriul, sfinții, relicvele, imaginile și indulgențele. Conciliul se încheie la 4 decembrie 1563.</p></article></div>
+<details open><summary>Hotărârile doctrinare explicate</summary><div class="details-body"><div class="key-line"><strong>Scriptură și Tradiție</strong><span>Revelația este transmisă prin Scriptură și tradițiile apostolice; Biserica păstrează canonul biblic și folosește Vulgata latină ca text autentic pentru lectură și dispută.</span></div><div class="key-line"><strong>Justificare</strong><span>Harul lui Dumnezeu are inițiativa; omul nu se mântuiește prin efort propriu, dar libertatea umană cooperează cu harul. Credința trebuie să lucreze prin iubire.</span></div><div class="key-line"><strong>Șapte sacramente</strong><span>Botez, Mir, Euharistie, Pocăință, Ungerea bolnavilor, Hirotonire și Căsătorie.</span></div><div class="key-line"><strong>Euharistie</strong><span>Trento reafirmă prezența reală și transsubstanțierea, precum și caracterul sacrificial al Liturghiei.</span></div><div class="key-line"><strong>Sfinți și imagini</strong><span>Venerarea sfinților, relicvelor și imaginilor este păstrată, cu obligația evitării superstiției, indecenței și confuziei doctrinare.</span></div><div class="key-line"><strong>Indulgențe</strong><span>Doctrina este menținută; câștigul financiar și abuzurile sunt condamnate.</span></div></div></details>
+<details><summary>Reforma disciplinară și pastorală</summary><div class="details-body"><ul class="clean"><li>Episcopii și clericii trebuie să locuiască în diecezele și parohiile lor, nu doar să încaseze veniturile.</li><li>Fiecare dieceză trebuie să organizeze un seminar pentru formarea viitorilor preoți.</li><li>Sunt combătute simonia, cumulul de funcții și acordarea beneficiilor unor persoane nepregătite.</li><li>Vizitațiile episcopale, sinoadele diecezane, registrele parohiale și catehizarea devin instrumente ale uniformizării.</li><li>Decretul <em>Tametsi</em> din 11 noiembrie 1563 cere, acolo unde este promulgat, ca mariajul să fie celebrat înaintea parohului și a doi sau trei martori pentru a fi valid.</li></ul></div></details>
+<div class="correction"><strong>Nuanță:</strong> unele schimbări materiale prezentate frecvent ca „ordine directe ale conciliului” — confesionalele standardizate, băncile, tabernacolul pe altar sau eliminarea grilajelor — s-au răspândit în epoca post-tridentină, dar nu toate provin dintr-un singur decret universal al Conciliului. Ele reflectă aplicarea regională a unei noi pastorale vizibile și disciplinate.</div></section>
+
+<section class="section" id="comparatie"><p class="section-kicker">Punctele de confruntare</p><h2>V. Trento și doctrinele protestante: comparație</h2><div class="table-wrap"><table><thead><tr><th>Problemă</th><th>Poziții protestante</th><th>Răspuns catolic tridentin</th></tr></thead><tbody>
+<tr><td>Autoritatea</td><td>Scriptura ca normă supremă; respingerea jurisdicției papale</td><td>Scriptură și Tradiție în Biserică; autoritatea episcopală și papală este reafirmată</td></tr>
+<tr><td>Mântuirea</td><td>Justificare prin credință; accent pe inițiativa exclusivă a harului</td><td>Harul este absolut necesar; credința nu rămâne izolată de iubire și de transformarea vieții</td></tr>
+<tr><td>Sacramente</td><td>În general două: botez și Euharistie</td><td>Șapte sacramente, toate instituite de Hristos</td></tr>
+<tr><td>Euharistie</td><td>De la prezență reală luterană la interpretarea spirituală sau memorială</td><td>Transsubstanțiere și jertfa Liturghiei</td></tr>
+<tr><td>Cler și călugărie</td><td>Preoția universală; desființarea celibatului și a multor ordine în unele teritorii</td><td>Caracter sacramental al hirotonirii, celibat, ordine religioase și disciplină reformată</td></tr>
+<tr><td>Imagini și sfinți</td><td>De la acceptare limitată la iconoclasm</td><td>Venerare legitimă, controlată prin claritate, decență și doctrină</td></tr>
+</tbody></table></div></section>
+
+<section class="section" id="ordine"><p class="section-kicker">Oameni, rețele și educație</p><h2>VI. Ordinele religioase ale reînnoirii catolice</h2><div class="table-wrap"><table><thead><tr><th>Ordin / comunitate</th><th>Data</th><th>Scop</th><th>Exemple</th></tr></thead><tbody>
+<tr><td>Capucini</td><td>1528</td><td>Austeritate franciscană, predică populară, caritate și asistență în epidemii</td><td>Haină maro cu glugă; misiuni urbane și rurale</td></tr>
+<tr><td>Ursuline</td><td>1535</td><td>Educația fetelor și formarea creștină a femeilor</td><td>Angela Merici; comunități școlare răspândite în Europa</td></tr>
+<tr><td>Societatea lui Isus</td><td>1534 / 1540</td><td>Educație, misiuni, predică, consilierea principilor și apărarea papalității</td><td>Ignațiu de Loyola, Francisc Xaveriu, Petru Canisiu, Matteo Ricci</td></tr>
+<tr><td>Carmelitele descălțate</td><td>1562; ramura masculină 1568</td><td>Reformă contemplativă și mistică</td><td>Tereza de Ávila și Ioan al Crucii; ordinul este recunoscut separat în 1593</td></tr>
+<tr><td>Oratorienii</td><td>1575</td><td>Predică, muzică sacră, educație și viață comună fără voturi monastice solemne</td><td>Filip Neri; dezvoltarea oratoriului muzical</td></tr>
+<tr><td>Ordine medievale reînnoite</td><td>sec. XVI</td><td>Dominicanii, franciscanii și benedictinii își reformează disciplina și studiile</td><td>Predică, universități, misiuni, combaterea ereziei</td></tr>
+</tbody></table></div>
+<details open><summary>Iezuiții: „armată a papei” sau rețea educațională?</summary><div class="details-body"><p>Metafora militară surprinde disciplina și ascultarea, dar simplifică. Societatea lui Isus este aprobată de Paul al III-lea prin bula <em>Regimini militantis Ecclesiae</em> la <strong>27 septembrie 1540</strong>. <em>Exercițiile spirituale</em> sunt aprobate în <strong>1548</strong>. Colegiul Roman se deschide în <strong>1551</strong>, iar <em>Ratio Studiorum</em> din <strong>1599</strong> uniformizează programa: gramatică, retorică, filosofie, teologie, teatru școlar și dispută.</p><div class="three-col"><div class="micro-card"><strong>Francisc Xaveriu</strong><span>Ajunge în Goa în 1542 și în Japonia în 1549; moare în 1552 încercând să intre în China.</span></div><div class="micro-card"><strong>Petru Canisiu</strong><span>Publică în 1555 primul său catehism; organizează colegii și predică în Imperiul Romano-German.</span></div><div class="micro-card"><strong>Matteo Ricci</strong><span>Intră în China în 1583 și folosește matematica, cartografia și cultura clasică pentru dialog.</span></div></div></div></details></section>
+
+<section class="section" id="control"><p class="section-kicker">Controlul ideilor</p><h2>VII. Inchiziția romană și Indexul cărților interzise</h2><div class="two-col"><article class="info-card"><h3>Inchiziții diferite</h3><p>Inchiziția medievală este organizată în secolul al XIII-lea, iar Inchiziția spaniolă în <strong>1478</strong>, sub controlul monarhiei. În <strong>1542</strong>, Paul al III-lea creează Congregația Sfântului Oficiu, cunoscută drept Inchiziția romană, pentru supravegherea doctrinei în Italia și în teritorii catolice.</p></article><article class="info-card"><h3>Indexul</h3><p>Primul Index papal general apare în <strong>1559</strong>; un Index tridentin revizuit este publicat în <strong>1564</strong>. Cărțile puteau fi interzise complet, permise după corecturi sau rezervate cititorilor autorizați. Controlul tiparului devine parte a „confesionalizării” culturii.</p></article></div>
+<details><summary>Metode, jurisdicție și exemple</summary><div class="details-body"><div class="key-line"><strong>Tribunal</strong><span>Anchete, mărturii, interogatorii și sentințe ecleziastice; pedepsele capitale erau executate de autoritățile seculare.</span></div><div class="key-line"><strong>Galileo</strong><span>În 1616 i se cere să nu susțină heliocentrismul ca adevăr demonstrat; în 1633 este judecat după publicarea <em>Dialogului</em> și condamnat la arest la domiciliu.</span></div><div class="key-line"><strong>Giordano Bruno</strong><span>Este executat la Roma în 1600 după un proces complex care privea multiple teze teologice, nu doar cosmologia infinitului.</span></div><div class="key-line"><strong>Diferențe regionale</strong><span>Spania, Portugalia și Italia au instituții și priorități diferite; nu a existat o singură „Inchiziție europeană” uniformă.</span></div></div></details></section>
+
+<section class="section" id="pastorala"><p class="section-kicker">Biserica în viața cotidiană</p><h2>VIII. Educație, parohie și disciplinarea credincioșilor</h2><div class="three-col"><article class="info-card"><h3>Seminarii și cler</h3><p>După 1563, seminariile diecezane pregătesc preoții în teologie, latină, predică și administrarea sacramentelor. Episcopi precum Carol Borromeu, arhiepiscop de Milano din 1564, transformă vizitația și sinodul provincial în instrumente de reformă.</p></article><article class="info-card"><h3>Catehisme și predică</h3><p>Catehismul Roman din 1566, catehismele lui Canisiu și manualele locale oferă răspunsuri uniforme. Predica devine mai frecventă, iar confreriile organizează caritate, procesiuni și devoțiuni.</p></article><article class="info-card"><h3>Spațiul bisericii</h3><p>Altarul, tabernacolul, confesionalul, amvonul și imaginile sunt organizate pentru a face doctrina vizibilă. Băncile se răspândesc în multe regiuni, dar ritmul diferă de la o țară la alta.</p></article></div></section>
+
+<section class="section" id="misiuni"><p class="section-kicker">O Reformă Catolică globală</p><h2>IX. Misiunile în Americi, Asia și Africa</h2><p class="section-intro">Expansiunea iberică și ordinelor religioase transformă catolicismul într-o religie cu adevărat globală. Misiunea a însemnat convertire, traducere, școală și asistență, dar s-a desfășurat în cadrul imperiilor coloniale și a fost însoțită uneori de constrângere, distrugerea culturilor locale și conflicte de jurisdicție.</p>
+<div class="four-col"><div class="micro-card"><strong>Mexic, 1524</strong><span>„Cei doisprezece apostoli ai Mexicului”, franciscani, inițiază o vastă campanie de catehizare.</span></div><div class="micro-card"><strong>Goa, 1542</strong><span>Francisc Xaveriu folosește Goa ca bază pentru misiunile din India și Asia de Sud-Est.</span></div><div class="micro-card"><strong>Japonia, 1549</strong><span>Misiunea iezuită obține convertiri importante înaintea persecuțiilor de la sfârșitul secolului.</span></div><div class="micro-card"><strong>China, 1583</strong><span>Matteo Ricci adoptă limba și cultura elitelor, folosind știința ca instrument de dialog.</span></div></div></section>
+
+<section class="section" id="transilvania"><p class="section-kicker">Recatolicizare în Europa Centrală</p><h2>X. Papalitatea, iezuiții și Transilvania</h2><div class="timeline"><article class="event"><div class="date">1571–1576</div><div><h3>Ștefan Báthory</h3><p>Principe catolic într-un stat majoritar protestant, păstrează sistemul plural, dar pregătește revenirea instituțiilor catolice.</p></div></article><article class="event"><div class="date">1579</div><div><h3>Invitarea iezuiților</h3><p>Începe o misiune educațională și pastorală susținută de Báthory.</p></div></article><article class="event"><div class="date">1581</div><div><h3>Colegiul de la Cluj</h3><p>Instituția iezuită devine centru de învățământ superior și nucleu al recatolicizării.</p></div></article><article class="event"><div class="date">1588</div><div><h3>Expulzarea</h3><p>Dieta îi îndepărtează pe iezuiți; ordinul va reveni în alte etape, ceea ce arată fragilitatea politicii confesionale.</p></div></article><article class="event"><div class="date">sec. XVII–XVIII</div><div><h3>Educație și arhitectură</h3><p>Colegii, misiuni și mai târziu biserici baroce la Cluj, Sibiu și Târgu Mureș contribuie la refacerea prezenței catolice.</p></div></article></div>
+<div class="correction"><strong>Despre anul 1653:</strong> <em>Approbatae Constitutiones</em> este colecția legilor Dietei transilvănene adoptate între 1541 și 1653. Nu este o constituție internă iezuită. În materialele atașate apar ambele interpretări; în această prezentare este reținută forma istoric corectă.</div></section>
+
+<section class="section" id="rezultate"><p class="section-kicker">Bilanț</p><h2>XI. Ce a reușit și ce nu a reușit Contrareforma?</h2><div class="two-col"><article class="info-card"><h3>Reușite</h3><ul class="clean"><li>Stabilizează doctrina catolică pentru secole.</li><li>Îmbunătățește formarea clerului și controlul episcopal.</li><li>Recuperează sau consolidează catolicismul în Polonia, Austria, Bavaria, sudul Germaniei, Boemia după 1620 și părți ale Ungariei.</li><li>Construiește o rețea globală de colegii și misiuni.</li><li>Stimulează mistica, muzica, teatrul și arta barocă.</li></ul></article><article class="info-card"><h3>Limite și costuri</h3><ul class="clean"><li>Nu reface unitatea creștinismului occidental.</li><li>Întărește cenzura, tribunalele și uniformizarea forțată.</li><li>Leagă religia de rivalitatea dintre state și dinastii.</li><li>Misiunea globală se intersectează cu dominația colonială.</li><li>În multe regiuni, pluralismul rămâne juridic inegal.</li></ul></article></div></section>
+
+
+<section class="section" id="trento-sesiuni">
+  <p class="section-kicker">Conciliul analizat sesiune cu sesiune</p>
+  <h2>XII. Trento în detaliu: trei perioade, două întreruperi și o reformă de lungă durată</h2>
+  <p class="section-intro">Conciliul de la Trento nu a fost o adunare continuă de optsprezece ani. A funcționat în trei perioade, sub trei papi, pe fondul războaielor dintre Habsburgi și Franța, al presiunii principilor germani și al neîncrederii reciproce dintre papalitate și episcopi. Decretele doctrinare și disciplinare au fost elaborate treptat și aplicate apoi timp de decenii.</p>
+  <div class="timeline">
+    <article class="event"><div class="date">13 dec. 1545</div><div><h3>Deschiderea</h3><p>Conciliul este convocat de Paul al III-lea la Trento, oraș imperial, dar apropiat cultural de Italia. Participarea inițială este redusă; numărul episcopilor crește în sesiunile finale.</p></div></article>
+    <article class="event"><div class="date">8 apr. 1546</div><div><h3>Scriptură și Tradiție</h3><p>Sesiunea a IV-a confirmă canonul biblic catolic, rolul tradițiilor apostolice și utilizarea Vulgatei ca text latin autentic pentru lecturi, predică și dispută.</p></div></article>
+    <article class="event"><div class="date">17 iun. 1546</div><div><h3>Păcatul originar</h3><p>Decretul reafirmă universalitatea păcatului originar și eficiența botezului, păstrând o formulare specială privind Fecioara Maria.</p></div></article>
+    <article class="event"><div class="date">13 ian. 1547</div><div><h3>Justificarea</h3><p>Unul dintre cele mai ample decrete explică prioritatea harului, libertatea omului, credința, speranța, iubirea și faptele. Conciliul respinge atât ideea autosuficienței morale, cât și lectura sa asupra formulei „numai prin credință”.</p></div></article>
+    <article class="event"><div class="date">3 mar. 1547</div><div><h3>Sacramentele</h3><p>Sunt reafirmate cele șapte sacramente, caracterul lor instituit de Hristos și eficiența lor ca mijloace ale harului.</p></div></article>
+    <article class="event"><div class="date">1547–1549</div><div><h3>Transferul la Bologna și suspendarea</h3><p>Invocând epidemia, majoritatea se mută la Bologna, dar împăratul contestă transferul. Paul al III-lea suspendă lucrările în 1549.</p></div></article>
+    <article class="event"><div class="date">1 mai 1551</div><div><h3>Reluarea sub Iuliu al III-lea</h3><p>A doua perioadă încearcă să atragă și delegați protestanți, dar războiul principilor germani împotriva lui Carol al V-lea provoacă o nouă suspendare în aprilie 1552.</p></div></article>
+    <article class="event"><div class="date">11 oct. 1551</div><div><h3>Euharistia</h3><p>Conciliul afirmă prezența reală și substanțială a lui Hristos și folosește termenul de transsubstanțiere pentru schimbarea pâinii și vinului.</p></div></article>
+    <article class="event"><div class="date">25 nov. 1551</div><div><h3>Pocăința și ungerea bolnavilor</h3><p>Sunt definite rolul mărturisirii, absoluțiunii preotului, satisfacției și sacramentului ungerii.</p></div></article>
+    <article class="event"><div class="date">18 ian. 1562</div><div><h3>A treia perioadă</h3><p>Pius al IV-lea redeschide conciliul într-un context în care diferențele confesionale sunt deja consolidate. Sesiunile finale tratează reforma episcopatului, liturghia, preoția, căsătoria și imaginile.</p></div></article>
+    <article class="event"><div class="date">17 sept. 1562</div><div><h3>Jertfa Liturghiei</h3><p>Conciliul definește Liturghia ca reprezentare sacramentală, nesângeroasă, a jertfei lui Hristos și reafirmă legitimitatea liturghiilor pentru vii și morți.</p></div></article>
+    <article class="event"><div class="date">15 iul. 1563</div><div><h3>Preoția și seminariile</h3><p>Sesiunea a XXIII-a reafirmă caracterul sacramental al hirotonirii și cere înființarea seminariilor diecezane pentru pregătirea clerului.</p></div></article>
+    <article class="event"><div class="date">11 nov. 1563</div><div><h3>Căsătoria</h3><p>Decretul <em>Tametsi</em> cere, în teritoriile unde este promulgat, celebrarea în fața parohului sau a unui preot delegat și a doi sau trei martori, reducând problema căsătoriilor clandestine.</p></div></article>
+    <article class="event"><div class="date">3–4 dec. 1563</div><div><h3>Sfinți, relicve, imagini, purgatoriu și indulgențe</h3><p>Ultima sesiune reafirmă legitimitatea cultului sfinților și folosirea imaginilor pentru instruire și devoțiune, cere eliminarea abuzurilor și interzice orice „câștig necinstit” legat de indulgențe.</p></div></article>
+    <article class="event"><div class="date">26 ian. 1564</div><div><h3>Confirmarea</h3><p>Pius al IV-lea confirmă decretele prin bula <em>Benedictus Deus</em>. Implementarea depinde apoi de episcopi, monarhi, ordine religioase și administrațiile locale.</p></div></article>
+  </div>
+  <div class="table-wrap"><table><thead><tr><th>Domeniu</th><th>Poziția tridentină</th><th>Reforma disciplinară</th><th>Consecință</th></tr></thead><tbody>
+    <tr><td>Autoritate</td><td>Scriptura și tradițiile apostolice sunt primite în Biserică.</td><td>Editarea și explicarea controlată a textelor.</td><td>Consolidarea culturii teologice catolice.</td></tr>
+    <tr><td>Justificare</td><td>Harul precede și susține cooperarea omului; credința este vie prin iubire.</td><td>Cateheză mai precisă.</td><td>Delimitarea față de formulele protestante.</td></tr>
+    <tr><td>Sacramente</td><td>Șapte sacramente; Euharistie și preoție sacramentală.</td><td>Registre, examinarea clerului, control episcopal.</td><td>Uniformizare pastorală.</td></tr>
+    <tr><td>Cler</td><td>Preoția are funcție distinctă.</td><td>Seminarii, rezidență episcopală, vizitații.</td><td>Profesionalizarea clerului.</td></tr>
+    <tr><td>Căsătorie</td><td>Indisolubilitate și caracter sacramental.</td><td>Formă publică în fața preotului și martorilor.</td><td>Reducerea căsătoriilor secrete și a disputelor juridice.</td></tr>
+    <tr><td>Imagini</td><td>Venerarea se îndreaptă către prototip, nu către material.</td><td>Claritate, decență, controlul episcopului.</td><td>Programul vizual al artei posttridentine.</td></tr>
+  </tbody></table></div>
+  <div class="correction"><strong>Despre indulgențe:</strong> Conciliul nu a eliminat indulgențele ca doctrină. A condamnat „câștigurile necuviincioase” și abuzurile. În 1567, Pius al V-lea a anulat toate acordările de indulgențe care implicau tranzacții financiare.</div>
+</section>
+
+<section class="section" id="papi-extins">
+  <p class="section-kicker">Conducerea de la Roma</p>
+  <h2>XIII. Papii Reformei Catolice: programe, instituții și contradicții</h2>
+  <div class="table-wrap"><table><thead><tr><th>Papă</th><th>Pontificat</th><th>Măsuri principale</th><th>Semnificație</th></tr></thead><tbody>
+    <tr><td>Paul al III-lea</td><td>1534–1549</td><td>Aprobă iezuiții în 1540, creează Inchiziția romană în 1542, convoacă Trento în 1545.</td><td>Transformă reforma din proiect moral într-un program instituțional.</td></tr>
+    <tr><td>Iuliu al III-lea</td><td>1550–1555</td><td>Redeschide conciliul în 1551; susține Colegiul Roman.</td><td>Leagă educația iezuită de programul papal.</td></tr>
+    <tr><td>Paul al IV-lea</td><td>1555–1559</td><td>Extinde Sfântul Oficiu, publică Indexul sever din 1559, impune politici restrictive la Roma.</td><td>Reprezintă direcția intransigentă și centralizatoare.</td></tr>
+    <tr><td>Pius al IV-lea</td><td>1559–1565</td><td>Încheie Trento, confirmă decretele și publică profesiunea de credință tridentină.</td><td>Face posibil compromisul final dintre curie, episcopi și monarhi.</td></tr>
+    <tr><td>Pius al V-lea</td><td>1566–1572</td><td>Catehismul Roman, Breviarul din 1568, Misalul din 1570, aplicarea disciplinei.</td><td>Standardizează doctrina și cultul latin.</td></tr>
+    <tr><td>Grigore al XIII-lea</td><td>1572–1585</td><td>Rețea de colegii, calendarul gregorian din 1582, sprijin misionar.</td><td>Folosește educația și știința pentru universalizarea catolică.</td></tr>
+    <tr><td>Sixt al V-lea</td><td>1585–1590</td><td>Reorganizează curia în congregații permanente prin <em>Immensa aeterni Dei</em> (1588).</td><td>Creează o administrație pontificală mai specializată.</td></tr>
+    <tr><td>Urban al VIII-lea</td><td>1623–1644</td><td>Patronaj artistic major, activitate diplomatică, procesul lui Galileo din 1633.</td><td>Întruchipează apogeul Romei baroce și limitele controlului doctrinar.</td></tr>
+  </tbody></table></div>
+  <details open><summary>De ce centralizarea nu a fost completă?</summary><div class="details-body"><p>Papalitatea a oferit norme, cărți liturgice și instituții, dar implementarea depindea de monarhi, parlamente, episcopi și tradiții locale. Franța apăra „libertățile galicane”; Spania controla numirile și Inchiziția proprie; Veneția intra uneori în conflict cu Roma; Imperiul era confesional fragmentat. Reforma Catolică a fost simultan romană, episcopală, monastică, regală și locală.</p></div></details>
+</section>
+
+<section class="section" id="ordine-extinse">
+  <p class="section-kicker">Reînnoire prin comunități specializate</p>
+  <h2>XIV. Ordine și congregații: cine făcea efectiv reforma?</h2>
+  <div class="table-wrap"><table><thead><tr><th>Ordin / congregație</th><th>Fondare / reformă</th><th>Fondatori</th><th>Activitate</th><th>Exemplu concret</th></tr></thead><tbody>
+    <tr><td>Teatini</td><td>1524</td><td>Gaetano da Thiene, Gian Pietro Carafa</td><td>Reformarea clerului, predică, asistență.</td><td>Model de cleric regulat instruit și disciplinat.</td></tr>
+    <tr><td>Capucini</td><td>1528</td><td>Matteo da Bascio și reforma franciscană</td><td>Predică populară, sărăcie, spitale, misiuni.</td><td>Prezență puternică în orașe și în timpul epidemiilor.</td></tr>
+    <tr><td>Barnabiți</td><td>1530</td><td>Antonio Maria Zaccaria</td><td>Misiuni urbane și reformă morală.</td><td>„Patruzeci de ore” de adorație euharistică.</td></tr>
+    <tr><td>Societatea lui Isus</td><td>1534 / aprobare 1540</td><td>Ignațiu de Loyola și primii companioni</td><td>Colegii, misiuni, confesori, controverse teologice.</td><td>Colegiul Roman 1551; <em>Ratio Studiorum</em> 1599.</td></tr>
+    <tr><td>Ursuline</td><td>1535</td><td>Angela Merici</td><td>Educația fetelor, cateheză, îngrijire.</td><td>Primele comunități nu erau inițial claustrate în forma clasică.</td></tr>
+    <tr><td>Oratorienii</td><td>1575</td><td>Filip Neri</td><td>Predică familiară, muzică, conversație spirituală.</td><td>Oratoriul roman contribuie la dezvoltarea genului muzical omonim.</td></tr>
+    <tr><td>Carmeliții desculți</td><td>1562–1593</td><td>Tereza de Ávila, Ioan al Crucii</td><td>Reformă contemplativă, rugăciune interioară, noi mănăstiri.</td><td><em>Castelul interior</em> (1577) și poezia mistică a lui Ioan.</td></tr>
+    <tr><td>Vizitația</td><td>1610</td><td>Francisc de Sales, Ioana de Chantal</td><td>Viață religioasă feminină și asistență.</td><td>Spiritualitate adaptată vieții cotidiene.</td></tr>
+    <tr><td>Congregația Misiunii</td><td>1625</td><td>Vincent de Paul</td><td>Misiuni rurale și formarea clerului.</td><td>Conferințe pentru preoți și seminarii.</td></tr>
+  </tbody></table></div>
+  <details><summary>Iezuiții: disciplină, educație și adaptare</summary><div class="details-body"><p>Societatea lui Isus nu este un ordin monastic tradițional: membrii nu au cor comun obligatoriu și sunt disponibili pentru misiuni rapide. <em>Exercițiile spirituale</em>, aprobate în <strong>1548</strong>, structurează meditația și discernământul. Colegiile oferă educație gratuită sau subvenționată, folosind gramatica, retorica, filosofia, matematica, teatrul școlar și teologia. <em>Ratio Studiorum</em> din <strong>1599</strong> standardizează metodele, dar lasă loc adaptărilor locale.</p><p>În politică, iezuiții devin confesori ai principilor și consilieri, ceea ce le oferă influență și produce suspiciuni. În misiuni, unii folosesc acomodarea culturală: Matteo Ricci adoptă vestimentația și limbajul elitelor chineze, iar Roberto de Nobili încearcă în India să distingă creștinismul de obiceiurile europene.</p></div></details>
+</section>
+
+<section class="section" id="pastorala-extinsa">
+  <p class="section-kicker">Reforma în parohie</p>
+  <h2>XV. Cum se aplica Reforma Catolică în viața credincioșilor?</h2>
+  <div class="three-col">
+    <article class="info-card"><h3>Episcopul rezident</h3><p>Episcopul trebuia să locuiască în dieceză, să viziteze parohiile, să convoace sinoade, să examineze clerul și să controleze predicarea. Carol Borromeu organizează în provincia Milano concilii și vizitații între <strong>1565</strong> și <strong>1584</strong>.</p></article>
+    <article class="info-card"><h3>Seminarul</h3><p>Seminariile formează preoți în latină, teologie, morală, liturghie și predică. Aplicarea este lentă: unele dieceze înființează instituții imediat, altele abia în secolele XVII–XVIII.</p></article>
+    <article class="info-card"><h3>Catehismul</h3><p><em>Catehismul Roman</em> din <strong>1566</strong> este destinat preoților. Catehismele lui Petru Canisiu, publicate din <strong>1555</strong>, oferă versiuni pentru elevi și publicuri diferite.</p></article>
+    <article class="info-card"><h3>Spovada</h3><p>Confesionalul cu grilaj se răspândește în epoca posttridentină, asociat cu reforma lui Borromeu. Manualele de cazuri de conștiință încearcă să uniformizeze practica mărturisirii.</p></article>
+    <article class="info-card"><h3>Căsătoria publică</h3><p>Decretul <em>Tametsi</em> cere forma publică în teritoriile unde este promulgat. Registrele de botez, căsătorie și înmormântare permit Bisericii și statului să urmărească mai bine populația.</p></article>
+    <article class="info-card"><h3>Confreriile</h3><p>Asociații ale laicilor organizează procesiuni, caritate, înmormântări, devoțiuni mariane și euharistice. Ele leagă disciplina religioasă de solidaritatea urbană.</p></article>
+  </div>
+  <details open><summary>Standardizarea liturgică după Trento</summary><div class="details-body"><div class="key-line"><strong>1568</strong><span>Pius al V-lea publică Breviarul Roman reformat.</span></div><div class="key-line"><strong>1570</strong><span>Misalul Roman este promulgat; riturile cu o vechime de cel puțin două sute de ani pot continua.</span></div><div class="key-line"><strong>1584</strong><span>Este publicat Martirologiul Roman revizuit.</span></div><div class="key-line"><strong>1592</strong><span>Vulgata Clementină devine ediția latină standard pentru Biserica Romană.</span></div><p>„Liturghia tridentină” nu a fost inventată în 1570, ci a uniformizat tradiția romană existentă. Practicile locale nu au dispărut complet, iar recepția a diferit între ordine, dieceze și state.</p></div></details>
+</section>
+
+<section class="section" id="recatolicizare-extinsa">
+  <p class="section-kicker">Geografia succesului catolic</p>
+  <h2>XVI. Recatolicizarea Europei: educație, curți princiare și forță politică</h2>
+  <div class="table-wrap"><table><thead><tr><th>Regiune</th><th>Etape</th><th>Instrumente</th><th>Rezultat</th></tr></thead><tbody>
+    <tr><td>Bavaria</td><td>Universitatea din Ingolstadt; Albert al V-lea, 1550–1579</td><td>Iezuiți, vizitații, patronaj ducal.</td><td>Devine bastion catolic în sudul Germaniei.</td></tr>
+    <tr><td>Austria și Stiria</td><td>Arhiducele Carol al II-lea; Ferdinand al II-lea</td><td>Colegii, expulzarea pastorilor, presiune asupra nobililor.</td><td>Recatolicizare puternică la sfârșitul sec. XVI și începutul sec. XVII.</td></tr>
+    <tr><td>Boemia</td><td>Defenestrarea din Praga, 1618; Muntele Alb, 1620</td><td>Victorie habsburgică, confiscări, ordine religioase.</td><td>Catolicismul devine dominant, iar elitele protestante emigrează.</td></tr>
+    <tr><td>Polonia-Lituania</td><td>Colegii iezuiți din anii 1560; Uniunea de la Brest, 1596</td><td>Educație, controversă teologică, patronaj nobiliar.</td><td>Catolicismul recâștigă influență, dar pluralismul nu dispare.</td></tr>
+    <tr><td>Franța</td><td>Edictul de la Nantes, 1598; reînnoire spirituală în sec. XVII</td><td>Oratorieni, lazariști, școli, episcopi reformatori.</td><td>Monarhia rămâne catolică; hughenoții păstrează temporar drepturi.</td></tr>
+    <tr><td>Ungaria și Croația</td><td>Sec. XVII</td><td>Habsburgi, iezuiți, familii magnatice.</td><td>Recuperări catolice inegale, în context otoman și transilvănean.</td></tr>
+  </tbody></table></div>
+  <details><summary>Războiul de Treizeci de Ani și limitele explicației religioase</summary><div class="details-body"><p>Conflictul începe în <strong>1618</strong> prin revolta stărilor boeme împotriva Habsburgilor. Victoria catolică de la Muntele Alb din <strong>8 noiembrie 1620</strong> permite recatolicizarea Boemiei. Ulterior, intervențiile daneză, suedeză și franceză transformă războiul într-o luptă europeană pentru putere. Franța catolică intră direct împotriva Habsburgilor în <strong>1635</strong>. Pacea Westfalică din <strong>1648</strong> recunoaște catolicismul, luteranismul și calvinismul în Imperiu și fixează un compromis juridic, nu o victorie religioasă totală.</p></div></details>
+</section>
+
+<section class="section" id="misiuni-extinse">
+  <p class="section-kicker">Expansiune globală și întâlnire culturală</p>
+  <h2>XVII. Misiunile catolice: convertire, traducere, știință și dominație colonială</h2>
+  <div class="timeline">
+    <article class="event"><div class="date">1493–1494</div><div><h3>Cadru pontifical și imperial</h3><p>Bulele alexandrine și Tratatul de la Tordesillas leagă expansiunea iberică de evanghelizare. Misiunea se desfășoară însă în structuri de cucerire, muncă forțată și concurență imperială.</p></div></article>
+    <article class="event"><div class="date">1511</div><div><h3>Predica lui Antonio de Montesinos</h3><p>Dominicanul denunță tratamentul populațiilor indigene din Hispaniola, deschizând o dispută morală despre cucerire și convertire.</p></div></article>
+    <article class="event"><div class="date">1537</div><div><h3><em>Sublimis Deus</em></h3><p>Papa Paul al III-lea afirmă umanitatea și capacitatea de credință a populațiilor indigene și condamnă reducerea lor la sclavie, deși aplicarea practică rămâne contradictorie.</p></div></article>
+    <article class="event"><div class="date">1550–1551</div><div><h3>Dezbaterea de la Valladolid</h3><p>Bartolomé de las Casas și Juan Ginés de Sepúlveda discută legitimitatea războiului și a dominației asupra indigenilor. Dezbaterea arată tensiunea dintre universalismul creștin și imperiu.</p></div></article>
+    <article class="event"><div class="date">1542–1552</div><div><h3>Francisc Xaveriu</h3><p>Activează în India, Malacca, Insulele Moluce și Japonia. Învață din eșecurile traducerii și adaptează metodele, dar depinde de rețeaua portugheză.</p></div></article>
+    <article class="event"><div class="date">1583–1610</div><div><h3>Matteo Ricci în China</h3><p>Folosește limba chineză, hărți, ceasuri, matematică și cultura confuciană pentru a intra în dialog cu elitele. Strategia va provoca ulterior controversa riturilor chineze.</p></div></article>
+    <article class="event"><div class="date">1609–1767</div><div><h3>Reducțiunile din Paraguay</h3><p>Iezuiții organizează comunități guaraní cu agricultură, ateliere, muzică și apărare. Ele oferă protecție față de unii sclaviști, dar rămân proiecte paternaliste de transformare culturală.</p></div></article>
+  </div>
+  <div class="note"><strong>Evaluare echilibrată:</strong> misiunile au creat dicționare, gramatici, școli, muzică și traduceri și au apărat uneori populațiile locale. În același timp, au participat la destructurarea religiilor indigene și la sistemele coloniale. Cele două dimensiuni trebuie analizate împreună.</div>
+</section>
+
+<section class="section" id="transilvania-extinsa">
+  <p class="section-kicker">Contrareforma la frontiera confesională</p>
+  <h2>XVIII. Transilvania: catolicism tolerat, misiune iezuită și revenirea habsburgică</h2>
+  <div class="timeline">
+    <article class="event"><div class="date">1541</div><div><h3>Principatul autonom</h3><p>Noua situație politică slăbește instituțiile catolice și favorizează luteranismul, calvinismul și unitarianismul.</p></div></article>
+    <article class="event"><div class="date">1568</div><div><h3>Edictul de la Turda</h3><p>Libertatea predicării și alegerea predicatorilor creează un cadru de pluralism confesional neobișnuit, dar catolicii și ortodocșii au poziții politice diferite.</p></div></article>
+    <article class="event"><div class="date">1579–1581</div><div><h3>Invitarea iezuiților și colegiul de la Cluj</h3><p>Ștefan Báthory sprijină misiunea catolică și educația superioară. Colegiul primește rang universitar în 1581.</p></div></article>
+    <article class="event"><div class="date">1588</div><div><h3>Expulzarea ordinului</h3><p>Dieta condiționează recunoașterea lui Sigismund Báthory de îndepărtarea iezuiților. Membrii ordinului revin în alte forme și perioade.</p></div></article>
+    <article class="event"><div class="date">1653</div><div><h3><em>Approbatae Constitutiones</em></h3><p>Colecția legilor principatului codifică ordinea stărilor și a religiilor recepte. Ortodoxia românilor rămâne tolerată, nu receptă.</p></div></article>
+    <article class="event"><div class="date">1688–1691</div><div><h3>Integrarea în sfera habsburgică</h3><p>După retragerea otomană, Diploma Leopoldină din 1691 confirmă în principiu privilegiile și cele patru religii recepte, în timp ce administrația habsburgică sprijină catolicismul.</p></div></article>
+    <article class="event"><div class="date">1697–1701</div><div><h3>Unirea cu Roma</h3><p>O parte a clerului ortodox român acceptă comuniunea cu Roma, formând Biserica Română Unită. Procesul este religios, social și politic și va avea consecințe majore asupra educației românești.</p></div></article>
+    <article class="event"><div class="date">1718–1733</div><div><h3>Primele mari biserici baroce</h3><p>Biserica iezuită din Cluj este construită între 1718 și 1724, iar cea din Sibiu între 1726 și 1733, marcând vizual revenirea catolică.</p></div></article>
+  </div>
+  <div class="correction"><strong>Precizare:</strong> <em>Approbatae Constitutiones</em> nu este o constituție a iezuiților. Este o colecție de legi ale Principatului Transilvaniei, publicată în 1653, cu hotărâri acumulate din perioada 1541–1653.</div>
+</section>
+
+<section class="section" id="clarificari-contra">
+  <p class="section-kicker">Concepte și evaluare</p>
+  <h2>XIX. Ce trebuie reținut despre Contrareformă?</h2>
+  <div class="details-grid">
+    <div class="micro-card"><strong>Reforma Catolică este mai largă</strong><span>Include inițiative de reînnoire începute înainte de Luther; Contrareforma desemnează mai ales reacția împotriva protestantismului.</span></div>
+    <div class="micro-card"><strong>Trento nu a decis totul singur</strong><span>Aplicarea a fost realizată de papi, episcopi, ordine, monarhi, universități și comunități locale.</span></div>
+    <div class="micro-card"><strong>Inchizițiile nu sunt identice</strong><span>Instituțiile medievală, spaniolă, portugheză și romană au jurisdicții, proceduri și obiective diferite.</span></div>
+    <div class="micro-card"><strong>Barocul nu este doar propagandă</strong><span>Are funcții devoționale, civice, dinastice și estetice și apare și în contexte protestante și seculare.</span></div>
+    <div class="micro-card"><strong>Recatolicizarea combină persuasiunea și coerciția</strong><span>Colegiile și predica coexistă cu interdicții, confiscări, expulzări și presiunea autorității.</span></div>
+    <div class="micro-card"><strong>Globalizarea are două fețe</strong><span>Misiunea creează schimburi culturale și cunoaștere, dar este inseparabilă de expansiunea imperială.</span></div>
+  </div>
+  <details><summary>Lecturi recomandate și izvoare</summary><div class="details-body"><ul class="clean"><li><em>Decretele Conciliului de la Trento</em>, sesiunile IV, VI, XIII, XXIII–XXV.</li><li>Ignațiu de Loyola, <em>Exerciții spirituale</em>.</li><li>Tereza de Ávila, <em>Cartea vieții</em> și <em>Castelul interior</em>.</li><li>John W. O'Malley, <em>Trent: What Happened at the Council</em>.</li><li>R. Po-chia Hsia, <em>The World of Catholic Renewal, 1540–1770</em>.</li><li>Robert Bireley, <em>The Refashioning of Catholicism, 1450–1700</em>.</li><li>Simon Ditchfield, studii despre sfințenie, cult și cultura posttridentină.</li></ul></div></details>
+</section>
+
+
+<section class="section" id="control-extins">
+  <p class="section-kicker">Ortodoxie, cenzură și procedură</p>
+  <h2>XX. Inchiziția romană și Indexul în detaliu</h2>
+  <p class="section-intro">Închiziția romană, creată în 1542, nu a fost o simplă continuare a tribunalelor medievale și nici nu trebuie confundată cu Inchiziția spaniolă, aflată sub control monarhic. Congregația romană era o instituție centrală a curiei, alcătuită din cardinali și consultori, care supraveghea tribunalele locale, episcopii și uneori universitățile. Scopul ei era păstrarea doctrinei, dar instrumentele sale au inclus ancheta secretă, cenzura, detenția și predarea condamnaților către puterea seculară.</p>
+  <div class="timeline">
+    <article class="event"><div class="date">21 iul. 1542</div><div><h3><em>Licet ab initio</em></h3><p>Paul al III-lea instituie o comisie cardinalicească pentru apărarea credinței. Ea devine nucleul Congregației Sfântului Oficiu.</p></div></article>
+    <article class="event"><div class="date">1546–1549</div><div><h3>Juan de Valdés și „spiritualii” italieni</h3><p>Cercurile evanghelice italiene, interesate de justificare și de reformă interioară, sunt fragmentate de anchete și exil. Bernardino Ochino trece în tabăra protestantă în 1542, iar Pietro Carnesecchi este executat în 1567.</p></div></article>
+    <article class="event"><div class="date">1559</div><div><h3>Indexul lui Paul al IV-lea</h3><p>Lista interzice autori întregi, ediții anonime și numeroase traduceri biblice. Severitatea sa provoacă dificultăți universităților, librarilor și chiar unor episcopi catolici.</p></div></article>
+    <article class="event"><div class="date">1564</div><div><h3>Indexul tridentin</h3><p>Pius al IV-lea publică o listă revizuită și zece reguli generale. Unele cărți pot fi permise după corectare, iar citirea altora necesită autorizație.</p></div></article>
+    <article class="event"><div class="date">1571 / 1572</div><div><h3>Congregația Indexului</h3><p>O instituție specializată examinează cărți, propune corecturi și negociază cu autorii și tipografii. Sfântul Oficiu și Congregația Indexului au competențe care se suprapun.</p></div></article>
+    <article class="event"><div class="date">1592–1600</div><div><h3>Procesul lui Giordano Bruno</h3><p>Bruno este judecat pentru un ansamblu de teze teologice și filosofice: Trinitate, întrupare, suflet, magie și cosmologie. Este executat la Roma la 17 februarie 1600.</p></div></article>
+    <article class="event"><div class="date">1616</div><div><h3>Heliocentrismul</h3><p>Congregația Indexului suspendă lucrarea lui Copernic până la corectare și declară incompatibilă susținerea heliocentrismului ca adevăr fizic demonstrat în forma de atunci.</p></div></article>
+    <article class="event"><div class="date">1632–1633</div><div><h3>Galileo</h3><p>După publicarea <em>Dialogului despre cele două mari sisteme ale lumii</em>, Galileo este judecat, obligat să abjure și condamnat la arest la domiciliu. Cazul devine simbolul conflictului dintre autoritatea doctrinară și cercetarea științifică, deși contextul său include și rivalități personale, probleme exegetice și politica curiei.</p></div></article>
+  </div>
+  <div class="table-wrap"><table><thead><tr><th>Etapă procedurală</th><th>Ce presupunea</th><th>Observație</th></tr></thead><tbody>
+    <tr><td>Denunțul</td><td>O persoană, un text sau o predică era raportată autorității.</td><td>Denunțul putea porni din conflict personal, rivalitate profesională sau suspiciune doctrinară.</td></tr>
+    <tr><td>Examinarea</td><td>Consultorii analizau propoziții, manuscrise și mărturii.</td><td>Accentul era pus pe formulări exacte, nu doar pe reputația generală.</td></tr>
+    <tr><td>Interogatoriul</td><td>Acuzatul răspundea sub jurământ; mărturiile erau adesea secrete.</td><td>Procedura limita capacitatea apărării de a confrunta martorii.</td></tr>
+    <tr><td>Abjurarea</td><td>Retractare publică sau privată, urmată de penitență.</td><td>Multe cazuri se încheiau fără condamnare capitală.</td></tr>
+    <tr><td>Sentința</td><td>Interdicție, închisoare, exil, confiscare sau predare către autoritatea seculară.</td><td>Severitatea varia în funcție de loc, perioadă și recidivă.</td></tr>
+  </tbody></table></div>
+  <div class="note"><strong>Evaluare istorică:</strong> faptul că Inchiziția romană a avut mai puține execuții decât tribunalele spaniole sau decât unele persecuții seculare nu o face benignă. Cenzura, frica, autocenzura și distrugerea carierelor intelectuale au fost efecte reale chiar și atunci când sentința nu era capitală.</div>
+</section>
+
+<section class="section" id="mistica-sfinti">
+  <p class="section-kicker">Reforma inimii</p>
+  <h2>XXI. Mistică, sfințenie și rolul femeilor în reînnoirea catolică</h2>
+  <p class="section-intro">Reforma Catolică nu a fost doar un proiect administrativ al papilor și episcopilor. Ea a fost alimentată de autobiografii spirituale, viziuni, rețele de corespondență, spitale, școli și fundații realizate de femei și bărbați care urmăreau transformarea vieții interioare.</p>
+  <div class="three-col">
+    <article class="info-card"><h3>Tereza de Ávila (1515–1582)</h3><p>Intră în mănăstirea carmelită în 1535 și fondează prima comunitate reformată la San José de Ávila în 1562. <em>Cartea vieții</em>, <em>Calea perfecțiunii</em> și <em>Castelul interior</em> descriu etapele rugăciunii și discernerea experienței mistice. Reforma ei combină austeritatea, comunitatea mică și o activitate organizatorică remarcabilă.</p></article>
+    <article class="info-card"><h3>Ioan al Crucii (1542–1591)</h3><p>Colaborează cu Tereza din 1567. Poemele și comentariile sale — <em>Noaptea întunecată</em>, <em>Cântarea spirituală</em>, <em>Flacăra vie a iubirii</em> — explică purificarea dorinței și unirea cu Dumnezeu. Este închis de adversarii reformei carmelite în 1577–1578.</p></article>
+    <article class="info-card"><h3>Angela Merici (c. 1474–1540)</h3><p>Întemeiază Compania Sfintei Ursula la Brescia în 1535. Modelul său oferă femeilor consacrate o formă de activitate educațională în lume, înainte ca presiunile instituționale să impună treptat o organizare mai conventuală.</p></article>
+    <article class="info-card"><h3>Filip Neri (1515–1595)</h3><p>În jurul său se dezvoltă Oratoriul, aprobat în 1575. Conversația, cântecul, pelerinajul și umorul oferă o alternativă pastorală la formalism, iar întâlnirile muzicale contribuie la apariția oratoriului.</p></article>
+    <article class="info-card"><h3>Francisc de Sales (1567–1622)</h3><p>Episcop de Geneva cu reședința la Annecy, scrie <em>Introducere la viața evlavioasă</em> în 1609 pentru laici. Arată că sfințenia nu este rezervată mănăstirilor, ci poate fi practicată în familie, profesie și viață socială.</p></article>
+    <article class="info-card"><h3>Luisa de Marillac (1591–1660)</h3><p>Împreună cu Vincent de Paul întemeiază Fiicele Carității în 1633. Surorile lucrează în spitale, orfelinate și comunități sărace, fără forma tradițională a claustrării monastice.</p></article>
+  </div>
+  <details open><summary>Canonizările din 12 martie 1622</summary><div class="details-body"><p>Grigore al XV-lea îi canonizează împreună pe Ignațiu de Loyola, Francisc Xaveriu, Tereza de Ávila, Filip Neri și Isidor Plugarul. Ceremonia oferă Reformei Catolice un panteon de figuri recente: fondatorul educațional, misionarul global, mistica reformatoare, pastorul urban și laicul agricultor. Arta, biografiile și sărbătorile lor răspândesc modele complementare de sfințenie.</p></div></details>
+</section>
+
+<section class="section" id="cronologie"><p class="section-kicker">Repere organizate</p><h2>XXII. Cronologia Reformei Catolice: 1512–1773</h2><div class="date-list">
+<div class="date-row"><strong>1512–1517</strong><span>Conciliul de la Lateran arată că nevoia de reformă precedă ruptura luterană.</span></div><div class="date-row"><strong>1524–1537</strong><span>Teatini, capucini, ursuline și comisia lui Paul al III-lea pregătesc reînnoirea instituțională.</span></div><div class="date-row"><strong>1540–1542</strong><span>Societatea lui Isus este aprobată, iar Inchiziția romană este creată.</span></div><div class="date-row"><strong>1545–1563</strong><span>Trento definește doctrina și reforma disciplinei în trei perioade distincte.</span></div><div class="date-row"><strong>1559–1566</strong><span>Indexul, profesiunea de credință tridentină și Catehismul Roman construiesc o cultură confesională uniformă.</span></div><div class="date-row"><strong>1568–1570</strong><span>Breviarul și Misalul Roman standardizează cultul latin.</span></div><div class="date-row"><strong>1579–1599</strong><span>Iezuiții intră în Transilvania, iar <em>Ratio Studiorum</em> organizează educația ordinului.</span></div><div class="date-row"><strong>1618–1648</strong><span>Războiul de Treizeci de Ani confirmă că reforma religioasă este inseparabilă de rivalitatea politică europeană.</span></div>
+<div class="date-row"><strong>1622–1633</strong><span>Canonizările colective, Propaganda Fide și dezvoltarea instituțiilor caritative extind reforma spre cult, misiune și asistență.</span></div>
+<div class="date-row"><strong>1648–1691</strong><span>După Westfalia, recatolicizarea continuă în teritoriile habsburgice; Transilvania intră treptat în sfera politică a Vienei.</span></div>
+<div class="date-row"><strong>1701–1773</strong><span>Bisericile unite, colegiile și barocul habsburgic extind prezența catolică în Europa Centrală; suprimarea iezuiților în 1773 încheie o etapă.</span></div></div></section>
+
+<section class="final-box"><h2>Legătura dintre cele trei materiale</h2><p>Reforma explică fragmentarea creștinismului occidental; Reforma Catolică arată modul în care papalitatea și ordinele religioase au răspuns; barocul arată cum doctrina, emoția, ritualul și puterea au fost transformate într-un limbaj vizual și ceremonial.</p><div class="crosslinks"><a href="reforma-si-contrareforma-fragmentarea-bisericii.html">Reforma</a><a href="reforma-si-contrareforma-raspunsul-papalitatii.html">Răspunsul papalității</a><a href="reforma-si-contrareforma-arta-si-propaganda.html">Arta și propaganda</a></div></section>
+</main>
+<script>
+const bar=document.getElementById('reading-progress');
+window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-innerHeight;bar.style.width=(h>0?(scrollY/h)*100:0)+'%';});
+function toggleAll(open){document.querySelectorAll('details').forEach(d=>d.open=open)}
+</script>
+</body></html>

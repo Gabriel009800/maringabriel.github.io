@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>renasterea-umanismul-arta-si-cultura</title>
+<style>
+:root {
+  --bg: #f6f0e7;
+  --paper: #fffaf3;
+  --paper-2: #ffffff;
+  --ink: #2f241c;
+  --title: #3c2a1e;
+  --muted: #5b4a3d;
+  --accent: #7a4f2a;
+  --accent-2: #9b6a3c;
+  --accent-soft: #f0e4d4;
+  --line: rgba(91, 62, 36, 0.18);
+  --line-strong: rgba(91, 62, 36, 0.34);
+  --outer-dark: #241208;
+  --outer-mid: #4a2a18;
+  --outer-warm: #7a4b2b;
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+  --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+    radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+}
+.page {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 34px 0 70px;
+}
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.back-link, .tag { display: inline-flex; align-items: center; border: 1px solid var(--line); background: rgba(255, 250, 243, 0.84); color: var(--title); border-radius: 999px; padding: 10px 15px; text-decoration: none; font-size: 15px; font-weight: 700; box-shadow: var(--shadow-small); }
+.back-link:hover { background: #fff6eb; }
+.hero, .section, .nav-card, .final-box { background: rgba(255, 250, 243, 0.96); border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow); }
+.hero { padding: 38px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.hero::after { content: var(--hero-year); position: absolute; right: 26px; bottom: -22px; font-size: 110px; font-weight: 900; letter-spacing: -4px; color: rgba(122, 79, 42, 0.08); pointer-events: none; }
+.eyebrow { margin: 0 0 8px; font-size: 16px; color: var(--accent); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; }
+h1 { margin: 0; font-size: clamp(38px, 5vw, 62px); line-height: 1.04; color: var(--title); letter-spacing: -1.4px; text-align: left; text-align-last: auto; }
+.subtitle { margin: 18px 0 0; max-width: 980px; font-size: 19px; line-height: 1.78; color: var(--muted); text-align: justify; text-align-last: left; }
+.summary-grid, .three-col, .two-col, .term-grid, .quick-grid, .cause-grid, .four-col { display: grid; gap: 14px; }
+.summary-grid { grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+.summary-card, .info-card, .wide-card, .term-card, .quick-card, .source-note, .micro-card, .warning-box { background: var(--paper-2); border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); text-align: justify; text-align-last: left; }
+.summary-card { padding: 16px; min-height: 132px; }
+.summary-card strong, .quick-card strong, .term-card strong, .micro-card strong { display: block; color: var(--title); font-size: 17px; margin-bottom: 8px; text-align: left; text-align-last: auto; }
+.summary-card span, .quick-card span, .term-card span, .micro-card span { display: block; color: var(--muted); font-size: 15.5px; line-height: 1.56; text-align: justify; text-align-last: left; }
+.nav-card { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 18px 20px; margin-bottom: 24px; }
+.nav-card b { color: var(--title); margin-right: 2px; }
+.nav-card a, .mini-btn { color: var(--title); background: var(--accent-soft); border: 1px solid rgba(91, 62, 36, 0.16); border-radius: 999px; text-decoration: none; padding: 8px 12px; font-weight: 700; font-size: 14px; cursor: pointer; font-family: inherit; }
+.nav-card a:hover, .mini-btn:hover { background: #e5d2bb; }
+.section { padding: 30px; margin-bottom: 24px; }
+h2 { margin: 0 0 14px; color: var(--title); font-size: clamp(28px, 3vw, 38px); line-height: 1.15; text-align: left; text-align-last: auto; }
+h3 { margin: 0 0 12px; color: var(--title); font-size: 22px; line-height: 1.22; text-align: left; text-align-last: auto; }
+h4 { margin: 16px 0 8px; color: var(--title); font-size: 18px; text-align: left; text-align-last: auto; }
+.section-intro, p, li, dd { font-size: 17px; line-height: 1.72; color: var(--muted); text-align: justify; text-align-last: left; hyphens: auto; }
+.section-intro { margin: 0 0 20px; max-width: 1000px; }
+.three-col { grid-template-columns: repeat(3, 1fr); }
+.two-col { grid-template-columns: repeat(2, 1fr); }
+.four-col { grid-template-columns: repeat(4, 1fr); }
+.cause-grid { grid-template-columns: 1.1fr 0.9fr; }
+.term-grid { grid-template-columns: repeat(4, 1fr); }
+.quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+.info-card, .wide-card, .term-card, .quick-card, .micro-card, .warning-box, .source-note { padding: 20px; }
+.wide-card { margin-top: 14px; }
+.wide-card p:last-child, .info-card p:last-child { margin-bottom: 0; }
+.clean, .number-list { margin: 0; padding-left: 22px; }
+.clean li, .number-list li { margin: 0 0 9px; padding-left: 2px; }
+.clean li:last-child, .number-list li:last-child { margin-bottom: 0; }
+.mini-title { display: inline; color: var(--title); font-weight: 800; background: transparent; border: 0; border-radius: 0; padding: 0; margin-right: 5px; white-space: normal; text-align: inherit; }
+.date-pill { display: inline-block; color: var(--title); font-weight: 800; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.13); border-radius: 999px; padding: 2px 9px; margin-right: 5px; white-space: nowrap; text-align: left; }
+.definition, .note { margin-top: 18px; background: #fff8ef; border: 1px solid rgba(122, 79, 42, 0.22); border-left: 6px solid rgba(122, 79, 42, 0.48); border-radius: 18px; padding: 18px 20px; color: var(--muted); font-size: 17px; line-height: 1.7; text-align: justify; text-align-last: left; }
+.definition strong, .note strong { color: var(--title); }
+details { background: #fffdf9; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); margin-top: 14px; overflow: hidden; }
+details[open] { background: #fffaf3; }
+summary { cursor: pointer; list-style: none; padding: 18px 20px; font-size: 19px; font-weight: 800; color: var(--title); display: flex; justify-content: space-between; align-items: center; gap: 18px; text-align: left; text-align-last: auto; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "Deschide"; color: var(--muted); font-size: 14px; font-weight: 700; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 999px; padding: 7px 11px; white-space: nowrap; }
+details[open] > summary::after { content: "Ascunde"; }
+.details-body { border-top: 1px solid rgba(91, 62, 36, 0.12); padding: 18px 20px 20px; text-align: justify; text-align-last: left; }
+.details-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.nested-details { margin-top: 10px; box-shadow: none; background: #ffffff; }
+.nested-details summary { font-size: 17px; padding: 14px 16px; }
+.key-line { display: grid; grid-template-columns: 220px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px dashed rgba(91, 62, 36, 0.18); }
+.key-line:last-child { border-bottom: 0; }
+.key-line strong { color: var(--title); text-align: left; text-align-last: auto; }
+.key-line span { color: var(--muted); line-height: 1.65; text-align: justify; text-align-last: left; }
+.timeline { position: relative; display: grid; gap: 14px; margin-top: 18px; }
+.event { display: grid; grid-template-columns: 132px 1fr; gap: 18px; align-items: stretch; background: #ffffff; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); overflow: hidden; }
+.date { background: linear-gradient(180deg, #7a4f2a, #5b351b); color: #fffaf3; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px; font-size: 18px; line-height: 1.25; font-weight: 900; letter-spacing: 0.2px; }
+.event > div:last-child { padding: 17px 18px 18px 0; text-align: justify; text-align-last: left; }
+.event h3 { margin-bottom: 6px; }
+.event p { margin: 0; }
+.small-muted { font-size: 15px; color: #725c49; line-height: 1.6; text-align: justify; text-align-last: left; }
+.warning-box { background: #fff7ec; border-color: rgba(122, 79, 42, 0.22); margin-top: 16px; }
+.final-box { padding: 28px; background: linear-gradient(135deg, #fffaf3, #f4e4d1); border-color: rgba(91, 62, 36, 0.25); }
+.final-box p { margin-bottom: 0; }
+.table-wrap { overflow-x: auto; margin-top: 14px; border-radius: 18px; border: 1px solid rgba(91,62,36,.14); background: #fff; box-shadow: var(--shadow-small); }
+table { width: 100%; border-collapse: collapse; min-width: 740px; }
+th, td { padding: 13px 14px; border-bottom: 1px solid rgba(91,62,36,.12); color: var(--muted); font-size: 16px; line-height: 1.55; vertical-align: top; text-align: justify; }
+th { background: #f3eadf; color: var(--title); text-align: left; font-weight: 800; }
+tr:last-child td { border-bottom: 0; }
+@media (max-width: 980px) {
+  .summary-grid, .three-col, .term-grid, .quick-grid, .four-col { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .cause-grid, .details-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .page { width: min(100% - 22px, 1180px); padding-top: 22px; }
+  .hero, .section, .final-box { padding: 22px; border-radius: 22px; }
+  .summary-grid, .term-grid, .quick-grid, .four-col { grid-template-columns: 1fr; }
+  .event { grid-template-columns: 1fr; }
+  .date { min-height: 66px; }
+  .event > div:last-child { padding: 0 16px 16px; }
+  .key-line { grid-template-columns: 1fr; gap: 6px; }
+  summary { align-items: flex-start; flex-direction: column; }
+  .hero::after { font-size: 82px; }
+}
+</style>
+</head>
+
+<style>
+.phase-label{display:inline-block;margin:2px 0 12px;padding:6px 11px;border-radius:999px;background:var(--accent-soft);border:1px solid var(--line);color:var(--title);font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}.profile{display:grid;grid-template-columns:180px 1fr;gap:20px;align-items:start;padding:20px 0;border-bottom:1px dashed var(--line-strong)}.profile:last-child{border-bottom:0}.profile h3{margin:0}.profile .meta{font-size:15px;line-height:1.55;color:var(--accent);font-weight:700}.profile p{margin:6px 0 0}.date-list{display:grid;gap:10px}.date-row{display:grid;grid-template-columns:135px 1fr;gap:15px;padding:12px 0;border-bottom:1px solid var(--line)}.date-row:last-child{border-bottom:0}.date-row strong{color:var(--title)}.date-row span{color:var(--muted);line-height:1.62}.section-kicker{margin:0 0 8px;color:var(--accent);font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.lead-box{background:linear-gradient(135deg,#fffdf9,#f6eadb);border:1px solid var(--line);border-radius:20px;padding:20px;margin:16px 0}.lead-box p{margin:0}.compact-table td:first-child{white-space:nowrap;font-weight:800;color:var(--title)}@media(max-width:680px){.profile,.date-row{grid-template-columns:1fr;gap:5px}}
+</style>
+<body style="--hero-year: '1504';">
+<main class="page">
+<div class="topbar"><a class="back-link" href="evaluare_cu_material_renasterea.html">← Înapoi la materiale</a><span class="tag">Material ajutător · Renașterea · Artă și cultură</span></div>
+<section class="hero"><p class="eyebrow">Istoria universală · Epoca modernă timpurie</p><h1>Renașterea și umanismul: artă și cultură</h1><p class="subtitle">De la cupola lui Brunelleschi la Leonardo, Michelangelo și Rafael: cum perspectiva, studiul corpului, mecenatul și cultura urbană au creat un nou limbaj artistic.</p><div class="summary-grid"><div class="summary-card"><strong>Centru inițial</strong><span>Florența secolelor XIV–XV, urmată de Roma, Veneția, Milano și alte curți italiene.</span></div><div class="summary-card"><strong>Ideal vizual</strong><span>Armonie, proporție, claritate spațială și reprezentarea convingătoare a corpului uman.</span></div><div class="summary-card"><strong>Motor social</strong><span>Mecenatul familiilor, republicilor, papalității, confreriilor și breslelor.</span></div><div class="summary-card"><strong>Schimbare majoră</strong><span>Artistul devine creator intelectual, nu doar meșteșugar anonim.</span></div></div></section>
+<nav class="nav-card"><b>Cuprins:</b><a href="#cadru">Cadru</a><a href="#etape">Etape</a><a href="#limbaj">Limbaj artistic</a><a href="#maestri">Maeștri</a><a href="#arhitectura">Arhitectură</a><a href="#societate">Societate</a><a href="#opere">Opere analizate</a><a href="#scoli">Școli regionale</a><a href="#cronologie-extinsa">Cronologie extinsă</a><a href="#sinteza">Sinteză</a></nav>
+<section class="section" id="cadru"><p class="section-kicker">Punct de plecare</p><h2>I. De ce apare un nou tip de artă?</h2><p class="section-intro">Prosperitatea orașelor italiene, competiția politică, redescoperirea Antichității și interesul pentru om au creat condițiile unei arte care urmărea să pară naturală, ordonată și intelectual controlată.</p><div class="three-col"><article class="info-card"><h3>Orașul</h3><p>Florența, Veneția, Milano și Roma comandă palate, piețe, capele și monumente. Arta devine o formă de prestigiu public și de afirmare politică.</p></article><article class="info-card"><h3>Mecenatul</h3><p>Familia Medici, papii, principii și breslele finanțează artiști. Comanda stabilește tema și destinația, însă prestigiul creatorului crește constant.</p></article><article class="info-card"><h3>Antichitatea</h3><p>Coloanele, frontoanele, proporțiile și nudul eroic sunt reinterpretate. Modelele clasice nu sunt copiate mecanic, ci adaptate nevoilor creștine și civice.</p></article></div></section>
+<section class="section" id="etape"><p class="section-kicker">Periodizare</p><h2>II. Patru etape ale artei renascentiste</h2><div class="two-col"><article class="info-card"><span class="phase-label">cca 1300–1400</span><h3>Proto-Renașterea</h3><p>Giotto dă volum corpurilor, organizează spațiul și transformă gesturile în purtătoare de emoție. Frescele Capelei Scrovegni din Padova, realizate aproximativ între 1303 și 1305, sunt un reper.</p></article><article class="info-card"><span class="phase-label">cca 1400–1490</span><h3>Renașterea timpurie</h3><p>Brunelleschi experimentează perspectiva și construiește cupola catedralei florentine; Donatello reintroduce nudul monumental; Masaccio aplică perspectiva și lumina în pictură.</p></article><article class="info-card"><span class="phase-label">cca 1490–1527</span><h3>Înalta Renaștere</h3><p>Leonardo, Michelangelo și Rafael urmăresc sinteza dintre natură, ideal și compoziție monumentală. Roma devine principalul centru al marilor comenzi papale.</p></article><article class="info-card"><span class="phase-label">după 1520</span><h3>Manierismul</h3><p>Armonia clasică este înlocuită de tensiune, alungirea proporțiilor și spații instabile. Jefuirea Romei din 1527 simbolizează sfârșitul unei epoci, fără a opri creația renascentistă.</p></article></div></section>
+<section class="section" id="limbaj"><p class="section-kicker">Cum recunoaștem stilul?</p><h2>III. Limbajul vizual al Renașterii</h2><div class="details-grid"><div class="micro-card"><strong>Perspectivă liniară</strong><span>Liniile paralele converg spre un punct de fugă, creând un spațiu coerent și măsurabil.</span></div><div class="micro-card"><strong>Proporție</strong><span>Corpul și clădirea sunt concepute prin raporturi matematice și module armonice.</span></div><div class="micro-card"><strong>Contrapposto</strong><span>Greutatea corpului se sprijină pe un picior, producând echilibru și mișcare naturală.</span></div><div class="micro-card"><strong>Sfumato</strong><span>Contururile sunt estompate treptat, iar trecerile dintre lumină și umbră devin foarte fine.</span></div><div class="micro-card"><strong>Chiaroscuro</strong><span>Modelarea prin lumină și umbră dă volum și dramatism figurilor.</span></div><div class="micro-card"><strong>Realism idealizat</strong><span>Observația naturii este combinată cu selecția unor forme considerate frumoase și echilibrate.</span></div></div></section>
+<section class="section" id="maestri"><p class="section-kicker">Opere explicate</p><h2>IV. Cinci maeștri și contribuția lor</h2><div class="profile"><div><h3>Brunelleschi</h3><div class="meta">1377–1446 · arhitectură</div></div><p>Cupola catedralei Santa Maria del Fiore, ridicată în principal între 1420 și 1436, rezolvă o problemă inginerească uriașă printr-o structură dublă și tehnici inovatoare. Arhitectura sa revine la ordine, ritm și claritate geometrică.</p></div><div class="profile"><div><h3>Donatello</h3><div class="meta">cca 1386–1466 · sculptură</div></div><p><em>David</em>, realizat probabil în anii 1440, este primul mare nud masculin independent de după Antichitate. Sculptorul explorează atât eroismul, cât și fragilitatea psihologică.</p></div><div class="profile"><div><h3>Leonardo da Vinci</h3><div class="meta">1452–1519 · pictură și cercetare</div></div><p>În <em>Cina cea de Taină</em> (1495–1498), organizează reacțiile apostolilor într-o compoziție perfect controlată. În <em>Mona Lisa</em>, sfumato-ul și expresia ambiguă unesc observația și misterul.</p></div><div class="profile"><div><h3>Michelangelo</h3><div class="meta">1475–1564 · sculptură, pictură, arhitectură</div></div><p><em>David</em> (1501–1504) reprezintă tensiunea de dinaintea acțiunii, iar tavanul Capelei Sixtine (1508–1512) transformă corpul uman în principalul limbaj al dramei biblice.</p></div><div class="profile"><div><h3>Rafael</h3><div class="meta">1483–1520 · pictură</div></div><p><em>Școala din Atena</em> (1509–1511) reunește filosofi antici într-un spațiu arhitectural ideal. Opera exprimă armonia dintre tradiția clasică și cultura creștină a Romei papale.</p></div></section>
+<section class="section" id="arhitectura"><p class="section-kicker">Spațiu construit</p><h2>V. Arhitectură și urbanism</h2><div class="table-wrap"><table class="compact-table"><thead><tr><th>Construcție</th><th>Perioadă</th><th>Semnificație</th></tr></thead><tbody><tr><td>Santa Maria del Fiore</td><td>cupola: 1420–1436</td><td>Brunelleschi combină calculul geometric, ingineria și prestigiul civic al Florenței.</td></tr><tr><td>Palazzo Rucellai</td><td>cca 1446–1451</td><td>Alberti ordonează fațada prin registre și elemente inspirate din Antichitate.</td></tr><tr><td>Tempietto, Roma</td><td>cca 1502</td><td>Bramante concentrează idealul clasic într-o construcție mică, centralizată și perfect proporționată.</td></tr><tr><td>Bazilica Sf. Petru</td><td>începută în 1506</td><td>Proiectul trece prin mai multe etape și arhitecți; cupola lui Michelangelo devine model european.</td></tr><tr><td>Villa Rotonda</td><td>începută cca 1566</td><td>Palladio adaptează templul antic unei reședințe private și influențează arhitectura occidentală.</td></tr></tbody></table></div><div class="definition"><strong>Clarificare:</strong> Bazilica actuală Sfântul Petru a fost începută în 1506 și finalizată în secolul al XVII-lea. Încoronarea lui Carol cel Mare din anul 800 a avut loc în vechea bazilică aflată anterior pe același loc.</div></section>
+<section class="section" id="societate"><p class="section-kicker">Cultură și statut social</p><h2>VI. Artistul, curtea și orașul</h2><div class="three-col"><article class="info-card"><h3>Artistul intelectual</h3><p>Artiștii studiază anatomia, geometria, optica și literatura. Semnătura, biografia și reputația personală devin tot mai importante.</p></article><article class="info-card"><h3>Curtea renascentistă</h3><p>La Mantova, Urbino, Ferrara sau Milano, arta, muzica și conversația erudită devin instrumente ale prestigiului politic.</p></article><article class="info-card"><h3>Spațiul public</h3><p>Sculpturile, palatele și piețele organizează vizual orașul. Arta nu mai este limitată la interiorul bisericilor, deși comanda religioasă rămâne majoră.</p></article></div></section>
+
+<section class="section" id="opere"><p class="section-kicker">Studii de caz</p><h2>VII. Opere reprezentative explicate</h2><p class="section-intro">Datele sunt utile numai dacă arată o evoluție. Următoarele exemple ilustrează trecerea de la realismul narativ al secolului al XIV-lea la monumentalitatea și tensiunea secolului al XVI-lea.</p>
+<div class="two-col">
+<article class="info-card"><h3>Giotto – Capela Scrovegni</h3><p><strong>Padova, cca 1303–1305.</strong> Scenele vieții Fecioarei și ale lui Hristos sunt organizate clar, iar personajele au volum, greutate și emoții recognoscibile. În <em>Plângerea lui Hristos</em>, liniile stâncii și privirile personajelor conduc atenția spre trupul lui Hristos.</p><p><strong>Importanță:</strong> pictura nu mai funcționează doar ca simbol; ea construiește un eveniment dramatic în care spectatorul poate intra afectiv.</p></article>
+<article class="info-card"><h3>Masaccio – <em>Treimea</em></h3><p><strong>Florența, cca 1425–1427.</strong> Fresca din Santa Maria Novella creează iluzia unei capele adânci prin perspectivă liniară. Figurile sacre, donatorii și scheletul de la bază sunt dispuse într-o ordine geometrică precisă.</p><p><strong>Importanță:</strong> spațiul pictat pare continuarea arhitecturii reale; matematica devine mijloc artistic.</p></article>
+<article class="info-card"><h3>Donatello – <em>David</em></h3><p><strong>cca 1440, bronz.</strong> Este unul dintre primele nuduri monumentale independente realizate după Antichitate. Corpul adolescentului este relaxat în contrapposto, iar victoria asupra lui Goliat este prezentată fără gesturi eroice excesive.</p><p><strong>Importanță:</strong> sculptura poate fi privită din mai multe unghiuri și afirmă autonomia corpului uman în spațiu.</p></article>
+<article class="info-card"><h3>Botticelli – <em>Nașterea lui Venus</em></h3><p><strong>cca 1484–1486.</strong> Tema mitologică este legată de cultura neoplatonică a Florenței. Venus nu este o copie arheologică, ci o imagine poetică a frumuseții și iubirii spiritualizate.</p><p><strong>Importanță:</strong> mitologia antică poate deveni subiect major într-o societate creștină, mai ales în spațiul privat al elitelor.</p></article>
+<article class="info-card"><h3>Leonardo – <em>Cina cea de Taină</em></h3><p><strong>Milano, cca 1495–1498.</strong> Apostolii reacționează diferit la anunțul trădării. Grupurile de câte trei, perspectiva și lumina organizează scena în jurul lui Hristos.</p><p><strong>Importanță:</strong> compoziția matematică și psihologia gesturilor sunt integrate într-un singur moment dramatic.</p></article>
+<article class="info-card"><h3>Michelangelo – <em>David</em></h3><p><strong>1501–1504, marmură.</strong> Eroul este reprezentat înaintea luptei, concentrat și tensionat. Sculptura a fost amplasată în fața Palazzo Vecchio, devenind simbol al libertății republicane florentine.</p><p><strong>Importanță:</strong> corpul idealizat exprimă simultan forță fizică, voință și responsabilitate civică.</p></article>
+<article class="info-card"><h3>Rafael – <em>Școala din Atena</em></h3><p><strong>1509–1511, Vatican.</strong> Platon și Aristotel se află în centrul unei arhitecturi ideale, înconjurați de filosofi, matematicieni și savanți antici.</p><p><strong>Importanță:</strong> cultura clasică este prezentată ca fundament compatibil cu ordinea intelectuală a Romei papale.</p></article>
+<article class="info-card"><h3>Michelangelo – Capela Sixtină</h3><p><strong>Bolta: 1508–1512; <em>Judecata de Apoi</em>: 1536–1541.</strong> Pe boltă, scenele Genezei sunt legate de profeți, sibile și strămoșii lui Hristos. În <em>Judecata de Apoi</em>, ordinea clasică lasă loc unei mișcări dramatice și neliniștite.</p><p><strong>Importanță:</strong> aceeași capelă arată trecerea de la încrederea Înaltei Renașteri la tensiunile religioase și politice ale secolului al XVI-lea.</p></article>
+</div></section>
+<section class="section" id="scoli"><p class="section-kicker">Diversitate regională</p><h2>VIII. Școli artistice și diferențe de stil</h2><div class="table-wrap"><table><thead><tr><th>Școală</th><th>Caracteristici</th><th>Artiști și exemple</th><th>Perioadă de afirmare</th></tr></thead><tbody>
+<tr><td>Florența</td><td>Desen riguros, perspectivă, anatomie, interes pentru structură și volum.</td><td>Masaccio, Donatello, Botticelli, Leonardo, Michelangelo; cupola lui Brunelleschi.</td><td>cca 1400–1500, cu influență durabilă.</td></tr>
+<tr><td>Roma</td><td>Monumentalitate, sinteză clasică, programe papale și spații ceremoniale.</td><td>Bramante, Rafael, Michelangelo; Vaticanul și Bazilica Sfântul Petru.</td><td>Mai ales 1503–1527 și apoi în a doua jumătate a secolului XVI.</td></tr>
+<tr><td>Veneția</td><td>Culoare, lumină, atmosferă, peisaj și pictură în ulei adaptată climatului umed.</td><td>Giovanni Bellini, Giorgione, Tizian, Tintoretto, Veronese.</td><td>cca 1470–1600.</td></tr>
+<tr><td>Milano</td><td>Curte princiară, inginerie, ceremonie și experimente artistice.</td><td>Leonardo la curtea lui Ludovico Sforza; Bramante înainte de mutarea la Roma.</td><td>Mai ales 1482–1499.</td></tr>
+<tr><td>Urbino și Mantova</td><td>Cultură de curte, studiul perspectivei și reprezentarea prestigiului dinastic.</td><td>Piero della Francesca, Andrea Mantegna, Giulio Romano.</td><td>Secolele XV–XVI.</td></tr>
+<tr><td>Țările de Jos</td><td>Detaliu minuțios, simbolism domestic, ulei transparent și portret.</td><td>Jan van Eyck, Rogier van der Weyden, Hieronymus Bosch, Pieter Bruegel cel Bătrân.</td><td>cca 1420–1569.</td></tr>
+<tr><td>Germania</td><td>Grafică, expresivitate, interes pentru natură și tensiune religioasă.</td><td>Albrecht Dürer, Lucas Cranach cel Bătrân, Hans Holbein cel Tânăr.</td><td>cca 1490–1550.</td></tr>
+</tbody></table></div>
+<details open><summary>Renașterea nordică: asemănări și diferențe</summary><div class="details-body"><p>Artiștii nordici împărtășesc interesul pentru individ și observația naturii, dar nu adoptă întotdeauna imediat monumentalitatea italiană. <strong>Jan van Eyck</strong>, în <em>Portretul soților Arnolfini</em> (1434), folosește uleiul pentru suprafețe, reflexii și detalii. <strong>Dürer</strong> călătorește în Italia în 1494–1495 și din nou între 1505 și 1507, combinând teoria proporțiilor cu tradiția gravurii germane. <strong>Bruegel</strong>, în <em>Vânătorii în zăpadă</em> (1565), transformă peisajul și viața cotidiană în subiecte majore.</p></div></details></section>
+<section class="section" id="cronologie-extinsa"><p class="section-kicker">Cronologie comentată</p><h2>IX. Repere artistice și arhitecturale, 1300–1600</h2><div class="timeline">
+<article class="event"><div class="date">1303–1305</div><div><h3>Capela Scrovegni</h3><p>Giotto construiește o narațiune picturală coerentă, bazată pe spațiu, volum și emoție.</p></div></article>
+<article class="event"><div class="date">1334</div><div><h3>Giotto devine arhitect al catedralei din Florența</h3><p>Începe proiectarea campanilei, continuată după moartea sa din 1337.</p></div></article>
+<article class="event"><div class="date">1401</div><div><h3>Concursul pentru porțile Baptisteriului</h3><p>Reliefurile lui Ghiberti și Brunelleschi despre sacrificiul lui Isaac sunt considerate un reper al începutului Renașterii florentine.</p></div></article>
+<article class="event"><div class="date">1419</div><div><h3>Ospedale degli Innocenti</h3><p>Brunelleschi proiectează o fațadă cu arcade și proporții regulate, model al arhitecturii civile renascentiste.</p></div></article>
+<article class="event"><div class="date">1420–1436</div><div><h3>Cupola Santa Maria del Fiore</h3><p>Brunelleschi ridică dubla cupolă fără o centrare tradițională completă, rezolvând o problemă tehnică majoră.</p></div></article>
+<article class="event"><div class="date">cca 1425–1427</div><div><h3><em>Treimea</em> lui Masaccio</h3><p>Perspectiva liniară devine instrument riguros de organizare a spațiului pictat.</p></div></article>
+<article class="event"><div class="date">1440–1450</div><div><h3>Consolidarea sculpturii independente</h3><p>Donatello realizează <em>David</em> și monumentul ecvestru <em>Gattamelata</em>, inaugurat la Padova în 1453.</p></div></article>
+<article class="event"><div class="date">1470–1480</div><div><h3>Palate și capele florentine</h3><p>Palazzo Medici, Palazzo Rucellai și Capela Pazzi definesc un vocabular civil bazat pe ordine și proporție.</p></div></article>
+<article class="event"><div class="date">1481–1482</div><div><h3>Prima campanie decorativă a Capelei Sixtine</h3><p>Botticelli, Ghirlandaio, Perugino și alți maeștri pictează ciclurile lui Moise și Hristos.</p></div></article>
+<article class="event"><div class="date">1495–1498</div><div><h3><em>Cina cea de Taină</em></h3><p>Leonardo transformă scena religioasă într-un studiu de reacții psihologice.</p></div></article>
+<article class="event"><div class="date">1501–1504</div><div><h3><em>David</em> de Michelangelo</h3><p>Sculptura devine simbol civic al Florenței republicane.</p></div></article>
+<article class="event"><div class="date">1502</div><div><h3>Tempietto al lui Bramante</h3><p>Micul edificiu de la San Pietro in Montorio exprimă idealul centralizat și proporționat al Înaltei Renașteri.</p></div></article>
+<article class="event"><div class="date">18 apr. 1506</div><div><h3>Piatra de temelie a noii Bazilici Sfântul Petru</h3><p>Proiectul inițial al lui Bramante va fi modificat de Rafael, Antonio da Sangallo, Michelangelo, Maderno și Bernini.</p></div></article>
+<article class="event"><div class="date">1508–1512</div><div><h3>Bolta Capelei Sixtine</h3><p>Michelangelo creează una dintre cele mai complexe sinteze dintre teologie, anatomie și monumentalitate.</p></div></article>
+<article class="event"><div class="date">1509–1511</div><div><h3>Stanza della Segnatura</h3><p>Rafael pictează <em>Școala din Atena</em>, <em>Disputa asupra Sacramentului</em> și alte compoziții despre adevăr, poezie și drept.</p></div></article>
+<article class="event"><div class="date">1527</div><div><h3>Jefuirea Romei</h3><p>Criza politică și militară contribuie la dispersarea artiștilor și la afirmarea manierismului în mai multe regiuni.</p></div></article>
+<article class="event"><div class="date">1546</div><div><h3>Michelangelo preia șantierul Sfântului Petru</h3><p>El simplifică planul și proiectează forma esențială a cupolei.</p></div></article>
+<article class="event"><div class="date">1563</div><div><h3>Academia del Disegno</h3><p>Fondată la Florența, instituția confirmă statutul intelectual și teoretic al artistului.</p></div></article>
+<article class="event"><div class="date">1570</div><div><h3><em>Cele patru cărți despre arhitectură</em></h3><p>Andrea Palladio publică un tratat care va influența arhitectura europeană și americană timp de secole.</p></div></article>
+</div></section>
+<section class="section" id="sinteza"><p class="section-kicker">Repere esențiale</p><h2>VII. Cronologie selectivă și explicată</h2><div class="date-list"><div class="date-row"><strong>1303–1305</strong><span>Giotto, Capela Scrovegni: emoția și spațiul capătă o coerență nouă.</span></div><div class="date-row"><strong>1420–1436</strong><span>Brunelleschi ridică marea cupolă a Florenței și confirmă legătura dintre artă și inginerie.</span></div><div class="date-row"><strong>1440–1480</strong><span>Donatello, Masaccio și Botticelli definesc vocabularul Renașterii timpurii.</span></div><div class="date-row"><strong>1495–1512</strong><span><em>Cina cea de Taină</em>, <em>David</em>, Capela Sixtină și <em>Școala din Atena</em> marchează apogeul epocii.</span></div><div class="date-row"><strong>1520–1600</strong><span>Manierismul și școala venețiană extind Renașterea spre expresivitate, culoare și tensiune.</span></div></div></section>
+<section class="final-box"><h2>Ideea de reținut</h2><p>Arta Renașterii nu este o simplă colecție de capodopere. Ea este rezultatul întâlnirii dintre oraș, mecenat, studiul Antichității, matematică și afirmarea artistului ca intelectual. Datele sunt utile atunci când arată această evoluție, nu când apar izolate.</p></section>
+</main>
+</body></html>

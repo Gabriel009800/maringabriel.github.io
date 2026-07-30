@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Filosofia Luminilor: personalități istorice">
+<title>univ-filosofia-luminilor-personalitati-istorice</title>
+<style>
+:root {
+  --bg: #fbf6ea;
+  --paper: #fffaf0;
+  --paper-2: #ffffff;
+  --ink: #2d2418;
+  --title: #3c2d16;
+  --muted: #5e4d36;
+  --accent: #9a6519;
+  --accent-2: #c28a2c;
+  --accent-soft: #f5e8c8;
+  --line: rgba(92, 66, 30, 0.18);
+  --line-strong: rgba(92, 66, 30, 0.34);
+  --shadow: 0 26px 70px rgba(0,0,0,.28);
+  --shadow-small: 0 12px 30px rgba(0,0,0,.15);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin:0; min-height:100vh; color:var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(196,139,45,.70), transparent 32%),
+    radial-gradient(circle at 50% 100%, rgba(117,78,23,.45), transparent 37%),
+    radial-gradient(circle at 0 50%, rgba(18,14,8,.94), transparent 43%),
+    radial-gradient(circle at 100% 50%, rgba(18,14,8,.94), transparent 43%),
+    linear-gradient(180deg,#2c1e0c 0%,#58401c 48%,#170f06 100%);
+  background-attachment:fixed;
+}
+body::before { content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:radial-gradient(circle at center,transparent 0%,rgba(0,0,0,.08) 49%,rgba(0,0,0,.46) 100%),
+  linear-gradient(90deg,rgba(0,0,0,.18),transparent 18%,transparent 82%,rgba(0,0,0,.18)); }
+.page { position:relative; z-index:1; width:min(1180px,calc(100% - 32px)); margin:0 auto; padding:34px 0 70px; }
+.topbar { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:18px; flex-wrap:wrap; }
+.back-link,.tag { display:inline-flex; align-items:center; border:1px solid var(--line); background:rgba(255,250,240,.88); color:var(--title); border-radius:999px; padding:10px 15px; text-decoration:none; font-size:15px; font-weight:700; box-shadow:var(--shadow-small); }
+.back-link:hover { background:#fff6e4; }
+.hero,.section,.nav-card,.final-box,.related-card { background:rgba(255,250,240,.96); border:1px solid var(--line); border-radius:28px; box-shadow:var(--shadow); }
+.hero { padding:38px; margin-bottom:24px; position:relative; overflow:hidden; }
+.hero::after { content:var(--hero-year); position:absolute; right:26px; bottom:-24px; font-size:108px; font-weight:900; letter-spacing:-4px; color:rgba(154,101,25,.09); pointer-events:none; }
+.eyebrow { margin:0 0 8px; font-size:16px; color:var(--accent); font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+h1 { margin:0; font-size:clamp(38px,5vw,62px); line-height:1.04; color:var(--title); letter-spacing:-1.4px; }
+.subtitle { margin:18px 0 0; max-width:990px; font-size:19px; line-height:1.78; color:var(--muted); text-align:justify; text-align-last:left; }
+.series-links { display:flex; gap:9px; flex-wrap:wrap; margin-top:20px; }
+.series-links a { color:var(--title); background:#fff; border:1px solid rgba(92,66,30,.16); border-radius:999px; padding:9px 13px; text-decoration:none; font-weight:800; box-shadow:0 8px 20px rgba(0,0,0,.10); }
+.series-links a[aria-current="page"] { background:var(--accent); color:#fffaf3; }
+.series-links a:hover { transform:translateY(-1px); }
+.related-card { display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:16px 20px; margin:-10px 0 24px; border-radius:22px; box-shadow:var(--shadow-small); }
+.related-card b { color:var(--title); }
+.related-card a { color:var(--title); background:#f5e8c8; border:1px solid rgba(92,66,30,.16); border-radius:999px; text-decoration:none; padding:8px 12px; font-weight:700; font-size:14px; }
+.nav-card { display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:18px 20px; margin-bottom:24px; }
+.nav-card b { color:var(--title); }
+.nav-card a,.mini-btn { color:var(--title); background:var(--accent-soft); border:1px solid rgba(92,66,30,.16); border-radius:999px; text-decoration:none; padding:8px 12px; font-weight:700; font-size:14px; cursor:pointer; font-family:inherit; }
+.nav-card a:hover,.mini-btn:hover { background:#ead7a7; }
+.section { padding:30px; margin-bottom:24px; }
+h2 { margin:0 0 14px; color:var(--title); font-size:clamp(28px,3vw,38px); line-height:1.15; }
+h3 { margin:0 0 12px; color:var(--title); font-size:22px; line-height:1.22; }
+h4 { margin:16px 0 8px; color:var(--title); font-size:18px; }
+p,li,dd,.section-intro { font-size:17px; line-height:1.72; color:var(--muted); text-align:justify; text-align-last:left; hyphens:auto; }
+.section-intro { margin:0 0 20px; max-width:1020px; }
+.summary-grid,.three-col,.two-col,.four-col,.term-grid,.quick-grid,.cause-grid,.profile-grid,.principle-grid { display:grid; gap:14px; }
+.summary-grid,.quick-grid { grid-template-columns:repeat(4,1fr); margin-top:22px; }
+.three-col,.profile-grid { grid-template-columns:repeat(3,1fr); }
+.two-col,.cause-grid { grid-template-columns:repeat(2,1fr); }
+.four-col,.term-grid,.principle-grid { grid-template-columns:repeat(4,1fr); }
+.summary-card,.info-card,.wide-card,.term-card,.quick-card,.micro-card,.warning-box,.source-note,.profile-card,.principle-card { background:var(--paper-2); border:1px solid rgba(92,66,30,.14); border-radius:20px; box-shadow:var(--shadow-small); text-align:justify; text-align-last:left; }
+.summary-card,.info-card,.wide-card,.term-card,.quick-card,.micro-card,.warning-box,.source-note,.profile-card,.principle-card { padding:20px; }
+.summary-card { min-height:132px; padding:16px; }
+.summary-card strong,.quick-card strong,.term-card strong,.micro-card strong,.principle-card strong { display:block; color:var(--title); font-size:17px; margin-bottom:8px; text-align:left; }
+.summary-card span,.quick-card span,.term-card span,.micro-card span,.principle-card span { display:block; color:var(--muted); font-size:15.5px; line-height:1.58; }
+.profile-card h3 { margin-bottom:4px; }
+.profile-card .life { display:block; color:var(--accent); font-weight:800; margin-bottom:10px; }
+.profile-card p { font-size:16px; margin:8px 0; }
+.profile-card ul { margin:8px 0 0; padding-left:20px; }
+.profile-card li { font-size:15.5px; line-height:1.56; margin-bottom:5px; }
+.clean,.number-list { margin:0; padding-left:22px; }
+.clean li,.number-list li { margin:0 0 9px; padding-left:2px; }
+.date-pill { display:inline-block; color:var(--title); font-weight:800; background:#f7edda; border:1px solid rgba(92,66,30,.13); border-radius:999px; padding:2px 9px; margin-right:5px; white-space:nowrap; }
+.definition,.note,.fact-check,.quote-box { margin-top:18px; background:#fff8ea; border:1px solid rgba(154,101,25,.23); border-left:6px solid rgba(154,101,25,.55); border-radius:18px; padding:18px 20px; color:var(--muted); font-size:17px; line-height:1.7; text-align:justify; text-align-last:left; }
+.definition strong,.note strong,.fact-check strong,.quote-box strong { color:var(--title); }
+.quote-box { font-style:italic; }
+details { background:#fffdf8; border:1px solid rgba(92,66,30,.14); border-radius:20px; box-shadow:var(--shadow-small); margin-top:14px; overflow:hidden; }
+details[open] { background:#fffaf0; }
+summary { cursor:pointer; list-style:none; padding:18px 20px; font-size:19px; font-weight:800; color:var(--title); display:flex; justify-content:space-between; align-items:center; gap:18px; }
+summary::-webkit-details-marker { display:none; }
+summary::after { content:"Deschide"; color:var(--muted); font-size:14px; font-weight:700; background:#f7edda; border:1px solid rgba(92,66,30,.14); border-radius:999px; padding:7px 11px; white-space:nowrap; }
+details[open]>summary::after { content:"Ascunde"; }
+.details-body { border-top:1px solid rgba(92,66,30,.12); padding:18px 20px 20px; }
+.key-line { display:grid; grid-template-columns:220px 1fr; gap:14px; padding:14px 0; border-bottom:1px dashed rgba(92,66,30,.18); }
+.key-line:last-child { border-bottom:0; }
+.key-line strong { color:var(--title); }
+.key-line span { color:var(--muted); line-height:1.65; }
+.timeline { display:grid; gap:14px; margin-top:18px; }
+.event { display:grid; grid-template-columns:136px 1fr; gap:18px; align-items:stretch; background:#fff; border:1px solid rgba(92,66,30,.14); border-radius:20px; box-shadow:var(--shadow-small); overflow:hidden; }
+.date { background:linear-gradient(180deg,#a36b18,#6f430d); color:#fffaf3; display:flex; align-items:center; justify-content:center; text-align:center; padding:14px; font-size:18px; line-height:1.25; font-weight:900; }
+.event>div:last-child { padding:17px 18px 18px 0; }
+.event h3 { margin-bottom:6px; }
+.event p { margin:0; }
+.warning-box { background:#fff4df; border-color:rgba(154,101,25,.25); margin-top:16px; }
+.final-box { padding:28px; background:linear-gradient(135deg,#fffaf0,#f3dfb7); border-color:rgba(92,66,30,.25); }
+.final-box p { margin-bottom:0; }
+.table-wrap { overflow-x:auto; margin-top:14px; border-radius:18px; border:1px solid rgba(92,66,30,.14); background:#fff; box-shadow:var(--shadow-small); }
+table { width:100%; border-collapse:collapse; min-width:760px; }
+th,td { padding:13px 14px; border-bottom:1px solid rgba(92,66,30,.12); color:var(--muted); font-size:16px; line-height:1.55; vertical-align:top; text-align:left; }
+th { background:#f7edda; color:var(--title); font-weight:800; }
+tr:last-child td { border-bottom:0; }
+.badge-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+.badge { display:inline-flex; padding:6px 10px; border-radius:999px; background:#f7edda; border:1px solid rgba(92,66,30,.13); color:var(--title); font-weight:800; font-size:13px; }
+.flow { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin-top:16px; }
+.flow-item { position:relative; padding:16px; background:#fff; border:1px solid rgba(92,66,30,.14); border-radius:18px; box-shadow:var(--shadow-small); }
+.flow-item b { display:block; color:var(--title); margin-bottom:6px; }
+.flow-item span { font-size:15px; color:var(--muted); line-height:1.5; }
+.flow-item:not(:last-child)::after { content:'→'; position:absolute; right:-14px; top:50%; transform:translateY(-50%); font-size:22px; color:var(--accent); font-weight:900; z-index:3; }
+.source-map { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+.source-map article { background:#fff; border:1px solid rgba(92,66,30,.14); border-radius:18px; padding:17px; box-shadow:var(--shadow-small); }
+.source-map strong { display:block; color:var(--title); margin-bottom:6px; }
+.source-map span { color:var(--muted); font-size:15.5px; line-height:1.55; }
+footer { margin-top:24px; color:rgba(255,250,243,.82); text-align:center; font-size:14px; line-height:1.6; }
+@media(max-width:980px) {
+  .summary-grid,.three-col,.four-col,.term-grid,.quick-grid,.profile-grid,.principle-grid { grid-template-columns:repeat(2,1fr); }
+  .two-col,.cause-grid,.source-map { grid-template-columns:1fr; }
+  .flow { grid-template-columns:repeat(2,1fr); }
+  .flow-item::after { display:none; }
+}
+@media(max-width:680px) {
+  .page { width:min(100% - 22px,1180px); padding-top:22px; }
+  .hero,.section,.final-box { padding:22px; border-radius:22px; }
+  .summary-grid,.three-col,.four-col,.term-grid,.quick-grid,.profile-grid,.principle-grid,.flow { grid-template-columns:1fr; }
+  .event { grid-template-columns:1fr; }
+  .date { min-height:66px; }
+  .event>div:last-child { padding:0 16px 16px; }
+  .key-line { grid-template-columns:1fr; gap:6px; }
+  summary { align-items:flex-start; flex-direction:column; }
+  .hero::after { font-size:78px; }
+  .series-links a { width:100%; text-align:center; }
+  .subtitle,p,li,dd,.section-intro,.details-body,.key-line span,.event>div:last-child,.definition,.note,.fact-check,.quote-box { text-align:left; text-align-last:auto; hyphens:none; }
+}
+@media print {
+  body { background:#fff!important; }
+  body::before { display:none; }
+  .page { width:100%; padding:0; }
+  .topbar,.nav-card,.related-card { display:none!important; }
+  .hero,.section,.final-box { box-shadow:none; border:1px solid #ccb991; break-inside:avoid-page; }
+  details { break-inside:avoid-page; }
+  summary::after { display:none; }
+}
+</style>
+</head>
+<body id="top" style="--hero-year:'1751';">
+<main class="page">
+<div class="topbar"><a class="back-link" href="index.html">← Înapoi la materiale</a><span class="tag">Material ajutător · Istorie universală · Filosofia Luminilor</span></div>
+<section class="hero"><p class="eyebrow">Istorie universală · Filosofi · Scriitori · Savanți · Reformatori</p><h1>Filosofia Luminilor: personalități istorice</h1><p class="subtitle">Portrete intelectuale ale marilor reprezentanți ai Luminilor: de la Descartes, Spinoza și Locke la Voltaire, Montesquieu, Rousseau, Diderot, Hume, Smith, Kant, Beccaria, scriitori, femei ale Luminilor și Școala Ardeleană.</p><div class="series-links"><a href="univ-filosofia-luminilor-monarhia-luminata.html">Monarhia luminată</a><a href="univ-filosofia-luminilor-idei-filosofice.html">Idei filosofice</a><a href="univ-filosofia-luminilor-personalitati-istorice.html" aria-current="page">Personalități istorice</a></div></section>
+<div class="related-card"><b>Seria Filosofia Luminilor:</b><a href="univ-filosofia-luminilor-monarhia-luminata.html">Monarhia luminată</a><a href="univ-filosofia-luminilor-idei-filosofice.html">Idei filosofice</a><a href="univ-filosofia-luminilor-personalitati-istorice.html" aria-current="page">Personalități istorice</a></div>
+<nav class="nav-card" aria-label="Cuprinsul paginii"><b>Cuprins:</b><a href="#introducere">Rețeaua</a><a href="#precursori">Precursori</a><a href="#britanici">Britanici</a><a href="#francezi">Francezi</a><a href="#enciclopedisti">Reformatori</a><a href="#germani">Germani</a><a href="#femei">Femei</a><a href="#atlantic">Atlantic</a><a href="#romani">Școala Ardeleană</a><a href="#monarhi">Monarhi</a><a href="#cronologie">Cronologie</a><a href="#sinteza">Sinteză</a><button class="mini-btn" type="button" data-action="open">Deschide explicațiile</button><button class="mini-btn" type="button" data-action="close">Închide explicațiile</button></nav>
+
+<section class="section" id="introducere">
+<h2>I. Republica europeană a literelor</h2>
+<p class="section-intro">Iluminismul nu a avut un singur conducător sau manifest. Filosofi, savanți, scriitori, economiști, juriști, editori și organizatoare de saloane au format o rețea transnațională — „Republica Literelor” — bazată pe corespondență, traduceri, cărți, academii și călătorii.</p>
+<div class="summary-grid"><article class="summary-card"><strong>Filosofi</strong><span>Analizează cunoașterea, religia, libertatea și autoritatea.</span></article><article class="summary-card"><strong>Scriitori</strong><span>Romanul și satira transformă critica socială într-o experiență accesibilă publicului.</span></article><article class="summary-card"><strong>Economiști și juriști</strong><span>Propun legi naturale ale pieței, reforme penale și egalitate juridică.</span></article><article class="summary-card"><strong>Femei ale Luminilor</strong><span>Traduc, scriu, organizează saloane și revendică educație și cetățenie.</span></article></div>
+</section>
+
+<section class="section" id="precursori">
+<h2>II. Precursori: raționalism și empirism</h2>
+<div class="profile-grid"><article class="profile-card"><h3>René Descartes</h3><span class="life">1596–1650 · Franța</span><p>Transformă îndoiala într-o metodă și caută certitudinea prin rațiune.</p><ul><li><em>Discurs asupra metodei</em> (1637);</li><li><em>Meditații metafizice</em> (1641);</li><li>dualismul dintre res cogitans și res extensa;</li><li>model pentru spiritul critic al Luminilor.</li></ul></article><article class="profile-card"><h3>Baruch Spinoza</h3><span class="life">1632–1677 · Provinciile Unite</span><p>Construiește o filosofie a naturii, necesității și libertății intelectuale.</p><ul><li><em>Tratat teologico-politic</em> (1670);</li><li><em>Etica</em> (1677);</li><li>critică superstiția și lectura literală a Scripturii;</li><li>apără libertatea de filosofare.</li></ul></article><article class="profile-card"><h3>John Locke</h3><span class="life">1632–1704 · Anglia</span><p>Leagă empirismul de liberalismul politic și de toleranța religioasă.</p><ul><li><em>Eseu asupra intelectului uman</em> (1690);</li><li><em>Două tratate despre guvernare</em> (1689/1690);</li><li>drepturi naturale: viață, libertate, proprietate;</li><li>guvernarea prin consimțământ și dreptul la rezistență.</li></ul></article></div>
+<div class="profile-grid"><article class="profile-card"><h3>Francis Bacon</h3><span class="life">1561–1626 · Anglia</span><p>Promovează cunoașterea inductivă și programul unei științe utile, întemeiate pe observație și experiment.</p></article><article class="profile-card"><h3>Isaac Newton</h3><span class="life">1643–1727 · Anglia</span><p>Legea gravitației și mecanica oferă imaginea unui univers guvernat de legi inteligibile; devine modelul științei pentru secolul al XVIII-lea.</p></article><article class="profile-card"><h3>Pierre Bayle</h3><span class="life">1647–1706 · Franța / Provinciile Unite</span><p>Dicționarul său critic și apărarea toleranței subminează autoritatea tradiției neverificate.</p></article></div>
+</section>
+
+<section class="section" id="britanici">
+<h2>III. Filosofi și scriitori britanici</h2>
+<div class="profile-grid"><article class="profile-card"><h3>George Berkeley</h3><span class="life">1685–1753 · Irlanda</span><p>Empirist idealist, susține că obiectele sunt cunoscute numai ca percepții.</p><ul><li><em>Tratat asupra principiilor cunoașterii umane</em> (1710);</li><li>formula „a fi înseamnă a fi perceput”;</li><li>critică ideea materiei independente de minte.</li></ul></article><article class="profile-card"><h3>David Hume</h3><span class="life">1711–1776 · Scoția</span><p>Radicalizează empirismul și investighează cauzalitatea, identitatea și morala.</p><ul><li><em>Tratat despre natura umană</em> (1739–1740);</li><li>scepticism față de metafizică;</li><li>morala se bazează și pe sentimente, nu doar pe rațiune.</li></ul></article><article class="profile-card"><h3>Adam Smith</h3><span class="life">1723–1790 · Scoția</span><p>Filosof moral și întemeietor al economiei politice clasice.</p><ul><li><em>Teoria sentimentelor morale</em> (1759);</li><li><em>Avuția națiunilor</em> (1776);</li><li>diviziunea muncii, concurența și libertatea schimbului;</li><li>statul păstrează funcții de apărare, justiție și lucrări publice.</li></ul></article><article class="profile-card"><h3>Daniel Defoe</h3><span class="life">c. 1660–1731 · Anglia</span><p>Jurnalist și romancier al individului întreprinzător.</p><ul><li><em>Robinson Crusoe</em> (1719);</li><li>munca, calculul, supraviețuirea și colonizarea;</li><li>contribuie la apariția romanului modern.</li></ul></article><article class="profile-card"><h3>Jonathan Swift</h3><span class="life">1667–1745 · Irlanda</span><p>Folosește satira pentru a demasca vanitatea politică și falsa raționalitate.</p><ul><li><em>Călătoriile lui Gulliver</em> (1726);</li><li>critică războiul, partidele, colonialismul și optimismul naiv;</li><li>arată limitele proiectelor abstracte.</li></ul></article><article class="profile-card"><h3>Thomas Paine</h3><span class="life">1737–1809 · Anglia / America / Franța</span><p>Pamfletar revoluționar, transformă drepturile naturale într-un limbaj popular.</p><ul><li><em>Common Sense</em> (1776);</li><li><em>Drepturile omului</em> (1791–1792);</li><li>republicanism și critică a monarhiei ereditare.</li></ul></article></div>
+</section>
+
+<section class="section" id="francezi">
+<h2>IV. Filosofii francezi</h2>
+<div class="profile-grid"><article class="profile-card"><h3>Voltaire</h3><span class="life">1694–1778</span><p>Simbol al luptei împotriva fanatismului, intoleranței și erorilor judiciare.</p><ul><li><em>Scrisori filosofice</em> (1734);</li><li><em>Candide</em> (1759);</li><li><em>Tratat despre toleranță</em> (1763);</li><li>deism, libertate de expresie și monarhie luminată;</li><li>corespondență cu Frederic II și Ecaterina II.</li></ul></article><article class="profile-card"><h3>Montesquieu</h3><span class="life">1689–1755</span><p>Analizează legile în raport cu societatea și fundamentează teoria separării puterilor.</p><ul><li><em>Scrisori persane</em> (1721);</li><li><em>Despre spiritul legilor</em> (1748);</li><li>monarhie moderată și corpuri intermediare;</li><li>influență asupra constituțiilor moderne.</li></ul></article><article class="profile-card"><h3>Jean-Jacques Rousseau</h3><span class="life">1712–1778 · Geneva / Franța</span><p>Critică inegalitatea și civilizația artificială, dar fundamentează suveranitatea populară.</p><ul><li><em>Discurs despre științe și arte</em> (1750);</li><li><em>Discurs asupra originii inegalității</em> (1755);</li><li><em>Contractul social</em> (1762);</li><li><em>Émile</em> (1762);</li><li>voință generală, educație naturală și republicanism.</li></ul></article><article class="profile-card"><h3>Denis Diderot</h3><span class="life">1713–1784</span><p>Editor, filosof și scriitor, transformă Enciclopedia într-un instrument de emancipare.</p><ul><li>coordonează <em>Encyclopédie</em> din 1751;</li><li>scrie dialoguri materialiste și critice;</li><li>apără libertatea cercetării, tehnica și demnitatea meseriilor;</li><li>critică despotismul și colonialismul.</li></ul></article><article class="profile-card"><h3>Jean le Rond d'Alembert</h3><span class="life">1717–1783</span><p>Matematician și coeditor al Enciclopediei; clasifică sistemul cunoașterii în <em>Discurs preliminar</em> (1751).</p></article><article class="profile-card"><h3>Condorcet</h3><span class="life">1743–1794</span><p>Apără progresul nelimitat, școala publică, abolirea sclaviei și drepturile femeilor.</p><ul><li><em>Schiță a unui tablou istoric al progreselor spiritului uman</em>;</li><li>educație universală și egalitate politică;</li><li>legătură directă între Luminile târzii și Revoluția Franceză.</li></ul></article></div>
+</section>
+
+<section class="section" id="enciclopedisti">
+<h2>V. Enciclopediști, economiști și reformatori ai dreptului</h2>
+<div class="profile-grid"><article class="profile-card"><h3>François Quesnay</h3><span class="life">1694–1774 · Franța</span><p>Medic și lider al fiziocraților.</p><ul><li><em>Tabloul economic</em> (1758);</li><li>agricultura ca sursă a produsului net;</li><li>ordine naturală și libertatea comerțului cu cereale.</li></ul></article><article class="profile-card"><h3>Anne Robert Turgot</h3><span class="life">1727–1781 · Franța</span><p>Economist și ministru reformator.</p><ul><li>încearcă liberalizarea comerțului;</li><li>eliminarea corvezilor și a privilegiilor corporative;</li><li>reformele sale sunt blocate de grupurile privilegiate.</li></ul></article><article class="profile-card"><h3>Cesare Beccaria</h3><span class="life">1738–1794 · Italia</span><p>Reformează gândirea penală prin <em>Despre infracțiuni și pedepse</em> (1764).</p><ul><li>pedepse proporționale și legi publice;</li><li>condamnarea torturii;</li><li>critica pedepsei cu moartea;</li><li>prevenția este mai eficientă decât cruzimea.</li></ul></article><article class="profile-card"><h3>Paul-Henri d'Holbach</h3><span class="life">1723–1789</span><p>Materialist și ateu, autor al <em>Sistemului naturii</em> (1770); salonul său reunește nucleul radical al filosofilor.</p></article><article class="profile-card"><h3>Claude-Adrien Helvétius</h3><span class="life">1715–1771</span><p>Leagă caracterul de educație și mediu, susținând reformarea societății prin instituții raționale.</p></article><article class="profile-card"><h3>Gabriel Bonnot de Mably</h3><span class="life">1709–1785</span><p>Critic al inegalității și luxului, apără virtutea civică și forme mai egalitare de proprietate.</p></article></div>
+</section>
+
+<section class="section" id="germani">
+<h2>VI. Iluminismul german</h2>
+<div class="profile-grid"><article class="profile-card"><h3>Immanuel Kant</h3><span class="life">1724–1804 · Prusia</span><p>Definește iluminarea drept ieșirea omului din „minoritatea” autoimpusă.</p><ul><li><em>Ce este Luminarea?</em> (1784);</li><li>motto: <em>Sapere aude</em> — „Îndrăznește să cunoști”;</li><li>autonomia morală și folosirea publică a rațiunii;</li><li>proiectul păcii perpetue.</li></ul></article><article class="profile-card"><h3>Gotthold Ephraim Lessing</h3><span class="life">1729–1781</span><p>Dramaturg și critic al intoleranței.</p><ul><li><em>Nathan Înțeleptul</em> (1779);</li><li>dialog interreligios și umanitate comună;</li><li>dezvoltarea teatrului german modern.</li></ul></article><article class="profile-card"><h3>Johann Gottfried Herder</h3><span class="life">1744–1803</span><p>Corectează universalismul abstract prin atenția acordată limbii, tradiției și specificului fiecărui popor.</p><ul><li>cultura este istorică și plurală;</li><li>folclorul și limba exprimă spiritul comunității;</li><li>influență asupra romantismului și naționalismelor culturale.</li></ul></article></div>
+</section>
+
+<section class="section" id="femei">
+<h2>VII. Femeile Luminilor</h2>
+<div class="profile-grid"><article class="profile-card"><h3>Émilie du Châtelet</h3><span class="life">1706–1749 · Franța</span><p>Matematiciană și fiziciană, traduce în franceză <em>Principia</em> lui Newton și explică fizica modernă publicului continental.</p></article><article class="profile-card"><h3>Madame Geoffrin</h3><span class="life">1699–1777 · Franța</span><p>Salonul ei parizian conectează filosofi, artiști, diplomați și suverani; oferă sprijin material Enciclopediei.</p></article><article class="profile-card"><h3>Mary Wollstonecraft</h3><span class="life">1759–1797 · Anglia</span><p>În <em>Revendicarea drepturilor femeii</em> (1792) cere educație egală și critică transformarea femeii într-o ființă dependentă.</p></article><article class="profile-card"><h3>Olympe de Gouges</h3><span class="life">1748–1793 · Franța</span><p>Autoare a <em>Declarației drepturilor femeii și cetățenei</em> (1791), extinde logica drepturilor universale la femei.</p></article><article class="profile-card"><h3>Germaine de Staël</h3><span class="life">1766–1817</span><p>Leagă Luminile de liberalism și romantism; salonul ei devine centru al opoziției intelectuale față de Napoleon.</p></article><article class="profile-card"><h3>Ecaterina a II-a</h3><span class="life">1729–1796 · Rusia</span><p>Nu a fost filosof în sens strict, dar a scris, a corespondat cu philosophes și a încercat să traducă ideile lor într-un program imperial selectiv.</p></article></div>
+</section>
+
+<section class="section" id="atlantic">
+<h2>VIII. Personalități ale Luminilor atlantice</h2>
+<div class="profile-grid"><article class="profile-card"><h3>Benjamin Franklin</h3><span class="life">1706–1790 · America</span><p>Savant, tipograf și diplomat; unește experimentul științific, virtutea civică și republicanismul pragmatic.</p></article><article class="profile-card"><h3>Thomas Jefferson</h3><span class="life">1743–1826 · America</span><p>Redactează Declarația de Independență, inspirată de drepturile naturale; rămâne însă implicat în contradicția sclaviei.</p></article><article class="profile-card"><h3>James Madison</h3><span class="life">1751–1836 · America</span><p>Contribuie la Constituția SUA și dezvoltă teoria echilibrului instituțional și a controlului facțiunilor.</p></article></div>
+</section>
+
+<section class="section" id="romani">
+<h2>IX. Receptarea în spațiul românesc: Școala Ardeleană</h2>
+<div class="profile-grid"><article class="profile-card"><h3>Samuil Micu</h3><span class="life">1745–1806</span><p>Teolog, istoric și filolog; contribuie la afirmarea originii latine și la modernizarea limbii culturale.</p></article><article class="profile-card"><h3>Gheorghe Șincai</h3><span class="life">1754–1816</span><p>Organizează școli confesionale românești și scrie o vastă cronică istorică, legând educația de emancipare.</p></article><article class="profile-card"><h3>Petru Maior</h3><span class="life">c. 1756–1821</span><p>Istoric și polemist, apără continuitatea și drepturile românilor prin argumente filologice și istorice.</p></article><article class="profile-card"><h3>Ion Budai-Deleanu</h3><span class="life">1760–1820</span><p>Scriitor și jurist, autor al epopeii satirice <em>Țiganiada</em>; combină iluminismul, critica socială și proiectul național.</p></article></div>
+</section>
+
+<section class="section" id="monarhi">
+<h2>X. Filosofii și monarhii</h2>
+<div class="table-wrap"><table><thead><tr><th>Intelectual</th><th>Suveran / curte</th><th>Relație</th></tr></thead><tbody><tr><td>Voltaire</td><td>Frederic II al Prusiei</td><td>Admirație reciprocă, ședere la Sanssouci, apoi conflict; exemplu al tensiunii dintre libertatea filosofului și autoritatea regelui.</td></tr><tr><td>Diderot</td><td>Ecaterina II</td><td>Împărăteasa îi cumpără biblioteca și îl primește la Petersburg, dar nu aplică recomandările sale radicale.</td></tr><tr><td>Beccaria</td><td>Leopold al Toscanei și Iosif II</td><td>Ideile sale contribuie la limitarea torturii, reformarea codurilor și abolirea pedepsei cu moartea în Toscana.</td></tr><tr><td>Quesnay și Turgot</td><td>Ludovic XV / Ludovic XVI</td><td>Fiziocrații încearcă liberalizarea economiei, dar reformele se lovesc de privilegiile Vechiului Regim.</td></tr></tbody></table></div>
+</section>
+
+<section class="section" id="cronologie">
+<h2>XI. Cronologia operelor și ideilor</h2>
+<div class="timeline"><article class="event"><div class="date">1637</div><div><h3>Descartes</h3><p><em>Discurs asupra metodei</em>.</p></div></article><article class="event"><div class="date">1641</div><div><h3>Descartes</h3><p><em>Meditații metafizice</em>.</p></div></article><article class="event"><div class="date">1677</div><div><h3>Spinoza</h3><p><em>Etica</em>, publicată postum.</p></div></article><article class="event"><div class="date">1690</div><div><h3>Locke</h3><p><em>Eseu asupra intelectului uman</em> și consolidarea empirismului.</p></div></article><article class="event"><div class="date">1719–1726</div><div><h3>Defoe și Swift</h3><p><em>Robinson Crusoe</em> și <em>Călătoriile lui Gulliver</em> dezvoltă romanul și satira modernă.</p></div></article><article class="event"><div class="date">1721</div><div><h3>Montesquieu</h3><p><em>Scrisori persane</em>.</p></div></article><article class="event"><div class="date">1748</div><div><h3>Montesquieu</h3><p><em>Despre spiritul legilor</em>.</p></div></article><article class="event"><div class="date">1750</div><div><h3>Rousseau</h3><p><em>Discurs despre științe și arte</em>.</p></div></article><article class="event"><div class="date">1751</div><div><h3>Diderot și d'Alembert</h3><p>Primul volum al <em>Enciclopediei</em>.</p></div></article><article class="event"><div class="date">1762</div><div><h3>Rousseau</h3><p><em>Contractul social</em> și <em>Émile</em>.</p></div></article><article class="event"><div class="date">1764</div><div><h3>Beccaria</h3><p><em>Despre infracțiuni și pedepse</em>.</p></div></article><article class="event"><div class="date">1776</div><div><h3>Adam Smith</h3><p><em>Avuția națiunilor</em>; Declarația de Independență americană.</p></div></article><article class="event"><div class="date">1784</div><div><h3>Kant</h3><p><em>Răspuns la întrebarea: Ce este Luminarea?</em></p></div></article><article class="event"><div class="date">1791–1792</div><div><h3>De Gouges și Wollstonecraft</h3><p>Drepturile universale sunt revendicate explicit pentru femei.</p></div></article></div>
+</section>
+
+<section class="section" id="sinteza">
+<h2>XII. Cine a susținut ce?</h2>
+<div class="table-wrap"><table><thead><tr><th>Temă</th><th>Personalități</th><th>Idee-cheie</th></tr></thead><tbody><tr><td>Cunoaștere</td><td>Descartes, Locke, Berkeley, Hume</td><td>Rațiune, experiență și limitele minții.</td></tr><tr><td>Drepturi și guvernare</td><td>Locke, Montesquieu, Rousseau, Paine</td><td>Consimțământ, separarea puterilor, suveranitatea poporului.</td></tr><tr><td>Toleranță</td><td>Spinoza, Locke, Voltaire, Lessing</td><td>Libertatea conștiinței și combaterea fanatismului.</td></tr><tr><td>Economie</td><td>Quesnay, Turgot, Adam Smith</td><td>Agricultură, ordine naturală, schimb și diviziunea muncii.</td></tr><tr><td>Drept penal</td><td>Beccaria</td><td>Proporționalitate, legalitate, abolirea torturii.</td></tr><tr><td>Educație</td><td>Rousseau, Condorcet, Wollstonecraft</td><td>Formarea individului autonom și acces cât mai larg.</td></tr><tr><td>Enciclopedism</td><td>Diderot, d'Alembert</td><td>Organizarea și răspândirea cunoașterii.</td></tr><tr><td>Egalitatea femeilor</td><td>Wollstonecraft, Olympe de Gouges, Condorcet</td><td>Drepturile nu sunt universale dacă exclud jumătate din omenire.</td></tr></tbody></table></div>
+<div class="final-box"><h2>Concluzie</h2><p>Personalitățile Luminilor nu au gândit identic: Voltaire se temea de democrația populară, Rousseau critica luxul filosofilor, Hume limita pretențiile rațiunii, iar Kant cerea autonomia ei. Tocmai disputa dintre ei a făcut Iluminismul fecund — nu un catehism, ci un exercițiu permanent de critică.</p></div>
+</section>
+
+<section class="section" id="surse"><h2>XIII. Informațiile integrate</h2><div class="source-map"><article><strong>„Filosofia Luminilor”</strong><span>Locke, Berkeley, Defoe, Swift, Voltaire, Montesquieu, Rousseau, Diderot, Descartes, Spinoza și operele datate în document.</span></article><article><strong>Completări istorice</strong><span>Hume, Smith, Kant, Beccaria, enciclopediștii, femeile Luminilor, filosofii atlantici, Școala Ardeleană și relațiile dintre intelectuali și monarhi.</span></article></div></section>
+
+<footer>Material amplu, structurat după documentele Word furnizate și completat cu informații istorice suplimentare · Seria „Filosofia Luminilor”</footer>
+</main><script>
+const openBtn=document.querySelector('[data-action="open"]');
+const closeBtn=document.querySelector('[data-action="close"]');
+if(openBtn)openBtn.addEventListener('click',()=>document.querySelectorAll('details').forEach(d=>d.open=true));
+if(closeBtn)closeBtn.addEventListener('click',()=>document.querySelectorAll('details').forEach(d=>d.open=false));
+</script>
+</body></html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>renasterea-umanismul-literatura-si-filosofie</title>
+<style>
+:root {
+  --bg: #f6f0e7;
+  --paper: #fffaf3;
+  --paper-2: #ffffff;
+  --ink: #2f241c;
+  --title: #3c2a1e;
+  --muted: #5b4a3d;
+  --accent: #7a4f2a;
+  --accent-2: #9b6a3c;
+  --accent-soft: #f0e4d4;
+  --line: rgba(91, 62, 36, 0.18);
+  --line-strong: rgba(91, 62, 36, 0.34);
+  --outer-dark: #241208;
+  --outer-mid: #4a2a18;
+  --outer-warm: #7a4b2b;
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+  --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+    radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+}
+.page {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 34px 0 70px;
+}
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.back-link, .tag { display: inline-flex; align-items: center; border: 1px solid var(--line); background: rgba(255, 250, 243, 0.84); color: var(--title); border-radius: 999px; padding: 10px 15px; text-decoration: none; font-size: 15px; font-weight: 700; box-shadow: var(--shadow-small); }
+.back-link:hover { background: #fff6eb; }
+.hero, .section, .nav-card, .final-box { background: rgba(255, 250, 243, 0.96); border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow); }
+.hero { padding: 38px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.hero::after { content: var(--hero-year); position: absolute; right: 26px; bottom: -22px; font-size: 110px; font-weight: 900; letter-spacing: -4px; color: rgba(122, 79, 42, 0.08); pointer-events: none; }
+.eyebrow { margin: 0 0 8px; font-size: 16px; color: var(--accent); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; }
+h1 { margin: 0; font-size: clamp(38px, 5vw, 62px); line-height: 1.04; color: var(--title); letter-spacing: -1.4px; text-align: left; text-align-last: auto; }
+.subtitle { margin: 18px 0 0; max-width: 980px; font-size: 19px; line-height: 1.78; color: var(--muted); text-align: justify; text-align-last: left; }
+.summary-grid, .three-col, .two-col, .term-grid, .quick-grid, .cause-grid, .four-col { display: grid; gap: 14px; }
+.summary-grid { grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+.summary-card, .info-card, .wide-card, .term-card, .quick-card, .source-note, .micro-card, .warning-box { background: var(--paper-2); border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); text-align: justify; text-align-last: left; }
+.summary-card { padding: 16px; min-height: 132px; }
+.summary-card strong, .quick-card strong, .term-card strong, .micro-card strong { display: block; color: var(--title); font-size: 17px; margin-bottom: 8px; text-align: left; text-align-last: auto; }
+.summary-card span, .quick-card span, .term-card span, .micro-card span { display: block; color: var(--muted); font-size: 15.5px; line-height: 1.56; text-align: justify; text-align-last: left; }
+.nav-card { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 18px 20px; margin-bottom: 24px; }
+.nav-card b { color: var(--title); margin-right: 2px; }
+.nav-card a, .mini-btn { color: var(--title); background: var(--accent-soft); border: 1px solid rgba(91, 62, 36, 0.16); border-radius: 999px; text-decoration: none; padding: 8px 12px; font-weight: 700; font-size: 14px; cursor: pointer; font-family: inherit; }
+.nav-card a:hover, .mini-btn:hover { background: #e5d2bb; }
+.section { padding: 30px; margin-bottom: 24px; }
+h2 { margin: 0 0 14px; color: var(--title); font-size: clamp(28px, 3vw, 38px); line-height: 1.15; text-align: left; text-align-last: auto; }
+h3 { margin: 0 0 12px; color: var(--title); font-size: 22px; line-height: 1.22; text-align: left; text-align-last: auto; }
+h4 { margin: 16px 0 8px; color: var(--title); font-size: 18px; text-align: left; text-align-last: auto; }
+.section-intro, p, li, dd { font-size: 17px; line-height: 1.72; color: var(--muted); text-align: justify; text-align-last: left; hyphens: auto; }
+.section-intro { margin: 0 0 20px; max-width: 1000px; }
+.three-col { grid-template-columns: repeat(3, 1fr); }
+.two-col { grid-template-columns: repeat(2, 1fr); }
+.four-col { grid-template-columns: repeat(4, 1fr); }
+.cause-grid { grid-template-columns: 1.1fr 0.9fr; }
+.term-grid { grid-template-columns: repeat(4, 1fr); }
+.quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+.info-card, .wide-card, .term-card, .quick-card, .micro-card, .warning-box, .source-note { padding: 20px; }
+.wide-card { margin-top: 14px; }
+.wide-card p:last-child, .info-card p:last-child { margin-bottom: 0; }
+.clean, .number-list { margin: 0; padding-left: 22px; }
+.clean li, .number-list li { margin: 0 0 9px; padding-left: 2px; }
+.clean li:last-child, .number-list li:last-child { margin-bottom: 0; }
+.mini-title { display: inline; color: var(--title); font-weight: 800; background: transparent; border: 0; border-radius: 0; padding: 0; margin-right: 5px; white-space: normal; text-align: inherit; }
+.date-pill { display: inline-block; color: var(--title); font-weight: 800; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.13); border-radius: 999px; padding: 2px 9px; margin-right: 5px; white-space: nowrap; text-align: left; }
+.definition, .note { margin-top: 18px; background: #fff8ef; border: 1px solid rgba(122, 79, 42, 0.22); border-left: 6px solid rgba(122, 79, 42, 0.48); border-radius: 18px; padding: 18px 20px; color: var(--muted); font-size: 17px; line-height: 1.7; text-align: justify; text-align-last: left; }
+.definition strong, .note strong { color: var(--title); }
+details { background: #fffdf9; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); margin-top: 14px; overflow: hidden; }
+details[open] { background: #fffaf3; }
+summary { cursor: pointer; list-style: none; padding: 18px 20px; font-size: 19px; font-weight: 800; color: var(--title); display: flex; justify-content: space-between; align-items: center; gap: 18px; text-align: left; text-align-last: auto; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "Deschide"; color: var(--muted); font-size: 14px; font-weight: 700; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 999px; padding: 7px 11px; white-space: nowrap; }
+details[open] > summary::after { content: "Ascunde"; }
+.details-body { border-top: 1px solid rgba(91, 62, 36, 0.12); padding: 18px 20px 20px; text-align: justify; text-align-last: left; }
+.details-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.nested-details { margin-top: 10px; box-shadow: none; background: #ffffff; }
+.nested-details summary { font-size: 17px; padding: 14px 16px; }
+.key-line { display: grid; grid-template-columns: 220px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px dashed rgba(91, 62, 36, 0.18); }
+.key-line:last-child { border-bottom: 0; }
+.key-line strong { color: var(--title); text-align: left; text-align-last: auto; }
+.key-line span { color: var(--muted); line-height: 1.65; text-align: justify; text-align-last: left; }
+.timeline { position: relative; display: grid; gap: 14px; margin-top: 18px; }
+.event { display: grid; grid-template-columns: 132px 1fr; gap: 18px; align-items: stretch; background: #ffffff; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); overflow: hidden; }
+.date { background: linear-gradient(180deg, #7a4f2a, #5b351b); color: #fffaf3; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px; font-size: 18px; line-height: 1.25; font-weight: 900; letter-spacing: 0.2px; }
+.event > div:last-child { padding: 17px 18px 18px 0; text-align: justify; text-align-last: left; }
+.event h3 { margin-bottom: 6px; }
+.event p { margin: 0; }
+.small-muted { font-size: 15px; color: #725c49; line-height: 1.6; text-align: justify; text-align-last: left; }
+.warning-box { background: #fff7ec; border-color: rgba(122, 79, 42, 0.22); margin-top: 16px; }
+.final-box { padding: 28px; background: linear-gradient(135deg, #fffaf3, #f4e4d1); border-color: rgba(91, 62, 36, 0.25); }
+.final-box p { margin-bottom: 0; }
+.table-wrap { overflow-x: auto; margin-top: 14px; border-radius: 18px; border: 1px solid rgba(91,62,36,.14); background: #fff; box-shadow: var(--shadow-small); }
+table { width: 100%; border-collapse: collapse; min-width: 740px; }
+th, td { padding: 13px 14px; border-bottom: 1px solid rgba(91,62,36,.12); color: var(--muted); font-size: 16px; line-height: 1.55; vertical-align: top; text-align: justify; }
+th { background: #f3eadf; color: var(--title); text-align: left; font-weight: 800; }
+tr:last-child td { border-bottom: 0; }
+@media (max-width: 980px) {
+  .summary-grid, .three-col, .term-grid, .quick-grid, .four-col { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .cause-grid, .details-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .page { width: min(100% - 22px, 1180px); padding-top: 22px; }
+  .hero, .section, .final-box { padding: 22px; border-radius: 22px; }
+  .summary-grid, .term-grid, .quick-grid, .four-col { grid-template-columns: 1fr; }
+  .event { grid-template-columns: 1fr; }
+  .date { min-height: 66px; }
+  .event > div:last-child { padding: 0 16px 16px; }
+  .key-line { grid-template-columns: 1fr; gap: 6px; }
+  summary { align-items: flex-start; flex-direction: column; }
+  .hero::after { font-size: 82px; }
+}
+</style>
+</head>
+
+<style>
+.phase-label{display:inline-block;margin:2px 0 12px;padding:6px 11px;border-radius:999px;background:var(--accent-soft);border:1px solid var(--line);color:var(--title);font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}.profile{display:grid;grid-template-columns:180px 1fr;gap:20px;align-items:start;padding:20px 0;border-bottom:1px dashed var(--line-strong)}.profile:last-child{border-bottom:0}.profile h3{margin:0}.profile .meta{font-size:15px;line-height:1.55;color:var(--accent);font-weight:700}.profile p{margin:6px 0 0}.date-list{display:grid;gap:10px}.date-row{display:grid;grid-template-columns:135px 1fr;gap:15px;padding:12px 0;border-bottom:1px solid var(--line)}.date-row:last-child{border-bottom:0}.date-row strong{color:var(--title)}.date-row span{color:var(--muted);line-height:1.62}.section-kicker{margin:0 0 8px;color:var(--accent);font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.lead-box{background:linear-gradient(135deg,#fffdf9,#f6eadb);border:1px solid var(--line);border-radius:20px;padding:20px;margin:16px 0}.lead-box p{margin:0}.compact-table td:first-child{white-space:nowrap;font-weight:800;color:var(--title)}@media(max-width:680px){.profile,.date-row{grid-template-columns:1fr;gap:5px}}
+</style>
+<body style="--hero-year: '1516';">
+<main class="page">
+<div class="topbar"><a class="back-link" href="evaluare_cu_material_renasterea.html">← Înapoi la materiale</a><span class="tag">Material ajutător · Renașterea · Literatură și filosofie</span></div>
+<section class="hero"><p class="eyebrow">Istoria universală · Epoca modernă timpurie</p><h1>Renașterea și umanismul: literatură și filosofie</h1><p class="subtitle">O prezentare organizată a modului în care redescoperirea Antichității, filologia, tiparul și afirmarea individului au schimbat cultura europeană din secolele al XIV-lea–al XVI-lea.</p><div class="summary-grid"><div class="summary-card"><strong>Unde începe?</strong><span>În orașele Italiei, mai ales la Florența, apoi se răspândește în întreaga Europă.</span></div><div class="summary-card"><strong>Ce este umanismul?</strong><span>Un program de educație și reflecție centrat pe limbă, istorie, morală și demnitatea omului.</span></div><div class="summary-card"><strong>Metoda</strong><span><em>Ad fontes</em>: întoarcerea la textele originale și verificarea critică a tradiției.</span></div><div class="summary-card"><strong>Moștenirea</strong><span>Eseul, romanul modern, teatrul european, istoria critică și limbile literare naționale.</span></div></div></section>
+<nav class="nav-card"><b>Cuprins:</b><a href="#cadru">Cadru general</a><a href="#etape">Etape</a><a href="#autori">Autori</a><a href="#idei">Idei</a><a href="#tipar">Educație și tipar</a><a href="#genuri">Genuri și opere</a><a href="#centre">Centre europene</a><a href="#cronologie-extinsa">Cronologie extinsă</a><a href="#sinteza">Sinteză</a></nav>
+<section class="section" id="cadru"><p class="section-kicker">Punct de plecare</p><h2>I. Ce se schimbă în cultura europeană?</h2><p class="section-intro">Renașterea nu înseamnă dispariția bruscă a Evului Mediu, ci apariția unui nou echilibru: credința rămâne importantă, însă omul, istoria, experiența și textele Antichității primesc o atenție mult mai mare.</p><div class="three-col"><article class="info-card"><h3>Studia humanitatis</h3><p>Gramatica, retorica, poezia, istoria și filosofia morală formează nucleul educației umaniste. Scopul nu era simpla acumulare de informații, ci formarea unui om capabil să vorbească bine, să judece și să participe la viața publică.</p></article><article class="info-card"><h3>Ad fontes</h3><p>Umaniștii compară manuscrise și caută variante cât mai apropiate de original. Vechiul Testament este studiat în ebraică, Noul Testament în greacă, iar autorii latini sunt editați filologic.</p></article><article class="info-card"><h3>Individ și cetate</h3><p>Viața activă, reputația, educația și responsabilitatea civică sunt valorizate. Omul este privit ca ființă perfectibilă, capabilă să se formeze prin exercițiu și cunoaștere.</p></article></div><div class="lead-box"><p><strong>Ideea centrală:</strong> umanismul nu este doar „admirație pentru om”, ci o disciplină a lecturii, a educației și a judecății critice.</p></div></section>
+<section class="section" id="etape"><p class="section-kicker">Cronologie explicată</p><h2>II. Patru etape, nu o listă de date</h2><div class="two-col"><article class="info-card"><span class="phase-label">cca 1300–1400</span><h3>Începuturile italiene</h3><p>Dante, Petrarca și Boccaccio consolidează limba italiană și introduc o sensibilitate mai atentă la individ, experiență și societate. Petrarca face din recuperarea manuscriselor clasice un program cultural.</p><p><strong>Repere:</strong> <em>Divina Comedie</em> (cca 1308–1321); <em>Decameronul</em> (cca 1348–1353); viața lui Petrarca (1304–1374).</p></article><article class="info-card"><span class="phase-label">cca 1400–1500</span><h3>Umanismul civic și filologia</h3><p>Florența devine un mare centru al traducerilor și al istoriei politice. Leonardo Bruni explică trecutul prin oameni, instituții și cauze concrete, iar Lorenzo Valla demonstrează prin analiză lingvistică falsitatea „Donației lui Constantin”.</p><p><strong>Repere:</strong> demonstrația lui Valla (1440); tiparul lui Gutenberg (cca 1450–1455); discursul lui Pico despre demnitatea omului (1486).</p></article><article class="info-card"><span class="phase-label">cca 1500–1560</span><h3>Răspândirea europeană</h3><p>Umanismul trece Alpii și se combină cu reforma religioasă, critica socială și reflecția politică. Erasmus, Machiavelli și Thomas More oferă trei răspunsuri diferite la problemele epocii: reforma morală, analiza realistă a puterii și utopia.</p><p><strong>Repere:</strong> <em>Elogiul nebuniei</em> (1511); <em>Principele</em> (scris în 1513, publicat în 1532); <em>Utopia</em> (1516).</p></article><article class="info-card"><span class="phase-label">cca 1560–1620</span><h3>Maturitatea literară</h3><p>În Franța, Anglia și Spania, literatura explorează conflictul dintre ideal și realitate, incertitudinea, puterea și identitatea. Montaigne inventează eseul modern, Shakespeare dezvoltă drama psihologică, iar Cervantes reconfigurează romanul.</p><p><strong>Repere:</strong> <em>Eseuri</em> (1580); marile tragedii shakespeariene (cca 1599–1608); <em>Don Quijote</em> (1605 și 1615).</p></article></div></section>
+<section class="section" id="autori"><p class="section-kicker">Figuri reprezentative</p><h2>III. Autorii și contribuția lor</h2><div class="profile"><div><h3>Petrarca</h3><div class="meta">1304–1374 · Italia</div></div><p>Transformă studiul Antichității într-o vocație intelectuală. În <em>Canțonierul</em>, introspecția și conflictul interior capătă o expresie de mare finețe, iar în corespondență promovează modelul cărturarului preocupat de izvoare.</p></div><div class="profile"><div><h3>Erasmus din Rotterdam</h3><div class="meta">cca 1466–1536 · Țările de Jos</div></div><p>Reprezentant al umanismului creștin. În <em>Elogiul nebuniei</em> critică formalismul, superstiția și abuzurile; în ediția greco-latină a Noului Testament din 1516 aplică filologia textului biblic.</p></div><div class="profile"><div><h3>Niccolò Machiavelli</h3><div class="meta">1469–1527 · Florența</div></div><p>Separă analiza politică de predica morală. Îl interesează cum funcționează efectiv puterea, ce rol au virtuțile civice, conflictul social și împrejurările schimbătoare.</p></div><div class="profile"><div><h3>Montaigne</h3><div class="meta">1533–1592 · Franța</div></div><p>În <em>Eseuri</em> transformă propria experiență într-un instrument de cercetare. Scepticismul său este moderat: nu neagă cunoașterea, ci avertizează asupra limitelor și prejudecăților noastre.</p></div><div class="profile"><div><h3>Shakespeare și Cervantes</h3><div class="meta">1564–1616 / 1547–1616</div></div><p>Primul explorează ambiția, iubirea, gelozia și fragilitatea identității prin teatru; al doilea confruntă idealurile cavalerești cu realitatea socială. Amândoi plasează omul contradictoriu în centrul operei.</p></div></section>
+<section class="section" id="idei"><p class="section-kicker">Concepte de învățat</p><h2>IV. Ideile esențiale ale umanismului</h2><div class="details-grid"><div class="micro-card"><strong>Demnitate</strong><span>Omul nu are o condiție complet fixată; se poate forma prin alegere, educație și exercițiu.</span></div><div class="micro-card"><strong>Antropocentrism</strong><span>Interesul se mută spre om și lumea sa, fără ca religia să fie eliminată.</span></div><div class="micro-card"><strong>Viață activă</strong><span>Participarea civică și responsabilitatea publică sunt preferate retragerii totale.</span></div><div class="micro-card"><strong>Toleranță</strong><span>Comparația dintre culturi și texte poate relativiza certitudinile rigide.</span></div><div class="micro-card"><strong>Istorie critică</strong><span>Evenimentele sunt explicate prin contexte și acțiuni umane, nu exclusiv prin providență.</span></div><div class="micro-card"><strong>Utopie</strong><span>Societatea imaginară devine o metodă de critică a nedreptăților reale.</span></div></div></section>
+<section class="section" id="tipar"><p class="section-kicker">Mijloace de răspândire</p><h2>V. Educația, tiparul și limbile naționale</h2><div class="three-col"><article class="info-card"><h3>Școala umanistă</h3><p>Vittorino da Feltre, activ la Mantova din 1423, combină literatura clasică, exercițiul fizic și educația morală. Idealul este omul cultivat în întregime, nu specialistul îngust.</p></article><article class="info-card"><h3>Revoluția tiparului</h3><p>După mijlocul secolului al XV-lea, cărțile se multiplică rapid, textele se standardizează, iar polemicile circulă dincolo de universități și curți.</p></article><article class="info-card"><h3>Limbile vernaculare</h3><p>Italiana, franceza, engleza și spaniola devin limbi de mare literatură. Cultura europeană nu mai depinde exclusiv de latină.</p></article></div></section>
+
+<section class="section" id="genuri"><p class="section-kicker">Exemple și interpretare</p><h2>VI. Genuri literare, opere și teme reprezentative</h2><p class="section-intro">Literatura Renașterii nu poate fi redusă la o listă de autori. Fiecare gen răspunde unei nevoi noi: exprimarea individualității, critica moravurilor, analiza puterii, recuperarea Antichității sau reprezentarea conflictelor interioare.</p>
+<div class="two-col">
+<article class="info-card"><h3>Poezia lirică și modelul petrarchist</h3><p><strong>Francesco Petrarca</strong> își organizează <em>Canțonierul</em> în jurul iubirii pentru Laura, al trecerii timpului și al conflictului dintre dorință și conștiință. Forma sonetului italian este preluată de <strong>Pierre de Ronsard</strong> în Franța, de <strong>Garcilaso de la Vega</strong> în Spania și, în Anglia, de <strong>Thomas Wyatt</strong>, <strong>Henry Howard</strong> și apoi de Shakespeare.</p><p><strong>Exemple:</strong> Petrarca lucrează la <em>Canțonier</em> de-a lungul vieții; Ronsard publică <em>Les Amours</em> în 1552; seria celor 154 de <em>Sonete</em> ale lui Shakespeare apare tipărită în 1609.</p></article>
+<article class="info-card"><h3>Nuvela și observația socială</h3><p><strong>Boccaccio</strong> compune <em>Decameronul</em> în contextul ciumei din 1348. O sută de povestiri sunt legate printr-un cadru comun: zece tineri retrași în afara Florenței povestesc timp de zece zile. Clerici, negustori, femei, nobili și meșteșugari apar ca personaje motivate de inteligență, interes, iubire sau teamă.</p><p>Modelul influențează <em>Povestirile din Canterbury</em> ale lui <strong>Geoffrey Chaucer</strong>, scrise în principal între aproximativ 1387 și 1400, precum și colecții de nuvele italiene și franceze din secolele XV–XVI.</p></article>
+<article class="info-card"><h3>Eseul și analiza sinelui</h3><p><strong>Michel de Montaigne</strong> publică primele două cărți ale <em>Eseurilor</em> în 1580 și o ediție amplificată în 1588. El discută educația, prietenia, frica, obiceiul, cruzimea și relativitatea normelor culturale. Formula „Ce știu eu?” exprimă o atitudine de modestie intelectuală.</p><p>Eseul devine un gen flexibil, aflat între confesiune, reflecție morală și observație socială. În Anglia, <strong>Francis Bacon</strong> publică o primă colecție de <em>Essays</em> în 1597, extinsă în 1612 și 1625.</p></article>
+<article class="info-card"><h3>Teatrul și drama individului</h3><p>Teatrul renascentist reunește moștenirea antică, tradiția populară și interesele curților. În Anglia, <strong>Christopher Marlowe</strong> scrie <em>Doctor Faustus</em> în jurul anilor 1588–1592, iar Shakespeare explorează puterea în <em>Richard al III-lea</em>, gelozia în <em>Othello</em>, ambiția în <em>Macbeth</em> și fragilitatea certitudinii în <em>Hamlet</em>.</p><p>În Spania, <strong>Lope de Vega</strong> publică în 1609 tratatul <em>Arta nouă de a scrie comedii</em>, iar <strong>Pedro Calderón de la Barca</strong> va continua tradiția în secolul al XVII-lea prin <em>Viața este vis</em> (1635).</p></article>
+</div>
+<details open><summary>Romanul cavaleresc, satira și nașterea romanului modern</summary><div class="details-body"><p><strong>François Rabelais</strong> publică <em>Pantagruel</em> în 1532 și <em>Gargantua</em> în 1534, combinând erudiția, grotescul și satira instituțiilor. <strong>Cervantes</strong> publică prima parte din <em>Don Quijote</em> în 1605 și partea a doua în 1615. Personajul trăiește după codurile romanelor cavalerești, dar intră permanent în conflict cu lumea concretă. Rezultatul este comic, însă și profund: cititorul vede simultan noblețea idealului și imposibilitatea aplicării sale mecanice.</p><p>Alte exemple importante sunt <em>Orlando furioso</em> de <strong>Ludovico Ariosto</strong>, publicat în 1516 și revizuit în 1532, și <em>Ierusalimul eliberat</em> de <strong>Torquato Tasso</strong>, publicat în 1581.</p></div></details>
+</section>
+<section class="section" id="centre"><p class="section-kicker">Răspândirea în Europa</p><h2>VII. Centre, cercuri și forme regionale ale umanismului</h2><div class="table-wrap"><table><thead><tr><th>Centru</th><th>Perioadă și instituții</th><th>Reprezentanți</th><th>Specific</th></tr></thead><tbody>
+<tr><td>Florența</td><td>Secolele XIV–XV; cancelaria republicii, cercul Medici, Academia platoniciană</td><td>Petrarca, Boccaccio, Leonardo Bruni, Marsilio Ficino, Pico della Mirandola, Machiavelli</td><td>Umanism civic, traduceri din Platon, istorie politică, reflecție asupra libertății cetății.</td></tr>
+<tr><td>Roma</td><td>Secolele XV–XVI; curia papală și bibliotecile pontificale</td><td>Lorenzo Valla, Poggio Bracciolini, Enea Silvio Piccolomini</td><td>Filologie latină, recuperarea manuscriselor, istorie și diplomație.</td></tr>
+<tr><td>Veneția</td><td>Mai ales după 1490; tipografia lui Aldo Manuzio</td><td>Aldo Manuzio, Pietro Bembo, Erasmus</td><td>Ediții portabile ale clasicilor, standardizarea limbii italiene, circulația internațională a cărții.</td></tr>
+<tr><td>Paris și Valea Loarei</td><td>Secolul al XVI-lea; Collège de France fondat în 1530</td><td>Guillaume Budé, Rabelais, Ronsard, Montaigne</td><td>Studiul limbilor clasice, satiră, poezie vernaculară și scepticism moral.</td></tr>
+<tr><td>Țările de Jos</td><td>Sfârșitul secolului XV–prima jumătate a secolului XVI</td><td>Erasmus, Juan Luis Vives</td><td>Umanism creștin, reforma educației, întoarcerea la textul biblic.</td></tr>
+<tr><td>Anglia</td><td>Secolele XV–XVI; Oxford, Cambridge și curtea Tudorilor</td><td>Thomas More, John Colet, Shakespeare, Francis Bacon</td><td>Umanism creștin, utopie politică, teatru public și eseu moral.</td></tr>
+<tr><td>Spania</td><td>Secolele XV–XVII; universități și curtea habsburgică</td><td>Antonio de Nebrija, Juan Luis Vives, Cervantes, Lope de Vega</td><td>Gramatica limbii spaniole, reflecție pedagogică, roman și teatru național.</td></tr>
+<tr><td>Europa Centrală</td><td>Secolele XV–XVI; universitățile din Cracovia, Viena, Praga și Wittenberg</td><td>Conrad Celtis, Johannes Reuchlin, Philipp Melanchthon</td><td>Filologie, istorie națională, educație și legătura cu Reforma.</td></tr>
+</tbody></table></div></section>
+<section class="section" id="cronologie-extinsa"><p class="section-kicker">Ani și date puse în context</p><h2>VIII. Cronologie extinsă a literaturii și filosofiei renascentiste</h2><div class="timeline">
+<article class="event"><div class="date">1304</div><div><h3>Nașterea lui Petrarca</h3><p>Viitorul poet și cărturar devine simbolul recuperării conștiente a Antichității latine.</p></div></article>
+<article class="event"><div class="date">1321</div><div><h3>Moartea lui Dante</h3><p><em>Divina Comedie</em>, compusă în primele decenii ale secolului al XIV-lea, oferă limbii italiene un model literar major.</p></div></article>
+<article class="event"><div class="date">1341</div><div><h3>Petrarca este încoronat poet la Roma</h3><p>Ceremonia de pe Capitoliu reînvie simbolic tradiția laureaților antici.</p></div></article>
+<article class="event"><div class="date">1348–1353</div><div><h3>Contextul și redactarea <em>Decameronului</em></h3><p>Ciuma din 1348 oferă cadrul narativ pentru opera lui Boccaccio.</p></div></article>
+<article class="event"><div class="date">1401–1402</div><div><h3>Leonardo Bruni devine cancelar al Florenței</h3><p>Umanismul se leagă de viața civică și de scrierea istoriei republicane.</p></div></article>
+<article class="event"><div class="date">1440</div><div><h3>Critica „Donației lui Constantin”</h3><p>Lorenzo Valla folosește vocabularul și stilul pentru a demonstra că documentul nu putea proveni din secolul al IV-lea.</p></div></article>
+<article class="event"><div class="date">1453</div><div><h3>Căderea Constantinopolului</h3><p>Migrarea unor cărturari greci spre Italia intensifică studiul limbii și filosofiei grecești, deși procesul începuse cu mult înainte.</p></div></article>
+<article class="event"><div class="date">1469</div><div><h3>Nașterea lui Machiavelli</h3><p>Experiența republicii florentine și a războaielor italiene va alimenta analiza sa politică.</p></div></article>
+<article class="event"><div class="date">1486</div><div><h3>Pico redactează cele 900 de teze</h3><p><em>Discursul despre demnitatea omului</em>, conceput ca introducere, formulează imaginea omului capabil să se modeleze prin alegere.</p></div></article>
+<article class="event"><div class="date">1492</div><div><h3>Gramatica lui Nebrija</h3><p><em>Gramática de la lengua castellana</em> este prima gramatică tipărită a unei limbi europene moderne.</p></div></article>
+<article class="event"><div class="date">1508</div><div><h3>Prima ediție tipărită completă a operelor lui Platon în greacă</h3><p>Ediția aldina contribuie la răspândirea studiului direct al filosofiei platonice.</p></div></article>
+<article class="event"><div class="date">1511</div><div><h3><em>Elogiul nebuniei</em></h3><p>Erasmus folosește ironia pentru a critica vanitatea, formalismul și corupția.</p></div></article>
+<article class="event"><div class="date">1513</div><div><h3>Machiavelli redactează <em>Principele</em></h3><p>Textul este publicat postum, în 1532, și devine reper al analizei realiste a puterii.</p></div></article>
+<article class="event"><div class="date">1516</div><div><h3><em>Utopia</em> și Noul Testament al lui Erasmus</h3><p>Același an reunește critica socială a lui Thomas More și un moment major al filologiei biblice.</p></div></article>
+<article class="event"><div class="date">1532–1534</div><div><h3>Rabelais publică <em>Pantagruel</em> și <em>Gargantua</em></h3><p>Satira, erudiția și exuberanța corporală se combină într-o critică a educației și autorității.</p></div></article>
+<article class="event"><div class="date">1580</div><div><h3>Prima ediție a <em>Eseurilor</em></h3><p>Montaigne transformă experiența individuală într-un laborator al judecății morale.</p></div></article>
+<article class="event"><div class="date">1599</div><div><h3>Globe Theatre la Londra</h3><p>Teatrul public englez devine spațiul marilor drame istorice și tragedii shakespeariene.</p></div></article>
+<article class="event"><div class="date">1605 / 1615</div><div><h3>Cele două părți din <em>Don Quijote</em></h3><p>Cervantes construiește o reflecție despre lectură, ficțiune și conflictul dintre ideal și realitate.</p></div></article>
+</div></section>
+<section class="section" id="sinteza"><p class="section-kicker">Recapitulare</p><h2>IX. Repere cronologice esențiale</h2><div class="date-list"><div class="date-row"><strong>1308–1353</strong><span>Dante și Boccaccio oferă două modele majore ale literaturii italiene: poemul total și povestirea realistă.</span></div><div class="date-row"><strong>1440–1455</strong><span>Filologia critică a lui Valla și tiparul lui Gutenberg schimbă modul de verificare și transmitere a textelor.</span></div><div class="date-row"><strong>1486–1516</strong><span>Pico, Erasmus și More formulează teme centrale: libertatea omului, reforma morală și critica socială.</span></div><div class="date-row"><strong>1513–1532</strong><span>Machiavelli scrie și apoi publică <em>Principele</em>, reper al gândirii politice moderne.</span></div><div class="date-row"><strong>1580–1615</strong><span>Montaigne, Shakespeare și Cervantes duc literatura renascentistă spre analiza modernă a sinelui și a realității.</span></div></div></section>
+<section class="final-box"><h2>Ideea de reținut</h2><p>Renașterea literară și filosofică a creat o cultură a textului verificat, a educației umaniste și a individului capabil să judece. Nu numărul datelor este esențial, ci legătura dintre ele: manuscrisele și tiparul au făcut posibilă circulația ideilor, iar literatura a transformat omul într-un subiect complex al istoriei și al artei.</p></section>
+</main>
+</body></html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Franța napoleoniană: legi moderne">
+<title>univ-franta-napoleoniana-legi-moderne</title>
+<style>
+
+:root {
+  --bg: #f6f0e7;
+  --paper: #fffaf3;
+  --paper-2: #ffffff;
+  --ink: #2f241c;
+  --title: #3c2a1e;
+  --muted: #5b4a3d;
+  --accent: #7a4f2a;
+  --accent-2: #9b6a3c;
+  --accent-soft: #f0e4d4;
+  --line: rgba(91, 62, 36, 0.18);
+  --line-strong: rgba(91, 62, 36, 0.34);
+  --outer-dark: #241208;
+  --outer-mid: #4a2a18;
+  --outer-warm: #7a4b2b;
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+  --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+    radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+}
+.page {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 34px 0 70px;
+}
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.back-link, .tag { display: inline-flex; align-items: center; border: 1px solid var(--line); background: rgba(255, 250, 243, 0.84); color: var(--title); border-radius: 999px; padding: 10px 15px; text-decoration: none; font-size: 15px; font-weight: 700; box-shadow: var(--shadow-small); }
+.back-link:hover { background: #fff6eb; }
+.hero, .section, .nav-card, .final-box { background: rgba(255, 250, 243, 0.96); border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow); }
+.hero { padding: 38px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.hero::after { content: var(--hero-year); position: absolute; right: 26px; bottom: -22px; font-size: 110px; font-weight: 900; letter-spacing: -4px; color: rgba(122, 79, 42, 0.08); pointer-events: none; }
+.eyebrow { margin: 0 0 8px; font-size: 16px; color: var(--accent); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; }
+h1 { margin: 0; font-size: clamp(38px, 5vw, 62px); line-height: 1.04; color: var(--title); letter-spacing: -1.4px; text-align: left; text-align-last: auto; }
+.subtitle { margin: 18px 0 0; max-width: 980px; font-size: 19px; line-height: 1.78; color: var(--muted); text-align: justify; text-align-last: left; }
+.summary-grid, .three-col, .two-col, .term-grid, .quick-grid, .cause-grid, .four-col { display: grid; gap: 14px; }
+.summary-grid { grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+.summary-card, .info-card, .wide-card, .term-card, .quick-card, .source-note, .micro-card, .warning-box { background: var(--paper-2); border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); text-align: justify; text-align-last: left; }
+.summary-card { padding: 16px; min-height: 132px; }
+.summary-card strong, .quick-card strong, .term-card strong, .micro-card strong { display: block; color: var(--title); font-size: 17px; margin-bottom: 8px; text-align: left; text-align-last: auto; }
+.summary-card span, .quick-card span, .term-card span, .micro-card span { display: block; color: var(--muted); font-size: 15.5px; line-height: 1.56; text-align: justify; text-align-last: left; }
+.nav-card { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 18px 20px; margin-bottom: 24px; }
+.nav-card b { color: var(--title); margin-right: 2px; }
+.nav-card a, .mini-btn { color: var(--title); background: var(--accent-soft); border: 1px solid rgba(91, 62, 36, 0.16); border-radius: 999px; text-decoration: none; padding: 8px 12px; font-weight: 700; font-size: 14px; cursor: pointer; font-family: inherit; }
+.nav-card a:hover, .mini-btn:hover { background: #e5d2bb; }
+.section { padding: 30px; margin-bottom: 24px; }
+h2 { margin: 0 0 14px; color: var(--title); font-size: clamp(28px, 3vw, 38px); line-height: 1.15; text-align: left; text-align-last: auto; }
+h3 { margin: 0 0 12px; color: var(--title); font-size: 22px; line-height: 1.22; text-align: left; text-align-last: auto; }
+h4 { margin: 16px 0 8px; color: var(--title); font-size: 18px; text-align: left; text-align-last: auto; }
+.section-intro, p, li, dd { font-size: 17px; line-height: 1.72; color: var(--muted); text-align: justify; text-align-last: left; hyphens: auto; }
+.section-intro { margin: 0 0 20px; max-width: 1000px; }
+.three-col { grid-template-columns: repeat(3, 1fr); }
+.two-col { grid-template-columns: repeat(2, 1fr); }
+.four-col { grid-template-columns: repeat(4, 1fr); }
+.cause-grid { grid-template-columns: 1.1fr 0.9fr; }
+.term-grid { grid-template-columns: repeat(4, 1fr); }
+.quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+.info-card, .wide-card, .term-card, .quick-card, .micro-card, .warning-box, .source-note { padding: 20px; }
+.wide-card { margin-top: 14px; }
+.wide-card p:last-child, .info-card p:last-child { margin-bottom: 0; }
+.clean, .number-list { margin: 0; padding-left: 22px; }
+.clean li, .number-list li { margin: 0 0 9px; padding-left: 2px; }
+.clean li:last-child, .number-list li:last-child { margin-bottom: 0; }
+.mini-title { display: inline; color: var(--title); font-weight: 800; background: transparent; border: 0; border-radius: 0; padding: 0; margin-right: 5px; white-space: normal; text-align: inherit; }
+.date-pill { display: inline-block; color: var(--title); font-weight: 800; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.13); border-radius: 999px; padding: 2px 9px; margin-right: 5px; white-space: nowrap; text-align: left; }
+.definition, .note { margin-top: 18px; background: #fff8ef; border: 1px solid rgba(122, 79, 42, 0.22); border-left: 6px solid rgba(122, 79, 42, 0.48); border-radius: 18px; padding: 18px 20px; color: var(--muted); font-size: 17px; line-height: 1.7; text-align: justify; text-align-last: left; }
+.definition strong, .note strong { color: var(--title); }
+details { background: #fffdf9; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); margin-top: 14px; overflow: hidden; }
+details[open] { background: #fffaf3; }
+summary { cursor: pointer; list-style: none; padding: 18px 20px; font-size: 19px; font-weight: 800; color: var(--title); display: flex; justify-content: space-between; align-items: center; gap: 18px; text-align: left; text-align-last: auto; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "Deschide"; color: var(--muted); font-size: 14px; font-weight: 700; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 999px; padding: 7px 11px; white-space: nowrap; }
+details[open] > summary::after { content: "Ascunde"; }
+.details-body { border-top: 1px solid rgba(91, 62, 36, 0.12); padding: 18px 20px 20px; text-align: justify; text-align-last: left; }
+.details-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.nested-details { margin-top: 10px; box-shadow: none; background: #ffffff; }
+.nested-details summary { font-size: 17px; padding: 14px 16px; }
+.key-line { display: grid; grid-template-columns: 220px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px dashed rgba(91, 62, 36, 0.18); }
+.key-line:last-child { border-bottom: 0; }
+.key-line strong { color: var(--title); text-align: left; text-align-last: auto; }
+.key-line span { color: var(--muted); line-height: 1.65; text-align: justify; text-align-last: left; }
+.timeline { position: relative; display: grid; gap: 14px; margin-top: 18px; }
+.event { display: grid; grid-template-columns: 132px 1fr; gap: 18px; align-items: stretch; background: #ffffff; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); overflow: hidden; }
+.date { background: linear-gradient(180deg, #7a4f2a, #5b351b); color: #fffaf3; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px; font-size: 18px; line-height: 1.25; font-weight: 900; letter-spacing: 0.2px; }
+.event > div:last-child { padding: 17px 18px 18px 0; text-align: justify; text-align-last: left; }
+.event h3 { margin-bottom: 6px; }
+.event p { margin: 0; }
+.small-muted { font-size: 15px; color: #725c49; line-height: 1.6; text-align: justify; text-align-last: left; }
+.warning-box { background: #fff7ec; border-color: rgba(122, 79, 42, 0.22); margin-top: 16px; }
+.final-box { padding: 28px; background: linear-gradient(135deg, #fffaf3, #f4e4d1); border-color: rgba(91, 62, 36, 0.25); }
+.final-box p { margin-bottom: 0; }
+.table-wrap { overflow-x: auto; margin-top: 14px; border-radius: 18px; border: 1px solid rgba(91,62,36,.14); background: #fff; box-shadow: var(--shadow-small); }
+table { width: 100%; border-collapse: collapse; min-width: 740px; }
+th, td { padding: 13px 14px; border-bottom: 1px solid rgba(91,62,36,.12); color: var(--muted); font-size: 16px; line-height: 1.55; vertical-align: top; text-align: justify; }
+th { background: #f3eadf; color: var(--title); text-align: left; font-weight: 800; }
+tr:last-child td { border-bottom: 0; }
+@media (max-width: 980px) {
+  .summary-grid, .three-col, .term-grid, .quick-grid, .four-col { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .cause-grid, .details-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .page { width: min(100% - 22px, 1180px); padding-top: 22px; }
+  .hero, .section, .final-box { padding: 22px; border-radius: 22px; }
+  .summary-grid, .term-grid, .quick-grid, .four-col { grid-template-columns: 1fr; }
+  .event { grid-template-columns: 1fr; }
+  .date { min-height: 66px; }
+  .event > div:last-child { padding: 0 16px 16px; }
+  .key-line { grid-template-columns: 1fr; gap: 6px; }
+  summary { align-items: flex-start; flex-direction: column; }
+  .hero::after { font-size: 82px; }
+}
+
+.related-card { display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:16px 20px; margin:-10px 0 24px; background:rgba(255,250,243,.90); border:1px solid var(--line); border-radius:22px; box-shadow:var(--shadow-small); }
+.related-card b { color:var(--title); }
+.related-card a { color:var(--title); background:#f3eadf; border:1px solid rgba(91,62,36,.16); border-radius:999px; text-decoration:none; padding:8px 12px; font-weight:700; font-size:14px; }
+.related-card a:hover { background:#e5d2bb; }
+.badge-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
+.badge { display:inline-flex; align-items:center; color:var(--title); background:#f3eadf; border:1px solid rgba(91,62,36,.14); border-radius:999px; padding:6px 10px; font-weight:700; font-size:14px; }
+blockquote { margin:16px 0 0; padding:16px 20px; background:#fff8ef; border-left:6px solid rgba(122,79,42,.48); border-radius:16px; color:var(--muted); font-size:17px; line-height:1.7; }
+.mini-table table { min-width:560px; }
+@media print {
+  body { background:#fff !important; }
+  body::before { display:none; }
+  .page { width:100%; padding:0; }
+  .topbar, .nav-card, .related-card { display:none !important; }
+  .hero, .section, .final-box { box-shadow:none; border:1px solid #cbb9a8; break-inside:avoid-page; }
+  details { break-inside:avoid-page; }
+  details > summary::after { display:none; }
+}
+
+
+@media (max-width: 680px) {
+  .subtitle, .section-intro, p, li, dd,
+  .summary-card span, .quick-card span, .term-card span, .micro-card span,
+  .details-body, .key-line span, .event > div:last-child, th, td,
+  .definition, .note, blockquote {
+    text-align: left;
+    text-align-last: auto;
+    hyphens: none;
+  }
+}
+
+
+td { text-align: left; text-align-last: auto; }
+
+  
+
+/* Extensii pentru seria „Civilizația bizantină” */
+.series-links { display:flex; gap:9px; flex-wrap:wrap; margin-top:20px; }
+.series-links a { color:var(--title); background:#fff; border:1px solid rgba(91,62,36,.16); border-radius:999px; padding:9px 13px; text-decoration:none; font-weight:800; box-shadow:0 8px 20px rgba(0,0,0,.10); }
+.series-links a[aria-current="page"] { background:var(--accent); color:#fffaf3; }
+.series-links a:hover { transform:translateY(-1px); }
+.quote-box { margin-top:15px; padding:18px 20px; background:#fffdf9; border:1px solid rgba(91,62,36,.15); border-left:6px solid var(--accent-2); border-radius:18px; color:var(--muted); font-size:17px; line-height:1.72; text-align:justify; text-align-last:left; }
+.step-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:18px; }
+.step-card { background:#fff; border:1px solid rgba(91,62,36,.14); border-radius:20px; padding:18px; box-shadow:var(--shadow-small); }
+.step-card::before { content:attr(data-step); display:inline-flex; width:34px; height:34px; align-items:center; justify-content:center; border-radius:50%; background:var(--accent); color:#fff; font-weight:900; margin-bottom:11px; }
+.step-card strong { display:block; color:var(--title); font-size:17px; margin-bottom:7px; }
+.step-card span { color:var(--muted); font-size:15.5px; line-height:1.58; }
+.status-strip { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:16px; }
+.status-item { background:linear-gradient(135deg,#fff,#fff7ec); border:1px solid rgba(91,62,36,.14); border-radius:18px; padding:16px; }
+.status-item b { display:block; color:var(--title); margin-bottom:6px; }
+.status-item span { color:var(--muted); line-height:1.55; font-size:15.5px; }
+footer { margin-top:24px; color:rgba(255,250,243,.80); text-align:center; font-size:14px; line-height:1.6; }
+@media (max-width:980px) { .step-grid { grid-template-columns:repeat(2,1fr); } .status-strip { grid-template-columns:1fr; } }
+@media (max-width:680px) { .step-grid { grid-template-columns:1fr; } .series-links a { width:100%; text-align:center; } h1 { font-size:clamp(34px,10vw,52px); } }
+
+
+/* Extensii pentru seria „Europa medievală” */
+.series-links{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}.series-links a{color:var(--title);background:#fff;border:1px solid rgba(91,62,36,.16);border-radius:999px;padding:9px 13px;text-decoration:none;font-weight:800;box-shadow:0 8px 20px rgba(0,0,0,.10)}.series-links a[aria-current="page"]{background:var(--accent);color:#fffaf3}.series-links a:hover{transform:translateY(-1px)}
+.chapter-banner{margin:18px 0;padding:18px 20px;border-radius:20px;background:linear-gradient(135deg,#fff7ec,#f0e4d4);border:1px solid rgba(91,62,36,.18);box-shadow:var(--shadow-small)}.chapter-banner strong{display:block;color:var(--title);font-size:20px;margin-bottom:6px}.chapter-banner span{display:block;color:var(--muted);font-size:16px;line-height:1.62}
+.fact-check{margin-top:16px;padding:18px 20px;background:#fff7ec;border:1px solid rgba(122,79,42,.26);border-left:6px solid #8a4c2a;border-radius:18px;color:var(--muted);font-size:16px;line-height:1.68}.fact-check strong{color:var(--title)}
+.catalogue{columns:3 260px;column-gap:18px;margin-top:12px}.catalogue-group{break-inside:avoid;background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:16px;margin:0 0 14px;box-shadow:var(--shadow-small)}.catalogue-group h4{margin:0 0 8px}.catalogue-group ul{margin:0;padding-left:20px}.catalogue-group li{font-size:15.5px;line-height:1.5;margin-bottom:5px}
+.verse{padding:16px 18px;margin:12px 0;background:#fffdf9;border-left:5px solid var(--accent-2);border-radius:0 16px 16px 0;color:var(--muted);font-style:italic;line-height:1.7}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px}.flow-item{position:relative;padding:16px;background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;box-shadow:var(--shadow-small)}.flow-item b{display:block;color:var(--title);margin-bottom:6px}.flow-item span{font-size:15px;color:var(--muted);line-height:1.5}.flow-item:not(:last-child)::after{content:'→';position:absolute;right:-14px;top:50%;transform:translateY(-50%);font-size:22px;color:var(--accent);font-weight:900;z-index:3}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}.badge{display:inline-flex;padding:6px 10px;border-radius:999px;background:#f3eadf;border:1px solid rgba(91,62,36,.13);color:var(--title);font-weight:800;font-size:13px}
+.source-map{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.source-map article{background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:17px;box-shadow:var(--shadow-small)}.source-map strong{display:block;color:var(--title);margin-bottom:6px}.source-map span{color:var(--muted);font-size:15.5px;line-height:1.55}
+footer{margin-top:24px;color:rgba(255,250,243,.80);text-align:center;font-size:14px;line-height:1.6}
+@media(max-width:980px){.flow{grid-template-columns:repeat(2,1fr)}.flow-item::after{display:none}.source-map{grid-template-columns:1fr}.catalogue{columns:2 240px}}
+@media(max-width:680px){.flow{grid-template-columns:1fr}.catalogue{columns:1}.series-links a{width:100%;text-align:center}h1{font-size:clamp(34px,10vw,52px)}}
+
+/* Extensii pentru seria „Franța napoleoniană” */
+.campaign-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}.campaign-card{background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:20px;padding:19px;box-shadow:var(--shadow-small)}.campaign-card .years{display:inline-flex;padding:4px 9px;border-radius:999px;background:#f3eadf;color:var(--title);font-weight:900;font-size:13px;margin-bottom:9px}.campaign-card h3{margin-bottom:7px}.campaign-card p{font-size:15.8px;margin:0}.battle-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px}.battle-item{position:relative;background:linear-gradient(135deg,#fff,#fff8ef);border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:16px;box-shadow:var(--shadow-small)}.battle-item b{display:block;color:var(--title);margin-bottom:5px}.battle-item span{display:block;color:var(--muted);font-size:14.5px;line-height:1.48}.coalition-table td:first-child{font-weight:800;color:var(--title);white-space:nowrap}.strategy-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.strategy-card{background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:17px;box-shadow:var(--shadow-small)}.strategy-card strong{display:block;color:var(--title);margin-bottom:7px}.strategy-card span{color:var(--muted);font-size:15.5px;line-height:1.55}.law-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.law-card{background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:20px;padding:20px;box-shadow:var(--shadow-small)}.law-card .law-year{display:block;color:var(--accent);font-size:14px;font-weight:900;margin-bottom:7px}.law-card h3{margin-bottom:8px}.law-card p{font-size:15.7px;margin:0}.legacy-scale{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}.legacy-item{background:linear-gradient(135deg,#fff,#f7eddf);border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:17px}.legacy-item b{display:block;color:var(--title);margin-bottom:6px}.legacy-item span{display:block;color:var(--muted);font-size:15px;line-height:1.52}.system-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px}.system-step{position:relative;background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:16px;box-shadow:var(--shadow-small)}.system-step b{display:block;color:var(--title);margin-bottom:6px}.system-step span{display:block;color:var(--muted);font-size:14.8px;line-height:1.5}.system-step:not(:last-child)::after{content:'→';position:absolute;right:-14px;top:50%;transform:translateY(-50%);font-size:22px;color:var(--accent);font-weight:900;z-index:3}.impact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.impact-card{background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:20px;padding:20px;box-shadow:var(--shadow-small)}.impact-card h3{margin-bottom:8px}.impact-card ul{margin:0;padding-left:21px}.impact-card li{font-size:15.8px;line-height:1.58;margin-bottom:6px}.correction{margin-top:16px;padding:18px 20px;background:#fff7ec;border:1px solid rgba(132,70,38,.25);border-left:6px solid #8a4c2a;border-radius:18px;color:var(--muted);font-size:16.5px;line-height:1.68}.correction strong{color:var(--title)}.quote-line{margin:14px 0 0;padding:16px 19px;background:#fffdf9;border-left:5px solid var(--accent-2);border-radius:0 16px 16px 0;color:var(--muted);font-style:italic;line-height:1.7}.mini-map{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.mini-map article{background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:17px;box-shadow:var(--shadow-small)}.mini-map strong{display:block;color:var(--title);margin-bottom:6px}.mini-map span{display:block;color:var(--muted);font-size:15px;line-height:1.5}
+@media(max-width:980px){.campaign-grid,.law-grid{grid-template-columns:repeat(2,1fr)}.battle-strip,.strategy-grid,.legacy-scale,.system-flow{grid-template-columns:repeat(2,1fr)}.system-step::after{display:none}.impact-grid,.mini-map{grid-template-columns:1fr}}
+@media(max-width:680px){.campaign-grid,.law-grid,.battle-strip,.strategy-grid,.legacy-scale,.system-flow{grid-template-columns:1fr}}
+</style>
+</head>
+<body id="top" style="--hero-year:'1804';">
+<main class="page">
+<div class="topbar"><a class="back-link" href="index.html">← Înapoi la materiale</a><span class="tag">Material ajutător · Istorie universală · Franța napoleoniană</span></div>
+<section class="hero"><p class="eyebrow">Istorie universală · Epoca modernă · Consulat și Imperiu</p><h1>Franța napoleoniană: legi moderne</h1><p class="subtitle">Constituțiile napoleoniene, administrația prefectorală, Codul civil și celelalte coduri, Banca Franței, francul germinal, Concordatul, educația, justiția, poliția și moștenirea contradictorie a modernizării autoritare.</p><div class="series-links"><a href="univ-franta-napoleoniana-campanii-militare.html">Campanii militare</a><a href="univ-franta-napoleoniana-legi-moderne.html" aria-current="page">Legi moderne</a><a href="univ-franta-napoleoniana-sistemul-continental.html">Sistemul continental</a></div></section>
+<div class="related-card"><b>Seria Franța napoleoniană:</b><a href="univ-franta-napoleoniana-campanii-militare.html">Campanii militare</a><a href="univ-franta-napoleoniana-legi-moderne.html" aria-current="page">Legi moderne</a><a href="univ-franta-napoleoniana-sistemul-continental.html">Sistemul continental</a></div>
+<nav class="nav-card" aria-label="Cuprinsul paginii"><b>Cuprins:</b><a href="#regim">Regimul</a><a href="#administratie">Administrație</a><a href="#coduri">Codurile</a><a href="#civil">Codul civil</a><a href="#economie">Economie</a><a href="#religie">Religie</a><a href="#educatie">Educație</a><a href="#justitie">Justiție</a><a href="#control">Control politic</a><a href="#limite">Limite</a><a href="#mostenire">Moștenire</a><button class="mini-btn" type="button" data-action="open">Deschide explicațiile</button><button class="mini-btn" type="button" data-action="close">Închide explicațiile</button></nav>
+
+<section class="section" id="regim">
+<h2>I. Consulatul și Imperiul: modernizare autoritară</h2>
+<p class="section-intro">Napoleon a păstrat rezultatele sociale fundamentale ale Revoluției — abolirea privilegiilor, egalitatea civilă masculină, proprietatea dobândită și cariera deschisă talentului — dar le-a încadrat într-un regim centralizat, plebiscitar și polițienesc. Legile sale au creat instituții durabile, însă modernitatea juridică a coexistat cu cenzura, dominația patriarhală și restaurarea sclaviei coloniale.</p>
+<div class="summary-grid"><article class="summary-card"><strong>1799</strong><span>Constituția anului VIII: Primul Consul concentrează inițiativa și executivul.</span></article><article class="summary-card"><strong>1802</strong><span>Consulat pe viață, Legiunea de Onoare, licee și Articole Organice.</span></article><article class="summary-card"><strong>1804</strong><span>Codul civil și proclamarea Imperiului ereditar.</span></article><article class="summary-card"><strong>1800–1810</strong><span>Prefecți, bancă, monedă stabilă, coduri, tribunale și sistem educațional central.</span></article></div>
+<details open><summary>Instituțiile Constituției anului VIII</summary><div class="details-body"><div class="three-col"><article class="info-card"><h3>Cei trei consuli</h3><p>Formal colegiali, dar Primul Consul decidea aproape tot; al doilea și al treilea aveau rol consultativ.</p></article><article class="info-card"><h3>Consiliul de Stat</h3><p>Pregătea proiectele de lege și regulamentele administrative; a devenit laboratorul codificării.</p></article><article class="info-card"><h3>Tribunatul și Corpul Legislativ</h3><p>Tribunatul discuta fără a vota, iar Corpul Legislativ vota fără a dezbate, reducând deliberarea publică.</p></article></div><div class="two-col"><article class="info-card"><h3>Senatul conservator</h3><p>Verifica aparent constituționalitatea și putea modifica regimul prin <em>sénatus-consultes</em>; în practică legitima consolidarea puterii.</p></article><article class="info-card"><h3>Plebiscitele</h3><p>Constituțiile și schimbările de statut erau supuse votului popular, dar administrația controla procedura și rezultatele publicate.</p></article></div></div></details>
+<div class="definition"><strong>Formula regimului:</strong> suveranitatea națională este invocată, dar cetățenii aleg mai ales liste de notabilități și aprobă prin plebiscit decizii construite de executiv. Separarea puterilor există în text, însă centrul efectiv este Primul Consul, apoi Împăratul.</div>
+</section>
+
+<section class="section" id="administratie">
+<h2>II. Administrația centralizată</h2>
+<div class="timeline"><article class="event"><div class="date">17 feb. 1800</div><div><h3>Legea din 28 Pluviôse, anul VIII</h3><p>Instituie prefecții în departamente, subprefecții în arondismente și o rețea ierarhică dependentă de guvern.</p></div></article><article class="event"><div class="date">1800–1804</div><div><h3>Primarii și consiliile locale</h3><p>Primarii marilor orașe sunt numiți de puterea centrală; autonomia locală este redusă în favoarea uniformității.</p></div></article><article class="event"><div class="date">1807</div><div><h3>Curtea de Conturi și cadastrul</h3><p>Control financiar mai riguros și măsurarea sistematică a proprietăților pentru o fiscalitate previzibilă.</p></div></article></div>
+<div class="strategy-grid"><article class="strategy-card"><strong>Prefectul</strong><span>Reprezentant al guvernului, supraveghează poliția, recrutarea, alegerile, impozitele, drumurile și administrația comunală.</span></article><article class="strategy-card"><strong>Funcționarul</strong><span>Cariera administrativă se profesionalizează, dar depinde de numirea și loialitatea față de centru.</span></article><article class="strategy-card"><strong>Departamentul</strong><span>Unitatea creată în Revoluție este păstrată și transformată într-un instrument eficient al statului.</span></article><article class="strategy-card"><strong>Uniformitatea</strong><span>Aceleași coduri, formulare, tribunale și proceduri se aplică pe întreg teritoriul.</span></article></div>
+</section>
+
+<section class="section" id="coduri">
+<h2>III. Marea codificare napoleoniană</h2>
+<div class="law-grid"><article class="law-card"><span class="law-year">1804</span><h3>Codul civil</h3><p>Persoane, familie, proprietate, succesiuni, obligații și contracte. Devine nucleul dreptului privat continental.</p></article><article class="law-card"><span class="law-year">1806</span><h3>Codul de procedură civilă</h3><p>Uniformizează desfășurarea proceselor civile și competențele instanțelor.</p></article><article class="law-card"><span class="law-year">1807</span><h3>Codul comercial</h3><p>Reglementează comercianții, societățile, falimentul, efectele de comerț și jurisdicția comercială.</p></article><article class="law-card"><span class="law-year">1808</span><h3>Codul de instrucție criminală</h3><p>Organizează ancheta, urmărirea penală, judecata și raportul dintre procedura scrisă și dezbaterea publică.</p></article><article class="law-card"><span class="law-year">1810</span><h3>Codul penal</h3><p>Definește infracțiuni și pedepse, menține sancțiuni severe și clasifică faptele în crime, delicte și contravenții.</p></article><article class="law-card"><span class="law-year">1804–1810</span><h3>Coduri exportate</h3><p>Aplicate sau imitate în Belgia, Olanda, Italia, statele germane, Polonia și ulterior în numeroase sisteme juridice.</p></article></div>
+<div class="note"><strong>Continuitate și ruptură:</strong> Napoleon nu a inventat singur codurile. El a accelerat și arbitrat o muncă începută de juriștii Vechiului Regim și ai Revoluției, folosind Consiliul de Stat pentru a concilia dreptul roman din sud, cutumele din nord și legislația revoluționară.</div>
+</section>
+
+<section class="section" id="civil">
+<h2>IV. Codul civil din 1804: principii și contradicții</h2>
+<div class="two-col"><article class="info-card"><h3>Principii moderne</h3><ul class="clean"><li>egalitatea civilă a bărbaților în fața legii;</li><li>abolirea privilegiilor de naștere și a drepturilor feudale;</li><li>protecția fermă a proprietății private;</li><li>libertatea contractuală și siguranța tranzacțiilor;</li><li>secularizarea stării civile și a căsătoriei;</li><li>egalitatea succesorală între copiii legitimi, limitând perpetuarea marilor averi prin primogenitură.</li></ul></article><article class="info-card"><h3>Ordine patriarhală</h3><ul class="clean"><li>soțul stabilește domiciliul și controlează în mare măsură bunurile familiei;</li><li>femeia căsătorită are capacitate juridică limitată;</li><li>adulterul este tratat inegal după sex;</li><li>divorțul există, dar în condiții mai favorabile bărbatului;</li><li>autoritatea paternă este foarte puternică, inclusiv prin posibilitatea detenției corecționale a copiilor.</li></ul></article></div>
+<div class="correction"><strong>Majoratul și emanciparea:</strong> Codul fixa majoratul civil la 21 de ani. Emanciparea minorului putea interveni în condiții juridice determinate; serviciul militar nu era singura cale generală. Formulările din curs despre detenția fiului surprind autoritatea paternă, dar aceasta era supusă unor proceduri și limite de vârstă.</div>
+<details open><summary>Proprietatea — „drept inviolabil” și motor economic</summary><div class="details-body"><p>Codul garantează proprietățile dobândite în timpul Revoluției, inclusiv fostele bunuri ecleziastice și ale emigranților. Proprietatea este definită amplu, iar contractul devine instrumentul central al circulației bunurilor. Aceasta a stabilizat noua elită de proprietari și a făcut imposibilă restaurarea integrală a Vechiului Regim.</p></div></details>
+</section>
+
+<section class="section" id="economie">
+<h2>V. Monedă, bancă, fiscalitate și economie</h2>
+<div class="timeline"><article class="event"><div class="date">1800</div><div><h3>Banca Franței</h3><p>Instituție privată privilegiată, apropiată de stat, care primește treptat monopolul emisiunii la Paris și stabilizează creditul.</p></div></article><article class="event"><div class="date">1803</div><div><h3>Francul germinal</h3><p>Monedă bazată pe un raport legal între aur și argint; stabilitatea sa va dura până în secolul al XIX-lea târziu.</p></div></article><article class="event"><div class="date">1807</div><div><h3>Curtea de Conturi</h3><p>Verifică utilizarea banilor publici și întărește responsabilitatea contabilă a administrației.</p></div></article><article class="event"><div class="date">1807+</div><div><h3>Cadastrul parcelar</h3><p>Inventariază proprietățile pentru repartizarea mai exactă a impozitului funciar.</p></div></article></div>
+<div class="three-col"><article class="info-card"><h3>Intervenția statului</h3><p>Contracte militare, lucrări publice, tarife, controlul piețelor strategice și protejarea industriei continentale.</p></article><article class="info-card"><h3>Infrastructură</h3><p>Drumuri, poduri, canale, porturi și înfrumusețarea Parisului servesc simultan armata, economia și propaganda.</p></article><article class="info-card"><h3>Merit și elită</h3><p>Legiunea de Onoare, creată în 1802, recompensează servicii civile și militare, inclusiv ale unor străini, și creează o elită de merit controlată de stat.</p></article></div>
+</section>
+
+<section class="section" id="religie">
+<h2>VI. Concordatul și organizarea cultelor</h2>
+<div class="two-col"><article class="info-card"><h3>Concordatul din 1801</h3><ul class="clean"><li>catolicismul este „religia marii majorități a cetățenilor francezi”, nu religie de stat;</li><li>papa recunoaște noua ordine și vânzarea bunurilor bisericești;</li><li>Primul Consul nominalizează episcopii, iar papa le acordă instituirea canonică;</li><li>clerul este salarizat și depune jurământ față de stat;</li><li>cultul public este permis sub supraveghere administrativă.</li></ul></article><article class="info-card"><h3>Articolele Organice, 1802</h3><p>Adăugate unilateral de guvern, controlează publicarea documentelor papale, seminarele, sinoadele și relațiile clerului cu Roma. Organizarea protestantă este reglementată prin consistorii, iar statul urmărește să transforme religia într-un factor de ordine publică.</p></article></div>
+<details><summary>Napoleon și comunitățile evreiești</summary><div class="details-body"><p>Adunarea Notabililor evrei din 1806 și Marele Sanhedrin din 1807 au urmărit integrarea juridică și compatibilizarea normelor religioase cu cetățenia franceză. Consistoriile au fost organizate în 1808. Totuși, decretul din 17 martie 1808 a introdus temporar restricții discriminatorii asupra creditului, comerțului și recrutării în anumite regiuni, arătând limitele universalismului imperial.</p></div></details>
+<div class="correction"><strong>Raportul cu Revoluția:</strong> Constituția Civilă a Clerului din 1790 nu a fost o lege napoleoniană. Napoleon a înlocuit conflictul religios creat de aceasta prin Concordat, păstrând însă subordonarea instituțională a Bisericii față de stat.</div>
+</section>
+
+<section class="section" id="educatie">
+<h2>VII. Învățământul ca serviciu al statului</h2>
+<div class="law-grid"><article class="law-card"><span class="law-year">1802</span><h3>Liceele</h3><p>Pregătesc funcționari și ofițeri; disciplina, matematica, limbile clasice și spiritul civic-militar ocupă loc central.</p></article><article class="law-card"><span class="law-year">1806–1808</span><h3>Universitatea Imperială</h3><p>Nu este doar o universitate, ci organismul care monopolizează și supraveghează sistemul de învățământ.</p></article><article class="law-card"><span class="law-year">1808</span><h3>Bacalaureatul</h3><p>Devine diplomă de acces la învățământul superior și instrument de uniformizare a elitelor.</p></article></div>
+<div class="note"><strong>Limită socială și de gen:</strong> sistemul a favorizat mai ales educația secundară masculină necesară administrației și armatei. Educația fetelor a rămas în mare măsură familială, confesională sau orientată spre rolul domestic.</div>
+</section>
+
+<section class="section" id="justitie">
+<h2>VIII. Organizarea justiției</h2>
+<div class="strategy-grid"><article class="strategy-card"><strong>Judecători de pace</strong><span>Rezolvă litigii locale și încearcă concilierea.</span></article><article class="strategy-card"><strong>Tribunale de primă instanță</strong><span>Judecă principalele cauze civile și corecționale.</span></article><article class="strategy-card"><strong>Curți de apel</strong><span>Reexaminează hotărârile instanțelor inferioare.</span></article><article class="strategy-card"><strong>Curtea de Casație</strong><span>Controlează aplicarea corectă a legii, fără a rejudeca în mod obișnuit faptele.</span></article><article class="strategy-card"><strong>Consiliul de Stat</strong><span>Judecă treptat conflicte administrative și consiliază executivul.</span></article><article class="strategy-card"><strong>Juriul penal</strong><span>Moștenire revoluționară menținută pentru crime, într-un sistem tot mai controlat de magistrați.</span></article><article class="strategy-card"><strong>Ministerul public</strong><span>Parchetul reprezintă interesele statului și coordonează urmărirea penală.</span></article><article class="strategy-card"><strong>Inamovibilitate limitată</strong><span>Stabilitatea magistraților crește profesionalizarea, dar numirile păstrează influența executivului.</span></article></div>
+</section>
+
+<section class="section" id="control">
+<h2>IX. Poliție, cenzură și disciplinarea societății</h2>
+<div class="two-col"><article class="info-card"><h3>Poliția lui Joseph Fouché</h3><p>Rețele de informatori, rapoarte prefecturale, supravegherea emigranților, regaliștilor și foștilor iacobini. Regimul alternează amnistia cu arestarea preventivă și exilul administrativ.</p></article><article class="info-card"><h3>Presa și opinia publică</h3><p>Numărul ziarelor pariziene este redus drastic, tipografiile sunt licențiate, iar publicațiile trebuie să glorifice regimul și să evite critica politică.</p></article></div>
+<details open><summary>Muncitorii: egalitate civilă fără libertate colectivă</summary><div class="details-body"><p>Interdicția asociațiilor profesionale și grevelor, moștenită din Legea Le Chapelier, continuă. <em>Livret ouvrier</em>, introdus în 1803, înregistrează angajarea și deplasarea muncitorului, facilitând controlul patronal și polițienesc. Codul civil favoriza mult timp declarația patronului în litigiile salariale. Modernizarea dreptului proprietății nu a însemnat egalitate între capital și muncă.</p></div></details>
+</section>
+
+<section class="section" id="limite">
+<h2>X. Limitele și contradicțiile legislației napoleoniene</h2>
+<div class="impact-grid"><article class="impact-card"><h3>Promisiuni păstrate</h3><ul><li>desființarea privilegiilor feudale;</li><li>egalitatea juridică masculină;</li><li>secularizarea administrației și dreptului;</li><li>protecția proprietății și contractului;</li><li>cariera deschisă talentului;</li><li>uniformitate juridică și administrativă.</li></ul></article><article class="impact-card"><h3>Excluderi și regres</h3><ul><li>inferioritatea juridică a femeii căsătorite;</li><li>controlul muncitorilor și interzicerea organizării colective;</li><li>cenzură și poliție politică;</li><li>alegeri golite de competiție reală;</li><li>restaurarea sclaviei în colonii prin legea din 20 mai 1802;</li><li>războaie, conscripție și fiscalitate imperială.</li></ul></article></div>
+<div class="correction"><strong>Sclavia:</strong> Convenția abolise sclavia în coloniile franceze în 1794. Napoleon a restabilit-o în 1802 acolo unde controlul francez permitea acest lucru; în Saint-Domingue, încercarea de restaurare a dominației a contribuit la războiul care a dus la independența Haitiului în 1804.</div>
+</section>
+
+<section class="final-box" id="mostenire"><h2>XI. Moștenirea modernă</h2><div class="legacy-scale"><article class="legacy-item"><b>Drept civil</b><span>Codul napoleonian rămâne reper pentru familia romano-germanică de drept.</span></article><article class="legacy-item"><b>Administrație</b><span>Prefectul, departamentul și centralizarea au modelat state din Europa și din afara ei.</span></article><article class="legacy-item"><b>Educație</b><span>Liceul, bacalaureatul și controlul public al învățământului au devenit instituții durabile.</span></article><article class="legacy-item"><b>Stat fiscal</b><span>Banca, moneda, cadastrul și contabilitatea au susținut capacitatea administrativă modernă.</span></article></div><p>Legislația napoleoniană nu a fost pur și simplu liberală sau despotică. Ea a creat statul juridic și administrativ necesar societății proprietarilor, dar a redus participarea politică și a întărit autoritatea familiei patriarhale, a patronului și a executivului.</p></section>
+
+<footer>Material amplu, structurat și corectat istoric · Seria „Franța napoleoniană”</footer>
+</main>
+<script>
+const openBtn=document.querySelector('[data-action="open"]');const closeBtn=document.querySelector('[data-action="close"]');
+if(openBtn)openBtn.addEventListener('click',()=>document.querySelectorAll('details').forEach(d=>d.open=true));
+if(closeBtn)closeBtn.addEventListener('click',()=>document.querySelectorAll('details').forEach(d=>d.open=false));
+</script>
+</body></html>

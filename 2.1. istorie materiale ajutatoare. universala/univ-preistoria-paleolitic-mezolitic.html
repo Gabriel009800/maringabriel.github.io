@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="De la primele unelte de piatră la comunitățile de vânători-culegători ale Holocenului">
+  <title>Preistoria: Paleoliticul și Mezoliticul - Material ajutător de istorie</title>
+  <style>
+    :root {
+      --bg: #f6f0e7;
+      --paper: #fffaf3;
+      --paper-2: #ffffff;
+      --ink: #2f241c;
+      --muted: #695747;
+      --accent: #6f3f24;
+      --accent-2: #a66a3f;
+      --line: rgba(91, 62, 36, 0.18);
+      --soft: #f1e4d3;
+      --note: #fff1cf;
+      --good: #eaf2e6;
+      --shadow: 0 14px 36px rgba(69, 46, 25, 0.08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: Georgia, "Times New Roman", serif; line-height: 1.72; }
+    a { color: var(--accent); }
+    .page { width: min(1120px, calc(100% - 28px)); margin: 0 auto; padding: 26px 0 70px; }
+    .topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; }
+    .back { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 700; background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 10px 15px; box-shadow: 0 7px 18px rgba(69,46,25,.05); }
+    .category { color: var(--muted); font-size: 14px; text-align: right; }
+    .hero { background: linear-gradient(135deg, #fffaf3 0%, #f8ead7 100%); border: 1px solid var(--line); border-radius: 28px; padding: clamp(27px, 5vw, 55px); box-shadow: var(--shadow); margin-bottom: 24px; }
+    .eyebrow { display: inline-block; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .09em; background: var(--accent); color: white; padding: 7px 11px; border-radius: 999px; margin-bottom: 17px; }
+    h1 { font-size: clamp(34px, 6vw, 58px); line-height: 1.05; letter-spacing: -.035em; margin: 0 0 15px; color: #3c2a1e; }
+    .subtitle { font-size: clamp(18px, 2.4vw, 23px); color: var(--accent); font-weight: 700; margin: 0 0 17px; }
+    .lead { font-size: 18px; color: var(--muted); margin: 0; max-width: 900px; text-align: justify; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 24px; align-items: start; }
+    .content, .side-card { background: var(--paper); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); }
+    .content { padding: clamp(23px, 4vw, 43px); }
+    .sidebar { position: sticky; top: 18px; display: grid; gap: 16px; }
+    .side-card { padding: 20px; }
+    .side-card h2 { margin: 0 0 11px; font-size: 18px; }
+    .toc a { display: block; padding: 7px 0; border-bottom: 1px dashed var(--line); text-decoration: none; font-size: 14px; line-height: 1.35; }
+    .toc a:last-child { border-bottom: none; }
+    section { scroll-margin-top: 20px; margin-bottom: 34px; }
+    section:last-child { margin-bottom: 0; }
+    h2 { font-size: 29px; line-height: 1.2; margin: 0 0 17px; color: #3c2a1e; }
+    h3 { font-size: 21px; margin: 23px 0 9px; color: var(--accent); }
+    p { margin: 0 0 15px; text-align: justify; }
+    ul, ol { padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .callout { border-left: 5px solid var(--accent-2); background: var(--note); padding: 16px 18px; border-radius: 0 15px 15px 0; margin: 19px 0; }
+    .callout.good { background: var(--good); }
+    .callout strong { color: #4a2e1b; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; margin: 17px 0; }
+    .mini-card { background: var(--paper-2); border: 1px solid var(--line); border-radius: 17px; padding: 17px; }
+    .mini-card h3 { margin-top: 0; }
+    .timeline { border-left: 3px solid var(--accent-2); margin: 18px 0 22px 9px; padding-left: 23px; }
+    .event { position: relative; margin-bottom: 17px; }
+    .event::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); position: absolute; left: -30px; top: 7px; box-shadow: 0 0 0 4px var(--paper); }
+    .event b { color: var(--accent); }
+    table { width: 100%; border-collapse: collapse; margin: 18px 0 23px; background: white; font-size: 15px; }
+    th, td { border: 1px solid var(--line); padding: 11px 12px; vertical-align: top; text-align: left; }
+    th { background: var(--soft); color: #3c2a1e; }
+    .keywords { display: flex; flex-wrap: wrap; gap: 8px; }
+    .keywords span { border: 1px solid var(--line); background: var(--soft); border-radius: 999px; padding: 7px 10px; font-size: 13px; font-weight: 700; }
+    .questions { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 19px 22px; }
+    .bibliography { font-size: 14px; color: var(--muted); }
+    .footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 26px; }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; grid-row: 1; }
+      .toc { display: none; }
+    }
+    @media (max-width: 650px) {
+      .page { width: min(100% - 18px, 1120px); padding-top: 12px; }
+      .topbar { align-items: flex-start; }
+      .category { display: none; }
+      .hero, .content, .side-card { border-radius: 20px; }
+      .grid-2 { grid-template-columns: 1fr; }
+      table { display: block; overflow-x: auto; white-space: normal; }
+      h2 { font-size: 25px; }
+    }
+    @media print {
+      body { background: white; }
+      .page { width: 100%; padding: 0; }
+      .topbar, .sidebar { display: none; }
+      .layout { display: block; }
+      .hero, .content { box-shadow: none; border-color: #bbb; }
+      .hero { break-after: avoid; }
+      section, table { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a class="back" href="../evaluare.html">← Înapoi la Evaluare</a>
+      <div class="category">Material ajutător · Istorie universală · Preistoria</div>
+    </div>
+
+    <header class="hero">
+      <span class="eyebrow">Istorie universală · Preistoria</span>
+      <h1>Preistoria: Paleoliticul și Mezoliticul</h1>
+      <p class="subtitle">De la primele unelte de piatră la comunitățile de vânători-culegători ale Holocenului</p>
+      <p class="lead">O prezentare amplă a evoluției umane, tehnologiilor litice, economiei de vânătoare și cules, artei paleolitice și transformărilor produse la sfârșitul ultimei glaciațiuni.</p>
+    </header>
+
+    <div class="layout">
+      <article class="content">
+        
+<section id="context">
+  <h2>1. Ce cuprind Paleoliticul și Mezoliticul?</h2>
+  <p><strong>Paleoliticul</strong>, „epoca veche a pietrei”, reprezintă cea mai lungă parte a istoriei umane. El începe odată cu cele mai vechi unelte de piatră cunoscute, cu peste 3 milioane de ani în urmă, și se încheie diferit de la o regiune la alta, în general spre sfârșitul ultimei glaciațiuni. <strong>Mezoliticul</strong>, „epoca mijlocie a pietrei”, desemnează în numeroase regiuni intervalul de tranziție dintre comunitățile paleolitice și cele neolitice, aproximativ în primele milenii ale Holocenului.</p>
+  <div class="callout"><strong>Important:</strong> periodizarea este convențională și regională. Paleoliticul, Mezoliticul și Neoliticul nu au început și nu s-au încheiat simultan pe întregul glob. În Orientul Apropiat, termenul <em>Epipaleolitic</em> este adesea preferat pentru fazele târzii ale economiei de vânătoare și cules.</div>
+  <table>
+    <thead><tr><th>Perioadă</th><th>Repere aproximative</th><th>Trăsături generale</th></tr></thead>
+    <tbody>
+      <tr><td>Paleoliticul inferior</td><td>peste 3 milioane de ani – cca 300.000 de ani în urmă</td><td>Primele industrii litice, răspândirea genului <em>Homo</em>, folosirea treptată a focului, topoare de mână în unele regiuni.</td></tr>
+      <tr><td>Paleoliticul mijlociu</td><td>cca 300.000–45.000 de ani în urmă</td><td>Tehnici mai planificate de cioplire, neanderthalieni în Europa și vestul Asiei, apariția și răspândirea timpurie a lui <em>Homo sapiens</em>.</td></tr>
+      <tr><td>Paleoliticul superior</td><td>cca 45.000–11.700 de ani în urmă, în Europa</td><td>Lame de piatră, unelte din os și corn, podoabe, artă parietală și mobilieră, rețele sociale extinse.</td></tr>
+      <tr><td>Mezoliticul</td><td>după cca 11.700 de ani în urmă, cu mari variații regionale</td><td>Microlite, arcul și săgeata, pescuit intens, adaptarea la păduri și litoraluri, uneori așezări mai stabile.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="dezvoltare">
+  <h2>2. Evoluția umană: o istorie ramificată, nu o scară liniară</h2>
+  <p>Evoluția umană nu poate fi reprezentată corect ca o succesiune simplă de forme care se transformă una în alta. În diferite perioade au coexistat mai multe specii și populații umane. Unele au dispărut, altele au contribuit genetic la populațiile actuale. Fosilele, ADN-ul vechi și arheologia arată o istorie cu migrații, încrucișări și adaptări locale.</p>
+  <div class="grid-2">
+    <div class="mini-card"><h3>Genul Homo și primele dispersări</h3><p>Specii timpurii ale genului <em>Homo</em> au produs unelte și au părăsit Africa. <em>Homo erectus</em> și populații înrudite au ajuns în Eurasia cu mult înaintea apariției omului modern. Capacitatea de a coopera, de a exploata resurse diverse și de a transmite tehnici a fost decisivă.</p></div>
+    <div class="mini-card"><h3>Homo sapiens și celelalte umanități</h3><p><em>Homo sapiens</em> s-a format în Africa și s-a răspândit treptat în afara continentului. În Eurasia a întâlnit neanderthalieni și denisovani. Analizele genetice demonstrează încrucișări, astfel încât numeroase populații actuale păstrează mici proporții de ADN provenit de la aceste grupuri.</p></div>
+  </div>
+
+  <h2>3. Tehnologia pietrei</h2>
+  <h3>Primele unelte</h3>
+  <p>Cele mai simple industrii foloseau nuclee și așchii obținute prin lovirea controlată a pietrei. Chiar și un obiect aparent rudimentar presupunea alegerea materiei prime, anticiparea fracturii și cunoașterea unghiului de lovire. Uneltele serveau la tranșarea animalelor, prelucrarea lemnului, spargerea oaselor și prepararea plantelor.</p>
+  <h3>Topoarele de mână și tradiția acheuleană</h3>
+  <p>În Africa, Europa și vestul Asiei au circulat timp de sute de mii de ani unelte bifaciale, între care topoarele de mână. Forma lor relativ standardizată sugerează învățare socială și planificare. Ele nu au fost însă universale: în estul Asiei au existat alte soluții tehnice, adaptate materiilor prime și nevoilor locale.</p>
+  <h3>Metoda Levallois și pregătirea nucleului</h3>
+  <p>În Paleoliticul mijlociu, meșteșugarii au pregătit nucleul astfel încât să obțină așchii cu formă previzibilă. Această tehnică demonstrează o succesiune mentală complexă de operații. În Paleoliticul superior s-au răspândit lamele lungi, vârfurile, gratoarele și uneltele compozite, în care piatra era fixată în mânere de lemn sau os.</p>
+
+  <h2>4. Focul, îmbrăcămintea și locuirea</h2>
+  <p>Controlul focului a oferit căldură, lumină și protecție, a permis prepararea alimentelor și a creat un centru al vieții sociale. Dovezile sunt mai clare începând cu câteva sute de mii de ani în urmă, deși există indicii mai vechi discutate. În regiunile reci, oamenii au folosit piei, adăposturi și strategii sezoniere. Peșterile au fost importante, dar majoritatea comunităților nu au trăit permanent în peșteri; multe tabere se aflau în aer liber și s-au păstrat mai greu.</p>
+
+  <h2>5. Economia vânătorilor-culegători</h2>
+  <p>Hrana provenea din combinarea flexibilă a plantelor, fructelor, tuberculilor, nucilor, scoicilor, peștilor și vânatului. Termenul „vânători-culegători” nu descrie o singură economie. Unele grupuri urmăreau turme migratoare, altele exploatau litoraluri bogate, păduri sau râuri. Cunoașterea mediului era detaliată: anotimpuri, trasee animale, plante comestibile, surse de apă și proprietățile rocilor.</p>
+  <p>Mobilitatea putea fi mare, dar nu era o rătăcire fără plan. Comunitățile reveneau în locuri cunoscute și organizau teritorii sezoniere. Schimburile de silex, obsidian, cochilii și pigmenți pe distanțe mari arată existența unor rețele sociale care reduceau riscul în perioade de criză.</p>
+
+  <h2>6. Viața socială și simbolică</h2>
+  <p>Arheologia nu poate reconstrui exact limbile, credințele sau raporturile de rudenie, dar poate identifica urme ale cooperării și simbolismului. Îngrijirea unor persoane rănite sau vârstnice, transportul materiilor prime, vânătorile coordonate și transmiterea tehnicilor indică legături sociale stabile.</p>
+  <div class="grid-2">
+    <div class="mini-card"><h3>Înmormântări și podoabe</h3><p>Unele morminte conțin ocru, unelte sau podoabe. Acestea pot indica ritual, identitate și memorie socială, fără ca arheologii să poată defini precis credințele despre moarte.</p></div>
+    <div class="mini-card"><h3>Arta paleolitică</h3><p>Picturile rupestre, gravurile și statuetele reprezintă animale, semne și corpuri umane. Interpretările variază: ritual, povestire, memorie, inițiere, marcarea locului sau combinații ale acestora.</p></div>
+  </div>
+
+  <h2>7. Ultima glaciațiune și marile adaptări</h2>
+  <p>În timpul Pleistocenului, clima a oscilat între faze reci și mai blânde. La maximul ultimei glaciațiuni, aproximativ acum 26.000–19.000 de ani, calotele glaciare acopereau părți mari ale emisferei nordice, iar nivelul mărilor era mult mai scăzut. Oamenii s-au retras din unele regiuni și au ocupat refugii climatice. Poduri terestre, precum Beringia, au facilitat deplasări între continente.</p>
+  <p>Popularea Americilor a fost un proces complex. Dovezile actuale indică prezențe umane anterioare culturii Clovis, iar migrația s-a putut produce prin mai multe rute și etape. Australia și Noua Guinee fuseseră populate cu zeci de mii de ani mai devreme, necesitând traversări maritime.</p>
+
+  <h2>8. Mezoliticul: diversificare după încălzirea climei</h2>
+  <p>Începutul Holocenului, acum aproximativ 11.700 de ani, a adus încălzire climatică, extinderea pădurilor și transformarea faunei. Comunitățile au adaptat echipamentul la vânat mai mic și la medii fragmentate. <strong>Microlitele</strong>, mici lame sau segmente de silex, erau montate în săgeți, harpoane și cuțite compozite. Arcul, plasele, cârligele, capcanele și ambarcațiunile au lărgit spectrul resurselor.</p>
+  <p>În zonele cu resurse abundente, unele grupuri au devenit mai sedentare, au construit locuințe durabile, au format cimitire și au depozitat hrană. Câinele, domesticit înaintea agriculturii, a însoțit oamenii la vânătoare și în tabere. În Levant, comunitățile natufiene au locuit în așezări relativ stabile înainte de domesticirea deplină a cerealelor.</p>
+</section>
+
+<section id="cronologie">
+  <h2>9. Repere cronologice</h2>
+  <div class="timeline">
+    <div class="event"><b>peste 3 milioane de ani în urmă</b> – apar unele dintre cele mai vechi unelte de piatră cunoscute.</div>
+    <div class="event"><b>cca 1,9 milioane de ani în urmă</b> – populații timpurii ale genului <em>Homo</em> sunt prezente în afara Africii.</div>
+    <div class="event"><b>cca 400.000–300.000 de ani în urmă</b> – se consolidează folosirea focului în numeroase situri; apar forme timpurii de <em>Homo sapiens</em>.</div>
+    <div class="event"><b>cca 70.000–50.000 de ani în urmă</b> – se intensifică dispersările lui <em>Homo sapiens</em> în afara Africii.</div>
+    <div class="event"><b>cca 45.000 de ani în urmă</b> – începe Paleoliticul superior în mare parte din Europa.</div>
+    <div class="event"><b>cca 26.000–19.000 de ani în urmă</b> – maximul ultimei glaciațiuni.</div>
+    <div class="event"><b>cca 11.700 de ani în urmă</b> – începe Holocenul; în multe regiuni se dezvoltă economii mezolitice.</div>
+    <div class="event"><b>mileniile X–VII î.Hr.</b> – în unele regiuni ale Asiei de Sud-Vest, comunități de vânători-culegători trec treptat spre agricultură și creșterea animalelor.</div>
+  </div>
+</section>
+
+<section id="interpretare">
+  <h2>10. Cum interpretăm societățile paleolitice și mezolitice?</h2>
+  <table>
+    <thead><tr><th>Imagine simplificatoare</th><th>Ce arată cercetarea</th></tr></thead>
+    <tbody>
+      <tr><td>„Oamenii cavernelor” trăiau permanent în peșteri.</td><td>Peșterile sunt doar o parte a locuirii; numeroase tabere erau în aer liber și s-au conservat mai slab.</td></tr>
+      <tr><td>Progresul tehnic a fost continuu și identic peste tot.</td><td>Inovațiile au apărut, au dispărut și s-au combinat diferit în funcție de mediu și tradiție.</td></tr>
+      <tr><td>Vânătorii-culegători duceau inevitabil o viață precară.</td><td>Riscurile erau mari, dar unele medii ofereau diete variate și timp de muncă sezonier; situațiile diferă mult.</td></tr>
+      <tr><td>Arta demonstrează existența unei singure religii paleolitice.</td><td>Arta indică simbolism, dar sensurile ei exacte și varietatea credințelor nu pot fi stabilite cu certitudine.</td></tr>
+      <tr><td>Mezoliticul este doar o etapă „inferioară” înaintea agriculturii.</td><td>Comunitățile mezolitice au dezvoltat soluții sofisticate și viabile, iar agricultura nu a fost adoptată pretutindeni imediat.</td></tr>
+    </tbody>
+  </table>
+  <p>Preistoria timpurie trebuie înțeleasă prin raportarea la diversitate și adaptare. Succesul oamenilor nu s-a bazat numai pe forță sau pe dimensiunea creierului, ci pe cooperare, limbaj, memorie colectivă, flexibilitate și capacitatea de a combina cunoștințele mai multor generații.</p>
+</section>
+
+<section id="sinteza">
+  <h2>11. Sinteză</h2>
+  <div class="callout good"><strong>Ideea principală:</strong> în Paleolitic și Mezolitic s-au format elementele fundamentale ale vieții umane: tehnologia transmisă cultural, cooperarea, adaptarea la medii foarte diferite, simbolismul și rețelele sociale. Trecerea spre agricultură nu a fost o ruptură instantanee, ci rezultatul unor transformări regionale îndelungate.</div>
+</section>
+        <section id="verificare">
+          <h2>Întrebări de verificare</h2>
+          <div class="questions"><ol><li>De ce periodizarea Paleolitic–Mezolitic nu poate fi aplicată identic tuturor regiunilor?</li><li>Care este diferența dintre o viziune liniară și una ramificată asupra evoluției umane?</li><li>Ce schimbări tehnice caracterizează Paleoliticul mijlociu și superior?</li><li>Cum a influențat încălzirea de la începutul Holocenului economia comunităților mezolitice?</li><li>De ce arta și înmormântările pot dovedi simbolismul, dar nu permit reconstituirea sigură a unei religii?</li><li>Explică rolul rețelelor sociale și al schimburilor în supraviețuirea vânătorilor-culegători.</li></ol></div>
+        </section>
+        <section id="bibliografie">
+          <h2>Bibliografie orientativă</h2>
+          <ul class="bibliography"><li>Chris Scarre (coord.), The Human Past: World Prehistory and the Development of Human Societies.</li><li>Brian M. Fagan, World Prehistory: A Brief Introduction.</li><li>Graeme Barker, The Agricultural Revolution in Prehistory: Why Did Foragers Become Farmers?</li><li>Peter Bellwood, First Farmers: The Origins of Agricultural Societies.</li><li>V. Gordon Childe, Man Makes Himself; lucrare clasică în care a fost popularizat conceptul de „revoluție neolitică”.</li><li>Barry Cunliffe, Europe Between the Oceans, 9000 BC–AD 1000.</li><li>Robert J. Wenke și Deborah I. Olszewski, Patterns in Prehistory: Humankind’s First Three Million Years.</li></ul>
+        </section>
+      </article>
+
+      <aside class="sidebar">
+        <div class="side-card">
+          <h2>Termeni-cheie</h2>
+          <div class="keywords"><span>Paleolitic</span><span>Mezolitic</span><span>Homo sapiens</span><span>neanderthalieni</span><span>unelte litice</span><span>vânători-culegători</span><span>microlite</span><span>Holocen</span></div>
+        </div>
+        <div class="side-card toc">
+          <h2>Cuprins</h2>
+          <a href="#context">Context și delimitări</a>
+          <a href="#dezvoltare">Dezvoltarea temei</a>
+          <a href="#cronologie">Cronologie</a>
+          <a href="#interpretare">Interpretare istorică</a>
+          <a href="#sinteza">Sinteză</a>
+          <a href="#verificare">Întrebări</a>
+        </div>
+      </aside>
+    </div>
+    <footer class="footer">© 2026 Marin Gabriel · Material educațional pentru disciplina Istorie</footer>
+  </main>
+</body>
+</html>

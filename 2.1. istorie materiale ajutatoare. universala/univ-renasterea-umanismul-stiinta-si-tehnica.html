@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>renasterea-umanismul-stiinta-si-tehnica</title>
+<style>
+:root {
+  --bg: #f6f0e7;
+  --paper: #fffaf3;
+  --paper-2: #ffffff;
+  --ink: #2f241c;
+  --title: #3c2a1e;
+  --muted: #5b4a3d;
+  --accent: #7a4f2a;
+  --accent-2: #9b6a3c;
+  --accent-soft: #f0e4d4;
+  --line: rgba(91, 62, 36, 0.18);
+  --line-strong: rgba(91, 62, 36, 0.34);
+  --outer-dark: #241208;
+  --outer-mid: #4a2a18;
+  --outer-warm: #7a4b2b;
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+  --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+    radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+}
+.page {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 34px 0 70px;
+}
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.back-link, .tag { display: inline-flex; align-items: center; border: 1px solid var(--line); background: rgba(255, 250, 243, 0.84); color: var(--title); border-radius: 999px; padding: 10px 15px; text-decoration: none; font-size: 15px; font-weight: 700; box-shadow: var(--shadow-small); }
+.back-link:hover { background: #fff6eb; }
+.hero, .section, .nav-card, .final-box { background: rgba(255, 250, 243, 0.96); border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow); }
+.hero { padding: 38px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.hero::after { content: var(--hero-year); position: absolute; right: 26px; bottom: -22px; font-size: 110px; font-weight: 900; letter-spacing: -4px; color: rgba(122, 79, 42, 0.08); pointer-events: none; }
+.eyebrow { margin: 0 0 8px; font-size: 16px; color: var(--accent); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; }
+h1 { margin: 0; font-size: clamp(38px, 5vw, 62px); line-height: 1.04; color: var(--title); letter-spacing: -1.4px; text-align: left; text-align-last: auto; }
+.subtitle { margin: 18px 0 0; max-width: 980px; font-size: 19px; line-height: 1.78; color: var(--muted); text-align: justify; text-align-last: left; }
+.summary-grid, .three-col, .two-col, .term-grid, .quick-grid, .cause-grid, .four-col { display: grid; gap: 14px; }
+.summary-grid { grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+.summary-card, .info-card, .wide-card, .term-card, .quick-card, .source-note, .micro-card, .warning-box { background: var(--paper-2); border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); text-align: justify; text-align-last: left; }
+.summary-card { padding: 16px; min-height: 132px; }
+.summary-card strong, .quick-card strong, .term-card strong, .micro-card strong { display: block; color: var(--title); font-size: 17px; margin-bottom: 8px; text-align: left; text-align-last: auto; }
+.summary-card span, .quick-card span, .term-card span, .micro-card span { display: block; color: var(--muted); font-size: 15.5px; line-height: 1.56; text-align: justify; text-align-last: left; }
+.nav-card { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 18px 20px; margin-bottom: 24px; }
+.nav-card b { color: var(--title); margin-right: 2px; }
+.nav-card a, .mini-btn { color: var(--title); background: var(--accent-soft); border: 1px solid rgba(91, 62, 36, 0.16); border-radius: 999px; text-decoration: none; padding: 8px 12px; font-weight: 700; font-size: 14px; cursor: pointer; font-family: inherit; }
+.nav-card a:hover, .mini-btn:hover { background: #e5d2bb; }
+.section { padding: 30px; margin-bottom: 24px; }
+h2 { margin: 0 0 14px; color: var(--title); font-size: clamp(28px, 3vw, 38px); line-height: 1.15; text-align: left; text-align-last: auto; }
+h3 { margin: 0 0 12px; color: var(--title); font-size: 22px; line-height: 1.22; text-align: left; text-align-last: auto; }
+h4 { margin: 16px 0 8px; color: var(--title); font-size: 18px; text-align: left; text-align-last: auto; }
+.section-intro, p, li, dd { font-size: 17px; line-height: 1.72; color: var(--muted); text-align: justify; text-align-last: left; hyphens: auto; }
+.section-intro { margin: 0 0 20px; max-width: 1000px; }
+.three-col { grid-template-columns: repeat(3, 1fr); }
+.two-col { grid-template-columns: repeat(2, 1fr); }
+.four-col { grid-template-columns: repeat(4, 1fr); }
+.cause-grid { grid-template-columns: 1.1fr 0.9fr; }
+.term-grid { grid-template-columns: repeat(4, 1fr); }
+.quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+.info-card, .wide-card, .term-card, .quick-card, .micro-card, .warning-box, .source-note { padding: 20px; }
+.wide-card { margin-top: 14px; }
+.wide-card p:last-child, .info-card p:last-child { margin-bottom: 0; }
+.clean, .number-list { margin: 0; padding-left: 22px; }
+.clean li, .number-list li { margin: 0 0 9px; padding-left: 2px; }
+.clean li:last-child, .number-list li:last-child { margin-bottom: 0; }
+.mini-title { display: inline; color: var(--title); font-weight: 800; background: transparent; border: 0; border-radius: 0; padding: 0; margin-right: 5px; white-space: normal; text-align: inherit; }
+.date-pill { display: inline-block; color: var(--title); font-weight: 800; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.13); border-radius: 999px; padding: 2px 9px; margin-right: 5px; white-space: nowrap; text-align: left; }
+.definition, .note { margin-top: 18px; background: #fff8ef; border: 1px solid rgba(122, 79, 42, 0.22); border-left: 6px solid rgba(122, 79, 42, 0.48); border-radius: 18px; padding: 18px 20px; color: var(--muted); font-size: 17px; line-height: 1.7; text-align: justify; text-align-last: left; }
+.definition strong, .note strong { color: var(--title); }
+details { background: #fffdf9; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); margin-top: 14px; overflow: hidden; }
+details[open] { background: #fffaf3; }
+summary { cursor: pointer; list-style: none; padding: 18px 20px; font-size: 19px; font-weight: 800; color: var(--title); display: flex; justify-content: space-between; align-items: center; gap: 18px; text-align: left; text-align-last: auto; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "Deschide"; color: var(--muted); font-size: 14px; font-weight: 700; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 999px; padding: 7px 11px; white-space: nowrap; }
+details[open] > summary::after { content: "Ascunde"; }
+.details-body { border-top: 1px solid rgba(91, 62, 36, 0.12); padding: 18px 20px 20px; text-align: justify; text-align-last: left; }
+.details-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.nested-details { margin-top: 10px; box-shadow: none; background: #ffffff; }
+.nested-details summary { font-size: 17px; padding: 14px 16px; }
+.key-line { display: grid; grid-template-columns: 220px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px dashed rgba(91, 62, 36, 0.18); }
+.key-line:last-child { border-bottom: 0; }
+.key-line strong { color: var(--title); text-align: left; text-align-last: auto; }
+.key-line span { color: var(--muted); line-height: 1.65; text-align: justify; text-align-last: left; }
+.timeline { position: relative; display: grid; gap: 14px; margin-top: 18px; }
+.event { display: grid; grid-template-columns: 132px 1fr; gap: 18px; align-items: stretch; background: #ffffff; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); overflow: hidden; }
+.date { background: linear-gradient(180deg, #7a4f2a, #5b351b); color: #fffaf3; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px; font-size: 18px; line-height: 1.25; font-weight: 900; letter-spacing: 0.2px; }
+.event > div:last-child { padding: 17px 18px 18px 0; text-align: justify; text-align-last: left; }
+.event h3 { margin-bottom: 6px; }
+.event p { margin: 0; }
+.small-muted { font-size: 15px; color: #725c49; line-height: 1.6; text-align: justify; text-align-last: left; }
+.warning-box { background: #fff7ec; border-color: rgba(122, 79, 42, 0.22); margin-top: 16px; }
+.final-box { padding: 28px; background: linear-gradient(135deg, #fffaf3, #f4e4d1); border-color: rgba(91, 62, 36, 0.25); }
+.final-box p { margin-bottom: 0; }
+.table-wrap { overflow-x: auto; margin-top: 14px; border-radius: 18px; border: 1px solid rgba(91,62,36,.14); background: #fff; box-shadow: var(--shadow-small); }
+table { width: 100%; border-collapse: collapse; min-width: 740px; }
+th, td { padding: 13px 14px; border-bottom: 1px solid rgba(91,62,36,.12); color: var(--muted); font-size: 16px; line-height: 1.55; vertical-align: top; text-align: justify; }
+th { background: #f3eadf; color: var(--title); text-align: left; font-weight: 800; }
+tr:last-child td { border-bottom: 0; }
+@media (max-width: 980px) {
+  .summary-grid, .three-col, .term-grid, .quick-grid, .four-col { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .cause-grid, .details-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .page { width: min(100% - 22px, 1180px); padding-top: 22px; }
+  .hero, .section, .final-box { padding: 22px; border-radius: 22px; }
+  .summary-grid, .term-grid, .quick-grid, .four-col { grid-template-columns: 1fr; }
+  .event { grid-template-columns: 1fr; }
+  .date { min-height: 66px; }
+  .event > div:last-child { padding: 0 16px 16px; }
+  .key-line { grid-template-columns: 1fr; gap: 6px; }
+  summary { align-items: flex-start; flex-direction: column; }
+  .hero::after { font-size: 82px; }
+}
+</style>
+</head>
+
+<style>
+.phase-label{display:inline-block;margin:2px 0 12px;padding:6px 11px;border-radius:999px;background:var(--accent-soft);border:1px solid var(--line);color:var(--title);font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}.profile{display:grid;grid-template-columns:180px 1fr;gap:20px;align-items:start;padding:20px 0;border-bottom:1px dashed var(--line-strong)}.profile:last-child{border-bottom:0}.profile h3{margin:0}.profile .meta{font-size:15px;line-height:1.55;color:var(--accent);font-weight:700}.profile p{margin:6px 0 0}.date-list{display:grid;gap:10px}.date-row{display:grid;grid-template-columns:135px 1fr;gap:15px;padding:12px 0;border-bottom:1px solid var(--line)}.date-row:last-child{border-bottom:0}.date-row strong{color:var(--title)}.date-row span{color:var(--muted);line-height:1.62}.section-kicker{margin:0 0 8px;color:var(--accent);font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.lead-box{background:linear-gradient(135deg,#fffdf9,#f6eadb);border:1px solid var(--line);border-radius:20px;padding:20px;margin:16px 0}.lead-box p{margin:0}.compact-table td:first-child{white-space:nowrap;font-weight:800;color:var(--title)}@media(max-width:680px){.profile,.date-row{grid-template-columns:1fr;gap:5px}}
+</style>
+<body style="--hero-year: '1543';">
+<main class="page">
+<div class="topbar"><a class="back-link" href="evaluare_cu_material_renasterea.html">← Înapoi la materiale</a><span class="tag">Material ajutător · Renașterea · Știință și tehnică</span></div>
+<section class="hero"><p class="eyebrow">Istoria universală · Epoca modernă timpurie</p><h1>Renașterea și umanismul: știință și tehnică</h1><p class="subtitle">O evoluție explicată de la tipar, anatomie și navigație la Copernic, Kepler și Galileo: cum observația, măsurarea și instrumentele au schimbat imaginea lumii.</p><div class="summary-grid"><div class="summary-card"><strong>Punct de plecare</strong><span>Traducerea textelor antice și arabe, universitățile medievale și experiența atelierelor.</span></div><div class="summary-card"><strong>Metodă nouă</strong><span>Observația repetată, măsurarea, calculul și verificarea publică a rezultatelor.</span></div><div class="summary-card"><strong>Instrumente</strong><span>Tipar, busolă, astrolab, telescop, microscop, ceasuri și aparate de măsură.</span></div><div class="summary-card"><strong>Rezultat</strong><span>Trecerea de la cosmosul geocentric la știința matematică a naturii.</span></div></div></section>
+<nav class="nav-card"><b>Cuprins:</b><a href="#premise">Premise</a><a href="#etape">Etape</a><a href="#astronomie">Astronomie</a><a href="#medicina">Medicină</a><a href="#tehnica">Tehnică</a><a href="#navigatie">Navigație</a><a href="#metoda">Metodă</a><a href="#matematica">Matematică</a><a href="#inventii">Invenții și instrumente</a><a href="#cronologie-extinsa">Cronologie extinsă</a><a href="#sinteza">Sinteză</a></nav>
+<section class="section" id="premise"><p class="section-kicker">Înainte de „revoluție”</p><h2>I. Din ce se naște știința modernă?</h2><p class="section-intro">Știința Renașterii nu apare din nimic. Ea continuă tradiții medievale, folosește traduceri din greacă și arabă și se dezvoltă prin cooperarea dintre savanți, navigatori, medici, cartografi, meșteșugari și tipografi.</p><div class="three-col"><article class="info-card"><h3>Texte și filologie</h3><p>Edițiile mai bune ale lui Ptolemeu, Arhimede, Galen și Euclid permit comparația dintre autoritatea veche și experiența contemporană.</p></article><article class="info-card"><h3>Atelier și practică</h3><p>Artiștii și inginerii rezolvă probleme concrete de perspectivă, fortificații, hidraulică, metalurgie și mecanică.</p></article><article class="info-card"><h3>Tiparul</h3><p>După cca 1450, desenele, tabelele și rezultatele pot fi reproduse în forme relativ stabile, ceea ce face critica și colaborarea mult mai rapide.</p></article></div></section>
+<section class="section" id="etape"><p class="section-kicker">Evoluție în patru faze</p><h2>II. De la acumulare la demonstrație</h2><div class="two-col"><article class="info-card"><span class="phase-label">cca 1450–1500</span><h3>Multiplicarea cunoașterii</h3><p>Tiparul se răspândește, hărțile devin mai accesibile, iar explorările maritime produc informații noi despre coaste, vânturi și oceane. Lumea cunoscută se lărgește.</p></article><article class="info-card"><span class="phase-label">cca 1500–1543</span><h3>Îndoiala față de autorități</h3><p>Leonardo observă natura și corpul, iar navigatorii corectează geografia tradițională. În 1543, Copernic și Vesalius publică lucrări care contestă două autorități majore: cosmologia geocentrică și anatomia lui Galen.</p></article><article class="info-card"><span class="phase-label">1543–1600</span><h3>Măsurarea sistematică</h3><p>Tycho Brahe realizează observații astronomice de o precizie excepțională, Agricola descrie mineritul și metalurgia, iar Viète dezvoltă algebra simbolică.</p></article><article class="info-card"><span class="phase-label">1600–1650</span><h3>Matematizarea naturii</h3><p>Kepler formulează legile mișcării planetelor, Galileo folosește telescopul și experimentele, Harvey descrie circulația sângelui, iar Bacon și Descartes discută explicit metoda cunoașterii.</p></article></div></section>
+<section class="section" id="astronomie"><p class="section-kicker">Schimbarea imaginii universului</p><h2>III. Astronomia: de la Ptolemeu la Galileo</h2><div class="profile"><div><h3>Nicolaus Copernic</h3><div class="meta">1473–1543</div></div><p>În <em>Despre revoluțiile sferelor cerești</em> (1543), așază Soarele în centrul sistemului planetar. Modelul său rămâne bazat pe cercuri și nu este încă mai precis în toate calculele, dar schimbă radical întrebarea cosmologică.</p></div><div class="profile"><div><h3>Tycho Brahe</h3><div class="meta">1546–1601</div></div><p>Observă supernova din 1572 și cometa din 1577, arătând că cerul nu este imuabil și că obiectele pot exista dincolo de sfera Lunii. Datele sale vor fi decisive pentru Kepler.</p></div><div class="profile"><div><h3>Johannes Kepler</h3><div class="meta">1571–1630</div></div><p>În 1609 formulează primele două legi ale mișcării planetelor, inclusiv orbitele eliptice; în 1619 publică legea a treia. Cosmosul devine inteligibil prin relații matematice.</p></div><div class="profile"><div><h3>Galileo Galilei</h3><div class="meta">1564–1642</div></div><p>Din 1609 îmbunătățește telescopul și observă relieful Lunii, sateliții lui Jupiter și fazele lui Venus. Aceste descoperiri slăbesc cosmologia aristotelico-ptolemaică. Procesul său are loc în 1633.</p></div></section>
+<section class="section" id="medicina"><p class="section-kicker">Corpul ca obiect al observației</p><h2>IV. Anatomie și medicină</h2><div class="three-col"><article class="info-card"><h3>Andreas Vesalius</h3><p><em>Despre alcătuirea corpului omenesc</em> (1543) se bazează pe disecție directă și ilustrații precise. Vesalius corectează numeroase erori transmise din Galen.</p></article><article class="info-card"><h3>Paracelsus și Paré</h3><p>Paracelsus susține folosirea substanțelor chimice în medicină; Ambroise Paré îmbunătățește chirurgia de campanie și tratamentul rănilor în secolul al XVI-lea.</p></article><article class="info-card"><h3>William Harvey</h3><p>În 1628 descrie circulația sângelui și rolul inimii ca pompă. Demonstrația sa combină disecția, observația și calculul cantității de sânge.</p></article></div></section>
+<section class="section" id="tehnica"><p class="section-kicker">Instrumente și aplicații</p><h2>V. Tehnica nu este doar „fundalul” științei</h2><div class="details-grid"><div class="micro-card"><strong>Tiparul</strong><span>Standardizează tabele, imagini anatomice și instrucțiuni tehnice.</span></div><div class="micro-card"><strong>Metalurgia</strong><span>Cuptoarele, pompele și tehnicile miniere sunt descrise sistematic de Agricola în 1556.</span></div><div class="micro-card"><strong>Fortificațiile</strong><span>Artileria impune bastioane joase și groase, organizate geometric.</span></div><div class="micro-card"><strong>Telescopul</strong><span>Inventat în Țările de Jos în 1608 și perfecționat de Galileo în 1609.</span></div><div class="micro-card"><strong>Microscopul</strong><span>Primele modele compuse apar în jurul anului 1600 și deschid o nouă scară a observației.</span></div><div class="micro-card"><strong>Barometrul</strong><span>Torricelli demonstrează în 1643 că aerul exercită presiune.</span></div></div></section>
+<section class="section" id="navigatie"><p class="section-kicker">Cunoaștere și expansiune</p><h2>VI. Geografie, navigație și consecințe globale</h2><div class="two-col"><article class="info-card"><h3>Tehnici de orientare</h3><p>Busola magnetică, astrolabul, portulanele și navele adaptate oceanelor permit călătorii mai lungi. Nu un singur instrument produce expansiunea, ci combinarea lor cu experiența marinarilor și finanțarea statelor.</p></article><article class="info-card"><h3>O lume redesenată</h3><p>Columb ajunge în Caraibe în 1492, Vasco da Gama în India în 1498, iar expediția Magellan–Elcano realizează prima circumnavigație între 1519 și 1522. Cartografia europeană trebuie revizuită.</p></article></div><div class="warning-box"><h3>Consecințe contradictorii</h3><p>Explorările au produs schimburi de plante, animale și cunoștințe, dar și cuceriri, epidemii, sclavie și distrugerea unor societăți. Progresul tehnic nu trebuie confundat automat cu progresul moral.</p></div></section>
+<section class="section" id="metoda"><p class="section-kicker">Ce devine nou?</p><h2>VII. Formarea metodei științifice</h2><div class="three-col"><article class="info-card"><h3>Observație</h3><p>Afirmațiile sunt confruntate cu fenomene măsurabile. Autoritatea vechilor autori rămâne importantă, dar nu mai este suficientă.</p></article><article class="info-card"><h3>Matematică</h3><p>Kepler și Galileo exprimă regularitățile naturii prin relații cantitative, nu doar prin explicații calitative.</p></article><article class="info-card"><h3>Publicare și critică</h3><p>Tiparul permite verificarea de către alți cercetători. Cunoașterea devine mai puțin dependentă de transmiterea secretă în ateliere.</p></article></div><details open><summary>Bacon și Descartes: două accente diferite</summary><div class="details-body"><p><strong>Francis Bacon</strong>, în <em>Novum Organum</em> (1620), insistă asupra acumulării metodice de observații și asupra eliminării prejudecăților. <strong>René Descartes</strong>, în <em>Discurs despre metodă</em> (1637), pornește de la îndoiala controlată și de la descompunerea problemelor în pași clari. Știința modernă va combina, în forme variate, experimentul și raționamentul matematic.</p></div></details></section>
+
+<section class="section" id="matematica"><p class="section-kicker">Limbajul noii științe</p><h2>VIII. Matematică, mecanică și măsurare</h2><p class="section-intro">Renașterea științifică nu s-a bazat doar pe observații. Ea a avut nevoie de simboluri, tabele și metode de calcul care să transforme fenomenele în probleme verificabile.</p>
+<div class="two-col">
+<article class="info-card"><h3>Algebra italiană</h3><p><strong>Scipione del Ferro</strong> găsește la începutul secolului al XVI-lea o metodă pentru anumite ecuații cubice. <strong>Niccolò Tartaglia</strong> obține independent o soluție în 1535, iar <strong>Girolamo Cardano</strong> publică metodele pentru ecuații de gradul al treilea și al patrulea în <em>Ars Magna</em> (1545), menționând contribuțiile predecesorilor.</p><p>Lucrarea introduce și situații care conduc la numere imaginare, dezvoltate ulterior de Rafael Bombelli în <em>Algebra</em> (1572).</p></article>
+<article class="info-card"><h3>François Viète și algebra simbolică</h3><p>În <em>In artem analyticem isagoge</em> (1591), <strong>Viète</strong> folosește litere pentru mărimi cunoscute și necunoscute. Ecuația nu mai este doar o problemă numerică izolată, ci o relație generală.</p><p>Această schimbare pregătește geometria analitică a lui Descartes din 1637 și calculul modern al secolelor următoare.</p></article>
+<article class="info-card"><h3>Fracții zecimale și logaritmi</h3><p><strong>Simon Stevin</strong> popularizează fracțiile zecimale în <em>De Thiende</em> (1585), facilitând calculele comerciale și tehnice. <strong>John Napier</strong> publică logaritmii în 1614, iar <strong>Henry Briggs</strong> dezvoltă logaritmii în baza 10 începând din 1617.</p><p>Tabelele logaritmice reduc timpul necesar înmulțirilor, împărțirilor și calculelor astronomice.</p></article>
+<article class="info-card"><h3>Mecanica lui Galileo</h3><p>Galileo studiază căderea corpurilor, mișcarea proiectilelor și pendulul. În <em>Discursuri și demonstrații matematice despre două științe noi</em> (1638), el prezintă rezultatele despre mișcare și rezistența materialelor.</p><p>Exemplul său arată cum experimentul idealizat și matematica pot corecta impresiile imediate ale simțurilor.</p></article>
+</div></section>
+<section class="section" id="inventii"><p class="section-kicker">Exemple concrete</p><h2>IX. Invenții, instrumente și aplicațiile lor</h2><div class="table-wrap"><table><thead><tr><th>Instrument / tehnică</th><th>Dată orientativă</th><th>Exemple și utilizare</th><th>Importanță</th></tr></thead><tbody>
+<tr><td>Tiparul cu litere mobile</td><td>cca 1450–1455</td><td>Atelierul lui Gutenberg la Mainz; Biblia în 42 de rânduri, tipărită aproximativ în 1454–1455.</td><td>Multiplică edițiile, stabilizează diagramele și accelerează circulația criticii.</td></tr>
+<tr><td>Caravela și velatura oceanică</td><td>Secolele XV–XVI</td><td>Nave portugheze folosite pe coasta Africii; combinarea velelor latine și pătrate.</td><td>Crește manevrabilitatea și capacitatea de navigație pe rute lungi.</td></tr>
+<tr><td>Portulanul</td><td>Secolele XIII–XVI</td><td>Hărți maritime cu linii de direcție, porturi și coaste descrise practic.</td><td>Leagă experiența navigatorilor de reprezentarea cartografică.</td></tr>
+<tr><td>Astrolabul nautic</td><td>Secolele XV–XVI</td><td>Folosit pentru estimarea latitudinii după înălțimea Soarelui sau a stelelor.</td><td>Permite orientarea pe ocean, deși măsurarea rămâne dificilă pe mare agitată.</td></tr>
+<tr><td>Proiecția Mercator</td><td>1569</td><td>Harta lumii publicată de Gerardus Mercator.</td><td>Loxodromele apar ca linii drepte, facilitând trasarea cursului pe hartă.</td></tr>
+<tr><td>Ceas mecanic și pendul</td><td>Secolele XIV–XVII</td><td>Ceasuri urbane; observația izocronismului pendulului de Galileo, tradițional datată în jurul lui 1583; ceasul cu pendul al lui Huygens apare în 1656.</td><td>Măsurarea mai precisă a timpului devine esențială pentru experimente și astronomie.</td></tr>
+<tr><td>Termoscop</td><td>cca 1592–1603</td><td>Dispozitive asociate lui Galileo și altor savanți italieni indică variații de temperatură.</td><td>Transformă caldul și recele din calități percepute în mărimi comparabile.</td></tr>
+<tr><td>Telescop</td><td>1608–1609</td><td>Brevet solicitat în Țările de Jos în 1608; Galileo construiește instrumente mai puternice în 1609.</td><td>Extinde observația dincolo de capacitatea ochiului.</td></tr>
+<tr><td>Microscop compus</td><td>cca 1590–1620</td><td>Atribuit tradițional atelierelor de optică neerlandeze; termenul „microscop” este introdus în 1625.</td><td>Deschide studiul structurilor invizibile cu ochiul liber.</td></tr>
+<tr><td>Barometru cu mercur</td><td>1643</td><td>Experimentul lui Evangelista Torricelli.</td><td>Demonstrează presiunea atmosferică și posibilitatea producerii unui vid deasupra coloanei de mercur.</td></tr>
+<tr><td>Pompă de aer</td><td>1650</td><td>Otto von Guericke construiește o pompă eficientă și demonstrează efectele vidului.</td><td>Permite experimente controlate asupra aerului și presiunii.</td></tr>
+</tbody></table></div>
+<details open><summary>Leonardo da Vinci: artist, anatomist și inginer</summary><div class="details-body"><p>Leonardo (1452–1519) studiază mecanisme, curgerea apei, zborul păsărilor, anatomia și perspectiva. În jurul anilor 1487–1490 realizează celebrul desen numit <em>Omul vitruvian</em>, raportând corpul la cerc și pătrat. Între aproximativ 1507 și 1513 intensifică disecțiile anatomice și desenează mușchi, oase, inimă și fătul în uter.</p><p>Multe proiecte – mașini de zbor, vehicule, poduri, mecanisme militare – nu au fost construite în forma imaginată. Importanța lor constă în combinarea desenului tehnic, observației și gândirii mecanice.</p></div></details>
+</section>
+<section class="section" id="cronologie-extinsa"><p class="section-kicker">Ani și descoperiri explicate</p><h2>X. Cronologie extinsă a științei și tehnicii, 1450–1650</h2><div class="timeline">
+<article class="event"><div class="date">cca 1450–1455</div><div><h3>Tiparul lui Gutenberg</h3><p>Cartea produsă în serie schimbă viteza și stabilitatea comunicării savante.</p></div></article>
+<article class="event"><div class="date">1472</div><div><h3>Prima ediție tipărită a lucrării lui Ptolemeu</h3><p><em>Cosmographia</em> contribuie la circulația geografiei antice, care va fi apoi corectată de explorări.</p></div></article>
+<article class="event"><div class="date">1492</div><div><h3>Traversarea Atlanticului de către Columb</h3><p>Contactul dintre continente schimbă geografia, botanica, medicina și economia globală.</p></div></article>
+<article class="event"><div class="date">1494</div><div><h3>Publicarea <em>Summa de arithmetica</em></h3><p>Luca Pacioli sistematizează aritmetica comercială și contabilitatea în partidă dublă.</p></div></article>
+<article class="event"><div class="date">1498</div><div><h3>Vasco da Gama ajunge în India</h3><p>Ruta maritimă în jurul Africii leagă direct Atlanticul de Oceanul Indian.</p></div></article>
+<article class="event"><div class="date">1507</div><div><h3>Numele „America” pe o hartă tipărită</h3><p>Planisfera lui Martin Waldseemüller reflectă revizuirea rapidă a imaginii lumii.</p></div></article>
+<article class="event"><div class="date">1519–1522</div><div><h3>Prima circumnavigație</h3><p>Expediția începută de Magellan și încheiată de Elcano demonstrează practic continuitatea oceanelor.</p></div></article>
+<article class="event"><div class="date">1525</div><div><h3>Perspectiva lui Dürer</h3><p><em>Instrucțiuni pentru măsurare</em> arată legătura dintre artă, geometrie și instrumente.</p></div></article>
+<article class="event"><div class="date">1530</div><div><h3>Fracastoro și teoria contagiunii</h3><p>În poemul <em>Syphilis</em>, iar apoi în tratatul din 1546, Girolamo Fracastoro discută transmiterea bolilor prin „semințe” ale contagiunii.</p></div></article>
+<article class="event"><div class="date">1543</div><div><h3>Copernic și Vesalius</h3><p>Două lucrări majore contestă cosmologia și anatomia tradiționale prin calcul și disecție.</p></div></article>
+<article class="event"><div class="date">1545</div><div><h3><em>Ars Magna</em></h3><p>Cardano publică soluții algebrice pentru ecuațiile cubice și biquadrate.</p></div></article>
+<article class="event"><div class="date">1556</div><div><h3><em>De re metallica</em></h3><p>Georgius Agricola descrie minele, pompele, cuptoarele și organizarea muncii metalurgice.</p></div></article>
+<article class="event"><div class="date">1572 / 1577</div><div><h3>Nova și cometa lui Tycho Brahe</h3><p>Observațiile contestă ideea cerurilor neschimbătoare și a sferelor cristaline solide.</p></div></article>
+<article class="event"><div class="date">1582</div><div><h3>Calendarul gregorian</h3><p>Reforma promovată de papa Grigore al XIII-lea corectează acumularea erorii calendarului iulian.</p></div></article>
+<article class="event"><div class="date">1585</div><div><h3>Fracțiile zecimale ale lui Stevin</h3><p>Calculul cu mărimi practice devine mai simplu și mai uniform.</p></div></article>
+<article class="event"><div class="date">1591</div><div><h3>Algebra simbolică a lui Viète</h3><p>Literele exprimă relații generale între mărimi.</p></div></article>
+<article class="event"><div class="date">1600</div><div><h3><em>De magnete</em></h3><p>William Gilbert studiază sistematic magnetismul și descrie Pământul ca un mare magnet.</p></div></article>
+<article class="event"><div class="date">1608–1610</div><div><h3>Telescopul și primele publicații astronomice</h3><p>Galileo observă cerul în 1609 și publică <em>Mesagerul înstelat</em> în martie 1610.</p></div></article>
+<article class="event"><div class="date">1609 / 1619</div><div><h3>Legile lui Kepler</h3><p>Orbitele eliptice și relația dintre perioadă și distanță matematizează sistemul planetar.</p></div></article>
+<article class="event"><div class="date">1614</div><div><h3>Logaritmii lui Napier</h3><p>Tabelele reduc radical volumul calculelor astronomice și de navigație.</p></div></article>
+<article class="event"><div class="date">1620</div><div><h3><em>Novum Organum</em></h3><p>Bacon descrie obstacolele cunoașterii și susține investigarea metodică a naturii.</p></div></article>
+<article class="event"><div class="date">1628</div><div><h3>Harvey și circulația sângelui</h3><p>Inima este interpretată ca pompă într-un circuit închis.</p></div></article>
+<article class="event"><div class="date">1632–1633</div><div><h3>Dialogul și procesul lui Galileo</h3><p><em>Dialog despre cele două mari sisteme ale lumii</em> este publicat în 1632; procesul are loc în 1633.</p></div></article>
+<article class="event"><div class="date">1637</div><div><h3>Descartes și geometria analitică</h3><p><em>Discurs despre metodă</em> și anexele sale leagă algebra de geometrie.</p></div></article>
+<article class="event"><div class="date">1643</div><div><h3>Barometrul lui Torricelli</h3><p>Presiunea aerului devine obiect măsurabil, iar vidul intră în experimentul fizic.</p></div></article>
+</div></section>
+<section class="section" id="sinteza"><p class="section-kicker">Cronologie selectivă</p><h2>XI. Repere care explică evoluția</h2><div class="date-list"><div class="date-row"><strong>cca 1450</strong><span>Tiparul creează infrastructura europeană a comunicării științifice.</span></div><div class="date-row"><strong>1492–1522</strong><span>Marile călătorii obligă geografia și cartografia să se adapteze unei lumi mai vaste.</span></div><div class="date-row"><strong>1543</strong><span>Copernic și Vesalius contestă, în același an, două modele tradiționale ale cosmosului și corpului.</span></div><div class="date-row"><strong>1609–1619</strong><span>Telescopul lui Galileo și legile lui Kepler transformă astronomia într-o știință observațională și matematică.</span></div><div class="date-row"><strong>1620–1643</strong><span>Bacon, Harvey, Descartes și Torricelli consolidează metoda, experimentul și măsurarea.</span></div></div></section>
+<section class="final-box"><h2>Ideea de reținut</h2><p>Revoluția științifică nu este o succesiune de invenții izolate. Ea apare când textele, instrumentele, calculele, observațiile și publicarea ajung să funcționeze împreună. Datele importante marchează schimbări de metodă: 1543 pentru contestarea autorității, 1609 pentru observația telescopică și 1620–1640 pentru formularea explicită a noii științe.</p></section>
+</main>
+</body></html>

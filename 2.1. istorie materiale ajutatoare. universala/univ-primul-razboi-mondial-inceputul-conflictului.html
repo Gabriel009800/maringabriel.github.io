@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>primul-razboi-mondial-inceputul-conflictului</title>
+  <style>
+    :root {
+      --bg: #f6f0e7;
+      --paper: #fffaf3;
+      --paper-2: #ffffff;
+      --ink: #2f241c;
+      --title: #3c2a1e;
+      --muted: #5b4a3d;
+      --accent: #7a4f2a;
+      --accent-2: #9b6a3c;
+      --accent-soft: #f0e4d4;
+      --line: rgba(91, 62, 36, 0.18);
+      --line-strong: rgba(91, 62, 36, 0.34);
+      --outer-dark: #241208;
+      --outer-mid: #4a2a18;
+      --outer-warm: #7a4b2b;
+      --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+      --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+        radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+        radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+        radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+        linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+      background-attachment: fixed;
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0 70px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .back-link,
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 243, 0.84);
+      color: var(--title);
+      border-radius: 999px;
+      padding: 10px 15px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      box-shadow: var(--shadow-small);
+    }
+
+    .back-link:hover { background: #fff6eb; }
+
+    .hero,
+    .section,
+    .nav-card,
+    .final-box {
+      background: rgba(255, 250, 243, 0.96);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 38px;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "1914";
+      position: absolute;
+      right: 26px;
+      bottom: -22px;
+      font-size: 110px;
+      font-weight: 900;
+      letter-spacing: -4px;
+      color: rgba(122, 79, 42, 0.08);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      font-size: 16px;
+      color: var(--accent);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: left;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 1.04;
+      color: var(--title);
+      letter-spacing: -1.4px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    .subtitle {
+      margin: 18px 0 0;
+      max-width: 980px;
+      font-size: 19px;
+      line-height: 1.78;
+      color: var(--muted);
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .summary-grid,
+    .three-col,
+    .two-col,
+    .term-grid,
+    .quick-grid,
+    .cause-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .summary-grid {
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: 26px;
+    }
+
+    .summary-card,
+    .info-card,
+    .wide-card,
+    .term-card,
+    .quick-card,
+    .source-note,
+    .micro-card,
+    .warning-box {
+      background: var(--paper-2);
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 20px;
+      box-shadow: var(--shadow-small);
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .summary-card {
+      padding: 16px;
+      min-height: 132px;
+    }
+
+    .summary-card strong,
+    .quick-card strong,
+    .term-card strong,
+    .micro-card strong {
+      display: block;
+      color: var(--title);
+      font-size: 17px;
+      margin-bottom: 8px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    .summary-card span,
+    .quick-card span,
+    .term-card span,
+    .micro-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.56;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .nav-card {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 18px 20px;
+      margin-bottom: 24px;
+    }
+
+    .nav-card b {
+      color: var(--title);
+      margin-right: 2px;
+    }
+
+    .nav-card a,
+    .mini-btn {
+      color: var(--title);
+      background: var(--accent-soft);
+      border: 1px solid rgba(91, 62, 36, 0.16);
+      border-radius: 999px;
+      text-decoration: none;
+      padding: 8px 12px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .nav-card a:hover,
+    .mini-btn:hover { background: #e5d2bb; }
+
+    .section {
+      padding: 30px;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      color: var(--title);
+      font-size: clamp(28px, 3vw, 38px);
+      line-height: 1.15;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    h3 {
+      margin: 0 0 12px;
+      color: var(--title);
+      font-size: 22px;
+      line-height: 1.22;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    h4 {
+      margin: 16px 0 8px;
+      color: var(--title);
+      font-size: 18px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    .section-intro,
+    p,
+    li,
+    dd {
+      font-size: 17px;
+      line-height: 1.72;
+      color: var(--muted);
+      text-align: justify;
+      text-align-last: left;
+      hyphens: auto;
+    }
+
+    .section-intro {
+      margin: 0 0 20px;
+      max-width: 1000px;
+    }
+
+    .three-col { grid-template-columns: repeat(3, 1fr); }
+    .two-col { grid-template-columns: repeat(2, 1fr); }
+    .cause-grid { grid-template-columns: 1.1fr 0.9fr; }
+    .term-grid { grid-template-columns: repeat(4, 1fr); }
+    .quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+
+    .info-card,
+    .wide-card,
+    .term-card,
+    .quick-card,
+    .micro-card,
+    .warning-box {
+      padding: 20px;
+    }
+
+    .wide-card { margin-top: 14px; }
+    .wide-card p:last-child,
+    .info-card p:last-child { margin-bottom: 0; }
+
+    .clean,
+    .number-list {
+      margin: 0;
+      padding-left: 22px;
+    }
+
+    .clean li,
+    .number-list li {
+      margin: 0 0 9px;
+      padding-left: 2px;
+    }
+
+    .clean li:last-child,
+    .number-list li:last-child { margin-bottom: 0; }
+
+    .mini-title {
+      display: inline;
+      color: var(--title);
+      font-weight: 800;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      padding: 0;
+      margin-right: 5px;
+      white-space: normal;
+      text-align: inherit;
+    }
+
+    .date-pill {
+      display: inline-block;
+      color: var(--title);
+      font-weight: 800;
+      background: #f3eadf;
+      border: 1px solid rgba(91, 62, 36, 0.13);
+      border-radius: 999px;
+      padding: 2px 9px;
+      margin-right: 5px;
+      white-space: nowrap;
+      text-align: left;
+    }
+
+    .definition,
+    .note {
+      margin-top: 18px;
+      background: #fff8ef;
+      border: 1px solid rgba(122, 79, 42, 0.22);
+      border-left: 6px solid rgba(122, 79, 42, 0.48);
+      border-radius: 18px;
+      padding: 18px 20px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .definition strong,
+    .note strong { color: var(--title); }
+
+    details {
+      background: #fffdf9;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 20px;
+      box-shadow: var(--shadow-small);
+      margin-top: 14px;
+      overflow: hidden;
+    }
+
+    details[open] { background: #fffaf3; }
+
+    summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 18px 20px;
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--title);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    summary::after {
+      content: "Deschide";
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+      background: #f3eadf;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 999px;
+      padding: 7px 11px;
+      white-space: nowrap;
+    }
+
+    details[open] > summary::after { content: "Ascunde"; }
+
+    .details-body {
+      border-top: 1px solid rgba(91, 62, 36, 0.12);
+      padding: 18px 20px 20px;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .nested-details {
+      margin-top: 10px;
+      box-shadow: none;
+      background: #ffffff;
+    }
+
+    .nested-details summary {
+      font-size: 17px;
+      padding: 14px 16px;
+    }
+
+    .key-line {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px dashed rgba(91, 62, 36, 0.18);
+    }
+
+    .key-line:last-child { border-bottom: 0; }
+
+    .key-line strong {
+      color: var(--title);
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    .key-line span {
+      color: var(--muted);
+      line-height: 1.65;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .event {
+      display: grid;
+      grid-template-columns: 132px 1fr;
+      gap: 18px;
+      align-items: stretch;
+      background: #ffffff;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 20px;
+      box-shadow: var(--shadow-small);
+      overflow: hidden;
+    }
+
+    .date {
+      background: linear-gradient(180deg, #7a4f2a, #5b351b);
+      color: #fffaf3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 14px;
+      font-size: 18px;
+      line-height: 1.25;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+    }
+
+    .event > div:last-child {
+      padding: 17px 18px 18px 0;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .event h3 { margin-bottom: 6px; }
+    .event p { margin: 0; }
+
+    .small-muted {
+      font-size: 15px;
+      color: #725c49;
+      line-height: 1.6;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .warning-box {
+      background: #fff7ec;
+      border-color: rgba(122, 79, 42, 0.22);
+      margin-top: 16px;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .final-box {
+      padding: 28px;
+      background: linear-gradient(135deg, #fffaf3, #f4e4d1);
+      border-color: rgba(91, 62, 36, 0.25);
+    }
+
+    .final-box p { margin-bottom: 0; }
+
+    @media (max-width: 980px) {
+      .summary-grid,
+      .three-col,
+      .term-grid,
+      .quick-grid { grid-template-columns: repeat(2, 1fr); }
+      .two-col,
+      .cause-grid,
+      .details-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .page { width: min(100% - 22px, 1180px); padding-top: 22px; }
+      .hero,
+      .section,
+      .final-box { padding: 22px; border-radius: 22px; }
+      .summary-grid,
+      .term-grid,
+      .quick-grid { grid-template-columns: 1fr; }
+      .event { grid-template-columns: 1fr; }
+      .date { min-height: 66px; }
+      .event > div:last-child { padding: 0 16px 16px; }
+      .key-line { grid-template-columns: 1fr; gap: 6px; }
+      summary { align-items: flex-start; flex-direction: column; }
+      .hero::after { font-size: 82px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a class="back-link" href="evaluare_cu_material_primul_razboi_corectat.html">← Înapoi la materiale</a>
+      <span class="tag">Material ajutător · Istoria universală · Epoca contemporană</span>
+    </div>
+
+    <section class="hero">
+  
+      <h1>Începutul conflictului</h1>
+      <p class="subtitle">
+        Primul Război Mondial nu a izbucnit numai din cauza unui atentat. Asasinatul de la Sarajevo, din <strong>28 iunie 1914</strong>, a fost <strong>pretextul</strong> imediat, dar Europa se afla deja într-o stare de tensiune acumulată prin naționalism, imperialism, militarism, rivalități economice, crize diplomatice repetate și existența unor blocuri politico-militare opuse.
+      </p>
+
+      <div class="summary-grid">
+        <div class="summary-card">
+          <strong>Interval-cheie</strong>
+          <span>1871-1914: „Pacea armată”, adică o pace fragilă menținută prin armate, alianțe și planuri de mobilizare.</span>
+        </div>
+        <div class="summary-card">
+          <strong>Scânteia</strong>
+          <span>28 iunie 1914: Franz Ferdinand și Sophie sunt asasinați la Sarajevo de Gavrilo Princip.</span>
+        </div>
+        <div class="summary-card">
+          <strong>Momentul de ruptură</strong>
+          <span>23-28 iulie 1914: ultimatumul austro-ungar și declararea războiului împotriva Serbiei.</span>
+        </div>
+        <div class="summary-card">
+          <strong>Extinderea</strong>
+          <span>1-4 august 1914: Germania intră în război împotriva Rusiei și Franței, iar Marea Britanie intervine după invadarea Belgiei.</span>
+        </div>
+      </div>
+    </section>
+
+    <nav class="nav-card" aria-label="Cuprins">
+      <b>Cuprins:</b>
+      <a href="#context">I. Context</a>
+      <a href="#cauze">II. Cauze</a>
+      <a href="#factori">III. Factori</a>
+      <a href="#pretext">IV. Pretextul</a>
+      <a href="#criza">V. Criza din iulie</a>
+    </nav>
+
+
+    <section class="section" id="cronologie">
+      <h2>Cronologie extinsă: de la 1870 la 1914</h2>
+      <p class="section-intro">
+        Războiul din 1914 trebuie privit ca rezultat al unei acumulări de tensiuni. Cronologia arată cum se combină revanșismul francez, ascensiunea Germaniei, problema balcanică, competiția colonială și sistemul de alianțe.
+      </p>
+      <div class="timeline">
+        <article class="event"><div class="date">1870-1871</div><div><h3>Războiul Franco-Prusac</h3><p>Franța este înfrântă de Prusia și pierde Alsacia și Lorena. Se naște un puternic revanșism francez, adică dorința de recuperare a teritoriilor pierdute.</p></div></article>
+        <article class="event"><div class="date">18 ian.<br>1871</div><div><h3>Proclamarea Imperiului German</h3><p>Germania este unificată la Versailles, sub conducerea Prusiei. Noul stat schimbă echilibrul european, deoarece devine rapid o mare putere industrială, militară și diplomatică.</p></div></article>
+        <article class="event"><div class="date">1875-1878</div><div><h3>Criza orientală</h3><p>În Balcani apar revolte și conflicte împotriva Imperiului Otoman. Problema orientală (slăbirea Imperiului Otoman și împărțirea influenței în Balcani) devine una dintre marile surse de tensiune europeană.</p></div></article>
+        <article class="event"><div class="date">1878</div><div><h3>Congresul și Tratatul de la Berlin</h3><p>Bosnia-Herțegovina rămâne formal sub suzeranitate otomană, dar este ocupată și administrată de Austro-Ungaria. Această situație va nemulțumi Serbia și mișcările naționale slave.</p></div></article>
+        <article class="event"><div class="date">1879</div><div><h3>Dubla Alianță</h3><p>Germania și Austro-Ungaria încheie o alianță defensivă împotriva Rusiei. Aceasta devine nucleul blocului Puterilor Centrale.</p></div></article>
+        <article class="event"><div class="date">1880-1881</div><div><h3>Primul Război al Burilor</h3><p>Burii din Transvaal contestă dominația britanică și obțin o victorie importantă la Majuba Hill. Conflictul arată că expansiunea colonială britanică putea genera rezistență puternică.</p></div></article>		
+        <article class="event"><div class="date">1882</div><div><h3>Tripla Alianță</h3><p>Germania, Austro-Ungaria și Italia formează Tripla Alianță. Italia va rămâne însă un aliat nesigur, având propriile rivalități cu Austro-Ungaria.</p></div></article>
+        <article class="event"><div class="date">1885</div><div><h3>Războiul de Unificare al lui Barrios</h3><p>Justo Rufino Barrios, președintele Guatemalei, încearcă să refacă unitatea Americii Centrale, dar este ucis la Chalchuapa, la 2 aprilie 1885. Episodul arată că idealurile naționale și proiectele de unificare existau și în afara Europei.</p></div></article>
+        <article class="event"><div class="date">1894</div><div><h3>Alianța franco-rusă</h3><p>Franța și Rusia se apropie pentru a contrabalansa Germania și Austro-Ungaria. Germania începe să se teamă de un război pe două fronturi.</p></div></article>
+        <article class="event"><div class="date">1895-1896</div><div><h3>Războiul Italo-Etiopian</h3><p>Italia încearcă să transforme Etiopia într-un protectorat, dar este înfrântă la Adwa, în 1896. Înfrângerea alimentează frustrări coloniale italiene.</p></div></article>
+        <article class="event"><div class="date">1898</div><div><h3>Războiul Hispano-American</h3><p>Statele Unite înfrâng Spania, iar Cuba, Puerto Rico, Guam și Filipine intră în noua logică imperială americană. Evenimentul confirmă declinul vechilor imperii coloniale și ascensiunea puterilor noi.</p></div></article>
+        <article class="event"><div class="date">1898-1900</div><div><h3>Legile navale germane</h3><p>Germania începe dezvoltarea unei flote de război puternice. Rivalitatea navală cu Marea Britanie devine un element esențial al tensiunii anglo-germane.</p></div></article>
+        <article class="event"><div class="date">1899-1902</div><div><h3>Al Doilea Război al Burilor și Războiul Filipino-American</h3><p>Două conflicte dure arată violența imperialismului modern: britanicii luptă în Africa de Sud, iar Statele Unite își impun controlul asupra Filipinelor.</p></div></article>
+        <article class="event"><div class="date">1903</div><div><h3>Lovitura de stat din Serbia</h3><p>Dinastia Obrenović este înlăturată, iar Serbia se orientează mai mult spre Rusia și spre proiecte naționale anti-austro-ungare.</p></div></article>
+        <article class="event"><div class="date">1904</div><div><h3>Antanta cordială</h3><p>Marea Britanie și Franța își rezolvă mai multe dispute coloniale și se apropie diplomatic. Germania vede această apropiere ca pe o amenințare.</p></div></article>
+        <article class="event"><div class="date">1904-1905</div><div><h3>Războiul Ruso-Japonez</h3><p>Rusia este înfrântă de Japonia și își reorientează atenția spre Balcani. Japonia devine principala putere asiatică în Pacific.</p></div></article>
+        <article class="event"><div class="date">1905-1906</div><div><h3>Prima criză marocană</h3><p>Germania contestă influența franceză în Maroc. Conferința de la Algeciras arată că Franța beneficiază de sprijin larg, iar Germania se simte izolată.</p></div></article>
+        <article class="event"><div class="date">1907</div><div><h3>Convenția anglo-rusă și Tripla Înțelegere</h3><p>Marea Britanie și Rusia își reduc rivalitățile din Asia Centrală. Se conturează Tripla Înțelegere: Franța, Rusia și Marea Britanie.</p></div></article>
+        <article class="event"><div class="date">1908</div><div><h3>Anexarea Bosniei-Herțegovina</h3><p>Austro-Ungaria anexează oficial Bosnia-Herțegovina. Serbia protestează, Rusia este umilită diplomatic, iar tensiunile balcanice cresc.</p></div></article>
+        <article class="event"><div class="date">1911</div><div><h3>A doua criză marocană / Agadir</h3><p>Germania trimite canoniera Panther la Agadir. Criza întărește apropierea franco-britanică și accentuează teama de un conflict general.</p></div></article>
+        <article class="event"><div class="date">1912-1913</div><div><h3>Războaiele Balcanice</h3><p>Statele balcanice luptă împotriva Imperiului Otoman, apoi între ele. Serbia iese întărită, iar Austro-Ungaria se teme de creșterea influenței sârbe.</p></div></article>
+        <article class="event"><div class="date">28 iun.<br>1914</div><div><h3>Asasinatul de la Sarajevo</h3><p>Franz Ferdinand și Sophie sunt uciși. Evenimentul devine pretextul imediat pentru confruntarea dintre Austro-Ungaria și Serbia.</p></div></article>
+      </div>
+    </section>
+
+    <section class="section" id="context">
+      <h2>I. Context</h2>
+      <p class="section-intro">
+        La începutul secolului al XX-lea, Europa părea stabilă la suprafață, însă în profunzime era traversată de rivalități structurale. Marile puteri se dezvoltau economic, își extindeau influența colonială, își modernizau armatele și se grupau în alianțe. De aceea, perioada 1871-1914 este numită „Pacea armată”: nu exista un război general european, dar pacea era susținută de forță militară, planuri de mobilizare și teamă reciprocă.
+      </p>
+      <div class="three-col">
+        <article class="info-card"><h3>Naționalismul</h3><ul class="clean"><li>Unificarea Germaniei și a Italiei a schimbat raportul de putere european și a încurajat alte proiecte naționale.</li><li>Germania dezvolta aspirații pangermanice și o politică globală numită <em>Weltpolitik</em>.</li><li>Italia urmărea un imperiu mediteranean și avea tensiuni cu Austro-Ungaria pentru Tirol, cu Franța pentru Corsica și cu Marea Britanie pentru influența din nordul Africii.</li><li>În Balcani, slavii sudici doreau autonomie sau unificare, iar Serbia aspira să devină „Piemontul popoarelor slave balcanice”.</li></ul></article>
+        <article class="info-card"><h3>Imperiile multinaționale</h3><ul class="clean"><li>Austro-Ungaria, Imperiul Rus și Imperiul Otoman includeau numeroase popoare, limbi și confesiuni.</li><li>Naționalismul era periculos pentru imperii, deoarece putea duce la separatism (dorința de desprindere a unor teritorii).</li><li>Bosnia-Herțegovina era locuită de sârbi, croați și musulmani bosniaci; controlul austro-ungar asupra ei tensiona relația cu Serbia.</li><li>Imperiile încercau să mențină ordinea prin administrație, armată și compromisuri politice, dar aceste soluții deveneau tot mai fragile.</li></ul></article>
+        <article class="info-card"><h3>Apariția statelor noi</h3><ul class="clean"><li>Germania unificată în 1871 devine o putere majoră, capabilă să concureze Marea Britanie și Franța.</li><li>Italia, unificată în 1861-1870, caută prestigiu și extindere colonială.</li><li>Serbia, România, Bulgaria și Grecia urmăresc consolidarea statală și extinderea în zone considerate naționale.</li><li>Aceste state noi sau consolidate au mărit instabilitatea, deoarece revendicările lor se suprapuneau peste interesele imperiilor.</li></ul></article>
+      </div>
+      <div class="wide-card">
+        <h3>Blocurile politico-militare</h3>
+        <p><span class="mini-title">Tripla Alianță</span> Formată în 1882 de Germania, Austro-Ungaria și Italia. Ea urmărea menținerea echilibrului în favoarea Puterilor Centrale, dar Italia avea interese divergente și va intra în război de partea Antantei în 1915.</p>
+        <p><span class="mini-title">Tripla Înțelegere / Antanta</span> Se conturează prin alianța franco-rusă din 1894, Antanta cordială franco-britanică din 1904 și convenția anglo-rusă din 1907. Nu era identică unei alianțe militare unice, dar funcționa ca sistem de cooperare împotriva presiunii germane.</p>
+        <p><span class="mini-title">Efectul alianțelor</span> Alianțele erau gândite ca instrumente de descurajare (prevenirea atacului prin amenințarea unui răspuns), dar au făcut ca o criză locală, precum cea austro-sârbă, să devină rapid europeană.</p>
+      </div>
+      <div class="definition"><strong>Ideea-cheie:</strong> Europa era o hartă a tensiunilor suprapuse: naționale, imperiale, economice, coloniale și militare. Sarajevo a aprins scânteia, dar combustibilul fusese acumulat de zeci de ani.</div>
+    </section>
+
+    <section class="section" id="cauze">
+      <h2>II. Cauze</h2>
+      <p class="section-intro">Cauzele pot fi împărțite în cauze de durată și cauze imediate. Cauzele de durată țin de rivalitățile dintre marile puteri, iar cauza imediată a fost folosirea atentatului de la Sarajevo ca motiv pentru război.</p>
+      <div class="cause-grid">
+        <article class="info-card">
+          <h3>Ambiții revanșarde</h3>
+          <p><strong>Franța, 1870-1871.</strong> După înfrângerea în fața Prusiei și după proclamarea Imperiului German la Versailles, Franța pierde Alsacia și Lorena prin Tratatul de la Frankfurt din 1871. Pierderea acestor provincii a creat o rană simbolică și strategică: Alsacia și Lorena aveau populație mixtă, importanță economică și valoare de prestigiu. Revanșismul francez nu înseamnă că Franța dorea automat război în orice moment, dar dorința de recuperare a teritoriilor a rămas prezentă în imaginarul politic francez.</p>
+          <p><strong>Rusia, 1908-1909.</strong> Criza bosniacă a fost percepută ca o umilință diplomatică. Austro-Ungaria a anexat Bosnia-Herțegovina, Serbia a fost obligată să accepte situația, iar Rusia, slăbită după războiul ruso-japonez și revoluția din 1905, nu a reușit să-și apere eficient prestigiul în Balcani. Din acel moment, Rusia a fost mai puțin dispusă să cedeze într-o nouă criză balcanică.</p>
+          <p><strong>Germania, 1905 și 1911.</strong> Crizele marocane au arătat frustrarea Germaniei față de împărțirea colonială a lumii. Germania era o putere industrială foarte puternică, dar considera că are un imperiu colonial prea mic în raport cu forța ei economică. Politica mondială germană urmărea recunoașterea statutului de mare putere globală, iar episoadele Tanger și Agadir au amplificat izolarea diplomatică a Berlinului.</p>
+          <p><strong>Italia, înainte de 1914.</strong> Italia era membră a Triplei Alianțe, dar avea tensiuni tocmai cu Austro-Ungaria pentru teritorii locuite de italieni sau revendicate de naționaliștii italieni, precum Trentino, Trieste, Istria și părți ale Dalmației. Acest fenomen se numește iredentism italian. De aceea, alianța Italiei cu Germania și Austro-Ungaria era fragilă și condiționată de propriile interese teritoriale.</p>
+        </article>
+        <article class="info-card">
+          <h3>Ideologii și proiecte politice</h3>
+          <ul class="clean"><li><strong>Panslavismul</strong>: Rusia și Serbia prezentau solidaritatea slavă ca justificare pentru implicarea în Balcani.</li><li><strong>Pangermanismul</strong>: Germania și cercurile naționaliste germane susțineau afirmarea politică și culturală a lumii germane.</li><li><strong>Spațiul vital</strong>: noțiune folosită aici în sens larg, ca dorință de expansiune economică, teritorială sau colonială.</li><li><strong>Colonialismul</strong>: competiția pentru posesiuni extraeuropene a opus mai ales Germania puterilor coloniale mai vechi, Marea Britanie și Franța.</li><li><strong>Militarismul</strong>: armata era văzută ca instrument legitim de rezolvare a tensiunilor, iar planurile militare au început să preseze deciziile politice.</li></ul>
+        </article>
+      </div>
+      <details open><summary>Rivalitatea economică și industrială</summary><div class="details-body"><div class="key-line"><strong>Germania industrială</strong><span>După 1871, Germania se dezvoltă rapid, devenind un competitor major în producția de oțel, mașini, produse chimice și bunuri industriale.</span></div><div class="key-line"><strong>Piețe și resurse</strong><span>Marile puteri concurau pentru piețe de desfacere, materii prime, investiții și rute comerciale. Competiția economică se transforma ușor în rivalitate strategică.</span></div><div class="key-line"><strong>Protecționism</strong><span>Statele au folosit taxe vamale și politici economice restrictive pentru a-și apăra industriile, ceea ce a amplificat neîncrederea comercială.</span></div><div class="key-line"><strong>Tehnologie militară</strong><span>Industrializarea a permis producerea de armament modern: artilerie grea, mitraliere, nave de luptă, căi ferate militare, telegraf și sisteme logistice mai eficiente.</span></div></div></details>
+    </section>
+
+    <section class="section" id="factori">
+      <h2>III. Factori favorizanți</h2>
+      <p class="section-intro">Factorii favorizanți nu sunt neapărat cauze directe, dar au făcut ca tensiunile să escaladeze mai repede și să fie mai greu de controlat.</p>
+      <div class="three-col">
+        <article class="info-card"><h3>Revoluția tehnologică</h3><ul class="clean"><li>Căile ferate permiteau mobilizarea rapidă a trupelor.</li><li>Telegraful și telefonul accelerau comunicarea politică și militară, dar și presiunea deciziilor rapide.</li><li>Industria grea producea armament în cantități tot mai mari.</li><li>Flotele moderne, cuirasatele și submarinele au transformat rivalitatea navală într-o problemă strategică.</li></ul></article>
+        <article class="info-card"><h3>Cursa înarmărilor</h3><ul class="clean"><li>Germania, Franța, Marea Britanie, Rusia și Austro-Ungaria își măresc armatele și bugetele militare.</li><li>Competiția navală anglo-germană devine un simbol al rivalității globale.</li><li>Spirala înarmării creează dilema de securitate: fiecare stat susține că se apără, dar ceilalți văd o amenințare.</li><li>Planurile de mobilizare devin rigide: odată pornite, sunt greu de oprit.</li></ul></article>
+        <article class="info-card"><h3>Propaganda și mentalitățile</h3><ul class="clean"><li>Presa naționalistă prezenta adversarii ca amenințări existențiale.</li><li>Elitele politice și militare au subestimat potențialul inamic.</li><li>Mitul războiului scurt îi făcea pe mulți să creadă că războiul se va termina în câteva luni.</li><li>Prestigiul, onoarea și teama de umilință diplomatică au contat enorm în deciziile din 1914.</li></ul></article>
+      </div>
+      <div class="wide-card">
+        <h3>Diplomația preventivă și limitele ei</h3>
+        <p>La sfârșitul secolului al XIX-lea și începutul secolului al XX-lea au existat încercări de limitare a conflictelor prin arbitraj și conferințe internaționale, mai ales Conferințele de la Haga din 1899 și 1907. Totuși, aceste mecanisme nu aveau forță suficientă pentru a opri deciziile marilor puteri atunci când erau puse în joc prestigiul, alianțele, interesele coloniale sau planurile militare. Astfel, diplomația exista, dar era depășită treptat de logica mobilizării și de frica de a nu pierde inițiativa.</p>
+      </div>
+      <details open><summary>Extinderea imperiilor coloniale</summary><div class="details-body"><p><span class="mini-title">1900</span> Imperiile coloniale însumau aproximativ 72,9 milioane km² și 530 milioane locuitori. <span class="mini-title">1914</span> Ele ajung la aproximativ 75 milioane km² și 570 milioane locuitori. Această expansiune arată că marile puteri priveau controlul colonial ca sursă de prestigiu, resurse, piețe și influență strategică.</p><ul class="clean"><li><strong>Puterile vechi</strong>: Marea Britanie, Franța și Spania doreau consolidarea pozițiilor existente.</li><li><strong>Puterile noi</strong>: Germania și Italia doreau o reîmpărțire colonială a lumii.</li><li><strong>Consecință</strong>: lumea extraeuropeană devine teren de competiție europeană, iar conflictele coloniale alimentează tensiunile de pe continent.</li></ul></div></details>
+    </section>
+
+    <section class="section" id="tensiuni">
+      <h2>Dosar de aprofundare: acumularea tensiunilor</h2>
+      <p class="section-intro">Înainte de 1914, mai multe crize locale și conflicte periferice au testat echilibrul internațional. Unele au fost rezolvate diplomatic, dar aproape toate au lăsat suspiciuni, frustrări și dorințe de revanșă.</p>
+
+      <details open><summary>Rivalitatea marilor puteri</summary><div class="details-body"><div class="key-line"><strong>Rivalitatea economică</strong><span>Germania concurează Marea Britanie și Franța în industrie, comerț, tehnologie și acces la resurse coloniale.</span></div><div class="key-line"><strong>Rivalitatea militară</strong><span>Perioada 1871-1914 este numită „Pacea armată”: statele nu se luptă direct într-un război general, dar se pregătesc permanent pentru el.</span></div><div class="key-line"><strong>Războiul Franco-Prusac</strong><span>Conflictul din 1870-1871 a demonstrat forța Germaniei și a creat resentimente franceze durabile.</span></div><div class="key-line"><strong>Diplomația preventivă</strong><span>Conferințele de la Haga din 1899 și 1907 au promovat arbitrajul și normele internaționale, dar nu au reușit să oprească militarizarea politicii europene.</span></div></div></details>
+
+      <details open><summary>Crize locale</summary><div class="details-body">
+        <details class="nested-details" open><summary>Războaiele Anglo-Bure / Boer Wars, 1880-1881 și 1899-1902</summary><div class="details-body"><p>Războaiele burilor au avut loc în Africa de Sud între burii de origine olandeză și Regatul Unit. Primul război, 1880-1881, a dus la victoria burilor la Majuba Hill și la recunoașterea unei autonomii parțiale. Al Doilea Război al Burilor, 1899-1902, a fost mult mai dur, legat de controlul asupra Transvaalului, Orange Free State și resurselor de aur.</p><ul class="clean"><li>Britanicii au folosit tactica pământului ars și lagăre de concentrare pentru civili.</li><li>Tratatul de la Vereeniging din 1902 a pus capăt războiului.</li><li>Transvaalul și Orange Free State au devenit colonii britanice.</li><li>Conflictul a prefigurat tensiuni rasiale și politice care vor marca Africa de Sud în secolul XX.</li></ul></div></details>
+        <details class="nested-details" open><summary>Crizele marocane, 1905-1906 și 1911</summary><div class="details-body"><h4>Prima criză marocană / Criza Tangerului, 1905-1906</h4><p>La 31 martie 1905, Kaiserul Wilhelm al II-lea a vizitat Tangerul și a susținut formal suveranitatea Marocului. Gestul era o provocare la adresa Franței, care urmărea să-și consolideze influența în Maroc. Germania dorea să testeze soliditatea apropierii franco-britanice și să oblige Franța să accepte o conferință internațională.</p><ul class="clean"><li>În vara anului 1905, criza ajunge într-un punct periculos: Franța ia măsuri militare preventive, iar Germania amenință cu soluții dure dacă nu se organizează o conferință.</li><li>Ministrul francez de externe Théophile Delcassé, considerat prea ferm împotriva Germaniei, demisionează în iunie 1905.</li><li>Conferința de la Algeciras din 1906 arată izolarea Germaniei: Franța este susținută de Marea Britanie, Rusia, Italia, Spania și SUA, în timp ce Germania are sprijin ferm mai ales din partea Austro-Ungariei.</li><li>Franța nu obține totul formal, dar își consolidează controlul economic și politic asupra Marocului.</li><li>Criza întărește Antanta și adâncește neîncrederea dintre Germania, Franța și Marea Britanie.</li></ul><h4>A doua criză marocană / Criza Agadirului, 1911</h4><p>În 1911, o rebeliune internă din Maroc îi oferă Franței pretextul de a trimite trupe spre Fez pentru a proteja europenii și pentru a stabiliza situația. Germania nu se opune direct expansiunii franceze, dar cere compensații coloniale. La 1 iulie 1911, Berlinul trimite canoniera <em>Panther</em> la Agadir, gest perceput de Marea Britanie ca amenințare navală și diplomatică.</p><ul class="clean"><li>Marea Britanie se teme că Germania ar putea obține o bază navală pe Atlantic, aproape de rutele maritime britanice.</li><li>Discursul lui David Lloyd George din 21 iulie 1911 avertizează Germania că Marea Britanie nu va accepta umilirea diplomatică a Franței.</li><li>Acordul din 4 noiembrie 1911 permite Franței să-și consolideze poziția în Maroc, iar Germania primește compensații în Africa Ecuatorială Franceză, zona numită Neukamerun.</li><li>Tratatul de la Fez din 30 martie 1912 transformă Marocul în protectorat francez.</li><li>Criza întărește cooperarea navală franco-britanică și confirmă că rivalitățile coloniale puteau declanșa o criză europeană.</li></ul></div></details>
+        <details class="nested-details" open><summary>Criza Bosniacă / Criza Anexării, 1908-1909</summary><div class="details-body"><p>La 6 octombrie 1908, Austro-Ungaria a anunțat anexarea Bosniei-Herțegovina, teritoriu pe care îl administra din 1878. Anexarea a încălcat spiritul Tratatului de la Berlin și a provocat proteste din partea Serbiei, Rusiei și altor puteri.</p><ul class="clean"><li><strong>1878</strong>: Austro-Ungaria primește dreptul de a ocupa și administra Bosnia-Herțegovina.</li><li><strong>1903</strong>: Serbia se orientează mai puternic împotriva Austro-Ungariei după schimbarea dinastiei.</li><li><strong>1908</strong>: Bulgaria își declară independența, iar Austro-Ungaria anexează Bosnia-Herțegovina.</li><li><strong>Serbia</strong> cere anularea anexării sau compensații teritoriale.</li><li><strong>Imperiul Otoman</strong> protestează, dar acceptă ulterior compensații financiare; la 20 februarie 1909, Austro-Ungaria rezolvă problema printr-o plată către Poartă.</li><li><strong>Franța, Marea Britanie, Rusia și Italia</strong> consideră anexarea o încălcare a Tratatului de la Berlin și discută ideea unei conferințe internaționale.</li><li><strong>Germania</strong> susține Austro-Ungaria, iar Rusia, slăbită după înfrângerea din 1905, cedează diplomatic.</li></ul><p><strong>Semnificație:</strong> criza a arătat că Bosnia era un punct exploziv. Serbia dorea integrarea slavilor sudici, Rusia voia prestigiu în Balcani, iar Austro-Ungaria dorea să blocheze expansiunea sârbă.</p></div></details>
+      </div></details>
+
+      <details open><summary>Conflicte periferice și efectul lor asupra Europei</summary><div class="details-body">
+        <div class="details-grid">
+          <div class="micro-card"><strong>Războiul Italo-Etiopian, 1895-1896</strong><span>Italia încearcă să transforme Etiopia într-un protectorat, dar este înfrântă decisiv la Adwa, în 1896. Etiopia își apără independența, iar Italia rămâne cu dorință de revanșă colonială.</span></div>
+          <div class="micro-card"><strong>Războiul Pacificului / al Salpetrului, 1879-1884</strong><span>Chile luptă împotriva Peru și Boliviei pentru regiuni bogate în salpetru, anexând Tarapacá și Atacama. Conflictul arată importanța resurselor în rivalitățile moderne.</span></div>
+          <div class="micro-card"><strong>Războiul de Unificare al lui Barrios, 1885</strong><span>Președintele Guatemalei, Justo Rufino Barrios, încearcă reunificarea Americii Centrale. Moare la Chalchuapa, la 2 aprilie 1885, iar proiectul eșuează.</span></div>
+          <div class="micro-card"><strong>Războiul Hispano-American, 1898</strong><span>Statele Unite înfrâng Spania. Cuba devine formal independentă, iar Puerto Rico, Guam și Filipine ajung sub control american. Spania își pierde mare parte din imperiul colonial.</span></div>
+          <div class="micro-card"><strong>Războiul Filipino-American, 1899-1902</strong><span>Filipinezii luptă împotriva anexării de către SUA. Războiul duce la pierderi civile masive și arată contradicțiile imperialismului modern.</span></div>
+          <div class="micro-card"><strong>Războiul Ruso-Japonez, 1904-1905</strong><span>Japonia învinge Rusia și devine principala putere în Pacific. Rusia se îndepărtează de Germania, se apropie de Franța și își reorientează atenția spre Balcani.</span></div>
+        </div>
+      </div></details>
+    </section>
+
+    <section class="section" id="pretext">
+      <h2>IV. Pretextul: Asasinatul de la Sarajevo</h2>
+      <p class="section-intro">Atentatul de la Sarajevo a fost evenimentul imediat care a permis Austro-Ungariei să transforme tensiunea cu Serbia într-o criză diplomatică și apoi într-un război.</p>
+      <div class="two-col">
+        <article class="info-card"><h3>Bosnia-Herțegovina</h3><ul class="clean"><li>Locuită de sârbi, croați și musulmani bosniaci.</li><li>După criza orientală și Tratatul de la Berlin din 1878, Bosnia-Herțegovina intră sub administrație austro-ungară, deși rămâne formal legată de Imperiul Otoman.</li><li>În 1908, Austro-Ungaria o anexează oficial.</li><li>Serbia consideră Bosnia parte a spațiului slav sudic și se opune controlului austro-ungar.</li></ul></article>
+        <article class="info-card"><h3>Franz Ferdinand</h3><ul class="clean"><li>Împăratul Austro-Ungariei era Franz Joseph I, aflat pe tron din 1848.</li><li>Fiul său, Rudolf, s-a sinucis la Mayerling în 1889.</li><li>Franz Ferdinand devine moștenitor al tronului după moartea altor membri ai familiei imperiale.</li><li>El susținea reforme federative sau trialiste, adică o posibilă reorganizare a imperiului pentru a include mai bine popoarele slave.</li><li>Aceste idei nu erau pe placul tuturor elitelor imperiale și erau privite diferit de naționaliștii slavi.</li></ul></article>
+      </div>
+      <div class="wide-card"><h3>Poziția Serbiei în problema bosniacă</h3><p>Serbia era nemulțumită de controlul Austro-Ungariei asupra Bosniei-Herțegovina. Ea dorea să devină un fel de „Piemont al popoarelor slave balcanice”, adică centrul politic în jurul căruia să se unească slavii de sud, după modelul rolului jucat de Piemont în unificarea Italiei.</p></div>
+      <div class="timeline">
+        <article class="event"><div class="date">28 iun.<br>1914</div><div><h3>Vizita la Sarajevo</h3><p>Franz Ferdinand și soția sa, Sophie, vizitează Sarajevo, capitala Bosniei-Herțegovina. Data era sensibilă pentru sârbi, fiind asociată cu memoria bătăliei de la Kosovo din 1389.</p></div></article>
+        <article class="event"><div class="date">Primul atac</div><div><h3>Nedeljko Čabrinović</h3><p>Čabrinović aruncă o bombă spre mașina arhiducelui. Atacul eșuează, dar rănește persoane din convoi.</p></div></article>
+        <article class="event"><div class="date">Al doilea atac</div><div><h3>Gavrilo Princip</h3><p>După o schimbare nefericită de traseu, mașina arhiducelui ajunge în apropierea lui Gavrilo Princip. Acesta trage și îi ucide pe Franz Ferdinand și Sophie.</p></div></article>
+      </div>
+      <details open><summary>Young Bosnia, Mâna Neagră și motivația atentatului</summary><div class="details-body"><p><strong>Young Bosnia / Mlada Bosna</strong> era o mișcare naționalistă revoluționară a tinerilor sud-slavi din Bosnia. Membrii ei doreau eliberarea de sub dominația austro-ungară și unirea slavilor de sud.</p><p><strong>„Mâna Neagră”</strong> era o organizație secretă sârbă cu legături în cercuri militare. Obiectivul ei principal era eliberarea sârbilor aflați sub dominație străină și unificarea teritoriilor considerate sârbești sau sud-slave.</p><p>Pentru Princip, Franz Ferdinand devenise un simbol al dominației austro-ungare. Asasinatul a fost văzut de atentatori ca act politic, nu ca simplă crimă individuală. Din perspectiva Austro-Ungariei însă, atentatul era o amenințare directă la adresa stabilității unui imperiu multinațional.</p></div></details>
+    </section>
+
+    <section class="section" id="criza">
+      <h2>V. Criza din iulie 1914</h2>
+      <p class="section-intro">Criza din iulie a fost succesiunea de decizii diplomatice și militare prin care atentatul de la Sarajevo s-a transformat într-un război european. Ea arată cât de periculoase deveniseră alianțele, mobilizările și logica prestigiului.</p>
+      <div class="quick-grid">
+        <div class="quick-card"><strong>5-6 iulie 1914</strong><span>Germania oferă Austro-Ungariei sprijinul său, cunoscut ca „cec în alb” (blank cheque), încurajând o politică dură față de Serbia.</span></div>
+        <div class="quick-card"><strong>23 iulie 1914</strong><span>Austro-Ungaria trimite Serbiei ultimatumul cu termen de 48 de ore.</span></div>
+        <div class="quick-card"><strong>25 iulie 1914</strong><span>Serbia acceptă majoritatea cererilor, dar respinge punctele care încălcau suveranitatea sa.</span></div>
+        <div class="quick-card"><strong>28 iulie 1914</strong><span>Austro-Ungaria declară război Serbiei. Criza locală devine începutul războiului european.</span></div>
+      </div>
+      <details open><summary>Cele 10 puncte principale ale ultimatumului austro-ungar</summary><div class="details-body"><ol class="number-list"><li>Suprimarea publicațiilor care incitau la ură împotriva Monarhiei Austro-Ungare.</li><li>Dizolvarea organizației Narodna Odbrana („Apărarea Națională”) și a organizațiilor similare.</li><li>Eliminarea propagandei anti-austro-ungare din manuale și documente publice.</li><li>Îndepărtarea din administrația civilă și militară a persoanelor indicate de Austro-Ungaria.</li><li>Acceptarea colaborării cu reprezentanți austro-ungari pentru reprimarea mișcărilor subversive.</li><li>Aducerea în judecată a complicilor la asasinat și participarea delegaților austro-ungari la anchetă.</li><li>Arestarea maiorului Vojislav Tankosić și a funcționarului Milan Ciganović.</li><li>Oprirea traficului de arme și explozivi peste frontieră și pedepsirea funcționarilor de frontieră implicați.</li><li>Oferirea de explicații pentru declarațiile ostile făcute de oficiali sârbi.</li><li>Informarea Austro-Ungariei despre executarea măsurilor.</li></ol><div class="note"><strong>Punctul sensibil:</strong> participarea autorităților austro-ungare la anchetă pe teritoriul Serbiei. Pentru Belgrad, aceasta ar fi însemnat limitarea suveranității. Pentru Viena, refuzul era suficient pentru a invoca un <em>casus belli</em>.</div></div></details>
+      <details open><summary>Reacția în lanț: iulie-august 1914</summary><div class="details-body"><div class="timeline"><article class="event"><div class="date">28 iulie</div><div><h3>Austro-Ungaria declară război Serbiei</h3><p>Conflictul începe oficial ca război austro-sârb.</p></div></article><article class="event"><div class="date">29 iulie</div><div><h3>Bombardarea Belgradului</h3><p>Austro-Ungaria atacă Belgradul. Criza diplomatică devine conflict militar efectiv.</p></div></article><article class="event"><div class="date">30 iulie</div><div><h3>Rusia ordonă mobilizarea generală</h3><p>Rusia acționează pentru a sprijini Serbia și pentru a-și apăra prestigiul în Balcani. Germania interpretează mobilizarea ca amenințare.</p></div></article><article class="event"><div class="date">31 iulie</div><div><h3>Ultimatumuri germane</h3><p>Germania cere Rusiei să oprească mobilizarea și cere Franței să-și precizeze poziția. Logica militară începe să domine diplomația.</p></div></article><article class="event"><div class="date">1 august</div><div><h3>Germania declară război Rusiei</h3><p>Alianțele transformă conflictul balcanic într-un război al marilor puteri.</p></div></article><article class="event"><div class="date">2 august</div><div><h3>Luxemburg și Belgia</h3><p>Germania ocupă Luxemburgul și trimite Belgiei ultimatum pentru drept de trecere spre Franța, conform logicii Planului Schlieffen.</p></div></article><article class="event"><div class="date">3 august</div><div><h3>Germania declară război Franței</h3><p>Se deschide frontul de vest.</p></div></article><article class="event"><div class="date">4 august</div><div><h3>Invadarea Belgiei și intrarea Marii Britanii</h3><p>Germania invadează Belgia neutră. Marea Britanie declară război Germaniei, invocând neutralitatea Belgiei și echilibrul european.</p></div></article><article class="event"><div class="date">6 august</div><div><h3>Austro-Ungaria declară război Rusiei</h3><p>Războiul devine tot mai extins, iar taberele se conturează clar.</p></div></article><article class="event"><div class="date">12 august</div><div><h3>Franța și Marea Britanie declară război Austro-Ungariei</h3><p>Conflictul este deja european, iar luptele se extind pe mai multe fronturi.</p></div></article><article class="event"><div class="date">23 august</div><div><h3>Japonia declară război Germaniei</h3><p>Războiul începe să capete dimensiune globală, deoarece interesele coloniale și maritime intră în joc.</p></div></article></div></div></details>
+      <div class="warning-box"><h3>De ce nu a rămas un conflict local?</h3><p>Criza nu a rămas limitată la Serbia și Austro-Ungaria deoarece fiecare mare putere se temea că inacțiunea va produce pierdere de prestigiu sau avantaj strategic pentru adversari. Rusia nu voia să abandoneze Serbia; Germania nu voia să piardă Austro-Ungaria; Franța era aliata Rusiei; Marea Britanie nu putea accepta dominația germană asupra Belgiei și a coastelor Mării Nordului.</p></div>
+    </section>
+
+    <section class="section" id="retine">
+      <div class="final-box">
+        <h2>De reținut</h2>
+        <p>Primul Război Mondial a fost declanșat de Asasinatul de la Sarajevo, dar cauzele sale reale erau mult mai profunde: naționalismul radical, imperialismul, rivalitățile dintre marile puteri, crizele coloniale, problema balcanică, cursa înarmărilor, propaganda, mitul războiului scurt și sistemul de alianțe. Sarajevo a fost scânteia; Europa era deja pregătită să ardă.</p>
+      </div>
+      <details open><summary>Întrebări rapide de verificare</summary><div class="details-body"><ol class="number-list"><li>De ce perioada 1871-1914 este numită „Pacea armată”?</li><li>Ce este un stat multinațional și de ce era Austro-Ungaria vulnerabilă la naționalism?</li><li>De ce Bosnia-Herțegovina era importantă pentru Serbia?</li><li>Ce înseamnă <em>casus belli</em> și cum a fost folosit atentatul de la Sarajevo?</li><li>De ce punctele privind ancheta austro-ungară pe teritoriul Serbiei atingeau problema suveranității?</li><li>Cum a transformat sistemul de alianțe un conflict local într-un război european?</li></ol></div></details>
+    </section>
+    <section class="section" id="vocabular">
+      <h2>Vocabular istoric</h2>
+      <div class="term-grid">
+        <div class="term-card"><strong>Naționalism</strong><span>Ideologie care pune națiunea în centrul vieții politice; poate susține independența, unitatea națională, dar și rivalitatea față de alte popoare.</span></div>
+        <div class="term-card"><strong>Șovinism</strong><span>Formă agresivă de naționalism, bazată pe superioritatea propriei națiuni și disprețul față de alte națiuni.</span></div>
+        <div class="term-card"><strong>Panslavism</strong><span>Ideea solidarității popoarelor slave; în Balcani a fost susținută de Rusia și a alimentat speranțele Serbiei.</span></div>
+        <div class="term-card"><strong>Pangermanism</strong><span>Ideea solidarității lumii germane și a extinderii influenței politice a Germaniei sau a comunităților germane.</span></div>
+        <div class="term-card"><strong>Imperialism</strong><span>Politică de extindere a dominației unui stat asupra altor teritorii prin forță, economie, diplomație sau colonii.</span></div>
+        <div class="term-card"><strong>Colonialism</strong><span>Controlul politic și economic exercitat de o putere asupra unor teritorii extraeuropene, numite colonii.</span></div>
+        <div class="term-card"><strong>Militarism</strong><span>Creșterea importanței armatei în stat și credința că forța militară poate rezolva probleme politice.</span></div>
+        <div class="term-card"><strong>Cursa înarmărilor</strong><span>Competiție între state pentru creșterea armatelor, flotelor, artileriei și tehnologiei militare.</span></div>
+        <div class="term-card"><strong>Pacea armată</strong><span>Perioada 1871-1914: fără război general între marile puteri, dar cu înarmare intensă și neîncredere reciprocă.</span></div>
+        <div class="term-card"><strong>Casus belli</strong><span>Motiv invocat pentru declanșarea unui război; atentatul de la Sarajevo a fost folosit de Austro-Ungaria ca motiv împotriva Serbiei.</span></div>
+        <div class="term-card"><strong>Ultimatum</strong><span>Cerere diplomatică formulată sub presiune, cu termen limită și amenințarea unor consecințe grave.</span></div>
+        <div class="term-card"><strong>Suveranitate</strong><span>Dreptul unui stat de a decide independent asupra treburilor sale interne și externe.</span></div>
+        <div class="term-card"><strong>Mobilizare</strong><span>Trecerea armatei de la starea de pace la starea de război: chemarea rezerviștilor, transportul trupelor, activarea planurilor militare.</span></div>
+        <div class="term-card"><strong>Alianță</strong><span>Acord politic și militar între state, prin care acestea promit sprijin în anumite condiții.</span></div>
+        <div class="term-card"><strong>Antantă</strong><span>Înțelegere diplomatică mai flexibilă decât o alianță strictă; în 1907 se formează Tripla Înțelegere: Franța, Rusia, Marea Britanie.</span></div>
+        <div class="term-card"><strong>Stat multinațional</strong><span>Stat format din mai multe popoare, limbi și confesiuni; Austro-Ungaria era un exemplu clasic.</span></div>
+        <div class="term-card"><strong>Anexare</strong><span>Includerea oficială a unui teritoriu în cadrul unui stat; Austro-Ungaria a anexat Bosnia-Herțegovina în 1908.</span></div>
+        <div class="term-card"><strong>Protectorat</strong><span>Teritoriu care își păstrează formal unele instituții, dar este controlat de o putere străină.</span></div>
+        <div class="term-card"><strong>Iredentism</strong><span>Mișcare politică prin care un stat dorește să recupereze teritorii considerate „ale națiunii”.</span></div>
+        <div class="term-card"><strong>Trialism</strong><span>Proiect de reorganizare a Austro-Ungariei prin adăugarea unei a treia componente politice, posibil slavă, lângă Austria și Ungaria.</span></div>
+        <div class="term-card"><strong>Dilemă de securitate</strong><span>Situație în care măsurile defensive ale unui stat sunt interpretate ca amenințări de alte state, care se înarmează la rândul lor.</span></div>
+        <div class="term-card"><strong>Război preventiv</strong><span>Război declanșat din teama că adversarul va deveni mai puternic în viitor.</span></div>
+        <div class="term-card"><strong>Weltpolitik</strong><span>Politica mondială a Germaniei wilhelmiene, orientată spre statut de mare putere globală, flotă puternică și colonii.</span></div>
+        <div class="term-card"><strong>Planul Schlieffen</strong><span>Plan militar german care urmărea înfrângerea rapidă a Franței prin traversarea Belgiei, apoi întoarcerea împotriva Rusiei.</span></div>
+
+        <div class="term-card"><strong>Revanșism</strong><span>Dorința de răzbunare politică sau militară după o înfrângere; în cazul Franței, era legat de pierderea Alsaciei și Lorenei în 1871.</span></div>
+        <div class="term-card"><strong>Revizionism</strong><span>Politică prin care un stat dorește modificarea tratatelor, frontierelor sau ordinii internaționale existente.</span></div>
+        <div class="term-card"><strong>Iredentism italian</strong><span>Mișcare prin care Italia dorea unirea teritoriilor considerate italiene, dar aflate sub stăpânire străină, mai ales în Austro-Ungaria.</span></div>
+        <div class="term-card"><strong>Problema orientală</strong><span>Ansamblul tensiunilor provocate de slăbirea Imperiului Otoman și de competiția marilor puteri pentru influență în Balcani și în Orientul Apropiat.</span></div>
+        <div class="term-card"><strong>Concertul european</strong><span>Sistem informal de cooperare între marile puteri după 1815, menit să prevină războaiele generale și să mențină echilibrul european.</span></div>
+        <div class="term-card"><strong>Echilibrul puterilor</strong><span>Principiu diplomatic potrivit căruia niciun stat nu trebuie să devină atât de puternic încât să domine continentul.</span></div>
+        <div class="term-card"><strong>Descurajare</strong><span>Strategie prin care un stat încearcă să prevină atacul adversarului arătând că poate răspunde rapid și dur.</span></div>
+        <div class="term-card"><strong>Plan de mobilizare</strong><span>Set de măsuri pregătite din timp pentru chemarea rezerviștilor, transportul trupelor și concentrarea armatei la frontiere.</span></div>
+        <div class="term-card"><strong>Neutralitate</strong><span>Statut prin care un stat nu participă la război; Belgia era neutră, iar invadarea ei a atras intervenția Marii Britanii.</span></div>
+        <div class="term-card"><strong>Garanție internațională</strong><span>Angajament prin care una sau mai multe puteri promit să respecte sau să apere statutul unui teritoriu ori al unui stat.</span></div>
+        <div class="term-card"><strong>Cec în alb</strong><span>Sprijin politic acordat fără condiții clare; Germania a oferit Austro-Ungariei un astfel de sprijin în 5-6 iulie 1914.</span></div>
+        <div class="term-card"><strong>Canonieră</strong><span>Navă militară folosită pentru presiune diplomatică; trimiterea canonierei Panther la Agadir, în 1911, a simbolizat diplomația agresivă germană.</span></div>
+        <div class="term-card"><strong>Dreadnought</strong><span>Tip modern de cuirasat apărut după 1906, devenit simbol al cursei navale dintre Marea Britanie și Germania.</span></div>
+        <div class="term-card"><strong>Logistică militară</strong><span>Organizarea transportului, aprovizionării, comunicațiilor și concentrării trupelor în timp de război.</span></div>
+        <div class="term-card"><strong>Arbitraj internațional</strong><span>Metodă de rezolvare pașnică a conflictelor între state printr-o instanță sau comisie neutră.</span></div>
+        <div class="term-card"><strong>Federalizare</strong><span>Reorganizarea unui stat prin acordarea unei autonomii mai mari regiunilor sau popoarelor componente.</span></div>
+        <div class="term-card"><strong>„Piemont” politic</strong><span>Stat care devine nucleul unirii unei națiuni; Serbia dorea să joace pentru slavii de sud rolul jucat de Piemont în unificarea Italiei.</span></div>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>

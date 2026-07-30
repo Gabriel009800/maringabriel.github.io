@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Războiul Rece: Mișcarea de Nealiniere, decolonizarea, Lumea a Treia și cooperarea Sudului Global">
+<title>univ-razboiul-rece-miscarea-de-nealiniere</title>
+<style>
+:root{
+  --bg:#f6f0e7;--paper:#fffaf3;--paper-2:#fff;--ink:#2f241c;--title:#3c2a1e;
+  --muted:#5b4a3d;--accent:#7a4f2a;--accent-2:#9b6a3c;--accent-soft:#f0e4d4;
+  --line:rgba(91,62,36,.18);--line-strong:rgba(91,62,36,.34);
+  --shadow:0 26px 70px rgba(0,0,0,.28);--shadow-small:0 12px 30px rgba(0,0,0,.16);
+  --calm:#56715c;--calm-soft:#e6efe7;--danger:#874531;--danger-soft:#fae9e2;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{
+  margin:0;min-height:100vh;color:var(--ink);font-family:Georgia,"Times New Roman",serif;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(132,78,40,.72),transparent 34%),
+    radial-gradient(circle at 50% 100%,rgba(112,63,31,.44),transparent 36%),
+    radial-gradient(circle at 0 50%,rgba(29,13,6,.92),transparent 42%),
+    radial-gradient(circle at 100% 50%,rgba(29,13,6,.92),transparent 42%),
+    linear-gradient(180deg,#32190c 0%,#4a2a18 46%,#1e0e05 100%);
+  background-attachment:fixed;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(circle at center,transparent 0%,rgba(0,0,0,.10) 48%,rgba(0,0,0,.44) 100%),
+    linear-gradient(90deg,rgba(0,0,0,.20),transparent 18%,transparent 82%,rgba(0,0,0,.20));
+}
+.page{position:relative;z-index:1;width:min(1180px,calc(100% - 32px));margin:0 auto;padding:34px 0 70px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px;flex-wrap:wrap}
+.back-link,.tag{display:inline-flex;align-items:center;border:1px solid var(--line);background:rgba(255,250,243,.86);color:var(--title);border-radius:999px;padding:10px 15px;text-decoration:none;font-size:15px;font-weight:700;box-shadow:var(--shadow-small)}
+.back-link:hover{background:#fff6eb}
+.hero,.section,.nav-card,.final-box,.related-card{background:rgba(255,250,243,.96);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow)}
+.hero{padding:38px;margin-bottom:24px;position:relative;overflow:hidden}
+.hero::after{content:var(--hero-year);position:absolute;right:24px;bottom:-22px;font-size:104px;font-weight:900;letter-spacing:-5px;color:rgba(122,79,42,.075);pointer-events:none}
+.eyebrow{margin:0 0 8px;font-size:16px;color:var(--accent);font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+h1{margin:0;font-size:clamp(38px,5vw,62px);line-height:1.04;color:var(--title);letter-spacing:-1.4px}
+.subtitle{margin:18px 0 0;max-width:1020px;font-size:19px;line-height:1.78;color:var(--muted);text-align:justify;text-align-last:left}
+.badge-row,.series-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.badge,.series-links a{display:inline-flex;align-items:center;color:var(--title);background:#fff;border:1px solid rgba(91,62,36,.15);border-radius:999px;padding:8px 12px;font-weight:800;font-size:14px;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,.09)}
+.badge.accent,.series-links a[aria-current="page"]{background:var(--accent);color:#fffaf3}
+.related-card{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:16px 20px;margin:-10px 0 24px;border-radius:22px;box-shadow:var(--shadow-small)}
+.related-card b{color:var(--title)}
+.related-card a{color:var(--title);background:#f3eadf;border:1px solid rgba(91,62,36,.16);border-radius:999px;text-decoration:none;padding:8px 12px;font-weight:700;font-size:14px}
+.nav-card{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:18px 20px;margin-bottom:24px}
+.nav-card b{color:var(--title)}
+.nav-card a,.mini-btn{color:var(--title);background:var(--accent-soft);border:1px solid rgba(91,62,36,.16);border-radius:999px;text-decoration:none;padding:8px 12px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit}
+.nav-card a:hover,.mini-btn:hover{background:#e5d2bb}
+.section{padding:30px;margin-bottom:24px}
+h2{margin:0 0 14px;color:var(--title);font-size:clamp(28px,3vw,38px);line-height:1.15}
+h3{margin:0 0 12px;color:var(--title);font-size:22px;line-height:1.22}
+h4{margin:16px 0 8px;color:var(--title);font-size:18px}
+p,li,dd,.section-intro{font-size:17px;line-height:1.72;color:var(--muted);text-align:justify;text-align-last:left;hyphens:auto}
+.section-intro{margin:0 0 20px;max-width:1040px}
+.summary-grid,.three-col,.two-col,.four-col,.term-grid,.quick-grid,.cause-grid,.profile-grid,.principle-grid,.institution-grid,.compare-grid,.phase-grid{display:grid;gap:14px}
+.summary-grid,.quick-grid{grid-template-columns:repeat(4,1fr);margin-top:22px}
+.three-col,.profile-grid{grid-template-columns:repeat(3,1fr)}
+.two-col,.cause-grid,.compare-grid{grid-template-columns:repeat(2,1fr)}
+.four-col,.term-grid,.principle-grid,.institution-grid{grid-template-columns:repeat(4,1fr)}
+.phase-grid{grid-template-columns:repeat(5,1fr)}
+.summary-card,.info-card,.wide-card,.term-card,.quick-card,.micro-card,.warning-box,.source-note,.profile-card,.principle-card,.institution-card,.phase-card{
+  background:var(--paper-2);border:1px solid rgba(91,62,36,.14);border-radius:20px;box-shadow:var(--shadow-small);text-align:justify;text-align-last:left;padding:20px
+}
+.summary-card{min-height:132px;padding:16px}
+.summary-card strong,.quick-card strong,.term-card strong,.micro-card strong,.principle-card strong,.institution-card strong,.phase-card strong{display:block;color:var(--title);font-size:17px;margin-bottom:8px;text-align:left}
+.summary-card span,.quick-card span,.term-card span,.micro-card span,.principle-card span,.institution-card span,.phase-card span{display:block;color:var(--muted);font-size:15.5px;line-height:1.58}
+.phase-card{position:relative;padding-top:48px}.phase-card::before{content:attr(data-n);position:absolute;left:18px;top:14px;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--accent);color:white;font-weight:900}
+.profile-card h3{margin-bottom:4px}.profile-card .life{display:block;color:var(--accent);font-weight:800;margin-bottom:10px}.profile-card p{font-size:16px;margin:8px 0}.profile-card ul{margin:8px 0 0;padding-left:20px}.profile-card li{font-size:15.5px;line-height:1.56;margin-bottom:5px}
+.clean,.number-list{margin:0;padding-left:22px}.clean li,.number-list li{margin:0 0 9px;padding-left:2px}
+.date-pill{display:inline-block;color:var(--title);font-weight:800;background:#f3eadf;border:1px solid rgba(91,62,36,.13);border-radius:999px;padding:2px 9px;margin-right:5px;white-space:nowrap}
+.definition,.note,.fact-check,.quote-box{margin-top:18px;background:#fff8ef;border:1px solid rgba(122,79,42,.22);border-left:6px solid rgba(122,79,42,.48);border-radius:18px;padding:18px 20px;color:var(--muted);font-size:17px;line-height:1.7;text-align:justify;text-align-last:left}
+.definition strong,.note strong,.fact-check strong,.quote-box strong{color:var(--title)}
+.fact-check{background:#fff5e8;border-left-color:var(--danger)}
+.quote-box{font-style:italic}
+.calm-box{margin-top:16px;background:var(--calm-soft);border:1px solid rgba(86,113,92,.28);border-left:6px solid var(--calm);border-radius:18px;padding:18px 20px;color:#435648;font-size:17px;line-height:1.7}
+.danger-box{margin-top:16px;background:var(--danger-soft);border:1px solid rgba(135,69,49,.25);border-left:6px solid var(--danger);border-radius:18px;padding:18px 20px;color:#684034;font-size:17px;line-height:1.7}
+details{background:#fffdf9;border:1px solid rgba(91,62,36,.14);border-radius:20px;box-shadow:var(--shadow-small);margin-top:14px;overflow:hidden}
+details[open]{background:#fffaf3}
+summary{cursor:pointer;list-style:none;padding:18px 20px;font-size:19px;font-weight:800;color:var(--title);display:flex;justify-content:space-between;align-items:center;gap:18px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"Deschide";color:var(--muted);font-size:14px;font-weight:700;background:#f3eadf;border:1px solid rgba(91,62,36,.14);border-radius:999px;padding:7px 11px;white-space:nowrap}
+details[open]>summary::after{content:"Ascunde"}
+.details-body{border-top:1px solid rgba(91,62,36,.12);padding:18px 20px 20px}
+.key-line{display:grid;grid-template-columns:220px 1fr;gap:14px;padding:14px 0;border-bottom:1px dashed rgba(91,62,36,.18)}
+.key-line:last-child{border-bottom:0}.key-line strong{color:var(--title)}.key-line span{color:var(--muted);line-height:1.65}
+.timeline{display:grid;gap:14px;margin-top:18px}
+.event{display:grid;grid-template-columns:136px 1fr;gap:18px;align-items:stretch;background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:20px;box-shadow:var(--shadow-small);overflow:hidden}
+.date{background:linear-gradient(180deg,#7a4f2a,#5b351b);color:#fffaf3;display:flex;align-items:center;justify-content:center;text-align:center;padding:14px;font-size:18px;line-height:1.25;font-weight:900}
+.date.calm{background:linear-gradient(180deg,#657d68,#425947)}
+.date.danger{background:linear-gradient(180deg,#98503b,#682e22)}
+.event>div:last-child{padding:17px 18px 18px 0}.event h3{margin-bottom:6px}.event p{margin:0}
+.final-box{padding:28px;background:linear-gradient(135deg,#fffaf3,#f4e4d1);border-color:rgba(91,62,36,.25)}
+.final-box p{margin-bottom:0}
+.table-wrap{overflow-x:auto;margin-top:14px;border-radius:18px;border:1px solid rgba(91,62,36,.14);background:#fff;box-shadow:var(--shadow-small)}
+table{width:100%;border-collapse:collapse;min-width:790px}
+th,td{padding:13px 14px;border-bottom:1px solid rgba(91,62,36,.12);color:var(--muted);font-size:16px;line-height:1.55;vertical-align:top;text-align:left}
+th{background:#f3eadf;color:var(--title);font-weight:800}tr:last-child td{border-bottom:0}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px}
+.flow-item{position:relative;padding:16px;background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;box-shadow:var(--shadow-small)}
+.flow-item b{display:block;color:var(--title);margin-bottom:6px}.flow-item span{font-size:15px;color:var(--muted);line-height:1.5}
+.flow-item:not(:last-child)::after{content:"→";position:absolute;right:-14px;top:50%;transform:translateY(-50%);font-size:22px;color:var(--accent);font-weight:900;z-index:3}
+.small{font-size:15px;color:#725c49;line-height:1.58}
+footer{margin-top:24px;color:rgba(255,250,243,.82);text-align:center;font-size:14px;line-height:1.6}
+@media(max-width:1050px){.phase-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:980px){
+  .summary-grid,.three-col,.four-col,.term-grid,.quick-grid,.profile-grid,.principle-grid,.institution-grid{grid-template-columns:repeat(2,1fr)}
+  .two-col,.cause-grid,.compare-grid{grid-template-columns:1fr}
+  .flow{grid-template-columns:repeat(2,1fr)}.flow-item::after{display:none}
+}
+@media(max-width:680px){
+  .page{width:min(100% - 22px,1180px);padding-top:22px}
+  .hero,.section,.final-box{padding:22px;border-radius:22px}
+  .summary-grid,.three-col,.four-col,.term-grid,.quick-grid,.profile-grid,.principle-grid,.institution-grid,.flow,.phase-grid{grid-template-columns:1fr}
+  .event{grid-template-columns:1fr}.date{min-height:66px}.event>div:last-child{padding:0 16px 16px}
+  .key-line{grid-template-columns:1fr;gap:6px}summary{align-items:flex-start;flex-direction:column}.hero::after{font-size:70px}
+  .subtitle,p,li,dd,.section-intro,.details-body,.key-line span,.event>div:last-child,.definition,.note,.fact-check,.quote-box{text-align:left;text-align-last:auto;hyphens:none}
+}
+@media print{
+  body{background:#fff!important}body::before{display:none}.page{width:100%;padding:0}
+  .topbar,.nav-card,.related-card{display:none!important}
+  .hero,.section,.final-box{box-shadow:none;border:1px solid #cbb9a8;break-inside:avoid-page}
+  details{break-inside:avoid-page}summary::after{display:none}
+}
+</style>
+</head>
+<body id="top" style="--hero-year:'1955–1961';">
+<main class="page">
+<div class="topbar">
+  <a class="back-link" href="index.html">← Înapoi la materiale</a>
+  <span class="tag">Material ajutător · Istorie universală · Războiul Rece</span>
+</div>
+
+<section class="hero">
+  <p class="eyebrow">Istorie universală · Decolonizare · Sudul Global</p>
+  <h1>Războiul Rece: Mișcarea de Nealiniere</h1>
+  <p class="subtitle">Decolonizarea, Conferința de la Bandung, fondarea Mișcării la Belgrad, liderii și principiile nealinierii, revendicările economice ale Sudului Global, conflictele postcoloniale și migrațiile produse de transformarea lumii după 1945.</p>
+  <div class="series-links">
+    <a href="univ-razboiul-rece-modele-politice.html">Modele politice</a>
+    <a href="univ-razboiul-rece-diplomatie-si-conflict.html">Diplomație și conflict</a>
+    <a href="univ-razboiul-rece-miscarea-de-nealiniere.html" aria-current="page">Mișcarea de Nealiniere</a>
+  </div>
+  <div class="badge-row">
+    <span class="badge accent">Bandung 1955</span><span class="badge">Belgrad 1961</span>
+    <span class="badge">Anticolonialism</span><span class="badge">Suveranitate</span>
+    <span class="badge">Dezarmare</span><span class="badge">Cooperare Sud–Sud</span>
+  </div>
+</section>
+
+<div class="related-card">
+  <b>Seria Războiul Rece:</b>
+  <a href="univ-razboiul-rece-modele-politice.html">Modele politice</a>
+  <a href="univ-razboiul-rece-diplomatie-si-conflict.html">Diplomație și conflict</a>
+</div>
+
+<nav class="nav-card" aria-label="Cuprinsul paginii">
+  <b>Cuprins:</b>
+  <a href="#lumea-treia">Lumea a Treia</a><a href="#decolonizare">Decolonizarea</a>
+  <a href="#bandung">Bandung</a><a href="#fondare">Fondarea</a><a href="#lideri">Liderii</a>
+  <a href="#principii">Principii</a><a href="#evolutie">Evoluție</a><a href="#agenda">Agenda internațională</a>
+  <a href="#economie">Economie</a><a href="#organizatii">Organizații regionale</a>
+  <a href="#probleme">Probleme postcoloniale</a><a href="#studii">Studii de caz</a>
+  <a href="#migratii">Migrații</a><a href="#cronologie">Cronologie</a><a href="#sinteza">Sinteză</a>
+  <button class="mini-btn" type="button" data-action="open">Deschide explicațiile</button>
+  <button class="mini-btn" type="button" data-action="close">Închide explicațiile</button>
+</nav>
+
+<section class="section" id="lumea-treia">
+<h2>I. „Lumea a Treia”: sensul inițial al termenului</h2>
+<p class="section-intro">În timpul Războiului Rece, expresia „Lumea a Treia” desemna în primul rând statele care nu aparțineau nici blocului occidental capitalist — „Lumea întâi” — nici blocului comunist — „Lumea a doua”. Termenul nu însemna inițial „țări sărace”, deși a ajuns să fie asociat cu economiile postcoloniale, dezvoltarea inegală și dependența de exportul materiilor prime.</p>
+<div class="summary-grid">
+  <article class="summary-card"><strong>Lumea I</strong><span>Statele capitaliste industrializate, în general aliate cu Statele Unite.</span></article>
+  <article class="summary-card"><strong>Lumea II</strong><span>URSS, statele socialiste europene și alte regimuri comuniste.</span></article>
+  <article class="summary-card"><strong>Lumea III</strong><span>State afro-asiatice și latino-americane recent independente sau aflate în afara celor două alianțe.</span></article>
+  <article class="summary-card"><strong>Sudul Global</strong><span>Termen contemporan mai flexibil pentru state marcate de experiența colonială și inegalitatea mondială.</span></article>
+</div>
+<div class="definition"><strong>Originea expresiei:</strong> demograful și economistul francez Alfred Sauvy a folosit în 1952 formula <em>tiers monde</em>, prin analogie cu Starea a Treia a Revoluției Franceze: o majoritate numeroasă, lipsită de influența corespunzătoare dimensiunii sale.</div>
+<div class="fact-check"><strong>Precizare:</strong> nealinierea nu a fost identică cu sărăcia, neutralitatea permanentă sau izolarea. Iugoslavia era europeană, Cuba comunistă, India democratică, iar numeroase membre au primit simultan ajutor economic ori militar de la una sau de la ambele superputeri.</div>
+</section>
+
+<section class="section" id="decolonizare">
+<h2>II. Decolonizarea: premisa istorică a nealinierii</h2>
+<p class="section-intro">Mișcarea de Nealiniere nu poate fi înțeleasă separat de decolonizare. După 1945, zeci de popoare din Asia, Africa, Orientul Mijlociu, Caraibe și Pacific au transformat lupta împotriva dominației europene în state independente care doreau să evite o nouă subordonare, de această dată față de Washington ori Moscova.</p>
+<div class="four-col">
+  <article class="principle-card"><strong>Epuizarea metropolelor</strong><span>Marea Britanie, Franța, Țările de Jos și Belgia aveau datorii, infrastructură distrusă și costuri coloniale tot mai mari.</span></article>
+  <article class="principle-card"><strong>Naționalismul colonial</strong><span>Partidele, sindicatele, veteranii și elitele educate revendicau autodeterminarea și controlul resurselor.</span></article>
+  <article class="principle-card"><strong>ONU</strong><span>Carta, principiul autodeterminării și presiunea Adunării Generale delegitimau dominația colonială.</span></article>
+  <article class="principle-card"><strong>Războiul Rece</strong><span>SUA și URSS concurau pentru influență, arme, voturi la ONU, piețe și acces la resurse.</span></article>
+</div>
+
+<h3>Modalități de obținere a independenței</h3>
+<div class="compare-grid">
+  <article class="info-card"><h3>Negociere și transfer de putere</h3><ul class="clean">
+    <li>India și Pakistan — 1947;</li><li>Birmania și Ceylon — 1948;</li>
+    <li>Indonezia — recunoscută de Țările de Jos în 1949, după conflict și negociere;</li>
+    <li>Ghana — 1957, sub conducerea lui Kwame Nkrumah;</li>
+    <li>Nigeria — 1960; Kenya — 1963, după o etapă violentă.</li>
+  </ul></article>
+  <article class="info-card"><h3>Războaie de eliberare</h3><ul class="clean">
+    <li>Indochina franceză — 1946–1954;</li><li>Algeria — 1954–1962;</li>
+    <li>Angola, Guineea-Bissau și Mozambic — războaie împotriva Portugaliei;</li>
+    <li>Kenya — revolta Mau Mau și represiunea britanică;</li>
+    <li>revoluții, gherile și războaie civile în numeroase colonii.</li>
+  </ul></article>
+</div>
+<div class="note"><strong>Nu există două modele complet opuse:</strong> Imperiul Britanic nu s-a retras întotdeauna pașnic, iar Franța a negociat independența Marocului, Tunisiei și Africii subsahariene. Fiecare proces a combinat presiunea politică, mobilizarea populară, represiunea, negocierea și conjunctura internațională.</div>
+
+<h3>ONU și dreptul la autodeterminare</h3>
+<div class="timeline">
+  <article class="event"><div class="date calm">1945</div><div><h3>Carta ONU</h3><p>Include egalitatea suverană, cooperarea internațională și respectarea autodeterminării popoarelor.</p></div></article>
+  <article class="event"><div class="date calm">14 dec. 1960</div><div><h3>Rezoluția 1514 (XV)</h3><p>Declarația privind acordarea independenței țărilor și popoarelor coloniale afirmă că dominația colonială trebuie încheiată rapid și necondiționat.</p></div></article>
+  <article class="event"><div class="date calm">15 dec. 1960</div><div><h3>Rezoluția 1541 (XV)</h3><p>Clarifică formele prin care un teritoriu neautonom poate dobândi un statut deplin: independență, asociere liberă sau integrare pe baza unei alegeri libere.</p></div></article>
+  <article class="event"><div class="date calm">1961</div><div><h3>Comitetul Special pentru Decolonizare</h3><p>„Comitetul celor 24” monitorizează teritoriile neautonome și aplicarea Declarației din 1960.</p></div></article>
+  <article class="event"><div class="date calm">1974</div><div><h3>Noua Ordine Economică Internațională</h3><p>Rezoluțiile 3201 și 3202 cer suveranitate asupra resurselor, condiții comerciale mai echitabile și reformarea economiei mondiale.</p></div></article>
+</div>
+<div class="fact-check"><strong>Corecție documentară:</strong> „Noua Ordine Economică Internațională” a fost proclamată în 1974, nu printr-o presupusă Rezoluție 1654 din 1970. Comitetul de Decolonizare este cunoscut oficial drept Comitetul Special al celor 24.</div>
+
+<details><summary>India, Gandhi și drumul spre independență</summary><div class="details-body"><p>Congresul Național Indian a fost fondat în 1885. Masacrul de la Amritsar din 1919 a compromis legitimitatea britanică, iar Actul guvernării Indiei din 1935 a lărgit autoguvernarea provincială fără a acorda independența. Gandhi a transformat nesupunerea civică, boicotul și nonviolența în instrumente de mobilizare, în timp ce Jawaharlal Nehru a legat independența de modernizare și politică externă autonomă. Împărțirea din 1947 a creat India și Pakistan și a provocat una dintre cele mai mari migrații forțate ale secolului.</p></div></details>
+<details><summary>De ce independența politică nu a însemnat automat independență economică?</summary><div class="details-body"><p>Economiile coloniale fuseseră organizate pentru exportul câtorva materii prime, nu pentru piețe interne integrate. Infrastructura lega minele și plantațiile de porturi, iar industria, sistemele educaționale și administrația locală erau insuficient dezvoltate. Contractele cu firme străine, datoria, tehnologia importată, bazele militare și influența culturală au menținut relații asimetrice — fenomen descris adesea prin termenul <em>neocolonialism</em>.</p></div></details>
+</section>
+
+<section class="section" id="bandung">
+<h2>III. Conferința afro-asiatică de la Bandung, 1955</h2>
+<p class="section-intro">Bandung a fost marele precedent politic și moral al Mișcării de Nealiniere. Între 18 și 24 aprilie 1955, 29 de state asiatice și africane s-au întâlnit în Indonezia pentru a discuta anticolonialismul, rasismul, dezvoltarea economică, pacea și poziția lor în sistemul bipolar.</p>
+<div class="three-col">
+  <article class="info-card"><h3>Inițiatorii</h3><p>Indonezia, India, Pakistan, Birmania și Ceylon au convocat conferința. Președintele Sukarno a deschis lucrările, iar Nehru, Zhou Enlai, Nasser și U Nu s-au numărat printre figurile centrale.</p></article>
+  <article class="info-card"><h3>Greutatea politică</h3><p>Participanții reprezentau peste jumătate din populația globului, dar controlau o proporție mult mai mică din bogăția și instituțiile economiei mondiale.</p></article>
+  <article class="info-card"><h3>Semnificația</h3><p>Statele fost colonizate au încercat să devină subiecte ale relațiilor internaționale, nu doar obiecte ale deciziilor marilor puteri.</p></article>
+</div>
+
+<h3>Cele zece principii de la Bandung</h3>
+<div class="principle-grid">
+  <article class="principle-card"><strong>Drepturi fundamentale</strong><span>Respectarea drepturilor omului și a Cartei ONU.</span></article>
+  <article class="principle-card"><strong>Suveranitate</strong><span>Respectarea integrității teritoriale a tuturor statelor.</span></article>
+  <article class="principle-card"><strong>Egalitate</strong><span>Egalitatea tuturor raselor și națiunilor, mari sau mici.</span></article>
+  <article class="principle-card"><strong>Neintervenție</strong><span>Refuzul amestecului în treburile interne ale altor state.</span></article>
+  <article class="principle-card"><strong>Autoapărare</strong><span>Recunoașterea dreptului individual și colectiv la autoapărare.</span></article>
+  <article class="principle-card"><strong>Fără presiune</strong><span>Refuzul folosirii alianțelor pentru interesele particulare ale marilor puteri.</span></article>
+  <article class="principle-card"><strong>Fără agresiune</strong><span>Abținerea de la amenințarea sau folosirea forței.</span></article>
+  <article class="principle-card"><strong>Soluții pașnice</strong><span>Negociere, conciliere, arbitraj și justiție internațională.</span></article>
+  <article class="principle-card"><strong>Cooperare</strong><span>Promovarea intereselor reciproce și a dezvoltării comune.</span></article>
+  <article class="principle-card"><strong>Obligații internaționale</strong><span>Respectarea dreptului internațional și a tratatelor asumate.</span></article>
+</div>
+<div class="quote-box"><strong>Mesajul de fond:</strong> colonialismul nu dispăruse doar pentru că unele imperii se retrăgeau; putea continua prin ocupație, control economic, baze militare, rasism și presiune diplomatică.</div>
+</section>
+
+<section class="section" id="fondare">
+<h2>IV. De la Bandung la Belgrad: constituirea Mișcării</h2>
+<div class="flow">
+  <article class="flow-item"><b>Bandung, 1955</b><span>Solidaritate afro-asiatică și principii anticoloniale.</span></article>
+  <article class="flow-item"><b>Brioni, 1956</b><span>Tito, Nehru și Nasser discută o politică independentă de blocuri.</span></article>
+  <article class="flow-item"><b>Crize globale</b><span>Suez, Ungaria, Congo, Berlin și cursa nucleară arată pericolul bipolarității.</span></article>
+  <article class="flow-item"><b>Reuniunea Cairo, 1961</b><span>Pregătirea criteriilor și agendei primei conferințe la nivel înalt.</span></article>
+  <article class="flow-item"><b>Belgrad, 1961</b><span>25 de state fondează formal Mișcarea de Nealiniere.</span></article>
+</div>
+<div class="definition"><strong>Prima Conferință la nivel înalt:</strong> s-a desfășurat la Belgrad între 1 și 6 septembrie 1961. Participanții au cerut dezarmare nucleară, încheierea colonialismului, admiterea Chinei populare în ONU, rezolvarea pașnică a crizelor și reducerea presiunilor marilor puteri.</div>
+<div class="two-col">
+  <article class="info-card"><h3>De ce Belgrad?</h3><p>Iugoslavia lui Tito se desprinsese de tutela sovietică în 1948, dar nu intrase în NATO. Poziția sa între Est și Vest oferea un spațiu diplomatic potrivit pentru statele care doreau autonomie strategică.</p></article>
+  <article class="info-card"><h3>De ce tocmai în 1961?</h3><p>Anul era marcat de confruntarea Berlinului, invazia din Golful Porcilor, decolonizarea accelerată a Africii și intensificarea cursei nucleare. Noile state se temeau să nu devină teatre ale conflictului dintre superputeri.</p></article>
+</div>
+</section>
+
+<section class="section" id="lideri">
+<h2>V. Fondatorii și personalitățile nealinierii</h2>
+<div class="profile-grid">
+  <article class="profile-card"><h3>Jawaharlal Nehru</h3><span class="life">India · 1889–1964</span><p>A susținut „autonomia de judecată”, coexistența pașnică și principiile Panchsheel. India nu trebuia să devină instrumentul niciunui bloc, dar putea coopera cu ambele.</p><ul><li>prim-ministru din 1947;</li><li>modernizare și planificare mixtă;</li><li>opoziție față de colonialism și apartheid.</li></ul></article>
+  <article class="profile-card"><h3>Josip Broz Tito</h3><span class="life">Iugoslavia · 1892–1980</span><p>După ruptura cu Stalin din 1948, a construit un socialism independent de Moscova și a transformat Iugoslavia într-o punte diplomatică între continente.</p><ul><li>gazda summitului din 1961;</li><li>relații cu Estul și Vestul;</li><li>sprijin pentru mișcările anticoloniale.</li></ul></article>
+  <article class="profile-card"><h3>Gamal Abdel Nasser</h3><span class="life">Egipt · 1918–1970</span><p>A legat nealinierea de naționalismul arab, controlul Canalului Suez și modernizarea Egiptului. A primit armament sovietic, dar a evitat integrarea formală în blocul estic.</p><ul><li>revoluția ofițerilor din 1952;</li><li>naționalizarea Suezului în 1956;</li><li>teoria cercurilor arab, african și islamic.</li></ul></article>
+  <article class="profile-card"><h3>Ahmed Sukarno</h3><span class="life">Indonezia · 1901–1970</span><p>A condus lupta pentru independență și a găzduit Bandung. A promovat unitatea anticolonială și o politică externă militantă, apropiindu-se treptat de China și de stânga internă.</p></article>
+  <article class="profile-card"><h3>Kwame Nkrumah</h3><span class="life">Ghana · 1909–1972</span><p>A transformat independența Ghanei în platformă pentru panafricanism. A susținut unirea politică africană, industrializarea și lupta împotriva neocolonialismului.</p></article>
+  <article class="profile-card"><h3>Léopold Sédar Senghor</h3><span class="life">Senegal · 1906–2001</span><p>Poet, teoretician al negritudinii și președinte al Senegalului. A căutat o sinteză între identitatea africană, instituțiile francofone și un socialism democratic adaptat societăților africane.</p></article>
+</div>
+<div class="fact-check"><strong>Corecție de nume:</strong> liderul iugoslav a fost Josip Broz Tito, nu „Bronz Tito”. Cei cinci lideri asociați cel mai frecvent genezei Mișcării sunt Nehru, Tito, Nasser, Sukarno și Nkrumah.</div>
+</section>
+
+<section class="section" id="principii">
+<h2>VI. Ce însemna nealinierea?</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Principiu</th><th>Semnificație</th><th>Aplicare posibilă</th></tr></thead>
+<tbody>
+<tr><td>Independența politicii externe</td><td>Deciziile nu sunt dictate de Washington sau Moscova.</td><td>Vot diferențiat în ONU și cooperare selectivă cu ambele tabere.</td></tr>
+<tr><td>Neapartenența la blocuri militare</td><td>Refuzul integrării în alianțe create pentru confruntarea superputerilor.</td><td>Fără aderare la NATO ori Tratatul de la Varșovia.</td></tr>
+<tr><td>Anticolonialism</td><td>Sprijin pentru independență și împotriva ocupației, rasismului și apartheidului.</td><td>Susținerea Algeriei, Namibiei, Palestinei și luptei antiapartheid.</td></tr>
+<tr><td>Suveranitate și neintervenție</td><td>Fiecare stat trebuie să-și aleagă regimul și politica economică.</td><td>Condamnarea intervențiilor, bazelor străine și loviturilor de stat.</td></tr>
+<tr><td>Coexistență pașnică</td><td>Conflictele trebuie rezolvate prin negociere și drept internațional.</td><td>Mediere, conferințe și sprijin pentru ONU.</td></tr>
+<tr><td>Dezarmare</td><td>Reducerea armelor nucleare și interzicerea testelor.</td><td>Zone denuclearizate și tratate internaționale.</td></tr>
+<tr><td>Egalitate economică</td><td>Independența politică este incompletă fără controlul resurselor și dezvoltare.</td><td>NIEO, UNCTAD, G77 și cooperare Sud–Sud.</td></tr>
+</tbody></table></div>
+<div class="definition"><strong>Nealiniere ≠ echidistanță matematică:</strong> statele puteau condamna o superputere într-o criză și coopera cu ea în alta. Criteriul declarat era libertatea de decizie, nu neutralitatea față de orice conflict și nici refuzul alianțelor regionale defensive.</div>
+<details><summary>Criteriile de participare discutate înainte de Belgrad</summary><div class="details-body"><ul class="clean"><li>politică externă independentă și coexistență pașnică;</li><li>sprijin pentru mișcările de eliberare națională;</li><li>neapartenența la o alianță militară multilaterală legată de conflictul marilor puteri;</li><li>absența unui tratat bilateral sau a unor baze străine orientate explicit împotriva unei superputeri;</li><li>acceptarea principiilor anticoloniale și a suveranității.</li></ul><p>Aplicarea lor a rămas flexibilă, deoarece multe state aveau acorduri militare, baze sau dependențe economice moștenite.</p></div></details>
+</section>
+
+<section class="section" id="evolutie">
+<h2>VII. Evoluția Mișcării în timpul Războiului Rece</h2>
+<div class="timeline">
+  <article class="event"><div class="date calm">1961 · Belgrad</div><div><h3>Fondarea</h3><p>25 de state participante; accent pe pace, dezarmare, Berlin, Congo, colonialism și reprezentarea noilor state în ONU.</p></div></article>
+  <article class="event"><div class="date calm">1964 · Cairo</div><div><h3>Extinderea mișcării</h3><p>Participarea africană crește, iar lupta împotriva colonialismului portughez, apartheidului și dominației economice devine mai vizibilă.</p></div></article>
+  <article class="event"><div class="date calm">1970 · Lusaka</div><div><h3>Africa australă și dezvoltarea</h3><p>Sprijin pentru mișcările de eliberare din Angola, Mozambic, Namibia și Africa de Sud; critică a dependenței economice.</p></div></article>
+  <article class="event"><div class="date calm">1973 · Alger</div><div><h3>Radicalizarea agendei economice</h3><p>Controlul resurselor, prețuri mai echitabile și schimbarea instituțiilor economice mondiale pregătesc cererea pentru o Nouă Ordine Economică Internațională.</p></div></article>
+  <article class="event"><div class="date calm">1976 · Colombo</div><div><h3>Cooperare economică</h3><p>Accent pe comerț între statele în curs de dezvoltare, tehnologie, transport și suveranitate asupra resurselor.</p></div></article>
+  <article class="event"><div class="date danger">1979 · Havana</div><div><h3>Criza unității</h3><p>Fidel Castro susține că URSS este „aliatul natural” al mișcării; Tito, India și alte state apără independența față de ambele blocuri. Invazia sovietică în Afganistan adâncește ruptura.</p></div></article>
+  <article class="event"><div class="date calm">1983 · New Delhi</div><div><h3>Reafirmarea autonomiei</h3><p>India încearcă să reunească taberele și promovează dezarmarea, dezvoltarea și opoziția față de apartheid.</p></div></article>
+  <article class="event"><div class="date calm">1986 · Harare</div><div><h3>Africa de Sud</h3><p>Mișcarea acordă prioritate sancțiunilor împotriva apartheidului, independenței Namibiei și crizei datoriilor.</p></div></article>
+  <article class="event"><div class="date calm">1989 · Belgrad</div><div><h3>Spre lumea postbipolară</h3><p>În contextul reformelor lui Gorbaciov și al schimbărilor est-europene, mișcarea caută o nouă misiune dincolo de confruntarea celor două blocuri.</p></div></article>
+</div>
+<div class="note"><strong>Rezultat:</strong> Mișcarea nu a devenit o alianță militară sau o organizație supranațională. Forța ei a constat în coordonarea diplomatică, mai ales în Adunarea Generală a ONU, unde numărul statelor afro-asiatice și latino-americane a schimbat raportul de vot.</div>
+</section>
+
+<section class="section" id="agenda">
+<h2>VIII. Agenda diplomatică și conflictele interne ale Mișcării</h2>
+<div class="four-col">
+  <article class="principle-card"><strong>Decolonizare</strong><span>Algeria, Angola, Mozambic, Guineea-Bissau, Namibia și teritoriile încă dependente.</span></article>
+  <article class="principle-card"><strong>Antiapartheid</strong><span>Izolarea regimurilor minoritare din Africa de Sud și Rhodesia.</span></article>
+  <article class="principle-card"><strong>Palestina</strong><span>Sprijin pentru drepturile naționale palestiniene și reprezentarea OEP.</span></article>
+  <article class="principle-card"><strong>Dezarmare</strong><span>Oprirea testelor nucleare, zone fără arme nucleare și reducerea arsenalelor.</span></article>
+</div>
+<div class="two-col">
+  <article class="info-card"><h3>Succese diplomatice</h3><ul class="clean">
+    <li>transformarea anticolonialismului într-o normă internațională;</li>
+    <li>susținerea independenței Namibiei și a luptei antiapartheid;</li>
+    <li>introducerea dezvoltării și inegalității Nord–Sud pe agenda ONU;</li>
+    <li>creșterea rolului Adunării Generale și al statelor mici;</li>
+    <li>mediere și dialog între tabere în unele crize.</li>
+  </ul></article>
+  <article class="info-card"><h3>Contradicții</h3><ul class="clean">
+    <li>membri apropiați de SUA și membri apropiați de URSS;</li>
+    <li>războaie între state nealiniate: India–Pakistan, Iran–Irak, Cambodgia–Vietnam;</li>
+    <li>regimuri democratice, monarhii, dictaturi militare și state comuniste în aceeași mișcare;</li>
+    <li>principiul neintervenției putea proteja guverne represive;</li>
+    <li>consens dificil din cauza numărului și diversității membrilor.</li>
+  </ul></article>
+</div>
+<details><summary>Nealinierea și marile crize</summary><div class="details-body"><p>Unitatea era greu de menținut. Invazia sovietică în Cehoslovacia, războiul din Afganistan, intervențiile americane, conflictul arabo-israelian, ocuparea Cambodgiei de către Vietnam și războaiele dintre India și Pakistan provocau voturi diferite. Unele state invocau antiimperialismul occidental, altele condamnau orice dominație, inclusiv pe cea sovietică.</p></div></details>
+</section>
+
+<section class="section" id="economie">
+<h2>IX. De la independență politică la revendicarea unei noi ordini economice</h2>
+<p class="section-intro">Pentru statele nealiniate, suveranitatea era incompletă cât timp exportau materii prime ieftine, importau produse industriale scumpe, depindeau de credite externe și nu controlau tehnologia, transportul sau prețurile mondiale.</p>
+<div class="institution-grid">
+  <article class="institution-card"><strong>G77 · 1964</strong><span>Coaliție a statelor în curs de dezvoltare creată la prima conferință UNCTAD pentru negociere economică comună.</span></article>
+  <article class="institution-card"><strong>UNCTAD</strong><span>Conferința ONU pentru Comerț și Dezvoltare: acces la piețe, preferințe comerciale, mărfuri și finanțarea dezvoltării.</span></article>
+  <article class="institution-card"><strong>NIEO · 1974</strong><span>Noua Ordine Economică Internațională: control asupra resurselor, reglementarea multinaționalelor și transfer tehnologic.</span></article>
+  <article class="institution-card"><strong>Cooperare Sud–Sud</strong><span>Comerț, bănci de dezvoltare, instruire, proiecte comune și schimburi tehnologice între fostele colonii.</span></article>
+</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Problemă</th><th>Moștenire colonială</th><th>Revendicare a Sudului Global</th></tr></thead>
+<tbody>
+<tr><td>Monocultură</td><td>Economii dependente de cafea, cacao, bumbac, banane, petrol sau minerale.</td><td>Stabilizarea prețurilor și diversificare economică.</td></tr>
+<tr><td>Companii străine</td><td>Control extern asupra minelor, plantațiilor și petrolului.</td><td>Naționalizare, renegocierea concesiunilor și suveranitate permanentă asupra resurselor.</td></tr>
+<tr><td>Termeni de schimb</td><td>Materii prime ieftine, produse finite și tehnologie scumpe.</td><td>Preferințe comerciale și acces la piețele industrializate.</td></tr>
+<tr><td>Datorie</td><td>Împrumuturi pentru infrastructură și importuri, în valută forte.</td><td>Finanțare concesională, restructurare și instituții mai reprezentative.</td></tr>
+<tr><td>Tehnologie</td><td>Dependență de brevete, experți și echipamente externe.</td><td>Transfer tehnologic, formare profesională și industrializare.</td></tr>
+</tbody></table></div>
+<div class="calm-box"><strong>Exemplul resurselor:</strong> naționalizarea Canalului Suez de către Nasser și afirmarea OPEC au arătat că statele producătoare puteau folosi controlul infrastructurii și materiilor prime pentru a negocia o poziție internațională mai puternică.</div>
+</section>
+
+<section class="section" id="organizatii">
+<h2>X. Organizații regionale și solidarități paralele</h2>
+<p class="section-intro">Mișcarea de Nealiniere a coexistat cu organizații regionale. Acestea nu erau „subdiviziuni” ale Mișcării și nici dovada restrângerii ei, ci structuri cu scopuri diferite: securitate, integrare economică, decolonizare sau cooperare culturală.</p>
+<div class="three-col">
+  <article class="info-card"><h3>Organizația Unității Africane</h3><span class="date-pill">1963</span><p>Fondată la Addis Abeba pentru unitate africană, apărarea suveranității și eliminarea colonialismului. A preferat menținerea frontierelor moștenite pentru a evita un număr și mai mare de războaie.</p></article>
+  <article class="info-card"><h3>Uniunea Africană</h3><span class="date-pill">din 2002</span><p>Succesoarea OUA, cu instituții mai dezvoltate și o abordare mai activă privind pacea, integrarea și drepturile omului.</p></article>
+  <article class="info-card"><h3>Organizația Statelor Americane</h3><span class="date-pill">1948</span><p>Organizație panamericană dominată mult timp de influența SUA; nu a fost un organism nealiniat și a suspendat Cuba în 1962.</p></article>
+  <article class="info-card"><h3>SELA</h3><span class="date-pill">1975</span><p>Sistemul Economic Latino-American și Caraibian urmărește coordonarea economică și negocierea intereselor regionale.</p></article>
+  <article class="info-card"><h3>Integrarea africană</h3><p>Uniuni vamale și comunități regionale au încercat să depășească dimensiunea redusă a piețelor naționale: UDEAC/CEMAC, ECOWAS și alte grupări.</p></article>
+  <article class="info-card"><h3>ASEAN</h3><span class="date-pill">1967</span><p>Creată în Asia de Sud-Est pentru stabilitate și cooperare economică; membrii săi au avut poziții diferite față de nealiniere și alianțele occidentale.</p></article>
+</div>
+<div class="fact-check"><strong>Clarificare:</strong> denumirile din document precum „CEAAEO”, „UVAC” sau „CEAN” amestecă organisme cu epoci și titulaturi diferite. În pagină sunt folosite numele istorice sau actuale consacrate.</div>
+</section>
+
+<section class="section" id="probleme">
+<h2>XI. Problemele statelor postcoloniale</h2>
+<div class="principle-grid">
+  <article class="principle-card"><strong>Frontiere artificiale</strong><span>Granițele coloniale au separat sau au reunit comunități fără consultare locală.</span></article>
+  <article class="principle-card"><strong>Instituții fragile</strong><span>Administrații restrânse, armate politizate și participare civică limitată.</span></article>
+  <article class="principle-card"><strong>Economii dependente</strong><span>Monocultură, export de materii prime, infrastructură orientată spre porturi și capital extern.</span></article>
+  <article class="principle-card"><strong>Conflict social</strong><span>Inegalități funciare, regionale, etnice și religioase moștenite sau amplificate de colonialism.</span></article>
+  <article class="principle-card"><strong>Presiune demografică</strong><span>Creșterea populației fără extinderea suficientă a educației, sănătății și locurilor de muncă.</span></article>
+  <article class="principle-card"><strong>Lovituri de stat</strong><span>Armata se prezenta drept garant al unității, ordinii și modernizării.</span></article>
+  <article class="principle-card"><strong>Războiul Rece</strong><span>Superputerile au finanțat regimuri și grupări rivale, transformând crizele locale în conflicte globale.</span></article>
+  <article class="principle-card"><strong>Neocolonialism</strong><span>Influență prin credite, companii, baze militare, tratate, limbi și rețele culturale.</span></article>
+</div>
+
+<h3>Conflicte și tensiuni</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Caz</th><th>Cauze principale</th><th>Legătura cu lumea postcolonială</th></tr></thead>
+<tbody>
+<tr><td>Kashmir</td><td>Împărțirea Indiei britanice, statutul principatului și rivalitatea India–Pakistan.</td><td>Conflict teritorial, identitar și strategic rămas nesoluționat după 1947.</td></tr>
+<tr><td>Algeria–Maroc, 1963</td><td>Frontiera și revendicările asupra regiunilor Tindouf și Béchar.</td><td>„Războiul nisipurilor” arată dificultatea frontierelor coloniale.</td></tr>
+<tr><td>Congo și Katanga</td><td>Secesiune, resurse miniere, intervenție externă și criză instituțională.</td><td>Independență rapidă fără administrație stabilă; competiție între superputeri.</td></tr>
+<tr><td>Biafra, 1967–1970</td><td>Federalism, petrol, violențe etnice și secesiunea regiunii estice.</td><td>Frontiere coloniale și distribuția inegală a puterii și resurselor.</td></tr>
+<tr><td>Eritreea</td><td>Încorporarea în Etiopia și luptă de independență.</td><td>Conflict între principiul integrității teritoriale și autodeterminare.</td></tr>
+<tr><td>Rwanda, 1990–1994</td><td>Exil, război civil, propagandă extremistă și instituționalizarea colonială a identităților.</td><td>Genocidul nu poate fi redus la „triburi”; categoriile hutu și tutsi au istorii sociale și politice complexe.</td></tr>
+</tbody></table></div>
+<div class="fact-check"><strong>Nuanțare necesară:</strong> Biafra nu a fost doar un conflict religios; Rwanda nu poate fi explicată prin ideea simplistă a unor „triburi Bantu”; foametea și epidemiile nu sunt trăsături inevitabile ale climei calde, ci rezultatul interacțiunii dintre sărăcie, conflict, infrastructură, politici publice și mediu.</div>
+</section>
+
+<section class="section" id="studii">
+<h2>XII. Studii de caz: strategii diferite ale statelor nealiniate</h2>
+<div class="profile-grid">
+  <article class="profile-card"><h3>India</h3><span class="life">Democrație și autonomie strategică</span><p>A menținut sistemul parlamentar, a primit ajutor din ambele blocuri și a colaborat cu URSS în apărare, fără a adera la Tratatul de la Varșovia. Războaiele cu Pakistanul și conflictul cu China au arătat limitele idealismului diplomatic.</p></article>
+  <article class="profile-card"><h3>Iugoslavia</h3><span class="life">Socialism independent</span><p>A beneficiat de ajutor occidental după ruptura cu Stalin, apoi a normalizat relațiile cu Moscova. Diplomația personală a lui Tito și federalismul intern i-au oferit influență disproporționată.</p></article>
+  <article class="profile-card"><h3>Egipt</h3><span class="life">Naționalism arab</span><p>Nasser a cumpărat arme din blocul estic, a primit sprijin sovietic pentru barajul de la Assuan și a afirmat controlul Suezului. Sadat a schimbat ulterior orientarea către SUA, demonstrând flexibilitatea nealinierii.</p></article>
+  <article class="profile-card"><h3>Ghana</h3><span class="life">Panafricanism</span><p>Nkrumah a transformat Ghana într-un centru al mișcărilor de eliberare și a pledat pentru Statele Unite ale Africii. Proiectele industriale ambițioase și problemele financiare au fost urmate de lovitura de stat din 1966.</p></article>
+  <article class="profile-card"><h3>Algeria</h3><span class="life">Revoluție și diplomație</span><p>Prestigiul războiului de independență a făcut din Alger un centru al mișcărilor anticoloniale. Summitul din 1973 a accentuat revendicările economice și controlul resurselor.</p></article>
+  <article class="profile-card"><h3>Cuba</h3><span class="life">Membru controversat</span><p>Cuba s-a alăturat Mișcării, dar dependența sa economică, militară și strategică de URSS a provocat dispute asupra sensului nealinierii, mai ales la Havana în 1979.</p></article>
+</div>
+
+<details><summary>Egiptul și „teoria celor trei cercuri”</summary><div class="details-body"><p>În <em>Filosofia Revoluției</em>, Nasser prezenta Egiptul ca aparținând simultan cercului arab, celui african și celui islamic. Poziția geografică, Canalul Suez și rolul cultural al Egiptului trebuiau transformate în surse de influență. Această viziune explica activismul egiptean în lumea arabă, în Africa și în Mișcarea de Nealiniere.</p></div></details>
+<details><summary>Senegal, negritudine și socialism african</summary><div class="details-body"><p>Léopold Sédar Senghor considera că marxismul european, axat pe conflictul dintre clase industriale, trebuia adaptat societăților africane. Negritudinea afirma demnitatea culturilor africane și experiența comună a dominației coloniale, însă Senghor a rămas favorabil cooperării cu Franța și instituțiilor pluraliste.</p></div></details>
+</section>
+
+<section class="section" id="migratii">
+<h2>XIII. Decolonizarea și migrațiile contemporane</h2>
+<p class="section-intro">Prăbușirea imperiilor a mutat nu doar frontiere, ci și milioane de oameni. Războaiele, împărțirea teritoriilor, legăturile lingvistice și cererea de muncă din fostele metropole au creat fluxuri care au remodelat societățile postcoloniale și europene.</p>
+
+<h3>Ce este migrația?</h3>
+<div class="four-col">
+  <article class="principle-card"><strong>Fenomen demografic</strong><span>Schimbarea reședinței între regiuni sau state, temporar ori permanent.</span></article>
+  <article class="principle-card"><strong>Fenomen economic</strong><span>Circulația forței de muncă, calificărilor, capitalului uman și remitențelor.</span></article>
+  <article class="principle-card"><strong>Fenomen politic</strong><span>Refugiu din cauza războaielor, persecuției, dictaturii sau destrămării statelor.</span></article>
+  <article class="principle-card"><strong>Drepturi</strong><span>Libertatea de circulație și dreptul de a părăsi o țară sunt recunoscute internațional, fără a crea un drept nelimitat de intrare în orice stat.</span></article>
+</div>
+
+<div class="table-wrap"><table>
+<thead><tr><th>Criteriu</th><th>Tipuri</th><th>Exemple legate de decolonizare</th></tr></thead>
+<tbody>
+<tr><td>Motivație</td><td>Muncă, studii, familie, persecuție, război, climă</td><td>Studenți din fostele colonii în metropole; refugiați din războaiele de independență.</td></tr>
+<tr><td>Direcție</td><td>Internă / internațională; rural–urban; Sud–Nord; Sud–Sud</td><td>Maghreb–Franța; Commonwealth–Regatul Unit; refugiați palestinieni în state arabe.</td></tr>
+<tr><td>Durată</td><td>Temporară, sezonieră, permanentă</td><td>Muncitori contractuali, studenți, familii reunificate.</td></tr>
+<tr><td>Grad de constrângere</td><td>Voluntară, forțată, refugiu, strămutare internă</td><td>Împărțirea Indiei; expulzări și plecări după independența Algeriei.</td></tr>
+<tr><td>Statut juridic</td><td>Regulată, neregulată, solicitant de azil, refugiat</td><td>Legislațiile metropolelor au devenit treptat mai restrictive după 1960.</td></tr>
+</tbody></table></div>
+
+<h3>Migrații istorice majore</h3>
+<div class="timeline">
+  <article class="event"><div class="date danger">1945–1950</div><div><h3>Deplasările postbelice europene</h3><p>Refugiați, foști deportați, prizonieri și populații expulzate sau transferate au schimbat structura demografică a Europei Centrale și de Est.</p></div></article>
+  <article class="event"><div class="date danger">1947</div><div><h3>Împărțirea Indiei</h3><p>Hinduși, sikhi și musulmani s-au deplasat între India și Pakistan. Violențele comunitare, pierderea proprietăților și ruptura familiilor au marcat nașterea celor două state.</p></div></article>
+  <article class="event"><div class="date danger">1948 și după</div><div><h3>Refugiații palestinieni</h3><p>Războiul din 1948 a produs exod și strămutare, iar problema refugiaților a rămas una dintre chestiunile centrale ale conflictului arabo-israelian.</p></div></article>
+  <article class="event"><div class="date">1948–1970</div><div><h3>Migrația către fostele metropole</h3><p>Regatul Unit a primit migranți din Caraibe și Asia de Sud; Franța din Maghreb și Africa; Țările de Jos din Indonezia și Surinam. Reconstrucția și industria aveau nevoie de forță de muncă.</p></div></article>
+  <article class="event"><div class="date danger">1962</div><div><h3>Algeria</h3><p>Aproximativ un milion de europeni algerieni — <em>pieds-noirs</em> — au plecat spre Franța, alături de numeroși harkis și familiile lor, în condiții traumatice și adesea discriminatorii.</p></div></article>
+  <article class="event"><div class="date danger">1975–1979</div><div><h3>Indochina și Cambodgia</h3><p>Războaiele și regimul Khmerilor Roșii au produs refugiați, migrație maritimă și strămutări interne forțate.</p></div></article>
+</div>
+
+<h3>Consecințe</h3>
+<div class="two-col">
+  <article class="info-card"><h3>Pentru statele de origine</h3><ul class="clean">
+    <li>remitențe trimise familiilor și acces la rețele internaționale;</li>
+    <li>pierdere de forță de muncă și „exod de creiere”;</li>
+    <li>emancipare socială și schimbarea raporturilor dintre sat și oraș;</li>
+    <li>diaspore care influențează politica, investițiile și cultura;</li>
+    <li>scădere demografică în anumite regiuni.</li>
+  </ul></article>
+  <article class="info-card"><h3>Pentru statele de destinație</h3><ul class="clean">
+    <li>completarea deficitului de muncă și întinerirea populației;</li>
+    <li>multiculturalism, noi comunități religioase și transformări culturale;</li>
+    <li>presiune asupra locuințelor și serviciilor dacă integrarea este slab planificată;</li>
+    <li>discriminare, segregare și conflicte identitare;</li>
+    <li>inovație, antreprenoriat și circulația cunoștințelor.</li>
+  </ul></article>
+</div>
+<div class="fact-check"><strong>Corecții de perspectivă:</strong> migrația nu poate fi prezentată corect ca sursă automată de terorism, șomaj sau epidemii. Riscurile de securitate și sănătate trebuie analizate prin date, iar terorismul are cauze politice și sociale complexe. Migranții sunt adesea esențiali pentru economie, plătesc taxe, creează firme și ocupă atât posturi slab plătite, cât și profesii înalt calificate.</div>
+</section>
+
+<section class="section" id="cronologie">
+<h2>XIV. Cronologie: decolonizare și nealiniere</h2>
+<div class="timeline">
+  <article class="event"><div class="date">1919</div><div><h3>Amritsar</h3><p>Masacrul întărește mișcarea anticolonială indiană și neîncrederea față de dominația britanică.</p></div></article>
+  <article class="event"><div class="date calm">1945</div><div><h3>ONU și începutul valului postbelic</h3><p>Autodeterminarea intră în limbajul noii ordini internaționale.</p></div></article>
+  <article class="event"><div class="date calm">1947–1949</div><div><h3>India, Pakistan și Indonezia</h3><p>Independențele asiatice arată că dominația colonială europeană nu mai poate fi restaurată în forma veche.</p></div></article>
+  <article class="event"><div class="date calm">1955</div><div><h3>Bandung</h3><p>29 de state afro-asiatice formulează principiile solidarității anticoloniale.</p></div></article>
+  <article class="event"><div class="date calm">1956</div><div><h3>Brioni și Suez</h3><p>Tito, Nehru și Nasser apropie pozițiile; victoria diplomatică a Egiptului crește prestigiul nealinierii.</p></div></article>
+  <article class="event"><div class="date calm">1957–1960</div><div><h3>Independențele africane</h3><p>Ghana deschide valul subsaharian; 1960 devine „Anul Africii”.</p></div></article>
+  <article class="event"><div class="date calm">1961</div><div><h3>Belgrad</h3><p>Prima conferință la nivel înalt a Mișcării de Nealiniere.</p></div></article>
+  <article class="event"><div class="date danger">1961–1962</div><div><h3>Congo și Algeria</h3><p>Criza congoleză și războiul algerian demonstrează legătura dintre decolonizare, resurse și rivalitatea globală.</p></div></article>
+  <article class="event"><div class="date calm">1963–1964</div><div><h3>OUA, G77 și UNCTAD</h3><p>Solidaritatea politică este completată de instituții africane și o agendă economică globală.</p></div></article>
+  <article class="event"><div class="date calm">1973–1974</div><div><h3>Alger și NIEO</h3><p>Mișcarea cere transformarea relațiilor economice dintre Nord și Sud.</p></div></article>
+  <article class="event"><div class="date danger">1979</div><div><h3>Havana și Afganistan</h3><p>Disputa privind apropierea de URSS și invazia Afganistanului divid membrii.</p></div></article>
+  <article class="event"><div class="date calm">1989–1991</div><div><h3>Sfârșitul bipolarității</h3><p>Prăbușirea blocului sovietic obligă Mișcarea să-și redefinească rolul în jurul dezvoltării, suveranității și multilateralismului.</p></div></article>
+</div>
+</section>
+
+<section class="section" id="sinteza">
+<h2>XV. Sinteză pentru evaluare</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Concept</th><th>Definiție</th><th>Exemplu / fapt istoric</th><th>Importanță</th></tr></thead>
+<tbody>
+<tr><td>Decolonizare</td><td>Desființarea dominației coloniale și formarea statelor independente.</td><td>India 1947, Ghana 1957, Algeria 1962.</td><td>A creat majoritatea statelor care vor alcătui Mișcarea.</td></tr>
+<tr><td>Bandung</td><td>Conferința afro-asiatică din 1955.</td><td>29 de state și cele zece principii.</td><td>A formulat baza morală și diplomatică a nealinierii.</td></tr>
+<tr><td>Nealiniere</td><td>Politică externă independentă față de blocurile Războiului Rece.</td><td>Belgrad, 1–6 septembrie 1961.</td><td>A oferit noilor state o voce colectivă.</td></tr>
+<tr><td>Sudul Global</td><td>State marcate de colonialism și poziție periferică în economia mondială.</td><td>Asia, Africa, America Latină și Caraibe.</td><td>Mută accentul de la alianțe militare la inegalități structurale.</td></tr>
+<tr><td>Neocolonialism</td><td>Dependență menținută prin economie, companii, baze, datorie și influență culturală.</td><td>Monocultură și control extern al resurselor.</td><td>Explică de ce independența juridică nu a adus automat autonomie reală.</td></tr>
+<tr><td>NIEO</td><td>Program de reformare a economiei mondiale lansat în 1974.</td><td>Controlul resurselor și transfer tehnologic.</td><td>Momentul de vârf al agendei economice a statelor nealiniate.</td></tr>
+<tr><td>Migrație postcolonială</td><td>Circulația populațiilor între foste colonii, state vecine și metropole.</td><td>India–Pakistan, Algeria–Franța, Commonwealth–Regatul Unit.</td><td>A remodelat demografia, economia și identitățile societăților contemporane.</td></tr>
+</tbody></table></div>
+<div class="final-box">
+<h3>Concluzie generală</h3>
+<p>Mișcarea de Nealiniere a fost tentativa statelor recent independente de a transforma sistemul internațional bipolar într-unul mai plural. Nu a eliminat dependențele, războaiele sau apropierea unor membri de superputeri, însă a universalizat anticolonialismul, a amplificat vocea Sudului Global la ONU și a legat pacea de dezvoltare, suveranitatea asupra resurselor și egalitatea economică. Importanța sa istorică nu constă în neutralitate, ci în revendicarea dreptului fiecărui stat de a decide pentru sine.</p>
+</div>
+</section>
+
+<footer>Material de sinteză · Istorie universală · Războiul Rece: Mișcarea de Nealiniere</footer>
+</main>
+<script>
+const allDetails=[...document.querySelectorAll("details")];
+document.querySelectorAll("[data-action]").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    const open=btn.dataset.action==="open";
+    allDetails.forEach(d=>d.open=open);
+  });
+});
+</script>
+</body>
+</html>

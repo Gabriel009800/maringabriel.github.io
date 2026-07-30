@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Revoluția Franceză: cauzele revoluției">
+<title>univ-revolutia-franceza-cauzele-revolutiei</title>
+<style>
+
+:root {
+  --bg: #f6f0e7;
+  --paper: #fffaf3;
+  --paper-2: #ffffff;
+  --ink: #2f241c;
+  --title: #3c2a1e;
+  --muted: #5b4a3d;
+  --accent: #7a4f2a;
+  --accent-2: #9b6a3c;
+  --accent-soft: #f0e4d4;
+  --line: rgba(91, 62, 36, 0.18);
+  --line-strong: rgba(91, 62, 36, 0.34);
+  --outer-dark: #241208;
+  --outer-mid: #4a2a18;
+  --outer-warm: #7a4b2b;
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+  --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+    radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+}
+.page {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 34px 0 70px;
+}
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.back-link, .tag { display: inline-flex; align-items: center; border: 1px solid var(--line); background: rgba(255, 250, 243, 0.84); color: var(--title); border-radius: 999px; padding: 10px 15px; text-decoration: none; font-size: 15px; font-weight: 700; box-shadow: var(--shadow-small); }
+.back-link:hover { background: #fff6eb; }
+.hero, .section, .nav-card, .final-box { background: rgba(255, 250, 243, 0.96); border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow); }
+.hero { padding: 38px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.hero::after { content: var(--hero-year); position: absolute; right: 26px; bottom: -22px; font-size: 110px; font-weight: 900; letter-spacing: -4px; color: rgba(122, 79, 42, 0.08); pointer-events: none; }
+.eyebrow { margin: 0 0 8px; font-size: 16px; color: var(--accent); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; }
+h1 { margin: 0; font-size: clamp(38px, 5vw, 62px); line-height: 1.04; color: var(--title); letter-spacing: -1.4px; text-align: left; text-align-last: auto; }
+.subtitle { margin: 18px 0 0; max-width: 980px; font-size: 19px; line-height: 1.78; color: var(--muted); text-align: justify; text-align-last: left; }
+.summary-grid, .three-col, .two-col, .term-grid, .quick-grid, .cause-grid, .four-col { display: grid; gap: 14px; }
+.summary-grid { grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+.summary-card, .info-card, .wide-card, .term-card, .quick-card, .source-note, .micro-card, .warning-box { background: var(--paper-2); border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); text-align: justify; text-align-last: left; }
+.summary-card { padding: 16px; min-height: 132px; }
+.summary-card strong, .quick-card strong, .term-card strong, .micro-card strong { display: block; color: var(--title); font-size: 17px; margin-bottom: 8px; text-align: left; text-align-last: auto; }
+.summary-card span, .quick-card span, .term-card span, .micro-card span { display: block; color: var(--muted); font-size: 15.5px; line-height: 1.56; text-align: justify; text-align-last: left; }
+.nav-card { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 18px 20px; margin-bottom: 24px; }
+.nav-card b { color: var(--title); margin-right: 2px; }
+.nav-card a, .mini-btn { color: var(--title); background: var(--accent-soft); border: 1px solid rgba(91, 62, 36, 0.16); border-radius: 999px; text-decoration: none; padding: 8px 12px; font-weight: 700; font-size: 14px; cursor: pointer; font-family: inherit; }
+.nav-card a:hover, .mini-btn:hover { background: #e5d2bb; }
+.section { padding: 30px; margin-bottom: 24px; }
+h2 { margin: 0 0 14px; color: var(--title); font-size: clamp(28px, 3vw, 38px); line-height: 1.15; text-align: left; text-align-last: auto; }
+h3 { margin: 0 0 12px; color: var(--title); font-size: 22px; line-height: 1.22; text-align: left; text-align-last: auto; }
+h4 { margin: 16px 0 8px; color: var(--title); font-size: 18px; text-align: left; text-align-last: auto; }
+.section-intro, p, li, dd { font-size: 17px; line-height: 1.72; color: var(--muted); text-align: justify; text-align-last: left; hyphens: auto; }
+.section-intro { margin: 0 0 20px; max-width: 1000px; }
+.three-col { grid-template-columns: repeat(3, 1fr); }
+.two-col { grid-template-columns: repeat(2, 1fr); }
+.four-col { grid-template-columns: repeat(4, 1fr); }
+.cause-grid { grid-template-columns: 1.1fr 0.9fr; }
+.term-grid { grid-template-columns: repeat(4, 1fr); }
+.quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+.info-card, .wide-card, .term-card, .quick-card, .micro-card, .warning-box, .source-note { padding: 20px; }
+.wide-card { margin-top: 14px; }
+.wide-card p:last-child, .info-card p:last-child { margin-bottom: 0; }
+.clean, .number-list { margin: 0; padding-left: 22px; }
+.clean li, .number-list li { margin: 0 0 9px; padding-left: 2px; }
+.clean li:last-child, .number-list li:last-child { margin-bottom: 0; }
+.mini-title { display: inline; color: var(--title); font-weight: 800; background: transparent; border: 0; border-radius: 0; padding: 0; margin-right: 5px; white-space: normal; text-align: inherit; }
+.date-pill { display: inline-block; color: var(--title); font-weight: 800; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.13); border-radius: 999px; padding: 2px 9px; margin-right: 5px; white-space: nowrap; text-align: left; }
+.definition, .note { margin-top: 18px; background: #fff8ef; border: 1px solid rgba(122, 79, 42, 0.22); border-left: 6px solid rgba(122, 79, 42, 0.48); border-radius: 18px; padding: 18px 20px; color: var(--muted); font-size: 17px; line-height: 1.7; text-align: justify; text-align-last: left; }
+.definition strong, .note strong { color: var(--title); }
+details { background: #fffdf9; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); margin-top: 14px; overflow: hidden; }
+details[open] { background: #fffaf3; }
+summary { cursor: pointer; list-style: none; padding: 18px 20px; font-size: 19px; font-weight: 800; color: var(--title); display: flex; justify-content: space-between; align-items: center; gap: 18px; text-align: left; text-align-last: auto; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "Deschide"; color: var(--muted); font-size: 14px; font-weight: 700; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 999px; padding: 7px 11px; white-space: nowrap; }
+details[open] > summary::after { content: "Ascunde"; }
+.details-body { border-top: 1px solid rgba(91, 62, 36, 0.12); padding: 18px 20px 20px; text-align: justify; text-align-last: left; }
+.details-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.nested-details { margin-top: 10px; box-shadow: none; background: #ffffff; }
+.nested-details summary { font-size: 17px; padding: 14px 16px; }
+.key-line { display: grid; grid-template-columns: 220px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px dashed rgba(91, 62, 36, 0.18); }
+.key-line:last-child { border-bottom: 0; }
+.key-line strong { color: var(--title); text-align: left; text-align-last: auto; }
+.key-line span { color: var(--muted); line-height: 1.65; text-align: justify; text-align-last: left; }
+.timeline { position: relative; display: grid; gap: 14px; margin-top: 18px; }
+.event { display: grid; grid-template-columns: 132px 1fr; gap: 18px; align-items: stretch; background: #ffffff; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); overflow: hidden; }
+.date { background: linear-gradient(180deg, #7a4f2a, #5b351b); color: #fffaf3; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px; font-size: 18px; line-height: 1.25; font-weight: 900; letter-spacing: 0.2px; }
+.event > div:last-child { padding: 17px 18px 18px 0; text-align: justify; text-align-last: left; }
+.event h3 { margin-bottom: 6px; }
+.event p { margin: 0; }
+.small-muted { font-size: 15px; color: #725c49; line-height: 1.6; text-align: justify; text-align-last: left; }
+.warning-box { background: #fff7ec; border-color: rgba(122, 79, 42, 0.22); margin-top: 16px; }
+.final-box { padding: 28px; background: linear-gradient(135deg, #fffaf3, #f4e4d1); border-color: rgba(91, 62, 36, 0.25); }
+.final-box p { margin-bottom: 0; }
+.table-wrap { overflow-x: auto; margin-top: 14px; border-radius: 18px; border: 1px solid rgba(91,62,36,.14); background: #fff; box-shadow: var(--shadow-small); }
+table { width: 100%; border-collapse: collapse; min-width: 740px; }
+th, td { padding: 13px 14px; border-bottom: 1px solid rgba(91,62,36,.12); color: var(--muted); font-size: 16px; line-height: 1.55; vertical-align: top; text-align: justify; }
+th { background: #f3eadf; color: var(--title); text-align: left; font-weight: 800; }
+tr:last-child td { border-bottom: 0; }
+@media (max-width: 980px) {
+  .summary-grid, .three-col, .term-grid, .quick-grid, .four-col { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .cause-grid, .details-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .page { width: min(100% - 22px, 1180px); padding-top: 22px; }
+  .hero, .section, .final-box { padding: 22px; border-radius: 22px; }
+  .summary-grid, .term-grid, .quick-grid, .four-col { grid-template-columns: 1fr; }
+  .event { grid-template-columns: 1fr; }
+  .date { min-height: 66px; }
+  .event > div:last-child { padding: 0 16px 16px; }
+  .key-line { grid-template-columns: 1fr; gap: 6px; }
+  summary { align-items: flex-start; flex-direction: column; }
+  .hero::after { font-size: 82px; }
+}
+
+.related-card { display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:16px 20px; margin:-10px 0 24px; background:rgba(255,250,243,.90); border:1px solid var(--line); border-radius:22px; box-shadow:var(--shadow-small); }
+.related-card b { color:var(--title); }
+.related-card a { color:var(--title); background:#f3eadf; border:1px solid rgba(91,62,36,.16); border-radius:999px; text-decoration:none; padding:8px 12px; font-weight:700; font-size:14px; }
+.related-card a:hover { background:#e5d2bb; }
+.badge-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
+.badge { display:inline-flex; align-items:center; color:var(--title); background:#f3eadf; border:1px solid rgba(91,62,36,.14); border-radius:999px; padding:6px 10px; font-weight:700; font-size:14px; }
+blockquote { margin:16px 0 0; padding:16px 20px; background:#fff8ef; border-left:6px solid rgba(122,79,42,.48); border-radius:16px; color:var(--muted); font-size:17px; line-height:1.7; }
+.mini-table table { min-width:560px; }
+@media print {
+  body { background:#fff !important; }
+  body::before { display:none; }
+  .page { width:100%; padding:0; }
+  .topbar, .nav-card, .related-card { display:none !important; }
+  .hero, .section, .final-box { box-shadow:none; border:1px solid #cbb9a8; break-inside:avoid-page; }
+  details { break-inside:avoid-page; }
+  details > summary::after { display:none; }
+}
+
+
+@media (max-width: 680px) {
+  .subtitle, .section-intro, p, li, dd,
+  .summary-card span, .quick-card span, .term-card span, .micro-card span,
+  .details-body, .key-line span, .event > div:last-child, th, td,
+  .definition, .note, blockquote {
+    text-align: left;
+    text-align-last: auto;
+    hyphens: none;
+  }
+}
+
+
+td { text-align: left; text-align-last: auto; }
+
+  
+
+/* Extensii pentru seria „Civilizația bizantină” */
+.series-links { display:flex; gap:9px; flex-wrap:wrap; margin-top:20px; }
+.series-links a { color:var(--title); background:#fff; border:1px solid rgba(91,62,36,.16); border-radius:999px; padding:9px 13px; text-decoration:none; font-weight:800; box-shadow:0 8px 20px rgba(0,0,0,.10); }
+.series-links a[aria-current="page"] { background:var(--accent); color:#fffaf3; }
+.series-links a:hover { transform:translateY(-1px); }
+.quote-box { margin-top:15px; padding:18px 20px; background:#fffdf9; border:1px solid rgba(91,62,36,.15); border-left:6px solid var(--accent-2); border-radius:18px; color:var(--muted); font-size:17px; line-height:1.72; text-align:justify; text-align-last:left; }
+.step-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:18px; }
+.step-card { background:#fff; border:1px solid rgba(91,62,36,.14); border-radius:20px; padding:18px; box-shadow:var(--shadow-small); }
+.step-card::before { content:attr(data-step); display:inline-flex; width:34px; height:34px; align-items:center; justify-content:center; border-radius:50%; background:var(--accent); color:#fff; font-weight:900; margin-bottom:11px; }
+.step-card strong { display:block; color:var(--title); font-size:17px; margin-bottom:7px; }
+.step-card span { color:var(--muted); font-size:15.5px; line-height:1.58; }
+.status-strip { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:16px; }
+.status-item { background:linear-gradient(135deg,#fff,#fff7ec); border:1px solid rgba(91,62,36,.14); border-radius:18px; padding:16px; }
+.status-item b { display:block; color:var(--title); margin-bottom:6px; }
+.status-item span { color:var(--muted); line-height:1.55; font-size:15.5px; }
+footer { margin-top:24px; color:rgba(255,250,243,.80); text-align:center; font-size:14px; line-height:1.6; }
+@media (max-width:980px) { .step-grid { grid-template-columns:repeat(2,1fr); } .status-strip { grid-template-columns:1fr; } }
+@media (max-width:680px) { .step-grid { grid-template-columns:1fr; } .series-links a { width:100%; text-align:center; } h1 { font-size:clamp(34px,10vw,52px); } }
+
+
+/* Extensii pentru seria „Europa medievală” */
+.series-links{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}.series-links a{color:var(--title);background:#fff;border:1px solid rgba(91,62,36,.16);border-radius:999px;padding:9px 13px;text-decoration:none;font-weight:800;box-shadow:0 8px 20px rgba(0,0,0,.10)}.series-links a[aria-current="page"]{background:var(--accent);color:#fffaf3}.series-links a:hover{transform:translateY(-1px)}
+.chapter-banner{margin:18px 0;padding:18px 20px;border-radius:20px;background:linear-gradient(135deg,#fff7ec,#f0e4d4);border:1px solid rgba(91,62,36,.18);box-shadow:var(--shadow-small)}.chapter-banner strong{display:block;color:var(--title);font-size:20px;margin-bottom:6px}.chapter-banner span{display:block;color:var(--muted);font-size:16px;line-height:1.62}
+.fact-check{margin-top:16px;padding:18px 20px;background:#fff7ec;border:1px solid rgba(122,79,42,.26);border-left:6px solid #8a4c2a;border-radius:18px;color:var(--muted);font-size:16px;line-height:1.68}.fact-check strong{color:var(--title)}
+.catalogue{columns:3 260px;column-gap:18px;margin-top:12px}.catalogue-group{break-inside:avoid;background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:16px;margin:0 0 14px;box-shadow:var(--shadow-small)}.catalogue-group h4{margin:0 0 8px}.catalogue-group ul{margin:0;padding-left:20px}.catalogue-group li{font-size:15.5px;line-height:1.5;margin-bottom:5px}
+.verse{padding:16px 18px;margin:12px 0;background:#fffdf9;border-left:5px solid var(--accent-2);border-radius:0 16px 16px 0;color:var(--muted);font-style:italic;line-height:1.7}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px}.flow-item{position:relative;padding:16px;background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;box-shadow:var(--shadow-small)}.flow-item b{display:block;color:var(--title);margin-bottom:6px}.flow-item span{font-size:15px;color:var(--muted);line-height:1.5}.flow-item:not(:last-child)::after{content:'→';position:absolute;right:-14px;top:50%;transform:translateY(-50%);font-size:22px;color:var(--accent);font-weight:900;z-index:3}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}.badge{display:inline-flex;padding:6px 10px;border-radius:999px;background:#f3eadf;border:1px solid rgba(91,62,36,.13);color:var(--title);font-weight:800;font-size:13px}
+.source-map{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.source-map article{background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:17px;box-shadow:var(--shadow-small)}.source-map strong{display:block;color:var(--title);margin-bottom:6px}.source-map span{color:var(--muted);font-size:15.5px;line-height:1.55}
+footer{margin-top:24px;color:rgba(255,250,243,.80);text-align:center;font-size:14px;line-height:1.6}
+@media(max-width:980px){.flow{grid-template-columns:repeat(2,1fr)}.flow-item::after{display:none}.source-map{grid-template-columns:1fr}.catalogue{columns:2 240px}}
+@media(max-width:680px){.flow{grid-template-columns:1fr}.catalogue{columns:1}.series-links a{width:100%;text-align:center}h1{font-size:clamp(34px,10vw,52px)}}
+
+/* Extensii pentru seria „Revoluția Franceză” */
+.phase-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}.phase-card{background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:17px;box-shadow:var(--shadow-small)}.phase-card b{display:block;color:var(--title);font-size:17px;margin-bottom:6px}.phase-card span{display:block;color:var(--muted);font-size:15.5px;line-height:1.55}.document-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}.document-card{background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:20px;padding:20px;box-shadow:var(--shadow-small)}.document-card h3{margin-bottom:5px}.document-card .doc-meta{display:block;color:var(--accent);font-weight:800;font-size:14px;margin-bottom:10px}.article-list{counter-reset:art;list-style:none;margin:0;padding:0}.article-list li{counter-increment:art;position:relative;padding:12px 12px 12px 54px;margin:0;border-bottom:1px dashed rgba(91,62,36,.16)}.article-list li:last-child{border-bottom:0}.article-list li::before{content:counter(art);position:absolute;left:8px;top:11px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#f3eadf;color:var(--title);font-weight:900}.axis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.axis-card{background:linear-gradient(135deg,#fff,#fff8ef);border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:17px;box-shadow:var(--shadow-small)}.axis-card strong{display:block;color:var(--title);margin-bottom:6px}.axis-card span{color:var(--muted);font-size:15.5px;line-height:1.55}.red-note{margin-top:16px;padding:18px 20px;background:#fff6ef;border:1px solid rgba(132,52,38,.24);border-left:6px solid #833d2e;border-radius:18px;color:var(--muted);font-size:16.5px;line-height:1.68}.red-note strong{color:var(--title)}.quote-line{margin:12px 0;padding:15px 18px;background:#fffdf9;border-left:5px solid var(--accent-2);border-radius:0 16px 16px 0;color:var(--muted);font-style:italic;line-height:1.7}.people-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px}.person-chip{background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:16px;padding:14px;box-shadow:var(--shadow-small)}.person-chip b{display:block;color:var(--title);margin-bottom:5px}.person-chip span{font-size:14.5px;line-height:1.48;color:var(--muted)}
+@media(max-width:980px){.phase-grid{grid-template-columns:repeat(2,1fr)}.document-grid,.axis-grid{grid-template-columns:1fr}.people-strip{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:680px){.phase-grid,.document-grid,.axis-grid,.people-strip{grid-template-columns:1fr}.article-list li{padding-left:48px}}
+</style>
+</head>
+<body id="top" style="--hero-year:'1789';">
+<main class="page">
+<div class="topbar"><a class="back-link" href="index.html">← Înapoi la materiale</a><span class="tag">Material ajutător · Istorie universală · Revoluția Franceză</span></div>
+<section class="hero"><p class="eyebrow">Istorie universală · Epoca modernă · Franța secolului al XVIII-lea</p><h1>Revoluția Franceză: cauzele revoluției</h1><p class="subtitle">Vechiul Regim, societatea pe stări, criza fiscală și de subzistență, Iluminismul, exemplul american, reformele eșuate și transformarea Stărilor Generale într-o Adunare a națiunii.</p><div class="series-links"><a href="univ-revolutia-franceza-cauzele-revolutiei.html" aria-current="page">Cauzele revoluției</a><a href="univ-revolutia-franceza-desfasurarea-revolutiei.html">Desfășurarea revoluției</a><a href="univ-revolutia-franceza-documente-revolutionare.html">Documente revoluționare</a></div></section>
+<div class="related-card"><b>Seria Revoluția Franceză:</b><a href="univ-revolutia-franceza-cauzele-revolutiei.html" aria-current="page">Cauzele revoluției</a><a href="univ-revolutia-franceza-desfasurarea-revolutiei.html">Desfășurarea revoluției</a><a href="univ-revolutia-franceza-documente-revolutionare.html">Documente revoluționare</a></div>
+<nav class="nav-card" aria-label="Cuprinsul paginii"><b>Cuprins:</b><a href="#regim">Vechiul Regim</a><a href="#societate">Stările</a><a href="#fiscal">Criza fiscală</a><a href="#economie">Economie</a><a href="#politica">Politică</a><a href="#idei">Idei</a><a href="#america">America</a><a href="#reforme">Reforme eșuate</a><a href="#stari">Stările Generale</a><a href="#iunie">Iunie 1789</a><a href="#sinteza">Sinteză</a><button class="mini-btn" type="button" data-action="open">Deschide explicațiile</button><button class="mini-btn" type="button" data-action="close">Închide explicațiile</button></nav>
+
+<section class="section" id="regim">
+<h2>I. Vechiul Regim: cadrul general al crizei</h2>
+<p class="section-intro">Revoluția nu a izbucnit dintr-o singură cauză. Ea a rezultat din suprapunerea unei monarhii absolute în dificultate, a unei societăți juridic inegale, a unui stat aproape insolvabil, a scumpirii alimentelor și a unei culturi politice care începuse să conteste privilegiile și dreptul divin.</p>
+<div class="summary-grid"><article class="summary-card"><strong>Ordine politică</strong><span>Monarhie de drept divin, curte centralizată și instituții reprezentative convocate rar.</span></article><article class="summary-card"><strong>Ordine socială</strong><span>Trei stări cu obligații și privilegii diferite; majoritatea suporta povara fiscală.</span></article><article class="summary-card"><strong>Ordine economică</strong><span>Agricultură dominantă, drepturi feudale, piețe în dezvoltare și finanțe publice fragile.</span></article><article class="summary-card"><strong>Criză culturală</strong><span>Iluminismul, presa și exemplul american făceau arbitrarul mai greu de justificat.</span></article></div>
+<details open><summary>Când începe și când se încheie Vechiul Regim?</summary><div class="details-body"><p>Nu există o dată unică. Începutul poate fi plasat în secolele XVI–XVII, odată cu consolidarea monarhiei Bourbonilor după urcarea pe tron a lui Henric IV în 1589. Sfârșitul este gradual: privilegiile feudale sunt atacate în 1789, nobilimea ereditară este abolită în 1790, monarhia constituțională apare în 1791, monarhia este desființată în 1792, iar transformările revoluționare și napoleoniene continuă până în 1815.</p></div></details>
+<div class="definition"><strong>Absolutismul francez:</strong> formulele atribuite lui Ludovic XIV — „Statul sunt eu” — și lui Ludovic XV — „După mine, potopul” — exprimă imaginea unei puteri concentrate în persoana regelui. Ele sunt mai ales formule simbolice; în practică, monarhia trebuia să negocieze cu parlamentele judiciare, corpurile privilegiate și administrațiile locale.</div>
+</section>
+
+<section class="section" id="societate">
+<h2>II. Societatea pe stări și inegalitatea juridică</h2>
+<p class="section-intro">Franța avea aproximativ 26–28 de milioane de locuitori la sfârșitul anilor 1780. Ordinea socială era definită juridic prin apartenența la una dintre cele trei stări, nu doar prin avere.</p>
+<div class="three-col"><article class="info-card"><h3>Starea I — Clerul</h3><p>De la episcopi și abați bogați până la preoți de parohie. Biserica deținea pământ, încasa dijma și beneficia de scutiri fiscale, dar clerul inferior împărtășea adesea nemulțumirile comunităților rurale.</p></article><article class="info-card"><h3>Starea a II-a — Nobilimea</h3><p>Nobilimea de spadă, asociată tradiției militare, și nobilimea de robă, legată de magistraturi și funcții cumpărate. Deținea privilegii onorifice, funcții rezervate și drepturi senioriale.</p></article><article class="info-card"><h3>Starea a III-a</h3><p>Peste 95% din populație: burghezi, profesioniști, negustori, meșteșugari, muncitori urbani și țărani. Grup foarte eterogen, unit de excluderea de la privilegiile primelor două stări.</p></article></div>
+<div class="fact-check"><strong>Corecție față de ordinea din documentul de curs:</strong> în clasificarea tradițională, Starea I era clerul, Starea a II-a nobilimea, iar Starea a III-a restul populației. Nobilimea nu provenea pur și simplu din franci, iar populația neprivilegiată din galo-romani; aceasta este o schemă polemică folosită uneori în epocă, nu o explicație istorică literală.</div>
+<details><summary>De ce burghezia și țărănimea aveau revendicări diferite?</summary><div class="details-body"><div class="two-col"><article class="info-card"><h3>Burghezia</h3><ul class="clean"><li>acces la funcții și demnități;</li><li>egalitate juridică și fiscală;</li><li>libertatea comerțului și protecția proprietății;</li><li>constituție și reprezentare politică.</li></ul></article><article class="info-card"><h3>Țărănimea</h3><ul class="clean"><li>reducerea impozitelor și a dijmei;</li><li>abolirea obligațiilor și taxelor senioriale;</li><li>acces la pământ și eliminarea monopolurilor;</li><li>protecție împotriva foametei și scumpirii cerealelor.</li></ul></article></div><p>Alianța din 1789 a fost puternică, dar nu permanentă: după abolirea privilegiilor, proprietarii și populația săracă au avut interese economice tot mai divergente.</p></div></details>
+</section>
+
+<section class="section" id="fiscal">
+<h2>III. Criza fiscală și falimentul monarhiei</h2>
+<p class="section-intro">Statul francez nu era lipsit de resurse, dar sistemul fiscal era inegal, costisitor și incapabil să transforme bogăția țării în venituri publice suficiente. Războaiele și dobânzile datoriei consumau o mare parte a bugetului.</p>
+<div class="axis-grid"><article class="axis-card"><strong>Datorie de război</strong><span>Războiul de Șapte Ani și intervenția în Revoluția Americană au adus prestigiu diplomatic limitat, dar datorii enorme.</span></article><article class="axis-card"><strong>Impozitare inegală</strong><span>Privilegiile, diferențele provinciale și fermierii fiscali împiedicau o repartizare uniformă a sarcinii.</span></article><article class="axis-card"><strong>Credit compromis</strong><span>Împrumuturile noi necesitau încredere; refuzul privilegiilor de a accepta reforma a blocat finanțarea statului.</span></article></div>
+<details open><summary>Necker și imaginea cheltuielilor publice</summary><div class="details-body"><p>Documentul de curs reproduce o comparație în care Curtea Regală apare cu aproximativ 25,7 milioane de livre, față de 1,4 milioane pentru poliție, pompieri, iluminat și străzi, 270.000 pentru academii și câte 100.000 pentru biblioteci și imprimerii. Cifrele ilustrează contrastul politic dintre luxul curții și utilitățile publice.</p><p>Jacques Necker a publicat în 1781 <em>Compte rendu au roi</em>, primul raport bugetar destinat publicului. El a popularizat dezbaterea asupra finanțelor, dar a prezentat incomplet costurile extraordinare și datoria, contribuind la iluzia că problema putea fi rezolvată fără reformă structurală.</p></div></details>
+<div class="warning-box"><h3>De ce nu putea regele să impună pur și simplu noi taxe?</h3><p>Monarhia era absolută în teorie, dar noile impozite trebuiau înregistrate de parlamentele judiciare, iar extinderea lor asupra privilegiaților întâmpina opoziție. În 1787–1788, conflictul cu Adunarea Notabililor și Parlementul din Paris a făcut inevitabilă convocarea Stărilor Generale.</p></div>
+</section>
+
+<section class="section" id="economie">
+<h2>IV. Criza economică, demografică și de subzistență</h2>
+<div class="two-col"><article class="info-card"><h3>Recolte și prețuri</h3><p>Recoltele slabe din 1787–1788, iarna severă din 1788–1789 și perturbarea aprovizionării au ridicat prețul pâinii. Pentru populația urbană săracă, pâinea putea absorbi cea mai mare parte a veniturilor.</p></article><article class="info-card"><h3>Șomaj și consum</h3><p>Când hrana devenea mai scumpă, gospodăriile cumpărau mai puține produse manufacturate. Atelierele concediau muncitori, iar criza agrară se transforma într-o criză urbană și politică.</p></article></div>
+<div class="phase-grid"><article class="phase-card"><b>Creștere demografică</b><span>Mai mulți oameni concurau pentru pământ, locuri de muncă și cereale.</span></article><article class="phase-card"><b>Taxe multiple</b><span>Impozite regale, dijmă ecleziastică, rente și obligații senioriale.</span></article><article class="phase-card"><b>Piață tensionată</b><span>Liberalizarea cerealelor era percepută ca abandon al obligației regelui de a asigura pâinea.</span></article><article class="phase-card"><b>Politizarea foametei</b><span>Scumpirea era interpretată prin zvonuri despre speculanți și „complotul foametei”.</span></article></div>
+<details><summary>Războiul de Șapte Ani și pierderea prestigiului</summary><div class="details-body"><p>Înfrângerea din 1763 a redus imperiul colonial francez din America de Nord și India. Dorința de revanșă a contribuit la sprijinirea coloniilor americane împotriva Marii Britanii. Victoria diplomatică din 1783 nu a recuperat echilibrul financiar: costurile intervenției au adâncit deficitul.</p></div></details>
+</section>
+
+<section class="section" id="politica">
+<h2>V. Criza politică și lipsa unei reprezentări regulate</h2>
+<p class="section-intro">Stările Generale nu mai fuseseră convocate din 1614. Între timp, societatea se transformase, dar sistemul politic nu oferise o instituție națională permanentă prin care noile grupuri sociale să negocieze fiscalitatea și legislația.</p>
+<div class="three-col"><article class="info-card"><h3>Monarhia</h3><p>Ludovic XVI era dispus la unele reforme, dar indecis în conflictele cu privilegiații, miniștrii și curtea. Autoritatea sa oscila între concesii și retrageri.</p></article><article class="info-card"><h3>Parlamentele</h3><p>Curți suverane care înregistrau edictele. Se prezentau ca apărătoare ale libertăților, dar apărau și privilegiile juridice ale elitelor.</p></article><article class="info-card"><h3>Opinie publică</h3><p>Pamfletele, ziarele, saloanele, cafenelele și scandalurile curții transformau deciziile regale în subiecte ale unei dezbateri naționale.</p></article></div>
+<div class="red-note"><strong>Criza de legitimitate:</strong> când guvernul a cerut sacrificii fiscale, privilegiații au cerut consimțământ reprezentativ. Odată acceptat principiul reprezentării, Starea a III-a a putut întreba de ce națiunea ar trebui să voteze pe ordine, nu pe deputați.</div>
+</section>
+
+<section class="section" id="idei">
+<h2>VI. Iluminismul și noul limbaj politic</h2>
+<div class="table-wrap"><table><thead><tr><th>Idee</th><th>Autor / tradiție</th><th>Efect revoluționar</th></tr></thead><tbody><tr><td>Drepturi naturale</td><td>Locke, drept natural</td><td>Individul are drepturi anterioare statului.</td></tr><tr><td>Separarea puterilor</td><td>Montesquieu</td><td>Arbitrarul trebuie limitat instituțional.</td></tr><tr><td>Suveranitatea națiunii / poporului</td><td>Rousseau, Sieyès</td><td>Autoritatea nu derivă exclusiv din dinastie.</td></tr><tr><td>Toleranță și critică</td><td>Voltaire, enciclopediștii</td><td>Contestarea cenzurii, fanatismului și privilegiilor clericale.</td></tr><tr><td>Utilitate și progres</td><td>Fiziocrați, reformatori</td><td>Instituțiile trebuie evaluate după binele public.</td></tr></tbody></table></div>
+<details open><summary>Iluminismul a „provocat” singur Revoluția?</summary><div class="details-body"><p>Nu. Ideile nu ar fi produs revoluția fără falimentul fiscal, foamete și blocaj instituțional. Ele au oferit însă vocabularul pentru a transforma nemulțumirile în principii universale: națiune, cetățean, drepturi, constituție și reprezentare.</p></div></details>
+</section>
+
+<section class="section" id="america">
+<h2>VII. Exemplul american</h2>
+<div class="timeline"><article class="event"><div class="date">1776</div><div><h3>Declarația de Independență</h3><p>Drepturile inalienabile și consimțământul guvernaților devin formule politice cu impact european.</p></div></article><article class="event"><div class="date">1778–1783</div><div><h3>Intervenția franceză</h3><p>Soldați și ofițeri francezi, între care La Fayette, întâlnesc instituții și discursuri republicane.</p></div></article><article class="event"><div class="date">1787</div><div><h3>Constituția SUA</h3><p>O constituție scrisă și separarea puterilor demonstrează că principiile iluministe pot organiza un stat.</p></div></article><article class="event"><div class="date">1783–1788</div><div><h3>Costul financiar</h3><p>Războiul agravează datoria franceză și apropie criza fiscală decisivă.</p></div></article></div>
+<div class="definition"><strong>Dublu efect:</strong> revoluția americană a furnizat Franței atât un model intelectual al libertății, cât și o povară financiară care a grăbit colapsul Vechiului Regim.</div>
+</section>
+
+<section class="section" id="reforme">
+<h2>VIII. Reformele eșuate: Turgot, Necker, Calonne și Brienne</h2>
+<div class="table-wrap"><table><thead><tr><th>Ministru</th><th>Program</th><th>Obstacol / rezultat</th></tr></thead><tbody><tr><td>Turgot (1774–1776)</td><td>liberalizarea cerealelor, reducerea privilegiilor corporative, impozit funciar mai echitabil</td><td>opoziția curții, breslelor și privilegiaților; demis.</td></tr><tr><td>Necker (1777–1781; 1788–1789)</td><td>împrumuturi, transparență bugetară, economii și popularizarea reformei</td><td>nu rezolvă structura fiscală; devine simbol al încrederii publice.</td></tr><tr><td>Calonne (1783–1787)</td><td>impozit funciar universal, adunări provinciale, stimularea economiei</td><td>Adunarea Notabililor refuză să legitimeze planul.</td></tr><tr><td>Brienne (1787–1788)</td><td>continuarea reformei și confruntarea cu parlamentele</td><td>creditul se prăbușește; acceptă convocarea Stărilor Generale.</td></tr></tbody></table></div>
+<div class="note"><strong>Paradox:</strong> nu lipsa proiectelor a distrus monarhia, ci incapacitatea ei de a impune sau negocia reforma în cadrul instituțiilor existente.</div>
+</section>
+
+<section class="section" id="stari">
+<h2>IX. Convocarea Stărilor Generale, 1788–1789</h2>
+<p class="section-intro">Ludovic XVI a anunțat convocarea Stărilor Generale pentru 1789. Campania electorală a transformat comunitățile în spații de dezbatere și a produs mii de <em>cahiers de doléances</em> — caiete de plângeri și revendicări.</p>
+<div class="two-col"><article class="info-card"><h3>Revendicări frecvente</h3><ul class="clean"><li>constituție și legi fundamentale;</li><li>votarea regulată a impozitelor;</li><li>egalitate fiscală și desființarea privilegiilor;</li><li>reforma justiției și administrației;</li><li>libertatea presei și protecția drepturilor;</li><li>rezolvarea obligațiilor feudale și a problemei agrare.</li></ul></article><article class="info-card"><h3>Problema votului</h3><p>Starea a III-a a primit un număr dublu de deputați, dar nu era clar dacă votul urma să fie pe cap de deputat sau pe stare. Votul pe stare ar fi permis clerului și nobilimii să domine cu două voturi contra unu.</p></article></div>
+<div class="quote-line">Sieyès sintetiza ruptura: Starea a III-a este „totul” în societate, „nimic” în ordinea politică și dorește „să devină ceva”.</div>
+<div class="timeline"><article class="event"><div class="date">5 mai 1789</div><div><h3>Deschiderea la Versailles</h3><p>Regele cere soluționarea crizei financiare, dar deputații transformă reuniunea într-o dezbatere asupra suveranității.</p></div></article><article class="event"><div class="date">17 iunie</div><div><h3>Adunarea Națională</h3><p>Deputații Stării a III-a, sprijiniți de o parte a clerului, se declară reprezentanții națiunii.</p></div></article><article class="event"><div class="date">20 iunie</div><div><h3>Jurământul din Sala Jocului cu Mingea</h3><p>Găsind sala obișnuită închisă, deputații jură să nu se despartă până nu dau Franței o constituție.</p></div></article><article class="event"><div class="date">27 iunie</div><div><h3>Unirea ordinelor</h3><p>Regele cere clerului și nobilimii să se alăture Adunării, care devine Constituantă.</p></div></article></div>
+</section>
+
+<section class="section" id="iunie">
+<h2>X. De la criză constituțională la insurecție</h2>
+<div class="three-col"><article class="info-card"><h3>Trupe în jurul Parisului</h3><p>Concentrarea regimentelor și teama unei dizolvări a Adunării amplifică zvonurile despre o lovitură regală.</p></article><article class="info-card"><h3>Demiterea lui Necker</h3><p>La 11 iulie 1789, îndepărtarea ministrului popular este interpretată drept început al represiunii.</p></article><article class="info-card"><h3>Înarmarea Parisului</h3><p>Mulțimea caută arme la Hôtel des Invalides și pulbere la Bastilia; apare o miliție cetățenească, viitoarea Gardă Națională.</p></article></div>
+<div class="timeline"><article class="event"><div class="date">14 iulie 1789</div><div><h3>Cucerirea Bastiliei</h3><p>Fortăreața-închisoare este asaltată. Era slab populată, dar simboliza detenția arbitrară și absolutismul. Demolarea ei începe imediat după cădere.</p></div></article><article class="event"><div class="date">iulie–august</div><div><h3>Marea Spaimă</h3><p>Zvonurile despre bande și comploturi aristocratice provoacă atacuri asupra castelelor și arhivelor senioriale.</p></div></article></div>
+<div class="final-box"><h2>Pragul revoluției</h2><p>Până la Bastilia, criza era fiscală și constituțională. După 14 iulie și Marea Spaimă, puterea populară urbană și rurală a intrat în proces, obligând Adunarea să desființeze structuri ale Vechiului Regim.</p></div>
+</section>
+
+<section class="section" id="sinteza">
+<h2>XI. Sinteza cauzelor</h2>
+<div class="flow"><div class="flow-item"><b>Inegalitate</b><span>Privilegii, taxe și drepturi feudale.</span></div><div class="flow-item"><b>Datorie</b><span>Războaie, dobânzi și credit epuizat.</span></div><div class="flow-item"><b>Subzistență</b><span>Recolte slabe, pâine scumpă, șomaj.</span></div><div class="flow-item"><b>Idei</b><span>Drepturi, națiune, constituție.</span></div><div class="flow-item"><b>Blocaj</b><span>Stările Generale și disputa votului.</span></div></div>
+<div class="final-box"><h3>Concluzie</h3><p>Revoluția Franceză a început când statul nu a mai putut împrumuta bani fără reformă, privilegiații nu au acceptat egalitatea fiscală, iar reprezentanții Stării a III-a au transformat problema bugetului într-o problemă de suveranitate. Criza pâinii și mobilizarea populară au făcut ruptura ireversibilă.</p></div>
+</section>
+
+<footer>Material amplu și corectat istoric · Seria „Revoluția Franceză”</footer>
+</main>
+<script>
+const openBtn=document.querySelector('[data-action="open"]');const closeBtn=document.querySelector('[data-action="close"]');
+if(openBtn)openBtn.addEventListener('click',()=>document.querySelectorAll('details').forEach(d=>d.open=true));
+if(closeBtn)closeBtn.addEventListener('click',()=>document.querySelectorAll('details').forEach(d=>d.open=false));
+</script>
+</body></html>
