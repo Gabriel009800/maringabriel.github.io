@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+
+<html lang="ro">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>romania-comunista-instaurarea-regimului</title>
+<style>
+    :root {
+      --bg: #171411;
+      --paper: #f4ead7;
+      --paper-2: #fff7e8;
+      --paper-3: #fffdf7;
+      --ink: #211915;
+      --muted: #6c5b4f;
+      --accent: #b85c38;
+      --accent-dark: #74351f;
+      --gold: #d7a94f;
+      --green: #586b4d;
+      --red: #8d2f24;
+      --blue: #415a77;
+      --violet: #5f4a77;
+      --line: rgba(33, 25, 21, 0.18);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 15% 8%, rgba(216, 151, 71, 0.22), transparent 35%),
+        radial-gradient(circle at 92% 4%, rgba(141, 47, 36, 0.22), transparent 30%),
+        radial-gradient(circle at 45% 98%, rgba(65, 90, 119, 0.18), transparent 34%),
+        linear-gradient(135deg, #171411 0%, #2c241d 50%, #16120f 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.16;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mix-blend-mode: screen;
+    }
+
+    .page {
+      position: relative;
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+      z-index: 1;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .back-link,
+    .material-tag {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 243, 0.84);
+      color: #3c2a1e;
+      border-radius: 999px;
+      padding: 10px 15px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.25;
+      box-shadow: 0 8px 20px rgba(69, 46, 25, 0.10);
+    }
+
+    .back-link:hover { background: #fff6eb; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      background:
+        linear-gradient(120deg, rgba(255, 247, 232, 0.97), rgba(244, 234, 215, 0.94)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='760' height='420' viewBox='0 0 760 420'%3E%3Cg fill='none' stroke='%2374351f' stroke-opacity='.16' stroke-width='2'%3E%3Cpath d='M50 350C170 250 245 390 395 310s195-38 315-120'/%3E%3Cpath d='M0 185c100-36 170 30 260-10s200-88 430-18'/%3E%3Cpath d='M95 80c145 90 260 10 380 50 90 30 130 102 220 82'/%3E%3Cpath d='M110 70h95v250h-95zM260 95h95v225h-95zM410 125h95v195h-95zM560 80h95v240h-95z'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: cover;
+      padding: clamp(34px, 5vw, 70px);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .hero::after {
+      content: "1944–1948";
+      position: absolute;
+      right: -18px;
+      bottom: -24px;
+      font-size: clamp(3.5rem, 10vw, 9rem);
+      line-height: 0.8;
+      color: rgba(116, 53, 31, 0.09);
+      font-weight: 900;
+      letter-spacing: -0.08em;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 16px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(184, 92, 56, 0.12);
+      color: var(--accent-dark);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-weight: 750;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      max-width: 980px;
+      font-size: clamp(2.55rem, 6.3vw, 5.8rem);
+      line-height: 0.92;
+      letter-spacing: -0.07em;
+      color: var(--ink);
+    }
+
+    .subtitle {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 24px 0 0;
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      line-height: 1.65;
+      color: var(--muted);
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .stat-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.48);
+      border: 1px solid rgba(116, 53, 31, 0.14);
+      min-height: 116px;
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 1.45rem;
+      line-height: 1.05;
+      color: var(--accent-dark);
+      margin-bottom: 8px;
+    }
+
+    .stat-card span {
+      display: block;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.42;
+      color: var(--muted);
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    .toc {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(244, 234, 215, 0.88);
+      box-shadow: 0 14px 42px rgba(0, 0, 0, 0.20);
+      border: 1px solid rgba(255, 255, 255, 0.38);
+    }
+
+    .toc h2 {
+      margin: 0 0 12px;
+      font-size: 1.28rem;
+      color: var(--accent-dark);
+      letter-spacing: -0.03em;
+    }
+
+    .toc-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+
+
+    .toc-detailed {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .toc-card {
+      padding: 12px;
+      border-radius: 18px;
+      background: rgba(255, 247, 232, 0.78);
+      border: 1px solid rgba(116, 53, 31, 0.14);
+    }
+
+    .toc-card .toc-main {
+      width: 100%;
+      justify-content: flex-start;
+      border-radius: 14px;
+      padding: 10px 12px;
+      color: var(--accent-dark);
+      background: rgba(184, 92, 56, 0.10);
+      border-color: rgba(184, 92, 56, 0.22);
+      font-size: 0.95rem;
+    }
+
+    .toc-sub {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 9px;
+    }
+
+    .toc-sub a {
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 0.78rem;
+      font-weight: 650;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.52);
+    }
+
+    .toc-sub a:hover {
+      color: var(--accent-dark);
+      background: rgba(215, 169, 79, 0.16);
+    }
+
+    .toc a {
+      display: inline-flex;
+      border: 1px solid rgba(116, 53, 31, 0.16);
+      border-radius: 999px;
+      padding: 9px 12px;
+      text-decoration: none;
+      color: var(--ink);
+      background: rgba(255, 247, 232, 0.86);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .toc a:hover {
+      background: rgba(184, 92, 56, 0.12);
+      color: var(--accent-dark);
+    }
+
+    .panel {
+      margin-top: 24px;
+      border-radius: 30px;
+      padding: clamp(22px, 4vw, 42px);
+      background: rgba(244, 234, 215, 0.96);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.36);
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 24px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.75rem, 3vw, 3rem);
+      letter-spacing: -0.045em;
+      line-height: 1;
+      color: var(--accent-dark);
+    }
+
+    .panel-note {
+      margin: 0;
+      max-width: 520px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.95rem;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .content-grid.three { grid-template-columns: repeat(3, 1fr); }
+    .content-grid.one { grid-template-columns: 1fr; }
+
+    .note-card,
+    .timeline-content,
+    .summary-card,
+    .quote-card {
+      padding: 20px;
+      border-radius: 22px;
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(33, 25, 21, 0.06);
+    }
+
+    .note-card.soft { background: rgba(244, 234, 215, 0.62); }
+    .note-card.full, .quote-card.full { grid-column: 1 / -1; }
+
+    .note-card h3,
+    .timeline-content h3,
+    .summary-card h3,
+    .quote-card h3 {
+      margin: 0 0 12px;
+      color: var(--accent-dark);
+      font-size: 1.28rem;
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+    }
+
+    .note-card h4,
+    .quote-card h4 {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 14px;
+      color: var(--accent-dark);
+      font-size: 1.12rem;
+      letter-spacing: -0.02em;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 30px;
+      height: 30px;
+      padding: 0 8px;
+      border-radius: 999px;
+      background: rgba(184, 92, 56, 0.13);
+      color: var(--accent-dark);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .tag.green { background: rgba(88, 107, 77, 0.16); color: #405235; }
+    .tag.blue { background: rgba(65, 90, 119, 0.15); color: var(--blue); }
+    .tag.red { background: rgba(141, 47, 36, 0.12); color: var(--red); }
+    .tag.gold { background: rgba(215, 169, 79, 0.2); color: #755219; }
+    .tag.violet { background: rgba(95, 74, 119, 0.14); color: var(--violet); }
+
+    p {
+      margin: 0 0 12px;
+      line-height: 1.58;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .note-card p,
+    .summary-card p,
+    .timeline-content p,
+    .quote-card p,
+    li {
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    ul, ol { margin: 0; padding-left: 1.2rem; }
+    li { margin: 8px 0; line-height: 1.52; }
+    li::marker { color: var(--accent); }
+
+    .callout {
+      margin-top: 16px;
+      padding: 16px 18px;
+      border-left: 5px solid var(--accent);
+      border-radius: 16px;
+      background: rgba(184, 92, 56, 0.1);
+      color: var(--accent-dark);
+      line-height: 1.55;
+      font-weight: 700;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .callout.green {
+      border-left-color: var(--green);
+      background: rgba(88, 107, 77, 0.12);
+      color: #405235;
+    }
+
+    .callout.blue {
+      border-left-color: var(--blue);
+      background: rgba(65, 90, 119, 0.1);
+      color: var(--blue);
+    }
+
+    .callout.red {
+      border-left-color: var(--red);
+      background: rgba(141, 47, 36, 0.1);
+      color: var(--red);
+    }
+
+    .ribbon {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .ribbon-item {
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255,255,255,0.45);
+      border: 1px solid rgba(116, 53, 31, 0.12);
+    }
+
+    .ribbon-item strong {
+      display: block;
+      color: var(--accent-dark);
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+    }
+
+    .ribbon-item span {
+      display: block;
+      color: var(--muted);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.88rem;
+      line-height: 1.35;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    .split-title {
+      margin: 28px 0 14px;
+      color: var(--accent-dark);
+      font-size: clamp(1.35rem, 2vw, 2rem);
+      letter-spacing: -0.035em;
+    }
+
+    .event-stack { display: grid; gap: 12px; }
+
+    .event {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 16px;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 247, 232, 0.88);
+      border: 1px solid var(--line);
+    }
+
+    .event-date {
+      color: var(--accent-dark);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.18;
+    }
+
+    .event-text {
+      margin: 0;
+      color: var(--ink);
+      line-height: 1.5;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .point-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .point-card {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 247, 232, 0.92);
+      border: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .point-no {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(184, 92, 56, 0.13);
+      color: var(--accent-dark);
+      font-weight: 900;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .point-card p { margin: 0; text-align: justify; line-height: 1.48; }
+
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .data-card {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 247, 232, 0.9);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 24px rgba(33, 25, 21, 0.05);
+    }
+
+    .data-card strong {
+      display: block;
+      color: var(--accent-dark);
+      font-size: 1.45rem;
+      line-height: 1.05;
+      margin-bottom: 7px;
+      letter-spacing: -0.035em;
+    }
+
+    .data-card span {
+      display: block;
+      color: var(--muted);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.42;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 12px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 19px;
+      top: 8px;
+      bottom: 8px;
+      width: 4px;
+      border-radius: 999px;
+      background: linear-gradient(var(--red), var(--accent), var(--gold), var(--green), var(--blue));
+    }
+
+    .timeline-row {
+      position: relative;
+      display: grid;
+      grid-template-columns: 138px 1fr;
+      gap: 16px;
+      padding-left: 48px;
+    }
+
+    .timeline-row::before {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 18px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--paper-2);
+      border: 5px solid var(--accent);
+      z-index: 1;
+    }
+
+    .timeline-date {
+      color: var(--accent-dark);
+      font-weight: 900;
+      line-height: 1.2;
+      padding-top: 13px;
+    }
+
+    .timeline-content {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+    }
+
+    .timeline-content strong {
+      display: block;
+      color: var(--accent-dark);
+      margin-bottom: 6px;
+      font-size: 1.05rem;
+    }
+
+    .timeline-content p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.48;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: var(--paper-2);
+      margin-top: 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    th {
+      color: var(--accent-dark);
+      background: rgba(184, 92, 56, 0.10);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    td {
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .footer {
+      color: rgba(244, 234, 215, 0.78);
+      text-align: center;
+      padding: 28px 12px 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 1040px) {
+      .content-grid.three,
+      .ribbon { grid-template-columns: repeat(2, 1fr); }
+      .hero-grid { grid-template-columns: repeat(2, 1fr); }
+      .point-grid { grid-template-columns: 1fr; }
+      .data-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 820px) {
+      .content-grid,
+      .content-grid.three,
+      .ribbon { grid-template-columns: 1fr; }
+
+      .event,
+      .timeline-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .timeline-date { padding-top: 0; }
+    }
+
+    @media (max-width: 720px) {
+      .page { width: min(100% - 20px, 1180px); padding-top: 12px; }
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .hero { border-radius: 24px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .panel-header { align-items: flex-start; flex-direction: column; }
+      .point-card { grid-template-columns: 1fr; }
+      .data-grid { grid-template-columns: 1fr; }
+    }
+
+
+
+    @media (max-width: 820px) {
+      .toc-detailed { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      body { background: white !important; }
+      body::before, .topbar, .footer, .toc { display: none !important; }
+      .page { width: 100%; padding: 0; }
+      .hero, .panel, .note-card, .summary-card, .timeline-content { box-shadow: none; }
+      .panel, .hero { break-inside: avoid; }
+      .timeline-row, .note-card { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+<main class="page">
+<div class="topbar">
+<a class="back-link" href="evaluare_cu_material_romania_comunista.html">← Înapoi la materiale</a>
+<span class="material-tag">Material ajutător · Istoria României · Regimul comunist</span>
+</div>
+<header class="hero">
+<p class="eyebrow">România comunistă · instaurarea regimului</p>
+<h1>Instaurarea regimului comunist în România</h1>
+<p class="subtitle">
+        Comunizarea României nu s-a produs într-o singură zi. Ea a fost un proces etapizat, început sub presiunea militară sovietică din 1944, continuat prin control politic, propagandă, epurări, fraudă electorală și eliminarea opoziției, apoi consolidat prin abolirea monarhiei, Constituția din 1948, naționalizare, colectivizare, subordonarea culturii, controlul cultelor și crearea aparatului represiv.
+      </p>
+<section aria-label="Repere rapide" class="hero-grid">
+<article class="stat-card"><strong>23 aug. 1944</strong><span>România rupe alianța cu Germania nazistă, iar regele Mihai îl arestează pe Ion Antonescu.</span></article>
+<article class="stat-card"><strong>12 sept. 1944</strong><span>Armistițiul de la Moscova creează cadrul legal al controlului sovietic asupra României.</span></article>
+<article class="stat-card"><strong>6 mar. 1945</strong><span>Guvernul Petru Groza este instalat sub presiune sovietică și devine instrumentul comunizării.</span></article>
+<article class="stat-card"><strong>30 dec. 1947</strong><span>Regele Mihai este forțat să abdice, iar Republica Populară Română este proclamată.</span></article>
+</section>
+</header>
+<nav aria-label="Cuprins" class="toc">
+<h2>Cuprins</h2>
+<div class="toc-grid toc-detailed">
+<div class="toc-card"><a class="toc-main" href="#context">I. Contextul militar</a><div class="toc-sub"><a href="#ofensiva-iasi-chisinau">Ofensiva Iași-Chișinău</a><a href="#momentul-23-august">23 august 1944</a><a href="#armistitiul-12-septembrie">Armistițiul</a></div></div>
+<div class="toc-card"><a class="toc-main" href="#infiltrare">II. Infiltrarea comunistă</a><div class="toc-sub"><a href="#arlus-propaganda">ARLUS</a><a href="#visinski-planul">Vîșinski și planul în 10 puncte</a><a href="#guvernul-groza">Guvernul Groza</a></div></div>
+<div class="toc-card"><a class="toc-main" href="#democratie">III. Demontarea democrației</a><div class="toc-sub"><a href="#greva-regala">Greva regală</a><a href="#alegerile-1946">Alegerile din 1946</a><a href="#eliminarea-opozitiei">Eliminarea opoziției și a monarhiei</a></div></div>
+<div class="toc-card"><a class="toc-main" href="#economie">IV. Sovietizarea economiei</a><div class="toc-sub"><a href="#reforma-agrara">Reforma agrară</a><a href="#sovromuri">SovRom-urile</a><a href="#nationalizarea">Naționalizarea</a></div></div>
+<div class="toc-card"><a class="toc-main" href="#cultura">V. Cultură și religie</a><div class="toc-sub"><a href="#propaganda-cultura">Propagandă</a><a href="#culte-religie">Controlul cultelor</a></div></div>
+<div class="toc-card"><a class="toc-main" href="#represiune">VI. Represiunea</a><div class="toc-sub"><a href="#securitatea">Securitatea</a><a href="#militia">Miliția</a><a href="#deportari">Deportări și control social</a></div></div>
+<div class="toc-card"><a class="toc-main" href="#cronologie">VII. Cronologie</a></div>
+<div class="toc-card"><a class="toc-main" href="#recapitulare">VIII. Recapitulare</a></div>
+</div>
+</nav>
+<section class="panel" id="context">
+<div class="panel-header">
+<h2>I. Contextul militar</h2>
+<p class="panel-note">În 1944, prăbușirea frontului german din est a făcut imposibilă continuarea războiului alături de Axă. România a devenit simultan front militar, miză diplomatică și spațiu de expansiune sovietică.</p>
+</div>
+<div class="ribbon">
+<div class="ribbon-item"><strong>Martie 1944</strong><span>Armata Roșie intră pe teritoriul României, în nord-est.</span></div>
+<div class="ribbon-item"><strong>20 aug. 1944</strong><span>Începe ofensiva Iași-Chișinău, care rupe apărarea germano-română.</span></div>
+<div class="ribbon-item"><strong>23 aug. 1944</strong><span>Antonescu este înlăturat, iar România iese din alianța cu Germania.</span></div>
+<div class="ribbon-item"><strong>31 aug. 1944</strong><span>Trupele sovietice intră în București.</span></div>
+<div class="ribbon-item"><strong>12 sept. 1944</strong><span>Armistițiul cu Aliații este semnat la Moscova.</span></div>
+</div>
+<div class="content-grid">
+<article class="note-card">
+<h3>De ce se apropia Armata Roșie?</h3>
+<p>
+            În 1944, Germania pierdea inițiativa pe frontul de est. Grupul de Armate Ucraina de Sud a fost împins spre frontiera României interbelice, iar linia de pe Nistru nu a rezistat presiunii sovietice. În martie 1944, trupele sovietice ajung pe teritoriul românesc, iar frontul se stabilizează temporar pe direcția Cernăuți–Botoșani–Iași–Chișinău–Tighina.
+          </p>
+<p>
+            Pentru România, situația era critică: continuarea războiului alături de Germania risca ocuparea totală a țării fără posibilitatea negocierii unor condiții politice. În același timp, ieșirea din Axă însemna intrarea în sfera de control a URSS, pentru că România urma să fie ocupată militar de Armata Roșie.
+          </p>
+</article>
+<article class="note-card">
+<h3 id="ofensiva-iasi-chisinau">Operațiunea Iași-Chișinău</h3>
+<p>
+            A Doua Ofensivă Iași-Chișinău, numită uneori „Bătălia pentru România”, a fost ofensiva sovietică desfășurată la sfârșitul lunii august și începutul lunii septembrie 1944. Fronturile al 2-lea și al 3-lea Ucrainean urmăreau distrugerea forțelor germano-române și ocuparea României.
+          </p>
+<p>
+            Ofensiva a accelerat decizia politică de la București. Momentul 23 august nu poate fi înțeles separat de presiunea militară: regimul Antonescu era prins între fidelitatea față de Germania și realitatea că frontul se prăbușea.
+          </p>
+</article>
+</div>
+<h3 class="split-title">România în ultimele luni de război</h3>
+<div class="event-stack">
+<div class="event"><div class="event-date">4 septembrie 1940</div><p class="event-text"><strong>Ion Antonescu devine prim-ministru.</strong> Este numit de Carol al II-lea, apoi reconfirmat după abdicarea regelui Carol și urcarea pe tron a regelui Mihai. Antonescu își asumă titlul de „Conducător al statului”, instaurând o dictatură militară.</p></div>
+<div class="event"><div class="event-date">Martie 1944</div><p class="event-text"><strong>Armata Roșie intră în nord-estul României.</strong> Momentul marchează începutul ocupației militare sovietice pe teritoriul românesc și transformă ieșirea din Axă într-o problemă de supraviețuire politică.</p></div>
+<div class="event"><div class="event-date">20–29 august 1944</div><p class="event-text"><strong>Ofensiva Iași-Chișinău.</strong> Frontul este rupt, iar presiunea asupra guvernului Antonescu devine maximă. România riscă să devină teatru de război total.</p></div>
+</div>
+<h3 class="split-title" id="momentul-23-august">23 august 1944 și armistițiul</h3><div class="callout blue">Lovitura de palat a scos România din alianța cu Germania, dar armistițiul semnat ulterior a fixat România într-o poziție de dependență față de Uniunea Sovietică.</div><div class="content-grid">
+<article class="note-card full">
+<h3>23 august 1944: ruptura de Germania</h3>
+<p>
+            Actul de la 23 august a fost pregătit sub autoritatea regelui Mihai de o coaliție numită Blocul Național Democrat. În jurul acestei formule s-au aflat partidele democratice interbelice, Partidul Social-Democrat, comuniștii și o parte a conducerii militare. Regele i-a cerut lui Ion Antonescu să accepte semnarea armistițiului și încetarea războiului împotriva Aliaților. Refuzul lui Antonescu a dus la demiterea și arestarea sa.
+          </p>
+<div class="point-grid">
+<div class="point-card"><div class="point-no">1</div><p><strong>Ieșirea din Axă.</strong> România încetează colaborarea cu Germania și renunță la războiul împotriva Aliaților.</p></div>
+<div class="point-card"><div class="point-no">2</div><p><strong>Schimbarea frontului.</strong> Armata română începe colaborarea militară cu URSS și luptă împotriva Germaniei și Ungariei.</p></div>
+<div class="point-card"><div class="point-no">3</div><p><strong>Risc militar imediat.</strong> Germania bombardează Bucureștiul la 24 august și încearcă să mențină poziții în capitală și împrejurimi.</p></div>
+<div class="point-card"><div class="point-no">4</div><p><strong>Intrarea sovietică.</strong> Deși România devenise formal aliat al Națiunilor Unite, Armata Roșie a tratat țara ca teritoriu ocupat.</p></div>
+</div>
+</article>
+<article class="note-card">
+<h3>31 august 1944: Armata Roșie intră în București</h3>
+<p>
+            După luptele româno-germane din capitală și împrejurimi, o coloană blindată sovietică a intrat în București la 31 august. Populația a întâmpinat trupele cu speranța că orașul va scăpa de distrugerile războiului, dar contactul cu trupele de ocupație a fost rapid marcat de confiscări, dezarmări, jafuri, abuzuri și tensiuni.
+          </p>
+<p>
+            Alături de Armata Roșie a intrat și Divizia „Tudor Vladimirescu”, formată din voluntari români recrutați dintre prizonierii de război din URSS. Aceasta a fost prima unitate românească organizată după model sovietic, cu ofițeri politici, și a devenit un simbol al infiltrării sovietice în structurile militare românești.
+          </p>
+</article>
+<article class="note-card">
+<h3 id="armistitiul-12-septembrie">12 septembrie 1944: Convenția de armistițiu</h3>
+<p>
+            Armistițiul a fost semnat la Moscova de România cu Uniunea Sovietică, Regatul Unit și Statele Unite. În practică, controlul era exercitat prin Comisia Aliată de Control, dominată de partea sovietică. România trebuia să lupte împotriva Germaniei și Ungariei sub conducerea generală a Înaltului Comandament Aliat, adică sovietic.
+          </p>
+<p>
+            Convenția prevedea libertatea de mișcare a trupelor sovietice pe teritoriul României, despăgubiri către URSS în valoare de 300 de milioane de dolari, restabilirea frontierei româno-sovietice din 28 iunie 1940 și obligații legate de prizonieri, bunuri și resurse.
+          </p>
+</article>
+</div><div class="table-wrap">
+<table>
+<thead>
+<tr><th>Dată</th><th>Eveniment</th><th>Semnificație pentru comunizare</th></tr>
+</thead>
+<tbody>
+<tr><td>25 octombrie 1944</td><td>Eliberarea Transilvaniei de Nord.</td><td>Succes militar româno-sovietic, folosit ulterior propagandistic; administrația românească revine în Transilvania de Nord la 13 martie 1945.</td></tr>
+<tr><td>6 ianuarie 1945</td><td>Nota sovietică privind deportarea germanilor din România.</td><td>Comisia Aliată de Control cere „mobilizarea pentru muncă” a etnicilor germani apți de muncă; măsura arată limitele suveranității românești.</td></tr>
+<tr><td>10–20 ianuarie 1945</td><td>Deportări în URSS.</td><td>Sunt vizați bărbați între 17–45 de ani și femei între 18–30 de ani, cu excepții limitate; protestele guvernului Rădescu nu pot opri măsura.</td></tr>
+</tbody>
+</table>
+</div></section>
+
+<section class="panel" id="infiltrare">
+<div class="panel-header">
+<h2>II. Infiltrarea comunistă</h2>
+<p class="panel-note">Înainte ca PCR să controleze complet statul, el a folosit instrumente de influență culturală, propagandă, presiune sovietică și reorganizarea structurilor militare și administrative.</p>
+</div>
+<div class="content-grid">
+<article class="note-card">
+<h3 id="arlus-propaganda">ARLUS: prietenie culturală sau propagandă?</h3>
+<p>
+            La 20 octombrie 1944 este creată Asociația Română pentru strângerea Legăturilor cu Uniunea Sovietică. Oficial, ARLUS trebuia să promoveze cunoașterea reciprocă și prietenia româno-sovietică. În realitate, asociația a devenit unul dintre principalele canale de legitimare culturală a prezenței sovietice.
+          </p>
+<p>
+            Adunarea generală constitutivă a avut loc la 12 noiembrie 1944, iar statutul a fost publicat la 17 decembrie 1944. ARLUS a dezvoltat Editura Cartea Rusă, revista „Veac Nou”, „Caietele ARLUS”, „Analele Româno-Sovietice” și o rețea de biblioteci și filiale. În primii nouă ani, Editura Cartea Rusă a publicat 1.468 de titluri, cu peste 20 de milioane de exemplare.
+          </p>
+<div class="callout blue">ARLUS a fost mai mult decât o instituție culturală: a creat limbajul public prin care ocupația sovietică putea fi prezentată drept „eliberare”, „prietenie” și „progres”.</div>
+</article>
+<article class="note-card">
+<h3>Andrei Vîșinski și presiunea directă a Moscovei</h3>
+<p>
+            La 28 februarie 1945, Andrei Vîșinski este trimis la București. El fusese procuror în procesele publice staliniste de la Moscova și reprezenta modul brutal prin care URSS impunea soluții politice în statele ocupate. Prezența sa în România a coincis cu presiunea pentru înlăturarea guvernului Nicolae Rădescu și instalarea unui guvern favorabil comuniștilor.
+          </p>
+<p>
+            În 6 martie 1945, sub presiunea sovietică, regele Mihai este forțat să accepte guvernul Petru Groza. Din acest moment, statul român începe să fie folosit din interior pentru comunizare: administrația, poliția, justiția, economia și educația sunt treptat puse în slujba noii puteri.
+          </p>
+</article>
+</div>
+<h3 class="split-title">Planul de comunizare primit de la Moscova</h3>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>Direcție</th><th>Măsură prevăzută</th><th>Logica politică</th></tr>
+</thead>
+<tbody>
+<tr><td>Agricultură</td><td>Confiscarea marilor moșii și ruinarea moșierilor.</td><td>Distrugerea elitei rurale și pregătirea controlului asupra satului.</td></tr>
+<tr><td>Armată</td><td>Desființarea armatei vechi și crearea unei armate noi, folosind diviziile „Tudor Vladimirescu” și „Avram Iancu”.</td><td>Înlocuirea corpului militar tradițional cu structuri politizate după model sovietic.</td></tr>
+<tr><td>Bănci</td><td>Atacarea băncilor și a PNL, ai cărui membri controlau multe instituții financiare.</td><td>Lovirea liberalilor și obținerea controlului asupra creditului.</td></tr>
+<tr><td>Țărănime</td><td>Desființarea micilor gospodării pentru a pregăti absorbția lor în sistemul colectivist.</td><td>Transformarea proprietarului rural în dependent de stat.</td></tr>
+<tr><td>Monarhie</td><td>Abdicarea regelui și exilul familiei regale.</td><td>Înlăturarea ultimului centru de legitimitate democratică.</td></tr>
+<tr><td>Comerț exterior</td><td>Orientarea exportului spre URSS și țările aflate sub dominație sovietică.</td><td>Ruperea legăturilor economice cu Occidentul.</td></tr>
+<tr><td>Partide</td><td>Suprimarea partidelor istorice prin arestarea, uciderea sau răpirea membrilor.</td><td>Eliminarea pluralismului politic.</td></tr>
+<tr><td>Poliție</td><td>Crearea unei organizații de poliție de tip NKVD.</td><td>Construirea aparatului de supraveghere și represiune.</td></tr>
+<tr><td>Industrializare</td><td>Îndreptarea populației rurale spre industrie.</td><td>Crearea bazei economice a statului socialist.</td></tr>
+<tr><td>Izolare</td><td>Limitarea accesului străinilor, cu excepția celor din statele de influență sovietică.</td><td>Închiderea societății românești față de Occident.</td></tr>
+</tbody>
+</table>
+</div>
+<h3 class="split-title" id="guvernul-groza">Guvernul Groza: infiltrarea comunistă devine putere de stat</h3><div class="callout green">După 6 martie 1945, comunizarea capătă formă guvernamentală: puterea nu mai este doar presiune sovietică externă, ci devine administrație, lege și instituție.</div><div class="content-grid">
+<article class="note-card">
+<h3>Legea epurării instituțiilor statului — 30 martie 1945</h3>
+<p>
+            Legea nr. 271 privind purificarea administrației publice, învățământului, presei și instituțiilor de presă a fost prezentată ca o măsură de îndepărtare a celor compromiși de fostul regim. În practică, ea a permis eliminarea unor funcționari, intelectuali, jurnaliști și profesori care se opuneau comunizării.
+          </p>
+<p>
+            Legea a suspendat garanții precum inamovibilitatea și stabilitatea funcționarilor publici. Cei îndepărtați din serviciu puteau fi trimiși la muncă obligatorie în folosul statului, în lagăre speciale.
+          </p>
+</article>
+<article class="note-card">
+<h3>Legea nr. 312 — 24 aprilie 1945</h3>
+<p>
+            Legea pentru urmărirea și sancționarea celor vinovați de dezastrul țării sau de crime de război a creat cadrul pentru judecarea persoanelor asociate cu hitlerismul, fascismul, crimele de război, persecuțiile rasiale, deportările, tratamentele inumane și represiunea din timpul războiului.
+          </p>
+<p>
+            Necesitatea judecării crimelor de război era reală, dar cadrul instituțional a putut fi folosit și pentru presiune politică. Tribunalul Poporului includea judecători ai poporului desemnați de grupările politice din guvern, ceea ce slăbea autonomia justiției.
+          </p>
+</article>
+<article class="note-card">
+<h3>Tribunalele Poporului — 10 iulie 1945</h3>
+<p>
+            Pe baza legii nr. 256/1945, au fost înființate două tribunale ale poporului: la București și la Cluj. Scopul lor era judecarea vinovaților de crime de război, inclusiv a celor implicați în deportarea și exterminarea populației evreiești din Transilvania de Nord.
+          </p>
+<p>
+            Tribunalul Poporului din Cluj a judecat crimele comise în 1940 și în 1944 sub administrația maghiară. În sentința nr. 8 din 31 mai 1946, 201 persoane au fost condamnate; 38 au primit pedeapsa capitală, 75 închisoare pe viață, iar restul pedepse diferențiate. Tribunalele au funcționat până la 28 iunie 1946.
+          </p>
+</article>
+<article class="note-card">
+<h3>Represiunea în interiorul PCR: cazul Ștefan Foriș</h3>
+<p>
+            Comunizarea nu a însemnat doar eliminarea adversarilor democrați, ci și epurarea internă a partidului. Ștefan Foriș, lider comunist în ilegalitate în perioada 1940–1944, a fost înlăturat la 4 aprilie 1944, arestat la 9 iunie 1945 și ucis în 1946. Cazul arată logica stalinistă a puterii: partidul își elimina și rivalii interni, nu doar adversarii externi.
+          </p>
+</article>
+</div></section>
+
+<section class="panel" id="democratie">
+<div class="panel-header">
+<h2>III. Demontarea democrației</h2>
+<p class="panel-note">În 1945–1946, monarhia constituțională și partidele istorice încă existau, dar cadrul democratic era golit de conținut prin presiune, epurări, schimbări electorale și violență politică.</p>
+</div>
+<div class="event-stack">
+<div class="event" id="greva-regala"><div class="event-date">21 aug. 1945 – 7 ian. 1946</div><p class="event-text"><strong>Greva regală.</strong> Regele Mihai refuză să semneze actele guvernului Groza și să primească miniștrii în audiență, încercând să forțeze înlocuirea guvernului aservit Moscovei cu unul de uniune națională.</p></div>
+<div class="event"><div class="event-date">8 noiembrie 1945</div><p class="event-text"><strong>Demonstrația regală.</strong> Manifestația de susținere a regelui este reprimată în fața Palatului Regal. Autoritățile prezintă evenimentul drept tentativă de lovitură de stat; se deschide focul și sunt uciși demonstranți.</p></div>
+<div class="event"><div class="event-date">ianuarie 1946</div><p class="event-text"><strong>Soluția formală.</strong> În guvern sunt cooptați Emil Hațieganu din partea PNȚ și Mihail Romniceanu din partea PNL, ceea ce permite recunoașterea formală a guvernului Groza de către SUA și Marea Britanie, fără schimbarea reală a raportului de putere.</p></div>
+<div class="event"><div class="event-date">15 iulie 1946</div><p class="event-text"><strong>Noua lege electorală și Parlamentul unicameral.</strong> Legea extinde votul către femei, militari și funcționari publici, dar limitează drepturile unor persoane asociate cu regimul Antonescu. În același context, Senatul este eliminat, iar legislativul devine unicameral, ușurând controlul asupra procesului legislativ.</p></div>
+</div>
+<h3 class="split-title" id="alegerile-1946">Alegerile din 19 noiembrie 1946</h3>
+<div class="content-grid">
+<article class="note-card">
+<h3>De ce au fost decisive?</h3>
+<p>
+            Alegerile din 1946 s-au desfășurat în condițiile prezenței trupelor sovietice și ale controlului guvernului Groza asupra administrației. Campania Blocului Partidelor Democrate a fost însoțită de intimidări, abuzuri, presiune administrativă și fraudă electorală. Rezultatul oficial a oferit comuniștilor și aliaților lor o majoritate covârșitoare.
+          </p>
+<p>
+            După alegeri, monarhia constituțională a fost destabilizată, iar opoziția a pierdut posibilitatea de a mai acționa legal și eficient. Alegerile au fost pasul decisiv spre proclamarea regimului comunist la sfârșitul anului 1947.
+          </p>
+</article>
+<article class="note-card">
+<h3>Blocul Partidelor Democrate</h3>
+<p>
+            BPD a fost alianța electorală dominată de comuniști. Ea reunea PCR, Partidul Social-Democrat Român, Frontul Plugarilor, PNL-Tătărăscu, Uniunea Patrioților/Partidul Național Popular, PNȚ-Anton Alexandrescu și Comitetul Democrat Evreiesc. Această structură permitea PCR să se prezinte ca forță „democratică” și „populară”, deși obiectivul era monopolizarea puterii.
+          </p>
+</article>
+</div>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>Partid / alianță</th><th>Voturi oficiale</th><th>% oficial</th><th>Mandate</th><th>Semnificație</th></tr>
+</thead>
+<tbody>
+<tr><td>Blocul Partidelor Democrate</td><td>4.766.630</td><td>68,70%</td><td>347</td><td>Majoritate oficială care permite controlul legislativ.</td></tr>
+<tr><td>Partidul Național-Țărănesc</td><td>878.927</td><td>12,70%</td><td>32</td><td>Opoziția principală este redusă la o minoritate politică.</td></tr>
+<tr><td>Uniunea Populară Maghiară</td><td>568.862</td><td>8,20%</td><td>29</td><td>Organizație de minoritate integrată în noul sistem politic.</td></tr>
+<tr><td>Partidul Național Liberal</td><td>259.306</td><td>3,70%</td><td>3</td><td>Liberalismul istoric este marginalizat.</td></tr>
+<tr><td>Alții și independenți</td><td>aprox. 525.000</td><td>sub 7%</td><td>9</td><td>Fragmentare fără capacitate de opoziție reală.</td></tr>
+</tbody>
+</table>
+</div>
+<h3 class="split-title" id="eliminarea-opozitiei">Eliminarea opoziției și a monarhiei</h3><div class="callout red">În 1947, comuniștii au trecut de la controlul indirect la eliminarea fățișă a adversarilor: partidele istorice au fost distruse, iar monarhia a fost abolită prin forță.</div><div class="content-grid">
+<article class="note-card">
+<h3>10 februarie 1947: Tratatul de la Paris</h3>
+<p>
+            România semnează Tratatul de Pace de la Paris, rezultat al negocierilor din 29 iulie – 15 octombrie 1946. Tratatul confirmă revenirea Transilvaniei de Nord la România, dar recunoaște pierderea Basarabiei, a Bucovinei de Nord și a Cadrilaterului. România trebuie să plătească despăgubiri de 300 milioane de dolari către URSS.
+          </p>
+<p>
+            Pe plan diplomatic, tratatul trebuia să redea României statutul de stat suveran. În practică, prezența militară sovietică și dominația politică a guvernului Groza au făcut ca suveranitatea să fie sever limitată.
+          </p>
+</article>
+<article class="note-card">
+<h3>14 iulie 1947: înscenarea de la Tămădău</h3>
+<p>
+            Mai mulți fruntași ai Partidului Național Țărănesc au fost atrași într-o tentativă de plecare în străinătate, apoi arestați pe aerodromul de la Tămădău. Incidentul a fost folosit de comuniști pentru a acuza PNȚ de complot, trădare și activitate antinațională.
+          </p>
+<p>
+            Printre cei vizați se aflau Iuliu Maniu, Ion Mihalache, Ilie Lazăr și Nicolae Carandino. Afacerea a dus la un proces-spectacol după model sovietic, cu pedepse disproporționate și cu scop politic clar: distrugerea celui mai important partid democratic de opoziție.
+          </p>
+</article>
+<article class="note-card">
+<h3>29 iulie 1947: dizolvarea PNȚ</h3>
+<p>
+            La 19 iulie 1947, Adunarea Deputaților ridică imunitatea parlamentarilor țărăniști. La 29 iulie, guvernul decide dizolvarea Partidului Național Țărănesc prin Hotărârea Consiliului de Miniștri nr. 1027. Sunt închise sediile, sunt ridicate arhivele, iar patrimoniul partidului este lichidat.
+          </p>
+<p>
+            Conducătorii PNȚ sunt arestați, trimiși în judecată și condamnați pentru „complot împotriva guvernului legal al țării”. Pluralismul politic devine practic imposibil.
+          </p>
+</article>
+<article class="note-card">
+<h3>PNL și gruparea Tătărăscu</h3>
+<p>
+            În 1947, PNL-Brătianu este împins spre încetarea activității, iar mulți lideri liberali ajung în închisori sau în exil. PNL-Tătărăscu, care colaborase cu comuniștii, este și el eliminat treptat: la 5–6 noiembrie 1947, miniștrii grupării Tătărăscu sunt înlăturați din guvern. În 1948, formațiunea PNL-Bejan nu mai poate continua activitatea.
+          </p>
+</article>
+</div><h3 class="split-title">30 decembrie 1947: abdicarea forțată a regelui Mihai</h3><div class="content-grid">
+<article class="note-card full">
+<p>
+            După întoarcerea de la nunta principesei Elisabeta a Marii Britanii, regele Mihai este primit rece de guvernul Groza. La 29 decembrie 1947, primește telefon prin care i se cere o întâlnire cu Petru Groza a doua zi, la Palatul Elisabeta, sub pretextul unei „chestiuni de familie”.
+          </p>
+<p>
+            La 30 decembrie 1947, regele se întâlnește cu Petru Groza și Gheorghe Gheorghiu-Dej. Garda Regală fusese înlocuită cu militari din Divizia Tudor Vladimirescu, telefoanele erau tăiate, iar Palatul era izolat. Groza prezintă un act de abdicare gata redactat. Regele protestează, arătând că forma de guvernământ nu poate fi schimbată decât prin voința națiunii și prin procedură constituțională.
+          </p>
+<p>
+            Presiunea decisivă a fost amenințarea cu împușcarea a 1.100 de tineri arestați după demonstrația regală din 8 noiembrie 1945. Regele semnează pentru a evita vărsarea de sânge. În aceeași seară, Adunarea Deputaților este convocată în grabă, fără condiții normale de procedură, și proclamă Republica Populară Română.
+          </p>
+<div class="callout red">30 decembrie 1947 marchează sfârșitul monarhiei constituționale și începutul statului comunist român. Între 30 decembrie 1947 și 13 aprilie 1948, România se află într-un vid constituțional, până la adoptarea primei Constituții comuniste.</div>
+</article>
+</div><div class="event-stack">
+<div class="event"><div class="event-date">3 ianuarie 1948</div><p class="event-text"><strong>Familia Regală pleacă în exil.</strong> Plecarea are loc din Gara Regală Sinaia, sub control militar strict și după verificări umilitoare ale bagajelor.</p></div>
+<div class="event"><div class="event-date">13 aprilie 1948</div><p class="event-text"><strong>Prima Constituție comunistă.</strong> Constituția RPR fixează noua ordine politică, în care principiul democratic liberal este înlocuit de modelul „democrației populare”.</p></div>
+</div></section>
+
+<section class="panel" id="economie">
+<div class="panel-header">
+<h2>IV. Sovietizarea economiei</h2>
+<p class="panel-note">Controlul politic nu era suficient fără controlul proprietății. Regimul a trecut de la reformă agrară și SovRom-uri la etatizare bancară, naționalizare, cote și colectivizare.</p>
+</div>
+<div class="data-grid">
+<div class="data-card"><strong>23 mar. 1945</strong><span>Legea Agrară: exproprieri, împroprietăriri și lovirea marilor proprietăți.</span></div>
+<div class="data-card"><strong>8 mai 1945</strong><span>Acordul pentru SovRom-uri: exploatare economică sub control sovietic.</span></div>
+<div class="data-card"><strong>23 dec. 1946</strong><span>Etatizarea BNR: statul controlează moneda, creditul și sectorul bancar.</span></div>
+<div class="data-card"><strong>11 iun. 1948</strong><span>Naționalizarea: 1.060 întreprinderi industriale și miniere trec la stat.</span></div>
+</div>
+<div class="content-grid">
+<article class="note-card">
+<h3>Reforma agrară din 1945</h3>
+<p>
+            Reforma agrară din 23 martie 1945 a fost prezentată ca împroprietărire a țăranilor săraci. Au fost expropriate terenurile cetățenilor germani care colaboraseră cu Germania hitleristă, ale criminalilor de război, ale refugiaților, absenteiștilor, celor care nu cultivaseră pământul în regie proprie și surplusul proprietăților de peste 50 ha.
+          </p>
+<p>
+            Aproximativ 800.000 de familii au primit circa 1 milion de hectare. Pe termen scurt, măsura a diminuat inegalitățile sociale. Pe termen lung, a distrus marile proprietăți agricole moderne și a pregătit terenul pentru colectivizare, deoarece țăranii mici proprietari puteau fi mai ușor controlați prin cote și presiuni administrative.
+          </p>
+</article>
+<article class="note-card">
+<h3>SovRom-urile</h3>
+<p>
+            SovRom-urile au fost societăți mixte româno-sovietice create după acordul semnat la Moscova la 8 mai 1945. Oficial, ele trebuiau să ajute la recuperarea datoriilor României față de URSS. În practică, au devenit instrumente prin care Uniunea Sovietică a exploatat resursele românești: transporturi, petrol, lemn, metal, gaz, chimie, construcții, cărbune, film, aviație și, mai târziu, uraniu.
+          </p>
+<p>
+            Sovromtransport a exploatat nave și șantiere navale, Sovrompetrol a preluat controlul asupra industriei petroliere, iar Sovromcuarțit a camuflat exploatarea uraniului. Între 1952 și 1960, România a furnizat URSS cantități uriașe de uraniu, folosite cel puțin parțial în programul atomic sovietic.
+          </p>
+</article>
+<article class="note-card">
+<h3>BNR și naționalizarea industriei</h3>
+<p>
+            La 23 decembrie 1946, Banca Națională a României este etatizată, ceea ce permite statului să controleze emisiunea de monedă, politica monetară și creditarea. La 11 iunie 1948, Legea nr. 119 naționalizează principalele mijloace de producție: bogățiile subsolului, industriile strategice, băncile, asigurările, transporturile și telecomunicațiile.
+          </p>
+<p>
+            Au fost naționalizate 1.060 de întreprinderi industriale și miniere, reprezentând aproximativ 90% din producția țării. Naționalizarea nu a fost doar o măsură economică, ci un act politic: distrugea burghezia economică și transforma statul-partid în proprietar aproape total al economiei.
+          </p>
+</article>
+<article class="note-card">
+<h3>Colectivizarea — 1949–1962</h3>
+<p>
+            Colectivizarea începe prin Decretul nr. 84 din 2 martie 1949 și prin plenara CC al PMR din 3–5 martie 1949, care adoptă modelul sovietic al „transformării socialiste a agriculturii”. Țărănimea reprezenta aproximativ 75% din populația României, iar micii proprietari erau considerați o bază socială periculoasă pentru regimul comunist.
+          </p>
+<p>
+            Procesul are trei etape: început violent în 1949–1953, stagnare în 1953–1956 după moartea lui Stalin, apoi finalizare în forță în 1957–1962. În noiembrie 1957, regiunea Constanța este declarată prima regiune complet colectivizată. La 27–30 aprilie 1962, regimul anunță încheierea colectivizării: 96% din terenul arabil și 93,4% din suprafața agricolă se aflau în forme socialiste de proprietate.
+          </p>
+</article>
+</div>
+<h3 class="split-title">Mecanisme economice ale comunizării</h3>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>Mecanism</th><th>An / interval</th><th>Ce urmărea</th><th>Efect</th></tr>
+</thead>
+<tbody>
+<tr><td>Reforma agrară</td><td>1945</td><td>Lovirea marilor proprietăți și câștigarea sprijinului țăranilor săraci.</td><td>Distruge proprietatea agricolă mare și pregătește colectivizarea.</td></tr>
+<tr><td>SovRom-uri</td><td>1945–1956</td><td>Extragerea resurselor și plata despăgubirilor către URSS.</td><td>Control sovietic asupra transporturilor, petrolului, uraniului și altor sectoare.</td></tr>
+<tr><td>Etatizarea BNR</td><td>1946/1947</td><td>Subordonarea politicii monetare statului comunist.</td><td>Creditul și moneda devin instrumente politice.</td></tr>
+<tr><td>Naționalizarea</td><td>11 iunie 1948</td><td>Trecerea industriei, transporturilor și finanțelor în proprietatea statului.</td><td>Burghezia economică este eliminată.</td></tr>
+<tr><td>Sistemul cotelor</td><td>din 1949</td><td>Obligarea țăranilor să predea statului produse agricole.</td><td>Sărăcirea satului și presiune pentru intrarea în colective.</td></tr>
+<tr><td>Colectivizarea</td><td>1949–1962</td><td>Comasarea gospodăriilor în GAC/CAP și IAS.</td><td>Arestări, deportări, confiscări și transformarea satului românesc.</td></tr>
+<tr><td>Naționalizarea locuințelor</td><td>20 aprilie 1950</td><td>Preluarea imobilelor „marei burghezii” și ale exploatatorilor de locuințe.</td><td>Transfer masiv de proprietate urbană către stat, fără despăgubire.</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="panel" id="cultura">
+<div class="panel-header">
+<h2>V. Cultură și religie</h2>
+<p class="panel-note">Regimul comunist nu a urmărit doar controlul instituțiilor politice și economice, ci și formarea unei noi conștiințe publice: școala, istoria, presa, cultura și cultele trebuiau integrate în sistem.</p>
+</div>
+<div class="content-grid">
+<article class="note-card">
+<h3>Reforma învățământului — 3 august 1948</h3>
+<p>
+            Decretul nr. 175/1948 reorganizează învățământul pe baze „democratice, populare și realist-științifice”. Învățământul devine public, laic, organizat exclusiv de stat, iar școlile străine și cele ale cultelor sunt închise. Limba rusă devine obligatorie, iar marxism-leninismul intră în programă.
+          </p>
+<p>
+            Reforma urmărea alfabetizarea și extinderea educației, dar și controlul ideologic al tinerei generații. Școala trebuia să producă specialiști și cetățeni formați în spiritul „democrației populare”.
+          </p>
+</article>
+<article class="note-card">
+<h3>Istoria rescrisă</h3>
+<p>
+            În 1948 apar instituții de orientare sovietică precum Muzeul Româno-Rus și Institutul Maxim Gorki, destinat pregătirii profesorilor de limba și literatura rusă. Mihail Roller devine membru titular al Academiei Române și coordonează o istorie oficială în care trecutul României este reinterpretat prin grila luptei de clasă și a rolului eliberator al URSS.
+          </p>
+</article>
+<article class="note-card">
+<h3>Legea Cultelor — 4 august 1948</h3>
+<p>
+            Decretul nr. 177/1948 reglementează funcționarea cultelor religioase. Formal, statul garanta libertatea conștiinței și libertatea religioasă, dar în același timp introducea mecanisme de control: recunoașterea cultelor prin decret, aprobarea șefilor cultelor de către Prezidiul Marii Adunări Naționale, jurământul de credință față de Republica Populară Română, controlul bugetelor, al școlilor teologice și al relațiilor cu străinătatea.
+          </p>
+<p>
+            Legea favoriza controlul centralizat al vieții religioase. Biserica Ortodoxă era recunoscută ca autocefală și unitară, iar celelalte culte erau constrânse prin proceduri de recunoaștere, limitări instituționale și control politic.
+          </p>
+</article>
+<article class="note-card">
+<h3>Desființarea Bisericii Greco-Catolice — 1 decembrie 1948</h3>
+<p>
+            În toamna anului 1948, regimul comunist trece la lichidarea Bisericii Române Unite cu Roma. La 3 septembrie este depus episcopul Ioan Suciu, iar la 18 septembrie sunt depuși ceilalți episcopi uniți. La 1 octombrie, autoritățile organizează o adunare de trecere la Biserica Ortodoxă, contestată de episcopul Iuliu Hossu.
+          </p>
+<p>
+            În 27–29 octombrie 1948 sunt arestați episcopii greco-catolici. La 1 decembrie 1948, Decretul 358/1948 stabilește încetarea cultului greco-catolic și exproprierea bunurilor sale. Biserica intră în clandestinitate, iar încercările de relegalizare provoacă noi valuri de arestări, inclusiv după liturghia publică de la Cluj din 12 august 1956.
+          </p>
+</article>
+</div>
+</section>
+<section class="panel" id="represiune">
+<div class="panel-header">
+<h2>VI. Represiunea</h2>
+<p class="panel-note">După eliminarea monarhiei și a opoziției, regimul își construiește aparatul de control: Securitatea, Miliția, legislația politică penală, deportările și supravegherea generalizată.</p>
+</div>
+<div class="content-grid">
+<article class="note-card">
+<h3>Securitatea — 30 august 1948</h3>
+<p>
+            Prin Decretul nr. 221/1948 este creată Direcția Generală a Securității Poporului, care înlocuiește vechea Direcție Generală a Poliției de Siguranță. Oficial, Securitatea trebuia să apere „cuceririle democratice” și securitatea Republicii Populare Române. În realitate, ea devine instrumentul principal al PCR pentru supravegherea, anchetarea și eliminarea „dușmanilor poporului”.
+          </p>
+<p>
+            Securitatea a fost construită sub influență sovietică. Forma ei rudimentară apare prin activitatea SMERȘ/NKVD, iar Brigada Mobilă din România este condusă de Alexandru Nicolski. Primul director al Securității a fost Gheorghe Pintilie, zis Pantiușa, secondat de Alexandru Nicolski și Vladimir Mazuru, toți legați de aparatul sovietic.
+          </p>
+</article>
+<article class="note-card">
+<h3>Miliția — 23 ianuarie 1949</h3>
+<p>
+            Prin Decretul nr. 25/1949 este creată Miliția, în cadrul Ministerului Afacerilor Interne. Ea înlocuiește poliția de tip vechi și preia modelul sovietic al „miliției muncitorilor și țăranilor”. Miliția avea misiuni de ordine publică, pază, control al circulației, cercetarea infracțiunilor, controlul actelor de călătorie și supravegherea străinilor.
+          </p>
+<p>
+            În practică, Miliția a fost instrumentul de prezență cotidiană al statului comunist: controla populația, sprijinea execuția hotărârilor judecătorești, participa la operațiuni de evacuare, confiscare, deportare și intimidare.
+          </p>
+</article>
+<article class="note-card">
+<h3>Decretul 199/1950 și infracțiunile politice</h3>
+<p>
+            Decretul nr. 199/1950 sancționa infracțiunile care „primejduiesc securitatea statului”. Erau pedepsite cu moartea trădarea de patrie, transmiterea secretelor de stat, uneltirea împotriva securității interne și externe, actele de teroare, sabotajul economic și distrugerea infrastructurii. Instanțele puteau pronunța confiscarea totală a averii.
+          </p>
+<p>
+            Astfel, opoziția politică, rezistența armată, refuzul cotelor, protestul social sau simpla nealiniere ideologică puteau fi încadrate ca amenințări la adresa statului.
+          </p>
+</article>
+<article class="note-card">
+<h3>Deportările din Bărăgan — 1951–1956</h3>
+<p>
+            Deportările din Banat în Bărăgan au avut loc pe fondul conflictului Tito–Stalin și al fricii regimului față de zonele de frontieră. După ruptura dintre Iugoslavia și URSS din 1948, populațiile considerate nesigure au fost privite ca potențiali susținători ai titoismului.
+          </p>
+<p>
+            Țărani, familii etichetate drept „chiabure”, persoane din zone de graniță și opozanți reali sau inventați au fost strămutați în Bărăgan. Deportarea a servit ca instrument de intimidare, mai ales în contextul colectivizării și al rezistenței rurale.
+          </p>
+</article>
+</div>
+<h3 class="split-title">Cum funcționa represiunea?</h3>
+<div class="point-grid">
+<div class="point-card"><div class="point-no">1</div><p><strong>Etichetarea.</strong> Adversarul era definit ca fascist, reacționar, chiabur, titoist, dușman al poporului sau sabotor.</p></div>
+<div class="point-card"><div class="point-no">2</div><p><strong>Legalizarea abuzului.</strong> Decretele și legile transformau opoziția politică în infracțiune împotriva statului.</p></div>
+<div class="point-card"><div class="point-no">3</div><p><strong>Instituționalizarea.</strong> Securitatea și Miliția preluau supravegherea, arestarea, ancheta și intimidarea.</p></div>
+<div class="point-card"><div class="point-no">4</div><p><strong>Exemplul public.</strong> Procesele, deportările, confiscările și condamnările arătau restului societății costul opoziției.</p></div>
+</div>
+</section>
+<section class="panel" id="cronologie">
+<div class="panel-header">
+<h2>VII. Cronologie</h2>
+<p class="panel-note">Cronologia urmărește transformarea României din stat aflat sub presiune militară sovietică în republică populară comunistă și apoi în stat socialist controlat prin economie, cultură și represiune.</p>
+</div>
+<div class="timeline">
+<div class="timeline-row"><div class="timeline-date">martie 1944</div><div class="timeline-content"><strong>Armata Roșie intră pe teritoriul României</strong><p>Frontul se apropie de Moldova, iar ieșirea din alianța cu Germania devine urgentă.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">20 aug. 1944</div><div class="timeline-content"><strong>Operațiunea Iași-Chișinău</strong><p>Ofensiva sovietică rupe frontul germano-român.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">23 aug. 1944</div><div class="timeline-content"><strong>Arestarea lui Ion Antonescu</strong><p>România rupe alianța cu Germania și caută armistițiul cu Aliații.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">31 aug. 1944</div><div class="timeline-content"><strong>Trupele sovietice intră în București</strong><p>Începe controlul militar efectiv al URSS asupra capitalei.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">12 sept. 1944</div><div class="timeline-content"><strong>Convenția de armistițiu</strong><p>România acceptă condiții grele: despăgubiri, control sovietic și libertate de mișcare pentru Armata Roșie.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">20 oct. 1944</div><div class="timeline-content"><strong>ARLUS</strong><p>Propaganda prieteniei româno-sovietice primește cadru instituțional.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">6 ian. 1945</div><div class="timeline-content"><strong>Deportarea germanilor</strong><p>Comisia Aliată de Control cere mobilizarea etnicilor germani pentru muncă în URSS.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">28 feb. 1945</div><div class="timeline-content"><strong>Vîșinski la București</strong><p>Presiunea sovietică devine directă.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">6 mar. 1945</div><div class="timeline-content"><strong>Guvernul Petru Groza</strong><p>Începe comunizarea prin guvern.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">23 mar. 1945</div><div class="timeline-content"><strong>Reforma agrară</strong><p>Statul lovește marile proprietăți și creează baza politică pentru controlul satului.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">30 mar. 1945</div><div class="timeline-content"><strong>Legea epurării</strong><p>Funcționarii, profesorii, jurnaliștii și intelectualii incomozi pot fi îndepărtați.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">8 mai 1945</div><div class="timeline-content"><strong>SovRom-urile</strong><p>Economia românească intră în mecanisme de exploatare sovietică.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">21 aug. 1945</div><div class="timeline-content"><strong>Greva regală</strong><p>Regele refuză actele guvernului Groza până la 7 ianuarie 1946.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">8 nov. 1945</div><div class="timeline-content"><strong>Demonstrația regală</strong><p>Manifestația pro-monarhie este reprimată.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">15 iul. 1946</div><div class="timeline-content"><strong>Noua lege electorală</strong><p>Se pregătește câștigarea controlată a alegerilor și se elimină Senatul.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">19 nov. 1946</div><div class="timeline-content"><strong>Alegeri generale</strong><p>BPD obține oficial majoritatea, prin intimidare, abuzuri și fraudă.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">10 feb. 1947</div><div class="timeline-content"><strong>Tratatul de Pace de la Paris</strong><p>Transilvania de Nord revine României; Basarabia, Bucovina de Nord și Cadrilaterul rămân pierdute.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">14 iul. 1947</div><div class="timeline-content"><strong>Tămădău</strong><p>Înscenarea este folosită pentru distrugerea PNȚ.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">29 iul. 1947</div><div class="timeline-content"><strong>Dizolvarea PNȚ</strong><p>Opoziția democratică principală este eliminată legal și represiv.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">6 nov. 1947</div><div class="timeline-content"><strong>Eliminarea grupării Tătărăscu</strong><p>Comuniștii înlătură și aliații deveniți inutili.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">30 dec. 1947</div><div class="timeline-content"><strong>Abdicarea forțată a regelui Mihai</strong><p>Monarhia este abolită, iar Republica Populară Română este proclamată.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">13 apr. 1948</div><div class="timeline-content"><strong>Constituția RPR</strong><p>Se fixează cadrul constituțional al regimului comunist.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">11 iun. 1948</div><div class="timeline-content"><strong>Naționalizarea</strong><p>Industria, băncile, transporturile și telecomunicațiile trec sub controlul statului.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">3–4 aug. 1948</div><div class="timeline-content"><strong>Învățământ și culte</strong><p>Școala și viața religioasă sunt puse sub control de stat.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">30 aug. 1948</div><div class="timeline-content"><strong>Securitatea</strong><p>Se creează instrumentul central de supraveghere și represiune.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">1 dec. 1948</div><div class="timeline-content"><strong>Desființarea Bisericii Greco-Catolice</strong><p>Cultul este scos în afara legii, iar bunurile sunt expropriate.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">23 ian. 1949</div><div class="timeline-content"><strong>Miliția</strong><p>Poliția de tip vechi este înlocuită cu o instituție de model sovietic.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">2 mar. 1949</div><div class="timeline-content"><strong>Începe colectivizarea</strong><p>Exproprieri, cote, presiuni și violență împotriva satului.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">14 iul. 1949</div><div class="timeline-content"><strong>România aderă la CAER</strong><p>Economia este integrată în blocul economic sovietic.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">1951–1956</div><div class="timeline-content"><strong>Deportările din Bărăgan</strong><p>Populații considerate nesigure sunt strămutate forțat.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">27 apr. 1962</div><div class="timeline-content"><strong>Colectivizarea este anunțată încheiată</strong><p>Regimul declară victoria asupra proprietății țărănești private.</p></div></div>
+</div>
+</section>
+<section class="panel" id="recapitulare">
+<div class="panel-header">
+<h2>VIII. Recapitulare</h2>
+<p class="panel-note">Nu trebuie memorată doar o listă de date, ci logica prin care o democrație fragilizată de război a fost transformată într-un regim totalitar.</p>
+</div>
+<div class="content-grid">
+<article class="summary-card">
+<h3>Ideea centrală</h3>
+<p>
+            Regimul comunist s-a instaurat în România prin combinarea presiunii sovietice externe cu acțiunea internă a PCR. Nu a fost o revoluție populară spontană, ci o preluare de putere realizată prin ocupație militară, guvern impus, propagandă, modificări legale, fraudă electorală, eliminarea partidelor, abolirea monarhiei și represiune.
+          </p>
+</article>
+<article class="summary-card">
+<h3>Formula cauză–efect</h3>
+<p>
+<strong>Prăbușirea Axei</strong> a creat dependența militară de URSS. <strong>Armistițiul</strong> a creat cadrul legal al controlului sovietic. <strong>Guvernul Groza</strong> a transformat controlul militar în control politic. <strong>Alegerile falsificate din 1946</strong> au oferit aparența de legitimitate. <strong>Eliminarea PNȚ, PNL și a monarhiei</strong> a distrus pluralismul. <strong>Naționalizarea, colectivizarea și Securitatea</strong> au consolidat regimul.
+          </p>
+</article>
+</div>
+<h3 class="split-title">Tabel de sinteză: cum se instalează regimul?</h3>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>Domeniu</th><th>Mecanism</th><th>Exemple-cheie</th><th>Rezultat</th></tr>
+</thead>
+<tbody>
+<tr><td>Militar</td><td>Ocupație și control sovietic.</td><td>Martie 1944; 31 august 1944; Comisia Aliată de Control.</td><td>România pierde libertatea reală de decizie.</td></tr>
+<tr><td>Politic</td><td>Guvern impus și partide-satelit.</td><td>6 martie 1945; BPD; Frontul Plugarilor; PNL-Tătărăscu.</td><td>PCR controlează puterea fără sprijin popular majoritar real.</td></tr>
+<tr><td>Juridic</td><td>Legi folosite ca instrumente de epurare.</td><td>Legea epurării; Legea 312; Tribunalele Poporului; Decretul 199/1950.</td><td>Represiunea capătă formă legală.</td></tr>
+<tr><td>Electoral</td><td>Modificarea regulilor și fraudă.</td><td>Legea electorală din 1946; alegerile din 19 noiembrie 1946.</td><td>Opoziția este marginalizată parlamentar.</td></tr>
+<tr><td>Opoziție</td><td>Înscenări, procese și dizolvări.</td><td>Tămădău; dizolvarea PNȚ; suspendarea PNL; eliminarea Tătărăscu.</td><td>Pluralismul politic dispare.</td></tr>
+<tr><td>Monarhie</td><td>Constrângere directă.</td><td>30 decembrie 1947; abdicarea regelui Mihai.</td><td>Republica Populară Română înlocuiește monarhia constituțională.</td></tr>
+<tr><td>Economie</td><td>Statul preia proprietatea.</td><td>Reforma agrară, SovRom-uri, etatizarea BNR, naționalizarea, colectivizarea.</td><td>Proprietatea privată este eliminată treptat ca bază socială a independenței.</td></tr>
+<tr><td>Cultură și religie</td><td>Control ideologic.</td><td>Reforma învățământului, limba rusă obligatorie, Roller, Legea Cultelor, desființarea BRU.</td><td>Societatea este reeducată în spirit sovietic.</td></tr>
+<tr><td>Represiune</td><td>Supraveghere, arestări, deportări.</td><td>Securitatea, Miliția, Bărăgan, închisori politice.</td><td>Frica devine mecanism de guvernare.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="callout green">
+        Pentru test: dacă trebuie explicată instaurarea comunismului în România, răspunsul bun nu începe direct cu 30 decembrie 1947. Începe cu 1944, cu ocupația sovietică, armistițiul, guvernul Groza, epurările, alegerile falsificate și eliminarea opoziției. Abdicarea regelui este punctul culminant, nu începutul procesului.
+      </div>
+</section>
+<p class="footer">
+      Material ajutător pentru lecția „România comunistă: instaurarea regimului” · structură pe cauze, mecanisme și consecințe.
+    </p>
+</main>
+</body>
+</html>

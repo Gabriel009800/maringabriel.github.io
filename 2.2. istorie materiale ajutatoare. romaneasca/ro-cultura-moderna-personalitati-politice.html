@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Personalități și partide politice românești între Revoluția de la 1848 și instaurarea comunismului."/>
+<title>ro-cultura-moderna-personalitati-politice</title>
+<style>
+
+
+:root {
+  --bg: #f6f0e7;
+  --paper: #fffaf3;
+  --paper-2: #ffffff;
+  --ink: #2f241c;
+  --title: #3c2a1e;
+  --muted: #5b4a3d;
+  --accent: #7a4f2a;
+  --accent-2: #9b6a3c;
+  --accent-soft: #f0e4d4;
+  --line: rgba(91, 62, 36, 0.18);
+  --line-strong: rgba(91, 62, 36, 0.34);
+  --outer-dark: #241208;
+  --outer-mid: #4a2a18;
+  --outer-warm: #7a4b2b;
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+  --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+    radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+}
+.page {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 34px 0 70px;
+}
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.back-link, .tag { display: inline-flex; align-items: center; border: 1px solid var(--line); background: rgba(255, 250, 243, 0.84); color: var(--title); border-radius: 999px; padding: 10px 15px; text-decoration: none; font-size: 15px; font-weight: 700; box-shadow: var(--shadow-small); }
+.back-link:hover { background: #fff6eb; }
+.hero, .section, .nav-card, .final-box { background: rgba(255, 250, 243, 0.96); border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow); }
+.hero { padding: 38px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.hero::after { content: var(--hero-year); position: absolute; right: 26px; bottom: -22px; font-size: 110px; font-weight: 900; letter-spacing: -4px; color: rgba(122, 79, 42, 0.08); pointer-events: none; }
+.eyebrow { margin: 0 0 8px; font-size: 16px; color: var(--accent); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; }
+h1 { margin: 0; font-size: clamp(38px, 5vw, 62px); line-height: 1.04; color: var(--title); letter-spacing: -1.4px; text-align: left; text-align-last: auto; }
+.subtitle { margin: 18px 0 0; max-width: 980px; font-size: 19px; line-height: 1.78; color: var(--muted); text-align: justify; text-align-last: left; }
+.summary-grid, .three-col, .two-col, .term-grid, .quick-grid, .cause-grid, .four-col { display: grid; gap: 14px; }
+.summary-grid { grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+.summary-card, .info-card, .wide-card, .term-card, .quick-card, .source-note, .micro-card, .warning-box { background: var(--paper-2); border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); text-align: justify; text-align-last: left; }
+.summary-card { padding: 16px; min-height: 132px; }
+.summary-card strong, .quick-card strong, .term-card strong, .micro-card strong { display: block; color: var(--title); font-size: 17px; margin-bottom: 8px; text-align: left; text-align-last: auto; }
+.summary-card span, .quick-card span, .term-card span, .micro-card span { display: block; color: var(--muted); font-size: 15.5px; line-height: 1.56; text-align: justify; text-align-last: left; }
+.nav-card { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 18px 20px; margin-bottom: 24px; }
+.nav-card b { color: var(--title); margin-right: 2px; }
+.nav-card a, .mini-btn { color: var(--title); background: var(--accent-soft); border: 1px solid rgba(91, 62, 36, 0.16); border-radius: 999px; text-decoration: none; padding: 8px 12px; font-weight: 700; font-size: 14px; cursor: pointer; font-family: inherit; }
+.nav-card a:hover, .mini-btn:hover { background: #e5d2bb; }
+.section { padding: 30px; margin-bottom: 24px; }
+h2 { margin: 0 0 14px; color: var(--title); font-size: clamp(28px, 3vw, 38px); line-height: 1.15; text-align: left; text-align-last: auto; }
+h3 { margin: 0 0 12px; color: var(--title); font-size: 22px; line-height: 1.22; text-align: left; text-align-last: auto; }
+h4 { margin: 16px 0 8px; color: var(--title); font-size: 18px; text-align: left; text-align-last: auto; }
+.section-intro, p, li, dd { font-size: 17px; line-height: 1.72; color: var(--muted); text-align: justify; text-align-last: left; hyphens: auto; }
+.section-intro { margin: 0 0 20px; max-width: 1000px; }
+.three-col { grid-template-columns: repeat(3, 1fr); }
+.two-col { grid-template-columns: repeat(2, 1fr); }
+.four-col { grid-template-columns: repeat(4, 1fr); }
+.cause-grid { grid-template-columns: 1.1fr 0.9fr; }
+.term-grid { grid-template-columns: repeat(4, 1fr); }
+.quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+.info-card, .wide-card, .term-card, .quick-card, .micro-card, .warning-box, .source-note { padding: 20px; }
+.wide-card { margin-top: 14px; }
+.wide-card p:last-child, .info-card p:last-child { margin-bottom: 0; }
+.clean, .number-list { margin: 0; padding-left: 22px; }
+.clean li, .number-list li { margin: 0 0 9px; padding-left: 2px; }
+.clean li:last-child, .number-list li:last-child { margin-bottom: 0; }
+.mini-title { display: inline; color: var(--title); font-weight: 800; background: transparent; border: 0; border-radius: 0; padding: 0; margin-right: 5px; white-space: normal; text-align: inherit; }
+.date-pill { display: inline-block; color: var(--title); font-weight: 800; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.13); border-radius: 999px; padding: 2px 9px; margin-right: 5px; white-space: nowrap; text-align: left; }
+.definition, .note { margin-top: 18px; background: #fff8ef; border: 1px solid rgba(122, 79, 42, 0.22); border-left: 6px solid rgba(122, 79, 42, 0.48); border-radius: 18px; padding: 18px 20px; color: var(--muted); font-size: 17px; line-height: 1.7; text-align: justify; text-align-last: left; }
+.definition strong, .note strong { color: var(--title); }
+details { background: #fffdf9; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); margin-top: 14px; overflow: hidden; }
+details[open] { background: #fffaf3; }
+summary { cursor: pointer; list-style: none; padding: 18px 20px; font-size: 19px; font-weight: 800; color: var(--title); display: flex; justify-content: space-between; align-items: center; gap: 18px; text-align: left; text-align-last: auto; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "Deschide"; color: var(--muted); font-size: 14px; font-weight: 700; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 999px; padding: 7px 11px; white-space: nowrap; }
+details[open] > summary::after { content: "Ascunde"; }
+.details-body { border-top: 1px solid rgba(91, 62, 36, 0.12); padding: 18px 20px 20px; text-align: justify; text-align-last: left; }
+.details-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.nested-details { margin-top: 10px; box-shadow: none; background: #ffffff; }
+.nested-details summary { font-size: 17px; padding: 14px 16px; }
+.key-line { display: grid; grid-template-columns: 220px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px dashed rgba(91, 62, 36, 0.18); }
+.key-line:last-child { border-bottom: 0; }
+.key-line strong { color: var(--title); text-align: left; text-align-last: auto; }
+.key-line span { color: var(--muted); line-height: 1.65; text-align: justify; text-align-last: left; }
+.timeline { position: relative; display: grid; gap: 14px; margin-top: 18px; }
+.event { display: grid; grid-template-columns: 132px 1fr; gap: 18px; align-items: stretch; background: #ffffff; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); overflow: hidden; }
+.date { background: linear-gradient(180deg, #7a4f2a, #5b351b); color: #fffaf3; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px; font-size: 18px; line-height: 1.25; font-weight: 900; letter-spacing: 0.2px; }
+.event > div:last-child { padding: 17px 18px 18px 0; text-align: justify; text-align-last: left; }
+.event h3 { margin-bottom: 6px; }
+.event p { margin: 0; }
+.small-muted { font-size: 15px; color: #725c49; line-height: 1.6; text-align: justify; text-align-last: left; }
+.warning-box { background: #fff7ec; border-color: rgba(122, 79, 42, 0.22); margin-top: 16px; }
+.final-box { padding: 28px; background: linear-gradient(135deg, #fffaf3, #f4e4d1); border-color: rgba(91, 62, 36, 0.25); }
+.final-box p { margin-bottom: 0; }
+.table-wrap { overflow-x: auto; margin-top: 14px; border-radius: 18px; border: 1px solid rgba(91,62,36,.14); background: #fff; box-shadow: var(--shadow-small); }
+table { width: 100%; border-collapse: collapse; min-width: 740px; }
+th, td { padding: 13px 14px; border-bottom: 1px solid rgba(91,62,36,.12); color: var(--muted); font-size: 16px; line-height: 1.55; vertical-align: top; text-align: justify; }
+th { background: #f3eadf; color: var(--title); text-align: left; font-weight: 800; }
+tr:last-child td { border-bottom: 0; }
+@media (max-width: 980px) {
+  .summary-grid, .three-col, .term-grid, .quick-grid, .four-col { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .cause-grid, .details-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .page { width: min(100% - 22px, 1180px); padding-top: 22px; }
+  .hero, .section, .final-box { padding: 22px; border-radius: 22px; }
+  .summary-grid, .term-grid, .quick-grid, .four-col { grid-template-columns: 1fr; }
+  .event { grid-template-columns: 1fr; }
+  .date { min-height: 66px; }
+  .event > div:last-child { padding: 0 16px 16px; }
+  .key-line { grid-template-columns: 1fr; gap: 6px; }
+  summary { align-items: flex-start; flex-direction: column; }
+  .hero::after { font-size: 82px; }
+}
+
+
+/* Extensii pentru această sinteză */
+.tool-row { display:flex; gap:10px; flex-wrap:wrap; margin-top:18px; }
+.tool-row button { border:1px solid rgba(91,62,36,.18); background:#f3eadf; color:var(--title); border-radius:999px; padding:9px 13px; font:700 14px Georgia,"Times New Roman",serif; cursor:pointer; }
+.tool-row button:hover { background:#e5d2bb; }
+.metric { font-size:34px; line-height:1; color:var(--accent); font-weight:900; display:block; margin-bottom:8px; }
+.ribbon { display:inline-block; margin-bottom:10px; padding:5px 10px; border-radius:999px; background:#efe0cf; border:1px solid rgba(91,62,36,.15); color:var(--accent); font-size:13px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; }
+.compare-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.compare-head { background:linear-gradient(180deg,#7a4f2a,#5b351b); color:#fffaf3; padding:15px 18px; font-weight:900; font-size:18px; }
+.compare-body { padding:18px; }
+.compare-card { background:#fff; border:1px solid rgba(91,62,36,.14); border-radius:20px; overflow:hidden; box-shadow:var(--shadow-small); }
+.quote { margin:16px 0 0; padding:18px 20px; border-left:6px solid rgba(122,79,42,.55); background:#fff8ef; border-radius:0 18px 18px 0; color:var(--muted); font-size:17px; line-height:1.7; font-style:italic; }
+.badge-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+.badge { display:inline-flex; padding:6px 10px; border-radius:999px; background:#f3eadf; border:1px solid rgba(91,62,36,.14); color:var(--title); font-size:13.5px; font-weight:700; }
+.kicker { color:var(--accent); font-weight:800; text-transform:uppercase; letter-spacing:.06em; font-size:14px; margin:0 0 8px; }
+.checklist { list-style:none; margin:0; padding:0; }
+.checklist li { position:relative; padding-left:28px; margin-bottom:10px; }
+.checklist li::before { content:"✓"; position:absolute; left:0; top:0; color:var(--accent); font-weight:900; }
+.redflag { list-style:none; margin:0; padding:0; }
+.redflag li { position:relative; padding-left:28px; margin-bottom:10px; }
+.redflag li::before { content:"!"; position:absolute; left:4px; top:0; color:#8b3e2f; font-weight:900; }
+.progress { position:fixed; left:0; top:0; height:4px; background:#d3a46f; width:0; z-index:99; box-shadow:0 1px 5px rgba(0,0,0,.25); }
+@media (max-width:980px){ .compare-grid{grid-template-columns:1fr;} }
+@media print {
+  body { background:#fff; }
+  body::before, .progress, .topbar, .nav-card, .tool-row { display:none !important; }
+  .page { width:100%; padding:0; }
+  .hero,.section,.final-box { box-shadow:none; border:1px solid #bbb; break-inside:avoid; }
+  details { break-inside:avoid; }
+  details > .details-body { display:block !important; }
+  summary::after { display:none; }
+}
+
+.data-strip { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:18px; }
+.data-item { background:#fff; border:1px solid rgba(91,62,36,.14); border-radius:18px; padding:16px; box-shadow:var(--shadow-small); }
+.data-item b { display:block; color:var(--accent); font-size:24px; line-height:1.05; margin-bottom:7px; text-align:left; }
+.data-item span { display:block; color:var(--muted); font-size:14.5px; line-height:1.5; text-align:justify; }
+.period-band { display:grid; grid-template-columns:160px 1fr; border:1px solid rgba(91,62,36,.14); border-radius:20px; overflow:hidden; background:#fff; box-shadow:var(--shadow-small); margin-top:13px; }
+.period-band .period-date { display:flex; align-items:center; justify-content:center; padding:18px; background:linear-gradient(180deg,#7a4f2a,#5b351b); color:#fffaf3; text-align:center; font-weight:900; font-size:18px; }
+.period-band .period-copy { padding:17px 19px; }
+.period-band h3 { margin-bottom:7px; }
+.period-band p { margin:0; }
+.concept-chain { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:16px; }
+.concept-chain span { background:#fff; border:1px solid rgba(91,62,36,.16); border-radius:999px; padding:8px 11px; color:var(--title); font-weight:700; font-size:14px; box-shadow:var(--shadow-small); }
+.concept-chain i { color:var(--accent); font-style:normal; font-weight:900; }
+.source-box { margin-top:16px; background:#fffdf8; border:1px solid rgba(91,62,36,.16); border-radius:20px; padding:20px; }
+.source-box h3 { margin-bottom:8px; }
+.source-box p:last-child { margin-bottom:0; }
+.dense-table table { min-width:980px; }
+.dense-table th, .dense-table td { font-size:15.2px; line-height:1.48; padding:11px 12px; }
+.correction { background:#f8efe5; border:1px solid rgba(122,79,42,.24); border-left:6px solid #7a4f2a; border-radius:18px; padding:17px 19px; margin-top:15px; }
+.correction strong { color:var(--title); }
+.smallcaps { font-variant:small-caps; letter-spacing:.03em; }
+@media (max-width:980px){ .data-strip{grid-template-columns:repeat(2,1fr);} .period-band{grid-template-columns:130px 1fr;} }
+@media (max-width:680px){ .data-strip{grid-template-columns:1fr;} .period-band{grid-template-columns:1fr;} .period-band .period-date{min-height:62px;} }
+
+
+/* Structură editorială pe părți tematice */
+.part-divider {
+  position: relative;
+  margin: 38px 0 22px;
+  padding: 24px 28px;
+  border-radius: 24px;
+  color: #fffaf3;
+  background: linear-gradient(135deg, rgba(83,45,22,.98), rgba(128,78,40,.96));
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.part-divider::after {
+  content: attr(data-mark);
+  position: absolute;
+  right: 22px;
+  bottom: -22px;
+  font-size: 92px;
+  line-height: 1;
+  font-weight: 900;
+  color: rgba(255,255,255,.09);
+  pointer-events: none;
+}
+.part-divider .part-kicker {
+  margin: 0 0 6px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-weight: 900;
+  color: #f0d3b1;
+}
+.part-divider h2 { margin: 0 0 8px; color: #fffaf3; font-size: clamp(27px,3vw,38px); }
+.part-divider p { margin: 0; max-width: 940px; color: rgba(255,250,243,.88); }
+.section-label {
+  display: inline-flex;
+  margin: 0 0 9px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(91,62,36,.14);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.nav-card { align-items: stretch; }
+.nav-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 6px 0;
+  border-bottom: 1px dashed rgba(91,62,36,.16);
+}
+.nav-group:last-child { border-bottom: 0; }
+.nav-group > span {
+  min-width: 165px;
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.reform-overview { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 16px; }
+.reform-domain {
+  padding: 20px;
+  background: #fff;
+  border: 1px solid rgba(91,62,36,.14);
+  border-radius: 20px;
+  box-shadow: var(--shadow-small);
+}
+.reform-domain h3 { display:flex; align-items:center; gap:9px; margin-bottom:10px; }
+.reform-icon {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:34px; height:34px; border-radius:50%; background:var(--accent-soft);
+  color:var(--accent); font-size:16px; flex:0 0 auto;
+}
+.reform-domain p { margin:0; }
+.ruler-profile {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 0;
+  margin-top: 15px;
+  border: 1px solid rgba(91,62,36,.15);
+  border-radius: 22px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: var(--shadow-small);
+}
+.ruler-side {
+  padding: 22px;
+  background: linear-gradient(180deg,#754825,#4e2b17);
+  color:#fffaf3;
+}
+.ruler-side .years { display:block; margin-bottom:8px; color:#f0d3b1; font-weight:800; font-size:14px; }
+.ruler-side strong { display:block; font-size:20px; line-height:1.22; }
+.ruler-main { padding: 21px 22px; }
+.ruler-main h3 { margin-bottom: 9px; }
+.ruler-main p { margin: 0 0 11px; }
+.ruler-main p:last-child { margin-bottom:0; }
+.reform-list { list-style:none; padding:0; margin:12px 0 0; }
+.reform-list li { position:relative; padding: 10px 0 10px 31px; margin:0; border-top:1px dashed rgba(91,62,36,.16); }
+.reform-list li::before { content:'◆'; position:absolute; left:4px; top:11px; color:var(--accent); font-size:13px; }
+.reform-list strong { color:var(--title); }
+.reform-verdict {
+  margin-top: 13px;
+  padding: 13px 15px;
+  border-radius: 16px;
+  background:#fff8ef;
+  border-left:5px solid rgba(122,79,42,.5);
+}
+.reform-table td:first-child { min-width: 150px; color:var(--title); font-weight:800; }
+.reform-table td:nth-child(2) { min-width: 145px; }
+@media (max-width:980px){
+  .reform-overview{grid-template-columns:repeat(2,1fr)}
+  .ruler-profile{grid-template-columns:150px 1fr}
+}
+@media (max-width:680px){
+  .nav-group > span{min-width:100%;}
+  .reform-overview{grid-template-columns:1fr}
+  .ruler-profile{grid-template-columns:1fr}
+  .ruler-side{padding:17px 19px}
+}
+
+
+/* Extensii specifice paginii despre Transilvania */
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 5px;
+  width: 0;
+  z-index: 9999;
+  background: linear-gradient(90deg, #e4b575, #fff0c9);
+  box-shadow: 0 2px 8px rgba(0,0,0,.25);
+}
+.section-label {
+  display: inline-block;
+  margin-bottom: 9px;
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+.nav-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.nav-group + .nav-group {
+  padding-top: 12px;
+  margin-top: 2px;
+  border-top: 1px dashed rgba(91,62,36,.16);
+}
+.nav-group > span {
+  min-width: 165px;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.part-divider {
+  position: relative;
+  overflow: hidden;
+  margin: 28px 0 22px;
+  padding: 28px 30px;
+  border: 1px solid rgba(255,250,243,.18);
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 90% 15%, rgba(255,255,255,.13), transparent 30%),
+    linear-gradient(135deg, #5f3b22, #2d190d);
+  box-shadow: var(--shadow);
+}
+.part-divider::after {
+  content: attr(data-mark);
+  position: absolute;
+  right: 24px;
+  bottom: -34px;
+  color: rgba(255,250,243,.09);
+  font-size: 126px;
+  line-height: 1;
+  font-weight: 900;
+}
+.part-divider .part-kicker {
+  margin: 0 0 7px;
+  color: #e9c79e;
+  font-weight: 900;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+.part-divider h2 {
+  margin: 0 0 8px;
+  color: #fffaf3;
+  font-size: clamp(27px,3vw,38px);
+}
+.part-divider p {
+  margin: 0;
+  max-width: 960px;
+  color: rgba(255,250,243,.88);
+}
+.metric {
+  font-size: 34px;
+  line-height: 1;
+  color: var(--accent);
+  font-weight: 900;
+  display: block;
+  margin-bottom: 8px;
+}
+.period-band {
+  display: grid;
+  grid-template-columns: 185px 1fr;
+  gap: 18px;
+  margin-top: 13px;
+  overflow: hidden;
+  border: 1px solid rgba(91,62,36,.14);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: var(--shadow-small);
+}
+.period-date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: linear-gradient(180deg,#7a4f2a,#5b351b);
+  color: #fffaf3;
+  font-size: 18px;
+  line-height: 1.25;
+  font-weight: 900;
+  text-align: center;
+}
+.period-copy {
+  padding: 17px 18px 17px 0;
+}
+.period-copy h3 {
+  margin: 0 0 5px;
+}
+.period-copy p {
+  margin: 0;
+}
+.concept-chain {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+.concept-chain span {
+  padding: 8px 12px;
+  border: 1px solid rgba(91,62,36,.15);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--title);
+  font-weight: 800;
+  box-shadow: var(--shadow-small);
+}
+.concept-chain i {
+  color: var(--accent);
+  font-style: normal;
+  font-weight: 900;
+}
+.source-box, .correction {
+  margin-top: 16px;
+  padding: 19px 21px;
+  border: 1px solid rgba(91,62,36,.18);
+  border-radius: 19px;
+  background: #fff9f1;
+  color: var(--muted);
+  font-size: 16.5px;
+  line-height: 1.68;
+}
+.correction {
+  border-left: 6px solid #8c5f34;
+}
+.source-box h3 {
+  margin-bottom: 7px;
+}
+.estates-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 13px;
+}
+.estate {
+  overflow: hidden;
+  border: 1px solid rgba(91,62,36,.14);
+  border-radius: 19px;
+  background: #fff;
+  box-shadow: var(--shadow-small);
+}
+.estate-head {
+  padding: 14px 16px;
+  background: #f3eadf;
+  color: var(--title);
+  font-size: 17px;
+  font-weight: 900;
+}
+.estate-body {
+  padding: 16px;
+}
+.estate-body p {
+  margin: 0;
+  font-size: 15.8px;
+}
+.profile {
+  display: grid;
+  grid-template-columns: 175px 1fr;
+  overflow: hidden;
+  margin-top: 15px;
+  border: 1px solid rgba(91,62,36,.14);
+  border-radius: 21px;
+  background: #fff;
+  box-shadow: var(--shadow-small);
+}
+.profile-side {
+  padding: 20px;
+  background: linear-gradient(180deg,#7a4f2a,#5b351b);
+  color: #fffaf3;
+}
+.profile-side strong {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 18px;
+}
+.profile-side span {
+  display: block;
+  color: rgba(255,250,243,.82);
+  line-height: 1.55;
+}
+.profile-main {
+  padding: 21px;
+}
+.profile-main h3 {
+  margin-bottom: 8px;
+}
+.profile-main p:first-of-type {
+  margin-top: 0;
+}
+.profile-main p:last-child {
+  margin-bottom: 0;
+}
+.balance-grid {
+  display: grid;
+  grid-template-columns: 1fr 72px 1fr;
+  gap: 14px;
+  align-items: stretch;
+  margin-top: 15px;
+}
+.balance-side, .balance-center {
+  border: 1px solid rgba(91,62,36,.14);
+  border-radius: 20px;
+  box-shadow: var(--shadow-small);
+}
+.balance-side {
+  padding: 20px;
+  background: #fff;
+}
+.balance-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0e4d4;
+  color: var(--accent);
+  font-size: 30px;
+  font-weight: 900;
+}
+.claim-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 13px;
+  margin-top: 15px;
+}
+.claim {
+  padding: 18px;
+  border: 1px solid rgba(91,62,36,.14);
+  border-radius: 19px;
+  background: #fff;
+  box-shadow: var(--shadow-small);
+}
+.claim strong {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--title);
+  font-size: 17px;
+}
+.claim p {
+  margin: 0;
+  font-size: 15.8px;
+}
+.checklist {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.checklist li {
+  position: relative;
+  margin-bottom: 9px;
+  padding-left: 25px;
+}
+.checklist li::before {
+  content: "◆";
+  position: absolute;
+  left: 0;
+  top: 1px;
+  color: var(--accent);
+  font-size: 12px;
+}
+.compare-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 14px;
+}
+.compare-card {
+  overflow: hidden;
+  border: 1px solid rgba(91,62,36,.14);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: var(--shadow-small);
+}
+.compare-head {
+  padding: 15px 18px;
+  background: linear-gradient(180deg,#7a4f2a,#5b351b);
+  color: #fffaf3;
+  font-size: 18px;
+  font-weight: 900;
+}
+.compare-body {
+  padding: 18px;
+}
+.quote {
+  margin: 16px 0 0;
+  padding: 18px 20px;
+  border-left: 6px solid rgba(122,79,42,.55);
+  border-radius: 0 18px 18px 0;
+  background: #fff8ef;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.7;
+  font-style: italic;
+}
+.tool-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+.tool-row button {
+  border: 1px solid rgba(91,62,36,.18);
+  border-radius: 999px;
+  padding: 9px 13px;
+  background: #f3eadf;
+  color: var(--title);
+  font: 700 14px Georgia,"Times New Roman",serif;
+  cursor: pointer;
+}
+.tool-row button:hover {
+  background: #e5d2bb;
+}
+@media (max-width:980px) {
+  .estates-grid, .claim-grid, .compare-grid { grid-template-columns: repeat(2,1fr); }
+  .balance-grid { grid-template-columns: 1fr; }
+  .balance-center { min-height: 58px; }
+}
+@media (max-width:680px) {
+  .period-band, .profile { grid-template-columns: 1fr; }
+  .period-copy { padding: 0 16px 16px; }
+  .estates-grid, .claim-grid, .compare-grid { grid-template-columns: 1fr; }
+  .nav-group > span { min-width: 100%; }
+}
+@media print {
+  body { background:#fff; }
+  body::before, .progress, .topbar, .tool-row { display:none !important; }
+  .page { width:100%; padding:0; }
+  .hero, .section, .final-box, .part-divider { box-shadow:none; break-inside:avoid; }
+  details { break-inside:avoid; }
+  details > * { display:block !important; }
+  summary::after { display:none; }
+}
+
+
+
+/* Extensii pentru pagina despre conflictele militare */
+.progress {
+  position: fixed;
+  inset: 0 auto auto 0;
+  width: 0;
+  height: 5px;
+  z-index: 9999;
+  background: linear-gradient(90deg,#dca861,#fff0c7);
+  box-shadow: 0 2px 8px rgba(0,0,0,.28);
+}
+.section-label {
+  display:inline-block;
+  margin-bottom:9px;
+  color:var(--accent);
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+.nav-group {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+  width:100%;
+}
+.nav-group + .nav-group {
+  padding-top:12px;
+  margin-top:2px;
+  border-top:1px dashed rgba(91,62,36,.16);
+}
+.nav-group > span {
+  min-width:170px;
+  color:var(--accent);
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+.part-divider {
+  position:relative;
+  overflow:hidden;
+  margin:28px 0 22px;
+  padding:29px 31px;
+  border:1px solid rgba(255,250,243,.18);
+  border-radius:26px;
+  background:
+    radial-gradient(circle at 91% 14%,rgba(255,255,255,.13),transparent 31%),
+    linear-gradient(135deg,#633d22,#2d190d);
+  box-shadow:var(--shadow);
+}
+.part-divider::after {
+  content:attr(data-mark);
+  position:absolute;
+  right:24px;
+  bottom:-35px;
+  color:rgba(255,250,243,.09);
+  font-size:128px;
+  line-height:1;
+  font-weight:900;
+}
+.part-divider .part-kicker {
+  margin:0 0 7px;
+  color:#e9c79e;
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+.part-divider h2 { margin:0 0 8px; color:#fffaf3; }
+.part-divider p { margin:0; max-width:970px; color:rgba(255,250,243,.88); }
+.metric {
+  display:block;
+  margin-bottom:8px;
+  color:var(--accent);
+  font-size:33px;
+  line-height:1;
+  font-weight:900;
+}
+.war-header {
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:18px;
+  overflow:hidden;
+  margin:16px 0;
+  border:1px solid rgba(91,62,36,.14);
+  border-radius:22px;
+  background:#fff;
+  box-shadow:var(--shadow-small);
+}
+.war-date {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:22px 15px;
+  background:linear-gradient(180deg,#7a4f2a,#4e2d17);
+  color:#fffaf3;
+  font-size:23px;
+  line-height:1.18;
+  font-weight:900;
+  text-align:center;
+}
+.war-copy { padding:20px 21px 20px 0; }
+.war-copy h3 { margin-bottom:7px; }
+.war-copy p { margin:0; }
+.actor-grid, .campaign-grid, .treaty-grid, .impact-grid, .claim-grid {
+  display:grid;
+  gap:14px;
+}
+.actor-grid { grid-template-columns:repeat(3,1fr); }
+.campaign-grid { grid-template-columns:repeat(2,1fr); }
+.treaty-grid { grid-template-columns:repeat(3,1fr); }
+.impact-grid { grid-template-columns:repeat(4,1fr); }
+.claim-grid { grid-template-columns:repeat(3,1fr); }
+.actor, .campaign-card, .treaty-card, .impact-card, .claim {
+  padding:19px;
+  border:1px solid rgba(91,62,36,.14);
+  border-radius:20px;
+  background:#fff;
+  box-shadow:var(--shadow-small);
+}
+.actor strong, .campaign-card strong, .treaty-card strong, .impact-card strong, .claim strong {
+  display:block;
+  margin-bottom:7px;
+  color:var(--title);
+  font-size:17px;
+}
+.actor p, .campaign-card p, .treaty-card p, .impact-card p, .claim p {
+  margin:0;
+  font-size:15.9px;
+}
+.operation {
+  display:grid;
+  grid-template-columns:142px 1fr;
+  gap:16px;
+  overflow:hidden;
+  margin-top:13px;
+  border:1px solid rgba(91,62,36,.14);
+  border-radius:20px;
+  background:#fff;
+  box-shadow:var(--shadow-small);
+}
+.operation .op-date {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+  background:#f0e4d4;
+  color:var(--title);
+  font-weight:900;
+  text-align:center;
+}
+.operation .op-body { padding:16px 18px 16px 0; }
+.operation .op-body h3 { margin:0 0 5px; font-size:19px; }
+.operation .op-body p { margin:0; font-size:16.3px; }
+.causal-chain {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+.causal-chain span {
+  padding:8px 12px;
+  border:1px solid rgba(91,62,36,.15);
+  border-radius:999px;
+  background:#fff;
+  color:var(--title);
+  font-weight:800;
+  box-shadow:var(--shadow-small);
+}
+.causal-chain i { color:var(--accent); font-style:normal; font-weight:900; }
+.correction, .source-box, .strategic-box {
+  margin-top:17px;
+  padding:19px 21px;
+  border:1px solid rgba(91,62,36,.18);
+  border-radius:19px;
+  background:#fff9f1;
+  color:var(--muted);
+  font-size:16.5px;
+  line-height:1.68;
+}
+.correction { border-left:6px solid #8b5b31; }
+.strategic-box { background:#f5eee5; }
+.source-box h3, .strategic-box h3 { margin-bottom:7px; }
+.frontier {
+  display:grid;
+  grid-template-columns:1fr 64px 1fr;
+  gap:14px;
+  align-items:stretch;
+  margin-top:16px;
+}
+.frontier-side, .frontier-center {
+  border:1px solid rgba(91,62,36,.14);
+  border-radius:20px;
+  box-shadow:var(--shadow-small);
+}
+.frontier-side { padding:20px; background:#fff; }
+.frontier-center {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#f0e4d4;
+  color:var(--accent);
+  font-size:28px;
+  font-weight:900;
+}
+.quote {
+  margin:16px 0 0;
+  padding:18px 20px;
+  border-left:6px solid rgba(122,79,42,.55);
+  border-radius:0 18px 18px 0;
+  background:#fff8ef;
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.7;
+  font-style:italic;
+}
+.checklist {
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+.checklist li {
+  position:relative;
+  margin-bottom:9px;
+  padding-left:25px;
+}
+.checklist li::before {
+  content:"◆";
+  position:absolute;
+  left:0;
+  top:1px;
+  color:var(--accent);
+  font-size:12px;
+}
+.tool-row {
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+.tool-row button {
+  border:1px solid rgba(91,62,36,.18);
+  border-radius:999px;
+  padding:9px 13px;
+  background:#f3eadf;
+  color:var(--title);
+  font:700 14px Georgia,"Times New Roman",serif;
+  cursor:pointer;
+}
+.tool-row button:hover { background:#e5d2bb; }
+@media (max-width:980px) {
+  .actor-grid,.treaty-grid,.claim-grid { grid-template-columns:repeat(2,1fr); }
+  .impact-grid { grid-template-columns:repeat(2,1fr); }
+  .frontier { grid-template-columns:1fr; }
+  .frontier-center { min-height:56px; }
+}
+@media (max-width:680px) {
+  .war-header,.operation { grid-template-columns:1fr; }
+  .war-copy,.operation .op-body { padding:0 16px 17px; }
+  .actor-grid,.campaign-grid,.treaty-grid,.impact-grid,.claim-grid { grid-template-columns:1fr; }
+  .nav-group > span { min-width:100%; }
+}
+@media print {
+  body { background:#fff; }
+  body::before,.progress,.topbar,.tool-row { display:none!important; }
+  .page { width:100%; padding:0; }
+  .hero,.section,.final-box,.part-divider { box-shadow:none; break-inside:avoid; }
+  details { break-inside:avoid; }
+  details > * { display:block!important; }
+  summary::after { display:none; }
+}
+
+
+.progress{position:fixed;inset:0 auto auto 0;width:0;height:5px;z-index:9999;background:linear-gradient(90deg,#dca861,#fff0c7);box-shadow:0 2px 8px rgba(0,0,0,.28)}
+.section-label{display:inline-block;margin-bottom:9px;color:var(--accent);font-size:13px;font-weight:900;letter-spacing:.09em;text-transform:uppercase}
+.nav-group{display:flex;align-items:center;gap:8px;flex-wrap:wrap;width:100%}
+.nav-group+.nav-group{padding-top:12px;margin-top:2px;border-top:1px dashed rgba(91,62,36,.16)}
+.nav-group>span{min-width:172px;color:var(--accent);font-size:14px;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
+.part-divider{position:relative;overflow:hidden;margin:28px 0 22px;padding:29px 31px;border:1px solid rgba(255,250,243,.18);border-radius:26px;background:radial-gradient(circle at 91% 14%,rgba(255,255,255,.13),transparent 31%),linear-gradient(135deg,#633d22,#2d190d);box-shadow:var(--shadow)}
+.part-divider::after{content:attr(data-mark);position:absolute;right:24px;bottom:-35px;color:rgba(255,250,243,.09);font-size:128px;line-height:1;font-weight:900}
+.part-divider .part-kicker{margin:0 0 7px;color:#e9c79e;font-size:14px;font-weight:900;letter-spacing:.09em;text-transform:uppercase}
+.part-divider h2{margin:0 0 8px;color:#fffaf3}.part-divider p{margin:0;max-width:970px;color:rgba(255,250,243,.88)}
+.metric{display:block;margin-bottom:8px;color:var(--accent);font-size:33px;line-height:1;font-weight:900}
+.profile{display:grid;grid-template-columns:190px 1fr;overflow:hidden;margin-top:15px;border:1px solid rgba(91,62,36,.14);border-radius:21px;background:#fff;box-shadow:var(--shadow-small)}
+.profile-side{padding:20px;background:linear-gradient(180deg,#7a4f2a,#4e2d17);color:#fffaf3}
+.profile-side strong{display:block;margin-bottom:7px;font-size:18px}.profile-side span{display:block;color:rgba(255,250,243,.82);line-height:1.55}
+.profile-main{padding:21px}.profile-main h3{margin-bottom:8px}.profile-main p:first-of-type{margin-top:0}.profile-main p:last-child{margin-bottom:0}
+.claim-grid,.work-grid,.impact-grid,.compare-grid{display:grid;gap:14px}
+.claim-grid{grid-template-columns:repeat(3,1fr)}.work-grid{grid-template-columns:repeat(2,1fr)}.impact-grid{grid-template-columns:repeat(4,1fr)}.compare-grid{grid-template-columns:repeat(3,1fr)}
+.claim,.work-card,.impact-card,.compare-card{padding:19px;border:1px solid rgba(91,62,36,.14);border-radius:20px;background:#fff;box-shadow:var(--shadow-small)}
+.claim strong,.work-card strong,.impact-card strong,.compare-card strong{display:block;margin-bottom:7px;color:var(--title);font-size:17px}
+.claim p,.work-card p,.impact-card p,.compare-card p{margin:0;font-size:15.9px}
+.era{display:grid;grid-template-columns:176px 1fr;gap:18px;overflow:hidden;margin:14px 0;border:1px solid rgba(91,62,36,.14);border-radius:21px;background:#fff;box-shadow:var(--shadow-small)}
+.era-date{display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(180deg,#7a4f2a,#4e2d17);color:#fffaf3;font-size:21px;line-height:1.2;font-weight:900;text-align:center}
+.era-copy{padding:18px 20px 18px 0}.era-copy h3{margin:0 0 6px}.era-copy p{margin:0}
+.causal-chain{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:18px}
+.causal-chain span{padding:8px 12px;border:1px solid rgba(91,62,36,.15);border-radius:999px;background:#fff;color:var(--title);font-weight:800;box-shadow:var(--shadow-small)}
+.causal-chain i{color:var(--accent);font-style:normal;font-weight:900}
+.correction,.source-box,.quote{margin-top:17px;padding:19px 21px;border:1px solid rgba(91,62,36,.18);border-radius:19px;background:#fff9f1;color:var(--muted);font-size:16.5px;line-height:1.68}
+.correction{border-left:6px solid #8b5b31}.quote{border-left:6px solid rgba(122,79,42,.55);font-style:italic}
+.source-box h3{margin-bottom:7px}
+.checklist{margin:0;padding:0;list-style:none}.checklist li{position:relative;margin-bottom:9px;padding-left:25px}.checklist li::before{content:"◆";position:absolute;left:0;top:1px;color:var(--accent);font-size:12px}
+.tool-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.tool-row button{border:1px solid rgba(91,62,36,.18);border-radius:999px;padding:9px 13px;background:#f3eadf;color:var(--title);font:700 14px Georgia,"Times New Roman",serif;cursor:pointer}.tool-row button:hover{background:#e5d2bb}
+.ideology{display:grid;grid-template-columns:150px 1fr;gap:14px;margin-top:13px;overflow:hidden;border:1px solid rgba(91,62,36,.14);border-radius:19px;background:#fff;box-shadow:var(--shadow-small)}
+.ideology-name{display:flex;align-items:center;justify-content:center;padding:16px;background:#f0e4d4;color:var(--title);font-weight:900;text-align:center}.ideology-copy{padding:16px 18px 16px 0}.ideology-copy p{margin:0}
+@media(max-width:980px){.claim-grid,.compare-grid{grid-template-columns:repeat(2,1fr)}.impact-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:680px){.profile,.era,.ideology{grid-template-columns:1fr}.profile-main,.era-copy,.ideology-copy{padding:0 16px 17px}.claim-grid,.work-grid,.impact-grid,.compare-grid{grid-template-columns:1fr}.nav-group>span{min-width:100%}}
+@media print{body{background:#fff}body::before,.progress,.topbar,.tool-row{display:none!important}.page{width:100%;padding:0}.hero,.section,.final-box,.part-divider{box-shadow:none;break-inside:avoid}details{break-inside:avoid}details>*{display:block!important}summary::after{display:none}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<main class="page">
+  <div class="topbar"><a class="back-link" href="javascript:history.back()">← Înapoi</a><span class="tag">Cultura română modernă · sinteză amplă</span></div>
+  <header class="hero" style="--hero-year:'1848–1947'">
+    <p class="eyebrow">De la pașoptiști și partidele istorice la autoritarism și comunizare</p>
+    <h1>Personalități politice și cultura politică modernă</h1>
+    <p class="subtitle">O galerie politică structurată pe ideologii, partide și epoci: Kogălniceanu, Rosetti și Brătianu; conservatorii Catargiu, Carp și Maiorescu; liderii Partidului Național Român și ai PNȚ; Averescu și Iorga; extrema dreaptă, autoritarismul carlist, social-democrația și conducătorii comuniști.</p>
+    <div class="summary-grid"><div class="summary-card"><span class="metric">1848–1866</span><strong>Fondatorii</strong><span>Generația revoluționară construiește Unirea și statul constituțional.</span></div><div class="summary-card"><span class="metric">1875–1918</span><strong>Partidele istorice</strong><span>Liberalii, conservatorii și liderii românilor transilvăneni.</span></div><div class="summary-card"><span class="metric">1918–1938</span><strong>Politica maselor</strong><span>Țărănism, partide personale, naționalism și criza democrației.</span></div><div class="summary-card"><span class="metric">1944–1947</span><strong>Sfârșitul pluralismului</strong><span>Partidele istorice sunt eliminate, iar partidul comunist preia statul.</span></div></div>
+    <div class="tool-row"><button type="button" onclick="toggleAll(true)">Deschide toate explicațiile</button><button type="button" onclick="toggleAll(false)">Închide toate explicațiile</button><button type="button" onclick="window.print()">Printează / salvează PDF</button></div>
+  </header>
+  <nav class="nav-card" aria-label="Cuprins"><div class="nav-group"><span>Fundamente</span><a href="#cadru">Politicianul modern</a><a href="#ideologii">Ideologii</a></div><div class="nav-group"><span>Pașoptiști</span><a href="#kogalniceanu">Kogălniceanu</a><a href="#rossetti">C.A. Rosetti</a><a href="#icbratianu">Ion C. Brătianu</a></div><div class="nav-group"><span>Partide istorice</span><a href="#liberali">Liberalii</a><a href="#conservatori">Conservatorii</a><a href="#take-ionescu">Take Ionescu</a></div><div class="nav-group"><span>Transilvania</span><a href="#ratiu">Ioan Rațiu</a><a href="#maniu">Iuliu Maniu</a><a href="#goldis-vaida">Goldiș și Vaida</a></div><div class="nav-group"><span>Interbelic</span><a href="#mihalache">Mihalache</a><a href="#stere-madgearu">Stere și Madgearu</a><a href="#averescu">Averescu</a><a href="#iorga">Iorga</a></div><div class="nav-group"><span>Criza democrației</span><a href="#accuza-goga">Cuza și Goga</a><a href="#codreanu">Codreanu</a><a href="#carol-calin">Carol II și Călinescu</a></div><div class="nav-group"><span>Comunizare</span><a href="#socialisti">Social-democrați</a><a href="#comunisti">Comuniști</a><a href="#rezistenta">Rezistența democratică</a></div><div class="nav-group"><span>Sinteză</span><a href="#comparatie">Tipologii</a><a href="#partide">Partide</a><a href="#cronologie">Cronologie</a><a href="#glosar">Glosar</a><a href="#evaluare">Evaluare</a></div></nav>
+  
+<section class="part-divider" data-mark="I"><p class="part-kicker">De la grupări la partide</p><h2>Nașterea culturii politice moderne</h2><p>Personalitățile nu pot fi înțelese separat de instituții. Presa, cluburile, parlamentele, alegerile și partidele au transformat conducerea politică dintr-o rețea de familii și clientelă într-o competiție ideologică organizată.</p></section>
+
+<section class="section" id="cadru"><div class="section-label">Instituții și limbaj politic</div><h2>Cum apare politicianul modern</h2>
+<p class="section-intro">În prima jumătate a secolului al XIX-lea existau „partide” în sens larg: grupări boierești, cercuri revoluționare și clientele. După 1859 și mai ales după Constituția din 1866, competiția electorală, presa și responsabilitatea guvernamentală au produs partide mai stabile.</p>
+<div class="claim-grid">
+<article class="claim"><strong>Oratorul</strong><p>Parlamentul și adunările publice au făcut din discurs o armă politică esențială.</p></article>
+<article class="claim"><strong>Publicistul</strong><p>Ziarele formau opinia, criticau guvernul și mobilizau alegătorii.</p></article>
+<article class="claim"><strong>Organizatorul</strong><p>Rețelele locale, comitetele electorale și cluburile transformau ideile în voturi și guverne.</p></article>
+<article class="claim"><strong>Omul de stat</strong><p>Conducerea ministerelor cerea competență juridică, financiară, diplomatică și administrativă.</p></article>
+<article class="claim"><strong>Liderul național</strong><p>În Transilvania și Bucovina, personalitatea politică reprezenta o comunitate lipsită de putere statală proprie.</p></article>
+<article class="claim"><strong>Liderul autoritar</strong><p>În anii 1930, unii conducători au folosit partidul unic, violența și propaganda pentru a distruge pluralismul.</p></article>
+</div>
+</section>
+
+<section class="section" id="ideologii"><div class="section-label">Harta doctrinelor</div><h2>Principalele familii politice</h2>
+<div class="ideology"><div class="ideology-name">Liberalism</div><div class="ideology-copy"><p>Constituție, drepturi civile, proprietate, modernizare economică și stat național. În practica românească, liberalismul a combinat reformele cu centralizarea și patronajul politic.</p></div></div>
+<div class="ideology"><div class="ideology-name">Conservatorism</div><div class="ideology-copy"><p>Schimbare graduală, apărarea proprietății, administrație competentă și neîncredere față de reformele rapide neadaptate societății.</p></div></div>
+<div class="ideology"><div class="ideology-name">Naționalism civic</div><div class="ideology-copy"><p>Unire, independență și egalitatea românilor din imperii. A putut funcționa democratic, dar și aluneca spre excludere etnică.</p></div></div>
+<div class="ideology"><div class="ideology-name">Țărănism</div><div class="ideology-copy"><p>Reforma agrară, cooperație, descentralizare și reprezentarea majorității rurale.</p></div></div>
+<div class="ideology"><div class="ideology-name">Socialism</div><div class="ideology-copy"><p>Drepturi ale muncitorilor, sindicalism, vot universal și reforme sociale; aripa comunistă a adoptat modelul revoluționar bolșevic.</p></div></div>
+<div class="ideology"><div class="ideology-name">Extrema dreaptă</div><div class="ideology-copy"><p>Naționalism exclusivist, antisemitism, cultul violenței și respingerea democrației liberale.</p></div></div>
+</section>
+
+<section class="part-divider" data-mark="II"><p class="part-kicker">Generația pașoptistă și Unirea</p><h2>Revoluționari transformați în oameni de stat</h2><p>Personalitățile de la 1848 au trecut de la societăți secrete și exil la guvern, diplomație și construcția statului național.</p></section>
+
+<section class="section" id="kogalniceanu"><div class="section-label">Reformator și istoric</div><h2>Mihail Kogălniceanu</h2>
+<div class="profile"><div class="profile-side"><strong>Mihail Kogălniceanu</strong><span>1817–1891<br/>istoric, publicist, prim-ministru<br/>lider al reformelor din vremea lui Cuza</span></div><div class="profile-main"><h3>Program național și reformă socială</h3><p>A formulat în 1848 programul moldovean în <em>Dorințele partidei naționale</em>, a susținut Unirea și a devenit principal colaborator politic al lui Alexandru Ioan Cuza. Ca prim-ministru, a legat secularizarea averilor mănăstirești de reforma agrară și de modernizarea statului.</p><p>În 1877, ca ministru de externe, a proclamat în Parlament independența României. Kogălniceanu ilustrează trecerea de la intelectualul romantic la administratorul pragmatic.</p></div></div>
+</section>
+
+<section class="section" id="rossetti"><div class="section-label">Presa și radicalismul democratic</div><h2>C.A. Rosetti</h2>
+<div class="profile"><div class="profile-side"><strong>Constantin A. Rosetti</strong><span>1816–1885<br/>revoluționar, ziarist și lider liberal<br/>fondator al ziarului Românul</span></div><div class="profile-main"><h3>Politica prin opinie publică</h3><p>Rosetti a fost unul dintre liderii revoluției muntene din 1848 și un promotor al libertății presei, al cetățeniei și al mobilizării urbane. Ziarul <em>Românul</em> a devenit centrul radicalismului liberal.</p><p>A susținut Unirea, aducerea unui principe străin și independența, dar relația sa cu Ion C. Brătianu a oscilat între colaborare și conflict.</p></div></div>
+</section>
+
+<section class="section" id="icbratianu"><div class="section-label">Constructorul liberal</div><h2>Ion C. Brătianu</h2>
+<div class="profile"><div class="profile-side"><strong>Ion C. Brătianu</strong><span>1821–1891<br/>pașoptist și prim-ministru<br/>lider al PNL<br/>guvernare 1876–1888</span></div><div class="profile-main"><h3>De la revoluție la statul centralizat</h3><p>A participat la 1848, la mișcarea unionistă și la aducerea lui Carol I. În 1875 a fost principalul organizator al Partidului Național Liberal, iar guvernarea sa a traversat independența, proclamarea regatului și dezvoltarea instituțiilor moderne.</p><p>Stilul său combina viziunea strategică, controlul organizației și folosirea administrației electorale. Criticii au denunțat „viziratul” și dominația partidului asupra statului.</p></div></div>
+</section>
+
+<section class="part-divider" data-mark="III"><p class="part-kicker">Sistemul partidelor istorice</p><h2>Liberali și conservatori în România constituțională</h2><p>Între 1866 și Primul Război Mondial, alternanța la guvernare a fost dominată de cele două mari familii politice, chiar dacă votul cenzitar și intervenția administrației limitau competiția.</p></section>
+
+<section class="section" id="liberali"><div class="section-label">Partidul Național Liberal</div><h2>Dinastia politică Brătianu și modernizarea liberală</h2>
+<div class="profile"><div class="profile-side"><strong>Dimitrie A. Sturdza</strong><span>1833–1914<br/>istoric și lider PNL<br/>prim-ministru în mai multe rânduri</span></div><div class="profile-main"><h3>Instituții, disciplină și orientare externă</h3><p>Sturdza a reprezentat aripa disciplinată și administrativă a liberalismului. A alternat la conducerea guvernului și a partidului și a susținut apropierea de Puterile Centrale înainte de 1914.</p></div></div>
+<div class="profile"><div class="profile-side"><strong>Ion I.C. Brătianu</strong><span>1864–1927<br/>lider PNL<br/>prim-ministru în epoca războiului și a Marii Uniri</span></div><div class="profile-main"><h3>Negociatorul României Mari</h3><p>A condus guvernul care a decis intrarea în război alături de Antantă în 1916, a gestionat refugiul la Iași și a revenit la putere după 1918. A susținut reforma agrară, votul universal masculin și Constituția din 1923.</p><p>Puterea PNL se baza pe administrație, bănci, industrie și o organizație națională eficientă. Adversarii acuzau centralismul și controlul electoral.</p></div></div>
+<div class="profile"><div class="profile-side"><strong>Vintilă Brătianu</strong><span>1867–1930<br/>finanțist și prim-ministru<br/>doctrina „prin noi înșine”</span></div><div class="profile-main"><h3>Naționalism economic</h3><p>A susținut dezvoltarea capitalului românesc, controlul resurselor strategice și limitarea dependenței de capitalul străin. Politica sa a influențat liberalismul economic interbelic.</p></div></div>
+</section>
+
+<section class="section" id="conservatori"><div class="section-label">Partidul Conservator</div><h2>Lascăr Catargiu, P.P. Carp și Titu Maiorescu</h2>
+<div class="profile"><div class="profile-side"><strong>Lascăr Catargiu</strong><span>1823–1899<br/>lider conservator<br/>prim-ministru al „marii guvernări” 1871–1876</span></div><div class="profile-main"><h3>Ordine și stabilitate</h3><p>A consolidat monarhia constituțională după crizele începutului domniei lui Carol I. Guvernarea sa a întărit administrația, finanțele și infrastructura, dar a apărat votul cenzitar și predominanța proprietarilor.</p></div></div>
+<div class="profile"><div class="profile-side"><strong>Petre P. Carp</strong><span>1837–1919<br/>junimist și lider conservator<br/>diplomat și prim-ministru</span></div><div class="profile-main"><h3>Criticul formelor fără fond</h3><p>Carp cerea instituții adaptate nivelului economic și social, educație serioasă și responsabilitate fiscală. În politica externă a rămas un susținător ferm al alianței cu Puterile Centrale, inclusiv în 1914–1916.</p></div></div>
+<div class="profile"><div class="profile-side"><strong>Titu Maiorescu</strong><span>1840–1917<br/>critic literar, jurist și om politic<br/>prim-ministru 1912–1914</span></div><div class="profile-main"><h3>Cultura ca disciplină politică</h3><p>Maiorescu a transferat în politică exigența critică a Junimii. A susținut profesionalizarea administrației și a negociat Pacea de la București din 1913, după al Doilea Război Balcanic.</p></div></div>
+</section>
+
+<section class="section" id="take-ionescu"><div class="section-label">Dizidență conservatoare</div><h2>Take Ionescu</h2>
+<div class="profile"><div class="profile-side"><strong>Take Ionescu</strong><span>1858–1922<br/>mare orator<br/>fondator al Partidului Conservator-Democrat</span></div><div class="profile-main"><h3>Politicianul opiniei publice urbane</h3><p>A rupt conservatorismul tradițional și a creat o formațiune mai flexibilă, sprijinită de profesii liberale și clase mijlocii. A susținut apropierea de Antantă și proiectul unirii cu Transilvania.</p><p>Cariera sa arată fragmentarea vechilor partide și apariția politicii personale, bazată pe presă, oratorie și popularitate.</p></div></div>
+</section>
+
+<section class="part-divider" data-mark="IV"><p class="part-kicker">Românii din imperii</p><h2>Partidul Național Român și liderii emancipării transilvănene</h2><p>În Transilvania, politicianul modern nu administra un stat românesc, ci negocia drepturi naționale în cadrul Ungariei și al Monarhiei Austro-Ungare.</p></section>
+
+<section class="section" id="ratiu"><div class="section-label">Memorandism</div><h2>Ioan Rațiu</h2>
+<div class="profile"><div class="profile-side"><strong>Ioan Rațiu</strong><span>1828–1902<br/>avocat și lider PNR<br/>președinte al mișcării memorandiste</span></div><div class="profile-main"><h3>„Existența unui popor nu se discută, se afirmă”</h3><p>Rațiu a condus delegația Memorandumului din 1892, care denunța politica de maghiarizare și lipsa reprezentării românilor. Procesul de la Cluj din 1894 l-a transformat într-un simbol al rezistenței legale.</p></div></div>
+</section>
+
+<section class="section" id="maniu"><div class="section-label">De la PNR la PNȚ</div><h2>Iuliu Maniu</h2>
+<div class="profile"><div class="profile-side"><strong>Iuliu Maniu</strong><span>1873–1953<br/>lider al PNR și PNȚ<br/>președinte al Consiliului Dirigent<br/>prim-ministru</span></div><div class="profile-main"><h3>Legalism, autonomie și opoziție democratică</h3><p>A activat în Parlamentul de la Budapesta, a organizat românii din armata austro-ungară în 1918 și a condus Consiliul Dirigent al Transilvaniei. După fuziunea din 1926 cu Partidul Țărănesc, a devenit principalul lider al PNȚ.</p><p>S-a opus autoritarismului lui Carol al II-lea, dictaturii antonesciene și comunizării. A fost condamnat în procesul politic de la Tămădău și a murit în închisoarea de la Sighet.</p></div></div>
+</section>
+
+<section class="section" id="goldis-vaida"><div class="section-label">1918 și diplomația unirii</div><h2>Vasile Goldiș și Alexandru Vaida-Voevod</h2>
+<div class="two-col">
+<article class="info-card"><h3>Vasile Goldiș</h3><p>Publicist și ideolog al PNR, a redactat textul rezoluției adoptate la Alba Iulia la 1 decembrie 1918. Programul combina unirea cu România, libertăți democratice, egalitate națională și reformă agrară.</p></article>
+<article class="info-card"><h3>Alexandru Vaida-Voevod</h3><p>Deputat român la Budapesta, a citit în 1918 declarația de autodeterminare. A devenit apoi prim-ministru al României și reprezentant la Conferința de Pace, evoluând ulterior spre un naționalism autoritar.</p></article>
+</div>
+<div class="correction"><strong>Precizare organizațională:</strong> Partidul Național Român unificat în 1881 reprezenta în principal românii din Transilvania și Banat, cu legături în Crișana și Maramureș. Românii din Bucovina au avut organizații politice proprii în cadrul provinciei austriece, chiar dacă obiectivele naționale erau apropiate.</div>
+</section>
+
+<section class="part-divider" data-mark="V"><p class="part-kicker">Politica maselor după 1918</p><h2>Țărăniști, militari și noi forme de partid</h2><p>Votul universal masculin și reforma agrară au lărgit electoratul. Partidele au trebuit să mobilizeze milioane de țărani, veterani, muncitori și funcționari.</p></section>
+
+<section class="section" id="mihalache"><div class="section-label">Țărănism democratic</div><h2>Ion Mihalache</h2>
+<div class="profile"><div class="profile-side"><strong>Ion Mihalache</strong><span>1882–1963<br/>învățător și veteran<br/>fondator al Partidului Țărănesc<br/>lider PNȚ</span></div><div class="profile-main"><h3>Reprezentarea majorității rurale</h3><p>A creat în 1918 Partidul Țărănesc și a susținut reforma agrară, cooperativele, administrația locală și accesul satului la educație. Fuziunea din 1926 cu PNR a format Partidul Național-Țărănesc.</p><p>După 1945 s-a opus comuniștilor și a fost condamnat în același proces cu Maniu, murind la penitenciarul Râmnicu Sărat.</p></div></div>
+</section>
+
+<section class="section" id="stere-madgearu"><div class="section-label">Doctrină și economie</div><h2>Constantin Stere și Virgil Madgearu</h2>
+<div class="two-col">
+<article class="info-card"><h3>Constantin Stere</h3><p>A formulat poporanismul, punând în centrul societății țărănimea și cooperativa. A susținut votul universal și reforma agrară. Opțiunea sa pentru Puterile Centrale în Primul Război Mondial i-a afectat cariera.</p></article>
+<article class="info-card"><h3>Virgil Madgearu</h3><p>Economistul principal al PNȚ a elaborat doctrina statului țărănesc și a cooperativismului. Critic al fascismului și al legionarilor, a fost asasinat de aceștia în noiembrie 1940.</p></article>
+</div>
+</section>
+
+<section class="section" id="averescu"><div class="section-label">Prestigiu militar și partid personal</div><h2>Alexandru Averescu</h2>
+<div class="profile"><div class="profile-side"><strong>Alexandru Averescu</strong><span>1859–1938<br/>mareșal<br/>fondator al Ligii și Partidului Poporului<br/>prim-ministru</span></div><div class="profile-main"><h3>De la eroul de război la liderul populist</h3><p>Prestigiul câștigat în 1917 i-a permis să mobilizeze speranțele veteranilor și țăranilor. Partidul său promitea ordine, împroprietărire și pedepsirea „vinovaților”. La guvernare, a devenit mai moderat și dependent de înțelegeri cu regele și PNL.</p></div></div>
+</section>
+
+<section class="section" id="iorga"><div class="section-label">Naționalism cultural și politică</div><h2>Nicolae Iorga</h2>
+<div class="profile"><div class="profile-side"><strong>Nicolae Iorga</strong><span>1871–1940<br/>istoric, publicist și prim-ministru<br/>cofondator al PND</span></div><div class="profile-main"><h3>Autoritate culturală transformată în capital politic</h3><p>În 1910 a fondat împreună cu A.C. Cuza Partidul Naționalist-Democrat. Iorga susținea educația națională, protejarea micilor producători și o monarhie activă, dar s-a îndepărtat de antisemitismul radical al lui Cuza.</p><p>Relația sa cu Carol al II-lea și conflictul cu Mișcarea Legionară au culminat cu asasinarea sa de către legionari în 1940.</p></div></div>
+</section>
+
+<section class="part-divider" data-mark="VI"><p class="part-kicker">Criza democrației</p><h2>Autoritarism, antisemitism și extremism în anii 1930</h2><p>Criza economică, violența politică și slăbirea partidelor au permis ascensiunea mișcărilor care respingeau constituționalismul. Prezentarea lor trebuie făcută critic, fără transformarea propagandei în explicație istorică.</p></section>
+
+<section class="section" id="accuza-goga"><div class="section-label">Naționalism antisemit</div><h2>A.C. Cuza și Octavian Goga</h2>
+<div class="two-col">
+<article class="info-card"><h3>Alexandru C. Cuza</h3><p>Profesor universitar și cofondator al PND, a transformat antisemitismul într-un program politic sistematic. Liga Apărării Național-Creștine, fondată în 1923, s-a opus acordării cetățeniei egale evreilor și a mobilizat violența studențească.</p></article>
+<article class="info-card"><h3>Octavian Goga</h3><p>Poet și politician, a fondat Partidul Național Agrar în 1932, apoi a fuzionat cu LANC în Partidul Național Creștin. Guvernul Goga–Cuza din 1937–1938 a introdus măsuri antisemite și a subminat cetățenia unui număr mare de evrei.</p></article>
+</div>
+</section>
+
+<section class="section" id="codreanu"><div class="section-label">Mișcare fascistă și violență politică</div><h2>Corneliu Zelea Codreanu și Mișcarea Legionară</h2>
+<div class="profile"><div class="profile-side"><strong>Corneliu Zelea Codreanu</strong><span>1899–1938<br/>fondator al Legiunii Arhanghelul Mihail<br/>lider carismatic și paramilitar</span></div><div class="profile-main"><h3>Politica transformată în cult și violență</h3><p>Legiunea, fondată în 1927, combina fascismul, ultranaționalismul, antisemitismul, mistica ortodoxistă și organizarea paramilitară. Cultul liderului și al „martiriului” legitima disciplina totală și violența împotriva adversarilor.</p><p>Mișcarea a fost responsabilă pentru asasinate politice, între care cele ale lui I.G. Duca și Armand Călinescu, și pentru violențe antisemite. Codreanu a fost ucis extrajudiciar în 1938, în timpul represiunii carliste.</p></div></div>
+<div class="correction"><strong>Nuanțare:</strong> legionarismul a avut legături și convergențe cu fascismul european și a căutat sprijin extern, dar evoluția sa nu poate fi redusă la ideea că ar fi fost pur și simplu „creat și dirijat” din afara României. Cauzele interne — criza socială, antisemitismul, radicalizarea studențească și slăbirea instituțiilor — au fost fundamentale.</div>
+</section>
+
+<section class="section" id="carol-calin"><div class="section-label">Autoritarism regal</div><h2>Carol al II-lea și Armand Călinescu</h2>
+<div class="two-col">
+<article class="info-card"><h3>Carol al II-lea</h3><p>Revenit pe tron în 1930, regele a folosit rivalitatea partidelor și camarila pentru a-și extinde puterea. Constituția din 1938 a instaurat monarhia autoritară, iar Frontul Renașterii Naționale a devenit organizație politică unică.</p></article>
+<article class="info-card"><h3>Armand Călinescu</h3><p>Fost țărănist și ministru de interne, a condus represiunea împotriva legionarilor și a orientat România spre cooperare cu Franța și Marea Britanie. Ca prim-ministru a fost asasinat de un comando legionar în septembrie 1939.</p></article>
+</div>
+<details><summary>Frontul Renașterii Naționale și Partidul Națiunii</summary><div class="details-body"><p>FRN a fost creat în decembrie 1938 ca unică organizație politică legală. În iunie 1940 a fost transformat în Partidul Națiunii, declarat partid unic totalitar sub conducerea regelui. El nu era un partid competitiv, ci un instrument al regimului.</p></div></details>
+</section>
+
+<section class="part-divider" data-mark="VII"><p class="part-kicker">Stânga și comunizarea</p><h2>Social-democrați, comuniști și distrugerea pluralismului</h2><p>Mișcarea muncitorească a produs atât reformism democratic, cât și partidul comunist subordonat modelului bolșevic. După 1944, sprijinul militar sovietic a modificat decisiv raportul de forțe.</p></section>
+
+<section class="section" id="socialisti"><div class="section-label">Socialism democratic</div><h2>Constantin Titel Petrescu</h2>
+<div class="profile"><div class="profile-side"><strong>Constantin Titel Petrescu</strong><span>1888–1957<br/>lider social-democrat<br/>adversar al fuziunii forțate cu comuniștii</span></div><div class="profile-main"><h3>Alternativa socialistă pluralistă</h3><p>A susținut drepturile muncitorilor, parlamentarismul și independența Partidului Social-Democrat. După 1944 a refuzat subordonarea completă față de comuniști și a format o grupare social-democrată independentă. A fost arestat și încarcerat.</p></div></div>
+</section>
+
+<section class="section" id="comunisti"><div class="section-label">Partidul Comunist</div><h2>Gheorghe Cristescu, Lucrețiu Pătrășcanu, Ana Pauker și Gheorghe Gheorghiu-Dej</h2>
+<div class="profile"><div class="profile-side"><strong>Gheorghe Cristescu</strong><span>1882–1973<br/>primul secretar al Partidului Comunist din România</span></div><div class="profile-main"><h3>De la socialism la comunism</h3><p>A condus partidul creat în 1921 prin afilierea unei părți a socialiștilor la Internaționala Comunistă. A intrat ulterior în conflict cu linia Cominternului și a fost înlăturat.</p></div></div>
+<div class="profile"><div class="profile-side"><strong>Lucrețiu Pătrășcanu</strong><span>1900–1954<br/>jurist, intelectual comunist și ministru al justiției</span></div><div class="profile-main"><h3>Intelectualul eliminat de propriul regim</h3><p>A participat la actul de la 23 august 1944 și la primele guverne postbelice. A încercat să combine comunismul cu un discurs național și juridic, devenind rival intern. A fost arestat, anchetat și executat în 1954.</p></div></div>
+<div class="profile"><div class="profile-side"><strong>Ana Pauker</strong><span>1893–1960<br/>lider comunist format în exilul sovietic<br/>ministru de externe</span></div><div class="profile-main"><h3>Aripa moscovită</h3><p>A revenit în 1944 cu sprijin sovietic și a jucat un rol major în organizarea partidului și a guvernului. A fost eliminată din conducere în 1952 în conflictul cu grupul lui Gheorghiu-Dej.</p></div></div>
+<div class="profile"><div class="profile-side"><strong>Gheorghe Gheorghiu-Dej</strong><span>1901–1965<br/>lider al grupului din închisori<br/>conducător comunist al României</span></div><div class="profile-main"><h3>Preluarea puterii și eliminarea adversarilor</h3><p>A controlat aparatul de partid după 1944, a eliminat rivalii și a coordonat sovietizarea: desființarea monarhiei, naționalizarea, colectivizarea și represiunea politică.</p></div></div>
+</section>
+
+<section class="section" id="rezistenta"><div class="section-label">1944–1947</div><h2>Maniu, Mihalache și Dinu Brătianu în apărarea pluralismului</h2>
+<p class="section-intro">După răsturnarea regimului Antonescu, partidele istorice au sperat la restaurarea democrației. Prezența Armatei Roșii și controlul comunist asupra ministerelor-cheie au făcut competiția inegală.</p>
+<div class="claim-grid">
+<article class="claim"><strong>Iuliu Maniu</strong><p>A cerut respectarea armistițiului, alegeri libere și retragerea presiunii sovietice.</p></article>
+<article class="claim"><strong>Ion Mihalache</strong><p>A reorganizat PNȚ în teritoriu și a încercat să mențină legături occidentale.</p></article>
+<article class="claim"><strong>Constantin I.C. „Dinu” Brătianu</strong><p>A condus PNL și a refuzat absorbția în structurile controlate de comuniști.</p></article>
+<article class="claim"><strong>Tămădău, 1947</strong><p>Incidentul a fost folosit pentru dizolvarea PNȚ și condamnarea conducerii sale.</p></article>
+<article class="claim"><strong>Regele Mihai</strong><p>Greva regală din 1945–1946 a încercat să blocheze guvernul Groza, fără sprijin occidental suficient.</p></article>
+<article class="claim"><strong>30 decembrie 1947</strong><p>Abdicarea forțată a regelui a încheiat regimul monarhic și pluralismul constituțional.</p></article>
+</div>
+</section>
+
+<section class="part-divider" data-mark="VIII"><p class="part-kicker">Sinteză comparativă</p><h2>Stiluri de conducere și moșteniri politice</h2><p>O personalitate politică trebuie evaluată prin idei, instituții, metode și consecințe, nu doar prin popularitate sau retorică.</p></section>
+
+<section class="section" id="comparatie"><div class="section-label">Tipologii</div><h2>Șase modele de lider politic</h2>
+<div class="compare-grid">
+<article class="compare-card"><strong>Reformatorul</strong><p>Kogălniceanu: folosește guvernul și legea pentru schimbări sociale și instituționale.</p></article>
+<article class="compare-card"><strong>Organizatorul de partid</strong><p>Ion C. Brătianu: construiește o rețea capabilă să guverneze pe termen lung.</p></article>
+<article class="compare-card"><strong>Criticul conservator</strong><p>P.P. Carp și Maiorescu: cer instituții adaptate și administrație competentă.</p></article>
+<article class="compare-card"><strong>Liderul național minoritar</strong><p>Rațiu și Maniu: folosesc dreptul, memorandumul și organizația pentru reprezentarea unei comunități.</p></article>
+<article class="compare-card"><strong>Liderul populist sau carismatic</strong><p>Averescu, Codreanu și Carol al II-lea au mobilizat direct prestigiul personal, dar în direcții politice radical diferite.</p></article>
+<article class="compare-card"><strong>Conducătorul de partid-stat</strong><p>Gheorghiu-Dej subordonează administrația, economia și societatea unui partid unic.</p></article>
+</div>
+</section>
+
+<section class="section" id="partide"><div class="section-label">Partide și personalități</div><h2>Tabel de orientare</h2>
+<div class="table-wrap"><table><thead><tr><th>Formațiune</th><th>Perioadă</th><th>Personalități reprezentative</th><th>Profil</th></tr></thead><tbody>
+<tr><td>Partidul Național Liberal</td><td>din 1875</td><td>Ion C. Brătianu, D.A. Sturdza, Ion I.C. Brătianu, Vintilă Brătianu</td><td>Liberalism, stat național, industrie, centralizare.</td></tr>
+<tr><td>Partidul Conservator</td><td>1880–1918</td><td>Lascăr Catargiu, P.P. Carp, Titu Maiorescu</td><td>Schimbare graduală, proprietate, administrație.</td></tr>
+<tr><td>Partidul Conservator-Democrat</td><td>1908–1922</td><td>Take Ionescu</td><td>Conservatorism modernizat, clasă mijlocie, orientare pro-Antantă.</td></tr>
+<tr><td>Partidul Național Român</td><td>1881–1926</td><td>Ioan Rațiu, Vasile Goldiș, Iuliu Maniu, Vaida-Voevod</td><td>Drepturi naționale și unirea Transilvaniei.</td></tr>
+<tr><td>Partidul Țărănesc</td><td>1918–1926</td><td>Ion Mihalache, Virgil Madgearu</td><td>Reformă agrară, cooperație, descentralizare.</td></tr>
+<tr><td>Partidul Național-Țărănesc</td><td>1926–1947</td><td>Iuliu Maniu, Ion Mihalache, Madgearu</td><td>Democrație constituțională și țărănism.</td></tr>
+<tr><td>Partidul Poporului</td><td>1918–1938</td><td>Alexandru Averescu</td><td>Partid personal, veterani, ordine și reformă.</td></tr>
+<tr><td>Partidul Naționalist-Democrat</td><td>din 1910</td><td>Nicolae Iorga, A.C. Cuza</td><td>Naționalism cultural, apoi ruptură între moderat și antisemitism radical.</td></tr>
+<tr><td>LANC / Partidul Național Creștin</td><td>1923–1938</td><td>A.C. Cuza, Octavian Goga</td><td>Extremă dreaptă antisemită.</td></tr>
+<tr><td>Mișcarea Legionară</td><td>1927–1941</td><td>Corneliu Zelea Codreanu, Horia Sima</td><td>Fascism, paramilitarism și violență politică.</td></tr>
+<tr><td>Frontul Renașterii Naționale</td><td>1938–1940</td><td>Carol al II-lea, Armand Călinescu</td><td>Partid unic al monarhiei autoritare.</td></tr>
+<tr><td>Partidul Comunist</td><td>din 1921</td><td>Cristescu, Pătrășcanu, Pauker, Gheorghiu-Dej</td><td>Comunism revoluționar și, după 1947, partid-stat.</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section" id="cronologie"><div class="section-label">Repere</div><h2>Cronologie politică</h2>
+<div class="table-wrap"><table><thead><tr><th>An</th><th>Eveniment</th><th>Personalități</th></tr></thead><tbody>
+<tr><td>1848</td><td>Revoluțiile din Moldova și Țara Românească</td><td>Kogălniceanu, Rosetti, Ion C. Brătianu.</td></tr>
+<tr><td>1859</td><td>Unirea Principatelor</td><td>Cuza, Kogălniceanu, liderii partidei naționale.</td></tr>
+<tr><td>1864</td><td>Reformele lui Cuza</td><td>Cuza și Kogălniceanu.</td></tr>
+<tr><td>1866</td><td>Carol I și Constituția</td><td>Ion C. Brătianu, conservatori și liberali.</td></tr>
+<tr><td>1875</td><td>Fondarea PNL</td><td>Ion C. Brătianu, C.A. Rosetti.</td></tr>
+<tr><td>1877–1878</td><td>Independența</td><td>Kogălniceanu, Ion C. Brătianu, Carol I.</td></tr>
+<tr><td>1880</td><td>Fondarea Partidului Conservator</td><td>Catargiu, Carp, Maiorescu.</td></tr>
+<tr><td>1881</td><td>Unificarea PNR la Sibiu</td><td>Liderii românilor transilvăneni.</td></tr>
+<tr><td>1892–1894</td><td>Memorandumul și procesul</td><td>Ioan Rațiu.</td></tr>
+<tr><td>1908</td><td>Partidul Conservator-Democrat</td><td>Take Ionescu.</td></tr>
+<tr><td>1910</td><td>Partidul Naționalist-Democrat</td><td>Iorga și A.C. Cuza.</td></tr>
+<tr><td>1916</td><td>Intrarea României în război</td><td>Ion I.C. Brătianu, Take Ionescu.</td></tr>
+<tr><td>1918</td><td>Marea Unire și Partidul Țărănesc</td><td>Maniu, Goldiș, Vaida, Mihalache.</td></tr>
+<tr><td>1921</td><td>Crearea Partidului Comunist</td><td>Gheorghe Cristescu.</td></tr>
+<tr><td>1923</td><td>LANC</td><td>A.C. Cuza și Codreanu.</td></tr>
+<tr><td>1926</td><td>Formarea PNȚ</td><td>Maniu și Mihalache.</td></tr>
+<tr><td>1927</td><td>Legiunea Arhanghelul Mihail</td><td>Corneliu Zelea Codreanu.</td></tr>
+<tr><td>1930</td><td>Revenirea lui Carol al II-lea</td><td>Carol al II-lea și Maniu.</td></tr>
+<tr><td>1937–1938</td><td>Guvernul Goga–Cuza</td><td>Octavian Goga și A.C. Cuza.</td></tr>
+<tr><td>1938</td><td>Monarhia autoritară și FRN</td><td>Carol al II-lea, Armand Călinescu.</td></tr>
+<tr><td>1940</td><td>Statul Național-Legionar</td><td>Ion Antonescu și Horia Sima.</td></tr>
+<tr><td>23 aug. 1944</td><td>Răsturnarea lui Antonescu</td><td>Regele Mihai, Maniu, Pătrășcanu.</td></tr>
+<tr><td>1945</td><td>Guvernul Petru Groza</td><td>Groza, Gheorghiu-Dej, Pauker.</td></tr>
+<tr><td>1947</td><td>Dizolvarea PNȚ și abdicarea regelui</td><td>Maniu, Mihalache, Dinu Brătianu, Mihai I.</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section" id="glosar"><div class="section-label">Concepte</div><h2>Glosar politic</h2>
+<div class="term-grid">
+<div class="term-card"><strong>Partid de cadre</strong><span>Organizație restrânsă bazată pe elite, notabili și rețele locale.</span></div>
+<div class="term-card"><strong>Partid de masă</strong><span>Organizație cu membri numeroși, propagandă și mobilizare continuă.</span></div>
+<div class="term-card"><strong>Vot cenzitar</strong><span>Drept electoral condiționat de avere sau impozit.</span></div>
+<div class="term-card"><strong>Vot universal</strong><span>Drept de vot acordat tuturor adulților din categoria legală stabilită; inițial, în România, doar bărbaților.</span></div>
+<div class="term-card"><strong>Alternanță</strong><span>Schimbarea partidelor la guvernare.</span></div>
+<div class="term-card"><strong>Clientelism</strong><span>Schimb de favoruri, funcții și resurse pentru sprijin politic.</span></div>
+<div class="term-card"><strong>Memorandism</strong><span>Strategie de petiții și protest juridic a românilor transilvăneni.</span></div>
+<div class="term-card"><strong>Țărănism</strong><span>Doctrină care vede țărănimea și cooperația ca bază a statului.</span></div>
+<div class="term-card"><strong>Poporanism</strong><span>Curent social și cultural orientat spre lumea rurală și reformă.</span></div>
+<div class="term-card"><strong>Corporatism</strong><span>Organizarea reprezentării pe profesii și corpuri, adesea folosită de regimuri autoritare.</span></div>
+<div class="term-card"><strong>Fascism</strong><span>Ideologie ultranaționalistă, autoritară, antidemocratică și violentă.</span></div>
+<div class="term-card"><strong>Partid-stat</strong><span>Sistem în care partidul unic controlează administrația, economia și societatea.</span></div>
+</div>
+</section>
+
+<section class="section" id="evaluare"><div class="section-label">Metodă</div><h2>Cum evaluăm o personalitate politică</h2>
+<div class="claim-grid">
+<article class="claim"><strong>Ideile</strong><p>Ce program susținea și pentru cine?</p></article>
+<article class="claim"><strong>Instituțiile</strong><p>A consolidat legea și pluralismul sau puterea personală?</p></article>
+<article class="claim"><strong>Metodele</strong><p>A folosit alegeri, presă și negociere sau violență și intimidare?</p></article>
+<article class="claim"><strong>Rezultatele</strong><p>Ce reforme și consecințe concrete a produs?</p></article>
+<article class="claim"><strong>Contextul</strong><p>Ce constrângeri interne și externe îi limitau opțiunile?</p></article>
+<article class="claim"><strong>Costurile</strong><p>Cine a suportat pierderile sociale, economice sau umane?</p></article>
+</div>
+</section>
+
+<section class="final-box"><h2>Ideea de reținut</h2><p>Cultura politică modernă românească a fost construită de revoluționari, organizatori de partide, juriști, publiciști, lideri naționali și administratori. Kogălniceanu și Brătianu au legat ideile de reformă și stat; conservatorii au cerut gradualism și competență; Rațiu și Maniu au transformat rezistența națională în politică democratică; Mihalache și Madgearu au reprezentat lumea rurală. Criza interbelică a produs însă autoritarism regal, antisemitism și fascism, iar după 1944 comuniștii au distrus pluralismul și au transformat partidul în stat.</p></section>
+
+</main>
+
+<script>
+function toggleAll(openState){document.querySelectorAll('details').forEach(d=>d.open=openState);}
+window.addEventListener('scroll',()=>{const h=document.documentElement,max=h.scrollHeight-h.clientHeight,p=document.getElementById('progress');if(p)p.style.width=(max>0?(h.scrollTop/max)*100:0)+'%';});
+</script>
+
+</body>
+</html>

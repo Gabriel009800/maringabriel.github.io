@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Migrații, limbă și transformări în spațiul carpato-dunărean">
+  <title>Preistoria: indo-europenii - Material ajutător de istorie</title>
+  <style>
+    :root {
+      --bg: #f6f0e7;
+      --paper: #fffaf3;
+      --paper-2: #ffffff;
+      --ink: #2f241c;
+      --muted: #695747;
+      --accent: #6f3f24;
+      --accent-2: #a66a3f;
+      --line: rgba(91, 62, 36, 0.18);
+      --soft: #f1e4d3;
+      --note: #fff1cf;
+      --good: #eaf2e6;
+      --shadow: 0 14px 36px rgba(69, 46, 25, 0.08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: Georgia, "Times New Roman", serif; line-height: 1.72; }
+    a { color: var(--accent); }
+    .page { width: min(1120px, calc(100% - 28px)); margin: 0 auto; padding: 26px 0 70px; }
+    .topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; }
+    .back { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 700; background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 10px 15px; box-shadow: 0 7px 18px rgba(69,46,25,.05); }
+    .category { color: var(--muted); font-size: 14px; text-align: right; }
+    .hero { background: linear-gradient(135deg, #fffaf3 0%, #f8ead7 100%); border: 1px solid var(--line); border-radius: 28px; padding: clamp(27px, 5vw, 55px); box-shadow: var(--shadow); margin-bottom: 24px; }
+    .eyebrow { display: inline-block; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .09em; background: var(--accent); color: white; padding: 7px 11px; border-radius: 999px; margin-bottom: 17px; }
+    h1 { font-size: clamp(34px, 6vw, 58px); line-height: 1.05; letter-spacing: -.035em; margin: 0 0 15px; color: #3c2a1e; }
+    .subtitle { font-size: clamp(18px, 2.4vw, 23px); color: var(--accent); font-weight: 700; margin: 0 0 17px; }
+    .lead { font-size: 18px; color: var(--muted); margin: 0; max-width: 900px; text-align: justify; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 24px; align-items: start; }
+    .content, .side-card { background: var(--paper); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); }
+    .content { padding: clamp(23px, 4vw, 43px); }
+    .sidebar { position: sticky; top: 18px; display: grid; gap: 16px; }
+    .side-card { padding: 20px; }
+    .side-card h2 { margin: 0 0 11px; font-size: 18px; }
+    .toc a { display: block; padding: 7px 0; border-bottom: 1px dashed var(--line); text-decoration: none; font-size: 14px; line-height: 1.35; }
+    .toc a:last-child { border-bottom: none; }
+    section { scroll-margin-top: 20px; margin-bottom: 34px; }
+    section:last-child { margin-bottom: 0; }
+    h2 { font-size: 29px; line-height: 1.2; margin: 0 0 17px; color: #3c2a1e; }
+    h3 { font-size: 21px; margin: 23px 0 9px; color: var(--accent); }
+    p { margin: 0 0 15px; text-align: justify; }
+    ul, ol { padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .callout { border-left: 5px solid var(--accent-2); background: var(--note); padding: 16px 18px; border-radius: 0 15px 15px 0; margin: 19px 0; }
+    .callout.good { background: var(--good); }
+    .callout strong { color: #4a2e1b; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; margin: 17px 0; }
+    .mini-card { background: var(--paper-2); border: 1px solid var(--line); border-radius: 17px; padding: 17px; }
+    .mini-card h3 { margin-top: 0; }
+    .timeline { border-left: 3px solid var(--accent-2); margin: 18px 0 22px 9px; padding-left: 23px; }
+    .event { position: relative; margin-bottom: 17px; }
+    .event::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); position: absolute; left: -30px; top: 7px; box-shadow: 0 0 0 4px var(--paper); }
+    .event b { color: var(--accent); }
+    table { width: 100%; border-collapse: collapse; margin: 18px 0 23px; background: white; font-size: 15px; }
+    th, td { border: 1px solid var(--line); padding: 11px 12px; vertical-align: top; text-align: left; }
+    th { background: var(--soft); color: #3c2a1e; }
+    .keywords { display: flex; flex-wrap: wrap; gap: 8px; }
+    .keywords span { border: 1px solid var(--line); background: var(--soft); border-radius: 999px; padding: 7px 10px; font-size: 13px; font-weight: 700; }
+    .questions { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 19px 22px; }
+    .bibliography { font-size: 14px; color: var(--muted); }
+    .footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 26px; }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; grid-row: 1; }
+      .toc { display: none; }
+    }
+    @media (max-width: 650px) {
+      .page { width: min(100% - 18px, 1120px); padding-top: 12px; }
+      .topbar { align-items: flex-start; }
+      .category { display: none; }
+      .hero, .content, .side-card { border-radius: 20px; }
+      .grid-2 { grid-template-columns: 1fr; }
+      table { display: block; overflow-x: auto; white-space: normal; }
+      h2 { font-size: 25px; }
+    }
+    @media print {
+      body { background: white; }
+      .page { width: 100%; padding: 0; }
+      .topbar, .sidebar { display: none; }
+      .layout { display: block; }
+      .hero, .content { box-shadow: none; border-color: #bbb; }
+      .hero { break-after: avoid; }
+      section, table { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a class="back" href="../evaluare.html">← Înapoi la Evaluare</a>
+      <div class="category">Material ajutător · Istoria românilor · Preistoria</div>
+    </div>
+
+    <header class="hero">
+      <span class="eyebrow">Istoria românilor · Preistoria</span>
+      <h1>Preistoria: indo-europenii</h1>
+      <p class="subtitle">Migrații, limbă și transformări în spațiul carpato-dunărean</p>
+      <p class="lead">O prezentare critică a conceptului de indo-europeni, a principalelor ipoteze despre originea lor și a felului în care comunitățile de stepă au interacționat cu populațiile locale.</p>
+    </header>
+
+    <div class="layout">
+      <article class="content">
+        
+<section id="context">
+  <h2>1. Cine au fost indo-europenii?</h2>
+  <p>Termenul „indo-european” desemnează în primul rând o familie de limbi. Lingviștii au observat asemănări sistematice între sanscrită, greacă, latină, limbile germanice, slave, celtice, iraniene și altele, reconstruind o limbă strămoș comună: proto-indo-europeana. Vorbitorii ei nu au lăsat texte, iar identitatea lor politică sau etnică nu poate fi redusă la un singur „popor” compact.</p>
+  <div class="callout"><strong>Atenție:</strong> limba, cultura materială și originea biologică nu coincid perfect. O limbă se poate răspândi prin migrație, prestigiu, alianțe, dominație sau integrare, fără înlocuirea totală a populației locale.</div>
+</section>
+<section id="dezvoltare">
+  <h2>2. Ipotezele privind patria indo-europeană</h2>
+  <h3>Ipoteza stepei</h3>
+  <p>Modelul cel mai răspândit plasează o etapă importantă a comunității proto-indo-europene în stepele ponto-caspice, în mileniile V-IV î.Hr. Extinderea păstoritului mobil, folosirea carului și rețelele de rudenie ar fi favorizat răspândirea limbilor în mileniile IV-III î.Hr. Complexele funerare cu tumuli, asociate adesea culturii Iamnaia/Yamnaya, apar și în zona Dunării de Jos.</p>
+  <h3>Ipoteza anatoliană</h3>
+  <p>O altă ipoteză leagă răspândirea limbilor indo-europene de expansiunea agriculturii din Anatolia, începută mai devreme. Modelul explică amploarea geografică, dar cronologia și vocabularul reconstruit au generat dezbateri. Cercetarea genetică recentă susține migrații importante din stepă în epoca cuprului și bronzului, fără a transforma însă problema lingvistică într-una complet rezolvată.</p>
+
+  <h2>3. Spațiul carpato-dunărean ca zonă de contact</h2>
+  <p>Teritoriul actual al României se află între stepa nord-pontică, Balcani și Europa Centrală. În mileniile IV-III î.Hr., comunitățile eneolitice locale au intrat în contact cu grupuri pastorale venite din est și nord-est. Mormintele tumulare, schimbările de mobilitate și anumite transformări ale culturii materiale indică interacțiuni complexe.</p>
+  <p>Aceste procese nu trebuie descrise ca o invazie unică și simultană. Au existat valuri diferite, alianțe, conflicte, schimburi matrimoniale și adoptări culturale. Culturi precum Cernavodă, Coțofeni și, ulterior, comunitățile epocii bronzului reflectă o lume mixtă.</p>
+
+  <h2>4. Tehnologii și moduri de viață</h2>
+  <ul>
+    <li><strong>Păstoritul</strong> a permis exploatarea zonelor de stepă și deplasarea sezonieră.</li>
+    <li><strong>Calul</strong> a dobândit un rol economic și simbolic crescând, deși utilizarea sa pentru călărie și tracțiune a evoluat treptat.</li>
+    <li><strong>Vehiculele cu roți</strong> au extins mobilitatea și transportul.</li>
+    <li><strong>Tumulii</strong> au devenit monumente funerare vizibile, asociate unor grupuri și elite.</li>
+    <li><strong>Metalurgia</strong> și schimburile au conectat comunitățile pe distanțe mari.</li>
+  </ul>
+
+  <h2>5. De la indo-europenizare la lumea tracică</h2>
+  <p>În mileniul al II-lea î.Hr., numeroase comunități din sud-estul Europei vorbeau probabil dialecte indo-europene, dar documentarea directă este târzie. Tracii apar în izvoarele grecești ca un ansamblu foarte larg de populații. Geții sunt menționați la nord de Balcani și în zona Dunării de Jos, iar dacii devin vizibili mai ales în izvoarele romane.</p>
+  <p>Nu există o linie simplă „indo-europeni → traci → daci → români”. Între aceste etape se află milenii de transformări, migrații și schimbări lingvistice. Româna este o limbă romanică, formată în Antichitatea târzie și Evul Mediu timpuriu, pe baza latinei populare, cu substrat și influențe ulterioare.</p>
+</section>
+<section id="cronologie">
+  <h2>6. Cronologie orientativă</h2>
+  <div class="timeline">
+    <div class="event"><b>Mileniile V-IV î.Hr.</b> – comunități pastorale și agricole în stepele ponto-caspice; formarea unor rețele timpurii.</div>
+    <div class="event"><b>cca 3500-2500 î.Hr.</b> – migrații și influențe ale grupurilor de stepă spre Dunărea de Jos și Europa Centrală.</div>
+    <div class="event"><b>Mileniul al II-lea î.Hr.</b> – diversificarea limbilor și culturilor indo-europene în Europa.</div>
+    <div class="event"><b>Mileniul I î.Hr.</b> – apariția tracilor și geților în izvoarele scrise.</div>
+    <div class="event"><b>Secolele I î.Hr.-I d.Hr.</b> – consolidarea unor formațiuni politice geto-dacice.</div>
+  </div>
+</section>
+<section id="interpretare">
+  <h2>7. Dovezile: limbă, arheologie și genetică</h2>
+  <table>
+    <thead><tr><th>Domeniu</th><th>Ce poate arăta</th><th>Limită</th></tr></thead>
+    <tbody>
+      <tr><td>Lingvistică istorică</td><td>Înrudirea limbilor și vocabularul reconstruit</td><td>Nu localizează singură un popor precis</td></tr>
+      <tr><td>Arheologie</td><td>Locuire, ritualuri funerare, tehnologii, schimburi</td><td>Cultura materială nu echivalează automat cu limba</td></tr>
+      <tr><td>Paleogenetică</td><td>Relații biologice și migrații</td><td>Genele nu determină direct identitatea sau limba</td></tr>
+      <tr><td>Mitologie comparată</td><td>Teme și structuri culturale comune</td><td>Reconstrucțiile pot fi speculative</td></tr>
+    </tbody>
+  </table>
+  <p>O reconstrucție solidă combină toate aceste domenii și evită naționalizarea preistoriei. Indo-europenii nu aparțin unei națiuni moderne și nu pot fi folosiți ca argument simplu pentru superioritate, puritate sau continuitate exclusivă.</p>
+</section>
+<section id="sinteza">
+  <h2>8. Sinteză</h2>
+  <div class="callout good"><strong>Ideea principală:</strong> indo-europenizarea spațiului carpato-dunărean a fost un proces îndelungat de mobilitate, contact și schimbare lingvistică. Ea a contribuit la formarea lumii tracice, dar nu poate fi descrisă ca o genealogie directă și simplă.</div>
+</section>
+        <section id="verificare">
+          <h2>Întrebări de verificare</h2>
+          <div class="questions"><ol><li>De ce termenul „indo-european” este în primul rând unul lingvistic?</li><li>Care sunt principalele ipoteze despre patria indo-europeană?</li><li>Ce rol a avut spațiul carpato-dunărean în circulația populațiilor?</li><li>De ce nu putem identifica automat o cultură arheologică cu o limbă?</li><li>Explică de ce formula „indo-europeni → daci → români” este prea simplificatoare.</li></ol></div>
+        </section>
+        <section id="bibliografie">
+          <h2>Bibliografie orientativă</h2>
+          <ul class="bibliography"><li>Academia Română, Istoria Românilor, vol. I: Moștenirea timpurilor îndepărtate.</li><li>Mircea Petrescu-Dîmbovița și Alexandru Vulpe (coord.), Istoria Românilor, vol. I.</li><li>Dumitru Berciu, Contribuții la problemele neoliticului în România.</li><li>Vladimir Dumitrescu, Arta culturii Cucuteni.</li><li>Sinteze și cataloage ale muzeelor de istorie și arheologie din România.</li></ul>
+        </section>
+      </article>
+
+      <aside class="sidebar">
+        <div class="side-card">
+          <h2>Termeni-cheie</h2>
+          <div class="keywords"><span>indo-europeni</span><span>proto-indo-europeană</span><span>Yamnaya</span><span>stepă</span><span>tumul</span><span>traci</span><span>geți</span><span>paleogenetică</span></div>
+        </div>
+        <div class="side-card toc">
+          <h2>Cuprins</h2>
+          <a href="#context">Context și delimitări</a>
+          <a href="#dezvoltare">Dezvoltarea temei</a>
+          <a href="#cronologie">Cronologie</a>
+          <a href="#interpretare">Interpretare istorică</a>
+          <a href="#sinteza">Sinteză</a>
+          <a href="#verificare">Întrebări</a>
+        </div>
+      </aside>
+    </div>
+    <footer class="footer">© 2026 Marin Gabriel · Material educațional pentru disciplina Istorie</footer>
+  </main>
+</body>
+</html>

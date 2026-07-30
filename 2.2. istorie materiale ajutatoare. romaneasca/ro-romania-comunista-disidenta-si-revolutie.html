@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+
+<html lang="ro">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>România comunistă: disidență, exil și revoluție</title>
+<style>
+    :root {
+      --bg: #171411;
+      --paper: #f4ead7;
+      --paper-2: #fff7e8;
+      --paper-3: #fffdf7;
+      --ink: #211915;
+      --muted: #6c5b4f;
+      --accent: #b85c38;
+      --accent-dark: #74351f;
+      --gold: #d7a94f;
+      --green: #586b4d;
+      --red: #8d2f24;
+      --blue: #415a77;
+      --violet: #5f4a77;
+      --line: rgba(33, 25, 21, 0.18);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 15% 8%, rgba(216, 151, 71, 0.22), transparent 35%),
+        radial-gradient(circle at 92% 4%, rgba(141, 47, 36, 0.22), transparent 30%),
+        radial-gradient(circle at 45% 98%, rgba(65, 90, 119, 0.18), transparent 34%),
+        linear-gradient(135deg, #171411 0%, #2c241d 50%, #16120f 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.16;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mix-blend-mode: screen;
+    }
+
+    .page {
+      position: relative;
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+      z-index: 1;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .back-link,
+    .material-tag {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 243, 0.84);
+      color: #3c2a1e;
+      border-radius: 999px;
+      padding: 10px 15px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.25;
+      box-shadow: 0 8px 20px rgba(69, 46, 25, 0.10);
+    }
+
+    .back-link:hover { background: #fff6eb; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      background:
+        linear-gradient(120deg, rgba(255, 247, 232, 0.97), rgba(244, 234, 215, 0.94)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='760' height='420' viewBox='0 0 760 420'%3E%3Cg fill='none' stroke='%2374351f' stroke-opacity='.16' stroke-width='2'%3E%3Cpath d='M50 350C170 250 245 390 395 310s195-38 315-120'/%3E%3Cpath d='M0 185c100-36 170 30 260-10s200-88 430-18'/%3E%3Cpath d='M95 80c145 90 260 10 380 50 90 30 130 102 220 82'/%3E%3Cpath d='M110 70h95v250h-95zM260 95h95v225h-95zM410 125h95v195h-95zM560 80h95v240h-95z'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: cover;
+      padding: clamp(34px, 5vw, 70px);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .hero::after {
+      content: "1944–1989";
+      position: absolute;
+      right: -18px;
+      bottom: -24px;
+      font-size: clamp(3.5rem, 10vw, 9rem);
+      line-height: 0.8;
+      color: rgba(116, 53, 31, 0.09);
+      font-weight: 900;
+      letter-spacing: -0.08em;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 16px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(184, 92, 56, 0.12);
+      color: var(--accent-dark);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-weight: 750;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      max-width: 980px;
+      font-size: clamp(2.55rem, 6.3vw, 5.8rem);
+      line-height: 0.92;
+      letter-spacing: -0.07em;
+      color: var(--ink);
+    }
+
+    .subtitle {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 24px 0 0;
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      line-height: 1.65;
+      color: var(--muted);
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .stat-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.48);
+      border: 1px solid rgba(116, 53, 31, 0.14);
+      min-height: 116px;
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 1.45rem;
+      line-height: 1.05;
+      color: var(--accent-dark);
+      margin-bottom: 8px;
+    }
+
+    .stat-card span {
+      display: block;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.42;
+      color: var(--muted);
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    .toc {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(244, 234, 215, 0.88);
+      box-shadow: 0 14px 42px rgba(0, 0, 0, 0.20);
+      border: 1px solid rgba(255, 255, 255, 0.38);
+    }
+
+    .toc h2 {
+      margin: 0 0 12px;
+      font-size: 1.28rem;
+      color: var(--accent-dark);
+      letter-spacing: -0.03em;
+    }
+
+    .toc-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+
+
+    .toc-detailed {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .toc-card {
+      padding: 12px;
+      border-radius: 18px;
+      background: rgba(255, 247, 232, 0.78);
+      border: 1px solid rgba(116, 53, 31, 0.14);
+    }
+
+    .toc-card .toc-main {
+      width: 100%;
+      justify-content: flex-start;
+      border-radius: 14px;
+      padding: 10px 12px;
+      color: var(--accent-dark);
+      background: rgba(184, 92, 56, 0.10);
+      border-color: rgba(184, 92, 56, 0.22);
+      font-size: 0.95rem;
+    }
+
+    .toc-sub {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 9px;
+    }
+
+    .toc-sub a {
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 0.78rem;
+      font-weight: 650;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.52);
+    }
+
+    .toc-sub a:hover {
+      color: var(--accent-dark);
+      background: rgba(215, 169, 79, 0.16);
+    }
+
+    .toc a {
+      display: inline-flex;
+      border: 1px solid rgba(116, 53, 31, 0.16);
+      border-radius: 999px;
+      padding: 9px 12px;
+      text-decoration: none;
+      color: var(--ink);
+      background: rgba(255, 247, 232, 0.86);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .toc a:hover {
+      background: rgba(184, 92, 56, 0.12);
+      color: var(--accent-dark);
+    }
+
+    .panel {
+      margin-top: 24px;
+      border-radius: 30px;
+      padding: clamp(22px, 4vw, 42px);
+      background: rgba(244, 234, 215, 0.96);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.36);
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 24px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.75rem, 3vw, 3rem);
+      letter-spacing: -0.045em;
+      line-height: 1;
+      color: var(--accent-dark);
+    }
+
+    .panel-note {
+      margin: 0;
+      max-width: 520px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.95rem;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .content-grid.three { grid-template-columns: repeat(3, 1fr); }
+    .content-grid.one { grid-template-columns: 1fr; }
+
+    .note-card,
+    .timeline-content,
+    .summary-card,
+    .quote-card {
+      padding: 20px;
+      border-radius: 22px;
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(33, 25, 21, 0.06);
+    }
+
+    .note-card.soft { background: rgba(244, 234, 215, 0.62); }
+    .note-card.full, .quote-card.full { grid-column: 1 / -1; }
+
+    .note-card h3,
+    .timeline-content h3,
+    .summary-card h3,
+    .quote-card h3 {
+      margin: 0 0 12px;
+      color: var(--accent-dark);
+      font-size: 1.28rem;
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+    }
+
+    .note-card h4,
+    .quote-card h4 {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 14px;
+      color: var(--accent-dark);
+      font-size: 1.12rem;
+      letter-spacing: -0.02em;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 30px;
+      height: 30px;
+      padding: 0 8px;
+      border-radius: 999px;
+      background: rgba(184, 92, 56, 0.13);
+      color: var(--accent-dark);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .tag.green { background: rgba(88, 107, 77, 0.16); color: #405235; }
+    .tag.blue { background: rgba(65, 90, 119, 0.15); color: var(--blue); }
+    .tag.red { background: rgba(141, 47, 36, 0.12); color: var(--red); }
+    .tag.gold { background: rgba(215, 169, 79, 0.2); color: #755219; }
+    .tag.violet { background: rgba(95, 74, 119, 0.14); color: var(--violet); }
+
+    p {
+      margin: 0 0 12px;
+      line-height: 1.58;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .note-card p,
+    .summary-card p,
+    .timeline-content p,
+    .quote-card p,
+    li {
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    ul, ol { margin: 0; padding-left: 1.2rem; }
+    li { margin: 8px 0; line-height: 1.52; }
+    li::marker { color: var(--accent); }
+
+    .callout {
+      margin-top: 16px;
+      padding: 16px 18px;
+      border-left: 5px solid var(--accent);
+      border-radius: 16px;
+      background: rgba(184, 92, 56, 0.1);
+      color: var(--accent-dark);
+      line-height: 1.55;
+      font-weight: 700;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .callout.green {
+      border-left-color: var(--green);
+      background: rgba(88, 107, 77, 0.12);
+      color: #405235;
+    }
+
+    .callout.blue {
+      border-left-color: var(--blue);
+      background: rgba(65, 90, 119, 0.1);
+      color: var(--blue);
+    }
+
+    .callout.red {
+      border-left-color: var(--red);
+      background: rgba(141, 47, 36, 0.1);
+      color: var(--red);
+    }
+
+    .ribbon {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .ribbon-item {
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255,255,255,0.45);
+      border: 1px solid rgba(116, 53, 31, 0.12);
+    }
+
+    .ribbon-item strong {
+      display: block;
+      color: var(--accent-dark);
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+    }
+
+    .ribbon-item span {
+      display: block;
+      color: var(--muted);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.88rem;
+      line-height: 1.35;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    .split-title {
+      margin: 28px 0 14px;
+      color: var(--accent-dark);
+      font-size: clamp(1.35rem, 2vw, 2rem);
+      letter-spacing: -0.035em;
+    }
+
+    .event-stack { display: grid; gap: 12px; }
+
+    .event {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 16px;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 247, 232, 0.88);
+      border: 1px solid var(--line);
+    }
+
+    .event-date {
+      color: var(--accent-dark);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.18;
+    }
+
+    .event-text {
+      margin: 0;
+      color: var(--ink);
+      line-height: 1.5;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .point-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .point-card {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 247, 232, 0.92);
+      border: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .point-no {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(184, 92, 56, 0.13);
+      color: var(--accent-dark);
+      font-weight: 900;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .point-card p { margin: 0; text-align: justify; line-height: 1.48; }
+
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .data-card {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 247, 232, 0.9);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 24px rgba(33, 25, 21, 0.05);
+    }
+
+    .data-card strong {
+      display: block;
+      color: var(--accent-dark);
+      font-size: 1.45rem;
+      line-height: 1.05;
+      margin-bottom: 7px;
+      letter-spacing: -0.035em;
+    }
+
+    .data-card span {
+      display: block;
+      color: var(--muted);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.42;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 12px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 19px;
+      top: 8px;
+      bottom: 8px;
+      width: 4px;
+      border-radius: 999px;
+      background: linear-gradient(var(--red), var(--accent), var(--gold), var(--green), var(--blue));
+    }
+
+    .timeline-row {
+      position: relative;
+      display: grid;
+      grid-template-columns: 138px 1fr;
+      gap: 16px;
+      padding-left: 48px;
+    }
+
+    .timeline-row::before {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 18px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--paper-2);
+      border: 5px solid var(--accent);
+      z-index: 1;
+    }
+
+    .timeline-date {
+      color: var(--accent-dark);
+      font-weight: 900;
+      line-height: 1.2;
+      padding-top: 13px;
+    }
+
+    .timeline-content {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+    }
+
+    .timeline-content strong {
+      display: block;
+      color: var(--accent-dark);
+      margin-bottom: 6px;
+      font-size: 1.05rem;
+    }
+
+    .timeline-content p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.48;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: var(--paper-2);
+      margin-top: 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    th {
+      color: var(--accent-dark);
+      background: rgba(184, 92, 56, 0.10);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    td {
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .footer {
+      color: rgba(244, 234, 215, 0.78);
+      text-align: center;
+      padding: 28px 12px 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 1040px) {
+      .content-grid.three,
+      .ribbon { grid-template-columns: repeat(2, 1fr); }
+      .hero-grid { grid-template-columns: repeat(2, 1fr); }
+      .point-grid { grid-template-columns: 1fr; }
+      .data-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 820px) {
+      .content-grid,
+      .content-grid.three,
+      .ribbon { grid-template-columns: 1fr; }
+
+      .event,
+      .timeline-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .timeline-date { padding-top: 0; }
+    }
+
+    @media (max-width: 720px) {
+      .page { width: min(100% - 20px, 1180px); padding-top: 12px; }
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .hero { border-radius: 24px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .panel-header { align-items: flex-start; flex-direction: column; }
+      .point-card { grid-template-columns: 1fr; }
+      .data-grid { grid-template-columns: 1fr; }
+    }
+
+
+
+    @media (max-width: 820px) {
+      .toc-detailed { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      body { background: white !important; }
+      body::before, .topbar, .footer, .toc { display: none !important; }
+      .page { width: 100%; padding: 0; }
+      .hero, .panel, .note-card, .summary-card, .timeline-content { box-shadow: none; }
+      .panel, .hero { break-inside: avoid; }
+      .timeline-row, .note-card { break-inside: avoid; }
+    }
+  
+    .source-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .source-item { padding: 14px 16px; border-radius: 18px; background: rgba(255, 247, 232, 0.88); border: 1px solid var(--line); line-height: 1.48; }
+    .source-item strong { color: var(--accent-dark); display:block; margin-bottom: 5px; }
+    .small-note { font-size: 0.92rem; color: var(--muted); line-height: 1.5; }
+    .dense-table table { min-width: 980px; }
+    .mono-date { white-space: nowrap; font-weight: 800; color: var(--accent-dark); }
+    .toc-note { margin-top: 10px; color: var(--muted); font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 0.9rem; }
+    .warning-card { background: rgba(141, 47, 36, 0.08); border: 1px solid rgba(141, 47, 36, 0.20); }
+    .compact-list li { margin: 5px 0; }
+    .wide { grid-column: 1 / -1; }
+    @media (max-width: 820px) { .source-list { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<main class="page">
+<div class="topbar">
+<a class="back-link" href="evaluare_cu_material_romania_comunista.html">← Înapoi la materiale</a>
+<span class="material-tag">Material ajutător · Istoria României · Regimul comunist</span>
+</div>
+
+<header class="hero">
+<p class="eyebrow">România comunistă · disidență, rezistență, exil și revoluție</p>
+<h1>Disidență, exil și revoluție</h1>
+<p class="subtitle">
+Acest material urmărește opoziția față de regimul comunist în formele ei principale: lupte interne din Partidul Comunist, represiune politică, rezistență armată în munți, opoziție țărănească și religioasă, disidență intelectuală, activitatea diasporei și a exilului, revolte muncitorești, proteste publice și prăbușirea violentă a regimului în decembrie 1989. Exemplele din interiorul partidului, precum Ștefan Foriș, Lucrețiu Pătrășcanu, Ana Pauker, Vasile Luca, Teohari Georgescu sau Constantin Pîrvulescu, trebuie înțelese nu ca „disidență democratică” în toate cazurile, ci ca epurări, rivalități sau rupturi interne într-un sistem totalitar.
+</p>
+<section aria-label="Repere rapide" class="hero-grid">
+<article class="stat-card"><strong>1944–1962</strong><span>Rezistența armată, opoziția față de colectivizare și represiunile împotriva „dușmanilor de clasă”.</span></article>
+<article class="stat-card"><strong>1–3 aug. 1977</strong><span>Greva minerilor din Valea Jiului arată ruptura dintre clasa muncitoare și regimul care pretindea că o reprezintă.</span></article>
+<article class="stat-card"><strong>15 nov. 1987</strong><span>Revolta de la Brașov, pornită de la uzina Steagul Roșu, devine cel mai important protest urban înainte de 1989.</span></article>
+<article class="stat-card"><strong>16–25 dec. 1989</strong><span>Revoluția începe la Timișoara, se extinde în țară și duce la căderea și execuția cuplului Ceaușescu.</span></article>
+</section>
+</header>
+
+<nav aria-label="Cuprins" class="toc">
+<h2>Cuprins</h2>
+<div class="toc-grid">
+<a href="#cadru">I. Cadru general</a>
+<a href="#interior-partid">II. Opoziție și epurări în interiorul partidului</a>
+<a href="#rezistenta-armata">III. Rezistența armată și grupările din munți</a>
+<a href="#rezistenta-sociala">IV. Rezistență socială, țărănească și religioasă</a>
+<a href="#disidenta-civica">V. Disidență intelectuală, civică și muncitorească</a>
+<a href="#diaspora-exil">VI. Diaspora și exilul românesc</a>
+<a href="#proteste">VII. Proteste și revolte înainte de 1989</a>
+<a href="#revolutie">VIII. Revoluția din 1989</a>
+<a href="#cronologie">IX. Cronologie extinsă</a>
+<a href="#recapitulare">X. Recapitulare</a>
+</div>
+</nav>
+
+<section class="panel" id="cadru">
+<div class="panel-header"><h2>I. Cadru general: forme de opoziție</h2><p class="panel-note">În România comunistă, opoziția nu a fost un fenomen unic. A existat opoziție armată, opoziție socială, opoziție religioasă, opoziție intelectuală, opoziție muncitorească și chiar opoziție internă în partid, deși aceasta din urmă nu urmărea neapărat democratizarea țării.</p></div>
+<div class="ribbon">
+<div class="ribbon-item"><strong>Rezistență</strong><span>Acțiune clandestină sau armată împotriva noului regim, mai ales în anii 1940–1950.</span></div>
+<div class="ribbon-item"><strong>Disidență</strong><span>Critică publică, scrisori, manifeste, interviuri, memorii, proteste individuale sau de grup.</span></div>
+<div class="ribbon-item"><strong>Protest social</strong><span>Greve, revolte muncitorești, mișcări contra scăderii salariilor, lipsurilor și abuzurilor.</span></div>
+<div class="ribbon-item"><strong>Rezistență religioasă</strong><span>Apărarea autonomiei cultelor, refuzul ateizării, predici sau scrisori critice.</span></div>
+<div class="ribbon-item"><strong>Revoluție</strong><span>Momentul în care protestul local se transformă în criză națională și prăbușire a regimului.</span></div>
+</div>
+<div class="content-grid">
+<article class="note-card"><h3>De ce opoziția a fost fragmentată?</h3><p>Regimul comunist a distrus partidele istorice, presa liberă, sindicatele autonome, organizațiile studențești și societatea civilă. De aceea opoziția nu s-a putut coagula într-o mișcare națională legală. Ea a rămas fragmentată: grupuri de munte, familii de sprijin, rețele de intelectuali, preoți, muncitori, studenți, foști militari, țărani, foști membri ai partidelor istorice sau comuniști marginalizați.</p><p>În anii 1940–1950, forma cea mai vizibilă a fost rezistența armată și opoziția față de colectivizare. În anii 1970–1980, forma dominantă a devenit protestul social, disidența intelectuală și transmiterea mesajelor prin Radio Europa Liberă, scrisori deschise, manifeste sau încercări de organizare sindicală independentă.</p></article><article class="note-card"><h3>Atenție la termenul „disident”</h3><p>Nu orice victimă a epurărilor interne a fost automat disident democratic. Ana Pauker, Vasile Luca, Teohari Georgescu sau Iosif Chișinevschi au făcut parte din mecanismul comunizării, apoi au fost eliminați în luptele de putere. În schimb, Paul Goma, Doina Cornea, Gheorghe Ursu, Radu Filipescu, Dorin Tudoran, Mihai Botez, Mircea Dinescu sau Gheorghe Calciu-Dumitreasa au criticat explicit abuzurile regimului și au plătit prin anchete, supraveghere, concediere, arestare sau exil.</p><div class="callout blue">Pentru învățare, este util să separi trei categorii: epurări interne, rezistență anticomunistă și disidență civică.</div></article>
+</div>
+<h3 class="split-title">Tipuri de opoziție și exemple reprezentative</h3>
+<div class="table-wrap"><table><thead><tr><th>Tip de opoziție</th><th>Perioadă</th><th>Exemple</th><th>Ce urmărea / ce exprima</th></tr></thead><tbody><tr><td>Epurări și rivalități interne în partid</td><td>1944–1957; 1979; 1989</td><td>Ștefan Foriș, Lucrețiu Pătrășcanu, Ana Pauker, Vasile Luca, Teohari Georgescu, Miron Constantinescu, Iosif Chișinevschi, Constantin Pîrvulescu, „Scrisoarea celor șase”.</td><td>Luptă pentru putere, eliminarea rivalilor, uneori critică internă a cultului personalității sau a politicilor lui Ceaușescu.</td></tr><tr><td>Rezistență armată</td><td>1944/1945–începutul anilor 1960</td><td>Sumanele Negre, Mișcarea Națională de Rezistență, Haiducii Muscelului, Grupul Carpatin Făgărășan, grupurile din Apuseni, Banat, Bucovina, Dobrogea.</td><td>Refuzul instaurării comunismului, speranța într-un conflict Est–Vest, apărarea comunităților locale.</td></tr><tr><td>Rezistență țărănească</td><td>1949–1962</td><td>Proteste contra colectivizării în Bihor, Arad, Vrancea, Dâmbovița, Vadu Roșca și alte sate.</td><td>Apărarea proprietății, refuzul cotelor, refuzul înscrierii în gospodăriile colective.</td></tr><tr><td>Disidență intelectuală și religioasă</td><td>1970–1989</td><td>Paul Goma, Doina Cornea, Gheorghe Ursu, Dorin Tudoran, Mihai Botez, Dan Petrescu, Mircea Dinescu, Gheorghe Calciu-Dumitreasa.</td><td>Drepturi omenești, libertate de expresie, critică morală și politică, solidaritate cu alte mișcări est-europene.</td></tr><tr><td>Proteste muncitorești și civice</td><td>1977–1989</td><td>Valea Jiului, SLOMR, Motru, Cluj-Napoca, Nicolina Iași, Brașov, Iași 14 decembrie, Timișoara.</td><td>Reacție la lipsuri, scăderea veniturilor, condiții de muncă, raționalizare, abuzuri și izolarea regimului.</td></tr></tbody></table></div>
+</section>
+
+<section class="panel" id="interior-partid">
+<div class="panel-header"><h2>II. Opoziție și epurări în interiorul partidului</h2><p class="panel-note">Partidul Comunist a funcționat după logica stalinistă a controlului total: cine pierdea lupta pentru putere putea fi acuzat de trădare, deviaționism, naționalism, cosmopolitism, legături cu Siguranța sau spionaj. Unele cazuri au fost epurări brutale, altele forme de critică internă târzie.</p></div>
+<div class="content-grid">
+<article class="note-card"><h3>Ștefan Foriș: lider înlăturat înainte de preluarea puterii</h3><p>Ștefan Foriș a fost secretar general al Partidului Comunist în ilegalitate între 1940 și 4 aprilie 1944. A fost înlăturat de gruparea care pregătea ascensiunea lui Gheorghiu-Dej, apoi ținut sub control și ucis în 1946. Cazul arată că violența politică a început chiar în interiorul partidului, înainte ca regimul comunist să fie complet instalat.</p><p>Pentru elevi, Foriș este un exemplu de „epurare internă timpurie”: nu un opozant democratic, ci un comunist eliminat de alți comuniști pentru controlul partidului.</p></article><article class="note-card"><h3>Lucrețiu Pătrășcanu: comunist național, proces-spectacol, execuție</h3><p>Lucrețiu Pătrășcanu, intelectual comunist și fost ministru al Justiției, a fost arestat în 1948, anchetat ani întregi și judecat într-un proces politic. A fost executat la Jilava la 17 aprilie 1954, împreună cu Remus Koffler. După moartea lui Gheorghiu-Dej, cazul a fost folosit de Ceaușescu în 1968 pentru a critica abuzurile vechii conduceri și pentru a-și construi propria legitimitate.</p><p>Cazul Pătrășcanu este important deoarece combină trei teme: rivalitate de partid, acuzații fabricate și folosirea justiției ca instrument politic.</p></article><article class="note-card"><h3>Ana Pauker, Vasile Luca și Teohari Georgescu: căderea „grupului moscovit”</h3><p>În 1952, Gheorghiu-Dej a declanșat epurarea unor lideri importanți: Ana Pauker, Vasile Luca și Teohari Georgescu. Vasile Luca a fost acuzat în legătură cu reforma monetară din 1952 și cu „devierea de dreapta”; Ana Pauker a fost marginalizată; Teohari Georgescu, fost ministru de Interne, a fost înlăturat. În spatele acuzațiilor se afla consolidarea puterii lui Gheorghiu-Dej.</p><p>Nu este corect să fie prezentați simplu drept „victime democratice”: ei participaseră la comunizarea țării. Totuși, cazurile lor arată cât de instabil și violent era sistemul chiar pentru propriii săi lideri.</p></article><article class="note-card"><h3>Miron Constantinescu și Iosif Chișinevschi: criza anilor 1956–1957</h3><p>După moartea lui Stalin și după revoluția maghiară din 1956, în blocul comunist apar discuții despre destalinizare. În România, Miron Constantinescu și Iosif Chișinevschi au intrat în conflict cu Gheorghiu-Dej, criticând unele aspecte ale conducerii. În iunie 1957, Constantinescu a fost epurat, iar Chișinevschi a fost marginalizat.</p><p>Acest episod nu a dus la liberalizare, ci la întărirea controlului lui Gheorghiu-Dej. Conducerea românească a folosit frica de „revizionism” pentru a bloca reformele de tip polonez sau maghiar.</p></article><article class="note-card"><h3>Constantin Pîrvulescu: critică publică la Congresul al XII-lea</h3><p>Constantin Pîrvulescu, unul dintre vechii comuniști, a avut în 1979 o intervenție critică la Congresul al XII-lea al PCR, contestând realegerea lui Nicolae Ceaușescu și cultul personalității. A fost scos din sală, marginalizat și exclus din partid în 1980.</p><p>Spre deosebire de epurările anilor 1950, aici apare o critică internă îndreptată împotriva personalizării puterii ceaușiste. Pîrvulescu va semna și „Scrisoarea celor șase” în 1989.</p></article><article class="note-card"><h3>„Scrisoarea celor șase”: critică internă în martie 1989</h3><p>În martie 1989, șase foști demnitari comuniști — Gheorghe Apostol, Alexandru Bârlădeanu, Silviu Brucan, Corneliu Mănescu, Constantin Pîrvulescu și Grigore Răceanu — au criticat politicile lui Ceaușescu: izolarea externă, cultul personalității, încălcarea Constituției, demolările, austeritatea și compromiterea partidului.</p><p>Scrisoarea nu a fost o platformă democratică completă, dar a fost importantă pentru că a arătat că regimul nu mai era contestat doar de intelectuali, muncitori sau exilați, ci și de foști oameni ai sistemului.</p></article>
+</div>
+<h3 class="split-title">Cazuri interne: date, acuzații, semnificație</h3>
+<div class="table-wrap"><table><thead><tr><th>Caz</th><th>Date-cheie</th><th>Ce s-a întâmplat</th><th>Semnificație</th></tr></thead><tbody><tr><td>Ștefan Foriș</td><td>4 aprilie 1944; 1945; 1946</td><td>Înlăturat de la conducerea PCR, arestat/ținut sub control și ucis în contextul luptei pentru putere.</td><td>Epurare internă înainte de monopolul complet asupra statului.</td></tr><tr><td>Lucrețiu Pătrășcanu</td><td>1948; 1954; 1968</td><td>Arestat, anchetat, judecat politic, executat la Jilava; reabilitat politic mai târziu.</td><td>Proces-spectacol și folosirea justiției pentru eliminarea rivalilor.</td></tr><tr><td>Ana Pauker</td><td>1952</td><td>Înlăturată din conducere și prezentată ca simbol al „deviaționismului”.</td><td>Înfrângerea grupării asociate Moscovei și consolidarea lui Dej.</td></tr><tr><td>Vasile Luca</td><td>28 ian. 1952; 1952–1953</td><td>Legat de reforma monetară, acuzat și condamnat.</td><td>Acuzațiile economice ascund rivalități politice.</td></tr><tr><td>Teohari Georgescu</td><td>1945–1952; 1952</td><td>Fost ministru de Interne, implicat în sovietizarea aparatului represiv, apoi epurat.</td><td>Regimul își elimină inclusiv oamenii care l-au construit.</td></tr><tr><td>Miron Constantinescu și Iosif Chișinevschi</td><td>1956–1957</td><td>Critici în contextul destalinizării, apoi marginalizare.</td><td>Dej blochează orice reformă internă reală.</td></tr><tr><td>Constantin Pîrvulescu</td><td>1979; 1980; 1989</td><td>Critică la Congresul XII, excludere, apoi semnatar al Scrisorii celor șase.</td><td>Fisură publică în unanimitatea oficială a PCR.</td></tr><tr><td>Scrisoarea celor șase</td><td>martie 1989</td><td>Foști demnitari critică deschis politica lui Ceaușescu.</td><td>Semn al izolării regimului chiar în interiorul vechii elite comuniste.</td></tr></tbody></table></div>
+</section>
+
+<section class="panel" id="rezistenta-armata">
+<div class="panel-header"><h2>III. Rezistența armată și grupările din munți</h2><p class="panel-note">Rezistența armată a apărut în contextul ocupației sovietice, al eliminării partidelor democratice, al arestărilor, al colectivizării și al speranței că Occidentul va intra într-un conflict cu URSS. A fost formată din foști ofițeri, țărani, studenți, preoți, membri ai partidelor istorice, legionari, liberali, țărăniști și oameni fără afiliere politică.</p></div>
+<div class="callout red">Important: unele grupuri au avut componență politică foarte diversă, inclusiv foști legionari. A studia rezistența anticomunistă nu înseamnă a idealiza toate biografiile sau ideologiile participanților, ci a înțelege conflictul dintre societate și un regim totalitar.</div>
+<h3 class="split-title">De ce au mers oamenii în munți?</h3>
+<div class="point-grid">
+<div class="point-card"><div class="point-no">1</div><p><strong>Frica de arestare.</strong> Foști militari, membri PNȚ/PNL, legionari, preoți sau țărani considerați „chiaburi” riscau condamnări grele.</p></div>
+<div class="point-card"><div class="point-no">2</div><p><strong>Refuzul noului regim.</strong> Mulți considerau guvernarea comunistă un regim impus de Armata Roșie și de Moscova.</p></div>
+<div class="point-card"><div class="point-no">3</div><p><strong>Speranța în Occident.</strong> Formula „vin americanii” exprima credința într-un posibil război între Occident și URSS.</p></div>
+<div class="point-card"><div class="point-no">4</div><p><strong>Sprijin local.</strong> Partizanii depindeau de familii, pădurari, ciobani, preoți și țărani care ofereau hrană, adăpost, informații.</p></div>
+</div>
+<h3 class="split-title">Grupări și zone de rezistență</h3>
+<div class="table-wrap"><table><thead><tr><th>Grupare / zonă</th><th>Ani aproximativi</th><th>Persoane și exemple</th><th>Observații</th></tr></thead><tbody><tr><td>Mișcarea Națională de Rezistență / „Sumanele Negre”</td><td>1945–1946</td><td>Generalul Aurel Aldea, rețele de foști militari și civili anticomuniști.</td><td>Încercare de coordonare națională a rezistenței; Aldea este arestat în mai 1946, judecat în noiembrie 1946 și moare la Aiud în 1949.</td></tr><tr><td>Haiducii Muscelului / Nucșoara</td><td>1949–1958/1959</td><td>Toma Arnăuțoiu, Petre Arnăuțoiu, Gheorghe Arsenescu, Maria Plop, Elisabeta Rizea, familia Rizea.</td><td>Una dintre cele mai longevive grupări; arestări în 1958; execuții la Jilava în 1959.</td></tr><tr><td>Grupul Carpatin Făgărășan</td><td>1948–1955/1956</td><td>Ion Gavrilă Ogoranu, Ion Chiujdea, Laurian Hașu, Victor Metea și alții.</td><td>Grup activ pe versantul nordic al Făgărașului; membri capturați sau uciși; procese în anii 1950.</td></tr><tr><td>Frontul Apărării Naționale – Corpul de Haiduci</td><td>1948–1949</td><td>Maiorul Nicolae Dabija și partizani din zona Muntele Mare, Apuseni.</td><td>Luptă puternică cu Securitatea în martie 1949; Dabija este executat la Sibiu în octombrie 1949.</td></tr><tr><td>Grupurile Leon Șușman / Teodor Șușman</td><td>1948–1957</td><td>Familia Șușman, sprijin rural din Apuseni.</td><td>Rezistență locală în Munții Apuseni, dependentă de rețele de sate și familii.</td></tr><tr><td>Bucovina și Obcinele Bucovinei</td><td>sfârșitul anilor 1940–anii 1950</td><td>Gavril Vatamaniuc, Vladimir Macoveiciuc, grupuri locale din zona Sucevița–Rădăuți.</td><td>Rezistență legată de ocupația sovietică, de frontiera apropiată și de comunități rurale.</td></tr><tr><td>Banat și Munții Banatului</td><td>1948–1952/1953</td><td>Colonelul Ion Uță, Spiru Blănaru, grupuri din zona Teregova–Mehadia–Semenic.</td><td>Rezistență combinată: foști militari, țărani, naționaliști, adversari ai colectivizării.</td></tr><tr><td>Dobrogea</td><td>1948–1949</td><td>Gogu Puiu, frații Fudulea, rețele anticomuniste locale.</td><td>Rezistență într-o zonă mai puțin favorabilă ascunderii decât munții, rapid lovită de Securitate.</td></tr><tr><td>Maramureș, Vrancea, Neamț, Buzău</td><td>anii 1940–1950</td><td>Grupuri locale de foști militari, țărani, preoți și fugari.</td><td>Rezistență mai puțin cunoscută, dar relevantă pentru caracterul răspândit al opoziției.</td></tr></tbody></table></div>
+<div class="content-grid">
+<article class="note-card"><h3>„Sumanele Negre” și generalul Aurel Aldea</h3><p>După 1945, o parte din foști militari și oameni politici au încercat să creeze structuri de rezistență în eventualitatea unei confruntări dintre Occident și URSS. Generalul Aurel Aldea, fost ministru de Interne după 23 august 1944, a fost asociat cu Mișcarea Națională de Rezistență și cu procesul „Sumanelor Negre”.</p><p>Aldea a fost arestat la 27 mai 1946, judecat în noiembrie 1946 și condamnat la muncă silnică pe viață. A murit în închisoarea Aiud în 1949. Cazul arată că regimul a lovit din timp orice tentativă de coordonare națională a opoziției.</p></article><article class="note-card"><h3>Haiducii Muscelului: Nucșoara și familia Arnăuțoiu</h3><p>Gruparea din Nucșoara, legată de Toma Arnăuțoiu, Petre Arnăuțoiu și Gheorghe Arsenescu, a rezistat aproape un deceniu în zona Muscelului. A avut sprijin local, inclusiv din partea unor femei precum Elisabeta Rizea și Maria Plop. Pentru regim, localnicii care ajutau cu hrană, haine, informații sau ascunzători deveneau complici.</p><p>Capturarea fraților Arnăuțoiu în mai 1958 și execuțiile din iulie 1959 au marcat distrugerea uneia dintre cele mai cunoscute rețele de partizani. Represiunea nu s-a limitat la luptători: familii întregi au fost anchetate, condamnate sau deportate.</p></article><article class="note-card"><h3>Făgăraș: Grupul Carpatin Făgărășan</h3><p>În Munții Făgăraș, Ion Gavrilă Ogoranu și camarazii săi au organizat o formațiune de partizani activă în principal între 1948 și 1955. Grupul s-a deplasat prin zone împădurite, a mizat pe sprijinul sătenilor și a încercat legături cu alte nuclee de rezistență.</p><p>În 1955, mai mulți membri au fost capturați sau uciși, iar procesele ulterioare au dus la condamnări grele. Ogoranu a rămas ascuns mult timp, fiind descoperit abia în perioada târzie a regimului.</p></article><article class="note-card"><h3>Apuseni: Nicolae Dabija și grupurile Șușman</h3><p>În Apuseni au acționat mai multe grupuri. Maiorul Nicolae Dabija a condus Frontul Apărării Naționale – Corpul de Haiduci, lovit dur de Securitate în martie 1949. Dabija a fost prins în aceeași lună și executat la Sibiu în octombrie 1949.</p><p>În alte zone ale Apusenilor, familia Șușman și susținătorii ei au rămas în conflict cu autoritățile până în anii 1950. Apusenii erau favorabili ascunderii, dar Securitatea a folosit informatori, presiuni asupra rudelor, trupe speciale și capcane.</p></article><article class="note-card"><h3>Bucovina, Banat și Dobrogea</h3><p>În Bucovina, rezistența s-a legat de trauma ocupației sovietice, de graniță și de comunități rurale compacte. Gavril Vatamaniuc este unul dintre numele cunoscute. În Banat, grupuri precum cele ale lui Ion Uță și Spiru Blănaru au combinat experiența militară cu sprijinul local. În Dobrogea, Gogu Puiu și alți opozanți au încercat să organizeze rezistență într-un relief mai puțin favorabil decât Carpații.</p><p>În toate aceste cazuri, regimul a prezentat partizanii drept „bandiți”, în timp ce memoria postcomunistă i-a recuperat ca luptători anticomuniști. Interpretarea trebuie făcută atent, pe baza documentelor, fără mitizare și fără minimalizarea represiunii.</p></article><article class="note-card"><h3>Cum a distrus Securitatea rezistența?</h3><p>Securitatea a folosit unități militare, informatori, infiltrări, arestarea rudelor, amenințări, anchete violente, procese secrete și condamnări exemplare. Pentru fiecare grup din munți exista și o rețea de sprijin în sate; distrugerea acestei rețele era la fel de importantă ca prinderea luptătorilor.</p><p>După începutul anilor 1960, rezistența armată nu mai reprezenta o forță organizată. Regimul câștigase prin supraveghere, teroare și izolarea comunităților care îi ajutaseră pe partizani.</p></article>
+</div>
+</section>
+
+<section class="panel" id="rezistenta-sociala">
+<div class="panel-header"><h2>IV. Rezistență socială, țărănească și religioasă</h2><p class="panel-note">Nu toată rezistența a fost armată. În multe locuri, oamenii au refuzat cotele, colectivizarea, demolările, ateizarea, controlul asupra bisericilor sau intruziunea partidului în viața privată.</p></div>
+<div class="content-grid">
+<article class="note-card"><h3>Rezistența la colectivizare</h3><p>Colectivizarea agriculturii, începută oficial în 1949 și declarată încheiată în 1962, a produs una dintre cele mai ample forme de rezistență socială. Țăranii au refuzat înscrierea în gospodării colective, au ascuns recolte, au protestat la primării, au atacat activiști sau au fugit de presiunile administrative.</p><p>În zone precum Bihor, Arad, Vrancea, Dâmbovița, Oltenia sau Moldova au existat proteste locale. Unele au fost înăbușite prin arestări, deportări, bătăi, condamnări, confiscări și campanii de propagandă împotriva „chiaburilor”.</p></article><article class="note-card"><h3>Vadu Roșca și represiunea rurală</h3><p>Un exemplu puternic al conflictului dintre sat și regim este Vadu Roșca, în Vrancea, unde rezistența față de colectivizare a fost reprimată violent în 1957. Astfel de episoade arată că modernizarea comunistă a satului nu a fost doar economică, ci și coercitivă: statul voia să controleze proprietatea, hrana, munca și solidaritatea rurală.</p><p>Pentru mulți țărani, colectivizarea a însemnat pierderea pământului, a animalelor, a autonomiei familiale și a statutului social.</p></article><article class="note-card"><h3>Biserica Greco-Catolică și controlul cultelor</h3><p>În 1948, Biserica Română Unită cu Roma, Greco-Catolică, a fost scoasă în afara legii, iar credincioșii și clerul au fost forțați să treacă la ortodoxie. Episcopii greco-catolici au fost arestați, iar mulți au murit în detenție sau domiciliu obligatoriu.</p><p>Controlul cultelor nu s-a limitat la greco-catolici. Statul comunist a încercat să subordoneze Biserica Ortodoxă, cultele protestante, romano-catolicii și comunitățile neoprotestante prin supraveghere, dosare, colaboratori și limitarea educației religioase.</p></article><article class="note-card"><h3>Gheorghe Calciu-Dumitreasa și predicile către tineri</h3><p>Preotul Gheorghe Calciu-Dumitreasa, fost deținut politic, a devenit în anii 1970 un simbol al opoziției religioase prin predici adresate tinerilor și prin criticarea ateismului de stat. A fost arestat și condamnat, apoi eliberat în urma presiunilor internaționale și forțat să plece în exil.</p><p>Cazul său arată că disidența religioasă nu era doar o problemă de credință, ci și una de libertate publică: dreptul de a vorbi, de a educa și de a refuza monopolul ideologic al partidului.</p></article><article class="note-card"><h3>Rezistența prin familie, memorie și cultură</h3><p>În multe familii, opoziția a luat forma păstrării memoriei celor arestați, ascultării posturilor străine, transmiterii unor cărți interzise, refuzului de a repeta propaganda oficială sau ajutorului dat rudelor deținuților politici.</p><p>Această rezistență discretă este greu de măsurat, dar a contat: regimul controla instituțiile, însă nu putea controla complet memoria privată, solidaritatea familială și neîncrederea oamenilor în limbajul oficial.</p></article><article class="note-card"><h3>Deportări și domiciliu obligatoriu</h3><p>Deportările în Bărăgan, domiciliul obligatoriu, mutarea forțată a familiilor și marginalizarea socială au fost metode prin care statul a rupt comunități. Ele au lovit nu doar adversari politici, ci și familii întregi, etnici germani, sârbi, bănățeni, țărani înstăriți, foști comercianți, preoți sau persoane considerate nesigure.</p><p>Prin aceste măsuri, represiunea devenea preventivă: nu pedepsea doar o faptă, ci încerca să distrugă posibilitatea de organizare viitoare.</p></article>
+</div>
+<h3 class="split-title">Exemple de rezistență socială și religioasă</h3>
+<div class="table-wrap"><table><thead><tr><th>Exemplu</th><th>Ani / perioadă</th><th>Formă de opoziție</th><th>Răspunsul regimului</th></tr></thead><tbody><tr><td>Refuzul cotelor agricole</td><td>sfârșitul anilor 1940–anii 1950</td><td>Ascunderea produselor, întârzieri, proteste locale.</td><td>Confiscări, amenzi, anchete, condamnări.</td></tr><tr><td>Proteste contra colectivizării</td><td>1949–1962</td><td>Adunări sătești, confruntări cu activiști, opoziție la înscrierea în colectiv.</td><td>Trupe, Miliție, Securitate, arestări, deportări.</td></tr><tr><td>Vadu Roșca</td><td>1957</td><td>Rezistență rurală împotriva colectivizării.</td><td>Intervenție violentă și represiune exemplară.</td></tr><tr><td>Biserica Greco-Catolică</td><td>din 1948</td><td>Refuzul desființării și păstrarea credinței în clandestinitate.</td><td>Arestarea episcopilor și interzicerea instituției.</td></tr><tr><td>Predicile lui Gheorghe Calciu</td><td>1978–1979</td><td>Critică religioasă și morală adresată tinerilor.</td><td>Arestare, condamnare, presiuni internaționale, exil.</td></tr><tr><td>Ascultarea Europei Libere</td><td>anii 1970–1980</td><td>Informare alternativă și circulația criticii.</td><td>Bruiaj, supraveghere, intimidare, dosare.</td></tr></tbody></table></div>
+</section>
+
+<section class="panel" id="disidenta-civica">
+<div class="panel-header"><h2>V. Disidență intelectuală, civică și muncitorească</h2><p class="panel-note">În anii Ceaușescu, disidența a devenit mai ales scrisă, morală, civică și internaționalizată. Scrisorile erau trimise la Europa Liberă, Amnesty International, ambasade occidentale sau conferințe internaționale pentru drepturile omului.</p></div>
+<div class="content-grid">
+<article class="note-card"><h3>Paul Goma și solidaritatea cu Carta 77</h3><p>În 1977, scriitorul Paul Goma a inițiat una dintre cele mai cunoscute acțiuni de disidență din România, inspirată de Carta 77 din Cehoslovacia. Scrisorile sale cereau respectarea drepturilor omului și au atras semnături de solidaritate. Regimul a reacționat prin presiuni, anchete, arestare și forțarea plecării în exil.</p><p>Goma este important pentru că a încercat să transforme nemulțumirea individuală într-o acțiune publică de solidaritate.</p></article><article class="note-card"><h3>Doina Cornea: scrisori deschise și critică morală</h3><p>Doina Cornea, profesoară la Cluj, a trimis texte critice către Radio Europa Liberă, a denunțat degradarea vieții publice, cultul personalității, lipsa de libertate și demolările. În 1987, după solidarizarea cu muncitorii de la Brașov, a fost anchetată și supravegheată strict.</p><p>Cazul ei arată că disidența putea fi nonviolentă, dar foarte periculoasă pentru regim, tocmai fiindcă formula o critică morală clară și inteligibilă.</p></article><article class="note-card"><h3>Gheorghe Ursu: jurnalul ca probă împotriva regimului</h3><p>Inginerul și poetul Gheorghe Ursu a ținut un jurnal critic la adresa regimului. În 1984, manuscrisele i-au fost confiscate. A fost arestat la 21 septembrie 1985 sub acuzații de deținere de valută, dar cazul era legat de jurnal și de refuzul de a-și denunța prietenii. A murit la 17 noiembrie 1985, după violențe suferite în detenție.</p><p>Ursu arată cât de departe mergea statul pentru a controla nu doar acțiunile publice, ci și gândirea privată consemnată în caiete.</p></article><article class="note-card"><h3>Radu Filipescu: manifeste pentru protest</h3><p>În anii 1980, Radu Filipescu a tipărit și distribuit manifeste prin care chema oamenii la protest împotriva lui Ceaușescu. A fost arestat în 1983 și condamnat pentru „propagandă împotriva orânduirii socialiste”. A continuat să fie activ în încercări de organizare civică și sindicală.</p><p>Cazul Filipescu este important pentru trecerea de la critică intelectuală la încercarea concretă de mobilizare publică.</p></article><article class="note-card"><h3>Mihai Botez, Dorin Tudoran, Dan Petrescu</h3><p>Mihai Botez, matematician și analist critic, a scris texte despre criza regimului și despre lipsa libertăților. Dorin Tudoran a demisionat din PCR în 1982, a cerut emigrarea și a făcut greva foamei în 1985. Dan Petrescu, intelectual din Iași, a formulat critici împotriva dictaturii și a fost supravegheat.</p><p>Acești intelectuali au conectat România la limbajul drepturilor omului și la dezbaterile din Europa de Est.</p></article><article class="note-card"><h3>Mircea Dinescu, Ana Blandiana, Liviu Babeș</h3><p>Mircea Dinescu a fost sancționat pentru interviuri și texte critice în 1989. Ana Blandiana a fost interzisă după texte considerate subversive. Liviu Cornel Babeș s-a autoincendiat la 2 martie 1989 pe pârtia Bradu din Poiana Brașov, lăsând mesajul „Stop Murder! Brașov = Auschwitz”.</p><p>Aceste cazuri arată diversitatea disidenței: literatură, interviu, gest simbolic extrem, protest moral și refuzul tăcerii.</p></article>
+</div>
+<h3 class="split-title">Disidenți și forme de acțiune</h3>
+<div class="table-wrap"><table><thead><tr><th>Persoană / grup</th><th>Ani importanți</th><th>Formă de disidență</th><th>Consecințe</th></tr></thead><tbody><tr><td>Paul Goma</td><td>1977</td><td>Scrisori de solidaritate cu Carta 77, apeluri pentru drepturi omenești.</td><td>Anchetă, arestare, presiuni, exil.</td></tr><tr><td>Doina Cornea</td><td>1982–1989</td><td>Scrisori la Europa Liberă, protest moral, solidarizare cu Brașov 1987.</td><td>Concediere, anchete, domiciliu supravegheat.</td></tr><tr><td>Gheorghe Ursu</td><td>1984–1985</td><td>Jurnal critic, refuzul colaborării cu anchetatorii.</td><td>Arestare și moarte în detenție.</td></tr><tr><td>Radu Filipescu</td><td>1983; 1988; 1989</td><td>Manifeste, apel la protest, încercări de asociere liberă.</td><td>Condamnare, supraveghere, arestări.</td></tr><tr><td>Mihai Botez</td><td>anii 1970–1980</td><td>Memorii și analize critice despre sistem.</td><td>Supraveghere, presiuni, marginalizare.</td></tr><tr><td>Dorin Tudoran</td><td>1982–1985</td><td>Demisie din PCR, scrisori, greva foamei.</td><td>Presiuni, plecare în SUA în 1985.</td></tr><tr><td>Gheorghe Calciu-Dumitreasa</td><td>1978–1979; 1980s</td><td>Predici și opoziție religioasă.</td><td>Condamnare, detenție, exil.</td></tr><tr><td>Mircea Dinescu</td><td>1989</td><td>Interviuri și texte critice.</td><td>Interdicție publică, domiciliu supravegheat.</td></tr><tr><td>Liviu Babeș</td><td>2 martie 1989</td><td>Autoincendiere ca protest politic.</td><td>Moarte; gest simbolic împotriva regimului.</td></tr><tr><td>SLOMR</td><td>1979</td><td>Sindicat liber independent.</td><td>Dizolvare rapidă, arestări, internări psihiatrice, presiuni.</td></tr></tbody></table></div>
+</section>
+
+<section class="panel" id="diaspora-exil">
+<div class="panel-header"><h2>VI. Diaspora și exilul românesc</h2><p class="panel-note">Exilul a prelungit în afara granițelor rezistența față de comunism. Prin organizații politice, instituții culturale, presă, emisiuni radio și campanii internaționale, românii plecați au informat Occidentul, au sprijinit disidenții din țară și au păstrat o cultură publică liberă.</p></div>
+
+<div class="content-grid three">
+<article class="note-card"><h3>Începutul exilului</h3><p>Prima mare etapă a exilului a fost legată de instaurarea comunismului și de practica represivă a noului regim. Între formarea guvernului Petru Groza, la <strong>6 martie 1945</strong>, și proclamarea Republicii Populare Române, la <strong>30 decembrie 1947</strong>, foști politicieni, funcționari, militari, clerici, intelectuali și oameni obișnuiți au încercat să se refugieze în Statele Unite sau în Europa Occidentală.</p><p>Cei mai mulți dintre reprezentanții exilului politic timpuriu erau anticomuniști și antisovietici. Plecarea însemna atât salvare personală, cât și încercarea de a continua din exterior lupta pentru libertatea României.</p></article>
+<article class="note-card"><h3>Un al doilea val, după 1970</h3><p>Din anii 1970, emigrația s-a diversificat. Unii români au plecat după conflicte directe cu regimul, după anchete, interdicții profesionale sau presiuni politice; alții au urmărit în primul rând un nivel de trai mai bun și posibilitatea de a trăi într-o societate liberă.</p><p>Granița dintre exil politic și emigrație economică nu a fost întotdeauna rigidă. Lipsurile materiale, controlul asupra carierei, cenzura și imposibilitatea de a circula liber erau toate efecte ale aceluiași sistem.</p></article>
+<article class="note-card"><h3>Funcțiile exilului</h3><ul><li>Reprezentarea intereselor românilor aflați în afara țării.</li><li>Informarea opiniei publice occidentale despre represiunea din România.</li><li>Sprijinirea deținuților politici, disidenților și familiilor lor.</li><li>Păstrarea continuității culturale și politice democratice.</li><li>Transmiterea spre țară a informațiilor cenzurate de regim.</li></ul><div class="callout blue">Exilul nu a fost doar o comunitate de refugiați, ci și o formă de opoziție transnațională.</div></article>
+</div>
+
+<h3 class="split-title">Comitetul Național Român și organizarea politică</h3>
+<div class="content-grid">
+<article class="note-card"><h3>Comitetul Național Român (CNR)</h3><p>În <strong>1949</strong>, la New York, a fost constituit Comitetul Național Român, prezidat inițial de generalul <strong>Nicolae Rădescu</strong> și așezat sub autoritatea regelui Mihai. În comitet au intrat reprezentanți ai partidelor democratice interbelice — PNȚ, PNL și PSD.</p><p>CNR urmărea reprezentarea națiunii române în exil, apărarea intereselor diasporei, coordonarea ajutorului pentru refugiați și susținerea eliberării țării de sub dominația sovietică. S-a prezentat drept un guvern național în exil, fără a primi însă recunoașterea oficială a Statelor Unite.</p><p>Neînțelegerile interne au slăbit organizația; Nicolae Rădescu a demisionat, iar CNR și-a încetat activitatea în <strong>1975</strong>.</p></article>
+<article class="note-card"><h3>Activitate culturală și solidaritate</h3><p>O direcție importantă a fost promovarea culturii române în Occident prin reviste, conferințe, seminarii și burse. În <strong>1949</strong> a fost fondată la Paris <strong>Fundația Universitară Carol I</strong>, în jurul căreia au activat personalități precum Mircea Eliade, Vintilă Horia, Virgil Ierunca, Emil Turdeanu, Virgil Veniamin și Constantin Amăriuței.</p><p>Biserica Română din Paris, condusă de preotul Vasile Boldeanu, a funcționat și ca spațiu comunitar. În 1987, Remus Radina a înființat Asociația Deținuților Politici Anticomuniști Români, care a inițiat pelerinaje la cimitirul militar românesc de la Soultzmatt.</p></article>
+</div>
+
+<h3 class="split-title">Presa, radioul și rețelele culturale</h3>
+<div class="table-wrap"><table><thead><tr><th>Instrument / instituție</th><th>Loc / perioadă</th><th>Rol</th></tr></thead><tbody>
+<tr><td><strong>Lumea Liberă</strong></td><td>New York</td><td>Ziar al exilului, spațiu de informare și critică anticomunistă.</td></tr>
+<tr><td><strong>Lupta</strong></td><td>Paris</td><td>Publicație politică și culturală a românilor din Occident.</td></tr>
+<tr><td><strong>Cuvântul liber</strong></td><td>Canada</td><td>Menținerea legăturilor comunitare și difuzarea informațiilor necenzurate.</td></tr>
+<tr><td><strong>Dialog</strong> / <strong>Dorul</strong></td><td>Germania / Danemarca</td><td>Reviste ale comunităților românești din Europa Occidentală.</td></tr>
+<tr><td><strong>Radio Europa Liberă</strong></td><td>Emisiuni către România</td><td>Transmiterea știrilor, documentelor și vocilor interzise în țară; legătură esențială între disidență și public.</td></tr>
+<tr><td><strong>Teze și antiteze la Paris</strong></td><td>1967–1992</td><td>Emisiunea Monicăi Lovinescu de critică literară și dezbatere de idei; analiza critică a producției culturale din România comunistă.</td></tr>
+</tbody></table></div>
+
+<h3 class="split-title">Personalități și campanii de solidaritate</h3>
+<div class="content-grid">
+<article class="note-card"><h3>Vocile exilului</h3><p>Monica Lovinescu, Virgil Ierunca, Maria Brătianu, Sanda Stolojan, Virgil Tănase, Brutus Coste și Mihnea Berindei s-au numărat printre cei care au apărat în Occident drepturile românilor și au făcut cunoscute abuzurile regimului.</p><p>Prin presă, radio, memorii și contacte cu organizații internaționale, exilul a contribuit la protejarea unor opozanți precum Paul Goma, Vasile Paraschiv, Radu Filipescu, Gheorghe Calciu-Dumitreasa, Doina Cornea și Mircea Dinescu. Presiunea externă nu elimina represiunea, dar îi putea crește costul diplomatic.</p></article>
+<article class="note-card warning-card"><h3>Represiunea a trecut granițele</h3><p>Regimul de la București a urmărit, intimidat și atacat opozanți aflați în Occident. Documentul amintește agresiunea împotriva Monicăi Lovinescu la Paris, în 1977, precum și operațiuni din 1981 îndreptate împotriva lui Nicolae Penescu, Paul Goma, Șerban Orescu, Emil Georgescu și a Secției române a postului Radio Europa Liberă de la München.</p><p>Tentativa împotriva lui Paul Goma a fost dejucată de serviciile franceze. Aceste episoade arată că Securitatea considera exilul o amenințare politică reală și încerca să-l neutralizeze inclusiv în afara României.</p></article>
+</div>
+
+<h3 class="split-title">Studiu de caz: Remus Radina</h3>
+<div class="timeline">
+<div class="timeline-row"><div class="timeline-date">octombrie 1946</div><div class="timeline-content"><strong>Ruptura publică de regim</strong><p>Ca sublocotenent, Remus Radina refuză să mai servească într-o armată subordonată guvernului Petru Groza și cere trecerea în rezervă.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">1946–1948</div><div class="timeline-content"><strong>Arestare, rezistență și tentativa de plecare</strong><p>Este arestat în ziua alegerilor din 19 noiembrie 1946, intră în legătură cu rezistența anticomunistă și încearcă să treacă în Iugoslavia în noiembrie 1948.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">1949–1954</div><div class="timeline-content"><strong>Închisori și Canal</strong><p>Condamnat pentru trecerea frontierei, ajunge la Jilava și în lagărele de la Canal. Protestează prin greve ale foamei și cere respectarea demnității deținuților.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">10 dec. 1956</div><div class="timeline-content"><strong>Memoriu pentru drepturile omului</strong><p>În contextul revoluției maghiare, cere eliberarea deținuților politici, alegeri libere și retragerea trupelor sovietice din Ungaria; memoriul este dus la Ambasada Statelor Unite.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">1957–1960</div><div class="timeline-content"><strong>O nouă condamnare</strong><p>După o nouă încercare de trecere a frontierei și extrădarea din Iugoslavia, este condamnat la zece ani și închis la Gherla, unde continuă protestele împotriva abuzurilor.</p></div></div>
+<div class="timeline-row"><div class="timeline-date">1978–1987</div><div class="timeline-content"><strong>Mărturie și organizare în exil</strong><p>Ajunge în Franța, publică mărturia <em>Testamentul din morgă</em>, prefațată de Eugen Ionescu, iar în 1987 creează o asociație a foștilor deținuți politici anticomuniști români.</p></div></div>
+</div>
+
+<h3 class="split-title">Studiu de caz: Paul Goma, de la disidență la exil</h3>
+<div class="content-grid">
+<article class="note-card"><h3>Formarea unui opozant</h3><p>Născut în Basarabia și refugiat în România după ocuparea sovietică, Paul Goma a intrat devreme în conflict cu autoritățile. În 1952 a fost reținut și exmatriculat pentru susținerea unor persoane acuzate de anticomunism. După revoluția maghiară din 1956 și-a predat carnetul UTM, a fost arestat, condamnat și apoi trimis cu domiciliu obligatoriu în Bărăgan.</p><p>Romanul <em>Ostinato</em>, cenzurat în țară și publicat în Germania Federală, l-a adus din nou în conflict cu regimul.</p></article>
+<article class="note-card"><h3>Mișcarea pentru drepturile omului din 1977</h3><p>În 1977, Goma s-a solidarizat cu Carta 77 din Cehoslovacia și a adresat scrisori deschise lui Nicolae Ceaușescu și Conferinței de la Belgrad. Apelurile au atras sute de semnături și au fost difuzate de Radio Europa Liberă și de presa occidentală.</p><p>A fost urmărit, arestat și maltratat, dar campania internațională a dus la eliberarea sa. În noiembrie 1977, lui și familiei sale le-a fost retrasă cetățenia română, iar aceștia au fost expulzați și s-au stabilit la Paris.</p></article>
+<article class="note-card full"><h3>Activitatea din exil și necesitatea unei evaluări critice</h3><p>La Paris, Paul Goma a continuat să denunțe regimul Ceaușescu, a sprijinit apariția SLOMR și a devenit ținta unei tentative de asasinat. Rolul său în mișcarea pentru drepturile omului din 1977 rămâne esențial pentru istoria disidenței românești.</p><p>În același timp, unele dintre textele și pozițiile sale ulterioare au provocat controverse grave, inclusiv acuzații de antisemitism. Pentru o analiză istorică riguroasă, contribuția sa anticomunistă trebuie prezentată fără a evita evaluarea critică a ideilor controversate exprimate ulterior.</p></article>
+</div>
+
+<h3 class="split-title">După căderea regimului</h3>
+<div class="content-grid">
+<article class="note-card"><h3>Memoria foștilor deținuți politici</h3><p>La 2 ianuarie 1990 a fost înființată Asociația Foștilor Deținuți Politici din România (AFDPR), reunind foști deținuți politici, anticomuniști, deportați, prizonieri și urmașii acestora. Asociația a fost legată de Constantin Ticu Dumitrescu și de rețelele internaționale ale victimelor comunismului.</p></article>
+<article class="note-card"><h3>Continuitatea rețelelor din exil</h3><p>După 1989, persoane și organizații formate în exil au contribuit la documentarea represiunii, recuperarea memoriei, sprijinirea pluralismului politic și reconectarea culturii române la spațiul occidental. Structurile create după Revoluție trebuie diferențiate de organizațiile care au funcționat efectiv în timpul dictaturii.</p></article>
+</div>
+<div class="callout green">Ideea centrală: opoziția din interior și exilul au funcționat împreună. Disidenții transmiteau informații spre Occident, iar exilul le amplifica vocea, mobiliza solidaritatea internațională și trimitea informația înapoi în România.</div>
+</section>
+
+
+<section class="panel" id="proteste">
+<div class="panel-header"><h2>VII. Proteste și revolte înainte de 1989</h2><p class="panel-note">Înainte de Revoluție au existat mai multe mișcări sociale, greve, proteste studențești, revolte muncitorești, gesturi individuale și încercări de organizare. Ele nu au răsturnat regimul, dar au slăbit mitul unanimității și au arătat că frica putea fi depășită.</p></div>
+<h3 class="split-title">Proteste și incidente importante</h3>
+<div class="table-wrap"><table><thead><tr><th>Eveniment</th><th>Data / perioada</th><th>Loc</th><th>Descriere și semnificație</th></tr></thead><tbody><tr><td>Reacții studențești la revoluția maghiară</td><td>1956</td><td>Timișoara, Cluj, București, Iași</td><td>Studenți și intelectuali discută reforme, libertăți și solidaritate cu Ungaria; regimul răspunde prin arestări, exmatriculări și supraveghere.</td></tr><tr><td>Mișcarea Paul Goma</td><td>ianuarie–aprilie 1977</td><td>București / rețele intelectuale</td><td>Scrisori de solidaritate cu Carta 77 și apeluri pentru drepturi; primul caz major de disidență civică în perioada Ceaușescu.</td></tr><tr><td>Greva minerilor din Valea Jiului</td><td>1–3 august 1977</td><td>Lupeni, Petroșani, Valea Jiului</td><td>Zeci de mii de mineri protestează împotriva modificării pensiilor, condițiilor de muncă și abuzurilor. Ceaușescu vine personal, promite concesii, apoi urmează represiunea.</td></tr><tr><td>SLOMR</td><td>februarie–mai 1979</td><td>București, Timișoara și alte orașe</td><td>Sindicat liber inițiat de Ionel Cană și susținut de persoane precum Paul Goma și Gheorghe Calciu-Dumitreasa; ajunge la mii de adepți, dar este rapid zdrobit de Securitate.</td></tr><tr><td>Revolta de la Motru</td><td>1981</td><td>Motru, Gorj</td><td>Protest legat de lipsuri, alimentație și condiții de muncă; muncitorii atacă simboluri ale puterii locale. Represiunea este rapidă.</td></tr><tr><td>Nemulțumiri muncitorești la Cluj-Napoca</td><td>noiembrie 1986</td><td>Cluj-Napoca</td><td>Conflicte de muncă și proteste limitate, legate de salarii, aprovizionare și condiții de trai.</td></tr><tr><td>Greva de la Nicolina</td><td>16 februarie 1987</td><td>Iași</td><td>Muncitorii de la Întreprinderea Mecanică Nicolina protestează; episod mai puțin cunoscut, dar important în seria revoltelor muncitorești dinainte de Brașov.</td></tr><tr><td>Revolta de la Brașov</td><td>15 noiembrie 1987</td><td>Brașov</td><td>Pornită de la uzina Steagul Roșu, la care se adaugă muncitori de la Tractorul și Hidromecanica; protestul devine anti-Ceaușescu și anti-PCR.</td></tr><tr><td>Liviu Babeș</td><td>2 martie 1989</td><td>Poiana Brașov</td><td>Autoincendiere ca protest împotriva crimelor regimului; mesajul său leagă Brașovul de represiunea politică.</td></tr><tr><td>Scrisoarea celor șase</td><td>martie 1989</td><td>București / difuzare externă</td><td>Foști demnitari comuniști critică public regimul, semn că izolarea lui Ceaușescu era vizibilă și în vechea elită.</td></tr><tr><td>Mitingul planificat de la Iași</td><td>14 decembrie 1989</td><td>Iași</td><td>O încercare de protest înainte de Timișoara, asociată cu Frontul Popular Român; organizatorii sunt identificați și arestați înainte ca manifestația să capete amploare.</td></tr><tr><td>Cazul László Tőkés</td><td>decembrie 1989</td><td>Timișoara</td><td>Încercarea de evacuare a pastorului reformat devine scânteia protestului care se transformă în Revoluția din Decembrie.</td></tr></tbody></table></div>
+<div class="content-grid">
+<article class="note-card"><h3>Valea Jiului, 1–3 august 1977</h3><p>Greva din Valea Jiului a izbucnit după modificările privind pensiile și condițiile de muncă. Minerii au formulat revendicări sociale: program, pensii, aprovizionare, condiții de muncă, respect față de muncitori. Ceaușescu a venit la fața locului pe 3 august, într-o situație rară în care conducătorul a trebuit să negocieze direct cu protestatarii.</p><p>După încheierea grevei, regimul a folosit metoda tipică: aparent concesii, apoi anchetarea liderilor, mutări disciplinare, supraveghere, închisori și distrugerea nucleului de organizare.</p></article><article class="note-card"><h3>SLOMR, 1979</h3><p>Sindicatul Liber al Oamenilor Muncii din România a fost o încercare de creare a unui sindicat independent într-un stat în care toate sindicatele erau controlate de partid. Declarația SLOMR a fost difuzată la Radio Europa Liberă în martie 1979, iar adeziunile au crescut rapid.</p><p>Regimul a reacționat prin arestări, presiuni, internări psihiatrice și intimidări. SLOMR este important deoarece a anticipat tipul de opoziție sindicală care în Polonia va deveni Solidaritatea.</p></article><article class="note-card"><h3>Brașov, 15 noiembrie 1987</h3><p>Revolta de la Brașov a pornit în ziua alegerilor locale, când muncitorii de la uzina Steagul Roșu au protestat față de salariile reduse și condițiile de viață. Coloana a mers spre centrul orașului și s-a transformat într-o manifestație împotriva lui Ceaușescu și a PCR.</p><p>Au fost atacate sediile puterii locale, au fost distruse simboluri ale regimului, iar scandările sociale au devenit politice. După revoltă, participanții au fost anchetați, bătuți, condamnați sau deportați intern în alte localități.</p></article><article class="note-card"><h3>Iași, 14 decembrie 1989</h3><p>La Iași a existat o încercare de organizare a unei manifestații înainte de izbucnirea revoltei de la Timișoara. Planul a fost descoperit, iar organizatorii au fost arestați sau neutralizați înainte ca protestul să devină masiv.</p><p>Episodul este important deoarece arată că tensiunea din decembrie 1989 nu era izolată la Timișoara. În mai multe orașe exista disponibilitate pentru protest, dar Securitatea și Miliția acționau preventiv.</p></article>
+</div>
+</section>
+
+<section class="panel" id="revolutie">
+<div class="panel-header"><h2>VIII. Revoluția din 1989</h2><p class="panel-note">Revoluția română începe la Timișoara, pe fondul încercării de evacuare a pastorului László Tőkés, dar devine rapid o revoltă socială, politică și națională împotriva dictaturii. Spre deosebire de alte revoluții est-europene din 1989, cea română a fost violentă.</p></div>
+<div class="data-grid">
+<div class="data-card"><strong>16 dec.</strong><span>Protestul din Timișoara capătă caracter antiregim.</span></div>
+<div class="data-card"><strong>17 dec.</strong><span>Se trage asupra demonstranților la Timișoara.</span></div>
+<div class="data-card"><strong>20 dec.</strong><span>Timișoara este proclamată primul oraș liber de comunism.</span></div>
+<div class="data-card"><strong>22 dec.</strong><span>Ceaușescu fuge din sediul CC; puterea este preluată de FSN.</span></div>
+</div>
+<h3 class="split-title">Timișoara: de la solidaritate la revoltă</h3>
+<div class="event-stack">
+<div class="event"><div class="event-date">15 decembrie 1989</div><p class="event-text"><strong>Începutul solidarizării.</strong> Enoriași și susținători se adună în jurul locuinței pastorului reformat László Tőkés, amenințat cu evacuarea. Protestul are inițial dimensiune religioasă și civică.</p></div><div class="event"><div class="event-date">16 decembrie 1989</div><p class="event-text"><strong>Protestul se extinde.</strong> Tot mai mulți timișoreni se alătură, apar scandări împotriva regimului, iar mișcarea depășește cazul Tőkés. Intervenția forțelor de ordine radicalizează mulțimea.</p></div><div class="event"><div class="event-date">17 decembrie 1989</div><p class="event-text"><strong>Represiune armată.</strong> Nicolae Ceaușescu ordonă reprimarea. Armata, Miliția și Securitatea sunt implicate în dispersarea violentă; se trage asupra protestatarilor.</p></div><div class="event"><div class="event-date">18–19 decembrie 1989</div><p class="event-text"><strong>Teroare și ascunderea urmelor.</strong> Autoritățile încearcă să controleze orașul, să ascundă morții și să împiedice circulația informațiilor. Totuși, vestea represiunii ajunge în țară și în străinătate.</p></div><div class="event"><div class="event-date">20 decembrie 1989</div><p class="event-text"><strong>Primul oraș liber.</strong> Greva generală și manifestațiile masive schimbă raportul de forțe. Timișoara este proclamată primul oraș liber de comunism din România.</p></div>
+</div>
+<h3 class="split-title">București: mitingul eșuat și căderea lui Ceaușescu</h3>
+<div class="event-stack">
+<div class="event"><div class="event-date">21 decembrie 1989, dimineața</div><p class="event-text"><strong>Mitingul oficial.</strong> Regimul organizează o mare adunare în fața Comitetului Central pentru a arăta sprijin popular. Discursul lui Ceaușescu este întrerupt de huiduieli, panică și zgomote; imaginea controlului se rupe în direct.</p></div><div class="event"><div class="event-date">21 decembrie 1989, seara-noaptea</div><p class="event-text"><strong>Baricada de la Intercontinental.</strong> Protestatarii rămân în centrul capitalei. Intervenția forțelor de represiune produce victime și arestări. Noaptea de 21/22 decembrie devine decisivă.</p></div><div class="event"><div class="event-date">22 decembrie 1989, dimineața</div><p class="event-text"><strong>Moartea generalului Vasile Milea.</strong> Ministrul Apărării moare în condiții controversate. Armata se desprinde treptat de Ceaușescu, iar mulțimile revin în stradă.</p></div><div class="event"><div class="event-date">22 decembrie 1989, ora prânzului</div><p class="event-text"><strong>Fuga lui Ceaușescu.</strong> Nicolae și Elena Ceaușescu părăsesc sediul CC cu elicopterul. Televiziunea devine centrul simbolic al noii puteri, iar Frontul Salvării Naționale se prezintă ca organ conducător.</p></div><div class="event"><div class="event-date">22–25 decembrie 1989</div><p class="event-text"><strong>Confuzie, lupte și „teroriști”.</strong> După fuga lui Ceaușescu continuă tirurile și confruntările în București, Sibiu, Cluj, Brașov, Timișoara și alte orașe. Multe victime apar după prăbușirea formală a dictatorului.</p></div><div class="event"><div class="event-date">25 decembrie 1989</div><p class="event-text"><strong>Procesul și execuția.</strong> Nicolae și Elena Ceaușescu sunt judecați de un tribunal militar excepțional la Târgoviște și executați în aceeași zi.</p></div>
+</div>
+<h3 class="split-title">Orașe importante în Revoluție</h3>
+<div class="table-wrap"><table><thead><tr><th>Oraș</th><th>Date importante</th><th>Ce s-a întâmplat</th><th>De ce contează</th></tr></thead><tbody><tr><td>Timișoara</td><td>15–20 decembrie</td><td>Protestul pornit de la cazul Tőkés devine revoltă anticomunistă; represiune armată; oraș liber la 20 decembrie.</td><td>Scânteia Revoluției și primul spațiu urban scăpat de controlul regimului.</td></tr><tr><td>București</td><td>21–25 decembrie</td><td>Mitingul oficial eșuează; baricadă, represiune, fuga lui Ceaușescu, lupte post-22 decembrie.</td><td>Centrul politic al căderii regimului și al preluării puterii de FSN.</td></tr><tr><td>Sibiu</td><td>21–25 decembrie</td><td>Lupte puternice și confuzie între unități militare, Miliție, Securitate și civili.</td><td>Unul dintre orașele cu violențe intense după 22 decembrie.</td></tr><tr><td>Cluj-Napoca</td><td>21 decembrie</td><td>Manifestanți împușcați în centru; protestele se extind.</td><td>Arată extinderea Revoluției dincolo de Timișoara și București.</td></tr><tr><td>Arad</td><td>21–22 decembrie</td><td>Proteste și victime; oraș important în propagarea revoltei în vest.</td><td>Legătură regională cu Timișoara.</td></tr><tr><td>Brașov</td><td>21–22 decembrie</td><td>Oraș cu memorie recentă a revoltei din 1987; proteste și schimbare de putere locală.</td><td>Continuitate între 1987 și 1989.</td></tr><tr><td>Târgu Mureș, Lugoj, Alba Iulia, Constanța, Brăila, Craiova</td><td>21–23 decembrie</td><td>Manifestații, tensiuni locale, ocuparea instituțiilor, schimbări de putere.</td><td>Revoluția devine fenomen național.</td></tr></tbody></table></div>
+</section>
+
+<section class="panel" id="cronologie">
+<div class="panel-header"><h2>IX. Cronologie extinsă</h2><p class="panel-note">Cronologia leagă rezistența timpurie, disidența, protestele și Revoluția. Este utilă pentru recapitulare și pentru a vedea acumularea tensiunilor.</p></div>
+<div class="timeline"><div class="timeline-row"><div class="timeline-date">23 august 1944</div><div class="timeline-content"><strong>Schimbarea alianței României</strong><p>România iese din alianța cu Germania, dar intră rapid în zona de ocupație și influență sovietică.</p></div></div><div class="timeline-row"><div class="timeline-date">6 martie 1945</div><div class="timeline-content"><strong>Guvernul Petru Groza</strong><p>Instalarea guvernului susținut de Moscova creează cadrul pentru comunizarea statului.</p></div></div><div class="timeline-row"><div class="timeline-date">1945–1946</div><div class="timeline-content"><strong>Sumanele Negre și Mișcarea Națională de Rezistență</strong><p>Rețele anticomuniste încearcă să pregătească rezistența în eventualitatea unui conflict Est–Vest.</p></div></div><div class="timeline-row"><div class="timeline-date">27 mai 1946</div><div class="timeline-content"><strong>Arestarea generalului Aurel Aldea</strong><p>Lovitură majoră împotriva încercărilor de coordonare a rezistenței.</p></div></div><div class="timeline-row"><div class="timeline-date">19 noiembrie 1946</div><div class="timeline-content"><strong>Alegeri falsificate</strong><p>Comuniștii obțin controlul parlamentar prin fraudă și presiune.</p></div></div><div class="timeline-row"><div class="timeline-date">30 decembrie 1947</div><div class="timeline-content"><strong>Abolirea monarhiei</strong><p>Regele Mihai este forțat să abdice; Republica Populară Română este proclamată.</p></div></div><div class="timeline-row"><div class="timeline-date">1948</div><div class="timeline-content"><strong>Arestarea lui Pătrășcanu și desființarea Greco-Catolicilor</strong><p>Regimul lovește simultan în rivali interni și în instituții religioase autonome.</p></div></div><div class="timeline-row"><div class="timeline-date">1948–1955</div><div class="timeline-content"><strong>Grupul Carpatin Făgărășan</strong><p>Rezistență armată în Făgăraș, asociată cu Ion Gavrilă Ogoranu și camarazii săi.</p></div></div><div class="timeline-row"><div class="timeline-date">1949</div><div class="timeline-content"><strong>Începutul colectivizării</strong><p>Colectivizarea declanșează rezistență rurală, proteste și represiune.</p></div></div><div class="timeline-row"><div class="timeline-date">4 martie 1949</div><div class="timeline-content"><strong>Lupta de pe Muntele Mare</strong><p>Grupul lui Nicolae Dabija este lovit de Securitate în Apuseni.</p></div></div><div class="timeline-row"><div class="timeline-date">28 octombrie 1949</div><div class="timeline-content"><strong>Execuția lui Nicolae Dabija</strong><p>Maiorul Dabija și membri ai grupului sunt executați la Sibiu.</p></div></div><div class="timeline-row"><div class="timeline-date">1952</div><div class="timeline-content"><strong>Epurarea Pauker–Luca–Georgescu</strong><p>Gheorghiu-Dej își consolidează puterea prin eliminarea rivalilor de vârf.</p></div></div><div class="timeline-row"><div class="timeline-date">17 aprilie 1954</div><div class="timeline-content"><strong>Execuția lui Lucrețiu Pătrășcanu</strong><p>Proces politic și crimă de stat împotriva unui rival comunist.</p></div></div><div class="timeline-row"><div class="timeline-date">1956</div><div class="timeline-content"><strong>Ecouri ale revoluției maghiare</strong><p>Studenți și intelectuali români discută reforme; regimul reacționează cu arestări și supraveghere.</p></div></div><div class="timeline-row"><div class="timeline-date">1957</div><div class="timeline-content"><strong>Vadu Roșca și epurări interne</strong><p>Rezistență rurală reprimată; Miron Constantinescu este epurat în contextul crizei post-staliniste.</p></div></div><div class="timeline-row"><div class="timeline-date">20 mai 1958</div><div class="timeline-content"><strong>Capturarea fraților Arnăuțoiu</strong><p>Securitatea lovește nucleul grupului de la Nucșoara.</p></div></div><div class="timeline-row"><div class="timeline-date">18/19 iulie 1959</div><div class="timeline-content"><strong>Execuții la Jilava</strong><p>Toma și Petre Arnăuțoiu și sprijinitori ai grupului sunt executați.</p></div></div><div class="timeline-row"><div class="timeline-date">1962</div><div class="timeline-content"><strong>Finalul oficial al colectivizării</strong><p>Satul românesc este forțat să intre în sistemul colectivist.</p></div></div><div class="timeline-row"><div class="timeline-date">1968</div><div class="timeline-content"><strong>Reabilitări selective</strong><p>Ceaușescu folosește condamnarea abuzurilor vechi pentru a-și consolida autoritatea.</p></div></div><div class="timeline-row"><div class="timeline-date">1971</div><div class="timeline-content"><strong>Tezele din iulie</strong><p>Regimul intră într-o fază de reideologizare, control cultural și cult al personalității.</p></div></div><div class="timeline-row"><div class="timeline-date">1977</div><div class="timeline-content"><strong>Mișcarea Goma</strong><p>Disidență pentru drepturile omului, solidară cu Carta 77.</p></div></div><div class="timeline-row"><div class="timeline-date">1–3 august 1977</div><div class="timeline-content"><strong>Greva minerilor din Valea Jiului</strong><p>Cel mai mare protest muncitoresc înainte de 1989.</p></div></div><div class="timeline-row"><div class="timeline-date">1978–1979</div><div class="timeline-content"><strong>Predicile lui Gheorghe Calciu</strong><p>Opoziție religioasă și morală, urmată de condamnare.</p></div></div><div class="timeline-row"><div class="timeline-date">februarie–mai 1979</div><div class="timeline-content"><strong>SLOMR</strong><p>Încercare de sindicat liber, distrusă de Securitate.</p></div></div><div class="timeline-row"><div class="timeline-date">1979–1980</div><div class="timeline-content"><strong>Constantin Pîrvulescu</strong><p>Critică publică la Congresul XII și excludere din PCR.</p></div></div><div class="timeline-row"><div class="timeline-date">1981</div><div class="timeline-content"><strong>Motru</strong><p>Protest muncitoresc legat de lipsuri și condiții de viață.</p></div></div><div class="timeline-row"><div class="timeline-date">1983</div><div class="timeline-content"><strong>Radu Filipescu</strong><p>Arestat pentru manifeste anti-Ceaușescu.</p></div></div><div class="timeline-row"><div class="timeline-date">17 noiembrie 1985</div><div class="timeline-content"><strong>Moartea lui Gheorghe Ursu</strong><p>Inginerul și poetul moare după violențe în detenție.</p></div></div><div class="timeline-row"><div class="timeline-date">noiembrie 1986</div><div class="timeline-content"><strong>Cluj-Napoca</strong><p>Nemulțumiri muncitorești și proteste locale.</p></div></div><div class="timeline-row"><div class="timeline-date">16 februarie 1987</div><div class="timeline-content"><strong>Nicolina Iași</strong><p>Greva muncitorilor de la întreprinderea Nicolina.</p></div></div><div class="timeline-row"><div class="timeline-date">15 noiembrie 1987</div><div class="timeline-content"><strong>Brașov</strong><p>Revolta muncitorilor de la Steagul Roșu, Tractorul și Hidromecanica.</p></div></div><div class="timeline-row"><div class="timeline-date">2 martie 1989</div><div class="timeline-content"><strong>Liviu Babeș</strong><p>Autoincendiere la Poiana Brașov ca protest politic.</p></div></div><div class="timeline-row"><div class="timeline-date">martie 1989</div><div class="timeline-content"><strong>Scrisoarea celor șase</strong><p>Critică internă a regimului Ceaușescu din partea unor foști demnitari comuniști.</p></div></div><div class="timeline-row"><div class="timeline-date">14 decembrie 1989</div><div class="timeline-content"><strong>Iași</strong><p>Încercare de protest împiedicată preventiv de autorități.</p></div></div><div class="timeline-row"><div class="timeline-date">15–16 decembrie 1989</div><div class="timeline-content"><strong>Timișoara</strong><p>Solidarizarea cu László Tőkés devine protest anticomunist.</p></div></div><div class="timeline-row"><div class="timeline-date">17 decembrie 1989</div><div class="timeline-content"><strong>Represiunea de la Timișoara</strong><p>Se trage asupra demonstranților.</p></div></div><div class="timeline-row"><div class="timeline-date">20 decembrie 1989</div><div class="timeline-content"><strong>Timișoara liberă</strong><p>Orașul iese de sub controlul regimului.</p></div></div><div class="timeline-row"><div class="timeline-date">21 decembrie 1989</div><div class="timeline-content"><strong>Mitingul eșuat din București</strong><p>Imaginea controlului ceaușist se prăbușește în direct.</p></div></div><div class="timeline-row"><div class="timeline-date">22 decembrie 1989</div><div class="timeline-content"><strong>Fuga lui Ceaușescu</strong><p>Dictatorul părăsește sediul CC; FSN preia puterea.</p></div></div><div class="timeline-row"><div class="timeline-date">25 decembrie 1989</div><div class="timeline-content"><strong>Procesul și execuția Ceaușeștilor</strong><p>Sfârșitul simbolic și violent al regimului Ceaușescu.</p></div></div><div class="timeline-row"><div class="timeline-date">31 decembrie 1989</div><div class="timeline-content"><strong>Pluralism politic</strong><p>Decretul-lege nr. 8 permite constituirea partidelor politice.</p></div></div></div>
+</section>
+
+<section class="panel" id="recapitulare">
+<div class="panel-header"><h2>X. Recapitulare</h2><p class="panel-note">Pentru sinteză, opoziția anticomunistă poate fi urmărită pe trei axe: cine se opune, cum se opune și cum reacționează statul.</p></div>
+<div class="content-grid three">
+<article class="note-card"><h3>1. Cine se opune?</h3><ul><li>Foști militari și membri ai partidelor istorice.</li><li>Țărani afectați de colectivizare.</li><li>Preoți și credincioși controlați de stat.</li><li>Intelectuali, scriitori, ingineri, profesori, studenți.</li><li>Muncitori afectați de austeritate și scăderea salariilor.</li><li>Foști lideri comuniști marginalizați de Ceaușescu.</li></ul></article><article class="note-card"><h3>2. Cum se opune?</h3><ul><li>Rezistență armată în munți.</li><li>Sprijin clandestin: hrană, adăpost, informații.</li><li>Scrisori deschise, jurnale, manifeste, interviuri.</li><li>Greve și proteste de fabrică.</li><li>Predici, refuz religios, memorie familială.</li><li>Manifestații urbane și ocuparea spațiului public.</li></ul></article><article class="note-card"><h3>3. Cum reacționează regimul?</h3><ul><li>Arestări, anchete, tortură, condamnări.</li><li>Execuții și procese-spectacol.</li><li>Deportări și domiciliu obligatoriu.</li><li>Infiltrări și rețele de informatori.</li><li>Propagandă: „bandiți”, „huligani”, „agenți străini”.</li><li>Represiune armată în decembrie 1989.</li></ul></article>
+</div>
+<div class="callout blue">Exilul a fost extensia externă a opoziției: a păstrat memoria democratică, a făcut publice abuzurile și a conectat vocile din țară la opinia publică occidentală.</div>
+<div class="callout green">Ideea centrală: regimul comunist nu a căzut brusc dintr-un vid. Revoluția din 1989 a fost precedată de decenii de rezistență, frică, tăcere, proteste izolate, gesturi morale, greve și fisuri interne.</div>
+<h3 class="split-title">Întrebări de verificare</h3>
+<div class="point-grid">
+<div class="point-card"><div class="point-no">1</div><p>De ce Ana Pauker sau Teohari Georgescu trebuie tratați diferit de Paul Goma sau Doina Cornea?</p></div>
+<div class="point-card"><div class="point-no">2</div><p>De ce rezistența din munți a depins atât de mult de sprijinul satelor?</p></div>
+<div class="point-card"><div class="point-no">3</div><p>Ce legătură există între austeritatea anilor 1980 și revoltele muncitorești?</p></div>
+<div class="point-card"><div class="point-no">4</div><p>De ce Brașov 1987 poate fi considerat un preambul al Revoluției?</p></div>
+<div class="point-card"><div class="point-no">5</div><p>De ce au continuat violențele după fuga lui Ceaușescu din 22 decembrie 1989?</p></div>
+<div class="point-card"><div class="point-no">6</div><p>Ce diferență există între rezistență, disidență, revoltă și revoluție?</p></div>
+</div>
+</section>
+
+
+
+<footer class="footer">
+Material ajutător pentru studiul României comuniste · Disidență, rezistență, diaspora, exil și Revoluția din 1989 · structură extinsă, cu exemple și date-cheie.
+</footer>
+</main>
+</body>
+</html>
