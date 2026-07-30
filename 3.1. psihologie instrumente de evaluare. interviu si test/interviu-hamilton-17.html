@@ -1,0 +1,1109 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <title>Interviu digital HDRS-17</title>
+  <style>
+
+:root {
+  --bg: #f3f7f8;
+  --surface: #ffffff;
+  --ink: #18323b;
+  --muted: #5e7279;
+  --line: #d8e3e6;
+  --accent: #176b75;
+  --accent-2: #0d4f58;
+  --soft: #e8f3f4;
+  --warn: #8a4b00;
+  --warn-bg: #fff4df;
+  --danger: #9f1d2b;
+  --danger-bg: #fff0f2;
+  --success: #176b44;
+  --shadow: 0 14px 34px rgba(21, 54, 63, .10);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); line-height: 1.52; }
+button, input, textarea, select { font: inherit; }
+button, .btn { min-height: 46px; border-radius: 12px; border: 1px solid transparent; padding: .72rem 1rem; cursor: pointer; font-weight: 700; }
+button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, .descriptor:focus-within { outline: 3px solid rgba(23,107,117,.25); outline-offset: 2px; }
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: var(--accent-2); }
+.btn-secondary { background: #fff; color: var(--accent-2); border-color: var(--line); }
+.btn-danger { background: #fff; color: var(--danger); border-color: #efbdc4; }
+.btn-ghost { background: transparent; color: var(--accent-2); border-color: transparent; }
+.shell { width: min(1120px, calc(100% - 28px)); margin: 0 auto; }
+.app-header { background: linear-gradient(135deg, #123f47, #176b75); color: #fff; padding: 26px 0; box-shadow: var(--shadow); }
+.app-header h1 { margin: 0; font-size: clamp(1.45rem, 2.7vw, 2.2rem); line-height: 1.18; }
+.app-header p { margin: .45rem 0 0; color: rgba(255,255,255,.84); }
+.header-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.badge { display: inline-flex; align-items: center; border-radius: 999px; padding: .32rem .66rem; font-size: .82rem; font-weight: 750; background: var(--soft); color: var(--accent-2); }
+.badge.light { background: rgba(255,255,255,.15); color: #fff; border: 1px solid rgba(255,255,255,.24); }
+main { padding: 24px 0 48px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow); padding: clamp(18px, 3vw, 30px); margin-bottom: 18px; }
+.card h2, .card h3 { margin-top: 0; }
+.notice { border-radius: 14px; padding: 14px 16px; border: 1px solid var(--line); background: #f9fbfb; margin: 14px 0; }
+.notice.warn { background: var(--warn-bg); border-color: #edd39e; color: #654000; }
+.notice.danger { background: var(--danger-bg); border-color: #efbdc4; color: #701521; }
+.notice.success { background: #edf8f2; border-color: #b8ddc9; color: #125233; }
+.grid { display: grid; gap: 14px; }
+.grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.field label { display: block; font-weight: 750; margin-bottom: 6px; }
+.field input, .field textarea, .field select { width: 100%; border: 1px solid #bdcdd1; border-radius: 12px; background: #fff; color: var(--ink); padding: .78rem .86rem; min-height: 46px; }
+.field textarea { min-height: 96px; resize: vertical; }
+.help { color: var(--muted); font-size: .9rem; margin-top: 5px; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 18px; }
+.actions.end { justify-content: flex-end; }
+.hidden { display: none !important; }
+.progress-wrap { position: sticky; top: 0; z-index: 10; background: rgba(243,247,248,.96); backdrop-filter: blur(8px); padding: 10px 0 12px; }
+.progress-line { height: 10px; background: #dce8ea; border-radius: 999px; overflow: hidden; }
+.progress-line > div { height: 100%; background: var(--accent); width: 0; transition: width .25s ease; }
+.progress-meta { display: flex; justify-content: space-between; gap: 14px; color: var(--muted); font-size: .92rem; margin-bottom: 7px; }
+.item-title { display: flex; align-items: flex-start; gap: 14px; }
+.item-number { flex: 0 0 auto; width: 48px; height: 48px; border-radius: 15px; background: var(--accent); color: #fff; display: grid; place-items: center; font-weight: 850; font-size: 1.1rem; }
+.item-title h2 { margin: 0 0 2px; }
+.item-title p { margin: 0; color: var(--muted); }
+.section-label { margin: 22px 0 8px; font-size: .88rem; letter-spacing: .04em; text-transform: uppercase; color: var(--accent-2); font-weight: 850; }
+.question-list { margin: 0; padding-left: 1.35rem; }
+.question-list li { margin: .45rem 0; }
+.descriptor-list { display: grid; gap: 10px; }
+.descriptor { display: flex; gap: 12px; align-items: flex-start; border: 1px solid var(--line); border-radius: 14px; padding: 13px 14px; background: #fff; cursor: pointer; transition: .16s ease; }
+.descriptor:hover { border-color: #98b8be; background: #fbfefe; }
+.descriptor.checked { border-color: var(--accent); background: var(--soft); box-shadow: inset 4px 0 0 var(--accent); }
+.descriptor input { width: 22px; height: 22px; margin-top: 1px; accent-color: var(--accent); flex: 0 0 auto; }
+.descriptor span { flex: 1; }
+.blind-note { display: flex; gap: 10px; align-items: center; color: var(--muted); font-size: .9rem; }
+.blind-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--success); }
+.nav-actions { display: flex; justify-content: space-between; gap: 12px; margin-top: 24px; }
+.nav-actions .right { display: flex; gap: 10px; }
+.item-status { margin-left: auto; white-space: nowrap; }
+.status-complete { color: var(--success); font-weight: 750; }
+.status-incomplete { color: var(--warn); font-weight: 750; }
+.risk-inline { margin-top: 14px; }
+.overview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; }
+.overview-item { border: 1px solid var(--line); border-radius: 12px; padding: 12px; background: #fff; }
+.overview-item strong { display: block; }
+.overview-item small { color: var(--muted); }
+.kpi-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; }
+.kpi { border: 1px solid var(--line); border-radius: 16px; padding: 16px; background: #fff; }
+.kpi .value { font-size: clamp(1.65rem, 4vw, 2.55rem); font-weight: 900; line-height: 1; }
+.kpi .label { color: var(--muted); margin-top: 7px; }
+.report-section { border-top: 1px solid var(--line); padding-top: 20px; margin-top: 20px; }
+.report-section h3 { margin-bottom: 8px; }
+.profile-row { display: grid; grid-template-columns: minmax(180px, 1.2fr) 2.8fr auto; gap: 12px; align-items: center; margin: 10px 0; }
+.bar { height: 12px; border-radius: 999px; background: #dce8ea; overflow: hidden; }
+.bar > div { height: 100%; background: var(--accent); }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; min-width: 760px; }
+th, td { text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); padding: 11px 10px; }
+th { background: #f4f8f9; color: var(--accent-2); font-size: .88rem; }
+.details-card { border: 1px solid var(--line); border-radius: 14px; margin: 10px 0; overflow: hidden; }
+.details-card summary { cursor: pointer; padding: 13px 15px; background: #f8fbfb; font-weight: 800; }
+.details-body { padding: 14px 15px; }
+.score-select { min-width: 78px; padding: .55rem; border: 1px solid #bdcdd1; border-radius: 10px; }
+.report-text p { margin: .65rem 0; text-align: justify; }
+.signature { margin-top: 34px; display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+.signature > div { border-top: 1px solid #81979d; padding-top: 7px; color: var(--muted); }
+.no-print { }
+.footer { color: var(--muted); text-align: center; font-size: .86rem; padding: 18px 0 28px; }
+@media (max-width: 760px) {
+  .grid-2, .grid-3, .kpi-grid { grid-template-columns: 1fr; }
+  .header-row { align-items: flex-start; flex-direction: column; }
+  .profile-row { grid-template-columns: 1fr; gap: 5px; }
+  .nav-actions { flex-direction: column; }
+  .nav-actions .right { display: grid; grid-template-columns: 1fr 1fr; }
+  .nav-actions button { width: 100%; }
+  .item-status { margin-left: 0; }
+  .signature { grid-template-columns: 1fr; }
+}
+@media print {
+  @page { size: A4; margin: 14mm; }
+  body { background: #fff; font-size: 10.5pt; }
+  .app-header { background: #fff !important; color: #111; box-shadow: none; padding: 0 0 12px; border-bottom: 2px solid #333; }
+  .app-header p { color: #444; }
+  .badge.light { color: #333; border-color: #999; background: #fff; }
+  main { padding: 10px 0; }
+  .shell { width: 100%; }
+  .card { box-shadow: none; border: 0; padding: 0; margin: 0 0 12px; }
+  .no-print, .actions, .footer { display: none !important; }
+  .kpi-grid { grid-template-columns: repeat(4, 1fr); }
+  .kpi { break-inside: avoid; }
+  .report-section, .details-card, table { break-inside: avoid; }
+  details > summary { display: none; }
+  details .details-body { display: block !important; }
+  .details-card { border: 0; }
+  .details-body { padding: 0; }
+}
+
+</style>
+</head>
+<body>
+<header class="app-header">
+  <div class="shell header-row">
+    <div>
+      <h1>Interviu digital - Scala Hamilton pentru depresie (17 itemi)</h1>
+      <p>Administrare asistată pe tabletă, cotare oarbă și raport automat preliminar.</p>
+    </div>
+    <span class="badge light">Funcționează local / offline</span>
+  </div>
+</header>
+<main class="shell">
+  <section id="setupView">
+    <div class="card">
+      <h2>Datele evaluării</h2>
+      <div class="notice warn"><strong>Utilizare profesională.</strong> Instrumentul cuantifică severitatea simptomelor în urma unui interviu și nu stabilește singur un diagnostic. Raportul automat trebuie verificat, integrat clinic și semnat de psiholog.</div>
+      <div class="grid grid-3">
+        <div class="field"><label for="clientCode">Cod client *</label><input id="clientCode" autocomplete="off" placeholder="ex. CL-2026-014"></div>
+        <div class="field"><label for="assessmentDate">Data evaluării *</label><input id="assessmentDate" type="date"></div>
+        <div class="field"><label for="assessmentType">Tip evaluare</label><select id="assessmentType"><option>Evaluare inițială</option><option>Monitorizare</option><option>Evaluare la externare</option><option>Alt context</option></select></div>
+        <div class="field"><label for="evaluator">Evaluator</label><input id="evaluator" autocomplete="name" placeholder="Nume psiholog"></div>
+        <div class="field"><label for="age">Vârsta</label><input id="age" type="number" min="12" max="120" inputmode="numeric"></div>
+        <div class="field"><label for="sex">Sex / gen (opțional)</label><input id="sex" autocomplete="off"></div>
+      </div>
+      <div class="grid grid-2" style="margin-top:14px">
+        <div class="field"><label for="timeWindow">Perioada explorată</label><input id="timeWindow" value="ultima lună"></div>
+        <div class="field"><label for="referral">Motivul evaluării</label><input id="referral" placeholder="Scopul / întrebarea de trimitere"></div>
+        <div class="field"><label for="knownDiagnosis">Diagnostic / ipoteză clinică preexistentă</label><input id="knownDiagnosis" placeholder="Opțional; scala nu stabilește diagnosticul"></div>
+        <div class="field"><label for="medicalContext">Context somatic și tratament relevant</label><input id="medicalContext" placeholder="Comorbidități, medicamente, schimbări recente"></div>
+      </div>
+      <div class="field" style="margin-top:14px"><label for="contextNotes">Observații inițiale / context</label><textarea id="contextNotes" placeholder="Informații relevante pentru interpretare"></textarea></div>
+      <div class="notice"><strong>Mod orb activ:</strong> în timpul interviului nu sunt afișate valorile numerice, scorul itemilor sau scorul total. Bifați numai descriptorii susținuți de interviu și observație; algoritmul va calcula cotarea după finalizare.</div>
+      <div class="actions end"><a class="btn btn-secondary" href="cabinet-evaluare.html">Înapoi la cabinet</a><button class="btn-danger" id="clearDraftBtn" type="button">Șterge evaluarea salvată</button><button class="btn-primary" id="startBtn" type="button">Începe interviul</button></div>
+    </div>
+    <div class="card">
+      <h3>Cele 17 domenii evaluate</h3>
+      <div id="overview" class="overview-grid"></div>
+    </div>
+  </section>
+
+  <section id="interviewView" class="hidden">
+    <div class="progress-wrap">
+      <div class="progress-meta"><span id="progressText">Item 1 din 17</span><span id="completionText">0 completate</span></div>
+      <div class="progress-line" aria-hidden="true"><div id="progressBar"></div></div>
+    </div>
+    <article class="card" id="itemCard"></article>
+  </section>
+</main>
+<div class="footer shell">Datele rămân în browserul dispozitivului. Nu există transmitere automată către un server.</div>
+<script>
+window.HAMD_ITEMS = [
+  {
+    "id": 1,
+    "title": "Starea depresivă",
+    "subtitle": "tristețe, deznădejde, lipsa interesului",
+    "max": 4,
+    "guidance": "Evaluați pesimismul, tristețea, tendința de a plânge, persistența și posibilitatea de ameliorare prin companie ori activitate. Țineți cont de modul în care persoana înțelege termenul „depresie” și de contextul cultural.",
+    "questions": [
+      "V-ați simțit suficient de bine dispus sau, dimpotrivă, depresiv ori îngrijorat?",
+      "Îmi puteți descrie cum a fost starea dumneavoastră?",
+      "Ați simțit că vă merge prost?",
+      "V-ați simțit descurajat?",
+      "V-ați simțit trist?",
+      "Cât de des v-ați simțit astfel?",
+      "Vă simțeați mai bine dacă erați cu cineva?",
+      "Cât timp a persistat starea?",
+      "Ați simțit nevoia să plângeți?",
+      "Plânsul v-a ușurat?",
+      "Ați simțit că nu mai sunteți în stare să plângeți?",
+      "Starea a devenit chinuitoare sau foarte dureroasă?"
+    ],
+    "descriptors": [
+      {
+        "id": "i1-d0",
+        "score": 0,
+        "text": "Absență totală sau trăiri ocazionale, nu mai intense decât cele normale pentru persoană."
+      },
+      {
+        "id": "i1-d1",
+        "score": 1,
+        "text": "Starea este relatată numai când persoana este întrebată."
+      },
+      {
+        "id": "i1-d2",
+        "score": 1,
+        "text": "Indispoziție, descurajare, pesimism ori tristețe mai intense decât trăirile ocazionale."
+      },
+      {
+        "id": "i1-d3",
+        "score": 1,
+        "text": "Starea se ameliorează prin companie, muncă sau activitate."
+      },
+      {
+        "id": "i1-d4",
+        "score": 2,
+        "text": "Starea depresivă este relatată spontan."
+      },
+      {
+        "id": "i1-d5",
+        "score": 2,
+        "text": "Sentimente persistente de depresie sau abatere."
+      },
+      {
+        "id": "i1-d6",
+        "score": 2,
+        "text": "Nevoie frecventă de a plânge, uneori cu plâns efectiv."
+      },
+      {
+        "id": "i1-d7",
+        "score": 2,
+        "text": "Starea nu se ameliorează ușor prin companie."
+      },
+      {
+        "id": "i1-d8",
+        "score": 3,
+        "text": "Starea este comunicată și nonverbal."
+      },
+      {
+        "id": "i1-d9",
+        "score": 3,
+        "text": "Trăiri afective foarte intense."
+      },
+      {
+        "id": "i1-d10",
+        "score": 3,
+        "text": "Plâns frecvent."
+      },
+      {
+        "id": "i1-d11",
+        "score": 3,
+        "text": "Persistență pe parcursul zilei și de la o zi la alta."
+      },
+      {
+        "id": "i1-d12",
+        "score": 4,
+        "text": "Sentimente severe și persistente."
+      },
+      {
+        "id": "i1-d13",
+        "score": 4,
+        "text": "Discuția este dominată aproape exclusiv de starea afectivă."
+      },
+      {
+        "id": "i1-d14",
+        "score": 4,
+        "text": "Persoana descrie imposibilitatea de a mai plânge."
+      },
+      {
+        "id": "i1-d15",
+        "score": 4,
+        "text": "Trăiri chinuitoare, agonizante, persistente și imposibil de ușurat."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Sentimente de vinovăție",
+    "subtitle": "autoblamare, autoreproș, culpabilitate",
+    "max": 4,
+    "guidance": "Distingeți vinovăția patologică de regretul sau autoblamarea proporționale cu fapte reale. Evaluați persistența, caracterul irațional și eventualele convingeri delirante.",
+    "questions": [
+      "Aveți o părere mai proastă despre dumneavoastră?",
+      "Ați fost deosebit de critic cu dumneavoastră, simțind că greșiți în tot ce încercați?",
+      "V-ați învinovățit pentru lucruri făcute în trecut sau recent?",
+      "V-ați simțit vinovat pentru ceva?",
+      "Ați simțit că v-ați abandonat familia ori prietenii la greu sau că nu i-ați putut ajuta?",
+      "Ați simțit că sunteți de blamat pentru starea dumneavoastră? O considerați o pedeapsă?"
+    ],
+    "descriptors": [
+      {
+        "id": "i2-d0",
+        "score": 0,
+        "text": "Sentimente absente sau foarte ușoare, la limita normalității."
+      },
+      {
+        "id": "i2-d1",
+        "score": 1,
+        "text": "Părere proastă despre sine, regrete persistente, autoreproșuri ori ideea de a fi prejudiciat pe cineva, fără caracter evident patologic."
+      },
+      {
+        "id": "i2-d2",
+        "score": 2,
+        "text": "Vinovăție și autoblamare insistente și persistente, apreciate clinic drept patologice."
+      },
+      {
+        "id": "i2-d3",
+        "score": 2,
+        "text": "Ruminații asupra erorilor trecute sau asupra unor acțiuni considerate condamnabile."
+      },
+      {
+        "id": "i2-d4",
+        "score": 3,
+        "text": "Vinovăția ori autoblamarea se extind la multiple arii ale existenței."
+      },
+      {
+        "id": "i2-d5",
+        "score": 3,
+        "text": "Convingerea că boala este o pedeapsă pentru greșeli trecute."
+      },
+      {
+        "id": "i2-d6",
+        "score": 3,
+        "text": "Idei delirante de culpabilitate."
+      },
+      {
+        "id": "i2-d7",
+        "score": 4,
+        "text": "Convingeri de condamnare sau învinovățire cu intensitate severă."
+      },
+      {
+        "id": "i2-d8",
+        "score": 4,
+        "text": "Convingeri delirante de vinovăție, cu sau fără voci acuzatoare ori alte halucinații congruente."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Ideație și comportament suicidar",
+    "subtitle": "de la lipsa sensului vieții la tentative",
+    "max": 4,
+    "risk": true,
+    "guidance": "Acest item nu înlocuiește o evaluare structurată a riscului suicidar. Orice criteriu diferit de absență impune explorarea imediată a intenției, planului, accesului la mijloace, temporalității, factorilor protectivi și a conduitei de siguranță.",
+    "questions": [
+      "Ați simțit că viața nu merită trăită?",
+      "V-ați dorit să fiți mort?",
+      "V-ați gândit să vă luați viața?",
+      "V-ați făcut un plan în acest sens?",
+      "Ați avut vreo tentativă sau vreun gest de acest fel?"
+    ],
+    "descriptors": [
+      {
+        "id": "i3-d0",
+        "score": 0,
+        "text": "Absent: nu sunt relatate idei sau comportamente suicidare."
+      },
+      {
+        "id": "i3-d1",
+        "score": 1,
+        "text": "Impresia persistentă sau recurentă că viața nu merită efortul de a fi trăită."
+      },
+      {
+        "id": "i3-d2",
+        "score": 2,
+        "text": "Dorința de a fi mort, fără gânduri clare de sinucidere."
+      },
+      {
+        "id": "i3-d3",
+        "score": 3,
+        "text": "Idei suicidare clare sau planuri elaborate."
+      },
+      {
+        "id": "i3-d4",
+        "score": 3,
+        "text": "Gesturi autovătămătoare ori ingestii peste doza prescrisă, fără caracter letal evident."
+      },
+      {
+        "id": "i3-d5",
+        "score": 4,
+        "text": "Tentativă de suicid."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Insomnie inițială",
+    "subtitle": "dificultăți de adormire",
+    "max": 2,
+    "guidance": "Luați în considerare frecvența și severitatea. Conform materialului furnizat, simptomul este relevant când apare cel puțin o dată la trei nopți.",
+    "questions": [
+      "Ați avut dificultăți de adormire?",
+      "Cât timp vă ia, de obicei, să adormiți?",
+      "Cât de des apare această dificultate?",
+      "Ați folosit medicamente pentru somn? Când și cât timp?"
+    ],
+    "descriptors": [
+      {
+        "id": "i4-d0",
+        "score": 0,
+        "text": "Absentă sau perturbări ușoare ale adormirii, nu mai frecvente decât cele obișnuite."
+      },
+      {
+        "id": "i4-d1",
+        "score": 1,
+        "text": "Dificultăți de adormire de aproximativ 30-60 de minute."
+      },
+      {
+        "id": "i4-d2",
+        "score": 2,
+        "text": "Dificultăți severe de adormire, în fiecare seară, de aproximativ 1-2 ore."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Insomnie mediană",
+    "subtitle": "treziri în timpul nopții",
+    "max": 2,
+    "guidance": "Diferențiați trezirile fiziologice ori pentru nevoi organice de trezirile repetate, cu neliniște și dificultate de readormire.",
+    "questions": [
+      "Vi s-a întâmplat să vă treziți noaptea?",
+      "De câte ori pe noapte?",
+      "Din ce motiv vă treziți?",
+      "Readormiți ușor sau cu dificultate?",
+      "Vă ridicați ori vă plimbați în timpul nopții?"
+    ],
+    "descriptors": [
+      {
+        "id": "i5-d0",
+        "score": 0,
+        "text": "Absentă sau numai treziri normale, fiziologice."
+      },
+      {
+        "id": "i5-d1",
+        "score": 1,
+        "text": "Două-trei treziri pe noapte, fără probleme de readormire."
+      },
+      {
+        "id": "i5-d2",
+        "score": 2,
+        "text": "Treziri frecvente, cu readormire dificilă."
+      },
+      {
+        "id": "i5-d3",
+        "score": 2,
+        "text": "Ridicări sau plimbări în timpul nopții, altele decât pentru nevoi organice."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Insomnie tardivă",
+    "subtitle": "trezire matinală precoce",
+    "max": 2,
+    "guidance": "Raportați trezirea la ora obișnuită a persoanei și evaluați posibilitatea de a readormi.",
+    "questions": [
+      "La ce oră vă treziți în mod obișnuit?",
+      "În ultima perioadă, la ce oră v-ați trezit?",
+      "Ați reușit să readormiți?",
+      "Vă treziți odihnit sau obosit?"
+    ],
+    "descriptors": [
+      {
+        "id": "i6-d0",
+        "score": 0,
+        "text": "Durată normală a somnului și trezire la ora obișnuită."
+      },
+      {
+        "id": "i6-d1",
+        "score": 1,
+        "text": "Trezire cu aproximativ 30-60 de minute mai devreme, cu posibilitatea de a readormi."
+      },
+      {
+        "id": "i6-d2",
+        "score": 2,
+        "text": "Trezire cu peste o oră mai devreme decât ora obișnuită și imposibilitatea de a readormi."
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Muncă, activități și interese",
+    "subtitle": "funcționare, eficiență și anhedonie",
+    "max": 4,
+    "guidance": "Separați pierderea interesului și scăderea eficienței de fatigabilitate/pierderea energiei, care sunt evaluate separat. Raportați la nivelul bazal și la solicitările reale ale rolului persoanei.",
+    "questions": [
+      "Ați simțit o scădere a capacității de muncă?",
+      "Ce activități ați realizat efectiv la muncă, acasă, în hobby-uri și în viața socială?",
+      "V-ați simțit depășit de sarcinile pe care le aveați?",
+      "Cum v-ați petrecut timpul în ultimele zile?",
+      "Ați fost interesat de ceea ce ați făcut?",
+      "Ați renunțat la activități obișnuite? Din ce motiv?"
+    ],
+    "descriptors": [
+      {
+        "id": "i7-d0",
+        "score": 0,
+        "text": "Activitate desfășurată normal, fără dificultăți relevante."
+      },
+      {
+        "id": "i7-d1",
+        "score": 1,
+        "text": "Pierdere ușoară, dar clară, a interesului sau plăcerii pentru muncă, hobby-uri, activități casnice ori sociale; sarcinile esențiale sunt încă îndeplinite."
+      },
+      {
+        "id": "i7-d2",
+        "score": 1,
+        "text": "Gânduri de incapacitate, slăbiciune ori oboseală raportate la muncă și activități."
+      },
+      {
+        "id": "i7-d3",
+        "score": 2,
+        "text": "Scădere a performanței și pierdere semnificativă a interesului."
+      },
+      {
+        "id": "i7-d4",
+        "score": 2,
+        "text": "Omiterea repetată a unor sarcini, inclusiv esențiale, indecizie sau ezitare."
+      },
+      {
+        "id": "i7-d5",
+        "score": 3,
+        "text": "Pierderea eficienței este evidentă pentru ceilalți și apare în multiple contexte."
+      },
+      {
+        "id": "i7-d6",
+        "score": 3,
+        "text": "Dezorganizare marcată a muncii ori gospodăriei; igienă sau autoîngrijire deficitare; retragere față de prieteni."
+      },
+      {
+        "id": "i7-d7",
+        "score": 3,
+        "text": "În spital: mai puțin de aproximativ trei ore/zi în activități non-rutiniere, precum terapie ocupațională sau ajutor acordat personalului."
+      },
+      {
+        "id": "i7-d8",
+        "score": 4,
+        "text": "Incapacitate de a funcționa în viața cotidiană sau abandonarea muncii din cauza episodului actual."
+      },
+      {
+        "id": "i7-d9",
+        "score": 4,
+        "text": "Dependență de rude ori vecini pentru cumpărături și treburi; incapacitate de autoîngrijire."
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Retardare psihomotorie",
+    "subtitle": "încetinirea gândirii, vorbirii și mișcării",
+    "max": 4,
+    "guidance": "Cotarea se bazează în principal pe observația evaluatorului, nu pe auto-descriere. Urmăriți latența răspunsului, prosodia, expresivitatea, mișcarea și dificultatea de a continua interviul.",
+    "questions": [],
+    "descriptors": [
+      {
+        "id": "i8-d0",
+        "score": 0,
+        "text": "Limbaj, gândire și activitate motorie în limite normale."
+      },
+      {
+        "id": "i8-d1",
+        "score": 1,
+        "text": "Încetinire ușoară a conversației sau comunicării."
+      },
+      {
+        "id": "i8-d2",
+        "score": 1,
+        "text": "Expresie fixă ori răspuns emoțional redus sau oscilant."
+      },
+      {
+        "id": "i8-d3",
+        "score": 2,
+        "text": "Încetinire vizibilă în conversație, voce monotonă sau latență crescută a răspunsului."
+      },
+      {
+        "id": "i8-d4",
+        "score": 2,
+        "text": "Tendința de a rămâne nemișcat."
+      },
+      {
+        "id": "i8-d5",
+        "score": 3,
+        "text": "Răspunsuri atât de lente încât interviul devine dificil și excesiv de prelungit."
+      },
+      {
+        "id": "i8-d6",
+        "score": 4,
+        "text": "Conversație imposibilă sau stupoare."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Agitație psihomotorie",
+    "subtitle": "neliniște motorie observabilă",
+    "max": 4,
+    "guidance": "Evaluați observațional neliniștea asociată tensiunii și anxietății. Forma din documentul românesc furnizat utilizează 0-4; studiul original Hamilton (1960) prezintă acest item pe 0-2.",
+    "questions": [],
+    "descriptors": [
+      {
+        "id": "i9-d0",
+        "score": 0,
+        "text": "Comportament în limite normale; agitație absentă sau minimă."
+      },
+      {
+        "id": "i9-d1",
+        "score": 1,
+        "text": "Se joacă repetat cu mâinile, părul sau picioarele."
+      },
+      {
+        "id": "i9-d2",
+        "score": 2,
+        "text": "Se trage de păr ori strânge/șifonează în mâini batiste sau haine."
+      },
+      {
+        "id": "i9-d3",
+        "score": 3,
+        "text": "Se mișcă permanent și nu poate sta liniștit în timpul interviului."
+      },
+      {
+        "id": "i9-d4",
+        "score": 4,
+        "text": "Agitația este atât de intensă încât interviul poate fi realizat numai cu mare dificultate, „din mers”."
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Anxietate psihică",
+    "subtitle": "tensiune, griji, teamă și panică",
+    "max": 4,
+    "guidance": "Evaluați modificarea patologică față de nivelul bazal. În cazul evitării fobice, luați în calcul severitatea restricției activității, chiar dacă anxietatea manifestă este redusă prin evitare.",
+    "questions": [
+      "V-ați simțit nervos, anxios sau înspăimântat?",
+      "V-ați simțit tensionat ori incapabil să vă relaxați?",
+      "Ați simțit că urmează să se întâmple ceva groaznic?"
+    ],
+    "descriptors": [
+      {
+        "id": "i10-d0",
+        "score": 0,
+        "text": "Absentă."
+      },
+      {
+        "id": "i10-d1",
+        "score": 1,
+        "text": "Tensiune subiectivă, iritabilitate ori griji nefondate, nepermanente și nedominante."
+      },
+      {
+        "id": "i10-d2",
+        "score": 2,
+        "text": "Simptome frecvente și intense, care preocupă persoana o perioadă îndelungată."
+      },
+      {
+        "id": "i10-d3",
+        "score": 3,
+        "text": "Fobie sau risc de reacții de panică; neliniște evidentă în expresia facială și limbaj."
+      },
+      {
+        "id": "i10-d4",
+        "score": 4,
+        "text": "Temeri exprimate spontan și anxietate aproape panicardă care domină viața mentală și interviul."
+      },
+      {
+        "id": "i10-d5",
+        "score": 4,
+        "text": "Atacuri frecvente de panică ori fobii invalidante."
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "title": "Anxietate somatică",
+    "subtitle": "manifestări fizice ale anxietății",
+    "max": 4,
+    "guidance": "Explorați manifestări gastrointestinale, cardiovasculare, respiratorii, urinare și neurovegetative; evaluați frecvența, intensitatea și impactul funcțional.",
+    "questions": [
+      "Ați avut gură uscată, indigestie, diaree, crampe, vărsături sau balonare?",
+      "Ați avut palpitații ori dureri de cap?",
+      "Ați oftat, hiperventilat sau suspinat frecvent?",
+      "Ați avut transpirații, urinări frecvente, amețeli, vedere încețoșată ori țiuit în urechi?",
+      "Cât de des au apărut?",
+      "Cât de intense au fost?"
+    ],
+    "descriptors": [
+      {
+        "id": "i11-d0",
+        "score": 0,
+        "text": "Absentă."
+      },
+      {
+        "id": "i11-d1",
+        "score": 1,
+        "text": "Manifestări gastrointestinale ușoare (de exemplu gură uscată, tulburări digestive, diaree, colici, eructații) mai rar de două ori pe săptămână."
+      },
+      {
+        "id": "i11-d2",
+        "score": 2,
+        "text": "Simptome mai intense sau mai severe, care apar de peste două ori pe săptămână."
+      },
+      {
+        "id": "i11-d3",
+        "score": 3,
+        "text": "Manifestări cardiovasculare ori cefalee persistentă și frecventă, de regulă zilnică."
+      },
+      {
+        "id": "i11-d4",
+        "score": 3,
+        "text": "Episoade ocazionale foarte severe sau invalidante."
+      },
+      {
+        "id": "i11-d5",
+        "score": 4,
+        "text": "Simptome severe și persistente, cu incapacitate funcțională."
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "title": "Simptome somatice gastrointestinale",
+    "subtitle": "apetit, constipație și disconfort abdominal",
+    "max": 2,
+    "guidance": "Diferențiați simptomele asociate depresiei de cele explicate mai bine de anxietate, boli somatice, medicamente sau schimbări dietetice.",
+    "questions": [
+      "Cum este apetitul dumneavoastră?",
+      "Ați avut constipație?",
+      "Ați simțit greutate sau durere abdominală?",
+      "Ați avut nevoie de laxative mai des decât în mod obișnuit?"
+    ],
+    "descriptors": [
+      {
+        "id": "i12-d0",
+        "score": 0,
+        "text": "Apetit normal și absența simptomelor relevante."
+      },
+      {
+        "id": "i12-d1",
+        "score": 1,
+        "text": "Pierderea poftei de mâncare, dar persoana mănâncă fără a trebui să fie îndemnată."
+      },
+      {
+        "id": "i12-d2",
+        "score": 1,
+        "text": "Senzație de greutate abdominală sau apariția constipației."
+      },
+      {
+        "id": "i12-d3",
+        "score": 2,
+        "text": "Scădere progresivă și evidentă a apetitului."
+      },
+      {
+        "id": "i12-d4",
+        "score": 2,
+        "text": "Constipație persistentă, cu utilizarea unei cantități neobișnuite de laxative."
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "title": "Simptome somatice generale",
+    "subtitle": "energie, fatigabilitate și senzații corporale",
+    "max": 2,
+    "guidance": "Evaluați oboseala disproporționată, pierderea energiei, senzația de greutate și durerile difuze. Luați în calcul explicațiile medicale și nivelul de efort real.",
+    "questions": [
+      "Obosiți ușor?",
+      "Vă simțiți obosit tot timpul?",
+      "Aveți suficientă energie?",
+      "Este un efort să faceți orice?",
+      "Vă petreceți mult timp odihnindu-vă?",
+      "Petreceți mai mult timp în pat?"
+    ],
+    "descriptors": [
+      {
+        "id": "i13-d0",
+        "score": 0,
+        "text": "Absente."
+      },
+      {
+        "id": "i13-d1",
+        "score": 1,
+        "text": "Oboseală disproporționată față de efortul depus."
+      },
+      {
+        "id": "i13-d2",
+        "score": 1,
+        "text": "Senzație de greutate la spate, cap sau membre; pierderea energiei ori fatigabilitate."
+      },
+      {
+        "id": "i13-d3",
+        "score": 2,
+        "text": "Simptome accentuate și distincte, cu nevoie frecventă de odihnă."
+      },
+      {
+        "id": "i13-d4",
+        "score": 2,
+        "text": "Epuizare la activități fizice, dificultate de a susține efortul sau senzația că întreg corpul este greu."
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "title": "Simptome genitale",
+    "subtitle": "pierderea libidoului și scăderea activității sexuale",
+    "max": 2,
+    "guidance": "Evaluați schimbarea față de nivelul bazal și contextul relațional, vârsta, starea somatică și medicația. Informațiile insuficiente sunt tratate în sursa furnizată ca absență, dar raportul va semnala lipsa datelor dacă o marcați în notițe.",
+    "questions": [
+      "Ați observat o schimbare a interesului pentru sex în ultima perioadă?",
+      "V-ați pierdut recent interesul sexual?",
+      "Ați avut tulburări de dinamică sexuală?",
+      "Ați avut relații sexuale mai puține decât de obicei?"
+    ],
+    "descriptors": [
+      {
+        "id": "i14-d0",
+        "score": 0,
+        "text": "Interes și activitate la nivelul obișnuit."
+      },
+      {
+        "id": "i14-d1",
+        "score": 1,
+        "text": "Pierdere ușoară a interesului sau scădere a activității."
+      },
+      {
+        "id": "i14-d2",
+        "score": 2,
+        "text": "Absență totală a interesului și activității sexuale."
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "title": "Ipohondrie",
+    "subtitle": "preocupare excesivă pentru sănătatea corporală",
+    "max": 4,
+    "guidance": "Evaluați focalizarea excesivă asupra corpului, spontaneitatea plângerilor, solicitarea repetată de ajutor și caracterul irațional ori delirant al convingerilor.",
+    "questions": [
+      "V-ați gândit mult în ultimele zile la sănătatea dumneavoastră?",
+      "Atenția vi s-a fixat pe corp sau pe funcționarea organismului?"
+    ],
+    "descriptors": [
+      {
+        "id": "i15-d0",
+        "score": 0,
+        "text": "Absentă."
+      },
+      {
+        "id": "i15-d1",
+        "score": 1,
+        "text": "Atenție centrată asupra corpului numai când persoana este întrebată; tema nu apare spontan."
+      },
+      {
+        "id": "i15-d2",
+        "score": 2,
+        "text": "Preocuparea pentru simptome fizice și posibile boli organice este relatată voluntar."
+      },
+      {
+        "id": "i15-d3",
+        "score": 3,
+        "text": "Convingere irațională puternică de boală fizică, cu plângeri frecvente și solicitări repetate de ajutor."
+      },
+      {
+        "id": "i15-d4",
+        "score": 4,
+        "text": "Idei delirante ipohondrice."
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "title": "Pierderea în greutate",
+    "subtitle": "relatată sau măsurată",
+    "max": 2,
+    "variant": true,
+    "guidance": "Selectați metoda de evaluare. Cântăririle repetate sunt preferabile când există date fiabile. Luați în calcul cauzele medicale, dietetice și medicamentoase.",
+    "questions": [
+      "Ați pierdut în greutate în perioada evaluată?",
+      "Cât ați cântărit înainte și cât cântăriți acum?",
+      "Pierderea pare legată de episodul actual?",
+      "Există cântăriri repetate sau documente medicale?"
+    ],
+    "variants": {
+      "self": {
+        "label": "După relatarea persoanei",
+        "descriptors": [
+          {
+            "id": "i16-self-d0",
+            "score": 0,
+            "text": "Nicio pierdere în greutate."
+          },
+          {
+            "id": "i16-self-d1",
+            "score": 1,
+            "text": "Pierdere în greutate probabil legată de starea actuală."
+          },
+          {
+            "id": "i16-self-d2",
+            "score": 2,
+            "text": "Pierdere în greutate semnificativă."
+          }
+        ]
+      },
+      "measured": {
+        "label": "Pe baza cântăririlor",
+        "descriptors": [
+          {
+            "id": "i16-measured-d0",
+            "score": 0,
+            "text": "Mai puțin de 500 g pe săptămână."
+          },
+          {
+            "id": "i16-measured-d1",
+            "score": 1,
+            "text": "Peste 500 g pe săptămână, dar nu peste 1000 g pe săptămână."
+          },
+          {
+            "id": "i16-measured-d2",
+            "score": 2,
+            "text": "Peste 1000 g pe săptămână."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": 17,
+    "title": "Conștientizarea bolii (autoanaliza / insight)",
+    "subtitle": "recunoașterea caracterului patologic al stării",
+    "max": 2,
+    "guidance": "Distingeți lipsa insightului de reticența de a utiliza etichete psihiatrice. Interpretați răspunsul în raport cu nivelul de educație, limbajul și cadrul cultural.",
+    "questions": [
+      "Cum înțelegeți schimbările prin care treceți?",
+      "Considerați că este vorba despre o problemă de sănătate sau despre altceva?",
+      "Ce credeți că explică starea actuală?"
+    ],
+    "descriptors": [
+      {
+        "id": "i17-d0",
+        "score": 0,
+        "text": "Recunoaște că este deprimat și bolnav."
+      },
+      {
+        "id": "i17-d1",
+        "score": 1,
+        "text": "Recunoaște că există o problemă, dar o atribuie exclusiv hranei, climei, surmenajului, unui virus sau nevoii de liniște."
+      },
+      {
+        "id": "i17-d2",
+        "score": 2,
+        "text": "Neagă că este bolnav sau că există o problemă psihică."
+      }
+    ]
+  }
+];
+
+</script>
+<script>
+
+(() => {
+  const KEY = 'hamd17_assessment_v1';
+  const $ = (id) => document.getElementById(id);
+  const itemById = (id) => window.HAMD_ITEMS.find(i => i.id === id);
+  let current = 0;
+  let state = loadState() || freshState();
+
+  function freshState() {
+    return {
+      meta: { assessmentDate: new Date().toISOString().slice(0,10), timeWindow: 'ultima lună', assessmentType: 'Evaluare inițială' },
+      responses: {}, started: false, createdAt: new Date().toISOString()
+    };
+  }
+  function loadState() {
+    try { const raw = localStorage.getItem(KEY); return raw ? JSON.parse(raw) : null; } catch { return null; }
+  }
+  function saveState() {
+    state.updatedAt = new Date().toISOString();
+    localStorage.setItem(KEY, JSON.stringify(state));
+  }
+  function metaIds() { return ['clientCode','assessmentDate','assessmentType','evaluator','age','sex','timeWindow','referral','knownDiagnosis','medicalContext','contextNotes']; }
+  function hydrateMeta() {
+    metaIds().forEach(id => { if ($(id) && state.meta[id] != null) $(id).value = state.meta[id]; });
+  }
+  function captureMeta() {
+    metaIds().forEach(id => { if ($(id)) state.meta[id] = $(id).value.trim(); });
+    saveState();
+  }
+  function responseFor(item) {
+    if (!state.responses[item.id]) state.responses[item.id] = { selected: [], notes: '', confidence: 'medie', variant: item.variant ? 'self' : null };
+    return state.responses[item.id];
+  }
+  function descriptorsFor(item, resp) {
+    return item.variant ? item.variants[resp.variant || 'self'].descriptors : item.descriptors;
+  }
+  function isComplete(item) { return responseFor(item).selected.length > 0; }
+  function buildOverview() {
+    $('overview').innerHTML = window.HAMD_ITEMS.map(i => `<div class="overview-item"><strong>${i.id}. ${esc(i.title)}</strong><small>${esc(i.subtitle || '')}</small></div>`).join('');
+  }
+  function startInterview() {
+    captureMeta();
+    if (!state.meta.clientCode || !state.meta.assessmentDate) {
+      alert('Completați codul clientului și data evaluării.'); return;
+    }
+    state.started = true; saveState();
+    $('setupView').classList.add('hidden'); $('interviewView').classList.remove('hidden'); renderItem();
+  }
+  function renderItem() {
+    const item = window.HAMD_ITEMS[current]; const resp = responseFor(item); const descs = descriptorsFor(item, resp);
+    const questionHtml = item.questions.length
+      ? `<div class="section-label">Întrebări orientative</div><ol class="question-list">${item.questions.map(q=>`<li>${esc(q)}</li>`).join('')}</ol>`
+      : `<div class="section-label">Modalitate de evaluare</div><div class="notice">Acest domeniu se cotează în principal prin observația directă a conduitei din timpul interviului.</div>`;
+    const variantHtml = item.variant ? `<div class="field" style="margin-top:18px"><label for="variantSelect">Metoda de evaluare a pierderii în greutate</label><select id="variantSelect">${Object.entries(item.variants).map(([k,v])=>`<option value="${k}" ${resp.variant===k?'selected':''}>${esc(v.label)}</option>`).join('')}</select></div>` : '';
+    const risk = item.risk && resp.selected.some(id => (descs.find(d=>d.id===id)?.score || 0) > 0)
+      ? `<div class="notice danger risk-inline"><strong>Semnal clinic de siguranță:</strong> a fost bifat cel puțin un descriptor suicidar. Nu așteptați scorul total; realizați imediat evaluarea structurată a riscului și aplicați procedura profesională de siguranță adecvată contextului.</div>` : '';
+    $('itemCard').innerHTML = `
+      <div class="item-title"><div class="item-number">${item.id}</div><div><h2>${esc(item.title)}</h2><p>${esc(item.subtitle || '')}</p></div><div class="item-status ${isComplete(item)?'status-complete':'status-incomplete'}">${isComplete(item)?'✓ completat':'necompletat'}</div></div>
+      <div class="notice">${esc(item.guidance)}</div>
+      ${questionHtml}${variantHtml}
+      <div class="section-label">Descriptori clinici observați / susținuți</div>
+      <div class="blind-note"><span class="blind-dot"></span><span>Valorile de cotare sunt ascunse până la finalizare. Puteți bifa mai mulți descriptori.</span></div>
+      <div class="descriptor-list" style="margin-top:10px">${descs.map(d=>`<label class="descriptor ${resp.selected.includes(d.id)?'checked':''}"><input type="checkbox" data-id="${d.id}" ${resp.selected.includes(d.id)?'checked':''}><span>${esc(d.text)}</span></label>`).join('')}</div>
+      ${risk}
+      <div class="grid grid-2" style="margin-top:20px">
+        <div class="field"><label for="itemNotes">Notele evaluatorului</label><textarea id="itemNotes" placeholder="Răspunsuri relevante, observații comportamentale, clarificări...">${esc(resp.notes)}</textarea></div>
+        <div class="field"><label for="confidence">Încrederea evaluatorului în informația obținută</label><select id="confidence"><option value="ridicată" ${resp.confidence==='ridicată'?'selected':''}>Ridicată</option><option value="medie" ${resp.confidence==='medie'?'selected':''}>Medie</option><option value="scăzută" ${resp.confidence==='scăzută'?'selected':''}>Scăzută</option></select><div class="help">Aceasta nu modifică scorul, dar apare în raport și semnalează necesitatea clarificării.</div></div>
+      </div>
+      <div class="nav-actions"><button type="button" class="btn-secondary" id="backSetupBtn">Date evaluare</button><div class="right"><button type="button" class="btn-secondary" id="prevBtn" ${current===0?'disabled':''}>Anterior</button><button type="button" class="btn-primary" id="nextBtn">${current===window.HAMD_ITEMS.length-1?'Finalizează':'Următorul'}</button></div></div>`;
+
+    document.querySelectorAll('.descriptor input').forEach(cb => cb.addEventListener('change', () => handleDescriptor(item, cb)));
+    if ($('variantSelect')) $('variantSelect').addEventListener('change', e => { resp.variant = e.target.value; resp.selected=[]; saveState(); renderItem(); });
+    $('itemNotes').addEventListener('input', e => { resp.notes=e.target.value; saveState(); });
+    $('confidence').addEventListener('change', e => { resp.confidence=e.target.value; saveState(); });
+    $('prevBtn').addEventListener('click', () => { if (current>0) { current--; renderItem(); window.scrollTo({top:0}); }});
+    $('nextBtn').addEventListener('click', () => { if (current < window.HAMD_ITEMS.length-1) { current++; renderItem(); window.scrollTo({top:0}); } else finalize(); });
+    $('backSetupBtn').addEventListener('click', () => { $('interviewView').classList.add('hidden'); $('setupView').classList.remove('hidden'); hydrateMeta(); window.scrollTo({top:0}); });
+    updateProgress();
+  }
+  function handleDescriptor(item, cb) {
+    const resp = responseFor(item); const descs = descriptorsFor(item, resp); const d = descs.find(x=>x.id===cb.dataset.id);
+    if (!d) return;
+    if (cb.checked) {
+      if (d.score === 0) resp.selected = [d.id];
+      else { resp.selected = resp.selected.filter(id => (descs.find(x=>x.id===id)?.score ?? 0) !== 0); if (!resp.selected.includes(d.id)) resp.selected.push(d.id); }
+    } else resp.selected = resp.selected.filter(id=>id!==d.id);
+    saveState(); renderItem();
+  }
+  function updateProgress() {
+    const complete = window.HAMD_ITEMS.filter(isComplete).length;
+    $('progressText').textContent = `Item ${current+1} din ${window.HAMD_ITEMS.length}`;
+    $('completionText').textContent = `${complete} din 17 completate`;
+    $('progressBar').style.width = `${(complete/window.HAMD_ITEMS.length)*100}%`;
+  }
+  function scoreItem(item) {
+    const resp = responseFor(item); const descs = descriptorsFor(item, resp); const selected = resp.selected.map(id=>descs.find(d=>d.id===id)).filter(Boolean);
+    if (!selected.length) return null;
+    const score = Math.max(...selected.map(d=>d.score));
+    const levels = [...new Set(selected.map(d=>d.score))].sort((a,b)=>a-b);
+    const nonzero = levels.filter(x=>x>0);
+    let consistency = 'coerent';
+    if (nonzero.length >= 3 || nonzero.some((v,i)=>i && v-nonzero[i-1]>1)) consistency = 'profil mixt - necesită revizuire';
+    else if (nonzero.length === 2) consistency = 'descriptori de intensități adiacente';
+    return { score, max:item.max, selected, levels, consistency, confidence:resp.confidence, notes:resp.notes, variant:resp.variant || null };
+  }
+  function finalize() {
+    const missing = window.HAMD_ITEMS.filter(i=>!isComplete(i));
+    if (missing.length) {
+      const list = missing.map(i=>`${i.id}. ${i.title}`).join('\n');
+      if (!confirm(`Au rămas ${missing.length} itemi fără niciun descriptor bifat:\n\n${list}\n\nApăsați OK pentru a merge la primul item incomplet.`)) return;
+      current = window.HAMD_ITEMS.indexOf(missing[0]); renderItem(); window.scrollTo({top:0}); return;
+    }
+    const computed = {};
+    window.HAMD_ITEMS.forEach(i=>computed[i.id]=scoreItem(i));
+    const payload = { ...state, computed, finalizedAt:new Date().toISOString(), version:'Adaptare română furnizată; itemul 9 cotat 0-4; maxim teoretic 52', finalScores:Object.fromEntries(window.HAMD_ITEMS.map(i=>[i.id,computed[i.id].score])) };
+    localStorage.setItem('hamd17_final_v1', JSON.stringify(payload));
+    window.name = 'HAMD17:' + encodeURIComponent(JSON.stringify(payload));
+    window.location.href = 'interviu-hamilton-17-rezultate.html';
+  }
+  function esc(s='') { return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
+
+  buildOverview(); hydrateMeta();
+  metaIds().forEach(id => $(id)?.addEventListener('input', captureMeta));
+  $('startBtn').addEventListener('click', startInterview);
+  $('clearDraftBtn').addEventListener('click', () => { if (confirm('Ștergeți toate datele salvate local pentru această evaluare?')) { localStorage.removeItem(KEY); localStorage.removeItem('hamd17_final_v1'); state=freshState(); hydrateMeta(); alert('Datele locale au fost șterse.'); }});
+  if (state.started) { $('setupView').classList.add('hidden'); $('interviewView').classList.remove('hidden'); renderItem(); }
+})();
+
+</script>
+</body>
+</html>
