@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="ro">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CV Europass - Gabriel Marin</title>
-  <link rel="stylesheet" href="./cv.css?v=14">
-  <link rel="icon" type="image/png" href="./favicon.png">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CV Europass - Gabriel Marin</title>
+<link href="./cv.css?v=14" rel="stylesheet"/>
+<link href="./favicon.png" rel="icon" type="image/png"/>
+<style>
     .profile-card {
       padding-top: 24px !important;
     }
@@ -14,521 +15,1649 @@
     .profile-card .profile-photo-wrapper {
       margin-top: 12px !important;
     }
-  </style>
+
+    .pdf-download-btn {
+      position: fixed;
+      top: 18px;
+      right: 22px;
+      z-index: 9999;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 42px;
+      padding: 10px 17px;
+      border: 1px solid rgba(255, 255, 255, 0.42);
+      border-radius: 10px;
+      background: #ffffff;
+      color: #173a63;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+    }
+
+    .pdf-download-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.24);
+    }
+
+    .pdf-download-btn:focus-visible {
+      outline: 3px solid rgba(255, 215, 0, 0.85);
+      outline-offset: 3px;
+    }
+
+    .pdf-download-btn:disabled {
+      cursor: wait;
+      opacity: 0.72;
+      transform: none;
+    }
+
+    .pdf-download-icon {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+    }
+
+    body.pdf-exporting .pdf-download-btn,
+    body.pdf-exporting .toggle-btn {
+      display: none !important;
+    }
+
+    body.pdf-exporting .timeline-item,
+    body.pdf-exporting .simple-row,
+    body.pdf-exporting .publication,
+    body.pdf-exporting .profile-card {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+
+    /* Stil compact folosit exclusiv în PDF-ul descărcat */
+    body.pdf-exporting {
+      margin: 0 !important;
+      background: #ffffff !important;
+      color: #1f2933 !important;
+      font-size: 10px !important;
+      line-height: 1.28 !important;
+    }
+
+    body.pdf-exporting .topbar,
+    body.pdf-exporting .hero,
+    body.pdf-exporting .hero-overlay,
+    body.pdf-exporting .cv-container,
+    body.pdf-exporting .profile-card,
+    body.pdf-exporting .card,
+    body.pdf-exporting .timeline,
+    body.pdf-exporting .timeline-item,
+    body.pdf-exporting .publication,
+    body.pdf-exporting .simple-row,
+    body.pdf-exporting .table-wrap {
+      background: #ffffff !important;
+      box-shadow: none !important;
+    }
+
+    body.pdf-exporting .hero {
+      min-height: 0 !important;
+      height: 18px !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+    body.pdf-exporting .cv-container {
+      width: auto !important;
+      max-width: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    body.pdf-exporting .profile-card,
+    body.pdf-exporting .card {
+      margin: 0 0 6px !important;
+      padding: 10px 13px !important;
+      border-radius: 0 !important;
+    }
+
+    body.pdf-exporting .profile-card {
+      padding-top: 10px !important;
+    }
+
+    body.pdf-exporting .profile-card .profile-photo-wrapper {
+      margin-top: 0 !important;
+      margin-bottom: 4px !important;
+    }
+
+    body.pdf-exporting .profile-photo {
+      width: 78px !important;
+      height: 78px !important;
+    }
+
+    body.pdf-exporting h1 {
+      margin: 3px 0 !important;
+      font-size: 21px !important;
+      line-height: 1.08 !important;
+    }
+
+    body.pdf-exporting .gold-line {
+      margin: 5px auto !important;
+    }
+
+    body.pdf-exporting .basic-info,
+    body.pdf-exporting .contact-details,
+    body.pdf-exporting .contact-row {
+      font-size: 9.5px !important;
+      line-height: 1.22 !important;
+    }
+
+    body.pdf-exporting .contact-details {
+      margin-top: 4px !important;
+    }
+
+    body.pdf-exporting .contact-row {
+      margin: 2px 0 !important;
+    }
+
+    body.pdf-exporting .section-title {
+      margin: 0 0 7px !important;
+      padding-bottom: 4px !important;
+      font-size: 14px !important;
+      line-height: 1.15 !important;
+    }
+
+    body.pdf-exporting h3 {
+      margin: 0 0 2px !important;
+      font-size: 11.2px !important;
+      line-height: 1.18 !important;
+    }
+
+    body.pdf-exporting h4,
+    body.pdf-exporting .small-heading,
+    body.pdf-exporting .skill-heading {
+      margin: 5px 0 4px !important;
+      font-size: 10.4px !important;
+      line-height: 1.18 !important;
+    }
+
+    body.pdf-exporting p {
+      margin: 2px 0 !important;
+      font-size: 9.5px !important;
+      line-height: 1.27 !important;
+    }
+
+    body.pdf-exporting .timeline-item {
+      margin: 0 0 5px !important;
+      padding: 0 0 5px !important;
+    }
+
+    body.pdf-exporting .timeline-org,
+    body.pdf-exporting .timeline-date,
+    body.pdf-exporting .simple-right {
+      font-size: 8.8px !important;
+      line-height: 1.2 !important;
+    }
+
+    body.pdf-exporting .timeline-content {
+      gap: 8px !important;
+    }
+
+    body.pdf-exporting .simple-row,
+    body.pdf-exporting .publication {
+      margin: 0 0 5px !important;
+      padding: 6px 0 !important;
+    }
+
+    body.pdf-exporting .link-buttons,
+    body.pdf-exporting .hobby-links {
+      margin-top: 4px !important;
+      gap: 4px !important;
+    }
+
+    body.pdf-exporting .link-buttons a,
+    body.pdf-exporting .hobby-links a,
+    body.pdf-exporting .skills-tags span {
+      padding: 3px 6px !important;
+      font-size: 8.7px !important;
+      line-height: 1.15 !important;
+    }
+
+    body.pdf-exporting .skills-tags {
+      gap: 4px !important;
+      margin: 4px 0 !important;
+    }
+
+    body.pdf-exporting table,
+    body.pdf-exporting th,
+    body.pdf-exporting td {
+      font-size: 8.2px !important;
+      line-height: 1.18 !important;
+    }
+
+    body.pdf-exporting th,
+    body.pdf-exporting td {
+      padding: 4px 3px !important;
+    }
+
+    @media (max-width: 700px) {
+      .pdf-download-btn {
+        top: 12px;
+        right: 12px;
+        min-height: 38px;
+        padding: 9px 12px;
+        font-size: 13px;
+      }
+    }
+
+    @media print {
+      .pdf-download-btn,
+      .toggle-btn,
+      .grade-menu {
+        display: none !important;
+      }
+
+      body {
+        margin: 0 !important;
+        background: #ffffff !important;
+        font-size: 10px !important;
+        line-height: 1.28 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .hero,
+      .hero-overlay,
+      .cv-container,
+      .profile-card,
+      .card,
+      .timeline,
+      .timeline-item,
+      .publication,
+      .simple-row,
+      .table-wrap {
+        background: #ffffff !important;
+        box-shadow: none !important;
+      }
+
+      .hero {
+        min-height: 0 !important;
+        height: 18px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .cv-container {
+        width: auto !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      .profile-card,
+      .card {
+        margin: 0 0 6px !important;
+        padding: 10px 13px !important;
+        border-radius: 0 !important;
+      }
+
+      .section-title {
+        margin: 0 0 7px !important;
+        padding-bottom: 4px !important;
+        font-size: 14px !important;
+      }
+
+      h3 { font-size: 11.2px !important; margin: 0 0 2px !important; }
+      p { font-size: 9.5px !important; line-height: 1.27 !important; margin: 2px 0 !important; }
+      .timeline-item { margin: 0 0 5px !important; padding: 0 0 5px !important; }
+      .timeline-org, .timeline-date, .simple-right { font-size: 8.8px !important; }
+      .simple-row, .publication { margin: 0 0 5px !important; padding: 6px 0 !important; }
+      .link-buttons a, .hobby-links a, .skills-tags span { padding: 3px 6px !important; font-size: 8.7px !important; }
+      table, th, td { font-size: 8.2px !important; line-height: 1.18 !important; }
+      th, td { padding: 4px 3px !important; }
+
+      .timeline-item,
+      .simple-row,
+      .publication,
+      .profile-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
+  
+
+    .pdf-only {
+      display: none;
+    }
+
+    .screen-only {
+      display: revert;
+    }
+
+    body.pdf-exporting .screen-only {
+      display: none !important;
+    }
+
+    body.pdf-exporting .pdf-only {
+      display: block !important;
+    }
+
+    body.pdf-exporting .pdf-qr-grid {
+      display: flex !important;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: flex-start;
+      margin-top: 8px !important;
+    }
+
+    body.pdf-exporting .pdf-qr-card {
+      width: 96px;
+      text-align: center;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    body.pdf-exporting .pdf-qr-image {
+      width: 82px;
+      height: 82px;
+      display: block;
+      margin: 0 auto 5px;
+    }
+
+    body.pdf-exporting .pdf-qr-label {
+      font-size: 8.2px !important;
+      line-height: 1.18 !important;
+      color: #1f2933;
+      text-align: center;
+    }
+
+    body.pdf-exporting .timeline::before,
+    body.pdf-exporting .timeline::after {
+      display: none !important;
+    }
+
+    body.pdf-exporting .timeline-item {
+      border-left: none !important;
+    }
+
+    body.pdf-exporting .timeline-content,
+    body.pdf-exporting .timeline-main {
+      border-left: none !important;
+    }
+
+    body.pdf-exporting #formare-profesionala,
+    body.pdf-exporting #educatie,
+    body.pdf-exporting #competente-section {
+      break-before: page;
+      page-break-before: always;
+    }
+
+    body.pdf-exporting #competente-section .skills-tags {
+      display: grid !important;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 6px !important;
+      align-items: stretch;
+    }
+
+    body.pdf-exporting #competente-section .skills-tags span {
+      display: block !important;
+      width: auto !important;
+      text-align: center;
+      min-height: 100%;
+    }
+
+    @media print {
+      .screen-only {
+        display: none !important;
+      }
+
+      .pdf-only {
+        display: block !important;
+      }
+
+      .pdf-qr-grid {
+        display: flex !important;
+        flex-wrap: wrap;
+        gap: 14px;
+        align-items: flex-start;
+        margin-top: 8px !important;
+      }
+
+      .pdf-qr-card {
+        width: 96px;
+        text-align: center;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .pdf-qr-image {
+        width: 82px;
+        height: 82px;
+        display: block;
+        margin: 0 auto 5px;
+      }
+
+      .pdf-qr-label {
+        font-size: 8.2px !important;
+        line-height: 1.18 !important;
+        color: #1f2933;
+        text-align: center;
+      }
+
+      .timeline::before,
+      .timeline::after {
+        display: none !important;
+      }
+
+      .timeline-item,
+      .timeline-content,
+      .timeline-main {
+        border-left: none !important;
+      }
+
+      #formare-profesionala,
+      #educatie,
+      #competente-section {
+        break-before: page;
+        page-break-before: always;
+      }
+
+      #competente-section .skills-tags {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 6px !important;
+      }
+
+      #competente-section .skills-tags span {
+        display: block !important;
+        width: auto !important;
+        text-align: center;
+      }
+    }
+
+
+    body.pdf-exporting .profile-card {
+      padding-top: 6px !important;
+      padding-bottom: 8px !important;
+    }
+
+    body.pdf-exporting .profile-card .profile-photo-wrapper {
+      margin-top: 0 !important;
+      margin-bottom: 2px !important;
+      width: 88px !important;
+      height: 88px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      border-radius: 50% !important;
+      overflow: hidden !important;
+      background: #ffffff !important;
+    }
+
+    body.pdf-exporting .profile-photo {
+      width: 88px !important;
+      height: 88px !important;
+      border-radius: 50% !important;
+      object-fit: cover !important;
+      object-position: center top !important;
+      display: block !important;
+    }
+
+    body.pdf-exporting h1 {
+      margin: 0 0 2px !important;
+      font-size: 18px !important;
+      line-height: 1.05 !important;
+    }
+
+    body.pdf-exporting .gold-line {
+      margin: 3px auto 5px !important;
+    }
+
+    body.pdf-exporting .basic-info {
+      margin-top: 0 !important;
+      margin-bottom: 3px !important;
+    }
+
+    body.pdf-exporting .contact-details {
+      margin-top: 2px !important;
+    }
+
+    body.pdf-exporting .contact-row {
+      margin: 1px 0 !important;
+    }
+
+    body.pdf-exporting #formare-militara,
+    body.pdf-exporting #cursuri-complementare {
+      break-before: page;
+      page-break-before: always;
+    }
+
+    body.pdf-exporting #formare-profesionala,
+    body.pdf-exporting #educatie,
+    body.pdf-exporting #competente-section {
+      break-before: auto !important;
+      page-break-before: auto !important;
+    }
+
+    body.pdf-exporting .pdf-side-layout {
+      display: flex !important;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    body.pdf-exporting .pdf-side-text {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    body.pdf-exporting .pdf-side-text p {
+      margin: 0 !important;
+      font-size: 9px !important;
+      line-height: 1.22 !important;
+    }
+
+    body.pdf-exporting .pdf-side-qrs {
+      flex: 0 0 168px;
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      align-items: start;
+    }
+
+    body.pdf-exporting .pdf-side-single-qr {
+      flex: 0 0 86px;
+      display: block !important;
+    }
+
+    body.pdf-exporting .pdf-side-qr-card {
+      text-align: center;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    body.pdf-exporting .pdf-side-qr-image {
+      width: 76px;
+      height: 76px;
+      display: block;
+      margin: 0 auto 3px;
+    }
+
+    body.pdf-exporting .pdf-side-qr-label {
+      font-size: 7.7px !important;
+      line-height: 1.15 !important;
+      text-align: center;
+    }
+
+    body.pdf-exporting .compact-third-page .publication,
+    body.pdf-exporting .compact-third-page .simple-row,
+    body.pdf-exporting .compact-third-page .skills-tags,
+    body.pdf-exporting .compact-third-page .table-wrap {
+      margin-bottom: 4px !important;
+    }
+
+    body.pdf-exporting .compact-third-page h3 {
+      font-size: 10.5px !important;
+      margin-bottom: 1px !important;
+    }
+
+    body.pdf-exporting .compact-third-page p {
+      font-size: 8.8px !important;
+      line-height: 1.2 !important;
+    }
+
+    body.pdf-exporting .compact-third-page .section-title {
+      margin-bottom: 5px !important;
+      font-size: 12.8px !important;
+    }
+
+    body.pdf-exporting .compact-third-page .card {
+      padding-top: 8px !important;
+      padding-bottom: 7px !important;
+      margin-bottom: 4px !important;
+    }
+
+    body.pdf-exporting .pdf-qr-grid {
+      display: none !important;
+    }
+
+    @media print {
+      #formare-militara,
+      #cursuri-complementare {
+        break-before: page;
+        page-break-before: always;
+      }
+
+      #formare-profesionala,
+      #educatie,
+      #competente-section {
+        break-before: auto !important;
+        page-break-before: auto !important;
+      }
+
+      .profile-card .profile-photo-wrapper {
+        margin-top: 0 !important;
+        margin-bottom: 2px !important;
+        width: 88px !important;
+        height: 88px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        border-radius: 50% !important;
+        overflow: hidden !important;
+        background: #ffffff !important;
+      }
+
+      .profile-photo {
+        width: 88px !important;
+        height: 88px !important;
+        border-radius: 50% !important;
+        object-fit: cover !important;
+        object-position: center top !important;
+        display: block !important;
+      }
+
+      .pdf-side-layout {
+        display: flex !important;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: 4px;
+      }
+
+      .pdf-side-text {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+
+      .pdf-side-text p {
+        margin: 0 !important;
+        font-size: 9px !important;
+        line-height: 1.22 !important;
+      }
+
+      .pdf-side-qrs {
+        flex: 0 0 168px;
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        align-items: start;
+      }
+
+      .pdf-side-single-qr {
+        flex: 0 0 86px;
+        display: block !important;
+      }
+
+      .pdf-side-qr-card {
+        text-align: center;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .pdf-side-qr-image {
+        width: 76px;
+        height: 76px;
+        display: block;
+        margin: 0 auto 3px;
+      }
+
+      .pdf-side-qr-label {
+        font-size: 7.7px !important;
+        line-height: 1.15 !important;
+        text-align: center;
+      }
+
+      .compact-third-page .publication,
+      .compact-third-page .simple-row,
+      .compact-third-page .skills-tags,
+      .compact-third-page .table-wrap {
+        margin-bottom: 4px !important;
+      }
+
+      .compact-third-page h3 {
+        font-size: 10.5px !important;
+        margin-bottom: 1px !important;
+      }
+
+      .compact-third-page p {
+        font-size: 8.8px !important;
+        line-height: 1.2 !important;
+      }
+
+      .compact-third-page .section-title {
+        margin-bottom: 5px !important;
+        font-size: 12.8px !important;
+      }
+
+      .compact-third-page .card {
+        padding-top: 8px !important;
+        padding-bottom: 7px !important;
+        margin-bottom: 4px !important;
+      }
+
+      .pdf-qr-grid {
+        display: none !important;
+      }
+    }
+
+
+    body.pdf-exporting #educatie .timeline,
+    body.pdf-exporting .educatie-two-col-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px 18px;
+      align-items: start;
+    }
+
+    body.pdf-exporting #educatie .timeline-item {
+      margin: 0 !important;
+      padding: 0 0 4px !important;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    body.pdf-exporting #educatie .timeline-content {
+      display: block !important;
+      gap: 0 !important;
+    }
+
+    body.pdf-exporting #educatie .timeline-main p {
+      margin-top: 1px !important;
+    }
+
+    body.pdf-exporting #educatie .timeline-date {
+      display: block !important;
+      margin-top: 2px !important;
+      font-size: 8.6px !important;
+    }
+
+    body.pdf-exporting #cursuri-complementare {
+      break-before: auto !important;
+      page-break-before: auto !important;
+    }
+
+    body.pdf-exporting .two-col-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 18px;
+      align-items: start;
+    }
+
+    body.pdf-exporting .two-col-grid > .publication {
+      margin: 0 !important;
+      padding: 0 !important;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    body.pdf-exporting #proiecte-online .publication h3,
+    body.pdf-exporting #hobby-uri .publication h3 {
+      margin-bottom: 3px !important;
+    }
+
+    body.pdf-exporting #proiecte-online .pdf-side-layout,
+    body.pdf-exporting #hobby-uri .pdf-side-layout {
+      gap: 8px !important;
+      margin-top: 0 !important;
+    }
+
+    body.pdf-exporting #proiecte-online .pdf-side-text,
+    body.pdf-exporting #hobby-uri .pdf-side-text {
+      flex: 1 1 auto;
+    }
+
+    body.pdf-exporting #proiecte-online .pdf-side-single-qr,
+    body.pdf-exporting #hobby-uri .pdf-side-single-qr {
+      flex: 0 0 78px;
+    }
+
+    body.pdf-exporting #proiecte-online .pdf-side-qr-image,
+    body.pdf-exporting #hobby-uri .pdf-side-qr-image {
+      width: 68px;
+      height: 68px;
+      margin-bottom: 2px;
+    }
+
+    body.pdf-exporting #proiecte-online .pdf-side-qr-label,
+    body.pdf-exporting #hobby-uri .pdf-side-qr-label {
+      font-size: 7.2px !important;
+      line-height: 1.1 !important;
+    }
+
+    @media print {
+      #educatie .timeline,
+      .educatie-two-col-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px 18px;
+        align-items: start;
+      }
+
+      #educatie .timeline-item {
+        margin: 0 !important;
+        padding: 0 0 4px !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      #educatie .timeline-content {
+        display: block !important;
+        gap: 0 !important;
+      }
+
+      #educatie .timeline-date {
+        display: block !important;
+        margin-top: 2px !important;
+        font-size: 8.6px !important;
+      }
+
+      #cursuri-complementare {
+        break-before: auto !important;
+        page-break-before: auto !important;
+      }
+
+      .two-col-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px 18px;
+        align-items: start;
+      }
+
+      .two-col-grid > .publication {
+        margin: 0 !important;
+        padding: 0 !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      #proiecte-online .publication h3,
+      #hobby-uri .publication h3 {
+        margin-bottom: 3px !important;
+      }
+
+      #proiecte-online .pdf-side-layout,
+      #hobby-uri .pdf-side-layout {
+        gap: 8px !important;
+        margin-top: 0 !important;
+      }
+
+      #proiecte-online .pdf-side-single-qr,
+      #hobby-uri .pdf-side-single-qr {
+        flex: 0 0 78px;
+      }
+
+      #proiecte-online .pdf-side-qr-image,
+      #hobby-uri .pdf-side-qr-image {
+        width: 68px;
+        height: 68px;
+        margin-bottom: 2px;
+      }
+
+      #proiecte-online .pdf-side-qr-label,
+      #hobby-uri .pdf-side-qr-label {
+        font-size: 7.2px !important;
+        line-height: 1.1 !important;
+      }
+    }
+
+
+    /* Conținutul original al paginii rămâne vizibil în HTML. Variantele compacte sunt exclusiv pentru PDF. */
+    body:not(.pdf-exporting) .projects-two-col-grid.pdf-only,
+    body:not(.pdf-exporting) .hobby-two-col-grid.pdf-only {
+      display: none !important;
+    }
+
+
+    /* Doar în pagina HTML: cele trei opțiuni apar pe același rând. */
+    body:not(.pdf-exporting) .history-link-buttons {
+      display: grid !important;
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      align-items: stretch !important;
+      gap: 10px !important;
+      width: 100% !important;
+    }
+
+    body:not(.pdf-exporting) .history-link-buttons > a,
+    body:not(.pdf-exporting) .history-link-buttons > .grade-popover {
+      width: 100% !important;
+      min-width: 0 !important;
+      margin: 0 !important;
+      box-sizing: border-box !important;
+    }
+
+    body:not(.pdf-exporting) .history-link-buttons > a,
+    body:not(.pdf-exporting) .history-link-buttons .grade-trigger {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 100% !important;
+      height: 100% !important;
+      box-sizing: border-box !important;
+      text-align: center !important;
+    }
+
+    body:not(.pdf-exporting) .history-link-buttons .grade-popover {
+      position: relative !important;
+    }
+
+
+    /* Ajustări exclusive pentru PDF - revizia 6 */
+    body.pdf-exporting #educatie .timeline {
+      column-gap: 42px !important;
+    }
+
+    body.pdf-exporting #educatie .timeline-item:nth-child(even) {
+      margin-left: 24px !important;
+      width: calc(100% - 24px) !important;
+    }
+
+    body.pdf-exporting #cursuri-complementare .simple-left,
+    body.pdf-exporting #cursuri-complementare .simple-left strong {
+      font-size: 9.4px !important;
+      line-height: 1.2 !important;
+    }
+
+    body.pdf-exporting #cursuri-complementare .simple-row {
+      min-height: 0 !important;
+      padding-top: 4px !important;
+      padding-bottom: 4px !important;
+    }
+
+    body.pdf-exporting .pdf-grade-note {
+      margin-top: 5px !important;
+      font-size: 8.8px !important;
+      line-height: 1.2 !important;
+      color: #1f2933 !important;
+    }
+
+    body.pdf-exporting .pdf-grade-note strong {
+      font-size: inherit !important;
+      font-weight: 700 !important;
+    }
+
+    @media print {
+      #educatie .timeline {
+        column-gap: 42px !important;
+      }
+
+      #educatie .timeline-item:nth-child(even) {
+        margin-left: 24px !important;
+        width: calc(100% - 24px) !important;
+      }
+
+      #cursuri-complementare .simple-left,
+      #cursuri-complementare .simple-left strong {
+        font-size: 9.4px !important;
+        line-height: 1.2 !important;
+      }
+
+      #cursuri-complementare .simple-row {
+        min-height: 0 !important;
+        padding-top: 4px !important;
+        padding-bottom: 4px !important;
+      }
+
+      .pdf-grade-note {
+        margin-top: 5px !important;
+        font-size: 8.8px !important;
+        line-height: 1.2 !important;
+        color: #1f2933 !important;
+      }
+
+      .pdf-grade-note strong {
+        font-size: inherit !important;
+        font-weight: 700 !important;
+      }
+    }
+
+
+    /* Doar în HTML: butoane compacte, egale, cu subcasetă separată pentru Definitivat. */
+    body:not(.pdf-exporting) .history-link-buttons {
+      --history-button-width: 176px;
+      --history-button-height: 54px;
+      --history-button-gap: 10px;
+      display: grid !important;
+      grid-template-columns: repeat(3, var(--history-button-width)) !important;
+      align-items: start !important;
+      justify-content: start !important;
+      gap: var(--history-button-gap) !important;
+      width: fit-content !important;
+      max-width: 100% !important;
+      margin-top: 12px !important;
+    }
+
+    body:not(.pdf-exporting) .history-link-buttons > a,
+    body:not(.pdf-exporting) .history-link-buttons > .grade-popover {
+      width: var(--history-button-width) !important;
+      min-width: var(--history-button-width) !important;
+      max-width: var(--history-button-width) !important;
+      margin: 0 !important;
+      box-sizing: border-box !important;
+    }
+
+    body:not(.pdf-exporting) .history-link-buttons > a,
+    body:not(.pdf-exporting) .history-link-buttons .grade-trigger,
+    body:not(.pdf-exporting) .history-link-buttons .grade-result-link {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 100% !important;
+      min-height: var(--history-button-height) !important;
+      height: var(--history-button-height) !important;
+      padding: 10px 12px !important;
+      box-sizing: border-box !important;
+      text-align: center !important;
+      line-height: 1.2 !important;
+    }
+
+    body:not(.pdf-exporting) .history-link-buttons .grade-popover {
+      position: relative !important;
+      display: block !important;
+    }
+
+    body:not(.pdf-exporting) .history-link-buttons .grade-menu {
+      position: static !important;
+      inset: auto !important;
+      transform: none !important;
+      width: 100% !important;
+      min-width: 100% !important;
+      max-width: 100% !important;
+      margin: var(--history-button-gap) 0 0 !important;
+      padding: 0 !important;
+      box-sizing: border-box !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      border: 0 !important;
+    }
+
+    body:not(.pdf-exporting) .history-link-buttons .grade-menu[hidden] {
+      display: none !important;
+    }
+
+    body:not(.pdf-exporting) .history-link-buttons .grade-result-link {
+      margin: 0 !important;
+    }
+
+    body:not(.pdf-exporting) .history-link-buttons.grade-open > a {
+      height: calc((2 * var(--history-button-height)) + var(--history-button-gap)) !important;
+      min-height: calc((2 * var(--history-button-height)) + var(--history-button-gap)) !important;
+    }
+
+    @media (max-width: 720px) {
+      body:not(.pdf-exporting) .history-link-buttons {
+        --history-button-width: min(176px, calc((100vw - 44px) / 3));
+        gap: 6px !important;
+      }
+
+      body:not(.pdf-exporting) .history-link-buttons > a,
+      body:not(.pdf-exporting) .history-link-buttons .grade-trigger,
+      body:not(.pdf-exporting) .history-link-buttons .grade-result-link {
+        padding: 8px 5px !important;
+        font-size: 12px !important;
+      }
+    }
+</style>
 </head>
 <body>
-
+<button aria-label="Descarcă CV-ul în format PDF" class="pdf-download-btn" id="pdf-download-btn" onclick="downloadCVPDF()" type="button">
+<svg aria-hidden="true" class="pdf-download-icon" viewbox="0 0 24 24">
+<path d="M11 3h2v10.17l3.59-3.58L18 11l-6 6-6-6 1.41-1.41L11 13.17V3Zm-6 16h14v2H5v-2Z" fill="currentColor"></path>
+</svg>
+<span class="pdf-button-text">Descarcă PDF</span>
+</button>
 <header class="topbar">
-  <div class="topbar-left">
-    <div class="eu-flag" aria-label="Drapelul Uniunii Europene">
-      <span class="star s1"></span>
-      <span class="star s2"></span>
-      <span class="star s3"></span>
-      <span class="star s4"></span>
-      <span class="star s5"></span>
-      <span class="star s6"></span>
-      <span class="star s7"></span>
-      <span class="star s8"></span>
-      <span class="star s9"></span>
-      <span class="star s10"></span>
-      <span class="star s11"></span>
-      <span class="star s12"></span>
-    </div>
-
-    <div class="brand-text">
+<div class="topbar-left">
+<div aria-label="Drapelul Uniunii Europene" class="eu-flag">
+<span class="star s1"></span>
+<span class="star s2"></span>
+<span class="star s3"></span>
+<span class="star s4"></span>
+<span class="star s5"></span>
+<span class="star s6"></span>
+<span class="star s7"></span>
+<span class="star s8"></span>
+<span class="star s9"></span>
+<span class="star s10"></span>
+<span class="star s11"></span>
+<span class="star s12"></span>
+</div>
+<div class="brand-text">
       Uniunea Europeană
     </div>
-  </div>
+</div>
 </header>
-
 <section class="hero">
-  <div class="hero-overlay"></div>
+<div class="hero-overlay"></div>
 </section>
-
 <main class="cv-container">
-
-  <section class="profile-card">
-    <div class="profile-photo-wrapper">
-      <img src="poza.jpg" alt="Gabriel Marin" class="profile-photo">
-    </div>
-
-    <h1>Gabriel Marin</h1>
-
-    <div class="gold-line"></div>
-
-    <div class="basic-info">
-      <span><strong>Data nașterii:</strong> 04/12/1998</span>
-      <span class="separator">|</span>
-      <span><strong>Cetățenie:</strong> română</span>
-    </div>
-
-    <button class="toggle-btn" onclick="toggleContact()">
-      <span id="contact-toggle-text">Ascunde datele de contact</span>
-      <span id="contact-toggle-arrow">▲</span>
-    </button>
-
-    <div id="contact-details" class="contact-details">
-      <div class="contact-row center">
-        <span class="icon">📞</span>
-        <strong>Număr de telefon mobil:</strong> 0728.115.190
+<section class="profile-card">
+<div class="profile-photo-wrapper">
+<img alt="Gabriel Marin" class="profile-photo" src="poza.jpg"/>
+</div>
+<h1>Gabriel Marin</h1>
+<div class="gold-line"></div>
+<div class="basic-info">
+<span><strong>Data nașterii:</strong> 04/12/1998</span>
+<span class="separator">|</span>
+<span><strong>Cetățenie:</strong> română</span>
+</div>
+<button class="toggle-btn" onclick="toggleContact()">
+<span id="contact-toggle-text">Ascunde datele de contact</span>
+<span id="contact-toggle-arrow">▲</span>
+</button>
+<div class="contact-details" id="contact-details">
+<div class="contact-row center">
+<span class="icon">📞</span>
+<strong>Număr de telefon mobil:</strong> 0728.115.190
       </div>
-
-      <div class="contact-row center">
-        <span class="icon">✉️</span>
-        <strong>E-mail:</strong> cabinet@maringabriel.ro
+<div class="contact-row center">
+<span class="icon">✉️</span>
+<strong>E-mail:</strong> cabinet@maringabriel.ro
       </div>
-
-      <div class="contact-row center">
-        <span class="icon">📍</span>
-        <strong>Locație:</strong> București, România
+<div class="contact-row center">
+<span class="icon">📍</span>
+<strong>Locație:</strong> București, România
       </div>
-    </div>
-  </section>
-
-  <section class="card">
-    <h2 class="section-title">EXPERIENȚA PROFESIONALĂ</h2>
-
-    <div class="timeline">
-
-      <div class="timeline-item">
-        <div class="timeline-org">Unități aflate în subordinea Ministerului Educației</div>
-        <div class="timeline-content">
-          <div class="timeline-main">
-            <h3>Profesor de Istorie</h3>
-            <p>Îi îndrum pe elevii din învățământul preuniversitar spre o înțelegere profundă a evenimentelor care au modelat lumea, stârnindu-le curiozitatea prin activități interactive ce conectează istoria cu prezentul. De asemenea, elaborez exerciții digitale pentru recapitulare și evaluare pe care le adaptatez constant în funcție de feedbackului primit de la elevi.</p>
-
-            <div class="link-buttons">
-              <a href="istorie-lectii.html" target="_blank">
+</div>
+</section>
+<section class="card">
+<h2 class="section-title">EXPERIENȚA PROFESIONALĂ</h2>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-org">Unități aflate în subordinea Ministerului Educației</div>
+<div class="timeline-content">
+<div class="timeline-main">
+<h3>Profesor de Istorie</h3>
+<p class="screen-only">Îi îndrum pe elevii din învățământul preuniversitar spre o înțelegere profundă a evenimentelor care au modelat lumea, stârnindu-le curiozitatea prin activități interactive ce conectează istoria cu prezentul. De asemenea, elaborez exerciții digitale pentru recapitulare și evaluare pe care le adaptatez constant în funcție de feedbackului primit de la elevi.</p><div class="pdf-only pdf-side-layout"><div class="pdf-side-text"><p>Îi îndrum pe elevii din învățământul preuniversitar spre o înțelegere profundă a evenimentelor care au modelat lumea, stârnindu-le curiozitatea prin activități interactive ce conectează istoria cu prezentul. De asemenea, elaborez exerciții digitale pentru recapitulare și evaluare pe care le adaptatez constant în funcție de feedbackului primit de la elevi.</p><div class="pdf-grade-note"><strong>Grade didactice:</strong> Definitivat (2026), nota 9.95</div></div><div class="pdf-side-qrs"><div class="pdf-side-qr-card"><img alt="Cod QR către Lecții de istorie" class="pdf-side-qr-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZoAAAGaAQAAAAAefbjOAAADGUlEQVR4nO2bS2rkMBCGvxoZspQhB8hR5JsNOVJuYB9lDhCwlw02/ywkP7qZTSaJu2OXFg1+fLgE1fWWiQ+v7tfHGXDIIYcccsghh44JWVkVMFT5iTVMZlZPBsP8QnMX8RzaH0qSpB7oXi4GTKZ2eJJagqwhSJJ0De0nnkP7QcUgMNSQ3sCIQZbengXxYoAhBjAI4+7iOfQA0GCmNl4Mhgq1ccSa7/mSQ48IVf+6aQCWWmHwJBi+4EsO/SwoSmqXu0mSXs1M6qccT0oab6H9xHNob6gzM7MaSH0QDBX2uy9BJTDlVONe4jm0t9fYlLK7OuRQEpiMrsZ09cKu4jm0O0TOKlMPQMjpJhAEcSRnpOtTSVL74Hty6DPQrBGScjAhjaiNpfaQL9VDVpXkGnF0iPK/70MxFGktRMXyoChDP7/sGnFkaLERIxDXHxXXkbJPKZ7ENeL40NZGlOhhMRlrurmoinuNw0OzRqhYhuIm4pgDhxxRpB5ytcI14vDQHBrAklIsK5Zok5KEeBxxBmjJPoubUBtVbERRlbAUMz2OOAO0iSyzFWiBXIpoCaVDvoQQ7jWOD5VOV1e/Y8T3ypIAhidZ6muDOFZiqFBn3g0/AzQ7hzjCkmtkk5Hzjzmy9HrESaBN9rnVjcVNAKx5qGvEqaC5uxlKAbvNEzMSXQ2wzs78nD059PG15hqlmxHnZJSluVFiTO9rnAqajPSnYk4uJLVMlvUFyCO5RVV+yp4c+gwUZPZyMTozmydmIE/REC9mzVBhzb3Ec2gvaDMfsS1E9VfzEXlFr0ecAVr6GmWV6mUf5jSjh00D1DXi8FCuUM0DlGEUXPIsHcR+fjA85/RTe4vn0O7QZobqZmymZBjaVia8HnF86PZMF0RBZ0DSlMsT1hlAfJ9ffvA9OfSlUFdPZk0c0as9qZzuilLudTT3Fs+h74a2s9hp4zVG1lCytDR674afAZodQRQwQD6b0RkIRtTVPepehEHYXzyHdofYVCXX3mdeUWU+IrdCNXpkeQLo9kyXri+L8VhP9fz/lxxyyCGHHHLIoaNBfwELY5XGXEyB7gAAAABJRU5ErkJggg=="/><div class="pdf-side-qr-label">Lecții de istorie</div></div><div class="pdf-side-qr-card"><img alt="Cod QR către Exerciții digitale" class="pdf-side-qr-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZoAAAGaAQAAAAAefbjOAAAC9ElEQVR4nO2cy23cMBCGvwkF5CgBKcClcDtITSnJHaxKcQEGqLuEPweSeqxzcRbQCtLo4qWsDyChwTz+mV0T3776H99nwCGHHHLIIYccOidk5Wryp3zvxmR2YzIY6gO3l2zPof2hKElKQExgt6FBf7ogGBqAIEnSFtpvew7tBzXl79BBfAf1XRjpO4z40YwAWHwHgzDuvj2Hdoeah7XF1BlRUyOGydS/jY+PHP5MDj0DPb5uMYD6Lik7hZiQvW57Dr0MaiXdAfoOgMmgHeclSBofof2259BuUPERffYDAYvp12jx46csvjejlWRi2viJg5/JoWcgtL3qvRFoR0r9sX3mfvAzOfQMlC2CmEB3QHfCvAzSPZtF+ZRtwy3izFCOGurfhNEmjPbTypLJFNMEMJmKMrHv9hx6EWQ3JtN9MCN+1BcfU1DWMW+A3VrPLK8AlTwixwqNJVZIIzlMQFAJJ63nEVeA5syyOoCokjgQl3KzlUqi6RZxEai3n9K9lYAgs27OMXPeOVmuOl60PYdeUGuUCiPrUotgFVOYW2DBo8YFoFX1WUpLwiZCLHkEbhFXgFbVJ72FkVx9/g5Zq8olKIRxLVoe/EwOPQOtM8tY40d2CovzoPoNV6jOD9XgUJPKeq8WHHOZkXVMjxqnh1jPRrVS8QLVQIqAXdUK9xHnh2rUSGHlI0r82DiKpRh1izg1VNMFzcGhtj1LwIDS6SqqlVvEyaFVZpkFCFplAaJIUm3Rs5fk0y3i1NAsO1BffNpklkWXqqqVZ5anhx7nI2rUmBsZqT7omeU1oK8zVDVMLK3QmmW4j7gCtKk+WcJEiSRViqi9creIq0BRJZ+kf1smsGuTK09lm89QXQHadLqqgM1KvUz1wVUz7OBncugZ6F/f6QLaBLSfpQ8GU6P5mxuHP5NDz0CPPqLcm5dxrkTk8xGXgFaa5fLOV5MSi4QZl38c/EwOPQN9rTXy0O1GtcpTND4xcwnI/JfJHHLIIYcccsih/4T+AnmB6ePK0vorAAAAAElFTkSuQmCC"/><div class="pdf-side-qr-label">Exerciții digitale</div></div></div></div>
+<div class="link-buttons screen-only history-link-buttons">
+<a href="istorie-lectii.html" target="_blank">
                 Lecții de istorie
               </a>
-
-              <a href="istorie-evaluare.html" target="_blank">
+<a href="istorie-evaluare.html" target="_blank">
                 Exerciții digitale
               </a>
-
-              <div class="grade-popover">
-                <a
-                  class="grade-trigger"
-                  href="#"
-                  role="button"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                  aria-controls="grade-menu"
-                >
+<div class="grade-popover">
+<a aria-controls="grade-menu" aria-expanded="false" aria-haspopup="true" class="grade-trigger" href="#" role="button">
                   Grade didactice
                 </a>
-
-                <div id="grade-menu" class="grade-menu" hidden>
-                  <a
-                    class="grade-result-link"
-                    href="https://definitivat.edu.ro/2026/generated/files/j/index.html#B"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+<div class="grade-menu" hidden="" id="grade-menu">
+<a class="grade-result-link" href="https://definitivat.edu.ro/2026/generated/files/j/index.html#B" rel="noopener noreferrer" target="_blank">
                     Definitivat (2026): 9.95
                   </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="timeline-date">01/09/2023 – În curs</div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-org">Companii din domeniul tehnologiei informației</div>
-        <div class="timeline-content">
-          <div class="timeline-main">
-            <h3>Revizor digital</h3>
-            <p>Am monitorizat conținutul platformelor media aparținând companiilor contractuale, identificând și înregistrând încălcările regulamentelor în aplicațiile de lucru, iar astfel am contribuit la oferirea unei experiențe sigure și plăcute pentru utilizatori.</p>
-          </div>
-          <div class="timeline-date">01/2023 – 03/2023</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="card">
-    <h2 class="section-title">FORMARE PROFESIONALĂ</h2>
-
-    <div class="timeline">
-
-      <div class="timeline-item">
-        <div class="timeline-org">ISRA Center Marketing Research</div>
-        <div class="timeline-content">
-          <div class="timeline-main">
-            <h3>Stagiar</h3>
-            <p>Am desfășurat activități de cercetare în cadrul departamentului de studii calitative, atribuțiile mele constând în analizarea datelor furnizate prin intermediul discuțiilor de grup, precum și în sintetizarea și interpretarea informațiilor, respectiv în raportarea și prezentarea concluziilor.</p>
-          </div>
-          <div class="timeline-date">06/2023 – 07/2023</div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-org">Little London International Academy - Consiliere Psihologică</div>
-        <div class="timeline-content">
-          <div class="timeline-main">
-            <h3>Stagiar</h3>
-            <p>Am desfășurat activități pentru aprofundarea rolului consilierului psihologic în vederea optimizării și dezvoltării personale a elevilor. Munca mea s-a concretizat în elaborarea și aplicarea unor proiecte de lecție și activități de grup cu caracter interactiv.</p>
-          </div>
-          <div class="timeline-date">12/2021 – 01/2022</div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-org">Consiliul Național pentru Studierea Arhivelor Comunismului</div>
-        <div class="timeline-content">
-          <div class="timeline-main">
-            <h3>Stagiar</h3>
-            <p>Prin intermediul experienței din cadrul CNSAS am deprins noi cunoștinţe despre accesarea și cercetarea fondului documentar redactat în timpul regimului comunist.</p>
-          </div>
-          <div class="timeline-date">07/2019 – 08/2019</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="card">
-    <h2 class="section-title">FORMARE MILITARĂ</h2>
-
-    <div class="timeline">
-
-      <div class="timeline-item">
-        <div class="timeline-org">Academia de Poliție "Alexandru Ioan Cuza"</div>
-        <div class="timeline-content">
-          <div class="timeline-main">
-            <h3>Responsabil BDS</h3>
-            <p>Am participat ca student la activităţi specifice profilului unității de învățământ (instruire, misiuni pe linia ordinii și siguranţei publice). De asemenea, am îndeplinit în toată această perioadă funcţia de responsabil BDS (Bibliotecă și Documente Secrete).</p>
-          </div>
-          <div class="timeline-date">10/2018 – 07/2022</div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-org">Inspectoratul General pentru Situații de Urgență - Serviciul Juridic</div>
-        <div class="timeline-content">
-          <div class="timeline-main">
-            <h3>Stagiar</h3>
-            <p>În cadrul stagiului efectuat la Serviciul Juridic al IGSU am dobândit noţiuni de reprezentare și consultanţă juridică (apărarea intereselor instituţiei în instanţa de judecată, încheierea contractelor de achiziţii, elaborarea unor proiecte de acte normative, avizarea pentru legalitate a actelor juridice).</p>
-          </div>
-          <div class="timeline-date">02/2022 – 03/2022</div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-org">Direcția Generală de Poliție București - Investigații Criminale</div>
-        <div class="timeline-content">
-          <div class="timeline-main">
-            <h3>Stagiar</h3>
-            <p>Am luat parte la activităţile de urmărire penală, asistând alături de organele de cercetare la punerea în executare a mandatelor penale emise de autoritățile judiciare, la elaborarea actelor procedurale și la desfășurarea unor acţiuni specifice poliției judiciare (arestări, percheziţii, audieri, reconstituiri).</p>
-          </div>
-          <div class="timeline-date">02/2020 – 03/2020</div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-org">Direcția Generală de Poliție București - Ordine Publică</div>
-        <div class="timeline-content">
-          <div class="timeline-main">
-            <h3>Stagiar</h3>
-            <p>Am participat la activitățile de menținere a ordinii și siguranței publice, asistând echipajele în misiuni de patrulare, prevenire a incidentelor și gestionare a situațiilor de tulburare a liniștii publice. Experiența mi-a oferit o perspectivă practică asupra aplicării măsurilor de ordine publică în mediul urban.</p>
-          </div>
-          <div class="timeline-date">02/2019 – 03/2019</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="card">
-    <h2 class="section-title">EDUCAȚIE</h2>
-
-    <div class="timeline">
-
-      <div class="timeline-item compact">
-        <div class="timeline-content">
-          <div class="timeline-main">
-            <h3>Master în Comportament Organizațional și Consiliere Psihologică</h3>
-            <p>Universitatea din București</p>
-          </div>
-          <div class="timeline-date">2025 – Prezent</div>
-        </div>
-      </div>
-
-      <div class="timeline-item compact">
-        <div class="timeline-content">
-          <div class="timeline-main">
-            <h3>Master în Didactica Istoriei</h3>
-            <p>Universitatea din București</p>
-          </div>
-          <div class="timeline-date">2024 – 2026</div>
-        </div>
-      </div>
-
-      <div class="timeline-item compact">
-        <div class="timeline-content">
-          <div class="timeline-main">
-            <h3>Master în Istoria Ideilor, Mentalităților și Culturii de Masă</h3>
-            <p>Universitatea din București</p>
-          </div>
-          <div class="timeline-date">2022 – 2024</div>
-        </div>
-      </div>
-
-      <div class="timeline-item compact">
-        <div class="timeline-content">
-          <div class="timeline-main">
-            <h3>Licență în Psihologie</h3>
-            <p>Universitatea din București</p>
-          </div>
-          <div class="timeline-date">2020 – 2023</div>
-        </div>
-      </div>
-
-      <div class="timeline-item compact">
-        <div class="timeline-content">
-          <div class="timeline-main">
-            <h3>Licență în Drept</h3>
-            <p>Academia de Poliție "Alexandru Ioan Cuza"</p>
-          </div>
-          <div class="timeline-date">2018 – 2022</div>
-        </div>
-      </div>
-
-      <div class="timeline-item compact">
-        <div class="timeline-content">
-          <div class="timeline-main">
-            <h3>Licență în Istorie</h3>
-            <p>Universitatea din București</p>
-          </div>
-          <div class="timeline-date">2017 – 2020</div>
-        </div>
-      </div>
-
-      <div class="timeline-item compact">
-        <div class="timeline-content">
-          <div class="timeline-main">
-            <h3>Bacalaureat</h3>
-            <p>Colegiul Național "Mircea cel Bătrân"</p>
-          </div>
-          <div class="timeline-date">2013 – 2017</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="card">
-    <h2 class="section-title">CURSURI COMPLEMENTARE</h2>
-
-    <div class="simple-rows">
-      <div class="simple-row">
-        <div class="simple-left"><strong>Module de perfecționare specifice activității didactice</strong></div>
-        <div class="simple-right">2023 – 2025</div>
-      </div>
-
-      <div class="simple-row">
-        <div class="simple-left"><strong>Module de pregătire psihopedagogică (Istorie și Psihologie)</strong></div>
-        <div class="simple-right">2020 – 2023</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="card">
-    <h2 class="section-title">COMPETENȚE LINGVISTICE</h2>
-
-    <h4 class="small-heading">Altă limbă (Alte limbi)</h4>
-
-    <div class="table-wrap">
-      <table class="lang-table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Comprehensiune orală</th>
-            <th>Citit</th>
-            <th>Conversație</th>
-            <th>Producerea de mesaje orale</th>
-            <th>Scris</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="lang-name">Engleză</td>
-            <td><strong>B2:</strong> Utilizator independent</td>
-            <td><strong>B2:</strong> Utilizator independent</td>
-            <td><strong>B2:</strong> Utilizator independent</td>
-            <td><strong>B2:</strong> Utilizator independent</td>
-            <td><strong>B2:</strong> Utilizator independent</td>
-          </tr>
-          <tr>
-            <td class="lang-name">Italiană</td>
-            <td><strong>A2:</strong> Utilizator de bază</td>
-            <td><strong>A2:</strong> Utilizator de bază</td>
-            <td><strong>A2:</strong> Utilizator de bază</td>
-            <td><strong>A2:</strong> Utilizator de bază</td>
-            <td><strong>A2:</strong> Utilizator de bază</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section class="card">
-    <h2 class="section-title">COMPETENȚE</h2>
-
-    <h4 class="skill-heading">Utilizator avansat</h4>
-
-    <div class="skills-tags">
-      <span>AI Apps (ChatGPT, Gemini, Perplexity)</span>
-      <span>School Apps (Kahoot, Wordwall, LearningApps)</span>
-      <span>E-learning (Google Classroom, Microsoft Teams)</span>
-      <span>Microsoft Office (Word, Excel, PowerPoint)</span>
-      <span>Baze de date (ProQuest, Elsevier, JSTOR)</span>
-      <span>Reference Tools (Mendeley, Zotero)</span>
-      <span>Grafică (Canva, CapCut, Inkarnate, Drawio)</span>
-      <span>Social Media (Facebook, Instagram, YouTube)</span>
-      <span>Content Strategy (TikTok 25.000+ urmăritori)</span>
-    </div>
-
-    <h4 class="skill-heading beginner-heading">Utilizator începător</h4>
-
-    <div class="skills-tags">
-      <span>Statistică (SPSS Statistics, Jamovi, RStudio, Gephi)</span>
-      <span>Editare video (DaVinci Resolve)</span>
-      <span>Programming Tools (GitHub, Codex)</span>
-    </div>
-  </section>
-
-  <section class="card">
-    <h2 class="section-title">PUBLICAȚII</h2>
-
-    <div class="publication">
-      <h3>Newsletter Asociația Psihologilor din România (contributor)</h3>
-      <p>
+</div>
+</div>
+</div>
+</div>
+<div class="timeline-date">01/09/2023 – În curs</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-org">Companii din domeniul tehnologiei informației</div>
+<div class="timeline-content">
+<div class="timeline-main">
+<h3>Revizor digital</h3>
+<p>Am monitorizat conținutul platformelor media aparținând companiilor contractuale, identificând și înregistrând încălcările regulamentelor în aplicațiile de lucru, iar astfel am contribuit la oferirea unei experiențe sigure și plăcute pentru utilizatori.</p>
+</div>
+<div class="timeline-date">01/2023 – 03/2023</div>
+</div>
+</div>
+</div>
+</section>
+<section class="card" id="formare-profesionala">
+<h2 class="section-title">FORMARE PROFESIONALĂ</h2>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-org">ISRA Center Marketing Research</div>
+<div class="timeline-content">
+<div class="timeline-main">
+<h3>Stagiar</h3>
+<p>Am desfășurat activități de cercetare în cadrul departamentului de studii calitative, atribuțiile mele constând în analizarea datelor furnizate prin intermediul discuțiilor de grup, precum și în sintetizarea și interpretarea informațiilor, respectiv în raportarea și prezentarea concluziilor.</p>
+</div>
+<div class="timeline-date">06/2023 – 07/2023</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-org">Little London International Academy - Consiliere Psihologică</div>
+<div class="timeline-content">
+<div class="timeline-main">
+<h3>Stagiar</h3>
+<p>Am desfășurat activități pentru aprofundarea rolului consilierului psihologic în vederea optimizării și dezvoltării personale a elevilor. Munca mea s-a concretizat în elaborarea și aplicarea unor proiecte de lecție și activități de grup cu caracter interactiv.</p>
+</div>
+<div class="timeline-date">12/2021 – 01/2022</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-org">Consiliul Național pentru Studierea Arhivelor Comunismului</div>
+<div class="timeline-content">
+<div class="timeline-main">
+<h3>Stagiar</h3>
+<p>Prin intermediul experienței din cadrul CNSAS am deprins noi cunoștinţe despre accesarea și cercetarea fondului documentar redactat în timpul regimului comunist.</p>
+</div>
+<div class="timeline-date">07/2019 – 08/2019</div>
+</div>
+</div>
+</div>
+</section>
+<section class="card" id="formare-militara">
+<h2 class="section-title">FORMARE MILITARĂ</h2>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-org">Academia de Poliție "Alexandru Ioan Cuza"</div>
+<div class="timeline-content">
+<div class="timeline-main">
+<h3>Responsabil BDS</h3>
+<p>Am participat ca student la activităţi specifice profilului unității de învățământ (instruire, misiuni pe linia ordinii și siguranţei publice). De asemenea, am îndeplinit în toată această perioadă funcţia de responsabil BDS (Bibliotecă și Documente Secrete).</p>
+</div>
+<div class="timeline-date">10/2018 – 07/2022</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-org">Inspectoratul General pentru Situații de Urgență - Serviciul Juridic</div>
+<div class="timeline-content">
+<div class="timeline-main">
+<h3>Stagiar</h3>
+<p>În cadrul stagiului efectuat la Serviciul Juridic al IGSU am dobândit noţiuni de reprezentare și consultanţă juridică (apărarea intereselor instituţiei în instanţa de judecată, încheierea contractelor de achiziţii, elaborarea unor proiecte de acte normative, avizarea pentru legalitate a actelor juridice).</p>
+</div>
+<div class="timeline-date">02/2022 – 03/2022</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-org">Direcția Generală de Poliție București - Investigații Criminale</div>
+<div class="timeline-content">
+<div class="timeline-main">
+<h3>Stagiar</h3>
+<p>Am luat parte la activităţile de urmărire penală, asistând alături de organele de cercetare la punerea în executare a mandatelor penale emise de autoritățile judiciare, la elaborarea actelor procedurale și la desfășurarea unor acţiuni specifice poliției judiciare (arestări, percheziţii, audieri, reconstituiri).</p>
+</div>
+<div class="timeline-date">02/2020 – 03/2020</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-org">Direcția Generală de Poliție București - Ordine Publică</div>
+<div class="timeline-content">
+<div class="timeline-main">
+<h3>Stagiar</h3>
+<p>Am participat la activitățile de menținere a ordinii și siguranței publice, asistând echipajele în misiuni de patrulare, prevenire a incidentelor și gestionare a situațiilor de tulburare a liniștii publice. Experiența mi-a oferit o perspectivă practică asupra aplicării măsurilor de ordine publică în mediul urban.</p>
+</div>
+<div class="timeline-date">02/2019 – 03/2019</div>
+</div>
+</div>
+</div>
+</section>
+<section class="card" id="educatie">
+<h2 class="section-title">EDUCAȚIE</h2>
+<div class="timeline">
+<div class="timeline-item compact">
+<div class="timeline-content">
+<div class="timeline-main">
+<h3>Master în Comportament Organizațional și Consiliere Psihologică</h3>
+<p>Universitatea din București</p>
+</div>
+<div class="timeline-date">2025 – Prezent</div>
+</div>
+</div>
+<div class="timeline-item compact">
+<div class="timeline-content">
+<div class="timeline-main">
+<h3>Master în Didactica Istoriei</h3>
+<p>Universitatea din București</p>
+</div>
+<div class="timeline-date">2024 – 2026</div>
+</div>
+</div>
+<div class="timeline-item compact">
+<div class="timeline-content">
+<div class="timeline-main">
+<h3>Master în Istoria Ideilor, Mentalităților și Culturii de Masă</h3>
+<p>Universitatea din București</p>
+</div>
+<div class="timeline-date">2022 – 2024</div>
+</div>
+</div>
+<div class="timeline-item compact">
+<div class="timeline-content">
+<div class="timeline-main">
+<h3>Licență în Psihologie</h3>
+<p>Universitatea din București</p>
+</div>
+<div class="timeline-date">2020 – 2023</div>
+</div>
+</div>
+<div class="timeline-item compact">
+<div class="timeline-content">
+<div class="timeline-main">
+<h3>Licență în Drept</h3>
+<p>Academia de Poliție "Alexandru Ioan Cuza"</p>
+</div>
+<div class="timeline-date">2018 – 2022</div>
+</div>
+</div>
+<div class="timeline-item compact">
+<div class="timeline-content">
+<div class="timeline-main">
+<h3>Licență în Istorie</h3>
+<p>Universitatea din București</p>
+</div>
+<div class="timeline-date">2017 – 2020</div>
+</div>
+</div>
+<div class="timeline-item compact">
+<div class="timeline-content">
+<div class="timeline-main">
+<h3>Bacalaureat</h3>
+<p>Colegiul Național "Mircea cel Bătrân"</p>
+</div>
+<div class="timeline-date">2013 – 2017</div>
+</div>
+</div>
+</div>
+</section>
+<section class="card compact-third-page" id="cursuri-complementare">
+<h2 class="section-title">CURSURI COMPLEMENTARE</h2>
+<div class="simple-rows">
+<div class="simple-row">
+<div class="simple-left"><strong>Module de perfecționare specifice activității didactice</strong></div>
+<div class="simple-right">2023 – 2025</div>
+</div>
+<div class="simple-row">
+<div class="simple-left"><strong>Module de pregătire psihopedagogică (Istorie și Psihologie)</strong></div>
+<div class="simple-right">2020 – 2023</div>
+</div>
+</div>
+</section>
+<section class="card compact-third-page">
+<h2 class="section-title">COMPETENȚE LINGVISTICE</h2>
+<h4 class="small-heading">Altă limbă (Alte limbi)</h4>
+<div class="table-wrap">
+<table class="lang-table">
+<thead>
+<tr>
+<th></th>
+<th>Comprehensiune orală</th>
+<th>Citit</th>
+<th>Conversație</th>
+<th>Producerea de mesaje orale</th>
+<th>Scris</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="lang-name">Engleză</td>
+<td><strong>B2:</strong> Utilizator independent</td>
+<td><strong>B2:</strong> Utilizator independent</td>
+<td><strong>B2:</strong> Utilizator independent</td>
+<td><strong>B2:</strong> Utilizator independent</td>
+<td><strong>B2:</strong> Utilizator independent</td>
+</tr>
+<tr>
+<td class="lang-name">Italiană</td>
+<td><strong>A2:</strong> Utilizator de bază</td>
+<td><strong>A2:</strong> Utilizator de bază</td>
+<td><strong>A2:</strong> Utilizator de bază</td>
+<td><strong>A2:</strong> Utilizator de bază</td>
+<td><strong>A2:</strong> Utilizator de bază</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="card compact-third-page" id="competente-section">
+<h2 class="section-title">COMPETENȚE</h2>
+<h4 class="skill-heading">Utilizator avansat</h4>
+<div class="skills-tags">
+<span>AI Apps (ChatGPT, Gemini, Perplexity)</span>
+<span>School Apps (Kahoot, Wordwall, LearningApps)</span>
+<span>E-learning (Google Classroom, Microsoft Teams)</span>
+<span>Microsoft Office (Word, Excel, PowerPoint)</span>
+<span>Baze de date (ProQuest, Elsevier, JSTOR)</span>
+<span>Reference Tools (Mendeley, Zotero)</span>
+<span>Grafică (Canva, CapCut, Inkarnate, Drawio)</span>
+<span>Social Media (Facebook, Instagram, YouTube)</span>
+<span>Content Strategy (TikTok 25.000+ urmăritori)</span>
+</div>
+<h4 class="skill-heading beginner-heading">Utilizator începător</h4>
+<div class="skills-tags">
+<span>Statistică (SPSS Statistics, Jamovi, RStudio, Gephi)</span>
+<span>Editare video (DaVinci Resolve)</span>
+<span>Programming Tools (GitHub, Codex)</span>
+</div>
+</section>
+<section class="card compact-third-page" id="publicatii">
+<h2 class="section-title">PUBLICAȚII</h2><div class="publication">
+<h3>Newsletter Asociația Psihologilor din România (contributor)</h3>
+<p>
         Contribui la redactarea de materiale publicate pe platforma APSI, abordând teme din domeniul
         psihologiei clinice, educaționale și sociale. Articolele mele urmăresc să explice concepte
         teoretice într-un limbaj accesibil, dar riguros, și să ofere cititorilor instrumente practice
         pentru înțelegerea și gestionarea unor probleme actuale.
       </p>
-
-      <div class="link-buttons">
-        <a href="https://newsletter.apsi.ro/" target="_blank">
+<div class="link-buttons screen-only">
+<a href="https://newsletter.apsi.ro/" target="_blank">
           Newsletter APSI
         </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="card">
-    <h2 class="section-title">PROIECTE ONLINE</h2>
-
-    <div class="publication">
-      <h3>TikTok Historical Horror Stories (autor)</h3>
-      <p>
+</div>
+</div>
+</section>
+<section class="card compact-third-page" id="proiecte-online">
+<h2 class="section-title">PROIECTE ONLINE</h2><div class="publication screen-only">
+<h3>TikTok Historical Horror Stories (autor)</h3>
+<p>
         Postez ocazional pe tema imaginarului istoric: creaturi mitologice, povești din folclor
         și istoria religiilor. Creez, pe baza unei bibliografii relevante, scurte povești pe care
         le însoțesc cu imagini generate de inteligența artificială.
       </p>
-
-      <div class="link-buttons">
-        <a href="https://www.tiktok.com/@marin_gabriel_mcmxcviii?_t=8p7JwmWvHNJ&_r=1" target="_blank">
+<div class="link-buttons">
+<a href="https://www.tiktok.com/@marin_gabriel_mcmxcviii?_t=8p7JwmWvHNJ&amp;_r=1" target="_blank">
           TikTok Istorie
         </a>
-      </div>
-    </div>
-
-    <div class="publication">
-      <h3>TikTok Psihologia desenelor animate (autor)</h3>
-      <p>
+</div>
+</div><div class="publication screen-only">
+<h3>TikTok Psihologia desenelor animate (autor)</h3>
+<p>
         Postez scurte interpretări și profiluri psihologice ale unor personaje din desene animate,
         utilizând concepte din psihologia clinică, dinamică și de dezvoltare. Proiectul își propune
         să explice motivații, mecanisme de apărare și tipare de comportament într-un limbaj captivant
         și ușor de înțeles pentru publicul larg.
       </p>
-
-      <div class="link-buttons">
-        <a href="https://www.tiktok.com/@psihologia.desenelor?_r=1&_t=ZN-97YoKnY4X2s" target="_blank">
+<div class="link-buttons">
+<a href="https://www.tiktok.com/@psihologia.desenelor?_r=1&amp;_t=ZN-97YoKnY4X2s" target="_blank">
           TikTok Psihologie
         </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="card">
-    <h2 class="section-title">HOBBY-URI ȘI TEME DE INTERES</h2>
-
-    <div class="publication hobby-block">
-      <h3>Arte marțiale</h3>
-      <p>
+</div>
+</div><div class="two-col-grid projects-two-col-grid pdf-only"><div class="publication">
+<h3>TikTok Historical Horror Stories (autor)</h3>
+<p class="screen-only">
+        Postez ocazional pe tema imaginarului istoric: creaturi mitologice, povești din folclor
+        și istoria religiilor. Creez, pe baza unei bibliografii relevante, scurte povești pe care
+        le însoțesc cu imagini generate de inteligența artificială.
+      </p><div class="pdf-only pdf-side-layout one-qr"><div class="pdf-side-text"><p>Postez ocazional pe tema imaginarului istoric: creaturi mitologice, povești din folclor
+        și istoria religiilor. Creez, pe baza unei bibliografii relevante, scurte povești pe care
+        le însoțesc cu imagini generate de inteligența artificială.</p></div><div class="pdf-side-single-qr"><div class="pdf-side-qr-card"><img alt="Cod QR către TikTok Istorie" class="pdf-side-qr-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAcIAAAHCAQAAAABUY/ToAAADhklEQVR4nO2cTW6jQBCFXw1IWcINfBS4WZSbmaNwA1haauvNoqqbxoo3UdAYz6sVDvkELZWqX/00RvzMpj8/BAGRIkWKFClSpMjXIy2sBbCamfV3w2Rm+SfyDTOz8R+/rciXJAeS5ALY2CWQ80fR2g3JuYWNaEiS3JM/f6bINyPXEl/WFpj6u2FYALM+/AoAEKHql54p8k3JqW+IgQmYLgm8dgmYeoDX454p8q1IXrsEGwHY59zCPpe7xSZ32DNFnpvMW1NHACuAYW4TsfYg1iZhsoYGNL6Z1QXJc61T5OHkZJF+2QjARjT0q88FwLAAAO6elv3WM0W+CelxqIov0yWBwM2A7macLgl+tY9CZ1unyONIeLoeuX3DHHMA/+m5fbm6ZoLXc61T5HFk9ghENlb7S8fiUuUnk3xI5IPVPrQA5AIAXQ5L6MgtrSeZoiApHxKZzX2ISylCd7kqNGw33JsSgC5vfPIhkTvSUzJPutaPon3uZmOX4HXqYf5gXWg84zpFHkEit8Cy4gkRnW8PS0MPSxGgIm4pDoksFh6R9bNHmoF533Jl5CooHEl7mci9RW6/IAugTTXvc7XwsEZxSOSDVXsZly0OFenchQ/FjQWKQyIfbMvGIukqGX1Vcsx33c0Uh0R+SzYEVjMfHfKrS0wNYZhbkLOZlUbaadcp8iCS19WskkKhke4WIQiA2SWBX8WvTrlOkUeQVV62KR5XQUUKRVqP0j7TXiaytoe8zP2Fno3V04tV+i8fErmz3C/LrbLwpuTlxagxYmukqT4k8tEiDpUNzbMxRjDKNUZWGZrikMi9sVj8oWM1axZCKeshqm8v8glpI+4WvuEZWrQ5ANwt/qW7eUc2NNIZ1ynyCLLS1I+d1uJIroeuQBZKikMia/suL8sutfXLgJBCi/Iykc/IhvmAfYvcsk/gdW1h1jcE1jgwbeO/f1uRL0RWmnoT1jkli4mPbaxxq2IrDonck9t3P0jGOVfft76s9RHGCFAoJ17PuE6RB5IeXxYAvqv1Dc2sjTOK6G5V5+y3ninyTcidpi5jQijjZ6Vz5lYSNu1lIp+S4SUJmCym830cn0tDfl1ip3uRtxX5kmR3i++gobsZhrn1sY98uEPn7UU+IXMpEVOPHIyWqE6Tc+vq2uyi76CJfLS6VYammv3Y5qlzWl+m86WHRFZm+sa5SJEiRYoUKfI/J/8CIcdQJuHUxtkAAAAASUVORK5CYII="/><div class="pdf-side-qr-label">TikTok Istorie</div></div></div></div>
+<div class="link-buttons screen-only">
+<a href="https://www.tiktok.com/@marin_gabriel_mcmxcviii?_t=8p7JwmWvHNJ&amp;_r=1" target="_blank">
+          TikTok Istorie
+        </a>
+</div>
+</div><div class="publication">
+<h3>TikTok Psihologia desenelor animate (autor)</h3>
+<p class="screen-only">
+        Postez scurte interpretări și profiluri psihologice ale unor personaje din desene animate,
+        utilizând concepte din psihologia clinică, dinamică și de dezvoltare. Proiectul își propune
+        să explice motivații, mecanisme de apărare și tipare de comportament într-un limbaj captivant
+        și ușor de înțeles pentru publicul larg.
+      </p><div class="pdf-only pdf-side-layout one-qr"><div class="pdf-side-text"><p>Postez scurte interpretări și profiluri psihologice ale unor personaje din desene animate,
+        utilizând concepte din psihologia clinică, dinamică și de dezvoltare. Proiectul își propune
+        să explice motivații, mecanisme de apărare și tipare de comportament într-un limbaj captivant
+        și ușor de înțeles pentru publicul larg.</p></div><div class="pdf-side-single-qr"><div class="pdf-side-qr-card"><img alt="Cod QR către TikTok Psihologie" class="pdf-side-qr-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAcIAAAHCAQAAAABUY/ToAAADlklEQVR4nO2cW2rkMBBFb40N/amGLCBLkXeWrdlL6QU02J8BmzsfqpIfyTAQ0vSDWx+i5dbBNhSleslG/EyGPz8EAZEiRYoUKVKkyMcjzaWF2RnAYGbWTWb+7xmwbopV3Z2fVuRDkpkkOQLkxcw+xoYAGloHgH1Z1JAkuSd/fk+RL0KiqEUeAeSxcUXq01wXuOaQoVdF4frnek+RtyPbw9yQ5nKNwNISWCymv3VPkS9O5ksL69DQuulEDNaCHAHrbndPkU9Nhh1KBDD5hMDSAliMQDObD3tj9FzvKfLm5GBmJSRDNUFAQ/sYgeItAUsJy37rniJfhKy+zyqLYXifgeHcgJgWYzFQae8SPdd7irwdGXFZDc6QyIjQ6sAapiUqLhP5DzKsD9bM4vunWZc+DZhasE8kMJl5uuhJ31Pkrcjh3JD91II9Gt+z8uVEYGqB4Qwgj4sVe3X3pxX5UCQ2CcTMGWUAGrJP9IEjEGnIILSXiQzhKn3VHHKuyWpXrvh3hvwhkTvx/NDQNbNlLubZ6ekMA05l3/JpGmFINYh7rvcUeTuy5hivhsEaGhLg+cTpDVYXet5xqsWR53pPkbcj6142owTuSCT78kdc86B/DqdIe5nIrUQ7R0MPyXZekLtCRX1Utxf5nUSeenoDkK5GYAGQxuIFcTDA8qUFS/ao1NDu9bQiH5EMOxRblicQ01x++ZDmTT5bsb3IvbhGlFzQbvNCDN7guA7SIZFbWe1QdCoC7linyElXA1WSRNIhkTtZe2F9yxrDsc5jTSqOgF/jLDsk8iBR64h5rjrkNfrY1byJSHZI5FE2ZQ73jKoJAvZVsgjwFduL3MlaLoMbmdWTjmMermbhFMkOifxKmlkL9qVX6ETky4nWpU8ze/euobLug+r9EHmU1R/aGp6akwYiZ+RBv/JDIo+y2ctyifJDVUqzB1BPwUY5RP6QyK2UWochXUvHB3K/wPLFQKSrwY8FLW1ZduenFfmI5LYHzY3Rtv+epOepvW2/LpQdErkj1+9+YDjX8OvSAkP5FkjDbevQnZ9W5GORu1pqHAby2J61GLt6S1BsL/IorkMjtglExq81GjsQ0iGRVQ46FN+OiXi/B7DrDFFcJvIoRx3q4XWNdYj+2PXYq3RI5CpfvvuRxzPg5zpK0A9i8qjeAKiPUeRB3HUuEonpkk+sXlCuZqkvU9khkasY/7/mW9E3zkWKFClSpEiRL0L+BS4lZF+n3o1WAAAAAElFTkSuQmCC"/><div class="pdf-side-qr-label">TikTok Psihologie</div></div></div></div>
+<div class="link-buttons screen-only">
+<a href="https://www.tiktok.com/@psihologia.desenelor?_r=1&amp;_t=ZN-97YoKnY4X2s" target="_blank">
+          TikTok Psihologie
+        </a>
+</div>
+</div></div>
+</section>
+<section class="card compact-third-page" id="hobby-uri">
+<h2 class="section-title">HOBBY-URI ȘI TEME DE INTERES</h2><div class="publication hobby-block screen-only">
+<h3>Arte marțiale</h3>
+<p>
         Am practicat timp de zece ani arte marțiale și autoapărare. Această experiență
         mi-a dezvoltat nu doar rezistența fizică, ci și echilibrul psihic și autocontrolul.
         Pe lângă disciplină, antrenamentele mi-au cultivat o curiozitate constantă pentru
         culturile orientale.
       </p>
-    </div>
-
-    <div class="publication hobby-block">
-      <h3>Cărți</h3>
-      <p>
+</div><div class="publication hobby-block screen-only">
+<h3>Cărți</h3>
+<p>
         Aprofundez preponderent lucrări de istorie și psihologie, dar îmi arunc adesea
         privirea și asupra altor domenii. Această pasiune îmi cultivă gândirea critică,
         rigoarea intelectuală și capacitatea de sinteză, oferindu-mi un cadru constant
         de reflexie profundă și înțelegere a dinamicii umane.
       </p>
-
-      <div class="hobby-links">
-        <a href="https://www.goodreads.com/friend/i?invite_token=Zjc1Y2MxMDMtYTQ2OC00MTJiLTgzY2UtY2I0NTEzMzVlZGYw" target="_blank" rel="noopener noreferrer">
+<div class="hobby-links">
+<a href="https://www.goodreads.com/friend/i?invite_token=Zjc1Y2MxMDMtYTQ2OC00MTJiLTgzY2UtY2I0NTEzMzVlZGYw" rel="noopener noreferrer" target="_blank">
           Goodreads
         </a>
-      </div>
-    </div>
-
-    <div class="publication hobby-block">
-      <h3>Fotografie</h3>
-      <p>
+</div>
+</div><div class="publication hobby-block screen-only">
+<h3>Fotografie</h3>
+<p>
         Îmi place să surprind dinamica orașului, detaliile arhitecturale și cadrele de stradă.
         Prefer monocromia pentru modul în care pune în evidență formele, contrastele și jocul
         de lumini și umbre și încerc să îmbin această pasiune cu plăcerea pentru explorarea urbană.
       </p>
-
-      <div class="hobby-links">
-        <a href="https://www.instagram.com/gabriel.marin.mcmxcviii?igsh=MWJkdTF5dHF4c3E4bA==" target="_blank">
+<div class="hobby-links">
+<a href="https://www.instagram.com/gabriel.marin.mcmxcviii?igsh=MWJkdTF5dHF4c3E4bA==" target="_blank">
           Instagram
         </a>
-
-        <a href="calatorii.html">
+<a href="calatorii.html">
           Hărți
         </a>
-      </div>
-    </div>
-
-    <div class="publication hobby-block">
-      <h3>Cinema</h3>
-      <p>
+</div>
+</div><div class="publication hobby-block screen-only">
+<h3>Cinema</h3>
+<p>
         Urmăresc regizori cu stiluri vizuale și povești puternice. Îmi plac atât clasicii,
         de la pionierii filmului precum F.W. Murnau și Serghei Eisenstein până la cadrele
         profunde ale lui Andrei Tarkovski sau Ingmar Bergman, cât și abordările moderne
         ale unor regizori ca Stanley Kubrick, Kim Ki-duk sau Quentin Tarantino.
       </p>
-
-      <div class="hobby-links">
-        <a href="https://boxd.it/jVYEh" target="_blank">
+<div class="hobby-links">
+<a href="https://boxd.it/jVYEh" target="_blank">
           Letterboxd
         </a>
-
-        <a href="https://www.imdb.com/user/p.xvuccvzshltcydjgobb74akttu?ref_=ext_shr_lnk" target="_blank">
+<a href="https://www.imdb.com/user/p.xvuccvzshltcydjgobb74akttu?ref_=ext_shr_lnk" target="_blank">
           IMDb
         </a>
-      </div>
-    </div>
-
-  </section>
-
+</div>
+</div><div class="two-col-grid hobby-two-col-grid pdf-only"><div class="publication hobby-block">
+<h3>Arte marțiale</h3>
+<p>
+        Am practicat timp de zece ani arte marțiale și autoapărare. Această experiență
+        mi-a dezvoltat nu doar rezistența fizică, ci și echilibrul psihic și autocontrolul.
+        Pe lângă disciplină, antrenamentele mi-au cultivat o curiozitate constantă pentru
+        culturile orientale.
+      </p>
+</div><div class="publication hobby-block">
+<h3>Cărți</h3>
+<p class="screen-only">
+        Aprofundez preponderent lucrări de istorie și psihologie, dar îmi arunc adesea
+        privirea și asupra altor domenii. Această pasiune îmi cultivă gândirea critică,
+        rigoarea intelectuală și capacitatea de sinteză, oferindu-mi un cadru constant
+        de reflexie profundă și înțelegere a dinamicii umane.
+      </p><div class="pdf-only pdf-side-layout one-qr"><div class="pdf-side-text"><p>Aprofundez preponderent lucrări de istorie și psihologie, dar îmi arunc adesea
+        privirea și asupra altor domenii. Această pasiune îmi cultivă gândirea critică,
+        rigoarea intelectuală și capacitatea de sinteză, oferindu-mi un cadru constant
+        de reflexie profundă și înțelegere a dinamicii umane.</p></div><div class="pdf-side-single-qr"><div class="pdf-side-qr-card"><img alt="Cod QR către Goodreads" class="pdf-side-qr-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeoAAAHqAQAAAADjFjCXAAAEF0lEQVR4nO2dS2rkSBCGvxgJeimBD1BHybpBH6npI/kG0lF8gAJpacgiZpEPpV3QC0mD21N/LAyS8iNLEETGS2FzDsj8zxEahAsXLly4cOHChZ+LW5aefDmCXblbXrX2MI9g17UsvZ63u/Bnw3F3d4K7uy+d+wQQPOK+dE4o99zrko2YvvW7C/8qPFs31hHCK1hIQW3nMEQcIhaWMa2y8AoGXTxnd+HCgXyQmvXYdTVjNrPtQbKE/+Huwp8C7x9v3XvCBMyX2BvDrfd57KKF5d4TXk/dXfhz4kXrBgfWcne2LgKdM//sHLibz+PiBtDmlb/1uwv/KjxHE1ly+PCnP2WpognhuyXZusZ8zSPmEHF4N59HDLgbDO+WbeJpuwt/TrxkThYAOveJrqRFhoj7UtZNQ6RZ57J1wndLVp+kSDGn6qbBPSvcEMshPMR0mc9aaZ3w3ZKtlkf45NelpB1d1r/GufOIbJ3wA5LVZ6hmDmiUKxnBcpllKKoqrRO+S4pfVwLU5LkNrcK5L9mvK8cximGFH5FSX90qsrF5QKixRrV/OmGFnxlNLKRAIukawBZm5N6AoW0BkNYJ3ydtNDFk/UtP8llbO1I8J1KKEyitE75XvEq+MdRU3ce4Nj8tqidbJ3y/bMm4EldA7qob6jGbNLHNJsvWCT8gJXPi/ulesXpbhNEVh0+ZE+En4PZrobhqdG5mZj6tZpD+/Mixxu8RgLs62IUfkZI56R6OT0+1sZIbDiXgQHVY4cfwJkucYoiJkj7ZluSOgFq5cMWwwg9J68MBub7v9XscuvrAmyqtbJ3wA1KyxNCkgLfc8PQxVfIx4JXWCd8nJVVXP0pcOi/uG7W/rpy/6ThWRUz4GXhY7ma/agl2IiucXcnFCLsCKaSdx5o0/it+vPDvhjffTbShwrK1m3RNqrgJJGTrhO+Xx9pE6QPItdnaPLxAboGSXyf8mGzRRJku0VUlLNFsHQXQxLXSOuH7pbVwNVSo7U5N5iR8Mn3SOuG7ZdO1JKGUKjaHj7CUVHESnbDCz8FzbqRMDctDxLZ6RSrV1sUn7y78qfCH7ybqvaa1KTyaPp2wwvdL/fY/4uAYw61Pdi4s974MQLkb4XWEMIE1+Ld+d+FfhSetK4rURWftgeHWw/rixvoS09P54hjrS2zHTnzrdxf+xXiOIfJwWPe3njLYpE7tfLN0mWfFnri78CfF1zpqGDC7uMP6w5mtx65DxH9f3NMQxW2w01/y44V/M/xxauJw6wnTvWe+RGC4mQNYeOujzz9vvbOOJ+0u/DnxR61bf3hx6fpImHALryM+X97NWXtMfp3wY/jjDPbB60exXdOtXqYAaLqO8DN7Tsjl1txa3CoXbfcT+m5C+DHc9N/rhAsXLly4cOHC/xf4v5HvR9KhskR/AAAAAElFTkSuQmCC"/><div class="pdf-side-qr-label">Goodreads</div></div></div></div>
+<div class="hobby-links screen-only">
+<a href="https://www.goodreads.com/friend/i?invite_token=Zjc1Y2MxMDMtYTQ2OC00MTJiLTgzY2UtY2I0NTEzMzVlZGYw" rel="noopener noreferrer" target="_blank">
+          Goodreads
+        </a>
+</div>
+</div><div class="publication hobby-block">
+<h3>Fotografie</h3>
+<p class="screen-only">
+        Îmi place să surprind dinamica orașului, detaliile arhitecturale și cadrele de stradă.
+        Prefer monocromia pentru modul în care pune în evidență formele, contrastele și jocul
+        de lumini și umbre și încerc să îmbin această pasiune cu plăcerea pentru explorarea urbană.
+      </p><div class="pdf-only pdf-side-layout one-qr"><div class="pdf-side-text"><p>Îmi place să surprind dinamica orașului, detaliile arhitecturale și cadrele de stradă.
+        Prefer monocromia pentru modul în care pune în evidență formele, contrastele și jocul
+        de lumini și umbre și încerc să îmbin această pasiune cu plăcerea pentru explorarea urbană.</p></div><div class="pdf-side-single-qr"><div class="pdf-side-qr-card"><img alt="Cod QR către Instagram" class="pdf-side-qr-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAcIAAAHCAQAAAABUY/ToAAADjklEQVR4nO2cXWrrSBCFvxoJ8iiBF5CltHcwS5o1ZQfSUryAAfVjoE3NQ/+o5dyBITfBduach8TI+pAERVfVqZbN+ZzWPz4JgkiRIkWKFClS5OORVjQC0Yx1BlYbsTNXy6ecYz3rfOe7FflYJO7uTnB3923If2BKwJTwhcEJG5Rv28nLcz2nyO8jx/I/zhDewGDA1z8HhzhiAA6lezMY0h3vVuRTkGEDO8cRs9eEuyfMclb7tmuK/Fnk+vpu7v5uhMsI63w1X6b0H8jPX1PkU5M1l00ORID4khOXE4dE2HDgOpZjX3FNkT+SXM3MbKblshe3MzWr/XV5ceCa27L7363IhyJzX7YLJi99WXAvK1JryTqpLxNZVdr1DYDBfZlSjauNXFP7Ari3UxRDIg8qEdHCZwFKSE0lkAie8p8uwhRDIqtqDJWVJi88e2oL2+A5hqinyGMUeVSpghhKKRSaWX2sh8q38qlF3qr17FeDaNkfIpvV89+jE0/JgPItcb7n3Yp8RLLvy5apVUYM1QqqBdD+SfWQyKP2mro2Z1CM6WkfxlKK7db0K4ZENtUlKNX2a2tLUFuMgh88I8WQyF5tbj/ixJOzviZg2rCwADAkI54SxBc34in5/e5W5COSrcRJNYMx1Npng1wjZXtxSn3nr3VIZNWey3Z7sX4a/JDaqpTLRB5UrET35gC14UYzjoptrXpI5C9VY6iuQ/nYRp1rbABdv695mchblZDYBj94QV4nHDmQik+teZnIX6ifdQDddvwcOS2XHROaYkhkU19Tt5UmW47ZfGwbQHYLSTEkslP2hyxcXtzAIFxGLGwnPL/r4dfRwtspv+YBcUb+kMijDsOwWg/l5OVlRXLfVx/V1CI/aA+aPW/lDSBL2w9Cfa+jj6bnek6R30f2MVTCZz82eLcO7e6R1iGRB3X+0HGrWR1zDIeuTblM5Af5USWrTaUlq818e81jcsWQyBtVfwgodjRt/30tosvuouYUKYZE9qq5bDervZu0loTm+0hN9ZDIfyFj/V2hsF2tn69ezMzmq7GaGeFSXoB91ucU+fXkeHtgnTfPVuJqQzKmNDpxhPB2SrbOw+9fU+TPIj/EEICFJY3FrAaHyTGmVN//+M1rivyZZG3E8maP1UZ8md7Lr+rlMQdg573Lf87nFPn15G1fVl3E0pd11bVv/RZ91dQiq0y/cS5SpEiRIkWK/J+T/wCeEqAeCr1VXgAAAABJRU5ErkJggg=="/><div class="pdf-side-qr-label">Instagram</div></div></div></div>
+<div class="hobby-links screen-only">
+<a href="https://www.instagram.com/gabriel.marin.mcmxcviii?igsh=MWJkdTF5dHF4c3E4bA==" target="_blank">
+          Instagram
+        </a>
+</div>
+</div><div class="publication hobby-block">
+<h3>Cinema</h3>
+<p class="screen-only">
+        Urmăresc regizori cu stiluri vizuale și povești puternice. Îmi plac atât clasicii,
+        de la pionierii filmului precum F.W. Murnau și Serghei Eisenstein până la cadrele
+        profunde ale lui Andrei Tarkovski sau Ingmar Bergman, cât și abordările moderne
+        ale unor regizori ca Stanley Kubrick, Kim Ki-duk sau Quentin Tarantino.
+      </p><div class="pdf-only pdf-side-layout one-qr"><div class="pdf-side-text"><p>Urmăresc regizori cu stiluri vizuale și povești puternice. Îmi plac atât clasicii,
+        de la pionierii filmului precum F.W. Murnau și Serghei Eisenstein până la cadrele
+        profunde ale lui Andrei Tarkovski sau Ingmar Bergman, cât și abordările moderne
+        ale unor regizori ca Stanley Kubrick, Kim Ki-duk sau Quentin Tarantino.</p></div><div class="pdf-side-single-qr"><div class="pdf-side-qr-card"><img alt="Cod QR către Letterboxd" class="pdf-side-qr-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUoAAAFKAQAAAABTUiuoAAAB/0lEQVR4nO2aQYrjMBBFX40MvbRhDpCjyDdr5mb2UfoAAXkZcPizkOw43T1DMuBYMKWFSay3+CCq9KvKJh5c449HSXDUUUcdddTRPVErqwG4Wtmbltf97gIcfQaNkqQEZtZg/WQGBEmS7tF9BDj6DDqVEJISaACspxzeSwQ4+i/o2AUxdkEajhHg6J9X8+m/xdQZtGf7UogdrtXRBW2Vg0m/um0mlDS/RoCjD6wSW2P2gQGL6eds8eNNtnGHOwpw9OnTumU9MYHGLgDtfTI8XKujpd7qpyY/GE8z9q6LlY1bgFWi9X9GuVVU+VdMsFxjS70VJWk4XKujiydsz41BmCkPMNoETN2+Ahx9OrYkzWhYI2oAiKl4wgx4bB2P3mXCFERMQZtMOLQzngnrQnOBZaeLMZ4uRkxg7wmA4H3CatCtt8gGAyCmULKjEh5b1aDLpUTJf0smLNcY0e+titBNbOUjy94irfvtYkP8tI5HV0+ozSwrdwejlKPMM2Fd6G12nPPf2AFMzTfoPgIcfQZdZ8cwmd0uL1jLr2q0OrrOju09BVkPMJoZcPXvMqpBP08jBRdj7M4Ncbg2ML15vVUtmj/EiB/NYhE1Y/0LBTj6t7XpsisFZZcBbDyhO/ha0E2fEJZgWjqGWy/vp1UB+nV2zNLLKK+9T+ioo4466mg96G+DH15b3cYUEwAAAABJRU5ErkJggg=="/><div class="pdf-side-qr-label">Letterboxd</div></div></div></div>
+<div class="hobby-links screen-only">
+<a href="https://boxd.it/jVYEh" target="_blank">
+          Letterboxd
+        </a>
+</div>
+</div></div>
+</section>
 </main>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
+  async function downloadCVPDF() {
+    const button = document.getElementById('pdf-download-btn');
+    const buttonText = button ? button.querySelector('.pdf-button-text') : null;
+    const contactDetails = document.getElementById('contact-details');
+    const gradeMenuForPdf = document.getElementById('grade-menu');
+    const previousContactDisplay = contactDetails ? contactDetails.style.display : '';
+
+    if (button) button.disabled = true;
+    if (buttonText) buttonText.textContent = 'Se generează…';
+    if (contactDetails) contactDetails.style.display = 'block';
+    if (gradeMenuForPdf) gradeMenuForPdf.hidden = true;
+    document.body.classList.add('pdf-exporting');
+
+    const options = {
+      margin: [4, 4, 4, 4],
+      filename: 'CV_Gabriel_Marin.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: {
+        scale: 2,
+        useCORS: true,
+        allowTaint: false,
+        logging: false,
+        backgroundColor: '#ffffff',
+        scrollX: 0,
+        scrollY: 0
+      },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+      pagebreak: {
+        mode: ['css', 'legacy'],
+        before: ['#formare-militara'],
+        avoid: ['.timeline-item', '.simple-row', '.publication', '.profile-card', '.pdf-qr-card']
+      }
+    };
+
+    try {
+      if (typeof html2pdf === 'function') {
+        await html2pdf().set(options).from(document.body).save();
+      } else {
+        window.print();
+      }
+    } catch (error) {
+      console.error('Generarea PDF-ului a eșuat. Se deschide dialogul de imprimare.', error);
+      window.print();
+    } finally {
+      document.body.classList.remove('pdf-exporting');
+      if (contactDetails) contactDetails.style.display = previousContactDisplay;
+      if (button) button.disabled = false;
+      if (buttonText) buttonText.textContent = 'Descarcă PDF';
+    }
+  }
+
   function toggleContact() {
     const details = document.getElementById('contact-details');
     const text = document.getElementById('contact-toggle-text');
@@ -564,11 +1693,13 @@
   const gradePopover = document.querySelector('.grade-popover');
   const gradeTrigger = document.querySelector('.grade-trigger');
   const gradeMenu = document.getElementById('grade-menu');
+  const historyLinkButtons = document.querySelector('.history-link-buttons');
 
   if (gradePopover && gradeTrigger && gradeMenu) {
     const closeGradeMenu = () => {
       gradeMenu.hidden = true;
       gradeTrigger.setAttribute('aria-expanded', 'false');
+      if (historyLinkButtons) historyLinkButtons.classList.remove('grade-open');
     };
 
     gradeTrigger.addEventListener('click', (event) => {
@@ -577,6 +1708,7 @@
       const willOpen = gradeMenu.hidden;
       gradeMenu.hidden = !willOpen;
       gradeTrigger.setAttribute('aria-expanded', String(willOpen));
+      if (historyLinkButtons) historyLinkButtons.classList.toggle('grade-open', willOpen);
     });
 
     gradeMenu.addEventListener('click', (event) => {
@@ -597,6 +1729,5 @@
     });
   }
 </script>
-
 </body>
 </html>
