@@ -1,0 +1,2302 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testul grilă CT (varianta B) – Preistoria</title>
+  <style>
+    :root {
+      --bg: #f6f3ef;
+      --panel: #fffaf4;
+      --card: #ffffff;
+      --ink: #25211d;
+      --muted: #6f675d;
+      --line: #e6ded4;
+      --accent: #72462a;
+      --accent-2: #b77c48;
+      --accent-soft: #f1e3d4;
+      --good: #255f3f;
+      --good-soft: #edf6f1;
+      --warn: #8a5a00;
+      --warn-soft: #fff4db;
+      --danger: #9b2c2c;
+      --danger-soft: #f7e6e3;
+      --shadow: 0 18px 50px rgba(74, 52, 33, 0.12);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184, 130, 80, 0.14), transparent 36rem),
+        linear-gradient(180deg, #fbf8f3 0%, var(--bg) 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.58;
+    }
+
+    button, input { font: inherit; }
+    button { -webkit-tap-highlight-color: transparent; }
+
+    .page {
+      width: min(1160px, calc(100% - 104px));
+      margin: 0 auto;
+      padding: 34px 0 82px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 32px;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(255, 250, 244, 0.96), rgba(241, 227, 212, 0.82));
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      right: -145px;
+      top: -205px;
+      background: rgba(122, 78, 45, 0.08);
+      pointer-events: none;
+    }
+
+    .kicker {
+      margin: 0 0 8px;
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 850;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1, h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing: -0.025em;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2.1rem, 4vw, 3.65rem);
+      line-height: 1;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: clamp(1.45rem, 2.5vw, 2.1rem);
+    }
+
+    h3 { margin: 0 0 10px; }
+
+    p { margin: 0 0 12px; }
+    .muted { color: var(--muted); }
+    .section { margin-top: 22px; }
+
+    .card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 10px 30px rgba(74, 52, 33, 0.07);
+    }
+
+    .meta-grid,
+    .student-grid,
+    .stats-grid,
+    .competency-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .meta-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .meta-item {
+      padding: 15px;
+      border: 1px solid rgba(114, 70, 42, 0.12);
+      border-radius: 17px;
+      background: rgba(255, 255, 255, 0.68);
+    }
+
+    .meta-item strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--accent);
+      font-size: 0.8rem;
+      letter-spacing: 0.045em;
+      text-transform: uppercase;
+    }
+
+    .student-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .field { display: grid; gap: 7px; }
+    .required-mark { color: var(--danger); }
+    .form-error {
+      display: none;
+      margin: 14px 0 0;
+      padding: 12px 14px;
+      border: 1px solid rgba(155, 44, 44, 0.28);
+      border-radius: 14px;
+      background: var(--danger-soft);
+      color: var(--danger);
+      font-weight: 800;
+    }
+    .form-error.show { display: block; }
+    .field input.invalid {
+      border-color: var(--danger);
+      box-shadow: 0 0 0 3px rgba(155, 44, 44, 0.12);
+    }
+    .json-export-box {
+      margin-top: 16px;
+      padding: 15px 16px;
+      border: 1px dashed rgba(114, 70, 42, 0.28);
+      border-radius: 16px;
+      background: #fffdf9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+    }
+    .json-export-box p { margin: 3px 0 0; }
+    .json-export-box .btn { flex: 0 0 auto; }
+
+    .field label { font-weight: 800; color: #49382d; }
+    .field input {
+      width: 100%;
+      padding: 12px 13px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      outline: none;
+      background: #fff;
+    }
+    .field input:focus {
+      border-color: var(--accent-2);
+      box-shadow: 0 0 0 3px rgba(183, 124, 72, 0.14);
+    }
+
+    .competency-source {
+      display: block;
+      margin: -22px -22px 18px;
+      padding: 14px 20px;
+      border-radius: 22px 22px 0 0;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    .competency-source:hover { filter: brightness(1.08); }
+
+    details.competencies {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      background: #fffdf9;
+    }
+
+    details.competencies summary {
+      cursor: pointer;
+      padding: 16px 18px;
+      font-weight: 850;
+      color: #3f3026;
+    }
+
+    .competency-details {
+      padding: 0 18px 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    .competency-details h3 {
+      margin: 17px 0 7px;
+      color: var(--accent);
+      font-size: 1rem;
+    }
+
+    .competency-details ul {
+      margin: 0 0 8px 20px;
+      padding: 0;
+      color: var(--muted);
+    }
+
+    .progress-shell {
+      position: fixed;
+      z-index: 40;
+      top: 50%;
+      right: 10px;
+      width: 54px;
+      height: 260px;
+      padding: 11px 9px;
+      border: 1px solid rgba(114, 70, 42, 0.20);
+      border-radius: 20px;
+      background: rgba(255, 250, 244, 0.96);
+      box-shadow: 0 12px 28px rgba(74, 52, 33, 0.13);
+      backdrop-filter: blur(10px);
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+    }
+
+    .progress-head {
+      display: contents;
+      color: #55463b;
+      font-size: 0.72rem;
+      font-weight: 850;
+      line-height: 1;
+      text-align: center;
+    }
+
+    #progressPercent {
+      order: -2;
+      color: var(--accent);
+      font-size: 0.86rem;
+    }
+
+    #progressText {
+      order: 2;
+      white-space: nowrap;
+      font-size: 0.7rem;
+    }
+
+    .bar {
+      height: 10px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #eadfd3;
+    }
+
+    .bar > span {
+      display: block;
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width 0.25s ease;
+    }
+
+    .progress-shell .bar {
+      order: 1;
+      display: flex;
+      width: 11px;
+      height: 182px;
+      flex: 0 0 182px;
+      align-items: flex-end;
+      background: #eadfd3;
+    }
+
+    .progress-shell .bar > span {
+      width: 100%;
+      height: 0;
+      background: linear-gradient(0deg, var(--accent), var(--accent-2));
+      transition: height 0.25s ease;
+    }
+
+    #quizForm {
+      display: grid;
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .question-card {
+      padding: 21px;
+      border: 1px solid var(--line);
+      border-radius: 21px;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(74, 52, 33, 0.055);
+      scroll-margin-top: 100px;
+    }
+
+    .question-card.review-correct { border-color: rgba(37, 95, 63, 0.42); background: #fbfffc; }
+    .question-card.review-wrong { border-color: rgba(155, 44, 44, 0.38); background: #fffafa; }
+    .question-card.review-missing { border-color: rgba(138, 90, 0, 0.38); background: #fffdf7; }
+
+    .question-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 13px;
+    }
+
+    .question-number {
+      display: inline-flex;
+      min-width: 38px;
+      height: 38px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    .question-main { flex: 1; min-width: 0; }
+    .question-title {
+      margin: 0;
+      color: #30261f;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.08rem;
+      line-height: 1.52;
+    }
+
+    .competency-pill,
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 850;
+      line-height: 1.15;
+    }
+
+    .competency-pill {
+      margin-top: 7px;
+      background: #f1ede8;
+      color: #5d554e;
+    }
+
+    .pill.good { background: var(--good-soft); color: var(--good); }
+    .pill.warn { background: var(--warn-soft); color: #76510b; }
+    .pill.danger { background: var(--danger-soft); color: var(--danger); }
+    .pill.neutral { background: #f1ede8; color: #5d554e; }
+
+    .option-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      margin: 7px 0;
+      padding: 11px 12px;
+      border: 1px solid transparent;
+      border-radius: 14px;
+      color: #463a31;
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .option-label:hover { background: #fbf5ee; }
+    .option-label input { margin-top: 4px; accent-color: var(--accent); }
+    .option-text { flex: 1; min-width: 0; }
+
+    .option-label.selected {
+      border-color: rgba(114, 70, 42, 0.24);
+      background: #fbf2e8;
+    }
+
+    .option-label.answer-correct {
+      border-color: rgba(37, 95, 63, 0.32);
+      background: var(--good-soft);
+    }
+
+    .option-label.answer-wrong {
+      border-color: rgba(155, 44, 44, 0.30);
+      background: var(--danger-soft);
+    }
+
+    .review-note {
+      margin: 4px 0 13px;
+      padding: 10px 12px;
+      border-radius: 13px;
+      font-weight: 800;
+      font-size: 0.92rem;
+    }
+
+    .review-note.good { background: var(--good-soft); color: var(--good); }
+    .review-note.warn { background: var(--warn-soft); color: #76510b; }
+    .review-note.danger { background: var(--danger-soft); color: var(--danger); }
+
+    .explanation {
+      margin-top: 15px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fffaf4;
+      color: #4a4038;
+    }
+
+    .explanation p { text-align: justify; }
+    .explanation ul { margin: 9px 0 0 20px; padding: 0; }
+    .explanation li { margin-bottom: 8px; }
+
+    .finish-panel {
+      position: sticky;
+      z-index: 25;
+      bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 18px;
+      padding: 8px 10px;
+      border: 1px solid rgba(114, 70, 42, 0.18);
+      border-radius: 16px;
+      background: rgba(255, 250, 244, 0.96);
+      box-shadow: 0 9px 23px rgba(74, 52, 33, 0.12);
+      backdrop-filter: blur(10px);
+    }
+
+    .finish-panel > .muted {
+      margin: 0;
+      max-width: 620px;
+      font-size: 0.79rem;
+      line-height: 1.25;
+    }
+
+    .finish-panel .actions { gap: 7px; }
+    .finish-panel .btn { padding: 8px 12px; font-size: 0.86rem; }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 11px 16px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      font-weight: 850;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 10px 18px rgba(114, 70, 42, 0.16);
+    }
+
+    .btn:hover { transform: translateY(-1px); filter: brightness(1.04); }
+    .btn.secondary {
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--accent);
+      box-shadow: none;
+    }
+    .btn.soft {
+      background: var(--accent-soft);
+      color: #5b3920;
+      box-shadow: none;
+    }
+    .btn.danger {
+      background: var(--danger);
+      color: white;
+    }
+
+    #resultsSection { display: none; scroll-margin-top: 20px; }
+
+    .results-hero {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(255, 250, 244, 0.98), rgba(241, 227, 212, 0.78));
+      box-shadow: var(--shadow);
+    }
+
+    .result-title-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .score-orb {
+      display: flex;
+      width: 112px;
+      height: 112px;
+      flex: 0 0 112px;
+      align-items: center;
+      justify-content: center;
+      border: 10px solid #eadfd3;
+      border-radius: 50%;
+      background: white;
+      color: var(--accent);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.95rem;
+      font-weight: 900;
+      box-shadow: 0 9px 24px rgba(74, 52, 33, 0.09);
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 18px;
+    }
+
+    .stat {
+      min-height: 126px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fffdf9;
+    }
+
+    .stat .big-number {
+      display: block;
+      margin: 7px 0 4px;
+      color: var(--accent);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.15rem;
+      line-height: 1;
+    }
+
+    .stat strong { color: #4d3b2f; }
+    .stat small { color: var(--muted); }
+
+    .competency-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 15px;
+    }
+
+    .competency-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 220px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 19px;
+      background: #fffdf9;
+    }
+
+    .competency-card .score-line {
+      margin: 10px 0 12px;
+      color: var(--accent);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.05rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .competency-card .bar { margin: 8px 0 13px; }
+    .competency-card p { color: var(--muted); font-size: 0.92rem; }
+
+    .table-wrap {
+      overflow: auto;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: white;
+    }
+
+    table {
+      width: 100%;
+      min-width: 800px;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 12px 13px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #fbf4ec;
+      color: #563820;
+      font-size: 0.8rem;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .report-box {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fffdf9;
+      color: #332d28;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.04rem;
+      line-height: 1.74;
+    }
+
+    .report-box p { text-align: justify; }
+
+    .completion-card {
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(255, 250, 244, 0.99), rgba(241, 227, 212, 0.84));
+      box-shadow: var(--shadow);
+    }
+
+    .completion-card h2 {
+      margin-bottom: 8px;
+      font-size: clamp(2rem, 4vw, 3rem);
+    }
+
+    .completion-score {
+      margin: 0 0 22px;
+      color: #47372d;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+    }
+
+    .completion-score strong {
+      color: var(--accent);
+      font-size: 1.18em;
+    }
+
+    .completion-options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .completion-option {
+      min-height: 92px;
+      padding: 18px 20px;
+      border: 1px solid rgba(114, 70, 42, 0.22);
+      border-radius: 20px;
+      background: #fff;
+      color: #3e2d22;
+      font: inherit;
+      font-size: 1.03rem;
+      font-weight: 850;
+      line-height: 1.35;
+      text-align: left;
+      cursor: pointer;
+      box-shadow: 0 9px 22px rgba(74, 52, 33, 0.07);
+      transition: transform 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
+    }
+
+    .completion-option:hover {
+      transform: translateY(-2px);
+      border-color: rgba(114, 70, 42, 0.42);
+      box-shadow: 0 13px 26px rgba(74, 52, 33, 0.11);
+    }
+
+    .pdf-download-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .pdf-download-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 92px;
+      padding: 15px 17px 15px 20px;
+      border: 1px solid rgba(114, 70, 42, 0.18);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.84);
+    }
+
+    .pdf-download-row h3 {
+      margin: 0 0 4px;
+      color: #3e2d22;
+      font-size: 1.05rem;
+    }
+
+    .pdf-download-row p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .pdf-icon-button {
+      display: inline-flex;
+      width: 66px;
+      height: 66px;
+      flex: 0 0 66px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(114, 70, 42, 0.22);
+      transition: transform 0.16s ease, filter 0.16s ease;
+    }
+
+    .pdf-icon-button:hover { transform: translateY(-2px); filter: brightness(1.05); }
+    .pdf-icon-button svg { width: 24px; height: 24px; fill: currentColor; }
+    .pdf-icon-button span { font-size: 0.68rem; font-weight: 900; letter-spacing: 0.05em; }
+
+    #detailedResults { scroll-margin-top: 16px; }
+    #downloadStatus { min-height: 1.4em; margin: 12px 0 0; }
+
+    .bibliography ol { margin: 7px 0 0 20px; padding: 0; }
+    .bibliography li { margin-bottom: 7px; }
+    .bibliography a { color: var(--accent); }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 900px) {
+      .meta-grid, .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .competency-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .page { width: min(100% - 62px, 1160px); margin-left: 12px; margin-right: auto; padding-top: 18px; }
+      .hero, .results-hero { padding: 23px; border-radius: 24px; }
+      .student-grid, .meta-grid, .stats-grid { grid-template-columns: 1fr; }
+      .result-title-row { flex-direction: column; }
+      .score-orb { width: 96px; height: 96px; flex-basis: 96px; font-size: 1.6rem; }
+      .finish-panel { position: sticky; bottom: 5px; flex-direction: row; align-items: center; }
+      .finish-panel > .muted { display: none; }
+      .finish-panel .actions { width: 100%; flex-wrap: nowrap; }
+      .finish-panel .btn { width: auto; flex: 1 1 0; padding: 8px 9px; font-size: 0.78rem; }
+      .actions .btn { flex: 1 1 0; }
+      .progress-shell { right: 4px; width: 42px; height: 202px; padding: 8px 6px; border-radius: 16px; }
+      .progress-shell .bar { height: 132px; flex-basis: 132px; width: 9px; }
+      #progressText { font-size: 0.62rem; }
+      #progressPercent { font-size: 0.75rem; }
+      .question-top { align-items: flex-start; }
+      .completion-card { padding: 22px; }
+      .completion-options { grid-template-columns: 1fr; }
+      .pdf-download-row { padding-left: 16px; }
+      .json-export-box { flex-direction: column; align-items: stretch; }
+      .json-export-box .btn { width: 100%; }
+      .pdf-icon-button { width: 60px; height: 60px; flex-basis: 60px; }
+    }
+
+    @media print {
+      body { background: white; }
+      .page { width: 100%; padding: 0; }
+      .no-print, #quizForm, .progress-shell, .finish-panel, .bibliography { display: none !important; }
+      #resultsSection { display: block !important; }
+      .hero, .results-hero, .card { box-shadow: none; }
+      .section { break-inside: avoid; }
+      .completion-card { display: none !important; }
+      .competency-grid { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+      table { min-width: 0; font-size: 0.84rem; }
+      th, td { padding: 8px; }
+    }
+    .bibliography a { color: var(--accent); overflow-wrap: anywhere; }
+  
+    .bibliography-title {
+      display: block;
+    }
+
+    .bibliography-link {
+      display: block;
+      margin-top: 4px;
+      color: var(--accent);
+      font-weight: 800;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .bibliography-link:hover,
+    .bibliography-link:focus {
+      text-decoration: none;
+      filter: brightness(0.9);
+    }
+
+  </style>
+</head>
+<body>
+<main class="page">
+  <section class="hero">
+    <p class="kicker">Evaluare digitală</p>
+    <h1>Testul grilă CT (varianta B)</h1>
+    <p class="muted" style="max-width:850px;font-size:1rem">
+      Istorie, clasa a V-a · Unitatea de învățare: <strong>Preistoria</strong>
+    </p>
+
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Întrebări</strong><span>19 itemi cu alegere multiplă</span></div>
+      <div class="meta-item"><strong>Timp estimat</strong><span>20 de minute</span></div>
+      <div class="meta-item"><strong>Scorare</strong><span>1 punct pentru fiecare răspuns corect</span></div>
+      <div class="meta-item"><strong>Rezultate</strong><span>Raport pe competențe și fișiere descărcabile</span></div>
+    </div>
+  </section>
+
+  <section class="section card no-print" id="studentDataSection">
+    <h2>Datele elevului</h2>
+    <p class="muted">Toate câmpurile sunt obligatorii și vor apărea în fișierul de rezultate.</p>
+    <div class="student-grid">
+      <div class="field">
+        <label for="studentName">Nume și prenume <span class="required-mark">*</span></label>
+        <input id="studentName" type="text" autocomplete="name" placeholder="Ex.: Popescu Ana" required />
+      </div>
+      <div class="field">
+        <label for="studentTestCode">Cod de testare <span class="required-mark">*</span></label>
+        <input id="studentTestCode" type="text" autocomplete="off" placeholder="Ex.: PRE-5B-014" required />
+      </div>
+      <div class="field">
+        <label for="studentSchool">Școala <span class="required-mark">*</span></label>
+        <input id="studentSchool" type="text" autocomplete="organization" placeholder="Ex.: Școala Gimnazială nr. 1" required />
+      </div>
+      <div class="field">
+        <label for="studentClass">Clasa <span class="required-mark">*</span></label>
+        <input id="studentClass" type="text" placeholder="Ex.: a V-a B" required />
+      </div>
+    </div>
+    <p id="studentDataError" class="form-error" role="alert">Completează numele, codul de testare, școala și clasa înainte de finalizarea testului.</p>
+  </section>
+
+  <section class="section card no-print">
+    <a class="competency-source" href="https://rm.coe.int/prems-108118-gbr-2507-quality-history-education-web-21x21/16808eace7" target="_blank" rel="noopener noreferrer">
+      Competențe din raportul Consiliului Europei (2018): „Quality History Education in the 21st Century”
+    </a>
+    <details class="competencies">
+      <summary>Competențe evaluate</summary>
+      <div class="competency-details">
+        <h3>CT1.1. Selectarea și interpretarea informațiilor istorice digitale</h3>
+        <ul>
+          <li>Identificarea informațiilor relevante din texte, imagini și materiale video</li>
+          <li>Diferențierea între date factuale, opinii, interpretări și speculații</li>
+          <li>Argumentarea selecției surselor utilizate</li>
+        </ul>
+
+        <h3>CT1.2. Evaluarea motivației, utilității și credibilității unei surse</h3>
+        <ul>
+          <li>Analizarea scopului autorului și a intereselor posibile</li>
+          <li>Identificarea autorului, instituției, datei, contextului și metodei</li>
+          <li>Explicarea influenței contextului asupra obiectivității</li>
+        </ul>
+
+        <h3>CT1.3. Analizarea perspectivelor multiple și a interpretărilor divergente</h3>
+        <ul>
+          <li>Compararea interpretărilor diferite ale aceluiași proces</li>
+          <li>Explicarea rolului contextului în formularea interpretărilor</li>
+          <li>Identificarea riscurilor narațiunilor unilaterale sau radicalizate</li>
+        </ul>
+
+        <h3>CT1.4. Analizarea critică a materialelor vizuale cu conținut istoric</h3>
+        <ul>
+          <li>Diferențierea dintre conținutul ilustrat și mesajul autorului</li>
+          <li>Identificarea cadrajului, selecției imaginilor și montajului</li>
+          <li>Argumentarea impactului emoțional sau ideologic</li>
+        </ul>
+
+        <h3>CT2.1. Dezvoltarea unei atitudini critice față de utilizarea media digitale</h3>
+        <ul>
+          <li>Identificarea utilizării pozitive și negative a informației istorice online</li>
+          <li>Recunoașterea titlurilor manipulative, anacronismelor și generalizărilor</li>
+          <li>Aplicarea comportamentelor responsabile de verificare și distribuire</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <div class="progress-shell no-print">
+    <div class="progress-head">
+      <span id="progressText">0/18</span>
+      <span id="progressPercent">0%</span>
+    </div>
+    <div class="bar" aria-hidden="true"><span id="progressBar"></span></div>
+  </div>
+
+  <form id="quizForm" class="no-print"></form>
+
+  <div class="finish-panel no-print">
+    <span class="muted">Poți finaliza și cu întrebări necompletate; acestea vor fi marcate separat.</span>
+    <div class="actions">
+      <button type="button" class="btn secondary" id="resetButton">Șterge răspunsurile</button>
+      <button type="button" class="btn" id="finishButton">Am terminat testul</button>
+    </div>
+  </div>
+
+  <section id="resultsSection" class="section">
+    <section class="completion-card no-print" aria-live="polite">
+      <p class="kicker">Evaluare încheiată</p>
+      <h2>Test finalizat</h2>
+      <p class="completion-score">Punctaj general: <strong id="completionScore">0/18</strong></p>
+      <p id="completionIdentity" class="muted"></p>
+      <p id="completionDate" class="muted"></p>
+
+      <div class="completion-options">
+        <button type="button" class="completion-option" id="reviewButton">Arată răspunsurile și explicațiile</button>
+        <button type="button" class="completion-option" id="detailsButton">Vezi rezultate detaliate</button>
+      </div>
+
+      <div class="pdf-download-list">
+        <div class="pdf-download-row">
+          <div>
+            <h3>Descarcă răspunsurile trimise</h3>
+            <p>Întrebările și variantele bifate, într-un document pregătit pentru PDF.</p>
+          </div>
+          <button type="button" class="pdf-icon-button" id="answersPdfButton" aria-label="Descarcă răspunsurile trimise în format PDF" title="Descarcă răspunsurile trimise – PDF">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h8l4 4v5h-2V7h-3V4H6v16h6v2H4V2h2zm9 11h2.5a2.5 2.5 0 0 1 0 5H17v3h-2v-8zm2 2v1h.5a.5.5 0 0 0 0-1H17zm-9-2h3a3 3 0 0 1 0 6H10v2H8v-8zm2 2v2h1a1 1 0 0 0 0-2h-1zm10-2h4v2h-2v1h2v2h-2v3h-2v-8z"/></svg>
+            <span>PDF</span>
+          </button>
+        </div>
+
+        <div class="pdf-download-row">
+          <div>
+            <h3>Descarcă rezultatele</h3>
+            <p>Punctajul general, profilul pe competențe și interpretarea rezultatului.</p>
+          </div>
+          <button type="button" class="pdf-icon-button" id="resultsPdfButton" aria-label="Descarcă rezultatele în format PDF" title="Descarcă rezultatele – PDF">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h8l4 4v5h-2V7h-3V4H6v16h6v2H4V2h2zm9 11h2.5a2.5 2.5 0 0 1 0 5H17v3h-2v-8zm2 2v1h.5a.5.5 0 0 0 0-1H17zm-9-2h3a3 3 0 0 1 0 6H10v2H8v-8zm2 2v2h1a1 1 0 0 0 0-2h-1zm10-2h4v2h-2v1h2v2h-2v3h-2v-8z"/></svg>
+            <span>PDF</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="json-export-box">
+        <div>
+          <strong>Fișier pentru pagina profesorului</strong>
+          <p class="muted">Descarcă rezultatul în format JSON pentru a-l importa în pagina centralizată de rezultate.</p>
+        </div>
+        <button type="button" class="btn secondary" id="jsonDownloadButton">Descarcă JSON</button>
+      </div>
+      <p id="downloadStatus" class="muted" aria-live="polite"></p>
+    </section>
+
+    <div id="detailedResults" class="hidden">
+      <div class="results-hero">
+        <div class="result-title-row">
+          <div>
+            <p class="kicker">Scorare și interpretare</p>
+            <h2>Rezultatele detaliate</h2>
+            <p id="resultIdentity" class="muted"></p>
+            <p id="resultDate" class="muted"></p>
+          </div>
+          <div id="scoreOrb" class="score-orb">0%</div>
+        </div>
+
+        <div id="statsGrid" class="stats-grid"></div>
+      </div>
+
+      <section class="section card">
+        <h2>Profil pe competențe</h2>
+        <p class="muted">Rezultatele sunt calculate separat pentru fiecare dintre cele cinci competențe evaluate.</p>
+        <div id="competencyCards" class="competency-grid"></div>
+      </section>
+
+      <section class="section card">
+        <h2>Sinteza rezultatelor</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Competență</th>
+                <th>Scor</th>
+                <th>Procent</th>
+                <th>Nivel orientativ</th>
+                <th>Interpretare</th>
+              </tr>
+            </thead>
+            <tbody id="competencyTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section card">
+        <h2>Interpretare generală</h2>
+        <div id="generalReport" class="report-box"></div>
+      </section>
+    </div>
+  </section>
+
+  <section class="section card bibliography">
+    <h2>Bibliografie</h2>
+    <ol>
+      <li>
+        Ministerul Educației Naționale, <em>Programa școlară pentru disciplina Istorie, clasele a V-a–a VIII-a</em>,
+        aprobată prin Ordinul MEN nr. 3393 din 28 februarie 2017.
+      </li>
+      <li>
+        <span class="bibliography-title">Consiliul Europei (2018), <em>Quality History Education in the 21st Century</em>.</span>
+        <a class="bibliography-link" href="https://rm.coe.int/prems-108118-gbr-2507-quality-history-education-web-21x21/16808eace7" target="_blank" rel="noopener noreferrer">https://rm.coe.int/prems-108118-gbr-2507-quality-history-education-web-21x21/16808eace7</a>
+      </li>
+    </ol>
+  </section>
+</main>
+
+<script>
+const QUESTIONS = [
+  {
+    "id": 1,
+    "sourceCode": "CT1.1.1B",
+    "competency": "CT1.1",
+    "text": "Un site istoric afirmă: „Oamenii din Paleolitic erau organizați în triburi mici.” Aceasta este:",
+    "options": {
+      "A": "O informație bazată pe dovezi",
+      "B": "O glumă cu substrat istoric pe care nu o putem înțelege decât dacă avem o cultură generală bogată",
+      "C": "O interpretare exagerată",
+      "D": "O simplă părere"
+    },
+    "answer": "A",
+    "explanation": {
+      "correct": "Organizarea în grupuri mici sau triburi este o afirmație istorică plauzibilă, susținută de interpretarea dovezilor despre modul de viață paleolitic.",
+      "options": {
+        "A": "Corect: afirmația se poate baza pe dovezi și interpretări istorice serioase.",
+        "B": "Nu este o glumă; are conținut istoric verificabil.",
+        "C": "Nu este o exagerare în sine, deoarece comunitățile mici sunt plauzibile pentru Paleolitic.",
+        "D": "Nu este doar o părere dacă este susținută de dovezi istorice."
+      }
+    }
+  },
+  {
+    "id": 2,
+    "sourceCode": "CT1.1.2B",
+    "competency": "CT1.1",
+    "text": "Un influencer (care este și absolvent al Facultății de Istorie) afirmă: „Preistoricii trăiau într-o mai mare comuniune cu natura, astfel că trebuie să fi fost niște oameni mult mai blânzi, mai cuminți și mai înțelepți decât cei de azi.” Această afirmație:",
+    "options": {
+      "A": "Este o simplă opinie personală, fără valoare de adevăr istoric",
+      "B": "Este bazată pe izvoare istorice",
+      "C": "Are la bază experiența de cercetare a influencerului",
+      "D": "Este adevărată, cu atât mai mult pentru că, în mod indirect, critică societatea actuală care a pierdut contactul cu natura"
+    },
+    "answer": "A",
+    "explanation": {
+      "correct": "Afirmația idealizează oamenii preistorici și proiectează o judecată modernă asupra lor, fără dovezi istorice clare.",
+      "options": {
+        "A": "Corect: este o opinie personală, nu o concluzie demonstrată istoric.",
+        "B": "Nu se bazează pe izvoare istorice directe care să dovedească blândețea sau înțelepciunea lor.",
+        "C": "Faptul că vorbitorul are studii nu transformă automat opinia în cercetare.",
+        "D": "O critică a societății actuale nu dovedește o realitate istorică despre Preistorie."
+      }
+    }
+  },
+  {
+    "id": 3,
+    "sourceCode": "CT1.1.3B",
+    "competency": "CT1.1",
+    "text": "Pe un blog numit “Dacii paleolitici” citim: următoarea afirmație: „Primele unelte metalice au fost create în munții Carpați.” Aceasta este:",
+    "options": {
+      "A": "O informație istorică dovedită prin dovezi clare",
+      "B": "O speculație (presupunere) care nu poate fi dovedită din punct de vedere istoric",
+      "C": "O chestiune bine cunoscută de oamenii cinstiți, dar ascunsă de niște vicleni care nu vor să cunoaștem istoria adevărată",
+      "D": "Un fapt acceptat de toți istoricii"
+    },
+    "answer": "B",
+    "explanation": {
+      "correct": "Afirmația despre primele unelte metalice create în Carpați este prezentată fără dovezi acceptate; deci este speculație.",
+      "options": {
+        "A": "Nu sunt oferite dovezi clare sau consens istoric.",
+        "B": "Corect: este o presupunere nedovedită istoric.",
+        "C": "Varianta folosește un limbaj conspiraționist, nu argumente istorice.",
+        "D": "Nu este un fapt acceptat de toți istoricii."
+      }
+    }
+  },
+  {
+    "id": 4,
+    "sourceCode": "CT1.1.4B",
+    "competency": "CT1.1",
+    "text": "Un articol explică faptul că unele comunități neolitice cultivau grâu și orz, indicând descoperirea unor semințe carbonizate în așezări. Aceasta este:",
+    "options": {
+      "A": "O explicație care s-ar potrivi mai degrabă alimentației moderne",
+      "B": "O informație istorică susținută de dovezi arheologice",
+      "C": "O speculație despre plante dispărute",
+      "D": "O teorie în care istoricii au crezut până prin anii 1970’"
+    },
+    "answer": "B",
+    "explanation": {
+      "correct": "Semințele carbonizate descoperite în așezări constituie dovezi materiale care pot indica plantele cultivate de comunitățile neolitice.",
+      "options": {
+        "A": "Faptul că grâul și orzul sunt consumate și în prezent nu anulează dovezile arheologice privind cultivarea lor în Neolitic.",
+        "B": "Corect: afirmația este susținută de dovezi arheologice concrete.",
+        "C": "Grâul și orzul nu sunt prezentate drept plante imaginare sau dispărute.",
+        "D": "Descoperirea semințelor carbonizate reprezintă o dovadă arheologică; nu este prezentată ca o teorie abandonată în trecut."
+      }
+    }
+  },
+  {
+    "id": 5,
+    "sourceCode": "CT1.2.1B",
+    "competency": "CT1.2",
+    "text": "Cine este mai potrivit să interpreteze o pictură rupestră?",
+    "options": {
+      "A": "Autorul unei pagini web cu articole despre secrete din Preistorie",
+      "B": "Un foarte bun cunoscător al regiunii în care se află acea peșteră",
+      "C": "Un pasionat de grafitti modern",
+      "D": "Un istoric de artă care cunoaște bine simbolismul preistoric"
+    },
+    "answer": "D",
+    "explanation": {
+      "correct": "Interpretarea unei picturi rupestre cere cunoașterea artei preistorice, a simbolurilor și a contextului arheologic.",
+      "options": {
+        "A": "O pagină despre secrete poate fi nesigură și nu garantează competență științifică.",
+        "B": "Cunoașterea regiunii ajută, dar nu înlocuiește specializarea în interpretarea artei preistorice.",
+        "C": "Graffiti-ul modern este alt fenomen cultural și nu oferă automat competență pentru Paleolitic.",
+        "D": "Corect: istoricul de artă specializat este cel mai potrivit dintre variante."
+      }
+    }
+  },
+  {
+    "id": 6,
+    "sourceCode": "CT1.2.2B",
+    "competency": "CT1.2",
+    "text": "O broșură a unui muzeu explică modul de viață în Epoca Fierului și citează cercetări recent publicate. Aceasta este:",
+    "options": {
+      "A": "Propagandă politică",
+      "B": "O sursă demnă de a fi crezută",
+      "C": "Un zvon",
+      "D": "O legendă"
+    },
+    "answer": "B",
+    "explanation": {
+      "correct": "O broșură de muzeu care citează cercetări recente are autoritate instituțională și trimite la surse verificabile.",
+      "options": {
+        "A": "Propaganda politică urmărește influențarea ideologică, ceea ce nu rezultă din enunț.",
+        "B": "Corect: muzeul și citarea cercetărilor sporesc credibilitatea sursei.",
+        "C": "Un zvon nu are surse clare și verificabile.",
+        "D": "O legendă este o povestire tradițională, nu o prezentare muzeală bazată pe cercetări."
+      }
+    }
+  },
+  {
+    "id": 7,
+    "sourceCode": "CT1.2.3B",
+    "competency": "CT1.2",
+    "text": "Un site comercial afirmă: „Amuletele preistorice vindecau boli.” Ce interes ar putea mai degrabă să urmărească autorul?",
+    "options": {
+      "A": "Doar unul științific",
+      "B": "Comercial (încercarea de a vinde “produse-minune”, sugerând că vechimea istorică este însoțită de capacitatea de a vindeca bolile)",
+      "C": "Promovarea cunoașterii istorice",
+      "D": "Promovarea horoscopului"
+    },
+    "answer": "B",
+    "explanation": {
+      "correct": "Un site comercial care leagă amuletele de vindecare poate urmări vânzarea unor produse, nu informarea istorică obiectivă.",
+      "options": {
+        "A": "Interesul nu este doar științific, deoarece enunțul implică produse și vindecare.",
+        "B": "Corect: scopul probabil este comercial, prin promisiuni de tip „produs-minune”.",
+        "C": "Promovarea cunoașterii istorice nu se face prin afirmații medicale nedovedite.",
+        "D": "Horoscopul nu este tema centrală a enunțului."
+      }
+    }
+  },
+  {
+    "id": 8,
+    "sourceCode": "CT1.2.4B",
+    "competency": "CT1.2",
+    "text": "Titlul unui articol comercial este: „Secretul oamenilor preistorici pentru o viață de 150 de ani! Cumpără acum elixirul original!”. Care este cel mai probabil scop al autorului?",
+    "options": {
+      "A": "Să vândă un produs folosind o afirmație istorică senzaționalistă",
+      "B": "Să prezinte rezultatele unei cercetări arheologice",
+      "C": "Să explice obiectiv speranța de viață din Preistorie",
+      "D": "Să ofere gratuit informații medicale verificate"
+    },
+    "answer": "A",
+    "explanation": {
+      "correct": "Titlul combină o promisiune extraordinară cu un îndemn direct la cumpărare, ceea ce indică un interes comercial.",
+      "options": {
+        "A": "Corect: trecutul este folosit ca instrument de promovare a unui produs.",
+        "B": "Nu sunt menționate cercetări, metode sau specialiști.",
+        "C": "Afirmația despre o viață de 150 de ani nu reprezintă o explicație obiectivă.",
+        "D": "Materialul urmărește vânzarea unui produs și nu oferă informații medicale verificate."
+      }
+    }
+  },
+  {
+    "id": 9,
+    "sourceCode": "CT1.3.1B",
+    "competency": "CT1.3",
+    "text": "Un autor afirmă: „Oamenii din Paleolitic trăiau într-o stare de primitivism, având doar uneltele lor din piatră.” Ce riscuri pot apărea dacă acceptăm această afirmație?",
+    "options": {
+      "A": "Riscul de a ignora faptul că Paleoliticul a fost o perioadă lungă și complexă și nu poate fi redusă doar la uneltele de piatră",
+      "B": "Atât varianta A, cât și varianta C",
+      "C": "Riscul de a subestima complexitatea vieții sociale din Paleolitic",
+      "D": "Nu există riscuri"
+    },
+    "answer": "B",
+    "explanation": {
+      "correct": "Afirmația reduce Paleoliticul doar la unelte de piatră și ignoră complexitatea vieții sociale, a artei, a adaptării și a relațiilor de grup.",
+      "options": {
+        "A": "Aceasta este o observație corectă, dar nu singura.",
+        "B": "Corect: sunt valide atât riscul din A, cât și cel din C.",
+        "C": "Și această observație este corectă, dar întrebarea cere varianta care le include pe amândouă.",
+        "D": "Există riscuri clare: simplificarea și subestimarea unei perioade lungi și complexe."
+      }
+    }
+  },
+  {
+    "id": 10,
+    "sourceCode": "CT1.3.2B",
+    "competency": "CT1.3",
+    "text": "La ora de istorie, elevii învață că în Neolitic oamenii au început să practice agricultura și să domesticească animale. Totuși, un călugăr susține că recoltele și animalele domestice le-au fost oferite oamenilor ca un dar divin încă de la facerea lumii. Ce putem spune cel mai sigur despre situația aceasta?",
+    "options": {
+      "A": "Istoricul a oferit o explicație bazată pe cercetări științifice și surse istorice",
+      "B": "Călugărul prezintă o viziune religioasă care nu poate fi confirmată prin dovezi istorice",
+      "C": "Agricultura și domesticirea animalelor au fost, într-adevăr, minuni divine, conform religiei",
+      "D": "Variantele A și B sunt corecte"
+    },
+    "answer": "D",
+    "explanation": {
+      "correct": "Istoria lucrează cu dovezi și cercetări; afirmația religioasă exprimă credință, dar nu poate fi confirmată ca fapt istoric prin aceleași metode.",
+      "options": {
+        "A": "Este corect: explicația de la istorie se bazează pe cercetări și surse.",
+        "B": "Este corect: călugărul exprimă o viziune religioasă, nu o demonstrație istorică verificabilă.",
+        "C": "Aceasta este o afirmație de credință, nu un fapt dovedit istoric.",
+        "D": "Corect: A și B sunt ambele adevărate."
+      }
+    }
+  },
+  {
+    "id": 11,
+    "sourceCode": "CT1.3.3B",
+    "competency": "CT1.3",
+    "text": "Arheologul 1 afirmă că primele vase ceramice apar în jurul anului 6.500 î.Hr. Arheologul 2 susține că cele mai vechi vase de ceramică au fost găsite într-o altă zonă și datează din 10.000 î.Hr. Care explicație este cea mai plauzibilă?",
+    "options": {
+      "A": "Arheologul 1 a uitat să includă în lucrare toate dovezile",
+      "B": "Al doilea arheolog a adăugat mai multe mii de ani din orgoliu, ca să poată spune că a descoperit ceva mai vechi și mai important",
+      "C": "Cercetările arheologice nu sunt utile pentru a data ceramica",
+      "D": "Regiunile studiate au avut evoluții diferite, iar vasele de ceramică au apărut mai devreme în unele zone"
+    },
+    "answer": "D",
+    "explanation": {
+      "correct": "Descoperirile arheologice pot avea date diferite deoarece regiunile nu evoluează identic; unele tehnologii apar mai devreme în anumite zone.",
+      "options": {
+        "A": "Nu trebuie presupusă o omisiune fără dovezi.",
+        "B": "Varianta atacă intenția cercetătorului fără argumente.",
+        "C": "Arheologia este tocmai una dintre metodele utile pentru datarea ceramicii.",
+        "D": "Corect: diferențele regionale explică cel mai bine datele diferite."
+      }
+    }
+  },
+  {
+    "id": 12,
+    "sourceCode": "CT1.3.4B",
+    "competency": "CT1.3",
+    "text": "Într-o regiune, uneltele de bronz au devenit comune mai devreme decât într-o altă regiune. Care explicație este cea mai plauzibilă?",
+    "options": {
+      "A": "Locuitorii celei de-a doua regiuni erau mai puțin inteligenți",
+      "B": "Toate regiunile au folosit bronzul exact în același moment",
+      "C": "Arheologii au ascuns intenționat obiectele mai vechi",
+      "D": "Regiunile aveau acces diferit la resurse, schimburi comerciale și tehnologii"
+    },
+    "answer": "D",
+    "explanation": {
+      "correct": "Răspândirea metalurgiei a depins de existența materiilor prime, de contactele dintre comunități și de transmiterea cunoștințelor tehnice.",
+      "options": {
+        "A": "Diferențele tehnologice nu demonstrează diferențe de inteligență între populații.",
+        "B": "Tehnologiile nu s-au răspândit simultan în toate regiunile.",
+        "C": "Nu există dovezi pentru o asemenea acuzație.",
+        "D": "Corect: accesul la resurse și rețele de schimb poate explica evoluțiile diferite."
+      }
+    }
+  },
+  {
+    "id": 13,
+    "sourceCode": "CT1.4.1B",
+    "competency": "CT1.4",
+    "text": "Într-o prezentare despre viața din Paleolitic, oamenii sunt reprezentați purtând haine extrem de curate și bine croite, având coafuri ordonate la fel ca în moda modernă și purtându-se ca oamenii de azi. Ce intenție credeți că a avut autorul?",
+    "options": {
+      "A": "Să redea cu exactitate vestimentația și îngrijirea oamenilor preistorici, demonstrată arheologic",
+      "B": "Să ofere informații corecte despre felul de a fi al primitivilor",
+      "C": "Variantele A și B sunt corecte",
+      "D": "Să facă personajele mai ușor de asociat cu omul modern, chiar dacă astfel prezintă o versiune falsă a istoriei"
+    },
+    "answer": "D",
+    "explanation": {
+      "correct": "Autorul poate moderniza imaginea trecutului pentru ca personajele să pară familiare, dar această alegere poate falsifica realitatea istorică.",
+      "options": {
+        "A": "Vestimentația și coafurile moderne nu pot fi demonstrate ca exacte pentru Paleolitic.",
+        "B": "Varianta acceptă necritic o reprezentare modernizată.",
+        "C": "Dacă A și B sunt greșite, nu poate fi corectă combinația lor.",
+        "D": "Corect: imaginea este adaptată pentru publicul modern, nu pentru fidelitate istorică."
+      }
+    }
+  },
+  {
+    "id": 14,
+    "sourceCode": "CT1.4.2B",
+    "competency": "CT1.4",
+    "text": "Un poster despre Paleolitic folosește culori întunecate, umbre și animale amenințătoare în fundal. Care este scopul posibil?",
+    "options": {
+      "A": "Să prezinte calmul și siguranța din acea perioadă",
+      "B": "Să redea extrem de fidel realitatea din punct de vedere științific",
+      "C": "Să arate că oamenii nu se temeau de nimic",
+      "D": "Să creeze o atmosferă dramatică și periculoasă pentru a influența emoțional privitorul"
+    },
+    "answer": "D",
+    "explanation": {
+      "correct": "Culorile întunecate, umbrele și animalele amenințătoare sunt tehnici vizuale care creează tensiune și emoție.",
+      "options": {
+        "A": "Elementele vizuale nu sugerează calm și siguranță.",
+        "B": "Un poster dramatic nu garantează redarea fidelă și științifică a realității.",
+        "C": "Animalele amenințătoare și umbrele transmit mai degrabă frică, nu lipsa fricii.",
+        "D": "Corect: scopul posibil este influențarea emoțională a privitorului."
+      }
+    }
+  },
+  {
+    "id": 15,
+    "sourceCode": "CT1.4.3B",
+    "competency": "CT1.4",
+    "text": "O carte cu ilustrații ne arată oameni din Paleolitic mereu murdari, cu părul dezordonat și îmbrăcați doar în haine sfâșiate. Ce trebuie să observăm critic?",
+    "options": {
+      "A": "Că autorul oferă o descriere corectă și sigură a felului în care arătau oamenii atunci",
+      "B": "Că autorul transmite o imagine obiectivă, adică neinfluențată de filme și cultura populară",
+      "C": "Că autorul încearcă să ne inoculeze o anumită percepție despre oamenii primitivi, astfel încât să credem că au fost mai sălbatici decât au fost în realitate",
+      "D": "Că autorul a folosit o fotografie reală din Paleolitic"
+    },
+    "answer": "C",
+    "explanation": {
+      "correct": "Ilustrațiile pot transmite stereotipul omului preistoric „sălbatic”, iar elevul trebuie să observe că imaginea poate fi influențată de clișee moderne.",
+      "options": {
+        "A": "Nu putem ști sigur că toți oamenii arătau așa; este o reprezentare.",
+        "B": "Cultura populară poate influența exact acest tip de imagine.",
+        "C": "Corect: autorul poate induce o percepție exagerată despre „primitivism”.",
+        "D": "Nu există fotografii reale din Paleolitic."
+      }
+    }
+  },
+  {
+    "id": 16,
+    "sourceCode": "CT2.1.1B",
+    "competency": "CT2.1",
+    "text": "Un videoclip de pe TikTok se numește: „Adevărul ascuns! Marile piramide au fost construite de giganți preistorici, nu de oameni!” Ce strategie de manipulare observăm?",
+    "options": {
+      "A": "Prezentarea afirmației ca fiind susținută de cercetări și argumente științifice credibile",
+      "B": "Utilizarea unui titlu spectaculos și provocator pentru a atrage interesul publicului",
+      "C": "Redarea echilibrată a unor date arheologice verificate și interpretate obiectiv",
+      "D": "Trimiterea la studii academice și consens științific pentru a întări credibilitatea mesajului"
+    },
+    "answer": "B",
+    "explanation": {
+      "correct": "Titlul folosește senzaționalul, misterul și ideea de „adevăr ascuns” pentru a atrage atenția, nu pentru a informa echilibrat.",
+      "options": {
+        "A": "Enunțul nu oferă cercetări credibile, ci doar o formulare spectaculoasă.",
+        "B": "Corect: titlul provocator este o tehnică de atragere a publicului.",
+        "C": "Nu există redare echilibrată a datelor arheologice.",
+        "D": "Nu se face trimitere la consens științific, ci la o afirmație senzaționalistă."
+      }
+    }
+  },
+  {
+    "id": 17,
+    "sourceCode": "CT2.1.2B",
+    "competency": "CT2.1",
+    "text": "Un videoclip prezintă oameni din Paleolitic care foloseau telefoane din piatră pentru a comunica între peșteri. Ce este greșit la acest conținut?",
+    "options": {
+      "A": "Telefoanele din piatră sunt o descoperire rară, întâlnită doar în anumite regiuni",
+      "B": "Tehnologia telefoanelor nu exista în Paleolitic",
+      "C": "Oamenii din Paleolitic comunicau doar prin scris, pe tăblițe de lut",
+      "D": "Telefoanele preistorice funcționau doar pe distanțe scurte"
+    },
+    "answer": "B",
+    "explanation": {
+      "correct": "Telefoanele sunt o tehnologie modernă, imposibilă în Paleolitic; „telefoanele din piatră” sunt o invenție fictivă.",
+      "options": {
+        "A": "Nu sunt descoperiri rare, ci obiecte inexistente ca tehnologie paleolitică.",
+        "B": "Corect: tehnologia telefoanelor nu exista în Paleolitic.",
+        "C": "Paleoliticul este anterior scrierii pe tăblițe de lut.",
+        "D": "Nu existau telefoane preistorice care să funcționeze pe distanțe scurte."
+      }
+    }
+  },
+  {
+    "id": 18,
+    "sourceCode": "CT2.1.3B",
+    "competency": "CT2.1",
+    "text": "Într-un videoclip, povestitorul afirmă: „În Epoca Pietrei, oamenii nu aveau niciun fel de artă pentru că erau preocupați doar de supraviețuire.” Ce eroare observi?",
+    "options": {
+      "A": "Afirmarea unui adevăr istoric demonstrat pe deplin de cercetări",
+      "B": "Ignorarea dovezilor arheologice despre artă (picturi rupestre, statuete, podoabe), ceea ce duce la o concluzie falsă și excesiv de simplificată",
+      "C": "În Preistorie, oamenii foloseau foarte puține culori, motiv pentru care picturile rupestre nu pot fi considerate artă",
+      "D": "Confuzie între Epoca Pietrei și Evul Mediu"
+    },
+    "answer": "B",
+    "explanation": {
+      "correct": "Afirmația ignoră dovezi precum picturile rupestre, statuetele și podoabele, care arată existența manifestărilor artistice în Epoca Pietrei.",
+      "options": {
+        "A": "Nu este un adevăr demonstrat; este contrazis de dovezi arheologice.",
+        "B": "Corect: concluzia este falsă deoarece ignoră dovezile despre artă.",
+        "C": "Numărul culorilor nu anulează caracterul artistic al picturilor rupestre.",
+        "D": "Nu este vorba despre Evul Mediu, ci despre interpretarea greșită a Epocii Pietrei."
+      }
+    }
+  },
+  {
+    "id": 19,
+    "sourceCode": "CT2.1.4B",
+    "competency": "CT2.1",
+    "text": "Un utilizator de TikTok editează o imagine cu picturi rupestre și adaugă siluete de extratereștri. Ce facem?",
+    "options": {
+      "A": "Analizăm imaginea și observăm că este editată, deci nu poate fi o sursă istorică autentică",
+      "B": "Conștientizăm că astfel de materiale pot crea impresia falsă a unor „dovezi” istorice și pot induce în eroare publicul",
+      "C": "Considerăm că autorul dezvăluie informații ascunse pe care istoricii le-au omis intenționat",
+      "D": "Variantele A și B sunt corecte"
+    },
+    "answer": "D",
+    "explanation": {
+      "correct": "O imagine editată cu extratereștri trebuie analizată critic: nu este o sursă autentică și poate crea o falsă impresie de dovadă istorică.",
+      "options": {
+        "A": "Este corect: editarea imaginii trebuie observată și separată de sursa istorică autentică.",
+        "B": "Este corect: astfel de editări pot induce publicul în eroare.",
+        "C": "Varianta acceptă o narațiune conspiraționistă fără dovezi.",
+        "D": "Corect: atât A, cât și B exprimă reacții critice potrivite."
+      }
+    }
+  }
+];
+
+const COMPETENCIES = {
+  "CT1.1": {
+    "title": "CT1.1. Selectarea și interpretarea informațiilor istorice digitale",
+    "short": "diferențierea faptelor, opiniilor, interpretărilor și speculațiilor din conținutul digital"
+  },
+  "CT1.2": {
+    "title": "CT1.2. Evaluarea motivației, utilității și credibilității unei surse",
+    "short": "evaluarea expertizei autorului, a scopului sursei și a indicatorilor de credibilitate"
+  },
+  "CT1.3": {
+    "title": "CT1.3. Analizarea perspectivelor multiple și a interpretărilor divergente",
+    "short": "recunoașterea interpretărilor unilaterale și compararea explicațiilor istorice diferite"
+  },
+  "CT1.4": {
+    "title": "CT1.4. Analizarea critică a materialelor vizuale cu conținut istoric",
+    "short": "identificarea selecției vizuale, a idealizării și a efectelor emoționale ale imaginilor"
+  },
+  "CT2.1": {
+    "title": "CT2.1. Dezvoltarea unei atitudini critice față de utilizarea media digitale",
+    "short": "recunoașterea clickbaitului, anacronismelor, generalizărilor și comportamentelor responsabile online"
+  }
+};
+
+let lastResult = null;
+let reviewVisible = false;
+
+const quizForm = document.getElementById("quizForm");
+
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function renderQuestions() {
+  const fragment = document.createDocumentFragment();
+
+  QUESTIONS.forEach((question) => {
+    const card = document.createElement("article");
+    card.className = "question-card";
+    card.id = `question-${question.id}`;
+    card.dataset.questionId = question.id;
+
+    const top = document.createElement("div");
+    top.className = "question-top";
+
+    const number = document.createElement("span");
+    number.className = "question-number";
+    number.textContent = question.id;
+
+    const main = document.createElement("div");
+    main.className = "question-main";
+
+    const title = document.createElement("h3");
+    title.className = "question-title";
+    title.textContent = question.text;
+
+    const competency = document.createElement("span");
+    competency.className = "competency-pill";
+    competency.textContent = question.competency;
+
+    main.append(title, competency);
+    top.append(number, main);
+    card.appendChild(top);
+
+    Object.entries(question.options).forEach(([letter, text]) => {
+      const label = document.createElement("label");
+      label.className = "option-label";
+
+      const input = document.createElement("input");
+      input.type = "radio";
+      input.name = `q${question.id}`;
+      input.value = letter;
+      input.addEventListener("change", () => {
+        card.querySelectorAll(".option-label").forEach((item) => item.classList.remove("selected"));
+        label.classList.add("selected");
+        updateProgress();
+      });
+
+      const option = document.createElement("span");
+      option.className = "option-text";
+      option.textContent = `${letter}. ${text}`;
+
+      label.append(input, option);
+      card.appendChild(label);
+    });
+
+    fragment.appendChild(card);
+  });
+
+  quizForm.appendChild(fragment);
+}
+
+function getSelectedAnswer(questionId) {
+  return document.querySelector(`input[name="q${questionId}"]:checked`)?.value ?? null;
+}
+
+function updateProgress() {
+  const answered = QUESTIONS.filter((question) => getSelectedAnswer(question.id)).length;
+  const percent = Math.round((answered / QUESTIONS.length) * 100);
+  document.getElementById("progressText").textContent = `${answered}/${QUESTIONS.length}`;
+  document.getElementById("progressPercent").textContent = `${percent}%`;
+  document.getElementById("progressBar").style.height = `${percent}%`;
+  document.querySelector(".progress-shell")?.setAttribute("aria-label", `${answered} din ${QUESTIONS.length} întrebări completate, ${percent}%`);
+}
+
+function percent(value, total) {
+  return total ? Math.round((value / total) * 100) : 0;
+}
+
+function levelFor(scorePercent) {
+  if (scorePercent >= 90) return { label: "Excelent", kind: "good" };
+  if (scorePercent >= 75) return { label: "Foarte bine", kind: "good" };
+  if (scorePercent >= 60) return { label: "Bine", kind: "neutral" };
+  if (scorePercent >= 45) return { label: "În formare", kind: "warn" };
+  return { label: "Necesită consolidare", kind: "danger" };
+}
+
+function feedbackBand(scorePercent) {
+  if (scorePercent >= 90) return "excellent";
+  if (scorePercent >= 75) return "strong";
+  if (scorePercent >= 60) return "functional";
+  if (scorePercent >= 45) return "developing";
+  return "consolidation";
+}
+
+function competencyProfileFeedback(code, scorePercent) {
+  const band = feedbackBand(scorePercent);
+  const feedback = {
+  "CT1.1": {
+    "excellent": "Elevul separă cu precizie informația factuală de opinie, interpretare și speculație și verifică afirmațiile spectaculoase prin raportare la dovezi.",
+    "strong": "Distincțiile dintre fapt și speculație sunt bine înțelese. Erorile izolate apar mai ales când un mesaj folosește imagini sau formulări aparent convingătoare.",
+    "functional": "Elevul recunoaște majoritatea afirmațiilor nefondate, dar nu aplică încă în mod constant criteriul dovezilor verificabile.",
+    "developing": "Sunt identificate unele exagerări, însă viralitatea, titlul sursei sau aspectul vizual pot fi confundate cu dovada istorică.",
+    "consolidation": "Rezultatul indică dificultăți în separarea faptelor de opinii și speculații. Este necesară verificarea autorului, dovezilor și confirmării în surse independente."
+  },
+  "CT1.2": {
+    "excellent": "Elevul evaluează corect expertiza autorului, instituția, metoda și scopul comunicării înainte de a acorda încredere unei surse.",
+    "strong": "Credibilitatea surselor este apreciată corect în majoritatea situațiilor, cu mici ezitări între notorietate, pasiune personală și expertiză reală.",
+    "functional": "Elevul recunoaște sursele evident credibile sau evident dubioase, dar justificarea alegerii nu este întotdeauna completă.",
+    "developing": "Evaluarea se bazează uneori pe prestigiul aparent, aspectul materialului sau popularitatea autorului, nu pe competență și metodă.",
+    "consolidation": "Este necesară folosirea unei grile stabile: autor identificabil, specializare, instituție, dată, metodă, surse citate și scop posibil."
+  },
+  "CT1.3": {
+    "excellent": "Elevul recunoaște perspectivele parțiale, evită concluziile radicale și explică diferențele dintre interpretări prin context și dovezi.",
+    "strong": "Interpretările divergente sunt analizate bine. Puținele erori apar la formulări care conțin un adevăr parțial, dar omit consecințe sau explicații alternative.",
+    "functional": "Elevul observă caracterul unilateral al unor afirmații, dar nu identifică întotdeauna toate elementele omise ori diferențele de context.",
+    "developing": "Unele narațiuni simplificate sunt acceptate prea repede, mai ales când includ o explicație categorică sau o opoziție între două perspective.",
+    "consolidation": "Rezultatul indică nevoia de a întreba: ce parte este adevărată, ce lipsește, ce dovezi există și ce altă explicație ar fi posibilă?"
+  },
+  "CT1.4": {
+    "excellent": "Elevul identifică modul în care selecția imaginilor, idealizarea, dramatizarea și repetarea unui cadru vizual influențează percepția trecutului.",
+    "strong": "Materialele vizuale sunt analizate critic, iar intenția de persuasiune este recunoscută în majoritatea cazurilor.",
+    "functional": "Elevul observă exagerările vizuale evidente, dar poate confunda încă ilustrarea atractivă cu reconstituirea exactă.",
+    "developing": "Impactul emoțional al imaginilor este recunoscut parțial, fără o analiză suficientă a selecției, cadrului și elementelor omise.",
+    "consolidation": "Este necesară compararea imaginii cu informațiile istorice și identificarea explicită a ceea ce este arătat, accentuat, omis sau idealizat."
+  },
+  "CT2.1": {
+    "excellent": "Elevul recunoaște strategiile de manipulare digitală și adoptă comportamente responsabile: verifică, compară și evită distribuirea conținutului neverificat.",
+    "strong": "Clickbaitul, anacronismele și generalizările sunt identificate corect. Mai trebuie consolidată explicarea exactă a erorii.",
+    "functional": "Elevul sesizează conținutul suspect, dar nu aplică uniform verificarea în alte surse sau analiza cronologică.",
+    "developing": "Unele titluri spectaculoase și hărți bine realizate pot fi acceptate înaintea verificării informației.",
+    "consolidation": "Prioritatea este formarea unei rutine digitale: oprește-te, verifică autorul și data, caută confirmări și nu distribui afirmațiile neverificate."
+  }
+};
+  return feedback[code]?.[band] || "Continuă exersarea competenței prin sarcini aplicate.";
+}
+
+function competencySummaryFeedback(code, scorePercent) {
+  const band = feedbackBand(scorePercent);
+  const feedback = {
+  "CT1.1": {
+    "excellent": "Aplică aceeași analiză unor postări noi și justifică verdictul prin dovezi și surse independente.",
+    "strong": "Revizuiește itemii greșiți și notează separat afirmația, dovada și elementul speculativ.",
+    "functional": "Construiește un tabel cu patru categorii: fapt, opinie, interpretare și speculație.",
+    "developing": "Exersează pe titluri virale și identifică exact ce informație poate fi verificată.",
+    "consolidation": "Prioritate: nu confunda viralitatea, fotografiile sau numele pompos al unui site cu dovada istorică."
+  },
+  "CT1.2": {
+    "excellent": "Compară două surse despre aceeași temă și argumentează care este mai credibilă.",
+    "strong": "Completează pentru fiecare sursă o fișă cu autor, expertiză, instituție, metodă și scop.",
+    "functional": "Justifică în două propoziții de ce un specialist este mai relevant decât un influencer sau autor anonim.",
+    "developing": "Separă popularitatea și aspectul profesionist de expertiza verificabilă.",
+    "consolidation": "Prioritate: autor, specializare, surse citate, dată, instituție și posibil interes al mesajului."
+  },
+  "CT1.3": {
+    "excellent": "Formulează o interpretare echilibrată care include avantaje, limite și explicații alternative.",
+    "strong": "Identifică elementele omise din fiecare afirmație unilaterală și explică efectul omisiunii.",
+    "functional": "Folosește schema: afirmație, adevăr parțial, informație omisă, concluzie echilibrată.",
+    "developing": "Compară cel puțin două perspective înainte de a formula concluzia.",
+    "consolidation": "Prioritate: evitarea afirmațiilor absolute precum «toți», «numai», «întotdeauna» și «în toate privințele»."
+  },
+  "CT1.4": {
+    "excellent": "Analizează un material vizual nou prin cadraj, selecție, emoție, omisiuni și mesaj intenționat.",
+    "strong": "Compară ilustrația cu o sursă istorică și notează elementele idealizate sau dramatizate.",
+    "functional": "Descrie mai întâi ce se vede direct, apoi explică impresia creată de autor.",
+    "developing": "Caută ce lipsește din imagine și ce generalizare poate produce selecția vizuală.",
+    "consolidation": "Prioritate: o imagine atractivă sau repetată nu reprezintă automat o reconstituire exactă."
+  },
+  "CT2.1": {
+    "excellent": "Aplică rutina de verificare înainte de distribuirea oricărui conținut istoric spectaculos.",
+    "strong": "Explică tipul exact de manipulare: clickbait, anacronism, generalizare sau autoritate aparentă.",
+    "functional": "Verifică aceeași informație în manual și în cel puțin o sursă instituțională.",
+    "developing": "Oprește distribuirea până când autorul, data și afirmația centrală sunt confirmate.",
+    "consolidation": "Prioritate: verifică înainte de a crede, comenta sau distribui conținut istoric online."
+  }
+};
+  return feedback[code]?.[band] || "Continuă exersarea competenței prin sarcini aplicate.";
+}
+
+function generalInterpretation(scorePercent, missing) {
+  let text;
+  if (scorePercent >= 90) {
+    text = "Rezultatul indică un nivel foarte bun de gândire critică aplicată informației istorice digitale: elevul verifică dovezile, evaluează sursele, compară perspectivele și recunoaște tehnicile de manipulare vizuală sau textuală.";
+  } else if (scorePercent >= 75) {
+    text = "Competențele de analiză critică sunt bine dezvoltate. Erorile sunt punctuale și privesc mai ales justificarea completă a credibilității ori identificarea exactă a tehnicii de manipulare.";
+  } else if (scorePercent >= 60) {
+    text = "Elevul recunoaște majoritatea mesajelor problematice, dar aplicarea criteriilor de verificare nu este încă uniformă. Sunt utile exerciții care separă dovada, interpretarea, intenția autorului și efectul vizual.";
+  } else if (scorePercent >= 45) {
+    text = "Competențele sunt în formare. Se recomandă folosirea unei grile de verificare pentru autor, dovezi, context, limbaj, imagini și confirmarea informației în surse independente.";
+  } else {
+    text = "Rezultatul indică necesitatea consolidării rutinei de analiză critică: identificarea afirmației, verificarea sursei, căutarea dovezilor, recunoașterea generalizărilor și evitarea distribuirii conținutului neverificat.";
+  }
+  if (missing > 0) {
+    text += ` Au rămas necompletate ${missing} ${missing === 1 ? "întrebare" : "întrebări"}, ceea ce a redus scorul final.`;
+  }
+  return text;
+}
+
+function buildResult() {
+  const studentName = document.getElementById("studentName").value.trim();
+  const studentTestCode = document.getElementById("studentTestCode").value.trim();
+  const studentClass = document.getElementById("studentClass").value.trim();
+  const studentSchool = document.getElementById("studentSchool").value.trim();
+  const answers = [];
+  const competencyStats = {};
+
+  Object.keys(COMPETENCIES).forEach((code) => {
+    competencyStats[code] = { code, total: 0, correct: 0, wrong: 0, missing: 0 };
+  });
+
+  let correct = 0;
+  let wrong = 0;
+  let missing = 0;
+
+  QUESTIONS.forEach((question) => {
+    const selected = getSelectedAnswer(question.id);
+    const isCorrect = selected === question.answer;
+    const stat = competencyStats[question.competency];
+    stat.total += 1;
+
+    if (!selected) {
+      missing += 1;
+      stat.missing += 1;
+    } else if (isCorrect) {
+      correct += 1;
+      stat.correct += 1;
+    } else {
+      wrong += 1;
+      stat.wrong += 1;
+    }
+
+    answers.push({
+      id: question.id,
+      code: question.sourceCode,
+      competency: question.competency,
+      question: question.text,
+      options: question.options,
+      selected,
+      selectedText: selected ? question.options[selected] : null,
+      correctAnswer: question.answer,
+      correctText: question.options[question.answer],
+      isCorrect: selected ? isCorrect : null,
+      explanation: question.explanation
+    });
+  });
+
+  const total = QUESTIONS.length;
+  const scorePercent = percent(correct, total);
+  const completedAt = new Date();
+
+  const competencies = Object.values(competencyStats).map((stat) => {
+    const scorePercent = percent(stat.correct, stat.total);
+    return {
+      ...stat,
+      title: COMPETENCIES[stat.code].title,
+      short: COMPETENCIES[stat.code].short,
+      percent: scorePercent,
+      level: levelFor(scorePercent),
+      profileFeedback: competencyProfileFeedback(stat.code, scorePercent),
+      summaryFeedback: competencySummaryFeedback(stat.code, scorePercent),
+      interpretation: competencyProfileFeedback(stat.code, scorePercent)
+    };
+  });
+
+  return {
+    test: {
+      title: "Testul grilă CT (varianta B)",
+      discipline: "Istorie, clasa a V-a",
+      unit: "Preistoria",
+      totalQuestions: total
+    },
+    student: {
+      name: studentName,
+      testCode: studentTestCode,
+      nickname: studentTestCode,
+      className: studentClass,
+      school: studentSchool
+    },
+    completedAt: completedAt.toISOString(),
+    completedAtLabel: completedAt.toLocaleString("ro-RO"),
+    score: {
+      correct,
+      wrong,
+      missing,
+      total,
+      percent: scorePercent,
+      level: levelFor(scorePercent)
+    },
+    competencies,
+    interpretation: generalInterpretation(scorePercent, missing),
+    answers
+  };
+}
+
+function renderResults(result) {
+  const identityParts = [];
+  if (result.student.name) identityParts.push(result.student.name);
+  if (result.student.testCode || result.student.nickname) identityParts.push(`cod ${result.student.testCode || result.student.nickname}`);
+  if (result.student.className) identityParts.push(`clasa ${result.student.className}`);
+  if (result.student.school) identityParts.push(result.student.school);
+
+  const identityText = identityParts.length ? identityParts.join(" · ") : "Elev neidentificat";
+  const dateText = `Finalizat la ${result.completedAtLabel}`;
+
+  document.getElementById("completionScore").textContent = `${result.score.correct}/${result.score.total}`;
+  document.getElementById("completionIdentity").textContent = identityText;
+  document.getElementById("completionDate").textContent = dateText;
+  document.getElementById("resultIdentity").textContent = identityText;
+  document.getElementById("resultDate").textContent = dateText;
+  document.getElementById("scoreOrb").textContent = `${result.score.percent}%`;
+
+  const statItems = [
+    ["Scor total", `${result.score.correct}/${result.score.total}`, "Răspunsuri corecte"],
+    ["Corecte", result.score.correct, `${percent(result.score.correct, result.score.total)}% din test`],
+    ["Greșite", result.score.wrong, `${percent(result.score.wrong, result.score.total)}% din test`],
+    ["Necompletate", result.score.missing, `${percent(result.score.missing, result.score.total)}% din test`]
+  ];
+
+  document.getElementById("statsGrid").innerHTML = statItems.map(([title, number, note]) => `
+    <div class="stat">
+      <strong>${escapeHtml(title)}</strong>
+      <span class="big-number">${escapeHtml(number)}</span>
+      <small>${escapeHtml(note)}</small>
+    </div>
+  `).join("");
+
+  document.getElementById("competencyCards").innerHTML = result.competencies.map((item) => `
+    <article class="competency-card">
+      <div><span class="pill ${item.level.kind}">${escapeHtml(item.level.label)}</span></div>
+      <h3 style="margin-top:12px">${escapeHtml(item.code)}</h3>
+      <div class="score-line">${item.correct}/${item.total} · ${item.percent}%</div>
+      <div class="bar"><span style="width:${item.percent}%"></span></div>
+      <p><strong>${escapeHtml(item.short)}</strong></p>
+      <p>${escapeHtml(item.profileFeedback || item.interpretation)}</p>
+    </article>
+  `).join("");
+
+  document.getElementById("competencyTableBody").innerHTML = result.competencies.map((item) => `
+    <tr>
+      <td><strong>${escapeHtml(item.title)}</strong></td>
+      <td>${item.correct}/${item.total}</td>
+      <td>${item.percent}%</td>
+      <td><span class="pill ${item.level.kind}">${escapeHtml(item.level.label)}</span></td>
+      <td>${escapeHtml(item.summaryFeedback || item.interpretation)}</td>
+    </tr>
+  `).join("");
+
+  document.getElementById("generalReport").innerHTML = `
+    <p><strong>Nivel general: ${escapeHtml(result.score.level.label)}.</strong></p>
+    <p>${escapeHtml(result.interpretation)}</p>
+    <p>Scorul trebuie utilizat împreună cu activitatea la clasă, răspunsurile orale, exercițiile scrise și evoluția elevului în timp.</p>
+  `;
+
+  document.getElementById("resultsSection").style.display = "block";
+}
+
+function validateStudentData() {
+  const ids = ["studentName", "studentTestCode", "studentSchool", "studentClass"];
+  const missingFields = ids
+    .map((id) => document.getElementById(id))
+    .filter((input) => !input.value.trim());
+
+  ids.forEach((id) => document.getElementById(id).classList.remove("invalid"));
+  const errorBox = document.getElementById("studentDataError");
+
+  if (missingFields.length) {
+    missingFields.forEach((input) => input.classList.add("invalid"));
+    errorBox.classList.add("show");
+    missingFields[0].focus();
+    document.getElementById("studentDataSection").scrollIntoView({ behavior: "smooth", block: "center" });
+    return false;
+  }
+
+  errorBox.classList.remove("show");
+  return true;
+}
+
+function finishQuiz() {
+  if (!validateStudentData()) return;
+  clearReview();
+  reviewVisible = false;
+  document.getElementById("reviewButton").textContent = "Arată răspunsurile și explicațiile";
+  document.getElementById("detailsButton").textContent = "Vezi rezultate detaliate";
+  document.getElementById("detailedResults").classList.add("hidden");
+  document.getElementById("downloadStatus").textContent = "";
+  lastResult = buildResult();
+  renderResults(lastResult);
+
+  try {
+    localStorage.setItem("testPreistoriaCTVarBLastResult_v1", JSON.stringify(lastResult));
+  } catch (error) {
+    console.warn("Rezultatul nu a putut fi salvat local.", error);
+  }
+
+  document.getElementById("resultsSection").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function toggleDetailedResults() {
+  if (!lastResult) return;
+  const details = document.getElementById("detailedResults");
+  const button = document.getElementById("detailsButton");
+  const willShow = details.classList.contains("hidden");
+
+  details.classList.toggle("hidden", !willShow);
+  button.textContent = willShow ? "Ascunde rezultatele detaliate" : "Vezi rezultate detaliate";
+
+  if (willShow) {
+    details.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+
+function clearReview() {
+  document.querySelectorAll(".question-card").forEach((card) => {
+    card.classList.remove("review-correct", "review-wrong", "review-missing");
+    card.querySelector(".review-note")?.remove();
+    card.querySelector(".explanation")?.remove();
+  });
+  document.querySelectorAll(".option-label").forEach((label) => {
+    label.classList.remove("answer-correct", "answer-wrong");
+  });
+}
+
+function showReview() {
+  if (!lastResult) return;
+
+  lastResult.answers.forEach((answerData) => {
+    const question = QUESTIONS.find((item) => item.id === answerData.id);
+    const card = document.getElementById(`question-${question.id}`);
+    if (!card) return;
+
+    const note = document.createElement("div");
+    note.className = "review-note";
+
+    if (!answerData.selected) {
+      card.classList.add("review-missing");
+      note.classList.add("warn");
+      note.textContent = `Nu ai bifat niciun răspuns. Varianta corectă este ${question.answer}.`;
+    } else if (answerData.isCorrect) {
+      card.classList.add("review-correct");
+      note.classList.add("good");
+      note.textContent = `Ai bifat ${answerData.selected}. Răspuns corect.`;
+    } else {
+      card.classList.add("review-wrong");
+      note.classList.add("danger");
+      note.textContent = `Ai bifat ${answerData.selected}, dar varianta corectă este ${question.answer}.`;
+    }
+
+    card.querySelector(".question-top").insertAdjacentElement("afterend", note);
+
+    card.querySelectorAll(".option-label").forEach((label) => {
+      const input = label.querySelector("input");
+      if (input.value === question.answer) label.classList.add("answer-correct");
+      if (input.value === answerData.selected && input.value !== question.answer) {
+        label.classList.add("answer-wrong");
+      }
+    });
+
+    const explanation = document.createElement("div");
+    explanation.className = "explanation";
+    explanation.innerHTML = `
+      <p><strong>De ce răspunsul ${escapeHtml(question.answer)} este corect:</strong>
+        ${escapeHtml(question.explanation.correct)}
+      </p>
+      <ul>
+        ${Object.entries(question.explanation.options).map(([letter, text]) =>
+          `<li><strong>${escapeHtml(letter)}.</strong> ${escapeHtml(text)}</li>`
+        ).join("")}
+      </ul>
+    `;
+    card.appendChild(explanation);
+  });
+}
+
+function toggleReview() {
+  if (!lastResult) return;
+  reviewVisible = !reviewVisible;
+  const button = document.getElementById("reviewButton");
+
+  if (reviewVisible) {
+    showReview();
+    button.textContent = "Ascunde răspunsurile și explicațiile";
+    document.getElementById("question-1").scrollIntoView({ behavior: "smooth", block: "start" });
+  } else {
+    clearReview();
+    button.textContent = "Arată răspunsurile și explicațiile";
+  }
+}
+
+function resetQuiz() {
+  if (!confirm("Ștergi toate răspunsurile și rezultatul afișat?")) return;
+
+  quizForm.reset();
+  document.querySelectorAll(".option-label").forEach((label) => label.classList.remove("selected"));
+  clearReview();
+  reviewVisible = false;
+  lastResult = null;
+  document.getElementById("detailedResults").classList.add("hidden");
+  document.getElementById("detailsButton").textContent = "Vezi rezultate detaliate";
+  document.getElementById("resultsSection").style.display = "none";
+  document.getElementById("downloadStatus").textContent = "";
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function fileSafeName() {
+  const name = lastResult?.student?.name
+    ? lastResult.student.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9]+/g, "-")
+    : "elev";
+  return `rezultate-test-preistoria-CT-var-B-${name}-${new Date().toISOString().slice(0, 10)}`;
+}
+
+function downloadBlob(content, mimeType, extension) {
+  const blob = new Blob([content], { type: mimeType });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = `${fileSafeName()}.${extension}`;
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 500);
+}
+
+function requireResult() {
+  if (lastResult) return true;
+  document.getElementById("downloadStatus").textContent = "Finalizează testul înainte de a descărca rezultatele.";
+  return false;
+}
+
+function downloadJson() {
+  if (!requireResult()) return;
+  downloadBlob(JSON.stringify(lastResult, null, 2), "application/json;charset=utf-8", "json");
+  document.getElementById("downloadStatus").textContent = "Fișierul JSON a fost generat.";
+}
+
+function csvCell(value) {
+  const text = String(value ?? "");
+  return `"${text.replaceAll('"', '""')}"`;
+}
+
+function downloadCsv() {
+  if (!requireResult()) return;
+
+  const rows = [
+    ["Test", lastResult.test.title],
+    ["Unitate", lastResult.test.unit],
+    ["Elev", lastResult.student.name ?? ""],
+    ["Cod de testare", lastResult.student.testCode ?? lastResult.student.nickname ?? ""],
+    ["Școala", lastResult.student.school ?? ""],
+    ["Clasa", lastResult.student.className ?? ""],
+    ["Data", lastResult.completedAtLabel],
+    ["Scor corect", lastResult.score.correct],
+    ["Total", lastResult.score.total],
+    ["Procent", `${lastResult.score.percent}%`],
+    [],
+    ["Competență", "Corecte", "Total", "Procent", "Nivel"]
+  ];
+
+  lastResult.competencies.forEach((item) => {
+    rows.push([item.code, item.correct, item.total, `${item.percent}%`, item.level.label]);
+  });
+
+  rows.push([]);
+  rows.push(["Nr.", "Cod item", "Competență", "Întrebare", "Răspuns bifat", "Răspuns corect", "Evaluare"]);
+
+  lastResult.answers.forEach((item) => {
+    rows.push([
+      item.id,
+      item.code,
+      item.competency,
+      item.question,
+      item.selected ?? "",
+      item.correctAnswer,
+      item.isCorrect === null ? "Necompletat" : item.isCorrect ? "Corect" : "Greșit"
+    ]);
+  });
+
+  const csv = "\uFEFF" + rows.map((row) => row.map(csvCell).join(";")).join("\r\n");
+  downloadBlob(csv, "text/csv;charset=utf-8", "csv");
+  document.getElementById("downloadStatus").textContent = "Fișierul CSV a fost generat.";
+}
+
+function reportBodyHtml(result) {
+  return `
+    <section class="hero">
+      <p class="kicker">Scorare și interpretare</p>
+      <h1>${escapeHtml(result.test.title)} – ${escapeHtml(result.test.unit)}</h1>
+      <p>${escapeHtml(result.student.name ?? "Elev neidentificat")}
+        ${(result.student.testCode || result.student.nickname) ? ` · cod ${escapeHtml(result.student.testCode || result.student.nickname)}` : ""}
+        ${result.student.school ? ` · ${escapeHtml(result.student.school)}` : ""}
+        ${result.student.className ? ` · clasa ${escapeHtml(result.student.className)}` : ""}
+      </p>
+      <p>Finalizat la ${escapeHtml(result.completedAtLabel)}</p>
+    </section>
+
+    <section class="section grid">
+      <div class="stat"><strong>Scor</strong><b>${result.score.correct}/${result.score.total}</b></div>
+      <div class="stat"><strong>Procent</strong><b>${result.score.percent}%</b></div>
+      <div class="stat"><strong>Greșite</strong><b>${result.score.wrong}</b></div>
+      <div class="stat"><strong>Necompletate</strong><b>${result.score.missing}</b></div>
+    </section>
+
+    <section class="section card">
+      <h2>Profil pe competențe</h2>
+      ${result.competencies.map((item) => `
+        <div class="competency">
+          <strong>${escapeHtml(item.title)}</strong>
+          <span>${item.correct}/${item.total} · ${item.percent}% · ${escapeHtml(item.level.label)}</span>
+          <p>${escapeHtml(item.profileFeedback || item.interpretation)}</p>
+          <p><strong>Recomandare practică:</strong> ${escapeHtml(item.summaryFeedback || "Continuă exersarea prin sarcini aplicate.")}</p>
+        </div>
+      `).join("")}
+    </section>
+
+    <section class="section card">
+      <h2>Interpretare generală</h2>
+      <p>${escapeHtml(result.interpretation)}</p>
+    </section>
+
+    <section class="section card">
+      <h2>Răspunsuri</h2>
+      <table>
+        <thead><tr><th>Nr.</th><th>Întrebare</th><th>Bifat</th><th>Corect</th><th>Evaluare</th></tr></thead>
+        <tbody>
+          ${result.answers.map((item) => `
+            <tr>
+              <td>${item.id}</td>
+              <td>${escapeHtml(item.question)}</td>
+              <td>${escapeHtml(item.selected ?? "—")}</td>
+              <td>${escapeHtml(item.correctAnswer)}</td>
+              <td>${item.isCorrect === null ? "Necompletat" : item.isCorrect ? "Corect" : "Greșit"}</td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    </section>
+  `;
+}
+
+function buildStandaloneReport(result) {
+  return `<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raport – Test Preistoria</title>
+<style>
+  :root{--ink:#25211d;--muted:#6f675d;--line:#e6ded4;--accent:#72462a;--soft:#f1e3d4}
+  *{box-sizing:border-box}body{margin:0;background:#f6f3ef;color:var(--ink);font-family:Arial,sans-serif;line-height:1.58}
+  .page{width:min(1050px,calc(100% - 34px));margin:auto;padding:32px 0 60px}
+  .hero,.card,.stat{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px}
+  .hero{background:linear-gradient(135deg,#fffaf4,#f1e3d4)}
+  .kicker{color:var(--accent);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.8rem}
+  h1,h2{font-family:Georgia,serif}.section{margin-top:18px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .stat b{display:block;color:var(--accent);font-family:Georgia,serif;font-size:2rem}.competency{padding:14px 0;border-bottom:1px solid var(--line)}
+  .competency:last-child{border-bottom:0}.competency span{display:block;color:var(--accent);font-weight:bold;margin-top:4px}.competency p{color:var(--muted)}
+  table{width:100%;border-collapse:collapse}th,td{border-bottom:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}th{background:#fbf4ec}
+  @media(max-width:700px){.grid{grid-template-columns:1fr 1fr}}
+  @media print{body{background:#fff}.page{width:100%;padding:0}.hero,.card,.stat{box-shadow:none}}
+</style>
+</head>
+<body><main class="page">${reportBodyHtml(result)}</main></body>
+</html>`;
+}
+
+function downloadHtmlReport() {
+  if (!requireResult()) return;
+  downloadBlob(buildStandaloneReport(lastResult), "text/html;charset=utf-8", "html");
+  document.getElementById("downloadStatus").textContent = "Raportul HTML a fost generat.";
+}
+
+function printableShell(title, bodyHtml) {
+  return `<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${escapeHtml(title)}</title>
+<style>
+  :root{--ink:#25211d;--muted:#6f675d;--line:#e6ded4;--accent:#72462a;--soft:#f1e3d4;--good:#255f3f;--danger:#9b2c2c}
+  *{box-sizing:border-box}body{margin:0;background:#fff;color:var(--ink);font-family:Arial,sans-serif;line-height:1.5}
+  .page{width:min(1000px,calc(100% - 40px));margin:0 auto;padding:28px 0 46px}
+  .hero,.card{border:1px solid var(--line);border-radius:18px;padding:20px;margin-bottom:16px}
+  .hero{background:linear-gradient(135deg,#fffaf4,#f1e3d4)}
+  .kicker{margin:0 0 6px;color:var(--accent);font-size:.78rem;font-weight:850;letter-spacing:.12em;text-transform:uppercase}
+  h1,h2{font-family:Georgia,"Times New Roman",serif;margin:0 0 10px}p{margin:0 0 9px}.muted{color:var(--muted)}
+  .score{font-family:Georgia,"Times New Roman",serif;font-size:2rem;color:var(--accent);font-weight:900}
+  .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.stat{border:1px solid var(--line);border-radius:14px;padding:14px}.stat b{display:block;font-size:1.7rem;color:var(--accent);font-family:Georgia,serif}
+  table{width:100%;border-collapse:collapse}th,td{padding:9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#fbf4ec;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+  .answer-item{padding:13px 0;border-bottom:1px solid var(--line);break-inside:avoid}.answer-item:last-child{border-bottom:0}.choice{margin-top:7px;padding:9px 11px;border-radius:10px;background:#f7f2ec}.missing{color:#76510b}.competency{padding:12px 0;border-bottom:1px solid var(--line)}.competency:last-child{border-bottom:0}.competency strong{display:block}.competency span{display:block;margin-top:3px;color:var(--accent);font-weight:800}
+  @page{size:A4;margin:14mm}@media print{.page{width:100%;padding:0}.hero,.card{break-inside:avoid}.grid{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body><main class="page">${bodyHtml}</main></body>
+</html>`;
+}
+
+function answersPdfBody(result) {
+  return `
+    <section class="hero">
+      <p class="kicker">Răspunsuri trimise</p>
+      <h1>${escapeHtml(result.test.title)} – ${escapeHtml(result.test.unit)}</h1>
+      <p>${escapeHtml(result.student.name ?? "Elev neidentificat")}${(result.student.testCode || result.student.nickname) ? ` · cod ${escapeHtml(result.student.testCode || result.student.nickname)}` : ""}${result.student.school ? ` · ${escapeHtml(result.student.school)}` : ""}${result.student.className ? ` · clasa ${escapeHtml(result.student.className)}` : ""}</p>
+      <p class="muted">${escapeHtml(result.completedAtLabel)}</p>
+    </section>
+    <section class="card">
+      ${result.answers.map((item) => {
+        const question = QUESTIONS.find((entry) => entry.id === item.id);
+        const selectedText = item.selected && question ? question.options[item.selected] : "Niciun răspuns bifat";
+        return `<article class="answer-item">
+          <strong>${item.id}. ${escapeHtml(item.question)}</strong>
+          <div class="choice ${item.selected ? "" : "missing"}"><b>Răspuns trimis:</b> ${escapeHtml(item.selected ?? "—")}${item.selected ? `. ${escapeHtml(selectedText)}` : ` · ${escapeHtml(selectedText)}`}</div>
+        </article>`;
+      }).join("")}
+    </section>`;
+}
+
+function resultsPdfBody(result) {
+  return `
+    <section class="hero">
+      <p class="kicker">Rezultatele testului</p>
+      <h1>${escapeHtml(result.test.title)} – ${escapeHtml(result.test.unit)}</h1>
+      <p>${escapeHtml(result.student.name ?? "Elev neidentificat")}${(result.student.testCode || result.student.nickname) ? ` · cod ${escapeHtml(result.student.testCode || result.student.nickname)}` : ""}${result.student.school ? ` · ${escapeHtml(result.student.school)}` : ""}${result.student.className ? ` · clasa ${escapeHtml(result.student.className)}` : ""}</p>
+      <p class="muted">${escapeHtml(result.completedAtLabel)}</p>
+      <p class="score">${result.score.correct}/${result.score.total} · ${result.score.percent}%</p>
+    </section>
+    <section class="grid">
+      <div class="stat"><strong>Corecte</strong><b>${result.score.correct}</b></div>
+      <div class="stat"><strong>Greșite</strong><b>${result.score.wrong}</b></div>
+      <div class="stat"><strong>Necompletate</strong><b>${result.score.missing}</b></div>
+      <div class="stat"><strong>Nivel</strong><b style="font-size:1.15rem">${escapeHtml(result.score.level.label)}</b></div>
+    </section>
+    <section class="card" style="margin-top:16px">
+      <h2>Profil pe competențe</h2>
+      ${result.competencies.map((item) => `<div class="competency">
+        <strong>${escapeHtml(item.title)}</strong>
+        <span>${item.correct}/${item.total} · ${item.percent}% · ${escapeHtml(item.level.label)}</span>
+        <p>${escapeHtml(item.profileFeedback || item.interpretation)}</p>
+        <p><strong>Recomandare practică:</strong> ${escapeHtml(item.summaryFeedback || "Continuă exersarea prin sarcini aplicate.")}</p>
+      </div>`).join("")}
+    </section>
+    <section class="card">
+      <h2>Interpretare generală</h2>
+      <p>${escapeHtml(result.interpretation)}</p>
+    </section>`;
+}
+
+function openPdfPrint(title, bodyHtml) {
+  if (!requireResult()) return;
+  const printWindow = window.open("", "_blank");
+  if (!printWindow) {
+    document.getElementById("downloadStatus").textContent = "Browserul a blocat fereastra PDF. Permite ferestrele pop-up și încearcă din nou.";
+    return;
+  }
+
+  printWindow.document.open();
+  printWindow.document.write(printableShell(title, bodyHtml));
+  printWindow.document.close();
+  printWindow.focus();
+  document.getElementById("downloadStatus").textContent = "În fereastra deschisă, alege «Salvează ca PDF».";
+  setTimeout(() => printWindow.print(), 350);
+}
+
+function downloadAnswersPdf() {
+  if (!requireResult()) return;
+  openPdfPrint("Răspunsuri trimise – Test Preistoria", answersPdfBody(lastResult));
+}
+
+function downloadResultsPdf() {
+  if (!requireResult()) return;
+  openPdfPrint("Rezultate – Test Preistoria", resultsPdfBody(lastResult));
+}
+
+async function copyReport() {
+  if (!requireResult()) return;
+
+  const lines = [
+    `${lastResult.test.title} – ${lastResult.test.unit}`,
+    `Elev: ${lastResult.student.name ?? "—"}`,
+    `Cod de testare: ${lastResult.student.testCode ?? lastResult.student.nickname ?? "—"}`,
+    `Școala: ${lastResult.student.school ?? "—"}`,
+    `Clasa: ${lastResult.student.className ?? "—"}`,
+    `Data: ${lastResult.completedAtLabel}`,
+    `Scor: ${lastResult.score.correct}/${lastResult.score.total} (${lastResult.score.percent}%)`,
+    `Nivel: ${lastResult.score.level.label}`,
+    "",
+    ...lastResult.competencies.map((item) =>
+      `${item.code}: ${item.correct}/${item.total} (${item.percent}%) – ${item.level.label}`
+    ),
+    "",
+    lastResult.interpretation
+  ];
+
+  try {
+    await navigator.clipboard.writeText(lines.join("\n"));
+    document.getElementById("downloadStatus").textContent = "Raportul a fost copiat.";
+  } catch {
+    document.getElementById("downloadStatus").textContent = "Copierea automată nu a fost permisă de browser.";
+  }
+}
+
+document.getElementById("finishButton").addEventListener("click", finishQuiz);
+document.getElementById("resetButton").addEventListener("click", resetQuiz);
+document.getElementById("reviewButton").addEventListener("click", toggleReview);
+document.getElementById("detailsButton").addEventListener("click", toggleDetailedResults);
+document.getElementById("answersPdfButton").addEventListener("click", downloadAnswersPdf);
+document.getElementById("resultsPdfButton").addEventListener("click", downloadResultsPdf);
+document.getElementById("jsonDownloadButton").addEventListener("click", downloadJson);
+
+["studentName", "studentTestCode", "studentSchool", "studentClass"].forEach((id) => {
+  document.getElementById(id).addEventListener("input", (event) => {
+    event.currentTarget.classList.remove("invalid");
+    if (["studentName", "studentTestCode", "studentSchool", "studentClass"].every((fieldId) => document.getElementById(fieldId).value.trim())) {
+      document.getElementById("studentDataError").classList.remove("show");
+    }
+  });
+});
+
+renderQuestions();
+updateProgress();
+</script>
+</body>
+</html>

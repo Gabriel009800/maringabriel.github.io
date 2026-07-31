@@ -1,0 +1,2204 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testul grilă nr. 2 (varianta A) – Marile descoperiri geografice</title>
+  <style>
+    :root {
+      --bg: #f6f3ef;
+      --panel: #fffaf4;
+      --card: #ffffff;
+      --ink: #25211d;
+      --muted: #6f675d;
+      --line: #e6ded4;
+      --accent: #72462a;
+      --accent-2: #b77c48;
+      --accent-soft: #f1e3d4;
+      --good: #255f3f;
+      --good-soft: #edf6f1;
+      --warn: #8a5a00;
+      --warn-soft: #fff4db;
+      --danger: #9b2c2c;
+      --danger-soft: #f7e6e3;
+      --shadow: 0 18px 50px rgba(74, 52, 33, 0.12);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184, 130, 80, 0.14), transparent 36rem),
+        linear-gradient(180deg, #fbf8f3 0%, var(--bg) 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.58;
+    }
+
+    button, input { font: inherit; }
+    button { -webkit-tap-highlight-color: transparent; }
+
+    .page {
+      width: min(1160px, calc(100% - 104px));
+      margin: 0 auto;
+      padding: 34px 0 82px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 32px;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(255, 250, 244, 0.96), rgba(241, 227, 212, 0.82));
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      right: -145px;
+      top: -205px;
+      background: rgba(122, 78, 45, 0.08);
+      pointer-events: none;
+    }
+
+    .kicker {
+      margin: 0 0 8px;
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 850;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1, h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing: -0.025em;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2.1rem, 4vw, 3.65rem);
+      line-height: 1;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: clamp(1.45rem, 2.5vw, 2.1rem);
+    }
+
+    h3 { margin: 0 0 10px; }
+
+    p { margin: 0 0 12px; }
+    .muted { color: var(--muted); }
+    .section { margin-top: 22px; }
+
+    .card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 10px 30px rgba(74, 52, 33, 0.07);
+    }
+
+    .meta-grid,
+    .student-grid,
+    .stats-grid,
+    .competency-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .meta-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .meta-item {
+      padding: 15px;
+      border: 1px solid rgba(114, 70, 42, 0.12);
+      border-radius: 17px;
+      background: rgba(255, 255, 255, 0.68);
+    }
+
+    .meta-item strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--accent);
+      font-size: 0.8rem;
+      letter-spacing: 0.045em;
+      text-transform: uppercase;
+    }
+
+    .student-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .field { display: grid; gap: 7px; }
+    .required-mark { color: var(--danger); }
+    .form-error {
+      display: none;
+      margin: 14px 0 0;
+      padding: 12px 14px;
+      border: 1px solid rgba(155, 44, 44, 0.28);
+      border-radius: 14px;
+      background: var(--danger-soft);
+      color: var(--danger);
+      font-weight: 800;
+    }
+    .form-error.show { display: block; }
+    .field input.invalid {
+      border-color: var(--danger);
+      box-shadow: 0 0 0 3px rgba(155, 44, 44, 0.12);
+    }
+    .json-export-box {
+      margin-top: 16px;
+      padding: 15px 16px;
+      border: 1px dashed rgba(114, 70, 42, 0.28);
+      border-radius: 16px;
+      background: #fffdf9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+    }
+    .json-export-box p { margin: 3px 0 0; }
+    .json-export-box .btn { flex: 0 0 auto; }
+
+    .field label { font-weight: 800; color: #49382d; }
+    .field input {
+      width: 100%;
+      padding: 12px 13px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      outline: none;
+      background: #fff;
+    }
+    .field input:focus {
+      border-color: var(--accent-2);
+      box-shadow: 0 0 0 3px rgba(183, 124, 72, 0.14);
+    }
+
+    .competency-source {
+      display: block;
+      margin: -22px -22px 18px;
+      padding: 14px 20px;
+      border-radius: 22px 22px 0 0;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    .competency-source:hover { filter: brightness(1.08); }
+
+    details.competencies {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      background: #fffdf9;
+    }
+
+    details.competencies summary {
+      cursor: pointer;
+      padding: 16px 18px;
+      font-weight: 850;
+      color: #3f3026;
+    }
+
+    .competency-details {
+      padding: 0 18px 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    .competency-details h3 {
+      margin: 17px 0 7px;
+      color: var(--accent);
+      font-size: 1rem;
+    }
+
+    .competency-details ul {
+      margin: 0 0 8px 20px;
+      padding: 0;
+      color: var(--muted);
+    }
+
+    .progress-shell {
+      position: fixed;
+      z-index: 40;
+      top: 50%;
+      right: 10px;
+      width: 54px;
+      height: 260px;
+      padding: 11px 9px;
+      border: 1px solid rgba(114, 70, 42, 0.20);
+      border-radius: 20px;
+      background: rgba(255, 250, 244, 0.96);
+      box-shadow: 0 12px 28px rgba(74, 52, 33, 0.13);
+      backdrop-filter: blur(10px);
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+    }
+
+    .progress-head {
+      display: contents;
+      color: #55463b;
+      font-size: 0.72rem;
+      font-weight: 850;
+      line-height: 1;
+      text-align: center;
+    }
+
+    #progressPercent {
+      order: -2;
+      color: var(--accent);
+      font-size: 0.86rem;
+    }
+
+    #progressText {
+      order: 2;
+      white-space: nowrap;
+      font-size: 0.7rem;
+    }
+
+    .bar {
+      height: 10px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #eadfd3;
+    }
+
+    .bar > span {
+      display: block;
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width 0.25s ease;
+    }
+
+    .progress-shell .bar {
+      order: 1;
+      display: flex;
+      width: 11px;
+      height: 182px;
+      flex: 0 0 182px;
+      align-items: flex-end;
+      background: #eadfd3;
+    }
+
+    .progress-shell .bar > span {
+      width: 100%;
+      height: 0;
+      background: linear-gradient(0deg, var(--accent), var(--accent-2));
+      transition: height 0.25s ease;
+    }
+
+    #quizForm {
+      display: grid;
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .question-card {
+      padding: 21px;
+      border: 1px solid var(--line);
+      border-radius: 21px;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(74, 52, 33, 0.055);
+      scroll-margin-top: 100px;
+    }
+
+    .question-card.review-correct { border-color: rgba(37, 95, 63, 0.42); background: #fbfffc; }
+    .question-card.review-wrong { border-color: rgba(155, 44, 44, 0.38); background: #fffafa; }
+    .question-card.review-missing { border-color: rgba(138, 90, 0, 0.38); background: #fffdf7; }
+
+    .question-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 13px;
+    }
+
+    .question-number {
+      display: inline-flex;
+      min-width: 38px;
+      height: 38px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    .question-main { flex: 1; min-width: 0; }
+    .question-title {
+      margin: 0;
+      color: #30261f;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.08rem;
+      line-height: 1.52;
+    }
+
+    .competency-pill,
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 850;
+      line-height: 1.15;
+    }
+
+    .competency-pill {
+      margin-top: 7px;
+      background: #f1ede8;
+      color: #5d554e;
+    }
+
+    .pill.good { background: var(--good-soft); color: var(--good); }
+    .pill.warn { background: var(--warn-soft); color: #76510b; }
+    .pill.danger { background: var(--danger-soft); color: var(--danger); }
+    .pill.neutral { background: #f1ede8; color: #5d554e; }
+
+    .option-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      margin: 7px 0;
+      padding: 11px 12px;
+      border: 1px solid transparent;
+      border-radius: 14px;
+      color: #463a31;
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .option-label:hover { background: #fbf5ee; }
+    .option-label input { margin-top: 4px; accent-color: var(--accent); }
+    .option-text { flex: 1; min-width: 0; }
+
+    .option-label.selected {
+      border-color: rgba(114, 70, 42, 0.24);
+      background: #fbf2e8;
+    }
+
+    .option-label.answer-correct {
+      border-color: rgba(37, 95, 63, 0.32);
+      background: var(--good-soft);
+    }
+
+    .option-label.answer-wrong {
+      border-color: rgba(155, 44, 44, 0.30);
+      background: var(--danger-soft);
+    }
+
+    .review-note {
+      margin: 4px 0 13px;
+      padding: 10px 12px;
+      border-radius: 13px;
+      font-weight: 800;
+      font-size: 0.92rem;
+    }
+
+    .review-note.good { background: var(--good-soft); color: var(--good); }
+    .review-note.warn { background: var(--warn-soft); color: #76510b; }
+    .review-note.danger { background: var(--danger-soft); color: var(--danger); }
+
+    .explanation {
+      margin-top: 15px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fffaf4;
+      color: #4a4038;
+    }
+
+    .explanation p { text-align: justify; }
+    .explanation ul { margin: 9px 0 0 20px; padding: 0; }
+    .explanation li { margin-bottom: 8px; }
+
+    .finish-panel {
+      position: sticky;
+      z-index: 25;
+      bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 18px;
+      padding: 8px 10px;
+      border: 1px solid rgba(114, 70, 42, 0.18);
+      border-radius: 16px;
+      background: rgba(255, 250, 244, 0.96);
+      box-shadow: 0 9px 23px rgba(74, 52, 33, 0.12);
+      backdrop-filter: blur(10px);
+    }
+
+    .finish-panel > .muted {
+      margin: 0;
+      max-width: 620px;
+      font-size: 0.79rem;
+      line-height: 1.25;
+    }
+
+    .finish-panel .actions { gap: 7px; }
+    .finish-panel .btn { padding: 8px 12px; font-size: 0.86rem; }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 11px 16px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      font-weight: 850;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 10px 18px rgba(114, 70, 42, 0.16);
+    }
+
+    .btn:hover { transform: translateY(-1px); filter: brightness(1.04); }
+    .btn.secondary {
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--accent);
+      box-shadow: none;
+    }
+    .btn.soft {
+      background: var(--accent-soft);
+      color: #5b3920;
+      box-shadow: none;
+    }
+    .btn.danger {
+      background: var(--danger);
+      color: white;
+    }
+
+    #resultsSection { display: none; scroll-margin-top: 20px; }
+
+    .results-hero {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(255, 250, 244, 0.98), rgba(241, 227, 212, 0.78));
+      box-shadow: var(--shadow);
+    }
+
+    .result-title-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .score-orb {
+      display: flex;
+      width: 112px;
+      height: 112px;
+      flex: 0 0 112px;
+      align-items: center;
+      justify-content: center;
+      border: 10px solid #eadfd3;
+      border-radius: 50%;
+      background: white;
+      color: var(--accent);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.95rem;
+      font-weight: 900;
+      box-shadow: 0 9px 24px rgba(74, 52, 33, 0.09);
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 18px;
+    }
+
+    .stat {
+      min-height: 126px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fffdf9;
+    }
+
+    .stat .big-number {
+      display: block;
+      margin: 7px 0 4px;
+      color: var(--accent);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.15rem;
+      line-height: 1;
+    }
+
+    .stat strong { color: #4d3b2f; }
+    .stat small { color: var(--muted); }
+
+    .competency-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 15px;
+    }
+
+    .competency-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 220px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 19px;
+      background: #fffdf9;
+    }
+
+    .competency-card .score-line {
+      margin: 10px 0 12px;
+      color: var(--accent);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.05rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .competency-card .bar { margin: 8px 0 13px; }
+    .competency-card p { color: var(--muted); font-size: 0.92rem; }
+
+    .table-wrap {
+      overflow: auto;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: white;
+    }
+
+    table {
+      width: 100%;
+      min-width: 800px;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 12px 13px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #fbf4ec;
+      color: #563820;
+      font-size: 0.8rem;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .report-box {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fffdf9;
+      color: #332d28;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.04rem;
+      line-height: 1.74;
+    }
+
+    .report-box p { text-align: justify; }
+
+    .completion-card {
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(255, 250, 244, 0.99), rgba(241, 227, 212, 0.84));
+      box-shadow: var(--shadow);
+    }
+
+    .completion-card h2 {
+      margin-bottom: 8px;
+      font-size: clamp(2rem, 4vw, 3rem);
+    }
+
+    .completion-score {
+      margin: 0 0 22px;
+      color: #47372d;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+    }
+
+    .completion-score strong {
+      color: var(--accent);
+      font-size: 1.18em;
+    }
+
+    .completion-options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .completion-option {
+      min-height: 92px;
+      padding: 18px 20px;
+      border: 1px solid rgba(114, 70, 42, 0.22);
+      border-radius: 20px;
+      background: #fff;
+      color: #3e2d22;
+      font: inherit;
+      font-size: 1.03rem;
+      font-weight: 850;
+      line-height: 1.35;
+      text-align: left;
+      cursor: pointer;
+      box-shadow: 0 9px 22px rgba(74, 52, 33, 0.07);
+      transition: transform 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
+    }
+
+    .completion-option:hover {
+      transform: translateY(-2px);
+      border-color: rgba(114, 70, 42, 0.42);
+      box-shadow: 0 13px 26px rgba(74, 52, 33, 0.11);
+    }
+
+    .pdf-download-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .pdf-download-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 92px;
+      padding: 15px 17px 15px 20px;
+      border: 1px solid rgba(114, 70, 42, 0.18);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.84);
+    }
+
+    .pdf-download-row h3 {
+      margin: 0 0 4px;
+      color: #3e2d22;
+      font-size: 1.05rem;
+    }
+
+    .pdf-download-row p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .pdf-icon-button {
+      display: inline-flex;
+      width: 66px;
+      height: 66px;
+      flex: 0 0 66px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(114, 70, 42, 0.22);
+      transition: transform 0.16s ease, filter 0.16s ease;
+    }
+
+    .pdf-icon-button:hover { transform: translateY(-2px); filter: brightness(1.05); }
+    .pdf-icon-button svg { width: 24px; height: 24px; fill: currentColor; }
+    .pdf-icon-button span { font-size: 0.68rem; font-weight: 900; letter-spacing: 0.05em; }
+
+    #detailedResults { scroll-margin-top: 16px; }
+    #downloadStatus { min-height: 1.4em; margin: 12px 0 0; }
+
+    .bibliography ol { margin: 7px 0 0 20px; padding: 0; }
+    .bibliography li { margin-bottom: 7px; }
+    .bibliography a { color: var(--accent); }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 900px) {
+      .meta-grid, .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .competency-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .page { width: min(100% - 62px, 1160px); margin-left: 12px; margin-right: auto; padding-top: 18px; }
+      .hero, .results-hero { padding: 23px; border-radius: 24px; }
+      .student-grid, .meta-grid, .stats-grid { grid-template-columns: 1fr; }
+      .result-title-row { flex-direction: column; }
+      .score-orb { width: 96px; height: 96px; flex-basis: 96px; font-size: 1.6rem; }
+      .finish-panel { position: sticky; bottom: 5px; flex-direction: row; align-items: center; }
+      .finish-panel > .muted { display: none; }
+      .finish-panel .actions { width: 100%; flex-wrap: nowrap; }
+      .finish-panel .btn { width: auto; flex: 1 1 0; padding: 8px 9px; font-size: 0.78rem; }
+      .actions .btn { flex: 1 1 0; }
+      .progress-shell { right: 4px; width: 42px; height: 202px; padding: 8px 6px; border-radius: 16px; }
+      .progress-shell .bar { height: 132px; flex-basis: 132px; width: 9px; }
+      #progressText { font-size: 0.62rem; }
+      #progressPercent { font-size: 0.75rem; }
+      .question-top { align-items: flex-start; }
+      .completion-card { padding: 22px; }
+      .completion-options { grid-template-columns: 1fr; }
+      .pdf-download-row { padding-left: 16px; }
+      .json-export-box { flex-direction: column; align-items: stretch; }
+      .json-export-box .btn { width: 100%; }
+      .pdf-icon-button { width: 60px; height: 60px; flex-basis: 60px; }
+    }
+
+    @media print {
+      body { background: white; }
+      .page { width: 100%; padding: 0; }
+      .no-print, #quizForm, .progress-shell, .finish-panel, .bibliography { display: none !important; }
+      #resultsSection { display: block !important; }
+      .hero, .results-hero, .card { box-shadow: none; }
+      .section { break-inside: avoid; }
+      .completion-card { display: none !important; }
+      .competency-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      table { min-width: 0; font-size: 0.84rem; }
+      th, td { padding: 8px; }
+    }
+  </style>
+</head>
+<body>
+<main class="page">
+  <section class="hero">
+    <p class="kicker">Evaluare digitală</p>
+    <h1>Testul grilă nr. 2 (varianta A)</h1>
+    <p class="muted" style="max-width:850px;font-size:1rem">
+      Istorie, clasa a VI-a · Unitatea de învățare: <strong>Marile descoperiri geografice</strong>
+    </p>
+
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Întrebări</strong><span>18 itemi cu alegere multiplă</span></div>
+      <div class="meta-item"><strong>Timp estimat</strong><span>20 de minute</span></div>
+      <div class="meta-item"><strong>Scorare</strong><span>1 punct pentru fiecare răspuns corect</span></div>
+      <div class="meta-item"><strong>Rezultate</strong><span>Raport pe competențe și fișiere descărcabile</span></div>
+    </div>
+  </section>
+
+  <section class="section card no-print" id="studentDataSection">
+    <h2>Datele elevului</h2>
+    <p class="muted">Toate câmpurile sunt obligatorii și vor apărea în fișierul de rezultate.</p>
+    <div class="student-grid">
+      <div class="field">
+        <label for="studentName">Nume și prenume <span class="required-mark">*</span></label>
+        <input id="studentName" type="text" autocomplete="name" placeholder="Ex.: Popescu Ana" required />
+      </div>
+      <div class="field">
+        <label for="studentTestCode">Cod de testare <span class="required-mark">*</span></label>
+        <input id="studentTestCode" type="text" autocomplete="off" placeholder="Ex.: MDG-6A-014" required />
+      </div>
+      <div class="field">
+        <label for="studentSchool">Școala <span class="required-mark">*</span></label>
+        <input id="studentSchool" type="text" autocomplete="organization" placeholder="Ex.: Școala Gimnazială nr. 1" required />
+      </div>
+      <div class="field">
+        <label for="studentClass">Clasa <span class="required-mark">*</span></label>
+        <input id="studentClass" type="text" placeholder="Ex.: a VI-a B" required />
+      </div>
+    </div>
+    <p id="studentDataError" class="form-error" role="alert">Completează numele, codul de testare, școala și clasa înainte de finalizarea testului.</p>
+  </section>
+
+  <section class="section card no-print">
+    <a class="competency-source" href="https://www.ise.ro/wp-content/uploads/2017/01/Istorie.pdf" target="_blank" rel="noopener noreferrer">
+      Baza curriculară: Programa școlară pentru disciplina Istorie, clasele a V-a–a VIII-a, aprobată prin Ordinul MEN nr. 3393/2017
+    </a>
+    <details class="competencies">
+      <summary>Competențe specifice evaluate</summary>
+      <div class="competency-details">
+        <h3>CS2.1. Utilizarea adecvată a termenilor istorici și a limbajului de specialitate</h3>
+        <ul>
+          <li>Alcătuirea unui glosar de termeni specifici</li>
+          <li>Folosirea termenilor istorici în situații noi de comunicare</li>
+          <li>Realizarea unor texte folosind adecvat termenii istorici</li>
+        </ul>
+
+        <h3>CS2.2. Utilizarea gândirii critice în analiza surselor de informare</h3>
+        <ul>
+          <li>Analiza surselor scrise sau vizuale pe baza unor cerințe</li>
+          <li>Alcătuirea unor fișe de personaj istoric pe baza unor surse diverse</li>
+          <li>Compararea surselor istorice oficiale cu cele neoficiale</li>
+        </ul>
+
+        <h3>CS2.3. Identificarea elementelor de cauzalitate prezente în surse variate</h3>
+        <ul>
+          <li>Stabilirea elementelor de cauzalitate într-o sursă istorică</li>
+          <li>Descoperirea cauzelor unui eveniment prin analiza contextului</li>
+          <li>Recunoașterea cauzelor unor evenimente istorice asemănătoare sau diferite</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <div class="progress-shell no-print">
+    <div class="progress-head">
+      <span id="progressText">0/18</span>
+      <span id="progressPercent">0%</span>
+    </div>
+    <div class="bar" aria-hidden="true"><span id="progressBar"></span></div>
+  </div>
+
+  <form id="quizForm" class="no-print"></form>
+
+  <div class="finish-panel no-print">
+    <span class="muted">Poți finaliza și cu întrebări necompletate; acestea vor fi marcate separat.</span>
+    <div class="actions">
+      <button type="button" class="btn secondary" id="resetButton">Șterge răspunsurile</button>
+      <button type="button" class="btn" id="finishButton">Am terminat testul</button>
+    </div>
+  </div>
+
+  <section id="resultsSection" class="section">
+    <section class="completion-card no-print" aria-live="polite">
+      <p class="kicker">Evaluare încheiată</p>
+      <h2>Test finalizat</h2>
+      <p class="completion-score">Punctaj general: <strong id="completionScore">0/18</strong></p>
+      <p id="completionIdentity" class="muted"></p>
+      <p id="completionDate" class="muted"></p>
+
+      <div class="completion-options">
+        <button type="button" class="completion-option" id="reviewButton">Arată răspunsurile și explicațiile</button>
+        <button type="button" class="completion-option" id="detailsButton">Vezi rezultate detaliate</button>
+      </div>
+
+      <div class="pdf-download-list">
+        <div class="pdf-download-row">
+          <div>
+            <h3>Descarcă răspunsurile trimise</h3>
+            <p>Întrebările și variantele bifate, într-un document pregătit pentru PDF.</p>
+          </div>
+          <button type="button" class="pdf-icon-button" id="answersPdfButton" aria-label="Descarcă răspunsurile trimise în format PDF" title="Descarcă răspunsurile trimise – PDF">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h8l4 4v5h-2V7h-3V4H6v16h6v2H4V2h2zm9 11h2.5a2.5 2.5 0 0 1 0 5H17v3h-2v-8zm2 2v1h.5a.5.5 0 0 0 0-1H17zm-9-2h3a3 3 0 0 1 0 6H10v2H8v-8zm2 2v2h1a1 1 0 0 0 0-2h-1zm10-2h4v2h-2v1h2v2h-2v3h-2v-8z"/></svg>
+            <span>PDF</span>
+          </button>
+        </div>
+
+        <div class="pdf-download-row">
+          <div>
+            <h3>Descarcă rezultatele</h3>
+            <p>Punctajul general, profilul pe competențe și interpretarea rezultatului.</p>
+          </div>
+          <button type="button" class="pdf-icon-button" id="resultsPdfButton" aria-label="Descarcă rezultatele în format PDF" title="Descarcă rezultatele – PDF">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h8l4 4v5h-2V7h-3V4H6v16h6v2H4V2h2zm9 11h2.5a2.5 2.5 0 0 1 0 5H17v3h-2v-8zm2 2v1h.5a.5.5 0 0 0 0-1H17zm-9-2h3a3 3 0 0 1 0 6H10v2H8v-8zm2 2v2h1a1 1 0 0 0 0-2h-1zm10-2h4v2h-2v1h2v2h-2v3h-2v-8z"/></svg>
+            <span>PDF</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="json-export-box">
+        <div>
+          <strong>Fișier pentru pagina profesorului</strong>
+          <p class="muted">Descarcă rezultatul în format JSON pentru a-l importa în pagina centralizată de rezultate.</p>
+        </div>
+        <button type="button" class="btn secondary" id="jsonDownloadButton">Descarcă JSON</button>
+      </div>
+      <p id="downloadStatus" class="muted" aria-live="polite"></p>
+    </section>
+
+    <div id="detailedResults" class="hidden">
+      <div class="results-hero">
+        <div class="result-title-row">
+          <div>
+            <p class="kicker">Scorare și interpretare</p>
+            <h2>Rezultatele detaliate</h2>
+            <p id="resultIdentity" class="muted"></p>
+            <p id="resultDate" class="muted"></p>
+          </div>
+          <div id="scoreOrb" class="score-orb">0%</div>
+        </div>
+
+        <div id="statsGrid" class="stats-grid"></div>
+      </div>
+
+      <section class="section card">
+        <h2>Profil pe competențe</h2>
+        <p class="muted">Rezultatele sunt calculate separat pentru fiecare dintre cele trei competențe evaluate.</p>
+        <div id="competencyCards" class="competency-grid"></div>
+      </section>
+
+      <section class="section card">
+        <h2>Sinteza rezultatelor</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Competență</th>
+                <th>Scor</th>
+                <th>Procent</th>
+                <th>Nivel orientativ</th>
+                <th>Interpretare</th>
+              </tr>
+            </thead>
+            <tbody id="competencyTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section card">
+        <h2>Interpretare generală</h2>
+        <div id="generalReport" class="report-box"></div>
+      </section>
+    </div>
+  </section>
+
+  <section class="section card bibliography">
+    <h2>Bibliografie</h2>
+    <ol>
+      <li>
+        Ministerul Educației Naționale, <em>Programa școlară pentru disciplina Istorie, clasele a V-a–a VIII-a</em>,
+        aprobată prin Ordinul MEN nr. 3393 din 28 februarie 2017.
+      </li>
+    </ol>
+  </section>
+</main>
+
+<script>
+const QUESTIONS = [
+  {
+    "id": 1,
+    "sourceCode": "CS2.1.1A",
+    "competency": "CS2.1",
+    "text": "Cum se numește procesul prin care europenii au cucerit și administrat teritorii din afara Europei?",
+    "options": {
+      "A": "Urbanizare",
+      "B": "Feudalizare",
+      "C": "Colonizare",
+      "D": "Romanizare"
+    },
+    "answer": "C",
+    "explanation": {
+      "correct": "Colonizarea este procesul prin care un stat cucerește, ocupă, administrează și exploatează teritorii din afara propriului spațiu.",
+      "options": {
+        "A": "Urbanizarea înseamnă dezvoltarea orașelor.",
+        "B": "Feudalizarea se referă la răspândirea structurilor feudale.",
+        "C": "Corect: procesul descris este colonizarea.",
+        "D": "Romanizarea desemnează adoptarea limbii și culturii romane."
+      }
+    }
+  },
+  {
+    "id": 2,
+    "sourceCode": "CS2.1.2A",
+    "competency": "CS2.1",
+    "text": "Termenul „conchistador” se referă la:",
+    "options": {
+      "A": "Călători medievali din Asia",
+      "B": "Războinici ai triburilor amerindiene",
+      "C": "Soldați-exploratori spanioli implicați în cucerirea Americii, mai ales în secolul al XVI-lea",
+      "D": "Navigatori portughezi din Evul Mediu târziu"
+    },
+    "answer": "C",
+    "explanation": {
+      "correct": "Conchistadorii au fost soldați și aventurieri spanioli care au explorat și cucerit teritorii americane, mai ales în secolul al XVI-lea.",
+      "options": {
+        "A": "Nu erau călători medievali asiatici.",
+        "B": "Nu desemnează războinicii populațiilor amerindiene.",
+        "C": "Corect: erau soldați-exploratori spanioli implicați în cucerirea Americii.",
+        "D": "Navigatorii portughezi nu sunt desemnați prin termenul «conchistador»."
+      }
+    }
+  },
+  {
+    "id": 3,
+    "sourceCode": "CS2.1.3A",
+    "competency": "CS2.1",
+    "text": "Ce termen desemnează populațiile amerindiene din Mexic, Peru și America Centrală, înainte de cucerirea europeană?",
+    "options": {
+      "A": "Triburi barbare",
+      "B": "Civilizații precolumbiene",
+      "C": "Popoare germanice",
+      "D": "Comunități asiatice"
+    },
+    "answer": "B",
+    "explanation": {
+      "correct": "Civilizațiile existente în America înainte de sosirea și cucerirea europeană sunt numite civilizații precolumbiene.",
+      "options": {
+        "A": "«Triburi barbare» este un termen peiorativ și inexact.",
+        "B": "Corect: aztecii, mayașii și incașii sunt civilizații precolumbiene.",
+        "C": "Popoarele germanice aparțin istoriei europene.",
+        "D": "Aceste populații nu erau comunități asiatice."
+      }
+    }
+  },
+  {
+    "id": 4,
+    "sourceCode": "CS2.1.4A",
+    "competency": "CS2.1",
+    "text": "Ce desemnează termenul „caravelă”?",
+    "options": {
+      "A": "O fortificație medievală folosită pentru apărarea porturilor",
+      "B": "O navă ușoară, rapidă și manevrabilă, utilizată de portughezi în vremea marilor descoperiri geografice",
+      "C": "Un tip de armură purtată de conchistadori",
+      "D": "O monedă spaniolă folosită în comerțul atlantic"
+    },
+    "answer": "B",
+    "explanation": {
+      "correct": "Caravela era o navă relativ ușoară, rapidă și manevrabilă, potrivită pentru explorarea maritimă la distanță.",
+      "options": {
+        "A": "Caravela nu era o fortificație.",
+        "B": "Corect: era o navă folosită de portughezi și de alți navigatori în epoca marilor descoperiri.",
+        "C": "Nu era un tip de armură.",
+        "D": "Nu era o monedă."
+      }
+    }
+  },
+  {
+    "id": 5,
+    "sourceCode": "CS2.1.5A",
+    "competency": "CS2.1",
+    "text": "Ce înseamnă termenul „circumnavigație”?",
+    "options": {
+      "A": "Explorarea interiorului unui continent",
+      "B": "Traversarea unui ocean de la nord la sud",
+      "C": "Realizarea unei hărți a unei regiuni necunoscute",
+      "D": "Călătoria completă în jurul Pământului"
+    },
+    "answer": "D",
+    "explanation": {
+      "correct": "Circumnavigația reprezintă parcurgerea unui traseu care înconjoară complet Pământul sau un teritoriu.",
+      "options": {
+        "A": "Explorarea interiorului unui continent nu este o circumnavigație.",
+        "B": "Simpla traversare a unui ocean nu presupune înconjurarea Pământului.",
+        "C": "Realizarea hărților se numește cartografiere.",
+        "D": "Corect: circumnavigația este călătoria în jurul lumii."
+      }
+    }
+  },
+  {
+    "id": 6,
+    "sourceCode": "CS2.1.6A",
+    "competency": "CS2.1",
+    "text": "Ce desemnează expresia „comerț triunghiular”?",
+    "options": {
+      "A": "Schimburile comerciale desfășurate între Europa, Africa și America",
+      "B": "Comerțul dintre trei orașe aflate în aceeași colonie",
+      "C": "Schimburile de produse dintre Spania, Portugalia și Imperiul Otoman",
+      "D": "O rută maritimă care avea forma exactă a unui triunghi"
+    },
+    "answer": "A",
+    "explanation": {
+      "correct": "Comerțul triunghiular lega Europa, Africa și America prin transportul de produse, materii prime și oameni înrobiți.",
+      "options": {
+        "A": "Corect: sistemul comercial lega cele trei continente.",
+        "B": "Termenul nu se referă la trei orașe din aceeași colonie.",
+        "C": "Nu desemnează comerțul dintre cele trei state menționate.",
+        "D": "Denumirea provine din legătura dintre cele trei regiuni, nu din forma perfect geometrică a traseului."
+      }
+    }
+  },
+  {
+    "id": 7,
+    "sourceCode": "CS2.2.1A",
+    "competency": "CS2.2",
+    "text": "O hartă spaniolă din 1570 exagerează dimensiunile Americii de Sud. De ce?",
+    "options": {
+      "A": "Cartografii (oamenii care creau hărțile) cunoșteau deja forma exactă a continentelor, dar preferau reprezentări artistice",
+      "B": "Variantele C și D",
+      "C": "Marinarii aveau acces limitat la informații și tehnici de măsurare",
+      "D": "Informațiile incomplete și estimările primilor exploratori puteau conduce la supraestimarea întinderii teritoriilor"
+    },
+    "answer": "B",
+    "explanation": {
+      "correct": "Exagerarea dimensiunilor putea proveni atât din informațiile și tehnicile de măsurare limitate, cât și din estimările imprecise ale primilor exploratori.",
+      "options": {
+        "A": "Cartografii nu cunoșteau deja forma exactă a continentului.",
+        "B": "Corect: variantele C și D oferă împreună explicația cerută.",
+        "C": "Corectă parțial: măsurătorile și informațiile geografice erau limitate.",
+        "D": "Corectă parțial: estimările și relatările exploratorilor puteau supraevalua întinderea teritoriilor nou-cunoscute."
+      }
+    }
+  },
+  {
+    "id": 8,
+    "sourceCode": "CS2.2.2A",
+    "competency": "CS2.2",
+    "text": "Într-o cronică spaniolă oficială se afirmă că „aztecii i-au primit cu bucurie pe spanioli și nu au existat conflicte între aceștia”. Cum analizăm critic afirmația?",
+    "options": {
+      "A": "Analizăm contextul: un autor spaniol ar fi putut înfrumuseța realitatea pentru a lăsa să se înțeleagă că spaniolii au fost oameni pașnici",
+      "B": "Cronicile de acum 500 de ani sunt surse sigure pentru că pe atunci oamenii erau mai religioși și mai sinceri",
+      "C": "Considerăm că aztecii erau un popor care nu purta războaie",
+      "D": "Afirmația este corectă deoarece aztecii aveau reputația de a fi foarte ospitalieri (primitori) cu străinii"
+    },
+    "answer": "A",
+    "explanation": {
+      "correct": "O cronică oficială trebuie analizată în raport cu autorul, publicul și interesul politic; un cronicar spaniol putea prezenta cucerirea într-o lumină favorabilă.",
+      "options": {
+        "A": "Corect: contextul și interesul autorului pot explica înfrumusețarea relatării.",
+        "B": "Vechimea și religiozitatea autorilor nu garantează sinceritatea sau exactitatea.",
+        "C": "Aztecii purtau războaie, iar afirmația nu rezultă din sursă.",
+        "D": "O presupusă reputație de ospitalitate nu dovedește absența conflictelor."
+      }
+    }
+  },
+  {
+    "id": 9,
+    "sourceCode": "CS2.2.3A",
+    "competency": "CS2.2",
+    "text": "Un tablou realizat în jurul anului 1600 îl înfățișează pe Francisco Pizarro într-o manieră eroică. Ce putem înțelege de aici?",
+    "options": {
+      "A": "Pictorii erau obligați să reprezinte obiectiv realitatea, deci tabloul descrie exact personajul",
+      "B": "Tabloul exprimă valori culturale și politice ale epocii, reprezentându-i ca eroi pe marii aventurieri",
+      "C": "Artistul nu urmărea să transmită un mesaj politic",
+      "D": "Pictorul a fost martor direct la aventurile lui Francisco Pizzaro"
+    },
+    "answer": "B",
+    "explanation": {
+      "correct": "Un portret eroic nu este o fotografie neutră, ci reflectă valorile, idealurile și interesele politice ale epocii în care a fost realizat.",
+      "options": {
+        "A": "Pictorii nu erau obligați să reprezinte personajele în mod complet obiectiv.",
+        "B": "Corect: tabloul poate transforma aventurierul și cuceritorul într-un erou conform valorilor epocii.",
+        "C": "Artistul putea transmite intenționat sau neintenționat un mesaj politic.",
+        "D": "Realizarea tabloului în jurul anului 1600 nu dovedește că pictorul fusese martor direct la expedițiile lui Pizarro."
+      }
+    }
+  },
+  {
+    "id": 10,
+    "sourceCode": "CS2.2.4A",
+    "competency": "CS2.2",
+    "text": "Niște cronicari (scriitori) europeni îi descriu pe amerindieni ca fiind mult mai sălbatici și dezordonați decât erau în realitate. Ce ar trebui să înțelegem de aici?",
+    "options": {
+      "A": "Cronicarii descriau realitatea exact așa cum era, fără exagerări",
+      "B": "Exagerările pot reflecta prejudecățile europene ale epocii și dorința de a justifica cuceririle",
+      "C": "Amerindienii erau într-adevăr complet lipsiți de organizare, așa cum apare în orice sursă (nu aveau orașe și conducători)",
+      "D": "Sursele europene din acea vreme sunt mai credibile decât sursele de astăzi deoarece autorii trăiseră chiar în perioada respectivelor descoperiri"
+    },
+    "answer": "B",
+    "explanation": {
+      "correct": "Descrierile exagerat de negative ale amerindienilor puteau exprima prejudecăți europene și puteau legitima ideologic dominația și cucerirea.",
+      "options": {
+        "A": "Cronicile pot conține selecții, exagerări și prejudecăți.",
+        "B": "Corect: imaginea de «sălbatic» putea fi folosită pentru justificarea cuceririi.",
+        "C": "Civilizațiile amerindiene aveau orașe, conducători și forme complexe de organizare.",
+        "D": "Faptul că autorii erau contemporani nu face automat sursele lor mai obiective decât cercetările moderne."
+      }
+    }
+  },
+  {
+    "id": 11,
+    "sourceCode": "CS2.2.5A",
+    "competency": "CS2.2",
+    "text": "Jurnalul unui marinar și raportul oficial al conducătorului unei expediții descriu diferit aceeași călătorie. Cum ar trebui să procedeze un istoric?",
+    "options": {
+      "A": "Să folosească numai raportul oficial, deoarece a fost scris de un conducător",
+      "B": "Să respingă ambele surse deoarece se contrazic",
+      "C": "Să compare cele două relatări și să verifice informațiile și prin alte surse",
+      "D": "Să considere automat că jurnalul marinarului spune întregul adevăr"
+    },
+    "answer": "C",
+    "explanation": {
+      "correct": "Diferențele dintre surse trebuie analizate prin compararea autorilor, intereselor, contextului și informațiilor oferite de alte documente.",
+      "options": {
+        "A": "Caracterul oficial al unei surse nu garantează obiectivitatea.",
+        "B": "Contradicțiile nu fac sursele inutile, ci trebuie explicate.",
+        "C": "Corect: sursele trebuie confruntate între ele și verificate.",
+        "D": "Nici o relatare personală nu trebuie considerată automat complet adevărată."
+      }
+    }
+  },
+  {
+    "id": 12,
+    "sourceCode": "CS2.2.6A",
+    "competency": "CS2.2",
+    "text": "Pe o hartă din secolul al XVI-lea apar monștri marini în zonele insuficient cunoscute. Ce interpretare este cea mai potrivită?",
+    "options": {
+      "A": "Desenele reflectă temerile, credințele și cunoștințele limitate ale epocii",
+      "B": "Monștrii marini existau cu siguranță, deoarece apar pe hartă",
+      "C": "Harta nu poate oferi nicio informație utilă unui istoric",
+      "D": "Autorul hărții a vizitat personal toate regiunile reprezentate"
+    },
+    "answer": "A",
+    "explanation": {
+      "correct": "Reprezentările fantastice arată modul în care oamenii epocii își imaginau spațiile necunoscute și pericolele mărilor.",
+      "options": {
+        "A": "Corect: imaginile reflectă mentalitățile și limitele cunoașterii geografice.",
+        "B": "Prezența unui desen nu demonstrează existența reală a creaturilor.",
+        "C": "Harta poate fi valoroasă pentru studierea geografiei și a mentalităților epocii.",
+        "D": "Realizarea hărții nu dovedește că autorul călătorise în toate regiunile."
+      }
+    }
+  },
+  {
+    "id": 13,
+    "sourceCode": "CS2.3.1A",
+    "competency": "CS2.3",
+    "text": "Conform surselor istorice, un motiv pentru cucerirea imperiului aztec a fost reprezentat de faptul că:",
+    "options": {
+      "A": "Archebuzele și muschetele europene ofereau un avantaj militar față de armele amerindienilor",
+      "B": "Europenii au profitat de existența triburilor aflate în dușmănie cu aztecii și au încheiat alianțe cu acestea",
+      "C": "Aztecii doreau să fie cuceriți de către spanioli deoarece tânjeau (își doreau) să fie civilizați de către europeni",
+      "D": "Spaniolii își doreau în mod sincer să civilizeze continentul american; mai ales creștinarea acestuia constituia o prioritate"
+    },
+    "answer": "B",
+    "explanation": {
+      "correct": "Alianțele spaniolilor cu populații ostile dominației aztece au oferit oameni, informații și sprijin decisiv pentru cucerirea imperiului.",
+      "options": {
+        "A": "Armele de foc au contribuit la avantajul militar european, astfel încât varianta este istoric relevantă; totuși, B exprimă mai direct factorul politic decisiv urmărit de item.",
+        "B": "Corect ca răspuns principal: Cortés a profitat de ostilitatea unor populații față de azteci și a format alianțe cu acestea.",
+        "C": "Aztecii nu doreau să fie cuceriți sau «civilizați» de spanioli.",
+        "D": "Creștinarea a fost invocată ca obiectiv, dar formularea idealizată ascunde interesele politice și economice ale cuceririi."
+      }
+    }
+  },
+  {
+    "id": 14,
+    "sourceCode": "CS2.3.2A",
+    "competency": "CS2.3",
+    "text": "Un text ne menționează că „rivalitățile interne au slăbit Imperiul Aztec înainte de sosirea spaniolilor”. Ce putem înțelege de aici?",
+    "options": {
+      "A": "Neînțelegerile dintre azteci au făcut mai ușoară cucerirea spaniolă",
+      "B": "Spaniolii au avut, probabil, rolul de conciliatori (i-au ajutat pe azteci să se împace unii cu alții)",
+      "C": "Imperiul Incaș nu avea elite politice (conducători sau nobili)",
+      "D": "Ne este prezentată o cauză a convertirii populației la creștinism: europenii voiau să aducă pacea și armonia printre popoarele lumii"
+    },
+    "answer": "A",
+    "explanation": {
+      "correct": "Rivalitățile și ostilitățile din interiorul sau din jurul imperiului au redus capacitatea aztecilor de a rezista unit cuceritorilor.",
+      "options": {
+        "A": "Corect: dezbinarea a ușurat formarea alianțelor anti-aztece și cucerirea spaniolă.",
+        "B": "Spaniolii nu au avut rolul principal de conciliatori, ci au exploatat conflictele existente.",
+        "C": "Întrebarea se referă la Imperiul Aztec, nu la Imperiul Incaș.",
+        "D": "Rivalitățile explică vulnerabilitatea politică, nu convertirea religioasă."
+      }
+    }
+  },
+  {
+    "id": 15,
+    "sourceCode": "CS2.3.3A",
+    "competency": "CS2.3",
+    "text": "Două surse diferite prezintă motivele pentru care europenii au emigrat în America în timpul marilor descoperiri geografice: una vorbește despre bogății, iar cealaltă despre misiuni religioase. Ce concluzie corectă putem trage?",
+    "options": {
+      "A": "Doar bogățiile sunt cele care i-au motivat pe europeni să colonizeze America",
+      "B": "Ambele cauze pot fi valabile",
+      "C": "De fapt, credința în tărâmuri și obiecte miraculoase (Eldorado și fântâna tinereții) i-au făcut pe europeni să plece în America",
+      "D": "Europenii care plecau în America erau fie extrem de lacomi, fie extrem de religioși"
+    },
+    "answer": "B",
+    "explanation": {
+      "correct": "Colonizarea a fost determinată de motive multiple, între care dorința de bogăție și răspândirea credinței creștine.",
+      "options": {
+        "A": "Bogățiile au fost importante, dar nu au constituit singurul motiv.",
+        "B": "Corect: motivațiile economice și religioase puteau exista simultan.",
+        "C": "Legendele despre Eldorado au influențat unele expediții, dar nu anulează celelalte cauze.",
+        "D": "Împărțirea tuturor oamenilor în două categorii extreme este o simplificare."
+      }
+    }
+  },
+  {
+    "id": 16,
+    "sourceCode": "CS2.3.4A",
+    "competency": "CS2.3",
+    "text": "O scrisoare a unui călugăr european din vremea marilor descoperiri geografice informează că: „Mulți amerindieni au murit din cauza slăbiciunii corpului lor.” Ce am putea înțelege de aici?",
+    "options": {
+      "A": "Amerindienii nu aveau o forță la fel de mare precum a europenilor și nu puteau să manevreze armele cu aceeași rapiditate",
+      "B": "Lipsa contactului anterior cu numeroase boli eurasiatice a făcut ca populațiile amerindiene să aibă o imunitate mai redusă",
+      "C": "Europenii fuseseră întăriți în luptele cu amerindienii de o forță divină",
+      "D": "Călugărul folosește o explicație eronată (influențată de prejudecățile epocii sale)"
+    },
+    "answer": "B",
+    "explanation": {
+      "correct": "Populațiile amerindiene nu avuseseră contact anterior cu numeroase boli eurasiatice și nu dezvoltaseră aceeași imunitate, ceea ce a dus la epidemii devastatoare.",
+      "options": {
+        "A": "Mortalitatea nu se explică printr-o presupusă slăbiciune musculară sau prin manevrarea armelor.",
+        "B": "Corect: lipsa imunității la boli precum variola a contribuit decisiv la mortalitate.",
+        "C": "O intervenție divină nu poate fi demonstrată prin cercetare istorică.",
+        "D": "Formularea călugărului poate reflecta prejudecăți, însă explicația istorică principală a mortalității este lipsa imunității la boli eurasiatice."
+      }
+    }
+  },
+  {
+    "id": 17,
+    "sourceCode": "CS2.3.5A",
+    "competency": "CS2.3",
+    "text": "O sursă menționează că mirodeniile asiatice ajungeau în Europa prin numeroși intermediari, iar prețul lor devenea foarte ridicat. Ce efect a avut această situație?",
+    "options": {
+      "A": "Europenii au renunțat complet la folosirea mirodeniilor",
+      "B": "Statele europene au interzis comerțul maritim",
+      "C": "Navigatorii au căutat rute maritime directe către Asia",
+      "D": "Comercianții asiatici au început să exploreze America"
+    },
+    "answer": "C",
+    "explanation": {
+      "correct": "Dorința de a evita intermediarii și de a cumpăra direct mirodenii a stimulat căutarea unor rute maritime către India și Asia de Sud-Est.",
+      "options": {
+        "A": "Cererea europeană pentru mirodenii a rămas ridicată.",
+        "B": "Statele europene au încurajat, nu au interzis, expedițiile maritime.",
+        "C": "Corect: prețurile ridicate au contribuit la căutarea rutelor directe.",
+        "D": "Sursa nu indică explorarea Americii de către comercianții asiatici."
+      }
+    }
+  },
+  {
+    "id": 18,
+    "sourceCode": "CS2.3.6A",
+    "competency": "CS2.3",
+    "text": "Un text arată că Imperiul Incaș fusese slăbit de un război civil înaintea sosirii lui Francisco Pizarro. Ce concluzie poate fi formulată?",
+    "options": {
+      "A": "Războiul civil i-a făcut pe incași mai uniți în fața spaniolilor",
+      "B": "Conflictul intern a redus capacitatea imperiului de a organiza o rezistență comună",
+      "C": "Spaniolii au provocat războiul civil înainte de a ajunge în America",
+      "D": "Imperiul Incaș nu avea conducători înainte de sosirea europenilor"
+    },
+    "answer": "B",
+    "explanation": {
+      "correct": "Lupta pentru putere dintre taberele incașe a consumat resurse, a provocat pierderi și a slăbit autoritatea centrală.",
+      "options": {
+        "A": "Războiul civil a divizat, nu a unit, imperiul.",
+        "B": "Corect: dezbinarea internă a ușurat cucerirea spaniolă.",
+        "C": "Conflictul dintre pretendenții incași exista înaintea intervenției lui Pizarro.",
+        "D": "Imperiul avea un sistem politic și conducători proprii."
+      }
+    }
+  }
+];
+
+const COMPETENCIES = {
+  "CS2.1": {
+    "title": "CS2.1. Utilizarea adecvată a termenilor istorici și a limbajului de specialitate",
+    "short": "recunoașterea și folosirea termenilor colonizare, conchistador, civilizație precolumbiană, caravelă, circumnavigație și comerț triunghiular"
+  },
+  "CS2.2": {
+    "title": "CS2.2. Utilizarea gândirii critice în analiza surselor de informare",
+    "short": "analizarea critică a hărților, cronicilor, jurnalelor, rapoartelor și reprezentărilor vizuale"
+  },
+  "CS2.3": {
+    "title": "CS2.3. Identificarea elementelor de cauzalitate prezente în surse variate",
+    "short": "identificarea cauzelor politice, militare, economice, religioase și biologice ale explorării, cuceririi și colonizării"
+  }
+};
+
+let lastResult = null;
+let reviewVisible = false;
+
+const quizForm = document.getElementById("quizForm");
+
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function renderQuestions() {
+  const fragment = document.createDocumentFragment();
+
+  QUESTIONS.forEach((question) => {
+    const card = document.createElement("article");
+    card.className = "question-card";
+    card.id = `question-${question.id}`;
+    card.dataset.questionId = question.id;
+
+    const top = document.createElement("div");
+    top.className = "question-top";
+
+    const number = document.createElement("span");
+    number.className = "question-number";
+    number.textContent = question.id;
+
+    const main = document.createElement("div");
+    main.className = "question-main";
+
+    const title = document.createElement("h3");
+    title.className = "question-title";
+    title.textContent = question.text;
+
+    const competency = document.createElement("span");
+    competency.className = "competency-pill";
+    competency.textContent = question.competency;
+
+    main.append(title, competency);
+    top.append(number, main);
+    card.appendChild(top);
+
+    Object.entries(question.options).forEach(([letter, text]) => {
+      const label = document.createElement("label");
+      label.className = "option-label";
+
+      const input = document.createElement("input");
+      input.type = "radio";
+      input.name = `q${question.id}`;
+      input.value = letter;
+      input.addEventListener("change", () => {
+        card.querySelectorAll(".option-label").forEach((item) => item.classList.remove("selected"));
+        label.classList.add("selected");
+        updateProgress();
+      });
+
+      const option = document.createElement("span");
+      option.className = "option-text";
+      option.textContent = `${letter}. ${text}`;
+
+      label.append(input, option);
+      card.appendChild(label);
+    });
+
+    fragment.appendChild(card);
+  });
+
+  quizForm.appendChild(fragment);
+}
+
+function getSelectedAnswer(questionId) {
+  return document.querySelector(`input[name="q${questionId}"]:checked`)?.value ?? null;
+}
+
+function updateProgress() {
+  const answered = QUESTIONS.filter((question) => getSelectedAnswer(question.id)).length;
+  const percent = Math.round((answered / QUESTIONS.length) * 100);
+  document.getElementById("progressText").textContent = `${answered}/${QUESTIONS.length}`;
+  document.getElementById("progressPercent").textContent = `${percent}%`;
+  document.getElementById("progressBar").style.height = `${percent}%`;
+  document.querySelector(".progress-shell")?.setAttribute("aria-label", `${answered} din ${QUESTIONS.length} întrebări completate, ${percent}%`);
+}
+
+function percent(value, total) {
+  return total ? Math.round((value / total) * 100) : 0;
+}
+
+function levelFor(scorePercent) {
+  if (scorePercent >= 90) return { label: "Excelent", kind: "good" };
+  if (scorePercent >= 75) return { label: "Foarte bine", kind: "good" };
+  if (scorePercent >= 60) return { label: "Bine", kind: "neutral" };
+  if (scorePercent >= 45) return { label: "În formare", kind: "warn" };
+  return { label: "Necesită consolidare", kind: "danger" };
+}
+
+function feedbackBand(scorePercent) {
+  if (scorePercent >= 90) return "excellent";
+  if (scorePercent >= 75) return "strong";
+  if (scorePercent >= 60) return "functional";
+  if (scorePercent >= 45) return "developing";
+  return "consolidation";
+}
+
+function competencyProfileFeedback(code, scorePercent) {
+  const band = feedbackBand(scorePercent);
+  const feedback = {
+  "CS2.1": {
+    "excellent": "Elevul utilizează precis vocabularul marilor descoperiri geografice și diferențiază procesele, actorii, mijloacele de navigație și sistemele comerciale.",
+    "strong": "Vocabularul este bine stăpânit. Erorile izolate pot privi diferența dintre colonizare, cucerire, circumnavigație și comerț triunghiular.",
+    "functional": "Elevul recunoaște majoritatea termenilor, dar nu îi definește întotdeauna complet sau îi confundă în situații noi.",
+    "developing": "Termenii principali sunt identificați în contexte evidente, însă folosirea lor independentă necesită consolidare.",
+    "consolidation": "Este necesară recapitularea termenilor: colonizare, conchistador, civilizație precolumbiană, caravelă, circumnavigație și comerț triunghiular."
+  },
+  "CS2.2": {
+    "excellent": "Elevul analizează critic surse oficiale și neoficiale, identificând limitele tehnice, perspectiva autorului, prejudecățile, mentalitățile și interesele politice.",
+    "strong": "Sursele sunt evaluate corect în majoritatea situațiilor. Erorile izolate apar la compararea relatărilor contradictorii sau la interpretarea simbolurilor cartografice.",
+    "functional": "Elevul recunoaște exagerările evidente, dar nu aplică întotdeauna consecvent criteriile de autor, context, public, scop și verificare.",
+    "developing": "Sursa este uneori acceptată după vechime, caracter oficial sau aspect vizual, fără analizarea suficientă a perspectivei.",
+    "consolidation": "Este necesară aplicarea unei grile stabile: tipul sursei, autorul, data, publicul, scopul, informațiile oferite și limitele."
+  },
+  "CS2.3": {
+    "excellent": "Elevul construiește explicații multicausale și identifică relațiile dintre alianțe, conflicte interne, arme, epidemii, interese economice și motivații religioase.",
+    "strong": "Cauzalitatea este bine înțeleasă. Micile ezitări apar la diferența dintre factorul decisiv, condiția favorizantă și justificarea ideologică.",
+    "functional": "Elevul recunoaște cauzele principale, dar tinde uneori să reducă un proces complex la o singură explicație.",
+    "developing": "Cauzele și consecințele sunt diferențiate doar parțial, iar explicațiile idealizate pot fi acceptate prea ușor.",
+    "consolidation": "Este necesară organizarea cauzelor în categorii: politice, militare, economice, religioase și biologice."
+  }
+};
+  return feedback[code]?.[band] || "Continuă exersarea competenței prin sarcini aplicate.";
+}
+
+function competencySummaryFeedback(code, scorePercent) {
+  const band = feedbackBand(scorePercent);
+  const feedback = {
+  "CS2.1": {
+    "excellent": "Folosește termenii în enunțuri proprii și explică legăturile dintre navigație, cucerire, colonizare și comerț atlantic.",
+    "strong": "Revizuiește termenii confundați și formulează definiții fără variante de răspuns.",
+    "functional": "Construiește un glosar cu termen, definiție și exemplu istoric.",
+    "developing": "Asociază fiecare termen cu un proces, personaj, navă sau rută.",
+    "consolidation": "Prioritate: colonizare, conchistador, civilizație precolumbiană, caravelă, circumnavigație și comerț triunghiular."
+  },
+  "CS2.2": {
+    "excellent": "Compară surse diferite și justifică influența autorului, contextului și scopului asupra mesajului.",
+    "strong": "Revizuiește itemii greșiți și notează ce informație este sigură, ce este interpretare și ce trebuie verificat.",
+    "functional": "Folosește schema: sursă – autor – context – scop – informație – limită.",
+    "developing": "Compară o cronică oficială cu un jurnal personal și explică de ce pot apărea diferențe.",
+    "consolidation": "Prioritate: caracterul oficial sau vechimea unei surse nu garantează obiectivitatea."
+  },
+  "CS2.3": {
+    "excellent": "Construiește explicații multicausale și diferențiază cauzele imediate, factorii favorizanți și motivațiile declarate.",
+    "strong": "Grupează cauzele și explică modul în care s-au combinat în cucerirea imperiilor aztec și incaș.",
+    "functional": "Folosește diagrame cauză–efect pentru explorare, cucerire și epidemii.",
+    "developing": "Separă cauzele politice și militare de interesele economice și justificările religioase.",
+    "consolidation": "Prioritate: alianțe, rivalități interne, război civil, arme, epidemii, mirodenii, bogății și misiuni religioase."
+  }
+};
+  return feedback[code]?.[band] || "Continuă exersarea competenței prin sarcini aplicate.";
+}
+
+function generalInterpretation(scorePercent, missing) {
+  let text;
+  if (scorePercent >= 90) {
+    text = "Rezultatul indică o foarte bună stăpânire a vocabularului istoric, a analizei critice a surselor și a explicațiilor cauzale referitoare la marile descoperiri geografice, cucerirea Americii și formarea lumii atlantice.";
+  } else if (scorePercent >= 75) {
+    text = "Competențele evaluate sunt bine dezvoltate. Erorile sunt punctuale și pot fi corectate prin revizuirea termenilor, a perspectivei surselor sau a relațiilor de cauzalitate.";
+  } else if (scorePercent >= 60) {
+    text = "Noțiunile principale sunt înțelese, dar aplicarea lor nu este încă uniformă. Este util lucrul cu glosare, fișe de analiză a surselor și diagrame cauză–efect.";
+  } else if (scorePercent >= 45) {
+    text = "Competențele sunt în formare. Se recomandă diferențierea termenilor, analizarea autorului și scopului sursei și organizarea cauzelor pe categorii.";
+  } else {
+    text = "Rezultatul indică necesitatea consolidării vocabularului de bază și a pașilor esențiali pentru analiza surselor și explicarea cauzelor explorării, cuceririi și colonizării.";
+  }
+  if (missing > 0) {
+    text += ` Au rămas necompletate ${missing} ${missing === 1 ? "întrebare" : "întrebări"}, ceea ce a redus scorul final.`;
+  }
+  return text;
+}
+
+function buildResult() {
+  const studentName = document.getElementById("studentName").value.trim();
+  const studentTestCode = document.getElementById("studentTestCode").value.trim();
+  const studentClass = document.getElementById("studentClass").value.trim();
+  const studentSchool = document.getElementById("studentSchool").value.trim();
+  const answers = [];
+  const competencyStats = {};
+
+  Object.keys(COMPETENCIES).forEach((code) => {
+    competencyStats[code] = { code, total: 0, correct: 0, wrong: 0, missing: 0 };
+  });
+
+  let correct = 0;
+  let wrong = 0;
+  let missing = 0;
+
+  QUESTIONS.forEach((question) => {
+    const selected = getSelectedAnswer(question.id);
+    const isCorrect = selected === question.answer;
+    const stat = competencyStats[question.competency];
+    stat.total += 1;
+
+    if (!selected) {
+      missing += 1;
+      stat.missing += 1;
+    } else if (isCorrect) {
+      correct += 1;
+      stat.correct += 1;
+    } else {
+      wrong += 1;
+      stat.wrong += 1;
+    }
+
+    answers.push({
+      id: question.id,
+      code: question.sourceCode,
+      competency: question.competency,
+      question: question.text,
+      options: question.options,
+      selected,
+      selectedText: selected ? question.options[selected] : null,
+      correctAnswer: question.answer,
+      correctText: question.options[question.answer],
+      isCorrect: selected ? isCorrect : null,
+      explanation: question.explanation
+    });
+  });
+
+  const total = QUESTIONS.length;
+  const scorePercent = percent(correct, total);
+  const completedAt = new Date();
+
+  const competencies = Object.values(competencyStats).map((stat) => {
+    const scorePercent = percent(stat.correct, stat.total);
+    return {
+      ...stat,
+      title: COMPETENCIES[stat.code].title,
+      short: COMPETENCIES[stat.code].short,
+      percent: scorePercent,
+      level: levelFor(scorePercent),
+      profileFeedback: competencyProfileFeedback(stat.code, scorePercent),
+      summaryFeedback: competencySummaryFeedback(stat.code, scorePercent),
+      interpretation: competencyProfileFeedback(stat.code, scorePercent)
+    };
+  });
+
+  return {
+    test: {
+      title: "Testul grilă nr. 2 (varianta A)",
+      discipline: "Istorie, clasa a VI-a",
+      unit: "Marile descoperiri geografice",
+      totalQuestions: total
+    },
+    student: {
+      name: studentName,
+      testCode: studentTestCode,
+      nickname: studentTestCode,
+      className: studentClass,
+      school: studentSchool
+    },
+    completedAt: completedAt.toISOString(),
+    completedAtLabel: completedAt.toLocaleString("ro-RO"),
+    score: {
+      correct,
+      wrong,
+      missing,
+      total,
+      percent: scorePercent,
+      level: levelFor(scorePercent)
+    },
+    competencies,
+    interpretation: generalInterpretation(scorePercent, missing),
+    answers
+  };
+}
+
+function renderResults(result) {
+  const identityParts = [];
+  if (result.student.name) identityParts.push(result.student.name);
+  if (result.student.testCode || result.student.nickname) identityParts.push(`cod ${result.student.testCode || result.student.nickname}`);
+  if (result.student.className) identityParts.push(`clasa ${result.student.className}`);
+  if (result.student.school) identityParts.push(result.student.school);
+
+  const identityText = identityParts.length ? identityParts.join(" · ") : "Elev neidentificat";
+  const dateText = `Finalizat la ${result.completedAtLabel}`;
+
+  document.getElementById("completionScore").textContent = `${result.score.correct}/${result.score.total}`;
+  document.getElementById("completionIdentity").textContent = identityText;
+  document.getElementById("completionDate").textContent = dateText;
+  document.getElementById("resultIdentity").textContent = identityText;
+  document.getElementById("resultDate").textContent = dateText;
+  document.getElementById("scoreOrb").textContent = `${result.score.percent}%`;
+
+  const statItems = [
+    ["Scor total", `${result.score.correct}/${result.score.total}`, "Răspunsuri corecte"],
+    ["Corecte", result.score.correct, `${percent(result.score.correct, result.score.total)}% din test`],
+    ["Greșite", result.score.wrong, `${percent(result.score.wrong, result.score.total)}% din test`],
+    ["Necompletate", result.score.missing, `${percent(result.score.missing, result.score.total)}% din test`]
+  ];
+
+  document.getElementById("statsGrid").innerHTML = statItems.map(([title, number, note]) => `
+    <div class="stat">
+      <strong>${escapeHtml(title)}</strong>
+      <span class="big-number">${escapeHtml(number)}</span>
+      <small>${escapeHtml(note)}</small>
+    </div>
+  `).join("");
+
+  document.getElementById("competencyCards").innerHTML = result.competencies.map((item) => `
+    <article class="competency-card">
+      <div><span class="pill ${item.level.kind}">${escapeHtml(item.level.label)}</span></div>
+      <h3 style="margin-top:12px">${escapeHtml(item.code)}</h3>
+      <div class="score-line">${item.correct}/${item.total} · ${item.percent}%</div>
+      <div class="bar"><span style="width:${item.percent}%"></span></div>
+      <p><strong>${escapeHtml(item.short)}</strong></p>
+      <p>${escapeHtml(item.profileFeedback || item.interpretation)}</p>
+    </article>
+  `).join("");
+
+  document.getElementById("competencyTableBody").innerHTML = result.competencies.map((item) => `
+    <tr>
+      <td><strong>${escapeHtml(item.title)}</strong></td>
+      <td>${item.correct}/${item.total}</td>
+      <td>${item.percent}%</td>
+      <td><span class="pill ${item.level.kind}">${escapeHtml(item.level.label)}</span></td>
+      <td>${escapeHtml(item.summaryFeedback || item.interpretation)}</td>
+    </tr>
+  `).join("");
+
+  document.getElementById("generalReport").innerHTML = `
+    <p><strong>Nivel general: ${escapeHtml(result.score.level.label)}.</strong></p>
+    <p>${escapeHtml(result.interpretation)}</p>
+    <p>Scorul trebuie utilizat împreună cu activitatea la clasă, răspunsurile orale, exercițiile scrise și evoluția elevului în timp.</p>
+  `;
+
+  document.getElementById("resultsSection").style.display = "block";
+}
+
+function validateStudentData() {
+  const ids = ["studentName", "studentTestCode", "studentSchool", "studentClass"];
+  const missingFields = ids
+    .map((id) => document.getElementById(id))
+    .filter((input) => !input.value.trim());
+
+  ids.forEach((id) => document.getElementById(id).classList.remove("invalid"));
+  const errorBox = document.getElementById("studentDataError");
+
+  if (missingFields.length) {
+    missingFields.forEach((input) => input.classList.add("invalid"));
+    errorBox.classList.add("show");
+    missingFields[0].focus();
+    document.getElementById("studentDataSection").scrollIntoView({ behavior: "smooth", block: "center" });
+    return false;
+  }
+
+  errorBox.classList.remove("show");
+  return true;
+}
+
+function finishQuiz() {
+  if (!validateStudentData()) return;
+  clearReview();
+  reviewVisible = false;
+  document.getElementById("reviewButton").textContent = "Arată răspunsurile și explicațiile";
+  document.getElementById("detailsButton").textContent = "Vezi rezultate detaliate";
+  document.getElementById("detailedResults").classList.add("hidden");
+  document.getElementById("downloadStatus").textContent = "";
+  lastResult = buildResult();
+  renderResults(lastResult);
+
+  try {
+    localStorage.setItem("cls6TestMarileDescopeririGeograficeCG2VarALastResult_v2", JSON.stringify(lastResult));
+  } catch (error) {
+    console.warn("Rezultatul nu a putut fi salvat local.", error);
+  }
+
+  document.getElementById("resultsSection").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function toggleDetailedResults() {
+  if (!lastResult) return;
+  const details = document.getElementById("detailedResults");
+  const button = document.getElementById("detailsButton");
+  const willShow = details.classList.contains("hidden");
+
+  details.classList.toggle("hidden", !willShow);
+  button.textContent = willShow ? "Ascunde rezultatele detaliate" : "Vezi rezultate detaliate";
+
+  if (willShow) {
+    details.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+
+function clearReview() {
+  document.querySelectorAll(".question-card").forEach((card) => {
+    card.classList.remove("review-correct", "review-wrong", "review-missing");
+    card.querySelector(".review-note")?.remove();
+    card.querySelector(".explanation")?.remove();
+  });
+  document.querySelectorAll(".option-label").forEach((label) => {
+    label.classList.remove("answer-correct", "answer-wrong");
+  });
+}
+
+function showReview() {
+  if (!lastResult) return;
+
+  lastResult.answers.forEach((answerData) => {
+    const question = QUESTIONS.find((item) => item.id === answerData.id);
+    const card = document.getElementById(`question-${question.id}`);
+    if (!card) return;
+
+    const note = document.createElement("div");
+    note.className = "review-note";
+
+    if (!answerData.selected) {
+      card.classList.add("review-missing");
+      note.classList.add("warn");
+      note.textContent = `Nu ai bifat niciun răspuns. Varianta corectă este ${question.answer}.`;
+    } else if (answerData.isCorrect) {
+      card.classList.add("review-correct");
+      note.classList.add("good");
+      note.textContent = `Ai bifat ${answerData.selected}. Răspuns corect.`;
+    } else {
+      card.classList.add("review-wrong");
+      note.classList.add("danger");
+      note.textContent = `Ai bifat ${answerData.selected}, dar varianta corectă este ${question.answer}.`;
+    }
+
+    card.querySelector(".question-top").insertAdjacentElement("afterend", note);
+
+    card.querySelectorAll(".option-label").forEach((label) => {
+      const input = label.querySelector("input");
+      if (input.value === question.answer) label.classList.add("answer-correct");
+      if (input.value === answerData.selected && input.value !== question.answer) {
+        label.classList.add("answer-wrong");
+      }
+    });
+
+    const explanation = document.createElement("div");
+    explanation.className = "explanation";
+    explanation.innerHTML = `
+      <p><strong>De ce răspunsul ${escapeHtml(question.answer)} este corect:</strong>
+        ${escapeHtml(question.explanation.correct)}
+      </p>
+      <ul>
+        ${Object.entries(question.explanation.options).map(([letter, text]) =>
+          `<li><strong>${escapeHtml(letter)}.</strong> ${escapeHtml(text)}</li>`
+        ).join("")}
+      </ul>
+    `;
+    card.appendChild(explanation);
+  });
+}
+
+function toggleReview() {
+  if (!lastResult) return;
+  reviewVisible = !reviewVisible;
+  const button = document.getElementById("reviewButton");
+
+  if (reviewVisible) {
+    showReview();
+    button.textContent = "Ascunde răspunsurile și explicațiile";
+    document.getElementById("question-1").scrollIntoView({ behavior: "smooth", block: "start" });
+  } else {
+    clearReview();
+    button.textContent = "Arată răspunsurile și explicațiile";
+  }
+}
+
+function resetQuiz() {
+  if (!confirm("Ștergi toate răspunsurile și rezultatul afișat?")) return;
+
+  quizForm.reset();
+  document.querySelectorAll(".option-label").forEach((label) => label.classList.remove("selected"));
+  clearReview();
+  reviewVisible = false;
+  lastResult = null;
+  document.getElementById("detailedResults").classList.add("hidden");
+  document.getElementById("detailsButton").textContent = "Vezi rezultate detaliate";
+  document.getElementById("resultsSection").style.display = "none";
+  document.getElementById("downloadStatus").textContent = "";
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function fileSafeName() {
+  const name = lastResult?.student?.name
+    ? lastResult.student.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9]+/g, "-")
+    : "elev";
+  return `rezultate-cls-6-test-marile-descoperiri-geografice-CG2-var-A-${name}-${new Date().toISOString().slice(0, 10)}`;
+}
+
+function downloadBlob(content, mimeType, extension) {
+  const blob = new Blob([content], { type: mimeType });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = `${fileSafeName()}.${extension}`;
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 500);
+}
+
+function requireResult() {
+  if (lastResult) return true;
+  document.getElementById("downloadStatus").textContent = "Finalizează testul înainte de a descărca rezultatele.";
+  return false;
+}
+
+function downloadJson() {
+  if (!requireResult()) return;
+  downloadBlob(JSON.stringify(lastResult, null, 2), "application/json;charset=utf-8", "json");
+  document.getElementById("downloadStatus").textContent = "Fișierul JSON a fost generat.";
+}
+
+function csvCell(value) {
+  const text = String(value ?? "");
+  return `"${text.replaceAll('"', '""')}"`;
+}
+
+function downloadCsv() {
+  if (!requireResult()) return;
+
+  const rows = [
+    ["Test", lastResult.test.title],
+    ["Unitate", lastResult.test.unit],
+    ["Elev", lastResult.student.name ?? ""],
+    ["Cod de testare", lastResult.student.testCode ?? lastResult.student.nickname ?? ""],
+    ["Școala", lastResult.student.school ?? ""],
+    ["Clasa", lastResult.student.className ?? ""],
+    ["Data", lastResult.completedAtLabel],
+    ["Scor corect", lastResult.score.correct],
+    ["Total", lastResult.score.total],
+    ["Procent", `${lastResult.score.percent}%`],
+    [],
+    ["Competență", "Corecte", "Total", "Procent", "Nivel"]
+  ];
+
+  lastResult.competencies.forEach((item) => {
+    rows.push([item.code, item.correct, item.total, `${item.percent}%`, item.level.label]);
+  });
+
+  rows.push([]);
+  rows.push(["Nr.", "Cod item", "Competență", "Întrebare", "Răspuns bifat", "Răspuns corect", "Evaluare"]);
+
+  lastResult.answers.forEach((item) => {
+    rows.push([
+      item.id,
+      item.code,
+      item.competency,
+      item.question,
+      item.selected ?? "",
+      item.correctAnswer,
+      item.isCorrect === null ? "Necompletat" : item.isCorrect ? "Corect" : "Greșit"
+    ]);
+  });
+
+  const csv = "\uFEFF" + rows.map((row) => row.map(csvCell).join(";")).join("\r\n");
+  downloadBlob(csv, "text/csv;charset=utf-8", "csv");
+  document.getElementById("downloadStatus").textContent = "Fișierul CSV a fost generat.";
+}
+
+function reportBodyHtml(result) {
+  return `
+    <section class="hero">
+      <p class="kicker">Scorare și interpretare</p>
+      <h1>${escapeHtml(result.test.title)} – ${escapeHtml(result.test.unit)}</h1>
+      <p>${escapeHtml(result.student.name ?? "Elev neidentificat")}
+        ${(result.student.testCode || result.student.nickname) ? ` · cod ${escapeHtml(result.student.testCode || result.student.nickname)}` : ""}
+        ${result.student.school ? ` · ${escapeHtml(result.student.school)}` : ""}
+        ${result.student.className ? ` · clasa ${escapeHtml(result.student.className)}` : ""}
+      </p>
+      <p>Finalizat la ${escapeHtml(result.completedAtLabel)}</p>
+    </section>
+
+    <section class="section grid">
+      <div class="stat"><strong>Scor</strong><b>${result.score.correct}/${result.score.total}</b></div>
+      <div class="stat"><strong>Procent</strong><b>${result.score.percent}%</b></div>
+      <div class="stat"><strong>Greșite</strong><b>${result.score.wrong}</b></div>
+      <div class="stat"><strong>Necompletate</strong><b>${result.score.missing}</b></div>
+    </section>
+
+    <section class="section card">
+      <h2>Profil pe competențe</h2>
+      ${result.competencies.map((item) => `
+        <div class="competency">
+          <strong>${escapeHtml(item.title)}</strong>
+          <span>${item.correct}/${item.total} · ${item.percent}% · ${escapeHtml(item.level.label)}</span>
+          <p>${escapeHtml(item.profileFeedback || item.interpretation)}</p>
+          <p><strong>Recomandare practică:</strong> ${escapeHtml(item.summaryFeedback || "Continuă exersarea prin sarcini aplicate.")}</p>
+        </div>
+      `).join("")}
+    </section>
+
+    <section class="section card">
+      <h2>Interpretare generală</h2>
+      <p>${escapeHtml(result.interpretation)}</p>
+    </section>
+
+    <section class="section card">
+      <h2>Răspunsuri</h2>
+      <table>
+        <thead><tr><th>Nr.</th><th>Întrebare</th><th>Bifat</th><th>Corect</th><th>Evaluare</th></tr></thead>
+        <tbody>
+          ${result.answers.map((item) => `
+            <tr>
+              <td>${item.id}</td>
+              <td>${escapeHtml(item.question)}</td>
+              <td>${escapeHtml(item.selected ?? "—")}</td>
+              <td>${escapeHtml(item.correctAnswer)}</td>
+              <td>${item.isCorrect === null ? "Necompletat" : item.isCorrect ? "Corect" : "Greșit"}</td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    </section>
+  `;
+}
+
+function buildStandaloneReport(result) {
+  return `<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raport – Test Marile descoperiri geografice</title>
+<style>
+  :root{--ink:#25211d;--muted:#6f675d;--line:#e6ded4;--accent:#72462a;--soft:#f1e3d4}
+  *{box-sizing:border-box}body{margin:0;background:#f6f3ef;color:var(--ink);font-family:Arial,sans-serif;line-height:1.58}
+  .page{width:min(1050px,calc(100% - 34px));margin:auto;padding:32px 0 60px}
+  .hero,.card,.stat{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px}
+  .hero{background:linear-gradient(135deg,#fffaf4,#f1e3d4)}
+  .kicker{color:var(--accent);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.8rem}
+  h1,h2{font-family:Georgia,serif}.section{margin-top:18px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .stat b{display:block;color:var(--accent);font-family:Georgia,serif;font-size:2rem}.competency{padding:14px 0;border-bottom:1px solid var(--line)}
+  .competency:last-child{border-bottom:0}.competency span{display:block;color:var(--accent);font-weight:bold;margin-top:4px}.competency p{color:var(--muted)}
+  table{width:100%;border-collapse:collapse}th,td{border-bottom:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}th{background:#fbf4ec}
+  @media(max-width:700px){.grid{grid-template-columns:1fr 1fr}}
+  @media print{body{background:#fff}.page{width:100%;padding:0}.hero,.card,.stat{box-shadow:none}}
+</style>
+</head>
+<body><main class="page">${reportBodyHtml(result)}</main></body>
+</html>`;
+}
+
+function downloadHtmlReport() {
+  if (!requireResult()) return;
+  downloadBlob(buildStandaloneReport(lastResult), "text/html;charset=utf-8", "html");
+  document.getElementById("downloadStatus").textContent = "Raportul HTML a fost generat.";
+}
+
+function printableShell(title, bodyHtml) {
+  return `<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${escapeHtml(title)}</title>
+<style>
+  :root{--ink:#25211d;--muted:#6f675d;--line:#e6ded4;--accent:#72462a;--soft:#f1e3d4;--good:#255f3f;--danger:#9b2c2c}
+  *{box-sizing:border-box}body{margin:0;background:#fff;color:var(--ink);font-family:Arial,sans-serif;line-height:1.5}
+  .page{width:min(1000px,calc(100% - 40px));margin:0 auto;padding:28px 0 46px}
+  .hero,.card{border:1px solid var(--line);border-radius:18px;padding:20px;margin-bottom:16px}
+  .hero{background:linear-gradient(135deg,#fffaf4,#f1e3d4)}
+  .kicker{margin:0 0 6px;color:var(--accent);font-size:.78rem;font-weight:850;letter-spacing:.12em;text-transform:uppercase}
+  h1,h2{font-family:Georgia,"Times New Roman",serif;margin:0 0 10px}p{margin:0 0 9px}.muted{color:var(--muted)}
+  .score{font-family:Georgia,"Times New Roman",serif;font-size:2rem;color:var(--accent);font-weight:900}
+  .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.stat{border:1px solid var(--line);border-radius:14px;padding:14px}.stat b{display:block;font-size:1.7rem;color:var(--accent);font-family:Georgia,serif}
+  table{width:100%;border-collapse:collapse}th,td{padding:9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#fbf4ec;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+  .answer-item{padding:13px 0;border-bottom:1px solid var(--line);break-inside:avoid}.answer-item:last-child{border-bottom:0}.choice{margin-top:7px;padding:9px 11px;border-radius:10px;background:#f7f2ec}.missing{color:#76510b}.competency{padding:12px 0;border-bottom:1px solid var(--line)}.competency:last-child{border-bottom:0}.competency strong{display:block}.competency span{display:block;margin-top:3px;color:var(--accent);font-weight:800}
+  @page{size:A4;margin:14mm}@media print{.page{width:100%;padding:0}.hero,.card{break-inside:avoid}.grid{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body><main class="page">${bodyHtml}</main></body>
+</html>`;
+}
+
+function answersPdfBody(result) {
+  return `
+    <section class="hero">
+      <p class="kicker">Răspunsuri trimise</p>
+      <h1>${escapeHtml(result.test.title)} – ${escapeHtml(result.test.unit)}</h1>
+      <p>${escapeHtml(result.student.name ?? "Elev neidentificat")}${(result.student.testCode || result.student.nickname) ? ` · cod ${escapeHtml(result.student.testCode || result.student.nickname)}` : ""}${result.student.school ? ` · ${escapeHtml(result.student.school)}` : ""}${result.student.className ? ` · clasa ${escapeHtml(result.student.className)}` : ""}</p>
+      <p class="muted">${escapeHtml(result.completedAtLabel)}</p>
+    </section>
+    <section class="card">
+      ${result.answers.map((item) => {
+        const question = QUESTIONS.find((entry) => entry.id === item.id);
+        const selectedText = item.selected && question ? question.options[item.selected] : "Niciun răspuns bifat";
+        return `<article class="answer-item">
+          <strong>${item.id}. ${escapeHtml(item.question)}</strong>
+          <div class="choice ${item.selected ? "" : "missing"}"><b>Răspuns trimis:</b> ${escapeHtml(item.selected ?? "—")}${item.selected ? `. ${escapeHtml(selectedText)}` : ` · ${escapeHtml(selectedText)}`}</div>
+        </article>`;
+      }).join("")}
+    </section>`;
+}
+
+function resultsPdfBody(result) {
+  return `
+    <section class="hero">
+      <p class="kicker">Rezultatele testului</p>
+      <h1>${escapeHtml(result.test.title)} – ${escapeHtml(result.test.unit)}</h1>
+      <p>${escapeHtml(result.student.name ?? "Elev neidentificat")}${(result.student.testCode || result.student.nickname) ? ` · cod ${escapeHtml(result.student.testCode || result.student.nickname)}` : ""}${result.student.school ? ` · ${escapeHtml(result.student.school)}` : ""}${result.student.className ? ` · clasa ${escapeHtml(result.student.className)}` : ""}</p>
+      <p class="muted">${escapeHtml(result.completedAtLabel)}</p>
+      <p class="score">${result.score.correct}/${result.score.total} · ${result.score.percent}%</p>
+    </section>
+    <section class="grid">
+      <div class="stat"><strong>Corecte</strong><b>${result.score.correct}</b></div>
+      <div class="stat"><strong>Greșite</strong><b>${result.score.wrong}</b></div>
+      <div class="stat"><strong>Necompletate</strong><b>${result.score.missing}</b></div>
+      <div class="stat"><strong>Nivel</strong><b style="font-size:1.15rem">${escapeHtml(result.score.level.label)}</b></div>
+    </section>
+    <section class="card" style="margin-top:16px">
+      <h2>Profil pe competențe</h2>
+      ${result.competencies.map((item) => `<div class="competency">
+        <strong>${escapeHtml(item.title)}</strong>
+        <span>${item.correct}/${item.total} · ${item.percent}% · ${escapeHtml(item.level.label)}</span>
+        <p>${escapeHtml(item.profileFeedback || item.interpretation)}</p>
+        <p><strong>Recomandare practică:</strong> ${escapeHtml(item.summaryFeedback || "Continuă exersarea prin sarcini aplicate.")}</p>
+      </div>`).join("")}
+    </section>
+    <section class="card">
+      <h2>Interpretare generală</h2>
+      <p>${escapeHtml(result.interpretation)}</p>
+    </section>`;
+}
+
+function openPdfPrint(title, bodyHtml) {
+  if (!requireResult()) return;
+  const printWindow = window.open("", "_blank");
+  if (!printWindow) {
+    document.getElementById("downloadStatus").textContent = "Browserul a blocat fereastra PDF. Permite ferestrele pop-up și încearcă din nou.";
+    return;
+  }
+
+  printWindow.document.open();
+  printWindow.document.write(printableShell(title, bodyHtml));
+  printWindow.document.close();
+  printWindow.focus();
+  document.getElementById("downloadStatus").textContent = "În fereastra deschisă, alege «Salvează ca PDF».";
+  setTimeout(() => printWindow.print(), 350);
+}
+
+function downloadAnswersPdf() {
+  if (!requireResult()) return;
+  openPdfPrint("Răspunsuri trimise – Test Marile descoperiri geografice", answersPdfBody(lastResult));
+}
+
+function downloadResultsPdf() {
+  if (!requireResult()) return;
+  openPdfPrint("Rezultate – Test Marile descoperiri geografice", resultsPdfBody(lastResult));
+}
+
+async function copyReport() {
+  if (!requireResult()) return;
+
+  const lines = [
+    `${lastResult.test.title} – ${lastResult.test.unit}`,
+    `Elev: ${lastResult.student.name ?? "—"}`,
+    `Cod de testare: ${lastResult.student.testCode ?? lastResult.student.nickname ?? "—"}`,
+    `Școala: ${lastResult.student.school ?? "—"}`,
+    `Clasa: ${lastResult.student.className ?? "—"}`,
+    `Data: ${lastResult.completedAtLabel}`,
+    `Scor: ${lastResult.score.correct}/${lastResult.score.total} (${lastResult.score.percent}%)`,
+    `Nivel: ${lastResult.score.level.label}`,
+    "",
+    ...lastResult.competencies.map((item) =>
+      `${item.code}: ${item.correct}/${item.total} (${item.percent}%) – ${item.level.label}`
+    ),
+    "",
+    lastResult.interpretation
+  ];
+
+  try {
+    await navigator.clipboard.writeText(lines.join("\n"));
+    document.getElementById("downloadStatus").textContent = "Raportul a fost copiat.";
+  } catch {
+    document.getElementById("downloadStatus").textContent = "Copierea automată nu a fost permisă de browser.";
+  }
+}
+
+document.getElementById("finishButton").addEventListener("click", finishQuiz);
+document.getElementById("resetButton").addEventListener("click", resetQuiz);
+document.getElementById("reviewButton").addEventListener("click", toggleReview);
+document.getElementById("detailsButton").addEventListener("click", toggleDetailedResults);
+document.getElementById("answersPdfButton").addEventListener("click", downloadAnswersPdf);
+document.getElementById("resultsPdfButton").addEventListener("click", downloadResultsPdf);
+document.getElementById("jsonDownloadButton").addEventListener("click", downloadJson);
+
+["studentName", "studentTestCode", "studentSchool", "studentClass"].forEach((id) => {
+  document.getElementById(id).addEventListener("input", (event) => {
+    event.currentTarget.classList.remove("invalid");
+    if (["studentName", "studentTestCode", "studentSchool", "studentClass"].every((fieldId) => document.getElementById(fieldId).value.trim())) {
+      document.getElementById("studentDataError").classList.remove("show");
+    }
+  });
+});
+
+renderQuestions();
+updateProgress();
+</script>
+</body>
+</html>
