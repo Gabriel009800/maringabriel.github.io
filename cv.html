@@ -1096,6 +1096,46 @@
         font-size: 12px !important;
       }
     }
+
+
+    /* Corecție exclusiv pentru HTML pe ecrane mici: blocul Profesor de Istorie
+       nu mai forțează lățimea coloanei din cauza celor trei butoane. */
+    @media (max-width: 720px) {
+      body:not(.pdf-exporting) .timeline > .timeline-item:first-child .timeline-content,
+      body:not(.pdf-exporting) .timeline > .timeline-item:first-child .timeline-main {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+      }
+
+      body:not(.pdf-exporting) .timeline > .timeline-item:first-child .timeline-main > p.screen-only {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-right: 0 !important;
+        padding-right: 10px !important;
+        box-sizing: border-box !important;
+        overflow-wrap: anywhere !important;
+      }
+
+      body:not(.pdf-exporting) .history-link-buttons {
+        --history-button-width: auto;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        box-sizing: border-box !important;
+      }
+
+      body:not(.pdf-exporting) .history-link-buttons > a,
+      body:not(.pdf-exporting) .history-link-buttons > .grade-popover {
+        width: auto !important;
+        min-width: 0 !important;
+        max-width: none !important;
+      }
+    }
+
 </style>
 </head>
 <body>
