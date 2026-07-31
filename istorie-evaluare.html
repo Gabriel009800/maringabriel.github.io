@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Teste de evaluare la istorie și materiale ajutătoare pentru clasele V–VIII.">
-  <title>Istorie – instrumente de evaluare | Marin Gabriel</title>
+  <meta name="description" content="Teste de evaluare la istorie pentru clasele V–VIII.">
+  <title>Istorie – evaluare | Marin Gabriel</title>
   <style>
     :root {
       --bg: #f6f3ef;
@@ -364,34 +364,64 @@
       .topbar, .search-wrap { display: none; }
       .hero, .section-card { box-shadow: none; }
     }
+  
+
+    .topbar-nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .home-link.current {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      pointer-events: none;
+    }
+    .stats.stats-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    @media (max-width: 760px) {
+      .topbar { align-items: flex-start; }
+      .topbar-nav { gap: 7px; }
+      .home-link { padding: 8px 11px; font-size: .84rem; }
+    }
+    @media (max-width: 520px) {
+      .stats.stats-3 { grid-template-columns: 1fr; }
+    }
+
   </style>
 </head>
 <body>
+
   <main class="page">
     <div class="topbar">
-      <a class="home-link" href="index.html">← Acasă</a>
+
+      <nav class="topbar-nav" aria-label="Navigare resurse de istorie">
+        <a class="home-link" href="index.html">← Acasă</a>
+        <a class="home-link current" href="istorie-evaluare.html" aria-current="page">Teste</a>
+        <a class="home-link" href="istorie-lectii.html">Lecții</a>
+      </nav>
       <span class="top-label">Marin Gabriel · Istorie</span>
     </div>
 
     <section class="hero">
-      <p class="kicker">Resurse didactice</p>
-      <h1>Istorie – instrumente de evaluare</h1>
-      <p class="hero-copy">Alege clasa și unitatea de învățare, apoi deschide grila sau pagina de rezultate. Mai jos găsești și materialele ajutătoare pentru istoria universală și istoria românilor, organizate cronologic și tematic, după structura reală a folderelor tale.</p>
+      <p class="kicker">Recapitulare și Evaluare</p>
+      <h1>Teste de istorie </h1>
+      <p class="hero-copy">Teste pentru clasele V–VIII, organizate pe niveluri și unități de învățare. Fiecare variantă include o pagină de grilă și o pagină separată pentru rezultate.</p>
 
-      <div class="stats">
+      <div class="stats stats-3">
         <div class="stat"><div><strong>Clase</strong><small>niveluri disponibile</small></div><div class="big-number" id="classCount">0</div></div>
-        <div class="stat"><div><strong>Teste</strong><small>variante complete</small></div><div class="big-number" id="testCount">0</div></div>
-        <div class="stat"><div><strong>Pagini de evaluare</strong><small>grile și rezultate</small></div><div class="big-number" id="pageCount">0</div></div>
-        <div class="stat"><div><strong>Materiale</strong><small>universale + românești</small></div><div class="big-number" id="materialCount">0</div></div>
-      </div>
+        <div class="stat"><div><strong>Conținuturi</strong><small>unități de învățare</small></div><div class="big-number" id="contentCount">0</div></div>
+       <div class="stat"><div><strong>Teste</strong><small>variante complete</small></div><div class="big-number" id="testCount">0</div></div>
+      </div
+>
     </section>
 
     <section class="section-card">
       <div class="section-head">
         <div>
-          <p class="kicker">Evaluare</p>
-          <h2>Teste pentru clasele V–VIII</h2>
-          <p class="muted">Deschide o clasă, apoi unitatea de învățare. Fiecare variantă are pagină de grilă și pagină separată de rezultate.</p>
+          <p class="kicker">Teste</p>
+          <h2>Instrumente de evaluare pentru clasele V–VIII</h2>
+          <p class="muted">Deschide o clasă, apoi unitatea de învățare. Poți accesa separat grila de lucru și pagina de rezultate.</p>
         </div>
         <label class="search-wrap">
           <span class="search-label">Caută în teste</span>
@@ -402,23 +432,7 @@
       <div id="testNoResults" class="empty-state no-results"><span>○</span><span>Nu a fost găsit niciun test pentru căutarea introdusă.</span></div>
     </section>
 
-    <section class="section-card">
-      <div class="section-head">
-        <div>
-          <p class="kicker">Materiale ajutătoare</p>
-          <h2>Istorie universală și românească</h2>
-          <p class="muted">Materialele sunt grupate pe epoci, civilizații și teme. Sunt incluse acum atât folderul „2.1. ... universala”, cât și folderul „2.2. ... romaneasca”.</p>
-        </div>
-        <label class="search-wrap">
-          <span class="search-label">Caută în materiale</span>
-          <input id="materialSearch" class="search-input" type="search" placeholder="Ex.: Bizanț, Cuza, comunistă, absolutism…" autocomplete="off">
-        </label>
-      </div>
-      <div id="materialCatalog" class="material-tree" aria-live="polite"></div>
-      <div id="materialNoResults" class="empty-state no-results"><span>○</span><span>Nu a fost găsit niciun material pentru căutarea introdusă.</span></div>
-    </section>
-
-    <aside class="notice"><strong>Structura legăturilor a fost refăcută după directoarele reale:</strong> fiecare clasă folosește propriul folder, iar materialele sunt încărcate acum din ambele directoare: „2.1. istorie materiale ajutatoare. universala” și „2.2. istorie materiale ajutatoare. romaneasca”.</aside>
+ 
     <p class="footer-note">© 2026 Marin Gabriel · Toate drepturile rezervate.</p>
   </main>
 
@@ -428,10 +442,6 @@
       VI: "1.2. istorie instrumente de evaluare. cls. 6",
       VII: "1.3. istorie instrumente de evaluare. cls. 7",
       VIII: "1.4. istorie instrumente de evaluare. cls. 8"
-    };
-    const materialFolders = {
-      universal: "2.1. istorie materiale ajutatoare. universala",
-      romanian: "2.2. istorie materiale ajutatoare. romaneasca"
     };
 
     const units = {
@@ -662,801 +672,6 @@
     }
   ]
 };
-    const materials = [
-  {
-    "name": "Istoria universală",
-    "children": [
-      {
-        "name": "Alfabetul istoriei",
-        "resources": [
-          {
-            "title": "Primele civilizații",
-            "file": "univ-alfabetul-istoriei-primele-civilizatii.html"
-          },
-          {
-            "title": "Tipuri de cronologii",
-            "file": "univ-alfabetul-istoriei-tipuri-de-cronologii.html"
-          },
-          {
-            "title": "Tipuri de izvoare istorice",
-            "file": "univ-alfabetul-istoriei-tipuri-de-izvoare.html"
-          }
-        ]
-      },
-      {
-        "name": "Preistoria",
-        "resources": [
-          {
-            "title": "Paleoliticul și Mezoliticul",
-            "file": "univ-preistoria-paleolitic-mezolitic.html"
-          },
-          {
-            "title": "Revoluția neolitică",
-            "file": "univ-preistoria-revolutia-neolitica.html"
-          },
-          {
-            "title": "Epoca metalelor",
-            "file": "univ-preistoria-epoca-metalelor.html"
-          }
-        ]
-      },
-      {
-        "name": "Antichitatea",
-        "children": [
-          {
-            "name": "Civilizația mesopotamiană",
-            "resources": [
-              {
-                "title": "Stat și politică",
-                "file": "univ-civilizatia-mesopotamiana-stat-si-politica.html"
-              }
-            ]
-          },
-          {
-            "name": "Civilizația egipteană",
-            "resources": [
-              {
-                "title": "Stat și politică",
-                "file": "univ-civilizatia-egipteana-stat-si-politica.html"
-              }
-            ]
-          },
-          {
-            "name": "Civilizația evreiască",
-            "resources": [
-              {
-                "title": "Stat și politică",
-                "file": "univ-civilizatia-evreiasca-stat-si-politica.html"
-              }
-            ]
-          },
-          {
-            "name": "Civilizația greacă",
-            "resources": [
-              {
-                "title": "Conflicte militare",
-                "file": "univ-civilizatia-greaca-conflicte-militare.html"
-              },
-              {
-                "title": "Modele culturale",
-                "file": "univ-civilizatia-greaca-modele-culturale.html"
-              },
-              {
-                "title": "Modele politice",
-                "file": "univ-civilizatia-greaca-modele-politice.html"
-              }
-            ]
-          },
-          {
-            "name": "Civilizația romană",
-            "resources": [
-              {
-                "title": "Artă și cultură",
-                "file": "univ-civilizatia-romana-arta-si-cultura.html"
-              },
-              {
-                "title": "Diplomație și conflict",
-                "file": "univ-civilizatia-romana-diplomatie-si-conflict.html"
-              },
-              {
-                "title": "Instituții politice",
-                "file": "univ-civilizatia-romana-institutii-politice.html"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "name": "Evul Mediu",
-        "children": [
-          {
-            "name": "Creștinismul",
-            "resources": [
-              {
-                "title": "Începuturile creștinismului",
-                "file": "univ-civilizatia-crestina-inceputurile-crestinismului.html"
-              },
-              {
-                "title": "Istoria Bisericii",
-                "file": "univ-civilizatia-crestina-istoria-bisericii.html"
-              },
-              {
-                "title": "Credință și sabie",
-                "file": "univ-civilizatia-crestina-credinta-si-sabie.html"
-              }
-            ]
-          },
-          {
-            "name": "Civilizația bizantină",
-            "resources": [
-              {
-                "title": "Politică internă",
-                "file": "univ-civilizatia-bizantina-politica-interna.html"
-              },
-              {
-                "title": "Diplomație și conflict",
-                "file": "univ-civilizatia-bizantina-diplomatie-si-conflict.html"
-              },
-              {
-                "title": "Conflictele religioase",
-                "file": "univ-civilizatia-bizantina-conflictele-religioase.html"
-              }
-            ]
-          },
-          {
-            "name": "Civilizația arabă",
-            "resources": [
-              {
-                "title": "Fondarea islamului",
-                "file": "univ-civilizatia-araba-fondarea-islamului.html"
-              },
-              {
-                "title": "Expansiunea islamului",
-                "file": "univ-civilizatia-araba-expansiunea-islamului.html"
-              },
-              {
-                "title": "Cultură și filosofie",
-                "file": "univ-civilizatia-araba-cultura-si-filosofie.html"
-              }
-            ]
-          },
-          {
-            "name": "Civilizația occidentală",
-            "resources": [
-              {
-                "title": "Migrații și regate barbare",
-                "file": "univ-europa-medievala-migratii-si-regate-barbare.html"
-              },
-              {
-                "title": "Formarea statelor medievale",
-                "file": "univ-europa-medievala-formarea-statelor-medievale.html"
-              },
-              {
-                "title": "Religie și cultură",
-                "file": "univ-europa-medievala-religie-si-cultura.html"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "name": "Epoca Modernă",
-        "children": [
-          {
-            "name": "Marile descoperiri geografice",
-            "resources": [
-              {
-                "title": "Premisele explorării",
-                "file": "univ-marile-descoperiri-geografice-premisele-explorarii.html"
-              },
-              {
-                "title": "Expansiunea europeană",
-                "file": "univ-marile-descoperiri-geografice-expansiunea-europeana.html"
-              },
-              {
-                "title": "Sistemul colonial",
-                "file": "univ-marile-descoperiri-geografice-sistemul-colonial.html"
-              }
-            ]
-          },
-          {
-            "name": "Renașterea și Umanismul",
-            "resources": [
-              {
-                "title": "Artă și cultură",
-                "file": "univ-renasterea-umanismul-arta-si-cultura.html"
-              },
-              {
-                "title": "Literatură și filosofie",
-                "file": "univ-renasterea-umanismul-literatura-si-filosofie.html"
-              },
-              {
-                "title": "Știință și tehnică",
-                "file": "univ-renasterea-umanismul-stiinta-si-tehnica.html"
-              }
-            ]
-          },
-          {
-            "name": "Reforma și Contrareforma",
-            "resources": [
-              {
-                "title": "Fragmentarea Bisericii",
-                "file": "univ-reforma-si-contrareforma-fragmentarea-bisericii.html"
-              },
-              {
-                "title": "Răspunsul papalității",
-                "file": "univ-reforma-si-contrareforma-raspunsul-papalitatii.html"
-              },
-              {
-                "title": "Artă și propagandă",
-                "file": "univ-reforma-si-contrareforma-arta-si-propaganda.html"
-              }
-            ]
-          },
-          {
-            "name": "Absolutismul monarhic",
-            "resources": [
-              {
-                "title": "Apariția și consolidarea",
-                "file": "univ-absolutismul-monarhic-aparitia-si-consolidarea.html"
-              },
-              {
-                "title": "Elemente caracteristice",
-                "file": "univ-absolutismul-monarhic-elemente-caracteristice.html"
-              },
-              {
-                "title": "Modele politice",
-                "file": "univ-absolutismul-monarhic-modele-politice.html"
-              }
-            ]
-          },
-          {
-            "name": "Iluminismul",
-            "resources": [
-              {
-                "title": "Idei filosofice",
-                "file": "univ-filosofia-luminilor-idei-filosofice.html"
-              },
-              {
-                "title": "Personalități istorice",
-                "file": "univ-filosofia-luminilor-personalitati-istorice.html"
-              },
-              {
-                "title": "Monarhia luminată",
-                "file": "univ-filosofia-luminilor-monarhia-luminata.html"
-              }
-            ]
-          },
-          {
-            "name": "Revoluția Engleză",
-            "resources": [
-              {
-                "title": "Rădăcinile conflictului",
-                "file": "univ-revolutia-engleza-radacinile-conflictului.html"
-              },
-              {
-                "title": "Schimbarea pașnică",
-                "file": "univ-revolutia-engleza-schimbarea-pasnica.html"
-              },
-              {
-                "title": "Monarhia constituțională",
-                "file": "univ-revolutia-engleza-monarhia-constitutionala.html"
-              }
-            ]
-          },
-          {
-            "name": "Revoluția Americană și constituirea SUA",
-            "resources": [
-              {
-                "title": "Războiul de Independență",
-                "file": "univ-constituirea-sua-razboiul-de-independenta.html"
-              },
-              {
-                "title": "Organizarea internă",
-                "file": "univ-constituirea-sua-organizarea-interna.html"
-              },
-              {
-                "title": "Constituția SUA",
-                "file": "univ-constituirea-sua-constitutia-sua.html"
-              }
-            ]
-          },
-          {
-            "name": "Revoluția Franceză",
-            "resources": [
-              {
-                "title": "Cauzele revoluției",
-                "file": "univ-revolutia-franceza-cauzele-revolutiei.html"
-              },
-              {
-                "title": "Desfășurarea revoluției",
-                "file": "univ-revolutia-franceza-desfasurarea-revolutiei.html"
-              },
-              {
-                "title": "Documente revoluționare",
-                "file": "univ-revolutia-franceza-documente-revolutionare.html"
-              }
-            ]
-          },
-          {
-            "name": "Franța napoleoniană",
-            "resources": [
-              {
-                "title": "Campanii militare",
-                "file": "univ-franta-napoleoniana-campanii-militare.html"
-              },
-              {
-                "title": "Legi moderne",
-                "file": "univ-franta-napoleoniana-legi-moderne.html"
-              },
-              {
-                "title": "Sistemul continental",
-                "file": "univ-franta-napoleoniana-sistemul-continental.html"
-              }
-            ]
-          },
-          {
-            "name": "Revoluția Industrială",
-            "resources": [
-              {
-                "title": "Prima etapă",
-                "file": "univ-revolutia-industriala-prima-etapa.html"
-              },
-              {
-                "title": "A doua etapă",
-                "file": "univ-revolutia-industriala-a-doua-etapa.html"
-              },
-              {
-                "title": "Schimbări sociale",
-                "file": "univ-revolutia-industriala-schimbari-sociale.html"
-              }
-            ]
-          },
-          {
-            "name": "Statele naționale moderne",
-            "resources": [
-              {
-                "title": "Fondarea statelor-națiuni",
-                "file": "univ-statele-nationale-fondarea-statelor-natiuni.html"
-              },
-              {
-                "title": "Revoluție și identitate",
-                "file": "univ-statele-nationale-revolutie-si-identitate.html"
-              },
-              {
-                "title": "Diplomație și conflict",
-                "file": "univ-statele-nationale-diplomatie-si-conflict.html"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "name": "Epoca Contemporană",
-        "children": [
-          {
-            "name": "Primul Război Mondial",
-            "resources": [
-              {
-                "title": "Începutul conflictului",
-                "file": "univ-primul-razboi-mondial-inceputul-conflictului.html"
-              },
-              {
-                "title": "Desfășurarea conflictului",
-                "file": "univ-primul-razboi-mondial-desfasurarea-conflictului.html"
-              },
-              {
-                "title": "Consecințele conflictului",
-                "file": "univ-primul-razboi-mondial-consecintele-conflictului.html"
-              }
-            ]
-          },
-          {
-            "name": "Perioada Interbelică",
-            "resources": [
-              {
-                "title": "Politică și ideologie",
-                "file": "univ-perioada-interbelica-politica-si-ideologie.html"
-              },
-              {
-                "title": "Diplomație și conflict",
-                "file": "univ-perioada-interbelica-diplomatie-si-conflict.html"
-              },
-              {
-                "title": "Artă și cultură",
-                "file": "univ-perioada-interbelica-arta-si-cultura.html"
-              }
-            ]
-          },
-          {
-            "name": "Al Doilea Război Mondial",
-            "resources": [
-              {
-                "title": "Începutul conflictului",
-                "file": "univ-al-doilea-razboi-mondial-inceputul-conflictului.html"
-              },
-              {
-                "title": "Desfășurarea conflictului",
-                "file": "univ-al-doilea-razboi-mondial-desfasurarea-conflictului.html"
-              },
-              {
-                "title": "Consecințele conflictului",
-                "file": "univ-al-doilea-razboi-mondial-consecintele-conflictului.html"
-              }
-            ]
-          },
-          {
-            "name": "Macrocriminalitatea în timpul celui de-Al Doilea Război Mondial",
-            "resources": [
-              {
-                "title": "Germania nazistă",
-                "file": "univ-macro-criminalitate-germania-nazista.html"
-              },
-              {
-                "title": "Imperiul Japonez",
-                "file": "univ-macro-criminalitate-imperiul-japonez.html"
-              },
-              {
-                "title": "Restul lumii",
-                "file": "univ-macro-criminalitate-restul-lumii.html"
-              }
-            ]
-          },
-          {
-            "name": "Războiul Rece",
-            "resources": [
-              {
-                "title": "Modele politice",
-                "file": "univ-razboiul-rece-modele-politice.html"
-              },
-              {
-                "title": "Diplomație și conflict",
-                "file": "univ-razboiul-rece-diplomatie-si-conflict.html"
-              },
-              {
-                "title": "Mișcarea de Nealiniere",
-                "file": "univ-razboiul-rece-miscarea-de-nealiniere.html"
-              }
-            ]
-          },
-          {
-            "name": "Lumea postbelică",
-            "resources": [
-              {
-                "title": "Drepturile omului",
-                "file": "univ-lumea-postbelica-drepturile-omului.html"
-              },
-              {
-                "title": "Știință și tehnologie",
-                "file": "univ-lumea-postbelica-stiinta-si-tehnologie.html"
-              },
-              {
-                "title": "Uniunea Europeană",
-                "file": "univ-lumea-postbelica-uniunea-europeana.html"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "folderKey": "universal"
-  },
-  {
-    "name": "Istoria românilor",
-    "children": [
-      {
-        "name": "Alfabetul istoriei",
-        "resources": [
-          {
-            "title": "Decalajul istoric",
-            "file": "ro-alfabetul-istoriei-decalajul-istoric.html"
-          },
-          {
-            "title": "Izvoare istorice",
-            "file": "ro-alfabetul-istoriei-izvoare-istorice.html"
-          },
-          {
-            "title": "Primele culturi",
-            "file": "ro-alfabetul-istoriei-primele-culturi.html"
-          }
-        ]
-      },
-      {
-        "name": "Preistoria",
-        "resources": [
-          {
-            "title": "Primii locuitori",
-            "file": "ro-preistoria-primii-locuitori.html"
-          },
-          {
-            "title": "Epoca metalelor",
-            "file": "ro-preistoria-epoca-metalelor.html"
-          },
-          {
-            "title": "Indo-europenii",
-            "file": "ro-preistoria-indo-europenii.html"
-          }
-        ]
-      },
-      {
-        "name": "Antichitatea",
-        "children": [
-          {
-            "name": "Geto-dacii",
-            "resources": [
-              {
-                "title": "Mențiuni istorice",
-                "file": "ro-geto-dacii-mentiuni-istorice.html"
-              },
-              {
-                "title": "Stat și societate",
-                "file": "ro-geto-dacii-stat-si-societate.html"
-              },
-              {
-                "title": "Războaiele cu romanii",
-                "file": "ro-geto-dacii-razboaiele-cu-romanii.html"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "name": "Evul Mediu",
-        "children": [
-          {
-            "name": "Romanitatea românilor",
-            "resources": [
-              {
-                "title": "Etnogeneza românească",
-                "file": "ro-romanitatea-romanilor-etnogeneza-romaneasca.html"
-              },
-              {
-                "title": "Menționări timpurii",
-                "file": "ro-romanitatea-romanilor-mentionari-timpurii.html"
-              },
-              {
-                "title": "Politizarea istoriei",
-                "file": "ro-romanitatea-romanilor-politizarea-istoriei.html"
-              }
-            ]
-          },
-          {
-            "name": "Geneza statelor medievale românești",
-            "resources": [
-              {
-                "title": "Transilvania",
-                "file": "ro-geneza-statului-transilvania.html"
-              },
-              {
-                "title": "Valahia",
-                "file": "ro-geneza-statului-valahia.html"
-              },
-              {
-                "title": "Moldova",
-                "file": "ro-geneza-statului-moldova.html"
-              }
-            ]
-          },
-          {
-            "name": "Cruciadele târzii",
-            "resources": [
-              {
-                "title": "Valahia",
-                "file": "ro-cruciadele-tarzii-valahia.html"
-              },
-              {
-                "title": "Moldova",
-                "file": "ro-cruciadele-tarzii-moldova.html"
-              },
-              {
-                "title": "Rivalități interne",
-                "file": "ro-cruciadele-tarzii-rivalitati-interne.html"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "name": "Epoca Modernă",
-        "children": [
-          {
-            "name": "Modernitatea timpurie",
-            "resources": [
-              {
-                "title": "Valahia și Moldova",
-                "file": "ro-modernitatea-timpurie-valahia-si-moldova.html"
-              },
-              {
-                "title": "Transilvania",
-                "file": "ro-modernitatea-timpurie-transilvania.html"
-              },
-              {
-                "title": "Conflicte militare",
-                "file": "ro-modernitatea-timpurie-conflicte-militare.html"
-              }
-            ]
-          },
-          {
-            "name": "Cultura modernă",
-            "resources": [
-              {
-                "title": "Apariția tiparului",
-                "file": "ro-cultura-moderna-aparitia-tiparului.html"
-              },
-              {
-                "title": "Școala Ardeleană",
-                "file": "ro-cultura-moderna-scoala-ardeleana.html"
-              },
-              {
-                "title": "Personalități politice",
-                "file": "ro-cultura-moderna-personalitati-politice.html"
-              }
-            ]
-          },
-          {
-            "name": "Revoluții și reforme în prima jumătate a secolului al XIX-lea",
-            "resources": [
-              {
-                "title": "Răscoala de la 1821",
-                "file": "ro-epoca-moderna-rascoala-de-la-1821.html"
-              },
-              {
-                "title": "Regulamentele Organice",
-                "file": "ro-epoca-moderna-regulamentele-organice.html"
-              },
-              {
-                "title": "Revoluția de la 1848",
-                "file": "ro-epoca-moderna-revolutia-de-la-1848.html"
-              }
-            ]
-          },
-          {
-            "name": "Alexandru Ioan Cuza",
-            "resources": [
-              {
-                "title": "Războiul Crimeii",
-                "file": "ro-alexandru-ioan-cuza-razboiul-crimeii.html"
-              },
-              {
-                "title": "Alegerea domnitorului",
-                "file": "ro-alexandru-ioan-cuza-alegerea-domnitorului.html"
-              },
-              {
-                "title": "Reformele modernizării",
-                "file": "ro-alexandru-ioan-cuza-reformele-modernizarii.html"
-              }
-            ]
-          },
-          {
-            "name": "Regele Carol I",
-            "resources": [
-              {
-                "title": "Alegerea domnitorului",
-                "file": "ro-regele-carol-i-alegerea-domnitorului.html"
-              },
-              {
-                "title": "Războiul de Independență",
-                "file": "ro-regele-carol-i-razboiul-de-independenta.html"
-              },
-              {
-                "title": "Reformele modernizării",
-                "file": "ro-regele-carol-i-reformele-modernizarii.html"
-              }
-            ]
-          },
-          {
-            "name": "Constituțiile României",
-            "resources": [
-              {
-                "title": "Context istoric",
-                "file": "ro-constitutiile-romaniei-context-istoric.html"
-              },
-              {
-                "title": "Modele politice",
-                "file": "ro-constitutiile-romaniei-modele-politice.html"
-              },
-              {
-                "title": "Analize comparative",
-                "file": "ro-constitutiile-romaniei-analize-comparative.html"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "name": "Epoca Contemporană",
-        "children": [
-          {
-            "name": "Primul Război Mondial",
-            "resources": [
-              {
-                "title": "Începutul conflictului",
-                "file": "ro-primul-razboi-mondial-inceputul-conflictului.html"
-              },
-              {
-                "title": "Desfășurarea conflictului",
-                "file": "ro-primul-razboi-mondial-desfasurarea-conflictului.html"
-              },
-              {
-                "title": "Consecințele conflictului",
-                "file": "ro-primul-razboi-mondial-consecintele-conflictului.html"
-              }
-            ]
-          },
-          {
-            "name": "Perioada Interbelică",
-            "resources": [
-              {
-                "title": "Politică internă",
-                "file": "ro-perioada-interbelica-politica-interna.html"
-              },
-              {
-                "title": "Politică externă",
-                "file": "ro-perioada-interbelica-politica-externa.html"
-              },
-              {
-                "title": "Economie și societate",
-                "file": "ro-perioada-interbelica-economie-si-societate.html"
-              }
-            ]
-          },
-          {
-            "name": "Al Doilea Război Mondial",
-            "resources": [
-              {
-                "title": "Începutul conflictului",
-                "file": "ro-al-doilea-razboi-mondial-inceputul-conflictului.html"
-              },
-              {
-                "title": "Desfășurarea conflictului",
-                "file": "ro-al-doilea-razboi-mondial-desfasurarea-conflictului.html"
-              },
-              {
-                "title": "Consecințele conflictului",
-                "file": "ro-al-doilea-razboi-mondial-consecintele-conflictului.html"
-              }
-            ]
-          },
-          {
-            "name": "Macrocriminalitate și probleme teritoriale",
-            "resources": [
-              {
-                "title": "Chestiunea evreiască",
-                "file": "ro-macro-criminalitate-chestiunea-evreiasca.html"
-              },
-              {
-                "title": "Problema Transilvaniei",
-                "file": "ro-macro-criminalitate-problema-transilvaniei.html"
-              },
-              {
-                "title": "Problema Transnistriei",
-                "file": "ro-macro-criminalitate-problema-transnistriei.html"
-              }
-            ]
-          },
-          {
-            "name": "România comunistă",
-            "resources": [
-              {
-                "title": "Instaurarea regimului",
-                "file": "ro-romania-comunista-instaurarea-regimului.html"
-              },
-              {
-                "title": "Epoca Ceaușescu",
-                "file": "ro-romania-comunista-epoca-ceausescu.html"
-              },
-              {
-                "title": "Disidență și revoluție",
-                "file": "ro-romania-comunista-disidenta-si-revolutie.html"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "folderKey": "romanian"
-  }
-];
 
     const classLabels = { V: "Clasa a V-a", VI: "Clasa a VI-a", VII: "Clasa a VII-a", VIII: "Clasa a VIII-a" };
     const classIcons = { V: "V", VI: "VI", VII: "VII", VIII: "VIII" };
@@ -1481,10 +696,6 @@
 
     function countTests() {
       return Object.values(units).flat().reduce((sum, unit) => sum + unit.tests.length, 0);
-    }
-
-    function countResources(node) {
-      return (node.resources?.length || 0) + (node.children || []).reduce((sum, child) => sum + countResources(child), 0);
     }
 
     function testMatches(test, unitName, query) {
@@ -1551,79 +762,14 @@
       document.getElementById("testNoResults").style.display = visibleTests === 0 && query ? "flex" : "none";
     }
 
-    function nodeMatches(node, query) {
-      if (!query) return true;
-      if (normalize(node.name).includes(query)) return true;
-      if ((node.resources || []).some(resource => normalize(resource.title).includes(query))) return true;
-      return (node.children || []).some(child => nodeMatches(child, query));
-    }
-
-    function renderMaterialNode(node, query, depth = 1, rootFolderKey = "universal") {
-      const nameMatches = normalize(node.name).includes(query);
-      const resources = (node.resources || []).filter(resource => !query || nameMatches || normalize(resource.title).includes(query));
-      const children = (node.children || []).filter(child => !query || nameMatches || nodeMatches(child, query));
-      const total = countResources(node);
-
-      const resourcesHtml = resources.length ? `<div class="resource-list">${resources.map(resource => `
-        <a class="resource-link" href="${pathTo(materialFolders[node.folderKey || rootFolderKey], resource.file)}" target="_blank" rel="noopener">
-          <span class="resource-title">${escapeHtml(resource.title)}</span>
-          <span class="resource-open">Deschide materialul →</span>
-        </a>`).join("")}</div>` : "";
-
-      const childrenHtml = children.length
-        ? `<div class="material-children">${children.map(child => renderMaterialNode(child, query, Math.min(depth + 1, 4), rootFolderKey)).join("")}</div>`
-        : "";
-
-      const content = resourcesHtml || childrenHtml
-        ? `${resourcesHtml}${childrenHtml}`
-        : `<div class="empty-state"><span>○</span><span>Nu există încă materiale în această secțiune.</span></div>`;
-
-      return `<details class="material-node depth-${Math.min(depth, 4)}" style="--depth:${depth - 1}" ${query ? "open" : ""}>
-        <summary class="material-node-summary">
-          <span class="material-node-title">${escapeHtml(node.name)}</span>
-          <span class="count-badge">${total} ${total === 1 ? "material" : "materiale"}</span>
-          <span class="chevron" aria-hidden="true">›</span>
-        </summary>
-        <div class="material-node-content">${content}</div>
-      </details>`;
-    }
-
-    function renderMaterials(rawQuery = "") {
-      const query = normalize(rawQuery);
-      const root = document.getElementById("materialCatalog");
-      const visibleRoots = materials.filter(node => !query || nodeMatches(node, query));
-
-      root.innerHTML = visibleRoots.map(node => {
-        const total = countResources(node);
-        const children = (node.children || []).filter(child => !query || nodeMatches(child, query));
-        const icon = node.folderKey === "romanian" ? "🇷🇴" : "🌍";
-        const subtitle = node.folderKey === "romanian" ? "Materiale din folderul 2.2 · istorie românească" : "Materiale din folderul 2.1 · istorie universală";
-        return `<details class="material-window" ${query ? "open" : ""}>
-          <summary class="material-summary">
-            <span class="material-icon">${icon}</span>
-            <span class="material-title">${escapeHtml(node.name)}<span class="summary-subtitle">${subtitle}</span></span>
-            <span class="count-badge">${total} materiale</span>
-            <span class="chevron" aria-hidden="true">›</span>
-          </summary>
-          <div class="material-content"><div class="material-children">${children.map(child => renderMaterialNode(child, query, 1, node.folderKey || "universal")).join("")}</div></div>
-        </details>`;
-      }).join("");
-
-      document.getElementById("materialNoResults").style.display = visibleRoots.length === 0 && query ? "flex" : "none";
-    }
-
     const totalTests = countTests();
-    const totalMaterials = materials.reduce((sum, node) => sum + countResources(node), 0);
+    const totalContents = Object.values(units).reduce((sum, classUnits) => sum + classUnits.length, 0);
     document.getElementById("classCount").textContent = Object.keys(units).length;
     document.getElementById("testCount").textContent = totalTests;
-    document.getElementById("pageCount").textContent = totalTests * 2;
-    document.getElementById("materialCount").textContent = totalMaterials;
-
+    document.getElementById("contentCount").textContent = totalContents;
     document.getElementById("testSearch").addEventListener("input", event => renderTests(event.target.value));
-    document.getElementById("materialSearch").addEventListener("input", event => renderMaterials(event.target.value));
-
     renderTests();
-    renderMaterials();
+
   </script>
 </body>
 </html>

@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Materiale de sprijin pentru istoria universală și istoria românilor.">
+  <title>Istorie – lecții | Marin Gabriel</title>
+  <style>
+    :root {
+      --bg: #f6f3ef;
+      --panel: #fffaf4;
+      --card: #ffffff;
+      --ink: #202020;
+      --muted: #6f675d;
+      --line: #e6ded4;
+      --accent: #7a4e2d;
+      --accent-2: #b98250;
+      --accent-soft: #f1e3d4;
+      --shadow: 0 18px 50px rgba(74, 52, 33, .12);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184, 130, 80, .14), transparent 36rem),
+        linear-gradient(180deg, #fbf8f3 0%, var(--bg) 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.58;
+    }
+
+    a { color: inherit; }
+    button, input { font: inherit; }
+    .page { width: min(1180px, calc(100% - 36px)); margin: 0 auto; padding: 34px 0 72px; }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .home-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .82);
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 800;
+    }
+    .home-link:hover { background: #fff; }
+    .top-label { color: var(--muted); font-size: .88rem; font-weight: 700; }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(255, 250, 244, .95), rgba(241, 227, 212, .78));
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 390px;
+      height: 390px;
+      border-radius: 50%;
+      right: -150px;
+      top: -210px;
+      background: rgba(122, 78, 45, .08);
+    }
+    .hero > * { position: relative; z-index: 1; }
+    .kicker {
+      color: var(--accent);
+      font-size: .82rem;
+      font-weight: 850;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin: 0 0 8px;
+    }
+    h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; }
+    h1 {
+      font-size: clamp(2.25rem, 5.5vw, 4.8rem);
+      line-height: .98;
+      letter-spacing: -.05em;
+      margin: 0 0 18px;
+    }
+    h2 { font-size: clamp(1.45rem, 2.4vw, 2.1rem); margin: 0 0 10px; }
+    h3 { margin: 0; }
+    p { margin: 0 0 12px; }
+    .hero-copy { max-width: 850px; color: #5c534b; font-size: 1.02rem; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .stat {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 253, 249, .92);
+    }
+    .stat strong { display: block; line-height: 1.25; }
+    .stat small { color: var(--muted); }
+    .big-number {
+      font-family: Georgia, serif;
+      font-size: 2.15rem;
+      line-height: 1;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .section-card {
+      margin-top: 22px;
+      background: rgba(255, 255, 255, .92);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 30px rgba(74, 52, 33, .07);
+      padding: 24px;
+    }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .muted { color: var(--muted); }
+
+    .search-wrap { width: min(350px, 100%); }
+    .search-label {
+      display: block;
+      font-size: .78rem;
+      color: var(--muted);
+      font-weight: 800;
+      margin: 0 0 6px 4px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .search-input {
+      width: 100%;
+      border: 1px solid #d9c9b9;
+      border-radius: 14px;
+      background: #fffdf9;
+      color: var(--ink);
+      padding: 11px 13px;
+      outline: none;
+    }
+    .search-input:focus {
+      border-color: var(--accent-2);
+      box-shadow: 0 0 0 4px rgba(185, 130, 80, .13);
+    }
+
+    .catalog-list { display: grid; gap: 14px; }
+    details { min-width: 0; }
+    summary { list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+
+    .class-window, .material-window {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: #fffdf9;
+      overflow: hidden;
+      transition: .18s ease;
+    }
+    .class-window[open], .material-window[open] {
+      border-color: #d8b99b;
+      box-shadow: 0 12px 30px rgba(74, 52, 33, .08);
+    }
+    .class-summary, .material-summary {
+      display: grid;
+      grid-template-columns: 52px minmax(0, 1fr) auto 22px;
+      gap: 14px;
+      align-items: center;
+      padding: 17px 18px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .class-summary:hover, .material-summary:hover { background: #fff8ef; }
+    .class-number, .material-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 17px;
+      display: grid;
+      place-items: center;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-family: Georgia, serif;
+      font-size: 1.16rem;
+      font-weight: 900;
+    }
+    .class-title, .material-title { font-size: 1.08rem; font-weight: 900; line-height: 1.3; }
+    .summary-subtitle { display: block; color: var(--muted); font-size: .85rem; font-weight: 600; margin-top: 2px; }
+    .count-badge, .code-badge, .item-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      white-space: nowrap;
+      font-weight: 850;
+    }
+    .count-badge { padding: 6px 11px; background: #fff; color: var(--accent); border: 1px solid #ddc7b2; font-size: .82rem; }
+    .chevron { font-size: 1.1rem; color: var(--accent); transition: transform .18s ease; }
+    details[open] > summary .chevron { transform: rotate(90deg); }
+    .class-content, .material-content { padding: 0 16px 16px; border-top: 1px solid var(--line); }
+
+    .unit-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; padding-top: 14px; align-items: start; }
+    .unit-window, .material-node {
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: #fff;
+      overflow: hidden;
+    }
+    .unit-window[open], .material-node[open] { border-color: #d8b99b; box-shadow: 0 8px 22px rgba(74, 52, 33, .07); }
+    .unit-summary, .material-node-summary {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto 18px;
+      gap: 9px;
+      align-items: center;
+      padding: 13px 14px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .unit-summary:hover, .material-node-summary:hover { background: #fff9f2; }
+    .unit-title, .material-node-title { font-size: .94rem; font-weight: 850; line-height: 1.35; }
+    .unit-content, .material-node-content { padding: 12px; border-top: 1px solid var(--line); background: #fffdfb; }
+
+    .test-list, .resource-list, .material-children { display: grid; gap: 10px; }
+    .test-card {
+      display: grid;
+      grid-template-columns: 50px minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: #fff;
+      padding: 12px 13px;
+      min-height: 86px;
+      transition: .18s ease;
+    }
+    .test-card:hover, .resource-link:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(74, 52, 33, .08); border-color: #d6bca0; }
+    .test-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-family: Georgia, serif;
+      font-weight: 950;
+    }
+    .test-body { min-width: 0; }
+    .test-title { display: block; font-size: .98rem; font-weight: 900; line-height: 1.3; }
+    .test-purpose { display: block; color: #5c534b; font-size: .82rem; line-height: 1.42; margin-top: 3px; }
+    .test-actions { display: flex; align-items: center; justify-content: flex-end; gap: 7px; flex-wrap: wrap; }
+    .code-badge { padding: 5px 9px; background: #f7f2ec; color: #6c5b4d; border: 1px solid var(--line); font-size: .76rem; }
+    .action-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: .83rem;
+      font-weight: 850;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: .18s ease;
+    }
+    .action-link.primary { background: var(--accent); color: #fff; box-shadow: 0 8px 16px rgba(122, 78, 45, .14); }
+    .action-link.secondary { background: #fff; color: var(--accent); border: 1px solid #d8c2ad; }
+    .action-link:hover { transform: translateY(-1px); filter: brightness(1.03); }
+
+    .empty-state {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 14px;
+      border: 1px dashed #d8c2ad;
+      border-radius: 15px;
+      background: #fffaf5;
+      color: var(--muted);
+      font-size: .87rem;
+    }
+    .empty-state strong { color: var(--accent); }
+
+    .material-tree { display: grid; gap: 12px; }
+    .material-window > .material-content { padding-top: 14px; }
+    .material-node.depth-1 { background: #fff; }
+    .material-node.depth-2 { background: #fffdf9; }
+    .material-node.depth-3 { background: #fbf5ec; }
+    .material-node.depth-4 { background: #f8efe3; }
+    .material-node-summary { padding-left: calc(14px + var(--depth, 0) * 8px); }
+    .resource-link {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: #fff;
+      padding: 12px 14px;
+      text-decoration: none;
+      transition: .18s ease;
+    }
+    .resource-title { font-weight: 850; line-height: 1.35; }
+    .resource-open { color: var(--accent); font-size: .82rem; font-weight: 850; white-space: nowrap; }
+
+    .notice {
+      margin-top: 22px;
+      background: #fff7ec;
+      border: 1px solid #ead8c4;
+      border-left: 6px solid var(--accent-2);
+      padding: 16px 18px;
+      border-radius: 18px;
+      color: #46382d;
+    }
+    .no-results { display: none; margin-top: 14px; }
+    .footer-note { text-align: center; color: var(--muted); font-size: .85rem; margin-top: 24px; }
+
+    @media (max-width: 980px) {
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .unit-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 760px) {
+      .page { width: min(100% - 22px, 1180px); padding-top: 18px; }
+      .hero { padding: 25px; border-radius: 24px; }
+      .section-card { padding: 18px; }
+      .section-head { align-items: stretch; flex-direction: column; }
+      .search-wrap { width: 100%; }
+      .top-label { display: none; }
+      .class-summary, .material-summary { grid-template-columns: 44px minmax(0, 1fr) auto 18px; padding: 14px; }
+      .class-number, .material-icon { width: 44px; height: 44px; border-radius: 14px; }
+      .count-badge { font-size: .74rem; padding: 5px 8px; }
+      .test-card { grid-template-columns: 46px minmax(0, 1fr); align-items: start; }
+      .test-icon { width: 46px; height: 46px; border-radius: 14px; }
+      .test-actions { grid-column: 2; justify-content: flex-start; }
+      .resource-link { grid-template-columns: 1fr; }
+      .resource-open { white-space: normal; }
+    }
+    @media (max-width: 520px) {
+      .stats { grid-template-columns: 1fr; }
+      .class-summary, .material-summary { grid-template-columns: 42px minmax(0, 1fr) 18px; }
+      .class-summary .count-badge, .material-summary .count-badge { grid-column: 2; justify-self: start; }
+      .class-summary .chevron, .material-summary .chevron { grid-column: 3; grid-row: 1 / span 2; }
+    }
+    @media print {
+      body { background: white; }
+      .page { width: 100%; padding: 0; }
+      .topbar, .search-wrap { display: none; }
+      .hero, .section-card { box-shadow: none; }
+    }
+  
+
+    .topbar-nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .home-link.current {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      pointer-events: none;
+    }
+    .stats.stats-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    @media (max-width: 760px) {
+      .topbar { align-items: flex-start; }
+      .topbar-nav { gap: 7px; }
+      .home-link { padding: 8px 11px; font-size: .84rem; }
+    }
+    @media (max-width: 520px) {
+      .stats.stats-3 { grid-template-columns: 1fr; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <main class="page">
+    <div class="topbar">
+
+      <nav class="topbar-nav" aria-label="Navigare resurse de istorie">
+        <a class="home-link" href="index.html">← Acasă</a>
+        <a class="home-link" href="istorie-evaluare.html">Teste</a>
+        <a class="home-link current" href="istorie-lectii.html" aria-current="page">Lecții</a>
+      </nav>
+      <span class="top-label">Marin Gabriel · Istorie</span>
+    </div>
+
+    <section class="hero">
+      <p class="kicker">Materiale de studiu</p>
+      <h1>Lecții de istorie</h1>
+      <p class="hero-copy">Materiale pentru aprofundarea istoriei universale și a istoriei românilor, organizate cronologic și tematic pe epoci, civilizații și subiecte.</p>
+
+      <div class="stats stats-3">
+        <div class="stat"><div><strong>Colecții</strong><small>universală și românească</small></div><div class="big-number" id="collectionCount">0</div></div>
+        <div class="stat"><div><strong>Secțiuni tematice</strong><small>epoci și subiecte</small></div><div class="big-number" id="sectionCount">0</div></div>
+        <div class="stat"><div><strong>Materiale</strong><small>lecții și sinteze</small></div><div class="big-number" id="materialCount">0</div></div>
+
+      </div>
+    </section>
+
+    <section class="section-card">
+      <div class="section-head">
+        <div>
+          <p class="kicker">Lecții</p>
+          <h2>Istorie universală și istoria românilor</h2>
+          <p class="muted">Deschide colecția, epoca și tema dorită, apoi accesează materialul de sprijin.</p>
+        </div>
+        <label class="search-wrap">
+          <span class="search-label">Caută în materiale</span>
+          <input id="materialSearch" class="search-input" type="search" placeholder="Ex.: Bizanț, Cuza, comunistă, absolutism…" autocomplete="off">
+        </label>
+      </div>
+      <div id="materialCatalog" class="material-tree" aria-live="polite"></div>
+      <div id="materialNoResults" class="empty-state no-results"><span>○</span><span>Nu a fost găsit niciun material pentru căutarea introdusă.</span></div>
+    </section>
+
+
+    <p class="footer-note">© 2026 Marin Gabriel · Toate drepturile rezervate.</p>
+  </main>
+
+  <script>
+    const materialFolders = {
+      universal: "2.1. istorie materiale ajutatoare. universala",
+      romanian: "2.2. istorie materiale ajutatoare. romaneasca"
+    };
+
+    const materials = [
+  {
+    "name": "Istoria universală",
+    "children": [
+      {
+        "name": "Alfabetul istoriei",
+        "resources": [
+          {
+            "title": "Primele civilizații",
+            "file": "univ-alfabetul-istoriei-primele-civilizatii.html"
+          },
+          {
+            "title": "Tipuri de cronologii",
+            "file": "univ-alfabetul-istoriei-tipuri-de-cronologii.html"
+          },
+          {
+            "title": "Tipuri de izvoare istorice",
+            "file": "univ-alfabetul-istoriei-tipuri-de-izvoare.html"
+          }
+        ]
+      },
+      {
+        "name": "Preistoria",
+        "resources": [
+          {
+            "title": "Paleoliticul și Mezoliticul",
+            "file": "univ-preistoria-paleolitic-mezolitic.html"
+          },
+          {
+            "title": "Revoluția neolitică",
+            "file": "univ-preistoria-revolutia-neolitica.html"
+          },
+          {
+            "title": "Epoca metalelor",
+            "file": "univ-preistoria-epoca-metalelor.html"
+          }
+        ]
+      },
+      {
+        "name": "Antichitatea",
+        "children": [
+          {
+            "name": "Civilizația mesopotamiană",
+            "resources": [
+              {
+                "title": "Stat și politică",
+                "file": "univ-civilizatia-mesopotamiana-stat-si-politica.html"
+              }
+            ]
+          },
+          {
+            "name": "Civilizația egipteană",
+            "resources": [
+              {
+                "title": "Stat și politică",
+                "file": "univ-civilizatia-egipteana-stat-si-politica.html"
+              }
+            ]
+          },
+          {
+            "name": "Civilizația evreiască",
+            "resources": [
+              {
+                "title": "Stat și politică",
+                "file": "univ-civilizatia-evreiasca-stat-si-politica.html"
+              }
+            ]
+          },
+          {
+            "name": "Civilizația greacă",
+            "resources": [
+              {
+                "title": "Conflicte militare",
+                "file": "univ-civilizatia-greaca-conflicte-militare.html"
+              },
+              {
+                "title": "Modele culturale",
+                "file": "univ-civilizatia-greaca-modele-culturale.html"
+              },
+              {
+                "title": "Modele politice",
+                "file": "univ-civilizatia-greaca-modele-politice.html"
+              }
+            ]
+          },
+          {
+            "name": "Civilizația romană",
+            "resources": [
+              {
+                "title": "Artă și cultură",
+                "file": "univ-civilizatia-romana-arta-si-cultura.html"
+              },
+              {
+                "title": "Diplomație și conflict",
+                "file": "univ-civilizatia-romana-diplomatie-si-conflict.html"
+              },
+              {
+                "title": "Instituții politice",
+                "file": "univ-civilizatia-romana-institutii-politice.html"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Evul Mediu",
+        "children": [
+          {
+            "name": "Creștinismul",
+            "resources": [
+              {
+                "title": "Începuturile creștinismului",
+                "file": "univ-civilizatia-crestina-inceputurile-crestinismului.html"
+              },
+              {
+                "title": "Istoria Bisericii",
+                "file": "univ-civilizatia-crestina-istoria-bisericii.html"
+              },
+              {
+                "title": "Credință și sabie",
+                "file": "univ-civilizatia-crestina-credinta-si-sabie.html"
+              }
+            ]
+          },
+          {
+            "name": "Civilizația bizantină",
+            "resources": [
+              {
+                "title": "Politică internă",
+                "file": "univ-civilizatia-bizantina-politica-interna.html"
+              },
+              {
+                "title": "Diplomație și conflict",
+                "file": "univ-civilizatia-bizantina-diplomatie-si-conflict.html"
+              },
+              {
+                "title": "Conflictele religioase",
+                "file": "univ-civilizatia-bizantina-conflictele-religioase.html"
+              }
+            ]
+          },
+          {
+            "name": "Civilizația arabă",
+            "resources": [
+              {
+                "title": "Fondarea islamului",
+                "file": "univ-civilizatia-araba-fondarea-islamului.html"
+              },
+              {
+                "title": "Expansiunea islamului",
+                "file": "univ-civilizatia-araba-expansiunea-islamului.html"
+              },
+              {
+                "title": "Cultură și filosofie",
+                "file": "univ-civilizatia-araba-cultura-si-filosofie.html"
+              }
+            ]
+          },
+          {
+            "name": "Civilizația occidentală",
+            "resources": [
+              {
+                "title": "Migrații și regate barbare",
+                "file": "univ-europa-medievala-migratii-si-regate-barbare.html"
+              },
+              {
+                "title": "Formarea statelor medievale",
+                "file": "univ-europa-medievala-formarea-statelor-medievale.html"
+              },
+              {
+                "title": "Religie și cultură",
+                "file": "univ-europa-medievala-religie-si-cultura.html"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Epoca Modernă",
+        "children": [
+          {
+            "name": "Marile descoperiri geografice",
+            "resources": [
+              {
+                "title": "Premisele explorării",
+                "file": "univ-marile-descoperiri-geografice-premisele-explorarii.html"
+              },
+              {
+                "title": "Expansiunea europeană",
+                "file": "univ-marile-descoperiri-geografice-expansiunea-europeana.html"
+              },
+              {
+                "title": "Sistemul colonial",
+                "file": "univ-marile-descoperiri-geografice-sistemul-colonial.html"
+              }
+            ]
+          },
+          {
+            "name": "Renașterea și Umanismul",
+            "resources": [
+              {
+                "title": "Artă și cultură",
+                "file": "univ-renasterea-umanismul-arta-si-cultura.html"
+              },
+              {
+                "title": "Literatură și filosofie",
+                "file": "univ-renasterea-umanismul-literatura-si-filosofie.html"
+              },
+              {
+                "title": "Știință și tehnică",
+                "file": "univ-renasterea-umanismul-stiinta-si-tehnica.html"
+              }
+            ]
+          },
+          {
+            "name": "Reforma și Contrareforma",
+            "resources": [
+              {
+                "title": "Fragmentarea Bisericii",
+                "file": "univ-reforma-si-contrareforma-fragmentarea-bisericii.html"
+              },
+              {
+                "title": "Răspunsul papalității",
+                "file": "univ-reforma-si-contrareforma-raspunsul-papalitatii.html"
+              },
+              {
+                "title": "Artă și propagandă",
+                "file": "univ-reforma-si-contrareforma-arta-si-propaganda.html"
+              }
+            ]
+          },
+          {
+            "name": "Absolutismul monarhic",
+            "resources": [
+              {
+                "title": "Apariția și consolidarea",
+                "file": "univ-absolutismul-monarhic-aparitia-si-consolidarea.html"
+              },
+              {
+                "title": "Elemente caracteristice",
+                "file": "univ-absolutismul-monarhic-elemente-caracteristice.html"
+              },
+              {
+                "title": "Modele politice",
+                "file": "univ-absolutismul-monarhic-modele-politice.html"
+              }
+            ]
+          },
+          {
+            "name": "Iluminismul",
+            "resources": [
+              {
+                "title": "Idei filosofice",
+                "file": "univ-filosofia-luminilor-idei-filosofice.html"
+              },
+              {
+                "title": "Personalități istorice",
+                "file": "univ-filosofia-luminilor-personalitati-istorice.html"
+              },
+              {
+                "title": "Monarhia luminată",
+                "file": "univ-filosofia-luminilor-monarhia-luminata.html"
+              }
+            ]
+          },
+          {
+            "name": "Revoluția Engleză",
+            "resources": [
+              {
+                "title": "Rădăcinile conflictului",
+                "file": "univ-revolutia-engleza-radacinile-conflictului.html"
+              },
+              {
+                "title": "Schimbarea pașnică",
+                "file": "univ-revolutia-engleza-schimbarea-pasnica.html"
+              },
+              {
+                "title": "Monarhia constituțională",
+                "file": "univ-revolutia-engleza-monarhia-constitutionala.html"
+              }
+            ]
+          },
+          {
+            "name": "Revoluția Americană și constituirea SUA",
+            "resources": [
+              {
+                "title": "Războiul de Independență",
+                "file": "univ-constituirea-sua-razboiul-de-independenta.html"
+              },
+              {
+                "title": "Organizarea internă",
+                "file": "univ-constituirea-sua-organizarea-interna.html"
+              },
+              {
+                "title": "Constituția SUA",
+                "file": "univ-constituirea-sua-constitutia-sua.html"
+              }
+            ]
+          },
+          {
+            "name": "Revoluția Franceză",
+            "resources": [
+              {
+                "title": "Cauzele revoluției",
+                "file": "univ-revolutia-franceza-cauzele-revolutiei.html"
+              },
+              {
+                "title": "Desfășurarea revoluției",
+                "file": "univ-revolutia-franceza-desfasurarea-revolutiei.html"
+              },
+              {
+                "title": "Documente revoluționare",
+                "file": "univ-revolutia-franceza-documente-revolutionare.html"
+              }
+            ]
+          },
+          {
+            "name": "Franța napoleoniană",
+            "resources": [
+              {
+                "title": "Campanii militare",
+                "file": "univ-franta-napoleoniana-campanii-militare.html"
+              },
+              {
+                "title": "Legi moderne",
+                "file": "univ-franta-napoleoniana-legi-moderne.html"
+              },
+              {
+                "title": "Sistemul continental",
+                "file": "univ-franta-napoleoniana-sistemul-continental.html"
+              }
+            ]
+          },
+          {
+            "name": "Revoluția Industrială",
+            "resources": [
+              {
+                "title": "Prima etapă",
+                "file": "univ-revolutia-industriala-prima-etapa.html"
+              },
+              {
+                "title": "A doua etapă",
+                "file": "univ-revolutia-industriala-a-doua-etapa.html"
+              },
+              {
+                "title": "Schimbări sociale",
+                "file": "univ-revolutia-industriala-schimbari-sociale.html"
+              }
+            ]
+          },
+          {
+            "name": "Statele naționale moderne",
+            "resources": [
+              {
+                "title": "Fondarea statelor-națiuni",
+                "file": "univ-statele-nationale-fondarea-statelor-natiuni.html"
+              },
+              {
+                "title": "Revoluție și identitate",
+                "file": "univ-statele-nationale-revolutie-si-identitate.html"
+              },
+              {
+                "title": "Diplomație și conflict",
+                "file": "univ-statele-nationale-diplomatie-si-conflict.html"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Epoca Contemporană",
+        "children": [
+          {
+            "name": "Primul Război Mondial",
+            "resources": [
+              {
+                "title": "Începutul conflictului",
+                "file": "univ-primul-razboi-mondial-inceputul-conflictului.html"
+              },
+              {
+                "title": "Desfășurarea conflictului",
+                "file": "univ-primul-razboi-mondial-desfasurarea-conflictului.html"
+              },
+              {
+                "title": "Consecințele conflictului",
+                "file": "univ-primul-razboi-mondial-consecintele-conflictului.html"
+              }
+            ]
+          },
+          {
+            "name": "Perioada Interbelică",
+            "resources": [
+              {
+                "title": "Politică și ideologie",
+                "file": "univ-perioada-interbelica-politica-si-ideologie.html"
+              },
+              {
+                "title": "Diplomație și conflict",
+                "file": "univ-perioada-interbelica-diplomatie-si-conflict.html"
+              },
+              {
+                "title": "Artă și cultură",
+                "file": "univ-perioada-interbelica-arta-si-cultura.html"
+              }
+            ]
+          },
+          {
+            "name": "Al Doilea Război Mondial",
+            "resources": [
+              {
+                "title": "Începutul conflictului",
+                "file": "univ-al-doilea-razboi-mondial-inceputul-conflictului.html"
+              },
+              {
+                "title": "Desfășurarea conflictului",
+                "file": "univ-al-doilea-razboi-mondial-desfasurarea-conflictului.html"
+              },
+              {
+                "title": "Consecințele conflictului",
+                "file": "univ-al-doilea-razboi-mondial-consecintele-conflictului.html"
+              }
+            ]
+          },
+          {
+            "name": "Macrocriminalitatea în timpul celui de-Al Doilea Război Mondial",
+            "resources": [
+              {
+                "title": "Germania nazistă",
+                "file": "univ-macro-criminalitate-germania-nazista.html"
+              },
+              {
+                "title": "Imperiul Japonez",
+                "file": "univ-macro-criminalitate-imperiul-japonez.html"
+              },
+              {
+                "title": "Restul lumii",
+                "file": "univ-macro-criminalitate-restul-lumii.html"
+              }
+            ]
+          },
+          {
+            "name": "Războiul Rece",
+            "resources": [
+              {
+                "title": "Modele politice",
+                "file": "univ-razboiul-rece-modele-politice.html"
+              },
+              {
+                "title": "Diplomație și conflict",
+                "file": "univ-razboiul-rece-diplomatie-si-conflict.html"
+              },
+              {
+                "title": "Mișcarea de Nealiniere",
+                "file": "univ-razboiul-rece-miscarea-de-nealiniere.html"
+              }
+            ]
+          },
+          {
+            "name": "Lumea postbelică",
+            "resources": [
+              {
+                "title": "Drepturile omului",
+                "file": "univ-lumea-postbelica-drepturile-omului.html"
+              },
+              {
+                "title": "Știință și tehnologie",
+                "file": "univ-lumea-postbelica-stiinta-si-tehnologie.html"
+              },
+              {
+                "title": "Uniunea Europeană",
+                "file": "univ-lumea-postbelica-uniunea-europeana.html"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "folderKey": "universal"
+  },
+  {
+    "name": "Istoria românilor",
+    "children": [
+      {
+        "name": "Alfabetul istoriei",
+        "resources": [
+          {
+            "title": "Decalajul istoric",
+            "file": "ro-alfabetul-istoriei-decalajul-istoric.html"
+          },
+          {
+            "title": "Izvoare istorice",
+            "file": "ro-alfabetul-istoriei-izvoare-istorice.html"
+          },
+          {
+            "title": "Primele culturi",
+            "file": "ro-alfabetul-istoriei-primele-culturi.html"
+          }
+        ]
+      },
+      {
+        "name": "Preistoria",
+        "resources": [
+          {
+            "title": "Primii locuitori",
+            "file": "ro-preistoria-primii-locuitori.html"
+          },
+          {
+            "title": "Epoca metalelor",
+            "file": "ro-preistoria-epoca-metalelor.html"
+          },
+          {
+            "title": "Indo-europenii",
+            "file": "ro-preistoria-indo-europenii.html"
+          }
+        ]
+      },
+      {
+        "name": "Antichitatea",
+        "children": [
+          {
+            "name": "Geto-dacii",
+            "resources": [
+              {
+                "title": "Mențiuni istorice",
+                "file": "ro-geto-dacii-mentiuni-istorice.html"
+              },
+              {
+                "title": "Stat și societate",
+                "file": "ro-geto-dacii-stat-si-societate.html"
+              },
+              {
+                "title": "Războaiele cu romanii",
+                "file": "ro-geto-dacii-razboaiele-cu-romanii.html"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Evul Mediu",
+        "children": [
+          {
+            "name": "Romanitatea românilor",
+            "resources": [
+              {
+                "title": "Etnogeneza românească",
+                "file": "ro-romanitatea-romanilor-etnogeneza-romaneasca.html"
+              },
+              {
+                "title": "Menționări timpurii",
+                "file": "ro-romanitatea-romanilor-mentionari-timpurii.html"
+              },
+              {
+                "title": "Politizarea istoriei",
+                "file": "ro-romanitatea-romanilor-politizarea-istoriei.html"
+              }
+            ]
+          },
+          {
+            "name": "Geneza statelor medievale românești",
+            "resources": [
+              {
+                "title": "Transilvania",
+                "file": "ro-geneza-statului-transilvania.html"
+              },
+              {
+                "title": "Valahia",
+                "file": "ro-geneza-statului-valahia.html"
+              },
+              {
+                "title": "Moldova",
+                "file": "ro-geneza-statului-moldova.html"
+              }
+            ]
+          },
+          {
+            "name": "Cruciadele târzii",
+            "resources": [
+              {
+                "title": "Valahia",
+                "file": "ro-cruciadele-tarzii-valahia.html"
+              },
+              {
+                "title": "Moldova",
+                "file": "ro-cruciadele-tarzii-moldova.html"
+              },
+              {
+                "title": "Rivalități interne",
+                "file": "ro-cruciadele-tarzii-rivalitati-interne.html"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Epoca Modernă",
+        "children": [
+          {
+            "name": "Modernitatea timpurie",
+            "resources": [
+              {
+                "title": "Valahia și Moldova",
+                "file": "ro-modernitatea-timpurie-valahia-si-moldova.html"
+              },
+              {
+                "title": "Transilvania",
+                "file": "ro-modernitatea-timpurie-transilvania.html"
+              },
+              {
+                "title": "Conflicte militare",
+                "file": "ro-modernitatea-timpurie-conflicte-militare.html"
+              }
+            ]
+          },
+          {
+            "name": "Cultura modernă",
+            "resources": [
+              {
+                "title": "Apariția tiparului",
+                "file": "ro-cultura-moderna-aparitia-tiparului.html"
+              },
+              {
+                "title": "Școala Ardeleană",
+                "file": "ro-cultura-moderna-scoala-ardeleana.html"
+              },
+              {
+                "title": "Personalități politice",
+                "file": "ro-cultura-moderna-personalitati-politice.html"
+              }
+            ]
+          },
+          {
+            "name": "Revoluții și reforme în prima jumătate a secolului al XIX-lea",
+            "resources": [
+              {
+                "title": "Răscoala de la 1821",
+                "file": "ro-epoca-moderna-rascoala-de-la-1821.html"
+              },
+              {
+                "title": "Regulamentele Organice",
+                "file": "ro-epoca-moderna-regulamentele-organice.html"
+              },
+              {
+                "title": "Revoluția de la 1848",
+                "file": "ro-epoca-moderna-revolutia-de-la-1848.html"
+              }
+            ]
+          },
+          {
+            "name": "Alexandru Ioan Cuza",
+            "resources": [
+              {
+                "title": "Războiul Crimeii",
+                "file": "ro-alexandru-ioan-cuza-razboiul-crimeii.html"
+              },
+              {
+                "title": "Alegerea domnitorului",
+                "file": "ro-alexandru-ioan-cuza-alegerea-domnitorului.html"
+              },
+              {
+                "title": "Reformele modernizării",
+                "file": "ro-alexandru-ioan-cuza-reformele-modernizarii.html"
+              }
+            ]
+          },
+          {
+            "name": "Regele Carol I",
+            "resources": [
+              {
+                "title": "Alegerea domnitorului",
+                "file": "ro-regele-carol-i-alegerea-domnitorului.html"
+              },
+              {
+                "title": "Războiul de Independență",
+                "file": "ro-regele-carol-i-razboiul-de-independenta.html"
+              },
+              {
+                "title": "Reformele modernizării",
+                "file": "ro-regele-carol-i-reformele-modernizarii.html"
+              }
+            ]
+          },
+          {
+            "name": "Constituțiile României",
+            "resources": [
+              {
+                "title": "Context istoric",
+                "file": "ro-constitutiile-romaniei-context-istoric.html"
+              },
+              {
+                "title": "Modele politice",
+                "file": "ro-constitutiile-romaniei-modele-politice.html"
+              },
+              {
+                "title": "Analize comparative",
+                "file": "ro-constitutiile-romaniei-analize-comparative.html"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Epoca Contemporană",
+        "children": [
+          {
+            "name": "Primul Război Mondial",
+            "resources": [
+              {
+                "title": "Începutul conflictului",
+                "file": "ro-primul-razboi-mondial-inceputul-conflictului.html"
+              },
+              {
+                "title": "Desfășurarea conflictului",
+                "file": "ro-primul-razboi-mondial-desfasurarea-conflictului.html"
+              },
+              {
+                "title": "Consecințele conflictului",
+                "file": "ro-primul-razboi-mondial-consecintele-conflictului.html"
+              }
+            ]
+          },
+          {
+            "name": "Perioada Interbelică",
+            "resources": [
+              {
+                "title": "Politică internă",
+                "file": "ro-perioada-interbelica-politica-interna.html"
+              },
+              {
+                "title": "Politică externă",
+                "file": "ro-perioada-interbelica-politica-externa.html"
+              },
+              {
+                "title": "Economie și societate",
+                "file": "ro-perioada-interbelica-economie-si-societate.html"
+              }
+            ]
+          },
+          {
+            "name": "Al Doilea Război Mondial",
+            "resources": [
+              {
+                "title": "Începutul conflictului",
+                "file": "ro-al-doilea-razboi-mondial-inceputul-conflictului.html"
+              },
+              {
+                "title": "Desfășurarea conflictului",
+                "file": "ro-al-doilea-razboi-mondial-desfasurarea-conflictului.html"
+              },
+              {
+                "title": "Consecințele conflictului",
+                "file": "ro-al-doilea-razboi-mondial-consecintele-conflictului.html"
+              }
+            ]
+          },
+          {
+            "name": "Macrocriminalitate și probleme teritoriale",
+            "resources": [
+              {
+                "title": "Chestiunea evreiască",
+                "file": "ro-macro-criminalitate-chestiunea-evreiasca.html"
+              },
+              {
+                "title": "Problema Transilvaniei",
+                "file": "ro-macro-criminalitate-problema-transilvaniei.html"
+              },
+              {
+                "title": "Problema Transnistriei",
+                "file": "ro-macro-criminalitate-problema-transnistriei.html"
+              }
+            ]
+          },
+          {
+            "name": "România comunistă",
+            "resources": [
+              {
+                "title": "Instaurarea regimului",
+                "file": "ro-romania-comunista-instaurarea-regimului.html"
+              },
+              {
+                "title": "Epoca Ceaușescu",
+                "file": "ro-romania-comunista-epoca-ceausescu.html"
+              },
+              {
+                "title": "Disidență și revoluție",
+                "file": "ro-romania-comunista-disidenta-si-revolutie.html"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "folderKey": "romanian"
+  }
+];
+
+    function pathTo(folder, file) {
+      return `${encodeURIComponent(folder)}/${encodeURIComponent(file)}`;
+    }
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>'"]/g, ch => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;"
+      })[ch]);
+    }
+
+    function normalize(value) {
+      return String(value || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .trim();
+    }
+
+    function countResources(node) {
+      return (node.resources?.length || 0) + (node.children || []).reduce((sum, child) => sum + countResources(child), 0);
+    }
+
+    function countSections(node) {
+      return (node.children || []).length + (node.children || []).reduce((sum, child) => sum + countSections(child), 0);
+    }
+
+    function nodeMatches(node, query) {
+      if (!query) return true;
+      if (normalize(node.name).includes(query)) return true;
+      if ((node.resources || []).some(resource => normalize(resource.title).includes(query))) return true;
+      return (node.children || []).some(child => nodeMatches(child, query));
+    }
+
+    function renderMaterialNode(node, query, depth = 1, rootFolderKey = "universal") {
+      const nameMatches = normalize(node.name).includes(query);
+      const resources = (node.resources || []).filter(resource => !query || nameMatches || normalize(resource.title).includes(query));
+      const children = (node.children || []).filter(child => !query || nameMatches || nodeMatches(child, query));
+      const total = countResources(node);
+
+      const resourcesHtml = resources.length ? `<div class="resource-list">${resources.map(resource => `
+        <a class="resource-link" href="${pathTo(materialFolders[node.folderKey || rootFolderKey], resource.file)}" target="_blank" rel="noopener">
+          <span class="resource-title">${escapeHtml(resource.title)}</span>
+          <span class="resource-open">Deschide materialul →</span>
+        </a>`).join("")}</div>` : "";
+
+      const childrenHtml = children.length
+        ? `<div class="material-children">${children.map(child => renderMaterialNode(child, query, Math.min(depth + 1, 4), rootFolderKey)).join("")}</div>`
+        : "";
+
+      const content = resourcesHtml || childrenHtml
+        ? `${resourcesHtml}${childrenHtml}`
+        : `<div class="empty-state"><span>○</span><span>Nu există încă materiale în această secțiune.</span></div>`;
+
+      return `<details class="material-node depth-${Math.min(depth, 4)}" style="--depth:${depth - 1}" ${query ? "open" : ""}>
+        <summary class="material-node-summary">
+          <span class="material-node-title">${escapeHtml(node.name)}</span>
+          <span class="count-badge">${total} ${total === 1 ? "material" : "materiale"}</span>
+          <span class="chevron" aria-hidden="true">›</span>
+        </summary>
+        <div class="material-node-content">${content}</div>
+      </details>`;
+    }
+
+    function renderMaterials(rawQuery = "") {
+      const query = normalize(rawQuery);
+      const root = document.getElementById("materialCatalog");
+      const visibleRoots = materials.filter(node => !query || nodeMatches(node, query));
+
+      root.innerHTML = visibleRoots.map(node => {
+        const total = countResources(node);
+        const children = (node.children || []).filter(child => !query || nodeMatches(child, query));
+        const icon = node.folderKey === "romanian" ? "🇷🇴" : "🌍";
+        const subtitle = node.folderKey === "romanian"
+          ? "Materiale de sprijin pentru istoria românilor"
+          : "Materiale de sprijin pentru istoria universală";
+        return `<details class="material-window" ${query ? "open" : ""}>
+          <summary class="material-summary">
+            <span class="material-icon">${icon}</span>
+            <span class="material-title">${escapeHtml(node.name)}<span class="summary-subtitle">${subtitle}</span></span>
+            <span class="count-badge">${total} materiale</span>
+            <span class="chevron" aria-hidden="true">›</span>
+          </summary>
+          <div class="material-content"><div class="material-children">${children.map(child => renderMaterialNode(child, query, 1, node.folderKey || "universal")).join("")}</div></div>
+        </details>`;
+      }).join("");
+
+      document.getElementById("materialNoResults").style.display = visibleRoots.length === 0 && query ? "flex" : "none";
+    }
+
+    const totalMaterials = materials.reduce((sum, node) => sum + countResources(node), 0);
+    const totalSections = materials.reduce((sum, node) => sum + countSections(node), 0);
+    document.getElementById("collectionCount").textContent = materials.length;
+    document.getElementById("materialCount").textContent = totalMaterials;
+    document.getElementById("sectionCount").textContent = totalSections;
+    document.getElementById("materialSearch").addEventListener("input", event => renderMaterials(event.target.value));
+    renderMaterials();
+
+  </script>
+</body>
+</html>
