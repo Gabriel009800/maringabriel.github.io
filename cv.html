@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>CV Europass - Gabriel Marin</title>
-<link href="./cv.css?v=14" rel="stylesheet"/>
+<link href="./cv.css?v=23" rel="stylesheet"/>
 <link href="./favicon.png" rel="icon" type="image/png"/>
 <style>
     .profile-card {
@@ -1136,6 +1136,234 @@
       }
     }
 
+
+
+    /* Corecție finală: instrumente negre + intervale pe un singur rând, aliniate simetric */
+    #cursuri-complementare .assessment-tool-link,
+    #cursuri-complementare .assessment-tool-link:link,
+    #cursuri-complementare .assessment-tool-link:visited,
+    #cursuri-complementare .assessment-tool-link:hover,
+    #cursuri-complementare .assessment-tool-link:active,
+    #cursuri-complementare .assessment-tool-link:focus,
+    #cursuri-complementare .assessment-tool-link-text {
+      color: #111111 !important;
+      -webkit-text-fill-color: #111111 !important;
+      text-decoration: none !important;
+    }
+
+    #cursuri-complementare .info-index,
+    #cursuri-complementare .info-index:hover,
+    #cursuri-complementare .info-index:focus-visible {
+      color: #111111 !important;
+      -webkit-text-fill-color: #111111 !important;
+    }
+
+    #cursuri-complementare .course-info-note {
+      display: block;
+      width: min(760px, 100%);
+      margin-top: 8px;
+      padding: 9px 11px;
+      border: 1px solid #c7c7c7;
+      border-radius: 6px;
+      background: #f7f7f7;
+      color: #333333;
+      box-shadow: 0 2px 7px rgba(0,0,0,.08);
+    }
+
+    #cursuri-complementare .course-info-note[hidden] {
+      display: none !important;
+    }
+
+    #cursuri-complementare .aligned-course-date {
+      display: grid !important;
+      grid-template-columns: 4ch 1.25ch 7ch !important;
+      column-gap: .35em !important;
+      align-items: baseline !important;
+      justify-content: end !important;
+      flex: 0 0 auto !important;
+      width: auto !important;
+      min-width: max-content !important;
+      white-space: nowrap !important;
+      text-align: left !important;
+    }
+
+    #cursuri-complementare .aligned-course-date .date-start {
+      grid-column: 1;
+      text-align: right;
+      white-space: nowrap !important;
+    }
+
+    #cursuri-complementare .aligned-course-date .date-dash {
+      grid-column: 2;
+      text-align: center;
+      white-space: nowrap !important;
+    }
+
+    #cursuri-complementare .aligned-course-date .date-end {
+      grid-column: 3;
+      text-align: left;
+      white-space: nowrap !important;
+    }
+
+    @media (max-width: 1024px) {
+      #cursuri-complementare .aligned-course-date {
+        display: grid !important;
+        grid-template-columns: 4ch 1.25ch 7ch !important;
+        align-items: baseline !important;
+        justify-content: end !important;
+        min-width: max-content !important;
+      }
+    }
+
+
+
+    /* ===================== */
+    /* AFILIERI PROFESIONALE */
+    /* ===================== */
+    #afilieri-profesionale .professional-affiliations {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    #afilieri-profesionale .professional-affiliation {
+      font-size: 20px;
+      line-height: 1.45;
+    }
+
+    #afilieri-profesionale .professional-org-link,
+    #afilieri-profesionale .professional-org-link:link,
+    #afilieri-profesionale .professional-org-link:visited,
+    #afilieri-profesionale .professional-org-link:hover,
+    #afilieri-profesionale .professional-org-link:active,
+    #afilieri-profesionale .professional-org-link:focus {
+      color: #111 !important;
+      -webkit-text-fill-color: #111 !important;
+      text-decoration: none !important;
+      font-weight: 700 !important;
+    }
+
+    #afilieri-profesionale .professional-org-link:hover {
+      text-decoration: none !important;
+    }
+
+    #afilieri-profesionale .professional-role {
+      margin-top: 4px;
+      font-style: normal !important;
+      font-weight: 400 !important;
+      color: #111 !important;
+      -webkit-text-fill-color: #111 !important;
+      text-decoration: none !important;
+    }
+
+    #afilieri-profesionale .specializations-trigger,
+    #afilieri-profesionale .specializations-trigger:hover,
+    #afilieri-profesionale .specializations-trigger:focus,
+    #afilieri-profesionale .specializations-trigger:active {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      padding: 0;
+      margin: 0 0 0 4px;
+      font: inherit;
+      font-style: normal !important;
+      font-weight: 400 !important;
+      color: #111 !important;
+      -webkit-text-fill-color: #111 !important;
+      cursor: pointer;
+      text-decoration: none !important;
+    }
+
+    #afilieri-profesionale .specializations-box {
+      margin-top: 10px;
+      width: min(1120px, 100%);
+      max-width: 1120px;
+      padding: 12px 14px;
+      border: 1px solid #c8c8c8;
+      border-left: 4px solid #15639a;
+      border-radius: 4px;
+      background: #f7f7f7;
+      color: #111;
+      font-size: 18px;
+      line-height: 1.45;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    #afilieri-profesionale .specializations-grid {
+      display: grid;
+      grid-template-columns: minmax(520px, max-content) 18px minmax(360px, max-content);
+      column-gap: 10px;
+      row-gap: 6px;
+      align-items: baseline;
+      width: max-content;
+      min-width: 100%;
+    }
+
+    #afilieri-profesionale .specialization-row {
+      display: contents;
+    }
+
+    #afilieri-profesionale .specialization-name {
+      text-align: left;
+      min-width: 0;
+      white-space: nowrap;
+    }
+
+    #afilieri-profesionale .specialization-dash {
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    #afilieri-profesionale .specialization-status {
+      text-align: left;
+      min-width: 0;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 720px) {
+      #afilieri-profesionale .specializations-box {
+        overflow-x: auto;
+      }
+
+      #afilieri-profesionale .specializations-grid {
+        grid-template-columns: max-content 14px max-content;
+        column-gap: 6px;
+        min-width: max-content;
+      }
+    }
+
+    body.pdf-exporting #afilieri-profesionale .specializations-grid {
+      grid-template-columns: minmax(0, 1fr) 12px minmax(130px, 0.72fr) !important;
+      column-gap: 5px !important;
+      row-gap: 3px !important;
+    }
+
+    body.pdf-exporting #afilieri-profesionale .professional-affiliation,
+    body.pdf-exporting #afilieri-profesionale .specializations-box {
+      font-size: 9.4px !important;
+      line-height: 1.2 !important;
+    }
+
+    body.pdf-exporting #afilieri-profesionale .professional-affiliations {
+      gap: 8px !important;
+    }
+
+    body.pdf-exporting #afilieri-profesionale .specializations-box {
+      margin-top: 4px !important;
+      padding: 5px 7px !important;
+      box-shadow: none !important;
+    }
+
+    @media (max-width: 768px) {
+      #afilieri-profesionale .professional-affiliation {
+        font-size: 17px;
+      }
+
+      #afilieri-profesionale .specializations-box {
+        font-size: 16px;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -1391,21 +1619,63 @@
 </div>
 </div>
 </section>
+
 <section class="card compact-third-page" id="cursuri-complementare">
 <h2 class="section-title">CURSURI COMPLEMENTARE</h2>
 <div class="simple-rows">
+<div class="simple-row assessment-tools-row">
+<div class="simple-left">
+<div class="assessment-tools-heading"><strong>Certificări în domeniul evaluării psihologice:</strong></div>
+<div class="assessment-tool-item">
+<div class="assessment-tool-title">
+<a aria-label="Vezi certificatul MoCA" class="assessment-tool-link" href="./6.1. anexe/Marin-Gabriel-Certificat-MoCa.pdf" rel="noopener noreferrer" style="color:#111 !important;-webkit-text-fill-color:#111 !important;text-decoration:none !important;font-weight:400 !important;" target="_blank" title="Vezi certificatul MoCA"><span class="assessment-tool-link-text" style="color:#111111 !important;-webkit-text-fill-color:#111111 !important;font-weight:400 !important;">MoCA (Montreal Cognitive Assessment)</span></a>
+<button aria-controls="info-moca" aria-expanded="false" aria-label="Ce este MoCA și la ce folosește" class="info-index" onclick="toggleAssessmentInfo('info-moca', this)" type="button"><sup>?</sup></button>
+</div>
+<div class="course-info-note" hidden id="info-moca"><strong>MoCA:</strong> instrument scurt de screening cognitiv, utilizat pentru depistarea posibilelor dificultăți de memorie, atenție, funcții executive, limbaj și orientare. <a class="assessment-site-link" href="https://mocacognition.com/training-certification/" rel="noopener noreferrer" target="_blank"><strong>Accesează site-ul</strong></a></div>
+</div>
+<div class="assessment-tool-item">
+<div class="assessment-tool-title">
+<a aria-label="Vezi certificatul C-SSRS" class="assessment-tool-link" href="./6.1. anexe/Marin-Gabriel-Certificat-C-SSRS.pdf" rel="noopener noreferrer" style="color:#111 !important;-webkit-text-fill-color:#111 !important;text-decoration:none !important;font-weight:400 !important;" target="_blank" title="Vezi certificatul C-SSRS"><span class="assessment-tool-link-text" style="color:#111111 !important;-webkit-text-fill-color:#111111 !important;font-weight:400 !important;">C-SSRS (Columbia-Suicide Severity Rating Scale)</span></a>
+<button aria-controls="info-cssrs" aria-expanded="false" aria-label="Ce este C-SSRS și la ce folosește" class="info-index" onclick="toggleAssessmentInfo('info-cssrs', this)" type="button"><sup>?</sup></button>
+</div>
+<div class="course-info-note" hidden id="info-cssrs"><strong>C-SSRS:</strong> scală structurată pentru evaluarea severității ideației suicidare și a comportamentelor suicidare, utilizată pentru aprecierea riscului și orientarea intervenției. <a class="assessment-site-link" href="https://cssrs.columbia.edu/training/training-options/" rel="noopener noreferrer" target="_blank"><strong>Accesează site-ul</strong></a></div>
+</div>
+</div>
+<div class="simple-right aligned-course-date"><span class="date-start">2026</span><span class="date-dash">–</span><span class="date-end">prezent</span></div>
+</div>
 <div class="simple-row">
 <div class="simple-left"><strong>Module de perfecționare specifice activității didactice</strong></div>
-<div class="simple-right">2023 – 2025</div>
+<div class="simple-right aligned-course-date"><span class="date-start">2023</span><span class="date-dash">–</span><span class="date-end">prezent</span></div>
 </div>
 <div class="simple-row">
 <div class="simple-left"><strong>Module de pregătire psihopedagogică (Istorie și Psihologie)</strong></div>
-<div class="simple-right">2020 – 2023</div>
+<div class="simple-right aligned-course-date"><span class="date-start">2020</span><span class="date-dash">–</span><span class="date-end">2023</span></div>
+</div>
+</div>
+</section>
+<section class="card compact-third-page" id="afilieri-profesionale">
+<h2 class="section-title">AFILIERI PROFESIONALE</h2>
+<div class="professional-affiliations">
+<div class="professional-affiliation">
+<a class="professional-org-link" href="https://www.copsi.ro/" rel="noopener noreferrer" target="_blank">Colegiul Psihologilor din România (CPR)</a>
+<div class="professional-role" style="font-style:normal !important;font-weight:400 !important;color:#111 !important;-webkit-text-fill-color:#111 !important;text-decoration:none !important;">Membru – Psiholog cu drept de liberă practică <button aria-controls="cpr-specializari" aria-expanded="false" class="specializations-trigger" style="color:#111 !important;-webkit-text-fill-color:#111 !important;text-decoration:none !important;font-style:normal !important;font-weight:400 !important;" onclick="toggleProfessionalInfo('cpr-specializari', this)" type="button">(vezi specializările)</button></div>
+<div class="specializations-box" hidden id="cpr-specializari">
+<div class="specializations-grid">
+<div class="specialization-row"><span class="specialization-name">Psihologie clinică</span><span class="specialization-dash">–</span><span class="specialization-status">practicant sub supervizare</span></div>
+<div class="specialization-row"><span class="specialization-name">Psihologia muncii</span><span class="specialization-dash">–</span><span class="specialization-status">practicant sub supervizare</span></div>
+<div class="specialization-row"><span class="specialization-name">Psihologie aplicată în domeniul securității naționale</span><span class="specialization-dash">–</span><span class="specialization-status">practicant sub supervizare</span></div>
+<div class="specialization-row"><span class="specialization-name">Psihoterapeut în formare</span><span class="specialization-dash">–</span><span class="specialization-status">psihoterapie cognitiv-comportamentală</span></div>
+</div>
+</div>
+</div>
+<div class="professional-affiliation">
+<a class="professional-org-link" href="https://www.apa.org/" rel="noopener noreferrer" target="_blank">American Psychological Association (APA)</a>
+<div class="professional-role" style="font-style:normal !important;font-weight:400 !important;color:#111 !important;-webkit-text-fill-color:#111 !important;text-decoration:none !important;">Membru - Graduate Student</div>
 </div>
 </div>
 </section>
 <section class="card compact-third-page">
-<h2 class="section-title">COMPETENȚE LINGVISTICE</h2>
+<h2 class="section-title">CUNOȘTINȚE LINGVISTICE</h2>
 <h4 class="small-heading">Altă limbă (Alte limbi)</h4>
 <div class="table-wrap">
 <table class="lang-table">
@@ -1729,6 +1999,139 @@
       arrow.textContent = '▼';
     }
   }
+
+  function formatDuration(years, months) {
+    const parts = [];
+
+    if (years === 1) parts.push('un an');
+    else if (years > 1) parts.push(`${years} ani`);
+
+    if (months === 1) parts.push('o lună');
+    else if (months > 1) parts.push(`${months} luni`);
+
+    if (!parts.length) return 'mai puțin de o lună';
+    return parts.join(' și ');
+  }
+
+  function parseCVDate(value, isEnd = false) {
+    const normalized = value.trim().toLowerCase();
+    if (['în curs', 'in curs', 'prezent'].includes(normalized)) {
+      return { date: new Date(), precision: 'day', ongoing: true };
+    }
+
+    let match = normalized.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+    if (match) {
+      return {
+        date: new Date(Number(match[3]), Number(match[2]) - 1, Number(match[1])),
+        precision: 'day'
+      };
+    }
+
+    match = normalized.match(/^(\d{2})\/(\d{4})$/);
+    if (match) {
+      return {
+        date: new Date(Number(match[2]), Number(match[1]) - 1, 1),
+        precision: 'month'
+      };
+    }
+
+    match = normalized.match(/^(\d{4})$/);
+    if (match) {
+      return {
+        date: new Date(Number(match[1]), isEnd ? 11 : 0, isEnd ? 31 : 1),
+        precision: 'year'
+      };
+    }
+
+    return null;
+  }
+
+  function durationFromRange(rangeText) {
+    const parts = rangeText.split(/\s+[–—-]\s+/);
+    if (parts.length !== 2) return null;
+
+    const start = parseCVDate(parts[0], false);
+    const end = parseCVDate(parts[1], true);
+    if (!start || !end || end.date < start.date) return null;
+
+    // Pentru intervalele afișate doar prin ani, păstrăm aceeași precizie vizuală.
+    if (start.precision === 'year' || end.precision === 'year') {
+      const years = end.date.getFullYear() - start.date.getFullYear();
+      return formatDuration(Math.max(0, years), 0);
+    }
+
+    let totalMonths = (end.date.getFullYear() - start.date.getFullYear()) * 12
+      + (end.date.getMonth() - start.date.getMonth());
+
+    // La date complete, numărăm doar lunile întregi împlinite.
+    if (start.precision === 'day' && end.precision === 'day' && end.date.getDate() < start.date.getDate()) {
+      totalMonths -= 1;
+    }
+
+    totalMonths = Math.max(0, totalMonths);
+    const years = Math.floor(totalMonths / 12);
+    const months = totalMonths % 12;
+    return formatDuration(years, months);
+  }
+
+  function addDurationLabels() {
+    const dateNodes = document.querySelectorAll('.timeline-date');
+
+    dateNodes.forEach((node) => {
+      if (node.querySelector('.duration-label')) return;
+
+      const rangeText = Array.from(node.childNodes)
+        .filter((child) => child.nodeType === Node.TEXT_NODE)
+        .map((child) => child.textContent)
+        .join(' ')
+        .trim() || node.textContent.trim();
+
+      const duration = durationFromRange(rangeText);
+      if (!duration) return;
+
+      const label = document.createElement('span');
+      label.className = 'duration-label';
+      label.textContent = duration;
+      node.appendChild(label);
+    });
+  }
+
+
+
+  function toggleProfessionalInfo(infoId, button) {
+    const box = document.getElementById(infoId);
+    if (!box) return;
+
+    const willOpen = box.hidden;
+    document.querySelectorAll('#afilieri-profesionale .specializations-box').forEach((item) => {
+      item.hidden = true;
+    });
+    document.querySelectorAll('#afilieri-profesionale .specializations-trigger').forEach((item) => {
+      item.setAttribute('aria-expanded', 'false');
+    });
+
+    box.hidden = !willOpen;
+    if (button) button.setAttribute('aria-expanded', String(willOpen));
+  }
+
+  function toggleAssessmentInfo(infoId, button) {
+    const note = document.getElementById(infoId);
+    if (!note) return;
+
+    const willOpen = note.hidden;
+
+    document.querySelectorAll('#cursuri-complementare .course-info-note').forEach((item) => {
+      item.hidden = true;
+    });
+    document.querySelectorAll('#cursuri-complementare .info-index').forEach((item) => {
+      item.setAttribute('aria-expanded', 'false');
+    });
+
+    note.hidden = !willOpen;
+    if (button) button.setAttribute('aria-expanded', String(willOpen));
+  }
+
+  addDurationLabels();
 
   const gradePopover = document.querySelector('.grade-popover');
   const gradeTrigger = document.querySelector('.grade-trigger');

@@ -780,3 +780,176 @@ body {
     flex-wrap: wrap;
   }
 }
+
+/* ===================== */
+/* DURATE + INSTRUMENTE PSIHOLOGICE */
+/* ===================== */
+
+.timeline-date,
+#cursuri-complementare .simple-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.duration-label {
+  display: block;
+  margin-top: 2px;
+  color: #8a8a8a;
+  font-size: 0.84em;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.assessment-tools-group {
+  margin-top: 6px;
+  padding-top: 4px;
+}
+
+.assessment-tools-heading {
+  margin-bottom: 8px;
+  font-size: 19px;
+  font-weight: 700;
+  color: #111;
+}
+
+.assessment-tool-item {
+  margin: 0 0 8px;
+}
+
+.assessment-tool-item:last-child {
+  margin-bottom: 0;
+}
+
+.assessment-tool-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.assessment-tool-title a {
+  color: #15639a;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.assessment-tool-title a:hover {
+  text-decoration: underline;
+}
+
+.info-index {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: #15639a;
+  padding: 0 2px;
+  margin: -2px 0 0;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.info-index:hover,
+.info-index:focus-visible {
+  color: #0d766e;
+}
+
+.info-index:focus-visible {
+  outline: 2px solid #15639a;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.course-info-note {
+  margin-top: 4px;
+  max-width: 980px;
+  color: #555;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.course-info-note[hidden] {
+  display: none !important;
+}
+
+body.pdf-exporting .duration-label {
+  margin-top: 1px !important;
+  font-size: 7.3px !important;
+  line-height: 1.1 !important;
+}
+
+body.pdf-exporting .info-index,
+body.pdf-exporting .course-info-note {
+  display: none !important;
+}
+
+body.pdf-exporting .assessment-tools-heading,
+body.pdf-exporting .assessment-tool-title,
+body.pdf-exporting .assessment-tool-title a {
+  font-size: 9px !important;
+  line-height: 1.18 !important;
+}
+
+@media print {
+  .duration-label {
+    margin-top: 1px !important;
+    font-size: 7.3px !important;
+    line-height: 1.1 !important;
+  }
+
+  .info-index,
+  .course-info-note {
+    display: none !important;
+  }
+
+  .assessment-tools-heading,
+  .assessment-tool-title,
+  .assessment-tool-title a {
+    font-size: 9px !important;
+    line-height: 1.18 !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .timeline-date,
+  #cursuri-complementare .simple-right {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .assessment-tools-heading {
+    font-size: 17px;
+  }
+
+  .assessment-tool-title {
+    font-size: 16px;
+  }
+
+  .course-info-note {
+    font-size: 14px;
+  }
+}
+
+
+
+/* Link către site-ul oficial, afișat la finalul casetei informative */
+.assessment-site-link,
+.assessment-site-link:link,
+.assessment-site-link:visited {
+  color: #15639a;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.assessment-site-link:hover,
+.assessment-site-link:focus-visible {
+  color: #0d766e;
+  text-decoration: underline;
+}
