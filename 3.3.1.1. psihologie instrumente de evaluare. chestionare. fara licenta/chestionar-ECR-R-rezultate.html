@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rezultate ECR-R</title>
+<style>
+:root{--bg:#f6f3ef;--panel:#fffaf4;--card:#fff;--ink:#202020;--muted:#6f675d;--line:#e6ded4;--accent:#7a4e2d;--accent-2:#b98250;--accent-soft:#f1e3d4;--good:#255f3f;--warn:#8a5a00;--danger:#9b2c2c;--shadow:0 18px 50px rgba(74,52,33,.12);--radius:22px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:radial-gradient(circle at top left,rgba(184,130,80,.14),transparent 36rem),linear-gradient(180deg,#fbf8f3 0%,var(--bg) 100%);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.58}.page{width:min(1160px,calc(100% - 36px));margin:0 auto;padding:34px 0 70px}.hero{background:linear-gradient(135deg,rgba(255,250,244,.94),rgba(241,227,212,.78));border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);padding:30px;position:relative;overflow:hidden}.hero::after{content:"";position:absolute;width:340px;height:340px;border-radius:50%;right:-135px;top:-185px;background:rgba(122,78,45,.08)}.kicker{color:var(--accent);font-size:.8rem;font-weight:850;letter-spacing:.14em;text-transform:uppercase;margin:0 0 8px}h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,3.8vw,3.5rem);line-height:1;letter-spacing:-.035em;margin:0 0 10px}h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.25rem,2vw,1.85rem);margin:0 0 10px}h3{margin:0 0 8px;font-size:1.06rem}p{margin:0 0 12px}.muted{color:var(--muted)}.tiny{font-size:.82rem;color:var(--muted)}.section{margin-top:22px}.grid{display:grid;gap:18px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}.card{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(74,52,33,.07);padding:22px}.notice{background:#fff7ec;border:1px solid #ead8c4;border-left:6px solid var(--accent-2);padding:16px 18px;border-radius:18px;color:#46382d}.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.btn{border:0;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:11px 16px;background:var(--accent);color:#fff;font-weight:850;cursor:pointer;text-decoration:none;box-shadow:0 10px 18px rgba(122,78,45,.16)}.btn.secondary{background:#fff;color:var(--accent);border:1px solid var(--line);box-shadow:none}.btn.soft{background:var(--accent-soft);color:#5b3920;box-shadow:none}.btn.danger{background:#9b2c2c}.btn:disabled{opacity:.48;cursor:not-allowed}.btn:hover{transform:translateY(-1px);filter:brightness(1.03)}input,select{width:100%;border:1px solid var(--line);border-radius:14px;padding:12px 13px;background:#fff;font:inherit;outline:none}label{font-weight:750;display:block;line-height:1.2}.field{display:grid;gap:8px;min-width:0}.select-row{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end}.select-row .field:nth-child(1){flex:0 1 220px}.select-row .field:nth-child(2){flex:1 1 350px}.select-row .actions{flex:1 1 560px;min-width:280px}.pill{display:inline-flex;align-items:center;justify-content:center;padding:6px 10px;border-radius:999px;background:var(--accent-soft);color:#5b3920;font-size:.84rem;font-weight:850;text-align:center}.pill.green{background:#edf6f1;color:#255f3f}.pill.yellow{background:#fff4db;color:#76510b}.pill.red{background:#f7e6e3;color:#8a2b21}.pill.gray{background:#f1ede8;color:#5d554e}.stat{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;padding:17px;border:1px solid var(--line);border-radius:18px;background:#fffdf9}.big-number{font-family:Georgia,serif;font-size:2.15rem;line-height:1;color:var(--accent);white-space:nowrap}.metric-title{font-weight:850}.metric-note{display:block;margin-top:4px;color:var(--muted);font-size:.9rem}.dimension-card{display:flex;flex-direction:column;gap:12px}.dimension-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.dimension-title{font-weight:900}.score-line{font-family:Georgia,serif;font-size:2rem;color:var(--accent);line-height:1}.bar{height:10px;border-radius:999px;background:#eadfd3;overflow:hidden}.bar span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent-2))}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px;background:#fff}table{width:100%;border-collapse:collapse;min-width:980px}th,td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#fbf4ec;color:#563820;font-size:.82rem;text-transform:uppercase;letter-spacing:.055em}tr:last-child td{border-bottom:0}.report-text{font-family:Georgia,"Times New Roman",serif;font-size:1.05rem;line-height:1.72;color:#2b2723}.report-text p{text-align:justify}.report-box{background:#fffdf9;border:1px solid var(--line);border-radius:18px;padding:18px}.norm-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.norm-chip{padding:12px;border:1px solid var(--line);border-radius:15px;background:#fffdf9}.norm-chip strong{display:block;font-family:Georgia,serif;font-size:1.35rem;color:var(--accent)}.profile-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.quadrant{min-height:124px;border:1px solid var(--line);border-radius:18px;padding:16px;background:#fffdf9}.quadrant.active{border:2px solid var(--accent);background:#fff7ec;box-shadow:0 10px 24px rgba(122,78,45,.09)}.quadrant strong,.quadrant small{display:block}.axis-note{margin-top:12px;color:var(--muted);font-size:.86rem}.hidden{display:none!important}.auth-screen{display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at top left,rgba(184,130,80,.22),transparent 34rem),linear-gradient(180deg,#fbf8f3 0%,var(--bg) 100%)}body.locked{overflow:hidden}body.locked .page{display:none!important}body.locked .auth-screen{display:flex}.auth-card{width:min(430px,calc(100% - 20px));background:rgba(255,250,244,.98);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:28px;display:grid;gap:14px}.auth-card h2{font-size:clamp(1.7rem,4vw,2.4rem);margin:0}.auth-card .btn{width:100%}.auth-error{margin:0;color:var(--danger);font-weight:850;background:#f7e6e3;border:1px solid #e9c7c0;border-radius:14px;padding:10px 12px}.scoring-list{margin:8px 0 0 20px;padding:0}.scoring-list li{margin-bottom:8px}.biblio ol{margin:8px 0 0 20px;padding:0}.biblio li{margin-bottom:8px}@media(max-width:900px){.grid.two,.grid.three,.grid.four,.norm-grid,.profile-grid{grid-template-columns:1fr}.select-row{display:grid;grid-template-columns:1fr}.select-row .field,.select-row .actions{min-width:0}.page{width:min(100% - 22px,1160px);padding-top:18px}.hero{padding:24px;border-radius:24px}table{min-width:900px}}@media print{body{background:#fff}.auth-screen,.no-print,.actions,.select-row,#emptyState,.pdf-exclude{display:none!important}body.locked .page{display:block!important}.page{width:100%;padding:0}.hero,.card,.stat{box-shadow:none;background:#fff}.section{break-inside:avoid}.table-wrap{overflow:visible}table{min-width:0;font-size:.74rem}th,td{padding:6px}.report-text{font-size:1rem}.profile-grid,.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+</head>
+<body class="locked">
+<section id="authScreen" class="auth-screen" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+  <form id="authForm" class="auth-card" autocomplete="off">
+    <p class="kicker">Acces protejat</p><h2 id="authTitle">Rezultate ECR-R</h2><p class="muted">Introdu parola pentru a vedea pagina de scorare și interpretare.</p>
+    <div class="field"><label for="authPassword">Parolă</label><input id="authPassword" type="password" placeholder="Scrie parola" autocomplete="current-password" /></div>
+    <p id="authError" class="auth-error hidden">Parolă greșită. Încearcă din nou.</p><button class="btn" type="submit">Intră</button>
+  </form>
+</section>
+<main class="page">
+  <section class="hero"><p class="kicker">Scorare și interpretare</p><h1>Chestionarul ECR-R</h1><p class="muted" style="max-width:900px">Raport dimensional pentru evitarea și anxietatea de atașament. Scorarea urmează versiunea românească de 31 de itemi, scala 1–6 și recodificarea itemilor inversați prin formula 7 − răspuns.</p></section>
+  <section class="section card no-print">
+    <p class="muted" style="margin-bottom:14px">Importă fișierul JSON descărcat după completarea versiunii ECR-R cu 6 trepte.</p>
+    <div class="select-row">
+      <div class="field"><label for="resultFilter">Afișare</label><select id="resultFilter"><option value="active">Active</option><option value="archived">Arhivate</option><option value="all">Toate</option></select></div>
+      <div class="field"><label for="submissionSelect">Rezultat salvat</label><select id="submissionSelect"></select></div>
+      <div class="actions"><button class="btn secondary" type="button" id="archiveBtn">Arhivează</button><button class="btn danger" type="button" id="deleteBtn">Șterge</button><button class="btn secondary" type="button" id="importBtn">Importă JSON</button><input class="hidden" type="file" id="jsonImport" accept="application/json,.json" /><button class="btn secondary" type="button" id="printBtn">Printează / PDF</button><button class="btn soft" type="button" id="copyReportBtn">Copiază formularea</button></div>
+    </div>
+  </section>
+  <section id="emptyState" class="section notice hidden"><strong>Nu există încă rezultate ECR-R cu scală 1–6 în acest browser.</strong><br />Importă fișierul JSON primit de la client.</section>
+  <section id="reportRoot" class="hidden"></section>
+</main>
+<script>
+const ACCESS_PASSWORD="kimkiduk";
+const ACCESS_SESSION_KEY="ecrrResultsAccess_6point_v2";
+const STORAGE_KEY="ecrrSubmissions_6point_v2";
+const VIEW_KEY="ecrrResultsView_6point_v2";
+const ITEMS=[
+  [
+    1,
+    "Prefer să nu arăt partenerului/partenerei ce simt eu cu adevărat."
+  ],
+  [
+    2,
+    "Mi-e teamă că voi pierde afecțiunea partenerei/partenerului meu."
+  ],
+  [
+    3,
+    "Mi-e ușor să mă bizui pe iubiții mei/iubitele mele."
+  ],
+  [
+    4,
+    "Îmi fac deseori griji că partenerii mei/partenerele mele nu vor dori să stea cu mine."
+  ],
+  [
+    5,
+    "Prefer să nu fiu prea apropiat(ă) de iubiții/iubitele mele."
+  ],
+  [
+    6,
+    "Îmi fac deseori griji că partenerul meu/partenera mea nu ține cu adevărat la mine."
+  ],
+  [
+    7,
+    "Mi se pare relativ ușor să mă apropii de partenerul meu/partenera mea."
+  ],
+  [
+    8,
+    "Îmi fac griji că iubiții mei/iubitele mele nu vor ține la mine la fel de mult cât țin eu la ei/ele."
+  ],
+  [
+    9,
+    "Uneori, iubiții mei/iubitele mele își schimbă sentimentele față de mine fără niciun motiv vizibil."
+  ],
+  [
+    10,
+    "Mi-e de ajutor să mă adresez, la nevoie, iubitului/iubitei mele."
+  ],
+  [
+    11,
+    "Îmi doresc deseori ca sentimentele partenerului/partenerei mele pentru mine să fie la fel de puternice ca sentimentele mele pentru el/ea."
+  ],
+  [
+    12,
+    "Mă simt în largul meu să mă bizui pe iubiții mei/iubitele mele."
+  ],
+  [
+    13,
+    "Îmi fac multe griji în legătură cu relațiile mele."
+  ],
+  [
+    14,
+    "Spun partenerului meu/partenerei mele aproape tot."
+  ],
+  [
+    15,
+    "Când arăt ce simt față de iubiții mei/iubitele mele, mi-e teamă că ei nu vor simți la fel pentru mine."
+  ],
+  [
+    16,
+    "Nu mi-e greu să mă apropii de partenerul meu/partenera mea."
+  ],
+  [
+    17,
+    "Iubitul meu/iubita mea mă face să am îndoieli legate de mine însămi/însumi."
+  ],
+  [
+    18,
+    "Nu-mi fac prea des griji că voi fi abandonat(ă)."
+  ],
+  [
+    19,
+    "Mi se pare că iubiții/iubitele nu vor să se apropie atât cât mi-aș dori."
+  ],
+  [
+    20,
+    "Dorința mea de a fi foarte apropiat(ă) uneori îi sperie pe oameni."
+  ],
+  [
+    21,
+    "Discut tot felul de lucruri cu partenerul meu/partenera mea."
+  ],
+  [
+    22,
+    "Mă simt neplăcut când partenerii mei se apropie prea mult de mine."
+  ],
+  [
+    23,
+    "Mi-e ușor să fiu afectuos/afectuoasă cu partenerul/partenera mea."
+  ],
+  [
+    24,
+    "Mi-e teamă că, de îndată ce iubitul/iubita va ajunge să mă cunoască, nu-i va plăcea cum sunt eu de fapt."
+  ],
+  [
+    25,
+    "Mă înfurie faptul că nu primesc afecțiunea și sprijinul de care am nevoie de la partenerul/partenera mea."
+  ],
+  [
+    26,
+    "De regulă, îmi discut problemele și grijile cu partenerul/partenera mea."
+  ],
+  [
+    27,
+    "Partenerul/partenera mea pare să mă observe doar când sunt furios/furioasă."
+  ],
+  [
+    28,
+    "Mă simt în largul meu să împărtășesc cu partenerul/partenera gândurile și emoțiile mele intime."
+  ],
+  [
+    29,
+    "Când partenerul/partenera mea nu este cu mine, îmi fac griji că ar putea fi interesat(ă) de alte persoane."
+  ],
+  [
+    30,
+    "Mi-e confortabil să mă apropii de iubiții mei/iubitele mele."
+  ],
+  [
+    31,
+    "Mi-e teamă că nu mă voi ridica la înălțimea așteptărilor celorlalți."
+  ]
+];
+const SCALES=[
+  {
+    "id": "avoidance",
+    "name": "Evitarea atașamentului",
+    "short": "disconfort față de apropierea emoțională, dependența interpersonală, autodezvăluire și sprijin reciproc",
+    "items": [
+      1,
+      3,
+      5,
+      7,
+      10,
+      12,
+      14,
+      16,
+      21,
+      22,
+      23,
+      26,
+      28,
+      30
+    ],
+    "reverse": [
+      3,
+      7,
+      10,
+      12,
+      14,
+      16,
+      21,
+      23,
+      26,
+      28,
+      30
+    ],
+    "normMean": 2.55,
+    "normSd": 0.84,
+    "alphaStudy1": 0.89,
+    "alphaStudy2": 0.86
+  },
+  {
+    "id": "anxiety",
+    "name": "Anxietatea de atașament",
+    "short": "teamă de respingere sau abandon, îndoieli privind afecțiunea partenerului și nevoie crescută de reasigurare",
+    "items": [
+      2,
+      4,
+      6,
+      8,
+      9,
+      11,
+      13,
+      15,
+      17,
+      18,
+      19,
+      20,
+      24,
+      25,
+      27,
+      29,
+      31
+    ],
+    "reverse": [
+      18
+    ],
+    "normMean": 2.37,
+    "normSd": 0.94,
+    "alphaStudy1": 0.91,
+    "alphaStudy2": 0.88
+  }
+];
+const STUDIES={study1:{n:245,women:211,womenPct:86.1,meanAge:25.07,sdAge:6.75,avoidanceMean:2.55,avoidanceSd:.84,anxietyMean:2.37,anxietySd:.94,avoidanceAlpha:.89,anxietyAlpha:.91},study2:{n:220,meanAge:22.30,sdAge:1.25,womenPct:76.4,lawPct:77.7,avoidanceAlpha:.86,anxietyAlpha:.88,cfi:.96,rmsea:.06}};
+function $(id){return document.getElementById(id)}
+function escapeHtml(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+function fmt(v,d=2){return Number.isFinite(Number(v))?Number(v).toLocaleString("ro-RO",{minimumFractionDigits:d,maximumFractionDigits:d}):"—"}
+function pct(v){return Math.max(0,Math.min(100,Number(v)||0))}
+function formatDate(v){if(!v)return"—";const d=new Date(String(v).length<=10?`${v}T12:00:00`:v);return Number.isNaN(d.getTime())?escapeHtml(v):d.toLocaleDateString("ro-RO")}
+function formatDateTime(v){if(!v)return"—";const d=new Date(v);return Number.isNaN(d.getTime())?escapeHtml(v):d.toLocaleString("ro-RO")}
+function normalCdf(z){const sign=z<0?-1:1;const x=Math.abs(z)/Math.sqrt(2);const t=1/(1+.3275911*x);const a1=.254829592,a2=-.284496736,a3=1.421413741,a4=-1.453152027,a5=1.061405429;const erf=sign*(1-(((((a5*t+a4)*t)+a3)*t+a2)*t+a1)*t*Math.exp(-x*x));return .5*(1+erf)}
+function normStats(avg,mean,sd){const z=(avg-mean)/sd;return{z:+z.toFixed(3),t:+(50+10*z).toFixed(1),percentile:+(100*normalCdf(z)).toFixed(1)}}
+function levelByZ(z){if(z<-1.5)return{label:"foarte scăzut",cls:"green"};if(z<-.5)return{label:"scăzut",cls:"green"};if(z<=.5)return{label:"în jurul mediei",cls:"gray"};if(z<=1.5)return{label:"ridicat",cls:"yellow"};return{label:"foarte ridicat",cls:"red"}}
+function scoreDimension(scale,responses){const scored=scale.items.map(n=>scale.reverse.includes(n)?7-Number(responses[n]):Number(responses[n]));const sum=scored.reduce((a,b)=>a+b,0);const average=sum/scale.items.length;return{...scale,sum,average:+average.toFixed(3),min:scale.items.length,max:scale.items.length*6,...normStats(average,scale.normMean,scale.normSd)}}
+function calculateScores(responses){const dimensionScores={};for(const scale of SCALES)dimensionScores[scale.id]=scoreDimension(scale,responses);return dimensionScores}
+function responsesAreValid(responses){if(!responses||Object.keys(responses).length<31)return false;return ITEMS.every(([nr])=>{const v=Number(responses[nr]);return Number.isInteger(v)&&v>=1&&v<=6})}
+function normalizeSubmission(raw){const s={...raw};s.responses=s.responses||{};s.dimensionScores=calculateScores(s.responses);return s}
+function readStore(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]")}catch(e){return[]}}
+function writeStore(items){localStorage.setItem(STORAGE_KEY,JSON.stringify(items))}
+function ensureIds(){const items=readStore();let changed=false;for(const item of items){if(!item.id){item.id=`ecrr_${Date.now()}_${Math.random().toString(16).slice(2)}`;changed=true}}if(changed)writeStore(items);return items}
+function isArchived(s){return Boolean(s.archivedAt)}
+function currentFilter(){return $("resultFilter")?.value||"active"}
+function filteredItems(){const filter=currentFilter();return ensureIds().filter(s=>filter==="all"||(filter==="archived"?isArchived(s):!isArchived(s))).sort((a,b)=>new Date(b.createdAt||0)-new Date(a.createdAt||0))}
+function selectedId(){return $("submissionSelect")?.value||""}
+function setupAuthGate(){if(sessionStorage.getItem(ACCESS_SESSION_KEY)==="1"){document.body.classList.remove("locked");return true}$("authForm").addEventListener("submit",e=>{e.preventDefault();if($("authPassword").value===ACCESS_PASSWORD){sessionStorage.setItem(ACCESS_SESSION_KEY,"1");document.body.classList.remove("locked");$("authError").classList.add("hidden");renderSelector()}else{$("authError").classList.remove("hidden");$("authPassword").select()}});return false}
+function renderSelector(preferredId){localStorage.setItem(VIEW_KEY,currentFilter());const items=filteredItems();const select=$("submissionSelect");select.innerHTML=items.length?items.map(s=>`<option value="${escapeHtml(s.id)}">${escapeHtml(s.clientCode||"fără cod")} · ${formatDate(s.testDate)}${isArchived(s)?" · arhivat":""}</option>`).join(""):'<option value="">Niciun rezultat</option>';const chosen=preferredId&&items.some(x=>x.id===preferredId)?preferredId:(items[0]?.id||"");select.value=chosen;const has=Boolean(chosen);$("emptyState").classList.toggle("hidden",has);$("reportRoot").classList.toggle("hidden",!has);$("archiveBtn").disabled=!has;$("deleteBtn").disabled=!has;if(has)renderReport(items.find(x=>x.id===chosen));select.onchange=()=>{const s=items.find(x=>x.id===select.value);if(s)renderReport(s)}}
+function toggleArchiveSelected(){const id=selectedId();if(!id)return;const all=ensureIds();const s=all.find(x=>x.id===id);if(!s)return;if(isArchived(s))delete s.archivedAt;else s.archivedAt=new Date().toISOString();writeStore(all);renderSelector()}
+function deleteSelectedSubmission(){const id=selectedId();if(!id)return;if(!confirm("Ștergi definitiv rezultatul selectat din acest browser?"))return;writeStore(ensureIds().filter(x=>x.id!==id));renderSelector()}
+function profileConfig(av,an){const avHigh=av.z>=0,anHigh=an.z>=0;if(!avHigh&&!anHigh)return{id:"low-both",label:"nivel relativ redus pe ambele dimensiuni",clinical:"Scorurile sunt sub mediile eșantionului de referință pe ambele dimensiuni."};if(!avHigh&&anHigh)return{id:"anxiety",label:"predominanță anxioasă",clinical:"Anxietatea este peste media de referință, iar evitarea este sub aceasta."};if(avHigh&&!anHigh)return{id:"avoidance",label:"predominanță evitantă",clinical:"Evitarea este peste media de referință, iar anxietatea este sub aceasta."};return{id:"both-high",label:"activare mixtă anxios-evitantă",clinical:"Ambele dimensiuni sunt peste mediile eșantionului de referință."}}
+function dimensionNarrative(id,score){const lvl=levelByZ(score.z);if(id==="avoidance")return `Scorul mediu la evitare este ${fmt(score.average)} din 6, corespunzând unui scor z de ${fmt(score.z)} și unui scor T de ${fmt(score.t,1)}. Poziționarea este ${lvl.label} față de reperul românesc publicat (M=${fmt(score.normMean)}, SD=${fmt(score.normSd)}; percentila normală aproximativă ${fmt(score.percentile,1)}). Un scor mai mare indică mai mult disconfort față de apropiere, dependență interpersonală și autodezvăluire.`;return `Scorul mediu la anxietate este ${fmt(score.average)} din 6, corespunzând unui scor z de ${fmt(score.z)} și unui scor T de ${fmt(score.t,1)}. Poziționarea este ${lvl.label} față de reperul românesc publicat (M=${fmt(score.normMean)}, SD=${fmt(score.normSd)}; percentila normală aproximativă ${fmt(score.percentile,1)}). Un scor mai mare indică mai multă teamă de respingere sau abandon și o nevoie mai intensă de reasigurare.`}
+function makeNarrative(s){const av=s.dimensionScores.avoidance,an=s.dimensionScores.anxiety,cfg=profileConfig(av,an);return `<p>Profilul ECR-R este interpretat dimensional, pe baza celor două scale ale versiunii românești: evitarea și anxietatea de atașament. ${escapeHtml(dimensionNarrative("avoidance",av))}</p><p>${escapeHtml(dimensionNarrative("anxiety",an))}</p><p>Configurația relativă este <strong>${escapeHtml(cfg.label)}</strong>. ${escapeHtml(cfg.clinical)} Această etichetă este descriptivă și nu reprezintă un diagnostic sau o categorie fixă de atașament.</p><p>Rezultatele trebuie integrate cu interviul clinic, istoricul relațiilor semnificative, reacțiile la distanțare și conflict, modul de solicitare a sprijinului și contextul relației actuale.</p>`}
+function renderReport(raw){const s=normalizeSubmission(raw);const av=s.dimensionScores.avoidance,an=s.dimensionScores.anxiety,cfg=profileConfig(av,an);const root=$("reportRoot");root.classList.remove("hidden");const cards=SCALES.map(scale=>{const sc=s.dimensionScores[scale.id],lvl=levelByZ(sc.z);return `<article class="card dimension-card"><div class="dimension-head"><div><div class="dimension-title">${escapeHtml(scale.name)}</div><span class="tiny">${escapeHtml(scale.short)}</span></div><span class="pill ${lvl.cls}">${lvl.label}</span></div><div><span class="score-line">${fmt(sc.average)} / 6</span><span class="metric-note">scor brut ${sc.sum}/${sc.max} · z=${fmt(sc.z)} · T=${fmt(sc.t,1)} · percentila ≈ ${fmt(sc.percentile,1)}</span></div><div class="bar"><span style="width:${pct((sc.average-1)/5*100)}%"></span></div><div class="norm-grid"><div class="norm-chip"><span class="tiny">Media RO</span><strong>${fmt(sc.normMean)}</strong></div><div class="norm-chip"><span class="tiny">SD RO</span><strong>${fmt(sc.normSd)}</strong></div><div class="norm-chip"><span class="tiny">Scor T</span><strong>${fmt(sc.t,1)}</strong></div><div class="norm-chip"><span class="tiny">Percentila ≈</span><strong>${fmt(sc.percentile,1)}</strong></div></div><small>${escapeHtml(dimensionNarrative(scale.id,sc))}</small></article>`}).join("");const rows=SCALES.map(scale=>{const sc=s.dimensionScores[scale.id],lvl=levelByZ(sc.z);return `<tr><td><strong>${escapeHtml(scale.name)}</strong></td><td>${scale.items.join(", ")}</td><td>${scale.reverse.join(", ")||"—"}</td><td>${sc.sum}/${sc.max}</td><td>${fmt(sc.average)}</td><td>${fmt(sc.normMean)} / ${fmt(sc.normSd)}</td><td>${fmt(sc.z)}</td><td>${fmt(sc.t,1)}</td><td>${fmt(sc.percentile,1)}</td><td><span class="pill ${lvl.cls}">${lvl.label}</span></td></tr>`}).join("");const rawRows=ITEMS.map(([nr,text])=>{const scale=SCALES.find(x=>x.items.includes(nr));const rawValue=Number(s.responses?.[nr]);const rev=scale?.reverse.includes(nr);const scored=rev?7-rawValue:rawValue;return `<tr><td>${nr}</td><td>${escapeHtml(text)}</td><td>${Number.isFinite(rawValue)?rawValue:"—"}</td><td>${rev?"Da":"Nu"}</td><td>${Number.isFinite(scored)?scored:"—"}</td><td>${escapeHtml(scale?.name||"—")}</td></tr>`}).join("");const quadrants=[{id:"anxiety",title:"Predominanță anxioasă",text:"anxietate ≥ M; evitare < M"},{id:"both-high",title:"Activare mixtă",text:"anxietate ≥ M; evitare ≥ M"},{id:"low-both",title:"Nivel relativ redus",text:"anxietate < M; evitare < M"},{id:"avoidance",title:"Predominanță evitantă",text:"anxietate < M; evitare ≥ M"}].map(q=>`<div class="quadrant ${cfg.id===q.id?"active":""}"><strong>${escapeHtml(q.title)}</strong><small>${escapeHtml(q.text)}</small>${cfg.id===q.id?'<span class="pill" style="margin-top:12px">Profil curent</span>':""}</div>`).join("");root.innerHTML=`<section class="section card"><h2>Raport individual</h2><div class="grid three"><div class="stat"><div><strong>Cod client / inițiale</strong><br><span class="muted">${escapeHtml(s.clientCode||"—")}</span></div></div><div class="stat"><div><strong>Data aplicării</strong><br><span class="muted">${formatDate(s.testDate)}</span></div></div><div class="stat"><div><strong>Salvat</strong><br><span class="muted">${formatDateTime(s.createdAt)}</span></div></div></div><p class="tiny" style="margin-top:12px">Vârsta: ${escapeHtml(s.age||"—")} · Status: ${isArchived(s)?"arhivat":"activ"} · Versiune: ECR-R, 31 itemi, scală 1–6 · Itemii inversați: 7 − răspuns.</p></section><section class="section grid four"><div class="stat"><div><span class="metric-title">Configurație descriptivă</span><span class="metric-note">Raportare la mediile eșantionului românesc</span></div><span class="pill ${cfg.id==="low-both"?"green":cfg.id==="both-high"?"red":"yellow"}">${escapeHtml(cfg.label)}</span></div><div class="stat"><div><span class="metric-title">Evitare</span><span class="metric-note">M RO=${fmt(av.normMean)}, SD=${fmt(av.normSd)}</span></div><div class="big-number" style="font-size:1.45rem">${fmt(av.average)}</div></div><div class="stat"><div><span class="metric-title">Anxietate</span><span class="metric-note">M RO=${fmt(an.normMean)}, SD=${fmt(an.normSd)}</span></div><div class="big-number" style="font-size:1.45rem">${fmt(an.average)}</div></div><div class="stat"><div><span class="metric-title">Distanța dintre dimensiuni</span><span class="metric-note">Diferență absolută între medii</span></div><div class="big-number" style="font-size:1.45rem">${fmt(Math.abs(av.average-an.average))}</div></div></section><section class="section card"><h2>Sinteză profesională</h2><div id="reportText" class="report-box report-text">${makeNarrative(s)}</div></section><section class="section"><h2>Dimensiunile ECR-R</h2><div class="grid two">${cards}</div></section><section class="section card"><h2>Configurație bidimensională</h2><p class="muted">Încadrarea folosește mediile publicate pentru eșantionul românesc: Evitare M=2,55 și Anxietate M=2,37. Este o reprezentare descriptivă, nu o clasificare clinică.</p><div class="profile-grid">${quadrants}</div><div class="axis-note">Axa orizontală: evitarea crește spre dreapta · Axa verticală: anxietatea crește în partea de sus</div></section><section class="section card"><h2>Scorare și raportare normativă orientativă</h2><div class="table-wrap"><table><thead><tr><th>Dimensiune</th><th>Itemi</th><th>Inversați</th><th>Brut</th><th>Medie</th><th>M / SD RO</th><th>z</th><th>T</th><th>Percentila ≈</th><th>Nivel</th></tr></thead><tbody>${rows}</tbody></table></div></section><section class="section card"><h2>Repere psihometrice din validarea românească</h2><p class="muted">Studiul 1 a inclus N=${STUDIES.study1.n} studenți, dintre care ${STUDIES.study1.womenPct}% femei, cu vârsta medie ${fmt(STUDIES.study1.meanAge)} ani (SD=${fmt(STUDIES.study1.sdAge)}). Au fost raportate: Evitare M=${fmt(STUDIES.study1.avoidanceMean)}, SD=${fmt(STUDIES.study1.avoidanceSd)}, α=${fmt(STUDIES.study1.avoidanceAlpha)}; Anxietate M=${fmt(STUDIES.study1.anxietyMean)}, SD=${fmt(STUDIES.study1.anxietySd)}, α=${fmt(STUDIES.study1.anxietyAlpha)}.</p><p class="muted">Studiul 2 a inclus N=${STUDIES.study2.n}, cu vârsta medie ${fmt(STUDIES.study2.meanAge)} ani (SD=${fmt(STUDIES.study2.sdAge)}); fidelitatea a fost α=${fmt(STUDIES.study2.avoidanceAlpha)} pentru evitare și α=${fmt(STUDIES.study2.anxietyAlpha)} pentru anxietate. Modelul cu doi factori a avut CFI=${fmt(STUDIES.study2.cfi)} și RMSEA=${fmt(STUDIES.study2.rmsea)}.</p></section><details class="section card pdf-exclude"><summary><strong>Vezi răspunsurile și scorurile pe itemi</strong></summary><div class="table-wrap section"><table><thead><tr><th>Nr.</th><th>Item</th><th>Răspuns brut</th><th>Inversat</th><th>Scor cotat</th><th>Dimensiune</th></tr></thead><tbody>${rawRows}</tbody></table></div></details><section class="section card"><h2>Limite de interpretare</h2><ul class="scoring-list muted"><li>Mediile și deviațiile standard provin dintr-un eșantion studențesc românesc de conveniență, predominant feminin; nu sunt etaloane naționale reprezentative.</li><li>Articolul raportează mediile în Studiul 1 înainte de descrierea eliminării celor cinci itemi. Din acest motiv, raportarea scorului mediu al versiunii finale de 31 de itemi la aceste valori este orientativă.</li><li>Percentilele sunt aproximări obținute din scorul z, presupunând distribuție normală; articolul nu publică tabele de percentile sau praguri clinice.</li><li>Scorurile sunt auto-raportate și pot varia în funcție de relația avută în minte, context și starea emoțională actuală.</li><li>Configurația bidimensională nu înlocuiește interviul clinic și nu stabilește o tulburare de atașament sau de personalitate.</li></ul></section><section class="section card biblio"><h2>Bibliografie</h2><ol><li>Fraley, R. C., Waller, N. G., &amp; Brennan, K. A. (2000). <em>An item response theory analysis of self-report measures of adult attachment</em>. Journal of Personality and Social Psychology, 78(2), 350–365.</li><li>Rotaru, T.-Ș., &amp; Rusu, A. (2013). <em>Psychometric properties of the Romanian version of Experiences in Close Relationships-Revised questionnaire (ECR-R)</em>. Procedia – Social and Behavioral Sciences, 78, 51–55.</li></ol></section>`}
+function importJsonFile(file){const reader=new FileReader();reader.onload=()=>{try{const parsed=JSON.parse(reader.result);const incoming=Array.isArray(parsed)?parsed:[parsed];const valid=incoming.filter(x=>x&&String(x.questionnaire||x.version||"").toUpperCase().includes("ECR")&&responsesAreValid(x.responses));if(!valid.length)throw new Error("Fișierul nu conține un rezultat ECR-R valid cu 31 de răspunsuri între 1 și 6. Fișierele vechi pe scala 1–7 nu pot fi interpretate cu aceste repere.");const current=ensureIds();const byId=new Map(current.map(x=>[x.id,x]));for(const item of valid){if(!item.id)item.id=`import_${Date.now()}_${Math.random().toString(16).slice(2)}`;item.version=item.version||"ECR-R 31 itemi · Likert 1–6";byId.set(item.id,item)}writeStore(Array.from(byId.values()).sort((a,b)=>new Date(b.createdAt||0)-new Date(a.createdAt||0)));renderSelector(valid[0].id);alert(`Am importat ${valid.length} rezultat(e) ECR-R.`)}catch(err){alert("Import eșuat: "+err.message)}};reader.readAsText(file)}
+document.addEventListener("DOMContentLoaded",()=>{const on=(id,event,handler)=>$(id)?.addEventListener(event,handler);const unlocked=setupAuthGate();const savedView=localStorage.getItem(VIEW_KEY);if(savedView&&$("resultFilter"))$("resultFilter").value=savedView;if(unlocked)renderSelector();on("resultFilter","change",()=>renderSelector());on("archiveBtn","click",toggleArchiveSelected);on("deleteBtn","click",deleteSelectedSubmission);on("importBtn","click",()=>$("jsonImport").click());on("jsonImport","change",e=>{const file=e.target.files[0];if(file)importJsonFile(file);e.target.value=""});on("printBtn","click",()=>window.print());on("copyReportBtn","click",async()=>{const text=$("reportText")?.innerText||"";if(!text)return;try{await navigator.clipboard.writeText(text);alert("Formularea profesională a fost copiată.")}catch(e){alert("Nu am putut copia automat textul.")}})});
+</script>
+</body>
+</html>

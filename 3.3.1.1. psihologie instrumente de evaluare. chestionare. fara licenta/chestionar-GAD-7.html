@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chestionar GAD-7</title>
+<style>
+:root{--bg:#f6f3ef;--panel:#fffaf4;--card:#fff;--ink:#202020;--muted:#6f675d;--line:#e6ded4;--accent:#7a4e2d;--accent-2:#b98250;--accent-soft:#f1e3d4;--good:#255f3f;--warn:#8a5a00;--danger:#9b2c2c;--shadow:0 18px 50px rgba(74,52,33,.12);--radius:22px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:radial-gradient(circle at top left,rgba(184,130,80,.14),transparent 36rem),linear-gradient(180deg,#fbf8f3 0%,var(--bg) 100%);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.55}a{color:inherit}.page{width:min(1120px,calc(100% - 36px));margin:0 auto;padding:34px 0 70px}.hero{background:linear-gradient(135deg,rgba(255,250,244,.92),rgba(241,227,212,.76));border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);padding:34px;position:relative;overflow:hidden}.hero::after{content:"";position:absolute;width:360px;height:360px;border-radius:50%;right:-140px;top:-190px;background:rgba(122,78,45,.08)}.kicker{color:var(--accent);font-size:.82rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin:0 0 8px}h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,5vw,4.4rem);line-height:.98;letter-spacing:-.05em;margin:0 0 16px}h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.35rem,2.2vw,2rem);margin:0 0 12px}h3{margin:0 0 8px;font-size:1.05rem}p{margin:0 0 12px}.muted{color:var(--muted)}.grid{display:grid;gap:18px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.card{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(74,52,33,.07);padding:22px}.section{margin-top:22px}.notice{background:#fff7ec;border:1px solid #ead8c4;border-left:6px solid var(--accent-2);padding:16px 18px;border-radius:18px;color:#46382d}.instruction-card{background:#fff8ef;padding:20px 22px}.instruction-card h3{font-size:1.14rem;margin-bottom:10px}.instruction-text{text-align:justify;text-justify:inter-word;font-size:1.03rem;line-height:1.76;letter-spacing:.004em;color:#3f342b}.scale-response{margin-top:14px;padding:14px;border:1px solid #ead8c4;border-radius:14px;background:rgba(255,255,255,.72);font-size:.96rem;line-height:1.68}.scale-key{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:10px}.scale-key span{display:block;padding:10px;border-radius:11px;background:#fff;border:1px solid var(--line)}.biblio-card{background:#fffdf9}.biblio-card ol{margin:8px 0 0 20px;padding:0}.biblio-card li{margin:0 0 8px;color:#44372c}.biblio-card small{display:block;margin-top:8px;line-height:1.55}label{font-weight:750}input[type="text"],input[type="number"],input[type="date"],select,textarea{width:100%;border:1px solid var(--line);border-radius:15px;padding:13px 14px;background:#fff;font:inherit;outline:none;transition:.18s ease}input:focus,textarea:focus,select:focus{border-color:var(--accent-2);box-shadow:0 0 0 4px rgba(184,130,80,.16)}textarea{min-height:92px;resize:vertical}.btn{border:0;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:12px 18px;background:var(--accent);color:white;font-weight:850;cursor:pointer;text-decoration:none;transition:.18s ease;box-shadow:0 10px 18px rgba(122,78,45,.16)}.btn:hover{transform:translateY(-1px);filter:brightness(1.03)}.btn.secondary{background:#fff;color:var(--accent);border:1px solid var(--line);box-shadow:none}.btn.soft{background:var(--accent-soft);color:#5b3920;box-shadow:none}.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.progress-shell{position:sticky;top:0;z-index:20;padding:10px 0;backdrop-filter:blur(18px)}.progress-card{background:rgba(255,250,244,.88);border:1px solid var(--line);border-radius:999px;padding:8px 12px;display:flex;align-items:center;gap:12px;box-shadow:0 8px 24px rgba(74,52,33,.08)}.progress-bar{height:10px;flex:1;border-radius:999px;background:#eadfd3;overflow:hidden}.progress-bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:999px}small{font-size:.84rem;color:var(--muted)}.hidden{display:none!important}.client-fields{display:grid;grid-template-columns:1.15fr .65fr .8fr .9fr;gap:14px}.item-card{display:grid;grid-template-columns:42px minmax(0,1fr) minmax(440px,auto);gap:14px;align-items:center;padding:18px;border:1px solid var(--line);border-radius:20px;background:#fff}.item-no{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--accent-soft);color:#5b3920;font-weight:900}.item-text{font-size:1rem}.likert{display:grid;grid-template-columns:repeat(4,minmax(92px,1fr));gap:7px}.likert label{position:relative;display:grid;place-items:center;text-align:center;min-height:56px;padding:7px;border:1px solid var(--line);border-radius:13px;cursor:pointer;background:#fffaf5;font-weight:800;font-size:.82rem;line-height:1.25}.likert input{position:absolute;opacity:0}.likert label:has(input:checked){border-color:var(--accent);background:var(--accent);color:#fff}.likert label:focus-within{outline:3px solid rgba(184,130,80,.25);outline-offset:2px}.impact-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.impact-grid label{position:relative;display:grid;place-items:center;text-align:center;min-height:62px;padding:10px;border:1px solid var(--line);border-radius:14px;background:#fff;cursor:pointer}.impact-grid input{position:absolute;opacity:0}.impact-grid label:has(input:checked){background:var(--accent);color:#fff;border-color:var(--accent)}@media(max-width:1050px){.item-card{grid-template-columns:42px minmax(0,1fr)}.likert{grid-column:1/-1;grid-template-columns:repeat(4,1fr)}}@media(max-width:760px){.page{width:min(100% - 22px,1120px);padding-top:18px}.hero{padding:24px;border-radius:24px}.client-fields,.grid.two,.scale-key,.impact-grid{grid-template-columns:1fr}.item-card{padding:15px;gap:11px}.likert{grid-template-columns:repeat(2,1fr);gap:5px}.likert label{min-height:52px}.progress-card strong{font-size:.85rem}}@media print{body{background:#fff}.no-print,.actions,.progress-shell{display:none!important}.page{width:100%;padding:0}.hero,.card{box-shadow:none}}
+</style>
+</head>
+<body>
+<main class="page">
+  <section class="hero">
+    <p class="kicker">Cabinet individual de psihologie</p>
+    <h1>Chestionarul GAD-7</h1>
+    <p class="muted">Scala de evaluare a tulburării de anxietate generalizată. Instrument scurt de screening al frecvenței simptomelor de anxietate din ultimele două săptămâni.</p>
+  </section>
+
+  <div class="progress-shell no-print"><div class="progress-card"><strong id="progressText">0 / 8 răspunsuri</strong><div class="progress-bar" aria-hidden="true"><span id="progressBar"></span></div><small id="progressPercent">0%</small></div></div>
+
+  <section class="section card">
+    <h2>Date de identificare</h2>
+    <p class="muted">Se recomandă folosirea unui cod de client/pacient, nu a numelui complet, dacă formularul este completat online.</p>
+    <div class="client-fields">
+      <div><label for="clientCode">Cod client / inițiale *</label><input id="clientCode" type="text" required placeholder="Ex.: GAD-001 sau A.B." /></div>
+      <div><label for="clientAge">Vârsta</label><input id="clientAge" type="number" min="14" max="100" placeholder="opțional" /></div>
+      <div><label for="clientGender">Gen / sex</label><select id="clientGender"><option value="">Nespecificat</option><option value="female">Femeie</option><option value="male">Bărbat</option><option value="other">Altă opțiune</option><option value="prefer_not">Prefer să nu precizez</option></select></div>
+      <div><label for="testDate">Data aplicării</label><input id="testDate" type="date" /></div>
+    </div>
+    <div class="section"><label for="contextNote">Observații / contextul aplicării</label><textarea id="contextNote" placeholder="Ex.: evaluare inițială, monitorizare, retestare, context medical etc."></textarea></div>
+  </section>
+
+  <section class="section notice instruction-card">
+    <h3>Instructaj</h3>
+    <div class="instruction-text"><p><strong>În ultimele 2 săptămâni, cât de des v-au deranjat următoarele probleme?</strong></p><p>Alegeți un singur răspuns pentru fiecare afirmație, în funcție de frecvența simptomului.</p></div>
+    <div class="scale-response"><strong>Scala de răspuns:</strong><div class="scale-key"><span><strong>0 · Deloc</strong><br><small>simptomul nu v-a deranjat</small></span><span><strong>1 · Câteva zile</strong><br><small>prezent ocazional</small></span><span><strong>2 · Peste jumătate din zile</strong><br><small>prezent frecvent</small></span><span><strong>3 · Aproape zilnic</strong><br><small>prezent aproape în fiecare zi</small></span></div></div>
+  </section>
+
+  <form id="gadForm" class="section">
+    <div id="itemsContainer" class="grid"></div>
+
+    <section class="section card">
+      <h2>Impactul asupra funcționării</h2>
+      <p>Dacă ați bifat anumite probleme, în ce măsură acestea au făcut dificil pentru dumneavoastră lucrul, treburile casnice sau relațiile cu alte persoane?</p>
+      <div class="impact-grid" role="radiogroup" aria-label="Impact funcțional"><label><input required type="radio" name="functionalImpact" value="0" />Deloc</label><label><input required type="radio" name="functionalImpact" value="1" />Întrucâtva dificil</label><label><input required type="radio" name="functionalImpact" value="2" />Foarte dificil</label><label><input required type="radio" name="functionalImpact" value="3" />Extrem de dificil</label></div>
+      <small style="display:block;margin-top:10px">Răspunsul privind funcționarea nu intră în scorul total GAD-7, dar este important pentru interpretarea clinică.</small>
+    </section>
+
+    <section class="section card">
+      <label style="display:flex;gap:10px;align-items:flex-start;font-weight:650"><input id="consent" type="checkbox" required style="margin-top:5px" /><span>Confirm că am răspuns la itemi cât mai sincer și înțeleg că GAD-7 este un instrument de screening, iar rezultatul nu reprezintă singur un diagnostic.</span></label>
+      <div class="actions section"><button class="btn" type="submit">Finalizează și descarcă răspunsurile</button><button class="btn secondary" type="button" id="saveDraftBtn">Salvează progresul</button><button class="btn secondary" type="button" id="restoreDraftBtn">Reia progresul salvat</button><button class="btn secondary" type="reset">Resetează formularul</button></div>
+    </section>
+  </form>
+
+  <section id="successPanel" class="section card hidden">
+    <h2>Răspunsurile au fost salvate și descărcate</h2>
+    <p class="muted">Rezultatul a fost păstrat local în acest browser, iar fișierul JSON a fost descărcat pe dispozitiv.</p>
+    <div class="notice" style="margin:14px 0"><strong>Următorul pas:</strong><br />Trimite documentul descărcat la adresa <strong>cabinet@maringabriel.ro</strong> pentru interpretare.</div>
+    <div class="actions"><button class="btn secondary" type="button" id="downloadLastBtn">Descarcă din nou fișierul JSON</button><a class="btn soft" href="mailto:cabinet@maringabriel.ro?subject=R%C4%83spunsuri%20Chestionar%20GAD-7&body=Bun%C4%83%20ziua%2C%0A%0AV%C4%83%20trimit%20ata%C8%99at%20fi%C8%99ierul%20JSON%20desc%C4%83rcat%20dup%C4%83%20completarea%20Chestionarului%20GAD-7.%0A%0AMul%C8%9Bumesc.">Deschide email către cabinet</a></div>
+  </section>
+
+  <section class="section card biblio-card">
+    <h2>Bibliografie relevantă</h2>
+    <ol><li>Spitzer, R. L., Kroenke, K., Williams, J. B. W., &amp; Löwe, B. (2006). <em>A brief measure for assessing generalized anxiety disorder: The GAD-7</em>. Archives of Internal Medicine, 166(10), 1092–1097.</li><li>Cotiga, A. C., Zanfirescu, Ș. A., Iliescu, D., Ciumăgeanu, M., Gotca, I., &amp; Popa, C. O. (2023). <em>Psychometric characteristics of the Romanian adaptation of the GAD-7</em>. Journal of Psychopathology and Behavioral Assessment, 45(3), 691–701.</li></ol>
+    <small>GAD-7 măsoară severitatea simptomelor raportate în ultimele două săptămâni. Scorul trebuie corelat cu interviul clinic, istoricul persoanei, funcționarea și diagnosticul diferențial.</small>
+  </section>
+</main>
+<script>
+const ITEMS = [
+  {
+    "nr": 1,
+    "text": "Sentimentul de nervozitate, anxietate sau tensiune.",
+    "short": "Nervozitate și tensiune",
+    "clinicalNote": "Reflectă activarea anxioasă generală, tensiunea internă și senzația de a fi «în alertă».",
+    "loadClinical": 0.83,
+    "loadGeneral": 0.55,
+    "discClinical": 3.05,
+    "discGeneral": 1.38,
+    "thrClinical": [
+      -0.92,
+      0.61,
+      1.24
+    ],
+    "thrGeneral": [
+      0.37,
+      1.53,
+      2.58
+    ]
+  },
+  {
+    "nr": 2,
+    "text": "Incapacitatea de a vă opri sau controla îngrijorarea.",
+    "short": "Controlul îngrijorării",
+    "clinicalNote": "Vizează caracterul greu controlabil al îngrijorării, o componentă centrală a anxietății generalizate.",
+    "loadClinical": 0.75,
+    "loadGeneral": 0.58,
+    "discClinical": 2.45,
+    "discGeneral": 1.46,
+    "thrClinical": [
+      -0.5,
+      0.84,
+      1.35
+    ],
+    "thrGeneral": [
+      0.68,
+      1.84,
+      2.78
+    ]
+  },
+  {
+    "nr": 3,
+    "text": "Îngrijorare excesivă pentru diverse lucruri.",
+    "short": "Îngrijorare excesivă",
+    "clinicalNote": "Surprinde amploarea și generalizarea îngrijorării la mai multe teme sau domenii de viață.",
+    "loadClinical": 0.81,
+    "loadGeneral": 0.49,
+    "discClinical": 2.73,
+    "discGeneral": 1.13,
+    "thrClinical": [
+      -0.81,
+      0.42,
+      1.57
+    ],
+    "thrGeneral": [
+      0.3,
+      1.76,
+      3.09
+    ]
+  },
+  {
+    "nr": 4,
+    "text": "Dificultăți de relaxare.",
+    "short": "Dificultăți de relaxare",
+    "clinicalNote": "Indică menținerea tensiunii și dificultatea de a reduce activarea fiziologică sau cognitivă.",
+    "loadClinical": 0.75,
+    "loadGeneral": 0.56,
+    "discClinical": 2.45,
+    "discGeneral": 1.37,
+    "thrClinical": [
+      -0.75,
+      0.44,
+      1.33
+    ],
+    "thrGeneral": [
+      0.4,
+      1.54,
+      3.01
+    ]
+  },
+  {
+    "nr": 5,
+    "text": "O neliniște excesivă, din cauza căreia v-a fost dificil să stați liniștit.",
+    "short": "Neliniște psihomotorie",
+    "clinicalNote": "Reflectă neliniștea vizibilă sau resimțită corporal. În validarea românească, acest item a avut cea mai mare discriminare în eșantionul clinic.",
+    "loadClinical": 0.95,
+    "loadGeneral": 0.66,
+    "discClinical": 4.07,
+    "discGeneral": 1.86,
+    "thrClinical": [
+      -0.37,
+      0.5,
+      1.17
+    ],
+    "thrGeneral": [
+      0.47,
+      1.4,
+      2.47
+    ]
+  },
+  {
+    "nr": 6,
+    "text": "Apariția ușoară a enervării sau iritabilității.",
+    "short": "Iritabilitate",
+    "clinicalNote": "Vizează reactivitatea afectivă crescută și toleranța redusă la frustrare în context anxios.",
+    "loadClinical": 0.78,
+    "loadGeneral": 0.5,
+    "discClinical": 3.37,
+    "discGeneral": 1.17,
+    "thrClinical": [
+      -0.58,
+      0.61,
+      1.33
+    ],
+    "thrGeneral": [
+      0.56,
+      1.96,
+      3.0
+    ]
+  },
+  {
+    "nr": 7,
+    "text": "Un sentiment de teamă ca și cum s-ar putea întâmpla ceva groaznic.",
+    "short": "Anticipare catastrofică",
+    "clinicalNote": "Surprinde anticiparea amenințătoare și senzația că este iminent un eveniment negativ major.",
+    "loadClinical": 0.74,
+    "loadGeneral": 0.51,
+    "discClinical": 2.98,
+    "discGeneral": 1.2,
+    "thrClinical": [
+      -0.34,
+      0.58,
+      1.24
+    ],
+    "thrGeneral": [
+      0.72,
+      1.71,
+      2.9
+    ]
+  }
+];
+const RESPONSE_LABELS={0:"Deloc",1:"Câteva zile",2:"Peste jumătate din zile",3:"Aproape zilnic"};
+const IMPACT_LABELS={0:"Deloc",1:"Întrucâtva dificil",2:"Foarte dificil",3:"Extrem de dificil"};
+const DRAFT_KEY="gad7Draft_v1";
+const STORAGE_KEY="gad7Submissions_v1";
+let lastSubmission=null;
+function $(id){return document.getElementById(id)}
+function todayISO(){const d=new Date();const local=new Date(d.getTime()-d.getTimezoneOffset()*60000);return local.toISOString().slice(0,10)}
+function renderItems(){
+  $("testDate").value=todayISO();
+  $("itemsContainer").innerHTML=ITEMS.map(item=>`<article class="item-card"><div class="item-no">${item.nr}</div><div class="item-text">${item.text}</div><div class="likert" role="radiogroup" aria-label="Răspuns item ${item.nr}">${[0,1,2,3].map(value=>`<label title="${RESPONSE_LABELS[value]}"><input required type="radio" name="q${item.nr}" value="${value}" /><span><strong>${value}</strong><br>${RESPONSE_LABELS[value]}</span></label>`).join("")}</div></article>`).join("");
+}
+function getResponses(partial=false){const responses={};for(const item of ITEMS){const selected=document.querySelector(`input[name="q${item.nr}"]:checked`);if(!selected){if(partial)continue;return null}responses[item.nr]=Number(selected.value)}return responses}
+function selectedImpact(){const selected=document.querySelector('input[name="functionalImpact"]:checked');return selected?Number(selected.value):null}
+function calculateScore(responses){const total=ITEMS.reduce((sum,item)=>sum+Number(responses[item.nr]||0),0);let severity="Anxietate minimă";if(total>=15)severity="Anxietate severă";else if(total>=10)severity="Anxietate moderată";else if(total>=5)severity="Anxietate ușoară";return {total,max:21,severity,screenPositive:total>=10}}
+function makeSubmission(responses){const now=new Date();const code=$("clientCode").value.trim()||`GAD7-${now.getTime()}`;const functionalImpact=selectedImpact();return {id:`gad7_${now.getTime()}_${Math.random().toString(16).slice(2)}`,questionnaire:"GAD-7",version:"GAD-7 RO · Cotiga et al. (2023)",responseScale:{min:0,max:3,labels:RESPONSE_LABELS},clientCode:code,age:$("clientAge").value.trim(),gender:$("clientGender").value,testDate:$("testDate").value||todayISO(),contextNote:$("contextNote").value.trim(),createdAt:now.toISOString(),responses,functionalImpact,functionalImpactLabel:IMPACT_LABELS[functionalImpact],...calculateScore(responses)}}
+function readStore(){try{const data=JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]");return Array.isArray(data)?data:[]}catch(e){return []}}
+function saveFinalLocally(submission){const current=readStore();const byId=new Map(current.map(x=>[x.id,x]));byId.set(submission.id,submission);localStorage.setItem(STORAGE_KEY,JSON.stringify(Array.from(byId.values()).sort((a,b)=>new Date(b.createdAt||0)-new Date(a.createdAt||0))))}
+function updateProgress(){const answered=Object.keys(getResponses(true)).length+(selectedImpact()!==null?1:0);const percent=Math.round(answered/8*100);$("progressText").textContent=`${answered} / 8 răspunsuri`;$("progressBar").style.width=`${percent}%`;$("progressPercent").textContent=`${percent}%`}
+function saveDraft(){const draft={clientCode:$("clientCode").value,clientAge:$("clientAge").value,clientGender:$("clientGender").value,testDate:$("testDate").value,contextNote:$("contextNote").value,responses:getResponses(true),functionalImpact:selectedImpact()};localStorage.setItem(DRAFT_KEY,JSON.stringify(draft));alert("Progresul a fost salvat în acest browser.")}
+function restoreDraft(){const raw=localStorage.getItem(DRAFT_KEY);if(!raw){alert("Nu există progres salvat pentru GAD-7.");return}try{const draft=JSON.parse(raw);$("clientCode").value=draft.clientCode||"";$("clientAge").value=draft.clientAge||"";$("clientGender").value=draft.clientGender||"";$("testDate").value=draft.testDate||todayISO();$("contextNote").value=draft.contextNote||"";for(const [nr,value] of Object.entries(draft.responses||{})){const input=document.querySelector(`input[name="q${nr}"][value="${value}"]`);if(input)input.checked=true}if(draft.functionalImpact!==null&&draft.functionalImpact!==undefined){const impact=document.querySelector(`input[name="functionalImpact"][value="${draft.functionalImpact}"]`);if(impact)impact.checked=true}updateProgress()}catch(e){alert("Progresul salvat nu a putut fi citit.")}}
+function downloadJson(data){const fileName=`${(data.clientCode||"GAD7").replace(/[^a-z0-9_-]+/gi,"_")}_${data.testDate||"data"}.json`;const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download=fileName;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)}
+document.addEventListener("DOMContentLoaded",()=>{renderItems();updateProgress();document.addEventListener("change",e=>{if(e.target.matches('input[type="radio"]'))updateProgress()});$("saveDraftBtn").addEventListener("click",saveDraft);$("restoreDraftBtn").addEventListener("click",restoreDraft);$("downloadLastBtn").addEventListener("click",()=>{if(lastSubmission)downloadJson(lastSubmission)});$("gadForm").addEventListener("reset",()=>{setTimeout(()=>{updateProgress();$("testDate").value=todayISO()},0);$("successPanel").classList.add("hidden")});$("gadForm").addEventListener("submit",e=>{e.preventDefault();if(!$("clientCode").value.trim()){$("clientCode").focus();alert("Completează codul clientului / inițialele.");return}if(!$("consent").checked){alert("Confirmarea finală este obligatorie.");return}const responses=getResponses();if(!responses){alert("Te rog să răspunzi la toți cei 7 itemi.");return}if(selectedImpact()===null){alert("Completează și întrebarea privind impactul asupra funcționării.");return}const invalid=Object.values(responses).some(v=>v<0||v>3);if(invalid){alert("Răspunsurile trebuie să fie între 0 și 3.");return}const submission=makeSubmission(responses);lastSubmission=submission;saveFinalLocally(submission);localStorage.removeItem(DRAFT_KEY);downloadJson(submission);$("successPanel").classList.remove("hidden");$("successPanel").scrollIntoView({behavior:"smooth",block:"center"})})});
+</script>
+</body>
+</html>
