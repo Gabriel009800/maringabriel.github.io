@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Modernitatea timpurie în Valahia și Moldova: epoca fanariotă, 1821, Adrianopol, Regulamentele Organice și drumul spre Unire.">
+  <title>ro-modernitatea-timpurie-valahia-si-moldova</title>
+  <style>
+:root {
+  --bg: #f6f0e7;
+  --paper: #fffaf3;
+  --paper-2: #ffffff;
+  --ink: #2f241c;
+  --title: #3c2a1e;
+  --muted: #5b4a3d;
+  --accent: #7a4f2a;
+  --accent-2: #9b6a3c;
+  --accent-soft: #f0e4d4;
+  --line: rgba(91, 62, 36, 0.18);
+  --line-strong: rgba(91, 62, 36, 0.34);
+  --outer-dark: #241208;
+  --outer-mid: #4a2a18;
+  --outer-warm: #7a4b2b;
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+  --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+    radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+}
+.page {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 34px 0 70px;
+}
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.back-link, .tag { display: inline-flex; align-items: center; border: 1px solid var(--line); background: rgba(255, 250, 243, 0.84); color: var(--title); border-radius: 999px; padding: 10px 15px; text-decoration: none; font-size: 15px; font-weight: 700; box-shadow: var(--shadow-small); }
+.back-link:hover { background: #fff6eb; }
+.hero, .section, .nav-card, .final-box { background: rgba(255, 250, 243, 0.96); border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow); }
+.hero { padding: 38px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.hero::after { content: var(--hero-year); position: absolute; right: 26px; bottom: -22px; font-size: 110px; font-weight: 900; letter-spacing: -4px; color: rgba(122, 79, 42, 0.08); pointer-events: none; }
+.eyebrow { margin: 0 0 8px; font-size: 16px; color: var(--accent); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; }
+h1 { margin: 0; font-size: clamp(38px, 5vw, 62px); line-height: 1.04; color: var(--title); letter-spacing: -1.4px; text-align: left; text-align-last: auto; }
+.subtitle { margin: 18px 0 0; max-width: 980px; font-size: 19px; line-height: 1.78; color: var(--muted); text-align: justify; text-align-last: left; }
+.summary-grid, .three-col, .two-col, .term-grid, .quick-grid, .cause-grid, .four-col { display: grid; gap: 14px; }
+.summary-grid { grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+.summary-card, .info-card, .wide-card, .term-card, .quick-card, .source-note, .micro-card, .warning-box { background: var(--paper-2); border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); text-align: justify; text-align-last: left; }
+.summary-card { padding: 16px; min-height: 132px; }
+.summary-card strong, .quick-card strong, .term-card strong, .micro-card strong { display: block; color: var(--title); font-size: 17px; margin-bottom: 8px; text-align: left; text-align-last: auto; }
+.summary-card span, .quick-card span, .term-card span, .micro-card span { display: block; color: var(--muted); font-size: 15.5px; line-height: 1.56; text-align: justify; text-align-last: left; }
+.nav-card { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 18px 20px; margin-bottom: 24px; }
+.nav-card b { color: var(--title); margin-right: 2px; }
+.nav-card a, .mini-btn { color: var(--title); background: var(--accent-soft); border: 1px solid rgba(91, 62, 36, 0.16); border-radius: 999px; text-decoration: none; padding: 8px 12px; font-weight: 700; font-size: 14px; cursor: pointer; font-family: inherit; }
+.nav-card a:hover, .mini-btn:hover { background: #e5d2bb; }
+.section { padding: 30px; margin-bottom: 24px; }
+h2 { margin: 0 0 14px; color: var(--title); font-size: clamp(28px, 3vw, 38px); line-height: 1.15; text-align: left; text-align-last: auto; }
+h3 { margin: 0 0 12px; color: var(--title); font-size: 22px; line-height: 1.22; text-align: left; text-align-last: auto; }
+h4 { margin: 16px 0 8px; color: var(--title); font-size: 18px; text-align: left; text-align-last: auto; }
+.section-intro, p, li, dd { font-size: 17px; line-height: 1.72; color: var(--muted); text-align: justify; text-align-last: left; hyphens: auto; }
+.section-intro { margin: 0 0 20px; max-width: 1000px; }
+.three-col { grid-template-columns: repeat(3, 1fr); }
+.two-col { grid-template-columns: repeat(2, 1fr); }
+.four-col { grid-template-columns: repeat(4, 1fr); }
+.cause-grid { grid-template-columns: 1.1fr 0.9fr; }
+.term-grid { grid-template-columns: repeat(4, 1fr); }
+.quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+.info-card, .wide-card, .term-card, .quick-card, .micro-card, .warning-box, .source-note { padding: 20px; }
+.wide-card { margin-top: 14px; }
+.wide-card p:last-child, .info-card p:last-child { margin-bottom: 0; }
+.clean, .number-list { margin: 0; padding-left: 22px; }
+.clean li, .number-list li { margin: 0 0 9px; padding-left: 2px; }
+.clean li:last-child, .number-list li:last-child { margin-bottom: 0; }
+.mini-title { display: inline; color: var(--title); font-weight: 800; background: transparent; border: 0; border-radius: 0; padding: 0; margin-right: 5px; white-space: normal; text-align: inherit; }
+.date-pill { display: inline-block; color: var(--title); font-weight: 800; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.13); border-radius: 999px; padding: 2px 9px; margin-right: 5px; white-space: nowrap; text-align: left; }
+.definition, .note { margin-top: 18px; background: #fff8ef; border: 1px solid rgba(122, 79, 42, 0.22); border-left: 6px solid rgba(122, 79, 42, 0.48); border-radius: 18px; padding: 18px 20px; color: var(--muted); font-size: 17px; line-height: 1.7; text-align: justify; text-align-last: left; }
+.definition strong, .note strong { color: var(--title); }
+details { background: #fffdf9; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); margin-top: 14px; overflow: hidden; }
+details[open] { background: #fffaf3; }
+summary { cursor: pointer; list-style: none; padding: 18px 20px; font-size: 19px; font-weight: 800; color: var(--title); display: flex; justify-content: space-between; align-items: center; gap: 18px; text-align: left; text-align-last: auto; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "Deschide"; color: var(--muted); font-size: 14px; font-weight: 700; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 999px; padding: 7px 11px; white-space: nowrap; }
+details[open] > summary::after { content: "Ascunde"; }
+.details-body { border-top: 1px solid rgba(91, 62, 36, 0.12); padding: 18px 20px 20px; text-align: justify; text-align-last: left; }
+.details-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.nested-details { margin-top: 10px; box-shadow: none; background: #ffffff; }
+.nested-details summary { font-size: 17px; padding: 14px 16px; }
+.key-line { display: grid; grid-template-columns: 220px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px dashed rgba(91, 62, 36, 0.18); }
+.key-line:last-child { border-bottom: 0; }
+.key-line strong { color: var(--title); text-align: left; text-align-last: auto; }
+.key-line span { color: var(--muted); line-height: 1.65; text-align: justify; text-align-last: left; }
+.timeline { position: relative; display: grid; gap: 14px; margin-top: 18px; }
+.event { display: grid; grid-template-columns: 132px 1fr; gap: 18px; align-items: stretch; background: #ffffff; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); overflow: hidden; }
+.date { background: linear-gradient(180deg, #7a4f2a, #5b351b); color: #fffaf3; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px; font-size: 18px; line-height: 1.25; font-weight: 900; letter-spacing: 0.2px; }
+.event > div:last-child { padding: 17px 18px 18px 0; text-align: justify; text-align-last: left; }
+.event h3 { margin-bottom: 6px; }
+.event p { margin: 0; }
+.small-muted { font-size: 15px; color: #725c49; line-height: 1.6; text-align: justify; text-align-last: left; }
+.warning-box { background: #fff7ec; border-color: rgba(122, 79, 42, 0.22); margin-top: 16px; }
+.final-box { padding: 28px; background: linear-gradient(135deg, #fffaf3, #f4e4d1); border-color: rgba(91, 62, 36, 0.25); }
+.final-box p { margin-bottom: 0; }
+.table-wrap { overflow-x: auto; margin-top: 14px; border-radius: 18px; border: 1px solid rgba(91,62,36,.14); background: #fff; box-shadow: var(--shadow-small); }
+table { width: 100%; border-collapse: collapse; min-width: 740px; }
+th, td { padding: 13px 14px; border-bottom: 1px solid rgba(91,62,36,.12); color: var(--muted); font-size: 16px; line-height: 1.55; vertical-align: top; text-align: justify; }
+th { background: #f3eadf; color: var(--title); text-align: left; font-weight: 800; }
+tr:last-child td { border-bottom: 0; }
+@media (max-width: 980px) {
+  .summary-grid, .three-col, .term-grid, .quick-grid, .four-col { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .cause-grid, .details-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .page { width: min(100% - 22px, 1180px); padding-top: 22px; }
+  .hero, .section, .final-box { padding: 22px; border-radius: 22px; }
+  .summary-grid, .term-grid, .quick-grid, .four-col { grid-template-columns: 1fr; }
+  .event { grid-template-columns: 1fr; }
+  .date { min-height: 66px; }
+  .event > div:last-child { padding: 0 16px 16px; }
+  .key-line { grid-template-columns: 1fr; gap: 6px; }
+  summary { align-items: flex-start; flex-direction: column; }
+  .hero::after { font-size: 82px; }
+}
+
+
+/* Extensii pentru această sinteză */
+.tool-row { display:flex; gap:10px; flex-wrap:wrap; margin-top:18px; }
+.tool-row button { border:1px solid rgba(91,62,36,.18); background:#f3eadf; color:var(--title); border-radius:999px; padding:9px 13px; font:700 14px Georgia,"Times New Roman",serif; cursor:pointer; }
+.tool-row button:hover { background:#e5d2bb; }
+.metric { font-size:34px; line-height:1; color:var(--accent); font-weight:900; display:block; margin-bottom:8px; }
+.ribbon { display:inline-block; margin-bottom:10px; padding:5px 10px; border-radius:999px; background:#efe0cf; border:1px solid rgba(91,62,36,.15); color:var(--accent); font-size:13px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; }
+.compare-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.compare-head { background:linear-gradient(180deg,#7a4f2a,#5b351b); color:#fffaf3; padding:15px 18px; font-weight:900; font-size:18px; }
+.compare-body { padding:18px; }
+.compare-card { background:#fff; border:1px solid rgba(91,62,36,.14); border-radius:20px; overflow:hidden; box-shadow:var(--shadow-small); }
+.quote { margin:16px 0 0; padding:18px 20px; border-left:6px solid rgba(122,79,42,.55); background:#fff8ef; border-radius:0 18px 18px 0; color:var(--muted); font-size:17px; line-height:1.7; font-style:italic; }
+.badge-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+.badge { display:inline-flex; padding:6px 10px; border-radius:999px; background:#f3eadf; border:1px solid rgba(91,62,36,.14); color:var(--title); font-size:13.5px; font-weight:700; }
+.kicker { color:var(--accent); font-weight:800; text-transform:uppercase; letter-spacing:.06em; font-size:14px; margin:0 0 8px; }
+.checklist { list-style:none; margin:0; padding:0; }
+.checklist li { position:relative; padding-left:28px; margin-bottom:10px; }
+.checklist li::before { content:"✓"; position:absolute; left:0; top:0; color:var(--accent); font-weight:900; }
+.redflag { list-style:none; margin:0; padding:0; }
+.redflag li { position:relative; padding-left:28px; margin-bottom:10px; }
+.redflag li::before { content:"!"; position:absolute; left:4px; top:0; color:#8b3e2f; font-weight:900; }
+.progress { position:fixed; left:0; top:0; height:4px; background:#d3a46f; width:0; z-index:99; box-shadow:0 1px 5px rgba(0,0,0,.25); }
+@media (max-width:980px){ .compare-grid{grid-template-columns:1fr;} }
+@media print {
+  body { background:#fff; }
+  body::before, .progress, .topbar, .nav-card, .tool-row { display:none !important; }
+  .page { width:100%; padding:0; }
+  .hero,.section,.final-box { box-shadow:none; border:1px solid #bbb; break-inside:avoid; }
+  details { break-inside:avoid; }
+  details > .details-body { display:block !important; }
+  summary::after { display:none; }
+}
+
+.data-strip { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:18px; }
+.data-item { background:#fff; border:1px solid rgba(91,62,36,.14); border-radius:18px; padding:16px; box-shadow:var(--shadow-small); }
+.data-item b { display:block; color:var(--accent); font-size:24px; line-height:1.05; margin-bottom:7px; text-align:left; }
+.data-item span { display:block; color:var(--muted); font-size:14.5px; line-height:1.5; text-align:justify; }
+.period-band { display:grid; grid-template-columns:160px 1fr; border:1px solid rgba(91,62,36,.14); border-radius:20px; overflow:hidden; background:#fff; box-shadow:var(--shadow-small); margin-top:13px; }
+.period-band .period-date { display:flex; align-items:center; justify-content:center; padding:18px; background:linear-gradient(180deg,#7a4f2a,#5b351b); color:#fffaf3; text-align:center; font-weight:900; font-size:18px; }
+.period-band .period-copy { padding:17px 19px; }
+.period-band h3 { margin-bottom:7px; }
+.period-band p { margin:0; }
+.concept-chain { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:16px; }
+.concept-chain span { background:#fff; border:1px solid rgba(91,62,36,.16); border-radius:999px; padding:8px 11px; color:var(--title); font-weight:700; font-size:14px; box-shadow:var(--shadow-small); }
+.concept-chain i { color:var(--accent); font-style:normal; font-weight:900; }
+.source-box { margin-top:16px; background:#fffdf8; border:1px solid rgba(91,62,36,.16); border-radius:20px; padding:20px; }
+.source-box h3 { margin-bottom:8px; }
+.source-box p:last-child { margin-bottom:0; }
+.dense-table table { min-width:980px; }
+.dense-table th, .dense-table td { font-size:15.2px; line-height:1.48; padding:11px 12px; }
+.correction { background:#f8efe5; border:1px solid rgba(122,79,42,.24); border-left:6px solid #7a4f2a; border-radius:18px; padding:17px 19px; margin-top:15px; }
+.correction strong { color:var(--title); }
+.smallcaps { font-variant:small-caps; letter-spacing:.03em; }
+@media (max-width:980px){ .data-strip{grid-template-columns:repeat(2,1fr);} .period-band{grid-template-columns:130px 1fr;} }
+@media (max-width:680px){ .data-strip{grid-template-columns:1fr;} .period-band{grid-template-columns:1fr;} .period-band .period-date{min-height:62px;} }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<main class="page">
+  <div class="topbar">
+    <a class="back-link" href="javascript:history.back()">← Înapoi</a>
+    <span class="tag">Istoria României · Valahia și Moldova · 1683–1858</span>
+  </div>
+
+  <header class="hero" style="--hero-year:'1711–1858'">
+    <p class="eyebrow">De la criza ordinii otomane la instituțiile statului modern</p>
+    <h1>Modernitatea timpurie în Valahia și Moldova</h1>
+    <p class="subtitle">Sinteză extinsă despre instaurarea și funcționarea domniilor fanariote, reformele administrative și juridice ale secolului al XVIII-lea, rivalitatea ruso-austro-otomană, proiectele boierimii pământene, mișcarea lui Tudor Vladimirescu din 1821, revenirea domniilor pământene, Convenția de la Akkerman, Tratatul de la Adrianopol, administrația lui Pavel Kiseleff și Regulamentele Organice. Accentul cade pe date, raporturi cauzale, instituții, documente programatice și contradicțiile unei modernizări realizate sub controlul marilor imperii.</p>
+    <div class="summary-grid">
+      <div class="summary-card"><span class="metric">1711 / 1716</span><strong>Începutul domniilor fanariote</strong><span>În Moldova după alianța lui Dimitrie Cantemir cu Rusia; în Valahia după înlăturarea lui Ștefan Cantacuzino.</span></div>
+      <div class="summary-card"><span class="metric">1746 / 1749</span><strong>Desființarea dependenței personale</strong><span>Constantin Mavrocordat desființează rumânia în Valahia și vecinia în Moldova, fără a rezolva dependența economică a țăranilor.</span></div>
+      <div class="summary-card"><span class="metric">1821–1822</span><strong>Ruptura antifanariotă</strong><span>Mișcarea lui Tudor, acțiunea Eteriei și ocupația otomană sunt urmate de revenirea domnilor pământeni.</span></div>
+      <div class="summary-card"><span class="metric">1831 / 1832</span><strong>Regulamentele Organice</strong><span>Se consolidează bugetul, administrația, justiția, miliția și reprezentarea politică boierească.</span></div>
+    </div>
+    <div class="tool-row">
+      <button type="button" onclick="toggleAll(true)">Deschide toate explicațiile</button>
+      <button type="button" onclick="toggleAll(false)">Închide toate explicațiile</button>
+      <button type="button" onclick="window.print()">Printează / salvează PDF</button>
+    </div>
+  </header>
+
+  <nav class="nav-card" aria-label="Cuprins">
+    <b>Cuprins:</b>
+    <a href="#periodizare">Periodizare</a>
+    <a href="#orientala">Problema Orientală</a>
+    <a href="#statut">Statutul Principatelor</a>
+    <a href="#instaurare">Instaurarea fanarioților</a>
+    <a href="#sistem">Sistemul fanariot</a>
+    <a href="#societate">Societate și economie</a>
+    <a href="#mavrocordat">Mavrocordat</a>
+    <a href="#coduri">Codurile de legi</a>
+    <a href="#proiecte">Proiecte politice</a>
+    <a href="#razboaie">Războaie și tratate</a>
+    <a href="#1821">Anul 1821</a>
+    <a href="#pamanteni">Domnii pământene</a>
+    <a href="#akkerman">Akkerman și Adrianopol</a>
+    <a href="#kiseleff">Ocupația rusă</a>
+    <a href="#regulamente">Regulamentele Organice</a>
+    <a href="#transformari">Transformări după 1830</a>
+    <a href="#1848">1848–1858</a>
+    <a href="#comparatie">Comparații</a>
+    <a href="#cronologie">Cronologie</a>
+    <a href="#glosar">Glosar</a>
+  </nav>
+
+  <section class="section" id="periodizare">
+    <h2>1. Periodizare și sensul modernității timpurii</h2>
+    <p class="section-intro">Pentru Valahia și Moldova, modernitatea timpurie nu este o dată unică, ci un proces de aproape un secol și jumătate. Instituțiile medievale nu dispar dintr-odată: ele sunt reformate, centralizate și puse treptat în slujba unui aparat public mai regulat. În același timp, dependența față de Poarta Otomană este completată, apoi concurată de intervenția Rusiei și a Austriei.</p>
+    <div class="period-band"><div class="period-date">1683–1711/1716</div><div class="period-copy"><h3>Criza echilibrului tradițional</h3><p>Înfrângerea otomană de la Viena, expansiunea habsburgică și afirmarea Rusiei modifică raportul de forțe. Domnii români încearcă politici de echilibru, iar Poarta reacționează printr-un control mai strict.</p></div></div>
+    <div class="period-band"><div class="period-date">1711/1716–1821</div><div class="period-copy"><h3>Epoca fanariotă</h3><p>Domnii sunt numiți direct de sultan, politica externă este controlată, fiscalitatea se accentuează, dar autonomia internă permite reforme, codificări juridice, școli și o administrație mai specializată.</p></div></div>
+    <div class="period-band"><div class="period-date">1821–1829</div><div class="period-copy"><h3>Ruptură și tranziție</h3><p>Mișcarea lui Tudor Vladimirescu contribuie la sfârșitul domniilor fanariote. Domnii pământeni încearcă refacerea administrației, însă noul război ruso-otoman schimbă din nou cadrul politic.</p></div></div>
+    <div class="period-band"><div class="period-date">1829–1848</div><div class="period-copy"><h3>Modernizarea regulamentară</h3><p>Tratatul de la Adrianopol liberalizează comerțul și întărește influența Rusiei. Regulamentele Organice construiesc instituții moderne, dar consolidează dominația politică și socială a marii boierimi.</p></div></div>
+    <div class="period-band"><div class="period-date">1848–1858</div><div class="period-copy"><h3>Criza regimului regulamentar</h3><p>Revoluțiile de la 1848 formulează revendicări democratice, naționale și sociale. Războiul Crimeii, Tratatul de la Paris și adunările ad-hoc pregătesc Unirea Principatelor.</p></div></div>
+    <div class="concept-chain"><span>centralizare</span><i>→</i><span>legi scrise</span><i>→</i><span>buget public</span><i>→</i><span>funcționari salarizați</span><i>→</i><span>instanțe stabile</span><i>→</i><span>armată și școli</span><i>→</i><span>stat modern</span></div>
+    <div class="definition"><strong>Definiție de lucru:</strong> modernitatea timpurie reprezintă trecerea de la o guvernare personală, patrimonială și bazată pe privilegii la o guvernare mai impersonală, reglementată prin norme, departamente și responsabilități publice. Procesul rămâne incomplet cât timp reprezentarea este restrânsă, țărănimea nu are pământ suficient, iar politica internă este supravegheată de puteri străine.</div>
+  </section>
+
+  <section class="section" id="orientala">
+    <h2>2. Problema Orientală și poziția geopolitică a Principatelor</h2>
+    <p class="section-intro">„Problema Orientală” desemnează competiția dintre marile puteri pentru teritoriile, strâmtorile și influența politică eliberate de declinul Imperiului Otoman, împreună cu mișcările de emancipare ale popoarelor creștine din sud-estul Europei.</p>
+    <div class="three-col">
+      <article class="info-card"><span class="ribbon">Imperiul Otoman</span><h3>Menținerea zonei dunărene</h3><p>Poarta urmărea să păstreze Principatele ca spațiu tampon, furnizor de tribut și produse și rută strategică spre Dunăre. De aceea controla domnia, politica externă și obligațiile materiale.</p></article>
+      <article class="info-card"><span class="ribbon">Imperiul Rus</span><h3>Acces spre Marea Neagră și Balcani</h3><p>Rusia își prezenta expansiunea și ca protecție a creștinilor ortodocși. După 1774 dobândește un drept de intervenție diplomatică, iar după 1829 exercită un protectorat mult mai apăsător.</p></article>
+      <article class="info-card"><span class="ribbon">Monarhia Habsburgică</span><h3>Extindere spre sud-est</h3><p>Austria urmărea controlul frontierelor carpatice și al rutelor comerciale. Ea ocupă Oltenia între 1718 și 1739 și anexează Bucovina în 1775.</p></article>
+    </div>
+    <details open><summary>De ce erau Valahia și Moldova atât de importante?</summary><div class="details-body"><div class="details-grid"><div class="micro-card"><strong>Poziție strategică</strong><span>Controlau trecerile dintre Europa Centrală, stepa pontică, Balcani și gurile Dunării.</span></div><div class="micro-card"><strong>Resurse</strong><span>Cereale, vite, lemn, sare, miere, ceară și alte produse aprovizionau piețe regionale și Constantinopolul.</span></div><div class="micro-card"><strong>Statut intermediar</strong><span>Nu erau provincii otomane propriu-zise, dar nici state independente. Tocmai ambiguitatea statutului permitea presiuni și negocieri succesive.</span></div><div class="micro-card"><strong>Legături confesionale</strong><span>Ortodoxia oferea Rusiei un limbaj legitimant pentru intervenție, fără ca interesele rusești să coincidă automat cu cele românești.</span></div></div></div></details>
+    <div class="correction"><strong>Precizare:</strong> după Pacea de la Kuciuk-Kainargi din 1774 se poate vorbi despre o protecție diplomatică rusească în creștere sau despre un protectorat de facto. Protectoratul ruso-otoman instituționalizat și mult mai clar se conturează după Tratatul de la Adrianopol din 1829.</div>
+  </section>
+
+  <section class="section" id="statut">
+    <h2>3. Statutul juridic al Valahiei și Moldovei</h2>
+    <p class="section-intro">Principatele se aflau sub suzeranitatea sultanului, dar își păstrau individualitatea politică, instituțiile, credința ortodoxă și dreptul intern. Această combinație dintre dependență externă și autonomie internă explică atât supraviețuirea statalității, cât și posibilitatea reformelor.</p>
+    <div class="two-col">
+      <article class="info-card"><h3>Ce controla Poarta</h3><ul class="clean"><li>numirea și mazilirea domnilor;</li><li>politica externă și războiul;</li><li>tributul și alte obligații materiale;</li><li>aprovizionarea și anumite monopoluri comerciale;</li><li>confirmarea unor acte politice majore;</li><li>intervenția militară în situații de criză.</li></ul></article>
+      <article class="info-card"><h3>Ce rămânea în interiorul țării</h3><ul class="clean"><li>administrația județelor și ținuturilor;</li><li>organizarea fiscală internă;</li><li>instanțele și dreptul civil;</li><li>Biserica Ortodoxă și mănăstirile;</li><li>limba cancelariei și tradiția juridică locală;</li><li>proprietatea boierească și raporturile agrare.</li></ul></article>
+    </div>
+    <details><summary>Raiale, hotare și pierderi teritoriale</summary><div class="details-body"><p>În anumite puncte strategice, otomanii administrau direct cetăți și teritorii numite raiale. Hotinul devine raia după războiul din 1710–1711; Turnu, Giurgiu și Brăila erau vechi puncte otomane la Dunăre. Tratatul de la Adrianopol din 1829 restituie Valahiei teritoriile raialelor dunărene.</p><p>Sultanul a acceptat și cedări teritoriale către alte imperii: Oltenia către Austria în 1718, Bucovina în 1775 și teritoriul Moldovei dintre Prut și Nistru către Rusia în 1812. Aceste acte au stimulat ideea că autonomia și integritatea teritorială trebuiau garantate printr-un nou statut internațional.</p></div></details>
+    <div class="data-strip">
+      <div class="data-item"><b>1718–1739</b><span>Oltenia se află sub administrație habsburgică, apoi revine Valahiei prin Pacea de la Belgrad.</span></div>
+      <div class="data-item"><b>1775</b><span>Austria anexează Bucovina, nord-vestul Moldovei.</span></div>
+      <div class="data-item"><b>1812</b><span>Rusia anexează teritoriul dintre Prut și Nistru, denumit ulterior Basarabia.</span></div>
+      <div class="data-item"><b>1829</b><span>Turnu, Giurgiu și Brăila revin Valahiei.</span></div>
+      <div class="data-item"><b>1856</b><span>Rusia pierde protectoratul exclusiv; Principatele intră sub garanția colectivă a Marilor Puteri.</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="instaurare">
+    <h2>4. Premisele și instaurarea domniilor fanariote</h2>
+    <p class="section-intro">Trecerea la domniile fanariote a fost răspunsul Porții la nesiguranța produsă de alianțele antiotomane ale unor domni pământeni și la ascensiunea Rusiei. Moldova intră în noul sistem în 1711, iar Valahia în 1716.</p>
+    <div class="two-col">
+      <article class="info-card"><h3>Dimitrie Cantemir și Moldova</h3><ul class="clean"><li><span class="date-pill">1710–1711</span>Dimitrie Cantemir este domn al Moldovei.</li><li><span class="date-pill">13 aprilie 1711</span>Tratatul secret de la Luțk cu Petru I: Cantemir intră în alianța antiotomană; Rusia recunoaște integritatea Moldovei și o succesiune ereditară în familia sa.</li><li><span class="date-pill">7–11 iulie 1711</span>Campania de la Stănilești se încheie prin încercuirea armatei ruso-moldave.</li><li><span class="date-pill">23 iulie 1711</span>Pacea de pe Prut, negociată în zona Huși–Stănilești, permite retragerea rușilor. Cantemir pleacă în Rusia și moare în 1723.</li><li>Poarta începe să numească în Moldova domni dependenți direct de sultan.</li></ul></article>
+      <article class="info-card"><h3>Brâncoveanu, Cantacuzino și Valahia</h3><ul class="clean"><li><span class="date-pill">1688–1714</span>Constantin Brâncoveanu menține un echilibru dificil între Poartă, Habsburgi și Rusia și dezvoltă o amplă rețea diplomatică.</li><li><span class="date-pill">15 august 1714</span>Brâncoveanu și fiii săi sunt executați la Constantinopol, după mazilirea și confiscarea averii.</li><li><span class="date-pill">1714–1716</span>Ștefan Cantacuzino este ultimul domn pământean al perioadei.</li><li><span class="date-pill">1716</span>Nicolae Mavrocordat este instalat în Valahia, inaugurând sistemul fanariot și aici.</li></ul></article>
+    </div>
+    <details><summary>Cine erau fanarioții?</summary><div class="details-body"><p>Fanarioții proveneau în principal din familii grecești sau elenizate din cartierul Fanar al Constantinopolului. Mulți erau dragomani, diplomați, medici, cărturari ori administratori ai Porții. Nu toate familiile domnitoare erau etnic grecești: între ele se aflau familii românești sau albaneze integrate în mediul fanariot, precum Racoviță, Callimachi și Ghica.</p><div class="badge-row"><span class="badge">Mavrocordat</span><span class="badge">Ipsilanti</span><span class="badge">Moruzi</span><span class="badge">Suțu</span><span class="badge">Caragea</span><span class="badge">Mavrogheni</span><span class="badge">Callimachi</span><span class="badge">Racoviță</span><span class="badge">Ghica</span></div></div></details>
+    <div class="correction"><strong>Corectură istorică:</strong> acuzația că Brâncoveanu l-ar fi otrăvit pe Șerban Cantacuzino nu poate fi tratată ca fapt cert. Succesiunea din 1688 s-a produs într-un context de rivalitate între grupările boierești, dar moartea lui Șerban Cantacuzino rămâne controversată.</div>
+  </section>
+
+  <section class="section" id="sistem">
+    <h2>5. Cum funcționa sistemul fanariot?</h2>
+    <p class="section-intro">Domnia fanariotă nu trebuie redusă la corupție și fiscalitate. Ea a fost simultan un mecanism de control imperial, o guvernare bazată pe clientelă și o etapă de centralizare și reformă. Tocmai această combinație explică imaginea sa contradictorie.</p>
+    <div class="four-col">
+      <div class="quick-card"><strong>Domnii scurte</strong><span>Media era adesea de aproximativ 2,5–3 ani; unii domni reveneau de mai multe ori în unul sau în ambele principate.</span></div>
+      <div class="quick-card"><strong>Tron costisitor</strong><span>Numirea, confirmarea și întreținerea relațiilor la Poartă presupuneau cheltuieli foarte mari.</span></div>
+      <div class="quick-card"><strong>Clientele</strong><span>Rudele, creditorii și protejații noului domn primeau dregătorii și surse de venit.</span></div>
+      <div class="quick-card"><strong>Autocrație internă</strong><span>Dependența externă a domnului coexistă cu puteri largi asupra administrației, fiscalității și justiției interne.</span></div>
+    </div>
+    <details open><summary>Numirea, mazilirea și cumpărarea influenței</summary><div class="details-body"><p>Domnul era numit prin firman și putea fi mazilit atunci când pierdea sprijinul Porții, nu își îndeplinea obligațiile ori era acuzat de legături cu puteri rivale. Insecuritatea domniei încuraja recuperarea rapidă a cheltuielilor. Din acest mecanism derivau vânzarea dregătoriilor, plățile pentru ranguri și presiunea asupra contribuabililor.</p><p>În același timp, funcțiile nu erau ocupate exclusiv de străini. Boierimea locală continua să participe la guvernare, iar familiile fanariote se înrudeau cu elitele pământene. Conflictul era mai ales unul pentru acces la putere și venituri, nu o separație etnică absolută.</p></div></details>
+    <details><summary>Capuchehaia și legătura permanentă cu Poarta</summary><div class="details-body"><p>Capuchehaia era reprezentantul domnului la Constantinopol. El transmitea cererile țării, urmărea deciziile Porții, negocia obligațiile și apăra interesele principatului. Numărul reprezentanților putea crește la trei, patru sau chiar mai mulți; conducătorul lor era numit bașcapuchehaia.</p><p>Reprezentanții Valahiei aveau reședința la Vlah-Sarai, iar cei ai Moldovei la Bogdan-Sarai. Funcția era riscantă: dacă domnul era acuzat de răzvrătire, reprezentantul său putea fi arestat sau executat.</p></div></details>
+    <details><summary>Fiscalitate, daruri și termeni</summary><div class="details-body"><div class="key-line"><strong>Haraci / tribut</strong><span>Obligație anuală a principatului față de Poartă; în limbajul epocii termenii fiscali puteau avea sensuri variabile.</span></div><div class="key-line"><strong>Peșcheș</strong><span>Dar oferit sultanului sau demnitarilor la numire, confirmare ori cu diferite prilejuri.</span></div><div class="key-line"><strong>Plocon, bacșiș, ciubuc</strong><span>Plăți și daruri care puteau funcționa ca forme de patronaj, recompensă sau corupție.</span></div><div class="key-line"><strong>Dăjdii</strong><span>Dări interne repartizate asupra populației contribuabile; frecvența și adăugirile lor alimentau nemulțumirea.</span></div><div class="key-line"><strong>Văcărit, oierit, dijmărit, vinărici</strong><span>Dări legate de animale, produse și activități agricole, invocate frecvent în programele de reformă.</span></div></div></details>
+    <div class="warning-box"><strong>Important:</strong> <em>ispencea</em> era o capitație/dare percepută de la nemusulmani în sistemul otoman. Recrutarea copiilor creștini pentru corpul ienicerilor se numea <em>devșirme</em> și reprezenta o instituție diferită; cele două nu trebuie confundate.</div>
+  </section>
+
+  <section class="section" id="societate">
+    <h2>6. Societatea, lumea rurală și economia secolului fanariot</h2>
+    <p class="section-intro">Societatea era dominată de proprietatea funciară și de ierarhii juridice. Boierimea și clerul controlau o mare parte a pământului, iar majoritatea populației era formată din țărani. Reformele au modificat statutul juridic al țăranilor, dar nu au redistribuit proprietatea.</p>
+    <div class="three-col">
+      <article class="info-card"><h3>Marea boierime</h3><p>Deținea moșii, ranguri și acces la marile dregătorii. Urmărea limitarea domniei, păstrarea privilegiilor fiscale și controlul instituțiilor reprezentative.</p></article>
+      <article class="info-card"><h3>Boierimea mică și mijlocie</h3><p>Avea acces mai redus la funcții și putea susține proiecte de reformă împotriva dominației marilor familii. Din acest mediu apar și idei constituționale mai radicale.</p></article>
+      <article class="info-card"><h3>Țărănimea</h3><p>După desființarea dependenței personale rămâne obligată la clacă, dijmă și alte prestații pentru folosirea pământului boieresc.</p></article>
+    </div>
+    <details open><summary>De ce libertatea juridică nu a însemnat libertate economică?</summary><div class="details-body"><p>Desființarea rumâniei și veciniei a eliminat legarea personală a țăranului de stăpân, dar nu i-a oferit automat pământ. Moșiile au rămas în proprietatea boierilor și mănăstirilor. Pentru a cultiva loturi, a pășuna animale sau a folosi pădurea, țăranul trebuia să presteze clacă, să ofere dijmă și să respecte condițiile stăpânului.</p><p>În consecință, relația feudală se transformă: dependența personală este înlocuită de o dependență contractuală și economică, care putea fi la fel de apăsătoare. Problema agrară devine astfel una dintre marile teme ale anilor 1821, 1848 și 1864.</p></div></details>
+    <details><summary>Comerțul și monopolul otoman</summary><div class="details-body"><p>Poarta urmărea aprovizionarea Constantinopolului și putea impune prețuri, cantități ori priorități de export. În 1751, controlul comercial este accentuat prin măsuri de monopol. Negustorii locali erau limitați, iar producătorii nu beneficiau întotdeauna de prețul pieței.</p><p>Totuși, comerțul nu încetează. Legăturile cu Brașovul, Sibiu, Leipzig, Viena, Constantinopol, Odesa și porturile dunărene se intensifică treptat. Negustorii greci, armeni, evrei, balcanici și români contribuie la apariția unei economii monetare mai active.</p></div></details>
+    <details><summary>Orașe, meșteșuguri și începuturile unei clase de mijloc</summary><div class="details-body"><p>Bucureștiul și Iașul se dezvoltă ca reședințe domnești și centre administrative. Târgurile și porturile adună negustori, meșteșugari, slujbași, profesori și clerici. Breslele sau isnafurile reglementează producția meșteșugărească, dar vor pierde treptat teren după liberalizarea comerțului din secolul al XIX-lea.</p><p>Creșterea circulației banilor, a creditului și a comerțului favorizează o categorie urbană intermediară. Aceasta nu este încă o burghezie industrială matură, dar va deveni un actor important al modernizării.</p></div></details>
+  </section>
+
+  <section class="section" id="cultura">
+    <h2>7. Educație, cultură și urbanizare în secolul al XVIII-lea</h2>
+    <p class="section-intro">Regimul fanariot a conectat Principatele la cultura greacă, la iluminism și la rețelele intelectuale ale sud-estului european. Limba greacă a dominat o parte a învățământului superior, dar s-au dezvoltat și tiparul, traducerile și școlile în limba română.</p>
+    <div class="two-col">
+      <article class="info-card"><h3>Instituții și circulația ideilor</h3><ul class="clean"><li>Academiile domnești din București și Iași pregăteau clerici, funcționari și cărturari.</li><li>Se traduc texte juridice, filosofice, medicale și istorice.</li><li>Domnii și boierii întrețin tipografii, biblioteci și burse de studiu.</li><li>Contactul cu Viena, Leipzig, Paris, Padova și Constantinopol facilitează pătrunderea iluminismului.</li></ul></article>
+      <article class="info-card"><h3>Limitele dezvoltării</h3><ul class="clean"><li>Accesul la școală rămâne restrâns și inegal.</li><li>Învățământul rural este slab dezvoltat.</li><li>Educația servește adesea nevoile administrației și ale Bisericii.</li><li>Războaiele și epidemiile întrerup periodic activitatea urbană.</li></ul></article>
+    </div>
+    <details><summary>Repere suplimentare</summary><div class="details-body"><ul class="clean"><li><span class="date-pill">1776</span>Alexandru Ipsilanti reorganizează Academia Domnească de la Sfântul Sava.</li><li><span class="date-pill">1813</span>Gheorghe Asachi organizează la Iași un curs de inginerie și hotărnicie în limba română.</li><li><span class="date-pill">1818</span>Gheorghe Lazăr deschide la Sfântul Sava cursuri superioare în limba română, un reper al afirmării învățământului național.</li><li><span class="date-pill">1835</span>Academia Mihăileană din Iași, creată în timpul lui Mihail Sturdza, devine un centru major de învățământ.</li></ul></div></details>
+    <div class="note"><strong>Context comparativ:</strong> în Transilvania habsburgică, <em>Ratio Educationis</em> din 1777 organizează învățământul ca problemă publică, Edictul de toleranță din 1781 extinde drepturile religioase ale ortodocșilor și protestanților, iar <em>Nova Ratio Educationis</em> din 1806 revizuiește sistemul școlar. Aceste reforme arată că modernizarea educațională era un fenomen regional, nu exclusiv fanariot.</div>
+    <details><summary>Ratio Educationis, Edictul de toleranță și școlile naționale</summary><div class="details-body"><p><span class="date-pill">1777</span><em>Ratio Educationis</em>, emisă în timpul Mariei Tereza, tratează educația ca responsabilitate publică. Sistemul diferenția școlile mici sătești și de târg, școlile urbane cu trei clase, școlile normale pentru pregătirea învățătorilor, gimnaziile și instituțiile superioare. În principiu, fiecare naționalitate trebuia să beneficieze, când era posibil, de predare în limba maternă.</p><p>În Maramureș și nordul Transilvaniei au fost organizate școli românești și rutene/ucrainene, inclusiv la Apșa de Jos și Apșa de Mijloc. Districtele școlare erau conduse de directori regali, iar Oradea a devenit un centru important pentru pregătirea funcționarilor și profesorilor.</p><p><span class="date-pill">13 octombrie 1781</span>Edictul de toleranță al lui Iosif al II-lea acordă protestanților și ortodocșilor dreptul de a-și practica religia în condiții mai largi; măsurile din 1782 privesc și comunitățile mozaice. <span class="date-pill">1806</span><em>Nova Ratio Educationis</em> întărește din nou rolul Bisericii în organizarea școlii și reduce unele elemente laice ale reformei din 1777.</p></div></details>
+  </section>
+
+  <section class="section" id="mavrocordat">
+    <h2>8. Reformele lui Constantin Mavrocordat</h2>
+    <p class="section-intro">Constantin Mavrocordat, domn de mai multe ori în ambele principate între 1730 și 1769, este figura centrală a reformismului fanariot. El urmărea o administrație mai previzibilă, o fiscalitate simplificată și o reducere a dependenței personale.</p>
+    <div class="four-col">
+      <div class="quick-card"><strong>Fiscalitate</strong><span>Comasarea mai multor dări într-o dare principală, achitată în patru rate anuale, pentru o percepere mai regulată.</span></div>
+      <div class="quick-card"><strong>Administrație</strong><span>Județele și ținuturile sunt supravegheate de ispravnici cu atribuții administrative, fiscale și judiciare.</span></div>
+      <div class="quick-card"><strong>Funcționari</strong><span>Introducerea lefurilor pentru dregători urmărea reducerea dependenței lor de taxe arbitrare și daruri.</span></div>
+      <div class="quick-card"><strong>Țărănime</strong><span>Desființarea rumâniei în 1746 și a veciniei în 1749.</span></div>
+    </div>
+    <details open><summary>Reforma socială: 1746 și 1749</summary><div class="details-body"><p><span class="date-pill">1746</span>În Valahia este desființată rumânia, forma locală de dependență personală. <span class="date-pill">1749</span>În Moldova este desființată vecinia. Țăranul nu mai este juridic legat de stăpân și poate, în principiu, să se mute.</p><p>Reforma nu desființează însă claca, dijma și monopolul proprietarului asupra moșiei. Libertatea de mișcare era limitată de lipsa pământului, de datorii și de condițiile impuse pentru folosirea loturilor.</p></div></details>
+    <details><summary>„Constituția” lui Mavrocordat și imaginea europeană</summary><div class="details-body"><p>Programul reformator al lui Mavrocordat a fost prezentat în Occident ca expresie a despotismului luminat. Un text asociat reformelor sale a fost publicat în 1742 în <em>Mercure de France</em>, contribuind la imaginea unui principe care încerca să raționalizeze guvernarea.</p><p>În practică, succesul reformelor depindea de cooperarea boierimii, de stabilitatea domniei și de presiunile Porții. De aceea multe măsuri au fost aplicate inegal sau abandonate de succesorii săi.</p></div></details>
+    <div class="definition"><strong>Bilanț:</strong> Mavrocordat nu construiește un stat modern în sens deplin, dar introduce logica modernă a uniformizării fiscale, salarizării funcționarilor și eliberării juridice a persoanei. Contradicția fundamentală rămâne proprietatea funciară: țăranul devine liber, dar nu devine proprietar.</div>
+  </section>
+
+  <section class="section" id="coduri">
+    <h2>9. Codificarea dreptului: Ipsilanti, Callimachi și Caragea</h2>
+    <p class="section-intro">Codurile de la sfârșitul secolului al XVIII-lea și începutul secolului al XIX-lea încearcă să transforme un drept fragmentar, bazat pe obicei, hrisoave și izvoare bizantine, într-un sistem mai coerent și mai accesibil administrației și instanțelor.</p>
+    <details open><summary>Pravilniceasca Condică a lui Alexandru Ipsilanti</summary><div class="details-body"><div class="two-col"><div><p><span class="date-pill">1775</span>Textul este întocmit în timpul domniei lui Alexandru Ipsilanti în Valahia. <span class="date-pill">1780</span>Este tipărit și pus în vigoare în greacă și română. Denumirile originale erau <em>Syntagmation nomikon</em> și <em>Mica rânduială juridică</em>.</p><p>Lucrarea cuprindea 40 de titluri și aproximativ 200 de puncte, reglementând instanțele, procedura, dreptul civil și familia.</p></div><div><p>Izvoarele combinau obiceiul pământului, dreptul bizantin, jurisprudența și idei juridice moderne asociate lui Montesquieu și Beccaria. Condica garanta anumite aspecte ale libertății persoanei și încerca să ordoneze procedura, dar păstra proprietatea feudală, claca, dijma și principiul masculinității în succesiune.</p><p>A rămas în vigoare până la <span class="date-pill">1 septembrie 1818</span>, când a fost înlocuită de Legiuirea Caragea.</p></div></div></div></details>
+    <details><summary>Codul Callimachi</summary><div class="details-body"><p><span class="date-pill">1817</span>Codul civil al Moldovei este promulgat la inițiativa lui Scarlat Callimachi. A fost redactat inițial în greacă, iar versiunea românească a apărut în 1833. A rămas aplicabil, cu modificări, până la intrarea în vigoare a Codului civil al lui Alexandru Ioan Cuza în 1865.</p><p>Codul combină dreptul local și bizantin cu influențe ale Codului civil francez din 1804 și ale Codului civil austriac din 1811. Introduce reguli despre contracte, proprietate, răspundere civilă și familie, folosind și norme de drept burghez. Condamnă robia în plan moral, fără a o desființa juridic, și interzice căsătoriile dintre persoane libere și robi.</p></div></details>
+    <details><summary>Legiuirea Caragea</summary><div class="details-body"><p><span class="date-pill">1818</span>Ioan Gheorghe Caragea promulgă în Valahia o amplă legiuire civilă și penală. Ea urmărea uniformizarea dreptului, reglementând persoanele, proprietatea, obligațiile, familia, delictele și procedurile.</p><p>Legiuirea păstra ierarhiile sociale și caracterul patriarhal al familiei, introducea ori confirma obligații fiscale și agrare și nu recunoștea participarea politică a femeilor. A fost criticată în programul lui Tudor Vladimirescu ca fiind adoptată fără voința „norodului”. A rămas în vigoare până în 1865.</p></div></details>
+    <div class="table-wrap dense-table"><table><thead><tr><th>Cod</th><th>Data</th><th>Spațiul</th><th>Izvoare</th><th>Elemente moderne</th><th>Limite</th></tr></thead><tbody>
+      <tr><td><strong>Pravilniceasca Condică</strong></td><td>1775 / 1780</td><td>Valahia</td><td>Obiceiul pământului, drept bizantin, jurisprudență, doctrină iluministă</td><td>Instanțe, procedură, publicare bilingvă, norme civile</td><td>Păstrează claca, dijma, proprietatea feudală și inegalități de statut</td></tr>
+      <tr><td><strong>Codul Callimachi</strong></td><td>1817; română 1833</td><td>Moldova</td><td>Drept local și bizantin, codurile francez și austriac</td><td>Contracte, răspundere civilă, proprietate și norme burgheze</td><td>Ordine patriarhală, robie menținută, inegalitate socială</td></tr>
+      <tr><td><strong>Legiuirea Caragea</strong></td><td>1818</td><td>Valahia</td><td>Drept local, bizantin și codificare europeană</td><td>Sistematizare civilă și penală, proceduri uniforme</td><td>Nu are legitimare reprezentativă și menține structuri feudale</td></tr>
+    </tbody></table></div>
+  </section>
+
+  <section class="section" id="proiecte">
+    <h2>10. Boierimea pământeană și proiectele de reorganizare politică</h2>
+    <p class="section-intro">Boierimea locală nu a fost doar apărătoarea privilegiilor. Ea a formulat memorii, proiecte de constituție, cereri de autonomie, unire și independență. Unele texte erau oligarhice, altele introduceau separarea puterilor și drepturi cetățenești.</p>
+    <div class="data-strip">
+      <div class="data-item"><b>40</b><span>Cereri de înlocuire a domnilor fanarioți cu domni aleși de țară, menționate pentru intervalul 1716–1812.</span></div>
+      <div class="data-item"><b>209</b><span>Proiecte și memorii politice inventariate pentru aproximativ 1769–1830.</span></div>
+      <div class="data-item"><b>75</b><span>Memorii produse în climatul politic al anilor 1821–1822.</span></div>
+      <div class="data-item"><b>1769</b><span>Mitropolitul Gavriil Callimachi propune o republică aristocratică guvernată de 12 mari boieri.</span></div>
+      <div class="data-item"><b>1802</b><span>Planul de oblăduire aristo-democraticească formulează un proiect republican și separarea puterilor.</span></div>
+    </div>
+    <div class="timeline">
+      <div class="event"><div class="date">1772</div><div><h3>Memoriile de la Focșani</h3><p>În timpul negocierilor ruso-otomane, boierii cer respectarea autonomiei, domni pământeni și garanții internaționale. Contextul războiului transformă diplomația boierească într-un instrument politic.</p></div></div>
+      <div class="event"><div class="date">1791</div><div><h3>Memoriul de la Șiștov</h3><p>Solicită autonomia deplină, unirea Moldovei cu Valahia și independența sub garanția Rusiei și Austriei. Formula arată că proiectul național era încă dependent de protecția marilor puteri.</p></div></div>
+      <div class="event"><div class="date">1802</div><div><h3>Plan republican</h3><p>Dumitrache Sturdza este asociat unui proiect de „oblăduire aristo-democraticească”, în care apar o republică boierească și separarea puterilor.</p></div></div>
+      <div class="event"><div class="date">1817–1818</div><div><h3>Proiectele lui Rosetti-Roznovanu</h3><p>Marele vistier elaborează mai multe proiecte care limitează autoritatea domnului și sporesc controlul boierimii asupra guvernării.</p></div></div>
+      <div class="event"><div class="date">1822</div><div><h3>Constituția Cărvunarilor</h3><p>Proiectul lui Ionică Tăutu, redactat la Iași, propune domn pământean, Adunare Obștească, separarea puterilor, autonomie și drepturi. Reprezintă vocea boierimii mici și mijlocii împotriva monopolului marii boierimi.</p></div></div>
+      <div class="event"><div class="date">1838</div><div><h3>Proiectul lui Ion Câmpineanu</h3><p>„Actul de unire și independență” și proiectul constituțional al Partidei Naționale leagă modernizarea internă de unirea Principatelor și de desprinderea de controlul ruso-otoman.</p></div></div>
+    </div>
+    <div class="definition"><strong>Contradicția proiectelor boierești:</strong> ele puteau susține autonomia, unirea și legalitatea, dar multe urmăreau în același timp păstrarea privilegiilor marilor proprietari și excluderea politică a majorității populației.</div>
+  </section>
+
+  <section class="section" id="razboaie">
+    <h2>11. Războaiele ruso-austro-otomane și efectele asupra Principatelor</h2>
+    <p class="section-intro">Între 1683 și 1829, Valahia și Moldova au fost traversate de armate, ocupate temporar și folosite ca monedă de schimb diplomatică. Războaiele au provocat pierderi, rechiziții și epidemii, dar tratatele de pace au creat și noi oportunități politice.</p>
+    <div class="table-wrap dense-table"><table><thead><tr><th>Conflict</th><th>Pacea / data</th><th>Efect teritorial sau politic</th><th>Semnificație pentru modernizare</th></tr></thead><tbody>
+      <tr><td>Războiul Ligii Sfinte, 1683–1699</td><td>Karlowitz, 26 ianuarie 1699</td><td>Transilvania intră în sistemul habsburgic</td><td>Poarta pierde poziții în Europa Centrală; Principatele devin zonă de frontieră strategică.</td></tr>
+      <tr><td>Războiul ruso-otoman, 1710–1711</td><td>Pacea de pe Prut / Vadul Hușilor, iulie 1711</td><td>Hotinul devine raia; Cantemir pleacă în Rusia</td><td>Începe regimul fanariot în Moldova.</td></tr>
+      <tr><td>Războiul austro-otoman, 1716–1718</td><td>Passarowitz, 21 iulie 1718</td><td>Oltenia și Banatul trec la Austria</td><td>Administrația habsburgică introduce un experiment de centralizare în Oltenia.</td></tr>
+      <tr><td>Războiul austro-ruso-otoman, 1735/1736–1739</td><td>Belgrad, 18 septembrie 1739</td><td>Oltenia revine Valahiei</td><td>Se reface integritatea Valahiei, dar regiunea rămâne expusă conflictelor.</td></tr>
+      <tr><td>Războiul ruso-otoman, 1768–1774</td><td>Kuciuk-Kainargi, 21 iulie 1774</td><td>Crește dreptul Rusiei de a interveni în favoarea Principatelor</td><td>Începe o nouă etapă a influenței ruse și a „Problemei Orientale”.</td></tr>
+      <tr><td>Presiune diplomatică austriacă</td><td>Convenția din 1775</td><td>Bucovina este anexată de Austria</td><td>Pierderea teritorială alimentează discursul autonomiei și integrității.</td></tr>
+      <tr><td>Războiul austro-ruso-otoman, 1787–1792</td><td>Șiștov, 4 august 1791; Iași, 9 ianuarie 1792</td><td>Rusia ajunge la Nistru</td><td>Moldova intră direct în vecinătatea Imperiului Rus.</td></tr>
+      <tr><td>Războiul ruso-otoman, 1806–1812</td><td>București, 28 mai 1812</td><td>Rusia anexează teritoriul dintre Prut și Nistru</td><td>Principatul Moldovei este grav amputat; problema teritorială devine centrală.</td></tr>
+      <tr><td>Războiul ruso-otoman, 1828–1829</td><td>Adrianopol, 14 septembrie 1829</td><td>Raialele dunărene revin Valahiei; monopolul otoman este înlăturat</td><td>Comerțul se liberalizează, dar protectoratul rus se consolidează.</td></tr>
+    </tbody></table></div>
+    <details><summary>Pacea de la Kuciuk-Kainargi, 1774</summary><div class="details-body"><p>Tratatul nu desființează suzeranitatea otomană, dar obligă Poarta să respecte anumite privilegii și permite Rusiei să facă reprezentări diplomatice în favoarea creștinilor și a Principatelor. Obligațiile materiale sunt mai clar definite, prezența otomană la nordul Dunării este limitată, iar durata domniilor devine mai previzibilă.</p><p>Pentru boierimea română, tratatul creează un precedent: statutul intern al țării poate fi negociat și garantat internațional. Pentru Rusia, el oferă un instrument de intervenție.</p></div></details>
+    <details><summary>Reacții ale unor domni fanarioți la pierderile teritoriale</summary><div class="details-body"><ul class="clean"><li><strong>Grigore al III-lea Ghica</strong> protestează împotriva anexării Bucovinei și este ucis în 1777, într-un context politic tensionat.</li><li><strong>Alexandru Mavrocordat</strong>, domn al Moldovei între 1782 și 1785, acordă privilegii comerciale negustorilor habsburgici.</li><li><strong>Alexandru Ipsilanti</strong>, domn al Moldovei în 1786–1788, negociază în 1787 o convenție comercială cu Habsburgii.</li></ul></div></details>
+  </section>
+
+  <section class="section" id="1821">
+    <h2>12. Anul 1821: context, actori și caracterul mișcării</h2>
+    <p class="section-intro">Evenimentele din 1821 au avut două componente care au colaborat temporar, apoi au intrat în conflict: mișcarea lui Tudor Vladimirescu, orientată împotriva abuzurilor interne și a regimului fanariot, și acțiunea Eteriei, organizație greacă ce urmărea declanșarea războiului de eliberare antiotoman.</p>
+    <div class="three-col">
+      <article class="info-card"><span class="ribbon">Social</span><h3>Nemulțumirea populației</h3><p>Fiscalitatea, abuzurile dregătorilor, vânzarea funcțiilor și dependența rurală alimentau opoziția țăranilor, pandurilor, negustorilor și micii boierimi.</p></article>
+      <article class="info-card"><span class="ribbon">Politic</span><h3>Program antifanariot</h3><p>Boierimea pământeană dorea limitarea grecilor în dregătorii, domn pământean, administrație legală și revenirea la privilegii considerate tradiționale.</p></article>
+      <article class="info-card"><span class="ribbon">Balcanic</span><h3>Eteria și emanciparea greacă</h3><p>Filiki Eteria, fondată în 1814 la Odesa, pregătea o insurecție greacă și spera într-un sprijin rusesc care nu a fost acordat oficial.</p></article>
+    </div>
+    <details open><summary>Tudor Vladimirescu: profil politic și militar</summary><div class="details-body"><p>Tudor provenea dintr-o familie de moșneni din Vladimir, Oltenia. Participase ca pandur de partea Rusiei în războiul din 1806–1812 și primise gradul de <em>porucic</em>. Avea experiență militară, legături cu boierii și autoritate în rândul pandurilor.</p><p>La sfârșitul anului 1820 și începutul lui 1821, trei mari boieri — Grigore Brâncoveanu, Grigore Ghica și Barbu Văcărescu — îl însărcinează să ridice Oltenia și să asigure o forță armată într-un moment de criză a domniei. Tudor acceptă și o înțelegere limitată cu Eteria, dar refuză subordonarea completă față de Alexandru Ipsilanti.</p></div></details>
+    <details><summary>De ce nu a sprijinit țarul Eteria?</summary><div class="details-body"><p>Alexandru Ipsilanti fusese ofițer rus și sugera că o „mare putere” va interveni. Totuși, țarul Alexandru I participa la sistemul Sfintei Alianțe, creat pentru apărarea ordinii monarhice împotriva revoluțiilor. La Congresul de la Laibach, țarul dezaprobă public acțiunea și îl exclude pe Ipsilanti din armata rusă.</p><p>Fără sprijin rusesc, o confruntare directă cu Imperiul Otoman devenea extrem de riscantă. Tudor încearcă de aceea să prezinte acțiunea sa ca una împotriva abuzurilor interne, nu împotriva suveranității sultanului.</p></div></details>
+    <div class="correction"><strong>Ultimii domni fanarioți:</strong> în momentul crizei din 1821, Alexandru Suțu era domnul Valahiei, iar Mihail Suțu al Moldovei. Scarlat Callimachi fusese domn al Moldovei și inițiatorul codului din 1817, dar nu ultimul domn fanariot al Valahiei.</div>
+    <div class="correction"><strong>Caracterizare echilibrată:</strong> mișcarea lui Tudor a fost antifanariotă, politică, socială și națională, dar nu a avut un program agrar unitar și nici un obiectiv public de independență imediată. Radicalismul Proclamației de la Padeș coexistă cu moderația diplomatică a <em>Cererilor norodului românesc</em>.</div>
+  </section>
+
+  <section class="section" id="documente1821">
+    <h2>13. Documentele programatice ale mișcării din 1821</h2>
+    <details open><summary>Cererile norodului românesc</summary><div class="details-body"><p>Documentul, redactat în ianuarie 1821 și dezvoltat în peste 30 de puncte, are caracter constituțional. El urmărea înlăturarea abuzurilor, limitarea influenței grecești, o administrație mai economică, o fiscalitate previzibilă și o armată națională.</p><div class="two-col"><div class="micro-card"><strong>Administrație</strong><span>Dregătoriile să nu mai fie cumpărate; numirile să se facă după merit și cu răspundere pentru abuzuri.</span></div><div class="micro-card"><strong>Fiscalitate</strong><span>Reducerea dăjdiilor, interzicerea majorărilor arbitrare și eliminarea unor categorii privilegiate precum scutelnicii și poslușnicii.</span></div><div class="micro-card"><strong>Biserică</strong><span>Limitarea călugărilor greci și păstrarea scaunelor bisericești și mănăstirilor în controlul țării.</span></div><div class="micro-card"><strong>Armată</strong><span>Organizarea a 4.000 de panduri și 200 de arnăuți, plătiți din veniturile mănăstirești.</span></div><div class="micro-card"><strong>Justiție</strong><span>Reducerea aparatului, taxelor judiciare și a numărului dregătorilor.</span></div><div class="micro-card"><strong>Legislație</strong><span>Abrogarea Legiuirii Caragea, considerată nelegitimă, și menținerea Condicii lui Ipsilanti.</span></div></div></div></details>
+    <details><summary>Proclamația de la Padeș</summary><div class="details-body"><p><span class="date-pill">23 ianuarie / 4 februarie 1821</span>Proclamația se adresează „norodului omenesc” și justifică ridicarea împotriva căpeteniilor politice și bisericești abuzive. Limbajul ei este mult mai radical decât cel al negocierilor purtate cu boierii și cu Poarta.</p><div class="quote">„Până când să-i suferim a ne suge sângele din noi? Până când să le fim robi?”</div><p>Textul cere dreptate și „slobozenie”, cheamă populația să se înarmeze și permite confiscarea averilor „rău agonisite” ale boierilor care se opun Adunării. Nu trebuie însă confundată această retorică cu un proiect tehnic complet de reformă agrară. Tudor încearcă simultan să mobilizeze țărănimea și să păstreze alianța cu o parte a boierimii.</p></div></details>
+    <details><summary>„Adunarea norodului” și ideea de reprezentare</summary><div class="details-body"><p>Tudor numește forța sa politică și militară „Adunarea norodului”. Termenul sugerează că puterea legitimă nu aparține exclusiv domnului sau boierilor, ci unei comunități politice mai largi. Totuși, structura concretă nu era o adunare aleasă democratic, ci o organizație militară și politică dominată de conducător și de căpitanii pandurilor.</p><p>Importanța expresiei este mai ales simbolică: ea introduce în limbajul politic ideea că reformele trebuie făcute în interesul „țării” și cu voința „norodului”.</p></div></details>
+  </section>
+
+  <section class="section" id="desfasurare1821">
+    <h2>14. Desfășurarea cronologică a evenimentelor din 1821</h2>
+    <div class="timeline">
+      <div class="event"><div class="date">Ian. 1821</div><div><h3>Criza domniei și pornirea acțiunii</h3><p>Moartea domnului Alexandru Suțu creează un vid de putere. Tudor părăsește Bucureștiul, se îndreaptă spre Oltenia și începe mobilizarea pandurilor.</p></div></div>
+      <div class="event"><div class="date">23 ian. / 4 feb.</div><div><h3>Proclamația de la Padeș</h3><p>Tudor cheamă populația la luptă împotriva abuzurilor și constituie nucleul „Adunării norodului”.</p></div></div>
+      <div class="event"><div class="date">Feb. 1821</div><div><h3>Consolidarea în Oltenia</h3><p>Pandurii ocupă puncte strategice, iar Tudor negociază cu boierii și cu autoritățile locale. Mănăstirile fortificate din Oltenia devin baze militare.</p></div></div>
+      <div class="event"><div class="date">22 feb. / 6 mart.</div><div><h3>Ipsilanti intră în Moldova</h3><p>Alexandru Ipsilanti trece Prutul și proclamă începutul luptei antiotomane, sugerând în mod nefondat că Rusia va sprijini acțiunea.</p></div></div>
+      <div class="event"><div class="date">Mart. 1821</div><div><h3>Dezavuarea rusă</h3><p>Țarul Alexandru I condamnă Eteria. Speranța unei intervenții rusești se prăbușește, iar boierii devin mai prudenți.</p></div></div>
+      <div class="event"><div class="date">21 mart. / 2 apr.</div><div><h3>Tudor intră în București</h3><p>Instalează tabăra la Cotroceni, negociază cu boierii rămași în capitală și exercită de facto conducerea Valahiei.</p></div></div>
+      <div class="event"><div class="date">Primăvara 1821</div><div><h3>Ruptura cu Eteria</h3><p>Tudor și Ipsilanti își separă zonele de acțiune. Tudor controlează Bucureștiul și vestul țării, iar eteriștii se concentrează în nord și est.</p></div></div>
+      <div class="event"><div class="date">1 / 13 mai</div><div><h3>Intervenția otomană</h3><p>Trupele otomane intră în Principate cu acceptul tacit al Rusiei, pentru a lichida Eteria și mișcarea armată.</p></div></div>
+      <div class="event"><div class="date">15 / 27 mai</div><div><h3>Retragerea din București</h3><p>Tudor se retrage spre Oltenia, încercând să evite confruntarea directă și să negocieze cu otomanii.</p></div></div>
+      <div class="event"><div class="date">21 mai / 2 iun.</div><div><h3>Arestarea la Golești</h3><p>Căpitanii eteriști îl arestează pe Tudor sub acuzația de trădare, folosind și nemulțumirile unor panduri față de disciplina impusă.</p></div></div>
+      <div class="event"><div class="date">27 mai / 8 iun.</div><div><h3>Executarea lui Tudor</h3><p>Este ucis lângă Târgoviște fără un proces regulat. Moartea sa provoacă destrămarea rapidă a oastei de panduri.</p></div></div>
+      <div class="event"><div class="date">7 / 19 iun.</div><div><h3>Bătălia de la Drăgășani</h3><p>Trupele eteriste sunt înfrânte de otomani. „Batalionul sacru” suferă pierderi grele, iar Ipsilanti se retrage spre Transilvania.</p></div></div>
+      <div class="event"><div class="date">Vara–toamna</div><div><h3>Ocupația otomană</h3><p>Valahia și Moldova sunt ocupate, iar ultimele forțe eteriste sunt dispersate. Represiunea și nesiguranța continuă până în 1822.</p></div></div>
+    </div>
+    <div class="warning-box"><strong>Datele duble:</strong> documentele epocii folosesc calendarul iulian, numit „stil vechi”. În secolul al XIX-lea diferența față de calendarul gregorian era de 12 zile. De aceea multe evenimente apar cu două date.</div>
+  </section>
+
+  <section class="section" id="consecinte1821">
+    <h2>15. De ce a eșuat mișcarea și ce a schimbat?</h2>
+    <div class="two-col">
+      <article class="info-card"><h3>Cauzele eșecului imediat</h3><ul class="redflag"><li>Retragerea sprijinului rusesc și dezavuarea Eteriei.</li><li>Incompatibilitatea dintre programul antifanariot al lui Tudor și războiul antiotoman al lui Ipsilanti.</li><li>Interese divergente între țărani, panduri, mica boierime și marea boierime.</li><li>Lipsa unei conduceri politice comune și a unui program agrar clar.</li><li>Superioritatea militară otomană și ocuparea Principatelor.</li><li>Arestarea și executarea lui Tudor de către eteriști.</li></ul></article>
+      <article class="info-card"><h3>Consecințele istorice</h3><ul class="checklist"><li>Poarta renunță în 1822 la numirea domnilor fanarioți.</li><li>Domnii pământeni revin în Valahia și Moldova.</li><li>Abuzurile fiscale și vânzarea funcțiilor devin teme centrale ale reformei.</li><li>Ideea armatei naționale și a unei legi fundamentale este consolidată.</li><li>Boierimea formulează noi proiecte constituționale în 1821–1822.</li><li>Mișcarea intră în memoria politică drept început al renașterii naționale moderne.</li></ul></article>
+    </div>
+    <div class="definition"><strong>Semnificație:</strong> 1821 nu produce imediat un regim liberal, dar schimbă criteriul legitimității. Domnia nu mai poate fi prezentată exclusiv ca rezultat al numirii sultanului; ea trebuie să răspundă intereselor țării, să limiteze abuzurile și să coopereze cu elitele pământene.</div>
+  </section>
+
+  <section class="section" id="pamanteni">
+    <h2>16. Revenirea domniilor pământene, 1822–1828</h2>
+    <p class="section-intro">În septembrie 1822, Poarta îi numește pe Grigore al IV-lea Ghica în Valahia și pe Ioan Sandu Sturdza în Moldova. Revenirea domnilor pământeni răspundea revendicărilor locale, dar nu însemna dispariția suzeranității otomane sau democratizarea regimului.</p>
+    <div class="two-col">
+      <article class="info-card"><h3>Grigore al IV-lea Ghica</h3><p><span class="date-pill">1822–1828</span>Domn al Valahiei. Încearcă reorganizarea financiară și administrativă, reducerea unor cheltuieli și refacerea ordinii după ocupația din 1821. Trebuie să echilibreze presiunea Porții, cererile boierimii și dificultățile fiscale.</p></article>
+      <article class="info-card"><h3>Ioan Sandu Sturdza</h3><p><span class="date-pill">1822–1828</span>Domn al Moldovei. Sprijinit inițial de boierimea mică și mijlocie, intră în conflict cu marii boieri refugiați în timpul crizei. Proiectul Cărvunarilor din 1822 apare în acest climat.</p></article>
+    </div>
+    <details><summary>De ce reformele au rămas limitate?</summary><div class="details-body"><p>Țările erau afectate de distrugeri, datorii și instabilitate. Marea boierime se opunea măsurilor care îi diminuau privilegiile, iar domnii nu aveau libertate externă. Rusia folosea protecția creștinilor și vechile tratate pentru a interveni, în timp ce Poarta încerca să păstreze controlul.</p><p>În plus, lipsa unei administrații profesioniste și a unor venituri stabile făcea dificilă aplicarea reformelor. Problema va fi abordată mai sistematic abia în timpul ocupației ruse și al Regulamentelor Organice.</p></div></details>
+  </section>
+
+  <section class="section" id="akkerman">
+    <h2>17. Convenția de la Akkerman și Tratatul de la Adrianopol</h2>
+    <details open><summary>Convenția de la Akkerman, 7 octombrie 1826</summary><div class="details-body"><p>Convenția ruso-otomană reafirmă privilegiile Principatelor. Domnii urmau să fie aleși de divanurile locale pentru mandate de șapte ani, cu confirmarea Porții și a Rusiei. Trupele otomane staționate după 1821 trebuiau retrase, iar vechile cetăți-raiale dunărene urmau să fie restituite Valahiei.</p><p>Sultanul Mahmud al II-lea a repudiat ulterior convenția, iar conflictul cu Rusia a contribuit la declanșarea războiului din 1828–1829.</p></div></details>
+    <details open><summary>Tratatul de la Adrianopol, 14 septembrie 1829</summary><div class="details-body"><div class="details-grid"><div class="micro-card"><strong>Domnia</strong><span>Principii urmau să fie aleși pe viață dintre boierii pământeni, sub confirmarea puterilor suzerană și protectoare.</span></div><div class="micro-card"><strong>Comerțul</strong><span>Monopolul otoman asupra produselor Principatelor este desființat; exportul devine mult mai liber.</span></div><div class="micro-card"><strong>Teritoriul</strong><span>Turnu, Giurgiu și Brăila sunt restituite Valahiei.</span></div><div class="micro-card"><strong>Ocupația</strong><span>Rusia putea menține trupe până la plata despăgubirilor de război de către Poartă.</span></div><div class="micro-card"><strong>Statutul</strong><span>Se menține suzeranitatea otomană, dar protectoratul rusesc devine determinant.</span></div><div class="micro-card"><strong>Regulamente</strong><span>Se prevede reorganizarea internă prin legi fundamentale elaborate sub supraveghere rusă.</span></div></div></div></details>
+    <div class="concept-chain"><span>desființarea monopolului</span><i>→</i><span>creșterea exportului de cereale</span><i>→</i><span>extinderea suprafețelor cultivate</span><i>→</i><span>presiune mai mare asupra muncii țărănești</span></div>
+    <div class="definition"><strong>Dublul efect al Adrianopolului:</strong> tratatul stimulează modernizarea economică prin libertatea comerțului și refacerea porturilor, dar întărește dependența politică față de Rusia. Dezvoltarea pieței nu înseamnă automat îmbunătățirea situației țărănimii; dimpotrivă, cererea externă de cereale poate intensifica obligațiile de muncă.</div>
+  </section>
+
+  <section class="section" id="kiseleff">
+    <h2>18. Ocupația rusă și administrația lui Pavel Kiseleff, 1828–1834</h2>
+    <p class="section-intro">Ocupația rusă începe în timpul războiului din 1828 și continuă după pace, ca garanție pentru despăgubirile datorate de Poartă. Primele faze sunt represive și împovărătoare; din 1829, generalul Pavel Kiseleff coordonează un program amplu de reorganizare.</p>
+    <div class="timeline">
+      <div class="event"><div class="date">1828–1829</div><div><h3>Pahlen și Jeltuhin</h3><p>Administrația militară impune rechiziții, contribuții și măsuri de război. Populația suportă costurile armatei, iar epidemiile agravează criza.</p></div></div>
+      <div class="event"><div class="date">1829–1834</div><div><h3>Pavel Kiseleff</h3><p>Generalul rus conduce ambele Principate, sprijină comisiile de redactare a Regulamentelor și reorganizează administrația, poliția, sănătatea publică, armata și infrastructura.</p></div></div>
+      <div class="event"><div class="date">1831</div><div><h3>Epidemia de holeră</h3><p>Criza sanitară accelerează instituirea carantinelor, cordoanelor sanitare, evidenței populației și măsurilor urbane de igienă.</p></div></div>
+      <div class="event"><div class="date">1834</div><div><h3>Încheierea ocupației</h3><p>Trupele ruse se retrag, iar puterea este preluată de domnii regulamentari: Alexandru Dimitrie Ghica în Valahia și Mihail Sturdza în Moldova.</p></div></div>
+    </div>
+    <details><summary>Modernizare sau dominație străină?</summary><div class="details-body"><p>Administrația Kiseleff a creat instituții durabile și o mai mare regularitate a guvernării. Totuși, reforma nu a fost rezultatul suveranității politice a Principatelor. Rusia controla procesul, iar articolul adițional cerea aprobarea Rusiei și a Porții pentru modificări ulterioare.</p><p>Prin urmare, Kiseleff este asociat atât cu modernizarea Bucureștiului și a administrației, cât și cu instituționalizarea protectoratului rusesc. Cele două aspecte nu se exclud.</p></div></details>
+  </section>
+
+  <section class="section" id="regulamente">
+    <h2>19. Regulamentele Organice: redactare, adoptare și caracter</h2>
+    <p class="section-intro">Regulamentele erau două texte similare, redactate de comisii de boieri români sub supraveghere rusă. Ele au avut rolul unor legi fundamentale și au creat primul sistem administrativ coerent comun Valahiei și Moldovei.</p>
+    <div class="two-col">
+      <article class="info-card"><h3>Valahia</h3><p><span class="date-pill">1/13 iulie 1831</span>Regulamentul intră în vigoare. Data este redată diferit în funcție de stilul vechi sau nou.</p></article>
+      <article class="info-card"><h3>Moldova</h3><p><span class="date-pill">1/13 ianuarie 1832</span>Intră în vigoare versiunea moldovenească, apropiată ca structură de cea valahă.</p></article>
+    </div>
+    <details open><summary>De ce sunt numite „primele constituții”?</summary><div class="details-body"><p>Regulamentele stabileau instituțiile principale, raporturile dintre domn și adunare, administrația, bugetul, justiția, armata și organizarea teritorială. Prin conținut și durată, au funcționat ca legi fundamentale.</p><p>Totuși, nu au fost constituții adoptate de o națiune suverană prin reprezentare largă. Au fost elaborate sub ocupație și impuse într-un cadru de suzeranitate otomană și protectorat rusesc. De aceea formula cea mai exactă este: <strong>primele legi fundamentale moderne ale Principatelor</strong>.</p></div></details>
+    <details><summary>Articolul adițional</summary><div class="details-body"><p>Rusia a urmărit introducerea unei clauze prin care orice modificare a Regulamentelor necesita acordul puterii protectoare și al Porții. Această prevedere limita autonomia legislativă și transforma textele într-un instrument de supraveghere externă.</p><p>Opoziția față de articolul adițional a alimentat Partida Națională, activitatea lui Ion Câmpineanu și discursul unirii și independenței.</p></div></details>
+    <div class="definition"><strong>Caracter dual:</strong> Regulamentele au fost moderne prin tehnica administrativă și conservatoare prin baza socială. Ele au înlocuit arbitrariul cu reguli, dar au rezervat puterea marii boierimi și au exclus majoritatea populației de la decizie.</div>
+  </section>
+
+  <section class="section" id="institutii">
+    <h2>20. Instituțiile Regulamentelor Organice</h2>
+    <div class="table-wrap dense-table"><table><thead><tr><th>Domeniu</th><th>Instituție</th><th>Funcționare</th><th>Limită</th></tr></thead><tbody>
+      <tr><td><strong>Executiv</strong></td><td>Domnul și Sfatul administrativ</td><td>Domnul numea funcționarii, conducea administrația, promulga legile și coordona departamentele.</td><td>Puterea sa era controlată de Rusia și de marea boierime; separarea puterilor nu era deplină.</td></tr>
+      <tr><td><strong>Legislativ</strong></td><td>Adunarea Obștească</td><td>Vota impozitele, bugetul și proiectele de lege; era prezidată de mitropolit și dominată de boieri.</td><td>Electorat restrâns, reprezentare socială foarte îngustă.</td></tr>
+      <tr><td><strong>Alegerea domnului</strong></td><td>Adunarea Obștească Extraordinară</td><td>În teorie alegea domnul dintre marii boieri, cu confirmarea puterilor.</td><td>În practică, intervenția externă putea decide numirea.</td></tr>
+      <tr><td><strong>Justiție</strong></td><td>Tribunale, divanuri și Înaltul Divan</td><td>Ierarhie de instanțe, proceduri mai stabile, specializare comercială.</td><td>Independența judecătorilor față de executiv era incompletă.</td></tr>
+      <tr><td><strong>Administrație locală</strong></td><td>Ispravnici, magistraturi urbane, poliție</td><td>Control mai sistematic al județelor, orașelor și ordinii publice.</td><td>Centralizare puternică și posibilitatea abuzului funcționarilor.</td></tr>
+      <tr><td><strong>Armată</strong></td><td>Miliția națională</td><td>Forță permanentă pentru ordine internă și pază, nucleul viitoarei armate.</td><td>Inițial supravegheată de Rusia și redusă numeric.</td></tr>
+    </tbody></table></div>
+    <details open><summary>Separarea puterilor: realitate sau principiu incomplet?</summary><div class="details-body"><p>Regulamentele disting executivul, legislativul și justiția, ceea ce reprezintă un progres față de concentrarea tradițională a puterii în persoana domnului. Totuși, domnul păstrează inițiativa, numește funcționarii și poate influența adunarea, iar boierii domină atât legislativul, cât și administrația și instanțele.</p><p>Este mai corect să vorbim despre <strong>diferențiere funcțională a puterilor</strong> decât despre o separație liberală deplină.</p></div></details>
+  </section>
+
+  <section class="section" id="reforme-regulamentare">
+    <h2>21. Reformele fiscale, judiciare, militare și administrative</h2>
+    <div class="three-col">
+      <article class="info-card"><h3>Fiscalitate și buget</h3><ul class="clean"><li>Se încearcă înlocuirea multiplelor dări cu o capitație mai previzibilă.</li><li>Cuantumul și termenele sunt reglementate.</li><li>Vistieria statului este separată de cămara domnului.</li><li>Domnul primește o listă civilă.</li><li>Se întocmește un buget anual.</li><li>Vămile interne sunt eliminate.</li></ul></article>
+      <article class="info-card"><h3>Justiție</h3><ul class="clean"><li>Tribunale județene și instanțe de apel.</li><li>Înaltul Divan ca instanță superioară.</li><li>Procurori și corp de avocați.</li><li>Instanțe comerciale speciale.</li><li>Reducerea rolului clerului în cauzele civile.</li><li>Limitarea torturii și a pedepselor arbitrare.</li></ul></article>
+      <article class="info-card"><h3>Administrație publică</h3><ul class="clean"><li>Departamente specializate, precursoare ale ministerelor.</li><li>Arhive pentru documentele publice.</li><li>Oficii de stare civilă și evidența populației.</li><li>Poliție urbană și servicii de pompieri.</li><li>Carantine și administrație sanitară.</li><li>Magistraturi orășenești și lucrări edilitare.</li></ul></article>
+    </div>
+    <details><summary>Arhive, statistică și statul care „vede” societatea</summary><div class="details-body"><p>Instituirea arhivelor, recensămintelor fiscale, registrelor de stare civilă și bugetelor marchează o schimbare profundă: statul încearcă să cunoască populația, proprietățile, veniturile și obligațiile prin documente standardizate.</p><p>Arhivele Statului sunt organizate în 1831 în Valahia și în 1832 în Moldova. Evidența mai exactă permite administrației să planifice, dar și să controleze mai eficient contribuabilii.</p></div></details>
+    <details><summary>Miliția națională</summary><div class="details-body"><p>Primele unități regulamentare apar în 1830–1831. Ele aveau rolul de a păstra ordinea publică, de a asigura paza frontierelor și de a oferi domnului o forță internă. Organizarea, uniformele, gradele și instrucția erau inspirate din modelul militar rus.</p><p>Milițiile munteană și moldovenească sunt încă mici și supravegheate extern, dar refac tradiția unei armate proprii și vor constitui baza armatei Principatelor Unite.</p></div></details>
+  </section>
+
+  <section class="section" id="agrar">
+    <h2>22. Problema agrară sub Regulamentele Organice</h2>
+    <p class="section-intro">Regulamentele încearcă să precizeze obligațiile reciproce dintre proprietar și țăran, dar o fac în avantajul marii proprietăți. Liberalizarea exportului de cereale crește interesul boierilor pentru exploatarea directă a moșiilor.</p>
+    <div class="two-col">
+      <article class="info-card"><h3>Ce primea țăranul</h3><ul class="clean"><li>drept de folosință asupra unui lot de hrană;</li><li>acces diferențiat la pășune, în funcție de numărul animalelor;</li><li>reglementarea nominală a zilelor de clacă;</li><li>o anumită predictibilitate a obligațiilor.</li></ul></article>
+      <article class="info-card"><h3>Ce primea proprietarul</h3><ul class="clean"><li>confirmarea dreptului asupra moșiei;</li><li>muncă obligatorie pentru exploatarea rezervei boierești;</li><li>dijme și alte prestații;</li><li>control asupra pășunilor, pădurilor și condițiilor de folosință.</li></ul></article>
+    </div>
+    <details open><summary>De ce „12 zile de clacă” puteau însemna mult mai mult?</summary><div class="details-body"><p>Obligația era calculată prin <em>nart</em>, adică o normă de lucru. O zi regulamentară nu era întotdeauna o zi calendaristică obișnuită, ci cantitatea de muncă pe care proprietarul o considera necesară. Dacă norma nu putea fi realizată într-o zi, ea se prelungea.</p><p>Se adăugau transporturile, reparațiile, dijmele și alte obligații. Prin urmare, reglementarea formală nu elimina exploatarea. Pe măsură ce exportul de cereale creștea, boierii încercau să mărească suprafața cultivată pentru piață.</p></div></details>
+    <details><summary>Fruntași, mijlocași și codași</summary><div class="details-body"><p>Regulamentele și practica rurală clasificau gospodăriile și după numărul animalelor de muncă. <strong>Fruntașii</strong> dispuneau de mai multe vite și primeau loturi ori drepturi de pășunat mai întinse; <strong>mijlocașii</strong> aveau resurse intermediare; <strong>codașii</strong>, lipsiți de animale suficiente, beneficiau de cele mai mici loturi și de acces foarte redus la pășune.</p><p>Clasificarea transforma inegalitatea economică în normă administrativă: gospodăriile deja înstărite puteau exploata mai eficient loturile, în timp ce săracii deveneau mai dependenți de munca pentru proprietar.</p></div></details>
+    <div class="warning-box"><strong>Rezultatul:</strong> principalul agent al presiunii asupra țăranului nu mai este doar fiscalitatea domnească, ci proprietarul interesat de producția comercială. Problema lipsei de pământ și a clăcii va deveni explozivă în 1848 și va fi rezolvată parțial abia prin reforma agrară din 1864.</div>
+  </section>
+
+  <section class="section" id="transformari">
+    <h2>23. Transformările economice și demografice după 1829</h2>
+    <p class="section-intro">Libertatea comerțului modifică rapid economia. Principatele devin mari exportatoare de cereale și animale, porturile dunărene se dezvoltă, iar orașele atrag negustori, meșteșugari, funcționari și migranți.</p>
+    <div class="four-col">
+      <div class="quick-card"><strong>Agricultură</strong><span>Rămâne principala sursă de venit și de export; industria modernă este încă slabă.</span></div>
+      <div class="quick-card"><strong>Porturi</strong><span>Brăila și Galați devin centre ale exportului dunărean; Galați primește statut de port liber în 1837, iar Brăila cunoaște o puternică extindere portuară și comercială.</span></div>
+      <div class="quick-card"><strong>Urbanizare</strong><span>Populația urbană crește puternic între 1831/1832 și anii 1850.</span></div>
+      <div class="quick-card"><strong>București</strong><span>Estimările indică o creștere de la aproximativ 70.000 de locuitori în 1831 la circa 120.000 în 1859.</span></div>
+    </div>
+    <details open><summary>Comerțul dunărean</summary><div class="details-body"><p>După restituirea Brăilei și desființarea monopolului otoman, exportatorii pot vinde pe piețe mai largi. Cerealele, vitele, pieile, sarea și lemnul circulă spre Marea Neagră și Mediterana. Consulatele străine, casele de comerț și creditul se extind.</p><p>În același timp, dependența de exportul agricol face economia vulnerabilă la prețurile internaționale și consolidează interesul boierimii pentru munca țărănească.</p></div></details>
+    <details><summary>Migrație, diversitate și tensiuni sociale</summary><div class="details-body"><p>Orașele atrag greci, armeni, evrei, bulgari, sârbi, austrieci și alți negustori sau meșteșugari. Imigrația evreiască din Galiția și alte regiuni crește în Moldova, iar comunitățile evreiești joacă roluri importante în comerț, credit, hanuri și meșteșuguri.</p><p>Concurența economică, prejudecățile religioase și crizele sociale alimentează antisemitismul. Explicațiile care atribuie unei întregi comunități sărăcirea țărănimii sunt stereotipuri și trebuie înlocuite cu analiza instituțiilor de credit, a proprietății, fiscalității și inegalității juridice.</p></div></details>
+    <details><summary>Infrastructură și administrație urbană</summary><div class="details-body"><p>Se pavează străzi, se aliniază ulițe, se organizează iluminatul, pompierii, piețele, poliția și serviciile sanitare. Bucureștiul este sistematizat treptat, iar Șoseaua Kiseleff devine simbolul noii administrații. Iașul își consolidează instituțiile culturale și administrative.</p><p>Modernizarea rămâne inegală: cartierele centrale beneficiază mai mult, în timp ce periferiile păstrează condiții rurale și infrastructură slabă.</p></div></details>
+    <details><summary>Naționalism romantic și origini istorice</summary><div class="details-body"><p>Școala, presa și contactele cu Franța și Italia răspândesc ideea unei națiuni române unite prin limbă și origine. Curentul latinist accentuează descendența romană și legătura cu Europa occidentală, iar interesul pentru daci și autohtonie completează imaginea continuității pe teritoriul vechii Dacii.</p><p>Aceste teorii nu erau simple discuții academice: ele legitimau dreptul la autonomie, unire și egalitate politică. Uneori erau folosite și de elite pentru a-și construi genealogii prestigioase, motiv pentru care trebuie separate cercetarea istorică de mitologia politică.</p></div></details>
+  </section>
+
+  <section class="section" id="emancipare">
+    <h2>24. Emanciparea romilor robi</h2>
+    <p class="section-intro">Robia romilor, moștenită din perioada medievală, era incompatibilă cu ideile moderne despre libertatea persoanei. Desființarea ei s-a realizat etapizat, prin legi succesive pentru robii statului, ai mănăstirilor și ai particularilor.</p>
+    <div class="timeline">
+      <div class="event"><div class="date">1830–1840</div><div><h3>Dezbaterea publică</h3><p>Tinerii boieri, scriitorii și juriștii influențați de liberalism critică robia. Tema apare în presă, literatură și programe politice.</p></div></div>
+      <div class="event"><div class="date">1843–1844</div><div><h3>Primele emancipări largi</h3><p>Valahia eliberează robii statului în 1843, iar Moldova îi emancipează în 1844 pe cei ai statului și ai mănăstirilor.</p></div></div>
+      <div class="event"><div class="date">1847</div><div><h3>Robii mănăstirești din Valahia</h3><p>O lege extinde emanciparea asupra robilor aparținând Bisericii și mănăstirilor.</p></div></div>
+      <div class="event"><div class="date">22 dec. 1855</div><div><h3>Desființarea completă în Moldova</h3><p>Domnia lui Grigore Alexandru Ghica adoptă legea pentru emanciparea robilor particularilor.</p></div></div>
+      <div class="event"><div class="date">20 feb. 1856</div><div><h3>Desființarea completă în Valahia</h3><p>Legea emancipează ultima categorie de robi, cei ai particularilor, și prevede despăgubirea proprietarilor.</p></div></div>
+    </div>
+    <div class="definition"><strong>Limită socială:</strong> emanciparea juridică nu a fost însoțită de un program suficient de integrare economică, educațională și funciară. Mulți foști robi au rămas fără resurse, expuși marginalizării și discriminării.</div>
+  </section>
+
+  <section class="section" id="domnii-regulamentare">
+    <h2>25. Domniile regulamentare</h2>
+    <div class="table-wrap"><table><thead><tr><th>Principat</th><th>Domn</th><th>Perioadă</th><th>Repere</th></tr></thead><tbody>
+      <tr><td>Valahia</td><td><strong>Alexandru Dimitrie Ghica</strong></td><td>1834–1842</td><td>Aplicarea instituțiilor regulamentare, tensiuni cu Adunarea Obștească și cu Partida Națională; înlocuit sub presiune politică.</td></tr>
+      <tr><td>Valahia</td><td><strong>Gheorghe Bibescu</strong></td><td>1842–1848</td><td>Lucrări publice, chestiuni comerciale și educaționale; abdică în timpul Revoluției din 1848.</td></tr>
+      <tr><td>Moldova</td><td><strong>Mihail Sturdza</strong></td><td>1834–1849</td><td>Administrație centralizată, dezvoltare culturală și economică, Academia Mihăileană; autoritarism și reprimarea opoziției.</td></tr>
+    </tbody></table></div>
+    <details><summary>Partida Națională și opoziția liberală</summary><div class="details-body"><p>În Valahia, Ion Câmpineanu și colaboratorii săi critică articolul adițional și protectoratul rus. Ei susțin unirea, independența, o constituție și o reprezentare mai largă. În Moldova, tinerii boieri educați în Occident contestă autoritarismul lui Mihail Sturdza.</p><p>Opoziția politică se dezvoltă prin societăți culturale, presă, saloane, traduceri și legături cu exilul polonez și liberalismul francez. Această generație va conduce revoluțiile din 1848 și mișcarea unionistă.</p></div></details>
+  </section>
+
+  <section class="section" id="1848">
+    <h2>26. De la revoluțiile din 1848 la Convenția de la Paris din 1858</h2>
+    <p class="section-intro">Revoluțiile din 1848 contestă limitele modernizării regulamentare: lipsa drepturilor politice, privilegiile boierești, dependența externă, robia și problema agrară. Înfrângerea revoluțiilor nu oprește procesul; războiul Crimeii schimbă echilibrul internațional și deschide drumul Unirii.</p>
+    <details open><summary>Moldova, martie–august 1848</summary><div class="details-body"><ul class="clean"><li><span class="date-pill">27 martie / 8 aprilie</span>Adunarea de la Hotel Petersburg din Iași formulează o petiție moderată, cerând legalitate, reformă administrativă și ameliorarea situației țărănești.</li><li>Mihail Sturdza reprimă mișcarea; liderii sunt arestați sau pleacă în exil.</li><li><span class="date-pill">Mai 1848</span><em>Prințipiile noastre pentru reformarea patriei</em> formulează revendicări mai radicale, inclusiv desființarea privilegiilor și împroprietărirea.</li><li><span class="date-pill">August 1848</span><em>Dorințele partidei naționale în Moldova</em>, redactate de Mihail Kogălniceanu, leagă autonomia, unirea și reforma socială.</li></ul></div></details>
+    <details open><summary>Valahia, iunie–septembrie 1848</summary><div class="details-body"><ul class="clean"><li><span class="date-pill">9/21 iunie</span>Proclamația de la Islaz cere independență administrativă și legislativă, egalitate politică, responsabilitate ministerială, Adunare reprezentativă, libertatea tiparului, gardă națională, emanciparea romilor și rezolvarea problemei agrare.</li><li><span class="date-pill">11/23 iunie</span>Gheorghe Bibescu acceptă inițial programul, apoi abdică. Se formează Guvernul provizoriu.</li><li>Revoluționarii desființează rangurile boierești și adoptă simboluri naționale, dar comisia proprietății nu reușește să împace țăranii și proprietarii.</li><li><span class="date-pill">13/25 septembrie</span>Intervenția otomană și lupta din Dealul Spirii încheie regimul revoluționar.</li></ul></div></details>
+    <details><summary>Balta Liman, 1 mai 1849</summary><div class="details-body"><p>Convenția ruso-otomană restabilește ordinea conservatoare. Domnii nu mai sunt aleși pe viață, ci numiți pentru șapte ani: Barbu Știrbei în Valahia și Grigore Alexandru Ghica în Moldova. Adunările Obștești sunt suspendate și înlocuite temporar cu divanuri restrânse.</p><p>Principiile administrative ale Regulamentelor continuă, dar controlul politic este întărit. Mulți revoluționari rămân în exil și transformă cauza românească într-o problemă europeană.</p></div></details>
+    <details open><summary>Războiul Crimeii și noul statut internațional</summary><div class="details-body"><ul class="clean"><li><span class="date-pill">1853–1856</span>Războiul Crimeii opune Rusia unei coaliții formate din Imperiul Otoman, Franța, Marea Britanie și Sardinia, cu implicarea diplomatică a Austriei.</li><li><span class="date-pill">30 martie 1856</span>Tratatul de la Paris înlătură protectoratul exclusiv rusesc și pune Principatele sub garanția colectivă a Marilor Puteri.</li><li>Sudul Basarabiei — județele Cahul, Bolgrad și Ismail — revine Moldovei.</li><li><span class="date-pill">1857</span>Divanurile ad-hoc consultă populația politică și se pronunță pentru unire, autonomie, principe străin și guvern reprezentativ.</li><li><span class="date-pill">19 august 1858</span>Convenția de la Paris devine noua lege fundamentală și înlocuiește formal Regulamentele Organice.</li></ul></div></details>
+  </section>
+
+  <section class="section" id="comparatie">
+    <h2>27. Analize comparative</h2>
+    <div class="table-wrap dense-table"><table><thead><tr><th>Criteriu</th><th>Epoca fanariotă</th><th>Mișcarea din 1821</th><th>Regimul regulamentar</th><th>Proiectele din 1848–1858</th></tr></thead><tbody>
+      <tr><td><strong>Legitimitate</strong></td><td>Numirea sultanului și clientela de la Poartă.</td><td>Interesul țării și voința „norodului”, combinate cu alianțe boierești.</td><td>Lege fundamentală, domn și adunare, dar sub protectorat rusesc.</td><td>Națiune, reprezentare, drepturi și garanții internaționale.</td></tr>
+      <tr><td><strong>Administrație</strong></td><td>Centralizare personală, dregătorii și ispravnici; funcții frecvent vândute.</td><td>Reducerea aparatului, merit și răspundere.</td><td>Departamente, buget, arhive, magistraturi și funcționari.</td><td>Ministere responsabile și guvern reprezentativ.</td></tr>
+      <tr><td><strong>Fiscalitate</strong></td><td>Dări multiple, obligații otomane și plăți informale.</td><td>Reducerea dăjdiilor și interzicerea adaosurilor arbitrare.</td><td>Impozit principal și buget, dar privilegii fiscale boierești.</td><td>Egalitate fiscală și eliminarea privilegiilor.</td></tr>
+      <tr><td><strong>Justiție</strong></td><td>Codificări importante, dar dependență de domn și statut.</td><td>Critica taxelor, abuzurilor și legilor fără consimțământ.</td><td>Ierarhie de instanțe, procurori, avocați și specializare.</td><td>Independența justiției și garanții individuale.</td></tr>
+      <tr><td><strong>Țărănime</strong></td><td>Libertate juridică, clacă și lipsă de pământ.</td><td>Mobilizare socială; program oficial fără soluție agrară coerentă.</td><td>Obligații reglementate, dar exploatarea comercială crește.</td><td>Împroprietărire și desființarea clăcii, revendicate în 1848.</td></tr>
+      <tr><td><strong>Relații externe</strong></td><td>Suzeranitate otomană, presiuni ruse și austriece.</td><td>Eșecul speranței într-un sprijin rusesc pentru Eterie.</td><td>Suzeranitate otomană și protectorat rus.</td><td>Garanția colectivă europeană și proiectul unirii.</td></tr>
+    </tbody></table></div>
+    <div class="compare-grid" style="margin-top:18px">
+      <div class="compare-card"><div class="compare-head">Continuități</div><div class="compare-body"><ul class="checklist"><li>Domnia și proprietatea boierească</li><li>Predominanța agriculturii</li><li>Dependența externă</li><li>Reprezentarea politică restrânsă</li><li>Problema agrară nerezolvată</li></ul></div></div>
+      <div class="compare-card"><div class="compare-head">Rupturi</div><div class="compare-body"><ul class="checklist"><li>Domni pământeni după 1822</li><li>Comerț liber după 1829</li><li>Buget și departamente</li><li>Justiție ierarhizată</li><li>Armată, arhive și poliție modernă</li></ul></div></div>
+      <div class="compare-card"><div class="compare-head">Direcția finală</div><div class="compare-body"><ul class="checklist"><li>Constituționalism</li><li>Unirea Principatelor</li><li>Suveranitate națională</li><li>Reformă agrară</li><li>Egalitate juridică</li></ul></div></div>
+    </div>
+  </section>
+
+  <section class="section" id="cronologie">
+    <h2>28. Cronologie detaliată, 1683–1858</h2>
+    <div class="table-wrap dense-table"><table><thead><tr><th>Data</th><th>Eveniment</th><th>Semnificație</th></tr></thead><tbody>
+      <tr><td>1683</td><td>Eșecul asediului otoman al Vienei</td><td>Începe reculul otoman accentuat în Europa Centrală.</td></tr>
+      <tr><td>26 ian. 1699</td><td>Pacea de la Karlowitz</td><td>Transilvania intră sub dominația habsburgică.</td></tr>
+      <tr><td>1688–1714</td><td>Domnia lui Constantin Brâncoveanu</td><td>Echilibru diplomatic, dezvoltare culturală și fiscalitate ridicată.</td></tr>
+      <tr><td>1710–1711</td><td>Domnia lui Dimitrie Cantemir</td><td>Încercare de desprindere de Poartă prin alianță rusă.</td></tr>
+      <tr><td>13 apr. 1711</td><td>Tratatul de la Luțk</td><td>Alianță secretă moldo-rusă.</td></tr>
+      <tr><td>7–11 iul. 1711</td><td>Campania de la Stănilești</td><td>Înfrângerea alianței ruso-moldave.</td></tr>
+      <tr><td>23 iul. 1711</td><td>Pacea de pe Prut</td><td>Retragerea Rusiei; începutul fanarioților în Moldova.</td></tr>
+      <tr><td>15 aug. 1714</td><td>Execuția lui Brâncoveanu</td><td>Poarta sancționează politica sa de echilibru și confiscă averea.</td></tr>
+      <tr><td>1716</td><td>Nicolae Mavrocordat în Valahia</td><td>Începutul domniilor fanariote în Țara Românească.</td></tr>
+      <tr><td>21 iul. 1718</td><td>Pacea de la Passarowitz</td><td>Oltenia trece sub administrație habsburgică.</td></tr>
+      <tr><td>18 sept. 1739</td><td>Pacea de la Belgrad</td><td>Oltenia revine Valahiei.</td></tr>
+      <tr><td>1742</td><td>Programul lui Mavrocordat cunoscut în Occident</td><td>Reformismul fanariot este asociat despotismului luminat.</td></tr>
+      <tr><td>1746</td><td>Desființarea rumâniei</td><td>Țăranii din Valahia devin liberi juridic.</td></tr>
+      <tr><td>1749</td><td>Desființarea veciniei</td><td>Reformă similară în Moldova.</td></tr>
+      <tr><td>1751</td><td>Accenturarea monopolului comercial otoman</td><td>Exportul este subordonat aprovizionării imperiale.</td></tr>
+      <tr><td>1768–1774</td><td>Războiul ruso-otoman</td><td>Principatele sunt ocupate și devin obiect al negocierilor.</td></tr>
+      <tr><td>21 iul. 1774</td><td>Kuciuk-Kainargi</td><td>Crește intervenția diplomatică rusă.</td></tr>
+      <tr><td>1775</td><td>Anexarea Bucovinei</td><td>Moldova pierde nord-vestul teritoriului.</td></tr>
+      <tr><td>1775</td><td>Redactarea Condicii lui Ipsilanti</td><td>Începe o importantă codificare juridică.</td></tr>
+      <tr><td>1776</td><td>Reorganizarea Academiei Sfântul Sava</td><td>Consolidarea învățământului superior.</td></tr>
+      <tr><td>1780</td><td>Pravilniceasca Condică intră în vigoare</td><td>Uniformizare a instanțelor și procedurii.</td></tr>
+      <tr><td>1787–1792</td><td>Războiul ruso-austro-otoman</td><td>Noi ocupații și proiecte diplomatice.</td></tr>
+      <tr><td>4 aug. 1791</td><td>Pacea de la Șiștov</td><td>Încheierea războiului austro-otoman.</td></tr>
+      <tr><td>1791</td><td>Memoriul boieresc pentru unire și independență</td><td>Proiect național sub garanție ruso-austriacă.</td></tr>
+      <tr><td>9 ian. 1792</td><td>Pacea de la Iași</td><td>Rusia ajunge la Nistru.</td></tr>
+      <tr><td>1802</td><td>Hatișeriful privind domniile și obligațiile</td><td>Încearcă stabilizarea domniilor și limitarea abuzurilor.</td></tr>
+      <tr><td>1802</td><td>Planul de oblăduire aristo-democraticească</td><td>Proiect republican și separarea puterilor.</td></tr>
+      <tr><td>1806–1812</td><td>Războiul ruso-otoman</td><td>Ocupație rusă îndelungată și criză economică.</td></tr>
+      <tr><td>28 mai 1812</td><td>Pacea de la București</td><td>Rusia anexează teritoriul dintre Prut și Nistru.</td></tr>
+      <tr><td>1813</td><td>Cursul lui Gheorghe Asachi</td><td>Învățământ tehnic în limba română la Iași.</td></tr>
+      <tr><td>1817</td><td>Codul Callimachi</td><td>Codificare civilă modernă în Moldova.</td></tr>
+      <tr><td>1818</td><td>Legiuirea Caragea</td><td>Codificare civilă și penală în Valahia.</td></tr>
+      <tr><td>1818</td><td>Cursurile lui Gheorghe Lazăr la Sfântul Sava</td><td>Afirmarea limbii române în învățământul superior.</td></tr>
+      <tr><td>1820</td><td>Înțelegerea limitată dintre Tudor și Eterie</td><td>Cooperare tactică, fără obiective identice.</td></tr>
+      <tr><td>23 ian. / 4 feb. 1821</td><td>Proclamația de la Padeș</td><td>Începutul mobilizării populare.</td></tr>
+      <tr><td>22 feb. / 6 mart. 1821</td><td>Ipsilanti trece Prutul</td><td>Declanșarea acțiunii eteriste în Principate.</td></tr>
+      <tr><td>21 mart. / 2 apr. 1821</td><td>Tudor intră în București</td><td>Preia de facto conducerea Valahiei.</td></tr>
+      <tr><td>27 mai / 8 iun. 1821</td><td>Executarea lui Tudor</td><td>Mișcarea pandurilor se destramă.</td></tr>
+      <tr><td>7 / 19 iun. 1821</td><td>Drăgășani</td><td>Înfrângerea decisivă a Eteriei.</td></tr>
+      <tr><td>Sept. 1822</td><td>Revenirea domnilor pământeni</td><td>Grigore Ghica și Ioan Sandu Sturdza sunt instalați.</td></tr>
+      <tr><td>1822</td><td>Constituția Cărvunarilor</td><td>Proiect de separare a puterilor și autonomie.</td></tr>
+      <tr><td>7 oct. 1826</td><td>Convenția de la Akkerman</td><td>Domnii pe șapte ani și reafirmarea privilegiilor.</td></tr>
+      <tr><td>1828–1829</td><td>Războiul ruso-otoman</td><td>Începe ocupația rusă a Principatelor.</td></tr>
+      <tr><td>14 sept. 1829</td><td>Tratatul de la Adrianopol</td><td>Comerț liber, raiale restituite și protectorat rus consolidat.</td></tr>
+      <tr><td>1829–1834</td><td>Administrația Kiseleff</td><td>Reforme și redactarea Regulamentelor.</td></tr>
+      <tr><td>1/13 iul. 1831</td><td>Regulamentul Organic în Valahia</td><td>Intră în vigoare prima versiune.</td></tr>
+      <tr><td>1/13 ian. 1832</td><td>Regulamentul Organic în Moldova</td><td>Intră în vigoare a doua versiune.</td></tr>
+      <tr><td>1834</td><td>Domnii regulamentari</td><td>Alexandru D. Ghica și Mihail Sturdza.</td></tr>
+      <tr><td>1835</td><td>Academia Mihăileană</td><td>Important centru cultural și educațional la Iași.</td></tr>
+      <tr><td>1830–1837</td><td>Modernizarea porturilor Brăila și Galați; Galați devine port liber în 1837</td><td>Dezvoltarea comerțului dunărean și a navigației internaționale.</td></tr>
+      <tr><td>1838</td><td>Proiectul lui Ion Câmpineanu</td><td>Unire, independență și constituționalism.</td></tr>
+      <tr><td>1842</td><td>Gheorghe Bibescu devine domn</td><td>Ultima domnie regulamentară valahă înainte de revoluție.</td></tr>
+      <tr><td>1843–1844</td><td>Primele mari legi de emancipare a romilor</td><td>Robii statului și mănăstirilor sunt eliberați în etape.</td></tr>
+      <tr><td>1847</td><td>Emanciparea robilor mănăstirești în Valahia</td><td>Robia se restrânge la proprietatea particulară.</td></tr>
+      <tr><td>Mart.–sept. 1848</td><td>Revoluțiile din Moldova și Valahia</td><td>Program democratic, național și social.</td></tr>
+      <tr><td>1 mai 1849</td><td>Convenția de la Balta Liman</td><td>Restaurare conservatoare și domni numiți pe șapte ani.</td></tr>
+      <tr><td>22 dec. 1855</td><td>Desființarea completă a robiei în Moldova</td><td>Emanciparea robilor particularilor.</td></tr>
+      <tr><td>20 feb. 1856</td><td>Desființarea completă a robiei în Valahia</td><td>Încheierea juridică a robiei.</td></tr>
+      <tr><td>30 mart. 1856</td><td>Tratatul de la Paris</td><td>Sfârșitul protectoratului rusesc exclusiv.</td></tr>
+      <tr><td>1857</td><td>Divanurile ad-hoc</td><td>Majoritățile politice cer unirea și autonomie.</td></tr>
+      <tr><td>19 aug. 1858</td><td>Convenția de la Paris</td><td>Noul cadru constituțional al Principatelor Unite.</td></tr>
+    </tbody></table></div>
+  </section>
+
+  <section class="section" id="glosar">
+    <h2>29. Glosar extins</h2>
+    <div class="term-grid">
+      <div class="term-card"><strong>Fanariot</strong><span>Membru al elitelor din Fanar; prin extensie, domn numit de Poartă în Moldova și Valahia între 1711/1716 și 1821.</span></div>
+      <div class="term-card"><strong>Suzeranitate</strong><span>Raport de dependență externă față de sultan, compatibil cu păstrarea autonomiei și instituțiilor interne.</span></div>
+      <div class="term-card"><strong>Protectorat</strong><span>Drept al unei puteri de a supraveghea și interveni în afacerile unui stat; în Principate, Rusia îl extinde după 1774 și 1829.</span></div>
+      <div class="term-card"><strong>Fanar</strong><span>Cartier al Constantinopolului locuit de numeroase familii grecești implicate în diplomația și administrația otomană.</span></div>
+      <div class="term-card"><strong>Dragoman</strong><span>Interpret și diplomat al Porții, cunoscător al limbilor și al relațiilor internaționale.</span></div>
+      <div class="term-card"><strong>Capuchehaia</strong><span>Reprezentant permanent al domnului la Poarta Otomană.</span></div>
+      <div class="term-card"><strong>Firman</strong><span>Act oficial emis de sultan, folosit inclusiv pentru numirea domnilor.</span></div>
+      <div class="term-card"><strong>Hatișerif</strong><span>Act solemn imperial care putea confirma privilegii, obligații și durata domniilor.</span></div>
+      <div class="term-card"><strong>Raia</strong><span>Teritoriu din jurul unei cetăți administrat direct de otomani.</span></div>
+      <div class="term-card"><strong>Haraci</strong><span>Tribut sau dare asociată supunerii față de Poartă.</span></div>
+      <div class="term-card"><strong>Peșcheș</strong><span>Dar oficial sau semi-oficial oferit pentru numire, confirmare ori favor.</span></div>
+      <div class="term-card"><strong>Dajdie</strong><span>Dare internă percepută de administrație asupra contribuabililor.</span></div>
+      <div class="term-card"><strong>Clacă</strong><span>Muncă obligatorie prestată de țăran pe rezerva proprietarului.</span></div>
+      <div class="term-card"><strong>Dijmă</strong><span>Parte din produse datorată proprietarului, mănăstirii sau altui beneficiar.</span></div>
+      <div class="term-card"><strong>Rumân / vecin</strong><span>Țăran dependent personal în Valahia, respectiv Moldova, înaintea reformelor lui Mavrocordat.</span></div>
+      <div class="term-card"><strong>Ispravnic</strong><span>Dregător local cu atribuții administrative, fiscale și judiciare.</span></div>
+      <div class="term-card"><strong>Zapciu</strong><span>Agent fiscal și administrativ însărcinat cu aplicarea ordinelor și perceperea dărilor.</span></div>
+      <div class="term-card"><strong>Scutelnic</strong><span>Persoană scutită de anumite dări și pusă în serviciul unui privilegiat.</span></div>
+      <div class="term-card"><strong>Poslușnic</strong><span>Dependent privilegiat ori slujitor al unei instituții sau persoane, scutit total sau parțial de obligații.</span></div>
+      <div class="term-card"><strong>Pandur</strong><span>Militar neregulat, mai ales oltean; pandurii formează nucleul oastei lui Tudor.</span></div>
+      <div class="term-card"><strong>Arnăut</strong><span>Mercenar sau gardă înarmată de origine balcanică, termen asociat adesea albanezilor.</span></div>
+      <div class="term-card"><strong>Eteria</strong><span>Societate secretă greacă, fondată la Odesa în 1814, pentru pregătirea independenței Greciei.</span></div>
+      <div class="term-card"><strong>Nart</strong><span>Normă cantitativă de muncă folosită la calcularea clăcii.</span></div>
+      <div class="term-card"><strong>Listă civilă</strong><span>Sumă stabilită prin buget pentru întreținerea domnului și curții.</span></div>
+      <div class="term-card"><strong>Adunare Obștească</strong><span>Organ legislativ regulamentar dominat de boierime.</span></div>
+      <div class="term-card"><strong>Divan ad-hoc</strong><span>Adunare consultativă convocată în 1857 pentru exprimarea dorințelor politice ale Principatelor.</span></div>
+      <div class="term-card"><strong>Porto-franco</strong><span>Port cu facilități vamale destinate stimulării comerțului internațional.</span></div>
+      <div class="term-card"><strong>Partida Națională</strong><span>Grupare politică favorabilă autonomiei, unirii, reformelor și, treptat, independenței.</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="retinut">
+    <h2>30. Formule și relații cauzale pentru examen</h2>
+    <div class="two-col">
+      <div class="info-card"><h3>Epoca fanariotă</h3><ul class="checklist"><li>Ascensiunea Rusiei + neîncrederea Porții în domnii locali → domni fanarioți.</li><li>Domnii scurte + cumpărarea tronului → fiscalitate și vânzarea funcțiilor.</li><li>Autonomie internă păstrată → posibilitatea reformelor și a codificării.</li><li>Desființarea dependenței personale fără pământ → clacă și dependență economică.</li><li>Războaie repetate → pierderi teritoriale și intervenție internațională.</li></ul></div>
+      <div class="info-card"><h3>1821 și epoca regulamentară</h3><ul class="checklist"><li>Criza fanariotă + Eteria + nemulțumiri sociale → mișcarea din 1821.</li><li>Eșec militar, dar succes politic indirect → domni pământeni în 1822.</li><li>Adrianopol 1829 → comerț liber și protectorat rus.</li><li>Ocupație rusă + comisii boierești → Regulamentele Organice.</li><li>Instituții moderne + privilegii boierești → modernizare conservatoare.</li><li>Contradicțiile regimului → revoluțiile de la 1848 și proiectul unirii.</li></ul></div>
+    </div>
+    <div class="source-box"><h3>Teză sintetică</h3><p>Modernizarea Valahiei și Moldovei nu a fost un drum liniar de la „fanariot” la „național”. Fanarioții au accentuat dominația otomană și presiunea fiscală, dar au introdus și reforme și coduri. Rusia a limitat autonomia, dar ocupația sa a accelerat instituționalizarea. Boierimea a apărat privilegii, dar a creat și proiecte constituționale. Economia de piață a stimulat orașele și comerțul, dar a agravat problema agrară. Din aceste tensiuni se naște programul politic al anului 1848 și apoi Unirea.</p></div>
+  </section>
+
+  <section class="final-box"><h2>Ideea de reținut</h2><p>Între 1711/1716 și 1858, Valahia și Moldova trec de la o ordine dominată de numirea otomană a domnilor, dregătorii patrimoniale și privilegii de stare la un sistem cu legi publicate, buget, departamente, funcționari, tribunale, arhive, școli, poliție și armată. Modernizarea este însă conservatoare și dependentă: marea boierime controlează reprezentarea, țărănimea rămâne fără pământ suficient, iar Poarta, Rusia și Austria intervin permanent. Mișcarea din 1821, Regulamentele Organice și revoluțiile din 1848 sunt trei etape ale aceleiași transformări, încheiată politic prin noul statut european din 1856–1858 și pregătirea Unirii Principatelor.</p></section>
+</main>
+<script>
+function toggleAll(openState) { document.querySelectorAll('details').forEach(d => d.open = openState); }
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const max = h.scrollHeight - h.clientHeight;
+  document.getElementById('progress').style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+});
+</script>
+
+</body>
+</html>

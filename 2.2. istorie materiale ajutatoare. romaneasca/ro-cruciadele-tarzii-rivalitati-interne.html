@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ro-cruciadele-tarzii-rivalitati-interne</title>
+<style>
+
+    :root {
+      --bg: #171411;
+      --paper: #f4ead7;
+      --paper-2: #fff7e8;
+      --ink: #211915;
+      --muted: #6c5b4f;
+      --accent: #b85c38;
+      --accent-dark: #74351f;
+      --gold: #d7a94f;
+      --green: #586b4d;
+      --red: #8d2f24;
+      --line: rgba(33, 25, 21, 0.18);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(216, 151, 71, 0.2), transparent 34%),
+        radial-gradient(circle at 88% 5%, rgba(184, 92, 56, 0.22), transparent 28%),
+        linear-gradient(135deg, #171411 0%, #2c241d 50%, #16120f 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.18;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mix-blend-mode: screen;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      margin-bottom: 22px;
+      padding: 12px;
+      border: 1px solid rgba(244, 234, 215, 0.22);
+      border-radius: 999px;
+      background: rgba(23, 20, 17, 0.72);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.24);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--paper);
+      font-size: 0.88rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      padding-left: 10px;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+      display: grid;
+      place-items: center;
+      color: #1d140f;
+      font-weight: 900;
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,0.25);
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 7px;
+    }
+
+    .nav a,
+    .print-btn {
+      border: 1px solid rgba(244, 234, 215, 0.2);
+      border-radius: 999px;
+      padding: 9px 13px;
+      color: var(--paper);
+      background: rgba(244, 234, 215, 0.06);
+      text-decoration: none;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .nav a:hover,
+    .print-btn:hover {
+      background: rgba(244, 234, 215, 0.18);
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      background:
+        linear-gradient(120deg, rgba(255, 247, 232, 0.96), rgba(244, 234, 215, 0.92)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Cg fill='none' stroke='%2374351f' stroke-opacity='.18'%3E%3Cpath d='M40 320C140 270 210 365 320 300s145-40 245-88'/%3E%3Cpath d='M0 180c85-30 135 25 210-8s160-78 320-16'/%3E%3Cpath d='M70 80c120 75 210 10 310 44 70 24 104 88 170 72'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: cover;
+      padding: clamp(34px, 5vw, 70px);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .hero::after {
+      content: "1914–1918";
+      position: absolute;
+      right: -16px;
+      bottom: -24px;
+      font-size: clamp(4rem, 12vw, 10rem);
+      line-height: 0.8;
+      color: rgba(116, 53, 31, 0.09);
+      font-weight: 900;
+      letter-spacing: -0.08em;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 16px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(184, 92, 56, 0.12);
+      color: var(--accent-dark);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-weight: 750;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      max-width: 900px;
+      font-size: clamp(2.35rem, 5.9vw, 5.75rem);
+      line-height: 0.92;
+      letter-spacing: -0.07em;
+      color: var(--ink);
+    }
+
+    .subtitle {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 24px 0 0;
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .stat-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.44);
+      border: 1px solid rgba(116, 53, 31, 0.14);
+      min-height: 116px;
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 1.65rem;
+      line-height: 1;
+      color: var(--accent-dark);
+      margin-bottom: 8px;
+    }
+
+    .stat-card span {
+      display: block;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.35;
+      color: var(--muted);
+    }
+
+    .panel {
+      margin-top: 24px;
+      border-radius: 30px;
+      padding: clamp(22px, 4vw, 42px);
+      background: rgba(244, 234, 215, 0.96);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.36);
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 24px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.75rem, 3vw, 3rem);
+      letter-spacing: -0.045em;
+      line-height: 1;
+      color: var(--accent-dark);
+    }
+
+    .panel-note {
+      margin: 0;
+      max-width: 460px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.95rem;
+    }
+
+    .map-grid {
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .front-map {
+      min-height: 360px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(116, 53, 31, 0.14);
+      background:
+        linear-gradient(rgba(255, 247, 232, 0.84), rgba(255, 247, 232, 0.84)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='520' viewBox='0 0 900 520'%3E%3Crect width='900' height='520' fill='%23f4ead7'/%3E%3Cg fill='none' stroke='%2374351f' stroke-width='3' stroke-opacity='.28'%3E%3Cpath d='M82 365c70-48 111-42 175-16 58 24 107 6 159-26 82-51 133-34 218 0 59 23 111 8 184-31'/%3E%3Cpath d='M115 142c75 42 112 95 190 72 72-21 104-99 194-73 104 31 139 151 266 118'/%3E%3Cpath d='M520 68c-8 62 54 102 86 149 42 61 34 130 11 212'/%3E%3C/g%3E%3Cg font-family='Georgia' font-weight='700' font-size='28' fill='%2374351f' fill-opacity='.35'%3E%3Ctext x='94' y='98'%3EVEST%3C/text%3E%3Ctext x='685' y='124'%3EEST%3C/text%3E%3Ctext x='382' y='410'%3EBALCANI%3C/text%3E%3C/g%3E%3C/svg%3E");
+      background-size: cover;
+      position: relative;
+      overflow: hidden;
+      padding: 26px;
+    }
+
+    .front-map::before,
+    .front-map::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(0.5px);
+      opacity: 0.94;
+    }
+
+    .front-map::before {
+      width: 72%;
+      height: 9px;
+      left: 7%;
+      top: 50%;
+      background: repeating-linear-gradient(90deg, var(--red), var(--red) 18px, transparent 18px, transparent 27px);
+      transform: rotate(-7deg);
+    }
+
+    .front-map::after {
+      width: 57%;
+      height: 9px;
+      right: 2%;
+      top: 35%;
+      background: repeating-linear-gradient(90deg, var(--green), var(--green) 18px, transparent 18px, transparent 27px);
+      transform: rotate(72deg);
+    }
+
+    .map-label {
+      position: absolute;
+      z-index: 2;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(33, 25, 21, 0.85);
+      color: var(--paper-2);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.8rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.23);
+    }
+
+    .map-label.vest { left: 13%; top: 43%; }
+    .map-label.est { right: 8%; top: 45%; }
+    .map-label.balcani { left: 43%; bottom: 17%; }
+
+    .info-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .info-item {
+      padding: 17px 18px;
+      border-radius: 20px;
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+    }
+
+    .info-item strong {
+      display: block;
+      color: var(--accent-dark);
+      margin-bottom: 5px;
+      font-size: 1.06rem;
+    }
+
+    .info-item span {
+      display: block;
+      color: var(--muted);
+      line-height: 1.45;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.94rem;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 26px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 34px;
+      top: 6px;
+      bottom: 6px;
+      width: 4px;
+      border-radius: 999px;
+      background: linear-gradient(var(--accent), var(--gold), var(--green));
+    }
+
+    .year-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .year-badge {
+      position: sticky;
+      top: 90px;
+      z-index: 3;
+      width: 72px;
+      height: 72px;
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, var(--accent-dark), var(--accent));
+      color: var(--paper-2);
+      font-size: 1.28rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      box-shadow: 0 16px 42px rgba(116, 53, 31, 0.28);
+      border: 1px solid rgba(255,255,255,0.22);
+    }
+
+    .year-content {
+      border-radius: 28px;
+      background: var(--paper-2);
+      border: 1px solid rgba(116, 53, 31, 0.14);
+      overflow: hidden;
+      box-shadow: 0 16px 42px rgba(33, 25, 21, 0.09);
+    }
+
+    .year-title {
+      padding: 24px 26px 20px;
+      background:
+        linear-gradient(120deg, rgba(184, 92, 56, 0.14), transparent 70%),
+        linear-gradient(0deg, rgba(215, 169, 79, 0.16), transparent);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .year-title h3 {
+      margin: 0;
+      color: var(--accent-dark);
+      font-size: clamp(1.45rem, 2.6vw, 2.35rem);
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+    }
+
+    .year-title p {
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      padding: 18px;
+    }
+
+    .content-grid.one {
+      grid-template-columns: 1fr;
+    }
+
+    .note-card {
+      padding: 20px;
+      border-radius: 22px;
+      background: rgba(244, 234, 215, 0.6);
+      border: 1px solid var(--line);
+    }
+
+    .note-card.full {
+      grid-column: 1 / -1;
+    }
+
+    .note-card h4 {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 14px;
+      color: var(--accent-dark);
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .note-card p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      line-height: 1.58;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.96rem;
+    }
+
+    .note-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .lead {
+      color: var(--ink) !important;
+      font-weight: 650;
+    }
+
+    .memory-line {
+      margin-top: 12px;
+      padding: 13px 15px;
+      border-radius: 15px;
+      background: rgba(88, 107, 77, 0.12);
+      border: 1px solid rgba(88, 107, 77, 0.18);
+      color: #415138;
+      line-height: 1.5;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-weight: 700;
+    }
+
+    .micro-heading {
+      display: block;
+      margin-top: 12px;
+      margin-bottom: 4px;
+      color: var(--accent-dark);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.82rem;
+      font-weight: 850;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: rgba(184, 92, 56, 0.13);
+      color: var(--accent-dark);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    ul, ol {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    li {
+      margin: 8px 0;
+      line-height: 1.52;
+    }
+
+    li::marker {
+      color: var(--accent);
+    }
+
+    .sublist {
+      margin-top: 7px;
+      color: var(--muted);
+    }
+
+    .sublist li {
+      margin: 6px 0;
+    }
+
+    .mini-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.93rem;
+    }
+
+    .mini-table th,
+    .mini-table td {
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .mini-table th {
+      background: rgba(116, 53, 31, 0.1);
+      color: var(--accent-dark);
+    }
+
+    .mini-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .callout {
+      margin-top: 16px;
+      padding: 16px 18px;
+      border-left: 5px solid var(--accent);
+      border-radius: 16px;
+      background: rgba(184, 92, 56, 0.1);
+      color: var(--accent-dark);
+      line-height: 1.55;
+      font-weight: 700;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+      gap: 12px;
+    }
+
+    .summary-card {
+      padding: 18px;
+      min-height: 170px;
+      border-radius: 20px;
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(33, 25, 21, 0.07);
+    }
+
+    .summary-card strong {
+      display: block;
+      color: var(--accent-dark);
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+    }
+
+    .summary-card span {
+      display: block;
+      color: var(--muted);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.91rem;
+      line-height: 1.45;
+    }
+
+
+
+    /* OCD-friendly: textul de conținut este justificat, dar titlurile rămân aliniate normal. */
+    .subtitle,
+    .panel-note,
+    .stat-card span,
+    .info-item span,
+    .year-title p,
+    .note-card p,
+    .note-card li,
+    .lead,
+    .memory-line,
+    .callout,
+    .summary-card span,
+    .date-card span,
+    .date-card p,
+    .date-card li,
+    .date-band p {
+      text-align: justify;
+      text-align-last: left;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .date-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+      gap: 14px;
+    }
+
+    .date-card {
+      position: relative;
+      padding: 18px 18px 18px 20px;
+      border-radius: 20px;
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(33, 25, 21, 0.06);
+      overflow: hidden;
+    }
+
+    .date-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 6px;
+      background: linear-gradient(var(--accent), var(--gold));
+    }
+
+    .date-card strong {
+      display: block;
+      color: var(--accent-dark);
+      font-size: 1.05rem;
+      line-height: 1.15;
+      margin-bottom: 7px;
+    }
+
+    .date-card span,
+    .date-card p {
+      display: block;
+      color: var(--muted);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.93rem;
+      line-height: 1.5;
+    }
+
+    .date-band {
+      margin-bottom: 18px;
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: rgba(184, 92, 56, 0.1);
+      border: 1px solid rgba(184, 92, 56, 0.18);
+    }
+
+    .date-band p {
+      margin: 0;
+      color: var(--accent-dark);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-weight: 700;
+      line-height: 1.55;
+    }
+
+    .footer {
+      color: rgba(244, 234, 215, 0.78);
+      text-align: center;
+      padding: 28px 12px 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .map-grid,
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        width: min(100% - 20px, 1180px);
+        padding-top: 12px;
+      }
+
+      .topbar {
+        position: static;
+        border-radius: 24px;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        border-radius: 24px;
+      }
+
+      .hero-grid,
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .panel-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .timeline::before {
+        left: 22px;
+      }
+
+      .year-card {
+        grid-template-columns: 58px 1fr;
+        gap: 12px;
+      }
+
+      .year-badge {
+        width: 48px;
+        height: 48px;
+        border-radius: 16px;
+        font-size: 0.92rem;
+        top: 12px;
+      }
+
+      .year-title,
+      .content-grid {
+        padding: 16px;
+      }
+
+      .front-map {
+        min-height: 270px;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      body::before,
+      .topbar,
+      .footer {
+        display: none;
+      }
+
+      .page {
+        width: 100%;
+        padding: 0;
+      }
+
+      .hero,
+      .panel,
+      .year-content,
+      .summary-card,
+      .date-card {
+        box-shadow: none;
+      }
+
+      .year-card,
+      .date-card {
+        break-inside: avoid;
+      }
+
+      .year-badge {
+        position: static;
+      }
+    }
+  
+
+    /* Topbar comună pentru toate materialele despre Primul Război Mondial */
+    .topbar {
+      position: static !important;
+      top: auto !important;
+      z-index: auto !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      gap: 16px !important;
+      margin-bottom: 18px !important;
+      padding: 0 !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      backdrop-filter: none !important;
+      box-shadow: none !important;
+      flex-wrap: wrap !important;
+    }
+
+    .back-link,
+    .material-tag {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 243, 0.84);
+      color: #3c2a1e;
+      border-radius: 999px;
+      padding: 10px 15px;
+      text-decoration: none;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.25;
+      box-shadow: var(--shadow-small, 0 8px 20px rgba(69, 46, 25, 0.10));
+    }
+
+    .back-link:hover {
+      background: #fff6eb;
+    }
+
+    @media (max-width: 680px) {
+      .topbar {
+        align-items: flex-start !important;
+        flex-direction: column !important;
+      }
+    }
+
+    @media print {
+      body { background: white !important; }
+      body::before,
+      .topbar,
+      .footer { display: none !important; }
+    }
+  
+    /* Ajustare cerută: titlul din hero puțin mai mic. */
+    header.hero > h1,
+    .hero > h1 {
+      font-size: clamp(2.35rem, 5.9vw, 5.75rem) !important;
+      line-height: 0.94 !important;
+    }
+
+  
+
+    /* Adaptări pentru seria „Cruciadele târzii” */
+    .hero::after { content: attr(data-period) !important; white-space: nowrap; }
+    .top-actions { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+    .series-nav { display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; position:relative; z-index:2; }
+    .series-nav a { text-decoration:none; color:var(--accent-dark); background:rgba(255,255,255,.52); border:1px solid rgba(116,53,31,.16); border-radius:999px; padding:9px 13px; font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:.84rem; font-weight:750; }
+    .series-nav a:hover { background:rgba(255,255,255,.8); transform:translateY(-1px); }
+    .small { font-size:.88rem !important; }
+    .muted { color:var(--muted); }
+    .center { text-align:center; }
+    .two-col { columns:2; column-gap:34px; }
+    .two-col li { break-inside:avoid; }
+    .certainty { display:inline-flex; align-items:center; gap:6px; padding:5px 9px; border-radius:999px; font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:.72rem; font-weight:800; letter-spacing:.04em; text-transform:uppercase; margin-left:7px; }
+    .certainty.high { background:rgba(88,107,77,.15); color:#40513a; }
+    .certainty.medium { background:rgba(215,169,79,.18); color:#765a22; }
+    .certainty.low { background:rgba(141,47,36,.12); color:#7d3028; }
+    .quote-lite { margin:14px 0 0; padding:14px 16px; border-left:4px solid var(--gold); background:rgba(215,169,79,.11); border-radius:14px; color:var(--muted); font-style:italic; line-height:1.55; }
+    .mini-table td:first-child { white-space:nowrap; font-weight:750; color:var(--accent-dark); }
+    .source-note { margin-top:14px; font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; color:var(--muted); font-size:.84rem; line-height:1.5; }
+    .rule { height:1px; background:var(--line); margin:18px 0; }
+    @media (max-width:720px) { .two-col { columns:1; } .top-actions{width:100%;} .print-btn{flex:1;} }
+
+:root{--accent:#8d4453;--accent-dark:#5e2835;--gold:#c89d4f;--green:#596a52;--red:#7f2934;}
+</style>
+</head>
+<body>
+<main class="page">
+  <div class="topbar">
+    <a class="back-link" href="javascript:history.back()">← Înapoi la materiale</a>
+    <div class="top-actions"><span class="material-tag">Material ajutător · Istoria românilor · Domnie, boierime și succesiune</span><button class="print-btn" type="button" onclick="window.print()">Tipărește / PDF</button></div>
+  </div>
+  <header class="hero" data-period="1447–1777">
+    <h1>Cruciadele târzii: rivalități interne</h1>
+    <p class="subtitle">În spatele războaielor cu Imperiul Otoman s-a desfășurat un al doilea front: competiția pentru tron, dregătorii, moșii și alianțe externe. Craiovești, Cantacuzini, Băleni, Movilești, Costinești și numeroși pretendenți au putut susține rezistența, dar și declanșa comploturi, maziliri, răscoale și asasinate.</p>
+    <section class="hero-grid" aria-label="Repere rapide"><article class="stat-card"><strong>1447</strong><span>Vlad Dracul și Mircea al II-lea sunt uciși.</span></article><article class="stat-card"><strong>1451</strong><span>Bogdan al II-lea este asasinat la Reuseni.</span></article><article class="stat-card"><strong>1529</strong><span>Radu de la Afumați este ucis la Cetățuia.</span></article><article class="stat-card"><strong>1655</strong><span>Revolta seimenilor lovește marea boierime.</span></article><article class="stat-card"><strong>1663</strong><span>Începe revanșa Cantacuzinilor.</span></article><article class="stat-card"><strong>1714–16</strong><span>Brâncoveanu și Cantacuzinii sunt eliminați succesiv.</span></article></section>
+    
+      <nav class="series-nav" aria-label="Navigare în serie">
+        <a href="ro-cruciadele-tarzii-moldova.html">Moldova</a>
+        <a href="ro-cruciadele-tarzii-valahia.html">Valahia</a>
+        <a href="ro-cruciadele-tarzii-rivalitati-interne.html">Rivalități interne</a>
+      </nav>
+  </header>
+  <section class="panel" id="mecanisme"><div class="panel-header"><h2>De ce izbucneau rivalitățile interne</h2><p class="panel-note">În principatele române, tronul era ereditar în familia domnească, dar nu revenea automat primului fiu. Alegerea și confirmarea depindeau de boieri și, din ce în ce mai mult, de puterile vecine. Această combinație a produs un număr mare de pretendenți, comploturi, maziliri și asasinate.</p></div><div class="content-grid"><section class="note-card"><h4><span class="tag">1</span>Succesiunea electiv-ereditară</h4><p class="lead">Orice bărbat considerat „os domnesc” putea revendica tronul, inclusiv fii nelegitimi sau rude îndepărtate.</p><ul><li>Lipsa primogeniturii stricte a creat ramuri rivale: Dănești și Drăculești în Valahia, urmași concurenți ai Mușatinilor în Moldova.</li><li>Un pretendent putea reveni de mai multe ori cu o oaste polonă, ungară, transilvăneană, tătară sau otomană.</li><li>În secolele XVI–XVIII, confirmarea Porții și sumele oferite dregătorilor otomani au devenit decisive.</li></ul></section><section class="note-card"><h4><span class="tag">2</span>Pământ, funcții și venituri</h4><p class="lead">Marii boieri controlau domenii, sate, vămi, dregătorii și cete armate.</p><ul><li>Domnul putea confisca averi, schimba dregători și ridica oameni noi; boierii încercau să apere autonomia familiei și accesul la sfat.</li><li>Controlul Băniei Olteniei, al vistieriei, al vorniciei, al logofeției sau al spătăriei oferea resurse politice și militare.</li><li>Căsătoriile legau familiile, dar puteau transforma conflictele politice în răzbunări de clan.</li></ul></section><section class="note-card"><h4><span class="tag">3</span>Partide externe</h4><p class="lead">O facțiune boierească era adesea și o rețea diplomatică.</p><ul><li>În Moldova, Movileștii au fost sprijiniți de Polonia; alte partide căutau recunoașterea Porții sau ajutor transilvănean.</li><li>În Valahia, Craioveștii au negociat cu Poarta și cu Transilvania; Cantacuzinii au întreținut legături la Istanbul, Viena și Moscova.</li><li>A susține un „protector” străin nu însemna automat lipsă de loialitate față de țară; în logica epocii era adesea singura cale de supraviețuire politică.</li></ul></section><section class="note-card full"><h4><span class="tag">4</span>Ciclul violenței</h4><p class="lead">Un domn temător de complot executa boieri; rudele exilate se întorceau cu un pretendent; noul regim confisca și răzbuna vechile crime.</p><ul><li>Represiunea putea consolida temporar autoritatea, dar reducea baza de cooperare necesară armatei și fiscalității.</li><li>Asasinarea domnului nu rezolva disputa: de multe ori deschidea un nou război civil și o intervenție externă.</li></ul><div class="memory-line">Instabilitatea internă și presiunea externă nu sunt două istorii separate: fiecare o alimenta pe cealaltă.</div></section></div></section><section class="panel" id="familii"><div class="panel-header"><h2>Marile familii și partide boierești</h2><p class="panel-note">Familia nu era doar legătură de sânge. Era o rețea de moșii, mănăstiri, clienți, căsătorii, dregători, slujitori și contacte externe.</p></div><div class="content-grid"><section class="note-card"><h4><span class="tag">CR</span>Craioveștii și Brâncoveneștii</h4><p class="lead">Craioveștii au devenit la sfârșitul secolului al XV-lea principala putere boierească din Oltenia, cu centrul la Craiova și cu o bază funciară excepțională.</p><ul><li>Tradiția documentară le atribuie peste 130 de sate și aproximativ 180 de bunuri funciare, suficient pentru o autonomie regională greu de ignorat.</li><li>Neagoe Strehăianul și fiii săi Barbu, Pârvu, Danciu și Radu au ocupat dregătorii înalte; familia a ctitorit Mănăstirea Bistrița.</li><li>Craioveștii au intrat în conflict cu Mihnea cel Rău și l-au sprijinit pe Neagoe Basarab; ulterior, prin ramuri și înrudiri, tradiția lor politică a continuat la Radu Șerban, Matei Basarab și Constantin Brâncoveanu.</li><li>În 1589, averea vechii familii a fost împărțită prin hotărâre domnească, însă prestigiul numelui Basarab și al ramurii Brâncovenești a supraviețuit.</li></ul></section><section class="note-card"><h4><span class="tag">DB</span>Dăneștii și Drăculeștii</h4><p class="lead">Cele două ramuri ale Basarabilor s-au luptat pentru tronul Valahiei din secolul al XV-lea până în secolul al XVI-lea.</p><ul><li>Dăneștii erau urmașii lui Dan I; Drăculeștii, ai lui Mircea cel Bătrân prin Vlad Dracul.</li><li>Poarta, Ungaria, Transilvania și Moldova au susținut pe rând pretendenți din ambele ramuri.</li><li>Alternanța Vlad Țepeș–Radu cel Frumos–Laiotă Basarab și luptele lui Radu de la Afumați cu Vladislav al III-lea sunt exemple tipice.</li></ul></section><section class="note-card"><h4><span class="tag">CB</span>Cantacuzinii și Bălenii/Leurdenii</h4><p class="lead">În a doua jumătate a secolului al XVII-lea, competiția dintre Cantacuzini și gruparea lui Stroe Leurdeanu și Gheorghe Băleanu a căpătat forma unui război politic de clan.</p><ul><li>Cantacuzinii erau o familie de origine bizantină, foarte bogată, cu fii educați și rețele la Istanbul și în Europa Centrală.</li><li>Adversarii îi acuzau că urmăresc tronul; Cantacuzinii denunțau abuzurile și legăturile rivalilor cu domnii Ghica.</li><li>În 1663, postelnicul Constantin Cantacuzino a fost strangulat din ordinul lui Grigore I Ghica după acuzații de complot; fiii săi au urmărit ani întregi răzbunarea și recuperarea puterii.</li></ul></section><section class="note-card"><h4><span class="tag">MB</span>Movileștii</h4><p class="lead">Familie moldoveană ridicată prin dregătorii, legături polone și înrudiri cu Petru Rareș.</p><ul><li>Ieremia Movilă a fost instalat în 1595 de oastea polonă a lui Jan Zamoyski.</li><li>Simion Movilă a domnit atât în Valahia, cât și în Moldova; fiii lor au continuat competiția până în 1616.</li><li>Elisabeta Movilă a condus activ partidul dinastic, a strâns oaste și a negociat cu magnații poloni.</li></ul></section><section class="note-card"><h4><span class="tag">BUZ</span>Buzeștii și boierimea lui Mihai</h4><p class="lead">Frații Preda, Radu și Stroe Buzescu au fost comandanți și susținători ai lui Mihai Viteazul.</p><ul><li>Boierimea a oferit domnului resurse pentru războiul antiotoman, dar tratatul de la Alba Iulia din 1595 i-a acordat și privilegii care limitau autoritatea centrală.</li><li>După moartea lui Mihai, marii boieri au negociat cu noile regimuri pentru a-și păstra domeniile și influența.</li></ul></section><section class="note-card"><h4><span class="tag">COST</span>Costineștii și Cantemireștii</h4><p class="lead">În Moldova sfârșitului de secol XVII, frații Miron și Velicico Costin reprezentau o familie cultivată și influentă, percepută de Constantin Cantemir ca rivală.</p><ul><li>Denunțul privind un complot a dus în 1691 la executarea lor.</li><li>Moartea cronicarului Miron Costin a rămas exemplul clasic al deciziei domnești luate în grabă, pe baza unei informații neverificate.</li></ul></section></div></section><section class="panel" id="cazuri"><div class="panel-header"><h2>Asasinate, execuții și schimbări violente de domnie</h2><p class="panel-note">Cazurile sunt prezentate cu diferența necesară dintre asasinat boieresc, execuție otomană, ucidere în luptă și moarte suspectată. Nu toate tradițiile târzii au aceeași valoare documentară.</p></div><div class="timeline">
+    <article class="year-card">
+      <div class="year-badge">1447</div>
+      <div class="year-content">
+        <div class="year-title"><h3>Vlad Dracul și Mircea al II-lea</h3><p>Schimbarea de regim a fost produsă prin intervenție transilvăneană și răzbunare boierească.</p></div>
+        <div class="content-grid"><section class="note-card full"><h4><span class="tag">DOMN</span>Vlad al II-lea Dracul</h4><p class="lead">După deteriorarea relațiilor cu Iancu de Hunedoara, Vlad Dracul a fost înlăturat și ucis în 1447.</p><ul><li>Fiul său Mircea a fost capturat și ucis de boierii din Târgoviște, potrivit tradiției fiind orbit și îngropat de viu.</li><li>Vlad Țepeș va folosi memoria acestor crime pentru a justifica represiunea împotriva adversarilor familiei sale.</li></ul></section></div>
+      </div>
+    </article>
+    <article class="year-card">
+      <div class="year-badge">1451</div>
+      <div class="year-content">
+        <div class="year-title"><h3>Bogdan al II-lea</h3><p>Un asasinat dinastic care a determinat politica lui Ștefan cel Mare.</p></div>
+        <div class="content-grid"><section class="note-card full"><h4><span class="tag">15/16 X</span>Reuseni</h4><p class="lead">Petru Aron l-a surprins pe Bogdan al II-lea la o nuntă și l-a decapitat.</p><ul><li>Ucigașul a ocupat tronul, dar a rămas dependent de sprijin extern și de acceptarea boierilor.</li><li>Ștefan a revenit în 1457 și l-a urmărit până la capturarea și execuția sa din 1470.</li></ul></section></div>
+      </div>
+    </article>
+    <article class="year-card">
+      <div class="year-badge">1456</div>
+      <div class="year-content">
+        <div class="year-title"><h3>Vlad Țepeș și boierii</h3><p>Centralizarea autorității a fost realizată prin schimbarea elitelor și pedepsirea celor considerați trădători.</p></div>
+        <div class="content-grid"><section class="note-card full"><h4><span class="tag">POL</span>Politica antioligarhică</h4><p class="lead">Vlad a redus durata dregătoriilor, a promovat slujitori dependenți de domnie și a confiscat averile adversarilor.</p><ul><li>Povestea ospățului de Paște, la care boierii ar fi fost arestați și siliți să lucreze la Poenari, aparține tradiției cronistice și legendare; nucleul istoric este conflictul real cu familiile care schimbaseră repetat domnii.</li><li>Represiunea a întărit pe termen scurt puterea domnului, dar a împins o parte a boierilor spre Radu cel Frumos în 1462.</li></ul></section></div>
+      </div>
+    </article>
+    <article class="year-card">
+      <div class="year-badge">1476</div>
+      <div class="year-content">
+        <div class="year-title"><h3>Moartea lui Vlad Țepeș</h3><p>Un final violent, dar cu împrejurări insuficient documentate.</p></div>
+        <div class="content-grid"><section class="note-card full"><h4><span class="tag">CERT</span>Versiuni</h4><p class="lead">Domnul a murit la sfârșitul anului 1476 într-o luptă sau ambuscadă împotriva adversarilor otomani și munteni.</p><ul><li>Unele izvoare indică un ucigaș otoman infiltrat; altele, confundarea lui cu un turc de către propriii oameni; o altă tradiție vorbește despre trădare.</li><li>Cert este că a fost decapitat, iar capul a fost trimis la Istanbul.</li></ul></section></div>
+      </div>
+    </article>
+    <article class="year-card">
+      <div class="year-badge">1509</div>
+      <div class="year-content">
+        <div class="year-title"><h3>Mihnea cel Rău și Craioveștii</h3><p>Conflict pentru controlul Olteniei și al sfatului domnesc.</p></div>
+        <div class="content-grid"><section class="note-card"><h4><span class="tag">1508–09</span>Represiunea</h4><p class="lead">Mihnea a urmărit reducerea puterii Craioveștilor prin confiscări, mutilări și înlocuirea dregătorilor.</p><ul><li>Craioveștii au fugit și au obținut sprijin otoman pentru înlăturarea lui.</li><li>Domnul s-a refugiat la Sibiu, unde a fost ucis la 12 martie 1510 de un adversar sârb asociat partidei oltene.</li></ul></section><section class="note-card"><h4><span class="tag">1512</span>Ridicarea lui Neagoe</h4><p class="lead">După domnia scurtă a lui Vlad cel Tânăr, Craioveștii l-au ridicat pe Neagoe Basarab.</p><ul><li>Vlad cel Tânăr a fost înfrânt la Văcărești și executat în ianuarie 1512.</li><li>Accesul lui Neagoe la tron arată cum o familie boierească putea transforma prestigiul, averea și sprijinul extern într-o nouă legitimitate dinastică.</li></ul></section></div>
+      </div>
+    </article>
+    <article class="year-card">
+      <div class="year-badge">1522</div>
+      <div class="year-content">
+        <div class="year-title"><h3>Radu de la Afumați și facțiunile boierești</h3><p>Un domn sprijinit inițial de Craiovești a fost ucis de o coaliție de boieri nemulțumiți.</p></div>
+        <div class="content-grid"><section class="note-card"><h4><span class="tag">1522–28</span>Război permanent</h4><p class="lead">Radu a alternat lupta cu otomanii și lupta cu pretendenții Vladislav al III-lea și Radu Bădica.</p><ul><li>Craioveștii erau indispensabili militar, dar influența lor provoca opoziția altor familii.</li><li>După recunoașterea otomană, problema principală a devenit distribuirea dregătoriilor și a autorității interne.</li></ul></section><section class="note-card"><h4><span class="tag">2 I 1529</span>Cetățuia</h4><p class="lead">Boierii Neagoe și Drăgan l-au ucis pe Radu și pe fiul său Vlad în biserica de la Cetățuia.</p><ul><li>Asasinarea într-un lăcaș de cult a fost privită de cronicari ca o încălcare excepțională a ordinii morale.</li><li>Capetele au fost trimise la Poartă pentru a demonstra schimbarea regimului.</li></ul></section></div>
+      </div>
+    </article>
+    <article class="year-card">
+      <div class="year-badge">1530</div>
+      <div class="year-content">
+        <div class="year-title"><h3>Un sfert de secol de domni uciși</h3><p>Între 1510 și 1535, Valahia a cunoscut o succesiune extrem de violentă.</p></div>
+        <div class="content-grid"><section class="note-card full"><h4><span class="tag">LISTĂ</span>Domni și pretendenți</h4><p class="lead">Mihnea cel Rău, Vlad cel Tânăr, Teodosie, Dragomir Călugărul, Radu Bădica, Radu de la Afumați, Vladislav al III-lea, Moise Vodă și Vlad Vintilă au fost uciși, executați sau au murit în lupte pentru tron.</p><ul><li>Vlad Înecatul a murit accidental, înecat în Dâmbovița, în 1532.</li><li>Teodosie a murit la Istanbul după ce fusese înlăturat; circumstanțele nu sunt identice cu o execuție boierească.</li><li>Seria ilustrează instabilitatea creată de intervenția otomană, rivalitatea Dănești–Drăculești și autonomia marilor boieri.</li></ul></section></div>
+      </div>
+    </article>
+    <article class="year-card">
+      <div class="year-badge">1535</div>
+      <div class="year-content">
+        <div class="year-title"><h3>Vlad Vintilă de la Slatina</h3><p>Un domn care încerca să deschidă contacte cu Habsburgii a pierdut sprijinul intern.</p></div>
+        <div class="content-grid"><section class="note-card full"><h4><span class="tag">IUN</span>Uciderea la vânătoare</h4><p class="lead">În iunie 1535, Vlad Vintilă a fost ucis de boieri în timpul unei vânători.</p><ul><li>Complotul a combinat nemulțumirea față de autoritarism, teama de schimbarea politicii externe și rivalitatea pentru dregătorii.</li><li>Radu Paisie a preluat tronul cu sprijin boieresc și otoman.</li></ul></section></div>
+      </div>
+    </article>
+    <article class="year-card">
+      <div class="year-badge">1540</div>
+      <div class="year-content">
+        <div class="year-title"><h3>Ștefan Lăcustă</h3><p>Domnul instalat de Soliman după campania din 1538 a rămas fără legitimitate internă.</p></div>
+        <div class="content-grid"><section class="note-card full"><h4><span class="tag">20 XII</span>Complotul de la Suceava</h4><p class="lead">Boierii l-au ucis în foișorul palatului în timp ce dormea și l-au ridicat pe Alexandru Cornea.</p><ul><li>Lăcustă fusese acuzat că a acceptat pierderea Tighinei și că răspundea uneltirilor prin execuții.</li><li>Atacul boieresc asupra garnizoanei de la Tighina arată că opoziția avea și o dimensiune antiotomană, nu doar una de clan.</li></ul></section></div>
+      </div>
+    </article>
+    <article class="year-card">
+      <div class="year-badge">1563</div>
+      <div class="year-content">
+        <div class="year-title"><h3>Despot Vodă și Ștefan Tomșa</h3><p>Mercenarii, fiscalitatea și conflictul religios au izolat un domn cu proiect occidental.</p></div>
+        <div class="content-grid"><section class="note-card full"><h4><span class="tag">NOV</span>Areni – Suceava</h4><p class="lead">După asediul Sucevei, Despot a ieșit să negocieze și a fost ucis de Ștefan Tomșa cu buzduganul.</p><ul><li>Tomșa a fost ridicat de boieri, dar nu a obținut confirmarea Porții.</li><li>În 1564, Alexandru Lăpușneanu a revenit cu sprijin otoman, iar Tomșa a fost executat în Polonia.</li></ul></section></div>
+      </div>
+    </article>
+    <article class="year-card">
+      <div class="year-badge">1564</div>
+      <div class="year-content">
+        <div class="year-title"><h3>Alexandru Lăpușneanu și marea boierime</h3><p>A doua domnie a fost construită pe pedepsirea celor care îl alungaseră.</p></div>
+        <div class="content-grid"><section class="note-card full"><h4><span class="tag">REPR</span>Execuții și confiscări</h4><p class="lead">Cronicile descriu uciderea unui număr mare de boieri la un ospăț și construirea unei piramide de capete.</p><ul><li>Nucleul istoric al represiunii este sigur, dar numărul de 47 și detaliile dramatice provin din tradiția cronistică, amplificată literar de Costache Negruzzi.</li><li>Lăpușneanu a mutat accentul politic spre Iași și a încercat să reducă vechile centre de autonomie boierească.</li></ul></section></div>
+      </div>
+    </article>
+    <article class="year-card">
+      <div class="year-badge">1574</div>
+      <div class="year-content">
+        <div class="year-title"><h3>Ioan Vodă și trădarea din campanie</h3><p>Războiul antiotoman s-a prăbușit și prin dezagregarea loialității interne.</p></div>
+        <div class="content-grid"><section class="note-card full"><h4><span class="tag">GOL</span>Ieremia Golia</h4><p class="lead">În timpul campaniei de la Cahul–Roșcani, pârcălabul Ieremia Golia a trecut cu o parte a oastei de partea adversarului.</p><ul><li>Trădarea nu a fost singura cauză a înfrângerii: superioritatea otomano-tătară, vremea și pierderea artileriei au fost decisive.</li><li>Ioan Vodă a fost executat de otomani după predare, nu asasinat direct de boieri, însă dezertarea a rămas în memoria istorică drept simbol al rupturii interne.</li></ul></section></div>
+      </div>
+    </article>
+    <article class="year-card">
+      <div class="year-badge">1595</div>
+      <div class="year-content">
+        <div class="year-title"><h3>Ștefan Răzvan și Ieremia Movilă</h3><p>Două proiecte externe concurente: Liga Sfântă transilvăneană și protecția polonă.</p></div>
+        <div class="content-grid"><section class="note-card full"><h4><span class="tag">AUG–DEC</span>Schimbarea tronului</h4><p class="lead">Oastea polonă l-a instalat pe Ieremia Movilă; Răzvan a încercat să revină cu sprijin transilvănean.</p><ul><li>La 3 decembrie 1595 a fost înfrânt pe câmpia Sucevei, capturat și executat prin tragere în țeapă.</li><li>Ieremia a acceptat recunoașterea atât a Poloniei, cât și a Porții, scoțând Moldova din frontul activ antiotoman.</li></ul></section></div>
+      </div>
+    </article>
+    <article class="year-card">
+      <div class="year-badge">1600</div>
+      <div class="year-content">
+        <div class="year-title"><h3>Mihai Viteazul, Movileștii și nobilimea transilvăneană</h3><p>Construcția politică a lui Mihai a unit temporar trei spații cu elite și interese diferite.</p></div>
+        <div class="content-grid"><section class="note-card"><h4><span class="tag">1599–1600</span>Opoziția elitelor</h4><p class="lead">În Transilvania, nobilimea a respins fiscalitatea, garnizoanele și perspectiva unei domnii personale durabile.</p><ul><li>În Moldova, partidul Movileștilor a rămas legat de magnații poloni.</li><li>În Valahia, Simion Movilă a fost instalat de poloni, iar boierii au fost obligați să aleagă între tabere.</li></ul></section><section class="note-card"><h4><span class="tag">1601</span>Asasinarea lui Mihai</h4><p class="lead">Mihai a fost ucis de soldații lui Giorgio Basta, nu de boierii munteni.</p><ul><li>Crima a fost o decizie militar-politică habsburgică, produsă de teama față de independența și prestigiul voievodului.</li><li>Unele familii boierești au rămas fidele memoriei sale, altele s-au adaptat rapid noului echilibru.</li></ul></section></div>
+      </div>
+    </article>
+    <article class="year-card">
+      <div class="year-badge">1615</div>
+      <div class="year-content">
+        <div class="year-title"><h3>Ultimul război al Movileștilor</h3><p>Elisabeta Movilă a încercat să păstreze tronul pentru fiul ei Alexandru.</p></div>
+        <div class="content-grid"><section class="note-card full"><h4><span class="tag">1615–16</span>Campania</h4><p class="lead">Cu sprijinul unor magnați poloni, Alexandru Movilă l-a înlăturat pe Ștefan Tomșa al II-lea.</p><ul><li>Poarta a trimis forțe pentru Radu Mihnea; la 2 august 1616, partida Movileștilor a fost înfrântă.</li><li>Alexandru și fratele său Bogdan au fost duși la Istanbul și convertiți la islam; Elisabeta a fost capturată și a murit în captivitate.</li></ul></section></div>
+      </div>
+    </article>
+    <article class="year-card">
+      <div class="year-badge">1620</div>
+      <div class="year-content">
+        <div class="year-title"><h3>Gașpar Graziani</h3><p>Schimbarea taberei în plin război polono-otoman i-a fost fatală.</p></div>
+        <div class="content-grid"><section class="note-card full"><h4><span class="tag">29 IX</span>Braniște</h4><p class="lead">După înfrângerea de la Cecora, Graziani a fugit cu un grup restrâns și a fost ucis de boierii Șeptilici și Goia.</p><ul><li>Ucigașii urmăreau să se distanțeze de alianța polonă și să evite răzbunarea Porții.</li><li>Crima nu i-a protejat pe termen lung: Moldova a rămas teatrul intervențiilor otomane și polone.</li></ul></section></div>
+      </div>
+    </article>
+    <article class="year-card">
+      <div class="year-badge">1632</div>
+      <div class="year-content">
+        <div class="year-title"><h3>Matei Basarab și Vasile Lupu</h3><p>Rivalitate între doi domni sprijiniți de partide boierești și de alianțe regionale diferite.</p></div>
+        <div class="content-grid"><section class="note-card"><h4><span class="tag">1637–39</span>Invaziile</h4><p class="lead">Vasile Lupu a încercat să obțină tronul muntean pentru sine sau pentru fiul său, folosind denunțuri la Poartă și campanii armate.</p><ul><li>Matei l-a învins la Focșani și Ojogeni/Nenișori.</li><li>Competiția a alimentat cheltuieli militare, dar și consolidarea armatelor, tiparului și instituțiilor celor două domnii.</li></ul></section><section class="note-card"><h4><span class="tag">1653</span>Gheorghe Ștefan și Finta</h4><p class="lead">Logofătul Gheorghe Ștefan s-a răsculat împotriva lui Lupu și a primit ajutor muntean și transilvănean.</p><ul><li>Lupu a recucerit Iașul cu ajutor cazac, apoi a invadat Valahia.</li><li>Înfrângerea de la Finta a decis pierderea tronului și a transformat o rivalitate personală într-o schimbare de regim regională.</li></ul></section></div>
+      </div>
+    </article>
+    <article class="year-card">
+      <div class="year-badge">1655</div>
+      <div class="year-content">
+        <div class="year-title"><h3>Revolta seimenilor și dorobanților</h3><p>O criză militară și socială îndreptată împotriva marii boierimi.</p></div>
+        <div class="content-grid"><section class="note-card"><h4><span class="tag">26–27 II</span>București</h4><p class="lead">Trupele de seimeni s-au răsculat după ce Constantin Șerban a încercat să le desființeze sau să le reducă privilegiile.</p><ul><li>Au fost ucise între 14 și 32 de persoane din rândul boierilor și slujitorilor lor.</li><li>Răsculații au contestat atât politica domnului, cât și dominația marilor familii asupra pământului și funcțiilor.</li></ul></section><section class="note-card"><h4><span class="tag">26 VI</span>Hoplea</h4><p class="lead">Domnul, sprijinit de Gheorghe Rákóczi al II-lea și de Gheorghe Ștefan al Moldovei, a înfrânt răscoala.</p><ul><li>Liderul Hrizea a continuat încercările de revenire, dar mișcarea a fost în cele din urmă lichidată.</li><li>Revolta s-a produs în 1655, la un an după moartea lui Matei Basarab, în timpul lui Constantin Șerban.</li></ul></section></div>
+      </div>
+    </article>
+    <article class="year-card">
+      <div class="year-badge">1663</div>
+      <div class="year-content">
+        <div class="year-title"><h3>Cantacuzinii și Leurdenii</h3><p>Punctul culminant al unei rivalități de familie care va domina politica munteană timp de decenii.</p></div>
+        <div class="content-grid"><section class="note-card"><h4><span class="tag">DEC</span>Moartea postelnicului Constantin Cantacuzino</h4><p class="lead">Grigore I Ghica a ordonat strangularea postelnicului după acuzațiile formulate de Stroe Leurdeanu și aliații săi.</p><ul><li>Șerban Cantacuzino a fost mutilat la nas pentru a fi descalificat de la domnie, iar alți membri ai familiei au fugit.</li><li>Crima a produs o memorie de familie și un program de răzbunare care a influențat domniile următoare.</li></ul></section><section class="note-card"><h4><span class="tag">1678–79</span>Revanșa</h4><p class="lead">Șerban Cantacuzino a ajuns domn în 1678, iar partidul rival a fost judecat și îndepărtat.</p><ul><li>Stroe Leurdeanu a fost obligat să se călugărească; influența Bălenilor a scăzut.</li><li>Victoria Cantacuzinilor nu a încheiat logica de clan, ci a mutat-o spre conflictul cu Brâncoveanu.</li></ul></section></div>
+      </div>
+    </article>
+    <article class="year-card">
+      <div class="year-badge">1688</div>
+      <div class="year-content">
+        <div class="year-title"><h3>Moartea lui Șerban Cantacuzino</h3><p>O succesiune rapidă, înconjurată de zvonuri de otrăvire.</p></div>
+        <div class="content-grid"><section class="note-card full"><h4><span class="tag">29 X</span>Certitudine și ipoteză</h4><p class="lead">Șerban a murit după o boală în 1688. Cronicile și tradiția politică au atribuit uneori moartea fraților săi sau lui Constantin Brâncoveanu.</p><ul><li>Documentele permit încadrarea cazului drept moarte suspectată; ipoteza otrăvirii rămâne nedemonstrată.</li><li>Brâncoveanu a fost ales rapid cu sprijinul Cantacuzinilor, care credeau inițial că îl vor controla.</li></ul></section></div>
+      </div>
+    </article>
+    <article class="year-card">
+      <div class="year-badge">1688</div>
+      <div class="year-content">
+        <div class="year-title"><h3>Brâncoveanu și Cantacuzinii</h3><p>Alianța de la început s-a transformat într-un conflict pentru controlul politicii externe și al succesiunii.</p></div>
+        <div class="content-grid"><section class="note-card"><h4><span class="tag">1690–1710</span>Cooperare și separare</h4><p class="lead">Stolnicul Constantin Cantacuzino și spătarul Mihai Cantacuzino au ocupat poziții esențiale în regim.</p><ul><li>Pe măsură ce fiii lui Brâncoveanu deveneau candidați la succesiune, Cantacuzinii se temeau de marginalizare.</li><li>Fiecare tabără întreținea contacte cu Viena, Moscova și Istanbul și putea transforma informația diplomatică în denunț.</li></ul></section><section class="note-card"><h4><span class="tag">1711</span>Toma Cantacuzino</h4><p class="lead">În timpul campaniei de pe Prut, Toma a trecut cu un contingent la ruși, în timp ce Brâncoveanu a rămas prudent.</p><ul><li>Poarta a interpretat episodul drept dovadă că întreaga elită munteană negocia cu inamicul.</li><li>Cantacuzinii au încercat să transfere vina asupra domnului; Brâncoveanu a urmărit să-i îndepărteze din dregătorii.</li></ul></section><section class="note-card full"><h4><span class="tag">1714–16</span>Două execuții succesive</h4><p class="lead">Brâncoveanu a fost mazilit și executat în 1714; Ștefan Cantacuzino, succesorul său, a fost executat în 1716 împreună cu tatăl său, stolnicul Constantin.</p><ul><li>Poarta a eliminat ambele rețele rivale și a înlocuit domniile pământene cu regimul fanariot.</li><li>Rivalitatea a produs exact rezultatul de care fiecare tabără se temea: pierderea accesului ambelor familii la tron.</li></ul></section></div>
+      </div>
+    </article>
+    <article class="year-card">
+      <div class="year-badge">1691</div>
+      <div class="year-content">
+        <div class="year-title"><h3>Miron Costin</h3><p>O acuzație de complot transformată în execuție înaintea unei anchete complete.</p></div>
+        <div class="content-grid"><section class="note-card full"><h4><span class="tag">DEC</span>Roman</h4><p class="lead">Constantin Cantemir a primit informația că Velicico Costin pregătește înlocuirea sa; a ordonat uciderea lui și arestarea fratelui Miron.</p><ul><li>Miron Costin, fost mare logofăt și cronicar, a fost decapitat lângă Roman.</li><li>Tradiția consemnează regretul ulterior al domnului, când a înțeles că fusese manipulat de adversarii Costineștilor.</li></ul></section></div>
+      </div>
+    </article>
+    <article class="year-card">
+      <div class="year-badge">1714</div>
+      <div class="year-content">
+        <div class="year-title"><h3>Constantin Brâncoveanu</h3><p>O execuție otomană favorizată de acumularea suspiciunilor și de denunțurile interne.</p></div>
+        <div class="content-grid"><section class="note-card full"><h4><span class="tag">ACUZE</span>Capetele de acuzare</h4><p class="lead">Poarta invoca corespondența cu Austria, Rusia, Polonia și Veneția, averea depusă în străinătate, monedele de aur și fuga lui Toma Cantacuzino.</p><ul><li>Stolnicul Constantin și spătarul Mihai Cantacuzino au contribuit la izolarea politică a domnului, deși decizia finală a aparținut sultanului și marelui vizir.</li><li>La 15 august 1714, domnul, cei patru fii și Ianache Văcărescu au fost decapitați la Istanbul.</li></ul></section></div>
+      </div>
+    </article>
+    <article class="year-card">
+      <div class="year-badge">1777</div>
+      <div class="year-content">
+        <div class="year-title"><h3>Grigore al III-lea Ghica</h3><p>Un domn fanariot ucis de un trimis al Porții după protestele față de anexarea Bucovinei.</p></div>
+        <div class="content-grid"><section class="note-card full"><h4><span class="tag">12 X</span>Beilicul din Iași</h4><p class="lead">Capugiul Ahmed Kara Hisarlı l-a atras într-o întâlnire și l-a ucis la 12 octombrie 1777, după mazilire.</p><ul><li>Domnul protestase împotriva cedării nord-vestului Moldovei către Austria în 1775.</li><li>A fost decapitat, iar capul trimis la Istanbul; moartea a provocat reacții în opinia publică europeană.</li><li>Asasinarea a fost executată de agenții Porții, nu de boieri, deși adversitățile de curte au contribuit la izolarea lui.</li></ul></section></div>
+      </div>
+    </article></div></section><section class="panel" id="destine"><div class="panel-header"><h2>Destine și împrejurări ale morții</h2><p class="panel-note">Cazurile sunt ordonate după natura evenimentului, certitudinea izvoarelor și contextul politic.</p></div><div class="content-grid"><section class="note-card"><h4><span class="tag">BAS</span>Basarab I</h4><p class="lead">A murit în 1352, după o domnie lungă, la peste două decenii după victoria de la Posada.</p><ul><li>Victoria de la Posada din 1330 a avut loc cu peste două decenii înaintea morții sale.</li></ul></section><section class="note-card"><h4><span class="tag">MIH</span>Mihnea Turcitul</h4><p class="lead">A fost mazilit în 1591, s-a convertit la islam și a devenit guvernator otoman; a murit la Tripoli în 1601.</p><ul><li>După mazilire, cariera sa a continuat în administrația otomană.</li></ul></section><section class="note-card"><h4><span class="tag">MAT</span>Matei Basarab</h4><p class="lead">A murit în 1654. Revolta seimenilor a izbucnit în 1655, sub succesorul Constantin Șerban.</p><ul><li>Tensiunile militare și fiscale de la sfârșitul domniei au pregătit criza izbucnită sub succesorul său.</li></ul></section><section class="note-card"><h4><span class="tag">ȘER</span>Șerban Cantacuzino</h4><p class="lead">A murit în 1688 după o boală; unii contemporani și tradiția politică au vehiculat ipoteza otrăvirii.</p><ul><li>Succesiunea rapidă a lui Brâncoveanu a alimentat zvonul și propaganda ulterioară.</li></ul></section><section class="note-card"><h4><span class="tag">VLAD</span>Vlad Înecatul</h4><p class="lead">A murit înecat în 1532, probabil accidental.</p><ul><li>Împrejurarea morții sale aparține categoriei accidentelor, deși epoca rămâne marcată de lupte pentru tron.</li></ul></section><section class="note-card"><h4><span class="tag">MIHAI</span>Mihai Viteazul</h4><p class="lead">A fost ucis de un detașament imperial trimis de Basta în 1601.</p><ul><li>În criza regimului au intervenit mai multe tabere, iar uciderea a fost executată de mercenarii imperiali trimiși de Giorgio Basta.</li></ul></section></div></section><section class="panel" id="tipologie"><div class="panel-header"><h2>Tipologia conflictelor interne</h2><p class="panel-note">Aceleași mecanisme se repetă în epoci și familii diferite.</p></div><div class="content-grid"><section class="note-card"><h4><span class="tag">A</span>Complotul de palat</h4><p class="lead">Un grup restrâns folosea accesul la curte, garda, ospățul, vânătoarea sau o întâlnire diplomatică pentru a elimina conducătorul.</p><ul><li>Bogdan al II-lea, Ștefan Lăcustă, Vlad Vintilă și Grigore al III-lea Ghica au fost surprinși în astfel de contexte.</li></ul></section><section class="note-card"><h4><span class="tag">B</span>Trădarea în campanie</h4><p class="lead">Cetele boierești puteau dezerta, schimba tabăra sau refuza mobilizarea.</p><ul><li>Ieremia Golia în 1574 și abandonarea lui Petru Rareș în 1538 arată efectul militar direct al rupturii politice.</li></ul></section><section class="note-card"><h4><span class="tag">C</span>Denunțul la Poartă</h4><p class="lead">Rivalii trimiteau informații despre contacte cu Habsburgii, Polonia sau Rusia și ofereau sume pentru mazilire.</p><ul><li>Brâncoveanu–Cantacuzinii și Vasile Lupu–Matei Basarab sunt exemple de război diplomatic purtat prin Istanbul.</li></ul></section><section class="note-card"><h4><span class="tag">D</span>Pretendentul cu oaste străină</h4><p class="lead">Un candidat la tron venea însoțit de poloni, unguri, transilvăneni, tătari sau otomani.</p><ul><li>Petru Aron, Ieremia Movilă, Simion Movilă și numeroșii pretendenți munteni au folosit acest model.</li></ul></section><section class="note-card"><h4><span class="tag">E</span>Represiunea domnească</h4><p class="lead">Confiscarea averilor și execuția adversarilor urmăreau prevenirea complotului, dar produceau noi exilați și noi coaliții.</p><ul><li>Vlad Țepeș, Alexandru Lăpușneanu, Mircea Ciobanul și Constantin Cantemir ilustrează diferite niveluri ale acestei politici.</li></ul></section><section class="note-card"><h4><span class="tag">F</span>Răscoala militară</h4><p class="lead">Trupele permanente sau semipermanente puteau deveni o putere politică autonomă.</p><ul><li>Revolta seimenilor din 1655 a atacat direct boierimea și a cerut intervenție militară externă pentru a fi înfrântă.</li></ul></section></div></section><section class="panel" id="bibliografie"><div class="panel-header"><h2>Bibliografie selectivă</h2><p class="panel-note">Pentru rivalități interne, genealogia, dregătoriile și cronica de partid sunt la fel de importante ca istoria militară.</p></div><div class="content-grid one"><article class="note-card full"><ul class="two-col">
+      <li>Nicolae Stoicescu, dicționare ale marilor dregători și studii despre boierime.</li>
+      <li>Constantin Rezachevici, studii privind cronologia domnilor și crizele politice medievale.</li>
+      <li>Constantin C. Giurescu și Dinu C. Giurescu, <em>Istoria românilor</em>.</li>
+      <li>Ștefan Ștefănescu, lucrări despre instituțiile Țării Românești.</li>
+      <li>N. Iorga, studii genealogice și politice asupra familiilor domnitoare.</li>
+      <li>Letopisețele muntene și moldovene, confruntate între ele și cu documentele de cancelarie.</li>
+      <li>Rapoarte diplomatice polone, habsburgice, venețiene și otomane.</li>
+      <li>Studii despre Craiovești, Cantacuzini, Movilești, Băleni/Leurdeni și Costinești.</li>
+    </ul><p class="source-note">Cronicile au fost scrise adesea în mediul unei familii sau al unei partide. Ele păstrează informații indispensabile, dar și acuzații, justificări și portrete polemice care trebuie comparate cu documente independente.</p></article></div></section>
+  <section class="panel" id="cronologie"><div class="panel-header"><h2>Cronologie de fixare</h2><p class="panel-note">Datele sunt ordonate pentru recapitulare rapidă. Când izvoarele medievale permit mai multe datări, intervalul sau dubla datare este păstrată în text.</p></div><div class="date-grid"><article class="date-card"><strong>1330</strong><span>Victoria lui Basarab I la Posada; domnul va muri în 1352, nu în această campanie.</span></article><article class="date-card"><strong>1447</strong><span>Vlad Dracul și Mircea al II-lea sunt uciși în schimbarea de regim susținută de Iancu de Hunedoara.</span></article><article class="date-card"><strong>15/16 octombrie 1451</strong><span>Bogdan al II-lea este asasinat la Reuseni de Petru Aron.</span></article><article class="date-card"><strong>1456–1462</strong><span>Vlad Țepeș înlocuiește o parte a vechii elite și reprimă facțiunile adverse.</span></article><article class="date-card"><strong>sfârșitul lui 1476</strong><span>Vlad Țepeș moare în luptă sau ambuscadă; împrejurările exacte rămân incerte.</span></article><article class="date-card"><strong>1508–1509</strong><span>Mihnea cel Rău intră în conflict deschis cu Craioveștii.</span></article><article class="date-card"><strong>12 martie 1510</strong><span>Mihnea este ucis la Sibiu.</span></article><article class="date-card"><strong>ianuarie 1512</strong><span>Vlad cel Tânăr este înfrânt și executat; Neagoe Basarab urcă pe tron.</span></article><article class="date-card"><strong>1522–1528</strong><span>Radu de la Afumați luptă cu pretendenții și reface temporar echilibrul intern.</span></article><article class="date-card"><strong>2 ianuarie 1529</strong><span>Radu de la Afumați și fiul său sunt asasinați la Cetățuia.</span></article><article class="date-card"><strong>1530</strong><span>Moise Vodă moare în lupta pentru tron împotriva lui Vlad Înecatul.</span></article><article class="date-card"><strong>1532</strong><span>Vlad Înecatul moare prin înec, nu printr-un asasinat demonstrat.</span></article><article class="date-card"><strong>iunie 1535</strong><span>Vlad Vintilă este ucis de boieri la vânătoare.</span></article><article class="date-card"><strong>1538</strong><span>O parte a boierilor îl abandonează pe Petru Rareș în fața campaniei lui Soliman.</span></article><article class="date-card"><strong>20 decembrie 1540</strong><span>Ștefan Lăcustă este ucis în palatul de la Suceava.</span></article><article class="date-card"><strong>noiembrie 1563</strong><span>Despot Vodă este ucis de Ștefan Tomșa.</span></article><article class="date-card"><strong>1564</strong><span>Lăpușneanu revine și începe represiunea împotriva boierilor adversari.</span></article><article class="date-card"><strong>iunie 1574</strong><span>Dezertarea lui Ieremia Golia contribuie la înfrângerea lui Ioan Vodă.</span></article><article class="date-card"><strong>1591</strong><span>Mihnea Turcitul este mazilit; va muri în 1601 la Tripoli.</span></article><article class="date-card"><strong>3 decembrie 1595</strong><span>Ștefan Răzvan este înfrânt, capturat și executat de partida Movileștilor.</span></article><article class="date-card"><strong>18 septembrie 1600</strong><span>Nobilimea transilvăneană și Basta îl înfrâng pe Mihai la Mirăslău.</span></article><article class="date-card"><strong>9/19 august 1601</strong><span>Mihai Viteazul este ucis de mercenarii imperiali.</span></article><article class="date-card"><strong>2 august 1616</strong><span>Partida Movileștilor este înfrântă; Alexandru și Bogdan Movilă sunt capturați.</span></article><article class="date-card"><strong>29 septembrie 1620</strong><span>Gașpar Graziani este ucis de boierii Șeptilici și Goia.</span></article><article class="date-card"><strong>1637 și 1639</strong><span>Războaiele dintre Vasile Lupu și Matei Basarab.</span></article><article class="date-card"><strong>mai 1653</strong><span>Rivalitatea Lupu–Gheorghe Ștefan–Matei Basarab se decide la Finta.</span></article><article class="date-card"><strong>aprilie 1654</strong><span>Moare Matei Basarab.</span></article><article class="date-card"><strong>26–27 februarie 1655</strong><span>Seimenii și dorobanții se răscoală și ucid numeroși boieri.</span></article><article class="date-card"><strong>26 iunie 1655</strong><span>Revolta este înfrântă la Hoplea.</span></article><article class="date-card"><strong>decembrie 1663</strong><span>Postelnicul Constantin Cantacuzino este strangulat din ordinul lui Grigore I Ghica.</span></article><article class="date-card"><strong>1678</strong><span>Șerban Cantacuzino ajunge domn; începe revanșa împotriva Leurdenilor/Bălenilor.</span></article><article class="date-card"><strong>29 octombrie 1688</strong><span>Moare Șerban Cantacuzino; zvonul otrăvirii rămâne nedovedit.</span></article><article class="date-card"><strong>decembrie 1691</strong><span>Miron și Velicico Costin sunt executați din ordinul lui Constantin Cantemir.</span></article><article class="date-card"><strong>1711</strong><span>Toma Cantacuzino trece la ruși; conflictul cu Brâncoveanu se agravează.</span></article><article class="date-card"><strong>15 august 1714</strong><span>Brâncoveanu, fiii săi și Ianache Văcărescu sunt executați la Istanbul.</span></article><article class="date-card"><strong>1716</strong><span>Ștefan și Constantin Cantacuzino sunt executați; Poarta instaurează regimul fanariot în Valahia.</span></article><article class="date-card"><strong>1775</strong><span>Austria anexează Bucovina în urma unei convenții cu Poarta.</span></article><article class="date-card"><strong>12 octombrie 1777</strong><span>Grigore al III-lea Ghica este ucis la Iași de trimisul sultanului.</span></article></div></section>
+  <footer class="footer">Material: „Cruciadele târzii – rivalități interne” · Familii boierești, asasinate, execuții și cronologie</footer>
+</main></body>
+</html>

@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+
+<html lang="ro">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>romania-comunista-epoca-ceausescu</title>
+<style>
+    :root {
+      --bg: #171411;
+      --paper: #f4ead7;
+      --paper-2: #fff7e8;
+      --paper-3: #fffdf7;
+      --ink: #211915;
+      --muted: #6c5b4f;
+      --accent: #b85c38;
+      --accent-dark: #74351f;
+      --gold: #d7a94f;
+      --green: #586b4d;
+      --red: #8d2f24;
+      --blue: #415a77;
+      --violet: #5f4a77;
+      --line: rgba(33, 25, 21, 0.18);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 15% 8%, rgba(216, 151, 71, 0.22), transparent 35%),
+        radial-gradient(circle at 92% 4%, rgba(141, 47, 36, 0.22), transparent 30%),
+        radial-gradient(circle at 45% 98%, rgba(65, 90, 119, 0.18), transparent 34%),
+        linear-gradient(135deg, #171411 0%, #2c241d 50%, #16120f 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.16;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mix-blend-mode: screen;
+    }
+
+    .page {
+      position: relative;
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+      z-index: 1;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .back-link,
+    .material-tag {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 243, 0.84);
+      color: #3c2a1e;
+      border-radius: 999px;
+      padding: 10px 15px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.25;
+      box-shadow: 0 8px 20px rgba(69, 46, 25, 0.10);
+    }
+
+    .back-link:hover { background: #fff6eb; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      background:
+        linear-gradient(120deg, rgba(255, 247, 232, 0.97), rgba(244, 234, 215, 0.94)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='760' height='420' viewBox='0 0 760 420'%3E%3Cg fill='none' stroke='%2374351f' stroke-opacity='.16' stroke-width='2'%3E%3Cpath d='M50 350C170 250 245 390 395 310s195-38 315-120'/%3E%3Cpath d='M0 185c100-36 170 30 260-10s200-88 430-18'/%3E%3Cpath d='M95 80c145 90 260 10 380 50 90 30 130 102 220 82'/%3E%3Cpath d='M110 70h95v250h-95zM260 95h95v225h-95zM410 125h95v195h-95zM560 80h95v240h-95z'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: cover;
+      padding: clamp(34px, 5vw, 70px);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .hero::after {
+      content: "1948–1989";
+      position: absolute;
+      right: -18px;
+      bottom: -24px;
+      font-size: clamp(3.5rem, 10vw, 9rem);
+      line-height: 0.8;
+      color: rgba(116, 53, 31, 0.09);
+      font-weight: 900;
+      letter-spacing: -0.08em;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 16px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(184, 92, 56, 0.12);
+      color: var(--accent-dark);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-weight: 750;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      max-width: 980px;
+      font-size: clamp(2.55rem, 6.3vw, 5.8rem);
+      line-height: 0.92;
+      letter-spacing: -0.07em;
+      color: var(--ink);
+    }
+
+    .subtitle {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 24px 0 0;
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      line-height: 1.65;
+      color: var(--muted);
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .stat-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.48);
+      border: 1px solid rgba(116, 53, 31, 0.14);
+      min-height: 116px;
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 1.45rem;
+      line-height: 1.05;
+      color: var(--accent-dark);
+      margin-bottom: 8px;
+    }
+
+    .stat-card span {
+      display: block;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.42;
+      color: var(--muted);
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    .toc {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(244, 234, 215, 0.88);
+      box-shadow: 0 14px 42px rgba(0, 0, 0, 0.20);
+      border: 1px solid rgba(255, 255, 255, 0.38);
+    }
+
+    .toc h2 {
+      margin: 0 0 12px;
+      font-size: 1.28rem;
+      color: var(--accent-dark);
+      letter-spacing: -0.03em;
+    }
+
+    .toc-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+
+
+    .toc-detailed {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .toc-card {
+      padding: 12px;
+      border-radius: 18px;
+      background: rgba(255, 247, 232, 0.78);
+      border: 1px solid rgba(116, 53, 31, 0.14);
+    }
+
+    .toc-card .toc-main {
+      width: 100%;
+      justify-content: flex-start;
+      border-radius: 14px;
+      padding: 10px 12px;
+      color: var(--accent-dark);
+      background: rgba(184, 92, 56, 0.10);
+      border-color: rgba(184, 92, 56, 0.22);
+      font-size: 0.95rem;
+    }
+
+    .toc-sub {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 9px;
+    }
+
+    .toc-sub a {
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 0.78rem;
+      font-weight: 650;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.52);
+    }
+
+    .toc-sub a:hover {
+      color: var(--accent-dark);
+      background: rgba(215, 169, 79, 0.16);
+    }
+
+    .toc a {
+      display: inline-flex;
+      border: 1px solid rgba(116, 53, 31, 0.16);
+      border-radius: 999px;
+      padding: 9px 12px;
+      text-decoration: none;
+      color: var(--ink);
+      background: rgba(255, 247, 232, 0.86);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .toc a:hover {
+      background: rgba(184, 92, 56, 0.12);
+      color: var(--accent-dark);
+    }
+
+    .panel {
+      margin-top: 24px;
+      border-radius: 30px;
+      padding: clamp(22px, 4vw, 42px);
+      background: rgba(244, 234, 215, 0.96);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.36);
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 24px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.75rem, 3vw, 3rem);
+      letter-spacing: -0.045em;
+      line-height: 1;
+      color: var(--accent-dark);
+    }
+
+    .panel-note {
+      margin: 0;
+      max-width: 520px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.95rem;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .content-grid.three { grid-template-columns: repeat(3, 1fr); }
+    .content-grid.one { grid-template-columns: 1fr; }
+
+    .note-card,
+    .timeline-content,
+    .summary-card,
+    .quote-card {
+      padding: 20px;
+      border-radius: 22px;
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(33, 25, 21, 0.06);
+    }
+
+    .note-card.soft { background: rgba(244, 234, 215, 0.62); }
+    .note-card.full, .quote-card.full { grid-column: 1 / -1; }
+
+    .note-card h3,
+    .timeline-content h3,
+    .summary-card h3,
+    .quote-card h3 {
+      margin: 0 0 12px;
+      color: var(--accent-dark);
+      font-size: 1.28rem;
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+    }
+
+    .note-card h4,
+    .quote-card h4 {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 14px;
+      color: var(--accent-dark);
+      font-size: 1.12rem;
+      letter-spacing: -0.02em;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 30px;
+      height: 30px;
+      padding: 0 8px;
+      border-radius: 999px;
+      background: rgba(184, 92, 56, 0.13);
+      color: var(--accent-dark);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .tag.green { background: rgba(88, 107, 77, 0.16); color: #405235; }
+    .tag.blue { background: rgba(65, 90, 119, 0.15); color: var(--blue); }
+    .tag.red { background: rgba(141, 47, 36, 0.12); color: var(--red); }
+    .tag.gold { background: rgba(215, 169, 79, 0.2); color: #755219; }
+    .tag.violet { background: rgba(95, 74, 119, 0.14); color: var(--violet); }
+
+    p {
+      margin: 0 0 12px;
+      line-height: 1.58;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .note-card p,
+    .summary-card p,
+    .timeline-content p,
+    .quote-card p,
+    li {
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    ul, ol { margin: 0; padding-left: 1.2rem; }
+    li { margin: 8px 0; line-height: 1.52; }
+    li::marker { color: var(--accent); }
+
+    .callout {
+      margin-top: 16px;
+      padding: 16px 18px;
+      border-left: 5px solid var(--accent);
+      border-radius: 16px;
+      background: rgba(184, 92, 56, 0.1);
+      color: var(--accent-dark);
+      line-height: 1.55;
+      font-weight: 700;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .callout.green {
+      border-left-color: var(--green);
+      background: rgba(88, 107, 77, 0.12);
+      color: #405235;
+    }
+
+    .callout.blue {
+      border-left-color: var(--blue);
+      background: rgba(65, 90, 119, 0.1);
+      color: var(--blue);
+    }
+
+    .callout.red {
+      border-left-color: var(--red);
+      background: rgba(141, 47, 36, 0.1);
+      color: var(--red);
+    }
+
+    .ribbon {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .ribbon-item {
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255,255,255,0.45);
+      border: 1px solid rgba(116, 53, 31, 0.12);
+    }
+
+    .ribbon-item strong {
+      display: block;
+      color: var(--accent-dark);
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+    }
+
+    .ribbon-item span {
+      display: block;
+      color: var(--muted);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.88rem;
+      line-height: 1.35;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    .split-title {
+      margin: 28px 0 14px;
+      color: var(--accent-dark);
+      font-size: clamp(1.35rem, 2vw, 2rem);
+      letter-spacing: -0.035em;
+    }
+
+    .event-stack { display: grid; gap: 12px; }
+
+    .event {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 16px;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 247, 232, 0.88);
+      border: 1px solid var(--line);
+    }
+
+    .event-date {
+      color: var(--accent-dark);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.18;
+    }
+
+    .event-text {
+      margin: 0;
+      color: var(--ink);
+      line-height: 1.5;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .point-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .point-card {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 247, 232, 0.92);
+      border: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .point-no {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(184, 92, 56, 0.13);
+      color: var(--accent-dark);
+      font-weight: 900;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .point-card p { margin: 0; text-align: justify; line-height: 1.48; }
+
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .data-card {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 247, 232, 0.9);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 24px rgba(33, 25, 21, 0.05);
+    }
+
+    .data-card strong {
+      display: block;
+      color: var(--accent-dark);
+      font-size: 1.45rem;
+      line-height: 1.05;
+      margin-bottom: 7px;
+      letter-spacing: -0.035em;
+    }
+
+    .data-card span {
+      display: block;
+      color: var(--muted);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.42;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 12px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 19px;
+      top: 8px;
+      bottom: 8px;
+      width: 4px;
+      border-radius: 999px;
+      background: linear-gradient(var(--red), var(--accent), var(--gold), var(--green), var(--blue));
+    }
+
+    .timeline-row {
+      position: relative;
+      display: grid;
+      grid-template-columns: 138px 1fr;
+      gap: 16px;
+      padding-left: 48px;
+    }
+
+    .timeline-row::before {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 18px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--paper-2);
+      border: 5px solid var(--accent);
+      z-index: 1;
+    }
+
+    .timeline-date {
+      color: var(--accent-dark);
+      font-weight: 900;
+      line-height: 1.2;
+      padding-top: 13px;
+    }
+
+    .timeline-content {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+    }
+
+    .timeline-content strong {
+      display: block;
+      color: var(--accent-dark);
+      margin-bottom: 6px;
+      font-size: 1.05rem;
+    }
+
+    .timeline-content p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.48;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: var(--paper-2);
+      margin-top: 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    th {
+      color: var(--accent-dark);
+      background: rgba(184, 92, 56, 0.10);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    td {
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .footer {
+      color: rgba(244, 234, 215, 0.78);
+      text-align: center;
+      padding: 28px 12px 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 1040px) {
+      .content-grid.three,
+      .ribbon { grid-template-columns: repeat(2, 1fr); }
+      .hero-grid { grid-template-columns: repeat(2, 1fr); }
+      .point-grid { grid-template-columns: 1fr; }
+      .data-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 820px) {
+      .content-grid,
+      .content-grid.three,
+      .ribbon { grid-template-columns: 1fr; }
+
+      .event,
+      .timeline-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .timeline-date { padding-top: 0; }
+    }
+
+    @media (max-width: 720px) {
+      .page { width: min(100% - 20px, 1180px); padding-top: 12px; }
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .hero { border-radius: 24px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .panel-header { align-items: flex-start; flex-direction: column; }
+      .point-card { grid-template-columns: 1fr; }
+      .data-grid { grid-template-columns: 1fr; }
+    }
+
+
+
+    @media (max-width: 820px) {
+      .toc-detailed { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      body { background: white !important; }
+      body::before, .topbar, .footer, .toc { display: none !important; }
+      .page { width: 100%; padding: 0; }
+      .hero, .panel, .note-card, .summary-card, .timeline-content { box-shadow: none; }
+      .panel, .hero { break-inside: avoid; }
+      .timeline-row, .note-card { break-inside: avoid; }
+    }
+  
+    .mini-note {
+      margin-top: 8px;
+      color: var(--muted);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.45;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+    .year-list {
+      columns: 2;
+      column-gap: 28px;
+    }
+    .year-list li {
+      break-inside: avoid;
+      margin-top: 0;
+    }
+    @media (max-width: 820px) {
+      .year-list { columns: 1; }
+    }
+</style>
+</head>
+<body>
+<main class="page">
+  <div class="topbar">
+    <a class="back-link" href="evaluare_cu_material_romania_comunista.html">← Înapoi la materiale</a>
+    <span class="material-tag">Material ajutător · Istoria României · Regimul comunist</span>
+  </div>
+
+  <header class="hero">
+    <p class="eyebrow">România comunistă</p>
+    <h1>Epoca Ceaușescu</h1>
+    <p class="subtitle">
+      Acest material urmărește evoluția regimului comunist după instaurarea sa: consolidarea stalinistă din timpul lui Gheorghe Gheorghiu-Dej, desprinderea prudentă de Moscova, ascensiunea lui Nicolae Ceaușescu, liberalizarea controlată a anilor 1960, național-comunismul anilor 1970 și criza profundă a anilor 1980. Materialul se oprește înainte de Revoluția din decembrie 1989, care poate fi tratată separat.
+    </p>
+    <section aria-label="Repere rapide" class="hero-grid">
+      <article class="stat-card"><strong>1948–1965</strong><span>Consolidarea regimului comunist: naționalizare, colectivizare, represiune, partid unic și sovietizare, apoi o desprindere controlată de URSS.</span></article>
+      <article class="stat-card"><strong>1965</strong><span>Moartea lui Gheorghiu-Dej și ascensiunea lui Nicolae Ceaușescu; România devine Republica Socialistă România.</span></article>
+      <article class="stat-card"><strong>1971–1974</strong><span>„Tezele din iulie” și instituirea funcției de președinte marchează trecerea spre cultul personalității și control ideologic accentuat.</span></article>
+      <article class="stat-card"><strong>Anii 1980</strong><span>Criză economică, austeritate, raționalizare, exporturi forțate, frig, datorie externă achitată cu preț social uriaș și izolare internațională.</span></article>
+    </section>
+  </header>
+
+  <nav aria-label="Cuprins" class="toc">
+    <h2>Cuprins</h2>
+    <div class="toc-grid toc-detailed">
+      <div class="toc-card"><a class="toc-main" href="#dej">I. Perioada Dej</a><div class="toc-sub"><a href="#dej-politic">Partid și represiune</a><a href="#dej-economie">Economie și colectivizare</a><a href="#dej-autonomie">Autonomie față de Moscova</a></div></div>
+      <div class="toc-card"><a class="toc-main" href="#ceausism-timpuriu">II. Ceaușescu: 1965–1968. Imaginea reformatorului</a><div class="toc-sub"><a href="#constitutia-1965">Constituția din 1965</a><a href="#liberalizare">Liberalizare controlată</a><a href="#momentul-1968">Momentul 1968</a></div></div>
+      <div class="toc-card"><a class="toc-main" href="#national-comunism">III. Ceaușescu: 1969–1974. Național-comunismul</a><div class="toc-sub"><a href="#politica-externa">Diplomație</a><a href="#tezele-iulie">Tezele din iulie</a><a href="#presedintia">Președinția</a></div></div>
+      <div class="toc-card"><a class="toc-main" href="#anii-1970">IV. Ceaușescu: Anii 1970'. Industrializare pe datorie</a><div class="toc-sub"><a href="#industrie">Industrializare</a><a href="#societate">Societate</a><a href="#cultura-control">Cultură și control</a></div></div>
+      <div class="toc-card"><a class="toc-main" href="#anii-1980">V. Ceaușescu: Anii 1980'. Austeritate și izolare</a><div class="toc-sub"><a href="#austeritate">Austeritate</a><a href="#sistematizare">Sistematizare</a><a href="#criza-finala">Criză și izolare</a></div></div>
+      <div class="toc-card"><a class="toc-main" href="#cronologie">VI. Cronologie extinsă</a></div>
+      <div class="toc-card"><a class="toc-main" href="#comparatii">VII. Comparații utile</a></div>
+      <div class="toc-card"><a class="toc-main" href="#recapitulare">VIII. Recapitulare</a></div>
+    </div>
+  </nav>
+
+  <section class="panel" id="dej">
+    <div class="panel-header">
+      <h2>I. Perioada Dej: consolidarea regimului comunist</h2>
+      <p class="panel-note">În timpul lui Gheorghe Gheorghiu-Dej, regimul comunist trece de la instaurare la consolidare: partid unic, represiune, economie planificată, colectivizare, control cultural și distrugerea elitelor sociale considerate ostile.</p>
+    </div>
+
+    <div class="ribbon">
+      <div class="ribbon-item"><strong>1948</strong><span>Constituție comunistă, naționalizare, reorganizarea învățământului și consolidarea aparatului represiv.</span></div>
+      <div class="ribbon-item"><strong>1949</strong><span>Începe colectivizarea agriculturii; Miliția înlocuiește vechea Poliție.</span></div>
+      <div class="ribbon-item"><strong>1952</strong><span>Constituție de inspirație stalinistă; Dej devine figura dominantă a partidului-stat.</span></div>
+      <div class="ribbon-item"><strong>1958</strong><span>Trupele sovietice se retrag din România, dar regimul comunist rămâne intact.</span></div>
+      <div class="ribbon-item"><strong>1964</strong><span>Declarația din aprilie afirmă autonomia PCR față de Moscova; sunt eliberați mulți deținuți politici.</span></div>
+    </div>
+
+    <div class="content-grid">
+      <article class="note-card" id="dej-politic">
+        <h3>Partidul-stat și eliminarea rivalilor</h3>
+        <p>
+          După proclamarea Republicii Populare Române, puterea reală este concentrată în Partidul Muncitoresc Român, rezultat al fuziunii forțate dintre comuniști și social-democrați. Statul, administrația, justiția, armata, învățământul, presa și organizațiile de masă sunt subordonate partidului.
+        </p>
+        <p>
+          Gheorghe Gheorghiu-Dej își consolidează autoritatea prin eliminarea rivalilor: Lucrețiu Pătrășcanu este arestat în 1948 și executat în 1954, iar gruparea Ana Pauker–Vasile Luca–Teohari Georgescu este îndepărtată în 1952. Epurările arată că regimul comunist nu elimina doar opoziția democratică, ci și competitori din interiorul partidului.
+        </p>
+        <div class="callout red">Logica puterii în perioada Dej este stalinistă: partid unic, lideri eliminați prin acuzații politice, frică socială și control instituțional total.</div>
+      </article>
+
+      <article class="note-card">
+        <h3>Securitatea, Miliția și represiunea</h3>
+        <p>
+          Direcția Generală a Securității Poporului este creată în 1948, după model sovietic, pentru a apăra „cuceririle democratice”, adică puterea partidului. În 1949, vechea Poliție este înlocuită de Miliție, iar Jandarmeria este transformată după modelul trupelor de securitate.
+        </p>
+        <p>
+          Represiunea vizează foști demnitari, militari, intelectuali, țărani care se opun colectivizării, clerici, studenți, membri ai partidelor istorice, rezistența armată din munți și orice formă de opoziție reală sau presupusă. Închisorile de la Sighet, Aiud, Gherla, Pitești, Râmnicu Sărat și lagărele de muncă devin simboluri ale terorii politice.
+        </p>
+      </article>
+    </div>
+
+    <h3 class="split-title" id="dej-economie">Economia planificată și transformarea societății</h3>
+    <div class="content-grid three">
+      <article class="note-card">
+        <h4><span class="tag red">1948</span> Naționalizarea</h4>
+        <p>
+          La 11 iunie 1948 sunt naționalizate principalele întreprinderi industriale, miniere, bancare, de transport și de asigurări. Proprietatea privată este restrânsă sever, iar statul devine principalul actor economic.
+        </p>
+      </article>
+      <article class="note-card">
+        <h4><span class="tag gold">1949–1962</span> Colectivizarea</h4>
+        <p>
+          Colectivizarea începe în 1949 și urmărește transformarea țăranilor proprietari în membri ai gospodăriilor agricole colective. Procesul este însoțit de presiuni, cote obligatorii, arestări, violență administrativă și propagandă. În 1962, regimul declară colectivizarea încheiată.
+        </p>
+      </article>
+      <article class="note-card">
+        <h4><span class="tag blue">1950</span> Planificarea</h4>
+        <p>
+          Economia este organizată prin planuri anuale și cincinale. Accentul cade pe industrie grea, energie, siderurgie, mașini, construcții și infrastructură, nu pe consumul populației.
+        </p>
+      </article>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Direcție</th><th>Măsură</th><th>Consecință</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Industrie</td><td>Naționalizare și planificare centralizată.</td><td>Statul controlează producția, investițiile, salariile, prețurile și distribuția resurselor.</td></tr>
+          <tr><td>Agricultură</td><td>Colectivizare, cote obligatorii, desființarea chiaburimii ca grup social.</td><td>Satul este integrat forțat în sistemul comunist; proprietatea rurală este distrusă.</td></tr>
+          <tr><td>Educație</td><td>Reforma învățământului din 1948.</td><td>Școala devine instrument ideologic; limba rusă, marxism-leninismul și interpretarea de clasă intră în curriculum.</td></tr>
+          <tr><td>Religie</td><td>Controlul cultelor; Biserica Greco-Catolică este interzisă în 1948.</td><td>Viața religioasă este supravegheată, iar instituțiile religioase sunt puse sub presiune administrativă.</td></tr>
+          <tr><td>Cultură</td><td>Realism socialist, cenzură, model sovietic.</td><td>Arta și istoriografia trebuie să legitimeze partidul, lupta de clasă și „prietenia” cu URSS.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="split-title" id="dej-autonomie">De la stalinism dur la autonomie față de Moscova</h3>
+    <div class="content-grid">
+      <article class="note-card">
+        <h3>După moartea lui Stalin</h3>
+        <p>
+          După 1953, destalinizarea din URSS nu produce imediat o liberalizare reală în România. Dej folosește prudent noul context pentru a-și consolida propria putere, nu pentru a democratiza sistemul. În 1956, revoluția maghiară provoacă teamă la București; regimul român întărește controlul asupra studenților, intelectualilor și minorității maghiare.
+        </p>
+      </article>
+      <article class="note-card">
+        <h3>1958 și 1964: două momente-cheie</h3>
+        <p>
+          Retragerea trupelor sovietice în 1958 permite conducerii române să prezinte regimul ca mai autonom. În 1964, Declarația PMR afirmă dreptul fiecărui partid comunist de a-și urma propria cale. Tot în această perioadă, sunt eliberați numeroși deținuți politici, însă pluralismul politic nu este restabilit.
+        </p>
+      </article>
+    </div>
+
+    <h3 class="split-title">Repere anuale pentru perioada Dej</h3>
+    <div class="event-stack">
+      <div class="event"><div class="event-date">1948</div><p class="event-text"><strong>Consolidare instituțională.</strong> Constituția Republicii Populare Române fixează cadrul noului regim; au loc naționalizarea, reforma învățământului și întărirea Securității.</p></div>
+      <div class="event"><div class="event-date">1949</div><p class="event-text"><strong>Colectivizarea începe.</strong> Statul atacă proprietatea țărănească și impune gospodării agricole colective; Miliția devine instrument de ordine socialistă.</p></div>
+      <div class="event"><div class="event-date">1950</div><p class="event-text"><strong>Reorganizare administrativă.</strong> Modelul județelor este înlocuit cu regiuni și raioane, după model sovietic; economia intră tot mai clar în logica planificării centralizate.</p></div>
+      <div class="event"><div class="event-date">1951</div><p class="event-text"><strong>Deportări în Bărăgan.</strong> Regimul mută forțat populații considerate nesigure de la granița cu Iugoslavia; frica devine metodă administrativă.</p></div>
+      <div class="event"><div class="event-date">1952</div><p class="event-text"><strong>Constituție stalinistă.</strong> Noua Constituție accentuează rolul clasei muncitoare și al partidului; Dej își întărește poziția prin eliminarea grupării Pauker–Luca–Georgescu.</p></div>
+      <div class="event"><div class="event-date">1954</div><p class="event-text"><strong>Cazul Pătrășcanu.</strong> Lucrețiu Pătrășcanu este executat după un proces politic, simbol al epurărilor interne.</p></div>
+      <div class="event"><div class="event-date">1955</div><p class="event-text"><strong>Integrare în blocul estic.</strong> România intră în Tratatul de la Varșovia și devine membră ONU, rămânând însă stat comunist în sfera sovietică.</p></div>
+      <div class="event"><div class="event-date">1956</div><p class="event-text"><strong>Revoluția maghiară și reacția românească.</strong> Evenimentele din Ungaria determină regimul să reprime solidarizările, mai ales în mediile studențești și intelectuale.</p></div>
+      <div class="event"><div class="event-date">1958</div><p class="event-text"><strong>Retragerea trupelor sovietice.</strong> România capătă mai mult spațiu diplomatic, dar în interior partidul unic și Securitatea rămân dominante.</p></div>
+      <div class="event"><div class="event-date">1960–1962</div><p class="event-text"><strong>Finalul colectivizării.</strong> Regimul forțează ultimele zone rurale să intre în structurile colective și proclamă victoria socialismului la sate.</p></div>
+      <div class="event"><div class="event-date">1964</div><p class="event-text"><strong>Declarația din aprilie.</strong> PMR afirmă autonomia față de Moscova; amnistierea deținuților politici creează imaginea unei destinderi, fără a schimba natura dictatorială a regimului.</p></div>
+      <div class="event"><div class="event-date">19 martie 1965</div><p class="event-text"><strong>Moartea lui Gheorghiu-Dej.</strong> Dispariția liderului deschide competiția pentru succesiune și ascensiunea lui Nicolae Ceaușescu.</p></div>
+    </div>
+  </section>
+
+  <section class="panel" id="ceausism-timpuriu">
+    <div class="panel-header">
+      <h2>II. Ceaușescu: 1965–1968, începutul unei imagini reformatoare</h2>
+      <p class="panel-note">Primii ani ai lui Ceaușescu sunt marcați de continuitate comunistă, dar și de gesturi de distanțare față de perioada Dej: schimbare de nume, discurs național, anumite relaxări culturale și o politică externă mai vizibil independentă.</p>
+    </div>
+
+    <div class="content-grid">
+      <article class="note-card" id="constitutia-1965">
+        <h3>1965: schimbarea simbolică a regimului</h3>
+        <p>
+          După moartea lui Gheorghiu-Dej, Nicolae Ceaușescu devine prim-secretar al partidului. În același an, Partidul Muncitoresc Român revine la numele de Partidul Comunist Român, iar Republica Populară Română devine Republica Socialistă România.
+        </p>
+        <p>
+          Constituția din 1965 nu introduce democrație politică, ci confirmă rolul conducător al partidului comunist. Totuși, ea este folosită pentru a crea impresia unei etape noi: mai naționale, mai independente și mai puțin rigid staliniste.
+        </p>
+      </article>
+      <article class="note-card" id="liberalizare">
+        <h3>Liberalizare controlată</h3>
+        <p>
+          În a doua jumătate a anilor 1960, atmosfera culturală pare mai relaxată decât în anii 1950. Apar reabilitări parțiale, o deschidere mai mare către literatura occidentală, o presă ceva mai puțin dogmatică și o istoriografie care pune accent pe continuitatea națională.
+        </p>
+        <p>
+          Această liberalizare rămâne însă controlată de partid. Nu există pluralism politic, presă liberă, alegeri competitive sau autonomie instituțională. Regimul permite anumite libertăți doar cât timp acestea întăresc popularitatea conducerii.
+        </p>
+      </article>
+    </div>
+
+    <h3 class="split-title">Politica internă și socială la începutul epocii Ceaușescu</h3>
+    <div class="content-grid three">
+      <article class="note-card">
+        <h4><span class="tag green">1966</span> Decretul 770</h4>
+        <p>
+          Politica demografică devine agresivă: avortul este interzis sau limitat sever, iar statul urmărește creșterea natalității. Măsura intră adânc în viața privată și are consecințe sociale majore.
+        </p>
+      </article>
+      <article class="note-card">
+        <h4><span class="tag blue">1967</span> Ceaușescu șef al statului</h4>
+        <p>
+          Ceaușescu devine președinte al Consiliului de Stat, ceea ce îl transformă nu doar în lider de partid, ci și în principală figură a statului.
+        </p>
+      </article>
+      <article class="note-card">
+        <h4><span class="tag gold">1968</span> Reorganizarea teritorială</h4>
+        <p>
+          Se revine la județe, abandonându-se structura de regiuni și raioane de inspirație sovietică. Măsura susține discursul național și administrativează mai eficient controlul central.
+        </p>
+      </article>
+    </div>
+
+    <h3 class="split-title" id="momentul-1968">1968: momentul de maximă popularitate</h3>
+    <div class="content-grid">
+      <article class="note-card full">
+        <p>
+          În august 1968, Ceaușescu condamnă public intervenția trupelor Tratatului de la Varșovia în Cehoslovacia. Discursul său din București produce o creștere majoră de popularitate internă și prestigiu extern. Mulți români îl percep atunci ca pe un lider curajos, capabil să apere independența țării față de Moscova.
+        </p>
+        <p>
+          Totuși, momentul 1968 nu înseamnă democratizare. Ceaușescu nu apără pluralismul politic, ci autonomia propriului regim comunist. Popularitatea câștigată atunci va fi folosită mai târziu pentru a justifica centralizarea puterii în jurul său.
+        </p>
+        <div class="callout blue">1968 este esențial pentru înțelegerea lui Ceaușescu: el se legitimează ca lider național, dar rămâne liderul unui stat comunist autoritar.</div>
+      </article>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>An</th><th>Eveniment</th><th>Semnificație</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1965</td><td>Ceaușescu devine prim-secretar al PCR; RPR devine RSR.</td><td>Începutul oficial al epocii Ceaușescu și schimbare simbolică de etapă.</td></tr>
+          <tr><td>1966</td><td>Decretul 770 limitează sever avortul.</td><td>Statul intervine direct în viața privată; demografia devine obiectiv politic.</td></tr>
+          <tr><td>1967</td><td>Ceaușescu devine președinte al Consiliului de Stat.</td><td>Concentrează funcția politică și reprezentarea statului.</td></tr>
+          <tr><td>1968</td><td>Condamnarea invaziei Cehoslovaciei.</td><td>Popularitate internă, prestigiu extern și consolidare a imaginii de lider independent.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="panel" id="national-comunism">
+    <div class="panel-header">
+      <h2>III. 1969–1974: național-comunism, cultul liderului și închiderea treptată</h2>
+      <p class="panel-note">După 1968, prestigiul lui Ceaușescu crește, dar direcția internă devine tot mai autoritară. Discursul național se combină cu marxism-leninismul, iar puterea personală se întărește.</p>
+    </div>
+
+    <div class="content-grid">
+      <article class="note-card" id="politica-externa">
+        <h3>Diplomație spectaculoasă</h3>
+        <p>
+          România continuă politica externă relativ independentă în blocul estic. Păstrează relații diplomatice cu Israelul după 1967, dezvoltă contacte cu Republica Federală Germania, primește vizita președintelui american Richard Nixon în 1969 și cultivă relații cu state occidentale, arabe, africane și asiatice.
+        </p>
+        <p>
+          Pentru Occident, România pare un stat comunist „dizident” față de Moscova. Pentru Ceaușescu, această imagine aduce credite, tehnologie, prestigiu și spațiu de manevră. În interior, însă, partidul unic și controlul polițienesc nu sunt abandonate.
+        </p>
+      </article>
+
+      <article class="note-card" id="tezele-iulie">
+        <h3>1971: Tezele din iulie</h3>
+        <p>
+          După vizite în Asia comunistă, în special în China și Coreea de Nord, Ceaușescu lansează „Tezele din iulie”. Ele cer intensificarea educației politico-ideologice, control mai puternic asupra culturii, presă subordonată partidului, educarea „omului nou” și implicarea organizațiilor de masă în propagandă.
+        </p>
+        <p>
+          Momentul marchează sfârșitul liberalizării relative a anilor 1960. Cultura este împinsă din nou spre obediență, iar cultul personalității începe să se amplifice.
+        </p>
+      </article>
+    </div>
+
+    <h3 class="split-title">De la lider popular la lider indispensabil</h3>
+    <div class="point-grid">
+      <div class="point-card"><div class="point-no">1</div><p><strong>Imagine națională.</strong> Ceaușescu se prezintă ca apărător al independenței României față de URSS.</p></div>
+      <div class="point-card"><div class="point-no">2</div><p><strong>Control ideologic.</strong> După 1971, partidul cere culturii și educației să producă loialitate politică.</p></div>
+      <div class="point-card"><div class="point-no">3</div><p><strong>Familie politică.</strong> Elena Ceaușescu capătă treptat funcții și vizibilitate, pregătind transformarea conducerii într-un nucleu familial.</p></div>
+      <div class="point-card"><div class="point-no">4</div><p><strong>Funcție prezidențială.</strong> În 1974, Ceaușescu devine președinte al Republicii Socialiste România, adăugând o formă de autoritate personală peste puterea partidului.</p></div>
+    </div>
+
+    <h3 class="split-title" id="presedintia">1974: funcția de președinte</h3>
+    <div class="content-grid">
+      <article class="note-card full">
+        <p>
+          În 1974 este creată funcția de președinte al Republicii Socialiste România, iar Ceaușescu este ales în această poziție. Momentul are o valoare politică și simbolică majoră: liderul de partid devine și figura supremă a statului, prezentată ceremonial ca într-un sistem prezidențial, dar fără mecanisme democratice reale.
+        </p>
+        <p>
+          De aici înainte, propaganda îl prezintă tot mai mult pe Ceaușescu ca strateg, conducător, garant al independenței, continuator al marilor voievozi și arhitect al modernizării socialiste. Istoria națională este reinterpretată pentru a susține cultul liderului.
+        </p>
+      </article>
+    </div>
+
+    <div class="event-stack">
+      <div class="event"><div class="event-date">1969</div><p class="event-text"><strong>Vizita lui Richard Nixon la București.</strong> România obține vizibilitate diplomatică în relația cu Statele Unite și își întărește imaginea de stat comunist relativ independent.</p></div>
+      <div class="event"><div class="event-date">1971</div><p class="event-text"><strong>Tezele din iulie.</strong> Liberalizarea culturală este înlocuită de o ofensivă ideologică; arta, școala și presa sunt împinse spre propagandă.</p></div>
+      <div class="event"><div class="event-date">1972</div><p class="event-text"><strong>România aderă la FMI și Banca Mondială.</strong> Regimul caută finanțare și tehnologie occidentală pentru industrializare.</p></div>
+      <div class="event"><div class="event-date">1974</div><p class="event-text"><strong>Ceaușescu devine președinte.</strong> Puterea personală este instituționalizată, iar cultul personalității intră într-o nouă etapă.</p></div>
+    </div>
+  </section>
+
+  <section class="panel" id="anii-1970">
+    <div class="panel-header">
+      <h2>IV. Anii 1970: industrializare, urbanizare, propagandă și datorie</h2>
+      <p class="panel-note">Anii 1970 sunt perioada în care regimul promite modernizare accelerată. Se construiesc fabrici, cartiere, platforme industriale și infrastructură, dar modelul economic devine tot mai costisitor, rigid și dependent de credite externe.</p>
+    </div>
+
+    <div class="content-grid" id="industrie">
+      <article class="note-card">
+        <h3>Industrializare forțată</h3>
+        <p>
+          Regimul investește masiv în industrie grea, petrochimie, metalurgie, construcții de mașini, energie și infrastructură. Orașe întregi sunt reorganizate în jurul platformelor industriale, iar populația rurală este atrasă spre muncă urbană.
+        </p>
+        <p>
+          Modernizarea este reală în multe privințe: apar locuințe, școli, uzine, drumuri, obiective energetice. Dar deciziile sunt centralizate, adesea lipsite de criterii economice eficiente, iar producția este orientată spre plan, nu spre calitate sau nevoile reale ale populației.
+        </p>
+      </article>
+      <article class="note-card">
+        <h3>Datoria externă</h3>
+        <p>
+          Pentru a finanța dezvoltarea, România contractează împrumuturi externe. În prima parte a anilor 1970, accesul la credite pare un avantaj al politicii independente. După șocurile petroliere și dificultățile economiei mondiale, datoria devine o vulnerabilitate majoră.
+        </p>
+        <p>
+          Această datorie va explica politicile dure ale anilor 1980: exporturi forțate, reducerea importurilor, economii la energie și scăderea dramatică a nivelului de trai.
+        </p>
+      </article>
+    </div>
+
+    <h3 class="split-title" id="societate">Societate și viață cotidiană</h3>
+    <div class="content-grid three">
+      <article class="note-card">
+        <h4><span class="tag green">Urbanizare</span> Blocuri și cartiere noi</h4>
+        <p>
+          Populația se mută masiv spre orașe. Cartiere de blocuri apar în București, Iași, Cluj, Timișoara, Brașov, Craiova, Ploiești, Constanța și în multe centre industriale. Locuința la bloc devine simbol al modernizării socialiste.
+        </p>
+      </article>
+      <article class="note-card">
+        <h4><span class="tag red">Familie</span> Demografie controlată</h4>
+        <p>
+          Decretul 770 continuă să afecteze viața femeilor și familiilor. Statul stimulează natalitatea, controlează avorturile și transformă reproducerea într-o problemă de politică de stat.
+        </p>
+      </article>
+      <article class="note-card">
+        <h4><span class="tag blue">Educație</span> Școală și ideologie</h4>
+        <p>
+          Alfabetizarea, accesul la educație tehnică și mobilitatea socială cresc, dar școala este încărcată ideologic: practica productivă, organizațiile de pionieri și UTC, istoria oficială și cultul conducerii devin componente permanente.
+        </p>
+      </article>
+    </div>
+
+    <h3 class="split-title" id="cultura-control">Cultură, propagandă și control social</h3>
+    <div class="content-grid">
+      <article class="note-card">
+        <h3>„Cântarea României” și cultura de masă</h3>
+        <p>
+          Festivalul național „Cântarea României” transformă activitatea artistică într-o demonstrație de loialitate față de partid. Folclorul, istoria, poezia, teatrul, muzica și festivitățile publice sunt puse în slujba ideii că poporul, partidul și conducătorul formează o unitate.
+        </p>
+      </article>
+      <article class="note-card">
+        <h3>Naționalism istoric</h3>
+        <p>
+          Regimul recuperează teme istorice precum dacii, continuitatea, voievozii medievali, independența și unitatea națională. Aceste teme sunt utile educațional, dar propaganda le folosește pentru a-l prezenta pe Ceaușescu drept continuator al marilor conducători ai trecutului.
+        </p>
+      </article>
+      <article class="note-card full">
+        <h3>1977: cutremur, grevă, disidență</h3>
+        <p>
+          Anul 1977 este important prin trei tipuri de tensiuni. Cutremurul din 4 martie arată vulnerabilitatea urbană și oferă regimului ocazia de a interveni masiv în reconstrucția Bucureștiului. Greva minerilor din Valea Jiului arată nemulțumiri sociale reale în clasa muncitoare, grupul pe care regimul pretindea că îl reprezintă. Mișcarea Paul Goma exprimă curaj civic și critică a lipsei drepturilor omului.
+        </p>
+      </article>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>An</th><th>Eveniment</th><th>Interpretare</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1975</td><td>România semnează Actul final de la Helsinki.</td><td>Regimul câștigă prestigiu diplomatic, dar angajamentele privind drepturile omului intră în contradicție cu practica internă.</td></tr>
+          <tr><td>1976</td><td>Se dezvoltă festivalul „Cântarea României”.</td><td>Cultura de masă devine instrument de propagandă și mobilizare politică.</td></tr>
+          <tr><td>1977</td><td>Cutremurul din 4 martie; greva minerilor din Valea Jiului; mișcarea Paul Goma.</td><td>Regimul este confruntat cu dezastru natural, protest social și critică civică.</td></tr>
+          <tr><td>1978</td><td>Defectarea lui Ion Mihai Pacepa.</td><td>Lovitură de imagine pentru regim și semnal al tensiunilor din aparatul de securitate.</td></tr>
+          <tr><td>1979</td><td>Criza energetică internațională agravează dificultățile economiei românești.</td><td>Modelul industrial dependent de energie și importuri devine tot mai vulnerabil.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="panel" id="anii-1980">
+    <div class="panel-header">
+      <h2>V. Anii 1980: criză, austeritate, izolare</h2>
+      <p class="panel-note">Aceasta este ultima perioadă analizată în material. Nu include Revoluția din decembrie 1989. Accentul cade pe cauzele deteriorării regimului: plata datoriei externe, frigul, raționalizarea, controlul social, demolările, propaganda și izolarea internațională.</p>
+    </div>
+
+    <div class="ribbon">
+      <div class="ribbon-item"><strong>1981</strong><span>Încep politici dure de economisire și raționalizare; consumul populației este sacrificat pentru exporturi și plata datoriei.</span></div>
+      <div class="ribbon-item"><strong>1984</strong><span>Canalul Dunăre–Marea Neagră este inaugurat, prezentat ca mare succes al socialismului.</span></div>
+      <div class="ribbon-item"><strong>1985</strong><span>Restricțiile la energie, căldură și consum devin parte a vieții cotidiene.</span></div>
+      <div class="ribbon-item"><strong>1987</strong><span>Revolta muncitorilor de la Brașov arată ruptura dintre regim și clasa muncitoare.</span></div>
+      <div class="ribbon-item"><strong>1989</strong><span>Datoria externă este declarată plătită; Ceaușescu este reconfirmat la Congresul al XIV-lea.</span></div>
+    </div>
+
+    <div class="content-grid" id="austeritate">
+      <article class="note-card">
+        <h3>Austeritatea ca politică de stat</h3>
+        <p>
+          În anii 1980, Ceaușescu decide achitarea accelerată a datoriei externe. Pentru aceasta, statul reduce importurile și mărește exporturile, inclusiv de produse alimentare, combustibili și bunuri necesare populației. Rezultatul este scăderea nivelului de trai.
+        </p>
+        <p>
+          În viața cotidiană apar cozi, cartele, lipsuri alimentare, raționalizarea energiei, frig în locuințe, iluminat redus, transport public aglomerat, întreruperi de curent și presiunea permanentă de a economisi.
+        </p>
+        <div class="callout red">Paradoxul anilor 1980: regimul se lăuda cu independența economică, dar populația trăia lipsa alimentelor, frigul și umilința cozilor.</div>
+      </article>
+
+      <article class="note-card">
+        <h3>Propagandă în loc de realitate</h3>
+        <p>
+          Presa, televiziunea și evenimentele publice prezentau o țară prosperă, disciplinată și recunoscătoare conducătorului. În realitate, diferența dintre limbajul oficial și experiența zilnică a oamenilor devenea tot mai mare.
+        </p>
+        <p>
+          Cultul personalității atinge forme excesive: Nicolae și Elena Ceaușescu sunt elogiați constant, iar discursul oficial devine rigid, repetitiv și rupt de viața reală.
+        </p>
+      </article>
+    </div>
+
+    <h3 class="split-title" id="sistematizare">Sistematizarea: orașe, sate, București</h3>
+    <div class="content-grid three">
+      <article class="note-card">
+        <h4><span class="tag violet">București</span> Centrul Civic</h4>
+        <p>
+          După cutremurul din 1977 și mai ales în anii 1980, Ceaușescu urmărește remodelarea capitalei. Demolările din București afectează cartiere, biserici, locuințe și memoria urbană. Casa Poporului și Bulevardul Victoria Socialismului devin simboluri ale grandorii politice impuse de sus.
+        </p>
+      </article>
+      <article class="note-card">
+        <h4><span class="tag green">Sat</span> Planuri de sistematizare rurală</h4>
+        <p>
+          Regimul intenționează concentrarea populației rurale în centre agroindustriale și reducerea numărului de sate. Proiectul provoacă îngrijorare internă și critici internaționale, mai ales spre sfârșitul anilor 1980.
+        </p>
+      </article>
+      <article class="note-card">
+        <h4><span class="tag red">Patrimoniu</span> Pierderi culturale</h4>
+        <p>
+          Demolările și relocările afectează biserici, mahalale istorice, case vechi și structuri urbane tradiționale. Modernizarea este folosită ca justificare pentru distrugerea unor spații cu valoare istorică.
+        </p>
+      </article>
+    </div>
+
+    <h3 class="split-title" id="criza-finala">Control social, protest și izolare</h3>
+    <div class="content-grid">
+      <article class="note-card">
+        <h3>Supravegherea</h3>
+        <p>
+          Securitatea, rețeaua de informatori, controlul corespondenței, ascultarea telefoanelor, presiunea la locul de muncă și dosarele personale creează un climat de frică. Oamenii învață să vorbească în șoaptă, să evite criticile și să se autocenzureze.
+        </p>
+      </article>
+      <article class="note-card">
+        <h3>Protestul muncitoresc</h3>
+        <p>
+          Revolta muncitorilor de la Brașov din 15 noiembrie 1987 contrazice propaganda regimului. Tocmai muncitorii, prezentați ca baza socială a comunismului, se ridică împotriva condițiilor de muncă, a scăderii veniturilor și a regimului politic.
+        </p>
+      </article>
+      <article class="note-card full">
+        <h3>1989 fără Revoluție: ultimul an înainte de prăbușire</h3>
+        <p>
+          În aprilie 1989, Ceaușescu anunță plata integrală a datoriei externe. Pentru conducere, acesta este un triumf. Pentru populație, este concluzia unui deceniu de sacrificii. În noiembrie 1989, Congresul al XIV-lea al PCR îl reconfirmă pe Ceaușescu, iar discursul oficial continuă să ignore criza reală.
+        </p>
+        <p>
+          Materialul se oprește aici, înainte de evenimentele din decembrie 1989, care trebuie explicate separat: Timișoara, București, căderea regimului, violențele, procesul și execuția cuplului Ceaușescu.
+        </p>
+      </article>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>An</th><th>Aspect</th><th>Detaliu</th><th>Impact social</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1980</td><td>Economie</td><td>Dezechilibrele modelului industrial devin tot mai vizibile.</td><td>Se pregătește trecerea la politici dure de economisire.</td></tr>
+          <tr><td>1981</td><td>Datorie</td><td>Regimul începe achitarea accelerată a datoriei externe.</td><td>Consumul intern este redus; exporturile sunt prioritare.</td></tr>
+          <tr><td>1982</td><td>Raționalizare</td><td>Lipsurile alimentare și economiile la energie devin tot mai frecvente.</td><td>Cozi, cartele, frustrare și scăderea nivelului de trai.</td></tr>
+          <tr><td>1984</td><td>Infrastructură</td><td>Este inaugurat Canalul Dunăre–Marea Neagră.</td><td>Propaganda îl prezintă ca simbol al voinței socialiste.</td></tr>
+          <tr><td>1985</td><td>Viață cotidiană</td><td>Restricții severe la energie, căldură, combustibil și iluminat.</td><td>Frig în locuințe, întreruperi, economisire impusă.</td></tr>
+          <tr><td>1986</td><td>Control</td><td>Regimul ignoră reformele de tip Gorbaciov și respinge ideea de liberalizare.</td><td>România devine tot mai izolată chiar și în interiorul blocului socialist.</td></tr>
+          <tr><td>1987</td><td>Protest</td><td>Revolta muncitorilor de la Brașov.</td><td>Arată ruptura dintre propaganda muncitorească și realitatea socială.</td></tr>
+          <tr><td>1988</td><td>Sistematizare</td><td>Planurile de reorganizare rurală atrag critici internaționale.</td><td>Crește teama de demolări, mutări forțate și pierderea comunităților tradiționale.</td></tr>
+          <tr><td>1989</td><td>Politică</td><td>Datoria este declarată achitată; Ceaușescu este reconfirmat la Congresul al XIV-lea.</td><td>Triumfalism oficial, dar societate epuizată și profund nemulțumită.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="panel" id="cronologie">
+    <div class="panel-header">
+      <h2>VI. Cronologie extinsă: 1948–1989</h2>
+      <p class="panel-note">Cronologia este gândită ca instrument de recapitulare rapidă. Ea include ani importanți din perioada Dej și Ceaușescu, fără a trata Revoluția din decembrie 1989.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-row"><div class="timeline-date">1948</div><div class="timeline-content"><strong>Constituție, naționalizare, Securitate, reformă educațională</strong><p>Statul comunist își creează instrumentele principale: control juridic, economic, ideologic și represiv.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1949</div><div class="timeline-content"><strong>Colectivizarea și Miliția</strong><p>Satul intră sub presiune directă, iar ordinea publică este reorganizată după model comunist.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1950</div><div class="timeline-content"><strong>Regiuni și raioane</strong><p>Organizarea administrativă urmează modelul sovietic, înlocuind temporar județele.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1951</div><div class="timeline-content"><strong>Deportări în Bărăgan</strong><p>Populații considerate nesigure sunt mutate forțat; represiunea devine instrument de inginerie socială.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1952</div><div class="timeline-content"><strong>Constituție stalinistă și epurări</strong><p>Dej elimină rivalii interni și întărește controlul partidului.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1954</div><div class="timeline-content"><strong>Execuția lui Lucrețiu Pătrășcanu</strong><p>Proces politic folosit pentru disciplinarea partidului și intimidarea elitelor.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1955</div><div class="timeline-content"><strong>Tratatul de la Varșovia și ONU</strong><p>România este integrată militar în blocul sovietic, dar obține și recunoaștere internațională prin ONU.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1956</div><div class="timeline-content"><strong>Revoluția maghiară</strong><p>Regimul român reacționează prin vigilență, anchete și reprimarea solidarizărilor.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1958</div><div class="timeline-content"><strong>Retragerea trupelor sovietice</strong><p>Un moment important pentru autonomia externă, fără democratizare internă.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1960</div><div class="timeline-content"><strong>Reorganizări administrative și minoritare</strong><p>Regimul ajustează structurile teritoriale și continuă centralizarea.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1962</div><div class="timeline-content"><strong>Colectivizarea declarată încheiată</strong><p>Proprietatea țărănească este în mare parte lichidată ca bază socială independentă.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1964</div><div class="timeline-content"><strong>Declarația din aprilie</strong><p>PMR afirmă o linie națională în comunismul românesc; deținuții politici sunt eliberați în număr mare.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1965</div><div class="timeline-content"><strong>Începutul epocii Ceaușescu</strong><p>Ceaușescu devine lider al partidului; România devine Republica Socialistă România.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1966</div><div class="timeline-content"><strong>Decretul 770</strong><p>Politica demografică intră brutal în viața privată.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1967</div><div class="timeline-content"><strong>Ceaușescu, președinte al Consiliului de Stat</strong><p>Puterea politică și reprezentarea statului se concentrează în mâinile sale.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1968</div><div class="timeline-content"><strong>Condamnarea invaziei Cehoslovaciei</strong><p>Moment de popularitate maximă și de consolidare a imaginii de lider independent.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1969</div><div class="timeline-content"><strong>Vizita lui Nixon</strong><p>România devine utilă diplomatic pentru Occident în contextul Războiului Rece.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1971</div><div class="timeline-content"><strong>Tezele din iulie</strong><p>Reideologizare, control cultural și începutul unei noi rigidizări.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1972</div><div class="timeline-content"><strong>Aderare la FMI și Banca Mondială</strong><p>Regimul obține acces la credite occidentale pentru industrializare.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1974</div><div class="timeline-content"><strong>Funcția de președinte al RSR</strong><p>Ceaușescu își instituționalizează puterea personală.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1975</div><div class="timeline-content"><strong>Helsinki</strong><p>România participă la arhitectura diplomatică europeană, dar drepturile omului rămân strict controlate intern.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1977</div><div class="timeline-content"><strong>Cutremur, Valea Jiului, Paul Goma</strong><p>An de criză naturală, protest social și disidență civică.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1978</div><div class="timeline-content"><strong>Defectarea lui Pacepa</strong><p>Afectează imaginea externă a regimului și securitatea sistemului.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1979</div><div class="timeline-content"><strong>Criza modelului industrial</strong><p>Economia energointensivă devine tot mai greu de susținut.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1981</div><div class="timeline-content"><strong>Începutul austerității dure</strong><p>Politica de plată rapidă a datoriei sacrifică nivelul de trai.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1984</div><div class="timeline-content"><strong>Canalul Dunăre–Marea Neagră</strong><p>Obiectiv propagandistic major, prezentat ca realizare socialistă monumentală.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1985</div><div class="timeline-content"><strong>Frig, economie la energie, restricții</strong><p>Viața cotidiană este dominată de lipsuri și control.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1987</div><div class="timeline-content"><strong>Revolta de la Brașov</strong><p>Nemulțumirea socială devine vizibilă în rândul muncitorilor.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1988</div><div class="timeline-content"><strong>Sistematizare rurală</strong><p>Planurile de reorganizare a satelor provoacă teamă internă și critici internaționale.</p></div></div>
+      <div class="timeline-row"><div class="timeline-date">1989</div><div class="timeline-content"><strong>Datoria achitată și Congresul al XIV-lea</strong><p>Regimul se declară victorios economic, dar societatea este epuizată. Nu sunt incluse aici evenimentele Revoluției.</p></div></div>
+    </div>
+  </section>
+
+  <section class="panel" id="comparatii">
+    <div class="panel-header">
+      <h2>VII. Comparații utile: Dej și Ceaușescu</h2>
+      <p class="panel-note">Pentru eseuri și teste, este util să compari cele două etape prin mecanisme de putere, economie, raportarea la URSS și viața cotidiană.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Criteriu</th><th>Perioada Dej</th><th>Epoca Ceaușescu</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Model politic</td><td>Stalinism, partid unic, represiune dură, sovietizare.</td><td>Partid unic, putere personală, cult al liderului, național-comunism.</td></tr>
+          <tr><td>Relația cu URSS</td><td>Subordonare puternică în anii 1940–1950, apoi autonomie prudentă.</td><td>Independență diplomatică mai vizibilă, dar fără democratizare internă.</td></tr>
+          <tr><td>Economie</td><td>Naționalizare, planificare, colectivizare, industrie grea.</td><td>Industrializare accelerată, credite externe, proiecte gigantice, apoi austeritate.</td></tr>
+          <tr><td>Societate rurală</td><td>Colectivizare forțată și distrugerea proprietății țărănești.</td><td>Satul este controlat prin CAP-uri, mecanizare, apoi planuri de sistematizare rurală.</td></tr>
+          <tr><td>Cultură</td><td>Realism socialist și model sovietic.</td><td>Relaxare în anii 1960, apoi reideologizare după 1971 și cult al personalității.</td></tr>
+          <tr><td>Represiune</td><td>Închisori politice, deportări, lagăre, eliminarea elitelor.</td><td>Supraveghere generalizată, control social, presiune psihologică, represiune selectivă.</td></tr>
+          <tr><td>Imagine publică</td><td>Lider comunist format în logica Moscovei, dar devenit autonom spre final.</td><td>Lider național, independent extern, dar tot mai autoritar și izolat intern.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="split-title">Formule bune de folosit în eseuri</h3>
+    <div class="content-grid">
+      <article class="quote-card">
+        <h3>Despre Dej</h3>
+        <p>
+          Perioada Gheorghiu-Dej a reprezentat etapa de consolidare a comunismului în România: statul a devenit instrument al partidului unic, economia a fost naționalizată, satul a fost colectivizat, iar societatea a fost disciplinată prin represiune și control ideologic.
+        </p>
+      </article>
+      <article class="quote-card">
+        <h3>Despre Ceaușescu</h3>
+        <p>
+          Epoca Ceaușescu a început printr-o imagine de deschidere și independență, dar a evoluat spre național-comunism, cultul personalității, centralizarea deciziei și, în anii 1980, spre austeritate extremă și izolare.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel" id="recapitulare">
+    <div class="panel-header">
+      <h2>VIII. Recapitulare finală</h2>
+      <p class="panel-note">Ideile de mai jos pot fi folosite ca schemă de învățare, răspuns oral sau introducere pentru un eseu despre România comunistă după instaurarea regimului.</p>
+    </div>
+
+    <div class="point-grid">
+      <div class="point-card"><div class="point-no">1</div><p><strong>Dej consolidează regimul.</strong> Anii 1948–1965 înseamnă naționalizare, colectivizare, represiune, partid unic și control ideologic.</p></div>
+      <div class="point-card"><div class="point-no">2</div><p><strong>Autonomia față de URSS nu înseamnă democrație.</strong> Retragerea trupelor sovietice și Declarația din 1964 sporesc libertatea externă a regimului, nu libertatea cetățenilor.</p></div>
+      <div class="point-card"><div class="point-no">3</div><p><strong>Ceaușescu pornește cu o imagine favorabilă.</strong> Constituția din 1965, liberalizarea relativă și discursul din 1968 îl fac popular.</p></div>
+      <div class="point-card"><div class="point-no">4</div><p><strong>După 1971 se accentuează controlul.</strong> Tezele din iulie, propaganda și cultul personalității reduc spațiul cultural și politic.</p></div>
+      <div class="point-card"><div class="point-no">5</div><p><strong>Anii 1970 aduc modernizare, dar și vulnerabilități.</strong> Industrializarea, urbanizarea și creditele externe creează dezvoltare vizibilă, dar și o economie rigidă și îndatorată.</p></div>
+      <div class="point-card"><div class="point-no">6</div><p><strong>Anii 1980 sunt perioada crizei sociale.</strong> Plata datoriei externe produce raționalizare, frig, lipsuri, exporturi forțate, izolare și nemulțumire profundă.</p></div>
+    </div>
+
+    <div class="callout green">
+      Concluzie: istoria României comuniste după 1948 nu trebuie redusă la Ceaușescu. Regimul are o primă etapă stalinistă și represivă sub Dej, apoi o etapă ceaușistă care începe prin prestigiu și autonomie externă, dar se încheie înainte de Revoluție prin austeritate, cult al personalității și izolare.
+    </div>
+  </section>
+
+  <p class="footer">
+    Material ajutător pentru lecția „România comunistă: perioada Dej și epoca Ceaușescu” · structură cronologică și tematică · fără Revoluția din decembrie 1989.
+  </p>
+</main>
+</body>
+</html>

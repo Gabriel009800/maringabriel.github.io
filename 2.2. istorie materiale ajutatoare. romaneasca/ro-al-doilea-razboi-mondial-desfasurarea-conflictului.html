@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ro-al-doilea-razboi-mondial-desfasurarea-conflictului</title>
+  <style>
+:root {
+  --bg: #f6f0e7;
+  --paper: #fffaf3;
+  --paper-2: #ffffff;
+  --ink: #2f241c;
+  --title: #3c2a1e;
+  --muted: #5b4a3d;
+  --accent: #6f4a2b;
+  --accent-2: #9b6a3c;
+  --accent-soft: #f0e4d4;
+  --line: rgba(91, 62, 36, 0.18);
+  --line-strong: rgba(91, 62, 36, 0.34);
+  --shadow: 0 26px 70px rgba(0,0,0,.28);
+  --shadow-small: 0 12px 30px rgba(0,0,0,.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 78, 40, .72), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(112, 63, 31, .44), transparent 36%),
+    radial-gradient(circle at 0% 50%, rgba(29,13,6,.92), transparent 42%),
+    radial-gradient(circle at 100% 50%, rgba(29,13,6,.92), transparent 42%),
+    linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+body::before {
+  content:""; position: fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0,0,0,.10) 48%, rgba(0,0,0,.44) 100%),
+    linear-gradient(90deg, rgba(0,0,0,.20), transparent 18%, transparent 82%, rgba(0,0,0,.20));
+}
+.page { position:relative; z-index:1; width:min(1180px, calc(100% - 32px)); margin:0 auto; padding:34px 0 70px; }
+.topbar { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:18px; flex-wrap:wrap; }
+.back-link, .tag { display:inline-flex; align-items:center; border:1px solid var(--line); background:rgba(255,250,243,.84); color:var(--title); border-radius:999px; padding:10px 15px; text-decoration:none; font-size:15px; font-weight:700; box-shadow:var(--shadow-small); }
+.back-link:hover { background:#fff6eb; }
+.hero, .section, .nav-card, .final-box { background:rgba(255,250,243,.96); border:1px solid var(--line); border-radius:28px; box-shadow:var(--shadow); }
+.hero { padding:38px; margin-bottom:24px; position:relative; overflow:hidden; }
+.hero::after { content: attr(data-watermark); position:absolute; right:26px; bottom:-25px; font-size:108px; font-weight:900; letter-spacing:-4px; color:rgba(122,79,42,.08); pointer-events:none; }
+.eyebrow { margin:0 0 8px; font-size:16px; color:var(--accent); font-weight:800; letter-spacing:.08em; text-transform:uppercase; text-align:left; }
+h1 { margin:0; font-size:clamp(38px,5vw,62px); line-height:1.04; color:var(--title); letter-spacing:-1.4px; text-align:left; }
+.subtitle { margin:18px 0 0; max-width:990px; font-size:19px; line-height:1.78; color:var(--muted); text-align:justify; text-align-last:left; }
+.summary-grid, .three-col, .two-col, .term-grid, .quick-grid, .cause-grid { display:grid; gap:14px; }
+.summary-grid { grid-template-columns:repeat(4, 1fr); margin-top:26px; }
+.summary-card, .info-card, .wide-card, .term-card, .quick-card, .source-note, .micro-card, .warning-box { background:var(--paper-2); border:1px solid rgba(91,62,36,.14); border-radius:20px; box-shadow:var(--shadow-small); text-align:justify; text-align-last:left; }
+.summary-card { padding:16px; min-height:132px; }
+.summary-card strong, .quick-card strong, .term-card strong, .micro-card strong { display:block; color:var(--title); font-size:17px; margin-bottom:8px; text-align:left; }
+.summary-card span, .quick-card span, .term-card span, .micro-card span { display:block; color:var(--muted); font-size:15.5px; line-height:1.56; text-align:justify; text-align-last:left; }
+.nav-card { display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:18px 20px; margin-bottom:24px; }
+.nav-card b { color:var(--title); margin-right:2px; }
+.nav-card a, .mini-btn { color:var(--title); background:var(--accent-soft); border:1px solid rgba(91,62,36,.16); border-radius:999px; text-decoration:none; padding:8px 12px; font-weight:700; font-size:14px; cursor:pointer; font-family:inherit; }
+.nav-card a:hover, .mini-btn:hover { background:#e5d2bb; }
+.section { padding:30px; margin-bottom:24px; }
+h2 { margin:0 0 14px; color:var(--title); font-size:clamp(28px,3vw,38px); line-height:1.15; text-align:left; }
+h3 { margin:0 0 12px; color:var(--title); font-size:22px; line-height:1.22; text-align:left; }
+h4 { margin:16px 0 8px; color:var(--title); font-size:18px; text-align:left; }
+.section-intro, p, li, dd { font-size:17px; line-height:1.72; color:var(--muted); text-align:justify; text-align-last:left; hyphens:auto; }
+.section-intro { margin:0 0 20px; max-width:1000px; }
+.three-col { grid-template-columns:repeat(3,1fr); }
+.two-col { grid-template-columns:repeat(2,1fr); }
+.cause-grid { grid-template-columns:1.05fr .95fr; }
+.term-grid { grid-template-columns:repeat(4,1fr); }
+.quick-grid { grid-template-columns:repeat(4,1fr); margin-top:18px; }
+.info-card, .wide-card, .term-card, .quick-card, .micro-card, .warning-box { padding:20px; }
+.wide-card { margin-top:14px; }
+.wide-card p:last-child, .info-card p:last-child { margin-bottom:0; }
+.clean, .number-list { margin:0; padding-left:22px; }
+.clean li, .number-list li { margin:0 0 9px; padding-left:2px; }
+.clean li:last-child, .number-list li:last-child { margin-bottom:0; }
+.mini-title { display:inline; color:var(--title); font-weight:800; margin-right:5px; }
+.date-pill { display:inline-block; color:var(--title); font-weight:800; background:#f3eadf; border:1px solid rgba(91,62,36,.13); border-radius:999px; padding:2px 9px; margin-right:5px; white-space:nowrap; text-align:left; }
+.definition, .note { margin-top:18px; background:#fff8ef; border:1px solid rgba(122,79,42,.22); border-left:6px solid rgba(122,79,42,.48); border-radius:18px; padding:18px 20px; color:var(--muted); font-size:17px; line-height:1.7; text-align:justify; text-align-last:left; }
+.definition strong, .note strong { color:var(--title); }
+details { background:#fffdf9; border:1px solid rgba(91,62,36,.14); border-radius:20px; box-shadow:var(--shadow-small); margin-top:14px; overflow:hidden; }
+details[open] { background:#fffaf3; }
+summary { cursor:pointer; list-style:none; padding:18px 20px; font-size:19px; font-weight:800; color:var(--title); display:flex; justify-content:space-between; align-items:center; gap:18px; text-align:left; }
+summary::-webkit-details-marker { display:none; }
+summary::after { content:"Deschide"; color:var(--muted); font-size:14px; font-weight:700; background:#f3eadf; border:1px solid rgba(91,62,36,.14); border-radius:999px; padding:7px 11px; white-space:nowrap; }
+details[open] > summary::after { content:"Ascunde"; }
+.details-body { border-top:1px solid rgba(91,62,36,.12); padding:18px 20px 20px; text-align:justify; text-align-last:left; }
+.details-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+.nested-details { margin-top:10px; box-shadow:none; background:#fff; }
+.nested-details summary { font-size:17px; padding:14px 16px; }
+.key-line { display:grid; grid-template-columns:240px 1fr; gap:14px; padding:14px 0; border-bottom:1px dashed rgba(91,62,36,.18); }
+.key-line:last-child { border-bottom:0; }
+.key-line strong { color:var(--title); text-align:left; }
+.key-line span { color:var(--muted); line-height:1.65; text-align:justify; text-align-last:left; }
+.timeline { position:relative; display:grid; gap:14px; margin-top:18px; }
+.event { display:grid; grid-template-columns:150px 1fr; gap:18px; align-items:stretch; background:#fff; border:1px solid rgba(91,62,36,.14); border-radius:20px; box-shadow:var(--shadow-small); overflow:hidden; }
+.date { background:linear-gradient(180deg,#7a4f2a,#5b351b); color:#fffaf3; display:flex; align-items:center; justify-content:center; text-align:center; padding:14px; font-size:18px; line-height:1.25; font-weight:900; letter-spacing:.2px; }
+.event > div:last-child { padding:17px 18px 18px 0; text-align:justify; text-align-last:left; }
+.event h3 { margin-bottom:6px; }
+.event p { margin:0; }
+.small-muted { font-size:15px; color:#725c49; line-height:1.6; text-align:justify; text-align-last:left; }
+.warning-box { background:#fff7ec; border-color:rgba(122,79,42,.22); margin-top:16px; }
+.final-box { padding:28px; background:linear-gradient(135deg,#fffaf3,#f4e4d1); border-color:rgba(91,62,36,.25); }
+.final-box p { margin-bottom:0; }
+.table-wrap { overflow-x:auto; margin-top:18px; border-radius:20px; box-shadow:var(--shadow-small); border:1px solid rgba(91,62,36,.14); background:#fff; }
+table { width:100%; border-collapse:collapse; min-width:760px; }
+th, td { padding:14px 16px; border-bottom:1px solid rgba(91,62,36,.13); vertical-align:top; font-size:16px; line-height:1.58; color:var(--muted); text-align:left; }
+th { color:var(--title); background:#f3eadf; font-weight:900; }
+tr:last-child td { border-bottom:0; }
+.badge { display:inline-block; padding:3px 9px; border-radius:999px; background:#f3eadf; border:1px solid rgba(91,62,36,.13); color:var(--title); font-weight:800; font-size:14px; margin:0 3px 5px 0; }
+@media (max-width: 980px) { .summary-grid, .three-col, .term-grid, .quick-grid { grid-template-columns:repeat(2,1fr); } .two-col, .cause-grid, .details-grid { grid-template-columns:1fr; } }
+@media (max-width: 680px) { .page { width:min(100% - 22px, 1180px); padding-top:22px; } .hero, .section, .final-box { padding:22px; border-radius:22px; } .summary-grid, .term-grid, .quick-grid { grid-template-columns:1fr; } .event { grid-template-columns:1fr; } .date { min-height:66px; } .event > div:last-child { padding:0 16px 16px; } .key-line { grid-template-columns:1fr; gap:6px; } summary { align-items:flex-start; flex-direction:column; } .hero::after { font-size:82px; } }
+</style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a class="back-link" href="./">← Înapoi la materiale</a>
+      <span class="tag">Material ajutător · Istoria românilor · Epoca contemporană</span>
+    </div>
+
+    <section class="hero" data-watermark="1941">
+      <p class="eyebrow">Al Doilea Război Mondial · Perspectiva României</p>
+      <h1>Desfășurarea conflictului</h1>
+      <p class="subtitle">Participarea României la război are două faze majore: <strong>22 iunie 1941 - 23 august 1944</strong>, alături de Germania împotriva URSS, și <strong>23/25 august 1944 - mai 1945</strong>, alături de Aliați împotriva Germaniei. Între aceste limite se află campania din Est, Stalingradul, bombardamentele, ofensiva Iași-Chișinău și campania de Vest.</p>
+      <div class="summary-grid">
+        <div class="summary-card"><strong>Interval-cheie</strong><span>22 iunie 1941 - 12 mai 1945: de la trecerea Prutului la ultimele lupte ale armatei române în Europa Centrală.</span></div>
+<div class="summary-card"><strong>Prima etapă</strong><span>Vara-toamna 1941: recuperarea Basarabiei și nordului Bucovinei, apoi trecerea dincolo de Nistru și asediul Odessei.</span></div>
+<div class="summary-card"><strong>Punct de ruptură</strong><span>19 noiembrie 1942 - 2 februarie 1943: Stalingradul distruge mitul victoriei rapide și slăbește decisiv armata română.</span></div>
+<div class="summary-card"><strong>Schimbarea de tabără</strong><span>23 august 1944: România rupe alianța cu Germania; din 25 august 1944 luptă împotriva Germaniei și Ungariei horthyste.</span></div>
+      </div>
+    </section>
+
+    
+<nav class="nav-card" aria-label="Navigare între lecții">
+  <b>Al Doilea Război Mondial · România:</b>
+  <a href="ro-al-doilea-razboi-mondial-inceputul-conflictului.html">Începutul conflictului</a>
+  <a href="ro-al-doilea-razboi-mondial-desfasurarea-conflictului.html">Desfășurarea conflictului</a>
+  <a href="ro-al-doilea-razboi-mondial-consecintele-conflictului.html">Consecințele conflictului</a>
+</nav>
+
+<nav class="nav-card" aria-label="Cuprins local">
+  <b>Cuprins:</b>
+  <a href="#est">I. Campania din Est</a>
+  <a href="#transnistria">II. Dincolo de Nistru</a>
+  <a href="#stalingrad">III. Stalingrad</a>
+  <a href="#front-acasa">IV. Războiul ajunge acasă</a>
+  <a href="#august-1944">V. 23 august</a>
+  <a href="#vest">VI. Campania de Vest</a>
+  <a href="#sinteza">Sinteză</a>
+</nav>
+
+
+    
+<section class="section" id="cronologie">
+  <h2>Cronologie militară extinsă: 22 iunie 1941 - 12 mai 1945</h2>
+  <p class="section-intro">Desfășurarea războiului pentru România are două mari faze: prima, între <strong>22 iunie 1941</strong> și <strong>23 august 1944</strong>, alături de Axă împotriva URSS; a doua, între <strong>23/25 august 1944</strong> și <strong>mai 1945</strong>, alături de Națiunile Unite împotriva Germaniei și Ungariei horthyste.</p>
+  <div class="timeline">
+    <article class="event"><div class="date">22 iun.<br>1941</div><div><h3>România intră în război contra URSS</h3><p>Armata română trece Prutul în cadrul Operațiunii Barbarossa. Obiectivul declarat este recuperarea Basarabiei și nordului Bucovinei.</p></div></article>
+    <article class="event"><div class="date">5 iul.<br>1941</div><div><h3>Intrarea în Cernăuți</h3><p>Trupele române recuceresc Cernăuțiul. Evenimentul are valoare simbolică pentru recuperarea nordului Bucovinei, cedat URSS în iunie 1940.</p></div></article>
+    <article class="event"><div class="date">16 iul.<br>1941</div><div><h3>Cucerirea Chișinăului</h3><p>Chișinăul este recucerit în timpul campaniei pentru Basarabia. Până la sfârșitul lunii iulie 1941, frontul ajunge la Nistru.</p></div></article>
+    <article class="event"><div class="date">8 aug.-16 oct.<br>1941</div><div><h3>Asediul Odessei</h3><p>Armata română conduce unul dintre cele mai grele episoade ale războiului din Est. Victoria de la Odessa vine cu pierderi mari și este urmată de represalii dure împotriva populației evreiești.</p></div></article>
+    <article class="event"><div class="date">22-25 oct.<br>1941</div><div><h3>Masacrul de la Odessa</h3><p>După explozia de la comandamentul român din Odessa, autoritățile române ordonă represalii masive. Episodul este una dintre cele mai grave crime comise sub administrație românească în timpul războiului.</p></div></article>
+    <article class="event"><div class="date">1941-1942</div><div><h3>Administrația Transnistriei și deportările</h3><p>Între Nistru și Bug este organizată administrația Transnistriei. În acest spațiu sunt deportați evrei și romi din Basarabia, Bucovina și alte zone, în condiții de foamete, boală, muncă forțată și violență.</p></div></article>
+    <article class="event"><div class="date">1 aug.<br>1943</div><div><h3>Bombardarea Ploieștiului</h3><p>Operațiunea Tidal Wave lovește rafinăriile din zona Ploiești. Petrolul românesc era esențial pentru Germania, de aceea România devine țintă aeriană strategică.</p></div></article>
+    <article class="event"><div class="date">19 nov.<br>1942</div><div><h3>Operațiunea Uranus</h3><p>Sovieticii atacă flancurile de la Stalingrad, apărate în mare parte de armatele române 3 și 4. Frontul se rupe, iar pierderile românești sunt foarte mari.</p></div></article>
+    <article class="event"><div class="date">2 feb.<br>1943</div><div><h3>Sfârșitul bătăliei de la Stalingrad</h3><p>Capitularea forțelor germane din încercuire marchează schimbarea cursului războiului. Pentru România, Stalingradul înseamnă începutul căutării unei ieșiri din alianța cu Germania.</p></div></article>
+    <article class="event"><div class="date">4 apr.<br>1944</div><div><h3>Bombardarea Bucureștiului</h3><p>Aviația americană bombardează Bucureștiul. Războiul nu mai este doar pe frontul din est, ci lovește direct populația civilă și infrastructura României.</p></div></article>
+    <article class="event"><div class="date">20 aug.<br>1944</div><div><h3>Ofensiva Iași-Chișinău</h3><p>Armata Roșie declanșează ofensiva care rupe frontul germano-român din Moldova. În câteva zile, situația militară a României devine imposibilă.</p></div></article>
+    <article class="event"><div class="date">23 aug.<br>1944</div><div><h3>Lovitura de stat de la București</h3><p>Regele Mihai îl arestează pe Ion Antonescu. România anunță încetarea alianței cu Germania și acceptarea armistițiului cu Aliații.</p></div></article>
+    <article class="event"><div class="date">25 aug.<br>1944</div><div><h3>România declară război Germaniei</h3><p>După atacurile germane asupra Bucureștiului, România intră efectiv în luptă împotriva Germaniei.</p></div></article>
+    <article class="event"><div class="date">12 sep.<br>1944</div><div><h3>Armistițiul de la Moscova</h3><p>România semnează armistițiul cu Națiunile Unite. Documentul consfințește schimbarea taberei, dar și controlul sovietic asupra României.</p></div></article>
+    <article class="event"><div class="date">25 oct.<br>1944</div><div><h3>Eliberarea orașului Carei</h3><p>Armata română eliberează ultimul teritoriu important din nord-vestul Transilvaniei. Data va deveni Ziua Armatei Române.</p></div></article>
+    <article class="event"><div class="date">mai<br>1945</div><div><h3>Ultimele lupte în Cehoslovacia</h3><p>Armata română continuă operațiunile alături de sovietici până în ultimele zile ale războiului european, inclusiv în Slovacia, Moravia și Boemia.</p></div></article>
+  </div>
+</section>
+
+<section class="section" id="est">
+  <h2>I. Campania pentru Basarabia și nordul Bucovinei, 22 iunie - sfârșitul lui iulie 1941</h2>
+  <p class="section-intro">La <strong>22 iunie 1941</strong>, România intră în război împotriva URSS. Prima etapă este prezentată oficial ca o campanie de eliberare: Basarabia și nordul Bucovinei fuseseră pierdute în urma ultimatumului sovietic din <strong>26-28 iunie 1940</strong>.</p>
+  <div class="two-col">
+    <article class="info-card"><h3>Trecerea Prutului, 22 iunie 1941</h3><p>În dimineața zilei de <strong>22 iunie 1941</strong>, operațiunile militare încep simultan cu atacul german asupra URSS. Armata română acționează pe direcții multiple, sub coordonare germană, pentru a împinge trupele sovietice peste Prut și apoi spre Nistru. Proclamația lui Antonescu transformă campania într-un moment de mobilizare națională: recuperarea teritoriilor pierdute în 1940 devine principalul argument al războiului.</p></article>
+    <article class="info-card"><h3>Cernăuți și Chișinău, 5 și 16 iulie 1941</h3><p><span class="date-pill">5 iul. 1941</span> Cernăuțiul este recucerit, iar <span class="date-pill">16 iul. 1941</span> Chișinăul este recucerit. Aceste date au fost folosite propagandistic pentru a demonstra „repararea” pierderilor din <strong>iunie 1940</strong>. Militar, campania avansează rapid, dar lasă în urmă administrație militară, violență, epurări, represalii și primele mari episoade antievreiești ale războiului.</p></article>
+  </div>
+  <details open><summary>De la Prut la Nistru: unde se termină „războiul de reîntregire”?</summary><div class="details-body"><p>Până la Nistru, obiectivul putea fi formulat ca recuperare teritorială. După atingerea Nistrului, România avea de ales între oprirea operațiunilor și continuarea războiului alături de Germania. Decizia de a merge mai departe, spre Odessa și apoi mai adânc în URSS, a transformat implicarea României într-o participare la războiul general al Axei împotriva Uniunii Sovietice.</p></div></details>
+</section>
+
+<section class="section" id="transnistria">
+  <h2>II. Dincolo de Nistru: Odessa, Transnistria și radicalizarea războiului</h2>
+  <p class="section-intro">După vara anului <strong>1941</strong>, armata română trece dincolo de Nistru. Acest moment este esențial deoarece schimbă caracterul participării românești: de la recuperarea Basarabiei la ocuparea și administrarea unui teritoriu care nu aparținuse României.</p>
+  <div class="cause-grid">
+    <article class="info-card"><h3><span class="date-pill">8 august - 16 octombrie 1941</span> Asediul Odessei</h3><p>Asediul Odessei este unul dintre cele mai costisitoare episoade pentru armata română în 1941. Orașul era un port strategic la Marea Neagră, iar cucerirea lui trebuia să asigure controlul asupra litoralului și să protejeze flancul sudic al frontului. Luptele grele, rezistența sovietică și deficiențele de coordonare au provocat pierderi mari. La <strong>16 octombrie 1941</strong>, Odessa este ocupată.</p><p>Victoria militară este urmată de un episod dramatic: la <strong>22 octombrie 1941</strong>, o explozie lovește comandamentul român din Odessa. Represaliile ordonate după explozie duc la uciderea unui număr foarte mare de evrei și civili. De aceea, Odessa nu trebuie prezentată doar ca victorie militară, ci și ca moment al responsabilității morale și politice.</p></article>
+    <article class="info-card"><h3><span class="date-pill">1941-1944</span> Administrația Transnistriei</h3><p>Transnistria, spațiul dintre Nistru și Bug, este administrată de România în timpul războiului. Ea nu este anexată formal ca provincie românească, dar se află sub control românesc. Regimul de ocupație este marcat de exploatare economică, administrație militară și deportări.</p><p>În <strong>1941-1942</strong>, numeroși evrei din Basarabia și Bucovina, precum și romi, sunt deportați în Transnistria. Condițiile de viață, foametea, bolile, munca forțată și violența duc la moartea multora dintre deportați. Acest capitol face parte din Holocaustul din România și din teritoriile aflate sub administrație românească.</p></article>
+  </div>
+  <div class="warning-box"><h3>Responsabilitatea istorică</h3><p>O prezentare serioasă a desfășurării războiului trebuie să includă nu doar luptele armatei române, ci și politicile antisemite, pogromurile, deportările și crimele din teritoriile administrate de România. Acestea nu sunt elemente secundare, ci parte a modului în care războiul a fost dus în Est.</p></div>
+</section>
+
+<section class="section" id="stalingrad">
+  <h2>III. Stalingradul și prăbușirea iluziei victoriei rapide, 19 noiembrie 1942 - 2 februarie 1943</h2>
+  <p class="section-intro">Stalingradul este punctul de cotitură al participării României la războiul din Est. La <strong>19 noiembrie 1942</strong>, sovieticii declanșează Operațiunea Uranus, lovind flancurile armatei germane, apărate în mare parte de armatele române.</p>
+  <details open><summary>Rolul armatelor române 3 și 4</summary><div class="details-body"><p>Armata a 3-a română apăra un sector la nord-vest de Stalingrad, iar Armata a 4-a română se afla pe flancul sudic. Unitățile române aveau fronturi foarte întinse, armament antitanc insuficient și poziții vulnerabile. Când ofensiva sovietică începe la <strong>19 noiembrie 1942</strong>, tancurile sovietice pătrund rapid prin sectoarele slab apărate. Rezultatul este încercuirea armatei germane din Stalingrad și distrugerea sau dezorganizarea gravă a forțelor române.</p></div></details>
+  <details open><summary>Consecința politică a Stalingradului</summary><div class="details-body"><p>După <strong>2 februarie 1943</strong>, când rezistența germană de la Stalingrad încetează, conducerea românească înțelege că Germania poate pierde războiul. De aici se intensifică încercările discrete de contact cu Aliații occidentali. Totuși, România rămâne prinsă militar de Germania, iar frontul de est se apropie treptat de granițele sale.</p></div></details>
+</section>
+
+<section class="section" id="front-acasa">
+  <h2>IV. Războiul ajunge acasă: bombardamentele și frontul din Moldova, 1943-1944</h2>
+  <p class="section-intro">După Stalingrad, războiul se apropie de România. Țara nu mai este doar furnizor de resurse și trupe, ci devine țintă directă pentru bombardamente și teatru de operațiuni militare.</p>
+  <div class="three-col">
+    <article class="info-card"><h3><span class="date-pill">1 august 1943</span> Ploiești</h3><p>Bombardarea rafinăriilor de la Ploiești în Operațiunea Tidal Wave arată importanța petrolului românesc pentru Germania. Pentru Aliați, reducerea producției de combustibil însemna slăbirea capacității militare germane.</p></article>
+    <article class="info-card"><h3><span class="date-pill">4 aprilie 1944</span> București</h3><p>Bombardamentul asupra Bucureștiului produce distrugeri și victime civile. Războiul intră în viața cotidiană a populației, iar imaginea alianței cu Germania devine tot mai greu de susținut.</p></article>
+    <article class="info-card"><h3><span class="date-pill">20 august 1944</span> Iași-Chișinău</h3><p>Ofensiva sovietică Iași-Chișinău sparge frontul germano-român. În câteva zile, România riscă ocuparea completă fără condiții politice negociate, ceea ce grăbește acțiunea de la 23 august 1944.</p></article>
+  </div>
+</section>
+
+<section class="section" id="august-1944">
+  <h2>V. 23 august 1944: lovitura de stat și schimbarea taberei</h2>
+  <p class="section-intro">La <strong>23 august 1944</strong>, regele Mihai, sprijinit de partidele istorice și de cercuri militare, îl arestează pe Ion Antonescu. România rupe alianța cu Germania și acceptă condițiile de armistițiu ale Aliaților. Evenimentul este decisiv, dar nu aduce imediat libertate deplină: Armata Roșie se află deja pe teritoriul României.</p>
+  <details open><summary><span class="date-pill">23 august 1944</span> Arestarea lui Antonescu</summary><div class="details-body"><p>În contextul ofensivei sovietice declanșate la <strong>20 august 1944</strong>, Antonescu este chemat la Palat și arestat. Regele anunță la radio încetarea luptei împotriva Națiunilor Unite și întoarcerea armelor împotriva Germaniei. Scopul era scurtarea războiului, salvarea statului de la distrugere completă și obținerea unei poziții mai bune la pace.</p></div></details>
+  <details open><summary><span class="date-pill">24-25 august 1944</span> Reacția germană și declarația de război</summary><div class="details-body"><p>Germania reacționează rapid și bombardează Bucureștiul. La <strong>25 august 1944</strong>, România declară război Germaniei. În următoarele zile, trupele române luptă pentru eliminarea forțelor germane din București, Ploiești și alte zone strategice.</p></div></details>
+  <details open><summary><span class="date-pill">12 septembrie 1944</span> Armistițiul de la Moscova</summary><div class="details-body"><p>Armistițiul semnat la <strong>12 septembrie 1944</strong> confirmă schimbarea taberei, dar stabilește și obligații dure: România trebuie să lupte împotriva Germaniei, să plătească despăgubiri, să accepte prezența trupelor sovietice și activitatea Comisiei Aliate de Control, dominată de URSS. Prin urmare, 23 august scoate România din Axă, dar o introduce în zona de control sovietic.</p></div></details>
+</section>
+
+<section class="section" id="vest">
+  <h2>VI. Campania de Vest, 25 august 1944 - mai 1945</h2>
+  <p class="section-intro">După <strong>25 august 1944</strong>, România luptă împotriva Germaniei și Ungariei horthyste. Această a doua fază a participării românești este importantă deoarece contribuie la eliberarea nord-vestului Transilvaniei și la ofensiva aliată din Europa Centrală.</p>
+  <div class="two-col">
+    <article class="info-card"><h3><span class="date-pill">sept.-oct. 1944</span> Transilvania</h3><p>Luptele pentru Transilvania au miză militară și simbolică. Armata română acționează împreună cu Armata Roșie pentru alungarea trupelor germane și ungare. La <strong>25 octombrie 1944</strong>, este eliberat orașul Carei, eveniment considerat momentul eliberării ultimei părți importante din teritoriul românesc ocupat în 1940.</p></article>
+    <article class="info-card"><h3><span class="date-pill">1944-1945</span> Ungaria, Cehoslovacia, Austria</h3><p>După eliberarea Transilvaniei, armata română continuă luptele în Ungaria și Cehoslovacia. Participarea românească se prelungește până în <strong>mai 1945</strong>, cu pierderi importante. România spera că efortul militar de după 23 august va fi recunoscut la tratatele de pace, însă statutul de cobeligerant nu va fi acordat în forma dorită de București.</p></article>
+  </div>
+  <details open><summary>De ce a continuat România lupta după 23 august?</summary><div class="details-body"><div class="key-line"><strong>Recuperarea Transilvaniei</strong><span>Obiectivul politic major era anularea Arbitrajului de la Viena din <strong>30 august 1940</strong> și revenirea nord-vestului Transilvaniei la România.</span></div><div class="key-line"><strong>Presiunea sovietică</strong><span>După <strong>12 septembrie 1944</strong>, obligațiile armistițiului impuneau României să participe militar împotriva Germaniei.</span></div><div class="key-line"><strong>Speranța diplomatică</strong><span>Conducerea românească spera că efortul militar din <strong>1944-1945</strong> va îmbunătăți poziția țării la conferința de pace.</span></div></div></details>
+</section>
+
+<section class="section" id="sinteza">
+  <h2>Sinteză finală: cele două războaie ale României în același conflict</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Etapă</th><th>Date importante</th><th>Alianță</th><th>Obiectiv declarat</th><th>Probleme și consecințe</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Războiul din Est</strong></td><td>22 iunie 1941 - 23 august 1944</td><td>Germania și Axa</td><td>Recuperarea Basarabiei și nordului Bucovinei; apoi continuarea războiului contra URSS.</td><td>Pierderi militare enorme, participare la ocupația din Est, deportări și crime împotriva evreilor și romilor.</td></tr>
+      <tr><td><strong>Punctul de cotitură</strong></td><td>19 noiembrie 1942 - 2 februarie 1943</td><td>Axa, în defensivă</td><td>Menținerea frontului de la Stalingrad.</td><td>Frontul se rupe, armatele române sunt grav afectate, iar România începe să caute ieșirea din război.</td></tr>
+      <tr><td><strong>Schimbarea taberei</strong></td><td>23-25 august 1944</td><td>Rupere de Germania; apropiere de Aliați</td><td>Oprirea dezastrului militar și recuperarea Transilvaniei.</td><td>România devine teatru de operațiuni, iar controlul sovietic crește rapid.</td></tr>
+      <tr><td><strong>Campania de Vest</strong></td><td>25 august 1944 - mai 1945</td><td>Națiunile Unite, sub comandament sovietic</td><td>Eliberarea nord-vestului Transilvaniei și lupta împotriva Germaniei.</td><td>Contribuție militară importantă, dar nerecunoaștere deplină ca stat cobeligerant la pace.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="final-box"><h3>Concluzie</h3><p>Desfășurarea celui de-al Doilea Război Mondial pentru România este contradictorie: la <strong>22 iunie 1941</strong>, România intră în război pentru recuperarea teritoriilor pierdute în est, dar continuarea operațiunilor dincolo de Nistru o implică în războiul Axei și în crimele din Est. La <strong>23 august 1944</strong>, România schimbă tabăra, contribuie la înfrângerea Germaniei și recuperează nord-vestul Transilvaniei, dar intră sub dominația militară și politică a URSS.</p></div>
+</section>
+
+  </main>
+</body>
+</html>
