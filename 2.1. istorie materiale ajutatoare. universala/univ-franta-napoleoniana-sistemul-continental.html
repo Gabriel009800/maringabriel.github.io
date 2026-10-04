@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Franța napoleoniană: Sistemul continental">
+<title>univ-franta-napoleoniana-sistemul-continental</title>
+<style>
+
+:root {
+  --bg: #f6f0e7;
+  --paper: #fffaf3;
+  --paper-2: #ffffff;
+  --ink: #2f241c;
+  --title: #3c2a1e;
+  --muted: #5b4a3d;
+  --accent: #7a4f2a;
+  --accent-2: #9b6a3c;
+  --accent-soft: #f0e4d4;
+  --line: rgba(91, 62, 36, 0.18);
+  --line-strong: rgba(91, 62, 36, 0.34);
+  --outer-dark: #241208;
+  --outer-mid: #4a2a18;
+  --outer-warm: #7a4b2b;
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+  --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+    radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+}
+.page {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 34px 0 70px;
+}
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.back-link, .tag { display: inline-flex; align-items: center; border: 1px solid var(--line); background: rgba(255, 250, 243, 0.84); color: var(--title); border-radius: 999px; padding: 10px 15px; text-decoration: none; font-size: 15px; font-weight: 700; box-shadow: var(--shadow-small); }
+.back-link:hover { background: #fff6eb; }
+.hero, .section, .nav-card, .final-box { background: rgba(255, 250, 243, 0.96); border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow); }
+.hero { padding: 38px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.hero::after { content: var(--hero-year); position: absolute; right: 26px; bottom: -22px; font-size: 110px; font-weight: 900; letter-spacing: -4px; color: rgba(122, 79, 42, 0.08); pointer-events: none; }
+.eyebrow { margin: 0 0 8px; font-size: 16px; color: var(--accent); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; }
+h1 { margin: 0; font-size: clamp(38px, 5vw, 62px); line-height: 1.04; color: var(--title); letter-spacing: -1.4px; text-align: left; text-align-last: auto; }
+.subtitle { margin: 18px 0 0; max-width: 980px; font-size: 19px; line-height: 1.78; color: var(--muted); text-align: justify; text-align-last: left; }
+.summary-grid, .three-col, .two-col, .term-grid, .quick-grid, .cause-grid, .four-col { display: grid; gap: 14px; }
+.summary-grid { grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+.summary-card, .info-card, .wide-card, .term-card, .quick-card, .source-note, .micro-card, .warning-box { background: var(--paper-2); border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); text-align: justify; text-align-last: left; }
+.summary-card { padding: 16px; min-height: 132px; }
+.summary-card strong, .quick-card strong, .term-card strong, .micro-card strong { display: block; color: var(--title); font-size: 17px; margin-bottom: 8px; text-align: left; text-align-last: auto; }
+.summary-card span, .quick-card span, .term-card span, .micro-card span { display: block; color: var(--muted); font-size: 15.5px; line-height: 1.56; text-align: justify; text-align-last: left; }
+.nav-card { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 18px 20px; margin-bottom: 24px; }
+.nav-card b { color: var(--title); margin-right: 2px; }
+.nav-card a, .mini-btn { color: var(--title); background: var(--accent-soft); border: 1px solid rgba(91, 62, 36, 0.16); border-radius: 999px; text-decoration: none; padding: 8px 12px; font-weight: 700; font-size: 14px; cursor: pointer; font-family: inherit; }
+.nav-card a:hover, .mini-btn:hover { background: #e5d2bb; }
+.section { padding: 30px; margin-bottom: 24px; }
+h2 { margin: 0 0 14px; color: var(--title); font-size: clamp(28px, 3vw, 38px); line-height: 1.15; text-align: left; text-align-last: auto; }
+h3 { margin: 0 0 12px; color: var(--title); font-size: 22px; line-height: 1.22; text-align: left; text-align-last: auto; }
+h4 { margin: 16px 0 8px; color: var(--title); font-size: 18px; text-align: left; text-align-last: auto; }
+.section-intro, p, li, dd { font-size: 17px; line-height: 1.72; color: var(--muted); text-align: justify; text-align-last: left; hyphens: auto; }
+.section-intro { margin: 0 0 20px; max-width: 1000px; }
+.three-col { grid-template-columns: repeat(3, 1fr); }
+.two-col { grid-template-columns: repeat(2, 1fr); }
+.four-col { grid-template-columns: repeat(4, 1fr); }
+.cause-grid { grid-template-columns: 1.1fr 0.9fr; }
+.term-grid { grid-template-columns: repeat(4, 1fr); }
+.quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+.info-card, .wide-card, .term-card, .quick-card, .micro-card, .warning-box, .source-note { padding: 20px; }
+.wide-card { margin-top: 14px; }
+.wide-card p:last-child, .info-card p:last-child { margin-bottom: 0; }
+.clean, .number-list { margin: 0; padding-left: 22px; }
+.clean li, .number-list li { margin: 0 0 9px; padding-left: 2px; }
+.clean li:last-child, .number-list li:last-child { margin-bottom: 0; }
+.mini-title { display: inline; color: var(--title); font-weight: 800; background: transparent; border: 0; border-radius: 0; padding: 0; margin-right: 5px; white-space: normal; text-align: inherit; }
+.date-pill { display: inline-block; color: var(--title); font-weight: 800; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.13); border-radius: 999px; padding: 2px 9px; margin-right: 5px; white-space: nowrap; text-align: left; }
+.definition, .note { margin-top: 18px; background: #fff8ef; border: 1px solid rgba(122, 79, 42, 0.22); border-left: 6px solid rgba(122, 79, 42, 0.48); border-radius: 18px; padding: 18px 20px; color: var(--muted); font-size: 17px; line-height: 1.7; text-align: justify; text-align-last: left; }
+.definition strong, .note strong { color: var(--title); }
+details { background: #fffdf9; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); margin-top: 14px; overflow: hidden; }
+details[open] { background: #fffaf3; }
+summary { cursor: pointer; list-style: none; padding: 18px 20px; font-size: 19px; font-weight: 800; color: var(--title); display: flex; justify-content: space-between; align-items: center; gap: 18px; text-align: left; text-align-last: auto; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "Deschide"; color: var(--muted); font-size: 14px; font-weight: 700; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 999px; padding: 7px 11px; white-space: nowrap; }
+details[open] > summary::after { content: "Ascunde"; }
+.details-body { border-top: 1px solid rgba(91, 62, 36, 0.12); padding: 18px 20px 20px; text-align: justify; text-align-last: left; }
+.details-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.nested-details { margin-top: 10px; box-shadow: none; background: #ffffff; }
+.nested-details summary { font-size: 17px; padding: 14px 16px; }
+.key-line { display: grid; grid-template-columns: 220px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px dashed rgba(91, 62, 36, 0.18); }
+.key-line:last-child { border-bottom: 0; }
+.key-line strong { color: var(--title); text-align: left; text-align-last: auto; }
+.key-line span { color: var(--muted); line-height: 1.65; text-align: justify; text-align-last: left; }
+.timeline { position: relative; display: grid; gap: 14px; margin-top: 18px; }
+.event { display: grid; grid-template-columns: 132px 1fr; gap: 18px; align-items: stretch; background: #ffffff; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); overflow: hidden; }
+.date { background: linear-gradient(180deg, #7a4f2a, #5b351b); color: #fffaf3; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px; font-size: 18px; line-height: 1.25; font-weight: 900; letter-spacing: 0.2px; }
+.event > div:last-child { padding: 17px 18px 18px 0; text-align: justify; text-align-last: left; }
+.event h3 { margin-bottom: 6px; }
+.event p { margin: 0; }
+.small-muted { font-size: 15px; color: #725c49; line-height: 1.6; text-align: justify; text-align-last: left; }
+.warning-box { background: #fff7ec; border-color: rgba(122, 79, 42, 0.22); margin-top: 16px; }
+.final-box { padding: 28px; background: linear-gradient(135deg, #fffaf3, #f4e4d1); border-color: rgba(91, 62, 36, 0.25); }
+.final-box p { margin-bottom: 0; }
+.table-wrap { overflow-x: auto; margin-top: 14px; border-radius: 18px; border: 1px solid rgba(91,62,36,.14); background: #fff; box-shadow: var(--shadow-small); }
+table { width: 100%; border-collapse: collapse; min-width: 740px; }
+th, td { padding: 13px 14px; border-bottom: 1px solid rgba(91,62,36,.12); color: var(--muted); font-size: 16px; line-height: 1.55; vertical-align: top; text-align: justify; }
+th { background: #f3eadf; color: var(--title); text-align: left; font-weight: 800; }
+tr:last-child td { border-bottom: 0; }
+@media (max-width: 980px) {
+  .summary-grid, .three-col, .term-grid, .quick-grid, .four-col { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .cause-grid, .details-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .page { width: min(100% - 22px, 1180px); padding-top: 22px; }
+  .hero, .section, .final-box { padding: 22px; border-radius: 22px; }
+  .summary-grid, .term-grid, .quick-grid, .four-col { grid-template-columns: 1fr; }
+  .event { grid-template-columns: 1fr; }
+  .date { min-height: 66px; }
+  .event > div:last-child { padding: 0 16px 16px; }
+  .key-line { grid-template-columns: 1fr; gap: 6px; }
+  summary { align-items: flex-start; flex-direction: column; }
+  .hero::after { font-size: 82px; }
+}
+
+.related-card { display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:16px 20px; margin:-10px 0 24px; background:rgba(255,250,243,.90); border:1px solid var(--line); border-radius:22px; box-shadow:var(--shadow-small); }
+.related-card b { color:var(--title); }
+.related-card a { color:var(--title); background:#f3eadf; border:1px solid rgba(91,62,36,.16); border-radius:999px; text-decoration:none; padding:8px 12px; font-weight:700; font-size:14px; }
+.related-card a:hover { background:#e5d2bb; }
+.badge-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
+.badge { display:inline-flex; align-items:center; color:var(--title); background:#f3eadf; border:1px solid rgba(91,62,36,.14); border-radius:999px; padding:6px 10px; font-weight:700; font-size:14px; }
+blockquote { margin:16px 0 0; padding:16px 20px; background:#fff8ef; border-left:6px solid rgba(122,79,42,.48); border-radius:16px; color:var(--muted); font-size:17px; line-height:1.7; }
+.mini-table table { min-width:560px; }
+@media print {
+  body { background:#fff !important; }
+  body::before { display:none; }
+  .page { width:100%; padding:0; }
+  .topbar, .nav-card, .related-card { display:none !important; }
+  .hero, .section, .final-box { box-shadow:none; border:1px solid #cbb9a8; break-inside:avoid-page; }
+  details { break-inside:avoid-page; }
+  details > summary::after { display:none; }
+}
+
+
+@media (max-width: 680px) {
+  .subtitle, .section-intro, p, li, dd,
+  .summary-card span, .quick-card span, .term-card span, .micro-card span,
+  .details-body, .key-line span, .event > div:last-child, th, td,
+  .definition, .note, blockquote {
+    text-align: left;
+    text-align-last: auto;
+    hyphens: none;
+  }
+}
+
+
+td { text-align: left; text-align-last: auto; }
+
+  
+
+/* Extensii pentru seria „Civilizația bizantină” */
+.series-links { display:flex; gap:9px; flex-wrap:wrap; margin-top:20px; }
+.series-links a { color:var(--title); background:#fff; border:1px solid rgba(91,62,36,.16); border-radius:999px; padding:9px 13px; text-decoration:none; font-weight:800; box-shadow:0 8px 20px rgba(0,0,0,.10); }
+.series-links a[aria-current="page"] { background:var(--accent); color:#fffaf3; }
+.series-links a:hover { transform:translateY(-1px); }
+.quote-box { margin-top:15px; padding:18px 20px; background:#fffdf9; border:1px solid rgba(91,62,36,.15); border-left:6px solid var(--accent-2); border-radius:18px; color:var(--muted); font-size:17px; line-height:1.72; text-align:justify; text-align-last:left; }
+.step-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:18px; }
+.step-card { background:#fff; border:1px solid rgba(91,62,36,.14); border-radius:20px; padding:18px; box-shadow:var(--shadow-small); }
+.step-card::before { content:attr(data-step); display:inline-flex; width:34px; height:34px; align-items:center; justify-content:center; border-radius:50%; background:var(--accent); color:#fff; font-weight:900; margin-bottom:11px; }
+.step-card strong { display:block; color:var(--title); font-size:17px; margin-bottom:7px; }
+.step-card span { color:var(--muted); font-size:15.5px; line-height:1.58; }
+.status-strip { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:16px; }
+.status-item { background:linear-gradient(135deg,#fff,#fff7ec); border:1px solid rgba(91,62,36,.14); border-radius:18px; padding:16px; }
+.status-item b { display:block; color:var(--title); margin-bottom:6px; }
+.status-item span { color:var(--muted); line-height:1.55; font-size:15.5px; }
+footer { margin-top:24px; color:rgba(255,250,243,.80); text-align:center; font-size:14px; line-height:1.6; }
+@media (max-width:980px) { .step-grid { grid-template-columns:repeat(2,1fr); } .status-strip { grid-template-columns:1fr; } }
+@media (max-width:680px) { .step-grid { grid-template-columns:1fr; } .series-links a { width:100%; text-align:center; } h1 { font-size:clamp(34px,10vw,52px); } }
+
+
+/* Extensii pentru seria „Europa medievală” */
+.series-links{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}.series-links a{color:var(--title);background:#fff;border:1px solid rgba(91,62,36,.16);border-radius:999px;padding:9px 13px;text-decoration:none;font-weight:800;box-shadow:0 8px 20px rgba(0,0,0,.10)}.series-links a[aria-current="page"]{background:var(--accent);color:#fffaf3}.series-links a:hover{transform:translateY(-1px)}
+.chapter-banner{margin:18px 0;padding:18px 20px;border-radius:20px;background:linear-gradient(135deg,#fff7ec,#f0e4d4);border:1px solid rgba(91,62,36,.18);box-shadow:var(--shadow-small)}.chapter-banner strong{display:block;color:var(--title);font-size:20px;margin-bottom:6px}.chapter-banner span{display:block;color:var(--muted);font-size:16px;line-height:1.62}
+.fact-check{margin-top:16px;padding:18px 20px;background:#fff7ec;border:1px solid rgba(122,79,42,.26);border-left:6px solid #8a4c2a;border-radius:18px;color:var(--muted);font-size:16px;line-height:1.68}.fact-check strong{color:var(--title)}
+.catalogue{columns:3 260px;column-gap:18px;margin-top:12px}.catalogue-group{break-inside:avoid;background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:16px;margin:0 0 14px;box-shadow:var(--shadow-small)}.catalogue-group h4{margin:0 0 8px}.catalogue-group ul{margin:0;padding-left:20px}.catalogue-group li{font-size:15.5px;line-height:1.5;margin-bottom:5px}
+.verse{padding:16px 18px;margin:12px 0;background:#fffdf9;border-left:5px solid var(--accent-2);border-radius:0 16px 16px 0;color:var(--muted);font-style:italic;line-height:1.7}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px}.flow-item{position:relative;padding:16px;background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;box-shadow:var(--shadow-small)}.flow-item b{display:block;color:var(--title);margin-bottom:6px}.flow-item span{font-size:15px;color:var(--muted);line-height:1.5}.flow-item:not(:last-child)::after{content:'→';position:absolute;right:-14px;top:50%;transform:translateY(-50%);font-size:22px;color:var(--accent);font-weight:900;z-index:3}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}.badge{display:inline-flex;padding:6px 10px;border-radius:999px;background:#f3eadf;border:1px solid rgba(91,62,36,.13);color:var(--title);font-weight:800;font-size:13px}
+.source-map{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.source-map article{background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:17px;box-shadow:var(--shadow-small)}.source-map strong{display:block;color:var(--title);margin-bottom:6px}.source-map span{color:var(--muted);font-size:15.5px;line-height:1.55}
+footer{margin-top:24px;color:rgba(255,250,243,.80);text-align:center;font-size:14px;line-height:1.6}
+@media(max-width:980px){.flow{grid-template-columns:repeat(2,1fr)}.flow-item::after{display:none}.source-map{grid-template-columns:1fr}.catalogue{columns:2 240px}}
+@media(max-width:680px){.flow{grid-template-columns:1fr}.catalogue{columns:1}.series-links a{width:100%;text-align:center}h1{font-size:clamp(34px,10vw,52px)}}
+
+/* Extensii pentru seria „Franța napoleoniană” */
+.campaign-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}.campaign-card{background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:20px;padding:19px;box-shadow:var(--shadow-small)}.campaign-card .years{display:inline-flex;padding:4px 9px;border-radius:999px;background:#f3eadf;color:var(--title);font-weight:900;font-size:13px;margin-bottom:9px}.campaign-card h3{margin-bottom:7px}.campaign-card p{font-size:15.8px;margin:0}.battle-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px}.battle-item{position:relative;background:linear-gradient(135deg,#fff,#fff8ef);border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:16px;box-shadow:var(--shadow-small)}.battle-item b{display:block;color:var(--title);margin-bottom:5px}.battle-item span{display:block;color:var(--muted);font-size:14.5px;line-height:1.48}.coalition-table td:first-child{font-weight:800;color:var(--title);white-space:nowrap}.strategy-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.strategy-card{background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:17px;box-shadow:var(--shadow-small)}.strategy-card strong{display:block;color:var(--title);margin-bottom:7px}.strategy-card span{color:var(--muted);font-size:15.5px;line-height:1.55}.law-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.law-card{background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:20px;padding:20px;box-shadow:var(--shadow-small)}.law-card .law-year{display:block;color:var(--accent);font-size:14px;font-weight:900;margin-bottom:7px}.law-card h3{margin-bottom:8px}.law-card p{font-size:15.7px;margin:0}.legacy-scale{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}.legacy-item{background:linear-gradient(135deg,#fff,#f7eddf);border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:17px}.legacy-item b{display:block;color:var(--title);margin-bottom:6px}.legacy-item span{display:block;color:var(--muted);font-size:15px;line-height:1.52}.system-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px}.system-step{position:relative;background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:16px;box-shadow:var(--shadow-small)}.system-step b{display:block;color:var(--title);margin-bottom:6px}.system-step span{display:block;color:var(--muted);font-size:14.8px;line-height:1.5}.system-step:not(:last-child)::after{content:'→';position:absolute;right:-14px;top:50%;transform:translateY(-50%);font-size:22px;color:var(--accent);font-weight:900;z-index:3}.impact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.impact-card{background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:20px;padding:20px;box-shadow:var(--shadow-small)}.impact-card h3{margin-bottom:8px}.impact-card ul{margin:0;padding-left:21px}.impact-card li{font-size:15.8px;line-height:1.58;margin-bottom:6px}.correction{margin-top:16px;padding:18px 20px;background:#fff7ec;border:1px solid rgba(132,70,38,.25);border-left:6px solid #8a4c2a;border-radius:18px;color:var(--muted);font-size:16.5px;line-height:1.68}.correction strong{color:var(--title)}.quote-line{margin:14px 0 0;padding:16px 19px;background:#fffdf9;border-left:5px solid var(--accent-2);border-radius:0 16px 16px 0;color:var(--muted);font-style:italic;line-height:1.7}.mini-map{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.mini-map article{background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:17px;box-shadow:var(--shadow-small)}.mini-map strong{display:block;color:var(--title);margin-bottom:6px}.mini-map span{display:block;color:var(--muted);font-size:15px;line-height:1.5}
+@media(max-width:980px){.campaign-grid,.law-grid{grid-template-columns:repeat(2,1fr)}.battle-strip,.strategy-grid,.legacy-scale,.system-flow{grid-template-columns:repeat(2,1fr)}.system-step::after{display:none}.impact-grid,.mini-map{grid-template-columns:1fr}}
+@media(max-width:680px){.campaign-grid,.law-grid,.battle-strip,.strategy-grid,.legacy-scale,.system-flow{grid-template-columns:1fr}}
+</style>
+</head>
+<body id="top" style="--hero-year:'1806';">
+<main class="page">
+<div class="topbar"><a class="back-link" href="index.html">← Înapoi la materiale</a><span class="tag">Material ajutător · Istorie universală · Franța napoleoniană</span></div>
+<section class="hero"><p class="eyebrow">Istorie universală · Epoca modernă · Război economic</p><h1>Franța napoleoniană: Sistemul continental</h1><p class="subtitle">De la Trafalgar și Decretul de la Berlin la contrabanda europeană, războiul peninsular, ruptura cu Rusia și eșecul strategiei prin care Napoleon a încercat să învingă economic Marea Britanie.</p><div class="series-links"><a href="univ-franta-napoleoniana-campanii-militare.html">Campanii militare</a><a href="univ-franta-napoleoniana-legi-moderne.html">Legi moderne</a><a href="univ-franta-napoleoniana-sistemul-continental.html" aria-current="page">Sistemul continental</a></div></section>
+<div class="related-card"><b>Seria Franța napoleoniană:</b><a href="univ-franta-napoleoniana-campanii-militare.html">Campanii militare</a><a href="univ-franta-napoleoniana-legi-moderne.html">Legi moderne</a><a href="univ-franta-napoleoniana-sistemul-continental.html" aria-current="page">Sistemul continental</a></div>
+<nav class="nav-card" aria-label="Cuprinsul paginii"><b>Cuprins:</b><a href="#context">Context</a><a href="#decrete">Decrete</a><a href="#mecanism">Mecanism</a><a href="#aplicare">Aplicare</a><a href="#britania">Marea Britanie</a><a href="#continent">Continent</a><a href="#iberica">Iberia</a><a href="#rusia">Rusia</a><a href="#esec">Eșec</a><a href="#bilant">Bilanț</a><button class="mini-btn" type="button" data-action="open">Deschide explicațiile</button><button class="mini-btn" type="button" data-action="close">Închide explicațiile</button></nav>
+
+<section class="section" id="context">
+<h2>I. De ce a apărut Sistemul continental?</h2>
+<p class="section-intro">După Trafalgar, Napoleon nu mai putea spera realist să invadeze Marea Britanie. A încercat, în schimb, să transforme dominația militară asupra continentului într-o armă economică: închiderea porturilor europene pentru navele, mărfurile și creditul britanic.</p>
+<div class="summary-grid"><article class="summary-card"><strong>21 oct. 1805</strong><span>Trafalgar confirmă superioritatea navală britanică și face improbabilă traversarea Canalului.</span></article><article class="summary-card"><strong>1806</strong><span>Victoriile asupra Prusiei îi permit lui Napoleon să impună reguli economice în Europa centrală.</span></article><article class="summary-card"><strong>21 nov. 1806</strong><span>Decretul de la Berlin declară Insulele Britanice în stare de blocadă.</span></article><article class="summary-card"><strong>1807–1812</strong><span>Aplicarea sistemului provoacă invazii, anexări, contrabandă și ruptura cu Rusia.</span></article></div>
+<div class="definition"><strong>Sistemul continental:</strong> ansamblu de decrete franceze, tratate, controale vamale și obligații impuse aliaților pentru a exclude comerțul britanic de pe continent. „Blocadă continentală” descrie obiectivul, dar nu o blocadă navală clasică, deoarece Franța nu controla mările.</div>
+</section>
+
+<section class="section" id="decrete">
+<h2>II. Arhitectura juridică a blocadei</h2>
+<div class="timeline"><article class="event"><div class="date">21 nov. 1806</div><div><h3>Decretul de la Berlin</h3><p>Insulele Britanice sunt declarate blocate; comerțul și corespondența cu ele sunt interzise; mărfurile britanice trebuie confiscate, iar supușii britanici aflați în teritoriile controlate sunt tratați ca prizonieri.</p></div></article><article class="event"><div class="date">ian.–nov. 1807</div><div><h3>Orders in Council</h3><p>Guvernul britanic răspunde cerând navelor neutre să treacă prin porturi britanice, să obțină licențe și să plătească taxe înainte de comerțul cu Europa controlată de Franța.</p></div></article><article class="event"><div class="date">dec. 1807</div><div><h3>Decretele de la Milano</h3><p>Navele care acceptă controlul britanic, intră într-un port britanic sau plătesc taxe Marii Britanii sunt declarate „denaționalizate” și pot fi capturate de Franța.</p></div></article><article class="event"><div class="date">1810</div><div><h3>Tariful de la Trianon și decretul de la Fontainebleau</h3><p>Taxe foarte mari asupra produselor coloniale și distrugerea publică a mărfurilor britanice confiscate încearcă să închidă breșele sistemului.</p></div></article></div>
+<div class="correction"><strong>Problema de drept maritim:</strong> atât Franța, cât și Marea Britanie au pretins că pot sancționa nave neutre pentru relațiile cu adversarul. Rivalitatea a afectat puternic Statele Unite și a contribuit la tensiunile anglo-americane care au culminat cu războiul din 1812.</div>
+</section>
+
+<section class="section" id="mecanism">
+<h2>III. Cum trebuia să funcționeze?</h2>
+<div class="system-flow"><article class="system-step"><b>1. Închiderea porturilor</b><span>Statele aliate interzic intrarea navelor și produselor britanice.</span></article><article class="system-step"><b>2. Confiscarea</b><span>Vămile și armata caută textile, zahăr, cafea și alte mărfuri suspecte.</span></article><article class="system-step"><b>3. Izolarea creditului</b><span>Corespondența, plățile și contractele cu negustorii britanici sunt blocate.</span></article><article class="system-step"><b>4. Substituția</b><span>Industria continentală ar trebui să înlocuiască produsele britanice și coloniale.</span></article><article class="system-step"><b>5. Criza britanică</b><span>Scăderea exporturilor ar provoca șomaj, lipsă de venituri și presiune pentru pace.</span></article></div>
+<details open><summary>De ce mecanismul era dificil de aplicat?</summary><div class="details-body"><ul class="clean"><li>coastele europene erau prea lungi pentru a fi controlate complet;</li><li>Marea Britanie domina mările și putea transporta mărfuri către porturi periferice;</li><li>nevoia de produse coloniale alimenta prețuri mari și contrabandă profitabilă;</li><li>funcționarii, militarii și comercianții erau coruptibili;</li><li>aliații Franței suportau costurile unei politici orientate în primul rând spre interesele franceze;</li><li>Napoleon acorda chiar el licențe comerciale, subminând principiul interdicției totale.</li></ul></div></details>
+</section>
+
+<section class="section" id="aplicare">
+<h2>IV. Europa transformată într-o frontieră vamală</h2>
+<div class="mini-map"><article><strong>Franța și teritoriile anexate</strong><span>Vămile imperiale, poliția și armata aplicau direct decretele în Belgia, Olanda anexată, nordul Germaniei și Italia.</span></article><article><strong>State-satelit</strong><span>Confederația Rinului, Regatul Italiei, Westfalia, Neapole și Marele Ducat al Varșoviei trebuiau să adopte interdicțiile franceze.</span></article><article><strong>Aliați constrânși</strong><span>Danemarca, Rusia după Tilsit, Prusia și Austria după înfrângeri au fost obligate să participe, deși economiile lor sufereau.</span></article></div>
+<div class="table-wrap"><table><thead><tr><th>Instrument</th><th>Scop</th><th>Realitate</th></tr></thead><tbody><tr><td>Vămi și cordoane militare</td><td>Oprirea mărfurilor britanice la granițe și porturi.</td><td>Costisitoare, selective și vulnerabile la mită.</td></tr><tr><td>Confiscări</td><td>Descurajarea comercianților și finanțarea statului.</td><td>Au creat piețe negre și pierderi pentru negustorii continentali.</td></tr><tr><td>Licențe imperiale</td><td>Permiterea unor exporturi/importuri necesare.</td><td>Au favorizat apropiații regimului și au dovedit că izolarea completă era imposibilă.</td></tr><tr><td>Anexări</td><td>Control direct asupra coastelor neascultătoare.</td><td>Au extins frontierele și obligațiile militare ale Imperiului.</td></tr><tr><td>State conduse de rude</td><td>Asigurarea obedienței politice.</td><td>Louis Bonaparte în Olanda a preferat interesele locale și a fost îndepărtat.</td></tr></tbody></table></div>
+</section>
+
+<section class="section" id="britania">
+<h2>V. A fost Marea Britanie sufocată economic?</h2>
+<div class="impact-grid"><article class="impact-card"><h3>Lovituri reale</h3><ul><li>exporturile britanice au suferit scăderi și perturbări, mai ales în 1808–1809;</li><li>anumite ramuri industriale au cunoscut stocuri, șomaj și presiune financiară;</li><li>comerțul cu nordul Europei a devenit mai scump și riscant;</li><li>asigurările, transportul și creditul au fost afectate de războiul comercial.</li></ul></article><article class="impact-card"><h3>Capacitatea de adaptare</h3><ul><li>Royal Navy a protejat rutele oceanice și imperiul colonial;</li><li>exportatorii au căutat piețe în America Latină, Mediterana, Orient și colonii;</li><li>contrabanda prin Portugalia, Spania, Sicilia, Helgoland și Marea Baltică a continuat;</li><li>subvențiile britanice au finanțat coalițiile continentale.</li></ul></article></div>
+<p>Marea Britanie a suportat costuri serioase, dar nu s-a prăbușit. Puterea navală, sistemul financiar, industrializarea și accesul global la piețe au fost avantaje pe care hegemonia terestră franceză nu le putea elimina.</p>
+</section>
+
+<section class="section" id="continent">
+<h2>VI. Efectele asupra economiilor continentale</h2>
+<div class="two-col"><article class="info-card"><h3>Câștigători relativi</h3><ul class="clean"><li>anumite textile și manufacturi franceze protejate de concurența britanică;</li><li>producția de zahăr din sfeclă și cercetarea substituenților;</li><li>industria chimică, vopselele și unele produse metalurgice;</li><li>negustorii cu licențe și contrabandiștii conectați la rețele internaționale.</li></ul></article><article class="info-card"><h3>Perdanți</h3><ul class="clean"><li>porturile și șantierele dependente de comerțul maritim;</li><li>consumatorii confruntați cu scumpirea zahărului, cafelei, bumbacului și produselor coloniale;</li><li>industriile care necesitau materii prime importate;</li><li>aliații obligați să sacrifice comerțul propriu pentru strategia Franței.</li></ul></article></div>
+<details><summary>O integrare economică europeană?</summary><div class="details-body"><p>Sistemul a stimulat standardizarea vamală și producția continentală, dar nu a fost o piață comună egală. Franța urmărea să transforme continentul într-un spațiu protejat pentru industria și finanțele sale, iar statele dependente erau adesea reduse la furnizori, consumatori și surse de soldați.</p></div></details>
+</section>
+
+<section class="section" id="iberica">
+<h2>VII. Portugaliei și Spaniei li se cere să aleagă</h2>
+<div class="timeline"><article class="event"><div class="date">oct. 1807</div><div><h3>Tratatul de la Fontainebleau</h3><p>Franța și Spania prevăd invadarea și împărțirea Portugaliei, aliata tradițională a Marii Britanii.</p></div></article><article class="event"><div class="date">nov. 1807</div><div><h3>Invazia Portugaliei</h3><p>Armata lui Junot intră în țară; familia regală portugheză se refugiază la Rio de Janeiro sub protecție britanică.</p></div></article><article class="event"><div class="date">1808</div><div><h3>Criza dinastică spaniolă</h3><p>Napoleon îi forțează pe Carol IV și Ferdinand VII să abdice la Bayonne și îl pune pe Joseph Bonaparte pe tron.</p></div></article><article class="event"><div class="date">1808–1814</div><div><h3>Războiul peninsular</h3><p>Revolta spaniolă, gherila și armatele britanico-portugheze transformă aplicarea blocadei într-un conflict devastator.</p></div></article></div>
+<div class="correction"><strong>Paradoxul sistemului:</strong> pentru a închide porturile Marii Britanii, Napoleon a trebuit să ocupe tot mai multe teritorii. Fiecare anexare cerea garnizoane și provoca rezistență, iar războiul peninsular a devenit una dintre cauzele majore ale epuizării Imperiului.</div>
+</section>
+
+<section class="section" id="rusia">
+<h2>VIII. Ruptura cu Rusia și drumul spre 1812</h2>
+<div class="two-col"><article class="info-card"><h3>Alianța de la Tilsit, 1807</h3><p>Alexandru I acceptă formal sistemul continental după înfrângerea de la Friedland. Rusia speră la libertate de acțiune împotriva Imperiului Otoman și Suediei.</p></article><article class="info-card"><h3>Interese incompatibile</h3><p>Exporturile rusești de cereale, lemn, cânepă și materii prime depindeau de comerțul maritim. Lipsa produselor coloniale și scăderea veniturilor nobilimii au făcut blocada impopulară.</p></article></div>
+<div class="timeline"><article class="event"><div class="date">1810</div><div><h3>Noul tarif rusesc</h3><p>Rusia taxează puternic mărfurile franceze și permite mai larg comerțul prin nave neutre, slăbind sistemul.</p></div></article><article class="event"><div class="date">1811</div><div><h3>Escaladarea diplomatică</h3><p>Disputa privind Polonia, anexarea Oldenburgului și blocada amplifică neîncrederea.</p></div></article><article class="event"><div class="date">iunie 1812</div><div><h3>Invazia</h3><p>Napoleon încearcă să oblige Rusia să revină la alianță și la blocadă, dar campania distruge Marea Armată.</p></div></article></div>
+</section>
+
+<section class="section" id="esec">
+<h2>IX. Cauzele eșecului</h2>
+<div class="strategy-grid"><article class="strategy-card"><strong>Superioritatea navală britanică</strong><span>Franța controla coastele, nu oceanele; marina britanică escorta convoaie și deschidea rute alternative.</span></article><article class="strategy-card"><strong>Contrabanda</strong><span>Diferențele mari de preț făceau încălcarea legii extrem de profitabilă.</span></article><article class="strategy-card"><strong>Interesele aliaților</strong><span>Olanda, Rusia, Portugalia și alte state aveau economii dependente de comerțul maritim.</span></article><article class="strategy-card"><strong>Licențele franceze</strong><span>Excepțiile acordate de Napoleon au compromis coerența interdicției.</span></article><article class="strategy-card"><strong>Extinderea militară</strong><span>Aplicarea sistemului a provocat ocupații în Iberia, anexarea Olandei și conflictul cu Rusia.</span></article><article class="strategy-card"><strong>Penuria continentală</strong><span>Consumatorii și producătorii au plătit prețuri mai mari pentru materii prime și bunuri coloniale.</span></article><article class="strategy-card"><strong>Piețe globale britanice</strong><span>America Latină și imperiul colonial au compensat o parte din pierderea piețelor europene.</span></article><article class="strategy-card"><strong>Naționalismul</strong><span>Blocada a făcut dominația franceză vizibilă în viața cotidiană și a alimentat opoziția.</span></article></div>
+</section>
+
+<section class="final-box" id="bilant"><h2>X. Bilanțul Sistemului continental</h2><p>Sistemul continental a fost cea mai amplă încercare de război economic a epocii. A accelerat unele industrii și a perturbat comerțul britanic, dar nu a putut învinge o putere navală și financiară cu acces global. Mai grav pentru Napoleon, blocada a transformat aliații în adversari, a legat Franța de ocupații costisitoare și a contribuit direct la războiul peninsular și la invazia Rusiei. Instrumentul destinat să izoleze Marea Britanie a ajuns să izoleze politic Imperiul Francez.</p></section>
+
+<footer>Material amplu, structurat și corectat istoric · Seria „Franța napoleoniană”</footer>
+</main>
+<script>
+const openBtn=document.querySelector('[data-action="open"]');const closeBtn=document.querySelector('[data-action="close"]');
+if(openBtn)openBtn.addEventListener('click',()=>document.querySelectorAll('details').forEach(d=>d.open=true));
+if(closeBtn)closeBtn.addEventListener('click',()=>document.querySelectorAll('details').forEach(d=>d.open=false));
+</script>
+</body></html>

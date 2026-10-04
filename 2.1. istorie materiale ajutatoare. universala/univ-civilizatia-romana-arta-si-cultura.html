@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="civilizatia-romana-arta-si-cultura">
+  <title>civilizatia-romana-arta-si-cultura</title>
+  <style>
+
+:root {
+  --bg: #f6f0e7;
+  --paper: #fffaf3;
+  --paper-2: #ffffff;
+  --ink: #2f241c;
+  --title: #3c2a1e;
+  --muted: #5b4a3d;
+  --accent: #7a4f2a;
+  --accent-2: #9b6a3c;
+  --accent-soft: #f0e4d4;
+  --line: rgba(91, 62, 36, 0.18);
+  --line-strong: rgba(91, 62, 36, 0.34);
+  --outer-dark: #241208;
+  --outer-mid: #4a2a18;
+  --outer-warm: #7a4b2b;
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+  --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+    radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+}
+.page {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 34px 0 70px;
+}
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.back-link, .tag { display: inline-flex; align-items: center; border: 1px solid var(--line); background: rgba(255, 250, 243, 0.84); color: var(--title); border-radius: 999px; padding: 10px 15px; text-decoration: none; font-size: 15px; font-weight: 700; box-shadow: var(--shadow-small); }
+.back-link:hover { background: #fff6eb; }
+.hero, .section, .nav-card, .final-box { background: rgba(255, 250, 243, 0.96); border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow); }
+.hero { padding: 38px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.hero::after { content: var(--hero-year); position: absolute; right: 26px; bottom: -22px; font-size: 110px; font-weight: 900; letter-spacing: -4px; color: rgba(122, 79, 42, 0.08); pointer-events: none; }
+.eyebrow { margin: 0 0 8px; font-size: 16px; color: var(--accent); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; }
+h1 { margin: 0; font-size: clamp(38px, 5vw, 62px); line-height: 1.04; color: var(--title); letter-spacing: -1.4px; text-align: left; text-align-last: auto; }
+.subtitle { margin: 18px 0 0; max-width: 980px; font-size: 19px; line-height: 1.78; color: var(--muted); text-align: justify; text-align-last: left; }
+.summary-grid, .three-col, .two-col, .term-grid, .quick-grid, .cause-grid, .four-col { display: grid; gap: 14px; }
+.summary-grid { grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+.summary-card, .info-card, .wide-card, .term-card, .quick-card, .source-note, .micro-card, .warning-box { background: var(--paper-2); border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); text-align: justify; text-align-last: left; }
+.summary-card { padding: 16px; min-height: 132px; }
+.summary-card strong, .quick-card strong, .term-card strong, .micro-card strong { display: block; color: var(--title); font-size: 17px; margin-bottom: 8px; text-align: left; text-align-last: auto; }
+.summary-card span, .quick-card span, .term-card span, .micro-card span { display: block; color: var(--muted); font-size: 15.5px; line-height: 1.56; text-align: justify; text-align-last: left; }
+.nav-card { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 18px 20px; margin-bottom: 24px; }
+.nav-card b { color: var(--title); margin-right: 2px; }
+.nav-card a, .mini-btn { color: var(--title); background: var(--accent-soft); border: 1px solid rgba(91, 62, 36, 0.16); border-radius: 999px; text-decoration: none; padding: 8px 12px; font-weight: 700; font-size: 14px; cursor: pointer; font-family: inherit; }
+.nav-card a:hover, .mini-btn:hover { background: #e5d2bb; }
+.section { padding: 30px; margin-bottom: 24px; }
+h2 { margin: 0 0 14px; color: var(--title); font-size: clamp(28px, 3vw, 38px); line-height: 1.15; text-align: left; text-align-last: auto; }
+h3 { margin: 0 0 12px; color: var(--title); font-size: 22px; line-height: 1.22; text-align: left; text-align-last: auto; }
+h4 { margin: 16px 0 8px; color: var(--title); font-size: 18px; text-align: left; text-align-last: auto; }
+.section-intro, p, li, dd { font-size: 17px; line-height: 1.72; color: var(--muted); text-align: justify; text-align-last: left; hyphens: auto; }
+.section-intro { margin: 0 0 20px; max-width: 1000px; }
+.three-col { grid-template-columns: repeat(3, 1fr); }
+.two-col { grid-template-columns: repeat(2, 1fr); }
+.four-col { grid-template-columns: repeat(4, 1fr); }
+.cause-grid { grid-template-columns: 1.1fr 0.9fr; }
+.term-grid { grid-template-columns: repeat(4, 1fr); }
+.quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+.info-card, .wide-card, .term-card, .quick-card, .micro-card, .warning-box, .source-note { padding: 20px; }
+.wide-card { margin-top: 14px; }
+.wide-card p:last-child, .info-card p:last-child { margin-bottom: 0; }
+.clean, .number-list { margin: 0; padding-left: 22px; }
+.clean li, .number-list li { margin: 0 0 9px; padding-left: 2px; }
+.clean li:last-child, .number-list li:last-child { margin-bottom: 0; }
+.mini-title { display: inline; color: var(--title); font-weight: 800; background: transparent; border: 0; border-radius: 0; padding: 0; margin-right: 5px; white-space: normal; text-align: inherit; }
+.date-pill { display: inline-block; color: var(--title); font-weight: 800; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.13); border-radius: 999px; padding: 2px 9px; margin-right: 5px; white-space: nowrap; text-align: left; }
+.definition, .note { margin-top: 18px; background: #fff8ef; border: 1px solid rgba(122, 79, 42, 0.22); border-left: 6px solid rgba(122, 79, 42, 0.48); border-radius: 18px; padding: 18px 20px; color: var(--muted); font-size: 17px; line-height: 1.7; text-align: justify; text-align-last: left; }
+.definition strong, .note strong { color: var(--title); }
+details { background: #fffdf9; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); margin-top: 14px; overflow: hidden; }
+details[open] { background: #fffaf3; }
+summary { cursor: pointer; list-style: none; padding: 18px 20px; font-size: 19px; font-weight: 800; color: var(--title); display: flex; justify-content: space-between; align-items: center; gap: 18px; text-align: left; text-align-last: auto; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "Deschide"; color: var(--muted); font-size: 14px; font-weight: 700; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 999px; padding: 7px 11px; white-space: nowrap; }
+details[open] > summary::after { content: "Ascunde"; }
+.details-body { border-top: 1px solid rgba(91, 62, 36, 0.12); padding: 18px 20px 20px; text-align: justify; text-align-last: left; }
+.details-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.nested-details { margin-top: 10px; box-shadow: none; background: #ffffff; }
+.nested-details summary { font-size: 17px; padding: 14px 16px; }
+.key-line { display: grid; grid-template-columns: 220px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px dashed rgba(91, 62, 36, 0.18); }
+.key-line:last-child { border-bottom: 0; }
+.key-line strong { color: var(--title); text-align: left; text-align-last: auto; }
+.key-line span { color: var(--muted); line-height: 1.65; text-align: justify; text-align-last: left; }
+.timeline { position: relative; display: grid; gap: 14px; margin-top: 18px; }
+.event { display: grid; grid-template-columns: 132px 1fr; gap: 18px; align-items: stretch; background: #ffffff; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); overflow: hidden; }
+.date { background: linear-gradient(180deg, #7a4f2a, #5b351b); color: #fffaf3; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px; font-size: 18px; line-height: 1.25; font-weight: 900; letter-spacing: 0.2px; }
+.event > div:last-child { padding: 17px 18px 18px 0; text-align: justify; text-align-last: left; }
+.event h3 { margin-bottom: 6px; }
+.event p { margin: 0; }
+.small-muted { font-size: 15px; color: #725c49; line-height: 1.6; text-align: justify; text-align-last: left; }
+.warning-box { background: #fff7ec; border-color: rgba(122, 79, 42, 0.22); margin-top: 16px; }
+.final-box { padding: 28px; background: linear-gradient(135deg, #fffaf3, #f4e4d1); border-color: rgba(91, 62, 36, 0.25); }
+.final-box p { margin-bottom: 0; }
+.table-wrap { overflow-x: auto; margin-top: 14px; border-radius: 18px; border: 1px solid rgba(91,62,36,.14); background: #fff; box-shadow: var(--shadow-small); }
+table { width: 100%; border-collapse: collapse; min-width: 740px; }
+th, td { padding: 13px 14px; border-bottom: 1px solid rgba(91,62,36,.12); color: var(--muted); font-size: 16px; line-height: 1.55; vertical-align: top; text-align: justify; }
+th { background: #f3eadf; color: var(--title); text-align: left; font-weight: 800; }
+tr:last-child td { border-bottom: 0; }
+@media (max-width: 980px) {
+  .summary-grid, .three-col, .term-grid, .quick-grid, .four-col { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .cause-grid, .details-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .page { width: min(100% - 22px, 1180px); padding-top: 22px; }
+  .hero, .section, .final-box { padding: 22px; border-radius: 22px; }
+  .summary-grid, .term-grid, .quick-grid, .four-col { grid-template-columns: 1fr; }
+  .event { grid-template-columns: 1fr; }
+  .date { min-height: 66px; }
+  .event > div:last-child { padding: 0 16px 16px; }
+  .key-line { grid-template-columns: 1fr; gap: 6px; }
+  summary { align-items: flex-start; flex-direction: column; }
+  .hero::after { font-size: 82px; }
+}
+
+.related-card { display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:16px 20px; margin:-10px 0 24px; background:rgba(255,250,243,.90); border:1px solid var(--line); border-radius:22px; box-shadow:var(--shadow-small); }
+.related-card b { color:var(--title); }
+.related-card a { color:var(--title); background:#f3eadf; border:1px solid rgba(91,62,36,.16); border-radius:999px; text-decoration:none; padding:8px 12px; font-weight:700; font-size:14px; }
+.related-card a:hover { background:#e5d2bb; }
+.badge-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
+.badge { display:inline-flex; align-items:center; color:var(--title); background:#f3eadf; border:1px solid rgba(91,62,36,.14); border-radius:999px; padding:6px 10px; font-weight:700; font-size:14px; }
+blockquote { margin:16px 0 0; padding:16px 20px; background:#fff8ef; border-left:6px solid rgba(122,79,42,.48); border-radius:16px; color:var(--muted); font-size:17px; line-height:1.7; }
+.mini-table table { min-width:560px; }
+@media print {
+  body { background:#fff !important; }
+  body::before { display:none; }
+  .page { width:100%; padding:0; }
+  .topbar, .nav-card, .related-card { display:none !important; }
+  .hero, .section, .final-box { box-shadow:none; border:1px solid #cbb9a8; break-inside:avoid-page; }
+  details { break-inside:avoid-page; }
+  details > summary::after { display:none; }
+}
+
+
+@media (max-width: 680px) {
+  .subtitle, .section-intro, p, li, dd,
+  .summary-card span, .quick-card span, .term-card span, .micro-card span,
+  .details-body, .key-line span, .event > div:last-child, th, td,
+  .definition, .note, blockquote {
+    text-align: left;
+    text-align-last: auto;
+    hyphens: none;
+  }
+}
+
+
+td { text-align: left; text-align-last: auto; }
+
+  </style>
+</head>
+<body style="--hero-year: '113';">
+  <main class="page">
+    <div class="topbar">
+      <a class="back-link" href="index.html">← Înapoi la materiale</a>
+      <span class="tag">Material ajutător · Istorie antică · Civilizația romană</span>
+    </div>
+    <section class="hero">
+      <p class="eyebrow">Istorie universală · Antichitate</p>
+      <h1>Civilizația romană: artă și cultură</h1>
+      <p class="subtitle">Cultura romană a unit tradiția italică, moștenirea etruscă și modelele grecești într-o civilizație urbană originală. Orașele, drumurile, apeductele, monumentele, locuințele, religia, literatura, spectacolele și artele vizuale au devenit instrumente ale identității și romanizării.</p>
+      <div class="summary-grid"><div class="summary-card"><strong>Orașul</strong><span>Forum, cardo, decumanus, terme, bazilici și infrastructură publică.</span></div><div class="summary-card"><strong>Arhitectura</strong><span>Beton, arc, boltă și cupolă: tehnică pusă în serviciul spațiului monumental.</span></div><div class="summary-card"><strong>Viața cotidiană</strong><span>Domus, insulae, villae, familie, hrană, îmbrăcăminte și spectacole.</span></div><div class="summary-card"><strong>Cultura</strong><span>Religie, elenism, literatură latină, portret, relief, mozaic și frescă.</span></div></div>
+    </section>
+    <div class="related-card"><b>Materiale conexe:</b><a href="civilizatia-romana-diplomatie-si-conflict.html">Diplomație și conflict</a><a href="civilizatia-romana-institutii-politice.html">Instituții politice</a></div>
+    <nav class="nav-card" aria-label="Cuprins"><b>Cuprins:</b><a href="#urbanizare">Urbanizare</a><a href="#tehnici">Tehnici</a><a href="#monumente">Monumente</a><a href="#locuire">Locuire</a><a href="#societate">Societate</a><a href="#religie">Religie</a><a href="#elenism">Elenism</a><a href="#arte">Arte</a><a href="#literatura">Literatură</a><a href="#spectacole">Spectacole</a><a href="#romanizare">Romanizare</a></nav>
+    <section class="section" id="urbanizare">
+      <h2>I. Urbanizarea – expresie a civilizației romane</h2>
+      <p class="section-intro">Rețeaua urbană era inegală: în Orient, Roma a moștenit cetăți grecești și elenistice dense; în Occident și în regiunile dunărene, orașele au fost adesea create sau reorganizate după cucerire. Planul comun, instituțiile locale și monumentalitatea au funcționat ca factori de unitate.</p>
+      <div class="table-wrap "><table><thead><tr><th>Element</th><th>Funcție</th><th>Rol în viața orașului</th></tr></thead><tbody><tr><td>Cardo maximus</td><td>Axa principală nord–sud</td><td>Conecta porțile și organiza circulația.</td></tr><tr><td>Decumanus maximus</td><td>Axa principală est–vest</td><td>Se intersecta cu cardo în zona centrală.</td></tr><tr><td>Forum</td><td>Piața civică</td><td>Temple, bazilică, curie, tribunale, monumente și comerț.</td></tr><tr><td>Basilica</td><td>Clădire civilă acoperită</td><td>Justiție, afaceri, audiențe și administrație.</td></tr><tr><td>Curia</td><td>Sediul consiliului local</td><td>Reuniunile elitei municipale.</td></tr><tr><td>Terme</td><td>Baie și centru social</td><td>Igienă, sport, lectură, conversație și relaxare.</td></tr><tr><td>Teatru / amfiteatru / circ</td><td>Spectacole diferite</td><td>Dramă, lupte de gladiatori, vânători și curse de care.</td></tr><tr><td>Apeducte și fântâni</td><td>Aprovizionare cu apă</td><td>Alimentau băile, locuințele, atelierele și spațiile publice.</td></tr><tr><td>Drumuri și poduri</td><td>Conectivitate imperială</td><td>Mișcarea armatei, poștei, comerțului și administrației.</td></tr></tbody></table></div>
+      <div class="two-col">
+        <article class="info-card"><h3>Planul urban</h3><p>Multe colonii și castre urmează o grilă organizată în jurul axelor <em>cardo</em> și <em>decumanus</em>. Intersecția lor conduce spre forum. Adaptarea la relief, așezările mai vechi și proprietatea locală produceau însă numeroase variante.</p></article>
+        <article class="info-card"><h3>Orașul ca vehicul al romanizării</h3><p>În oraș se concentrau administrația, limba latină, dreptul, taxele, armata, piețele, cultul imperial și educația elitelor. Monumentele exprimau apartenența la imperiu, iar magistraturile municipale imitau modelul Romei.</p></article>
+      </div>
+      <details open><summary>Forumul</summary><div class="details-body"><p>Forumul era centrul civic: piață pentru ceremonii, tribunale, negoț și întâlniri. În jurul său se găseau curia, bazilica, temple, arhive, statui și arcuri. În capitală au existat mai multe forumuri imperiale, fiecare legat de un program politic.</p></div></details>
+      <details open><summary>Declin și transformare</summary><div class="details-body"><p>Din secolele III–V, invaziile, fiscalitatea, epidemiile și schimbarea rutelor economice reduc unele spații urbane. Orașele se fortifică, reutilizează monumente și concentrează locuirea în jurul nucleelor apărate și al bisericilor. Multe centre medievale se dezvoltă din aceste nuclee târzii.</p></div></details>
+    </section>
+    <section class="section" id="tehnici">
+      <h2>II. Materiale și tehnici de construcție</h2>
+      <p class="section-intro">Originalitatea arhitecturii romane nu constă într-un singur element, ci în combinarea tehnicii grecești a ordinelor cu ingineria arcului, a bolții și a betonului.</p>
+      <div class="table-wrap "><table><thead><tr><th>Tehnică</th><th>Definiție</th><th>Utilizare</th></tr></thead><tbody><tr><td><em>Opus caementicium</em></td><td>Beton roman din mortar, agregate și piatră</td><td>Permitea bolți, cupole și construcții masive cu forme flexibile.</td></tr><tr><td>Arcul</td><td>Distribuirea presiunii către reazeme</td><td>Poduri, apeducte, porți, amfiteatre și clădiri publice.</td></tr><tr><td>Bolta în plin cintru</td><td>Prelungirea arcului</td><td>Coridoare, substructuri, terme și bazilici.</td></tr><tr><td>Bolta în cruce</td><td>Intersecția a două bolți</td><td>Deschidea spații mari și concentra greutatea în puncte de sprijin.</td></tr><tr><td>Cupola</td><td>Acoperire circulară monumentală</td><td>Pantheonul demonstrează controlul greutății prin casete și materiale gradate.</td></tr><tr><td><em>Opus reticulatum</em></td><td>Parament cu pietre dispuse în rețea</td><td>Tehnică frecventă în Republica târzie și începutul Imperiului.</td></tr><tr><td><em>Opus testaceum</em></td><td>Zidărie cu cărămidă</td><td>Standardizare și rapiditate în epoca imperială.</td></tr></tbody></table></div>
+      <div class="definition"><strong>Principiu estetic:</strong> coloanele și ordinele grecești puteau avea funcție structurală sau decorativă, în timp ce adevărata masă a clădirii era susținută de ziduri, arcuri și bolți din beton și cărămidă.</div>
+    </section>
+    <section class="section" id="monumente">
+      <h2>III. Cronologia artei monumentale</h2>
+      <p class="section-intro">Monumentele romane au fost infrastructură, spațiu social și propagandă. Ele comemorau victorii, ofereau apă și divertisment, organizau administrația și prezentau împăratul ca protector al comunității.</p>
+      <div class="timeline"><article class="event"><div class="date">sec. VI<br>î.Hr.</div><div><h3>Cloaca Maxima și urbanizarea arhaică</h3><p>Drenarea zonei Forumului și marile lucrări atribuite regilor etrusci transformă așezările de pe coline într-un oraș coerent.</p></div></article><article class="event"><div class="date">312<br>î.Hr.</div><div><h3>Via Appia</h3><p>Drumul început de Appius Claudius Caecus leagă Roma de sudul Italiei și devine model pentru infrastructura imperială.</p></div></article><article class="event"><div class="date">312<br>î.Hr.</div><div><h3>Aqua Appia</h3><p>Primul apeduct al Romei aduce apă de la distanță și deschide tradiția marilor sisteme hidraulice.</p></div></article><article class="event"><div class="date">55<br>î.Hr.</div><div><h3>Teatrul lui Pompei</h3><p>Primul teatru permanent de piatră al Romei combină spectacolul, porticurile și reprezentarea politică.</p></div></article><article class="event"><div class="date">13–9<br>î.Hr.</div><div><h3>Ara Pacis Augustae</h3><p>Altarul Păcii celebrează ordinea augustană prin procesiuni, reliefuri mitologice și simboluri ale fertilității.</p></div></article><article class="event"><div class="date">2<br>î.Hr.</div><div><h3>Forul lui Augustus</h3><p>Forul și templul lui Mars Ultor leagă victoria, memoria familiei Iulia și tradiția eroică a Romei.</p></div></article><article class="event"><div class="date">64<br>d.Hr.</div><div><h3>Marele incendiu al Romei</h3><p>Incendiul distruge cartiere și clădiri publice; reconstrucția introduce reguli mai stricte și proiecte monumentale.</p></div></article><article class="event"><div class="date">72–80</div><div><h3>Colosseumul</h3><p>Început de Vespasian și inaugurat de Titus, amfiteatrul Flavian folosește arcuri suprapuse, bolți și un sistem rapid de circulație.</p></div></article><article class="event"><div class="date">81</div><div><h3>Arcul lui Titus</h3><p>Reliefurile comemorează victoria în Iudeea și procesiunea cu prăzile Templului din Ierusalim.</p></div></article><article class="event"><div class="date">107–113</div><div><h3>Forul și Columna lui Traian</h3><p>Ansamblul lui Apolodor din Damasc include piață, Basilica Ulpia, biblioteci și columna cu narațiunea războaielor dacice.</p></div></article><article class="event"><div class="date">118–128</div><div><h3>Pantheonul lui Hadrian</h3><p>Rotonda cu cupolă și oculus creează unul dintre cele mai influente spații interioare ale arhitecturii mondiale.</p></div></article><article class="event"><div class="date">122–cca 128</div><div><h3>Zidul lui Hadrian</h3><p>Fortificația din Britannia combină funcția militară, infrastructura și controlul circulației.</p></div></article><article class="event"><div class="date">cca 161</div><div><h3>Columna lui Antoninus Pius</h3><p>Monumentul funerar, cunoscut mai ales prin bază, reprezintă apoteoza împăratului și a Faustinei.</p></div></article><article class="event"><div class="date">cca 180–193</div><div><h3>Columna lui Marcus Aurelius</h3><p>Friza spiralată prezintă războaiele dunărene într-un stil mai dramatic decât relieful traianic.</p></div></article><article class="event"><div class="date">203</div><div><h3>Arcul lui Septimius Severus</h3><p>Ridicat în Forumul Roman, comemorează campaniile împotriva parților și afirmă legitimitatea dinastiei severane.</p></div></article><article class="event"><div class="date">212–216</div><div><h3>Termele lui Caracalla</h3><p>Un complex uriaș de băi, biblioteci, grădini și săli sportive, alimentat de un ram al apeductului Aqua Marcia.</p></div></article><article class="event"><div class="date">298–306</div><div><h3>Termele lui Dioclețian</h3><p>Cele mai mari terme ale Romei exprimă capacitatea administrativă și monumentală a Tetrarhiei.</p></div></article><article class="event"><div class="date">cca 300</div><div><h3>Palatul lui Dioclețian la Split</h3><p>Reședință imperială, fortăreață și oraș-palatin, cu spații ceremoniale și militare integrate.</p></div></article><article class="event"><div class="date">312–315</div><div><h3>Arcul lui Constantin</h3><p>Monumentul reutilizează reliefuri din epocile lui Traian, Hadrian și Marcus Aurelius, combinând memoria trecutului cu noua dinastie.</p></div></article><article class="event"><div class="date">330</div><div><h3>Constantinopol</h3><p>Noua capitală dezvoltă forumuri, palate, hipodrom, biserici și porturi, continuând tradiția urbană romană în Orient.</p></div></article><article class="event"><div class="date">sec. IV–V</div><div><h3>Bazilicile creștine</h3><p>Forma bazilicii civile este adaptată cultului creștin: navă centrală, nave laterale, absidă și spațiu pentru comunitate.</p></div></article></div>
+      <details open><summary>Colosseumul</summary><div class="details-body"><p>Amfiteatrul Flavian a fost început sub Vespasian în jurul anului 72 și inaugurat de Titus în 80; Domițian a finalizat nivelurile superioare și substructurile. Fațada are patru registre și circa 80 de intrări, iar bolțile și coridoarele permiteau evacuarea rapidă. A găzduit lupte de gladiatori, vânători și alte spectacole; relatările despre naumahii se referă mai ales la fazele timpurii.</p></div></details>
+      <details open><summary>Forul și Columna lui Traian</summary><div class="details-body"><p>Forul lui Traian, proiectat de Apolodor din Damasc și inaugurat în 112, cuprindea piața, Basilica Ulpia, biblioteci și spații administrative. Columna, dedicată în 113, are aproximativ 38 m împreună cu baza. Friza spiralată prezintă peste o sută de episoade ale războaielor dacice. Statuia lui Traian din vârf a fost înlocuită în 1587 cu cea a Sfântului Petru.</p></div></details>
+      <details open><summary>Pantheonul</summary><div class="details-body"><p>Clădirea actuală a fost ridicată în epoca lui Hadrian pe locul unui templu al lui Agrippa. Porticul clasic conduce spre o rotondă acoperită de o cupolă cu diametrul de aproximativ 43,3 m. Oculusul central luminează interiorul, iar betonul devine mai ușor către vârf.</p></div></details>
+    </section>
+    <section class="section" id="locuire">
+      <h2>IV. Locuințele: domus, insula și villa</h2>
+      <p class="section-intro">Locuirea reflecta diferențele sociale. Casele rurale simple puteau fi construite din lemn, chirpici și piatră locală; în oraș, elitele locuiau în <em>domus</em>, populația numeroasă în blocuri <em>insulae</em>, iar proprietarii aveau și <em>villae</em> rurale sau maritime.</p>
+      <div class="table-wrap "><table><thead><tr><th>Spațiu al domus-ului</th><th>Funcție</th><th>Utilizare</th></tr></thead><tbody><tr><td>Vestibulum / fauces</td><td>Intrarea și coridorul de acces</td><td>Vizitatori, clienți și familie.</td></tr><tr><td>Atrium</td><td>Hol central cu <em>compluvium</em> și bazin <em>impluvium</em></td><td>Primire, ritual domestic și expunerea memoriei familiei.</td></tr><tr><td>Tablinum</td><td>Biroul stăpânului casei</td><td>Arhivă, afaceri și întâlniri ale <em>pater familias</em>.</td></tr><tr><td>Triclinium</td><td>Sala de mese</td><td>Ospețe pe paturi de masă dispuse în jurul meselor.</td></tr><tr><td>Cubicula</td><td>Dormitoare mici</td><td>Familie și oaspeți; mobilier relativ modest.</td></tr><tr><td>Culina</td><td>Bucătărie cu vatră</td><td>În principal spațiu de lucru pentru sclavi și servitori.</td></tr><tr><td>Lararium</td><td>Altarul casnic</td><td>Cultul Larilor, Penaților și al geniului familiei.</td></tr><tr><td>Peristylum</td><td>Curte cu grădină și colonadă</td><td>Influență elenistică; relaxare, artă și recepție.</td></tr><tr><td>Exedra</td><td>Sală de conversație</td><td>Discuții, lecturi și reprezentarea culturală a elitei.</td></tr><tr><td>Balneum</td><td>Baie privată</td><td>Prezentă în casele foarte bogate.</td></tr><tr><td>Posticum</td><td>Intrare secundară</td><td>Servitori, aprovizionare și acces discret.</td></tr></tbody></table></div>
+      <div class="three-col">
+        <article class="info-card"><h3>Domus</h3><p>Casă urbană unifamilială, orientată spre interior. Atriumul roman se combină, sub influență greacă, cu peristilul, grădina și încăperile de recepție decorate.</p></article>
+        <article class="info-card"><h3>Insula</h3><p>Clădire cu apartamente și prăvălii, uneori cu mai multe etaje. Parterul era mai valoros, etajele superioare mai ieftine și mai vulnerabile la incendii și prăbușiri.</p></article>
+        <article class="info-card"><h3>Villa</h3><p>Exploatație agricolă și reședință. <em>Villa rustica</em> organiza producția, iar <em>villa urbana</em> sau maritimă oferea lux, grădini, băi și peisaj.</p></article>
+      </div>
+      <details open><summary>Mobilier și decor</summary><div class="details-body"><p>Mobilierul obișnuit era relativ redus: paturi, mese, scaune, lăzi, suporturi și lămpi. Bogăția era exprimată mai ales prin pardoseli, fresce, mozaicuri, marmură, veselă de argint, textile și grădini. Ușile și camerele erau dispuse pentru a controla vizibilitatea și statutul vizitatorului.</p></div></details>
+    </section>
+    <section class="section" id="societate">
+      <h2>V. Omul și societatea</h2>
+      <p class="section-intro">Societatea romană era ierarhică și juridic diferențiată. Respectul față de superiori, autoritatea magistratului și obligațiile față de familie și comunitate erau valori centrale, dar mobilitatea era posibilă prin avere, armată, manumisiune și patronaj.</p>
+      <div class="four-col">
+        <article class="micro-card"><strong>Senatori</strong><span>Elita funciară și politică; acces la marile magistraturi și la guvernarea provinciilor.</span></article>
+        <article class="micro-card"><strong>Equites</strong><span>Elită economică și administrativă; afaceri, taxe, comandă auxiliară și funcții imperiale.</span></article>
+        <article class="micro-card"><strong>Plebei și provinciali</strong><span>Agricultori, meșteșugari, negustori și soldați, cu statute și niveluri de avere foarte variate.</span></article>
+        <article class="micro-card"><strong>Liberti și sclavi</strong><span>Libertul păstra obligații față de fostul stăpân; sclavul nu avea personalitate juridică deplină, dar situația sa varia enorm.</span></article>
+      </div>
+      <details open><summary>Familia și pater familias</summary><div class="details-body"><p><em>Pater familias</em> era capul juridic al gospodăriei și administra patrimoniul. Familia includea rude, sclavi, liberți și clienți. Autoritatea paternă a fost foarte largă în dreptul arhaic, dar practica și legislația imperială au introdus treptat limitări.</p></div></details>
+      <details open><summary>Educația</summary><div class="details-body"><p>Copiii învățau mai întâi acasă. Școala elementară oferea citire, scriere și calcul; grămăticul studia literatura greacă și latină; retorul pregătea elita pentru discurs și carieră. Educația fetelor depindea mult de statutul familiei, dar elitele puteau primi o formație literară solidă.</p></div></details>
+      <details open><summary>Îmbrăcăminte și hrană</summary><div class="details-body"><p>Tunica era piesa de bază; toga marca cetățeanul în contexte publice, iar stola era asociată matroanei. Alimentația obișnuită includea cereale, pâine, leguminoase, ulei, vin diluat, legume și pește; carnea era mai rară pentru săraci, mai frecventă la sacrificii și ospețe.</p></div></details>
+    </section>
+    <section class="section" id="religie">
+      <h2>VI. Religia romană</h2>
+      <p class="section-intro">Religia era contractuală și comunitară: oamenii respectau ritualul pentru a menține <em>pax deorum</em>, pacea cu zeii. Nu exista separație modernă între religie și politică.</p>
+      <div class="table-wrap "><table><thead><tr><th>Divinitate / cult</th><th>Rol</th><th>Ritualuri și spațiu</th></tr></thead><tbody><tr><td>Lares</td><td>Spirite protectoare ale casei și familiei</td><td>Ofrande de vin, tămâie și hrană la lararium.</td></tr><tr><td>Penates</td><td>Protectori ai proviziilor și bunăstării domestice</td><td>Invocați la mese și în rugăciunile familiei.</td></tr><tr><td>Genius / Juno</td><td>Spirit protector al bărbatului / femeii</td><td>Sărbătorit la aniversări și momente familiale.</td></tr><tr><td>Vesta</td><td>Focul domestic și sacru</td><td>Menținerea vetrei; în cultul public, Vestalele păzeau focul Romei.</td></tr><tr><td>Jupiter, Juno, Minerva</td><td>Triada Capitolină și protecția statului</td><td>Sacrificii publice, jurăminte și ceremonii civice.</td></tr><tr><td>Ianus și Saturn</td><td>Începuturi, treceri, timp și agricultură</td><td>Porțile lui Ianus, Saturnalia și rituri tradiționale.</td></tr><tr><td>Cultul imperial</td><td>Loialitate față de Roma și împărat</td><td>Altare provinciale, preoți ai cultului și ceremonii civice.</td></tr></tbody></table></div>
+      <div class="two-col">
+        <article class="info-card"><h3>Divinație și preoțime</h3><p>Augurii interpretau semnele, mai ales zborul păsărilor; haruspicii examinau măruntaiele victimelor. Pontifii supravegheau calendarul și dreptul sacru, iar <em>pontifex maximus</em> conducea colegiul.</p></article>
+        <article class="info-card"><h3>Vestalele</h3><p>Preotesele Vestei păzeau focul sacru și aveau privilegii juridice și sociale. Încălcarea votului de castitate era sancționată prin îngropare de vie, deoarece sângele unei vestale nu trebuia vărsat.</p></article>
+      </div>
+      <details open><summary>Sincretismul religios</summary><div class="details-body"><p>Romanii identificau divinități străine cu zei proprii și adoptau culte din Grecia, Egipt, Anatolia, Siria și Persia. Isis, Cybele, Mithras și Sol Invictus au atras adepți diferiți. Integrarea nu era nelimitată: statul putea interzice practici considerate periculoase politic.</p></div></details>
+      <details open><summary>De la cultul imperial la creștinism</summary><div class="details-body"><p>Cultul Romei și al împăratului exprima loialitatea civică, mai ales în provincii. Creștinismul, persecutat periodic, primește libertate prin acordul de la Milano din 313. În 380, edictul de la Thessalonic favorizează creștinismul niceean, iar templele și ritualurile tradiționale își pierd treptat sprijinul public.</p></div></details>
+    </section>
+    <section class="section" id="elenism">
+      <h2>VII. Influența greacă și elenistică</h2>
+      <p class="section-intro">Cucerirea lumii elenistice nu a însemnat doar dominație romană; cultura greacă a remodelat educația, filosofia, arta, arhitectura, luxul și literatura Romei.</p>
+      <div class="three-col">
+        <article class="info-card"><h3>Casa și luxul</h3><p>Peristilul, statuile, mozaicurile, frescele, vasele de argint și țesăturile scumpe transformă reședința aristocratică. Casele se extind și pot avea mai multe etaje și grădini elaborate.</p></article>
+        <article class="info-card"><h3>Educația și filosofia</h3><p>Greaca devine limba culturii superioare. Stoicismul, epicureismul, platonismul și aristotelismul sunt adaptate preocupărilor romane privind datoria, cetățenia și conducerea.</p></article>
+        <article class="info-card"><h3>Arta publică</h3><p>Statuile și operele aduse din Grecia decorează forurile și vilele. Artiști greci lucrează pentru patroni romani, iar stilurile grecești sunt combinate cu realismul și narațiunea istorică romană.</p></article>
+      </div>
+      <blockquote>„Grecia cucerită l-a cucerit pe cuceritorul ei” rezumă o realitate culturală: puterea politică a Romei și prestigiul cultural al Greciei s-au contopit într-o civilizație greco-romană.</blockquote>
+    </section>
+    <section class="section" id="arte">
+      <h2>VIII. Sculptură, relief, mozaic și pictură</h2>
+      <p class="section-intro">Arta romană nu a fost o simplă copie a artei grecești. Ea a folosit modele grecești pentru nevoile romane: memorie de familie, propagandă imperială, decor domestic și narațiune istorică.</p>
+      <div class="four-col"><article class="info-card"><h3>Portretul realist</h3><p>Republica valorizează trăsăturile individuale, vârsta și gravitatea. Imaginile strămoșilor și busturile exprimă continuitatea familiei și virtutea civică.</p></article><article class="info-card"><h3>Relieful istoric</h3><p>Arcurile și coloanele prezintă campanii, procesiuni și ceremonii. Spațiul și scara sunt organizate pentru claritatea mesajului politic, nu pentru realism optic absolut.</p></article><article class="info-card"><h3>Mozaicul</h3><p>Pardoseli din tessere alb-negru sau policrome reprezintă mituri, animale, scene marine, spectacole și activități cotidiene.</p></article><article class="info-card"><h3>Fresca</h3><p>Pictura murală din Campania folosește arhitecturi iluzioniste, grădini, naturi moarte, mitologie și panouri decorative. Cele patru stiluri pompeiene arată schimbări de gust.</p></article></div>
+      <details open><summary>Cele patru stiluri pompeiene</summary><div class="details-body"><p><strong>Stilul I:</strong> imită placaje de marmură. <strong>Stilul II:</strong> deschide iluzionist peretele prin arhitecturi și peisaje. <strong>Stilul III:</strong> preferă suprafețe plane, panouri delicate și mici scene centrale. <strong>Stilul IV:</strong> combină arhitectura fantastică, culori puternice și compoziții complexe.</p></div></details>
+      <details open><summary>Relieful ca istorie oficială</summary><div class="details-body"><p>Ara Pacis prezintă familia imperială și miturile originii; Arcul lui Titus arată prada din Ierusalim; Columna lui Traian construiește o narațiune continuă a campaniilor; Columna lui Marcus Aurelius accentuează dramatismul și intervenția divină. Fiecare monument selectează și ordonează realitatea în interes politic.</p></div></details>
+    </section>
+    <section class="section" id="literatura">
+      <h2>IX. Literatura latină</h2>
+      <p class="section-intro">Literatura romană a preluat genuri grecești, dar le-a adaptat istoriei, politicii și experienței sociale romane. Epoca augustană a fost un moment de vârf, urmat de proza imperială și literatura provincială.</p>
+      <div class="table-wrap "><table><thead><tr><th>Autor</th><th>Perioadă</th><th>Opere / gen</th><th>Teme și particularități</th></tr></thead><tbody><tr><td>Plaut</td><td>cca 254–184 î.Hr.</td><td>Comedii</td><td>Adaptarea comediei grecești, limbaj viu, tipuri sociale și intrigi de familie.</td></tr><tr><td>Terentius</td><td>cca 195–159 î.Hr.</td><td>Comedii</td><td>Stil rafinat, teme morale și umaniste, influență educativă.</td></tr><tr><td>Cicero</td><td>106–43 î.Hr.</td><td>Discursuri, tratate, scrisori</td><td>Modelul prozei latine; retorică, republică, datorie și filosofie.</td></tr><tr><td>Caesar</td><td>100–44 î.Hr.</td><td><em>Comentarii</em></td><td>Proză clară, relatare politică și militară a războaielor din Galia și a războiului civil.</td></tr><tr><td>Sallustius</td><td>86–cca 35 î.Hr.</td><td>Istoriografie</td><td>Criza morală și politică a Republicii; Catilina și războiul cu Iugurtha.</td></tr><tr><td>Vergiliu</td><td>70–19 î.Hr.</td><td><em>Bucolice</em>, <em>Georgice</em>, <em>Eneida</em></td><td>Natură, muncă, destinul Romei și legitimarea epocii augustane.</td></tr><tr><td>Horațiu</td><td>65–8 î.Hr.</td><td>Ode, satire, epistole, <em>Ars poetica</em></td><td>Echilibru, prietenie, timp, morală și teoria artei poetice.</td></tr><tr><td>Ovidiu</td><td>43 î.Hr.–17/18 d.Hr.</td><td><em>Metamorfoze</em>, <em>Ars amatoria</em>, <em>Tristele</em>, <em>Ponticele</em></td><td>Mit, iubire, ironie și experiența exilului la Tomis.</td></tr><tr><td>Titus Livius</td><td>59 î.Hr.–17 d.Hr.</td><td><em>Ab Urbe Condita</em></td><td>Istoria Romei ca memorie morală și exemplu civic.</td></tr><tr><td>Seneca</td><td>cca 4 î.Hr.–65 d.Hr.</td><td>Dialoguri, scrisori, tragedii</td><td>Stoicism, controlul pasiunilor, moarte și responsabilitate.</td></tr><tr><td>Petronius</td><td>sec. I d.Hr.</td><td><em>Satyricon</em></td><td>Satiră socială, mobilitate, lux și limbajul cotidian.</td></tr><tr><td>Plinius cel Bătrân</td><td>23/24–79</td><td><em>Naturalis Historia</em></td><td>Enciclopedie despre natură, tehnici, artă și geografie.</td></tr><tr><td>Quintilian</td><td>cca 35–cca 100</td><td><em>Institutio oratoria</em></td><td>Educația oratorului și legătura dintre elocință și caracter.</td></tr><tr><td>Tacitus</td><td>cca 56–cca 120</td><td><em>Anale</em>, <em>Istorii</em>, <em>Germania</em></td><td>Putere imperială, libertate, corupție și frontiere.</td></tr><tr><td>Iuvenal</td><td>sec. I–II</td><td>Satire</td><td>Critica moravurilor urbane, a clientelelor și a inegalității.</td></tr><tr><td>Apuleius</td><td>cca 124–după 170</td><td><em>Metamorfoze / Măgarul de aur</em></td><td>Aventură, magie, religie și transformare spirituală.</td></tr></tbody></table></div>
+      <details open><summary>Vergiliu, Horațiu și Ovidiu</summary><div class="details-body"><p><strong>Vergiliu</strong> leagă destinul lui Aeneas de misiunea Romei. <strong>Horațiu</strong> combină lirica greacă cu reflecția asupra echilibrului și timpului. <strong>Ovidiu</strong> transformă mitologia într-un univers fluid al metamorfozei, iar exilul său la Tomis produce <em>Tristele</em> și <em>Ponticele</em>, texte esențiale pentru istoria culturală a spațiului pontic.</p></div></details>
+    </section>
+    <section class="section" id="spectacole">
+      <h2>X. Spectacolele și timpul liber</h2>
+      <p class="section-intro">Spectacolele publice erau divertisment, ritual, competiție socială și instrument politic. Organizarea lor putea consolida prestigiul magistratului sau împăratului.</p>
+      <div class="four-col">
+        <article class="micro-card"><strong>Teatrul</strong><span>Tragedii, comedii, mimi și pantomimă; publicul roman prefera adesea forme spectaculoase și muzicale.</span></article>
+        <article class="micro-card"><strong>Amfiteatrul</strong><span>Gladiatori, vânători de animale și execuții publice; primele jocuri gladiatoriale atestate la Roma datează din 264 î.Hr.</span></article>
+        <article class="micro-card"><strong>Circul</strong><span>Curse de care între facțiuni, procesiuni și jocuri. Circus Maximus putea primi zeci de mii de spectatori.</span></article>
+        <article class="micro-card"><strong>Termele</strong><span>Baie, sport, lectură, discuție și sociabilitate; traseu prin camere reci, călduțe și fierbinți.</span></article>
+      </div>
+      <details open><summary>Gladiatorii</summary><div class="details-body"><p>Gladiatorii puteau fi sclavi, prizonieri, condamnați sau voluntari. Erau antrenați în școli și specializați în tipuri de armament. Jocurile nu erau lupte haotice: aveau reguli, arbitri și un puternic caracter teatral. Moartea nu era inevitabilă în fiecare confruntare, deoarece un luptător instruit reprezenta o investiție.</p></div></details>
+    </section>
+    <section class="section" id="romanizare">
+      <h2>XI. Cultura și romanizarea</h2>
+      <p class="section-intro">Romanizarea nu a fost o înlocuire totală a culturilor locale. Ea a fost un proces de interacțiune prin care instituțiile, limba, consumul, religia și formele urbane romane au fost adoptate selectiv și combinate cu tradiții regionale.</p>
+      <div class="two-col">
+        <article class="info-card"><h3>Vehicule</h3><ul class="clean"><li>Armata și veteranii instalați în colonii.</li><li>Orașele, drumurile, piețele și administrația.</li><li>Cetățenia, dreptul latin și cariera municipală.</li><li>Școala, inscripțiile, limba latină și cultul imperial.</li><li>Comerțul, moneda și modelele de consum.</li></ul></article>
+        <article class="info-card"><h3>Limite și variații</h3><p>În Orient, greaca a rămas dominantă în cultură și administrație locală. În mediul rural, tradițiile indigene au persistat. Divinitățile locale au fost adesea identificate cu zei romani, iar elitele provinciale au folosit cultura romană fără a renunța complet la identitățile regionale.</p></article>
+      </div>
+      <div class="definition"><strong>Moștenire:</strong> dreptul, limbile romanice, planul urban, arhitectura monumentală, calendarul, literatura și modelul cetățeniei au continuat să influențeze Europa și spațiul mediteraneean mult după 476.</div>
+    </section>
+    <section class="final-box"><h2>Ideea de reținut</h2><p>Arta și cultura romană au fost profund practice și politice: un apeduct oferea apă, dar demonstra și puterea statului; un forum organiza viața civică, dar proclama ordinea imperială; o casă proteja familia, dar afișa rangul; literatura și religia reinterpretau trecutul pentru a explica prezentul. Civilizația romană a unit utilitatea, monumentalitatea și integrarea culturală.</p></section>
+  </main>
+</body>
+</html>

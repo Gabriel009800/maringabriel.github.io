@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Lumea postbelică: știință și tehnologie, de la energia atomică, spațiu și electronică la biotehnologie, internet, inteligență artificială, climă și cercetarea românească">
+<title>univ-lumea-postbelica-stiinta-si-tehnologie</title>
+<style>
+:root{
+  --paper:#fffaf3;--paper2:#fff;--ink:#2f241c;--title:#3c2a1e;--muted:#5b4a3d;
+  --accent:#7a4f2a;--accent2:#a27040;--soft:#f0e4d4;--line:rgba(91,62,36,.18);
+  --shadow:0 26px 70px rgba(0,0,0,.28);--small-shadow:0 12px 30px rgba(0,0,0,.15);
+  --green:#58715f;--green-soft:#e7f0e9;--red:#8b4935;--red-soft:#fae9e2;
+  --blue:#536d7e;--blue-soft:#e8eef2;--gold:#8a6b2f;--gold-soft:#f6eedb;
+  --purple:#66577a;--purple-soft:#eee9f4;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{
+  margin:0;min-height:100vh;color:var(--ink);font-family:Georgia,"Times New Roman",serif;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(132,78,40,.72),transparent 34%),
+    radial-gradient(circle at 50% 100%,rgba(112,63,31,.44),transparent 36%),
+    radial-gradient(circle at 0 50%,rgba(29,13,6,.92),transparent 42%),
+    radial-gradient(circle at 100% 50%,rgba(29,13,6,.92),transparent 42%),
+    linear-gradient(180deg,#32190c 0%,#4a2a18 46%,#1e0e05 100%);
+  background-attachment:fixed
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(circle at center,transparent 0%,rgba(0,0,0,.1) 48%,rgba(0,0,0,.44) 100%),
+             linear-gradient(90deg,rgba(0,0,0,.2),transparent 18%,transparent 82%,rgba(0,0,0,.2))
+}
+.page{position:relative;z-index:1;width:min(1240px,calc(100% - 32px));margin:0 auto;padding:34px 0 72px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px;flex-wrap:wrap}
+.back,.tag{display:inline-flex;align-items:center;background:rgba(255,250,243,.88);border:1px solid var(--line);border-radius:999px;padding:10px 15px;color:var(--title);font-weight:700;font-size:15px;text-decoration:none;box-shadow:var(--small-shadow)}
+.hero,.section,.nav,.related,.final{background:rgba(255,250,243,.97);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow)}
+.hero{padding:40px;margin-bottom:24px;position:relative;overflow:hidden}
+.hero::after{content:"1945–2026";position:absolute;right:22px;bottom:-20px;font-size:100px;font-weight:900;letter-spacing:-5px;color:rgba(122,79,42,.07);pointer-events:none}
+.eyebrow{margin:0 0 8px;color:var(--accent);font-size:16px;font-weight:900;text-transform:uppercase;letter-spacing:.08em}
+h1{margin:0;color:var(--title);font-size:clamp(39px,5.1vw,65px);line-height:1.03;letter-spacing:-1.5px}
+.subtitle{margin:18px 0 0;max-width:1100px;color:var(--muted);font-size:19px;line-height:1.78;text-align:justify;text-align-last:left}
+.badges,.series{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.badge,.series a{display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;background:#fff;border:1px solid rgba(91,62,36,.15);box-shadow:0 8px 20px rgba(0,0,0,.08);color:var(--title);font-size:14px;font-weight:800;text-decoration:none}
+.badge.main{background:var(--accent);color:#fffaf3}
+.related{display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding:16px 20px;margin:-10px 0 24px;border-radius:22px;box-shadow:var(--small-shadow)}
+.related b{color:var(--title)}
+.related a{padding:8px 12px;border-radius:999px;background:#f3eadf;border:1px solid rgba(91,62,36,.16);color:var(--title);font-size:14px;font-weight:700;text-decoration:none}
+.nav{display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding:18px 20px;margin-bottom:24px}
+.nav b{color:var(--title)}
+.nav a,.nav button{padding:8px 12px;border-radius:999px;background:var(--soft);border:1px solid rgba(91,62,36,.16);color:var(--title);font-family:inherit;font-size:14px;font-weight:700;text-decoration:none;cursor:pointer}
+.nav a:hover,.nav button:hover{background:#e4d1ba}
+.section{padding:31px;margin-bottom:24px}
+h2{margin:0 0 14px;color:var(--title);font-size:clamp(29px,3vw,39px);line-height:1.13}
+h3{margin:0 0 11px;color:var(--title);font-size:22px;line-height:1.24}
+h4{margin:18px 0 8px;color:var(--title);font-size:18px}
+p,li,.intro,.key span{color:var(--muted);font-size:17px;line-height:1.72;text-align:justify;text-align-last:left;hyphens:auto}
+.intro{margin:0 0 20px;max-width:1090px}
+.grid2,.grid3,.grid4,.grid5,.grid6,.summary-grid,.meta-grid,.rights-grid{display:grid;gap:14px}
+.grid2{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:repeat(3,1fr)}
+.grid4,.summary-grid,.rights-grid{grid-template-columns:repeat(4,1fr)}
+.grid5{grid-template-columns:repeat(5,1fr)}.grid6{grid-template-columns:repeat(6,1fr)}
+.card,.summary-card,.meta-card,.right-card,.person-card,.stage{
+  background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:20px;box-shadow:var(--small-shadow);padding:20px;text-align:justify;text-align-last:left
+}
+.summary-card{min-height:132px;padding:16px}.summary-card strong,.meta-card strong,.right-card strong,.stage strong{display:block;margin-bottom:8px;color:var(--title);font-size:17px;text-align:left}
+.summary-card span,.meta-card span,.right-card span,.stage span{display:block;color:var(--muted);font-size:15.5px;line-height:1.58}
+.person-card h3{margin-bottom:4px}.person-card .years{display:block;color:var(--accent);font-weight:800;margin-bottom:10px}
+.clean{margin:0;padding-left:22px}.clean li{margin:0 0 9px;padding-left:2px}
+.key{display:grid;grid-template-columns:245px 1fr;gap:14px;padding:14px 0;border-bottom:1px dashed rgba(91,62,36,.18)}
+.key:last-child{border-bottom:0}.key strong{color:var(--title);font-size:16px}
+.pill{display:inline-block;margin:2px 5px 4px 0;padding:3px 9px;border-radius:999px;background:#f3eadf;border:1px solid rgba(91,62,36,.14);color:var(--title);font-weight:800;font-size:14px}
+.box,.fact,.green-box,.blue-box,.red-box,.gold-box,.purple-box{
+  margin-top:18px;border-radius:18px;padding:18px 20px;font-size:17px;line-height:1.7;text-align:justify;text-align-last:left
+}
+.box{background:#fff8ef;border:1px solid rgba(122,79,42,.22);border-left:6px solid rgba(122,79,42,.48);color:var(--muted)}
+.fact,.red-box{background:var(--red-soft);border:1px solid rgba(139,73,53,.24);border-left:6px solid var(--red);color:#684034}
+.green-box{background:var(--green-soft);border:1px solid rgba(88,113,95,.25);border-left:6px solid var(--green);color:#44594a}
+.blue-box{background:var(--blue-soft);border:1px solid rgba(83,109,126,.25);border-left:6px solid var(--blue);color:#42535e}
+.gold-box{background:var(--gold-soft);border:1px solid rgba(138,107,47,.24);border-left:6px solid var(--gold);color:#66542e}
+.purple-box{background:var(--purple-soft);border:1px solid rgba(102,87,122,.25);border-left:6px solid var(--purple);color:#51455f}
+.box strong,.fact strong,.green-box strong,.blue-box strong,.red-box strong,.gold-box strong,.purple-box strong{color:var(--title)}
+details{margin-top:14px;border:1px solid rgba(91,62,36,.14);border-radius:20px;background:#fffdf9;box-shadow:var(--small-shadow);overflow:hidden}
+details[open]{background:#fffaf3}
+summary{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 20px;cursor:pointer;list-style:none;color:var(--title);font-size:19px;font-weight:800}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"Deschide";padding:7px 11px;border-radius:999px;background:#f3eadf;border:1px solid rgba(91,62,36,.14);color:var(--muted);font-size:14px;font-weight:700}
+details[open]>summary::after{content:"Ascunde"}
+.details-body{padding:18px 20px 21px;border-top:1px solid rgba(91,62,36,.12)}
+.timeline{display:grid;gap:14px;margin-top:17px}
+.event{display:grid;grid-template-columns:148px 1fr;gap:18px;align-items:stretch;overflow:hidden;background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:20px;box-shadow:var(--small-shadow)}
+.date{display:flex;align-items:center;justify-content:center;padding:14px;text-align:center;color:#fffaf3;background:linear-gradient(180deg,#7a4f2a,#5b351b);font-size:18px;line-height:1.25;font-weight:900}
+.date.green{background:linear-gradient(180deg,#687e6d,#445949)}.date.blue{background:linear-gradient(180deg,#667f90,#425663)}.date.red{background:linear-gradient(180deg,#99533e,#6a3124)}.date.purple{background:linear-gradient(180deg,#7b698f,#554662)}
+.event>div:last-child{padding:17px 18px 18px 0}.event p{margin:0}.event h3{margin-bottom:6px}
+.table-wrap{overflow-x:auto;margin-top:14px;border-radius:18px;border:1px solid rgba(91,62,36,.14);background:#fff;box-shadow:var(--small-shadow)}
+table{width:100%;border-collapse:collapse;min-width:860px}
+th,td{padding:13px 14px;border-bottom:1px solid rgba(91,62,36,.12);color:var(--muted);font-size:15.8px;line-height:1.55;vertical-align:top;text-align:left}
+th{background:#f3eadf;color:var(--title);font-weight:800}tr:last-child td{border-bottom:0}
+.flow{display:grid;grid-template-columns:repeat(7,1fr);gap:9px;margin-top:16px}
+.flow-item{position:relative;padding:15px;background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;box-shadow:var(--small-shadow)}
+.flow-item b{display:block;color:var(--title);font-size:16px;margin-bottom:5px}.flow-item span{display:block;color:var(--muted);font-size:14.5px;line-height:1.48}
+.flow-item:not(:last-child)::after{content:"→";position:absolute;right:-13px;top:50%;transform:translateY(-50%);z-index:2;color:var(--accent);font-weight:900;font-size:21px}
+.stage{position:relative;padding-top:47px}.stage::before{content:attr(data-n);position:absolute;left:17px;top:13px;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--accent);color:#fff;font-weight:900}
+.final{padding:29px;background:linear-gradient(135deg,#fffaf3,#f4e4d1)}
+.final p{margin-bottom:0}
+.source-list{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.source-list a{display:block;background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:16px;padding:14px 16px;color:var(--title);text-decoration:none;font-weight:700;box-shadow:var(--small-shadow)}
+.source-list a:hover{background:#f6eadc}
+.small{font-size:14.5px;color:#725c49;line-height:1.55}
+footer{margin-top:24px;color:rgba(255,250,243,.82);text-align:center;font-size:14px;line-height:1.6}
+@media(max-width:1120px){.grid6{grid-template-columns:repeat(3,1fr)}.grid5{grid-template-columns:repeat(3,1fr)}.flow{grid-template-columns:repeat(4,1fr)}.flow-item::after{display:none}.source-list{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:950px){.grid4,.summary-grid,.rights-grid,.grid3{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}}
+@media(max-width:680px){
+  .page{width:min(100% - 22px,1240px);padding-top:22px}.hero,.section,.final{padding:22px;border-radius:22px}
+  .grid2,.grid3,.grid4,.grid5,.grid6,.summary-grid,.rights-grid,.flow,.source-list{grid-template-columns:1fr}
+  .event{grid-template-columns:1fr}.date{min-height:65px}.event>div:last-child{padding:0 16px 16px}
+  .key{grid-template-columns:1fr;gap:6px}summary{align-items:flex-start;flex-direction:column}.hero::after{font-size:61px}
+  .subtitle,p,li,.intro,.key span,.details-body,.box,.fact,.green-box,.blue-box,.red-box,.gold-box,.purple-box{text-align:left;text-align-last:auto;hyphens:none}
+}
+@media print{
+ body{background:#fff!important}body::before{display:none}.page{width:100%;padding:0}.topbar,.nav,.related{display:none!important}
+ .hero,.section,.final{box-shadow:none;border:1px solid #cbb9a8;break-inside:avoid-page}details{break-inside:avoid-page}summary::after{display:none}
+}
+</style>
+</head>
+<body id="top">
+<main class="page">
+
+<div class="topbar">
+  <a class="back" href="index.html">← Înapoi la materiale</a>
+  <span class="tag">Material amplu · Date verificate până în iulie 2026</span>
+</div>
+
+<section class="hero">
+  <p class="eyebrow">Istorie universală · Lumea postbelică</p>
+  <h1>Știință și tehnologie</h1>
+  <p class="subtitle">De la bomba atomică, calculatorul electronic și antibiotice la sateliți, microcipuri, internet, genom, energie regenerabilă, inteligență artificială și cercetarea cu lasere de mare putere. Materialul urmărește cronologic descoperirile, explică diferențele dintre știință și tehnologie și compară efectele lor militare, economice, sociale și etice.</p>
+  <div class="badges">
+    <span class="badge main">1945–2026</span>
+    <span class="badge">Era atomică</span><span class="badge">Era spațială</span>
+    <span class="badge">Revoluția digitală</span><span class="badge">Biotehnologie</span>
+    <span class="badge">Inteligență artificială</span><span class="badge">Climă și energie</span>
+  </div>
+</section>
+
+<div class="related">
+  <b>Materiale conexe:</b>
+  <a href="univ-lumea-postbelica-uniunea-europeana.html">Uniunea Europeană</a>
+  <a href="univ-lumea-postbelica-drepturile-omului.html">Drepturile omului</a>
+  <a href="univ-razboiul-rece-diplomatie-si-conflict.html">Războiul Rece</a>
+</div>
+
+<nav class="nav">
+  <b>Cuprins:</b>
+  <a href="#concepte">Concepte</a><a href="#model">Modelul postbelic</a>
+  <a href="#institutii">Instituții</a><a href="#1945-1955">1945–1955</a>
+  <a href="#1956-1969">1956–1969</a><a href="#1970">Anii 1970</a>
+  <a href="#1980">Anii 1980</a><a href="#1990">Anii 1990</a>
+  <a href="#2000">Anii 2000</a><a href="#2010">Anii 2010</a>
+  <a href="#2020">2020–2026</a><a href="#nuclear">Atomul</a>
+  <a href="#spatiu">Spațiul</a><a href="#digital">Calculatoare și internet</a>
+  <a href="#ai">Inteligență artificială</a><a href="#medicina">Medicină</a>
+  <a href="#fizica">Fizică</a><a href="#materiale">Materiale</a>
+  <a href="#energie">Energie și climă</a><a href="#transport">Transport</a>
+  <a href="#agricultura">Agricultură</a><a href="#etica">Etică</a>
+  <a href="#romania">România</a><a href="#impact">Impact social</a>
+  <a href="#cronologie">Cronologie</a><a href="#sinteza">Sinteză</a>
+  <button type="button" data-action="open">Deschide explicațiile</button>
+  <button type="button" data-action="close">Închide explicațiile</button>
+</nav>
+
+<section class="section" id="concepte">
+<h2>I. Știință, tehnologie, invenție și inovație</h2>
+<div class="grid4">
+  <article class="right-card"><strong>Știință</strong><span>Produce explicații testabile despre natură prin observație, ipoteze, experiment, modelare și verificare.</span></article>
+  <article class="right-card"><strong>Tehnologie</strong><span>Aplică cunoașterea pentru a crea instrumente, procese, sisteme și soluții practice.</span></article>
+  <article class="right-card"><strong>Invenție</strong><span>Crearea unui dispozitiv sau procedeu nou: tranzistor, laser, circuit integrat.</span></article>
+  <article class="right-card"><strong>Inovație</strong><span>Transformarea unei invenții într-un produs, serviciu sau sistem utilizat pe scară largă.</span></article>
+</div>
+
+<div class="table-wrap"><table>
+<thead><tr><th>Exemplu</th><th>Descoperire științifică</th><th>Tehnologie rezultată</th><th>Inovație socială și economică</th></tr></thead>
+<tbody>
+<tr><td>Fizica semiconductorilor</td><td>Comportamentul electronilor în solide</td><td>Tranzistorul și circuitul integrat</td><td>Calculatoare personale, telefoane, internet și automatizare</td></tr>
+<tr><td>Biologia moleculară</td><td>Structura ADN și codul genetic</td><td>Secvențiere, PCR și editare genomică</td><td>Diagnostic molecular, medicină personalizată și biotehnologie</td></tr>
+<tr><td>Relativitatea generală</td><td>Gravitația descrisă drept geometria spațiu-timpului</td><td>Ceasuri atomice și corecții relativiste</td><td>Navigație prin GPS</td></tr>
+<tr><td>Mecanica cuantică</td><td>Niveluri energetice și comportamentul materiei microscopice</td><td>Laser, tranzistor, LED, imagistică și senzori</td><td>Comunicații optice, industrie, medicină și electronică</td></tr>
+</tbody></table></div>
+<div class="box"><strong>Relație circulară:</strong> știința produce tehnologii, iar tehnologiile permit știință nouă. Fără acceleratoare, telescoape spațiale, microscoape electronice, supercalculatoare și secvențiatoare, multe descoperiri moderne nu ar fi fost posibile.</div>
+</section>
+
+<section class="section" id="model">
+<h2>II. Ce este specific științei postbelice?</h2>
+<div class="summary-grid">
+  <article class="summary-card"><strong>„Big Science”</strong><span>Proiecte mari, echipe internaționale, aparatură foarte scumpă și finanțare publică pe termen lung.</span></article>
+  <article class="summary-card"><strong>Legătura militar–civil</strong><span>Rachetele, energia nucleară, radarul, calculatoarele și rețelele au origini sau utilizări duble.</span></article>
+  <article class="summary-card"><strong>Instituționalizare</strong><span>Laboratoare naționale, agenții spațiale, organizații mondiale și programe strategice de cercetare.</span></article>
+  <article class="summary-card"><strong>Globalizare</strong><span>Articole, baze de date, conferințe și rețele unesc cercetători din numeroase state.</span></article>
+</div>
+
+<div class="grid3" style="margin-top:18px">
+  <article class="card"><h3>Complexul militar-industrial-științific</h3><p>Războiul Mondial și Războiul Rece au legat universitățile, armata, companiile și guvernele. Cercetarea de apărare a finanțat aviația, rachetele, microelectronica, comunicațiile și inteligența artificială.</p></article>
+  <article class="card"><h3>Știința pentru bunăstare</h3><p>Statul social, sănătatea publică și reconstrucția au stimulat vaccinarea, infrastructura, energia, agricultura, educația tehnică și cercetarea medicală.</p></article>
+  <article class="card"><h3>Știința pentru prestigiu</h3><p>Sputnik, Apollo, armele nucleare, supercalculatoarele și marile acceleratoare au devenit simboluri ale puterii și modernității.</p></article>
+</div>
+
+<div class="flow">
+  <article class="flow-item"><b>Cercetare fundamentală</b><span>Întrebări fără aplicație imediată.</span></article>
+  <article class="flow-item"><b>Laborator</b><span>Experiment și demonstrație.</span></article>
+  <article class="flow-item"><b>Prototip</b><span>Prima realizare funcțională.</span></article>
+  <article class="flow-item"><b>Inginerie</b><span>Fiabilitate, miniaturizare și standardizare.</span></article>
+  <article class="flow-item"><b>Producție</b><span>Fabricare la scară industrială.</span></article>
+  <article class="flow-item"><b>Rețea</b><span>Infrastructuri și compatibilitate.</span></article>
+  <article class="flow-item"><b>Societate</b><span>Adopție, reglementare și efecte neprevăzute.</span></article>
+</div>
+</section>
+
+<section class="section" id="institutii">
+<h2>III. Instituțiile științei postbelice</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Instituție</th><th>An</th><th>Domeniu</th><th>Importanță istorică</th></tr></thead>
+<tbody>
+<tr><td>UNESCO</td><td>1945</td><td>Educație, știință și cultură</td><td>Cooperare internațională, standarde, alfabetizare și patrimoniu.</td></tr>
+<tr><td>OMS / WHO</td><td>Constituție în vigoare la 7 apr. 1948</td><td>Sănătate publică</td><td>Campanii globale, standarde epidemiologice, vaccinare și răspuns la epidemii.</td></tr>
+<tr><td>CERN</td><td>1954</td><td>Fizica particulelor</td><td>Reface capacitatea științifică europeană printr-un laborator internațional și cercetare publică pașnică.</td></tr>
+<tr><td>AIEA / IAEA</td><td>1957</td><td>Tehnologii nucleare</td><td>Promovarea utilizărilor pașnice și verificarea neproliferării.</td></tr>
+<tr><td>NASA</td><td>1958</td><td>Spațiu și aeronautică</td><td>Răspuns american la Sputnik; misiuni umane, robotică și observarea Pământului.</td></tr>
+<tr><td>ESA</td><td>1975</td><td>Spațiu european</td><td>Programe comune de lansare, știință, navigație și observarea Pământului.</td></tr>
+<tr><td>IPCC</td><td>1988</td><td>Știința climei</td><td>Evaluează literatura științifică pentru deciziile publice privind schimbarea climatică.</td></tr>
+<tr><td>ITER</td><td>Acord 2006; organizație 2007</td><td>Fuziune nucleară</td><td>China, UE, India, Japonia, Coreea, Rusia și SUA construiesc un tokamak experimental comun.</td></tr>
+</tbody></table></div>
+<div class="green-box"><strong>Știință pentru pace:</strong> CERN a fost conceput și ca instrument al reconstrucției și cooperării europene. Convenția sa exclude lucrările pentru cerințe militare și cere publicarea rezultatelor.</div>
+</section>
+
+<section class="section" id="1945-1955">
+<h2>IV. 1945–1955: fundamentele noii epoci</h2>
+<div class="timeline">
+  <article class="event"><div class="date red">1945</div><div><h3>Era atomică</h3><p>Bombele de la Hiroshima și Nagasaki arată puterea fisiunii nucleare. Știința devine simultan sursă de teamă, securitate, energie și prestigiu.</p></div></article>
+  <article class="event"><div class="date blue">feb. 1946</div><div><h3>ENIAC este prezentat public</h3><p>Calculatorul electronic general ENIAC folosește aproximativ 18.000 de tuburi electronice. Programarea se face prin cabluri și comutatoare, dar viteza depășește radical mașinile electromecanice.</p></div></article>
+  <article class="event"><div class="date green">1947</div><div><h3>Tranzistorul</h3><p>John Bardeen, Walter Brattain și William Shockley realizează la Bell Labs componenta care va înlocui tubul electronic: mai mică, mai fiabilă și mai eficientă energetic.</p></div></article>
+  <article class="event"><div class="date blue">7 apr. 1948</div><div><h3>Organizația Mondială a Sănătății</h3><p>Constituția OMS intră în vigoare după ratificarea de către al 26-lea stat semnatar.</p></div></article>
+  <article class="event"><div class="date green">20 dec. 1951</div><div><h3>Prima electricitate utilă din fisiune</h3><p>Reactorul experimental EBR-I din Idaho alimentează patru becuri și apoi clădirea laboratorului.</p></div></article>
+  <article class="event"><div class="date purple">1952</div><div><h3>Primul dispozitiv termonuclear</h3><p>Testul american Ivy Mike inaugurează bomba cu hidrogen, mult mai puternică decât armele bazate exclusiv pe fisiune.</p></div></article>
+  <article class="event"><div class="date green">1953</div><div><h3>Structura dublu-elicoidală a ADN</h3><p>Modelul lui James Watson și Francis Crick, bazat esențial și pe datele de difracție produse de Rosalind Franklin și Maurice Wilkins, oferă un mecanism pentru copierea informației genetice.</p></div></article>
+  <article class="event"><div class="date green">26 iun. 1954</div><div><h3>Obninsk se conectează la rețea</h3><p>Centrala sovietică de 5 MW devine prima instalație nucleară care furnizează electricitate unei rețele publice.</p></div></article>
+  <article class="event"><div class="date green">23 dec. 1954</div><div><h3>Primul transplant renal cu succes durabil</h3><p>În Boston, un rinichi este transplantat între gemeni identici, evitând problema respingerii imunologice.</p></div></article>
+  <article class="event"><div class="date green">1954–1955</div><div><h3>Celula solară și vaccinul antipolio</h3><p>Bell Labs demonstrează o celulă fotovoltaică modernă din siliciu, iar vaccinul injectabil al lui Jonas Salk este declarat sigur și eficient în 1955.</p></div></article>
+</div>
+</section>
+
+<section class="section" id="1956-1969">
+<h2>V. 1956–1969: spațiul, microelectronica și biologia moleculară</h2>
+<div class="timeline">
+  <article class="event"><div class="date purple">vara 1956</div><div><h3>Inteligența artificială primește un nume</h3><p>Proiectul de cercetare de la Dartmouth, organizat de John McCarthy și colaboratorii săi, definește inteligența artificială ca domeniu distinct.</p></div></article>
+  <article class="event"><div class="date green">4 oct. 1957</div><div><h3>Sputnik 1</h3><p>Uniunea Sovietică lansează primul satelit artificial. Evenimentul declanșează cursa spațială și investiții masive în rachete, electronică și educație științifică.</p></div></article>
+  <article class="event"><div class="date blue">1958</div><div><h3>NASA și circuitul integrat</h3><p>NASA începe activitatea la 1 octombrie. Jack Kilby demonstrează un circuit integrat, iar Robert Noyce dezvoltă în 1959 o versiune planar-siliciu potrivită producției.</p></div></article>
+  <article class="event"><div class="date green">1960</div><div><h3>Primul laser funcțional</h3><p>Theodore Maiman construiește laserul cu rubin. Fasciculul coerent va fi folosit în industrie, comunicații, medicină, măsurători și cercetare.</p></div></article>
+  <article class="event"><div class="date green">12 apr. 1961</div><div><h3>Iuri Gagarin</h3><p>Devine primul om în spațiu și primul care orbitează Pământul, la bordul Vostok 1.</p></div></article>
+  <article class="event"><div class="date blue">1962</div><div><h3>Telstar și comunicațiile prin satelit</h3><p>Televiziunea și semnalele telefonice transatlantice sunt retransmise prin satelit, pregătind infrastructura globală de telecomunicații.</p></div></article>
+  <article class="event"><div class="date green">1963–1966</div><div><h3>Codul genetic este descifrat</h3><p>Experimentele arată cum tripletele de nucleotide specifică aminoacizii, legând informația genetică de sinteza proteinelor.</p></div></article>
+  <article class="event"><div class="date green">1 oct. 1964</div><div><h3>Shinkansen</h3><p>Japonia inaugurează linia Tōkaidō, transformând trenul de mare viteză într-un simbol al reconstrucției tehnologice.</p></div></article>
+  <article class="event"><div class="date purple">1965</div><div><h3>Legea lui Moore</h3><p>Gordon Moore observă ritmul rapid de creștere a densității componentelor pe circuite. Predicția devine reper al industriei semiconductorilor.</p></div></article>
+  <article class="event"><div class="date green">3 dec. 1967</div><div><h3>Primul transplant cardiac uman</h3><p>Christiaan Barnard realizează operația la Cape Town. Supraviețuirea inițială este scurtă, dar procedura inaugurează transplantologia cardiacă.</p></div></article>
+  <article class="event"><div class="date green">20 iul. 1969</div><div><h3>Apollo 11 aselenizează</h3><p>Neil Armstrong și Buzz Aldrin ajung pe Lună; Michael Collins rămâne pe orbită. Primul pas are loc la 21 iulie în timp universal.</p></div></article>
+  <article class="event"><div class="date blue">29 oct. 1969</div><div><h3>Primul mesaj ARPANET</h3><p>UCLA transmite către Stanford Research Institute. Rețeaua cu patru noduri devine una dintre originile internetului.</p></div></article>
+</div>
+</section>
+
+<section class="section" id="1970">
+<h2>VI. Anii 1970: microprocesor, medicină imagistică și criza energiei</h2>
+<div class="timeline">
+  <article class="event"><div class="date green">1971</div><div><h3>Microprocesorul</h3><p>Intel 4004 integrează funcțiile centrale de calcul pe un singur cip. Calculatoarele pot deveni mai mici, mai ieftine și integrate în aparate.</p></div></article>
+  <article class="event"><div class="date blue">1971</div><div><h3>Tomografia computerizată și e-mailul</h3><p>Primul pacient este scanat prin CT în Marea Britanie, iar Ray Tomlinson dezvoltă e-mailul între calculatoare conectate și folosește semnul @ în adresare.</p></div></article>
+  <article class="event"><div class="date green">1972–1973</div><div><h3>ADN recombinant</h3><p>Enzimele de restricție și tehnicile de recombinare permit transferarea genelor între organisme, punând baza industriei biotehnologice.</p></div></article>
+  <article class="event"><div class="date red">1973</div><div><h3>Șocul petrolier</h3><p>Creșterea prețurilor accelerează economisirea energiei, reactoarele nucleare, explorarea petrolieră, izolarea clădirilor și cercetarea solară și eoliană.</p></div></article>
+  <article class="event"><div class="date purple">3 apr. 1973</div><div><h3>Apel telefonic mobil portabil</h3><p>Martin Cooper efectuează un apel cu un prototip Motorola. Rețelele celulare comerciale se vor extinde în deceniul următor.</p></div></article>
+  <article class="event"><div class="date blue">1975</div><div><h3>Altair 8800 și revoluția microcalculatoarelor</h3><p>Kitul bazat pe microprocesor inspiră comunități de pasionați, software independent și companii care vor domina calculul personal.</p></div></article>
+  <article class="event"><div class="date red">1975</div><div><h3>Conferința Asilomar</h3><p>Biologii discută riscurile ADN-ului recombinant și adoptă măsuri voluntare de biosecuritate, model timpuriu de autoguvernare științifică.</p></div></article>
+  <article class="event"><div class="date green">1976–1977</div><div><h3>Apple I, Apple II și calculul personal</h3><p>Microcalculatoarele asamblate și apoi sistemele gata de utilizare mută informatica din laboratoare și firme spre locuințe și școli.</p></div></article>
+  <article class="event"><div class="date green">25 iul. 1978</div><div><h3>Prima naștere după fertilizare in vitro</h3><p>Louise Brown se naște în Marea Britanie, după cercetările lui Robert Edwards și Patrick Steptoe.</p></div></article>
+  <article class="event"><div class="date red">28 mar. 1979</div><div><h3>Three Mile Island</h3><p>Accidentul din Pennsylvania produce o topire parțială și schimbă reglementarea, opinia publică și economia programelor nucleare occidentale.</p></div></article>
+</div>
+
+<div class="blue-box"><strong>Deceniul convergenței:</strong> microprocesorul, rețelele, imagistica medicală și biotehnologia apar aproape simultan. Mai târziu, ele se vor combina în bioinformatică, telemedicină, robotică și instrumente științifice automatizate.</div>
+</section>
+
+<section class="section" id="1980">
+<h2>VII. Anii 1980: PC, internet, biomedicină și conștiință ecologică</h2>
+<div class="timeline">
+  <article class="event"><div class="date green">8 mai 1980</div><div><h3>Variola este declarată eradicată</h3><p>OMS certifică succesul campaniei globale de vaccinare și supraveghere. Rămâne singura boală umană eradicată complet.</p></div></article>
+  <article class="event"><div class="date green">12 aug. 1981</div><div><h3>IBM PC</h3><p>Modelul 5150 legitimează calculatorul personal în mediul de afaceri și creează un ecosistem de arhitecturi compatibile și software.</p></div></article>
+  <article class="event"><div class="date red">1981–1983</div><div><h3>Identificarea noii epidemii HIV/SIDA</h3><p>Primele cazuri sunt raportate în 1981, iar virusul este identificat în 1983. Primul antiretroviral este autorizat în 1987.</p></div></article>
+  <article class="event"><div class="date blue">1 ian. 1983</div><div><h3>ARPANET trece la TCP/IP</h3><p>Protocolul permite interconectarea rețelelor diferite. „Rețeaua de rețele” capătă arhitectura fundamentală a internetului.</p></div></article>
+  <article class="event"><div class="date green">1983–1984</div><div><h3>Interfața grafică devine comercială</h3><p>Apple Lisa și apoi Macintosh popularizează ferestrele, pictogramele și mouse-ul, dezvoltate anterior în laboratoarele Xerox PARC și în proiecte de cercetare.</p></div></article>
+  <article class="event"><div class="date red">26 apr. 1986</div><div><h3>Cernobîl</h3><p>Explozia reactorului 4 produce contaminare transfrontalieră, evacuări, pierderi umane și o criză majoră de încredere în instituțiile sovietice și energia nucleară.</p></div></article>
+  <article class="event"><div class="date green">1986</div><div><h3>Vaccin recombinant pentru hepatita B</h3><p>Este autorizat un vaccin produs prin inginerie genetică, demonstrând aplicarea biotehnologiei moderne în prevenție.</p></div></article>
+  <article class="event"><div class="date green">16 sept. 1987</div><div><h3>Protocolul de la Montreal</h3><p>Statele acceptă eliminarea treptată a substanțelor care distrug ozonul. Intră în vigoare la 1 ianuarie 1989.</p></div></article>
+  <article class="event"><div class="date blue">1988</div><div><h3>IPCC și campania globală antipolio</h3><p>UNEP și OMM creează IPCC, iar OMS lansează Inițiativa Globală de Eradicare a Poliomielitei.</p></div></article>
+  <article class="event"><div class="date purple">mart. 1989</div><div><h3>Propunerea World Wide Web</h3><p>Tim Berners-Lee propune la CERN combinarea hipertextului, rețelelor și calculatoarelor pentru schimbul de informație între cercetători.</p></div></article>
+</div>
+</section>
+
+<section class="section" id="1990">
+<h2>VIII. Anii 1990: web, genom și globalizarea cunoașterii</h2>
+<div class="timeline">
+  <article class="event"><div class="date green">24 apr. 1990</div><div><h3>Telescopul Spațial Hubble</h3><p>Este lansat pe orbită. După corectarea defectului optic în 1993, devine unul dintre cele mai productive instrumente astronomice.</p></div></article>
+  <article class="event"><div class="date blue">1 oct. 1990</div><div><h3>Proiectul Genomului Uman începe oficial</h3><p>Programul internațional urmărește cartografierea și secvențierea genomului, dezvoltarea tehnologiilor și studierea implicațiilor etice.</p></div></article>
+  <article class="event"><div class="date green">1991</div><div><h3>Bateria litiu-ion este comercializată</h3><p>Acumulatorii ușori și reîncărcabili fac posibilă expansiunea electronicii portabile și, ulterior, a vehiculelor electrice.</p></div></article>
+  <article class="event"><div class="date blue">30 apr. 1993</div><div><h3>CERN eliberează tehnologia web</h3><p>Software-ul World Wide Web este pus la dispoziție fără redevențe, permițând dezvoltarea deschisă și rapidă.</p></div></article>
+  <article class="event"><div class="date green">1995</div><div><h3>GPS devine complet operațional</h3><p>Constelația militară americană devine infrastructură globală pentru navigație, logistică, agricultură, finanțe și sincronizarea rețelelor.</p></div></article>
+  <article class="event"><div class="date green">1995</div><div><h3>Prima planetă în jurul unei stele asemănătoare Soarelui</h3><p>51 Pegasi b arată că sistemele planetare sunt răspândite și inaugurează o nouă ramură observațională.</p></div></article>
+  <article class="event"><div class="date green">1996</div><div><h3>Terapia antiretrovirală combinată</h3><p>Schemele cu mai multe medicamente transformă HIV dintr-o condamnare rapidă la moarte într-o infecție cronică gestionabilă pentru mulți pacienți cu acces la tratament.</p></div></article>
+  <article class="event"><div class="date purple">5 iul. 1996</div><div><h3>Dolly</h3><p>Se naște primul mamifer clonat dintr-o celulă somatică adultă; reușita este anunțată public în 1997.</p></div></article>
+  <article class="event"><div class="date blue">20 nov. 1998</div><div><h3>Începe construcția ISS</h3><p>Primul modul al Stației Spațiale Internaționale este lansat. Ocuparea umană continuă începe în noiembrie 2000.</p></div></article>
+  <article class="event"><div class="date blue">1998</div><div><h3>Motorul de căutare Google</h3><p>Algoritmii de ordonare a legăturilor și infrastructura distribuită schimbă accesul la informația web.</p></div></article>
+</div>
+</section>
+
+<section class="section" id="2000">
+<h2>IX. Anii 2000: genomul, nanomaterialele și internetul mobil</h2>
+<div class="timeline">
+  <article class="event"><div class="date blue">2001</div><div><h3>Primele analize ale genomului uman</h3><p>Consorțiul public și compania Celera publică versiuni preliminare, accelerând biologia computațională și medicina genomică.</p></div></article>
+  <article class="event"><div class="date green">14 apr. 2003</div><div><h3>Finalizarea Proiectului Genomului Uman</h3><p>Consorțiul anunță finalizarea cu peste doi ani înaintea calendarului inițial.</p></div></article>
+  <article class="event"><div class="date purple">2004</div><div><h3>Grafenul este izolat</h3><p>Andre Geim și Konstantin Novoselov obțin foi de carbon cu grosimea unui atom și proprietăți electrice și mecanice remarcabile.</p></div></article>
+  <article class="event"><div class="date blue">2004–2006</div><div><h3>Web 2.0 și rețele sociale</h3><p>Conținutul produs de utilizatori, platformele colaborative și serviciile în cloud schimbă comunicarea, economia și politica.</p></div></article>
+  <article class="event"><div class="date green">2007</div><div><h3>Telefonul inteligent modern se popularizează</h3><p>Ecranul tactil, internetul mobil, aplicațiile și senzorii reunesc telefonul, camera, harta, calculatorul și terminalul media.</p></div></article>
+  <article class="event"><div class="date blue">10 sept. 2008</div><div><h3>Large Hadron Collider</h3><p>Cel mai mare accelerator de particule începe activitatea la CERN, după un proiect internațional de mare complexitate.</p></div></article>
+  <article class="event"><div class="date red">2008</div><div><h3>Criza financiară în lumea algoritmică</h3><p>Modelele cantitative și tranzacționarea computerizată nu elimină riscul sistemic; tehnologia poate amplifica viteza crizelor.</p></div></article>
+  <article class="event"><div class="date green">2009</div><div><h3>Primul Bitcoin și registrul blockchain</h3><p>O rețea descentralizată combină criptografia, consensul și un registru distribuit, deschizând o nouă etapă a activelor digitale.</p></div></article>
+</div>
+</section>
+
+<section class="section" id="2010">
+<h2>X. Anii 2010: Higgs, CRISPR, unde gravitaționale și inteligență artificială</h2>
+<div class="timeline">
+  <article class="event"><div class="date red">11 mar. 2011</div><div><h3>Fukushima Daiichi</h3><p>Cutremurul și tsunamiul întrerup alimentarea și răcirea, producând accidente grave la trei reactoare și reevaluări mondiale ale siguranței nucleare.</p></div></article>
+  <article class="event"><div class="date green">4 iul. 2012</div><div><h3>O particulă compatibilă cu bosonul Higgs</h3><p>Experimentele ATLAS și CMS anunță un semnal de cinci sigma în jurul masei de 125–126 GeV; proprietățile confirmă ulterior natura de boson Higgs.</p></div></article>
+  <article class="event"><div class="date green">2012</div><div><h3>CRISPR-Cas9 și revoluția învățării profunde</h3><p>Doudna și Charpentier dezvoltă o metodă programabilă de editare genomică, iar performanța rețelelor neuronale în competiția ImageNet relansează inteligența artificială.</p></div></article>
+  <article class="event"><div class="date green">14 sept. 2015</div><div><h3>Prima detecție directă a undelor gravitaționale</h3><p>LIGO observă semnalul produs de fuziunea a două găuri negre. Anunțul public are loc la 11 februarie 2016.</p></div></article>
+  <article class="event"><div class="date green">12 dec. 2015</div><div><h3>Acordul de la Paris</h3><p>Statele adoptă tratatul climatic; acesta intră în vigoare la 4 noiembrie 2016.</p></div></article>
+  <article class="event"><div class="date purple">mart. 2016</div><div><h3>AlphaGo îl învinge pe Lee Sedol</h3><p>Învățarea profundă și căutarea probabilistică demonstrează capacitatea sistemelor de a rezolva probleme considerate foarte greu de formalizat.</p></div></article>
+  <article class="event"><div class="date green">10 apr. 2019</div><div><h3>Prima imagine a umbrei unei găuri negre</h3><p>Event Horizon Telescope combină radiotelescoape de pe mai multe continente într-un observator virtual de dimensiunea Pământului.</p></div></article>
+  <article class="event"><div class="date green">2019</div><div><h3>Bateriile litiu-ion sunt recunoscute prin Nobel</h3><p>Premiul evidențiază tehnologia care a făcut posibilă electronica reîncărcabilă și contribuie la mobilitatea electrică și stocarea energiei.</p></div></article>
+</div>
+</section>
+
+<section class="section" id="2020">
+<h2>XI. 2020–2026: pandemie, AI generativă și noi infrastructuri</h2>
+<div class="timeline">
+  <article class="event"><div class="date red">ian. 2020</div><div><h3>Genomul SARS-CoV-2 este publicat rapid</h3><p>Secvențierea și schimbul internațional de date permit dezvoltarea testelor, supravegherea variantelor și proiectarea vaccinurilor.</p></div></article>
+  <article class="event"><div class="date green">dec. 2020</div><div><h3>Vaccinuri ARNm autorizate</h3><p>Cercetările începute cu decenii înainte și modificările nucleozidice dezvoltate de Katalin Karikó și Drew Weissman permit vaccinuri eficiente produse rapid.</p></div></article>
+  <article class="event"><div class="date green">25 dec. 2021</div><div><h3>James Webb Space Telescope</h3><p>Observatorul este lansat spre punctul Lagrange L2; primele imagini color complete sunt publicate în iulie 2022.</p></div></article>
+  <article class="event"><div class="date purple">23 nov. 2021</div><div><h3>Standardul UNESCO pentru etica AI</h3><p>Statele membre adoptă o recomandare globală bazată pe drepturi, transparență, echitate, supraveghere umană și sustenabilitate.</p></div></article>
+  <article class="event"><div class="date purple">2022–2023</div><div><h3>AI generativă devine produs de masă</h3><p>Modelele de limbaj și de generare a imaginilor mută inteligența artificială din aplicații specializate în educație, creație, administrație și muncă de birou.</p></div></article>
+  <article class="event"><div class="date purple">1 aug. 2024</div><div><h3>Actul european privind inteligența artificială intră în vigoare</h3><p>UE introduce un cadru bazat pe risc pentru dezvoltatori și utilizatori, cu aplicare etapizată.</p></div></article>
+  <article class="event"><div class="date green">2024</div><div><h3>ELI-NP deschide noi zone experimentale</h3><p>La Măgurele sunt puse în funcțiune arii pentru accelerarea ionilor și electronilor cu fascicule laser de până la 10 PW.</p></div></article>
+  <article class="event"><div class="date blue">2024–2026</div><div><h3>ITER trece la „Baseline 2024”</h3><p>Planul actualizat prevede închiderea criostatului în 2033, începutul operațiunilor de cercetare în 2034, energie magnetică deplină în 2036 și operațiuni deuteriu–tritiu din 2039.</p></div></article>
+  <article class="event"><div class="date purple">2026</div><div><h3>Șaptezeci de ani de inteligență artificială</h3><p>Domeniul ajunge de la programe simbolice și sisteme expert la modele multimodale, robotică avansată și dezbateri despre control, muncă și autonomie.</p></div></article>
+</div>
+<div class="fact"><strong>Actualizare importantă:</strong> vechiul termen „prima plasmă ITER în 2025” nu mai descrie programul actual. După întârzieri, reparații și revizuirea strategiei, proiectul lucrează după noua abordare aprobată în 2024.</div>
+</section>
+
+<section class="section" id="nuclear">
+<h2>XII. Revoluția nucleară: armă, energie, medicină și diplomație</h2>
+<div class="grid3">
+  <article class="card"><h3>Fisiune</h3><p>Un nucleu greu, precum uraniul-235, se divide și eliberează energie și neutroni. Reacția în lanț poate fi controlată într-un reactor sau eliberată exploziv într-o armă.</p></article>
+  <article class="card"><h3>Fuziune</h3><p>Nuclee ușoare se unesc la temperaturi extreme. Alimentează stelele și armele termonucleare; controlul ei pentru electricitate rămâne obiectiv experimental.</p></article>
+  <article class="card"><h3>Radioizotopi</h3><p>Izotopii radioactivi sunt folosiți pentru diagnostic, radioterapie, sterilizare, trasori industriali, datare și cercetare biologică.</p></article>
+</div>
+
+<div class="table-wrap"><table>
+<thead><tr><th>Moment</th><th>Semnificație</th><th>Consecințe</th></tr></thead>
+<tbody>
+<tr><td>1942 — Chicago Pile-1</td><td>Prima reacție în lanț controlată și autoîntreținută</td><td>Baza reactoarelor, producerii plutoniului și cercetării nucleare.</td></tr>
+<tr><td>1945 — arme atomice</td><td>Aplicarea militară a fisiunii</td><td>Descurajare, cursă a înarmărilor și mișcări antinucleare.</td></tr>
+<tr><td>1951 — EBR-I</td><td>Prima electricitate utilă dintr-un reactor</td><td>Demonstrarea producției energetice.</td></tr>
+<tr><td>1954 — Obninsk</td><td>Prima centrală conectată la rețeaua publică</td><td>Începutul energiei nucleare comerciale.</td></tr>
+<tr><td>1957 — AIEA</td><td>Cooperare și verificare internațională</td><td>Utilizări pașnice, garanții și siguranță.</td></tr>
+<tr><td>1968 — Tratatul de neproliferare</td><td>Limitarea răspândirii armelor</td><td>Garanții AIEA, dezarmare negociată și acces pașnic la tehnologie.</td></tr>
+<tr><td>1979 / 1986 / 2011</td><td>Three Mile Island, Cernobîl, Fukushima</td><td>Reforme de siguranță și schimbarea politicilor energetice.</td></tr>
+<tr><td>2006–2007 — ITER</td><td>Organizație internațională pentru fuziune</td><td>Demonstrarea fezabilității plasmei cu câștig energetic ridicat.</td></tr>
+</tbody></table></div>
+
+<div class="red-box"><strong>Dual use:</strong> aceeași fizică permite centrale, radiofarmaceutice și arme. Controlul materialelor, transparența și instituțiile internaționale sunt parte integrantă a tehnologiei nucleare, nu elemente externe ei.</div>
+</section>
+
+<section class="section" id="spatiu">
+<h2>XIII. Era spațială: de la competiție la infrastructură globală</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Etapă</th><th>Repere</th><th>Impact științific și tehnologic</th></tr></thead>
+<tbody>
+<tr><td>Cursa inițială</td><td>Sputnik 1957, Gagarin 1961, Apollo 11 în 1969</td><td>Rachete, ghidaj, materiale, calculatoare, medicină aerospațială.</td></tr>
+<tr><td>Sateliți utilitari</td><td>Comunicații, meteorologie, spionaj, GPS</td><td>Prognoză, televiziune, navigație, agricultură și gestionarea dezastrelor.</td></tr>
+<tr><td>Explorare robotică</td><td>Luna, Venus, Marte, planetele exterioare</td><td>Cunoașterea Sistemului Solar fără riscul misiunilor umane.</td></tr>
+<tr><td>Observatoare</td><td>Hubble, Chandra, Kepler, Gaia, James Webb</td><td>Univers timpuriu, exoplanete, galaxii, materie și evoluție stelară.</td></tr>
+<tr><td>Cooperare</td><td>Apollo–Soyuz 1975, ISS din 1998</td><td>Stații orbitale, experimente de lungă durată și diplomație științifică.</td></tr>
+<tr><td>Comercializare</td><td>Lansatoare reutilizabile, sateliți mici, servicii private</td><td>Costuri mai mici, constelații și acces mai larg la orbită.</td></tr>
+</tbody></table></div>
+
+<details><summary>Internetul, GPS-ul și sateliții: legături indirecte</summary>
+<div class="details-body"><p>Nu toate tehnologiile digitale provin din programul spațial. Internetul are origini în rețelele de calculatoare finanțate de ARPA, iar microcipul a fost dezvoltat de industria semiconductorilor. Programele spațiale au accelerat însă miniaturizarea, fiabilitatea, controlul în timp real și achizițiile de componente. GPS-ul este în mod direct o infrastructură spațială militară devenită indispensabilă vieții civile.</p></div>
+</details>
+</section>
+
+<section class="section" id="digital">
+<h2>XIV. Revoluția digitală: de la cameră de calcul la rețea globală</h2>
+
+<h3>1. Generațiile calculatoarelor</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Generație</th><th>Tehnologie dominantă</th><th>Perioadă orientativă</th><th>Exemple și efecte</th></tr></thead>
+<tbody>
+<tr><td>I</td><td>Tuburi electronice</td><td>anii 1940–1950</td><td>ENIAC, UNIVAC, CIFA-1; mașini mari, consum ridicat și programare dificilă.</td></tr>
+<tr><td>II</td><td>Tranzistori</td><td>anii 1950–1960</td><td>Fiabilitate și dimensiuni îmbunătățite; limbaje precum FORTRAN și COBOL.</td></tr>
+<tr><td>III</td><td>Circuite integrate</td><td>anii 1960–1970</td><td>Mainframe, minicalculatoare, sisteme de operare și terminale.</td></tr>
+<tr><td>IV</td><td>Microprocesoare</td><td>din 1971</td><td>Calculatoare personale, control industrial, dispozitive integrate.</td></tr>
+<tr><td>V / contemporană</td><td>Paralelism, cloud, acceleratoare AI, calcul cuantic experimental</td><td>anii 1990–prezent</td><td>Supercalculatoare, telefoane, centre de date, modele de inteligență artificială.</td></tr>
+</tbody></table></div>
+
+<h3>2. Internetul nu este Web-ul</h3>
+<div class="grid2">
+  <article class="card"><h3>Internet</h3><p>Infrastructura de rețele conectate prin protocoale comune. Repere: ARPANET în 1969, TCP/IP dezvoltat în anii 1970 și adoptat de ARPANET în 1983, NSFNET din 1985 și comercializarea treptată.</p></article>
+  <article class="card"><h3>World Wide Web</h3><p>Serviciu care folosește internetul pentru documente legate prin hipertext. Tim Berners-Lee îl propune în 1989, construiește serverul și browserul în 1990, iar CERN eliberează software-ul în 1993.</p></article>
+</div>
+
+<h3>3. De la PC la cloud</h3>
+<div class="timeline">
+  <article class="event"><div class="date blue">1977–1981</div><div><h3>Calculatorul personal</h3><p>Apple II, Commodore PET, TRS-80 și IBM PC extind piața dincolo de laboratoare.</p></div></article>
+  <article class="event"><div class="date blue">1984–1995</div><div><h3>Interfețe grafice și multimedia</h3><p>Macintosh, Windows, CD-ROM și plăcile grafice fac calculatorul accesibil publicului larg.</p></div></article>
+  <article class="event"><div class="date blue">1993–2004</div><div><h3>Web și comerț electronic</h3><p>Browserele grafice, motoarele de căutare, e-mailul și plata online mută informația și afacerile pe rețea.</p></div></article>
+  <article class="event"><div class="date blue">2004–2010</div><div><h3>Web social și mobil</h3><p>Platformele de participare, telefonul inteligent și aplicațiile fac conexiunea permanentă.</p></div></article>
+  <article class="event"><div class="date blue">2010–2026</div><div><h3>Cloud, date masive și AI</h3><p>Centrele de date oferă calcul la cerere; analiza datelor și modelele de inteligență artificială devin infrastructuri generale.</p></div></article>
+</div>
+</section>
+
+<section class="section" id="ai">
+<h2>XV. Inteligența artificială și robotica</h2>
+<div class="timeline">
+  <article class="event"><div class="date purple">1950</div><div><h3>Testul Turing</h3><p>Alan Turing propune „jocul imitației” drept metodă de discutare a inteligenței mașinilor.</p></div></article>
+  <article class="event"><div class="date purple">1956</div><div><h3>Dartmouth</h3><p>Termenul „inteligență artificială” este consacrat într-un proiect de cercetare estival.</p></div></article>
+  <article class="event"><div class="date purple">anii 1960–1970</div><div><h3>AI simbolică și primii roboți</h3><p>Programe de demonstrare a teoremelor, jocuri, limbaj natural și robotul Shakey folosesc reguli și reprezentări explicite.</p></div></article>
+  <article class="event"><div class="date red">anii 1970 și 1980</div><div><h3>„Ierni” ale inteligenței artificiale</h3><p>Promisiunile depășesc hardware-ul și metodele disponibile; finanțarea scade în mai multe valuri.</p></div></article>
+  <article class="event"><div class="date purple">anii 1980</div><div><h3>Sisteme expert</h3><p>Baze de reguli codifică expertiza medicală, tehnică sau financiară, dar sunt costisitor de întreținut.</p></div></article>
+  <article class="event"><div class="date purple">1997</div><div><h3>Deep Blue</h3><p>Calculatorul IBM îl învinge pe campionul mondial Garry Kasparov într-un meci de șah.</p></div></article>
+  <article class="event"><div class="date purple">2012</div><div><h3>Învățarea profundă</h3><p>Rețelele neuronale accelerate de procesoare grafice obțin rezultate decisive în recunoașterea imaginilor.</p></div></article>
+  <article class="event"><div class="date purple">2016</div><div><h3>AlphaGo</h3><p>Învățarea din date, autojocul și căutarea arată o nouă combinație între statistică și planificare.</p></div></article>
+  <article class="event"><div class="date purple">2017–2022</div><div><h3>Transformere și modele fundamentale</h3><p>Arhitecturile de atenție permit antrenarea modelelor mari pentru limbaj, imagini, sunet și cod.</p></div></article>
+  <article class="event"><div class="date purple">2024</div><div><h3>Reglementarea bazată pe risc</h3><p>Actul european privind AI intră în vigoare, interzicând anumite practici și impunând cerințe sporite sistemelor cu risc ridicat.</p></div></article>
+</div>
+
+<div class="table-wrap"><table>
+<thead><tr><th>Abordare</th><th>Cum funcționează?</th><th>Puncte forte</th><th>Limite</th></tr></thead>
+<tbody>
+<tr><td>AI simbolică</td><td>Reguli, logică și reprezentări explicite</td><td>Explicabilitate și control conceptual</td><td>Fragilitate și dificultatea codificării tuturor excepțiilor</td></tr>
+<tr><td>Învățare automată</td><td>Modele ajustate pe date</td><td>Recunoașterea tiparelor și predicție</td><td>Dependență de date și risc de părtinire</td></tr>
+<tr><td>Învățare profundă</td><td>Rețele cu multe straturi și calcul masiv</td><td>Imagini, limbaj, sunet și control</td><td>Consum energetic, opacitate și vulnerabilitate</td></tr>
+<tr><td>AI generativă</td><td>Produce text, imagini, audio, video și cod</td><td>Interfață generală și productivitate</td><td>Halucinații, drepturi de autor, falsuri și automatizarea erorilor</td></tr>
+<tr><td>Robotică</td><td>Percepție, planificare și acțiune în lumea fizică</td><td>Industrie, logistică, chirurgie și explorare</td><td>Siguranță, cost, medii imprevizibile și responsabilitate</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section" id="medicina">
+<h2>XVI. Medicină, biologie și sănătate publică</h2>
+
+<h3>1. Marile schimbări</h3>
+<div class="grid4">
+  <article class="right-card"><strong>Antibiotice</strong><span>Producția în masă reduce mortalitatea infecțiilor, dar folosirea excesivă generează rezistență.</span></article>
+  <article class="right-card"><strong>Vaccinuri</strong><span>Polio, rujeolă, oreion, rubeolă, hepatita B, HPV, Ebola și ARNm.</span></article>
+  <article class="right-card"><strong>Imagistică</strong><span>Ecografie, CT, RMN, PET și imagistică digitală.</span></article>
+  <article class="right-card"><strong>Transplant</strong><span>Chirurgie vasculară, imunologie, medicamente imunosupresoare și coordonarea donării.</span></article>
+  <article class="right-card"><strong>Genetică</strong><span>ADN, cod genetic, PCR, secvențiere, genom uman și editare CRISPR.</span></article>
+  <article class="right-card"><strong>Reproducere asistată</strong><span>Fertilizare in vitro, diagnostic genetic și crioconservare.</span></article>
+  <article class="right-card"><strong>Terapii țintite</strong><span>Anticorpi monoclonali, medicină de precizie și imunoterapie oncologică.</span></article>
+  <article class="right-card"><strong>Sănătate globală</strong><span>OMS, supraveghere epidemiologică, campanii de vaccinare și standarde internaționale.</span></article>
+</div>
+
+<h3>2. Cronologia biomedicală selectivă</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>An</th><th>Realizare</th><th>Importanță</th></tr></thead>
+<tbody>
+<tr><td>1953</td><td>Modelul structurii ADN</td><td>Explică replicarea și deschide biologia moleculară.</td></tr>
+<tr><td>1954</td><td>Transplant renal între gemeni</td><td>Demonstrează fezabilitatea transplantului uman.</td></tr>
+<tr><td>1955</td><td>Vaccinul Salk împotriva poliomielitei</td><td>Prevenirea paraliziei la scară largă.</td></tr>
+<tr><td>1967</td><td>Transplant cardiac</td><td>Extinde posibilitățile chirurgiei organelor.</td></tr>
+<tr><td>1971</td><td>Primul CT clinic</td><td>Imagini secționale calculate ale corpului.</td></tr>
+<tr><td>1975</td><td>Anticorpi monoclonali</td><td>Diagnostic și tratamente țintite.</td></tr>
+<tr><td>1978</td><td>Prima naștere prin FIV</td><td>Reproducere asistată.</td></tr>
+<tr><td>1980</td><td>Eradicarea variolei</td><td>Succes unic al sănătății publice mondiale.</td></tr>
+<tr><td>1983</td><td>Identificarea HIV; dezvoltarea PCR</td><td>Înțelegerea SIDA și multiplicarea rapidă a ADN-ului.</td></tr>
+<tr><td>1990–2003</td><td>Proiectul Genomului Uman</td><td>Prima secvență de referință a genomului uman.</td></tr>
+<tr><td>1996</td><td>Terapie antiretrovirală combinată</td><td>Scăderea radicală a mortalității în țările cu acces.</td></tr>
+<tr><td>2012</td><td>CRISPR-Cas9 programabil</td><td>Editare genomică precisă și accesibilă.</td></tr>
+<tr><td>2020</td><td>Vaccinuri ARNm contra COVID-19</td><td>Platformă rapid adaptabilă pentru vaccinuri și terapii.</td></tr>
+</tbody></table></div>
+
+<div class="red-box"><strong>Progres inegal:</strong> existența unei tehnologii nu înseamnă acces universal. Prețul, brevetele, infrastructura, personalul medical, războaiele și distribuția globală pot separa descoperirea de beneficiul efectiv.</div>
+</section>
+
+<section class="section" id="fizica">
+<h2>XVII. Fizică fundamentală și „Big Science”</h2>
+<div class="grid3">
+  <article class="card"><h3>Modelul Standard</h3><p>Între anii 1960 și 1970, fizicienii unifică descrierea particulelor și a interacțiunilor electromagnetică, slabă și tare. Quarcurile sunt propuse în 1964; bosonii W și Z sunt descoperiți la CERN în 1983.</p></article>
+  <article class="card"><h3>Cosmologie observațională</h3><p>Radiația cosmică de fond este descoperită în 1965. Sateliții COBE, WMAP și Planck măsoară proprietățile Universului timpuriu.</p></article>
+  <article class="card"><h3>Instrumente extreme</h3><p>Acceleratoare, interferometre, detectoare subterane, telescoape radio globale și observatoare spațiale transformă fenomene invizibile în date.</p></article>
+</div>
+
+<div class="timeline">
+  <article class="event"><div class="date green">1954</div><div><h3>CERN</h3><p>Laboratorul european începe cooperarea pe termen lung în fizica particulelor.</p></div></article>
+  <article class="event"><div class="date green">1965</div><div><h3>Radiația cosmică de fond</h3><p>Arno Penzias și Robert Wilson observă relicva termică a Universului timpuriu.</p></div></article>
+  <article class="event"><div class="date green">1983</div><div><h3>Bosonii W și Z</h3><p>Experimentele UA1 și UA2 confirmă mediatorii interacțiunii slabe.</p></div></article>
+  <article class="event"><div class="date green">1995</div><div><h3>Quarcul top</h3><p>Este observat la Fermilab, completând familia de quarcuri prevăzută de Modelul Standard.</p></div></article>
+  <article class="event"><div class="date green">2012–2013</div><div><h3>Bosonul Higgs</h3><p>Noua particulă este descoperită și apoi caracterizată drept boson cu spin zero compatibil cu mecanismul Higgs.</p></div></article>
+  <article class="event"><div class="date green">2015–2016</div><div><h3>Unde gravitaționale</h3><p>LIGO deschide astronomia gravitațională și observarea directă a fuziunilor obiectelor compacte.</p></div></article>
+  <article class="event"><div class="date green">2019</div><div><h3>Imaginea M87*</h3><p>Interferometria radio la scară planetară rezolvă regiunea din jurul unei găuri negre supermasive.</p></div></article>
+</div>
+</section>
+
+<section class="section" id="materiale">
+<h2>XVIII. Materiale, fotonică și miniaturizare</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Tehnologie</th><th>Moment-cheie</th><th>Principiu</th><th>Aplicații</th></tr></thead>
+<tbody>
+<tr><td>Tranzistor</td><td>1947</td><td>Controlul curentului într-un semiconductor</td><td>Electronică, calcul și telecomunicații.</td></tr>
+<tr><td>Circuit integrat</td><td>1958–1959</td><td>Mai multe componente pe același material semiconductor</td><td>Microcipuri și miniaturizare.</td></tr>
+<tr><td>Laser</td><td>1960</td><td>Emisie stimulată de lumină coerentă</td><td>Fibră optică, chirurgie, măsurare, industrie.</td></tr>
+<tr><td>Fibră optică cu pierderi mici</td><td>anii 1960–1970</td><td>Ghidarea luminii prin reflexie internă</td><td>Internet de mare viteză și senzori.</td></tr>
+<tr><td>LED albastru</td><td>1986–1992</td><td>Semiconductori cu nitrură de galiu</td><td>Iluminat alb eficient, ecrane și stocare optică.</td></tr>
+<tr><td>Litiu-ion</td><td>dezvoltare 1970–1980; comercial 1991</td><td>Deplasarea reversibilă a ionilor între electrozi</td><td>Electronice, automobile și stocarea energiei.</td></tr>
+<tr><td>Grafen</td><td>2004</td><td>Strat bidimensional de carbon</td><td>Senzori, materiale compozite și cercetare electronică.</td></tr>
+<tr><td>Nanotehnologie</td><td>din anii 1980</td><td>Controlul materiei la scară nanometrică</td><td>Medicină, cataliză, electronică și acoperiri.</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section" id="energie">
+<h2>XIX. Energie, mediu și știința climei</h2>
+
+<h3>1. Tranziția de la abundență la limită ecologică</h3>
+<div class="timeline">
+  <article class="event"><div class="date green">1954</div><div><h3>Celula fotovoltaică modernă</h3><p>Bell Labs demonstrează o celulă de siliciu suficient de eficientă pentru aplicații practice timpurii.</p></div></article>
+  <article class="event"><div class="date blue">1958</div><div><h3>Începe seria de măsurători Keeling</h3><p>Concentrația dioxidului de carbon este urmărită continuu, oferind o dovadă clară a creșterii antropice.</p></div></article>
+  <article class="event"><div class="date red">1973–1979</div><div><h3>Crizele petrolului</h3><p>Statele investesc în eficiență, energie nucleară, extracții noi și surse alternative.</p></div></article>
+  <article class="event"><div class="date blue">1972</div><div><h3>Conferința de la Stockholm</h3><p>Mediul devine temă majoră a cooperării internaționale și este creat UNEP.</p></div></article>
+  <article class="event"><div class="date red">1985</div><div><h3>Gaura de ozon antarctică</h3><p>Măsurătorile confirmă reducerea severă sezonieră a ozonului, stimulând negocierea internațională.</p></div></article>
+  <article class="event"><div class="date green">1987–1989</div><div><h3>Protocolul de la Montreal</h3><p>Adoptat în 1987 și intrat în vigoare în 1989, elimină treptat substanțele care distrug ozonul.</p></div></article>
+  <article class="event"><div class="date blue">1988</div><div><h3>IPCC</h3><p>Organismul evaluează sistematic știința, impacturile și opțiunile privind schimbarea climatică.</p></div></article>
+  <article class="event"><div class="date green">1992 / 1997 / 2015</div><div><h3>UNFCCC, Kyoto și Paris</h3><p>Regimul climatic evoluează de la convenție-cadru la obiective pentru țările industrializate și apoi contribuții naționale universale.</p></div></article>
+  <article class="event"><div class="date green">anii 2010–2026</div><div><h3>Scăderea costului tehnologiilor curate</h3><p>Producția de masă, ingineria și politicile publice accelerează energia solară, eoliană, bateriile, pompele de căldură și vehiculele electrice.</p></div></article>
+</div>
+
+<h3>2. Comparația surselor</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Sursă</th><th>Avantaje</th><th>Limite</th><th>Necesități tehnologice</th></tr></thead>
+<tbody>
+<tr><td>Fosile</td><td>Densitate energetică, infrastructură existentă</td><td>Emisii, poluare și dependență geopolitică</td><td>Reducerea consumului și captarea carbonului în unele sectoare.</td></tr>
+<tr><td>Nucleară</td><td>Producție stabilă și emisii operaționale scăzute</td><td>Cost inițial, deșeuri, accidente și proliferare</td><td>Reglementare, cultură de siguranță și finanțare pe termen lung.</td></tr>
+<tr><td>Solară și eoliană</td><td>Resurse regenerabile și costuri în scădere</td><td>Variabilitate, rețea și utilizarea terenului</td><td>Stocare, interconectare, flexibilitate și prognoză.</td></tr>
+<tr><td>Hidroelectrică</td><td>Controlabilă și capabilă de stocare</td><td>Impact ecologic și social al barajelor</td><td>Gestionarea bazinelor și adaptarea la climă.</td></tr>
+<tr><td>Fuziune</td><td>Combustibil abundent și risc diferit de fisiune</td><td>Nu produce încă electricitate comercială</td><td>Controlul plasmei, materiale și instalații experimentale.</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section" id="transport">
+<h2>XX. Transport, logistică și infrastructuri</h2>
+<div class="grid4">
+  <article class="card"><h3>Aviația cu reacție</h3><p>Avioanele comerciale cu reacție transformă călătoria intercontinentală. Boeing 707 intră în serviciu în 1958; turismul și mobilitatea oamenilor de afaceri se extind.</p></article>
+  <article class="card"><h3>Containerizarea</h3><p>Transportul standardizat în containere, demonstrat comercial în 1956, reduce costurile de manipulare și reorganizează porturile, producția și comerțul mondial.</p></article>
+  <article class="card"><h3>Trenuri de mare viteză</h3><p>Shinkansen din 1964, TGV din 1981 și rețelele ulterioare oferă alternativă feroviară la avion pe distanțe medii.</p></article>
+  <article class="card"><h3>Navigație digitală</h3><p>Radarul, controlul traficului, GPS-ul și sistemele informatizate cresc capacitatea, precizia și siguranța.</p></article>
+  <article class="card"><h3>Concorde</h3><p>Primul zbor în 1969 și serviciu comercial din 1976. Demonstrează zborul supersonic de pasageri, dar costurile și zgomotul limitează modelul.</p></article>
+  <article class="card"><h3>Automobilul electric</h3><p>Bateria litiu-ion, electronica de putere și politicile climatice relansează vehiculul electric după anul 2000.</p></article>
+  <article class="card"><h3>Logistică automatizată</h3><p>Coduri de bare, RFID, roboți, software și predicție în timp real sincronizează lanțurile globale.</p></article>
+  <article class="card"><h3>Riscuri</h3><p>Poluare, emisii, accidente, dependența de infrastructură și vulnerabilitatea lanțurilor de aprovizionare.</p></article>
+</div>
+</section>
+
+<section class="section" id="agricultura">
+<h2>XXI. Agricultură, alimentație și „Revoluția Verde”</h2>
+<div class="grid2">
+  <article class="card"><h3>Creșterea producției</h3><p>Soiuri de grâu și orez cu randament ridicat, irigații, îngrășăminte, pesticide, mecanizare și consultanță agricolă cresc producția în Mexic, India, Pakistan și alte regiuni. Norman Borlaug primește Premiul Nobel pentru Pace în 1970.</p></article>
+  <article class="card"><h3>Costuri și limite</h3><p>Consumul de apă și energie, poluarea, pierderea biodiversității, dependența de inputuri și inegalitatea accesului arată că randamentul nu este singurul criteriu al securității alimentare.</p></article>
+</div>
+<div class="grid4" style="margin-top:18px">
+  <article class="right-card"><strong>Genetică vegetală</strong><span>Selecție, hibridare, markeri moleculari și editare genomică.</span></article>
+  <article class="right-card"><strong>Organisme modificate genetic</strong><span>Culturi comerciale din anii 1990, cu beneficii și controverse diferite după trăsătură.</span></article>
+  <article class="right-card"><strong>Agricultură de precizie</strong><span>GPS, sateliți, drone, senzori și aplicare variabilă a inputurilor.</span></article>
+  <article class="right-card"><strong>Alimente și lanț frigorific</strong><span>Refrigerare, procesare, ambalare și logistică globală.</span></article>
+</div>
+</section>
+
+<section class="section" id="etica">
+<h2>XXII. Etica științei și reglementarea tehnologiei</h2>
+<div class="timeline">
+  <article class="event"><div class="date red">1947</div><div><h3>Codul de la Nürnberg</h3><p>Formulează consimțământul voluntar și obligația evitării suferinței inutile în cercetarea pe oameni.</p></div></article>
+  <article class="event"><div class="date red">1964</div><div><h3>Declarația de la Helsinki</h3><p>Asociația Medicală Mondială stabilește principii pentru cercetarea medicală pe participanți umani, revizuite periodic.</p></div></article>
+  <article class="event"><div class="date red">1975</div><div><h3>Asilomar</h3><p>Cercetătorii stabilesc precauții pentru ADN recombinant, înainte ca riscurile să fie complet cunoscute.</p></div></article>
+  <article class="event"><div class="date red">1979</div><div><h3>Raportul Belmont</h3><p>Respect pentru persoane, binefacere și dreptate în cercetarea biomedicală.</p></div></article>
+  <article class="event"><div class="date red">1990</div><div><h3>ELSI în Proiectul Genomului Uman</h3><p>O parte a bugetului este rezervată implicațiilor etice, juridice și sociale ale genomicii.</p></div></article>
+  <article class="event"><div class="date red">2016–2018</div><div><h3>Regulamentul european privind datele</h3><p>GDPR este adoptat în 2016 și devine aplicabil în 2018, consolidând drepturile asupra datelor personale.</p></div></article>
+  <article class="event"><div class="date red">2021</div><div><h3>Recomandarea UNESCO privind etica AI</h3><p>Primul standard global amplu pentru guvernarea etică a inteligenței artificiale.</p></div></article>
+  <article class="event"><div class="date red">2024</div><div><h3>AI Act</h3><p>UE adoptă prima reglementare orizontală extinsă a sistemelor AI, clasificând obligațiile după risc.</p></div></article>
+</div>
+
+<div class="table-wrap"><table>
+<thead><tr><th>Dilemă</th><th>Beneficiu</th><th>Risc</th><th>Principiu de control</th></tr></thead>
+<tbody>
+<tr><td>Energie nucleară</td><td>Electricitate cu emisii reduse și izotopi medicali</td><td>Accident, deșeuri și proliferare</td><td>Reglementare, garanții și cultură de siguranță</td></tr>
+<tr><td>Editare genomică</td><td>Tratarea bolilor și culturi rezistente</td><td>Modificări ereditare și inegalitate biologică</td><td>Evaluare, consimțământ și limite pentru linia germinală</td></tr>
+<tr><td>Date și AI</td><td>Diagnostic, productivitate și acces la servicii</td><td>Supraveghere, discriminare și manipulare</td><td>Transparență, responsabilitate și supraveghere umană</td></tr>
+<tr><td>Explorare spațială</td><td>Cunoaștere, comunicații și observarea Pământului</td><td>Militarizare, resturi orbitale și concentrare economică</td><td>Tratate, coordonare și sustenabilitate orbitală</td></tr>
+<tr><td>Geoinginerie</td><td>Posibilă reducere rapidă a unor efecte climatice</td><td>Efecte globale incerte și conflict politic</td><td>Cercetare transparentă și guvernanță internațională</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section" id="romania">
+<h2>XXIII. România în știința și tehnologia postbelică</h2>
+<div class="timeline">
+  <article class="event"><div class="date green">1949</div><div><h3>Institutul de Fizică al Academiei</h3><p>La Măgurele se dezvoltă centrul care va deveni nucleul cercetării românești de fizică atomică și nucleară.</p></div></article>
+  <article class="event"><div class="date green">1957</div><div><h3>CIFA-1</h3><p>Echipa condusă de Victor Toma finalizează primul calculator electronic numeric românesc, cu aproximativ 1.500 de tuburi electronice.</p></div></article>
+  <article class="event"><div class="date green">1957</div><div><h3>Reactorul și ciclotronul de la Măgurele</h3><p>Intră în funcțiune infrastructuri majore pentru fizica nucleară, radioizotopi și pregătirea specialiștilor.</p></div></article>
+  <article class="event"><div class="date blue">1961–1968</div><div><h3>MECIPT și DACICC</h3><p>Centrele universitare din Timișoara și Cluj construiesc calculatoare proprii, iar informatica se dezvoltă ca disciplină.</p></div></article>
+  <article class="event"><div class="date green">1974</div><div><h3>George Emil Palade primește Premiul Nobel</h3><p>Este recompensat, împreună cu Albert Claude și Christian de Duve, pentru descoperiri privind organizarea structurală și funcțională a celulei.</p></div></article>
+  <article class="event"><div class="date blue">14–22 mai 1981</div><div><h3>Dumitru Prunariu în spațiu</h3><p>Zboară în misiunea Soyuz 40 și lucrează la stația Saliut 6 în cadrul programului Interkosmos.</p></div></article>
+  <article class="event"><div class="date green">1996</div><div><h3>Cernavodă 1</h3><p>Prima unitate CANDU intră în exploatare comercială; unitatea 2 urmează în 2007.</p></div></article>
+  <article class="event"><div class="date blue">22 dec. 2011</div><div><h3>România devine membră ESA</h3><p>Aderarea formală permite participarea deplină la programele Agenției Spațiale Europene.</p></div></article>
+  <article class="event"><div class="date blue">13 feb. 2012</div><div><h3>Goliat</h3><p>Primul satelit românesc este lansat cu zborul inaugural al rachetei europene Vega.</p></div></article>
+  <article class="event"><div class="date green">2016</div><div><h3>Membru cu drepturi depline al CERN</h3><p>România trece de la statutul de candidat la participarea deplină în organizația europeană de fizică a particulelor.</p></div></article>
+  <article class="event"><div class="date purple">mart. 2019</div><div><h3>ELI-NP atinge 10 petawați</h3><p>Sistemul laser de la Măgurele confirmă parametrii de proiectare, plasând România în cercetarea luminii extreme.</p></div></article>
+  <article class="event"><div class="date green">2024–2026</div><div><h3>ELI-NP ca infrastructură pentru utilizatori</h3><p>Zonele E1 și E6 sunt puse în funcțiune pentru accelerarea ionilor și electronilor, iar centrul dezvoltă aplicații în fizică nucleară, medicină și materiale.</p></div></article>
+</div>
+
+<h3>Domenii românești relevante</h3>
+<div class="grid4">
+  <article class="right-card"><strong>Fizică nucleară și laser</strong><span>IFIN-HH, ELI-NP și participarea la experimente CERN.</span></article>
+  <article class="right-card"><strong>Informatică</strong><span>CIFA, MECIPT, DACICC, industria FELIX și cercetarea matematică.</span></article>
+  <article class="right-card"><strong>Spațiu</strong><span>Interkosmos, ESA, ROSA, Goliat și contribuții la misiuni europene.</span></article>
+  <article class="right-card"><strong>Medicină celulară</strong><span>Moștenirea științifică a lui George Emil Palade și cercetarea biomedicală.</span></article>
+</div>
+<div class="purple-box"><strong>ELI-NP:</strong> sistemul cu două brațe poate furniza fascicule nominale de 10 PW. În 2024 au intrat în operare zone experimentale pentru accelerarea ionilor și electronilor, iar sincronizarea completă a celor două fascicule rămâne o etapă tehnică distinctă.</div>
+</section>
+
+<section class="section" id="impact">
+<h2>XXIV. Impactul asupra societății</h2>
+<div class="grid2">
+  <article class="card"><h3>Beneficii</h3><ul class="clean">
+    <li>creșterea speranței de viață și controlul bolilor;</li>
+    <li>comunicare aproape instantanee și acces la cunoaștere;</li>
+    <li>automatizarea muncilor periculoase și creșterea productivității;</li>
+    <li>mobilitate globală, navigație și prognoză meteorologică;</li>
+    <li>noi industrii, profesii și forme de colaborare;</li>
+    <li>măsurarea și înțelegerea mediului și climei.</li>
+  </ul></article>
+  <article class="card"><h3>Costuri și riscuri</h3><ul class="clean">
+    <li>arme de distrugere în masă și sisteme autonome;</li>
+    <li>poluare, schimbare climatică și epuizarea resurselor;</li>
+    <li>supraveghere digitală, pierderea vieții private și manipulare;</li>
+    <li>înlocuirea unor ocupații și polarizarea competențelor;</li>
+    <li>dependență de infrastructuri fragile și atacuri cibernetice;</li>
+    <li>inegalitate între state, regiuni și grupuri sociale.</li>
+  </ul></article>
+</div>
+
+<h3>Revoluțiile tehnologice comparate</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Revoluție</th><th>Resursa centrală</th><th>Infrastructură</th><th>Schimbare socială</th></tr></thead>
+<tbody>
+<tr><td>Atomică</td><td>Energia nucleului</td><td>Reactoare, laboratoare și sisteme de control</td><td>Descurajare nucleară, energie și medicină.</td></tr>
+<tr><td>Spațială</td><td>Racheta și orbita</td><td>Cosmodromuri, sateliți și stații de sol</td><td>Comunicații globale, navigație și observare.</td></tr>
+<tr><td>Digitală</td><td>Informația codificată</td><td>Microcipuri, rețele și centre de date</td><td>Automatizare, platforme și economie informațională.</td></tr>
+<tr><td>Biotehnologică</td><td>Informația genetică</td><td>Laboratoare, bioreactoare și baze genomice</td><td>Medicină moleculară, agricultură și bioeconomie.</td></tr>
+<tr><td>Tranziția verde</td><td>Fluxuri regenerabile și eficiență</td><td>Rețele electrice, stocare și electrificare</td><td>Restructurarea energiei, transportului și industriei.</td></tr>
+<tr><td>Inteligența artificială</td><td>Date, algoritmi și calcul</td><td>Acceleratoare, cloud și modele fundamentale</td><td>Automatizarea sarcinilor cognitive și noi probleme de control.</td></tr>
+</tbody></table></div>
+
+<div class="gold-box"><strong>Paradoxul productivității:</strong> o tehnologie poate apărea înainte ca societatea să se reorganizeze pentru a o folosi eficient. Beneficiile calculatoarelor, electricității sau AI depind de competențe, standarde, management, instituții și timp.</div>
+</section>
+
+<section class="section" id="cronologie">
+<h2>XXV. Cronologia generală: 1945–2026</h2>
+<div class="timeline">
+  <article class="event"><div class="date red">1945–1949</div><div><h3>Atom, calcul și sănătate mondială</h3><p>Arme atomice, ENIAC, tranzistor, OMS și instituționalizarea cercetării postbelice.</p></div></article>
+  <article class="event"><div class="date green">1950–1959</div><div><h3>ADN, nuclear civil, CERN și Sputnik</h3><p>Biologie moleculară, transplant, vaccin antipolio, celule solare, CIFA-1, sateliți și circuit integrat.</p></div></article>
+  <article class="event"><div class="date green">1960–1969</div><div><h3>Laser, om în spațiu și microelectronică</h3><p>Laser, Gagarin, comunicații prin satelit, cod genetic, transplant cardiac, Apollo și ARPANET.</p></div></article>
+  <article class="event"><div class="date blue">1970–1979</div><div><h3>Microprocesor și biotehnologie</h3><p>CT, e-mail, ADN recombinant, telefon mobil, calcul personal, FIV și crize energetice.</p></div></article>
+  <article class="event"><div class="date red">1980–1989</div><div><h3>PC, HIV, internet și mediu</h3><p>Eradicarea variolei, IBM PC, TCP/IP, Cernobîl, Montreal, IPCC și propunerea Web.</p></div></article>
+  <article class="event"><div class="date blue">1990–1999</div><div><h3>Web-ul și genomul</h3><p>Hubble, Proiectul Genomului, litiu-ion, GPS, exoplanete, terapie HIV, Dolly și ISS.</p></div></article>
+  <article class="event"><div class="date green">2000–2009</div><div><h3>Conectivitate permanentă</h3><p>Genom finalizat, grafen, rețele sociale, smartphone, LHC, cloud și blockchain.</p></div></article>
+  <article class="event"><div class="date purple">2010–2019</div><div><h3>Noua știință a datelor</h3><p>Higgs, CRISPR, învățare profundă, unde gravitaționale, Paris, AlphaGo și imaginea unei găuri negre.</p></div></article>
+  <article class="event"><div class="date purple">2020–2026</div><div><h3>Pandemia și AI generativă</h3><p>Vaccinuri ARNm, JWST, reglementarea AI, ELI-NP, cercetare cuantică, fuziune și tranziție energetică.</p></div></article>
+</div>
+</section>
+
+<section class="section" id="sinteza">
+<h2>XXVI. Sinteză pentru evaluare</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Domeniu</th><th>Descoperiri și invenții</th><th>Instituții</th><th>Efect istoric</th></tr></thead>
+<tbody>
+<tr><td>Fizică nucleară</td><td>Fisiune controlată, centrale și fuziune experimentală</td><td>AIEA, laboratoare naționale, ITER</td><td>Arme, energie, medicină și diplomație.</td></tr>
+<tr><td>Spațiu</td><td>Sateliți, zbor uman, sonde și telescoape</td><td>NASA, ESA, agenții naționale, ISS</td><td>Prestigiu, comunicații, navigație și știință planetară.</td></tr>
+<tr><td>Electronică</td><td>Tranzistor, cip, microprocesor, laser și fibră</td><td>Universități, laboratoare și industrie</td><td>Miniaturizare și infrastructura societății digitale.</td></tr>
+<tr><td>Informatică</td><td>PC, internet, Web, cloud și AI</td><td>ARPA/DARPA, CERN, companii și rețele academice</td><td>Economia informațională și automatizarea cognitivă.</td></tr>
+<tr><td>Biomedicină</td><td>ADN, vaccinuri, transplant, imagistică, genom și CRISPR</td><td>OMS, institute medicale și consorții genomice</td><td>Prevenție, diagnostic, tratament și dileme bioetice.</td></tr>
+<tr><td>Mediu și energie</td><td>Climatologie, fotovoltaic, eolian, baterii și eficiență</td><td>IPCC, UNEP, UNFCCC</td><td>Înțelegerea limitelor planetare și tranziția energetică.</td></tr>
+<tr><td>România</td><td>CIFA-1, fizică nucleară, Prunariu, Cernavodă, ESA, CERN, ELI-NP</td><td>IFA/IFIN-HH, ROSA, universități</td><td>Integrarea în rețelele științifice europene și globale.</td></tr>
+</tbody></table></div>
+
+<div class="final">
+<h3>Concluzie generală</h3>
+<p>Istoria postbelică a științei și tehnologiei nu este o succesiune liniară de invenții, ci o rețea de competiții, cooperări și efecte neprevăzute. Războiul Rece a accelerat energia atomică, spațiul și electronica, însă instituțiile internaționale au transformat o parte a rivalității în proiecte comune. Biologia moleculară și informatica au făcut din informație — genetică sau digitală — resursa centrală a lumii contemporane. În secolul XXI, problema nu mai este doar ce poate realiza tehnologia, ci cine o controlează, cine beneficiază, cum sunt distribuite riscurile și ce limite democratice, etice și ecologice trebuie stabilite.</p>
+</div>
+</section>
+
+<section class="section">
+<h2>XXVII. Surse instituționale pentru verificare și aprofundare</h2>
+<p class="intro">Materialul a fost verificat prin surse oficiale și instituționale. Linkurile de mai jos permit aprofundarea cronologiilor și actualizarea informațiilor care se pot schimba.</p>
+<div class="source-list">
+  <a href="https://www.nasa.gov/history/" target="_blank" rel="noopener">NASA History — istoria programelor spațiale</a>
+  <a href="https://home.cern/about/who-we-are/our-history/" target="_blank" rel="noopener">CERN — istorie și marile descoperiri</a>
+  <a href="https://home.cern/science/computing/the-birth-of-the-web/" target="_blank" rel="noopener">CERN — nașterea World Wide Web</a>
+  <a href="https://www.who.int/about/history/" target="_blank" rel="noopener">OMS — istoria sănătății publice mondiale</a>
+  <a href="https://www.genome.gov/human-genome-project/timeline" target="_blank" rel="noopener">NHGRI — cronologia Proiectului Genomului Uman</a>
+  <a href="https://www.darpa.mil/news/features/arpanet" target="_blank" rel="noopener">DARPA — ARPANET și internetul</a>
+  <a href="https://www.computerhistory.org/timeline/" target="_blank" rel="noopener">Computer History Museum — cronologia informaticii</a>
+  <a href="https://www.nobelprize.org/" target="_blank" rel="noopener">Nobel Prize — descoperiri și inventatori</a>
+  <a href="https://www.iaea.org/" target="_blank" rel="noopener">AIEA — energie nucleară, siguranță și garanții</a>
+  <a href="https://www.iter.org/" target="_blank" rel="noopener">ITER — fuziune și calendarul proiectului</a>
+  <a href="https://www.ipcc.ch/about/history/" target="_blank" rel="noopener">IPCC — istoria evaluărilor climatice</a>
+  <a href="https://unfccc.int/process-and-meetings/the-paris-agreement" target="_blank" rel="noopener">UNFCCC — Acordul de la Paris</a>
+  <a href="https://ozone.unep.org/treaties/montreal-protocol" target="_blank" rel="noopener">UNEP — Protocolul de la Montreal</a>
+  <a href="https://www.esa.int/Space_in_Member_States/Romania" target="_blank" rel="noopener">ESA — România și programele spațiale europene</a>
+  <a href="https://home.cern/about/who-we-are/member-states/" target="_blank" rel="noopener">CERN — state membre și aderarea României</a>
+  <a href="https://www.ifin.ro/history.php" target="_blank" rel="noopener">IFIN-HH — istoria cercetării de la Măgurele</a>
+  <a href="https://www.eli-np.ro/" target="_blank" rel="noopener">ELI-NP — infrastructura laser de 10 PW</a>
+  <a href="https://www.unesco.org/en/artificial-intelligence/recommendation-ethics" target="_blank" rel="noopener">UNESCO — etica inteligenței artificiale</a>
+  <a href="https://commission.europa.eu/news-and-media/news/ai-act-enters-force-2024-08-01_en" target="_blank" rel="noopener">Comisia Europeană — intrarea în vigoare a AI Act</a>
+</div>
+</section>
+
+<footer>Material de sinteză · Istorie universală · Lumea postbelică: știință și tehnologie · actualizat la 22 iulie 2026</footer>
+</main>
+<script>
+const items=[...document.querySelectorAll("details")];
+document.querySelectorAll("[data-action]").forEach(btn=>{
+ btn.addEventListener("click",()=>{
+  const value=btn.dataset.action==="open";
+  items.forEach(x=>x.open=value);
+ });
+});
+</script>
+</body>
+</html>

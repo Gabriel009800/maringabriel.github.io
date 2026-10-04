@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crime de stat înfăptuite de Germania Nazistă în Al Doilea Război Mondial</title>
+  <style>
+
+    :root {
+      --bg: #f6f0e7;
+      --paper: #fffaf3;
+      --paper-2: #ffffff;
+      --ink: #2f241c;
+      --title: #3c2a1e;
+      --muted: #5b4a3d;
+      --accent: #7a4f2a;
+      --accent-2: #9b6a3c;
+      --accent-soft: #f0e4d4;
+      --line: rgba(91, 62, 36, 0.18);
+      --line-strong: rgba(91, 62, 36, 0.34);
+      --outer-dark: #241208;
+      --outer-mid: #4a2a18;
+      --outer-warm: #7a4b2b;
+      --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+      --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+        radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+        radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+        radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+        linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+      background-attachment: fixed;
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0 70px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .back-link,
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 243, 0.84);
+      color: var(--title);
+      border-radius: 999px;
+      padding: 10px 15px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      box-shadow: var(--shadow-small);
+    }
+
+    .back-link:hover { background: #fff6eb; }
+
+    .hero,
+    .section,
+    .nav-card,
+    .final-box {
+      background: rgba(255, 250, 243, 0.96);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 38px;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: attr(data-watermark);
+      position: absolute;
+      right: 26px;
+      bottom: -22px;
+      font-size: 110px;
+      font-weight: 900;
+      letter-spacing: -4px;
+      color: rgba(122, 79, 42, 0.08);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      font-size: 16px;
+      color: var(--accent);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: left;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 1.04;
+      color: var(--title);
+      letter-spacing: -1.4px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    .subtitle {
+      margin: 18px 0 0;
+      max-width: 980px;
+      font-size: 19px;
+      line-height: 1.78;
+      color: var(--muted);
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .summary-grid,
+    .three-col,
+    .two-col,
+    .term-grid,
+    .quick-grid,
+    .cause-grid,
+    .four-col {
+      display: grid;
+      gap: 14px;
+    }
+
+    .summary-grid { grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+    .three-col { grid-template-columns: repeat(3, 1fr); }
+    .two-col { grid-template-columns: repeat(2, 1fr); }
+    .four-col { grid-template-columns: repeat(4, 1fr); }
+    .cause-grid { grid-template-columns: 1.1fr 0.9fr; }
+    .term-grid { grid-template-columns: repeat(4, 1fr); }
+    .quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+
+    .summary-card,
+    .info-card,
+    .wide-card,
+    .term-card,
+    .quick-card,
+    .source-note,
+    .micro-card,
+    .warning-box,
+    .quote-card {
+      background: var(--paper-2);
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 20px;
+      box-shadow: var(--shadow-small);
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .summary-card { padding: 16px; min-height: 132px; }
+
+    .summary-card strong,
+    .quick-card strong,
+    .term-card strong,
+    .micro-card strong {
+      display: block;
+      color: var(--title);
+      font-size: 17px;
+      margin-bottom: 8px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    .summary-card span,
+    .quick-card span,
+    .term-card span,
+    .micro-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.56;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .nav-card {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 18px 20px;
+      margin-bottom: 24px;
+    }
+
+    .nav-card b { color: var(--title); margin-right: 2px; }
+
+    .nav-card a,
+    .mini-btn {
+      color: var(--title);
+      background: var(--accent-soft);
+      border: 1px solid rgba(91, 62, 36, 0.16);
+      border-radius: 999px;
+      text-decoration: none;
+      padding: 8px 12px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .nav-card a:hover,
+    .mini-btn:hover { background: #e5d2bb; }
+
+    .section { padding: 30px; margin-bottom: 24px; }
+
+    h2 {
+      margin: 0 0 14px;
+      color: var(--title);
+      font-size: clamp(28px, 3vw, 38px);
+      line-height: 1.15;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    h3 {
+      margin: 0 0 12px;
+      color: var(--title);
+      font-size: 22px;
+      line-height: 1.22;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    h4 {
+      margin: 16px 0 8px;
+      color: var(--title);
+      font-size: 18px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    .section-intro,
+    p,
+    li,
+    dd {
+      font-size: 17px;
+      line-height: 1.72;
+      color: var(--muted);
+      text-align: justify;
+      text-align-last: left;
+      hyphens: auto;
+    }
+
+    .section-intro { margin: 0 0 20px; max-width: 1000px; }
+
+    .info-card,
+    .wide-card,
+    .term-card,
+    .quick-card,
+    .micro-card,
+    .warning-box,
+    .quote-card { padding: 20px; }
+
+    .wide-card { margin-top: 14px; }
+    .wide-card p:last-child,
+    .info-card p:last-child { margin-bottom: 0; }
+
+    .clean,
+    .number-list { margin: 0; padding-left: 22px; }
+
+    .clean li,
+    .number-list li { margin: 0 0 9px; padding-left: 2px; }
+
+    .clean li:last-child,
+    .number-list li:last-child { margin-bottom: 0; }
+
+    .mini-title {
+      display: inline;
+      color: var(--title);
+      font-weight: 800;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      padding: 0;
+      margin-right: 5px;
+      white-space: normal;
+      text-align: inherit;
+    }
+
+    .date-pill {
+      display: inline-block;
+      color: var(--title);
+      font-weight: 800;
+      background: #f3eadf;
+      border: 1px solid rgba(91, 62, 36, 0.13);
+      border-radius: 999px;
+      padding: 2px 9px;
+      margin-right: 5px;
+      white-space: nowrap;
+      text-align: left;
+    }
+
+    .definition,
+    .note {
+      margin-top: 18px;
+      background: #fff8ef;
+      border: 1px solid rgba(122, 79, 42, 0.22);
+      border-left: 6px solid rgba(122, 79, 42, 0.48);
+      border-radius: 18px;
+      padding: 18px 20px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .definition strong,
+    .note strong { color: var(--title); }
+
+    details {
+      background: #fffdf9;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 20px;
+      box-shadow: var(--shadow-small);
+      margin-top: 14px;
+      overflow: hidden;
+    }
+
+    details[open] { background: #fffaf3; }
+
+    summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 18px 20px;
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--title);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    summary::after {
+      content: "Deschide";
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+      background: #f3eadf;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 999px;
+      padding: 7px 11px;
+      white-space: nowrap;
+    }
+
+    details[open] > summary::after { content: "Ascunde"; }
+
+    .details-body {
+      border-top: 1px solid rgba(91, 62, 36, 0.12);
+      padding: 18px 20px 20px;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .nested-details { margin-top: 10px; box-shadow: none; background: #ffffff; }
+
+    .nested-details summary { font-size: 17px; padding: 14px 16px; }
+
+    .key-line {
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px dashed rgba(91, 62, 36, 0.18);
+    }
+
+    .key-line:last-child { border-bottom: 0; }
+
+    .key-line strong { color: var(--title); text-align: left; text-align-last: auto; }
+
+    .key-line span { color: var(--muted); line-height: 1.65; text-align: justify; text-align-last: left; }
+
+    .timeline { position: relative; display: grid; gap: 14px; margin-top: 18px; }
+
+    .event {
+      display: grid;
+      grid-template-columns: 132px 1fr;
+      gap: 18px;
+      align-items: stretch;
+      background: #ffffff;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 20px;
+      box-shadow: var(--shadow-small);
+      overflow: hidden;
+    }
+
+    .date {
+      background: linear-gradient(180deg, #7a4f2a, #5b351b);
+      color: #fffaf3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 14px;
+      font-size: 18px;
+      line-height: 1.25;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+    }
+
+    .event > div:last-child { padding: 17px 18px 18px 0; text-align: justify; text-align-last: left; }
+
+    .event h3 { margin-bottom: 6px; }
+    .event p { margin: 0; }
+
+    .small-muted {
+      font-size: 15px;
+      color: #725c49;
+      line-height: 1.6;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .warning-box { background: #fff7ec; border-color: rgba(122, 79, 42, 0.22); margin-top: 16px; }
+
+    .quote-card { background: linear-gradient(135deg, #fffdf9, #f8eddf); }
+
+    .source-note { margin-top: 14px; padding: 16px; background: #fffdf9; }
+    .source-note a { color: var(--accent); font-weight: 700; text-decoration: none; }
+    .source-note a:hover { text-decoration: underline; }
+
+    .controls { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+
+    .final-box { padding: 28px; background: linear-gradient(135deg, #fffaf3, #f4e4d1); border-color: rgba(91, 62, 36, 0.25); }
+
+    .final-box p { margin-bottom: 0; }
+
+    @media (max-width: 980px) {
+      .summary-grid,
+      .three-col,
+      .term-grid,
+      .quick-grid,
+      .four-col { grid-template-columns: repeat(2, 1fr); }
+      .two-col,
+      .cause-grid,
+      .details-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .page { width: min(100% - 22px, 1180px); padding-top: 22px; }
+      .hero,
+      .section,
+      .final-box { padding: 22px; border-radius: 22px; }
+      .summary-grid,
+      .term-grid,
+      .quick-grid,
+      .four-col { grid-template-columns: 1fr; }
+      .event { grid-template-columns: 1fr; }
+      .date { min-height: 66px; }
+      .event > div:last-child { padding: 0 16px 16px; }
+      .key-line { grid-template-columns: 1fr; gap: 6px; }
+      summary { align-items: flex-start; flex-direction: column; }
+      .hero::after { font-size: 82px; }
+    }
+
+  
+    .source-list { margin: 0; padding-left: 22px; }
+    .source-list li { margin-bottom: 8px; }
+    .source-list a { color: var(--accent); font-weight: 700; text-decoration: none; }
+    .source-list a:hover { text-decoration: underline; }
+    .divider-note { margin-top: 14px; }
+    .case-label { display:inline-block; font-weight:800; color:var(--title); background:#f3eadf; border:1px solid rgba(91,62,36,.13); border-radius:999px; padding:2px 9px; margin:0 4px 4px 0; }
+    .dense-list li { margin-bottom: 11px; }
+    .quote-box { margin-top: 14px; background:#fff8ef; border:1px dashed rgba(122,79,42,.28); border-radius:18px; padding:16px 18px; }
+  
+    .fact-table { width: 100%; border-collapse: collapse; margin-top: 14px; overflow: hidden; border-radius: 18px; box-shadow: var(--shadow-small); background: #fffdf9; }
+    .fact-table th, .fact-table td { border: 1px solid rgba(91,62,36,.16); padding: 12px 14px; vertical-align: top; color: var(--muted); font-size: 16px; line-height: 1.58; text-align: justify; text-align-last: left; }
+    .fact-table th { background: #f3eadf; color: var(--title); font-weight: 900; text-align: left; text-align-last: auto; }
+    .chapter-note { margin: 12px 0 0; font-size: 15.5px; color: #725c49; line-height: 1.6; }
+    .badge-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .badge { display:inline-flex; align-items:center; border:1px solid rgba(91,62,36,.16); background:#f3eadf; color:var(--title); border-radius:999px; padding:6px 10px; font-weight:800; font-size:14px; }
+    .reading-box { background:#fffdf9; border:1px dashed rgba(122,79,42,.32); border-radius:18px; padding:18px 20px; margin-top:14px; }
+    .reading-box p { margin-top: 0; }
+    .reading-box p:last-child { margin-bottom: 0; }
+    @media (max-width: 680px) { .fact-table, .fact-table tbody, .fact-table tr, .fact-table th, .fact-table td { display:block; width:100%; } .fact-table th { border-bottom:0; } }
+</style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a class="back-link" href="#">← Înapoi la materiale</a>
+      <span class="tag">Material ajutător · Istorie universală · Crime de stat</span>
+    </div>
+
+    <section class="hero" data-watermark="1933-1945">
+      <p class="eyebrow">Material ajutător · Istorie universală · Al Doilea Război Mondial</p>
+      <h1>Crime de stat înfăptuite de Germania Nazistă în Al Doilea Război Mondial</h1>
+      <p class="subtitle">Material amplu despre Holocaust și despre sistemul mai larg al persecuțiilor naziste: lagăre, ghetouri, centre de exterminare, muncă forțată, programul T4, sterilizare forțată, crime împotriva romilor, homosexualilor, prizonierilor sovietici, comuniștilor, democraților, artiștilor și intelectualilor considerați „degenerați”.</p>
+      <div class="summary-grid">
+        <div class="summary-card"><strong>Holocaustul</strong><span>Genocidul evreilor europeni: legi rasiale, ghetouri, deportări, împușcări, centre de exterminare și muncă până la moarte.</span></div>
+        <div class="summary-card"><strong>Sistemul lagărelor</strong><span>Lagăre timpurii, de concentrare, de muncă, de tranzit, pentru prizonieri, ghetouri, centre T4 și centre de exterminare.</span></div>
+        <div class="summary-card"><strong>Alte victime</strong><span>Romi și sinti, persoane cu dizabilități, homosexuali, comuniști, democrați, intelectuali, artiști, prizonieri sovietici și civili din est.</span></div>
+        <div class="summary-card"><strong>Stat și societate</strong><span>Crimele au fost posibile prin instituții, legi, medici, poliție, armată, companii, gări, funcționari și colaboratori.</span></div>
+      </div>
+    </section>
+
+    <nav class="nav-card" aria-label="Cuprins">
+      <b>Cuprins:</b>
+      <a href="#cadru">I. Cadru</a>
+      <a href="#cronologie">II. Cronologie</a>
+      <a href="#holocaust">III. Holocaustul</a>
+      <a href="#lagare">IV. Lagăre</a>
+      <a href="#victime">V. Victime</a>
+      <a href="#est">VI. Estul</a>
+      <a href="#cultura">VII. Cultură</a>
+      <a href="#munca">VIII. Muncă</a>
+      <a href="#justitie">IX. Justiție</a>
+      <a href="#dosare">X. Dosare</a>
+      <a href="#surse">Surse</a>
+    </nav>
+
+    
+<section class="section" id="cadru">
+  <h2>I. Cadru general: ce înseamnă crimă de stat în cazul Germaniei naziste?</h2>
+  <p class="section-intro">În Germania nazistă, violența nu a fost un fenomen marginal. Ea a fost organizată de stat și justificată printr-un amestec de antisemitism, rasism biologic, eugenism, anticomunism, militarism și cult al obedienței. De aceea, analiza trebuie să urmărească nu doar atrocitățile finale, ci și pașii prin care oamenii au fost transformați în categorii administrative: „evreu”, „țigan”, „asocial”, „bolnav ereditar”, „dușman politic”, „comisar bolșevic”, „degenerat”.</p>
+  <div class="three-col">
+    <article class="info-card"><h3>Ideologie</h3><p>Nazismul a susținut că societatea trebuie „purificată” de grupuri considerate periculoase biologic, politic sau cultural. Antisemitismul a fost central, dar nu singurul element: regimul a atacat și romii, persoanele cu dizabilități, homosexualii, comuniștii, social-democrații, liberalii, artiștii moderni, intelectualii critici și populațiile slave.</p></article>
+    <article class="info-card"><h3>Instituții</h3><p>SS, Gestapo, poliția de ordine, administrația civilă, armata, tribunalele speciale, medicii, funcționarii locali și companiile au avut roluri diferite în mecanismul represiv. Fără registre, transporturi, pază, decizii medicale, confiscări și logistică, crimele nu ar fi putut atinge asemenea dimensiuni.</p></article>
+    <article class="info-card"><h3>Război și ocupație</h3><p>După 1939, statul nazist a exportat violența în Europa ocupată. În Polonia, URSS, Balcani, Franța, Țările de Jos, Grecia, Italia și alte regiuni, autoritățile germane au combinat deportările, represaliile, munca forțată, foametea și exterminarea.</p></article>
+  </div>
+  <div class="definition"><strong>Ideea-cheie:</strong> Holocaustul nu poate fi separat de sistemul mai larg al criminalității naziste, dar nici redus la acesta. Holocaustul este genocidul evreilor europeni; în jurul lui se află un ansamblu de persecuții, crime de război, crime împotriva umanității și politici de exterminare sau distrugere socială aplicate altor grupuri.</div>
+</section>
+
+<section class="section" id="cronologie">
+  <h2>II. Cronologie amplă: de la excludere la exterminare</h2>
+  <p class="section-intro">Cronologia arată că radicalizarea a avut loc treptat. Etapele se suprapun: teroarea politică începe imediat, rasismul devine lege, războiul permite deportarea, iar ocupația din est deschide calea uciderii în masă.</p>
+  <div class="timeline">
+        <article class="event"><div class="date">1933</div><div><h3>Preluarea puterii și teroarea politică</h3><p>Comuniștii, social-democrații, sindicaliștii și alți adversari sunt arestați. Lagărele timpurii, precum Dachau, apar ca instrumente de intimidare și detenție fără protecție juridică.</p></div></article>
+        <article class="event"><div class="date">1933</div><div><h3>Legea sterilizării forțate</h3><p>Regimul începe transformarea medicinei în instrument politic. Persoanele etichetate ca având boli ereditare sau dizabilități sunt supuse sterilizării fără consimțământ.</p></div></article>
+        <article class="event"><div class="date">1935</div><div><h3>Legile de la Nürnberg</h3><p>Evreii pierd cetățenia deplină, iar apartenența la comunitatea germană este definită pe criterii rasiale. Excluderea devine politică legală.</p></div></article>
+        <article class="event"><div class="date">1937</div><div><h3>Campania împotriva „artei degenerate”</h3><p>Arta modernă, intelectualii independenți, artiștii evrei sau de stânga sunt prezentați ca simptome ale degradării culturale. Cultura devine teren de epurare politică.</p></div></article>
+        <article class="event"><div class="date">1938</div><div><h3>Noaptea de Cristal</h3><p>Sinagogi arse, magazine evreiești distruse, arestări și deportări în lagăre. Violența publică transmite mesajul că evreii nu mai sunt protejați de lege.</p></div></article>
+        <article class="event"><div class="date">1939</div><div><h3>Invadarea Poloniei</h3><p>În teritoriile ocupate încep ghetouri, execuții ale elitelor, deportări, muncă forțată și primele forme de inginerie demografică violentă.</p></div></article>
+        <article class="event"><div class="date">1939-1941</div><div><h3>Programul T4</h3><p>Persoane cu dizabilități sunt ucise în centre speciale. Certificatele de deces false și limbajul medical ascund crima sub aparența tratamentului.</p></div></article>
+        <article class="event"><div class="date">1941</div><div><h3>Operațiunea Barbarossa</h3><p>Invadarea URSS aduce războiul de anihilare: execuții masive, înfometarea prizonierilor sovietici, distrugerea comunităților evreiești și represalii împotriva civililor.</p></div></article>
+        <article class="event"><div class="date">1941-1942</div><div><h3>Radicalizarea „Soluției finale”</h3><p>Uciderea prin împușcare se combină cu deportarea către centre de exterminare. Conferința de la Wannsee coordonează birocratic distrugerea evreilor europeni.</p></div></article>
+        <article class="event"><div class="date">1942-1943</div><div><h3>Operațiunea Reinhard</h3><p>Bełżec, Sobibór și Treblinka devin centre specializate în ucidere rapidă, mai ales a evreilor din Polonia ocupată.</p></div></article>
+        <article class="event"><div class="date">1943-1944</div><div><h3>Extindere și exploatare industrială</h3><p>Sublagărele de muncă forțată se multiplică. Prizonierii sunt folosiți în fabrici, mine, lucrări subterane și industria de armament.</p></div></article>
+        <article class="event"><div class="date">1944</div><div><h3>Deportarea evreilor din Ungaria</h3><p>În câteva luni, sute de mii de evrei maghiari sunt deportați, mai ales la Auschwitz-Birkenau, arătând că mașinăria genocidară funcționa până aproape de sfârșitul războiului.</p></div></article>
+        <article class="event"><div class="date">1944-1945</div><div><h3>Marșurile morții</h3><p>Pe măsură ce fronturile se apropie, prizonierii sunt evacuați pe jos, în condiții de iarnă, foame și violență. Mulți mor înainte de eliberare.</p></div></article>
+        <article class="event"><div class="date">1945</div><div><h3>Eliberare și probe</h3><p>Aliații descoperă lagăre, gropi comune, documente, registre, supraviețuitori și urme materiale ale crimelor. Procesele postbelice transformă o parte din probe în condamnări juridice.</p></div></article>
+      </div>
+</section>
+
+<section class="section" id="holocaust">
+  <h2>III. Holocaustul: genocidul evreilor europeni</h2>
+  <p class="section-intro">Holocaustul a fost distrugerea sistematică a evreilor europeni de către Germania nazistă, cu sprijinul unor aliați și colaboratori. El a combinat ideologia antisemită, legislația rasială, ghetourile, deportările, execuțiile în masă, centrele de exterminare, munca forțată, înfometarea și confiscarea bunurilor.</p>
+  <div class="two-col">
+    <article class="info-card"><h3>Etapele genocidului</h3><ul class="clean dense-list"><li><strong>Definirea victimei:</strong> statul decide cine este evreu prin criterii rasiale, nu prin apartenență religioasă sau identitate personală.</li><li><strong>Excluderea:</strong> evreii sunt eliminați din profesii, școli, universități, instituții publice, presă, cultură și viața economică.</li><li><strong>Jefuirea:</strong> proprietățile sunt arianizate, conturile blocate, firmele confiscate, locuințele ocupate, obiectele personale luate.</li><li><strong>Concentrarea:</strong> ghetourile și taberele de tranzit facilitează controlul, foamea, epidemiile și deportarea.</li><li><strong>Exterminarea:</strong> împușcare, gazare, muncă până la moarte, înfometare, boală și violență arbitrară.</li></ul></article>
+    <article class="info-card"><h3>Ce nu trebuie simplificat</h3><ul class="clean dense-list"><li><strong>Nu toate victimele au murit în camere de gazare:</strong> multe au murit în ghetouri, în execuții, pe drum, în marșuri ale morții, în lagăre de muncă sau prin privare deliberată.</li><li><strong>Nu toate lagărele erau centre de exterminare:</strong> unele erau de concentrare, de muncă, de tranzit, pentru prizonieri de război, pentru tineri, pentru civili sau centre T4.</li><li><strong>Nu a fost doar o crimă germană abstractă:</strong> a presupus funcționari, polițiști, gări, trenuri, companii, vecini, denunțuri, colaboratori și administrații locale.</li><li><strong>Nu a fost haos:</strong> chiar când ordinele erau verbale sau ascunse, sistemul era organizat prin liste, transporturi, selecții și rapoarte.</li></ul></article>
+  </div>
+  <details open><summary>1. De la antisemitism social la antisemitism de stat</summary><div class="details-body">
+<p>Antisemitismul nazist nu a fost doar o prejudecată individuală. El a devenit principiu de guvernare. Propaganda a prezentat evreii ca dușmani ai națiunii, ai economiei, ai culturii și ai rasei. În școli, presă, afișe și filme, evreii erau dezumanizați și asociați cu boala, parazitismul, conspirația și bolșevismul.</p><div class="key-line"><strong>Boicot și excludere</strong><span>Boicotul magazinelor evreiești, eliminarea din funcții publice și interdicțiile profesionale au creat izolarea economică și socială.</span></div><div class="key-line"><strong>Legi rasiale</strong><span>Legile de la Nürnberg au rupt legătura dintre cetățenie și drepturi, transformând apartenența rasială într-o sentință juridică.</span></div><div class="key-line"><strong>Noaptea de Cristal</strong><span>Violența din noiembrie 1938 a arătat că statul poate organiza sau tolera atacuri publice, apoi poate pedepsi tot victima prin amenzi, confiscări și deportări.</span></div><div class="key-line"><strong>Emigrare forțată</strong><span>Înainte de război, mulți evrei au încercat să fugă, dar obstacolele birocratice, sărăcirea, refuzul vizelor și închiderea granițelor au limitat salvarea.</span></div>
+  </div></details>
+  <details open><summary>2. Ghetourile: izolare, control și moarte lentă</summary><div class="details-body">
+<p>Ghetourile au funcționat mai ales în Polonia ocupată și în Europa de Est. Ele concentrau populația evreiască în spații mici, împrejmuite sau controlate, unde hrana, igiena și spațiul erau insuficiente. Uneori ghetoul era prezentat ca măsură temporară; în realitate, devenea mecanism de distrugere și punct de plecare către deportare.</p><table class="fact-table"><thead><tr><th>Ghetou / loc</th><th>Rol și particularitate</th></tr></thead><tbody>
+<tr><td>Varșovia</td><td>Cel mai mare ghetou din Europa ocupată. Supraaglomerarea, foametea și deportările către Treblinka au produs distrugerea comunității; revolta din 1943 a devenit simbol al rezistenței.</td></tr>
+<tr><td>Łódź / Litzmannstadt</td><td>A funcționat mult timp ca ghetou-lagăr de muncă. Conducerea nazistă a exploatat munca evreilor înainte de lichidarea treptată.</td></tr>
+<tr><td>Cracovia</td><td>Ghetou important din Guvernământul General, legat de deportări, muncă forțată și lagărul Płaszów.</td></tr>
+<tr><td>Vilna / Vilnius</td><td>Spațiu al culturii evreiești distrus prin împușcări, deportări și lichidare. Ponary/Paneriai a devenit loc major de execuție.</td></tr>
+<tr><td>Kovno / Kaunas</td><td>Ghetou din Lituania ocupată, legat de execuții masive, muncă forțată și deportări.</td></tr>
+<tr><td>Theresienstadt</td><td>Ghetou, lagăr de tranzit și instrument de propagandă. Regimul l-a folosit pentru a masca deportările spre Auschwitz și alte locuri de ucidere.</td></tr>
+</tbody></table><div class="note"><strong>De reținut:</strong> ghetoul nu era doar o etapă administrativă. Era o formă de violență prin foamete, boală, frig, frică și incertitudine, urmată adesea de deportare.</div>
+  </div></details>
+  <details open><summary>3. Holocaustul prin gloanțe: Einsatzgruppen și execuțiile în masă</summary><div class="details-body">
+<p>După invadarea URSS, uciderea a devenit adesea directă și locală. Unitățile mobile de ucidere, sprijinite de poliție, Waffen-SS, Wehrmacht în anumite contexte și colaboratori locali, au adunat victimele, le-au dus la marginea orașelor sau satelor și le-au împușcat în gropi comune.</p><div class="key-line"><strong>Victime</strong><span>Evreii au fost ținta principală, dar au fost uciși și romi, comuniști, comisari politici sovietici, persoane suspectate de rezistență și civili.</span></div><div class="key-line"><strong>Locuri</strong><span>Babi Yar lângă Kiev, Rumbula lângă Riga, Ponary lângă Vilnius și numeroase alte ravene, păduri sau șanțuri au devenit locuri ale crimei.</span></div><div class="key-line"><strong>Metodă</strong><span>Victimele erau dezbrăcate, deposedate, aliniate și împușcate. Uneori erau forțate să se culce peste cadavrele celor executați anterior.</span></div><div class="key-line"><strong>Ascunderea urmelor</strong><span>În 1943-1944, operațiuni speciale au încercat să dezgroape și să ardă cadavrele pentru a elimina probele.</span></div><div class="warning-box"><h3>Observație pentru predare</h3><p>Este important să se explice că Holocaustul nu înseamnă doar Auschwitz. Pentru multe comunități evreiești din est, moartea a venit prin împușcare lângă sat, în pădure sau la marginea orașului.</p></div>
+  </div></details>
+  <details open><summary>4. Centrele de exterminare: locuri construite pentru ucidere</summary><div class="details-body">
+<p>Centrele de exterminare au fost create pentru uciderea rapidă a unor grupuri mari de oameni, mai ales evrei. Unele erau aproape exclusiv instalații de ucidere, nu lagăre de detenție pe termen lung. Aici diferența dintre „lagăr de concentrare” și „centru de exterminare” este esențială.</p><table class="fact-table"><thead><tr><th>Centru</th><th>Caracteristici principale</th></tr></thead><tbody>
+<tr><td>Chełmno / Kulmhof</td><td>A folosit camioane de gazare. A fost legat de uciderea evreilor din regiunea Łódź și a altor victime, inclusiv romi.</td></tr>
+<tr><td>Bełżec</td><td>Centru al Operațiunii Reinhard. Majoritatea deportaților erau uciși rapid după sosire; urmele au fost distruse aproape complet.</td></tr>
+<tr><td>Sobibór</td><td>Centru al Operațiunii Reinhard. Revolta din octombrie 1943 a dus la evadarea unor prizonieri și apoi la distrugerea lagărului de către naziști.</td></tr>
+<tr><td>Treblinka II</td><td>Unul dintre cele mai letale centre, legat de deportările din Ghetoul Varșoviei și din alte regiuni. Revolta din 1943 a rămas un act major de rezistență.</td></tr>
+<tr><td>Auschwitz-Birkenau</td><td>Complex mixt: lagăr de concentrare, muncă forțată și centru de exterminare. Birkenau a avut rampe de selecție, crematorii și camere de gazare.</td></tr>
+<tr><td>Majdanek / Lublin</td><td>A funcționat ca lagăr de concentrare și muncă, dar a avut și camere de gazare și execuții masive; clasificarea sa este mai complexă decât a centrelor exclusiv dedicate uciderii.</td></tr>
+</tbody></table><div class="note"><strong>Diferență-cheie:</strong> în lagărele de concentrare se urmărea detenția, teroarea și exploatarea, chiar dacă mortalitatea era uriașă; în centrele de exterminare, uciderea imediată era scopul principal pentru majoritatea deportaților.</div>
+  </div></details>
+  <details open><summary>5. Deportările: birocrația trenurilor</summary><div class="details-body">
+<p>Deportarea a fost puntea dintre viața comunitară și moarte. Ea a presupus liste nominale, ordine, razii, polițiști, gări, vagoane de marfă, pază, orare, destinații codificate și confiscarea finală a bunurilor. Victimele nu erau transportate doar de SS, ci printr-o infrastructură europeană în care au contat și administrațiile locale.</p><div class="key-line"><strong>Tranzit</strong><span>Drancy în Franța, Westerbork în Țările de Jos, Mechelen în Belgia, Gurs în sudul Franței, Fossoli în Italia și alte tabere au funcționat ca puncte de adunare.</span></div><div class="key-line"><strong>Înșelare</strong><span>Victimelor li se spunea adesea că sunt mutate pentru muncă sau relocare; erau obligate să ia bagaje, ceea ce făcea deportarea mai ușor de controlat.</span></div><div class="key-line"><strong>Condiții</strong><span>Vagoane supraaglomerate, lipsa apei, a hranei și a igienei produceau morți înainte de sosire.</span></div><div class="key-line"><strong>Selecție</strong><span>La sosire, mai ales la Auschwitz-Birkenau, persoanele considerate apte puteau fi trimise la muncă, iar cele considerate inapte erau ucise imediat.</span></div>
+  </div></details>
+  <details open><summary>6. Operațiunea Reinhard: genocid și jaf organizat</summary><div class="details-body">
+<p>Operațiunea Reinhard a vizat uciderea evreilor din Guvernământul General al Poloniei ocupate și confiscarea sistematică a bunurilor lor. Bełżec, Sobibór și Treblinka au fost centrele centrale ale acestei operațiuni. Ea arată că genocidul și jaful au fost legate: uciderea victimelor a fost urmată de sortarea hainelor, banilor, bijuteriilor, părului, obiectelor personale și locuințelor.</p><div class="details-grid">
+        <div class="micro-card"><strong>Ucideri rapide</strong><span>Victimele erau aduse cu trenul, dezbrăcate, deposedate și trimise către camerele de gazare.</span></div>
+        <div class="micro-card"><strong>Sonderkommando</strong><span>Prizonieri forțați erau obligați să lucreze la sortarea bunurilor și la manipularea cadavrelor, fiind apoi ei înșiși uciși periodic.</span></div>
+        <div class="micro-card"><strong>Distrugerea dovezilor</strong><span>După revolte și apropierea frontului, naziștii au demontat instalații, au nivelat terenuri și au plantat vegetație.</span></div>
+        <div class="micro-card"><strong>Jaf administrat</strong><span>Bunurile victimelor erau catalogate, transportate și redistribuite către stat, organizații naziste sau populație.</span></div>
+      </div>
+  </div></details>
+</section>
+
+<section class="section" id="lagare">
+  <h2>IV. Sistemul lagărelor: tipuri, funcții și exemple</h2>
+  <p class="section-intro">Un punct important: nu toate lagărele naziste aveau aceeași funcție. Cuvântul „lagăr” acoperă realități diferite: detenție politică, muncă forțată, tranzit, exterminare, prizonieri de război, tineri, ghetouri, centre T4, sublagăre industriale. Unele locuri au combinat mai multe funcții.</p>
+  <details open><summary>1. Lagăre timpurii / improvizate (1933-1934)</summary><div class="details-body">
+<p>Acestea apar imediat după preluarea puterii. Sunt folosite pentru zdrobirea opoziției: comuniști, social-democrați, sindicaliști, jurnaliști, intelectuali critici și adversari locali ai regimului. Unele erau improvizate în fabrici, castele, închisori, pivnițe, cazărmi sau clădiri abandonate.</p><div class="key-line"><strong>Scop</strong><span>Teroare politică, intimidare, ruperea rețelelor de partid și transmiterea mesajului că opoziția nu mai are spațiu legal.</span></div><div class="key-line"><strong>Administrare</strong><span>SA, poliție locală, SS și autorități regionale, înainte de standardizarea sistemului sub control SS.</span></div><div class="key-line"><strong>Exemple</strong><span>Dachau, Oranienburg, Columbia-Haus, Esterwegen, Börgermoor și alte locuri folosite temporar.</span></div><div class="key-line"><strong>Importanță</strong><span>Au creat modelul detenției fără proces, al bătăilor, umilirii, muncii forțate și arbitrarului gardienilor.</span></div>
+  </div></details>
+  <details open><summary>2. Lagăre de concentrare propriu-zise</summary><div class="details-body">
+<p>Lagărele de concentrare erau administrate de SS și folosite pentru detenție extrajudiciară, pedeapsă politică, teroare, muncă forțată și eliminare prin condiții de viață. Ele nu erau identice cu centrele de exterminare, dar mortalitatea a fost enormă.</p><table class="fact-table"><thead><tr><th>Lagăr</th><th>Profil</th></tr></thead><tbody>
+<tr><td>Dachau</td><td>Primul lagăr permanent, model pentru organizarea sistemului. A deținut opozanți politici, clerici, evrei, prizonieri din teritoriile ocupate și alții.</td></tr>
+<tr><td>Sachsenhausen</td><td>Aproape de Berlin; centru administrativ și model de control SS, cu deținuți politici, evrei, prizonieri sovietici și alte categorii.</td></tr>
+<tr><td>Buchenwald</td><td>Lângă Weimar; mare lagăr de concentrare și muncă forțată, cu deținuți din multe țări.</td></tr>
+<tr><td>Ravensbrück</td><td>Principalul lagăr pentru femei; loc al muncii forțate, experimentelor medicale și al suferinței femeilor din Europa ocupată.</td></tr>
+<tr><td>Mauthausen</td><td>Lagăr cu mortalitate extremă, legat de muncă în cariere și condiții brutale.</td></tr>
+<tr><td>Flossenbürg</td><td>Lagăr legat de muncă forțată în cariere și industrie, cu numeroase sublagăre.</td></tr>
+<tr><td>Neuengamme</td><td>Lagăr din nordul Germaniei, cu rețea de sublagăre și muncă în industria de război.</td></tr>
+<tr><td>Bergen-Belsen</td><td>Inițial cu funcții speciale și de schimb, apoi loc al colapsului sanitar, foametei și morții în masă înainte de eliberare.</td></tr>
+</tbody></table>
+  </div></details>
+  <details open><summary>3. Sublagăre și lagăre de muncă forțată</summary><div class="details-body">
+<p>Pe măsură ce războiul cerea tot mai multă producție, SS a extins rețeaua de sublagăre lângă fabrici, mine, tuneluri și șantiere. Prizonierii erau mutați acolo pentru a lucra în condiții letale. Formula era exploatarea până la epuizare.</p><div class="key-line"><strong>Auschwitz III / Monowitz</strong><span>Legat de complexul industrial IG Farben; prizonierii lucrau în condiții extrem de dure pentru producția de cauciuc sintetic și combustibil.</span></div><div class="key-line"><strong>Dora-Mittelbau</strong><span>Legat de producția de rachete V-2 în tuneluri subterane; condițiile de muncă și de cazare au produs mortalitate masivă.</span></div><div class="key-line"><strong>Gross-Rosen</strong><span>Centru al unei rețele de sublagăre legate de cariere, industrie și muncă forțată.</span></div><div class="key-line"><strong>Natzweiler-Struthof</strong><span>Lagăr în Alsacia anexată, cu sublagăre și crime medicale; prizonierii proveneau din mai multe țări europene.</span></div><div class="key-line"><strong>Stutthof</strong><span>Lagăr din apropierea Danzigului, extins în timp și legat de deportări, muncă forțată și marșuri ale morții.</span></div>
+  </div></details>
+  <details open><summary>4. Lagăre de tranzit și colectare</summary><div class="details-body">
+<p>Aceste locuri adunau victime înainte de deportarea spre est. Ele sunt importante deoarece arată implicarea administrațiilor locale și regionale. De multe ori, victimele treceau printr-un loc aparent „temporar”, dar destinația finală era Auschwitz, Sobibór, Treblinka sau alte spații de moarte.</p><table class="fact-table"><thead><tr><th>Loc</th><th>Rol</th></tr></thead><tbody>
+<tr><td>Drancy</td><td>Principalul centru de tranzit pentru evreii deportați din Franța ocupată și din zona controlată de Vichy.</td></tr>
+<tr><td>Westerbork</td><td>Tabără de tranzit din Țările de Jos, de unde evreii au fost trimiși spre Auschwitz, Sobibór și alte destinații.</td></tr>
+<tr><td>Mechelen / Malines</td><td>Centru de adunare pentru deportările evreilor din Belgia.</td></tr>
+<tr><td>Gurs</td><td>Tabără din sudul Franței, folosită pentru internare și tranzit, inclusiv pentru evrei și refugiați.</td></tr>
+<tr><td>Fossoli</td><td>Tabără din Italia folosită pentru tranzitul evreilor și al deținuților politici către lagărele naziste.</td></tr>
+</tbody></table>
+  </div></details>
+  <details open><summary>5. Lagăre pentru prizonieri de război, mai ales sovietici</summary><div class="details-body">
+<p>Prizonierii sovietici au fost tratați de Germania nazistă într-un mod radical diferit față de prizonierii occidentali. Ideologia rasială și antibolșevică i-a prezentat ca inferiori și periculoși. Milioane au murit prin foamete, frig, boală, execuții și muncă forțată.</p><div class="key-line"><strong>Stalaguri și Dulaguri</strong><span>Lagăre de prizonieri permanenți sau temporari, adesea lipsite de adăpost, hrană și îngrijire medicală pentru sovietici.</span></div><div class="key-line"><strong>Comisari politici</strong><span>Ordinul comisarilor a autorizat uciderea unor prizonieri sovietici asociați cu conducerea politică comunistă.</span></div><div class="key-line"><strong>Selecții SS</strong><span>Unii prizonieri erau selectați pentru execuție, muncă forțată sau deportare în lagăre de concentrare.</span></div><div class="key-line"><strong>Foamete deliberată</strong><span>Lipsa hranei nu a fost doar efect logistic, ci parte a disprețului ideologic și a priorităților criminale ale ocupației.</span></div>
+  </div></details>
+  <details open><summary>6. Centre T4 și instituții medicale criminale</summary><div class="details-body">
+<p>Centrele T4 nu erau „lagăre” în sensul clasic, dar au fost locuri de ucidere administrată. Pacienții erau transferați din spitale și azile, evaluați prin formulare și uciși. Familiile primeau minciuni despre cauze naturale ale morții.</p><table class="fact-table"><thead><tr><th>Centru</th><th>Element important</th></tr></thead><tbody>
+<tr><td>Brandenburg</td><td>Unul dintre centrele timpurii de gazare ale programului T4.</td></tr>
+<tr><td>Grafeneck</td><td>Loc de ucidere în masă a persoanelor cu dizabilități în 1940.</td></tr>
+<tr><td>Bernburg</td><td>Centru T4 și loc de ucidere pentru persoane selectate din instituții și lagăre.</td></tr>
+<tr><td>Sonnenstein</td><td>Centru de ucidere folosit în programul T4.</td></tr>
+<tr><td>Hartheim</td><td>Centru T4 din Austria, asociat și cu uciderea deținuților considerați inapți.</td></tr>
+<tr><td>Hadamar</td><td>Simbol al crimei medicalizate; după oprirea publică a T4, uciderile au continuat prin metode mai ascunse.</td></tr>
+</tbody></table>
+  </div></details>
+  <details open><summary>7. Lagăre pentru tineri, femei, romi și categorii speciale</summary><div class="details-body">
+<p>Sistemul nazist avea și spații specializate pentru categorii tratate ca „probleme sociale” sau „rasiale”. Unele nu urmăreau doar detenția, ci reeducarea violentă, sterilizarea, experimentarea sau distrugerea familiei.</p><div class="key-line"><strong>Moringen</strong><span>Lagăr pentru tineri băieți considerați devianți sau opozanți.</span></div><div class="key-line"><strong>Uckermark</strong><span>Lagăr pentru fete și tinere, asociat cu Ravensbrück și cu violențe împotriva celor considerate „asociale”.</span></div><div class="key-line"><strong>Zigeunerlager Auschwitz-Birkenau</strong><span>Sector pentru familii rome și sinti; în august 1944, restul prizonierilor romi din acest sector au fost uciși în masă.</span></div><div class="key-line"><strong>Bordeluri de lagăr</strong><span>Unele lagăre au inclus bordeluri forțate, arătând că violența sexuală și exploatarea corporală făceau parte din sistem.</span></div>
+  </div></details>
+</section>
+
+<section class="section" id="victime">
+  <h2>V. Grupuri persecutate: nu doar Holocaustul, ci o societate întreagă reorganizată prin violență</h2>
+  <p class="section-intro">Holocaustul a fost genocidul evreilor, dar Germania nazistă a produs și alte politici de persecuție și distrugere. Unele au fost genocidare, altele de exterminare parțială, sterilizare, detenție, muncă forțată sau eliminare socială.</p>
+  <div class="term-grid">
+    <div class="term-card"><strong>Evreii</strong><span>Ținta centrală a genocidului. Au fost excluși juridic, deposedați, ghetouizați, deportați, împușcați, gazați și uciși prin foame, boală și muncă forțată.</span></div>
+    <div class="term-card"><strong>Romi și sinti</strong><span>Au fost persecutați rasial, înregistrați, sterilizați, deportați și uciși în lagăre, ghetouri sau execuții mobile, mai ales în Europa ocupată.</span></div>
+    <div class="term-card"><strong>Persoane cu dizabilități</strong><span>Au fost vizate prin sterilizare forțată, programul T4, ucideri ale copiilor, înfometare și instituții medicale transformate în locuri ale crimei.</span></div>
+    <div class="term-card"><strong>Homosexuali</strong><span>Bărbații acuzați de homosexualitate au fost urmăriți prin Paragraful 175, trimiși în închisori sau lagăre, supuși umilirii, muncii, violenței și uneori castrării.</span></div>
+    <div class="term-card"><strong>Comuniști</strong><span>Primii vizați de teroarea politică. În Germania și în estul ocupat au fost arestați, torturați, deportați sau executați ca „bolșevici”.</span></div>
+    <div class="term-card"><strong>Social-democrați și sindicaliști</strong><span>Rețelele lor au fost distruse, liderii arestați, iar organizațiile muncitorești independente au fost înlocuite de structuri controlate de regim.</span></div>
+    <div class="term-card"><strong>Democrați și liberali</strong><span>Parlamentarismul, presa liberă, pluralismul și critica publică au fost eliminate. Opozanții au fost intimidați, arestați sau reduși la tăcere.</span></div>
+    <div class="term-card"><strong>Artiști și intelectuali</strong><span>Arta modernă, literatura critică, muzica asociată cu evrei sau modernismul și cercetarea independentă au fost atacate ca „degenerate”.</span></div>
+    <div class="term-card"><strong>Slavi și civili din est</strong><span>Polonezi, sovietici, belaruși, ucraineni, ruși și alții au fost supuși ocupației brutale, muncii forțate, foametei, execuțiilor și deportărilor.</span></div>
+    <div class="term-card"><strong>Prizonieri sovietici</strong><span>Milioane au murit prin foame, frig, boală, execuții și muncă forțată, fiind tratați prin prisma rasismului și antibolșevismului.</span></div>
+    <div class="term-card"><strong>Martorii lui Iehova</strong><span>Au fost persecutați pentru refuzul jurământului față de Hitler și al serviciului militar. Unii au fost executați sau trimiși în lagăre.</span></div>
+    <div class="term-card"><strong>„Asociali”</strong><span>Persoane fără adăpost, cerșetori, alcoolici, prostituate, recidiviști sau oameni care nu se încadrau în norma nazistă au fost arestați și stigmatizați.</span></div>
+  </div>
+</section>
+
+<section class="section" id="est">
+  <h2>VI. Războiul de anihilare în Europa de Est și URSS</h2>
+  <p class="section-intro">În est, războiul nazist a fost gândit ca luptă rasială, politică și colonială. Obiectivele militare s-au combinat cu planuri de colonizare, muncă forțată, înfometare și distrugerea elitelor locale.</p>
+  <details open><summary>Polonia ocupată: distrugerea statului și a elitelor</summary><div class="details-body">
+<p>După invadarea Poloniei, regimul nazist a urmărit distrugerea capacității de rezistență a societății poloneze. Profesorii, preoții, ofițerii, funcționarii, intelectualii și liderii comunitari au fost vizați deoarece puteau organiza continuitatea națională. În același timp, evreii polonezi au fost concentrați în ghetouri și apoi deportați.</p><div class="key-line"><strong>Intelligenzaktion</strong><span>Operațiuni de ucidere și arestare a elitelor poloneze.</span></div><div class="key-line"><strong>AB-Aktion</strong><span>Campanie de represiune împotriva intelectualilor și liderilor polonezi.</span></div><div class="key-line"><strong>Generalplan Ost</strong><span>Proiect de colonizare și reorganizare etnică a Europei de Est, cu deportări, muncă forțată și reducerea populațiilor considerate inferioare.</span></div><div class="key-line"><strong>Copii răpiți</strong><span>Unii copii considerați „germanizabili” au fost luați din familii și integrați forțat în mediul german.</span></div>
+  </div></details>
+  <details open><summary>URSS ocupată: foamete, execuții și ocupație rasială</summary><div class="details-body">
+<p>În URSS, violența a fost extremă. Naziștii au asociat populațiile slave cu inferioritatea rasială și au prezentat comunismul ca dușman absolut. Rezultatul a fost uciderea comisarilor, exterminarea comunităților evreiești, înfometarea prizonierilor, represalii anti-partizane și distrugerea satelor suspectate de sprijin pentru rezistență.</p><div class="details-grid">
+        <div class="micro-card"><strong>Prizonieri sovietici</strong><span>Milioane au murit în captivitate prin foamete, frig, boli, execuții și abandon deliberat.</span></div>
+        <div class="micro-card"><strong>Civili</strong><span>Satele erau incendiate, populațiile evacuate, iar represaliile colective erau folosite pentru intimidare.</span></div>
+        <div class="micro-card"><strong>Partizani</strong><span>Lupta anti-partizană a fost adesea pretext pentru masacre împotriva civililor.</span></div>
+        <div class="micro-card"><strong>Resurse</strong><span>Cucerirea hranei, petrolului, muncii și transporturilor era legată de planuri de exploatare colonială.</span></div>
+      </div>
+  </div></details>
+</section>
+
+<section class="section" id="cultura">
+  <h2>VII. Artiști, intelectuali și cultura considerată „degenerată”</h2>
+  <p class="section-intro">Regimul nazist a înțeles cultura ca armă. A impus o artă eroică, rasială și obedientă, respingând modernismul, avangarda, expresionismul, jazzul, arta evreiască, arta de stânga și orice cultură asociată cu pluralismul.</p>
+  <div class="two-col">
+    <article class="info-card"><h3>Ce era considerat „degenerat”?</h3><ul class="clean dense-list"><li>Arta modernă, abstractă, expresionistă sau critică.</li><li>Lucrările artiștilor evrei sau ale artiștilor asociați cu stânga politică.</li><li>Muzica jazz și forme culturale asociate cu influențe afro-americane sau cosmopolite.</li><li>Literatura pacifistă, democratică, marxistă, liberală sau antinazistă.</li><li>Psihanaliza, sociologia critică și cercetarea considerată „evreiască” sau „bolșevică”.</li></ul></article>
+    <article class="info-card"><h3>Forme de represiune culturală</h3><ul class="clean dense-list"><li>Epurararea muzeelor și bibliotecilor.</li><li>Arderea cărților și interzicerea autorilor.</li><li>Excluderea profesorilor și cercetătorilor din universități.</li><li>Forțarea emigrării unor artiști și intelectuali.</li><li>Transformarea culturii oficiale în propagandă.</li></ul></article>
+  </div>
+  <div class="note"><strong>De reținut:</strong> atacul împotriva culturii nu a fost un detaliu secundar. Pentru naziști, controlul imaginației și al limbajului era parte a controlului politic și rasial.</div>
+</section>
+
+<section class="section" id="munca">
+  <h2>VIII. Muncă forțată, economie de război și complicități</h2>
+  <p class="section-intro">Economia de război germană a folosit milioane de muncitori forțați, prizonieri, deportați și deținuți. Munca forțată nu a fost doar exploatare economică, ci și instrument de disciplinare, umilire și ucidere lentă.</p>
+  <details open><summary>Munca forțată civilă</summary><div class="details-body">
+<p>Civili din Polonia, URSS, Franța, Țările de Jos, Belgia, Cehia, Italia și alte teritorii au fost recrutați cu forța sau deportați pentru a lucra în Germania. Oamenii erau separați de familie, discriminați, supravegheați și pedepsiți sever pentru încercări de fugă sau insubordonare.</p><div class="key-line"><strong>Ostarbeiter</strong><span>Muncitori forțați din est, supuși unor condiții discriminatorii, marcaje și restricții severe.</span></div><div class="key-line"><strong>Femei și copii</strong><span>Și femeile tinere, adolescenții sau copiii mai mari au fost folosiți în muncă agricolă, domestică sau industrială.</span></div><div class="key-line"><strong>Pedeapsă</strong><span>Abaterile puteau duce la lagăre de muncă educativă, închisori, execuții sau deportare în lagăre de concentrare.</span></div><div class="key-line"><strong>Companii</strong><span>Întreprinderi private și de stat au beneficiat de muncă forțată, ceea ce lărgește problema responsabilității.</span></div>
+  </div></details>
+  <details open><summary>Munca de lagăr: exploatare până la epuizare</summary><div class="details-body">
+<p>În lagăre, deținuții erau folosiți în cariere, fabrici, construcții, mine, tuneluri și agricultură. Rațiile erau insuficiente, îmbrăcămintea nepotrivită, pedepsele arbitrare, iar boala se răspândea rapid. Selecția între „apt de muncă” și „inapt” putea decide viața sau moartea.</p><div class="details-grid">
+        <div class="micro-card"><strong>Cariera</strong><span>Mauthausen și alte lagăre au folosit munca în cariere ca instrument de epuizare și umilire.</span></div>
+        <div class="micro-card"><strong>Industria chimică</strong><span>Monowitz arată legătura dintre lagăr, corporații și producția de război.</span></div>
+        <div class="micro-card"><strong>Tunelurile</strong><span>Dora-Mittelbau arată cum producția subterană a armelor a fost construită pe moartea prizonierilor.</span></div>
+        <div class="micro-card"><strong>Sublagăre</strong><span>Rețeaua de sublagăre a adus lagărul lângă fabrică, nu invers.</span></div>
+      </div>
+  </div></details>
+</section>
+
+<section class="section" id="justitie">
+  <h2>IX. Dovezi, justiție și memorie</h2>
+  <p class="section-intro">La sfârșitul războiului, Aliații au găsit supraviețuitori, cadavre, documente, liste de transport, registre, instalații de ucidere, depozite de bunuri și mărturii. Crimele au fost judecate parțial, dar niciodată complet.</p>
+  <div class="three-col">
+    <article class="info-card"><h3>Procesele de la Nürnberg</h3><p>Au judecat lideri politici, militari și organizații naziste. Au consolidat noțiunile de crime împotriva păcii, crime de război și crime împotriva umanității.</p></article>
+    <article class="info-card"><h3>Procese ulterioare</h3><p>Au vizat medici, judecători, membri Einsatzgruppen, industriași și administratori. Ele au arătat rolul profesiilor aparent „tehnice” în sistemul criminal.</p></article>
+    <article class="info-card"><h3>Memorie și negare</h3><p>Memoria Holocaustului a fost construită prin mărturii, muzee, arhive, memoriale și educație. Negarea sau minimalizarea sunt forme de agresiune asupra victimelor și asupra adevărului istoric.</p></article>
+  </div>
+  <details open><summary>Întrebări de sinteză pentru lecție</summary><div class="details-body">
+    <ol class="number-list">
+      <li>De ce este greșit să spunem că toate lagărele naziste erau identice?</li>
+      <li>Ce rol au avut legea, medicina, poliția și economia în transformarea prejudecății în crimă de stat?</li>
+      <li>Prin ce se deosebește Holocaustul de alte persecuții naziste, fără a minimaliza suferința celorlalte victime?</li>
+      <li>Ce forme de rezistență au existat în ghetouri, lagăre și societățile ocupate?</li>
+      <li>Cum trebuie analizată responsabilitatea oamenilor care nu au ucis direct, dar au completat registre, au păzit trenuri sau au folosit munca prizonierilor?</li>
+    </ol>
+  </div></details>
+</section>
+
+
+    <section class="section" id="dosare">
+  <h2>X. Dosare foarte detaliate: lagăre, Holocaust și mecanisme cotidiene ale crimei</h2>
+  <p class="section-intro">Această parte poate fi folosită ca material de aprofundare pentru elevi sau ca bază pentru o lecție separată despre sistemul lagărelor. Scopul este să se vadă cum arăta concret mecanismul: de la arestare și transport până la selecție, muncă forțată, pedeapsă, moarte sau eliberare.</p>
+
+  <details open><summary>1. Ce se întâmpla la sosirea într-un lagăr?</summary><div class="details-body">
+    <p>Sosirea era gândită ca o rupere completă de viața anterioară. Deținutul pierdea numele, hainele, obiectele personale, familia, ritmul timpului și orice protecție juridică. În multe lagăre, procedura nu era doar administrativă, ci și psihologică: umilirea, confuzia, violența și nesiguranța produceau supunere.</p>
+    <div class="key-line"><strong>Transportul</strong><span>Victimele erau aduse cu trenuri de marfă, camioane sau pe jos. În deportările spre est, vagoanele erau supraaglomerate, fără apă, hrană, lumină și igienă. Mulți mureau înainte de sosire.</span></div>
+    <div class="key-line"><strong>Descărcarea</strong><span>La sosire, strigătele, loviturile, câinii, gardienii, luminile și graba dezorientau victimele. Familiile erau despărțite rapid, deseori fără să știe că se vedeau pentru ultima dată.</span></div>
+    <div class="key-line"><strong>Selecția</strong><span>În locuri precum Auschwitz-Birkenau, medicii sau ofițerii SS decideau cine era trimis la muncă și cine era ucis imediat. Copiii mici, bătrânii, bolnavii și mamele cu copii erau adesea trimiși direct la moarte.</span></div>
+    <div class="key-line"><strong>Înregistrarea</strong><span>Prizonierilor selectați pentru muncă li se luau datele, li se dădea un număr, uneori tatuat, li se tăia părul și primeau haine de lagăr. Individualitatea era înlocuită de număr și categorie.</span></div>
+    <div class="key-line"><strong>Carantina</strong><span>Mulți treceau prin perioade de carantină, unde primeau puțină hrană, erau bătuți și învățau regulile lagărului prin teroare. Aici începea procesul de dezumanizare instituțională.</span></div>
+  </div></details>
+
+  <details open><summary>2. Semnele de pe uniformă: cum clasifica SS-ul oamenii</summary><div class="details-body">
+    <p>Sistemul de insigne nu era o simplă evidență. El transforma oamenii în categorii vizibile, făcea discriminarea permanentă și permitea gardienilor și deținuților-funcționari să aplice ierarhii. Culorile și literele puteau varia, dar ideea era aceeași: identitatea personală era înlocuită cu o etichetă.</p>
+    <table class="fact-table"><thead><tr><th>Semn / categorie</th><th>Exemple de persoane vizate</th><th>Funcție în lagăr</th></tr></thead><tbody>
+      <tr><td>Triunghi roșu</td><td>Deținuți politici: comuniști, social-democrați, sindicaliști, rezistenți, opozanți.</td><td>Marca inamicul politic al regimului și era frecvent întâlnit în primele lagăre.</td></tr>
+      <tr><td>Triunghi galben / stea</td><td>Evrei.</td><td>Marca centrală a persecuției rasiale; în combinație cu alte semne putea indica și o altă categorie impusă.</td></tr>
+      <tr><td>Triunghi roz</td><td>Bărbați acuzați de homosexualitate.</td><td>Îi expunea la violență, umilire și izolare, inclusiv din partea altor prizonieri.</td></tr>
+      <tr><td>Triunghi negru</td><td>Persoane etichetate „asociale”: oameni fără adăpost, femei marginalizate, romi în unele contexte, persoane considerate neconforme.</td><td>Instrument de stigmatizare socială și morală.</td></tr>
+      <tr><td>Triunghi verde</td><td>Deținuți considerați „criminali de drept comun”.</td><td>Unii au fost folosiți ca deținuți-funcționari, ceea ce a creat ierarhii violente în interiorul lagărului.</td></tr>
+      <tr><td>Triunghi violet</td><td>Martorii lui Iehova.</td><td>Marca refuzul religios și politic de a se supune cultului nazist.</td></tr>
+      <tr><td>Litere naționale</td><td>Polonezi, francezi, ruși, cehi, olandezi, italieni și alte grupuri naționale.</td><td>Indica originea și putea accentua discriminarea în funcție de ierarhia rasială nazistă.</td></tr>
+    </tbody></table>
+    <div class="note"><strong>Observație:</strong> etichetele nu reflectau identitatea reală a oamenilor, ci clasificările impuse de regim. O persoană putea fi evreu, comunist, polonez și rezistent în același timp, dar administrația lagărului îi reducea existența la o combinație de semne.</div>
+  </div></details>
+
+  <details open><summary>3. Viața zilnică în lagăr: apel, foame, muncă, pedeapsă</summary><div class="details-body">
+    <p>Viața de lagăr era construită pentru a consuma corpul și voința. Programul zilnic depindea de loc și perioadă, dar multe elemente se repetau: apeluri interminabile, muncă epuizantă, hrană insuficientă, frig, boli, pedepse arbitrare și frica permanentă de selecție sau execuție.</p>
+    <div class="details-grid">
+      <div class="micro-card"><strong>Apelul</strong><span>Prizonierii erau obligați să stea nemișcați ore întregi, indiferent de vreme, până când numărătoarea era considerată corectă.</span></div>
+      <div class="micro-card"><strong>Hrana</strong><span>Rațiile erau sub necesarul biologic, mai ales pentru muncă grea. Foamea producea slăbire, boală, disperare și competiție pentru supraviețuire.</span></div>
+      <div class="micro-card"><strong>Munca</strong><span>Carieră, fabrică, drumuri, tuneluri, sortarea bunurilor, transport de cadavre, curățenie, agricultură sau producție militară.</span></div>
+      <div class="micro-card"><strong>Boala</strong><span>Tifos, dizenterie, tuberculoză, infecții, răni netratate și epuizare. „Infirmeria” putea fi loc de ajutor, dar și de selecție pentru moarte.</span></div>
+      <div class="micro-card"><strong>Pedeapsa</strong><span>Bătăi, stat în picioare, spânzurare, celule de pedeapsă, reducerea hranei, muncă suplimentară sau execuție.</span></div>
+      <div class="micro-card"><strong>Kapo</strong><span>Deținuți-funcționari folosiți pentru supraveghere. Unii au abuzat de putere, alții au încercat să protejeze prizonieri; sistemul crea deliberat ierarhii între victime.</span></div>
+    </div>
+  </div></details>
+
+  <details open><summary>4. Auschwitz: de ce este simbol central, dar nu singurul loc al Holocaustului</summary><div class="details-body">
+    <p>Auschwitz a devenit simbolul Holocaustului deoarece a combinat mai multe funcții: lagăr de concentrare, centru de exterminare, muncă forțată, laborator medical criminal, loc de selecție, spațiu de deportare internațională și loc al memoriei postbelice. Totuși, reducerea Holocaustului la Auschwitz ascunde execuțiile din est, ghetourile, Bełżec, Sobibór, Treblinka, Chełmno, foametea și miile de locuri mai mici ale crimei.</p>
+    <div class="key-line"><strong>Auschwitz I</strong><span>Lagărul principal, folosit pentru detenție, administrație, pedepse, execuții și experimente. Poarta cu inscripția „Arbeit macht frei” a devenit simbol al cinismului nazist.</span></div>
+    <div class="key-line"><strong>Birkenau</strong><span>Auschwitz II, locul rampelor de selecție, al barăcilor imense, al crematoriilor și camerelor de gazare. Aici au fost uciși masiv evrei deportați din multe țări europene.</span></div>
+    <div class="key-line"><strong>Monowitz</strong><span>Auschwitz III, lagăr de muncă legat de industria chimică. Arată conexiunea dintre SS, companii și economia de război.</span></div>
+    <div class="key-line"><strong>Experimente</strong><span>Medici naziști au folosit prizonieri pentru teste rasiale, sterilizare, boli, gemeni, rezistență fizică și alte proceduri fără consimțământ.</span></div>
+    <div class="key-line"><strong>Deportări europene</strong><span>Evreii au fost aduși din Polonia, Ungaria, Franța, Țările de Jos, Grecia, Slovacia, Italia, Belgia, Germania, Austria și alte locuri.</span></div>
+  </div></details>
+
+  <details open><summary>5. Bełżec, Sobibór și Treblinka: centre aproape fără supraviețuitori</summary><div class="details-body">
+    <p>Aceste centre ale Operațiunii Reinhard sunt mai puțin prezente în cultura populară decât Auschwitz, tocmai pentru că au fost construite pentru ucidere rapidă și pentru că naziștii au distrus multe urme. Puțini prizonieri erau menținuți temporar în viață pentru muncile forțate ale lagărului; majoritatea deportaților erau uciși imediat.</p>
+    <table class="fact-table"><thead><tr><th>Centru</th><th>Rol</th><th>Ce trebuie subliniat la lecție</th></tr></thead><tbody>
+      <tr><td>Bełżec</td><td>Centru de exterminare pentru evreii din Guvernământul General și alte regiuni.</td><td>Puțini supraviețuitori au putut depune mărturie, ceea ce face arheologia, documentele și cercetarea istorică foarte importante.</td></tr>
+      <tr><td>Sobibór</td><td>Centru de exterminare unde a avut loc o revoltă importantă în 1943.</td><td>Revolta arată că rezistența era posibilă chiar în locuri create pentru moarte imediată.</td></tr>
+      <tr><td>Treblinka</td><td>Centru principal pentru deportații din Varșovia și alte regiuni.</td><td>Treblinka arată viteza genocidului: comunități întregi puteau fi deportate și ucise în intervale foarte scurte.</td></tr>
+    </tbody></table>
+  </div></details>
+
+  <details open><summary>6. Rezistență în condiții extreme</summary><div class="details-body">
+    <p>Rezistența nu a însemnat doar luptă armată. Într-un regim care voia să transforme oamenii în obiecte, orice păstrare a demnității putea fi o formă de rezistență: educație clandestină, rugăciune, jurnal, arhivă, ajutorarea copiilor, ascunderea hranei, mărturie, sabotaj sau revoltă.</p>
+    <div class="details-grid">
+      <div class="micro-card"><strong>Ghetoul Varșoviei</strong><span>Revolta din 1943 a fost precedată de organizare, arhive clandestine, rețele politice și încercări de documentare a distrugerii.</span></div>
+      <div class="micro-card"><strong>Treblinka</strong><span>Prizonierii au organizat o revoltă pentru a scăpa și a transmite lumii ce se întâmpla acolo.</span></div>
+      <div class="micro-card"><strong>Sobibór</strong><span>Revolta din octombrie 1943 a permis evadarea unor prizonieri și a forțat naziștii să lichideze lagărul.</span></div>
+      <div class="micro-card"><strong>Auschwitz</strong><span>Au existat acte de sabotaj, transmitere de informații, fotografii clandestine și revolta Sonderkommando din 1944.</span></div>
+      <div class="micro-card"><strong>Ajutor și salvare</strong><span>Familii, diplomați, clerici, rețele de rezistență și oameni obișnuiți au ascuns sau ajutat evrei și alți persecutați.</span></div>
+      <div class="micro-card"><strong>Mărturia</strong><span>Jurnalele, notele îngropate, arhivele clandestine și memoriile supraviețuitorilor au devenit probe istorice.</span></div>
+    </div>
+  </div></details>
+
+  <details open><summary>7. Marșurile morții: crima din ultimele luni</summary><div class="details-body">
+    <p>Pe măsură ce fronturile se apropiau, SS a evacuat lagărele pentru a păstra forța de muncă, a ascunde probele și a împiedica eliberarea prizonierilor. Deținuții erau forțați să meargă pe distanțe lungi, iarna, fără hrană și îngrijire. Cei care cădeau erau adesea împușcați.</p>
+    <div class="key-line"><strong>Cauze</strong><span>Apropierea Armatei Roșii și a Aliaților occidentali, dorința de a ascunde crimele și de a exploata în continuare prizonierii.</span></div>
+    <div class="key-line"><strong>Condiții</strong><span>Frig, foame, epuizare, boli, lipsă de încălțăminte, violență permanentă și execuții pe marginea drumului.</span></div>
+    <div class="key-line"><strong>Victime</strong><span>Evrei, romi, deținuți politici, prizonieri din multe țări, femei și bărbați din lagărele evacuate.</span></div>
+    <div class="key-line"><strong>Semnificație</strong><span>Marșurile morții arată că violența nazistă nu s-a oprit când înfrângerea era clară; dimpotrivă, s-a radicalizat în retragere.</span></div>
+  </div></details>
+
+  <details open><summary>8. Cum se predă diferența dintre genocid, crimă de război și crimă împotriva umanității?</summary><div class="details-body">
+    <p>La nivel didactic, termenii juridici trebuie folosiți cu grijă. Holocaustul este genocid deoarece urmărea distrugerea evreilor ca grup. Uciderea prizonierilor sovietici este crimă de război și crimă împotriva umanității, cu dimensiune rasial-ideologică. Programul T4 este crimă împotriva umanității și exterminare a persoanelor cu dizabilități. Represaliile anti-partizane pot fi crime de război, chiar dacă nu urmăresc distrugerea totală a unui grup etnic.</p>
+    <table class="fact-table"><thead><tr><th>Termen</th><th>Explicație didactică</th><th>Exemplu nazist</th></tr></thead><tbody>
+      <tr><td>Genocid</td><td>Încercarea de a distruge total sau parțial un grup național, etnic, rasial sau religios.</td><td>Holocaustul; persecuția genocidară a romilor și sintilor.</td></tr>
+      <tr><td>Crimă de război</td><td>Încălcarea regulilor războiului: uciderea prizonierilor, a civililor, distrugeri nejustificate, represalii ilegale.</td><td>Uciderea prizonierilor sovietici, masacre anti-partizane, execuții de ostatici.</td></tr>
+      <tr><td>Crimă împotriva umanității</td><td>Atac larg sau sistematic împotriva civililor: exterminare, deportare, sclavie, persecuție, tortură.</td><td>Deportări, lagăre, T4, muncă forțată, persecuții politice.</td></tr>
+      <tr><td>Persecuție culturală</td><td>Distrugerea libertății culturale, cenzura, epurarea instituțiilor și atacul asupra intelectualilor.</td><td>„Arta degenerată”, arderea cărților, excluderea profesorilor și cercetătorilor.</td></tr>
+    </tbody></table>
+  </div></details>
+</section>
+
+    <section class="section" id="surse">
+      <h2>Surse orientative pentru documentare</h2>
+      <p class="section-intro">Lista este orientativă și poate fi completată cu documente de arhivă, manuale, atlase istorice, mărturii și materiale muzeale. Materialul de față este redactat pentru uz didactic, nu ca înlocuitor al unei monografii academice.</p>
+      <ul class="source-list">
+        <li>United States Holocaust Memorial Museum, <em>Holocaust Encyclopedia</em>: articole despre Holocaust, lagăre naziste, centre de exterminare, ghetouri, Einsatzgruppen, T4, sterilizare forțată și victimele persecuției naziste.</li>
+        <li>Yad Vashem: materiale despre Shoah, ghetouri, deportări, rezistență, mărturii și comunități distruse.</li>
+        <li>Documentele proceselor de la Nürnberg și procesele ulterioare: Einsatzgruppen, medici, judecători, industrie și administratori ai lagărelor.</li>
+        <li>Lucrări de sinteză utile: Raul Hilberg, Saul Friedländer, Christopher Browning, Ian Kershaw, Richard J. Evans, Nikolaus Wachsmann, Timothy Snyder.</li>
+      </ul>
+    </section>
+
+    <section class="final-box">
+      <h2>Idee de final pentru elevi</h2>
+      <p>Crimele de stat din Al Doilea Război Mondial trebuie analizate prin întrebări despre ideologie, instituții, ordine, complicitate, victime și memorie. O crimă de masă nu este produsă doar de lideri, ci și de administrații, funcționari, poliții, armate, medici, economii de război și societăți care acceptă dezumanizarea.</p>
+    </section>
+  </main>
+</body>
+</html>

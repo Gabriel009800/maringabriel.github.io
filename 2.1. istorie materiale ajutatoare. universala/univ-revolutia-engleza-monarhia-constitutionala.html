@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bill of Rights, Parlamentul, Cabinetul și noul echilibru al puterilor">
+  <title>Revoluția Engleză: monarhia constituțională - Material ajutător de istorie</title>
+  <style>
+    :root {
+      --bg: #f6f0e7;
+      --paper: #fffaf3;
+      --paper-2: #ffffff;
+      --ink: #2f241c;
+      --muted: #695747;
+      --accent: #6f3f24;
+      --accent-2: #a66a3f;
+      --line: rgba(91, 62, 36, 0.18);
+      --soft: #f1e4d3;
+      --note: #fff1cf;
+      --good: #eaf2e6;
+      --shadow: 0 14px 36px rgba(69, 46, 25, 0.08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: Georgia, "Times New Roman", serif; line-height: 1.72; }
+    a { color: var(--accent); }
+    .page { width: min(1120px, calc(100% - 28px)); margin: 0 auto; padding: 26px 0 70px; }
+    .topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; }
+    .back { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 700; background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 10px 15px; box-shadow: 0 7px 18px rgba(69,46,25,.05); }
+    .category { color: var(--muted); font-size: 14px; text-align: right; }
+    .hero { background: linear-gradient(135deg, #fffaf3 0%, #f8ead7 100%); border: 1px solid var(--line); border-radius: 28px; padding: clamp(27px, 5vw, 55px); box-shadow: var(--shadow); margin-bottom: 24px; }
+    .eyebrow { display: inline-block; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .09em; background: var(--accent); color: white; padding: 7px 11px; border-radius: 999px; margin-bottom: 17px; }
+    h1 { font-size: clamp(34px, 6vw, 58px); line-height: 1.05; letter-spacing: -.035em; margin: 0 0 15px; color: #3c2a1e; }
+    .subtitle { font-size: clamp(18px, 2.4vw, 23px); color: var(--accent); font-weight: 700; margin: 0 0 17px; }
+    .lead { font-size: 18px; color: var(--muted); margin: 0; max-width: 900px; text-align: justify; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 24px; align-items: start; }
+    .content, .side-card { background: var(--paper); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); }
+    .content { padding: clamp(23px, 4vw, 43px); }
+    .sidebar { position: sticky; top: 18px; display: grid; gap: 16px; }
+    .side-card { padding: 20px; }
+    .side-card h2 { margin: 0 0 11px; font-size: 18px; }
+    .toc a { display: block; padding: 7px 0; border-bottom: 1px dashed var(--line); text-decoration: none; font-size: 14px; line-height: 1.35; }
+    .toc a:last-child { border-bottom: none; }
+    section { scroll-margin-top: 20px; margin-bottom: 34px; }
+    section:last-child { margin-bottom: 0; }
+    h2 { font-size: 29px; line-height: 1.2; margin: 0 0 17px; color: #3c2a1e; }
+    h3 { font-size: 21px; margin: 23px 0 9px; color: var(--accent); }
+    p { margin: 0 0 15px; text-align: justify; }
+    ul, ol { padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .callout { border-left: 5px solid var(--accent-2); background: var(--note); padding: 16px 18px; border-radius: 0 15px 15px 0; margin: 19px 0; }
+    .callout.good { background: var(--good); }
+    .callout strong { color: #4a2e1b; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; margin: 17px 0; }
+    .mini-card { background: var(--paper-2); border: 1px solid var(--line); border-radius: 17px; padding: 17px; }
+    .mini-card h3 { margin-top: 0; }
+    .timeline { border-left: 3px solid var(--accent-2); margin: 18px 0 22px 9px; padding-left: 23px; }
+    .event { position: relative; margin-bottom: 17px; }
+    .event::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); position: absolute; left: -30px; top: 7px; box-shadow: 0 0 0 4px var(--paper); }
+    .event b { color: var(--accent); }
+    table { width: 100%; border-collapse: collapse; margin: 18px 0 23px; background: white; font-size: 15px; }
+    th, td { border: 1px solid var(--line); padding: 11px 12px; vertical-align: top; text-align: left; }
+    th { background: var(--soft); color: #3c2a1e; }
+    .keywords { display: flex; flex-wrap: wrap; gap: 8px; }
+    .keywords span { border: 1px solid var(--line); background: var(--soft); border-radius: 999px; padding: 7px 10px; font-size: 13px; font-weight: 700; }
+    .questions { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 19px 22px; }
+    .bibliography { font-size: 14px; color: var(--muted); }
+    .footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 26px; }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; grid-row: 1; }
+      .toc { display: none; }
+    }
+    @media (max-width: 650px) {
+      .page { width: min(100% - 18px, 1120px); padding-top: 12px; }
+      .topbar { align-items: flex-start; }
+      .category { display: none; }
+      .hero, .content, .side-card { border-radius: 20px; }
+      .grid-2 { grid-template-columns: 1fr; }
+      table { display: block; overflow-x: auto; white-space: normal; }
+      h2 { font-size: 25px; }
+    }
+    @media print {
+      body { background: white; }
+      .page { width: 100%; padding: 0; }
+      .topbar, .sidebar { display: none; }
+      .layout { display: block; }
+      .hero, .content { box-shadow: none; border-color: #bbb; }
+      .hero { break-after: avoid; }
+      section, table { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a class="back" href="../evaluare.html">← Înapoi la Evaluare</a>
+      <div class="category">Material ajutător · Istorie universală · Epoca modernă</div>
+    </div>
+
+    <header class="hero">
+      <span class="eyebrow">Istorie universală · Epoca modernă</span>
+      <h1>Revoluția Engleză: monarhia constituțională</h1>
+      <p class="subtitle">Bill of Rights, Parlamentul, Cabinetul și noul echilibru al puterilor</p>
+      <p class="lead">O prezentare sistematică a documentelor și instituțiilor prin care Anglia, apoi Marea Britanie, a construit o monarhie limitată de lege și un guvern dependent tot mai mult de Parlament.</p>
+    </header>
+
+    <div class="layout">
+      <article class="content">
+        
+<section id="context">
+  <h2>1. Nașterea unei monarhii limitate de lege</h2>
+  <p>Revoluția din 1688-1689 nu a produs o constituție unică, redactată într-un singur document. Sistemul britanic s-a construit prin statute, precedente, cutume și evoluția instituțiilor. Punctul de plecare a fost acceptarea ideii că monarhul deține coroana în condițiile stabilite de lege și că nu poate suspenda unilateral legile, impune taxe sau menține o armată permanentă fără acord parlamentar.</p>
+  <p>Wilhelm al III-lea și Maria a II-a au primit coroana împreună. Convenția parlamentară a transformat acuzațiile împotriva lui Iacob al II-lea într-o declarație de principii, apoi într-un act juridic: Bill of Rights din 1689, numit în română Declarația sau Legea Drepturilor.</p>
+</section>
+<section id="dezvoltare">
+  <h2>2. Documentele constituționale fundamentale</h2>
+  <table>
+    <thead><tr><th>Document</th><th>Conținut esențial</th><th>Importanță</th></tr></thead>
+    <tbody>
+      <tr><td>Magna Carta, 1215</td><td>Regele este supus legii; anumite obligații fiscale și judiciare trebuie limitate.</td><td>Precedent simbolic al guvernării legale.</td></tr>
+      <tr><td>Petiția Dreptului, 1628</td><td>Condamnă taxarea fără Parlament, detenția arbitrară și legea marțială abuzivă.</td><td>Formulează opoziția constituțională față de Carol I.</td></tr>
+      <tr><td>Habeas Corpus Act, 1679</td><td>Întărește controlul judecătoresc asupra detenției.</td><td>Protecție procedurală împotriva închiderii arbitrare.</td></tr>
+      <tr><td>Bill of Rights, 1689</td><td>Interzice suspendarea legilor și taxarea fără Parlament; afirmă alegeri libere și libertatea dezbaterilor parlamentare.</td><td>Definește condițiile monarhiei parlamentare.</td></tr>
+      <tr><td>Triennial Act, 1694</td><td>Impune convocarea regulată a Parlamentului și alegeri periodice.</td><td>Reduce posibilitatea guvernării îndelungate fără Parlament.</td></tr>
+      <tr><td>Act of Settlement, 1701</td><td>Reglementează succesiunea protestantă și întărește independența judecătorilor.</td><td>Leagă dinastia de ordinea constituțională.</td></tr>
+    </tbody>
+  </table>
+  <div class="callout"><strong>Corectare importantă:</strong> Bill of Rights nu a instituit instantaneu democrația modernă și nici separarea completă a puterilor. Dreptul de vot a rămas restrâns, iar regele a continuat să aibă un rol politic major. Schimbarea a fost una de echilibru constituțional și de supremație crescândă a Parlamentului.</div>
+
+  <h2>3. Cum funcționa noul sistem</h2>
+  <h3>Puterea legislativă</h3>
+  <p>Parlamentul bicameral era alcătuit din Camera Lorzilor și Camera Comunelor. Legile necesitau aprobarea ambelor camere și sancțiunea regală. În timp, refuzul sancțiunii a devenit excepțional, iar inițiativa politică s-a deplasat către majoritatea parlamentară.</p>
+  <h3>Puterea executivă și Cabinetul</h3>
+  <p>Monarhul își alegea miniștrii, dar aceștia aveau nevoie de sprijinul Parlamentului pentru finanțarea războaielor și a administrației. Cabinetul s-a desprins treptat din Consiliul Privat. În secolul al XVIII-lea, conducerea lui Robert Walpole a contribuit la cristalizarea funcției de prim-ministru, deși titlul și regulile nu erau încă fixate ca astăzi.</p>
+  <h3>Responsabilitatea politică</h3>
+  <p>Principiul conform căruia „regele domnește, dar nu guvernează” descrie o evoluție, nu o transformare instantanee în 1689. Miniștrii au devenit tot mai dependenți de majoritatea din Camera Comunelor; monarhul a păstrat influență, dar deciziile sale trebuiau asumate de miniștri.</p>
+  <h3>Justiția</h3>
+  <p>Act of Settlement a protejat stabilitatea judecătorilor, reducând dependența lor directă de bunul plac regal. Independența justiției s-a consolidat treptat, împreună cu garanțiile procedurale ale habeas corpus.</p>
+
+  <h2>4. Partidele, finanțele și statul modern</h2>
+  <p>Whigii și tory-ii nu erau partide moderne cu organizații permanente, dar au creat rețele politice, presă și discipline parlamentare. Guvernele trebuiau să negocieze voturile, iar dezbaterea publică a devenit mai intensă după relaxarea cenzurii prealabile a tiparului în 1695.</p>
+  <p>Războaiele împotriva Franței au obligat statul să dezvolte mecanisme fiscale și de credit. Fondarea Băncii Angliei în 1694 și apariția datoriei publice finanțate au permis mobilizarea unor resurse mari. Astfel, revoluția constituțională a fost și o „revoluție financiară”, care a întărit statul britanic.</p>
+
+  <h2>5. Succesiunea și formarea Marii Britanii</h2>
+  <p>Act of Settlement a stabilit succesiunea protestantă către Casa de Hanovra, în cazul în care linia directă nu producea moștenitori protestanți. În 1707, Actele Uniunii au unit parlamentele Angliei și Scoției în Regatul Marii Britanii. Irlanda a rămas un regat separat sub aceeași coroană până la uniunea din 1801.</p>
+</section>
+<section id="cronologie">
+  <h2>6. Cronologie constituțională</h2>
+  <div class="timeline">
+    <div class="event"><b>1215</b> – Magna Carta.</div>
+    <div class="event"><b>1628</b> – Petiția Dreptului.</div>
+    <div class="event"><b>1679</b> – Habeas Corpus Act.</div>
+    <div class="event"><b>1688</b> – Revoluția Glorioasă.</div>
+    <div class="event"><b>1689</b> – Bill of Rights și Toleration Act.</div>
+    <div class="event"><b>1694</b> – Triennial Act și Banca Angliei.</div>
+    <div class="event"><b>1701</b> – Act of Settlement.</div>
+    <div class="event"><b>1707</b> – Regatul Marii Britanii.</div>
+    <div class="event"><b>1714</b> – începutul dinastiei de Hanovra.</div>
+    <div class="event"><b>1721-1742</b> – epoca lui Robert Walpole, asociată consolidării funcției de prim-ministru.</div>
+  </div>
+</section>
+<section id="interpretare">
+  <h2>7. Importanța istorică și limitele modelului</h2>
+  <div class="grid-2">
+    <div class="mini-card"><h3>Moștenire</h3><ul><li>supremația legii;</li><li>taxare prin reprezentare;</li><li>convocarea regulată a Parlamentului;</li><li>guvernare prin miniștri responsabili;</li><li>model pentru constituționalismul atlantic.</li></ul></div>
+    <div class="mini-card"><h3>Limite</h3><ul><li>vot restrâns;</li><li>discriminări religioase;</li><li>inegalități sociale;</li><li>dominație colonială;</li><li>violență în Irlanda și Scoția.</li></ul></div>
+  </div>
+  <p>Modelul britanic nu s-a născut complet în 1689. El a evoluat prin practică politică, conflicte și reforme succesive. Totuși, Revoluția Glorioasă a schimbat principiul legitimării: monarhul nu mai putea susține plauzibil că puterea sa este independentă de lege și de reprezentarea politică.</p>
+</section>
+<section id="sinteza">
+  <h2>8. Sinteză</h2>
+  <div class="callout good"><strong>Ideea principală:</strong> monarhia constituțională britanică s-a format prin limitarea juridică a prerogativei regale și prin transferul treptat al guvernării efective către Cabinetul sprijinit de Parlament. Bill of Rights din 1689 a fost un prag decisiv, nu punctul final al evoluției.</div>
+</section>
+        <section id="verificare">
+          <h2>Întrebări de verificare</h2>
+          <div class="questions"><ol><li>Care sunt cele mai importante interdicții impuse coroanei prin Bill of Rights?</li><li>De ce nu putem spune că Anglia a devenit imediat o democrație modernă în 1689?</li><li>Cum a apărut responsabilitatea politică a Cabinetului față de Parlament?</li><li>Ce rol a avut Act of Settlement în evoluția monarhiei constituționale?</li><li>Explică legătura dintre revoluția constituțională și revoluția financiară.</li></ol></div>
+        </section>
+        <section id="bibliografie">
+          <h2>Bibliografie orientativă</h2>
+          <ul class="bibliography"><li>Barry Coward, The Stuart Age: England, 1603-1714.</li><li>John Morrill, The Nature of the English Revolution.</li><li>J. R. Jones, The Revolution of 1688 in England.</li><li>Materialele educaționale ale Parlamentului Regatului Unit privind Războiul Civil, Declarația Drepturilor și monarhia constituțională.</li><li>Documentul de curs „Revoluția Glorioasă”, furnizat de utilizator; informațiile au fost reorganizate și corectate acolo unde cronologia o impunea.</li></ul>
+        </section>
+      </article>
+
+      <aside class="sidebar">
+        <div class="side-card">
+          <h2>Termeni-cheie</h2>
+          <div class="keywords"><span>Bill of Rights</span><span>Habeas Corpus</span><span>Parlament</span><span>Cabinet</span><span>prim-ministru</span><span>Whig</span><span>Tory</span><span>Act of Settlement</span></div>
+        </div>
+        <div class="side-card toc">
+          <h2>Cuprins</h2>
+          <a href="#context">Context și delimitări</a>
+          <a href="#dezvoltare">Dezvoltarea temei</a>
+          <a href="#cronologie">Cronologie</a>
+          <a href="#interpretare">Interpretare istorică</a>
+          <a href="#sinteza">Sinteză</a>
+          <a href="#verificare">Întrebări</a>
+        </div>
+      </aside>
+    </div>
+    <footer class="footer">© 2026 Marin Gabriel · Material educațional pentru disciplina Istorie</footer>
+  </main>
+</body>
+</html>

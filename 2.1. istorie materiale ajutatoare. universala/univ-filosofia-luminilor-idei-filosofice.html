@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Filosofia Luminilor: idei filosofice">
+<title>univ-filosofia-luminilor-idei-filosofice</title>
+<style>
+:root {
+  --bg: #fbf6ea;
+  --paper: #fffaf0;
+  --paper-2: #ffffff;
+  --ink: #2d2418;
+  --title: #3c2d16;
+  --muted: #5e4d36;
+  --accent: #9a6519;
+  --accent-2: #c28a2c;
+  --accent-soft: #f5e8c8;
+  --line: rgba(92, 66, 30, 0.18);
+  --line-strong: rgba(92, 66, 30, 0.34);
+  --shadow: 0 26px 70px rgba(0,0,0,.28);
+  --shadow-small: 0 12px 30px rgba(0,0,0,.15);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin:0; min-height:100vh; color:var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(196,139,45,.70), transparent 32%),
+    radial-gradient(circle at 50% 100%, rgba(117,78,23,.45), transparent 37%),
+    radial-gradient(circle at 0 50%, rgba(18,14,8,.94), transparent 43%),
+    radial-gradient(circle at 100% 50%, rgba(18,14,8,.94), transparent 43%),
+    linear-gradient(180deg,#2c1e0c 0%,#58401c 48%,#170f06 100%);
+  background-attachment:fixed;
+}
+body::before { content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:radial-gradient(circle at center,transparent 0%,rgba(0,0,0,.08) 49%,rgba(0,0,0,.46) 100%),
+  linear-gradient(90deg,rgba(0,0,0,.18),transparent 18%,transparent 82%,rgba(0,0,0,.18)); }
+.page { position:relative; z-index:1; width:min(1180px,calc(100% - 32px)); margin:0 auto; padding:34px 0 70px; }
+.topbar { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:18px; flex-wrap:wrap; }
+.back-link,.tag { display:inline-flex; align-items:center; border:1px solid var(--line); background:rgba(255,250,240,.88); color:var(--title); border-radius:999px; padding:10px 15px; text-decoration:none; font-size:15px; font-weight:700; box-shadow:var(--shadow-small); }
+.back-link:hover { background:#fff6e4; }
+.hero,.section,.nav-card,.final-box,.related-card { background:rgba(255,250,240,.96); border:1px solid var(--line); border-radius:28px; box-shadow:var(--shadow); }
+.hero { padding:38px; margin-bottom:24px; position:relative; overflow:hidden; }
+.hero::after { content:var(--hero-year); position:absolute; right:26px; bottom:-24px; font-size:108px; font-weight:900; letter-spacing:-4px; color:rgba(154,101,25,.09); pointer-events:none; }
+.eyebrow { margin:0 0 8px; font-size:16px; color:var(--accent); font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+h1 { margin:0; font-size:clamp(38px,5vw,62px); line-height:1.04; color:var(--title); letter-spacing:-1.4px; }
+.subtitle { margin:18px 0 0; max-width:990px; font-size:19px; line-height:1.78; color:var(--muted); text-align:justify; text-align-last:left; }
+.series-links { display:flex; gap:9px; flex-wrap:wrap; margin-top:20px; }
+.series-links a { color:var(--title); background:#fff; border:1px solid rgba(92,66,30,.16); border-radius:999px; padding:9px 13px; text-decoration:none; font-weight:800; box-shadow:0 8px 20px rgba(0,0,0,.10); }
+.series-links a[aria-current="page"] { background:var(--accent); color:#fffaf3; }
+.series-links a:hover { transform:translateY(-1px); }
+.related-card { display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:16px 20px; margin:-10px 0 24px; border-radius:22px; box-shadow:var(--shadow-small); }
+.related-card b { color:var(--title); }
+.related-card a { color:var(--title); background:#f5e8c8; border:1px solid rgba(92,66,30,.16); border-radius:999px; text-decoration:none; padding:8px 12px; font-weight:700; font-size:14px; }
+.nav-card { display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:18px 20px; margin-bottom:24px; }
+.nav-card b { color:var(--title); }
+.nav-card a,.mini-btn { color:var(--title); background:var(--accent-soft); border:1px solid rgba(92,66,30,.16); border-radius:999px; text-decoration:none; padding:8px 12px; font-weight:700; font-size:14px; cursor:pointer; font-family:inherit; }
+.nav-card a:hover,.mini-btn:hover { background:#ead7a7; }
+.section { padding:30px; margin-bottom:24px; }
+h2 { margin:0 0 14px; color:var(--title); font-size:clamp(28px,3vw,38px); line-height:1.15; }
+h3 { margin:0 0 12px; color:var(--title); font-size:22px; line-height:1.22; }
+h4 { margin:16px 0 8px; color:var(--title); font-size:18px; }
+p,li,dd,.section-intro { font-size:17px; line-height:1.72; color:var(--muted); text-align:justify; text-align-last:left; hyphens:auto; }
+.section-intro { margin:0 0 20px; max-width:1020px; }
+.summary-grid,.three-col,.two-col,.four-col,.term-grid,.quick-grid,.cause-grid,.profile-grid,.principle-grid { display:grid; gap:14px; }
+.summary-grid,.quick-grid { grid-template-columns:repeat(4,1fr); margin-top:22px; }
+.three-col,.profile-grid { grid-template-columns:repeat(3,1fr); }
+.two-col,.cause-grid { grid-template-columns:repeat(2,1fr); }
+.four-col,.term-grid,.principle-grid { grid-template-columns:repeat(4,1fr); }
+.summary-card,.info-card,.wide-card,.term-card,.quick-card,.micro-card,.warning-box,.source-note,.profile-card,.principle-card { background:var(--paper-2); border:1px solid rgba(92,66,30,.14); border-radius:20px; box-shadow:var(--shadow-small); text-align:justify; text-align-last:left; }
+.summary-card,.info-card,.wide-card,.term-card,.quick-card,.micro-card,.warning-box,.source-note,.profile-card,.principle-card { padding:20px; }
+.summary-card { min-height:132px; padding:16px; }
+.summary-card strong,.quick-card strong,.term-card strong,.micro-card strong,.principle-card strong { display:block; color:var(--title); font-size:17px; margin-bottom:8px; text-align:left; }
+.summary-card span,.quick-card span,.term-card span,.micro-card span,.principle-card span { display:block; color:var(--muted); font-size:15.5px; line-height:1.58; }
+.profile-card h3 { margin-bottom:4px; }
+.profile-card .life { display:block; color:var(--accent); font-weight:800; margin-bottom:10px; }
+.profile-card p { font-size:16px; margin:8px 0; }
+.profile-card ul { margin:8px 0 0; padding-left:20px; }
+.profile-card li { font-size:15.5px; line-height:1.56; margin-bottom:5px; }
+.clean,.number-list { margin:0; padding-left:22px; }
+.clean li,.number-list li { margin:0 0 9px; padding-left:2px; }
+.date-pill { display:inline-block; color:var(--title); font-weight:800; background:#f7edda; border:1px solid rgba(92,66,30,.13); border-radius:999px; padding:2px 9px; margin-right:5px; white-space:nowrap; }
+.definition,.note,.fact-check,.quote-box { margin-top:18px; background:#fff8ea; border:1px solid rgba(154,101,25,.23); border-left:6px solid rgba(154,101,25,.55); border-radius:18px; padding:18px 20px; color:var(--muted); font-size:17px; line-height:1.7; text-align:justify; text-align-last:left; }
+.definition strong,.note strong,.fact-check strong,.quote-box strong { color:var(--title); }
+.quote-box { font-style:italic; }
+details { background:#fffdf8; border:1px solid rgba(92,66,30,.14); border-radius:20px; box-shadow:var(--shadow-small); margin-top:14px; overflow:hidden; }
+details[open] { background:#fffaf0; }
+summary { cursor:pointer; list-style:none; padding:18px 20px; font-size:19px; font-weight:800; color:var(--title); display:flex; justify-content:space-between; align-items:center; gap:18px; }
+summary::-webkit-details-marker { display:none; }
+summary::after { content:"Deschide"; color:var(--muted); font-size:14px; font-weight:700; background:#f7edda; border:1px solid rgba(92,66,30,.14); border-radius:999px; padding:7px 11px; white-space:nowrap; }
+details[open]>summary::after { content:"Ascunde"; }
+.details-body { border-top:1px solid rgba(92,66,30,.12); padding:18px 20px 20px; }
+.key-line { display:grid; grid-template-columns:220px 1fr; gap:14px; padding:14px 0; border-bottom:1px dashed rgba(92,66,30,.18); }
+.key-line:last-child { border-bottom:0; }
+.key-line strong { color:var(--title); }
+.key-line span { color:var(--muted); line-height:1.65; }
+.timeline { display:grid; gap:14px; margin-top:18px; }
+.event { display:grid; grid-template-columns:136px 1fr; gap:18px; align-items:stretch; background:#fff; border:1px solid rgba(92,66,30,.14); border-radius:20px; box-shadow:var(--shadow-small); overflow:hidden; }
+.date { background:linear-gradient(180deg,#a36b18,#6f430d); color:#fffaf3; display:flex; align-items:center; justify-content:center; text-align:center; padding:14px; font-size:18px; line-height:1.25; font-weight:900; }
+.event>div:last-child { padding:17px 18px 18px 0; }
+.event h3 { margin-bottom:6px; }
+.event p { margin:0; }
+.warning-box { background:#fff4df; border-color:rgba(154,101,25,.25); margin-top:16px; }
+.final-box { padding:28px; background:linear-gradient(135deg,#fffaf0,#f3dfb7); border-color:rgba(92,66,30,.25); }
+.final-box p { margin-bottom:0; }
+.table-wrap { overflow-x:auto; margin-top:14px; border-radius:18px; border:1px solid rgba(92,66,30,.14); background:#fff; box-shadow:var(--shadow-small); }
+table { width:100%; border-collapse:collapse; min-width:760px; }
+th,td { padding:13px 14px; border-bottom:1px solid rgba(92,66,30,.12); color:var(--muted); font-size:16px; line-height:1.55; vertical-align:top; text-align:left; }
+th { background:#f7edda; color:var(--title); font-weight:800; }
+tr:last-child td { border-bottom:0; }
+.badge-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+.badge { display:inline-flex; padding:6px 10px; border-radius:999px; background:#f7edda; border:1px solid rgba(92,66,30,.13); color:var(--title); font-weight:800; font-size:13px; }
+.flow { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin-top:16px; }
+.flow-item { position:relative; padding:16px; background:#fff; border:1px solid rgba(92,66,30,.14); border-radius:18px; box-shadow:var(--shadow-small); }
+.flow-item b { display:block; color:var(--title); margin-bottom:6px; }
+.flow-item span { font-size:15px; color:var(--muted); line-height:1.5; }
+.flow-item:not(:last-child)::after { content:'→'; position:absolute; right:-14px; top:50%; transform:translateY(-50%); font-size:22px; color:var(--accent); font-weight:900; z-index:3; }
+.source-map { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+.source-map article { background:#fff; border:1px solid rgba(92,66,30,.14); border-radius:18px; padding:17px; box-shadow:var(--shadow-small); }
+.source-map strong { display:block; color:var(--title); margin-bottom:6px; }
+.source-map span { color:var(--muted); font-size:15.5px; line-height:1.55; }
+footer { margin-top:24px; color:rgba(255,250,243,.82); text-align:center; font-size:14px; line-height:1.6; }
+@media(max-width:980px) {
+  .summary-grid,.three-col,.four-col,.term-grid,.quick-grid,.profile-grid,.principle-grid { grid-template-columns:repeat(2,1fr); }
+  .two-col,.cause-grid,.source-map { grid-template-columns:1fr; }
+  .flow { grid-template-columns:repeat(2,1fr); }
+  .flow-item::after { display:none; }
+}
+@media(max-width:680px) {
+  .page { width:min(100% - 22px,1180px); padding-top:22px; }
+  .hero,.section,.final-box { padding:22px; border-radius:22px; }
+  .summary-grid,.three-col,.four-col,.term-grid,.quick-grid,.profile-grid,.principle-grid,.flow { grid-template-columns:1fr; }
+  .event { grid-template-columns:1fr; }
+  .date { min-height:66px; }
+  .event>div:last-child { padding:0 16px 16px; }
+  .key-line { grid-template-columns:1fr; gap:6px; }
+  summary { align-items:flex-start; flex-direction:column; }
+  .hero::after { font-size:78px; }
+  .series-links a { width:100%; text-align:center; }
+  .subtitle,p,li,dd,.section-intro,.details-body,.key-line span,.event>div:last-child,.definition,.note,.fact-check,.quote-box { text-align:left; text-align-last:auto; hyphens:none; }
+}
+@media print {
+  body { background:#fff!important; }
+  body::before { display:none; }
+  .page { width:100%; padding:0; }
+  .topbar,.nav-card,.related-card { display:none!important; }
+  .hero,.section,.final-box { box-shadow:none; border:1px solid #ccb991; break-inside:avoid-page; }
+  details { break-inside:avoid-page; }
+  summary::after { display:none; }
+}
+</style>
+</head>
+<body id="top" style="--hero-year:'XVIII';">
+<main class="page">
+<div class="topbar"><a class="back-link" href="index.html">← Înapoi la materiale</a><span class="tag">Material ajutător · Istorie universală · Filosofia Luminilor</span></div>
+<section class="hero"><p class="eyebrow">Istorie universală · Epoca modernă · Secolul al XVIII-lea</p><h1>Filosofia Luminilor: idei filosofice</h1><p class="subtitle">Iluminismul în ansamblu: originile sale intelectuale, rațiunea și experiența, drepturile naturale, contractul social, separarea puterilor, toleranța, economia, Enciclopedia, spațiul public și impactul revoluționar.</p><div class="series-links"><a href="univ-filosofia-luminilor-monarhia-luminata.html">Monarhia luminată</a><a href="univ-filosofia-luminilor-idei-filosofice.html" aria-current="page">Idei filosofice</a><a href="univ-filosofia-luminilor-personalitati-istorice.html">Personalități istorice</a></div></section>
+<div class="related-card"><b>Seria Filosofia Luminilor:</b><a href="univ-filosofia-luminilor-monarhia-luminata.html">Monarhia luminată</a><a href="univ-filosofia-luminilor-idei-filosofice.html" aria-current="page">Idei filosofice</a><a href="univ-filosofia-luminilor-personalitati-istorice.html">Personalități istorice</a></div>
+<nav class="nav-card" aria-label="Cuprinsul paginii"><b>Cuprins:</b><a href="#definitie">Definiție</a><a href="#context">Context</a><a href="#radacini">Rădăcini</a><a href="#principii">Principii</a><a href="#politica">Politică</a><a href="#religie">Religie</a><a href="#economie">Economie</a><a href="#raspandire">Răspândire</a><a href="#enciclopedia">Enciclopedia</a><a href="#femei">Femei</a><a href="#spatii">Spații</a><a href="#consecinte">Consecințe</a><a href="#limite">Limite</a><button class="mini-btn" type="button" data-action="open">Deschide explicațiile</button><button class="mini-btn" type="button" data-action="close">Închide explicațiile</button></nav>
+
+<section class="section" id="definitie">
+<h2>I. Ce a fost Iluminismul?</h2>
+<p class="section-intro">Iluminismul — numit și Epoca Luminilor — a fost marea mișcare intelectuală a secolului al XVIII-lea, pregătită de revoluția științifică, de raționalismul și empirismul secolului al XVII-lea. „Lumina” desemna cultura, cunoașterea verificabilă și folosirea autonomă a rațiunii împotriva ignoranței, prejudecății, intoleranței și autorității nejustificate.</p>
+<div class="summary-grid"><article class="summary-card"><strong>Centru intelectual</strong><span>Rațiunea, observația, experimentul și dezbaterea critică.</span></article><article class="summary-card"><strong>Program social</strong><span>Alfabetizare, educație, răspândirea culturii și reformarea instituțiilor.</span></article><article class="summary-card"><strong>Program politic</strong><span>Libertate, egalitate civilă, toleranță, drepturi naturale și limitarea arbitrarului.</span></article><article class="summary-card"><strong>Orizont istoric</strong><span>Credința că societatea este perfectibilă și poate progresa prin cunoaștere.</span></article></div>
+<div class="definition"><strong>Definiție sintetică:</strong> mișcare culturală și ideologică antifeudală, desfășurată între secolele al XVII-lea și al XIX-lea în Europa și America, care urmărea construirea unei societăți raționale prin răspândirea „Luminii” către public.</div>
+<details><summary>Iluminismul și barocul</summary><div class="details-body"><p>Într-o formulare din documentul de curs, Iluminismul apare ca o replică la baroc: în locul spectacolului autorității, al dogmei și al sensibilității religioase colective, filosofii pun exercițiul critic, analiza empirică și argumentul. Opoziția nu este absolută — cele două epoci se suprapun — dar surprinde schimbarea centrului de greutate către individ și rațiune.</p></div></details><div class="fact-check"><strong>Corecție de cronologie:</strong> în document apare formularea „sfârșitul secolului XII”. Contextul — ascensiunea burgheziei, Revoluția Glorioasă și rădăcinile filosofice ale Luminilor — indică sfârșitul secolului al XVII-lea și începutul secolului al XVIII-lea.</div>
+</section>
+
+<section class="section" id="context">
+<h2>II. Contextul apariției</h2>
+<div class="two-col"><article class="info-card"><h3>Transformări economice și sociale</h3><ul class="clean"><li>progrese ale economiei europene și extinderea comerțului;</li><li>afirmarea burgheziei ca grup activ, bogat și instruit, care solicita acces la conducerea statului;</li><li>circulația ideilor, a mărfurilor și a oamenilor într-un spațiu european tot mai interconectat;</li><li>cosmopolitismul exprimat prin formula <em>Ubi bene, ibi patria</em> — „Unde este bine, acolo este patria”.</li></ul></article><article class="info-card"><h3>Problemele Vechiului Regim</h3><ul class="clean"><li>absolutismul și dreptul divin al monarhilor;</li><li>ordinea socială întemeiată pe stări și privilegii;</li><li>fiscalitatea inegală și reglementarea rigidă a economiei;</li><li>intoleranța confesională și controlul cenzurii;</li><li>războaiele dinastice, politica agresivă și expansiunea colonială.</li></ul></article></div>
+<details open><summary>De ce secolul al XVIII-lea a putut deveni „secolul filosofilor”?</summary><div class="details-body"><p>Creșterea alfabetizării, dezvoltarea tiparului și a presei periodice, intensificarea comerțului, apariția unei elite urbane și prestigiul științelor exacte au creat un public interesat de explicații raționale. Filosofii nu au fost doar autori de tratate: au intervenit în procese, au combătut tortura și intoleranța, au discutat reforma școlii, a justiției, a fiscalității și a administrației.</p></div></details>
+</section>
+
+<section class="section" id="radacini">
+<h2>III. Rădăcinile engleze și franceze</h2>
+<div class="timeline"><article class="event"><div class="date">1637</div><div><h3>Descartes — <em>Discurs asupra metodei</em></h3><p>Raționalismul cartezian propune îndoiala metodică și căutarea unor adevăruri clare și distincte.</p></div></article><article class="event"><div class="date">1641</div><div><h3><em>Meditații metafizice</em></h3><p>Descartes cercetează temeiurile certitudinii, raportul dintre spirit și materie și rolul rațiunii.</p></div></article><article class="event"><div class="date">1677</div><div><h3>Spinoza — <em>Etica</em></h3><p>O viziune raționalistă asupra naturii, libertății și pasiunilor, însoțită de apărarea toleranței și libertății de filosofare.</p></div></article><article class="event"><div class="date">1688–1689</div><div><h3>Revoluția Glorioasă</h3><p>Monarhia engleză este limitată politic, iar drepturile Parlamentului sunt consolidate. Modelul britanic devine reper pentru Montesquieu și liberalii europeni.</p></div></article><article class="event"><div class="date">1690</div><div><h3>Locke — <em>Eseu asupra intelectului uman</em></h3><p>Empirismul afirmă că ideile provin din experiență; în tratatele politice, Locke justifică drepturile naturale și rezistența față de tiranie.</p></div></article><article class="event"><div class="date">1715</div><div><h3>Moartea lui Ludovic al XIV-lea</h3><p>Critica absolutismului francez se intensifică, iar Parisul devine centrul european al filosofilor și saloanelor.</p></div></article></div>
+<div class="three-col"><article class="info-card"><h3>Empirism</h3><p>Cunoașterea pornește din experiență, observație și analiza faptelor. Locke, Berkeley și Hume explorează limitele și mecanismele minții.</p></article><article class="info-card"><h3>Raționalism</h3><p>Rațiunea poate construi explicații coerente și universale. Descartes și Spinoza oferă modele filosofice sistematice.</p></article><article class="info-card"><h3>Știința modernă</h3><p>Metoda experimentală și matematizarea naturii, asociate cu Bacon, Galileo și Newton, oferă Luminilor modelul unei cunoașteri cumulative.</p></article></div>
+</section>
+
+<section class="section" id="principii">
+<h2>IV. Principiile filosofiei luminilor</h2>
+<div class="principle-grid"><article class="principle-card"><strong>Rațiune</strong><span>Omul trebuie să judece autonom, să ceară argumente și să respingă afirmațiile neverificate.</span></article><article class="principle-card"><strong>Experiență</strong><span>Adevărul despre lumea naturală trebuie controlat prin observație și experiment.</span></article><article class="principle-card"><strong>Progres</strong><span>Educația, știința și reforma pot îmbunătăți instituțiile și condiția umană.</span></article><article class="principle-card"><strong>Universalism</strong><span>Omul este privit ca ființă rațională, purtătoare de drepturi, dincolo de rang și origine.</span></article><article class="principle-card"><strong>Libertate</strong><span>Libertatea de conștiință, expresie, presă și cercetare trebuie protejată.</span></article><article class="principle-card"><strong>Egalitate civilă</strong><span>Legea trebuie să se aplice tuturor și să înlocuiască privilegiile ereditare.</span></article><article class="principle-card"><strong>Toleranță</strong><span>Diferențele religioase nu justifică persecuția, iar statul trebuie să reducă fanatismul.</span></article><article class="principle-card"><strong>Fericire</strong><span>Scopul legitim al societății este bunăstarea oamenilor, nu gloria dinastică ori războiul perpetuu.</span></article></div>
+<div class="quote-box"><strong>Îndemnuri sintetice ale epocii:</strong> „Judecă și acționează conform rațiunii”; omul cultivat trebuie să poată înțelege și discuta problemele publice; fericirea devine o îndatorire și un obiectiv legitim al guvernării.</div>
+</section>
+
+<section class="section" id="politica">
+<h2>V. Ideile politice</h2>
+<div class="table-wrap"><table><thead><tr><th>Principiu</th><th>Semnificație</th><th>Autor / model asociat</th></tr></thead><tbody><tr><td>Drepturi naturale</td><td>Viața, libertatea și proprietatea nu sunt daruri revocabile ale monarhului.</td><td>John Locke</td></tr><tr><td>Contract social</td><td>Autoritatea politică este legitimă prin consimțământ, nu exclusiv prin drept divin.</td><td>Locke, Rousseau</td></tr><tr><td>Separarea puterilor</td><td>Puterea legislativă, executivă și judecătorească trebuie diferențiate pentru a preveni abuzul.</td><td>Montesquieu</td></tr><tr><td>Suveranitatea poporului</td><td>Puterea supremă aparține comunității cetățenilor.</td><td>Rousseau</td></tr><tr><td>Legalitate și proporționalitatea pedepselor</td><td>Legea trebuie să fie publică, previzibilă și să excludă tortura și cruzimea inutilă.</td><td>Beccaria</td></tr><tr><td>Libertate civilă și religioasă</td><td>Conștiința și exprimarea nu trebuie controlate arbitrar.</td><td>Voltaire, Locke, Spinoza</td></tr></tbody></table></div>
+<div class="three-col"><article class="info-card"><h3>Voltaire</h3><p>Preferă monarhia luminată: reforme inițiate de un suveran instruit, capabil să învingă privilegiile și fanatismul.</p></article><article class="info-card"><h3>Montesquieu</h3><p>Propune monarhia moderată, parlamentară sau constituțională, inspirată din echilibrul instituțiilor britanice.</p></article><article class="info-card"><h3>Rousseau</h3><p>Consideră republica democratică și suveranitatea populară drept modelul cel mai coerent al libertății politice.</p></article></div>
+<details><summary>Critica Vechiului Regim</summary><div class="details-body"><ul class="clean"><li>contestarea dreptului divin și a absolutismului;</li><li>respingerea privilegiilor juridice și fiscale ale stărilor;</li><li>critica intoleranței, a cenzurii și a proceselor nedrepte;</li><li>respingerea războaielor de prestigiu și a politicii agresive;</li><li>critica, uneori incompletă, a cuceririlor coloniale și sclaviei;</li><li>angajarea intelectualilor în viața publică și apărarea victimelor abuzului.</li></ul></div></details>
+</section>
+
+<section class="section" id="religie">
+<h2>VI. Religie, deism și toleranță</h2>
+<p class="section-intro">Majoritatea iluminiștilor nu au fost atei. Ei au criticat dogmatismul și puterea instituțională a clerului, dar au încercat frecvent să armonizeze credința cu rațiunea.</p>
+<div class="three-col"><article class="info-card"><h3>Deismul</h3><p>Dumnezeu este înțeles ca autor rațional al universului, cunoscut prin natură și rațiune; revelațiile și miracolele sunt privite critic.</p></article><article class="info-card"><h3>Toleranța</h3><p>Persecuția religioasă este considerată irațională și socialmente distructivă. Libertatea conștiinței devine atribut al statului modern.</p></article><article class="info-card"><h3>Secularizarea</h3><p>Școala, justiția, cenzura și administrația trebuie desprinse treptat de controlul exclusiv al Bisericii.</p></article></div>
+<details><summary>De la critică religioasă la ateism</summary><div class="details-body"><p>Locke, Voltaire și Rousseau păstrează forme de credință; Diderot evoluează spre materialism, iar d'Holbach dezvoltă un ateism sistematic. Diversitatea arată că Iluminismul nu a fost o doctrină unică, ci un câmp de dezbatere unit prin încrederea în critică și argument.</p></div></details>
+</section>
+
+<section class="section" id="economie">
+<h2>VII. Munca și economia</h2>
+<div class="two-col"><article class="info-card"><h3>Demnitatea muncii</h3><p>Munca trebuia să devină principala sursă legitimă a existenței. O societate utilă este construită de agricultori, meșteșugari, negustori, savanți și funcționari competenți, nu de privilegii ereditare.</p></article><article class="info-card"><h3>Libertatea schimburilor</h3><p>Meseriile și comerțul ar trebui eliberate de intervenții arbitrare și orientate prin cerere și ofertă. Această idee este dezvoltată de liberalismul economic.</p></article></div>
+<div class="table-wrap"><table><thead><tr><th>Curent</th><th>Idee centrală</th><th>Reprezentanți</th></tr></thead><tbody><tr><td>Fiziocrație</td><td>Agricultura este sursa principală a produsului net și a prosperității; ordinea economică are legi naturale.</td><td>François Quesnay, Turgot</td></tr><tr><td>Liberalism economic</td><td>Diviziunea muncii, concurența și libertatea schimbului pot crește bogăția.</td><td>Adam Smith</td></tr><tr><td>Mercantilism reformat</td><td>Statul stimulează producția, populația, manufacturile și comerțul pentru a-și întări resursele.</td><td>Monarhiile luminate, mai ales Prusia și Austria</td></tr></tbody></table></div>
+</section>
+
+<section class="section" id="raspandire">
+<h2>VIII. Cum se răspândeau ideile</h2>
+<div class="flow"><article class="flow-item"><b>Autorul</b><span>Scrie tratate, romane, satire, articole și pamflete.</span></article><article class="flow-item"><b>Tiparul</b><span>Multiplică volume, broșuri, ziare și foi volante.</span></article><article class="flow-item"><b>Societatea</b><span>Academii, cluburi, loji masonice și societăți științifice.</span></article><article class="flow-item"><b>Spațiul public</b><span>Saloane, cafenele, ceainării și cercuri de lectură.</span></article><article class="flow-item"><b>Publicul</b><span>Elita intelectuală și burgheză transformă ideile în opinie publică.</span></article></div>
+<div class="four-col"><article class="info-card"><h3>Academii</h3><p>Reunesc savanți, organizează concursuri și validează cercetarea.</p></article><article class="info-card"><h3>Saloane</h3><p>Femeile din înalta societate găzduiesc conversații care conectează filosofi, diplomați și artiști.</p></article><article class="info-card"><h3>Loji masonice</h3><p>Oferă rețele cosmopolite, ritualuri de fraternitate și dezbatere morală.</p></article><article class="info-card"><h3>Cafenele și ceainării</h3><p>Fac posibilă lectura presei și discuția politică în afara curții și universității.</p></article></div>
+</section>
+
+<section class="section" id="enciclopedia">
+<h2>IX. Enciclopedia</h2>
+<p class="section-intro"><em>Encyclopédie ou Dictionnaire raisonné des sciences, des arts et des métiers</em> a fost proiectul emblematic al Luminilor: o sinteză critică a cunoștințelor, a tehnicilor și meseriilor, destinată oamenilor de litere și publicului educat.</p>
+<div class="three-col"><article class="info-card"><h3>Coordonare</h3><p>Denis Diderot și Jean le Rond d'Alembert au coordonat proiectul; primul volum a apărut în 1751.</p></article><article class="info-card"><h3>Colaboratori</h3><p>Peste 150 de autori au redactat articole de filosofie, știință, economie, religie, artă și tehnică.</p></article><article class="info-card"><h3>Impact</h3><p>A organizat cunoașterea ca instrument de emancipare și a produs un „seism” în conștiința politică europeană.</p></article></div>
+<div class="fact-check"><strong>Precizare bibliografică:</strong> documentul de curs reține 24 de volume de text și 11 de planșe. Ediția pariziană originală publicată între 1751 și 1772 este, de regulă, numărată ca 17 volume de text și 11 volume de planșe; continuările și suplimentele explică numărători mai mari.</div>
+</section>
+
+<section class="section" id="femei">
+<h2>X. Emanciparea individului și rolul femeilor</h2>
+<div class="two-col"><article class="info-card"><h3>Participarea culturală</h3><p>Femeile din aristocrație și burghezie au organizat saloane, au finanțat proiecte, au tradus opere și au intrat în comunitățile științifice. Émilie du Châtelet a tradus și comentat opera lui Newton.</p></article><article class="info-card"><h3>Revendicarea egalității</h3><p>Mary Wollstonecraft și Olympe de Gouges au arătat contradicția dintre universalitatea drepturilor și excluderea femeilor din educație și cetățenie.</p></article></div>
+<div class="note"><strong>Limită majoră:</strong> Iluminismul a proclamat omul universal, dar drepturile au fost aplicate inițial mai ales bărbaților proprietari. Lupta pentru extinderea lor către femei, sclavi, populații coloniale și grupuri sărace a continuat în secolele următoare.</div>
+</section>
+
+<section class="section" id="spatii">
+<h2>XI. Iluminisme europene și atlantice</h2>
+<div class="table-wrap"><table><thead><tr><th>Spațiu</th><th>Accent</th><th>Reprezentanți / instituții</th></tr></thead><tbody><tr><td>Anglia și Scoția</td><td>Empirism, drepturi naturale, economie politică, filosofie morală.</td><td>Locke, Hume, Adam Smith, Berkeley.</td></tr><tr><td>Franța</td><td>Critica Vechiului Regim, enciclopedism, toleranță, reformă politică.</td><td>Voltaire, Montesquieu, Rousseau, Diderot, Condorcet.</td></tr><tr><td>Germania</td><td>Autonomia rațiunii, educație, critică estetică și istorie culturală.</td><td>Kant, Lessing, Herder.</td></tr><tr><td>Italia</td><td>Reforma dreptului penal, economia și administrația.</td><td>Beccaria, Verri.</td></tr><tr><td>America de Nord</td><td>Drepturi naturale, republicanism și constituționalism.</td><td>Franklin, Jefferson, Madison, Paine.</td></tr><tr><td>Europa Centrală și spațiul românesc</td><td>Școală, limbă, istorie, reformă administrativă și emancipare națională.</td><td>Școala Ardeleană: Samuil Micu, Gheorghe Șincai, Petru Maior, Ion Budai-Deleanu.</td></tr></tbody></table></div>
+</section>
+
+<section class="section" id="consecinte">
+<h2>XII. Consecințe politice și culturale</h2>
+<div class="timeline"><article class="event"><div class="date">1776</div><div><h3>Revoluția celor Treisprezece Colonii</h3><p>Declarația de Independență formulează drepturi naturale și legitimitatea guvernului prin consimțământ.</p></div></article><article class="event"><div class="date">1787–1791</div><div><h3>Constituționalismul american</h3><p>Constituția și Bill of Rights transformă separarea puterilor și libertățile civile în instituții.</p></div></article><article class="event"><div class="date">1789</div><div><h3>Revoluția Franceză</h3><p>Declarația Drepturilor Omului și Cetățeanului atacă privilegiile și proclamă egalitatea juridică.</p></div></article><article class="event"><div class="date">sec. XIX</div><div><h3>Moștenirea</h3><p>Liberalismul, constituționalismul, naționalismul civic, reforma penală și educația publică dezvoltă programul Luminilor.</p></div></article></div>
+<div class="three-col"><article class="info-card"><h3>Elită intelectuală</h3><p>Apare un public de autori, cititori și critici care judecă puterea din afara instituțiilor tradiționale.</p></article><article class="info-card"><h3>Acces cultural</h3><p>Broșurile, pamfletele, presa, bibliotecile și cluburile lărgesc accesul la artă, știință și informație.</p></article><article class="info-card"><h3>Reformă și revoluție</h3><p>Unele idei sunt aplicate de monarhi; altele devin limbajul revoluțiilor constituționale.</p></article></div>
+</section>
+
+<section class="section" id="limite">
+<h2>XIII. Limite și contradicții</h2>
+<div class="four-col"><article class="info-card"><h3>Colonialism</h3><p>Unii filosofi au criticat cucerirea și sclavia, dar economiile europene au continuat să profite de imperii coloniale.</p></article><article class="info-card"><h3>Elitism</h3><p>Culturalizarea „poporului” a fost adesea concepută de elite care se temeau de participarea politică largă.</p></article><article class="info-card"><h3>Eurocentrism</h3><p>Universalismul a coexistat cu ierarhii culturale și teorii despre „civilizații” superioare.</p></article><article class="info-card"><h3>Rațiune și violență</h3><p>Revoluțiile au arătat că limbajul rațional al drepturilor nu elimină automat conflictul și teroarea.</p></article></div>
+<div class="final-box"><h2>Concluzie</h2><p>Iluminismul a schimbat întrebarea politică fundamentală: autoritatea nu mai trebuia doar moștenită și consacrată, ci justificată prin utilitate publică, drepturi, lege și rațiune. Chiar și atunci când programul său a rămas incomplet, el a oferit vocabularul societății moderne.</p></div>
+</section>
+
+<section class="section" id="surse"><h2>XIV. Informațiile integrate</h2><div class="source-map"><article><strong>„Filosofia Luminilor”</strong><span>Context economic și social, rădăcini engleze și franceze, rațiune, deism, modele politice, economie, răspândirea ideilor, Enciclopedia, reprezentanți și consecințe revoluționare.</span></article><article><strong>Completări istorice</strong><span>Revoluția științifică, varietatea iluminismelor regionale, gândirea penală și economică, contribuția femeilor, receptarea în spațiul românesc și limitele universalismului.</span></article></div></section>
+
+<footer>Material amplu, structurat după documentele Word furnizate și completat cu informații istorice suplimentare · Seria „Filosofia Luminilor”</footer>
+</main><script>
+const openBtn=document.querySelector('[data-action="open"]');
+const closeBtn=document.querySelector('[data-action="close"]');
+if(openBtn)openBtn.addEventListener('click',()=>document.querySelectorAll('details').forEach(d=>d.open=true));
+if(closeBtn)closeBtn.addEventListener('click',()=>document.querySelectorAll('details').forEach(d=>d.open=false));
+</script>
+</body></html>

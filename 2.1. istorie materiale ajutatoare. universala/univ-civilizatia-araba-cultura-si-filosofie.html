@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Civilizația arabă: cultură și filosofie</title>
+<style>
+:root{
+  --bg:#f5efe4;
+  --paper:#fffaf2;
+  --ink:#2c241b;
+  --muted:#6f6255;
+  --accent:#8a4f22;
+  --accent2:#b9793a;
+  --line:#dccbb6;
+  --card:#fff6e8;
+  --soft:#efe0c8;
+  --green:#647a4a;
+  --red:#9b3f2f;
+  --blue:#4a6478;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family: Georgia, 'Times New Roman', serif;
+  background:
+    radial-gradient(circle at top left, rgba(185,121,58,.18), transparent 28rem),
+    linear-gradient(180deg,#f7efe2 0%,#f3eadc 55%,#efe3d1 100%);
+  color:var(--ink);
+  line-height:1.65;
+}
+a{color:#6f3b16;text-decoration:none;border-bottom:1px dotted rgba(111,59,22,.35)}
+a:hover{border-bottom-style:solid}
+.wrapper{width:min(1180px, calc(100% - 32px)); margin:0 auto 56px;}
+.hero{
+  margin:28px auto 22px;
+  background:linear-gradient(135deg,rgba(255,250,242,.97),rgba(248,233,210,.97));
+  border:1px solid var(--line);
+  border-radius:26px;
+  padding:34px;
+  box-shadow:0 18px 55px rgba(83,55,28,.14);
+  position:relative;
+  overflow:hidden;
+}
+.hero:after{
+  content:"";
+  position:absolute;
+  right:-90px; top:-90px;
+  width:260px; height:260px;
+  border-radius:50%;
+  background:rgba(138,79,34,.12);
+}
+.kicker{letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-size:.82rem;font-weight:bold;margin:0 0 8px;}
+h1{font-size:clamp(2.1rem,5vw,4.3rem);line-height:1.03;margin:.1em 0 .25em;color:#2b2118;}
+.subtitle{font-size:1.16rem;color:var(--muted);max-width:900px;margin:0;}
+.badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
+.badge{border:1px solid var(--line);background:#fffaf2;border-radius:999px;padding:7px 12px;font-size:.92rem;color:#4a3d31;}
+.nav{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0 26px;
+}
+.nav a{display:block;border:1px solid var(--line);border-radius:18px;background:rgba(255,250,242,.8);padding:14px 16px;color:#3b2d22;box-shadow:0 8px 22px rgba(75,50,24,.08);}
+.nav small{display:block;color:var(--muted);font-size:.82rem;margin-top:4px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin:20px 0;}
+.card{
+  background:rgba(255,250,242,.92);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:22px;
+  box-shadow:0 10px 30px rgba(73,47,22,.08);
+}
+.card h3{margin:.1em 0 .5em;font-size:1.25rem;color:#4a2a14;}
+.card p{margin:.55em 0;color:#44372c;}
+section{
+  margin:26px 0;
+  background:rgba(255,250,242,.86);
+  border:1px solid var(--line);
+  border-radius:26px;
+  padding:28px;
+  box-shadow:0 12px 34px rgba(73,47,22,.07);
+}
+h2{font-size:clamp(1.55rem,3vw,2.35rem);margin:.1em 0 .55em;color:#3b2617;}
+h3{font-size:1.28rem;margin:1.25em 0 .4em;color:#4a2d18;}
+h4{font-size:1.05rem;margin:1em 0 .25em;color:#623817;}
+.lead{font-size:1.08rem;color:#4b4036;}
+.note{background:#f1e3cc;border-left:5px solid var(--accent2);padding:14px 16px;border-radius:14px;margin:16px 0;color:#4b3d2d;}
+.warn{background:#f6e6de;border-left:5px solid var(--red);padding:14px 16px;border-radius:14px;margin:16px 0;color:#4b2e29;}
+.timeline{position:relative;margin:22px 0 8px;padding-left:22px;}
+.timeline:before{content:"";position:absolute;left:6px;top:4px;bottom:4px;width:3px;background:linear-gradient(var(--accent2),var(--green));border-radius:999px;}
+.event{position:relative;background:#fff6e8;border:1px solid var(--line);border-radius:18px;padding:14px 16px;margin:12px 0;}
+.event:before{content:"";position:absolute;left:-22px;top:20px;width:13px;height:13px;background:var(--accent);border:3px solid #f8ead8;border-radius:50%;}
+.event b{color:#6f3b16;}
+table{width:100%;border-collapse:collapse;margin:18px 0;border-radius:18px;overflow:hidden;background:#fffaf2;font-size:.96rem;}
+th,td{border:1px solid var(--line);padding:11px 12px;vertical-align:top;}
+th{background:#ead8be;color:#3d291a;text-align:left;}
+tr:nth-child(even) td{background:#fff5e5;}
+ul,ol{padding-left:1.35rem;}
+li{margin:.35em 0;}
+details{border:1px solid var(--line);border-radius:18px;background:#fff6e8;margin:12px 0;padding:14px 16px;}
+summary{cursor:pointer;font-weight:bold;color:#623817;}
+details p, details ul, details table{margin-top:12px;}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+@media(max-width:800px){.split{grid-template-columns:1fr}.hero,section{padding:22px}.wrapper{width:min(100% - 20px,1180px)}}
+.footer{font-size:.92rem;color:var(--muted);text-align:center;margin:34px 0 10px;}
+.pill{display:inline-block;background:#ead8be;border-radius:999px;padding:3px 9px;font-size:.86rem;margin:2px 4px 2px 0;color:#523520;}
+.sourcebox{background:#f1eadf;border:1px dashed #cbb79b;border-radius:18px;padding:16px;color:#5a4b3b;font-size:.95rem;}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <header class="hero">
+    <p class="kicker">Civilizația arabă — III</p>
+    <h1>Civilizația arabă: cultură și filosofie</h1>
+    <p class="subtitle">Biblioteci, traduceri, științe, filosofie, artă, economie urbană și transmiterea culturii arabe către Europa medievală.</p>
+    <div class="badges"><span class="badge">Bagdad • Córdoba • Cairo</span><span class="badge">Avicenna • Averroes</span><span class="badge">Știință • Filosofie</span><span class="badge">Traduceri arabe-latine</span></div>
+  </header>
+  <nav class="nav"><a href="civilizatia-araba-fondarea-islamului.html"><b>Fondarea islamului</b><small>Arabia preislamică, Muhammad, Hegira, Coranul</small></a><a href="civilizatia-araba-expansiunea-islamului.html"><b>Expansiunea islamului</b><small>Califii, cuceriri, arabi în Europa, cruciade</small></a><a href="civilizatia-araba-cultura-si-filosofie.html"><b>Cultură și filosofie</b><small>Științe, biblioteci, Avicenna, Averroes, transmitere culturală</small></a></nav>
+  
+<section id="intro">
+  <h2>O civilizație arabă sau o civilizație islamică?</h2>
+  <p class="lead">Cultura arabă medievală a devenit rapid o cultură islamică multietnică. Arabii au oferit limba sacră și cadrul politic inițial, dar persanii, sirienii, egiptenii, berberii, turcii, andaluzii, evreii și creștinii orientali au contribuit decisiv la știință, filosofie, medicină, traduceri, administrație și artă.</p>
+  <div class="note">De aceea, când vorbim despre „cultura arabă”, ne referim adesea la o cultură scrisă în arabă și organizată în jurul islamului, nu exclusiv la etnia arabă.</div>
+</section>
+
+<section id="conditii">
+  <h2>1. Condițiile dezvoltării culturale</h2>
+  <div class="grid">
+    <div class="card"><h3>Limba arabă</h3><p>Coranul a fixat prestigiul limbii arabe. Araba devine limbă de administrație, religie, poezie, filosofie, știință și comerț.</p></div>
+    <div class="card"><h3>Orașele</h3><p>Bagdad, Damasc, Córdoba, Cairo, Basra, Kufa, Samarkand, Bukhara, Fez și Toledo au devenit centre de educație, biblioteci și schimb intelectual.</p></div>
+    <div class="card"><h3>Hârtia</h3><p>După contactele cu lumea chineză, tehnologia hârtiei se răspândește în lumea islamică, stimulând copierea manuscriselor, bibliotecile și școlile.</p></div>
+    <div class="card"><h3>Patronajul politic</h3><p>Califii, vizirii, emirii și elitele urbane finanțează traducători, medici, astronomi, poeți și juriști.</p></div>
+  </div>
+  <p>Atitudinea favorabilă studiului, interesul practic pentru astronomie, medicină, matematică, agricultură, navigație și drept au făcut din lumea islamică una dintre cele mai dinamice zone culturale ale Evului Mediu.</p>
+</section>
+
+<section id="biblioteci">
+  <h2>2. Biblioteci, școli și centre de învățare</h2>
+  <p class="lead">Între secolele VIII–XIII, lumea islamică a creat o rețea intelectuală de la Bagdad până la Córdoba și de la Cairo până la Bukhara. Această rețea a permis circulația manuscriselor, comentariilor filosofice, tratatelor medicale, tabelelor astronomice și textelor grecești traduse.</p>
+  <table>
+    <tr><th>Centru</th><th>Perioadă de apogeu</th><th>Rol cultural</th></tr>
+    <tr><td>Bagdad</td><td>sec. VIII–XIII</td><td>Capitală abbasidă, Casa Înțelepciunii, traduceri din greacă, siriacă, persană și sanscrită.</td></tr>
+    <tr><td>Córdoba</td><td>sec. X</td><td>Centru al Al-Andalusului, biblioteci, medicină, filosofie, poezie și traduceri către latina medievală.</td></tr>
+    <tr><td>Cairo</td><td>sec. X–XII</td><td>Fatimizii fondează Cairo; Al-Azhar devine unul dintre marile centre ale studiului islamic.</td></tr>
+    <tr><td>Fez</td><td>sec. IX–XIV</td><td>Al-Qarawiyyin, centru de învățământ religios, juridic și lingvistic în Maghreb.</td></tr>
+    <tr><td>Nishapur, Bukhara, Samarkand</td><td>sec. IX–XI</td><td>Centre persane și central-asiatice de teologie, medicină, literatură și știință.</td></tr>
+    <tr><td>Maragha</td><td>sec. XIII</td><td>Observator astronomic important, asociat cu Nasir al-Din al-Tusi.</td></tr>
+    <tr><td>Toledo</td><td>sec. XII–XIII</td><td>Centru de traduceri arabe-latine după cucerirea creștină a orașului.</td></tr>
+  </table>
+  <details><summary>Casa Înțelepciunii din Bagdad</summary>
+    <p><i>Bayt al-Hikma</i>, asociată mai ales cu epoca abbasidă și cu al-Ma'mun, a fost un simbol al mișcării de traducere. Acolo și în jurul curții abbaside au fost traduse texte de Aristotel, Platon, Galen, Euclid, Ptolemeu și alți autori antici. Traducătorii au fost adesea creștini siriaci, persani sau savanți bilingvi.</p>
+  </details>
+</section>
+
+<section id="stiinte">
+  <h2>3. Științele în lumea arabă-islamică</h2>
+  <div class="grid">
+    <div class="card"><h3>Matematică</h3><p>Al-Khwarizmi, activ în sec. IX, a contribuit la dezvoltarea algebrei. Termenul „algoritm” derivă din latinizarea numelui său. Lumea islamică a transmis și dezvoltat sistemul numeral indian, ajuns în Europa ca „cifre arabe”.</p></div>
+    <div class="card"><h3>Astronomie</h3><p>Astronomia era necesară pentru calendar, rugăciune, qibla și navigație. Savanți precum al-Battani, al-Sufi și al-Zarqali au produs observații și instrumente importante.</p></div>
+    <div class="card"><h3>Medicină</h3><p>Al-Razi și Ibn Sina au sistematizat medicina greacă, persană și indiană. Spitalele urbane, farmaciile și tratatele medicale au influențat universitățile europene.</p></div>
+    <div class="card"><h3>Optică</h3><p>Ibn al-Haytham, în sec. XI, a analizat vederea, lumina și experimentul optic. Opera sa a influențat gândirea științifică medievală și modernă timpurie.</p></div>
+    <div class="card"><h3>Geografie</h3><p>Al-Idrisi, Ibn Hawqal, al-Mas'udi și Ibn Battuta au descris lumea islamică și regiunile vecine. Hărțile și itinerariile erau utile comerțului și administrației.</p></div>
+    <div class="card"><h3>Chimie și tehnici</h3><p>Alchimia, distilarea, parfumurile, coloranții, metalurgia și farmacopeea au avut aplicații practice în medicină, textile, ceramică și comerț.</p></div>
+  </div>
+</section>
+
+<section id="filosofie">
+  <h2>4. Filosofie: de la traduceri grecești la Avicenna și Averroes</h2>
+  <p class="lead">Filosofia arabă, numită adesea <i>falsafa</i>, a fost o încercare de a pune în dialog revelația islamică, rațiunea, logica aristotelică, neoplatonismul și științele. Ea a influențat profund scolastica latină medievală.</p>
+  <table>
+    <tr><th>Gânditor</th><th>Date</th><th>Origine / spațiu</th><th>Opere și idei</th></tr>
+    <tr><td>Al-Kindi</td><td>cca 801–873</td><td>Kufa / Bagdad</td><td>Primul mare filosof arab; a susținut compatibilitatea dintre filosofie și revelație.</td></tr>
+    <tr><td>Al-Farabi</td><td>cca 872–950</td><td>Asia Centrală / Bagdad / Damasc</td><td>Teorie politică, logică, metafizică; „Orașul virtuos”.</td></tr>
+    <tr><td>Avicenna / Ibn Sina</td><td>980–1037</td><td>Bukhara / Persia</td><td><i>Canonul medicinei</i>, <i>Cartea vindecării</i>; metafizică, medicină, logică, psihologie.</td></tr>
+    <tr><td>Al-Ghazali</td><td>1058–1111</td><td>Persia</td><td>Critic al filosofilor; <i>Incoerența filosofilor</i>; sinteză între teologie, drept și mistică.</td></tr>
+    <tr><td>Averroes / Ibn Rushd</td><td>1126–1198</td><td>Córdoba / Marrakesh</td><td>Comentarii la Aristotel; <i>Incoerența incoerenței</i>; influență majoră asupra Europei latine.</td></tr>
+  </table>
+  <h3>Avicenna vs. Averroes</h3>
+  <table>
+    <tr><th>Criteriu</th><th>Avicenna / Ibn Sina</th><th>Averroes / Ibn Rushd</th></tr>
+    <tr><td>Perioadă</td><td>980–1037</td><td>1126–1198</td></tr>
+    <tr><td>Spațiu</td><td>Persia și Asia Centrală</td><td>Al-Andalus și Maghreb</td></tr>
+    <tr><td>Domenii</td><td>Medicină, metafizică, logică, psihologie, științe naturale.</td><td>Filosofie aristotelică, drept, medicină, teologie, comentarii.</td></tr>
+    <tr><td>Operă majoră</td><td><i>Canonul medicinei</i>, <i>Cartea vindecării</i>.</td><td>Comentariile la Aristotel, <i>Incoerența incoerenței</i>.</td></tr>
+    <tr><td>Stil</td><td>Sistematic, enciclopedic, sinteză între Aristotel, neoplatonism și teologie.</td><td>Comentator analitic al lui Aristotel; apărarea autonomiei demonstrației filosofice.</td></tr>
+    <tr><td>Influență europeană</td><td>Medicină universitară, metafizică, teoria sufletului.</td><td>Scolastică latină, averroism, dezbateri despre rațiune și credință.</td></tr>
+  </table>
+</section>
+
+<section id="arta">
+  <h2>5. Artă, arhitectură și forme culturale</h2>
+  <div class="grid">
+    <div class="card"><h3>Moscheea</h3><p>Centru de rugăciune, predică, educație și comunitate. Elemente importante: mihrab, minbar, minaret, curte, sală hipostilă, orientare spre Mecca.</p></div>
+    <div class="card"><h3>Caligrafia</h3><p>Fiindcă reprezentarea figurativă era limitată în spațiile religioase, caligrafia a devenit artă majoră, legată de Coran și de prestigiul limbii arabe.</p></div>
+    <div class="card"><h3>Arabescul</h3><p>Decorație vegetală, geometrică și ritmică, exprimând infinitatea, ordinea și frumusețea creației.</p></div>
+    <div class="card"><h3>Arhitectura palatină</h3><p>Palate, grădini, fântâni, curți interioare, pavilioane și decor ceramic. Exemple: Alhambra, Samarra, palate omeiade.</p></div>
+  </div>
+  <table>
+    <tr><th>Monument / spațiu</th><th>Datare</th><th>Importanță</th></tr>
+    <tr><td>Cupola Stâncii, Ierusalim</td><td>691–692</td><td>Monument omeiad, unul dintre cele mai vechi edificii islamice păstrate.</td></tr>
+    <tr><td>Marea Moschee din Damasc</td><td>706–715</td><td>Model major de arhitectură omeiadă.</td></tr>
+    <tr><td>Marea Moschee din Córdoba</td><td>începută în 785/786</td><td>Simbol al Al-Andalusului și al artei hispano-islamice.</td></tr>
+    <tr><td>Al-Azhar, Cairo</td><td>fondat 970–972</td><td>Centru religios și universitar de lungă durată.</td></tr>
+    <tr><td>Alhambra, Granada</td><td>sec. XIII–XIV</td><td>Apogeu al artei nasride: curți, apă, stuc, ceramică, inscripții.</td></tr>
+  </table>
+</section>
+
+<section id="economie">
+  <h2>6. Economie, meșteșuguri și circulația bunurilor</h2>
+  <p>Lumea arabă-islamică a legat Extremul Orient, India, Asia Centrală, Africa de Est, Mediterana și Europa. Comerțul a transportat nu doar bunuri, ci și tehnologii, cărți, plante, gusturi, tehnici și vocabular.</p>
+  <div class="grid">
+    <div class="card"><h3>Textile</h3><p>Mătase, bumbac, lână, brocarturi, covoare persane și țesături de lux.</p></div>
+    <div class="card"><h3>Obiecte de lux</h3><p>Parfumuri orientale, mirodenii, ceramică, sticlă, obiecte decorative, faianță de Damasc.</p></div>
+    <div class="card"><h3>Tehnici</h3><p>Hârtie, irigații, distilare, metalurgie, arme de oțel, instrumente astronomice.</p></div>
+    <div class="card"><h3>Orașe comerciale</h3><p>Bagdad, Basra, Cairo, Alexandria, Damasc, Alep, Córdoba, Fez, Samarkand.</p></div>
+  </div>
+</section>
+
+<section id="europa">
+  <h2>7. Transmiterea culturii arabe către Europa</h2>
+  <p class="lead">Europa latină a primit prin lumea arabă o parte importantă a moștenirii grecești, dar și contribuții originale în matematică, medicină, filosofie, astronomie și tehnică. Cele mai importante punți au fost Spania musulmană, Sicilia și statele cruciate.</p>
+  <table>
+    <tr><th>Cale de transmitere</th><th>Ce se transmite</th><th>Impact european</th></tr>
+    <tr><td>Toledo și centrele de traducere</td><td>Aristotel, Galen, Ptolemeu, Avicenna, Averroes, tratate medicale și astronomice.</td><td>Alimentează universitățile medievale și scolastica.</td></tr>
+    <tr><td>Sicilia normandă</td><td>Administrație, artă, geografie, greacă, arabă și latină în același spațiu.</td><td>Model de sinteză culturală mediteraneană.</td></tr>
+    <tr><td>Comerțul mediteranean</td><td>Mirodenii, textile, hârtie, tehnici de calcul, obiecte de lux.</td><td>Creșterea orașelor italiene și a economiei monetare.</td></tr>
+    <tr><td>Cruciadele</td><td>Contact direct cu Levantul, medicina, fortificațiile, luxul oriental.</td><td>Intensifică schimburile, dar și stereotipurile și conflictele religioase.</td></tr>
+  </table>
+  <details><summary>Exemple de termeni ajunși în limbile europene prin arabă</summary>
+    <p><span class="pill">algebră</span><span class="pill">algoritm</span><span class="pill">alcool</span><span class="pill">azimut</span><span class="pill">zenit</span><span class="pill">nadir</span><span class="pill">sirop</span><span class="pill">zahăr</span><span class="pill">cotton / coton / bumbac prin rețele comerciale</span></p>
+  </details>
+</section>
+
+<section id="sinteza">
+  <h2>8. Sinteză: moștenirea culturală arabă-islamică</h2>
+  <table>
+    <tr><th>Domeniu</th><th>Moștenire</th></tr>
+    <tr><td>Religie</td><td>Islamul ca religie mondială, cu tradiții juridice, teologice și mistice diverse.</td></tr>
+    <tr><td>Politică</td><td>Modelul califatului, orașe-capitală, administrație fiscală, rețele comerciale.</td></tr>
+    <tr><td>Filosofie</td><td>Transmiterea și reinterpretarea lui Aristotel; dezbaterea rațiune-revelație.</td></tr>
+    <tr><td>Știință</td><td>Algebră, astronomie, medicină, optică, geografie, farmacologie.</td></tr>
+    <tr><td>Artă</td><td>Caligrafie, arabesc, moschei, grădini, ceramică, arhitectură palatină.</td></tr>
+    <tr><td>Europa</td><td>Influență asupra universităților, scolasticii, medicinei și culturii urbane medievale.</td></tr>
+  </table>
+</section>
+
+  <p class="footer">Material didactic — seria „Civilizația arabă”. Structurat pentru recapitulare, predare și aprofundare.</p>
+</div>
+</body>
+</html>

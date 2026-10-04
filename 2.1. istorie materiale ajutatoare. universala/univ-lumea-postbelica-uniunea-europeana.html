@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Uniunea Europeană: ideea europeană, integrarea postbelică, tratate, extinderi, instituții, piața unică, euro, Schengen, România și perspectivele extinderii">
+<title>univ-lumea-postbelica-uniunea-europeana</title>
+<style>
+:root{
+  --paper:#fffaf3;--paper2:#fff;--ink:#2f241c;--title:#3c2a1e;--muted:#5b4a3d;
+  --accent:#7a4f2a;--accent2:#a27040;--soft:#f0e4d4;--line:rgba(91,62,36,.18);
+  --shadow:0 26px 70px rgba(0,0,0,.28);--small-shadow:0 12px 30px rgba(0,0,0,.15);
+  --green:#58715f;--green-soft:#e7f0e9;--red:#8b4935;--red-soft:#fae9e2;
+  --blue:#536d7e;--blue-soft:#e8eef2;--gold:#8a6b2f;--gold-soft:#f6eedb;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{
+  margin:0;min-height:100vh;color:var(--ink);font-family:Georgia,"Times New Roman",serif;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(132,78,40,.72),transparent 34%),
+    radial-gradient(circle at 50% 100%,rgba(112,63,31,.44),transparent 36%),
+    radial-gradient(circle at 0 50%,rgba(29,13,6,.92),transparent 42%),
+    radial-gradient(circle at 100% 50%,rgba(29,13,6,.92),transparent 42%),
+    linear-gradient(180deg,#32190c 0%,#4a2a18 46%,#1e0e05 100%);
+  background-attachment:fixed
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(circle at center,transparent 0%,rgba(0,0,0,.1) 48%,rgba(0,0,0,.44) 100%),
+             linear-gradient(90deg,rgba(0,0,0,.2),transparent 18%,transparent 82%,rgba(0,0,0,.2))
+}
+.page{position:relative;z-index:1;width:min(1240px,calc(100% - 32px));margin:0 auto;padding:34px 0 72px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px;flex-wrap:wrap}
+.back,.tag{display:inline-flex;align-items:center;background:rgba(255,250,243,.88);border:1px solid var(--line);border-radius:999px;padding:10px 15px;color:var(--title);font-weight:700;font-size:15px;text-decoration:none;box-shadow:var(--small-shadow)}
+.hero,.section,.nav,.related,.final{background:rgba(255,250,243,.97);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow)}
+.hero{padding:40px;margin-bottom:24px;position:relative;overflow:hidden}
+.hero::after{content:"1950–2026";position:absolute;right:22px;bottom:-20px;font-size:100px;font-weight:900;letter-spacing:-5px;color:rgba(122,79,42,.07);pointer-events:none}
+.eyebrow{margin:0 0 8px;color:var(--accent);font-size:16px;font-weight:900;text-transform:uppercase;letter-spacing:.08em}
+h1{margin:0;color:var(--title);font-size:clamp(39px,5.1vw,65px);line-height:1.03;letter-spacing:-1.5px}
+.subtitle{margin:18px 0 0;max-width:1100px;color:var(--muted);font-size:19px;line-height:1.78;text-align:justify;text-align-last:left}
+.badges,.series{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.badge,.series a{display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;background:#fff;border:1px solid rgba(91,62,36,.15);box-shadow:0 8px 20px rgba(0,0,0,.08);color:var(--title);font-size:14px;font-weight:800;text-decoration:none}
+.badge.main{background:var(--accent);color:#fffaf3}
+.related{display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding:16px 20px;margin:-10px 0 24px;border-radius:22px;box-shadow:var(--small-shadow)}
+.related b{color:var(--title)}
+.related a{padding:8px 12px;border-radius:999px;background:#f3eadf;border:1px solid rgba(91,62,36,.16);color:var(--title);font-size:14px;font-weight:700;text-decoration:none}
+.nav{display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding:18px 20px;margin-bottom:24px}
+.nav b{color:var(--title)}
+.nav a,.nav button{padding:8px 12px;border-radius:999px;background:var(--soft);border:1px solid rgba(91,62,36,.16);color:var(--title);font-family:inherit;font-size:14px;font-weight:700;text-decoration:none;cursor:pointer}
+.nav a:hover,.nav button:hover{background:#e4d1ba}
+.section{padding:31px;margin-bottom:24px}
+h2{margin:0 0 14px;color:var(--title);font-size:clamp(29px,3vw,39px);line-height:1.13}
+h3{margin:0 0 11px;color:var(--title);font-size:22px;line-height:1.24}
+h4{margin:18px 0 8px;color:var(--title);font-size:18px}
+p,li,.intro,.key span{color:var(--muted);font-size:17px;line-height:1.72;text-align:justify;text-align-last:left;hyphens:auto}
+.intro{margin:0 0 20px;max-width:1090px}
+.grid2,.grid3,.grid4,.grid5,.grid6,.summary-grid,.meta-grid,.rights-grid{display:grid;gap:14px}
+.grid2{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:repeat(3,1fr)}
+.grid4,.summary-grid,.rights-grid{grid-template-columns:repeat(4,1fr)}
+.grid5{grid-template-columns:repeat(5,1fr)}.grid6{grid-template-columns:repeat(6,1fr)}
+.card,.summary-card,.meta-card,.right-card,.person-card,.stage{
+  background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:20px;box-shadow:var(--small-shadow);padding:20px;text-align:justify;text-align-last:left
+}
+.summary-card{min-height:132px;padding:16px}.summary-card strong,.meta-card strong,.right-card strong,.stage strong{display:block;margin-bottom:8px;color:var(--title);font-size:17px;text-align:left}
+.summary-card span,.meta-card span,.right-card span,.stage span{display:block;color:var(--muted);font-size:15.5px;line-height:1.58}
+.person-card h3{margin-bottom:4px}.person-card .years{display:block;color:var(--accent);font-weight:800;margin-bottom:10px}
+.clean{margin:0;padding-left:22px}.clean li{margin:0 0 9px;padding-left:2px}
+.key{display:grid;grid-template-columns:245px 1fr;gap:14px;padding:14px 0;border-bottom:1px dashed rgba(91,62,36,.18)}
+.key:last-child{border-bottom:0}.key strong{color:var(--title);font-size:16px}
+.pill{display:inline-block;margin:2px 5px 4px 0;padding:3px 9px;border-radius:999px;background:#f3eadf;border:1px solid rgba(91,62,36,.14);color:var(--title);font-weight:800;font-size:14px}
+.box,.fact,.green-box,.blue-box,.red-box,.gold-box{
+  margin-top:18px;border-radius:18px;padding:18px 20px;font-size:17px;line-height:1.7;text-align:justify;text-align-last:left
+}
+.box{background:#fff8ef;border:1px solid rgba(122,79,42,.22);border-left:6px solid rgba(122,79,42,.48);color:var(--muted)}
+.fact,.red-box{background:var(--red-soft);border:1px solid rgba(139,73,53,.24);border-left:6px solid var(--red);color:#684034}
+.green-box{background:var(--green-soft);border:1px solid rgba(88,113,95,.25);border-left:6px solid var(--green);color:#44594a}
+.blue-box{background:var(--blue-soft);border:1px solid rgba(83,109,126,.25);border-left:6px solid var(--blue);color:#42535e}
+.gold-box{background:var(--gold-soft);border:1px solid rgba(138,107,47,.24);border-left:6px solid var(--gold);color:#66542e}
+.box strong,.fact strong,.green-box strong,.blue-box strong,.red-box strong,.gold-box strong{color:var(--title)}
+details{margin-top:14px;border:1px solid rgba(91,62,36,.14);border-radius:20px;background:#fffdf9;box-shadow:var(--small-shadow);overflow:hidden}
+details[open]{background:#fffaf3}
+summary{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 20px;cursor:pointer;list-style:none;color:var(--title);font-size:19px;font-weight:800}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"Deschide";padding:7px 11px;border-radius:999px;background:#f3eadf;border:1px solid rgba(91,62,36,.14);color:var(--muted);font-size:14px;font-weight:700}
+details[open]>summary::after{content:"Ascunde"}
+.details-body{padding:18px 20px 21px;border-top:1px solid rgba(91,62,36,.12)}
+.timeline{display:grid;gap:14px;margin-top:17px}
+.event{display:grid;grid-template-columns:148px 1fr;gap:18px;align-items:stretch;overflow:hidden;background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:20px;box-shadow:var(--small-shadow)}
+.date{display:flex;align-items:center;justify-content:center;padding:14px;text-align:center;color:#fffaf3;background:linear-gradient(180deg,#7a4f2a,#5b351b);font-size:18px;line-height:1.25;font-weight:900}
+.date.green{background:linear-gradient(180deg,#687e6d,#445949)}.date.blue{background:linear-gradient(180deg,#667f90,#425663)}.date.red{background:linear-gradient(180deg,#99533e,#6a3124)}
+.event>div:last-child{padding:17px 18px 18px 0}.event p{margin:0}.event h3{margin-bottom:6px}
+.table-wrap{overflow-x:auto;margin-top:14px;border-radius:18px;border:1px solid rgba(91,62,36,.14);background:#fff;box-shadow:var(--small-shadow)}
+table{width:100%;border-collapse:collapse;min-width:860px}
+th,td{padding:13px 14px;border-bottom:1px solid rgba(91,62,36,.12);color:var(--muted);font-size:15.8px;line-height:1.55;vertical-align:top;text-align:left}
+th{background:#f3eadf;color:var(--title);font-weight:800}tr:last-child td{border-bottom:0}
+.flow{display:grid;grid-template-columns:repeat(7,1fr);gap:9px;margin-top:16px}
+.flow-item{position:relative;padding:15px;background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;box-shadow:var(--small-shadow)}
+.flow-item b{display:block;color:var(--title);font-size:16px;margin-bottom:5px}.flow-item span{display:block;color:var(--muted);font-size:14.5px;line-height:1.48}
+.flow-item:not(:last-child)::after{content:"→";position:absolute;right:-13px;top:50%;transform:translateY(-50%);z-index:2;color:var(--accent);font-weight:900;font-size:21px}
+.stage{position:relative;padding-top:47px}.stage::before{content:attr(data-n);position:absolute;left:17px;top:13px;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--accent);color:#fff;font-weight:900}
+.final{padding:29px;background:linear-gradient(135deg,#fffaf3,#f4e4d1)}
+.final p{margin-bottom:0}
+.small{font-size:14.5px;color:#725c49;line-height:1.55}
+footer{margin-top:24px;color:rgba(255,250,243,.82);text-align:center;font-size:14px;line-height:1.6}
+@media(max-width:1120px){.grid6{grid-template-columns:repeat(3,1fr)}.grid5{grid-template-columns:repeat(3,1fr)}.flow{grid-template-columns:repeat(4,1fr)}.flow-item::after{display:none}}
+@media(max-width:950px){.grid4,.summary-grid,.rights-grid,.grid3{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}}
+@media(max-width:680px){
+  .page{width:min(100% - 22px,1240px);padding-top:22px}.hero,.section,.final{padding:22px;border-radius:22px}
+  .grid2,.grid3,.grid4,.grid5,.grid6,.summary-grid,.rights-grid,.flow{grid-template-columns:1fr}
+  .event{grid-template-columns:1fr}.date{min-height:65px}.event>div:last-child{padding:0 16px 16px}
+  .key{grid-template-columns:1fr;gap:6px}summary{align-items:flex-start;flex-direction:column}.hero::after{font-size:61px}
+  .subtitle,p,li,.intro,.key span,.details-body,.box,.fact,.green-box,.blue-box,.red-box,.gold-box{text-align:left;text-align-last:auto;hyphens:none}
+}
+@media print{
+ body{background:#fff!important}body::before{display:none}.page{width:100%;padding:0}.topbar,.nav,.related{display:none!important}
+ .hero,.section,.final{box-shadow:none;border:1px solid #cbb9a8;break-inside:avoid-page}details{break-inside:avoid-page}summary::after{display:none}
+}
+</style>
+</head>
+<body id="top">
+<main class="page">
+
+<div class="topbar">
+  <a class="back" href="index.html">← Înapoi la materiale</a>
+  <span class="tag">Material amplu · Date verificate până în iulie 2026</span>
+</div>
+
+<section class="hero">
+  <p class="eyebrow">Istorie universală · Lumea postbelică</p>
+  <h1>Uniunea Europeană</h1>
+  <p class="subtitle">De la proiectele vechi de unitate europeană și reconcilierea franco-germană la CECO, CEE și Uniunea Europeană: tratate, extinderi, instituții, drept european, piața unică, euro, Schengen, crizele secolului XXI, aderarea României și perspectivele unei noi extinderi.</p>
+  <div class="badges">
+    <span class="badge main">27 de state membre</span>
+    <span class="badge">21 de state în zona euro</span>
+    <span class="badge">29 de state Schengen</span>
+    <span class="badge">24 de limbi oficiale</span>
+    <span class="badge">9 state candidate</span>
+  </div>
+</section>
+
+<div class="related">
+  <b>Materiale conexe:</b>
+  <a href="univ-lumea-postbelica-drepturile-omului.html">Drepturile omului</a>
+  <a href="univ-razboiul-rece-diplomatie-si-conflict.html">Războiul Rece</a>
+  <a href="univ-razboiul-rece-miscarea-de-nealiniere.html">Nealinierea</a>
+</div>
+
+<nav class="nav">
+  <b>Cuprins:</b>
+  <a href="#definitie">Ce este UE?</a><a href="#ideea">Ideea europeană</a>
+  <a href="#postbelic">Contextul postbelic</a><a href="#pionieri">Pionierii</a>
+  <a href="#ceco">CECO</a><a href="#roma">Tratatele de la Roma</a>
+  <a href="#anii60">Anii 1960</a><a href="#anii70">Anii 1970</a>
+  <a href="#anii80">Piața unică</a><a href="#maastricht">Maastricht</a>
+  <a href="#euro-schengen">Euro și Schengen</a><a href="#extinderi">Extinderi</a>
+  <a href="#lisabona">Lisabona</a><a href="#crize">Crize și transformări</a>
+  <a href="#tratate">Tratate comparate</a><a href="#institutii">Instituții</a>
+  <a href="#decizie">Cum se adoptă legile</a><a href="#drept">Dreptul UE</a>
+  <a href="#politici">Politici</a><a href="#buget">Buget</a>
+  <a href="#cetatenie">Cetățenie și simboluri</a><a href="#romania">România</a>
+  <a href="#prezent">UE în 2026</a><a href="#viitor">Extinderea viitoare</a>
+  <a href="#corecturi">Corecturi</a><a href="#cronologie">Cronologie</a>
+  <button type="button" data-action="open">Deschide explicațiile</button>
+  <button type="button" data-action="close">Închide explicațiile</button>
+</nav>
+
+<section class="section" id="definitie">
+<h2>I. Ce este Uniunea Europeană?</h2>
+<p class="intro">Uniunea Europeană este o uniune politică, juridică și economică între state suverane care au transferat exercitarea unor competențe către instituții comune. Nu este nici stat federal complet, nici simplă organizație internațională. Are tratate, personalitate juridică, cetățenie proprie, buget, legislație direct aplicabilă în anumite domenii, curte de justiție, piață unică și, pentru majoritatea membrilor, monedă comună.</p>
+<div class="summary-grid">
+  <article class="summary-card"><strong>Uniune de state</strong><span>Statele rămân suverane și membre ale ONU, dar exercită în comun competențe stabilite prin tratate.</span></article>
+  <article class="summary-card"><strong>Uniune de cetățeni</strong><span>Parlamentul European este ales direct, iar cetățenia UE completează cetățenia națională.</span></article>
+  <article class="summary-card"><strong>Ordine juridică proprie</strong><span>Dreptul Uniunii poate produce efecte directe și are prioritate în domeniile conferite UE.</span></article>
+  <article class="summary-card"><strong>Integrare diferențiată</strong><span>Nu toate statele participă identic la euro, Schengen, cooperarea în apărare sau anumite politici.</span></article>
+</div>
+<div class="box"><strong>Formula esențială:</strong> integrarea europeană combină două logici: una supranațională, în care instituțiile comune pot adopta norme obligatorii, și una interguvernamentală, în care guvernele negociază și păstrează un control decisiv.</div>
+</section>
+
+<section class="section" id="ideea">
+<h2>II. Istoria ideii europene înainte de 1945</h2>
+<p class="intro">Uniunea Europeană nu este continuarea directă a Imperiului Roman, a creștinătății medievale sau a imperiilor moderne. Aceste experiențe au creat însă limbaje ale unității continentale. Proiectul postbelic se deosebește prin caracterul voluntar, juridic, democratic și instituționalizat.</p>
+
+<div class="timeline">
+  <article class="event"><div class="date">Sec. I–II</div><div><h3><em>Orbis Romanus</em> și <em>Pax Romana</em></h3><p>Imperiul Roman a unit o mare parte a Europei prin administrație, drept, drumuri, monedă și limba latină. Era o unitate imperială, nu o federație de state egale.</p></div></article>
+  <article class="event"><div class="date">380–1054</div><div><h3>Creștinătatea europeană</h3><p>Creștinismul devine religie oficială a Imperiului Roman în 380. Biserica, latina și rețelele monastice creează legături transfrontaliere; Schisma din 1054 accentuează separarea dintre creștinătatea occidentală și cea răsăriteană.</p></div></article>
+  <article class="event"><div class="date">800</div><div><h3>Imperiul lui Carol cel Mare</h3><p>Încoronarea imperială reactualizează ideea unei ordini occidentale comune. Ulterior, Carol cel Mare va fi revendicat simbolic drept „părinte al Europei”.</p></div></article>
+  <article class="event"><div class="date">1309–1313</div><div><h3>Dante, <em>De Monarchia</em></h3><p>Dante imaginează o autoritate universală capabilă să garanteze pacea între puterile creștine, fără a formula însă un proiect democratic modern.</p></div></article>
+  <article class="event"><div class="date">Sec. XVII–XVIII</div><div><h3>Proiecte de pace europeană</h3><p>„Marele Proiect” atribuit ducelui de Sully, planul abatelui de Saint-Pierre din 1713 și reflecțiile lui Rousseau propun confederații ori arbitraj permanent între state.</p></div></article>
+  <article class="event"><div class="date">1795</div><div><h3>Kant, <em>Spre pacea eternă</em></h3><p>Immanuel Kant imaginează o federație a statelor libere, bazată pe republici, drept internațional și ospitalitate universală.</p></div></article>
+  <article class="event"><div class="date">1814</div><div><h3>Saint-Simon și Thierry</h3><p>Propun un parlament european comun Franței și Marii Britanii, urmat de extinderea treptată către alte state.</p></div></article>
+  <article class="event"><div class="date">1849</div><div><h3>Victor Hugo și „Statele Unite ale Europei”</h3><p>La Congresul Păcii de la Paris, Hugo anticipează o zi în care Franța, Rusia, Italia, Anglia și Germania se vor uni fără a-și pierde individualitatea.</p></div></article>
+  <article class="event"><div class="date">1923</div><div><h3>Mișcarea Paneuropeană</h3><p>Richard Coudenhove-Kalergi publică manifestul <em>Pan-Europa</em> și organizează o mișcare pentru unirea continentului democratic.</p></div></article>
+  <article class="event"><div class="date">1929–1930</div><div><h3>Planul Briand</h3><p>Ministrul francez Aristide Briand propune în Societatea Națiunilor o legătură federală între popoarele europene. Criza economică și naționalismul blochează proiectul.</p></div></article>
+</div>
+
+<details><summary>Unitate imperială, echilibru de putere și integrare voluntară</summary>
+<div class="details-body">
+<div class="table-wrap"><table>
+<thead><tr><th>Model</th><th>Mijloc de unificare</th><th>Exemple</th><th>Diferența față de UE</th></tr></thead>
+<tbody>
+<tr><td>Imperiu</td><td>Cucerire, dinastie și administrație centrală</td><td>Roma, Carol Quintul, Napoleon, Reichul nazist</td><td>UE se bazează pe tratate voluntare și egalitate juridică între membri.</td></tr>
+<tr><td>Creștinătate</td><td>Religie și autoritate spirituală comună</td><td>Europa latină medievală, cruciade</td><td>UE este seculară și pluralistă religios.</td></tr>
+<tr><td>Echilibru de putere</td><td>Congrese și alianțe între marile puteri</td><td>Westfalia, Viena, Concertul European</td><td>Nu crea o ordine juridică supranațională pentru cetățeni.</td></tr>
+<tr><td>Integrare europeană</td><td>Tratate, instituții, drept comun și piață</td><td>CECO, CEE, UE</td><td>Statele participă la un sistem permanent și acceptă decizii comune.</td></tr>
+</tbody></table></div>
+</div></details>
+</section>
+
+<section class="section" id="postbelic">
+<h2>III. Contextul după Al Doilea Război Mondial</h2>
+<div class="grid4">
+  <article class="right-card"><strong>Distrugere</strong><span>Orașe, infrastructură, industrie și agricultură afectate; milioane de morți și refugiați.</span></article>
+  <article class="right-card"><strong>Declin geopolitic</strong><span>Puterea mondială se deplasează spre SUA și URSS; imperiile coloniale europene intră în declin.</span></article>
+  <article class="right-card"><strong>Problema germană</strong><span>Era necesară reconstruirea Germaniei fără a permite revenirea militarismului.</span></article>
+  <article class="right-card"><strong>Războiul Rece</strong><span>Integrarea occidentală devine și răspuns la expansiunea influenței sovietice.</span></article>
+</div>
+
+<h3>Instituții și inițiative care pregătesc integrarea</h3>
+<div class="timeline">
+  <article class="event"><div class="date blue">1944</div><div><h3>Benelux</h3><p>Belgia, Țările de Jos și Luxemburg semnează convenția uniunii vamale, intrată în funcțiune în 1948. Cooperarea lor devine laborator pentru integrarea celor Șase.</p></div></article>
+  <article class="event"><div class="date blue">1946</div><div><h3>Discursul lui Churchill la Zürich</h3><p>Winston Churchill cere crearea unui „fel de State Unite ale Europei”, având în centru reconcilierea franco-germană.</p></div></article>
+  <article class="event"><div class="date blue">1947–1948</div><div><h3>Planul Marshall și OECE</h3><p>Ajutorul american stimulează cooperarea economică. Organizația Europeană de Cooperare Economică coordonează distribuirea fondurilor și liberalizarea schimburilor.</p></div></article>
+  <article class="event"><div class="date blue">7–11 mai 1948</div><div><h3>Congresul Europei de la Haga</h3><p>Federaliști și unioniști discută instituții comune, drepturile omului și cooperarea politică.</p></div></article>
+  <article class="event"><div class="date green">5 mai 1949</div><div><h3>Consiliul Europei</h3><p>Organizație interguvernamentală separată de UE, fondată pentru democrație, stat de drept și drepturile omului. Convenția Europeană este adoptată în 1950.</p></div></article>
+  <article class="event"><div class="date green">4 apr. 1949</div><div><h3>NATO</h3><p>Alianța militară atlantică oferă securitate occidentală. NATO și UE au membri și atribuții diferite.</p></div></article>
+</div>
+<div class="fact"><strong>Corectare conceptuală:</strong> reconcilierea decisivă pentru Comunitățile Europene a fost cea dintre Franța și Germania de Vest. Cooperarea franco-britanică a rămas importantă, dar Regatul Unit a preferat inițial organizații interguvernamentale și nu a participat la CECO ori CEE.</div>
+</section>
+
+<section class="section" id="pionieri">
+<h2>IV. Pionierii integrării europene</h2>
+<div class="grid4">
+  <article class="person-card"><h3>Jean Monnet</h3><span class="years">1888–1979</span><p>Planificator francez și arhitect al metodei funcționaliste: integrarea într-un sector strategic urma să creeze solidarități concrete și să atragă integrarea altor domenii.</p></article>
+  <article class="person-card"><h3>Robert Schuman</h3><span class="years">1886–1963</span><p>Ministru francez de externe. A prezentat la 9 mai 1950 planul plasării producției franco-germane de cărbune și oțel sub o autoritate comună.</p></article>
+  <article class="person-card"><h3>Konrad Adenauer</h3><span class="years">1876–1967</span><p>Primul cancelar al RFG. A legat reconstrucția Germaniei de reconcilierea cu Franța, integrarea occidentală și democrația creștină.</p></article>
+  <article class="person-card"><h3>Alcide De Gasperi</h3><span class="years">1881–1954</span><p>Prim-ministru italian, susținător al CECO, al apărării europene și al unui proiect federal.</p></article>
+  <article class="person-card"><h3>Paul-Henri Spaak</h3><span class="years">1899–1972</span><p>Diplomat belgian; raportul Spaak a pregătit Tratatele de la Roma și piața comună.</p></article>
+  <article class="person-card"><h3>Joseph Bech</h3><span class="years">1887–1975</span><p>Om de stat luxemburghez, implicat în Benelux și în comunitățile europene.</p></article>
+  <article class="person-card"><h3>Walter Hallstein</h3><span class="years">1901–1982</span><p>Primul președinte al Comisiei CEE, promotor al unei Comunități puternice și al dreptului supranațional.</p></article>
+  <article class="person-card"><h3>Altiero Spinelli</h3><span class="years">1907–1986</span><p>Autor al Manifestului de la Ventotene din 1941 și susținător al federalizării democratice a Europei.</p></article>
+</div>
+</section>
+
+<section class="section" id="ceco">
+<h2>V. Declarația Schuman și Comunitatea Cărbunelui și Oțelului</h2>
+<div class="meta-grid grid4">
+  <article class="meta-card"><strong>Declarația Schuman</strong><span>9 mai 1950 — data celebrată astăzi ca Ziua Europei.</span></article>
+  <article class="meta-card"><strong>Tratatul de la Paris</strong><span>Semnat la 18 aprilie 1951.</span></article>
+  <article class="meta-card"><strong>Intrare în vigoare</strong><span>23 iulie 1952.</span></article>
+  <article class="meta-card"><strong>Durată</strong><span>50 de ani; tratatul a expirat la 23 iulie 2002.</span></article>
+</div>
+
+<div class="grid2">
+  <article class="card"><h3>Statele fondatoare</h3><p>Franța, Republica Federală Germania, Italia, Belgia, Țările de Jos și Luxemburg — „Europa celor Șase”.</p><p>Cărbunele și oțelul erau indispensabile industriei grele și producerii armamentului. Controlul comun făcea pregătirea secretă a unui război franco-german mult mai dificilă.</p></article>
+  <article class="card"><h3>Instituțiile CECO</h3>
+    <div class="key"><strong>Înalta Autoritate</strong><span>Organ supranațional condus inițial de Jean Monnet.</span></div>
+    <div class="key"><strong>Consiliul Special</strong><span>Reprezenta guvernele statelor membre.</span></div>
+    <div class="key"><strong>Adunarea Comună</strong><span>Precursoarea Parlamentului European.</span></div>
+    <div class="key"><strong>Curtea de Justiție</strong><span>Asigura respectarea tratatului.</span></div>
+  </article>
+</div>
+
+<div class="green-box"><strong>Metoda comunitară:</strong> se alege un domeniu concret, se creează interese comune și instituții independente, iar succesul produce presiune pentru integrarea altor sectoare. Acest proces este numit uneori „efect de angrenaj” sau <em>spillover</em>.</div>
+
+<details><summary>Proiectul Comunității Europene de Apărare — 1952–1954</summary>
+<div class="details-body"><p>Pe fondul Războiului din Coreea și al necesității reînarmării Germaniei de Vest, cele șase state au semnat în 1952 un tratat pentru o armată europeană integrată. Proiectul includea și perspectiva unei Comunități Politice Europene. La 30 august 1954, Adunarea Națională franceză a refuzat examinarea ratificării. Eșecul a arătat că integrarea apărării era mai sensibilă decât cea economică. RFG a intrat în NATO în 1955, iar Uniunea Europei Occidentale a devenit cadrul defensiv european interguvernamental.</p></div>
+</details>
+</section>
+
+<section class="section" id="roma">
+<h2>VI. Tratatele de la Roma și nașterea pieței comune</h2>
+<div class="meta-grid grid4">
+  <article class="meta-card"><strong>Conferința de la Messina</strong><span>1–3 iunie 1955 — relansarea integrării după eșecul apărării europene.</span></article>
+  <article class="meta-card"><strong>Raportul Spaak</strong><span>1956 — plan pentru piață comună și cooperare nucleară.</span></article>
+  <article class="meta-card"><strong>Semnare</strong><span>25 martie 1957, la Roma.</span></article>
+  <article class="meta-card"><strong>Intrare în vigoare</strong><span>1 ianuarie 1958.</span></article>
+</div>
+
+<div class="grid2">
+  <article class="card"><h3>Comunitatea Economică Europeană — CEE</h3><ul class="clean">
+    <li>eliminarea treptată a taxelor vamale interne;</li>
+    <li>tarif vamal comun față de exterior;</li>
+    <li>libera circulație a mărfurilor, persoanelor, serviciilor și capitalurilor;</li>
+    <li>politici comune, mai ales agricultură, transport și concurență;</li>
+    <li>Fondul Social European și Banca Europeană de Investiții.</li>
+  </ul></article>
+  <article class="card"><h3>Comunitatea Europeană a Energiei Atomice — Euratom</h3><ul class="clean">
+    <li>cercetare nucleară pașnică;</li>
+    <li>standarde de securitate și protecție radiologică;</li>
+    <li>asigurarea aprovizionării cu materiale nucleare;</li>
+    <li>controlul utilizării pașnice;</li>
+    <li>investiții și cooperare tehnologică.</li>
+  </ul></article>
+</div>
+<div class="fact"><strong>Corectare importantă:</strong> CECO nu „devine” CEE. Din 1958 funcționează trei comunități distincte — CECO, CEE și Euratom — care folosesc treptat instituții comune. CECO dispare juridic în 2002; Euratom există și astăzi.</div>
+</section>
+
+<section class="section" id="anii60">
+<h2>VII. Consolidarea comunităților în anii 1960</h2>
+<div class="timeline">
+  <article class="event"><div class="date green">1962</div><div><h3>Politica Agricolă Comună</h3><p>Începe funcționarea PAC, menită să crească productivitatea, să asigure aprovizionarea și veniturile fermierilor. Va deveni una dintre cele mai costisitoare și controversate politici comunitare.</p></div></article>
+  <article class="event"><div class="date red">1963 și 1967</div><div><h3>Veto-urile lui de Gaulle împotriva Regatului Unit</h3><p>Președintele francez considera că economia și politica externă britanică erau prea legate de SUA și Commonwealth. A blocat de două ori deschiderea ori finalizarea aderării.</p></div></article>
+  <article class="event"><div class="date red">1965–1966</div><div><h3>Criza „scaunului gol”</h3><p>Franța boicotează Consiliul pentru a împiedica extinderea votului majoritar și consolidarea Comisiei. Compromisul de la Luxemburg permite continuarea negocierilor când un stat invocă un interes vital.</p></div></article>
+  <article class="event"><div class="date green">1 iul. 1967</div><div><h3>Tratatul de fuziune</h3><p>O singură Comisie și un singur Consiliu deservesc cele trei Comunități. Tratatele rămân distincte.</p></div></article>
+  <article class="event"><div class="date green">1 iul. 1968</div><div><h3>Uniunea vamală</h3><p>Taxele vamale între cei Șase sunt eliminate înaintea termenului, iar tariful extern comun este completat.</p></div></article>
+  <article class="event"><div class="date blue">1969</div><div><h3>Summitul de la Haga</h3><p>Liderii adoptă agenda „finalizare, aprofundare, extindere”: finanțarea PAC, cooperare monetară și negocieri cu noi membri.</p></div></article>
+</div>
+<div class="box"><strong>Europa lui de Gaulle:</strong> Franța nu s-a retras din NATO în 1966, ci din structura militară integrată. A rămas membră a alianței și a revenit complet în comandamentul integrat în 2009.</div>
+</section>
+
+<section class="section" id="anii70">
+<h2>VIII. Extindere, democrație și cooperare politică în anii 1970</h2>
+<div class="timeline">
+  <article class="event"><div class="date green">1 ian. 1973</div><div><h3>Prima extindere</h3><p>Danemarca, Irlanda și Regatul Unit aderă. Norvegia semnase tratatul, dar alegătorii îl resping prin referendum în 1972.</p></div></article>
+  <article class="event"><div class="date blue">1970</div><div><h3>Cooperarea Politică Europeană</h3><p>Raportul Davignon creează consultări regulate de politică externă, precursoare ale Politicii Externe și de Securitate Comune.</p></div></article>
+  <article class="event"><div class="date blue">1974</div><div><h3>Consiliul European</h3><p>Șefii de stat sau de guvern decid să se întâlnească regulat pentru orientarea politică generală. Instituția va primi statut formal prin tratatele ulterioare.</p></div></article>
+  <article class="event"><div class="date blue">1975</div><div><h3>Fondul European de Dezvoltare Regională</h3><p>Începe redistribuirea de fonduri către regiunile mai puțin dezvoltate și afectate de restructurare industrială.</p></div></article>
+  <article class="event"><div class="date green">7–10 iun. 1979</div><div><h3>Primele alegeri europene directe</h3><p>Cetățenii aleg direct membrii Parlamentului European, consolidând legitimitatea democratică a Comunităților.</p></div></article>
+  <article class="event"><div class="date blue">1979</div><div><h3>Sistemul Monetar European</h3><p>Mecanismul cursurilor de schimb și unitatea de cont ECU urmăresc stabilizarea monedelor europene.</p></div></article>
+</div>
+<div class="fact"><strong>Corectare:</strong> Regatul Unit, Danemarca și Irlanda au aderat în 1973, nu în 1979. Grecia se află în sud-estul Europei și a aderat în 1981 după restaurarea democrației, nu pentru că s-ar fi aflat în „sfera sovietică”.</div>
+</section>
+
+<section class="section" id="anii80">
+<h2>IX. Anii 1980: democratizare și realizarea pieței unice</h2>
+<div class="timeline">
+  <article class="event"><div class="date green">1 ian. 1981</div><div><h3>Grecia aderă</h3><p>Aderarea confirmă rolul Comunităților în consolidarea democrațiilor ieșite din dictatură.</p></div></article>
+  <article class="event"><div class="date blue">14 iun. 1985</div><div><h3>Acordul Schengen</h3><p>Franța, RFG și statele Benelux decid eliminarea treptată a controalelor la frontierele interne. Inițial, proiectul este în afara tratatelor comunitare.</p></div></article>
+  <article class="event"><div class="date green">1 ian. 1986</div><div><h3>Spania și Portugalia aderă</h3><p>Extinderea spre Peninsula Iberică consolidează tranzițiile democratice și mărește disparitățile economice, stimulând politica de coeziune.</p></div></article>
+  <article class="event"><div class="date green">1986–1987</div><div><h3>Actul Unic European</h3><p>Semnat la 17 și 28 februarie 1986 și intrat în vigoare la 1 iulie 1987. Extinde majoritatea calificată și fixează obiectivul pieței interne până la sfârșitul lui 1992.</p></div></article>
+  <article class="event"><div class="date blue">1987</div><div><h3>Erasmus</h3><p>Programul începe mobilitatea universitară europeană și devine una dintre cele mai cunoscute politici ale integrării.</p></div></article>
+  <article class="event"><div class="date blue">1988</div><div><h3>Reforma fondurilor structurale</h3><p>Pachetul Delors întărește coeziunea economică și socială în pregătirea pieței unice.</p></div></article>
+  <article class="event"><div class="date green">1989–1990</div><div><h3>Căderea comunismului și reunificarea Germaniei</h3><p>La 3 octombrie 1990, teritoriul fostei RDG intră în RFG și, prin aceasta, în Comunitățile Europene, fără un nou tratat de aderare.</p></div></article>
+</div>
+</section>
+
+<section class="section" id="maastricht">
+<h2>X. Maastricht și transformarea Comunităților în Uniunea Europeană</h2>
+<div class="meta-grid grid4">
+  <article class="meta-card"><strong>Semnare</strong><span>7 februarie 1992.</span></article>
+  <article class="meta-card"><strong>Intrare în vigoare</strong><span>1 noiembrie 1993.</span></article>
+  <article class="meta-card"><strong>Noua denumire</strong><span>Este creată Uniunea Europeană; CEE devine Comunitatea Europeană.</span></article>
+  <article class="meta-card"><strong>Ratificare dificilă</strong><span>Referendumuri, decizii constituționale și clauze speciale în mai multe state.</span></article>
+</div>
+
+<h3>Structura pe trei piloni</h3>
+<div class="grid3">
+  <article class="card"><h3>Pilonul I — Comunitățile</h3><p>Piața internă, politici economice și sociale, agricultură, mediu, comerț și pregătirea monedei comune. Metodă mai supranațională.</p></article>
+  <article class="card"><h3>Pilonul II — PESC</h3><p>Politica Externă și de Securitate Comună, dominată de cooperarea dintre guverne.</p></article>
+  <article class="card"><h3>Pilonul III — Justiție și afaceri interne</h3><p>Azil, imigrație, cooperare polițienească și judiciară, inițial interguvernamentale.</p></article>
+</div>
+
+<h3>Inovațiile Tratatului</h3>
+<div class="grid4">
+  <article class="right-card"><strong>Cetățenia UE</strong><span>Circulație, rezidență, vot local și european în statul de reședință, protecție consulară.</span></article>
+  <article class="right-card"><strong>Uniunea Economică și Monetară</strong><span>Etape, criterii de convergență și viitoarea Bancă Centrală Europeană.</span></article>
+  <article class="right-card"><strong>Codecizie</strong><span>Parlamentul primește putere legislativă mai mare alături de Consiliu.</span></article>
+  <article class="right-card"><strong>Subsidiaritate</strong><span>UE intervine numai când obiectivele nu pot fi realizate suficient de state.</span></article>
+</div>
+
+<details><summary>Criza ratificării Maastrichtului</summary>
+<div class="details-body"><p>Danemarca respinge tratatul la 2 iunie 1992. După obținerea unor derogări privind moneda, apărarea, cetățenia și justiția, îl aprobă într-un al doilea referendum în 1993. Franța îl aprobă la limită în septembrie 1992. Curtea Constituțională Federală germană confirmă compatibilitatea tratatului în 1993, subliniind caracterul derivat al competențelor UE.</p></div>
+</details>
+
+<div class="green-box"><strong>Piața unică:</strong> la 1 ianuarie 1993 este considerat realizat programul celor aproximativ 300 de măsuri necesare eliminării barierelor fizice, tehnice și fiscale dintre state.</div>
+</section>
+
+<section class="section" id="euro-schengen">
+<h2>XI. Euro și Schengen: două cercuri de integrare diferențiată</h2>
+
+<h3>1. Moneda euro</h3>
+<div class="timeline">
+  <article class="event"><div class="date blue">1 iun. 1998</div><div><h3>Banca Centrală Europeană</h3><p>Este creată la Frankfurt, succedând Institutului Monetar European.</p></div></article>
+  <article class="event"><div class="date green">1 ian. 1999</div><div><h3>Euro devine monedă scripturală</h3><p>Cursurile a 11 monede sunt fixate ireversibil; politica monetară este transferată BCE.</p></div></article>
+  <article class="event"><div class="date green">1 ian. 2002</div><div><h3>Bancnote și monede</h3><p>Numerarul euro intră în circulație, iar monedele naționale sunt retrase treptat.</p></div></article>
+  <article class="event"><div class="date green">1 ian. 2026</div><div><h3>Bulgaria aderă la zona euro</h3><p>Devine al 21-lea stat membru al zonei euro.</p></div></article>
+</div>
+
+<div class="table-wrap"><table>
+<thead><tr><th>Criteriu de convergență</th><th>Conținut</th><th>Rațiune</th></tr></thead>
+<tbody>
+<tr><td>Stabilitatea prețurilor</td><td>Inflație apropiată de cea a statelor cu cele mai bune rezultate.</td><td>Evitarea intrării cu dezechilibre inflaționiste.</td></tr>
+<tr><td>Deficit bugetar</td><td>În principiu, maximum 3% din PIB.</td><td>Disciplină fiscală.</td></tr>
+<tr><td>Datorie publică</td><td>În principiu, maximum 60% din PIB sau apropiere satisfăcătoare de prag.</td><td>Sustenabilitatea finanțelor.</td></tr>
+<tr><td>Curs de schimb</td><td>Participare stabilă în ERM II timp de cel puțin doi ani.</td><td>Demonstrarea stabilității monedei.</td></tr>
+<tr><td>Dobânzi pe termen lung</td><td>Apropiate de cele ale statelor cu stabilitate a prețurilor.</td><td>Încredere și convergență financiară.</td></tr>
+<tr><td>Compatibilitate juridică</td><td>Independența băncii centrale și alinierea legislației.</td><td>Funcționarea Sistemului European al Băncilor Centrale.</td></tr>
+</tbody></table></div>
+
+<h3>2. Spațiul Schengen</h3>
+<div class="timeline">
+  <article class="event"><div class="date blue">14 iun. 1985</div><div><h3>Acordul Schengen</h3><p>Cinci state convin eliminarea progresivă a controalelor la frontierele interne.</p></div></article>
+  <article class="event"><div class="date blue">19 iun. 1990</div><div><h3>Convenția de aplicare</h3><p>Stabilește reguli privind frontierele externe, vizele, poliția și Sistemul de Informații Schengen.</p></div></article>
+  <article class="event"><div class="date green">26 mar. 1995</div><div><h3>Aplicarea practică</h3><p>Controalele la frontierele interne sunt eliminate între primele state participante.</p></div></article>
+  <article class="event"><div class="date green">1999</div><div><h3>Integrarea în dreptul UE</h3><p>Tratatul de la Amsterdam introduce acquis-ul Schengen în cadrul Uniunii.</p></div></article>
+  <article class="event"><div class="date green">31 mar. 2024</div><div><h3>România și Bulgaria — aerian și maritim</h3><p>Sunt eliminate controalele asupra persoanelor la frontierele aeriene și maritime interne.</p></div></article>
+  <article class="event"><div class="date green">1 ian. 2025</div><div><h3>Aderare deplină</h3><p>Sunt eliminate și controalele la frontierele terestre interne cu România și Bulgaria.</p></div></article>
+</div>
+
+<div class="table-wrap"><table>
+<thead><tr><th>În iulie 2026</th><th>Componență</th><th>State UE din afară</th><th>State din afara UE participante</th></tr></thead>
+<tbody>
+<tr><td>Zona euro</td><td>21 dintre cele 27 de state UE</td><td>Cehia, Danemarca, Ungaria, Polonia, România și Suedia</td><td>Unele microstate folosesc euro prin acorduri; Kosovo și Muntenegru unilateral</td></tr>
+<tr><td>Schengen</td><td>29 de state: 25 UE + 4 asociate</td><td>Irlanda și Cipru</td><td>Islanda, Liechtenstein, Norvegia și Elveția</td></tr>
+</tbody></table></div>
+<div class="fact"><strong>Schengen nu este identic cu UE.</strong> Include patru state nemembre, iar două state membre UE nu fac parte deplin din spațiul fără controale interne.</div>
+</section>
+
+<section class="section" id="extinderi">
+<h2>XII. Valurile de extindere</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Data aderării</th><th>State</th><th>Numărul total</th><th>Semnificație</th></tr></thead>
+<tbody>
+<tr><td>1 ian. 1958</td><td>Belgia, Franța, RFG, Italia, Luxemburg, Țările de Jos</td><td>6</td><td>Nucleul fondator al CEE și Euratom.</td></tr>
+<tr><td>1 ian. 1973</td><td>Danemarca, Irlanda, Regatul Unit</td><td>9</td><td>Extindere nord-vestică; intrarea unei mari economii comerciale.</td></tr>
+<tr><td>1 ian. 1981</td><td>Grecia</td><td>10</td><td>Consolidarea democrației post-dictatoriale.</td></tr>
+<tr><td>1 ian. 1986</td><td>Spania și Portugalia</td><td>12</td><td>Extindere iberică și democratizare.</td></tr>
+<tr><td>1 ian. 1995</td><td>Austria, Finlanda și Suedia</td><td>15</td><td>State neutre din perioada Războiului Rece intră după Maastricht.</td></tr>
+<tr><td>1 mai 2004</td><td>Cipru, Cehia, Estonia, Ungaria, Letonia, Lituania, Malta, Polonia, Slovacia, Slovenia</td><td>25</td><td>„Marea extindere” către Europa Centrală și de Est.</td></tr>
+<tr><td>1 ian. 2007</td><td>Bulgaria și România</td><td>27</td><td>Continuarea extinderii estice; mecanisme speciale pentru justiție.</td></tr>
+<tr><td>1 iul. 2013</td><td>Croația</td><td>28</td><td>Prima aderare a unui stat din fosta Iugoslavie.</td></tr>
+<tr><td>31 ian. 2020</td><td>Regatul Unit se retrage</td><td>27</td><td>Prima ieșire a unui stat membru prin articolul 50.</td></tr>
+</tbody></table></div>
+
+<h3>Referendumuri și retrageri</h3>
+<div class="grid4">
+  <article class="card"><h3>Norvegia</h3><p>A respins aderarea în referendumurile din 1972 și 1994. Participă la Spațiul Economic European și Schengen.</p></article>
+  <article class="card"><h3>Groenlanda</h3><p>A intrat în Comunități ca parte a Danemarcei în 1973 și s-a retras în 1985 după obținerea autonomiei și un referendum.</p></article>
+  <article class="card"><h3>Elveția</h3><p>A respins aderarea la Spațiul Economic European în 1992 și și-a retras formal cererea de aderare la UE în 2016.</p></article>
+  <article class="card"><h3>Regatul Unit</h3><p>Referendumul din 23 iunie 2016 a produs o majoritate pentru ieșire; retragerea a avut loc la 31 ianuarie 2020.</p></article>
+</div>
+
+<div class="fact"><strong>Corectare:</strong> referendumurile norvegiene au avut loc în 1972 și 1994, nu în 1983 și 1995.</div>
+</section>
+
+<section class="section" id="lisabona">
+<h2>XIII. De la Amsterdam și Nisa la Tratatul de la Lisabona</h2>
+<div class="timeline">
+  <article class="event"><div class="date blue">2 oct. 1997</div><div><h3>Tratatul de la Amsterdam</h3><p>Intră în vigoare la 1 mai 1999. Integrează Schengen, extinde codecizia, introduce politica de ocupare a forței de muncă și funcția de Înalt Reprezentant pentru PESC.</p></div></article>
+  <article class="event"><div class="date blue">26 feb. 2001</div><div><h3>Tratatul de la Nisa</h3><p>Intră în vigoare la 1 februarie 2003. Reformă instituțională pentru extinderea din 2004: ponderarea voturilor, Comisia și cooperarea consolidată.</p></div></article>
+  <article class="event"><div class="date red">29 oct. 2004</div><div><h3>Tratatul Constituțional</h3><p>Este semnat, dar referendumul francez din 29 mai 2005 și cel neerlandez din 1 iunie 2005 îl blochează. Nu intră în vigoare.</p></div></article>
+  <article class="event"><div class="date green">13 dec. 2007</div><div><h3>Tratatul de la Lisabona</h3><p>Preia multe reforme constituționale fără a înlocui tratatele existente cu un singur text.</p></div></article>
+  <article class="event"><div class="date green">1 dec. 2009</div><div><h3>Intrarea în vigoare</h3><p>Uniunea dobândește personalitate juridică unică; structura pe piloni dispare în mare parte.</p></div></article>
+</div>
+
+<h3>Schimbările Lisabonei</h3>
+<div class="grid4">
+  <article class="right-card"><strong>Parlament mai puternic</strong><span>Procedura legislativă ordinară se extinde la numeroase domenii.</span></article>
+  <article class="right-card"><strong>Consiliu European stabil</strong><span>Este creată funcția de președinte ales pentru mandate de câte doi ani și jumătate.</span></article>
+  <article class="right-card"><strong>Politică externă</strong><span>Înaltul Reprezentant devine și vicepreședinte al Comisiei; apare Serviciul European de Acțiune Externă.</span></article>
+  <article class="right-card"><strong>Carta drepturilor</strong><span>Primește aceeași valoare juridică precum tratatele.</span></article>
+  <article class="right-card"><strong>Inițiativa cetățenească</strong><span>Un milion de cetățeni pot invita Comisia să propună legislație.</span></article>
+  <article class="right-card"><strong>Articolul 50</strong><span>Este introdusă procedura formală de retragere din Uniune.</span></article>
+  <article class="right-card"><strong>Competențe clarificate</strong><span>Exclusive, partajate și de sprijin.</span></article>
+  <article class="right-card"><strong>Votul în Consiliu</strong><span>Dubla majoritate devine regula generală din 2014.</span></article>
+</div>
+</section>
+
+<section class="section" id="crize">
+<h2>XIV. Crizele și transformările Uniunii în secolul XXI</h2>
+<div class="timeline">
+  <article class="event"><div class="date red">2008–2009</div><div><h3>Criza financiară globală</h3><p>Recesiunea, salvarea băncilor și creșterea datoriilor publice scot la iveală slăbiciunile uniunii monetare fără uniune fiscală deplină.</p></div></article>
+  <article class="event"><div class="date red">2010–2015</div><div><h3>Criza datoriilor din zona euro</h3><p>Grecia, Irlanda, Portugalia, Spania și Cipru primesc forme diferite de asistență. Sunt create Fondul European de Stabilitate Financiară și, în 2012, Mecanismul European de Stabilitate.</p></div></article>
+  <article class="event"><div class="date blue">2012–2016</div><div><h3>Uniunea bancară</h3><p>Mecanismul unic de supraveghere și mecanismul unic de rezoluție transferă către nivelul european controlul principalelor bănci din zona euro.</p></div></article>
+  <article class="event"><div class="date red">2015–2016</div><div><h3>Criza migrației și refugiaților</h3><p>Războiul din Siria și alte conflicte cresc sosirile. Apar dispute privind responsabilitatea, azilul, frontierele și solidaritatea între state.</p></div></article>
+  <article class="event"><div class="date red">2016–2020</div><div><h3>Brexit</h3><p>Articolul 50 este activat la 29 martie 2017. Acordul de retragere intră în vigoare la 31 ianuarie 2020; perioada de tranziție se încheie la 31 decembrie 2020.</p></div></article>
+  <article class="event"><div class="date blue">2017</div><div><h3>PESCO</h3><p>Cooperarea structurată permanentă permite unui grup larg de state să dezvolte proiecte comune de apărare.</p></div></article>
+  <article class="event"><div class="date red">2020</div><div><h3>Pandemia COVID-19</h3><p>UE coordonează achiziția vaccinurilor, flexibilizează regulile economice și creează instrumentul de redresare NextGenerationEU, finanțat prin împrumuturi comune.</p></div></article>
+  <article class="event"><div class="date red">24 feb. 2022</div><div><h3>Invazia rusă în Ucraina</h3><p>UE adoptă sancțiuni, finanțează sprijinul pentru Ucraina, acordă protecție temporară refugiaților și accelerează politica energetică și de securitate.</p></div></article>
+  <article class="event"><div class="date blue">2022–2026</div><div><h3>Revenirea extinderii</h3><p>Ucraina, Republica Moldova, Bosnia și Herțegovina și Georgia primesc statut de candidat în etape diferite; negocierile se intensifică pentru mai multe candidate.</p></div></article>
+  <article class="event"><div class="date green">2024–2026</div><div><h3>Integrare diferențiată mai profundă</h3><p>România și Bulgaria intră deplin în Schengen de la 1 ianuarie 2025, iar Bulgaria adoptă euro la 1 ianuarie 2026.</p></div></article>
+</div>
+</section>
+
+<section class="section" id="tratate">
+<h2>XV. Tratatele europene — tabel comparativ</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Tratat</th><th>Semnare</th><th>Intrare în vigoare</th><th>Scop</th><th>Schimbări esențiale</th></tr></thead>
+<tbody>
+<tr><td>Paris — CECO</td><td>18 apr. 1951</td><td>23 iul. 1952</td><td>Control comun al cărbunelui și oțelului</td><td>Prima comunitate supranațională; expiră în 2002.</td></tr>
+<tr><td>Roma — CEE și Euratom</td><td>25 mar. 1957</td><td>1 ian. 1958</td><td>Piață comună și cooperare nucleară</td><td>Uniune vamală, politici comune și instituții comunitare.</td></tr>
+<tr><td>Fuziune</td><td>8 apr. 1965</td><td>1 iul. 1967</td><td>Simplificarea instituțiilor</td><td>O singură Comisie și un singur Consiliu pentru cele trei Comunități.</td></tr>
+<tr><td>Actul Unic European</td><td>17/28 feb. 1986</td><td>1 iul. 1987</td><td>Finalizarea pieței interne</td><td>Majoritate calificată mai extinsă, rol sporit al Parlamentului, mediu și cooperare politică.</td></tr>
+<tr><td>Maastricht</td><td>7 feb. 1992</td><td>1 nov. 1993</td><td>Crearea UE și pregătirea euro</td><td>Cetățenie, trei piloni, codecizie, PESC și UEM.</td></tr>
+<tr><td>Amsterdam</td><td>2 oct. 1997</td><td>1 mai 1999</td><td>Reformă și spațiu de libertate</td><td>Schengen în UE, mai multă codecizie, ocupare și Înalt Reprezentant.</td></tr>
+<tr><td>Nisa</td><td>26 feb. 2001</td><td>1 feb. 2003</td><td>Pregătirea marii extinderi</td><td>Voturi în Consiliu, componența Comisiei și cooperare consolidată.</td></tr>
+<tr><td>Constituțional</td><td>29 oct. 2004</td><td>Nu a intrat</td><td>Un text constituțional unic</td><td>Respins prin referendum în Franța și Țările de Jos.</td></tr>
+<tr><td>Lisabona</td><td>13 dec. 2007</td><td>1 dec. 2009</td><td>Instituții mai eficiente și democratice</td><td>Personalitate juridică, președinte stabil, SEAE, Carta obligatorie, articolul 50.</td></tr>
+</tbody></table></div>
+<div class="gold-box"><strong>Ratificarea tratatelor UE:</strong> fiecare tratat de modificare sau de aderare trebuie aprobat de toate statele contractante potrivit regulilor constituționale proprii — vot parlamentar, referendum sau ambele. Un refuz poate bloca intrarea în vigoare pentru întreaga Uniune.</div>
+</section>
+
+<section class="section" id="institutii">
+<h2>XVI. Instituțiile Uniunii Europene</h2>
+<p class="intro">UE are șapte instituții în sensul tratatelor. Primele patru stabilesc direcția politică și adoptă sau execută legislația; celelalte trei asigură controlul juridic, monetar și financiar.</p>
+
+<div class="grid4">
+  <article class="card"><h3>Parlamentul European</h3><p>Ales direct la fiecare cinci ani. Adoptă legislația și bugetul împreună cu Consiliul, controlează politic Comisia și aprobă președintele Comisiei și colegiul comisarilor.</p></article>
+  <article class="card"><h3>Consiliul European</h3><p>Șefii de stat sau de guvern, președintele său și președintele Comisiei. Stabilește direcțiile și prioritățile politice; în general, nu adoptă legi.</p></article>
+  <article class="card"><h3>Consiliul Uniunii Europene</h3><p>Miniștrii statelor, reuniți pe domenii. Este colegislator și autoritate bugetară împreună cu Parlamentul și coordonează politicile naționale.</p></article>
+  <article class="card"><h3>Comisia Europeană</h3><p>Promovează interesul general, are de regulă inițiativa legislativă, execută bugetul, aplică politicile și supraveghează respectarea tratatelor.</p></article>
+  <article class="card"><h3>Curtea de Justiție a UE</h3><p>Interpretează dreptul UE, controlează legalitatea actelor și soluționează acțiuni împotriva instituțiilor ori statelor.</p></article>
+  <article class="card"><h3>Banca Centrală Europeană</h3><p>Conduce politica monetară a zonei euro și urmărește stabilitatea prețurilor; participă la supravegherea bancară.</p></article>
+  <article class="card"><h3>Curtea de Conturi Europeană</h3><p>Auditează veniturile și cheltuielile, verifică legalitatea și buna gestiune financiară.</p></article>
+  <article class="card"><h3>Organe consultative</h3><p>Comitetul Economic și Social European reprezintă partenerii socioeconomici; Comitetul Regiunilor reprezintă autoritățile locale și regionale.</p></article>
+</div>
+
+<div class="fact"><strong>Nu le confunda:</strong> Consiliul European reunește liderii și stabilește direcția; Consiliul UE reunește miniștrii și legiferează; Consiliul Europei este o organizație separată, cu 46 de membri și Curtea Europeană a Drepturilor Omului.</div>
+
+<details><summary>Sediile principale</summary>
+<div class="details-body">
+<div class="table-wrap"><table>
+<thead><tr><th>Instituție</th><th>Sediu principal / locuri de lucru</th></tr></thead>
+<tbody>
+<tr><td>Parlamentul European</td><td>Strasbourg — sesiuni plenare; Bruxelles — comisii și sesiuni suplimentare; Luxemburg — secretariat.</td></tr>
+<tr><td>Comisia Europeană</td><td>Bruxelles, cu servicii și la Luxemburg.</td></tr>
+<tr><td>Consiliul European și Consiliul UE</td><td>Bruxelles; anumite reuniuni ale Consiliului la Luxemburg.</td></tr>
+<tr><td>Curtea de Justiție și Curtea de Conturi</td><td>Luxemburg.</td></tr>
+<tr><td>Banca Centrală Europeană</td><td>Frankfurt pe Main.</td></tr>
+</tbody></table></div>
+</div></details>
+</section>
+
+<section class="section" id="decizie">
+<h2>XVII. Cum se adoptă o lege europeană?</h2>
+<div class="flow">
+  <article class="flow-item"><b>1. Inițiativă</b><span>Comisia pregătește propunerea după consultări și evaluarea impactului.</span></article>
+  <article class="flow-item"><b>2. Parlamente naționale</b><span>Verifică subsidiaritatea și pot formula avize motivate.</span></article>
+  <article class="flow-item"><b>3. Parlament</b><span>Comisia parlamentară și plenul adoptă poziția.</span></article>
+  <article class="flow-item"><b>4. Consiliu</b><span>Statele negociază în grupuri de lucru, Coreper și reuniunea miniștrilor.</span></article>
+  <article class="flow-item"><b>5. Trilog</b><span>Parlamentul, Consiliul și Comisia caută un compromis informal.</span></article>
+  <article class="flow-item"><b>6. Adoptare</b><span>Parlamentul și Consiliul aprobă același text.</span></article>
+  <article class="flow-item"><b>7. Aplicare</b><span>Publicare, transpunere dacă este directivă și controlul Comisiei și Curții.</span></article>
+</div>
+
+<h3>Votul în Consiliu</h3>
+<div class="grid3">
+  <article class="card"><h3>Majoritate calificată</h3><p>Regula generală: cel puțin 55% dintre state, reprezentând cel puțin 65% din populația UE. Minoritatea de blocaj necesită cel puțin patru state.</p></article>
+  <article class="card"><h3>Unanimitate</h3><p>Se păstrează în domenii sensibile: fiscalitate, aderarea unui nou stat, unele aspecte ale politicii externe, apărare, cetățenie și resurse proprii.</p></article>
+  <article class="card"><h3>Majoritate simplă</h3><p>Folosită mai ales pentru chestiuni procedurale și organizatorice.</p></article>
+</div>
+
+<details><summary>Procedura legislativă ordinară și procedurile speciale</summary>
+<div class="details-body"><p>În procedura ordinară, Parlamentul și Consiliul sunt colegislatori egali și pot parcurge până la trei lecturi, inclusiv conciliere. În procedurile speciale, Consiliul poate adopta actul după consultarea sau aprobarea Parlamentului, ori, mai rar, Parlamentul adoptă cu participarea Consiliului.</p></div>
+</details>
+</section>
+
+<section class="section" id="drept">
+<h2>XVIII. Dreptul Uniunii Europene</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Act</th><th>Caracter obligatoriu</th><th>Cum se aplică?</th><th>Exemplu de utilizare</th></tr></thead>
+<tbody>
+<tr><td>Regulament</td><td>Obligatoriu în toate elementele</td><td>Direct aplicabil în toate statele</td><td>Protecția datelor, reguli vamale, programe financiare.</td></tr>
+<tr><td>Directivă</td><td>Obligatorie privind rezultatul</td><td>Trebuie transpusă în dreptul național într-un termen</td><td>Protecția consumatorului, muncă, mediu.</td></tr>
+<tr><td>Decizie</td><td>Obligatorie în toate elementele</td><td>Pentru destinatarii indicați sau cu aplicare generală, după caz</td><td>Concurență, ajutoare de stat, sancțiuni.</td></tr>
+<tr><td>Recomandare</td><td>Neobligatorie</td><td>Orientează conduita și interpretarea</td><td>Politici economice, sănătate, educație.</td></tr>
+<tr><td>Aviz</td><td>Neobligatoriu</td><td>Exprimă poziția unei instituții</td><td>Consultarea comitetelor sau evaluarea aderării.</td></tr>
+</tbody></table></div>
+
+<h3>Principii dezvoltate de Curtea de Justiție</h3>
+<div class="grid4">
+  <article class="right-card"><strong>Efect direct</strong><span><em>Van Gend en Loos</em>, 1963: anumite norme UE conferă drepturi invocabile de persoane.</span></article>
+  <article class="right-card"><strong>Prioritate</strong><span><em>Costa contra ENEL</em>, 1964: dreptul UE nu poate fi înlăturat printr-o lege națională ulterioară.</span></article>
+  <article class="right-card"><strong>Răspunderea statului</strong><span><em>Francovich</em>, 1991: statul poate datora despăgubiri pentru încălcarea dreptului UE.</span></article>
+  <article class="right-card"><strong>Recunoaștere reciprocă</strong><span><em>Cassis de Dijon</em>, 1979: un produs comercializat legal într-un stat trebuie, în principiu, acceptat în altul.</span></article>
+</div>
+<div class="box"><strong>Competența de atribuire:</strong> UE poate acționa numai în domeniile conferite prin tratate. Competențele neatribuite rămân statelor membre.</div>
+</section>
+
+<section class="section" id="politici">
+<h2>XIX. Marile politici ale Uniunii</h2>
+<div class="grid4">
+  <article class="card"><h3>Piața unică</h3><p>Libera circulație a mărfurilor, persoanelor, serviciilor și capitalurilor, însoțită de standarde comune și recunoaștere reciprocă.</p></article>
+  <article class="card"><h3>Concurență</h3><p>Combaterea cartelurilor și abuzului de poziție dominantă, controlul concentrărilor și al ajutoarelor de stat.</p></article>
+  <article class="card"><h3>Agricultură și pescuit</h3><p>Sprijin pentru venituri, dezvoltare rurală, siguranță alimentară și gestionarea resurselor maritime.</p></article>
+  <article class="card"><h3>Coeziune</h3><p>Fonduri pentru regiuni, infrastructură, ocupare, tranziție industrială și reducerea decalajelor.</p></article>
+  <article class="card"><h3>Comerț extern</h3><p>Tarif vamal comun și negocieri comerciale conduse la nivel european.</p></article>
+  <article class="card"><h3>Mediu și climă</h3><p>Calitatea aerului și apei, biodiversitate, economie circulară, energie și reducerea emisiilor.</p></article>
+  <article class="card"><h3>Libertate, securitate și justiție</h3><p>Azil, migrație, cooperare polițienească, mandat european de arestare, protecția frontierelor și cooperare judiciară.</p></article>
+  <article class="card"><h3>Cercetare și educație</h3><p>Horizon Europe, Erasmus+, recunoașterea studiilor și cooperare universitară.</p></article>
+  <article class="card"><h3>Politica socială</h3><p>Standarde minime de muncă, egalitate, securitate și sănătate, coordonarea sistemelor sociale.</p></article>
+  <article class="card"><h3>Politica externă</h3><p>Declarații comune, sancțiuni, diplomație, ajutor umanitar și misiuni civile ori militare.</p></article>
+  <article class="card"><h3>Politica digitală</h3><p>Piață digitală, date, platforme, securitate cibernetică și reglementarea inteligenței artificiale.</p></article>
+  <article class="card"><h3>Sănătate</h3><p>Competențele naționale rămân centrale, dar UE coordonează amenințările transfrontaliere, medicamentele și cercetarea.</p></article>
+</div>
+
+<h3>Competențe exclusive, partajate și de sprijin</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Tip</th><th>Cine legiferează?</th><th>Exemple</th></tr></thead>
+<tbody>
+<tr><td>Exclusive</td><td>Numai UE, cu excepția executării delegate statelor</td><td>Uniunea vamală, concurența pieței interne, politica monetară pentru euro, conservarea resurselor biologice marine, politica comercială comună.</td></tr>
+<tr><td>Partajate</td><td>UE și statele; statele acționează cât timp UE nu și-a exercitat competența</td><td>Piața internă, mediu, transport, energie, agricultură, coeziune, protecția consumatorilor.</td></tr>
+<tr><td>Sprijin / coordonare</td><td>UE sprijină fără a armoniza complet legislația națională</td><td>Educație, cultură, turism, sport, protecție civilă și anumite aspecte de sănătate.</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section" id="buget">
+<h2>XX. Bugetul Uniunii Europene și fondurile</h2>
+<div class="grid2">
+  <article class="card"><h3>Venituri — „resurse proprii”</h3><ul class="clean">
+    <li>contribuție bazată pe venitul național brut;</li>
+    <li>taxe vamale asupra importurilor din afara UE;</li>
+    <li>resursă bazată pe TVA;</li>
+    <li>contribuție bazată pe deșeurile de ambalaje din plastic nereciclate;</li>
+    <li>alte venituri: amenzi, dobânzi, contribuții ale statelor terțe și excedente.</li>
+  </ul></article>
+  <article class="card"><h3>Cheltuieli</h3><ul class="clean">
+    <li>coeziune regională și socială;</li>
+    <li>agricultură, dezvoltare rurală și resurse naturale;</li>
+    <li>cercetare, inovare, infrastructură și competitivitate;</li>
+    <li>migrație, frontiere și securitate;</li>
+    <li>acțiune externă, ajutor și sprijin pentru Ucraina;</li>
+    <li>administrația instituțiilor.</li>
+  </ul></article>
+</div>
+<div class="grid4" style="margin-top:18px">
+  <article class="right-card"><strong>Cadrul financiar multianual</strong><span>Stabilește plafoanele și prioritățile pentru mai mulți ani; actualul cadru acoperă 2021–2027.</span></article>
+  <article class="right-card"><strong>Buget anual</strong><span>Propus de Comisie și negociat de Parlament și Consiliu în limitele cadrului multianual.</span></article>
+  <article class="right-card"><strong>NextGenerationEU</strong><span>Instrument temporar de redresare finanțat prin împrumuturi ale Comisiei pe piețele de capital.</span></article>
+  <article class="right-card"><strong>Control</strong><span>Comisia execută; Curtea de Conturi auditează; Parlamentul acordă descărcarea de gestiune.</span></article>
+</div>
+<div class="fact"><strong>UE nu are un buget identic cu bugetul unui stat federal.</strong> Dimensiunea sa este relativ redusă față de totalul economiilor membre, iar cheltuielile sociale principale, pensiile, sănătatea și apărarea rămân în mare măsură naționale.</div>
+</section>
+
+<section class="section" id="cetatenie">
+<h2>XXI. Cetățenia europeană, valorile și simbolurile</h2>
+<div class="grid4">
+  <article class="right-card"><strong>Circulație și ședere</strong><span>Dreptul de a locui, studia și lucra în alte state membre, în condițiile dreptului UE.</span></article>
+  <article class="right-card"><strong>Drepturi electorale</strong><span>Vot și candidatură la alegeri locale și europene în statul de reședință.</span></article>
+  <article class="right-card"><strong>Protecție consulară</strong><span>Ajutor din partea ambasadei altui stat UE când propriul stat nu este reprezentat.</span></article>
+  <article class="right-card"><strong>Petiții și Ombudsman</strong><span>Adresarea către Parlament, Ombudsman și instituții într-o limbă oficială.</span></article>
+</div>
+
+<div class="grid4" style="margin-top:18px">
+  <article class="card"><h3>Drapelul</h3><p>Douăsprezece stele aurii pe fond albastru. Numărul nu reprezintă statele, ci simbolizează unitatea și perfecțiunea.</p></article>
+  <article class="card"><h3>Imnul</h3><p>„Oda bucuriei” din Simfonia a IX-a de Beethoven, fără versuri oficiale.</p></article>
+  <article class="card"><h3>Motto</h3><p>„Unitate în diversitate”, folosit din anul 2000.</p></article>
+  <article class="card"><h3>Ziua Europei</h3><p>9 mai, aniversarea Declarației Schuman din 1950.</p></article>
+</div>
+
+<h3>Valorile articolului 2 TUE</h3>
+<p>Demnitatea umană, libertatea, democrația, egalitatea, statul de drept și respectarea drepturilor omului, inclusiv drepturile persoanelor aparținând minorităților.</p>
+<details><summary>Articolul 7 și condiționalitatea statului de drept</summary>
+<div class="details-body"><p>Articolul 7 permite constatarea riscului sau existenței unei încălcări grave a valorilor UE și, în etapa cea mai severă, suspendarea anumitor drepturi ale statului, inclusiv votul în Consiliu. Separat, mecanismul de condiționalitate bugetară poate proteja bugetul UE când încălcările statului de drept afectează gestiunea financiară.</p></div>
+</details>
+</section>
+
+<section class="section" id="romania">
+<h2>XXII. România și integrarea europeană</h2>
+
+<h3>1. Relațiile înainte de 1989</h3>
+<div class="grid2">
+  <article class="card"><h3>Deschiderea economică</h3><p>România a încercat să dezvolte relații comerciale cu Europa Occidentală în contextul autonomiei relative față de Moscova. Au existat cooperări industriale cu firme franceze și vest-germane, dintre care acordul Renault–Dacia din 1966 este cel mai cunoscut.</p></article>
+  <article class="card"><h3>Relațiile cu Comunitatea</h3><p>România a beneficiat din 1974 de Sistemul Generalizat de Preferințe și a încheiat în 1980 acorduri comerciale cu Comunitatea, devenind un interlocutor distinct în cadrul blocului estic. În anii 1980, încălcarea drepturilor omului și izolarea regimului au deteriorat relațiile.</p></article>
+</div>
+
+<h3>2. Drumul către aderare</h3>
+<div class="timeline">
+  <article class="event"><div class="date blue">1990</div><div><h3>Relații diplomatice și comerciale</h3><p>După prăbușirea regimului comunist, relațiile cu Comunitățile Europene sunt relansate și este semnat un acord de comerț și cooperare.</p></div></article>
+  <article class="event"><div class="date green">1 feb. 1993</div><div><h3>Acordul european de asociere</h3><p>Semnat la Bruxelles; intră în vigoare la 1 februarie 1995 și oferă cadrul apropierii politice, economice și legislative.</p></div></article>
+  <article class="event"><div class="date blue">21–22 iun. 1993</div><div><h3>Criteriile de la Copenhaga</h3><p>Democrație, stat de drept, drepturi, economie de piață funcțională și capacitatea de a aplica acquis-ul.</p></div></article>
+  <article class="event"><div class="date green">22 iun. 1995</div><div><h3>Cererea oficială de aderare</h3><p>România depune candidatura la președinția franceză a Consiliului.</p></div></article>
+  <article class="event"><div class="date blue">iul. 1997</div><div><h3>Avizul Comisiei</h3><p>Comisia recomandă pregătirea continuă, dar nu includerea României în primul grup de negocieri.</p></div></article>
+  <article class="event"><div class="date green">dec. 1999</div><div><h3>Decizia de deschidere a negocierilor</h3><p>Consiliul European de la Helsinki invită România, Bulgaria și alte state să înceapă negocierile.</p></div></article>
+  <article class="event"><div class="date green">15 feb. 2000</div><div><h3>Negocierile de aderare</h3><p>Sunt deschise oficial în cadrul conferinței interguvernamentale.</p></div></article>
+  <article class="event"><div class="date green">14 dec. 2004</div><div><h3>Închiderea negocierilor</h3><p>România finalizează provizoriu toate capitolele, cu monitorizare strictă până la aderare.</p></div></article>
+  <article class="event"><div class="date green">25 apr. 2005</div><div><h3>Tratatul de aderare</h3><p>România și Bulgaria semnează la Luxemburg; tratatul include clauze de salvgardare pentru eventuale întârzieri grave.</p></div></article>
+  <article class="event"><div class="date green">1 ian. 2007</div><div><h3>Aderarea</h3><p>România devine stat membru al Uniunii Europene.</p></div></article>
+</div>
+
+<h3>3. După aderare</h3>
+<div class="grid4">
+  <article class="card"><h3>MCV</h3><p>Mecanismul de Cooperare și Verificare a monitorizat reforma justiției și lupta anticorupție. A fost închis pentru România în 2023.</p></article>
+  <article class="card"><h3>Fonduri europene</h3><p>Coeziune, agricultură, infrastructură, educație, cercetare și redresare postpandemică.</p></article>
+  <article class="card"><h3>Schengen</h3><p>Frontiere aeriene și maritime fără controale interne din 31 martie 2024; frontiere terestre din 1 ianuarie 2025.</p></article>
+  <article class="card"><h3>Euro</h3><p>România este obligată prin tratat să adopte moneda după îndeplinirea criteriilor, dar nu are în iulie 2026 o dată fixă obligatorie.</p></article>
+</div>
+
+<h3>4. Reformele solicitate în procesul aderării</h3>
+<div class="grid4">
+  <article class="right-card"><strong>Justiție</strong><span>Independență, capacitate administrativă, combaterea corupției și executarea legii.</span></article>
+  <article class="right-card"><strong>Administrație</strong><span>Profesionalizare, transparență, achiziții și gestionarea fondurilor.</span></article>
+  <article class="right-card"><strong>Economie</strong><span>Privatizare, concurență, ajutoare de stat și funcționarea pieței.</span></article>
+  <article class="right-card"><strong>Agricultură și mediu</strong><span>Standarde sanitare, instituții de plăți, infrastructură de apă și gestionarea deșeurilor.</span></article>
+</div>
+</section>
+
+<section class="section" id="prezent">
+<h2>XXIII. Uniunea Europeană în iulie 2026</h2>
+<div class="summary-grid">
+  <article class="summary-card"><strong>27 de state membre</strong><span>După retragerea Regatului Unit în 2020.</span></article>
+  <article class="summary-card"><strong>Aproximativ 450 de milioane de locuitori</strong><span>Una dintre cele mai mari piețe integrate ale lumii.</span></article>
+  <article class="summary-card"><strong>21 de state în zona euro</strong><span>Bulgaria a devenit al 21-lea membru la 1 ianuarie 2026.</span></article>
+  <article class="summary-card"><strong>29 de state Schengen</strong><span>25 de state UE și patru state asociate din afara Uniunii.</span></article>
+  <article class="summary-card"><strong>24 de limbi oficiale</strong><span>Cetățenii pot comunica cu instituțiile în oricare dintre ele.</span></article>
+  <article class="summary-card"><strong>7 instituții</strong><span>Cadrul juridic central al Uniunii.</span></article>
+  <article class="summary-card"><strong>9 state candidate</strong><span>Muntenegru, Serbia, Albania, Macedonia de Nord, Bosnia și Herțegovina, Turcia, Ucraina, Moldova și Georgia.</span></article>
+  <article class="summary-card"><strong>Buget 2021–2027</strong><span>Completat de NextGenerationEU și instrumente pentru noi priorități.</span></article>
+</div>
+
+<h3>Statele membre și anul aderării</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>An</th><th>State membre</th></tr></thead>
+<tbody>
+<tr><td>1958</td><td>Belgia, Franța, Germania, Italia, Luxemburg, Țările de Jos</td></tr>
+<tr><td>1973</td><td>Danemarca, Irlanda</td></tr>
+<tr><td>1981</td><td>Grecia</td></tr>
+<tr><td>1986</td><td>Portugalia, Spania</td></tr>
+<tr><td>1995</td><td>Austria, Finlanda, Suedia</td></tr>
+<tr><td>2004</td><td>Cipru, Cehia, Estonia, Ungaria, Letonia, Lituania, Malta, Polonia, Slovacia, Slovenia</td></tr>
+<tr><td>2007</td><td>Bulgaria, România</td></tr>
+<tr><td>2013</td><td>Croația</td></tr>
+</tbody></table></div>
+<p class="small">Regatul Unit, membru din 1973, s-a retras în 2020 și nu apare în lista actuală.</p>
+</section>
+
+<section class="section" id="viitor">
+<h2>XXIV. Extinderea viitoare și marile dileme</h2>
+<h3>1. Procesul de aderare</h3>
+<div class="flow">
+  <article class="flow-item"><b>1. Cerere</b><span>Statul european solicită aderarea în temeiul articolului 49 TUE.</span></article>
+  <article class="flow-item"><b>2. Aviz</b><span>Comisia evaluează capacitatea și recomandă Consiliului.</span></article>
+  <article class="flow-item"><b>3. Candidat</b><span>Consiliul European acordă statutul prin consens.</span></article>
+  <article class="flow-item"><b>4. Negocieri</b><span>Acquis-ul este analizat pe clustere și capitole.</span></article>
+  <article class="flow-item"><b>5. Închidere</b><span>Fiecare capitol se închide provizoriu după îndeplinirea condițiilor.</span></article>
+  <article class="flow-item"><b>6. Tratat</b><span>Parlamentul consimte, iar Consiliul aprobă în unanimitate.</span></article>
+  <article class="flow-item"><b>7. Ratificare</b><span>Toate statele membre și candidatul ratifică tratatul.</span></article>
+</div>
+
+<h3>2. Criteriile de la Copenhaga</h3>
+<div class="grid3">
+  <article class="card"><h3>Politice</h3><p>Instituții stabile, democrație, stat de drept, drepturile omului și protecția minorităților.</p></article>
+  <article class="card"><h3>Economice</h3><p>Economie de piață funcțională și capacitatea de a face față concurenței în piața unică.</p></article>
+  <article class="card"><h3>Acquis și administrație</h3><p>Capacitatea de a aplica legislația UE și de a asuma obiectivele uniunii politice, economice și monetare.</p></article>
+</div>
+
+<h3>3. Candidatele actuale</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Stat candidat</th><th>Profil general al procesului</th></tr></thead>
+<tbody>
+<tr><td>Muntenegru</td><td>Negocieri avansate și mai multe capitole închise provizoriu.</td></tr>
+<tr><td>Serbia</td><td>Negocieri deschise; statul de drept, politica externă și normalizarea relațiilor cu Kosovo sunt centrale.</td></tr>
+<tr><td>Albania</td><td>Negocieri pe clustere, cu progrese accelerate în 2024–2026.</td></tr>
+<tr><td>Macedonia de Nord</td><td>Proces afectat de dispute bilaterale și necesitatea unor reforme constituționale.</td></tr>
+<tr><td>Bosnia și Herțegovina</td><td>Stat candidat; instituțiile complexe și reformele statului de drept încetinesc progresul.</td></tr>
+<tr><td>Turcia</td><td>Candidată din 1999; negocierile sunt practic blocate din cauza regreselor politice și disputelor.</td></tr>
+<tr><td>Ucraina</td><td>Candidată din 2022; negocieri deschise în timpul războiului, cu reforme și reconstrucție simultane.</td></tr>
+<tr><td>Republica Moldova</td><td>Candidată din 2022; negocieri și integrare graduală, sub presiuni de securitate și reformă.</td></tr>
+<tr><td>Georgia</td><td>Candidată din 2023; procesul depinde de respectarea valorilor democratice și de relația politică cu UE.</td></tr>
+</tbody></table></div>
+
+<h3>4. Dilemele Uniunii</h3>
+<div class="grid4">
+  <article class="right-card"><strong>Aprofundare vs. extindere</strong><span>Mai mulți membri pot cere reformarea instituțiilor și a votului.</span></article>
+  <article class="right-card"><strong>Unanimitate</strong><span>Politica externă, fiscalitatea și aderarea pot fi blocate de un singur stat.</span></article>
+  <article class="right-card"><strong>Buget și coeziune</strong><span>Noii membri sporesc necesarul de investiții și modifică distribuirea fondurilor.</span></article>
+  <article class="right-card"><strong>Statul de drept</strong><span>UE trebuie să prevină regresul democratic și după aderare.</span></article>
+  <article class="right-card"><strong>Apărare și autonomie</strong><span>Relația cu NATO, SUA și dezvoltarea capacității europene proprii.</span></article>
+  <article class="right-card"><strong>Competitivitate</strong><span>Energie, tehnologie, demografie și concurența globală.</span></article>
+  <article class="right-card"><strong>Climă</strong><span>Costurile și distribuția socială a tranziției verzi.</span></article>
+  <article class="right-card"><strong>Legitimitate democratică</strong><span>Participarea cetățenilor, transparența și apropierea deciziilor de nivelul național și local.</span></article>
+</div>
+</section>
+
+<section class="section" id="corecturi">
+<h2>XXV. Corecturi și nuanțări ale informațiilor din Word</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Formulare din materialul inițial</th><th>Formularea corectă / nuanțată</th></tr></thead>
+<tbody>
+<tr><td>CECO „devine” CEE în 1957</td><td>CEE și Euratom sunt create separat prin Tratatele de la Roma; CECO continuă să existe până în 2002.</td></tr>
+<tr><td>Prima extindere este în 1979</td><td>Danemarca, Irlanda și Regatul Unit aderă la 1 ianuarie 1973. În 1979 au loc primele alegeri directe pentru Parlament.</td></tr>
+<tr><td>Franța se retrage din NATO</td><td>În 1966 se retrage din structura militară integrată, dar rămâne membră NATO.</td></tr>
+<tr><td>Grecia se afla în sfera sovietică</td><td>Grecia era în blocul occidental, membră NATO din 1952; aderarea UE consolidează democrația după dictatura coloneilor.</td></tr>
+<tr><td>Norvegia refuză în 1983 și 1995</td><td>Referendumurile au avut loc în 1972 și 1994.</td></tr>
+<tr><td>Carol Quintul împarte imperiul în 1558 către Ferdinand al II-lea</td><td>Abdicările au avut loc în 1555–1556; ramura imperială revine fratelui său Ferdinand I, iar Spania și Țările de Jos fiului Filip al II-lea.</td></tr>
+<tr><td>Campaniile napoleoniene 1792–1812</td><td>Războaiele revoluționare încep în 1792; războaiele napoleoniene sunt delimitate de obicei între 1803 și 1815.</td></tr>
+<tr><td>RFG era mai puțin dezvoltată decât RDG</td><td>RDG era mai puțin productivă și mai slab echipată decât RFG, deși era una dintre economiile mai dezvoltate ale blocului estic.</td></tr>
+<tr><td>România are primele relații cu CE abia în 1990</td><td>Au existat preferințe comerciale din 1974 și acorduri comerciale în 1980; după 1989 începe relația de asociere și aderare.</td></tr>
+<tr><td>„Banca Europeană” a fost creată în 1990</td><td>Banca Europeană pentru Reconstrucție și Dezvoltare a fost creată în 1991; Banca Europeană de Investiții există din 1958.</td></tr>
+<tr><td>Consiliul Balticii în 1990</td><td>Consiliul Statelor de la Marea Baltică a fost creat în 1992.</td></tr>
+<tr><td>Grupul Vișegrad în 1992</td><td>A fost creat la 15 februarie 1991 de Polonia, Ungaria și Cehoslovacia.</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section" id="cronologie">
+<h2>XXVI. Cronologia esențială: 1945–2026</h2>
+<div class="timeline">
+  <article class="event"><div class="date blue">1946–1949</div><div><h3>Proiectul european reapare</h3><p>Discursul Churchill, Planul Marshall, Congresul de la Haga, OECE, NATO și Consiliul Europei.</p></div></article>
+  <article class="event"><div class="date green">1950–1952</div><div><h3>Schuman și CECO</h3><p>Declarația Schuman, Tratatul de la Paris și prima comunitate supranațională.</p></div></article>
+  <article class="event"><div class="date green">1957–1958</div><div><h3>Tratatele de la Roma</h3><p>CEE și Euratom extind integrarea de la două industrii la economie și energie nucleară.</p></div></article>
+  <article class="event"><div class="date blue">1962–1968</div><div><h3>PAC, crize și uniune vamală</h3><p>Politica agricolă, veto-urile franceze, scaunul gol, fuziunea instituțiilor și eliminarea taxelor interne.</p></div></article>
+  <article class="event"><div class="date green">1973–1979</div><div><h3>Prima extindere și democratizare</h3><p>Danemarca, Irlanda și Regatul Unit; Consiliul European, FEDR, alegeri directe și Sistemul Monetar.</p></div></article>
+  <article class="event"><div class="date green">1981–1987</div><div><h3>Europa de Sud și piața unică</h3><p>Grecia, Spania și Portugalia; Schengen, Actul Unic și Erasmus.</p></div></article>
+  <article class="event"><div class="date green">1989–1995</div><div><h3>Sfârșitul divizării continentului</h3><p>Căderea comunismului, reunificarea Germaniei, Maastricht, piața unică, Copenhaga și extinderea nordică.</p></div></article>
+  <article class="event"><div class="date blue">1997–2002</div><div><h3>Amsterdam, euro și Nisa</h3><p>Schengen intră în UE, BCE și moneda unică, reforme pentru extindere.</p></div></article>
+  <article class="event"><div class="date green">2004–2009</div><div><h3>Marea extindere și Lisabona</h3><p>Zece noi membri, România și Bulgaria, eșecul Constituției și intrarea în vigoare a Lisabonei.</p></div></article>
+  <article class="event"><div class="date red">2010–2016</div><div><h3>Crize multiple</h3><p>Datorii, uniune bancară, migrație, extinderea cu Croația și referendumul Brexit.</p></div></article>
+  <article class="event"><div class="date red">2020–2022</div><div><h3>Pandemie și război</h3><p>Brexit, NextGenerationEU, invazia Rusiei și revenirea politicii de extindere.</p></div></article>
+  <article class="event"><div class="date green">2024–2026</div><div><h3>Schengen și euro</h3><p>România și Bulgaria intră deplin în Schengen, iar Bulgaria devine al 21-lea stat al zonei euro.</p></div></article>
+</div>
+</section>
+
+<section class="section">
+<h2>XXVII. Sinteză comparativă</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Etapă</th><th>Formă de integrare</th><th>Instituție / tratat</th><th>Rezultat</th></tr></thead>
+<tbody>
+<tr><td>1952</td><td>Integrare sectorială</td><td>CECO</td><td>Control comun asupra industriilor războiului.</td></tr>
+<tr><td>1958</td><td>Integrare economică generală</td><td>CEE și Euratom</td><td>Piață comună și politici comune.</td></tr>
+<tr><td>1968</td><td>Uniune vamală</td><td>Aplicarea Tratatului de la Roma</td><td>Fără taxe vamale interne și tarif extern comun.</td></tr>
+<tr><td>1987–1993</td><td>Piață unică</td><td>Actul Unic</td><td>Cele patru libertăți și armonizare extinsă.</td></tr>
+<tr><td>1993</td><td>Uniune politică</td><td>Maastricht</td><td>UE, cetățenie, PESC, justiție și pregătirea euro.</td></tr>
+<tr><td>1999–2002</td><td>Uniune monetară</td><td>Maastricht și BCE</td><td>Moneda euro pentru statele participante.</td></tr>
+<tr><td>1995–2025</td><td>Spațiu fără frontiere interne</td><td>Schengen</td><td>Circulație fără control sistematic în 29 de state.</td></tr>
+<tr><td>2009</td><td>Cadru juridic unificat</td><td>Lisabona</td><td>Personalitate juridică, instituții consolidate și Carta obligatorie.</td></tr>
+</tbody></table></div>
+
+<div class="final">
+<h3>Concluzie generală</h3>
+<p>Uniunea Europeană s-a construit prin alternanța dintre crize și compromisuri. A pornit de la administrarea comună a cărbunelui și oțelului, a creat o uniune vamală și o piață unică, apoi a adăugat cetățenie, monedă, politici externe, cooperare judiciară și protecția drepturilor. Extinderile au transformat un nucleu occidental de șase state într-o uniune continentală de 27 de membri. UE rămâne o construcție incompletă și dinamică: suficient de integrată pentru a produce drept obligatoriu și politici comune, dar dependentă de acordul și capacitatea statelor pentru reformele fundamentale.</p>
+</div>
+</section>
+
+<section class="section">
+<h2>Surse instituționale utilizate pentru verificare</h2>
+<p class="intro">Materialul integrează documentul Word furnizat și corectează datele prin consultarea paginilor oficiale ale Uniunii Europene, Consiliului Uniunii Europene, Consiliului European, Parlamentului European, Comisiei Europene și EUR-Lex. Situația membrilor, zonei euro, spațiului Schengen și statelor candidate este actualizată la 22 iulie 2026.</p>
+</section>
+
+<footer>Material de sinteză · Istorie universală · Lumea postbelică și Uniunea Europeană</footer>
+</main>
+<script>
+const items=[...document.querySelectorAll("details")];
+document.querySelectorAll("[data-action]").forEach(btn=>{
+ btn.addEventListener("click",()=>{
+  const value=btn.dataset.action==="open";
+  items.forEach(x=>x.open=value);
+ });
+});
+</script>
+</body>
+</html>

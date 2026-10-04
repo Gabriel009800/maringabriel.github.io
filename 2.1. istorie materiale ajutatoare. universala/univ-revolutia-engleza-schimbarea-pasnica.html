@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="De la Războiul Civil la Revoluția Glorioasă (1642-1689)">
+  <title>Revoluția Engleză: schimbarea pașnică - Material ajutător de istorie</title>
+  <style>
+    :root {
+      --bg: #f6f0e7;
+      --paper: #fffaf3;
+      --paper-2: #ffffff;
+      --ink: #2f241c;
+      --muted: #695747;
+      --accent: #6f3f24;
+      --accent-2: #a66a3f;
+      --line: rgba(91, 62, 36, 0.18);
+      --soft: #f1e4d3;
+      --note: #fff1cf;
+      --good: #eaf2e6;
+      --shadow: 0 14px 36px rgba(69, 46, 25, 0.08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: Georgia, "Times New Roman", serif; line-height: 1.72; }
+    a { color: var(--accent); }
+    .page { width: min(1120px, calc(100% - 28px)); margin: 0 auto; padding: 26px 0 70px; }
+    .topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; }
+    .back { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 700; background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 10px 15px; box-shadow: 0 7px 18px rgba(69,46,25,.05); }
+    .category { color: var(--muted); font-size: 14px; text-align: right; }
+    .hero { background: linear-gradient(135deg, #fffaf3 0%, #f8ead7 100%); border: 1px solid var(--line); border-radius: 28px; padding: clamp(27px, 5vw, 55px); box-shadow: var(--shadow); margin-bottom: 24px; }
+    .eyebrow { display: inline-block; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .09em; background: var(--accent); color: white; padding: 7px 11px; border-radius: 999px; margin-bottom: 17px; }
+    h1 { font-size: clamp(34px, 6vw, 58px); line-height: 1.05; letter-spacing: -.035em; margin: 0 0 15px; color: #3c2a1e; }
+    .subtitle { font-size: clamp(18px, 2.4vw, 23px); color: var(--accent); font-weight: 700; margin: 0 0 17px; }
+    .lead { font-size: 18px; color: var(--muted); margin: 0; max-width: 900px; text-align: justify; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 24px; align-items: start; }
+    .content, .side-card { background: var(--paper); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); }
+    .content { padding: clamp(23px, 4vw, 43px); }
+    .sidebar { position: sticky; top: 18px; display: grid; gap: 16px; }
+    .side-card { padding: 20px; }
+    .side-card h2 { margin: 0 0 11px; font-size: 18px; }
+    .toc a { display: block; padding: 7px 0; border-bottom: 1px dashed var(--line); text-decoration: none; font-size: 14px; line-height: 1.35; }
+    .toc a:last-child { border-bottom: none; }
+    section { scroll-margin-top: 20px; margin-bottom: 34px; }
+    section:last-child { margin-bottom: 0; }
+    h2 { font-size: 29px; line-height: 1.2; margin: 0 0 17px; color: #3c2a1e; }
+    h3 { font-size: 21px; margin: 23px 0 9px; color: var(--accent); }
+    p { margin: 0 0 15px; text-align: justify; }
+    ul, ol { padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .callout { border-left: 5px solid var(--accent-2); background: var(--note); padding: 16px 18px; border-radius: 0 15px 15px 0; margin: 19px 0; }
+    .callout.good { background: var(--good); }
+    .callout strong { color: #4a2e1b; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; margin: 17px 0; }
+    .mini-card { background: var(--paper-2); border: 1px solid var(--line); border-radius: 17px; padding: 17px; }
+    .mini-card h3 { margin-top: 0; }
+    .timeline { border-left: 3px solid var(--accent-2); margin: 18px 0 22px 9px; padding-left: 23px; }
+    .event { position: relative; margin-bottom: 17px; }
+    .event::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); position: absolute; left: -30px; top: 7px; box-shadow: 0 0 0 4px var(--paper); }
+    .event b { color: var(--accent); }
+    table { width: 100%; border-collapse: collapse; margin: 18px 0 23px; background: white; font-size: 15px; }
+    th, td { border: 1px solid var(--line); padding: 11px 12px; vertical-align: top; text-align: left; }
+    th { background: var(--soft); color: #3c2a1e; }
+    .keywords { display: flex; flex-wrap: wrap; gap: 8px; }
+    .keywords span { border: 1px solid var(--line); background: var(--soft); border-radius: 999px; padding: 7px 10px; font-size: 13px; font-weight: 700; }
+    .questions { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 19px 22px; }
+    .bibliography { font-size: 14px; color: var(--muted); }
+    .footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 26px; }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; grid-row: 1; }
+      .toc { display: none; }
+    }
+    @media (max-width: 650px) {
+      .page { width: min(100% - 18px, 1120px); padding-top: 12px; }
+      .topbar { align-items: flex-start; }
+      .category { display: none; }
+      .hero, .content, .side-card { border-radius: 20px; }
+      .grid-2 { grid-template-columns: 1fr; }
+      table { display: block; overflow-x: auto; white-space: normal; }
+      h2 { font-size: 25px; }
+    }
+    @media print {
+      body { background: white; }
+      .page { width: 100%; padding: 0; }
+      .topbar, .sidebar { display: none; }
+      .layout { display: block; }
+      .hero, .content { box-shadow: none; border-color: #bbb; }
+      .hero { break-after: avoid; }
+      section, table { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a class="back" href="../evaluare.html">← Înapoi la Evaluare</a>
+      <div class="category">Material ajutător · Istorie universală · Epoca modernă</div>
+    </div>
+
+    <header class="hero">
+      <span class="eyebrow">Istorie universală · Epoca modernă</span>
+      <h1>Revoluția Engleză: schimbarea pașnică</h1>
+      <p class="subtitle">De la Războiul Civil la Revoluția Glorioasă (1642-1689)</p>
+      <p class="lead">Materialul urmărește prăbușirea monarhiei lui Carol I, experimentul republican, Protectoratul lui Cromwell, Restaurația și transferul relativ pașnic al coroanei către Wilhelm și Maria.</p>
+    </header>
+
+    <div class="layout">
+      <article class="content">
+        
+<section id="context">
+  <h2>1. De la conflict politic la revoluție</h2>
+  <p>În 1642, ruptura dintre Carol I și Parlament s-a transformat în război. Tabăra regală, numită adesea a „cavalerilor”, era puternică în nordul și vestul Angliei; susținătorii Parlamentului, numiți „capete rotunde”, dominau Londra, sud-estul și zonele comerciale. Alianțele nu au fost însă perfect stabile: familii, orașe și comitate s-au împărțit, iar motivele loialității au variat între religie, tradiție, interese locale și teamă de dezordine.</p>
+  <div class="callout"><strong>Despre formula „schimbare pașnică”:</strong> Revoluția Glorioasă din 1688 a produs în Anglia o transferare relativ rapidă a coroanei și a fost prezentată drept „fără sânge”. Totuși, întregul proces revoluționar englez a inclus războaie civile, execuția unui rege și lupte severe în Scoția și Irlanda. Termenul trebuie folosit cu această nuanță.</div>
+</section>
+<section id="dezvoltare">
+  <h2>2. Războaiele civile și victoria Parlamentului</h2>
+  <h3>Prima fază, 1642-1646</h3>
+  <p>Primele campanii nu au adus un câștigător clar. Parlamentul a beneficiat de resursele Londrei și de sprijinul marinei, în timp ce regele dispunea de comandanți experimentați și de sprijin regional. Alianța Parlamentului cu scoțienii și reorganizarea armatei au schimbat raportul de forțe.</p>
+  <p>Noua Armată Model, creată în 1645, a profesionalizat trupele parlamentare. Sir Thomas Fairfax a fost comandantul general, iar Oliver Cromwell s-a remarcat prin cavaleria sa. Victoria de la Naseby, în iunie 1645, a distrus principala armată regală; în 1646, Carol I s-a predat scoțienilor.</p>
+  <h3>A doua fază și regicidul</h3>
+  <p>Negocierile au eșuat deoarece regele a încercat să exploateze rivalitatea dintre Parlament, armată și scoțieni. Al Doilea Război Civil din 1648 a convins conducerea militară că pacea nu era posibilă cât timp Carol I rămânea pe tron. Camera Comunelor a fost epurată de adversarii procesului, iar un tribunal special l-a condamnat pe rege pentru trădare. Carol I a fost executat la 30 ianuarie 1649.</p>
+
+  <h2>3. Republica și Protectoratul</h2>
+  <p>Monarhia și Camera Lorzilor au fost abolite, iar Anglia a devenit Commonwealth. Noul regim s-a confruntat cu probleme imense: legitimarea puterii, revolte interne, războaie în Irlanda și Scoția și disputa dintre Parlament și armată.</p>
+  <h3>Campaniile lui Cromwell</h3>
+  <p>În Irlanda, campania din 1649-1650 a fost marcată de asediile sângeroase de la Drogheda și Wexford și de confiscări de pământ. În Scoția, Cromwell a învins forțele care îl proclamaseră pe Carol al II-lea. Aceste victorii au consolidat uniunea militară, dar au lăsat amintiri traumatice.</p>
+  <h3>Actele de Navigație și politica maritimă</h3>
+  <p>Actul de Navigație din 1651 a rezervat o parte importantă a comerțului maritim navelor engleze sau celor aparținând țării producătoare. Măsura a lovit interesele olandeze și a contribuit la Primul Război Anglo-Olandez. Ea a devenit o piesă a politicii mercantiliste engleze.</p>
+  <h3>Protectoratul</h3>
+  <p>În 1653, Cromwell a dizolvat Parlamentul Rump și a devenit Lord Protector în baza Instrumentului de Guvernare, prima constituție scrisă a Angliei. Regimul combina instituții republicane cu autoritatea dominantă a armatei. Cromwell a refuzat coroana, dar a exercitat puteri comparabile cu cele monarhice. A murit în 1658; fiul său Richard nu a putut menține regimul și a demisionat în 1659.</p>
+
+  <h2>4. Restaurația și criza lui Iacob al II-lea</h2>
+  <p>În 1660, generalul George Monck a facilitat revenirea lui Carol al II-lea. Declarația de la Breda a promis iertare, respectarea proprietății și o anumită toleranță, însă regicizii au fost exceptați de la amnistie. Restaurația nu a restabilit pur și simplu vechea ordine: experiența războiului făcuse imposibilă ignorarea Parlamentului.</p>
+  <h3>Instituții și partide</h3>
+  <p>Habeas Corpus Act din 1679 a întărit garanțiile împotriva detenției arbitrare. Test Acts au exclus catolicii și o parte dintre neconformiști din funcțiile publice. În jurul crizei Excluderii s-au conturat grupările Whig, favorabile limitării succesiunii catolice, și Tory, mai atașate coroanei și Bisericii Anglicane.</p>
+  <h3>Iacob al II-lea</h3>
+  <p>Urcat pe tron în 1685, Iacob al II-lea era catolic într-un regat predominant protestant. El a încercat să suspende legi religioase prin prerogativa regală, a numit catolici în funcții și a menținut o armată permanentă. Nașterea unui moștenitor masculin catolic în 1688 a transformat o domnie considerată temporară într-o posibilă dinastie catolică.</p>
+  <h3>Invitația adresată lui Wilhelm de Orania</h3>
+  <p>Un grup de lideri politici englezi l-a invitat pe Wilhelm de Orania, conducător protestant al Provinciilor Unite și soț al Mariei, fiica protestantă a lui Iacob, să intervină. Wilhelm a debarcat în noiembrie 1688. O parte a elitei și a armatei a trecut de partea lui, iar Iacob a fugit în Franța. Parlamentul a interpretat fuga drept abandon al tronului.</p>
+</section>
+<section id="cronologie">
+  <h2>5. Cronologie: 1642-1689</h2>
+  <div class="timeline">
+    <div class="event"><b>1642</b> – începe Primul Război Civil.</div>
+    <div class="event"><b>1644</b> – victoria parlamentară de la Marston Moor.</div>
+    <div class="event"><b>1645</b> – Noua Armată Model și victoria de la Naseby.</div>
+    <div class="event"><b>1648</b> – Al Doilea Război Civil; epurarea Camerei Comunelor.</div>
+    <div class="event"><b>1649</b> – execuția lui Carol I și proclamarea Commonwealth-ului.</div>
+    <div class="event"><b>1651</b> – Actul de Navigație; victoria de la Worcester.</div>
+    <div class="event"><b>1653</b> – Cromwell devine Lord Protector.</div>
+    <div class="event"><b>1658</b> – moartea lui Oliver Cromwell.</div>
+    <div class="event"><b>1660</b> – Restaurația lui Carol al II-lea.</div>
+    <div class="event"><b>1679</b> – Habeas Corpus Act.</div>
+    <div class="event"><b>1685</b> – domnia lui Iacob al II-lea.</div>
+    <div class="event"><b>1688</b> – debarcarea lui Wilhelm și fuga regelui.</div>
+    <div class="event"><b>1689</b> – Wilhelm al III-lea și Maria a II-a acceptă Declarația Drepturilor.</div>
+  </div>
+</section>
+<section id="interpretare">
+  <h2>6. De ce a reușit schimbarea din 1688?</h2>
+  <table>
+    <thead><tr><th>Factor</th><th>Explicație</th></tr></thead>
+    <tbody>
+      <tr><td>Izolarea regelui</td><td>Iacob al II-lea pierduse sprijinul unei părți a Bisericii Anglicane, armatei și elitei politice.</td></tr>
+      <tr><td>Alternativa dinastică</td><td>Wilhelm și Maria ofereau o soluție protestantă legitimabilă prin succesiune.</td></tr>
+      <tr><td>Experiența războaielor civile</td><td>Elitele doreau evitarea unui nou conflict generalizat și au preferat o schimbare negociată.</td></tr>
+      <tr><td>Contextul european</td><td>Wilhelm urmărea formarea unei coaliții împotriva Franței lui Ludovic al XIV-lea.</td></tr>
+      <tr><td>Acțiunea Parlamentului</td><td>Transferul coroanei a fost formulat juridic, nu doar impus militar.</td></tr>
+    </tbody>
+  </table>
+  <p>Revoluția Glorioasă a fost în același timp lovitură de stat aristocratică, intervenție militară externă, revoluție constituțională și episod al rivalității europene cu Franța. Caracterul ei „pașnic” se referă mai ales la schimbarea de regim din Anglia; războiul williamit din Irlanda și luptele iacobite din Scoția au fost violente.</p>
+</section>
+<section id="sinteza">
+  <h2>7. Sinteză</h2>
+  <div class="callout good"><strong>Ideea principală:</strong> între 1642 și 1689, Anglia a trecut prin monarhie, război civil, republică, dictatură militară, restaurație și revoluție constituțională. Schimbarea din 1688 a fost relativ rapidă în Anglia tocmai pentru că societatea politică fusese traumatizată de deceniile anterioare și dorea o soluție dinastică limitată de lege.</div>
+</section>
+        <section id="verificare">
+          <h2>Întrebări de verificare</h2>
+          <div class="questions"><ol><li>Care au fost avantajele strategice ale taberei parlamentare?</li><li>De ce a fost executat Carol I și ce schimbare politică a urmat?</li><li>În ce sens Protectoratul a fost republican și în ce sens a fost autoritar?</li><li>De ce domnia lui Iacob al II-lea a provocat opoziția elitelor protestante?</li><li>Explică de ce expresia „revoluție fără sânge” este corectă doar parțial.</li></ol></div>
+        </section>
+        <section id="bibliografie">
+          <h2>Bibliografie orientativă</h2>
+          <ul class="bibliography"><li>Barry Coward, The Stuart Age: England, 1603-1714.</li><li>John Morrill, The Nature of the English Revolution.</li><li>J. R. Jones, The Revolution of 1688 in England.</li><li>Materialele educaționale ale Parlamentului Regatului Unit privind Războiul Civil, Declarația Drepturilor și monarhia constituțională.</li><li>Documentul de curs „Revoluția Glorioasă”, furnizat de utilizator; informațiile au fost reorganizate și corectate acolo unde cronologia o impunea.</li></ul>
+        </section>
+      </article>
+
+      <aside class="sidebar">
+        <div class="side-card">
+          <h2>Termeni-cheie</h2>
+          <div class="keywords"><span>Război Civil</span><span>Cromwell</span><span>Commonwealth</span><span>Protectorat</span><span>Restaurație</span><span>Whig</span><span>Tory</span><span>Revoluția Glorioasă</span></div>
+        </div>
+        <div class="side-card toc">
+          <h2>Cuprins</h2>
+          <a href="#context">Context și delimitări</a>
+          <a href="#dezvoltare">Dezvoltarea temei</a>
+          <a href="#cronologie">Cronologie</a>
+          <a href="#interpretare">Interpretare istorică</a>
+          <a href="#sinteza">Sinteză</a>
+          <a href="#verificare">Întrebări</a>
+        </div>
+      </aside>
+    </div>
+    <footer class="footer">© 2026 Marin Gabriel · Material educațional pentru disciplina Istorie</footer>
+  </main>
+</body>
+</html>

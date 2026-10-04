@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>marile-descoperiri-geografice-expansiunea-europeana</title>
+  <style>
+:root {
+  --bg: #f6f0e7; --paper: #fffaf3; --paper-2: #ffffff; --ink: #2f241c; --title: #3c2a1e;
+  --muted: #5b4a3d; --accent: #7a4f2a; --accent-2: #9b6a3c; --accent-soft: #f0e4d4;
+  --line: rgba(91, 62, 36, 0.18); --line-strong: rgba(91, 62, 36, 0.34);
+  --outer-dark: #241208; --outer-mid: #4a2a18; --outer-warm: #7a4b2b;
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.28); --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+    radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+  background-attachment: fixed; color: var(--ink); font-family: Georgia, "Times New Roman", serif;
+}
+body::before { content:""; position:fixed; inset:0; z-index:0; pointer-events:none; background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,.10) 48%, rgba(0,0,0,.44) 100%), linear-gradient(90deg, rgba(0,0,0,.20), transparent 18%, transparent 82%, rgba(0,0,0,.20)); }
+.page { position:relative; z-index:1; width:min(1180px, calc(100% - 32px)); margin:0 auto; padding:34px 0 70px; }
+.topbar { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:18px; flex-wrap:wrap; }
+.back-link, .tag { display:inline-flex; align-items:center; border:1px solid var(--line); background:rgba(255,250,243,.84); color:var(--title); border-radius:999px; padding:10px 15px; text-decoration:none; font-size:15px; font-weight:700; box-shadow:var(--shadow-small); }
+.back-link:hover { background:#fff6eb; }
+.hero, .section, .nav-card, .final-box { background: rgba(255,250,243,.96); border:1px solid var(--line); border-radius:28px; box-shadow:var(--shadow); }
+.hero { padding:38px; margin-bottom:24px; position:relative; overflow:hidden; }
+.hero::after { content: attr(data-year); position:absolute; right:26px; bottom:-22px; font-size:105px; font-weight:900; letter-spacing:-4px; color:rgba(122,79,42,.08); pointer-events:none; }
+.eyebrow { margin:0 0 8px; font-size:16px; color:var(--accent); font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+h1 { margin:0; font-size:clamp(38px, 5vw, 62px); line-height:1.04; color:var(--title); letter-spacing:-1.4px; }
+.subtitle { margin:18px 0 0; max-width:1000px; font-size:19px; line-height:1.78; color:var(--muted); text-align:justify; }
+.summary-grid, .three-col, .two-col, .four-col, .five-col, .term-grid, .cause-grid, .details-grid, .mini-grid { display:grid; gap:14px; }
+.summary-grid { grid-template-columns: repeat(4, 1fr); margin-top:26px; }
+.three-col { grid-template-columns: repeat(3, 1fr); }
+.two-col { grid-template-columns: repeat(2, 1fr); }
+.four-col { grid-template-columns: repeat(4, 1fr); }
+.five-col { grid-template-columns: repeat(5, 1fr); }
+.cause-grid { grid-template-columns: 1.1fr .9fr; }
+.term-grid { grid-template-columns: repeat(4, 1fr); }
+.mini-grid { grid-template-columns: repeat(2, 1fr); }
+.summary-card, .info-card, .wide-card, .term-card, .micro-card, .warning-box, .source-note, .table-wrap, .expedition-card { background:var(--paper-2); border:1px solid rgba(91,62,36,.14); border-radius:20px; box-shadow:var(--shadow-small); text-align:justify; }
+.summary-card { padding:16px; min-height:132px; }
+.summary-card strong, .term-card strong, .micro-card strong { display:block; color:var(--title); font-size:17px; margin-bottom:8px; text-align:left; }
+.summary-card span, .term-card span, .micro-card span { display:block; color:var(--muted); font-size:15.5px; line-height:1.56; text-align:justify; }
+.nav-card { display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:18px 20px; margin-bottom:24px; }
+.nav-card b { color:var(--title); margin-right:2px; }
+.nav-card a, .mini-btn { color:var(--title); background:var(--accent-soft); border:1px solid rgba(91,62,36,.16); border-radius:999px; text-decoration:none; padding:8px 12px; font-weight:700; font-size:14px; cursor:pointer; font-family:inherit; }
+.nav-card a:hover, .mini-btn:hover { background:#e5d2bb; }
+.section { padding:30px; margin-bottom:24px; }
+h2 { margin:0 0 14px; color:var(--title); font-size:clamp(28px, 3vw, 38px); line-height:1.15; }
+h3 { margin:0 0 12px; color:var(--title); font-size:22px; line-height:1.22; }
+h4 { margin:16px 0 8px; color:var(--title); font-size:18px; }
+.section-intro, p, li, dd { font-size:17px; line-height:1.72; color:var(--muted); text-align:justify; hyphens:auto; }
+.section-intro { margin:0 0 20px; max-width:1000px; }
+.info-card, .wide-card, .term-card, .micro-card, .warning-box, .source-note, .table-wrap, .expedition-card { padding:20px; }
+.wide-card { margin-top:14px; }
+.clean, .number-list { margin:0; padding-left:22px; }
+.clean li, .number-list li { margin:0 0 9px; padding-left:2px; }
+.mini-title { display:inline; color:var(--title); font-weight:800; margin-right:5px; }
+.date-pill { display:inline-block; color:var(--title); font-weight:800; background:#f3eadf; border:1px solid rgba(91,62,36,.13); border-radius:999px; padding:2px 9px; margin-right:5px; white-space:nowrap; }
+.definition, .note { margin-top:18px; background:#fff8ef; border:1px solid rgba(122,79,42,.22); border-left:6px solid rgba(122,79,42,.48); border-radius:18px; padding:18px 20px; color:var(--muted); font-size:17px; line-height:1.7; text-align:justify; }
+.definition strong, .note strong { color:var(--title); }
+details { background:#fffdf9; border:1px solid rgba(91,62,36,.14); border-radius:20px; box-shadow:var(--shadow-small); margin-top:14px; overflow:hidden; }
+details[open] { background:#fffaf3; }
+summary { cursor:pointer; list-style:none; padding:18px 20px; font-size:19px; font-weight:800; color:var(--title); display:flex; justify-content:space-between; align-items:center; gap:18px; text-align:left; }
+summary::-webkit-details-marker { display:none; }
+summary::after { content:"Deschide"; color:var(--muted); font-size:14px; font-weight:700; background:#f3eadf; border:1px solid rgba(91,62,36,.14); border-radius:999px; padding:7px 11px; white-space:nowrap; }
+details[open] > summary::after { content:"Ascunde"; }
+.details-body { border-top:1px solid rgba(91,62,36,.12); padding:18px 20px 20px; text-align:justify; }
+.details-grid { grid-template-columns: repeat(2, 1fr); }
+.key-line { display:grid; grid-template-columns:220px 1fr; gap:14px; padding:13px 0; border-bottom:1px dashed rgba(91,62,36,.18); }
+.key-line:last-child { border-bottom:0; }
+.key-line strong { color:var(--title); text-align:left; }
+.key-line span { color:var(--muted); line-height:1.65; text-align:justify; }
+.timeline { position:relative; display:grid; gap:14px; margin-top:18px; }
+.event { display:grid; grid-template-columns:150px 1fr; gap:18px; align-items:stretch; background:#ffffff; border:1px solid rgba(91,62,36,.14); border-radius:20px; box-shadow:var(--shadow-small); overflow:hidden; }
+.date { background:linear-gradient(180deg, #7a4f2a, #5b351b); color:#fffaf3; display:flex; align-items:center; justify-content:center; text-align:center; padding:14px; font-size:18px; line-height:1.25; font-weight:900; letter-spacing:.2px; }
+.event > div:last-child { padding:17px 18px 18px 0; text-align:justify; }
+.event h3 { margin-bottom:6px; }
+.event p { margin:0; }
+.table-wrap { overflow:auto; margin-top:16px; }
+table { width:100%; border-collapse:collapse; min-width:760px; }
+th, td { border-bottom:1px solid rgba(91,62,36,.13); padding:12px 13px; vertical-align:top; text-align:left; }
+th { color:var(--title); background:#f3eadf; font-size:16px; }
+td { color:var(--muted); font-size:16px; line-height:1.58; }
+tr:last-child td { border-bottom:0; }
+.exp-meta { display:grid; grid-template-columns: repeat(4, 1fr); gap:10px; margin:14px 0; }
+.exp-meta div { background:#fff8ef; border:1px solid rgba(91,62,36,.12); border-radius:14px; padding:10px 12px; color:var(--muted); font-size:15.5px; line-height:1.45; }
+.exp-meta strong { display:block; color:var(--title); font-size:14px; margin-bottom:4px; }
+.small-muted { font-size:15px; color:#725c49; line-height:1.6; }
+.warning-box { background:#fff7ec; border-color:rgba(122,79,42,.22); margin-top:16px; }
+.final-box { padding:28px; background:linear-gradient(135deg, #fffaf3, #f4e4d1); border-color:rgba(91,62,36,.25); }
+.final-box p { margin-bottom:0; }
+@media (max-width: 980px) {
+  .summary-grid, .three-col, .term-grid, .four-col, .five-col { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .cause-grid, .details-grid, .mini-grid { grid-template-columns:1fr; }
+  .exp-meta { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 680px) {
+  .page { width:min(100% - 22px, 1180px); padding-top:22px; }
+  .hero, .section, .final-box { padding:22px; border-radius:22px; }
+  .summary-grid, .term-grid, .four-col, .five-col { grid-template-columns:1fr; }
+  .event { grid-template-columns:1fr; }
+  .date { min-height:66px; }
+  .event > div:last-child { padding:0 16px 16px; }
+  .key-line { grid-template-columns:1fr; gap:6px; }
+  summary { align-items:flex-start; flex-direction:column; }
+  .hero::after { font-size:82px; }
+  .exp-meta { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a class="back-link" href="#">← Înapoi la materiale</a>
+      <span class="tag">Material ajutător · Istorie universală · Epoca modernă timpurie</span>
+    </div>
+    <section class="hero" data-year="1492">
+      <p class="eyebrow">Marile descoperiri geografice</p>
+      <h1>Expansiunea europeană</h1>
+      <p class="subtitle">Principalele expediții, exploratori, teritorii atinse și modele de expansiune ale puterilor maritime europene. Materialul prezintă fiecare expediție cu dată, finanțator, rută, scop și rezultat.</p>
+      <div class="summary-grid">
+        <div class="summary-card"><strong>Interval principal</strong><span>Secolele XV-XVI: de la explorarea Atlanticului african la legarea Europei de America, Africa, Asia și Pacific.</span></div>
+        <div class="summary-card"><strong>Miza centrală</strong><span>Rute maritime, mirodenii, metale prețioase, misiune religioasă, prestigiu politic și control comercial.</span></div>
+        <div class="summary-card"><strong>Actori principali</strong><span>Portugalia și Spania deschid cursa; Anglia, Franța și Țările de Jos intră ulterior în competiție.</span></div>
+        <div class="summary-card"><strong>Efect global</strong><span>Se formează o lume conectată atlantic și oceanic, dar și un sistem colonial violent și inegal.</span></div>
+      </div>
+    </section>
+    <nav class="nav-card" aria-label="Cuprins"><b>Cuprins:</b><a href="#cronologie">I. Cronologie</a><a href="#fise">II. Fișe</a><a href="#portugalia">III. Portugalia</a><a href="#spania">IV. Spania</a><a href="#nord">V. Alte puteri</a></nav>
+    
+<section class="section" id="cronologie"><h2>I. Cronologie amplă a expansiunii europene</h2><p class="section-intro">Cronologia arată trecerea de la expediții de recunoaștere la cuceriri, colonizare, companii comerciale și integrare globală.</p><div class="timeline">
+<article class="event"><div class="date">aprox. 1000</div><div><h3>Leif Erikson și Vinland</h3><p>Navigatorii nordici ating America de Nord, dar contactul nu duce la un sistem colonial durabil.</p></div></article><article class="event"><div class="date">1271-1295</div><div><h3>Marco Polo</h3><p>Călătoriile sale spre Asia contribuie la fascinația europeană pentru China, India și mirodenii.</p></div></article><article class="event"><div class="date">1415</div><div><h3>Ceuta</h3><p>Portugalia cucerește un punct strategic nord-african, început al expansiunii maritime portugheze.</p></div></article><article class="event"><div class="date">1434</div><div><h3>Gil Eanes trece Capul Bojador</h3><p>Depășirea unui prag psihologic și geografic permite explorarea Africii occidentale.</p></div></article><article class="event"><div class="date">1482-1485</div><div><h3>Diogo Cão și Congo</h3><p>Portughezii intră în contact cu Regatul Kongo și marchează țărmurile africane cu padrão-uri.</p></div></article><article class="event"><div class="date">1488</div><div><h3>Bartolomeu Dias</h3><p>Trece de Capul Bunei Speranțe, demonstrând accesul spre Oceanul Indian.</p></div></article><article class="event"><div class="date">1492</div><div><h3>Cristofor Columb</h3><p>Ajunge în Bahamas, apoi Cuba și Hispaniola, deschizând contactul permanent dintre Europa și America.</p></div></article><article class="event"><div class="date">1494</div><div><h3>Tratatul de la Tordesillas</h3><p>Spania și Portugalia își delimitează sferele de expansiune printr-o linie atlantică.</p></div></article><article class="event"><div class="date">1498</div><div><h3>Vasco da Gama</h3><p>Ajunge la Calicut, stabilind ruta maritimă Europa-India prin ocolirea Africii.</p></div></article><article class="event"><div class="date">1500</div><div><h3>Cabral și Brazilia</h3><p>Pedro Álvares Cabral atinge coasta Braziliei și continuă spre India.</p></div></article><article class="event"><div class="date">1510-1511</div><div><h3>Goa și Malacca</h3><p>Afonso de Albuquerque transformă dominația portugheză într-o rețea strategică de porturi și forturi.</p></div></article><article class="event"><div class="date">1513</div><div><h3>Balboa vede Pacificul</h3><p>Traversarea istmului Panama arată că dincolo de America există un alt ocean.</p></div></article><article class="event"><div class="date">1519-1521</div><div><h3>Cortés și Mexicul</h3><p>Cucerirea Tenochtitlanului pune bazele Noii Spanii.</p></div></article><article class="event"><div class="date">1519-1522</div><div><h3>Magellan-Elcano</h3><p>Prima circumnavigație confirmă practic dimensiunea globală a oceanelor.</p></div></article><article class="event"><div class="date">1532-1533</div><div><h3>Pizarro și Peru</h3><p>Cucerirea nucleului incaș deschide exploatarea minelor andine și formarea viceregatului Peru.</p></div></article><article class="event"><div class="date">1534-1542</div><div><h3>Jacques Cartier</h3><p>Franța explorează Canada și fluviul Sfântul Laurențiu.</p></div></article><article class="event"><div class="date">1577-1580</div><div><h3>Francis Drake</h3><p>Anglia intră agresiv în competiția globală prin corsă și circumnavigație.</p></div></article><article class="event"><div class="date">1594-1597</div><div><h3>Willem Barents</h3><p>Olandezii caută ruta nord-estică spre Asia.</p></div></article><article class="event"><div class="date">1609-1611</div><div><h3>Henry Hudson</h3><p>Explorările lui Hudson pregătesc revendicări olandeze și engleze în America de Nord.</p></div></article><article class="event"><div class="date">1642-1643</div><div><h3>Abel Tasman</h3><p>Olanda extinde explorarea Pacificului de Sud.</p></div></article><article class="event"><div class="date">1768-1779</div><div><h3>James Cook</h3><p>Marea Britanie cartografiază Pacificul într-o etapă științifică și imperială târzie.</p></div></article>
+</div></section>
+<section class="section" id="fise"><h2>II. Fișe de expediție</h2><p class="section-intro">Fiecare expediție trebuie înțeleasă prin patru elemente: cine a finanțat-o, ce rută a urmat, ce urmărea și ce efecte a avut. Unele au fost explorări, altele cuceriri, altele acțiuni comerciale sau militare.</p>
+<details class="expedition-card"><summary>Leif Erikson și Vinland</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>aprox. 1000</div>
+        <div><strong>Finanțare / putere</strong>comunități nordice din Groenlanda / Islanda</div>
+        <div><strong>Rută / spațiu</strong>Groenlanda – Labrador / Newfoundland</div>
+        <div><strong>Scop principal</strong>explorare și contact nord-atlantic</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>Expedițiile nordice arată că America de Nord fusese atinsă de europeni cu secole înainte de Columb, dar fără integrare economică globală durabilă.</p>
+      <p>Așezarea de la L’Anse aux Meadows confirmă prezența nordică în zona Newfoundland. Importanța istorică este de precedent: a existat contact, dar nu a existat încă o expansiune sistematică, finanțată de state și conectată la economia atlantică.</p>
+    </div></details>
+<details class="expedition-card"><summary>Giovanni da Pian del Carpine</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1245-1247</div>
+        <div><strong>Finanțare / putere</strong>Papa Inocențiu al IV-lea</div>
+        <div><strong>Rută / spațiu</strong>Europa centrală – Kiev – stepa eurasiatică – curtea mongolă</div>
+        <div><strong>Scop principal</strong>misiune diplomatică și informațională</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A adus informații directe despre Imperiul Mongol și despre Asia interioară.</p>
+      <p>Misiunea papală a fost motivată de șocul invaziilor mongole și de dorința de a înțelege puterea asiatică. Ea a contribuit la lărgirea orizontului european, chiar dacă nu era încă o expediție maritimă.</p>
+    </div></details>
+<details class="expedition-card"><summary>Guillaume de Rubrouck</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1253-1255</div>
+        <div><strong>Finanțare / putere</strong>Regele Ludovic al IX-lea al Franței</div>
+        <div><strong>Rută / spațiu</strong>Crimeea – Volga – Karakorum</div>
+        <div><strong>Scop principal</strong>misiune religioasă și diplomatică</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A descris lumea mongolă cu precizie remarcabilă pentru epocă.</p>
+      <p>Relatarea lui Rubrouck a completat cunoașterea europeană despre Eurasia. Ea arată că expansiunea geografică a început prin misiuni terestre, înainte de marile călătorii oceanice.</p>
+    </div></details>
+<details class="expedition-card"><summary>Marco Polo</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1271-1295</div>
+        <div><strong>Finanțare / putere</strong>familia Polo / Veneția</div>
+        <div><strong>Rută / spațiu</strong>Mediterana – Asia Centrală – China Yuan – Oceanul Indian</div>
+        <div><strong>Scop principal</strong>comerț, diplomație, cunoaștere geografică</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>Descrierile sale au alimentat imaginația europeană despre bogățiile Asiei.</p>
+      <p>Cartea atribuită lui Marco Polo a devenit un text fundamental pentru europenii interesați de China, India, mirodenii și rutele asiatice. Columb însuși a fost influențat de ideea accesului occidental spre Asia.</p>
+    </div></details>
+<details class="expedition-card"><summary>Cucerirea Ceutei</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1415</div>
+        <div><strong>Finanțare / putere</strong>Regatul Portugaliei, regele João I</div>
+        <div><strong>Rută / spațiu</strong>Portugalia – strâmtoarea Gibraltar – Maroc</div>
+        <div><strong>Scop principal</strong>control comercial și militar</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>Ceuta a devenit începutul simbolic al expansiunii portugheze în afara Europei.</p>
+      <p>Orașul oferea acces la comerțul nord-african cu aur, sclavi și produse sahariene. Cucerirea a combinat spiritul de cruciadă cu interesul economic și strategic.</p>
+    </div></details>
+<details class="expedition-card"><summary>Madeira</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1419-1420</div>
+        <div><strong>Finanțare / putere</strong>Portugalia; João Gonçalves Zarco, Tristão Vaz Teixeira</div>
+        <div><strong>Rută / spațiu</strong>Atlanticul de Est</div>
+        <div><strong>Scop principal</strong>colonizare insulară și agricultură</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>Madeira a devenit un laborator pentru plantații de zahăr și colonizare atlantică.</p>
+      <p>Pe insule, portughezii au testat sisteme de proprietate, muncă, export și monocultură. Modelul va fi amplificat în Capul Verde, São Tomé și mai târziu în Brazilia și Caraibe.</p>
+    </div></details>
+<details class="expedition-card"><summary>Trecerea Capului Bojador</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1434</div>
+        <div><strong>Finanțare / putere</strong>Portugalia; Gil Eanes</div>
+        <div><strong>Rută / spațiu</strong>Sahara atlantică / coasta Africii</div>
+        <div><strong>Scop principal</strong>depășirea unui reper psihologic și geografic</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>Depășirea Capului Bojador a deschis explorarea sistematică a Africii de Vest.</p>
+      <p>Capul era considerat un prag dificil. După 1434, expedițiile portugheze au înaintat treptat spre sud, înregistrând vânturi, curenți, porturi, golfuri și posibilități comerciale.</p>
+    </div></details>
+<details class="expedition-card"><summary>Diogo Cão pe fluviul Congo</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1482-1485</div>
+        <div><strong>Finanțare / putere</strong>Portugalia</div>
+        <div><strong>Rută / spațiu</strong>Africa central-vestică, gurile fluviului Congo</div>
+        <div><strong>Scop principal</strong>explorare costieră și contacte politice</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A stabilit contacte cu Regatul Kongo și a extins harta portugheză a Africii.</p>
+      <p>Diogo Cão a ridicat padrão-uri, stâlpi de piatră ce marcau pretenția portugheză. Contactul cu Kongo arată că expansiunea nu era doar navală, ci și diplomatică și religioasă.</p>
+    </div></details>
+<details class="expedition-card"><summary>Bartolomeu Dias</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1487-1488</div>
+        <div><strong>Finanțare / putere</strong>Regele João II al Portugaliei</div>
+        <div><strong>Rută / spațiu</strong>Lisabona – coasta Africii – Capul Bunei Speranțe</div>
+        <div><strong>Scop principal</strong>găsirea trecerii spre Oceanul Indian</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A demonstrat că Africa poate fi ocolită pe la sud.</p>
+      <p>Dias a trecut de extremitatea sudică a Africii, numită inițial Capul Furtunilor. Regele portughez a preferat numele Capul Bunei Speranțe, deoarece ruta promitea accesul spre India.</p>
+    </div></details>
+<details class="expedition-card"><summary>Cristofor Columb: prima călătorie</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>3 aug. 1492 – mart. 1493</div>
+        <div><strong>Finanțare / putere</strong>Regii Catolici ai Spaniei</div>
+        <div><strong>Rută / spațiu</strong>Palos – Canare – Bahamas – Cuba – Hispaniola</div>
+        <div><strong>Scop principal</strong>drum vestic spre Asia</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A deschis contactul permanent dintre Europa și America.</p>
+      <p>Columb nu a înțeles inițial că ajunsese pe un continent necunoscut europenilor. Expediția a folosit trei nave: Niña, Pinta și Santa María. Debarcarea din 12 octombrie 1492 în Bahamas marchează începutul unei noi epoci atlantice.</p>
+    </div></details>
+<details class="expedition-card"><summary>Cristofor Columb: a doua călătorie</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1493-1496</div>
+        <div><strong>Finanțare / putere</strong>Spania</div>
+        <div><strong>Rută / spațiu</strong>Cadiz – Antilele Mici – Hispaniola</div>
+        <div><strong>Scop principal</strong>colonizare și consolidare</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A transformat explorarea în colonizare efectivă.</p>
+      <p>A doua călătorie a avut o flotă mult mai mare și a urmărit întemeierea unei prezențe spaniole stabile. Ea a adus animale, plante, coloniști și instituții europene în Caraibe.</p>
+    </div></details>
+<details class="expedition-card"><summary>Cristofor Columb: a treia călătorie</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1498-1500</div>
+        <div><strong>Finanțare / putere</strong>Spania</div>
+        <div><strong>Rută / spațiu</strong>Atlantic – Trinidad – coasta Venezuelei</div>
+        <div><strong>Scop principal</strong>explorare a sudului Caraibelor</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A atins continentul sud-american.</p>
+      <p>Contactul cu zona Orinoco l-a pus pe Columb în fața unei realități greu de integrat în teoria lui asiatică: mase continentale, ape dulci uriașe și populații numeroase.</p>
+    </div></details>
+<details class="expedition-card"><summary>Cristofor Columb: a patra călătorie</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1502-1504</div>
+        <div><strong>Finanțare / putere</strong>Spania</div>
+        <div><strong>Rută / spațiu</strong>Caraibe – America Centrală</div>
+        <div><strong>Scop principal</strong>căutarea unei strâmtori spre Asia</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A explorat coastele Hondurasului, Nicaraguei, Costa Ricăi și Panamei.</p>
+      <p>Columb căuta în continuare o trecere spre Oceanul Indian. Expediția arată persistența confuziei dintre America și Asia în prima generație a explorărilor.</p>
+    </div></details>
+<details class="expedition-card"><summary>Vasco da Gama</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1497-1499</div>
+        <div><strong>Finanțare / putere</strong>Portugalia; regele Manuel I</div>
+        <div><strong>Rută / spațiu</strong>Lisabona – Capul Bunei Speranțe – Malindi – Calicut</div>
+        <div><strong>Scop principal</strong>drum maritim direct spre India</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A legat Europa de India prin ruta oceanică africană.</p>
+      <p>Ajungerea la Calicut în 1498 a schimbat comerțul cu mirodenii. Portugalia a putut ocoli intermediarii mediteraneeni și orientali, deși controlul efectiv al comerțului a cerut ulterior forturi, flote și violență navală.</p>
+    </div></details>
+<details class="expedition-card"><summary>Amerigo Vespucci</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1499-1502</div>
+        <div><strong>Finanțare / putere</strong>Spania și Portugalia</div>
+        <div><strong>Rută / spațiu</strong>coastele Americii de Sud</div>
+        <div><strong>Scop principal</strong>identificarea Lumii Noi</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A susținut că teritoriile atinse nu erau Asia, ci un continent distinct.</p>
+      <p>Scrisorile atribuite lui Vespucci au popularizat expresia Mundus Novus. Numele America provine din forma latinizată a prenumelui său, Americus, folosită pe harta lui Martin Waldseemüller din 1507.</p>
+    </div></details>
+<details class="expedition-card"><summary>Pedro Álvares Cabral</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1500</div>
+        <div><strong>Finanțare / putere</strong>Portugalia</div>
+        <div><strong>Rută / spațiu</strong>Atlantic – Brazilia – Capul Bunei Speranțe – India</div>
+        <div><strong>Scop principal</strong>drum spre India și revendicare atlantică</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A atins Brazilia și apoi a continuat spre India.</p>
+      <p>Deviația spre vest, explicată prin vânturi și curenți, a dus la contactul cu țărmul Braziliei. Teritoriul intra în zona portugheză potrivit împărțirii de la Tordesillas.</p>
+    </div></details>
+<details class="expedition-card"><summary>Afonso de Albuquerque</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1509-1515</div>
+        <div><strong>Finanțare / putere</strong>Portugalia</div>
+        <div><strong>Rută / spațiu</strong>Oceanul Indian: Goa, Ormuz, Malacca</div>
+        <div><strong>Scop principal</strong>control strategic al comerțului asiatic</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A construit nucleul Estado da Índia.</p>
+      <p>Albuquerque a urmărit controlul strâmtorilor, porturilor și nodurilor comerciale. Goa a fost cucerită în 1510, Malacca în 1511, iar Ormuz a intrat sub control portughez în 1515.</p>
+    </div></details>
+<details class="expedition-card"><summary>Vasco Núñez de Balboa</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1513</div>
+        <div><strong>Finanțare / putere</strong>Spania</div>
+        <div><strong>Rută / spațiu</strong>Istmul Panama</div>
+        <div><strong>Scop principal</strong>descoperirea mării de dincolo de America</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A ajuns la Oceanul Pacific, numit de el Mar del Sur.</p>
+      <p>Balboa a arătat că la vest de America se află un alt ocean. Descoperirea a schimbat proiectul spaniol: nu mai era vorba doar de insule, ci de traversarea continentului și apoi a Pacificului.</p>
+    </div></details>
+<details class="expedition-card"><summary>Juan Ponce de León</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1513 și 1521</div>
+        <div><strong>Finanțare / putere</strong>Spania</div>
+        <div><strong>Rută / spațiu</strong>Puerto Rico – Florida</div>
+        <div><strong>Scop principal</strong>explorare și colonizare</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A revendicat Florida pentru Spania.</p>
+      <p>Expedițiile sale fac parte din extinderea spaniolă din Caraibe spre America de Nord. Florida devine ulterior zonă strategică pentru apărarea rutelor maritime spaniole.</p>
+    </div></details>
+<details class="expedition-card"><summary>Hernán Cortés</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1519-1521</div>
+        <div><strong>Finanțare / putere</strong>Spania / Cuba</div>
+        <div><strong>Rută / spațiu</strong>Cuba – Veracruz – Tlaxcala – Tenochtitlan</div>
+        <div><strong>Scop principal</strong>cucerirea Mexicului central</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A distrus Imperiul Aztec și a fondat Noua Spanie.</p>
+      <p>Cortés a combinat forța militară cu alianțe indigene, diplomație, traducerea realizată prin Malinche, capturarea lui Moctezuma II și asediul Tenochtitlanului. Căderea capitalei în 1521 a deschis colonizarea Mexicului.</p>
+    </div></details>
+<details class="expedition-card"><summary>Magellan-Elcano</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1519-1522</div>
+        <div><strong>Finanțare / putere</strong>Spania; Carol Quintul</div>
+        <div><strong>Rută / spațiu</strong>Sevilla – Atlantic – strâmtoarea Magellan – Pacific – Filipine – Oceanul Indian – Sevilla</div>
+        <div><strong>Scop principal</strong>rută vestică spre Moluce</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>Prima circumnavigație a lumii a fost încheiată de Juan Sebastián Elcano.</p>
+      <p>Magellan a murit în Filipine în 1521. Nava Victoria s-a întors la Sevilla în 1522, cu un echipaj redus. Expediția a demonstrat practic dimensiunea reală a oceanelor și a deschis problema controlului Pacificului.</p>
+    </div></details>
+<details class="expedition-card"><summary>Giovanni da Verrazzano</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1524</div>
+        <div><strong>Finanțare / putere</strong>Franța; regele Francisc I</div>
+        <div><strong>Rută / spațiu</strong>Atlantic – coasta Americii de Nord</div>
+        <div><strong>Scop principal</strong>pasaj spre Asia și cartografiere</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A explorat coasta atlantică nord-americană, inclusiv zona viitorului New York.</p>
+      <p>Verrazzano arată intrarea Franței în competiția atlantică. Căuta o trecere spre Asia, dar a contribuit la cunoașterea litoralului Americii de Nord.</p>
+    </div></details>
+<details class="expedition-card"><summary>Francisco Pizarro</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1532-1533</div>
+        <div><strong>Finanțare / putere</strong>Spania</div>
+        <div><strong>Rută / spațiu</strong>Panama – Peru – Cajamarca – Cuzco</div>
+        <div><strong>Scop principal</strong>cucerirea Imperiului Incaș</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A capturat pe Atahualpa și a cucerit centrul puterii incașe.</p>
+      <p>Pizarro a profitat de războiul civil dintre Atahualpa și Huáscar. Forța sa mică, caii, armele de oțel, ambuscada de la Cajamarca, bolile și destabilizarea conducerii au permis cucerirea unui imperiu vast.</p>
+    </div></details>
+<details class="expedition-card"><summary>Jacques Cartier</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1534, 1535-1536, 1541-1542</div>
+        <div><strong>Finanțare / putere</strong>Franța</div>
+        <div><strong>Rută / spațiu</strong>Golful și fluviul Sfântul Laurențiu</div>
+        <div><strong>Scop principal</strong>rută spre Asia și revendicare franceză</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A pus bazele interesului francez pentru Canada.</p>
+      <p>Cartier a intrat în contact cu comunități irocheze și a explorat zona Stadacona și Hochelaga. Deși nu a găsit aur sau pasaj spre China, expedițiile sale au pregătit colonizarea franceză ulterioară.</p>
+    </div></details>
+<details class="expedition-card"><summary>Hernando de Soto</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1539-1542</div>
+        <div><strong>Finanțare / putere</strong>Spania</div>
+        <div><strong>Rută / spațiu</strong>Florida – sud-estul Americii de Nord – Mississippi</div>
+        <div><strong>Scop principal</strong>aur, teritorii și explorare continentală</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A explorat interiorul sud-estului nord-american.</p>
+      <p>Expediția a provocat violență și epidemii în comunitățile indigene. Este asociată cu una dintre primele descrieri europene ale fluviului Mississippi.</p>
+    </div></details>
+<details class="expedition-card"><summary>Francisco Vásquez de Coronado</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1540-1542</div>
+        <div><strong>Finanțare / putere</strong>Spania / Noua Spanie</div>
+        <div><strong>Rută / spațiu</strong>Mexic – Arizona – New Mexico – Kansas</div>
+        <div><strong>Scop principal</strong>căutarea „Celor Șapte Orașe de Aur”</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A explorat sud-vestul Americii de Nord.</p>
+      <p>Expediția a arătat limitele miturilor despre bogății imediate. A intrat în contact cu societăți pueblo și a extins cunoașterea spaniolă asupra interiorului nord-american.</p>
+    </div></details>
+<details class="expedition-card"><summary>Francisco de Orellana</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1541-1542</div>
+        <div><strong>Finanțare / putere</strong>Spania</div>
+        <div><strong>Rută / spațiu</strong>Anzi – Amazon – Atlantic</div>
+        <div><strong>Scop principal</strong>explorare fluvială</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A realizat prima coborâre europeană documentată a fluviului Amazon.</p>
+      <p>Pornită ca parte a unei căutări a bogățiilor orientale sud-americane, expediția a deschis imaginea europeană asupra imensității Amazoniei.</p>
+    </div></details>
+<details class="expedition-card"><summary>Miguel López de Legazpi</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1564-1571</div>
+        <div><strong>Finanțare / putere</strong>Spania / Noua Spanie</div>
+        <div><strong>Rută / spațiu</strong>Mexic – Pacific – Filipine</div>
+        <div><strong>Scop principal</strong>colonizare și rută transpacifică</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A întemeiat dominația spaniolă în Filipine și orașul Manila.</p>
+      <p>Legazpi a consolidat legătura dintre America spaniolă și Asia. Din 1565 se dezvoltă ruta galionului Manila-Acapulco, care va lega argintul american de comerțul asiatic.</p>
+    </div></details>
+<details class="expedition-card"><summary>Martin Frobisher</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1576-1578</div>
+        <div><strong>Finanțare / putere</strong>Anglia</div>
+        <div><strong>Rută / spațiu</strong>Atlanticul de Nord / Arctica canadiană</div>
+        <div><strong>Scop principal</strong>Pasajul de Nord-Vest</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A explorat zona Baffin și a adus minereu considerat greșit aurifer.</p>
+      <p>Expedițiile lui Frobisher arată interesul Angliei pentru rute nordice spre Asia și pentru resurse. Deși obiectivul economic imediat a eșuat, harta Atlanticului de Nord s-a îmbogățit.</p>
+    </div></details>
+<details class="expedition-card"><summary>Francis Drake</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1577-1580</div>
+        <div><strong>Finanțare / putere</strong>Anglia; regina Elisabeta I</div>
+        <div><strong>Rută / spațiu</strong>Atlantic – Patagonia – Pacific – Oceanul Indian – Anglia</div>
+        <div><strong>Scop principal</strong>corsă, explorare și circumnavigație</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A realizat a doua circumnavigație a lumii.</p>
+      <p>Drake a atacat posesiuni și nave spaniole, transformând explorarea în război economic. Expediția simbolizează trecerea Angliei spre competiția oceanică globală.</p>
+    </div></details>
+<details class="expedition-card"><summary>Willem Barents</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1594-1597</div>
+        <div><strong>Finanțare / putere</strong>Țările de Jos</div>
+        <div><strong>Rută / spațiu</strong>Arctica eurasiatică / Novaia Zemlea</div>
+        <div><strong>Scop principal</strong>rută nord-estică spre Asia</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A explorat mările arctice, dar ruta a rămas impracticabilă pentru comerț regulat.</p>
+      <p>Barents a iernat în condiții extreme pe Novaia Zemlea. Marea Barents îi păstrează numele. Expedițiile arată că nordul era o alternativă căutată la rutele iberice.</p>
+    </div></details>
+<details class="expedition-card"><summary>Henry Hudson</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1609-1611</div>
+        <div><strong>Finanțare / putere</strong>Companii olandeze și engleze</div>
+        <div><strong>Rută / spațiu</strong>fluviul Hudson; golful Hudson</div>
+        <div><strong>Scop principal</strong>pasaj nordic spre Asia</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A explorat zone importante pentru colonizarea nord-americană.</p>
+      <p>Hudson nu a găsit pasajul spre Asia, dar explorările sale au susținut revendicări olandeze în New Netherland și interesul englez pentru golful Hudson.</p>
+    </div></details>
+<details class="expedition-card"><summary>Samuel de Champlain</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1603-1635</div>
+        <div><strong>Finanțare / putere</strong>Franța</div>
+        <div><strong>Rută / spațiu</strong>Canada, Sfântul Laurențiu, Marile Lacuri</div>
+        <div><strong>Scop principal</strong>colonizare, alianțe și comerț cu blănuri</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A fondat Quebec în 1608 și a devenit figura centrală a Noii Franțe.</p>
+      <p>Champlain a combinat cartografierea, diplomația cu populațiile indigene și întemeierea de așezări. Spre deosebire de modelul spaniol de cucerire rapidă, modelul francez s-a bazat mult pe comerțul cu blănuri și alianțe.</p>
+    </div></details>
+<details class="expedition-card"><summary>Abel Tasman</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1642-1643</div>
+        <div><strong>Finanțare / putere</strong>Compania Olandeză a Indiilor de Est</div>
+        <div><strong>Rută / spațiu</strong>Oceanul Indian – Tasmania – Noua Zeelandă</div>
+        <div><strong>Scop principal</strong>cartografiere și rute comerciale</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A identificat pentru europeni Tasmania și Noua Zeelandă.</p>
+      <p>Expediția sa face parte din expansiunea olandeză în Asia și Pacific. Ea a extins cartografia sudului oceanic, chiar dacă colonizarea europeană masivă a regiunii va veni mai târziu.</p>
+    </div></details>
+<details class="expedition-card"><summary>James Cook</summary><div class="details-body">
+      <div class="exp-meta">
+        <div><strong>Data / intervalul</strong>1768-1779</div>
+        <div><strong>Finanțare / putere</strong>Marea Britanie / Royal Navy</div>
+        <div><strong>Rută / spațiu</strong>Pacificul de Sud, Noua Zeelandă, Australia, Hawaii</div>
+        <div><strong>Scop principal</strong>cartografiere științifică și imperială</div>
+      </div>
+      <p><span class="mini-title">Rezultat:</span>A cartografiat precis mari spații ale Pacificului.</p>
+      <p>Cook aparține unei faze târzii a explorării: combină știința iluministă, astronomia, cartografia, interesul imperial și navigația de precizie. Expedițiile sale anunță noua epocă a imperiilor maritime moderne.</p>
+    </div></details>
+</section>
+<section class="section" id="portugalia"><h2>III. Modelul portughez: drumul african și Oceanul Indian</h2><p class="section-intro">Portugalia a urmărit mai ales controlul rutelor maritime și al punctelor comerciale, nu cucerirea în profunzime a unor teritorii continentale uriașe.</p><div class="two-col"><article class="info-card"><h3>Principii strategice</h3><ul class="clean"><li>cabotaj pe coasta Africii, apoi navigație de larg;</li><li>folosirea insulelor atlantice ca baze;</li><li>construirea de forturi și factorii comerciale;</li><li>controlul strâmtorilor și nodurilor: Ormuz, Goa, Malacca;</li><li>taxarea comerțului prin sistemul cartaz în Oceanul Indian.</li></ul></article><article class="info-card"><h3>De ce India?</h3><p>India era legată de comerțul cu mirodenii, textile fine, pietre prețioase și produse asiatice. Ajungerea directă la Calicut în 1498 a permis Portugaliei să concureze Veneția, negustorii arabi și rețelele comerciale islamice din Oceanul Indian.</p></article></div></section>
+<section class="section" id="spania"><h2>IV. Modelul spaniol: America, cucerire și viceregate</h2><p class="section-intro">Spania a trecut rapid de la explorarea insulelor caraibiene la cucerirea imperiilor amerindiene și organizarea unor teritorii vaste.</p><div class="three-col"><article class="info-card"><h3>Caraibele</h3><p>Hispaniola, Cuba, Puerto Rico și Jamaica au devenit primele baze. De aici au plecat expedițiile spre Mexic, Florida, America Centrală și nordul Americii de Sud.</p></article><article class="info-card"><h3>Mexicul</h3><p>Căderea Tenochtitlanului în 1521 a dus la formarea Noii Spanii, cu Mexico construit pe ruinele capitalei aztece. Regiunea devine centru administrativ, religios și economic.</p></article><article class="info-card"><h3>Peru</h3><p>Cucerirea incașă a deschis accesul la Anzi și la minele de argint. Lima și Cuzco au devenit repere ale stăpânirii spaniole în America de Sud.</p></article></div></section>
+<section class="section" id="nord"><h2>V. Nordul Atlanticului și intrarea celorlalte puteri</h2><p class="section-intro">Franța, Anglia și Țările de Jos au intrat mai târziu în competiția oceanică. Ele au căutat rute nordice spre Asia și, treptat, au construit colonii și companii comerciale.</p><div class="table-wrap"><table><thead><tr><th>Putere</th><th>Expediții reprezentative</th><th>Teritorii vizate</th><th>Model de expansiune</th></tr></thead><tbody><tr><td>Anglia</td><td>Cabot 1497; Frobisher 1576-1578; Drake 1577-1580; Hudson 1610-1611.</td><td>Newfoundland, Atlanticul de Nord, America de Nord, rute arctice.</td><td>Pescuit, corsă, colonizare, companii privilegiate.</td></tr><tr><td>Franța</td><td>Verrazzano 1524; Cartier 1534-1542; Champlain 1608.</td><td>Canada, Sfântul Laurențiu, Marile Lacuri.</td><td>Comerț cu blănuri, alianțe indigene, misiuni.</td></tr><tr><td>Țările de Jos</td><td>Barents 1594-1597; Houtman 1595-1597; Tasman 1642-1643.</td><td>Arctica, Indonezia, Capul Bunei Speranțe, Pacificul de Sud.</td><td>Companie comercială, monopol, rețea navală.</td></tr></tbody></table></div></section>
+
+<!-- EXTINDERE-2026-07-10-START -->
+<section class="section" id="etape-expansiune">
+  <h2>VI. Etapele expansiunii europene</h2>
+  <p class="section-intro">Expansiunea europeană nu s-a produs dintr-odată. Ea poate fi împărțită în mai multe etape, fiecare cu obiective, metode și state dominante diferite.</p>
+  <div class="table-wrap"><table><thead><tr><th>Etapă</th><th>Interval</th><th>Puteri principale</th><th>Caracteristici</th><th>Exemple</th></tr></thead><tbody>
+    <tr><td>Explorarea atlantică portugheză</td><td>1415-1488</td><td>Portugalia</td><td>Înaintare de-a lungul Africii, insule atlantice, experiență de vânturi și curenți, căutarea aurului și a drumului spre India.</td><td>Ceuta 1415; Madeira 1419-1420; Capul Verde c. 1456; Dias 1488.</td></tr>
+    <tr><td>Contactul transatlantic permanent</td><td>1492-1504</td><td>Spania</td><td>Columb ajunge în Caraibe, dar interpretează inițial spațiul ca margine a Asiei. Ulterior devine clar că este vorba de o „Lume Nouă”.</td><td>Bahamas, Cuba, Hispaniola, Jamaica, Trinidad, coasta Americii Centrale.</td></tr>
+    <tr><td>Deschiderea rutei maritime spre India</td><td>1497-1515</td><td>Portugalia</td><td>Ruta prin Capul Bunei Speranțe devine funcțională; Portugalia construiește forturi și controlează noduri comerciale.</td><td>Calicut 1498; Cochin; Goa 1510; Malacca 1511; Ormuz 1515.</td></tr>
+    <tr><td>Cuceririle spaniole continentale</td><td>1519-1540</td><td>Spania</td><td>Conquistadorii cuceresc imperii amerindiene prin alianțe locale, violență militară, șoc epidemiologic și exploatarea rivalităților interne.</td><td>Mexic 1519-1521; Peru 1532-1533; Noua Granada 1530s; Chile 1540s.</td></tr>
+    <tr><td>Circumnavigația și Pacificul</td><td>1519-1565</td><td>Spania și Portugalia</td><td>Se verifică dimensiunea globală a oceanelor și se leagă America de Asia prin Pacific.</td><td>Magellan-Elcano 1519-1522; Legazpi 1565; ruta Manila-Acapulco.</td></tr>
+    <tr><td>Intrarea puterilor nordice</td><td>1497-1650</td><td>Anglia, Franța, Țările de Jos</td><td>Se caută pasaje nordice, se dezvoltă pescuitul, comerțul cu blănuri, corsa, companiile comerciale și colonii în America de Nord și Asia.</td><td>Cabot 1497; Cartier 1534-1542; Barents 1594-1597; Hudson 1609-1611; VOC 1602.</td></tr>
+    <tr><td>Explorarea științifică imperială</td><td>sec. XVIII</td><td>Marea Britanie, Franța, Spania</td><td>Explorarea devine mai științifică: astronomie, cartografie, botanică, geodezie și interes imperial.</td><td>Bougainville 1766-1769; Cook 1768-1779; La Pérouse 1785-1788.</td></tr>
+  </tbody></table></div>
+</section>
+
+<section class="section" id="catalog-expeditii-extins">
+  <h2>VII. Catalog extins de expediții și exploratori</h2>
+  <p class="section-intro">Fișele de mai jos completează traseul principal al descoperirilor. Ele arată că expansiunea a fost o rețea de proiecte succesive, nu doar câteva nume izolate.</p>
+  <div class="timeline">
+    <article class="event"><div class="date">1245-1247</div><div><h3>Giovanni da Pian del Carpine</h3><p>Trimis papal la mongoli, ajunge la curtea marelui han. Miza era diplomatică și religioasă: Europa căuta informații despre puterea mongolă și eventuale alianțe contra lumii islamice.</p></div></article>
+    <article class="event"><div class="date">1253-1255</div><div><h3>William de Rubruck</h3><p>Călugăr franciscan trimis spre curtea mongolă. Relatarea sa oferă informații mai precise despre Asia Centrală și lumea stepelor.</p></div></article>
+    <article class="event"><div class="date">1455-1456</div><div><h3>Alvise Cadamosto</h3><p>Navigator venețian în serviciu portughez, explorează zone ale Africii occidentale și contribuie la cunoașterea Senegalului, Gambiei și Capului Verde.</p></div></article>
+    <article class="event"><div class="date">1469-1474</div><div><h3>Fernão Gomes</h3><p>Negustor portughez primește dreptul de exploatare a comerțului din Golful Guineei, cu obligația de a explora anual noi porțiuni de coastă. Explorarea devine afacere concesionată.</p></div></article>
+    <article class="event"><div class="date">1487-1490</div><div><h3>Pêro da Covilhã</h3><p>Trimis portughez pe uscat spre Orient, ajunge în zona Mării Roșii, India și Africa de Est. Informațiile sale despre comerțul indian au sprijinit politica oceanică portugheză.</p></div></article>
+    <article class="event"><div class="date">1497</div><div><h3>John Cabot</h3><p>În serviciul Angliei, atinge probabil Newfoundland sau Labrador. Expediția oferă Angliei un argument timpuriu pentru revendicări în Atlanticul de Nord.</p></div></article>
+    <article class="event"><div class="date">1499-1500</div><div><h3>Vicente Yáñez Pinzón</h3><p>Explorează coaste ale Americii de Sud, inclusiv zona gurii Amazonului. Arată că descoperirile spaniole se extind dincolo de Caraibe.</p></div></article>
+    <article class="event"><div class="date">1501-1502</div><div><h3>Amerigo Vespucci</h3><p>Participă la explorări ale coastei sud-americane și contribuie la ideea că teritoriile vestice nu sunt Asia, ci un continent distinct. Numele „America” va fi folosit în harta Waldseemüller din 1507.</p></div></article>
+    <article class="event"><div class="date">1513</div><div><h3>Juan Ponce de León</h3><p>Explorează Florida în serviciul Spaniei. Expediția leagă Caraibele de explorarea continentală nord-americană.</p></div></article>
+    <article class="event"><div class="date">1519-1521</div><div><h3>Hernán Cortés</h3><p>Intră în Mexic dinspre Veracruz, formează alianțe cu dușmani ai aztecilor, ajunge la Tenochtitlan și cucerește capitala în 1521. Cazul arată că succesul spaniol nu se explică doar prin arme, ci și prin alianțe indigene, epidemii și crize interne.</p></div></article>
+    <article class="event"><div class="date">1524</div><div><h3>Giovanni da Verrazzano</h3><p>În serviciul Franței, explorează coasta atlantică a Americii de Nord, de la zona Carolinei până spre Newfoundland, oferind Franței o bază de interes în nordul continentului.</p></div></article>
+    <article class="event"><div class="date">1535-1537</div><div><h3>Diego de Almagro</h3><p>Expediție spre Chile, dificilă și costisitoare, care arată limitele expansiunii spaniole în regiuni cu climă, relief și rezistență locală puternice.</p></div></article>
+    <article class="event"><div class="date">1536-1538</div><div><h3>Gonzalo Jiménez de Quesada</h3><p>Explorează și cucerește zone din actuala Columbie, legate de populațiile muisca. Va contribui la formarea Noii Grenade.</p></div></article>
+    <article class="event"><div class="date">1540-1553</div><div><h3>Pedro de Valdivia</h3><p>Conduce cucerirea spaniolă în Chile și întemeiază Santiago în 1541. Rezistența mapuche transformă regiunea într-un front colonial de lungă durată.</p></div></article>
+    <article class="event"><div class="date">1564-1565</div><div><h3>Miguel López de Legazpi</h3><p>Expediția spaniolă ajunge în Filipine și întemeiază o prezență durabilă. Din 1565 se consolidează legătura Manila-Acapulco, adică un pod comercial între Asia și America spaniolă.</p></div></article>
+    <article class="event"><div class="date">1576-1578</div><div><h3>Martin Frobisher</h3><p>Caută Pasajul de Nord-Vest și explorează zona Arcticii canadiene. Expedițiile arată interesul englez pentru o rută care să evite monopolurile iberice.</p></div></article>
+    <article class="event"><div class="date">1585-1587</div><div><h3>John Davis</h3><p>Explorează zona Groenlandei și strâmtoarea care îi poartă numele, continuând căutarea engleză a pasajului nord-vestic.</p></div></article>
+    <article class="event"><div class="date">1595-1597</div><div><h3>Cornelis de Houtman</h3><p>Conduce o expediție olandeză spre Indonezia, deschizând drumul concurenței olandeze împotriva portughezilor în comerțul cu mirodenii.</p></div></article>
+    <article class="event"><div class="date">1642-1644</div><div><h3>Abel Tasman</h3><p>Explorează Tasmania, Noua Zeelandă și regiuni ale Pacificului de Sud. Extinde cunoașterea europeană a Oceaniei, deși colonizarea intensă va veni mult mai târziu.</p></div></article>
+  </div>
+</section>
+
+<section class="section" id="tipuri-expeditii">
+  <h2>VIII. Tipuri de expediții</h2>
+  <div class="table-wrap"><table><thead><tr><th>Tip</th><th>Scop</th><th>Exemple</th><th>Consecințe</th></tr></thead><tbody>
+    <tr><td>Expediție de recunoaștere</td><td>Cartografiere, identificarea coastelor, găsirea de porturi și curenți.</td><td>Gil Eanes 1434; Diogo Cão 1482-1485; Verrazzano 1524.</td><td>Produce hărți, jurnale de bord și informații pentru expediții ulterioare.</td></tr>
+    <tr><td>Expediție comercială</td><td>Acces direct la mirodenii, aur, sclavi, textile sau alte mărfuri.</td><td>Vasco da Gama 1497-1499; Cabral 1500; Houtman 1595-1597.</td><td>Deschide rute comerciale și creează monopoluri maritime.</td></tr>
+    <tr><td>Expediție de cucerire</td><td>Subordonarea militară a unui teritoriu și preluarea resurselor.</td><td>Cortés 1519-1521; Pizarro 1532-1533; Valdivia 1540s.</td><td>Produce colonii, viceregate, exploatare economică și prăbușirea unor structuri politice indigene.</td></tr>
+    <tr><td>Expediție de circumnavigație</td><td>Demonstrarea unei rute globale și accesul la Asia pe direcția vestică.</td><td>Magellan-Elcano 1519-1522; Drake 1577-1580.</td><td>Schimbă cartografia mentală a lumii și arată unitatea oceanelor.</td></tr>
+    <tr><td>Expediție misionară-colonială</td><td>Convertire, întemeiere de așezări, alianțe și control cultural.</td><td>misiuni spaniole în America; iezuiți în Asia; francezi în Canada.</td><td>Schimbă limbi, religii, educație, raporturi sociale și forme de autoritate.</td></tr>
+  </tbody></table></div>
+</section>
+<!-- EXTINDERE-2026-07-10-END -->
+<section class="final-box"><h2>Ideea de reținut</h2><p>Expansiunea europeană nu a fost o singură mișcare, ci o succesiune de proiecte: portughezii au construit rute și forturi, spaniolii au cucerit imperii amerindiene, francezii au exploatat blănuri și fluviile nord-americane, englezii au combinat corsa cu colonizarea, iar olandezii au transformat compania comercială într-un instrument imperial.</p></section>
+
+  </main>
+</body>
+</html>

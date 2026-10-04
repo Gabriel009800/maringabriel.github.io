@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Războiul Rece: diplomație, alianțe, crize, conflicte regionale, cursa nucleară și spațială">
+<title>univ-razboiul-rece-diplomatie-si-conflict</title>
+<style>
+:root{
+  --bg:#f6f0e7;--paper:#fffaf3;--paper-2:#fff;--ink:#2f241c;--title:#3c2a1e;
+  --muted:#5b4a3d;--accent:#7a4f2a;--accent-2:#9b6a3c;--accent-soft:#f0e4d4;
+  --line:rgba(91,62,36,.18);--line-strong:rgba(91,62,36,.34);
+  --shadow:0 26px 70px rgba(0,0,0,.28);--shadow-small:0 12px 30px rgba(0,0,0,.16);
+  --danger:#873f2d;--danger-soft:#f8e5dd;--calm:#56715c;--calm-soft:#e5efe6;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{
+  margin:0;min-height:100vh;color:var(--ink);font-family:Georgia,"Times New Roman",serif;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(132,78,40,.72),transparent 34%),
+    radial-gradient(circle at 50% 100%,rgba(112,63,31,.44),transparent 36%),
+    radial-gradient(circle at 0 50%,rgba(29,13,6,.92),transparent 42%),
+    radial-gradient(circle at 100% 50%,rgba(29,13,6,.92),transparent 42%),
+    linear-gradient(180deg,#32190c 0%,#4a2a18 46%,#1e0e05 100%);
+  background-attachment:fixed;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(circle at center,transparent 0%,rgba(0,0,0,.10) 48%,rgba(0,0,0,.44) 100%),
+    linear-gradient(90deg,rgba(0,0,0,.20),transparent 18%,transparent 82%,rgba(0,0,0,.20));
+}
+.page{position:relative;z-index:1;width:min(1180px,calc(100% - 32px));margin:0 auto;padding:34px 0 70px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px;flex-wrap:wrap}
+.back-link,.tag{display:inline-flex;align-items:center;border:1px solid var(--line);background:rgba(255,250,243,.86);color:var(--title);border-radius:999px;padding:10px 15px;text-decoration:none;font-size:15px;font-weight:700;box-shadow:var(--shadow-small)}
+.back-link:hover{background:#fff6eb}
+.hero,.section,.nav-card,.final-box,.related-card{background:rgba(255,250,243,.96);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow)}
+.hero{padding:38px;margin-bottom:24px;position:relative;overflow:hidden}
+.hero::after{content:var(--hero-year);position:absolute;right:24px;bottom:-22px;font-size:104px;font-weight:900;letter-spacing:-5px;color:rgba(122,79,42,.075);pointer-events:none}
+.eyebrow{margin:0 0 8px;font-size:16px;color:var(--accent);font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+h1{margin:0;font-size:clamp(38px,5vw,62px);line-height:1.04;color:var(--title);letter-spacing:-1.4px}
+.subtitle{margin:18px 0 0;max-width:1020px;font-size:19px;line-height:1.78;color:var(--muted);text-align:justify;text-align-last:left}
+.badge-row,.series-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.badge,.series-links a{display:inline-flex;align-items:center;color:var(--title);background:#fff;border:1px solid rgba(91,62,36,.15);border-radius:999px;padding:8px 12px;font-weight:800;font-size:14px;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,.09)}
+.badge.accent,.series-links a[aria-current="page"]{background:var(--accent);color:#fffaf3}
+.related-card{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:16px 20px;margin:-10px 0 24px;border-radius:22px;box-shadow:var(--shadow-small)}
+.related-card b{color:var(--title)}
+.related-card a{color:var(--title);background:#f3eadf;border:1px solid rgba(91,62,36,.16);border-radius:999px;text-decoration:none;padding:8px 12px;font-weight:700;font-size:14px}
+.nav-card{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:18px 20px;margin-bottom:24px}
+.nav-card b{color:var(--title)}
+.nav-card a,.mini-btn{color:var(--title);background:var(--accent-soft);border:1px solid rgba(91,62,36,.16);border-radius:999px;text-decoration:none;padding:8px 12px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit}
+.nav-card a:hover,.mini-btn:hover{background:#e5d2bb}
+.section{padding:30px;margin-bottom:24px}
+h2{margin:0 0 14px;color:var(--title);font-size:clamp(28px,3vw,38px);line-height:1.15}
+h3{margin:0 0 12px;color:var(--title);font-size:22px;line-height:1.22}
+h4{margin:16px 0 8px;color:var(--title);font-size:18px}
+p,li,dd,.section-intro{font-size:17px;line-height:1.72;color:var(--muted);text-align:justify;text-align-last:left;hyphens:auto}
+.section-intro{margin:0 0 20px;max-width:1040px}
+.summary-grid,.three-col,.two-col,.four-col,.term-grid,.quick-grid,.cause-grid,.profile-grid,.principle-grid,.institution-grid,.compare-grid,.phase-grid{display:grid;gap:14px}
+.summary-grid,.quick-grid{grid-template-columns:repeat(4,1fr);margin-top:22px}
+.three-col,.profile-grid{grid-template-columns:repeat(3,1fr)}
+.two-col,.cause-grid,.compare-grid{grid-template-columns:repeat(2,1fr)}
+.four-col,.term-grid,.principle-grid,.institution-grid{grid-template-columns:repeat(4,1fr)}
+.phase-grid{grid-template-columns:repeat(5,1fr)}
+.summary-card,.info-card,.wide-card,.term-card,.quick-card,.micro-card,.warning-box,.source-note,.profile-card,.principle-card,.institution-card,.phase-card{
+  background:var(--paper-2);border:1px solid rgba(91,62,36,.14);border-radius:20px;box-shadow:var(--shadow-small);text-align:justify;text-align-last:left;padding:20px
+}
+.summary-card{min-height:132px;padding:16px}
+.summary-card strong,.quick-card strong,.term-card strong,.micro-card strong,.principle-card strong,.institution-card strong,.phase-card strong{display:block;color:var(--title);font-size:17px;margin-bottom:8px;text-align:left}
+.summary-card span,.quick-card span,.term-card span,.micro-card span,.principle-card span,.institution-card span,.phase-card span{display:block;color:var(--muted);font-size:15.5px;line-height:1.58}
+.phase-card{position:relative;padding-top:48px}.phase-card::before{content:attr(data-n);position:absolute;left:18px;top:14px;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--accent);color:white;font-weight:900}
+.profile-card h3{margin-bottom:4px}.profile-card .life{display:block;color:var(--accent);font-weight:800;margin-bottom:10px}.profile-card p{font-size:16px;margin:8px 0}.profile-card ul{margin:8px 0 0;padding-left:20px}.profile-card li{font-size:15.5px;line-height:1.56;margin-bottom:5px}
+.clean,.number-list{margin:0;padding-left:22px}.clean li,.number-list li{margin:0 0 9px;padding-left:2px}
+.date-pill{display:inline-block;color:var(--title);font-weight:800;background:#f3eadf;border:1px solid rgba(91,62,36,.13);border-radius:999px;padding:2px 9px;margin-right:5px;white-space:nowrap}
+.definition,.note,.fact-check,.quote-box{margin-top:18px;background:#fff8ef;border:1px solid rgba(122,79,42,.22);border-left:6px solid rgba(122,79,42,.48);border-radius:18px;padding:18px 20px;color:var(--muted);font-size:17px;line-height:1.7;text-align:justify;text-align-last:left}
+.definition strong,.note strong,.fact-check strong,.quote-box strong{color:var(--title)}
+.fact-check{background:#fff5e8;border-left-color:var(--danger)}
+.quote-box{font-style:italic}
+.calm-box{margin-top:16px;background:var(--calm-soft);border:1px solid rgba(86,113,92,.28);border-left:6px solid var(--calm);border-radius:18px;padding:18px 20px;color:#435648;font-size:17px;line-height:1.7}
+.danger-box{margin-top:16px;background:var(--danger-soft);border:1px solid rgba(135,63,45,.25);border-left:6px solid var(--danger);border-radius:18px;padding:18px 20px;color:#684034;font-size:17px;line-height:1.7}
+details{background:#fffdf9;border:1px solid rgba(91,62,36,.14);border-radius:20px;box-shadow:var(--shadow-small);margin-top:14px;overflow:hidden}
+details[open]{background:#fffaf3}
+summary{cursor:pointer;list-style:none;padding:18px 20px;font-size:19px;font-weight:800;color:var(--title);display:flex;justify-content:space-between;align-items:center;gap:18px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"Deschide";color:var(--muted);font-size:14px;font-weight:700;background:#f3eadf;border:1px solid rgba(91,62,36,.14);border-radius:999px;padding:7px 11px;white-space:nowrap}
+details[open]>summary::after{content:"Ascunde"}
+.details-body{border-top:1px solid rgba(91,62,36,.12);padding:18px 20px 20px}
+.key-line{display:grid;grid-template-columns:220px 1fr;gap:14px;padding:14px 0;border-bottom:1px dashed rgba(91,62,36,.18)}
+.key-line:last-child{border-bottom:0}.key-line strong{color:var(--title)}.key-line span{color:var(--muted);line-height:1.65}
+.timeline{display:grid;gap:14px;margin-top:18px}
+.event{display:grid;grid-template-columns:136px 1fr;gap:18px;align-items:stretch;background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:20px;box-shadow:var(--shadow-small);overflow:hidden}
+.date{background:linear-gradient(180deg,#7a4f2a,#5b351b);color:#fffaf3;display:flex;align-items:center;justify-content:center;text-align:center;padding:14px;font-size:18px;line-height:1.25;font-weight:900}
+.date.calm{background:linear-gradient(180deg,#657d68,#425947)}
+.date.danger{background:linear-gradient(180deg,#98503b,#682e22)}
+.event>div:last-child{padding:17px 18px 18px 0}.event h3{margin-bottom:6px}.event p{margin:0}
+.warning-box{background:#fff7ec;border-color:rgba(122,79,42,.22);margin-top:16px}
+.final-box{padding:28px;background:linear-gradient(135deg,#fffaf3,#f4e4d1);border-color:rgba(91,62,36,.25)}
+.final-box p{margin-bottom:0}
+.table-wrap{overflow-x:auto;margin-top:14px;border-radius:18px;border:1px solid rgba(91,62,36,.14);background:#fff;box-shadow:var(--shadow-small)}
+table{width:100%;border-collapse:collapse;min-width:790px}
+th,td{padding:13px 14px;border-bottom:1px solid rgba(91,62,36,.12);color:var(--muted);font-size:16px;line-height:1.55;vertical-align:top;text-align:left}
+th{background:#f3eadf;color:var(--title);font-weight:800}tr:last-child td{border-bottom:0}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px}
+.flow-item{position:relative;padding:16px;background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;box-shadow:var(--shadow-small)}
+.flow-item b{display:block;color:var(--title);margin-bottom:6px}.flow-item span{font-size:15px;color:var(--muted);line-height:1.5}
+.flow-item:not(:last-child)::after{content:"→";position:absolute;right:-14px;top:50%;transform:translateY(-50%);font-size:22px;color:var(--accent);font-weight:900;z-index:3}
+.small{font-size:15px;color:#725c49;line-height:1.58}
+footer{margin-top:24px;color:rgba(255,250,243,.82);text-align:center;font-size:14px;line-height:1.6}
+@media(max-width:1050px){.phase-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:980px){
+  .summary-grid,.three-col,.four-col,.term-grid,.quick-grid,.profile-grid,.principle-grid,.institution-grid{grid-template-columns:repeat(2,1fr)}
+  .two-col,.cause-grid,.compare-grid{grid-template-columns:1fr}
+  .flow{grid-template-columns:repeat(2,1fr)}.flow-item::after{display:none}
+}
+@media(max-width:680px){
+  .page{width:min(100% - 22px,1180px);padding-top:22px}
+  .hero,.section,.final-box{padding:22px;border-radius:22px}
+  .summary-grid,.three-col,.four-col,.term-grid,.quick-grid,.profile-grid,.principle-grid,.institution-grid,.flow,.phase-grid{grid-template-columns:1fr}
+  .event{grid-template-columns:1fr}.date{min-height:66px}.event>div:last-child{padding:0 16px 16px}
+  .key-line{grid-template-columns:1fr;gap:6px}summary{align-items:flex-start;flex-direction:column}.hero::after{font-size:68px}
+  .subtitle,p,li,dd,.section-intro,.details-body,.key-line span,.event>div:last-child,.definition,.note,.fact-check,.quote-box{text-align:left;text-align-last:auto;hyphens:none}
+}
+@media print{
+  body{background:#fff!important}body::before{display:none}.page{width:100%;padding:0}
+  .topbar,.nav-card,.related-card{display:none!important}
+  .hero,.section,.final-box{box-shadow:none;border:1px solid #cbb9a8;break-inside:avoid-page}
+  details{break-inside:avoid-page}summary::after{display:none}
+}
+</style>
+</head>
+<body id="top" style="--hero-year:'1945–1991';">
+<main class="page">
+<div class="topbar">
+  <a class="back-link" href="index.html">← Înapoi la materiale</a>
+  <span class="tag">Material ajutător · Istorie universală · Războiul Rece</span>
+</div>
+
+<section class="hero">
+  <p class="eyebrow">Istorie universală · Epoca contemporană</p>
+  <h1>Războiul Rece: diplomație și conflict</h1>
+  <p class="subtitle">Formarea lumii bipolare, alianțele și organizațiile internaționale, crizele Berlinului și Cubei, războaiele prin intermediari, Orientul Mijlociu, cursa nucleară și spațială, destinderea, Ostpolitik și destrămarea blocului sovietic.</p>
+  <div class="series-links">
+    <a href="univ-razboiul-rece-modele-politice.html">Modele politice</a>
+    <a href="univ-razboiul-rece-diplomatie-si-conflict.html" aria-current="page">Diplomație și conflict</a>
+  </div>
+  <div class="badge-row">
+    <span class="badge accent">1945–1991</span><span class="badge">Bipolaritate</span>
+    <span class="badge">Descurajare nucleară</span><span class="badge">Războaie prin intermediari</span>
+    <span class="badge">Destindere</span><span class="badge">Cursa spațială</span>
+  </div>
+</section>
+
+<div class="related-card">
+  <b>Material conex:</b>
+  <a href="univ-razboiul-rece-modele-politice.html">Războiul Rece: modele politice</a>
+</div>
+
+<nav class="nav-card" aria-label="Cuprinsul paginii">
+  <b>Cuprins:</b>
+  <a href="#definitie">Definiție</a><a href="#origini">Origini</a><a href="#blocuri">Blocuri</a>
+  <a href="#onu">ONU</a><a href="#berlin">Berlin</a><a href="#germania">Hallstein și Ostpolitik</a>
+  <a href="#nuclear">Nuclear</a><a href="#asia">Asia</a><a href="#cuba">Cuba</a>
+  <a href="#orient">Orientul Mijlociu</a><a href="#spatiu">Spațiu</a><a href="#destindere">Destindere</a>
+  <a href="#final">Sfârșitul</a><a href="#cronologie">Cronologie</a><a href="#sinteza">Sinteză</a>
+  <button class="mini-btn" type="button" data-action="open">Deschide explicațiile</button>
+  <button class="mini-btn" type="button" data-action="close">Închide explicațiile</button>
+</nav>
+
+<section class="section" id="definitie">
+<h2>I. Ce a fost Războiul Rece?</h2>
+<p class="section-intro">Războiul Rece a fost confruntarea globală dintre Statele Unite și Uniunea Sovietică, împreună cu alianțele lor, de la ruptura coaliției antihitleriste până la prăbușirea URSS. Cele două superputeri nu au purtat un război direct pe scară largă una împotriva celeilalte, deoarece armele nucleare făceau o asemenea confruntare potențial sinucigașă. Rivalitatea s-a manifestat prin presiune diplomatică, propagandă, alianțe, spionaj, competiție economică și tehnologică, lovituri de stat și războaie regionale.</p>
+<div class="summary-grid">
+  <article class="summary-card"><strong>Bipolaritate</strong><span>Sistem internațional dominat de două superputeri și de sferele lor de influență.</span></article>
+  <article class="summary-card"><strong>Descurajare</strong><span>Amenințarea represaliilor nucleare trebuia să împiedice un atac direct.</span></article>
+  <article class="summary-card"><strong>Proxy wars</strong><span>Conflicte locale în care superputerile sprijineau tabere opuse fără a se confrunta frontal.</span></article>
+  <article class="summary-card"><strong>Diplomație permanentă</strong><span>Crizele erau gestionate prin negocieri, summituri, linii directe și tratate de control al armamentelor.</span></article>
+</div>
+<div class="definition"><strong>Formula paradoxală:</strong> „rece” între superputeri, dar adesea foarte „fierbinte” în Coreea, Vietnam, Afganistan, Orientul Mijlociu, Africa și America Latină.</div>
+</section>
+
+<section class="section" id="origini">
+<h2>II. Originile confruntării: 1945–1947</h2>
+<div class="two-col">
+  <article class="info-card"><h3>De la alianță la suspiciune</h3><ul class="clean">
+    <li>diferențe fundamentale între democrația capitalistă occidentală și comunismul sovietic;</li>
+    <li>disputele privind viitorul Germaniei, despăgubirile și guvernele Europei Centrale și de Est;</li>
+    <li>instalarea regimurilor comuniste sprijinite de Moscova;</li>
+    <li>monopolul nuclear american până în 1949 și teama sovietică de încercuire;</li>
+    <li>ieșirea definitivă a SUA din izolaționism și asumarea unui rol global.</li>
+  </ul></article>
+  <article class="info-card"><h3>Puterile postbelice</h3><p><strong>SUA</strong> dispuneau de cea mai puternică economie, armament nuclear și capacitate financiară pentru reconstrucție. <strong>URSS</strong> controla cea mai mare armată terestră europeană și transforma Europa de Est într-o zonă de securitate. Marea Britanie și Franța rămâneau mari puteri, dar erau slăbite, iar China intra într-o nouă etapă după războiul civil câștigat de comuniști în 1949.</p></article>
+</div>
+<div class="phase-grid">
+  <article class="phase-card" data-n="1"><strong>1945</strong><span>Ialta și Potsdam: ocupația Germaniei, frontiere, reparații și începutul divergențelor.</span></article>
+  <article class="phase-card" data-n="2"><strong>1946</strong><span>Discursul „Cortinei de Fier” și întărirea controlului sovietic în Est.</span></article>
+  <article class="phase-card" data-n="3"><strong>1947</strong><span>Doctrina Truman: sprijin pentru Grecia și Turcia împotriva presiunii comuniste.</span></article>
+  <article class="phase-card" data-n="4"><strong>1947–1948</strong><span>Planul Marshall și coordonarea reconstrucției Europei occidentale.</span></article>
+  <article class="phase-card" data-n="5"><strong>1947</strong><span>Cominform: coordonarea partidelor comuniste sub conducerea Moscovei.</span></article>
+</div>
+<details><summary>Războiul civil din Grecia și Doctrina Truman</summary><div class="details-body"><p>Între 1946 și 1949, forțele guvernamentale grecești, susținute inițial de Marea Britanie și apoi de SUA, au luptat împotriva Armatei Democrate controlate de comuniști. Bulgaria, Albania și Iugoslavia au oferit sprijin logistic rebelilor; ruptura Stalin–Tito a slăbit însă această susținere. În martie 1947, Truman a cerut Congresului ajutor pentru Grecia și Turcia, formulând doctrina de sprijinire a statelor amenințate de expansiunea comunistă. Conflictul a devenit un prim exemplu al politicii de <em>containment</em>.</p></div></details>
+<details><summary>Planul Marshall și răspunsul sovietic</summary><div class="details-body"><p>Programul european de redresare, anunțat de George C. Marshall în 1947 și aplicat din 1948, a furnizat ajutor financiar, materii prime și echipamente pentru reconstruirea economiilor occidentale. Moscova a respins participarea și a obligat statele est-europene să procedeze la fel. În 1949 a fost creat CAER, menit să coordoneze schimburile economice ale blocului socialist, dar resursele sovietice nu puteau egala sprijinul american, iar relațiile au rămas în mare parte bilaterale și dependente de planificarea centralizată.</p></div></details>
+</section>
+
+<section class="section" id="blocuri">
+<h2>III. Organizarea celor două blocuri</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Domeniu</th><th>Blocul occidental</th><th>Blocul sovietic</th></tr></thead>
+<tbody>
+<tr><td>Putere conducătoare</td><td>Statele Unite</td><td>Uniunea Sovietică</td></tr>
+<tr><td>Model politic</td><td>Democrație liberală și pluralism</td><td>Partid unic comunist</td></tr>
+<tr><td>Economie</td><td>Economie de piață și integrare comercială</td><td>Economie de comandă și planificare centrală</td></tr>
+<tr><td>Reconstrucție</td><td>Planul Marshall și OECE</td><td>CAER, creat în 1949</td></tr>
+<tr><td>Alianță militară</td><td>NATO, 1949</td><td>Tratatul de la Varșovia, 1955</td></tr>
+<tr><td>Strategie</td><td>Containment, descurajare, alianțe globale</td><td>Securizarea sferei est-europene și sprijinirea mișcărilor comuniste</td></tr>
+</tbody></table></div>
+<div class="three-col">
+  <article class="info-card"><h3>NATO</h3><p>Tratatul Atlanticului de Nord a fost semnat la 4 aprilie 1949. Articolul 5 stabilește apărarea colectivă: un atac armat împotriva unui membru este considerat un atac împotriva tuturor. RFG a aderat în 1955.</p></article>
+  <article class="info-card"><h3>Tratatul de la Varșovia</h3><p>Creat în mai 1955 după aderarea RFG la NATO, a organizat militar statele comuniste europene sub comandament sovietic. A servit atât apărării externe, cât și menținerii disciplinei politice în bloc.</p></article>
+  <article class="info-card"><h3>Alianțe globale</h3><p>SUA au sprijinit și alte pacte, precum ANZUS, SEATO și CENTO. URSS a încheiat tratate bilaterale și a furnizat arme, consilieri și sprijin politic statelor și mișcărilor apropiate ideologic.</p></article>
+</div>
+<div class="fact-check"><strong>Clarificare:</strong> crearea NATO și a Tratatului de la Varșovia reprezintă instituționalizarea rivalității, nu momente de destindere. Planul Marshall și CAER au fost programe concurente, nu proiecte comune de cooperare Est–Vest.</div>
+</section>
+
+<section class="section" id="onu">
+<h2>IV. ONU: forța dreptului într-o lume bipolară</h2>
+<p class="section-intro">Organizația Națiunilor Unite a fost creată pentru a preveni repetarea catastrofelor mondiale și pentru a oferi un cadru permanent de negociere. Carta a fost semnată la San Francisco la 26 iunie 1945 de 50 de state; Polonia a semnat ulterior și este considerată membru fondator, astfel încât numărul inițial a fost 51.</p>
+<div class="institution-grid">
+  <article class="institution-card"><strong>Adunarea Generală</strong><span>Toate statele membre; dezbate și adoptă rezoluții, în general cu valoare recomandatorie.</span></article>
+  <article class="institution-card"><strong>Consiliul de Securitate</strong><span>Cinci membri permanenți cu veto și membri nepermanenți; răspundere principală pentru pace și securitate.</span></article>
+  <article class="institution-card"><strong>Curtea Internațională</strong><span>Soluționează litigii între state și oferă avize consultative.</span></article>
+  <article class="institution-card"><strong>Secretariatul</strong><span>Administrația ONU, condusă de secretarul general, mediator și reprezentant diplomatic.</span></article>
+</div>
+<div class="two-col">
+  <article class="info-card"><h3>Principii</h3><ul class="clean">
+    <li>egalitatea suverană a statelor;</li><li>soluționarea pașnică a diferendelor;</li>
+    <li>interzicerea amenințării și folosirii forței, cu excepțiile prevăzute de Cartă;</li>
+    <li>cooperare economică, socială, culturală și umanitară;</li><li>respectarea drepturilor omului.</li>
+  </ul></article>
+  <article class="info-card"><h3>Roluri în Războiul Rece</h3><ul class="clean">
+    <li>mandat pentru apărarea Coreei de Sud în 1950, în absența temporară a URSS din Consiliu;</li>
+    <li>mediere și observatori în Orientul Mijlociu;</li><li>forțe de menținere a păcii în Suez și Cipru;</li>
+    <li>tribună a decolonizării și a statelor nealiniate;</li><li>diplomație a secretarilor generali în crizele globale.</li>
+  </ul></article>
+</div>
+<div class="fact-check"><strong>Corecții utile:</strong> ONU nu deține o armată permanentă proprie; „Căștile Albastre” sunt contingente furnizate de state. Președinția Consiliului de Securitate se rotește lunar, nu la șase luni. În Cipru staționează misiunea ONU UNFICYP, nu forțe NATO.</div>
+</section>
+
+<section class="section" id="berlin">
+<h2>V. Berlinul: laboratorul confruntării Est–Vest</h2>
+<h3>1. Blocada și podul aerian, 1948–1949</h3>
+<div class="two-col">
+  <article class="info-card"><h3>Cauze</h3><p>Germania și Berlinul fuseseră împărțite în patru zone de ocupație. Unificarea economică a zonelor occidentale și introducerea mărcii germane în iunie 1948 au fost percepute de Stalin ca pași către formarea unui stat german occidental separat. URSS a întrerupt accesul rutier, feroviar și fluvial spre sectoarele occidentale ale Berlinului.</p></article>
+  <article class="info-card"><h3>Răspunsul occidental</h3><p>Truman a respins ideea străpungerii militare a blocadei și a aprobat aprovizionarea aeriană. Operațiunile americane <em>Vittles</em> și britanice <em>Plainfare</em> au adus alimente, combustibil și materiale timp de aproape un an, demonstrând capacitatea logistică și hotărârea occidentală.</p></article>
+</div>
+<div class="timeline">
+  <article class="event"><div class="date danger">24 iun. 1948</div><div><h3>Începutul blocadei</h3><p>Sunt închise rutele terestre către Berlinul de Vest și este redusă alimentarea cu energie.</p></div></article>
+  <article class="event"><div class="date">26 iun. 1948</div><div><h3>Începe podul aerian</h3><p>Avioanele occidentale aterizează într-un ritm tot mai intens. În total, au fost efectuate peste 278.000 de zboruri și livrate aproximativ 2,3 milioane de tone de provizii.</p></div></article>
+  <article class="event"><div class="date calm">12 mai 1949</div><div><h3>Ridicarea blocadei</h3><p>URSS redeschide căile terestre. Podul aerian continuă până în septembrie pentru constituirea rezervelor.</p></div></article>
+</div>
+<div class="note"><strong>„Bombardierele cu stafide”:</strong> pilotul Gail Halvorsen și alți aviatori au aruncat copiilor dulciuri atașate unor parașute mici, transformând operațiunea și într-un succes de imagine.</div>
+
+<h3>2. Zidul Berlinului, 1961–1989</h3>
+<div class="two-col">
+  <article class="info-card"><h3>De ce a fost construit?</h3><p>Între 1949 și 1961, milioane de est-germani au părăsit RDG, mulți prin Berlin. Exodul specialiștilor și muncitorilor calificați amenința economia est-germană. Walter Ulbricht a cerut închiderea frontierei, iar Hrușciov a aprobat operațiunea.</p></article>
+  <article class="info-card"><h3>Semnificație</h3><p>Bariera începută la 13 august 1961 a separat familii, locuri de muncă și cartiere. Regimul o numea „zid de protecție antifascist”, însă în Occident a devenit simbolul incapacității comunismului de a-și păstra cetățenii fără constrângere.</p></article>
+</div>
+<div class="timeline">
+  <article class="event"><div class="date danger">13 aug. 1961</div><div><h3>Frontiera este închisă</h3><p>Sârmă ghimpată, apoi ziduri, turnuri de observație, șanțuri și o zonă de securitate transformă Berlinul de Vest într-o enclavă.</p></div></article>
+  <article class="event"><div class="date">26 iun. 1963</div><div><h3>Kennedy la Berlin</h3><p>Prin discursul „Ich bin ein Berliner”, președintele american reafirmă garanția occidentală pentru oraș.</p></div></article>
+  <article class="event"><div class="date">12 iun. 1987</div><div><h3>Reagan și Poarta Brandenburg</h3><p>Președintele american îi cere lui Gorbaciov să „dărâme acest zid”.</p></div></article>
+  <article class="event"><div class="date calm">9 nov. 1989</div><div><h3>Căderea Zidului</h3><p>O comunicare confuză privind noile reguli de călătorie provoacă deschiderea punctelor de frontieră și traversarea masivă a populației.</p></div></article>
+</div>
+</section>
+
+<section class="section" id="germania">
+<h2>VI. Problema germană: Doctrina Hallstein și Ostpolitik</h2>
+<div class="compare-grid">
+  <article class="info-card"><h3>Doctrina Hallstein</h3><span class="date-pill">aprox. 1955–1969</span><p>RFG pretindea că guvernul de la Bonn reprezintă legitim întreaga națiune germană. Cu excepția URSS, stat considerat putere de ocupație, RFG amenința să rupă relațiile diplomatice cu statele care recunoșteau oficial RDG. Scopul era izolarea internațională a Germaniei de Est și menținerea deschisă a perspectivei reunificării.</p></article>
+  <article class="info-card"><h3>Ostpolitik</h3><span class="date-pill">din 1969</span><p>Willy Brandt și consilierul Egon Bahr au înlocuit izolarea cu formula „schimbare prin apropiere”. RFG a recunoscut realitățile teritoriale postbelice, a deschis dialogul cu URSS, Polonia și RDG și a facilitat contactele dintre germani, fără a renunța la obiectivul unității naționale.</p></article>
+</div>
+<div class="timeline">
+  <article class="event"><div class="date calm">1970</div><div><h3>Tratatele de la Moscova și Varșovia</h3><p>Renunțarea la forță și acceptarea frontierelor europene, inclusiv linia Oder–Neisse. Gestul lui Brandt în fața memorialului ghetoului din Varșovia devine simbol al reconcilierii.</p></div></article>
+  <article class="event"><div class="date calm">1971</div><div><h3>Acordul cvadripartit asupra Berlinului</h3><p>SUA, URSS, Marea Britanie și Franța îmbunătățesc accesul și regimul contactelor cu Berlinul de Vest.</p></div></article>
+  <article class="event"><div class="date calm">1972</div><div><h3>Tratatul fundamental RFG–RDG</h3><p>Cele două state stabilesc relații practice și acceptă existența reciprocă; în 1973 ambele intră în ONU.</p></div></article>
+  <article class="event"><div class="date calm">3 oct. 1990</div><div><h3>Reunificarea</h3><p>După căderea Zidului și tratatul „2+4”, landurile est-germane intră în RFG. Kohl și Gorbaciov negociază retragerea trupelor sovietice și statutul internațional al Germaniei unite.</p></div></article>
+</div>
+<details><summary>Ostpolitik a Vaticanului</summary><div class="details-body"><p>În timpul papei Paul al VI-lea, cardinalul Agostino Casaroli a negociat cu guvernele comuniste pentru a îmbunătăți situația comunităților catolice din spatele Cortinei de Fier. Au existat înțelegeri cu Iugoslavia și Ungaria și contacte cu oficiali sovietici și români. În România, nerecunoașterea Bisericii Române Unite cu Roma a rămas un obstacol major.</p></div></details>
+</section>
+
+<section class="section" id="nuclear">
+<h2>VII. Cursa nucleară, spionajul și echilibrul terorii</h2>
+<div class="four-col">
+  <article class="principle-card"><strong>1945</strong><span>SUA folosesc bombele atomice și dețin temporar monopolul nuclear.</span></article>
+  <article class="principle-card"><strong>1949</strong><span>URSS testează prima sa bombă atomică; monopolul american încetează.</span></article>
+  <article class="principle-card"><strong>1952–1953</strong><span>SUA și URSS testează arme termonucleare mult mai puternice.</span></article>
+  <article class="principle-card"><strong>Anii 1960</strong><span>Triada nucleară: bombardiere, rachete terestre și submarine cu rachete balistice.</span></article>
+</div>
+<div class="definition"><strong>MAD — distrugere reciprocă asigurată:</strong> dacă ambele tabere păstrau suficiente arme pentru o a doua lovitură devastatoare, niciuna nu putea spera să câștige rațional un război nuclear. Stabilitatea strategică era astfel bazată pe vulnerabilitate reciprocă.</div>
+<div class="two-col">
+  <article class="info-card"><h3>Incidentul U-2, 1 mai 1960</h3><p>O rachetă sovietică a doborât avionul american de spionaj U-2 pilotat de Francis Gary Powers. Washingtonul a negat inițial misiunea, dar Hrușciov a prezentat pilotul capturat și epava. Scandalul a compromis summitul de la Paris și a întrerupt temporar speranțele de destindere.</p></article>
+  <article class="info-card"><h3>Spionaj și operațiuni secrete</h3><p>CIA, KGB, MI6 și alte servicii au colectat informații, au recrutat agenți, au organizat propagandă și au intervenit în politica statelor terțe. Loviturile de stat, operațiunile clandestine și dezinformarea au devenit instrumente permanente ale rivalității.</p></article>
+</div>
+<details><summary>De la „represalii masive” la „răspuns flexibil”</summary><div class="details-body"><p>Administrația Eisenhower a accentuat amenințarea unei riposte nucleare masive pentru a compensa costurile forțelor convenționale. Odată cu creșterea capacității sovietice de a lovi teritoriul american, doctrina devenea prea rigidă. Administrația Kennedy a adoptat „răspunsul flexibil”: posibilitatea de a reacționa gradual, cu forțe convenționale, arme nucleare tactice sau strategice, pentru a evita alegerea dintre capitulare și apocalipsă.</p></div></details>
+</section>
+
+<section class="section" id="asia">
+<h2>VIII. Asia: Coreea, China, Indochina și Afganistan</h2>
+<h3>1. Războiul din Coreea, 1950–1953</h3>
+<div class="two-col">
+  <article class="info-card"><h3>Desfășurare</h3><p>Coreea fusese împărțită la paralela 38. La 25 iunie 1950, Coreea de Nord a invadat Sudul. O forță multinațională autorizată de ONU și condusă de SUA a apărat Coreea de Sud. După avansul spre frontiera chineză, China a intervenit masiv în sprijinul Nordului.</p></article>
+  <article class="info-card"><h3>Rezultat</h3><p>Armistițiul de la Panmunjom din 27 iulie 1953 a restabilit aproximativ frontiera inițială și a creat zona demilitarizată. Nu a fost semnat un tratat de pace. Războiul a militarizat containmentul și a accelerat reînarmarea occidentală.</p></article>
+</div>
+<h3>2. Ruptura chino-sovietică</h3>
+<p>După 1956, Mao Zedong a criticat destalinizarea și „coexistența pașnică” promovată de Hrușciov. Divergențele ideologice ascundeau și rivalități de putere, frontieră și conducere a lumii comuniste. Retragerea consilierilor sovietici, polemicile publice și ciocnirile de frontieră din 1969 au transformat China și URSS în rivali. Apropierea dintre Washington și Beijing din 1972 a permis SUA să practice o diplomație triunghiulară.</p>
+<h3>3. Războiul din Vietnam</h3>
+<div class="timeline">
+  <article class="event"><div class="date danger">1946–1954</div><div><h3>Primul război din Indochina</h3><p>Franța luptă împotriva Viet Minh. Înfrângerea franceză de la Điện Biên Phủ și acordurile de la Geneva împart temporar Vietnamul la paralela 17.</p></div></article>
+  <article class="event"><div class="date danger">1964–1968</div><div><h3>Escaladarea americană</h3><p>După incidentul din Golful Tonkin, SUA desfășoară trupe numeroase și bombardează Vietnamul de Nord. URSS și China furnizează arme și ajutor Nordului.</p></div></article>
+  <article class="event"><div class="date">1968–1973</div><div><h3>Ofensiva Tet și vietnamizarea</h3><p>Deși respinsă militar, ofensiva Tet schimbă opinia publică americană. Nixon retrage treptat trupele și extinde temporar războiul în Cambodgia și Laos.</p></div></article>
+  <article class="event"><div class="date danger">1975</div><div><h3>Căderea Saigonului</h3><p>Vietnamul de Nord cucerește Sudul; țara este reunificată sub regim comunist.</p></div></article>
+</div>
+<h3>4. Afganistan, 1979–1989</h3>
+<p>În decembrie 1979, URSS a intervenit pentru a susține regimul comunist afgan aflat în criză. Mujahedinii au primit arme și sprijin din partea SUA, Pakistanului, Arabiei Saudite și altor state. Războiul a costat enorm Uniunea Sovietică, a încheiat destinderea anilor 1970 și a contribuit la delegitimarea sistemului. Retragerea sovietică s-a încheiat în februarie 1989.</p>
+</section>
+
+<section class="section" id="cuba">
+<h2>IX. Cuba: revoluție, invazie și criza rachetelor</h2>
+<h3>1. Revoluția Cubaneză, 1953–1959</h3>
+<div class="timeline">
+  <article class="event"><div class="date danger">26 iul. 1953</div><div><h3>Atacul de la Moncada</h3><p>Grupul lui Fidel Castro atacă cazarma Moncada din Santiago de Cuba și cazarma Bayamo. Operațiunea eșuează, numeroși participanți sunt uciși sau executați, iar Fidel și Raúl Castro sunt condamnați.</p></div></article>
+  <article class="event"><div class="date">1955</div><div><h3>Amnistia și exilul</h3><p>Batista eliberează prizonierii politici. Frații Castro pleacă în Mexic, unde organizează Mișcarea 26 Iulie, sunt instruiți de Alberto Bayo și îl întâlnesc pe Ernesto „Che” Guevara.</p></div></article>
+  <article class="event"><div class="date danger">2 dec. 1956</div><div><h3>Debarcarea de pe Granma</h3><p>Din cei 82 de rebeli, puțini supraviețuiesc atacului inițial și se refugiază în Sierra Maestra. Cu sprijin țărănesc, ei formează nucleul gherilei.</p></div></article>
+  <article class="event"><div class="date">1957–1958</div><div><h3>Gherila și rezistența urbană</h3><p>Radio Rebelde, rețelele conduse de Frank País, atacurile gherilei și pierderea sprijinului pentru Batista erodează regimul. Directoratul Revoluționar organizează separat atacul asupra Palatului Prezidențial din 1957.</p></div></article>
+  <article class="event"><div class="date calm">1 ian. 1959</div><div><h3>Căderea lui Batista</h3><p>Dictatorul părăsește țara; forțele revoluționare intră în Havana. Naționalizările și apropierea de URSS transformă treptat revoluția într-un regim comunist.</p></div></article>
+</div>
+<div class="note"><strong>Personaje:</strong> Fidel Castro, Raúl Castro, Che Guevara, Camilo Cienfuegos, Celia Sánchez și Haydée Santamaría au avut roluri diferite în conducerea militară, rețelele clandestine și legitimarea revoluției.</div>
+
+<h3>2. Golful Porcilor, 17–19 aprilie 1961</h3>
+<div class="two-col">
+  <article class="info-card"><h3>Planul</h3><p>Operațiunea fusese pregătită de administrația Eisenhower și moștenită de Kennedy. CIA a instruit Brigada 2506, formată din exilați cubanezi, care trebuia să debarce, să provoace o revoltă internă și să formeze un guvern provizoriu recunoscut de SUA.</p></article>
+  <article class="info-card"><h3>De ce a eșuat?</h3><ul class="clean">
+    <li>sprijin popular pentru Castro mai mare decât estimările CIA;</li>
+    <li>rezistență internă anticastristă slab coordonată;</li>
+    <li>lipsa superiorității aeriene și limitarea implicării militare americane directe;</li>
+    <li>planificare rigidă, informații eronate și fenomen de „gândire de grup”;</li>
+    <li>forțele cubaneze au izolat rapid capul de pod.</li>
+  </ul></article>
+</div>
+<div class="danger-box"><strong>Consecință strategică:</strong> eșecul a întărit regimul Castro, a umilit administrația Kennedy și a împins Cuba spre o alianță militară mai strânsă cu URSS. Kennedy a autorizat ulterior operațiunea secretă Mongoose împotriva guvernului cubanez.</div>
+
+<h3>3. Criza rachetelor, octombrie 1962</h3>
+<div class="flow">
+  <article class="flow-item"><b>Rachete sovietice</b><span>Hrușciov amplasează în secret arme nucleare în Cuba.</span></article>
+  <article class="flow-item"><b>Descoperire</b><span>Avioanele U-2 fotografiază instalațiile.</span></article>
+  <article class="flow-item"><b>„Carantină”</b><span>Kennedy impune blocadă navală și cere retragerea rachetelor.</span></article>
+  <article class="flow-item"><b>Negociere</b><span>Moscova și Washingtonul evită confruntarea directă.</span></article>
+  <article class="flow-item"><b>Compromis</b><span>URSS retrage rachetele; SUA promit să nu invadeze Cuba și retrag discret rachetele Jupiter din Turcia.</span></article>
+</div>
+<div class="definition"><strong>Importanță:</strong> cele treisprezece zile au fost momentul în care lumea s-a apropiat cel mai mult de un război nuclear general. Ulterior a fost instalată linia directă Washington–Moscova și s-a semnat Tratatul de interzicere parțială a testelor nucleare din 1963.</div>
+</section>
+
+<section class="section" id="orient">
+<h2>X. Orientul Mijlociu: decolonizare, petrol și rivalitate globală</h2>
+<div class="note"><strong>Context mai vechi:</strong> Acordul Sykes–Picot din 1916 și Declarația Balfour din 1917 au influențat organizarea postotomană și conflictul dintre naționalismele arab și sionist. După 1945, regiunea a devenit un spațiu al decolonizării și al rivalității dintre superputeri.</div>
+<div class="timeline">
+  <article class="event"><div class="date danger">1948–1949</div><div><h3>Primul război arabo-israelian</h3><p>Israelul își proclamă independența la 14 mai 1948. SUA îl recunosc imediat, iar URSS îl recunoaște de asemenea și sprijină inițial apariția statului. Egipt, Transiordania, Siria, Liban și Irak intră în război. Armistițiile din 1949 stabilesc linii de încetare a focului, nu o pace definitivă.</p></div></article>
+  <article class="event"><div class="date danger">1956</div><div><h3>Criza Suezului</h3><p>Nasser naționalizează canalul după retragerea finanțării occidentale pentru barajul de la Assuan. Israelul atacă Egiptul, urmat de intervenția britanică și franceză. Presiunea comună, dar separată, a SUA și URSS obligă agresorii să se retragă. Criza marchează declinul imperial franco-britanic.</p></div></article>
+  <article class="event"><div class="date danger">1967</div><div><h3>Războiul de Șase Zile</h3><p>După mobilizarea arabă și închiderea Strâmtorii Tiran, Israelul lansează atacuri aeriene preventive împotriva Egiptului; Iordania și Siria intră în război. Israelul ocupă Sinaiul, Gaza, Cisiordania, Ierusalimul de Est și Înălțimile Golan.</p></div></article>
+  <article class="event"><div class="date danger">1973</div><div><h3>Războiul de Yom Kippur</h3><p>Egiptul și Siria atacă pentru recuperarea teritoriilor pierdute. SUA aprovizionează Israelul, URSS sprijină statele arabe, iar riscul escaladării crește. Embargoul petrolier arab amplifică efectele globale.</p></div></article>
+  <article class="event"><div class="date calm">1978–1979</div><div><h3>Camp David și pacea egipteano-israeliană</h3><p>Jimmy Carter mediază negocierile dintre Anwar al-Sadat și Menachem Begin. Egiptul recunoaște Israelul, iar Sinaiul este restituit treptat Egiptului.</p></div></article>
+</div>
+<details><summary>Palestinienii și OEP</summary><div class="details-body"><p>Organizația pentru Eliberarea Palestinei a fost creată în 1964. Yasser Arafat, liderul Fatah, a devenit președintele Comitetului Executiv al OEP în 1969. Organizația a combinat lupta armată, diplomația și construirea unei reprezentări naționale palestiniene. Acordurile de la Oslo din 1993 au creat Autoritatea Palestiniană și un proces de autonomie limitată, fără a soluționa definitiv frontierele, refugiații, Ierusalimul și coloniile.</p></div></details>
+<div class="fact-check"><strong>Corecții:</strong> URSS a recunoscut Israelul în 1948, iar Cehoslovacia a furnizat arme importante noului stat. În 1967, Israelul a inițiat lovitura militară; Libanul nu a fost unul dintre principalii combatanți. Camp David a avut loc în 1978, iar tratatul de pace în 1979.</div>
+</section>
+
+<section class="section" id="spatiu">
+<h2>XI. Cursa spațială: tehnologie, prestigiu și putere militară</h2>
+<p class="section-intro">Explorarea spațiului era inseparabilă de competiția rachetelor balistice. Aceeași tehnologie care lansa sateliți putea transporta focoase nucleare, iar fiecare reușită devenea demonstrație de superioritate științifică, educațională și industrială.</p>
+<h3>1. Șocul Sputnik</h3>
+<div class="two-col">
+  <article class="info-card"><h3>Sputnik 1 — 4 octombrie 1957</h3><p>Primul satelit artificial a fost lansat de la Baikonur cu o rachetă R-7. Efectua o orbită în aproximativ 96 de minute, iar semnalul său radio putea fi recepționat de radioamatori. A reintrat în atmosferă la 4 ianuarie 1958.</p></article>
+  <article class="info-card"><h3>Răspunsul american</h3><ul class="clean">
+    <li>crearea NASA în 1958 și accelerarea programului Mercury;</li>
+    <li>extinderea educației științifice și a finanțării National Science Foundation;</li>
+    <li>dezvoltarea rachetelor Polaris și a sistemelor de avertizare;</li>
+    <li>crearea ARPA în 1958; ARPANET a început să funcționeze în 1969.</li>
+  </ul></article>
+</div>
+<h3>2. Mercury, Gemini și Apollo</h3>
+<div class="timeline">
+  <article class="event"><div class="date">1958–1963</div><div><h3>Mercury</h3><p>Primul program american cu echipaj uman: verificarea supraviețuirii și muncii omului în spațiu. Alan Shepard a efectuat primul zbor suborbital american, iar John Glenn primul zbor orbital american.</p></div></article>
+  <article class="event"><div class="date">1961</div><div><h3>Gagarin și obiectivul lunar</h3><p>La 12 aprilie, Iuri Gagarin devine primul om în spațiu. La 25 mai, Kennedy cere Congresului aselenizarea unui om și întoarcerea sa în siguranță înainte de sfârșitul deceniului.</p></div></article>
+  <article class="event"><div class="date">1961–1966</div><div><h3>Gemini</h3><p>Misiunile testează întâlnirea și andocarea orbitală, zborurile de lungă durată și activitățile extravehiculare necesare programului lunar.</p></div></article>
+  <article class="event"><div class="date danger">27 ian. 1967</div><div><h3>Incendiul Apollo 1</h3><p>Virgil Grissom, Edward White și Roger Chaffee mor într-un incendiu în timpul unui test la sol. Accidentul duce la reproiectarea modulului de comandă și la schimbări majore de siguranță.</p></div></article>
+  <article class="event"><div class="date calm">20 iul. 1969</div><div><h3>Apollo 11</h3><p>Neil Armstrong și Buzz Aldrin aselenizează în modulul Eagle, în timp ce Michael Collins rămâne pe orbită. Misiunea revine pe Pământ la 24 iulie.</p></div></article>
+  <article class="event"><div class="date">1970–1972</div><div><h3>Apollo 13 și ultimele aselenizări</h3><p>Explozia unui rezervor de oxigen transformă Apollo 13 într-o operațiune dramatică de salvare. Apollo 17, în decembrie 1972, este ultima misiune care duce oameni pe Lună; în total, doisprezece astronauți au pășit pe suprafață.</p></div></article>
+  <article class="event"><div class="date calm">1975</div><div><h3>Apollo–Soyuz</h3><p>O capsulă americană Apollo și una sovietică Soyuz se andochează pe orbită, transformând tehnologia spațială într-un simbol al destinderii.</p></div></article>
+</div>
+<div class="fact-check"><strong>Clarificare:</strong> programul de aselenizare Apollo s-a desfășurat în principal între 1961 și 1972. Proiectul Apollo–Soyuz din 1975 a folosit o navă Apollo, dar a fost un program internațional distinct. Kennedy a formulat public obiectivul lunar la 25 mai 1961, nu la 25 martie.</div>
+</section>
+
+<section class="section" id="destindere">
+<h2>XII. Destindere și noi escaladări</h2>
+<h3>1. De ce a apărut destinderea?</h3>
+<div class="four-col">
+  <article class="principle-card"><strong>Paritate nucleară</strong><span>Niciuna dintre superputeri nu mai putea spera la victorie fără distrugere proprie.</span></article>
+  <article class="principle-card"><strong>Costuri</strong><span>Războiul din Vietnam și cursa armamentelor împovărau bugetele și societățile.</span></article>
+  <article class="principle-card"><strong>Ruptura sino-sovietică</strong><span>SUA au exploatat rivalitatea dintre Moscova și Beijing.</span></article>
+  <article class="principle-card"><strong>Europa</strong><span>Ostpolitik și interesele economice occidentale încurajau stabilizarea continentului.</span></article>
+</div>
+<div class="timeline">
+  <article class="event"><div class="date calm">1963</div><div><h3>Linia directă și tratatul testelor</h3><p>După criza cubaneză, Washingtonul și Moscova instalează o legătură directă și semnează Tratatul de interzicere parțială a testelor nucleare.</p></div></article>
+  <article class="event"><div class="date calm">1968</div><div><h3>Tratatul de neproliferare nucleară</h3><p>Statele fără arme nucleare promit să nu le dobândească, iar puterile nucleare acceptă obiective de dezarmare și cooperare pașnică.</p></div></article>
+  <article class="event"><div class="date calm">1972</div><div><h3>SALT I și Tratatul ABM</h3><p>Superputerile limitează anumite lansatoare strategice și sistemele antibalistice, protejând paradoxal logica descurajării reciproce.</p></div></article>
+  <article class="event"><div class="date calm">1975</div><div><h3>Actul Final de la Helsinki</h3><p>Statele participante recunosc inviolabilitatea frontierelor europene, cooperarea și un set de angajamente privind drepturile omului. Disidenții est-europeni vor folosi aceste angajamente împotriva propriilor regimuri.</p></div></article>
+</div>
+<h3>2. Limitele destinderii</h3>
+<p>Destinderea nu a eliminat competiția. URSS a reprimat revoluția maghiară din 1956 și Primăvara de la Praga din 1968; conflictele din Vietnam, Orientul Mijlociu și Africa au continuat; SUA și URSS au sprijinit tabere rivale în Angola, Etiopia și alte state. Invazia Afganistanului din 1979, revoluția iraniană și criza ostaticilor au inaugurat o nouă perioadă tensionată.</p>
+<h3>3. „Al doilea Război Rece”, 1979–1985</h3>
+<div class="two-col">
+  <article class="info-card"><h3>Escaladare</h3><ul class="clean">
+    <li>boicotarea Jocurilor Olimpice de la Moscova din 1980 și apoi a celor de la Los Angeles din 1984;</li>
+    <li>desfășurarea rachetelor sovietice SS-20 și a rachetelor occidentale Pershing II și Cruise;</li>
+    <li>doctrina Reagan și sprijin pentru mișcări anticomuniste;</li>
+    <li>Inițiativa de Apărare Strategică din 1983;</li>
+    <li>intensificarea propagandei și a cheltuielilor militare.</li>
+  </ul></article>
+  <article class="info-card"><h3>Începutul ieșirii din criză</h3><p>Venirea lui Gorbaciov la conducerea URSS în 1985 a schimbat dinamica. Summiturile de la Geneva, Reykjavík, Washington și Moscova au permis reluarea dialogului. Tratatul INF din 1987 a eliminat o clasă întreagă de rachete terestre cu rază intermediară.</p></article>
+</div>
+</section>
+
+<section class="section" id="final">
+<h2>XIII. Prăbușirea blocului sovietic și sfârșitul Războiului Rece</h2>
+<div class="two-col">
+  <article class="info-card"><h3>Cauze structurale</h3><ul class="clean">
+    <li>stagnarea economiei planificate și decalajul tehnologic;</li>
+    <li>costurile cursei armamentelor și ale războiului din Afganistan;</li>
+    <li>corupție, penurie și scăderea încrederii în ideologie;</li>
+    <li>naționalismele republicilor sovietice și ale Europei de Est;</li>
+    <li>circulația informației și comparația cu nivelul de trai occidental.</li>
+  </ul></article>
+  <article class="info-card"><h3>Reformele lui Gorbaciov</h3><ul class="clean">
+    <li><em>perestroika</em> — restructurarea economiei și a instituțiilor;</li>
+    <li><em>glasnost</em> — transparență, dezbatere și reducerea cenzurii;</li>
+    <li>„noua gândire” — reducerea confruntării externe și renunțarea la intervenția automată în statele satelit;</li>
+    <li>alegeri mai competitive și slăbirea monopolului PCUS;</li>
+    <li>reformele au eliberat tensiuni pe care centrul nu le-a mai putut controla.</li>
+  </ul></article>
+</div>
+<div class="timeline">
+  <article class="event"><div class="date calm">1989</div><div><h3>Revoluțiile est-europene</h3><p>Polonia, Ungaria, RDG, Cehoslovacia, Bulgaria și România abandonează regimurile comuniste. Moscova nu mai intervine militar.</p></div></article>
+  <article class="event"><div class="date calm">1990</div><div><h3>Reunificarea Germaniei</h3><p>Tratatul „2+4” rezolvă drepturile celor patru puteri, frontierele și statutul extern al Germaniei unite.</p></div></article>
+  <article class="event"><div class="date calm">1991</div><div><h3>Dispariția CAER și a Tratatului de la Varșovia</h3><p>Structurile economice și militare ale blocului estic sunt dizolvate.</p></div></article>
+  <article class="event"><div class="date danger">aug. 1991</div><div><h3>Lovitura de stat eșuată</h3><p>Conservatorii încearcă să-l înlăture pe Gorbaciov. Rezistența condusă la Moscova de Boris Elțîn accelerează destrămarea autorității unionale.</p></div></article>
+  <article class="event"><div class="date calm">dec. 1991</div><div><h3>Dizolvarea URSS</h3><p>Rusia, Ucraina și Belarus declară că Uniunea Sovietică nu mai există și creează Comunitatea Statelor Independente. Gorbaciov demisionează la 25 decembrie.</p></div></article>
+</div>
+<details><summary>Cele cincisprezece republici unionale devenite independente</summary><div class="details-body"><div class="three-col">
+  <article class="info-card"><h3>Europa și Baltica</h3><p>Rusia, Ucraina, Belarus, Moldova, Estonia, Letonia și Lituania.</p></article>
+  <article class="info-card"><h3>Caucaz</h3><p>Armenia, Azerbaidjan și Georgia.</p></article>
+  <article class="info-card"><h3>Asia Centrală</h3><p>Kazahstan, Kârgâzstan, Tadjikistan, Turkmenistan și Uzbekistan.</p></article>
+</div></div></details>
+</section>
+
+<section class="section" id="cronologie">
+<h2>XIV. Cronologie generală: 1945–1991</h2>
+<div class="timeline">
+  <article class="event"><div class="date danger">1945–1949</div><div><h3>Ruptura și formarea blocurilor</h3><p>ONU, Cortina de Fier, Doctrina Truman, Planul Marshall, Cominform, CAER, Blocada Berlinului, NATO, RFG și RDG, bomba atomică sovietică.</p></div></article>
+  <article class="event"><div class="date danger">1950–1956</div><div><h3>Militarizarea confruntării</h3><p>Coreea, SEATO, aderarea RFG la NATO, Tratatul de la Varșovia, Suez și revoluția maghiară.</p></div></article>
+  <article class="event"><div class="date danger">1957–1962</div><div><h3>Apogeul crizelor</h3><p>Sputnik, revoluția cubaneză, U-2, Golful Porcilor, Zidul Berlinului și criza rachetelor.</p></div></article>
+  <article class="event"><div class="date danger">1963–1969</div><div><h3>Competiție și fragmentare</h3><p>Vietnam, ruptura chino-sovietică, Războiul de Șase Zile, Primăvara de la Praga și aselenizarea Apollo 11.</p></div></article>
+  <article class="event"><div class="date calm">1969–1979</div><div><h3>Destinderea</h3><p>Ostpolitik, apropierea SUA–China, SALT I, Helsinki, Apollo–Soyuz, dar și Yom Kippur și continuarea conflictelor regionale.</p></div></article>
+  <article class="event"><div class="date danger">1979–1985</div><div><h3>Noua escaladare</h3><p>Afganistan, criza eurorachetelor, Solidaritatea, doctrina Reagan și Inițiativa de Apărare Strategică.</p></div></article>
+  <article class="event"><div class="date calm">1985–1991</div><div><h3>Dezescaladare și dezintegrare</h3><p>Gorbaciov, INF, retragerea din Afganistan, revoluțiile din 1989, căderea Zidului, reunificarea Germaniei și destrămarea URSS.</p></div></article>
+</div>
+</section>
+
+<section class="section" id="sinteza">
+<h2>XV. Tabel de sinteză: conflict și cooperare</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Tip de relație</th><th>Instrument</th><th>Exemple</th><th>Efect</th></tr></thead>
+<tbody>
+<tr><td>Conflict direct limitat</td><td>Blocadă, incident militar, amenințare</td><td>Berlin 1948, U-2, criza rachetelor</td><td>Testarea hotărârii adversarului fără război general.</td></tr>
+<tr><td>Război prin intermediari</td><td>Arme, consilieri, finanțare, trupe aliate</td><td>Coreea, Vietnam, Afganistan, Angola</td><td>Extinderea confruntării în state terțe și costuri umane enorme.</td></tr>
+<tr><td>Alianță</td><td>Tratat militar și apărare colectivă</td><td>NATO, Tratatul de la Varșovia</td><td>Consolidarea blocurilor și descurajarea atacului.</td></tr>
+<tr><td>Diplomație bilaterală</td><td>Summit, canal secret, compromis</td><td>Cuba 1962, diplomația triunghiulară, Gorbaciov–Reagan</td><td>Controlul escaladării și negocierea intereselor.</td></tr>
+<tr><td>Controlul armamentelor</td><td>Tratate și verificare</td><td>PTBT, NPT, SALT, ABM, INF</td><td>Limitarea unor riscuri fără eliminarea rivalității.</td></tr>
+<tr><td>Cooperare multilaterală</td><td>ONU, conferințe, misiuni de pace</td><td>Suez, Cipru, Helsinki</td><td>Cadru juridic și diplomatic pentru gestionarea conflictelor.</td></tr>
+<tr><td>Competiție tehnologică</td><td>Programe spațiale și cercetare</td><td>Sputnik, Mercury, Gemini, Apollo</td><td>Prestigiu, inovare și dezvoltarea tehnologiei rachetelor.</td></tr>
+</tbody></table></div>
+<div class="final-box">
+<h3>Concluzie generală</h3>
+<p>Diplomația Războiului Rece a funcționat sub amenințarea permanentă a distrugerii nucleare. Superputerile și-au extins influența prin alianțe și războaie regionale, dar au fost obligate să inventeze mecanisme de autocontrol: linii directe, summituri, tratate, instituții internaționale și recunoașterea tacită a unor limite. Sfârșitul confruntării nu a fost produs de o singură victorie militară, ci de acumularea dezechilibrelor economice, reformele sovietice, presiunea societăților est-europene și negocierea diplomatică a transformărilor din 1989–1991.</p>
+</div>
+</section>
+
+<footer>Material de sinteză · Istorie universală · Războiul Rece: diplomație și conflict</footer>
+</main>
+<script>
+const allDetails=[...document.querySelectorAll("details")];
+document.querySelectorAll("[data-action]").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    const open=btn.dataset.action==="open";
+    allDetails.forEach(d=>d.open=open);
+  });
+});
+</script>
+</body>
+</html>

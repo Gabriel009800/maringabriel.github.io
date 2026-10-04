@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>alfabetul-istoriei-tipuri-de-cronologii</title>
+  <style>
+:root {
+  --bg: #f6f0e7;
+  --paper: #fffaf3;
+  --paper-2: #ffffff;
+  --ink: #2f241c;
+  --title: #3c2a1e;
+  --muted: #5b4a3d;
+  --accent: #7a4f2a;
+  --accent-2: #9b6a3c;
+  --accent-soft: #f0e4d4;
+  --line: rgba(91, 62, 36, 0.18);
+  --line-strong: rgba(91, 62, 36, 0.34);
+  --outer-dark: #241208;
+  --outer-mid: #4a2a18;
+  --outer-warm: #7a4b2b;
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+  --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+    radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+}
+.page { position: relative; z-index: 1; width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 34px 0 70px; }
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.back-link, .tag { display: inline-flex; align-items: center; border: 1px solid var(--line); background: rgba(255, 250, 243, 0.84); color: var(--title); border-radius: 999px; padding: 10px 15px; text-decoration: none; font-size: 15px; font-weight: 700; box-shadow: var(--shadow-small); }
+.back-link:hover { background: #fff6eb; }
+.hero, .section, .nav-card, .final-box { background: rgba(255, 250, 243, 0.96); border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow); }
+.hero { padding: 38px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.hero::after { content: attr(data-watermark); position: absolute; right: 26px; bottom: -22px; font-size: 104px; font-weight: 900; letter-spacing: -4px; color: rgba(122, 79, 42, 0.08); pointer-events: none; }
+.eyebrow { margin: 0 0 8px; font-size: 16px; color: var(--accent); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; }
+h1 { margin: 0; font-size: clamp(38px, 5vw, 62px); line-height: 1.04; color: var(--title); letter-spacing: -1.4px; text-align: left; text-align-last: auto; }
+.subtitle { margin: 18px 0 0; max-width: 980px; font-size: 19px; line-height: 1.78; color: var(--muted); text-align: justify; text-align-last: left; }
+.summary-grid, .three-col, .two-col, .term-grid, .quick-grid, .cause-grid, .details-grid, .four-grid { display: grid; gap: 14px; }
+.summary-grid { grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+.three-col { grid-template-columns: repeat(3, 1fr); }
+.two-col { grid-template-columns: repeat(2, 1fr); }
+.four-grid { grid-template-columns: repeat(4, 1fr); }
+.cause-grid { grid-template-columns: 1.1fr 0.9fr; }
+.term-grid { grid-template-columns: repeat(4, 1fr); }
+.quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+.summary-card, .info-card, .wide-card, .term-card, .quick-card, .source-note, .micro-card, .warning-box, .table-wrap { background: var(--paper-2); border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); text-align: justify; text-align-last: left; }
+.summary-card { padding: 16px; min-height: 132px; }
+.summary-card strong, .quick-card strong, .term-card strong, .micro-card strong { display: block; color: var(--title); font-size: 17px; margin-bottom: 8px; text-align: left; text-align-last: auto; }
+.summary-card span, .quick-card span, .term-card span, .micro-card span { display: block; color: var(--muted); font-size: 15.5px; line-height: 1.56; text-align: justify; text-align-last: left; }
+.nav-card { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 18px 20px; margin-bottom: 24px; }
+.nav-card b { color: var(--title); margin-right: 2px; }
+.nav-card a, .mini-btn { color: var(--title); background: var(--accent-soft); border: 1px solid rgba(91, 62, 36, 0.16); border-radius: 999px; text-decoration: none; padding: 8px 12px; font-weight: 700; font-size: 14px; cursor: pointer; font-family: inherit; }
+.nav-card a:hover, .mini-btn:hover { background: #e5d2bb; }
+.section { padding: 30px; margin-bottom: 24px; }
+h2 { margin: 0 0 14px; color: var(--title); font-size: clamp(28px, 3vw, 38px); line-height: 1.15; text-align: left; text-align-last: auto; }
+h3 { margin: 0 0 12px; color: var(--title); font-size: 22px; line-height: 1.22; text-align: left; text-align-last: auto; }
+h4 { margin: 16px 0 8px; color: var(--title); font-size: 18px; text-align: left; text-align-last: auto; }
+.section-intro, p, li, dd { font-size: 17px; line-height: 1.72; color: var(--muted); text-align: justify; text-align-last: left; hyphens: auto; }
+.section-intro { margin: 0 0 20px; max-width: 1000px; }
+.info-card, .wide-card, .term-card, .quick-card, .micro-card, .warning-box, .table-wrap { padding: 20px; }
+.wide-card { margin-top: 14px; }
+.wide-card p:last-child, .info-card p:last-child { margin-bottom: 0; }
+.clean, .number-list { margin: 0; padding-left: 22px; }
+.clean li, .number-list li { margin: 0 0 9px; padding-left: 2px; }
+.clean li:last-child, .number-list li:last-child { margin-bottom: 0; }
+.mini-title { display: inline; color: var(--title); font-weight: 800; background: transparent; border: 0; border-radius: 0; padding: 0; margin-right: 5px; white-space: normal; text-align: inherit; }
+.date-pill { display: inline-block; color: var(--title); font-weight: 800; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.13); border-radius: 999px; padding: 2px 9px; margin-right: 5px; white-space: nowrap; text-align: left; }
+.definition, .note { margin-top: 18px; background: #fff8ef; border: 1px solid rgba(122, 79, 42, 0.22); border-left: 6px solid rgba(122, 79, 42, 0.48); border-radius: 18px; padding: 18px 20px; color: var(--muted); font-size: 17px; line-height: 1.7; text-align: justify; text-align-last: left; }
+.definition strong, .note strong { color: var(--title); }
+details { background: #fffdf9; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); margin-top: 14px; overflow: hidden; }
+details[open] { background: #fffaf3; }
+summary { cursor: pointer; list-style: none; padding: 18px 20px; font-size: 19px; font-weight: 800; color: var(--title); display: flex; justify-content: space-between; align-items: center; gap: 18px; text-align: left; text-align-last: auto; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "Deschide"; color: var(--muted); font-size: 14px; font-weight: 700; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 999px; padding: 7px 11px; white-space: nowrap; }
+details[open] > summary::after { content: "Ascunde"; }
+.details-body { border-top: 1px solid rgba(91, 62, 36, 0.12); padding: 18px 20px 20px; text-align: justify; text-align-last: left; }
+.details-grid { grid-template-columns: repeat(2, 1fr); }
+.nested-details { margin-top: 10px; box-shadow: none; background: #ffffff; }
+.nested-details summary { font-size: 17px; padding: 14px 16px; }
+.key-line { display: grid; grid-template-columns: 230px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px dashed rgba(91, 62, 36, 0.18); }
+.key-line:last-child { border-bottom: 0; }
+.key-line strong { color: var(--title); text-align: left; text-align-last: auto; }
+.key-line span { color: var(--muted); line-height: 1.65; text-align: justify; text-align-last: left; }
+.timeline { position: relative; display: grid; gap: 14px; margin-top: 18px; }
+.event { display: grid; grid-template-columns: 142px 1fr; gap: 18px; align-items: stretch; background: #ffffff; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); overflow: hidden; }
+.date { background: linear-gradient(180deg, #7a4f2a, #5b351b); color: #fffaf3; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px; font-size: 18px; line-height: 1.25; font-weight: 900; letter-spacing: 0.2px; }
+.event > div:last-child { padding: 17px 18px 18px 0; text-align: justify; text-align-last: left; }
+.event h3 { margin-bottom: 6px; }
+.event p { margin: 0; }
+.small-muted { font-size: 15px; color: #725c49; line-height: 1.6; text-align: justify; text-align-last: left; }
+.warning-box { background: #fff7ec; border-color: rgba(122, 79, 42, 0.22); margin-top: 16px; }
+.final-box { padding: 28px; background: linear-gradient(135deg, #fffaf3, #f4e4d1); border-color: rgba(91, 62, 36, 0.25); }
+.final-box p { margin-bottom: 0; }
+.table-wrap { overflow-x: auto; margin-top: 14px; }
+table { width: 100%; border-collapse: collapse; font-size: 16px; color: var(--muted); }
+th, td { border-bottom: 1px solid rgba(91, 62, 36, 0.14); padding: 12px 10px; vertical-align: top; text-align: left; }
+th { color: var(--title); background: #f7ecdd; font-weight: 900; }
+tr:last-child td { border-bottom: 0; }
+.badge { display: inline-block; font-size: 14px; font-weight: 800; color: var(--title); background: #f2e4d2; border: 1px solid rgba(91,62,36,0.14); padding: 3px 8px; border-radius: 999px; margin: 2px 2px 2px 0; }
+@media (max-width: 980px) { .summary-grid, .three-col, .term-grid, .quick-grid, .four-grid { grid-template-columns: repeat(2, 1fr); } .two-col, .cause-grid, .details-grid { grid-template-columns: 1fr; } }
+@media (max-width: 680px) { .page { width: min(100% - 22px, 1180px); padding-top: 22px; } .hero, .section, .final-box { padding: 22px; border-radius: 22px; } .summary-grid, .term-grid, .quick-grid, .four-grid { grid-template-columns: 1fr; } .event { grid-template-columns: 1fr; } .date { min-height: 66px; } .event > div:last-child { padding: 0 16px 16px; } .key-line { grid-template-columns: 1fr; gap: 6px; } summary { align-items: flex-start; flex-direction: column; } .hero::after { font-size: 76px; } }
+
+.hierarchy { margin-top: 16px; }
+.hierarchy .level { background:#fffdf9; border:1px solid rgba(91,62,36,.14); border-radius:18px; padding:16px 18px; margin:12px 0; box-shadow: var(--shadow-small); }
+.hierarchy .level strong { color:var(--title); }
+.hierarchy ul { margin:8px 0 0; padding-left:22px; }
+.hierarchy li { margin-bottom:6px; }
+.small-table td, .small-table th { font-size: 15.5px; }
+</style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a class="back-link" href="index.html">← Înapoi la materiale</a>
+      <span class="tag">Alfabetul istoriei · Metodă istorică · Material didactic</span>
+    </div>
+    <section class="hero" data-watermark="TIMP">
+      <p class="eyebrow">Alfabetul istoriei</p>
+      <h1>Tipuri de cronologii istorice</h1>
+      <p class="subtitle">Material structurat despre cronologii, periodizare și tranziții istorice. Accentul cade pe ierarhia corectă a epocilor: Preistorie → Epoca pietrei / Epoca metalelor → subetape, apoi Antichitate, Ev Mediu, Modernitate și Contemporaneitate, cu tabele comparative între spații istorice.</p>
+      <div class="summary-grid"><div class="summary-card"><strong>Structură corectă</strong><span>Paleoliticul, mezoliticul și neoliticul sunt subdiviziuni ale Epocii pietrei, iar Epoca pietrei este o subdiviziune a Preistoriei. Epoca bronzului și Epoca fierului aparțin Epocii metalelor, tot în Preistorie.</span></div><div class="summary-card"><strong>Antichitatea târzie</strong><span>Antichitatea târzie nu este o epocă separată de Antichitate, ci o parte finală a ei, alături de antichitatea timpurie, arhaică, clasică și elenistică/imperială, în funcție de spațiul studiat.</span></div><div class="summary-card"><strong>Tranziții, nu ziduri</strong><span>Trecerile între epoci nu se produc simultan peste tot. Scrierea apare în Mesopotamia înaintea Europei nordice; fierul se răspândește diferit; modernitatea europeană nu coincide cu toate lumile istorice.</span></div><div class="summary-card"><strong>Cronologie comparativă</strong><span>Comparația între spații istorice arată decalaje, ritmuri diferite și dezvoltări paralele: Europa, China, lumea islamică, Africa, America precolumbiană și Oceania nu urmează aceeași linie unică.</span></div></div>
+    </section>
+    <nav class="nav-card" aria-label="Cuprins"><b>Cuprins:</b><a href="#principii">I. Principii</a><a href="#ierarhie">II. Ierarhie</a><a href="#tranzitii">III. Tranziții</a><a href="#tipuri">IV. Tipuri</a><a href="#decalaj">V. Decalaj</a><a href="#comparativ">VI. Comparativ</a><a href="#calendare">VII. Calendare</a><a href="#metoda">VIII. Metodă</a></nav>
+    <section class="section" id="principii"><h2>I. Ce este o cronologie istorică?</h2><p class="section-intro">Cronologia istorică este organizarea timpului pentru a înțelege succesiunea, durata, simultaneitatea și raporturile dintre evenimente. Ea nu este doar o listă de ani, ci un instrument de interpretare: arată ce se întâmplă înainte, după, în același timp, mai repede sau mai lent.</p><div class="two-col"><article class="info-card"><h3>Cronologie absolută</h3><p>Folosește date calendaristice: 476, 1453, 1789, 1914. Este utilă pentru evenimente politice, tratate, războaie și domnii.</p></article><article class="info-card"><h3>Cronologie relativă</h3><p>Spune că un fenomen este anterior, posterior sau contemporan altuia. Este foarte importantă în arheologie, mai ales prin stratigrafie.</p></article><article class="info-card"><h3>Cronologie comparativă</h3><p>Pune în paralel spații diferite: ce se întâmpla în Europa, China, lumea islamică, Africa sau America în aceeași perioadă?</p></article><article class="info-card"><h3>Periodizare</h3><p>Împarte timpul în epoci, perioade, faze și subfaze. Este utilă, dar convențională: granițele dintre epoci sunt aproximative și depind de regiune.</p></article></div></section><section class="section" id="ierarhie"><h2>II. Ierarhia corectă a epocilor istorice</h2><p class="section-intro">O greșeală frecventă este punerea pe același nivel a Preistoriei, Paleoliticului, Neoliticului, Epocii bronzului și Antichității. Corect, Paleoliticul, Mezoliticul și Neoliticul sunt subetape ale Epocii pietrei, iar Epoca pietrei este o parte a Preistoriei. Epoca bronzului și Epoca fierului sunt subetape ale Epocii metalelor, tot în Preistorie.</p><div class="hierarchy">
+<div class="level"><strong>1. Preistoria</strong> — perioada de dinaintea folosirii scrierii într-un anumit spațiu; începe cu primele unelte de piatră și se încheie diferit, în funcție de regiune.
+  <ul>
+    <li><strong>1.1. Epoca pietrei</strong>
+      <ul>
+        <li><strong>Paleoliticul</strong> — vânătoare, cules, nomadism, prime unelte, controlul focului, artă rupestră; se subdivide în paleolitic inferior, mijlociu și superior.</li>
+        <li><strong>Mezoliticul / Epipaleoliticul</strong> — adaptare la climatul postglaciar, microlite, pescuit, vânătoare specializată, comunități mai stabile.</li>
+        <li><strong>Neoliticul</strong> — agricultură, domesticirea animalelor, sedentarizare, ceramică, sate, textile, ritualuri complexe.</li>
+        <li><strong>Eneoliticul / Calcoliticul</strong> — fază de tranziție în care piatra continuă să fie folosită, dar apare metalurgia cuprului și diferențiere socială mai vizibilă.</li>
+      </ul>
+    </li>
+    <li><strong>1.2. Epoca metalelor</strong>
+      <ul>
+        <li><strong>Epoca bronzului</strong> — aliaj cupru-staniu, elite războinice, schimburi pe distanțe lungi, fortificații, ierarhii, proto-state în unele zone.</li>
+        <li><strong>Epoca fierului</strong> — fierul devine tot mai important pentru unelte și arme; apar formațiuni tribale, regate, orașe fortificate și în multe spații trecerea spre istoria scrisă.</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<div class="level"><strong>2. Protoistoria</strong> — situație intermediară: un popor nu lasă încă texte proprii, dar este menționat de vecini care folosesc scrierea. Exemplu: unele populații europene cunoscute din izvoare grecești sau romane.</div>
+<div class="level"><strong>3. Antichitatea</strong> — epoca civilizațiilor scrise vechi: Mesopotamia, Egipt, Grecia, Roma, Persia, India, China, Levant etc. Subdiviziunile depind de spațiu.
+  <ul>
+    <li><strong>Antichitate timpurie</strong> — apariția orașelor, statelor, scrierii, administrației și marilor temple/palate.</li>
+    <li><strong>Antichitate arhaică</strong> — formarea instituțiilor, aristocrațiilor, regatelor, polisurilor sau imperiilor timpurii.</li>
+    <li><strong>Antichitate clasică</strong> — perioade de maturizare cultural-politică: Grecia clasică, Roma republicană/imperială timpurie, China Han etc.</li>
+    <li><strong>Antichitate elenistică / imperială</strong> — în Mediterana: de la Alexandru cel Mare la dominația romană; în Roma: sistem imperial, urbanizare, drept, armată.</li>
+    <li><strong>Antichitate târzie</strong> — transformarea lumii romane, creștinarea, reformele lui Dioclețian și Constantin, migrații, Bizanț timpuriu; nu este în afara Antichității, ci faza ei finală.</li>
+  </ul>
+</div>
+<div class="level"><strong>4. Evul Mediu</strong> — epoca dintre Antichitate și Modernitate în periodizarea europeană.
+  <ul>
+    <li><strong>Ev Mediu timpuriu</strong> — regate postromane, Bizanț, islam timpuriu, ruralizare în Occident, creștinări, migrații.</li>
+    <li><strong>Ev Mediu central / dezvoltat</strong> — feudalism, cruciade, orașe, universități, catedrale, monarhii în consolidare.</li>
+    <li><strong>Ev Mediu târziu</strong> — crize demografice, Ciuma Neagră, Războiul de 100 de Ani, state mai centralizate, începuturi renascentiste.</li>
+  </ul>
+</div>
+<div class="level"><strong>5. Epoca modernă</strong> — de regulă de la marile transformări ale secolelor XV-XVI până la revoluțiile moderne și industrializare.
+  <ul>
+    <li><strong>Modernitate timpurie</strong> — Renaștere, Reformă, expansiune oceanică, state centralizate, tipar, economie atlantică.</li>
+    <li><strong>Modernitate propriu-zisă / lungul secol XIX</strong> — revoluții, naționalisme, industrializare, liberalism, imperialism, capitalism global.</li>
+  </ul>
+</div>
+<div class="level"><strong>6. Epoca contemporană</strong> — revoluții moderne târzii, războaie mondiale, totalitarisme, Războiul Rece, decolonizare, globalizare, digitalizare.</div>
+</div><div class="note"><strong>Observație importantă:</strong> datele sunt orientative. În Mesopotamia scrierea apare în mileniul IV î.Hr.; în alte spații, preistoria continuă mult mai târziu. De aceea, „Preistorie” nu înseamnă același interval calendaristic peste tot.</div></section><section class="section" id="tranzitii"><h2>III. Evenimente și procese care marchează tranzițiile între epoci</h2><p class="section-intro">Trecerile dintre epoci sunt marcate de procese lente, nu doar de un singur eveniment. Totuși, pentru predare se folosesc repere: apariția agriculturii, metalurgia, scrierea, căderea Imperiului Roman de Apus, 1453, 1492, 1789, 1914 sau 1945. Aceste repere trebuie explicate, nu memorate mecanic.</p><div class="table-wrap small-table"><table><thead><tr><th>Tranziție</th><th>Reper cronologic orientativ</th><th>Evenimente / procese marcatoare</th><th>Ce se schimbă</th></tr></thead><tbody><tr><td>Paleolitic → Mezolitic</td><td>c. 9700 î.Hr. / începutul Holocenului</td><td>Sfârșitul ultimei glaciațiuni, încălzirea climei, retragerea ghețarilor, schimbarea faunei, apariția microlitelor.</td><td>Comunitățile de vânători-culegători se adaptează la medii mai diverse; apar strategii locale de subzistență.</td></tr><tr><td>Mezolitic → Neolitic</td><td>c. 10.000–7000 î.Hr. în Semiluna Fertilă; mai târziu în Europa</td><td>Domesticirea plantelor și animalelor, sedentarizarea, satele agricole, ceramică, depozitare, ritualuri comunitare.</td><td>Oamenii produc hrană, cresc densitatea populației, apar proprietatea, surplusul și ierarhii mai vizibile.</td></tr><tr><td>Neolitic → Eneolitic / Calcolitic</td><td>c. 5000–3500 î.Hr., în funcție de regiune</td><td>Prelucrarea cuprului, intensificarea schimburilor, așezări mai mari, diferențiere socială, simboluri de prestigiu.</td><td>Piatra rămâne importantă, dar metalul începe să creeze noi tehnologii și noi forme de prestigiu.</td></tr><tr><td>Eneolitic → Epoca bronzului</td><td>c. 3300–2500 î.Hr., variabil</td><td>Bronzul, schimburi pe distanțe lungi pentru cupru și staniu, fortificații, elite, morminte bogate, proto-state.</td><td>Tehnologia metalului susține arme, unelte, prestigiu, comerț și ierarhie.</td></tr><tr><td>Epoca bronzului → Epoca fierului</td><td>c. 1200–800 î.Hr. în multe zone europene și mediteraneene</td><td>Criza de la sfârșitul Epocii bronzului, migrații, colapsuri palatiale, răspândirea metalurgiei fierului.</td><td>Fierul devine mai accesibil decât bronzul; apar noi structuri militare, economice și politice.</td></tr><tr><td>Preistorie / Protoistorie → Antichitate</td><td>c. 3300–3000 î.Hr. în Mesopotamia; diferit în alte zone</td><td>Apariția scrierii, orașelor, statului, administrației, arhivelor, fiscalității și monumentelor publice.</td><td>Istoricul poate folosi izvoare scrise alături de arheologie; memoria devine instituționalizată.</td></tr><tr><td>Antichitate timpurie → Antichitate clasică</td><td>mileniul I î.Hr., în funcție de spațiu</td><td>Maturizarea polisurilor grecești, republicii romane, imperiilor persane, Chinei Zhou/Han, sistemelor juridice și filosofice.</td><td>Instituții politice și culturale mai complexe; expansiune militară și schimburi intelectuale.</td></tr><tr><td>Antichitate clasică / imperială → Antichitate târzie</td><td>sec. III–IV d.Hr.</td><td>Criza secolului al III-lea, reformele lui Dioclețian (284), Constantin, Edictul de la Milano (313), creștinarea imperiului.</td><td>Imperiul Roman se transformă administrativ, religios și militar; lumea antică nu dispare brusc.</td></tr><tr><td>Antichitate târzie → Ev Mediu timpuriu</td><td>476, 565, 622, sec. VII — repere diferite</td><td>Căderea Imperiului Roman de Apus (476), Iustinian (527–565), migrații, formarea regatelor postromane, apariția și expansiunea islamului.</td><td>Autoritatea politică, fiscalitatea, religia și lumea urbană se reorganizează.</td></tr><tr><td>Ev Mediu timpuriu → Ev Mediu central</td><td>sec. X–XI</td><td>Stabilizarea regatelor, feudalism, creștere demografică, expansiune agrară, reformă monastică, prime cruciade.</td><td>Crește puterea nobilimii, a Bisericii, a orașelor și a rețelelor comerciale.</td></tr><tr><td>Ev Mediu central → Ev Mediu târziu</td><td>sec. XIII–XIV</td><td>Crize agrare, războaie, Ciuma Neagră (1347–1351), conflicte sociale, state mai birocratice.</td><td>Scade populația, se schimbă raporturile de muncă, cresc fiscalitatea și centralizarea.</td></tr><tr><td>Ev Mediu → Epoca modernă timpurie</td><td>c. 1450–1520</td><td>Tiparul lui Gutenberg, 1453, 1492, marile descoperiri geografice, Renașterea, Reforma (1517).</td><td>Se schimbă circulația informației, raportul cu lumea extraeuropeană, religia și statul.</td></tr><tr><td>Modernitate timpurie → Modernitate politică</td><td>sec. XVII–XVIII</td><td>Revoluția engleză, Iluminism, Revoluția americană (1776), Revoluția franceză (1789).</td><td>Suveranitatea, cetățenia, drepturile, națiunea și constituția devin concepte centrale.</td></tr><tr><td>Modernitate → Contemporaneitate</td><td>1789, 1914 sau 1945, după criteriu</td><td>Revoluțiile politice, industrializarea, Primul Război Mondial, al Doilea Război Mondial, Războiul Rece.</td><td>Societăți de masă, stat-națiune, ideologii moderne, tehnologii globale, globalizare.</td></tr><tr><td>Contemporaneitate industrială → lume digitală</td><td>c. 1970–prezent</td><td>Calculatoare, internet, sateliți, globalizare financiară, rețele sociale, inteligență artificială.</td><td>Informația devine infrastructură centrală; apar surse digitale și noi forme de memorie.</td></tr></tbody></table></div></section><section class="section" id="tipuri"><h2>IV. Tipuri de cronologii istorice</h2><p class="section-intro">Există mai multe moduri de a organiza timpul. Alegerea tipului de cronologie depinde de întrebare: o bătălie cere ore și zile; o civilizație cere secole; o schimbare climatică cere milenii; o revoluție culturală cere simultan ani, generații și spații geografice.</p><div class="table-wrap small-table"><table><thead><tr><th>Tip de cronologie</th><th>Ce urmărește</th><th>Exemplu</th></tr></thead><tbody><tr><td>Liniară</td><td>Succesiunea evenimentelor într-un singur fir temporal</td><td>1914 → 1918 → 1919 → 1929 → 1933 → 1939.</td></tr><tr><td>Tematică</td><td>Un singur domeniu: politică, artă, economie, tehnologie, religie</td><td>Cronologia tiparului, cronologia dreptului de vot, cronologia Reformei.</td></tr><tr><td>Comparativă / sincronoptică</td><td>Evenimente simultane în spații diferite</td><td>Europa medievală comparată cu China Song sau cu lumea islamică.</td></tr><tr><td>Dinastică</td><td>Domnii, succesiuni, genealogii politice</td><td>Dinastiile egiptene, împărații romani, dinastiile chineze, domnii Moldovei.</td></tr><tr><td>Arheologică</td><td>Faze culturale, straturi, stiluri, tipuri de obiecte</td><td>Cultura Cucuteni, Hallstatt, La Tène, faze ceramice.</td></tr><tr><td>Stratigrafică</td><td>Ordinea depunerilor arheologice</td><td>Nivel de incendiu peste nivel de locuire, apoi refacere.</td></tr><tr><td>Tehnologică</td><td>Apariția și răspândirea inovațiilor</td><td>piatră cioplită → piatră șlefuită → cupru → bronz → fier → oțel industrial.</td></tr><tr><td>Economică</td><td>Crize, schimburi, prețuri, producție, instituții financiare</td><td>Marea Criză din 1929, revoluția industrială, apariția băncilor moderne.</td></tr><tr><td>Culturală</td><td>Curente artistice, opere, școli, generații intelectuale</td><td>Renaștere, baroc, iluminism, romantism, avangardă.</td></tr><tr><td>Microcronologie</td><td>Evenimente pe durate scurte: zile, ore, minute</td><td>Desfășurarea unei lovituri de stat sau a unei bătălii.</td></tr><tr><td>Longue durée</td><td>Procese lente: mediu, demografie, agricultură, mentalități</td><td>Schimbarea regimurilor alimentare sau a rețelelor comerciale pe secole.</td></tr><tr><td>Cronologie regresivă</td><td>Pornește din prezent și merge înapoi</td><td>Istoria unei familii sau a unei proprietăți reconstituită din acte recente spre acte vechi.</td></tr></tbody></table></div></section><section class="section" id="decalaj"><h2>V. Problema decalajului istoric</h2><p class="section-intro">Decalajul istoric nu înseamnă „superioritate” și „inferioritate”, ci ritmuri diferite de dezvoltare, determinate de mediu, resurse, contacte, izolare, structuri sociale, tehnologii, epidemii, drumuri comerciale și contexte politice. Spații diferite pot fi simultane calendaristic, dar aflate în faze tehnologice sau instituționale foarte diferite.</p><details open><summary>Europa și America precolumbiană</summary><div class="details-body"><p>În secolele XV–XVI, o parte a Europei intra în modernitatea timpurie: navigație oceanică, arme de foc, tipar, state fiscale, monarhii centralizate și economie atlantică. În America precolumbiană existau însă civilizații foarte complexe — aztecă, mayașă, incașă — cu orașe, temple, calendare, administrație, drumuri și imperii. Diferența nu era lipsa civilizației, ci altă configurație tehnologică: lipsa metalurgiei fierului pentru arme comparabile, folosirea limitată a roții pentru transport, animale de tracțiune diferite, alte sisteme de scriere și vulnerabilitate biologică la bolile eurasiatice.</p></div></details><details open><summary>Mesopotamia și Europa neolitică</summary><div class="details-body"><p>În timp ce Mesopotamia dezvoltă orașe, temple, scriere cuneiformă și administrație în mileniul IV–III î.Hr., multe spații europene se aflau încă în neolitic sau eneolitic, cu sate agricole, ceramică, rețele de schimb și metalurgie timpurie. Aceasta arată că „Antichitatea” începe în momente diferite în funcție de apariția scrierii și a statului.</p></div></details><details open><summary>Roma și societățile tribale europene</summary><div class="details-body"><p>În secolele I î.Hr.–IV d.Hr., Imperiul Roman are orașe, drumuri, armată profesionistă, fiscalitate, drept scris și administrație extinsă. În același timp, multe populații de la nord de limes funcționează prin structuri tribale, elite războinice, economie rurală și transmitere orală a memoriei. Contactul dintre ele produce comerț, romanizare, conflict și hibridizare culturală.</p></div></details><details open><summary>Lumea islamică și Occidentul medieval timpuriu</summary><div class="details-body"><p>Între secolele VIII–XI, califatele și orașele islamice dezvoltă mari centre urbane, știință, medicină, filosofie, biblioteci și comerț pe distanțe lungi. În Occidentul european, multe zone sunt mai ruralizate și politic fragmentate. Decalajul se schimbă ulterior prin renașterea urbană, universități, traduceri și expansiunea economică europeană.</p></div></details><details open><summary>China imperială și Europa</summary><div class="details-body"><p>China are perioade de avans tehnologic și administrativ remarcabil: hârtie, tipar, busolă, praf de pușcă, birocrație imperială, examene. Europa occidentală dezvoltă ulterior alte avantaje: concurență între state, capitalism comercial, expansiune oceanică și industrializare. Cronologia comparativă arată schimbarea centrelor de inovație.</p></div></details><details open><summary>Japonia: Edo și Meiji</summary><div class="details-body"><p>Japonia Tokugawa (1603–1868) are stabilitate internă, urbanizare și cultură sofisticată, dar contact extern strict controlat. După 1868, Restaurația Meiji accelerează industrializarea, armata modernă, constituția și expansiunea imperială. Aici decalajul este recuperat prin modernizare de stat foarte rapidă.</p></div></details></section><section class="section" id="comparativ"><h2>VI. Tabel comparativ între spații istorice</h2><p class="section-intro">Cronologiile comparative sunt utile pentru a evita eurocentrismul. Ele arată că în același secol pot coexista orașe imperiale, sate agricole, regate tribale, imperii birocratice și societăți fără scriere, dar cu structuri culturale complexe.</p><div class="table-wrap small-table"><table><thead><tr><th>Interval</th><th>Europa / Mediterana</th><th>Orient Apropiat & lumea islamică</th><th>Asia de Est / Sud</th><th>Africa</th><th>Americi</th></tr></thead><tbody><tr><td>c. 3300–2500 î.Hr.</td><td>Neolitic / eneolitic în multe regiuni; începuturi ale metalurgiei.</td><td>Sumer, Uruk, scriere cuneiformă, orașe-stat, temple, administrație.</td><td>Culturi neolitice chineze; începuturi regionale ale complexității sociale.</td><td>Egiptul predinastic și apoi regatul timpuriu; Nubia timpurie.</td><td>Centre arhaice, domesticiri regionale, comunități agricole incipiente.</td></tr><tr><td>c. 2000–1200 î.Hr.</td><td>Epoca bronzului: micenieni, minoici, rețele de schimb.</td><td>Babilon, hitiți, Egiptul Regatului Nou, orașe levantine.</td><td>Shang în China; civilizația Indus târzie; Vedic timpuriu.</td><td>Egipt imperial, Nubia/Kerma, contacte sahariene.</td><td>Olmeci timpurii spre final; Caral mai devreme în Anzi.</td></tr><tr><td>c. 800–300 î.Hr.</td><td>Grecia arhaică și clasică, Roma timpurie, celți, sciți.</td><td>Asiria, Babilon, Persia Ahemenidă.</td><td>Zhou târziu, state combatante; India mahajanapada.</td><td>Cartagina, Nubia/Kush, regate africane regionale.</td><td>Olmeci, Chavín, culturi formative.</td></tr><tr><td>sec. I–V d.Hr.</td><td>Imperiul Roman, apoi Antichitate târzie și regate postromane.</td><td>Parti, Sasanizi, creștinism oriental, iudaism rabinic.</td><td>Han, apoi fragmentări; Gupta în India.</td><td>Aksum, Nubia, Sahara romană târzie.</td><td>Maya clasic timpuriu, Teotihuacan, Nazca, Moche.</td></tr><tr><td>sec. VII–X</td><td>Ev Mediu timpuriu: Bizanț, carolingieni, vikingi, slavii.</td><td>Islam, califate, Bagdad, Damasc, Cordoba.</td><td>Tang, Song timpuriu, Heian, state indiene regionale.</td><td>Ghana, Aksum târziu, comerț transsaharian.</td><td>Maya clasic, Tiwanaku, Wari.</td></tr><tr><td>sec. XI–XIII</td><td>Feudalism, cruciade, orașe, universități, catedrale.</td><td>Selgiucizi, cruciade, califate regionale, mongoli.</td><td>Song, Yuan, Kamakura, sultanatul Delhi.</td><td>Mali se afirmă, orașe swahili, Etiopia creștină.</td><td>Postclasic mesoamerican, state andine regionale.</td></tr><tr><td>sec. XIV–XV</td><td>Ciuma Neagră, Renaștere, state centralizate, 1453, 1492.</td><td>Otomani, mameluci, Persia postmongolă.</td><td>Ming, Vijayanagara, Japonia Ashikaga.</td><td>Mali, Songhai, Benin, swahili.</td><td>Azteci, Inca, Maya postclasic; contact european la final.</td></tr><tr><td>sec. XVI–XVII</td><td>Reformă, Contrareformă, imperii coloniale, absolutism.</td><td>Otomani, Safavizi, Mughal.</td><td>Ming/Qing, Tokugawa, state sud-est asiatice.</td><td>Comerț atlantic, state vest-africane, presiune sclavagistă.</td><td>Colonizare, colaps demografic indigen, sincretisme, vice-regate.</td></tr><tr><td>sec. XVIII–XIX</td><td>Iluminism, revoluții, industrializare, naționalisme.</td><td>Reforme otomane, presiuni europene, modernizări selective.</td><td>Qing, Meiji, colonialism britanic în India.</td><td>Colonialism european, abolire treptată a sclaviei, rezistențe locale.</td><td>Independențe latino-americane, expansiunea SUA, transformări indigene.</td></tr><tr><td>sec. XX</td><td>Războaie mondiale, totalitarisme, integrare europeană.</td><td>Mandate, petrol, naționalisme, conflicte regionale.</td><td>China republicană/comunistă, Japonia imperială/postbelică, decolonizare.</td><td>Decolonizare, apartheid, state postcoloniale.</td><td>SUA superputere, America Latină între dictaturi, reforme și democratizare.</td></tr></tbody></table></div></section><section class="section" id="calendare"><h2>VII. Calendare, ere și probleme de datare</h2><p class="section-intro">Datarea nu înseamnă doar stabilirea unui an. Trebuie verificat calendarul folosit, stilul vechi sau nou, anul de domnie, era religioasă, datarea arheologică și eventualele conversii.</p><div class="two-col"><article class="info-card"><h3>Calendar iulian / gregorian</h3><p>Calendarul iulian a fost introdus în lumea romană; calendarul gregorian a fost introdus în 1582 și adoptat treptat. De aceea unele evenimente apar cu două date: stil vechi și stil nou.</p></article><article class="info-card"><h3>Ani de domnie</h3><p>În documente medievale și antice, data poate fi „în anul al X-lea al domniei regelui...”. Pentru conversie trebuie cunoscută cronologia domniei.</p></article><article class="info-card"><h3>Ere religioase</h3><p>Era creștină folosește î.Hr./d.Hr.; calendarul islamic pornește de la Hegira (622); alte lumi au ere ebraice, budiste, hinduse sau imperiale.</p></article><article class="info-card"><h3>Datare arheologică</h3><p>Poate fi relativă (straturi, tipologii) sau absolută (radiocarbon, dendrocronologie, termoluminescență, datare numismatică).</p></article></div></section><section class="section" id="metoda"><h2>VIII. Cum construiești o cronologie corectă?</h2><p class="section-intro">O cronologie profesionistă are ierarhie, criteriu, scară și explicație. Nu pune toate fenomenele pe același nivel și nu folosește aceleași date pentru toate regiunile fără precizări.</p><div class="timeline"><article class="event"><div class="date">1</div><div><h3>Alege scara</h3><p>Pentru preistorie folosești milenii; pentru Evul Mediu poți folosi secole; pentru o revoluție folosești ani, luni sau zile.</p></div></article><article class="event"><div class="date">2</div><div><h3>Stabilește ierarhia</h3><p>Separă epoca mare, subepoca, faza și evenimentul. Paleoliticul nu este egal cu Preistoria, ci parte a Epocii pietrei, care este parte a Preistoriei.</p></div></article><article class="event"><div class="date">3</div><div><h3>Precizează spațiul</h3><p>Datele pentru Mesopotamia nu se aplică automat Europei, Chinei, Americii sau Africii.</p></div></article><article class="event"><div class="date">4</div><div><h3>Marchează tranzițiile</h3><p>Adaugă evenimente și procese: scriere, agricultură, metalurgie, urbanizare, căderea unor imperii, revoluții, industrializare.</p></div></article><article class="event"><div class="date">5</div><div><h3>Compară ritmuri</h3><p>Arată simultaneități și decalaje: ce se întâmpla în același timp în lumi diferite?</p></div></article><article class="event"><div class="date">6</div><div><h3>Explică semnificația</h3><p>După fiecare perioadă, notează ce s-a schimbat: economie, stat, religie, tehnologie, societate, cultură, mediu.</p></div></article></div></section>
+    <section class="final-box"><h2>Ideea finală</h2><p>O cronologie bună nu este doar o listă de date, ci o structură a timpului. Ea trebuie să arate ierarhii corecte, tranziții, decalaje regionale, simultaneități și ritmuri diferite. Istoria devine mai clară atunci când înțelegem nu doar „când”, ci și „în ce spațiu”, „în ce ritm” și „prin ce transformare”.</p></section>
+  </main>
+</body>
+</html>
