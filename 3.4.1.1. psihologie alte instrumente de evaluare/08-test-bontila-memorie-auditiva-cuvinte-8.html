@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ro"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Testul 8 – Memorie auditivă a cuvintelor</title><style>
+:root{--bg:#f5f1eb;--paper:#fffdf9;--card:#fff;--ink:#25211e;--muted:#746c64;--line:#e4dcd3;--accent:#795038;--accent2:#b88762;--soft:#f3e8dc;--good:#2e6a49;--warn:#986718;--danger:#a13c36;--blue:#35658a;--shadow:0 18px 50px rgba(80,57,40,.11);--radius:24px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:radial-gradient(circle at 12% 0,rgba(184,135,98,.15),transparent 34rem),linear-gradient(180deg,#fbf8f4,var(--bg));font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.55}
+button,input,select,textarea{font:inherit}.page{width:min(1140px,calc(100% - 30px));margin:auto;padding:30px 0 72px}.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(255,253,249,.98),rgba(243,232,220,.82));border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);padding:30px}.hero:after{content:"";position:absolute;right:-130px;top:-190px;width:360px;height:360px;border-radius:50%;background:rgba(121,80,56,.08)}
+.kicker{margin:0 0 8px;color:var(--accent);font-size:.8rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase}h1,h2,h3{font-family:Georgia,"Times New Roman",serif}h1{margin:0 0 10px;font-size:clamp(2rem,4.5vw,3.8rem);line-height:1;letter-spacing:-.04em}h2{margin:0 0 10px;font-size:clamp(1.35rem,2.2vw,2rem)}h3{margin:0}.muted{color:var(--muted)}.tiny{font-size:.84rem;color:var(--muted)}.section{margin-top:22px}
+.card{background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(80,57,40,.07);padding:22px}.notice{background:#fff8ef;border:1px solid #ead8c5;border-left:6px solid var(--accent2);padding:16px 18px;border-radius:18px;color:#4b3c31}.notice.good{background:#f1f8f4;border-left-color:var(--good)}.notice.warn{border-left-color:var(--warn)}
+.fields{display:grid;grid-template-columns:1.25fr .55fr .55fr .8fr;gap:14px}.field{display:grid;gap:7px}label{font-weight:780}input,select,textarea{width:100%;border:1px solid var(--line);border-radius:14px;padding:11px 12px;background:#fff;color:var(--ink);outline:none}textarea{min-height:82px;resize:vertical}input:focus,select:focus,textarea:focus{border-color:#b68a6d;box-shadow:0 0 0 3px rgba(184,135,98,.12)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.btn{border:0;border-radius:999px;padding:11px 16px;background:var(--accent);color:#fff;font-weight:880;cursor:pointer;box-shadow:0 10px 18px rgba(121,80,56,.16)}.btn.secondary{background:#fff;color:var(--accent);border:1px solid var(--line);box-shadow:none}.btn.soft{background:var(--soft);color:#5b3921;box-shadow:none}.btn.danger{background:var(--danger)}.btn:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}.btn:hover:not(:disabled){transform:translateY(-1px);filter:brightness(1.03)}.hidden{display:none!important}
+.biblio-card{background:#fffdf9}.biblio-card ol{margin:8px 0 0 20px;padding:0}.biblio-card li{margin:0 0 8px;color:#44372c}
+@media(max-width:780px){.page{width:min(100% - 16px,1140px);padding-top:14px}.hero{padding:22px;border-radius:22px}.fields{grid-template-columns:1fr 1fr}}@media(max-width:520px){.fields{grid-template-columns:1fr}}
+@media print{body{background:#fff}.no-print,.auth-screen{display:none!important}.page{width:100%;padding:0}.hero,.card{box-shadow:none}.section{break-inside:avoid}}
+
+.start-card{text-align:center}.presentation{min-height:330px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(180deg,#fff,#fffaf5);border:1px solid var(--line);border-radius:24px;position:relative;overflow:hidden}.presentation:before{content:"";position:absolute;width:280px;height:280px;border-radius:50%;background:rgba(184,135,98,.08);top:-130px;right:-100px}
+.phase{font-size:.8rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}.word-display{font-family:Georgia,"Times New Roman",serif;font-size:clamp(3rem,8vw,6rem);font-weight:700;letter-spacing:-.02em;color:var(--ink);min-height:1.2em;display:flex;align-items:center;justify-content:center}.word-display.blank{color:transparent}.substatus{margin-top:14px;color:var(--muted);font-weight:750}.countdown-big{font-family:Georgia,"Times New Roman",serif;font-size:5rem;color:var(--accent);font-weight:700}
+.voice-note{margin-top:12px;padding:10px 12px;border-radius:14px;background:#fff8ef;border:1px solid #ead8c5;font-size:.9rem;color:#5a4736}.response-box textarea{min-height:260px;font-family:Georgia,"Times New Roman",serif;font-size:1.18rem;line-height:1.65}.response-meta{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:10px;color:var(--muted);font-size:.9rem}.elapsed{font-variant-numeric:tabular-nums;font-weight:900;color:var(--accent)}
+</style></head>
+<body><main class="page">
+<section class="hero"><p class="kicker">Exerciții pentru evaluarea psihologică</p><h1>Testul 8 – Memorie auditivă a cuvintelor</h1><p class="muted">Variantă digitală bazată pe instrucțiunile din materialul furnizat. Sunt prezentate 30 de cuvinte, unul la fiecare 2 secunde, însoțite de pronunțare vocală.</p></section>
+
+<section class="section card"><h2>Date de identificare</h2><div class="fields">
+<div class="field"><label for="clientCode">Cod candidat / inițiale *</label><input id="clientCode" placeholder="Ex.: T8-001 sau A.B."></div>
+<div class="field"><label for="ageYears">Ani</label><input id="ageYears" type="number" min="0" max="100"></div>
+<div class="field"><label for="ageMonths">Luni</label><input id="ageMonths" type="number" min="0" max="11"></div>
+<div class="field"><label for="testDate">Data examinării</label><input id="testDate" type="date"></div>
+</div><div class="field section"><label for="contextNote">Observații / context</label><textarea id="contextNote"></textarea></div></section>
+
+<section class="section notice">
+<strong>Instrucțiuni</strong>
+<p>Vor fi prezentate <strong>30 de cuvinte</strong>. Fiecare cuvânt va apărea pe ecran și va fi pronunțat clar, timp de aproximativ <strong>2 secunde</strong>, după care va fi înlocuit de următorul.</p>
+<p>În timpul prezentării nu scrie nimic. Încearcă să reții cât mai multe cuvinte. După ultimul cuvânt urmează o pauză de <strong>10 secunde</strong>. Apoi apare comanda <strong>„Începeți!”</strong> și vei putea scrie toate cuvintele pe care ți le amintești, în <strong>orice ordine</strong>.</p>
+<p>Scrie fiecare cuvânt o singură dată. Când consideri că ai terminat, finalizează răspunsul.</p>
+<p class="tiny">Această versiune prezintă cuvintele și vizual, la cererea utilizatorului; prin urmare, nu este identică cu administrarea exclusiv auditivă descrisă în manual.</p>
+</section>
+
+<section class="section card start-card no-print">
+<div class="actions" style="justify-content:center">
+<button id="startBtn" class="btn" type="button">Începe testul</button>
+</div>
+<div id="voiceNote" class="voice-note">Vocea este generată de browser. Se va folosi automat o voce română dacă este disponibilă.</div>
+</section>
+
+<section id="presentationCard" class="section card hidden">
+<div class="presentation">
+<div id="phaseLabel" class="phase">Prezentare</div>
+<div id="wordDisplay" class="word-display blank">—</div>
+<div id="substatus" class="substatus"></div>
+</div>
+</section>
+
+<section id="responseCard" class="section card response-box hidden">
+<h2>Reproducerea cuvintelor</h2>
+<p class="muted">Scrie cuvintele pe care ți le amintești, în orice ordine. Le poți separa prin spațiu, virgulă sau rând nou.</p>
+<textarea id="responseText" spellcheck="false" autocomplete="off" placeholder="Scrie aici cuvintele pe care ți le amintești..."></textarea>
+<div class="response-meta"><span><strong id="tokenCount">0</strong> cuvinte introduse</span><span>Timp de reproducere: <span id="elapsed" class="elapsed">00:00</span></span></div>
+<div class="actions section"><button id="finishBtn" class="btn" type="button">Finalizează și descarcă răspunsurile</button></div>
+</section>
+
+<section id="success" class="section notice good hidden"><strong>Răspunsurile au fost descărcate.</strong><p>Fișierul JSON poate fi importat în pagina de rezultate pentru scorare și etalonare.</p></section>
+
+<section class="section card biblio-card"><h2>Bibliografie relevantă</h2><ol>
+<li>Bontilă, G. (1971). <em>Ghid practic pentru interpretarea testelor psihologice</em>. Centrul de Documentare și Publicații al Ministerului Muncii.</li>
+</ol></section>
+</main>
+
+<script>
+const WORDS=["carton", "vagon", "șervet", "clopoțel", "coș", "bătrîn", "albină", "tavă", "vînător", "pian", "baston", "floare", "castan", "plop", "cărbune", "copac", "prăjitură", "călimară", "lămîie", "caiet", "martă", "oțel", "șoarece", "sugativă", "supă", "lucru", "buchet", "cuțit", "barieră", "chibrit"],STORE_KEY='bontilaT8Submissions_v1';
+const $=id=>document.getElementById(id);
+let started=false,wordIndex=0,presentationStartedAt=null,presentationEndedAt=null,reproductionStartedAt=null,reproductionEndedAt=null;
+let wordTimer=null,countdownTimer=null,elapsedTimer=null;
+$('testDate').value=new Date().toISOString().slice(0,10);
+
+function getRomanianVoice(){
+ if(!('speechSynthesis' in window))return null;
+ const voices=speechSynthesis.getVoices();
+ return voices.find(v=>/^ro([-_]|$)/i.test(v.lang)) || voices.find(v=>/roman/i.test(v.name)) || voices[0] || null;
+}
+function speak(word){
+ if(!('speechSynthesis' in window))return;
+ speechSynthesis.cancel();
+ const u=new SpeechSynthesisUtterance(word);
+ u.lang='ro-RO';u.rate=.88;u.pitch=1;u.volume=1;
+ const v=getRomanianVoice();if(v)u.voice=v;
+ speechSynthesis.speak(u);
+}
+function showWord(i){
+ if(i>=WORDS.length){finishPresentation();return}
+ wordIndex=i;
+ $('phaseLabel').textContent='Ascultă și reține';
+ $('wordDisplay').classList.remove('blank');
+ $('wordDisplay').textContent=WORDS[i];
+ $('substatus').textContent=`Cuvântul ${i+1} din ${WORDS.length}`;
+ speak(WORDS[i]);
+ wordTimer=setTimeout(()=>{
+   $('wordDisplay').classList.add('blank');
+   $('wordDisplay').textContent='—';
+   if(i+1<WORDS.length)showWord(i+1); else finishPresentation();
+ },2000);
+}
+function finishPresentation(){
+ clearTimeout(wordTimer);presentationEndedAt=new Date().toISOString();
+ if('speechSynthesis' in window)speechSynthesis.cancel();
+ startTenSecondPause();
+}
+function startTenSecondPause(){
+ let n=10;
+ $('phaseLabel').textContent='Pauză';
+ $('wordDisplay').classList.remove('blank');
+ $('wordDisplay').innerHTML=`<span class="countdown-big">${n}</span>`;
+ $('substatus').textContent='Nu scrie încă.';
+ countdownTimer=setInterval(()=>{
+   n--;
+   if(n<=0){
+     clearInterval(countdownTimer);countdownTimer=null;
+     beginReproduction();
+   }else{
+     $('wordDisplay').innerHTML=`<span class="countdown-big">${n}</span>`;
+   }
+ },1000);
+}
+function beginReproduction(){
+ $('phaseLabel').textContent='Începeți!';
+ $('wordDisplay').classList.remove('blank');
+ $('wordDisplay').textContent='Începeți!';
+ $('substatus').textContent='Scrie toate cuvintele pe care ți le amintești.';
+ setTimeout(()=>{
+   $('presentationCard').classList.add('hidden');
+   $('responseCard').classList.remove('hidden');
+   reproductionStartedAt=new Date().toISOString();
+   $('responseText').focus();
+   startElapsed();
+ },1200);
+}
+function startElapsed(){
+ const t0=Date.now();
+ elapsedTimer=setInterval(()=>{
+   const sec=Math.floor((Date.now()-t0)/1000),m=Math.floor(sec/60),s=sec%60;
+   $('elapsed').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+ },250);
+}
+function tokenize(text){
+ const m=text.toLocaleLowerCase('ro-RO').match(/[\p{L}]+/gu);
+ return m||[];
+}
+function updateTokenCount(){$('tokenCount').textContent=tokenize($('responseText').value).length}
+function startTest(){
+ if(started)return;
+ if(!$('clientCode').value.trim()){alert('Completează codul candidatului / inițialele.');$('clientCode').focus();return}
+ started=true;$('startBtn').disabled=true;$('presentationCard').classList.remove('hidden');presentationStartedAt=new Date().toISOString();
+ if(!('speechSynthesis' in window))$('voiceNote').textContent='Browserul nu oferă sinteză vocală; cuvintele vor fi afișate, dar nu pot fi pronunțate automat.';
+ showWord(0);
+}
+function buildSubmission(){
+ const tokens=tokenize($('responseText').value);
+ return {schema:'bontila-t8-v1',id:'t8-'+Date.now()+'-'+Math.random().toString(36).slice(2,8),createdAt:new Date().toISOString(),
+ clientCode:$('clientCode').value.trim(),ageYears:$('ageYears').value===''?null:Number($('ageYears').value),ageMonths:$('ageMonths').value===''?null:Number($('ageMonths').value),
+ testDate:$('testDate').value,contextNote:$('contextNote').value.trim(),responseText:$('responseText').value,tokens,
+ presentationStartedAt,presentationEndedAt,reproductionStartedAt,reproductionEndedAt:new Date().toISOString(),wordIntervalMs:2000,pauseAfterListSeconds:10};
+}
+function finish(){
+ reproductionEndedAt=new Date().toISOString();clearInterval(elapsedTimer);
+ const sub=buildSubmission();sub.reproductionEndedAt=reproductionEndedAt;
+ let arr=[];try{arr=JSON.parse(localStorage.getItem(STORE_KEY)||'[]')}catch(e){}
+ arr.push(sub);localStorage.setItem(STORE_KEY,JSON.stringify(arr));
+ const blob=new Blob([JSON.stringify(sub,null,2)],{type:'application/json'}),a=document.createElement('a');
+ a.href=URL.createObjectURL(blob);a.download=`test8-${(sub.clientCode||'rezultat').replace(/[^a-zA-Z0-9_-]+/g,'_')}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+ $('finishBtn').disabled=true;$('responseText').disabled=true;$('success').classList.remove('hidden');
+}
+$('startBtn').onclick=startTest;$('responseText').addEventListener('input',updateTokenCount);$('finishBtn').onclick=finish;
+if('speechSynthesis' in window){speechSynthesis.onvoiceschanged=()=>getRomanianVoice()}
+</script></body></html>

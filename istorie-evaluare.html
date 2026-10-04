@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Teste de evaluare la istorie pentru clasele V–VIII.">
+  <title>Istorie – evaluare | Marin Gabriel</title>
+  <style>
+    :root {
+      --bg: #f6f3ef;
+      --panel: #fffaf4;
+      --card: #ffffff;
+      --ink: #202020;
+      --muted: #6f675d;
+      --line: #e6ded4;
+      --accent: #7a4e2d;
+      --accent-2: #b98250;
+      --accent-soft: #f1e3d4;
+      --shadow: 0 18px 50px rgba(74, 52, 33, .12);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184, 130, 80, .14), transparent 36rem),
+        linear-gradient(180deg, #fbf8f3 0%, var(--bg) 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.58;
+    }
+
+    a { color: inherit; }
+    button, input { font: inherit; }
+    .page { width: min(1180px, calc(100% - 36px)); margin: 0 auto; padding: 34px 0 72px; }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .home-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .82);
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 800;
+    }
+    .home-link:hover { background: #fff; }
+    .top-label { color: var(--muted); font-size: .88rem; font-weight: 700; }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(255, 250, 244, .95), rgba(241, 227, 212, .78));
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 390px;
+      height: 390px;
+      border-radius: 50%;
+      right: -150px;
+      top: -210px;
+      background: rgba(122, 78, 45, .08);
+    }
+    .hero > * { position: relative; z-index: 1; }
+    .kicker {
+      color: var(--accent);
+      font-size: .82rem;
+      font-weight: 850;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin: 0 0 8px;
+    }
+    h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; }
+    h1 {
+      font-size: clamp(2.25rem, 5.5vw, 4.8rem);
+      line-height: .98;
+      letter-spacing: -.05em;
+      margin: 0 0 18px;
+    }
+    h2 { font-size: clamp(1.45rem, 2.4vw, 2.1rem); margin: 0 0 10px; }
+    h3 { margin: 0; }
+    p { margin: 0 0 12px; }
+    .hero-copy { max-width: 850px; color: #5c534b; font-size: 1.02rem; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .stat {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 253, 249, .92);
+    }
+    .stat strong { display: block; line-height: 1.25; }
+    .stat small { color: var(--muted); }
+    .big-number {
+      font-family: Georgia, serif;
+      font-size: 2.15rem;
+      line-height: 1;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .section-card {
+      margin-top: 22px;
+      background: rgba(255, 255, 255, .92);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 30px rgba(74, 52, 33, .07);
+      padding: 24px;
+    }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .muted { color: var(--muted); }
+
+    .search-wrap { width: min(350px, 100%); }
+    .search-label {
+      display: block;
+      font-size: .78rem;
+      color: var(--muted);
+      font-weight: 800;
+      margin: 0 0 6px 4px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .search-input {
+      width: 100%;
+      border: 1px solid #d9c9b9;
+      border-radius: 14px;
+      background: #fffdf9;
+      color: var(--ink);
+      padding: 11px 13px;
+      outline: none;
+    }
+    .search-input:focus {
+      border-color: var(--accent-2);
+      box-shadow: 0 0 0 4px rgba(185, 130, 80, .13);
+    }
+
+    .catalog-list { display: grid; gap: 14px; }
+    details { min-width: 0; }
+    summary { list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+
+    .class-window, .material-window {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: #fffdf9;
+      overflow: hidden;
+      transition: .18s ease;
+    }
+    .class-window[open], .material-window[open] {
+      border-color: #d8b99b;
+      box-shadow: 0 12px 30px rgba(74, 52, 33, .08);
+    }
+    .class-summary, .material-summary {
+      display: grid;
+      grid-template-columns: 52px minmax(0, 1fr) auto 22px;
+      gap: 14px;
+      align-items: center;
+      padding: 17px 18px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .class-summary:hover, .material-summary:hover { background: #fff8ef; }
+    .class-number, .material-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 17px;
+      display: grid;
+      place-items: center;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-family: Georgia, serif;
+      font-size: 1.16rem;
+      font-weight: 900;
+    }
+    .class-title, .material-title { font-size: 1.08rem; font-weight: 900; line-height: 1.3; }
+    .summary-subtitle { display: block; color: var(--muted); font-size: .85rem; font-weight: 600; margin-top: 2px; }
+    .count-badge, .code-badge, .item-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      white-space: nowrap;
+      font-weight: 850;
+    }
+    .count-badge { padding: 6px 11px; background: #fff; color: var(--accent); border: 1px solid #ddc7b2; font-size: .82rem; }
+    .chevron { font-size: 1.1rem; color: var(--accent); transition: transform .18s ease; }
+    details[open] > summary .chevron { transform: rotate(90deg); }
+    .class-content, .material-content { padding: 0 16px 16px; border-top: 1px solid var(--line); }
+
+    .unit-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; padding-top: 14px; align-items: start; }
+    .unit-window, .material-node {
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: #fff;
+      overflow: hidden;
+    }
+    .unit-window[open], .material-node[open] { border-color: #d8b99b; box-shadow: 0 8px 22px rgba(74, 52, 33, .07); }
+    .unit-summary, .material-node-summary {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto 18px;
+      gap: 9px;
+      align-items: center;
+      padding: 13px 14px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .unit-summary:hover, .material-node-summary:hover { background: #fff9f2; }
+    .unit-title, .material-node-title { font-size: .94rem; font-weight: 850; line-height: 1.35; }
+    .unit-content, .material-node-content { padding: 12px; border-top: 1px solid var(--line); background: #fffdfb; }
+
+    .test-list, .resource-list, .material-children { display: grid; gap: 10px; }
+    .test-card {
+      display: grid;
+      grid-template-columns: 50px minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: #fff;
+      padding: 12px 13px;
+      min-height: 86px;
+      transition: .18s ease;
+    }
+    .test-card:hover, .resource-link:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(74, 52, 33, .08); border-color: #d6bca0; }
+    .test-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-family: Georgia, serif;
+      font-weight: 950;
+    }
+    .test-body { min-width: 0; }
+    .test-title { display: block; font-size: .98rem; font-weight: 900; line-height: 1.3; }
+    .test-purpose { display: block; color: #5c534b; font-size: .82rem; line-height: 1.42; margin-top: 3px; }
+    .test-actions { display: flex; align-items: center; justify-content: flex-end; gap: 7px; flex-wrap: wrap; }
+    .code-badge { padding: 5px 9px; background: #f7f2ec; color: #6c5b4d; border: 1px solid var(--line); font-size: .76rem; }
+    .action-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: .83rem;
+      font-weight: 850;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: .18s ease;
+    }
+    .action-link.primary { background: var(--accent); color: #fff; box-shadow: 0 8px 16px rgba(122, 78, 45, .14); }
+    .action-link.secondary { background: #fff; color: var(--accent); border: 1px solid #d8c2ad; }
+    .action-link:hover { transform: translateY(-1px); filter: brightness(1.03); }
+
+    .empty-state {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 14px;
+      border: 1px dashed #d8c2ad;
+      border-radius: 15px;
+      background: #fffaf5;
+      color: var(--muted);
+      font-size: .87rem;
+    }
+    .empty-state strong { color: var(--accent); }
+
+    .material-tree { display: grid; gap: 12px; }
+    .material-window > .material-content { padding-top: 14px; }
+    .material-node.depth-1 { background: #fff; }
+    .material-node.depth-2 { background: #fffdf9; }
+    .material-node.depth-3 { background: #fbf5ec; }
+    .material-node.depth-4 { background: #f8efe3; }
+    .material-node-summary { padding-left: calc(14px + var(--depth, 0) * 8px); }
+    .resource-link {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: #fff;
+      padding: 12px 14px;
+      text-decoration: none;
+      transition: .18s ease;
+    }
+    .resource-title { font-weight: 850; line-height: 1.35; }
+    .resource-open { color: var(--accent); font-size: .82rem; font-weight: 850; white-space: nowrap; }
+
+    .notice {
+      margin-top: 22px;
+      background: #fff7ec;
+      border: 1px solid #ead8c4;
+      border-left: 6px solid var(--accent-2);
+      padding: 16px 18px;
+      border-radius: 18px;
+      color: #46382d;
+    }
+    .no-results { display: none; margin-top: 14px; }
+    .footer-note { text-align: center; color: var(--muted); font-size: .85rem; margin-top: 24px; }
+
+    @media (max-width: 980px) {
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .unit-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 760px) {
+      .page { width: min(100% - 22px, 1180px); padding-top: 18px; }
+      .hero { padding: 25px; border-radius: 24px; }
+      .section-card { padding: 18px; }
+      .section-head { align-items: stretch; flex-direction: column; }
+      .search-wrap { width: 100%; }
+      .top-label { display: none; }
+      .class-summary, .material-summary { grid-template-columns: 44px minmax(0, 1fr) auto 18px; padding: 14px; }
+      .class-number, .material-icon { width: 44px; height: 44px; border-radius: 14px; }
+      .count-badge { font-size: .74rem; padding: 5px 8px; }
+      .test-card { grid-template-columns: 46px minmax(0, 1fr); align-items: start; }
+      .test-icon { width: 46px; height: 46px; border-radius: 14px; }
+      .test-actions { grid-column: 2; justify-content: flex-start; }
+      .resource-link { grid-template-columns: 1fr; }
+      .resource-open { white-space: normal; }
+    }
+    @media (max-width: 520px) {
+      .stats { grid-template-columns: 1fr; }
+      .class-summary, .material-summary { grid-template-columns: 42px minmax(0, 1fr) 18px; }
+      .class-summary .count-badge, .material-summary .count-badge { grid-column: 2; justify-self: start; }
+      .class-summary .chevron, .material-summary .chevron { grid-column: 3; grid-row: 1 / span 2; }
+    }
+    @media print {
+      body { background: white; }
+      .page { width: 100%; padding: 0; }
+      .topbar, .search-wrap { display: none; }
+      .hero, .section-card { box-shadow: none; }
+    }
+  
+
+    .topbar-nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .home-link.current {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      pointer-events: none;
+    }
+    .stats.stats-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    @media (max-width: 760px) {
+      .topbar { align-items: flex-start; }
+      .topbar-nav { gap: 7px; }
+      .home-link { padding: 8px 11px; font-size: .84rem; }
+    }
+    @media (max-width: 520px) {
+      .stats.stats-3 { grid-template-columns: 1fr; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <main class="page">
+    <div class="topbar">
+
+      <nav class="topbar-nav" aria-label="Navigare resurse de istorie">
+        <a class="home-link current" href="istorie-evaluare.html" aria-current="page">Teste</a>
+        <a class="home-link" href="istorie-lectii.html">Lecții</a>
+      </nav>
+      <span class="top-label">Marin Gabriel · Istorie</span>
+    </div>
+
+    <section class="hero">
+      <p class="kicker">Recapitulare și Evaluare</p>
+      <h1>Teste de istorie </h1>
+      <p class="hero-copy">Teste pentru clasele V–VIII, organizate pe niveluri și unități de învățare. Fiecare variantă include o pagină de grilă și o pagină separată pentru rezultate.</p>
+
+      <div class="stats stats-3">
+        <div class="stat"><div><strong>Clase</strong><small>niveluri disponibile</small></div><div class="big-number" id="classCount">0</div></div>
+        <div class="stat"><div><strong>Conținuturi</strong><small>unități de învățare</small></div><div class="big-number" id="contentCount">0</div></div>
+       <div class="stat"><div><strong>Teste</strong><small>variante complete</small></div><div class="big-number" id="testCount">0</div></div>
+      </div
+>
+    </section>
+
+    <section class="section-card">
+      <div class="section-head">
+        <div>
+          <p class="kicker">Teste</p>
+          <h2>Instrumente de evaluare pentru clasele V–VIII</h2>
+          <p class="muted">Deschide o clasă, apoi unitatea de învățare. Poți accesa separat grila de lucru și pagina de rezultate.</p>
+        </div>
+        <label class="search-wrap">
+          <span class="search-label">Caută în teste</span>
+          <input id="testSearch" class="search-input" type="search" placeholder="Ex.: Preistoria, CG2, război…" autocomplete="off">
+        </label>
+      </div>
+      <div id="classCatalog" class="catalog-list" aria-live="polite"></div>
+      <div id="testNoResults" class="empty-state no-results"><span>○</span><span>Nu a fost găsit niciun test pentru căutarea introdusă.</span></div>
+    </section>
+
+ 
+    <p class="footer-note">© 2026 Marin Gabriel · Toate drepturile rezervate.</p>
+  </main>
+
+  <script>
+    const classFolders = {
+      V: "1.1. istorie instrumente de evaluare. cls. 5",
+      VI: "1.2. istorie instrumente de evaluare. cls. 6",
+      VII: "1.3. istorie instrumente de evaluare. cls. 7",
+      VIII: "1.4. istorie instrumente de evaluare. cls. 8"
+    };
+
+    const units = {
+  "V": [
+    {
+      "name": "Alfabetul istoriei",
+      "tests": []
+    },
+    {
+      "name": "Preistoria",
+      "tests": [
+        {
+          "title": "CG1 – Varianta A",
+          "competenceCode": "CG1",
+          "competence": "Utilizarea în contexte diverse a coordonatelor şi reprezentărilor de timp şi spaţiu",
+          "gridFile": "cls-5-test-preistoria-CG1-var-A-grila.html",
+          "resultsFile": "cls-5-test-preistoria-CG1-var-A-rezultate.html"
+        },
+        {
+          "title": "CG1 – Varianta B",
+          "competenceCode": "CG1",
+          "competence": "Utilizarea în contexte diverse a coordonatelor şi reprezentărilor de timp şi spaţiu",
+          "gridFile": "cls-5-test-preistoria-CG1-var-B-grila.html",
+          "resultsFile": "cls-5-test-preistoria-CG1-var-B-rezultate.html"
+        },
+        {
+          "title": "CG1 – Varianta C",
+          "competenceCode": "CG1",
+          "competence": "Utilizarea în contexte diverse a coordonatelor şi reprezentărilor de timp şi spaţiu",
+          "gridFile": "cls-5-test-preistoria-CG1-var-C-grila.html",
+          "resultsFile": "cls-5-test-preistoria-CG1-var-C-rezultate.html"
+        },
+        {
+          "title": "CG2 – Varianta A",
+          "competenceCode": "CG2",
+          "competence": "Utilizarea critică şi reflexivă a limbajului de specialitate şi a surselor istorice",
+          "gridFile": "cls-5-test-preistoria-CG2-var-A-grila.html",
+          "resultsFile": "cls-5-test-preistoria-CG2-var-A-rezultate.html"
+        },
+        {
+          "title": "CG2 – Varianta B",
+          "competenceCode": "CG2",
+          "competence": "Utilizarea critică şi reflexivă a limbajului de specialitate şi a surselor istorice",
+          "gridFile": "cls-5-test-preistoria-CG2-var-B-grila.html",
+          "resultsFile": "cls-5-test-preistoria-CG2-var-B-rezultate.html"
+        },
+        {
+          "title": "CG2 – Varianta C",
+          "competenceCode": "CG2",
+          "competence": "Utilizarea critică şi reflexivă a limbajului de specialitate şi a surselor istorice",
+          "gridFile": "cls-5-test-preistoria-CG2-var-C-grila.html",
+          "resultsFile": "cls-5-test-preistoria-CG2-var-C-rezultate.html"
+        },
+        {
+          "title": "CT – Varianta A",
+          "competenceCode": "CT",
+          "competence": "Dezvoltarea gândirii critice pentru demontarea mecanismelor de manipulare în mediile digitale",
+          "gridFile": "cls-5-test-preistoria-CT-var-A-grila.html",
+          "resultsFile": "cls-5-test-preistoria-CT-var-A-rezultate.html"
+        },
+        {
+          "title": "CT – Varianta B",
+          "competenceCode": "CT",
+          "competence": "Dezvoltarea gândirii critice pentru demontarea mecanismelor de manipulare în mediile digitale",
+          "gridFile": "cls-5-test-preistoria-CT-var-B-grila.html",
+          "resultsFile": "cls-5-test-preistoria-CT-var-B-rezultate.html"
+        },
+        {
+          "title": "CT – Varianta C",
+          "competenceCode": "CT",
+          "competence": "Dezvoltarea gândirii critice pentru demontarea mecanismelor de manipulare în mediile digitale",
+          "gridFile": "cls-5-test-preistoria-CT-var-C-grila.html",
+          "resultsFile": "cls-5-test-preistoria-CT-var-C-rezultate.html"
+        }
+      ]
+    },
+    {
+      "name": "Orientul Antic",
+      "tests": []
+    },
+    {
+      "name": "Grecia antică",
+      "tests": [
+        {
+          "title": "CG1 – Varianta A",
+          "competenceCode": "CG1",
+          "competence": "Utilizarea în contexte diverse a coordonatelor şi reprezentărilor de timp şi spaţiu",
+          "gridFile": "cls-5-test-grecia-antica-CG1-var-A-grila.html",
+          "resultsFile": "cls-5-test-grecia-antica-CG1-var-A-rezultate.html"
+        },
+        {
+          "title": "CG2 – Varianta A",
+          "competenceCode": "CG2",
+          "competence": "Utilizarea critică şi reflexivă a limbajului de specialitate şi a surselor istorice",
+          "gridFile": "cls-5-test-grecia-antica-CG2-var-A-grila.html",
+          "resultsFile": "cls-5-test-grecia-antica-CG2-var-A-rezultate.html"
+        },
+        {
+          "title": "CT – Varianta A",
+          "competenceCode": "CT",
+          "competence": "Dezvoltarea gândirii critice pentru demontarea mecanismelor de manipulare în mediile digitale",
+          "gridFile": "cls-5-test-grecia-antica-CT-var-A-grila.html",
+          "resultsFile": "cls-5-test-grecia-antica-CT-var-A-rezultate.html"
+        }
+      ]
+    },
+    {
+      "name": "Lumea romană",
+      "tests": []
+    },
+    {
+      "name": "Civilizația medievală",
+      "tests": []
+    }
+  ],
+  "VI": [
+    {
+      "name": "Marile descoperiri geografice",
+      "tests": [
+        {
+          "title": "CG1 – Varianta A",
+          "competenceCode": "CG1",
+          "competence": "Utilizarea în contexte diverse a coordonatelor şi reprezentărilor de timp şi spaţiu",
+          "gridFile": "cls-6-test-marile-descoperiri-geografice-CG1-var-A-grila.html",
+          "resultsFile": "cls-6-test-marile-descoperiri-geografice-CG1-var-A-rezultate.html"
+        },
+        {
+          "title": "CG2 – Varianta A",
+          "competenceCode": "CG2",
+          "competence": "Utilizarea critică şi reflexivă a limbajului de specialitate şi a surselor istorice",
+          "gridFile": "cls-6-test-marile-descoperiri-geografice-CG2-var-A-grila.html",
+          "resultsFile": "cls-6-test-marile-descoperiri-geografice-CG2-var-A-rezultate.html"
+        },
+        {
+          "title": "CT – Varianta A",
+          "competenceCode": "CT",
+          "competence": "Dezvoltarea gândirii critice pentru demontarea mecanismelor de manipulare în mediile digitale",
+          "gridFile": "cls-6-test-marile-descoperiri-geografice-CT-var-A-grila.html",
+          "resultsFile": "cls-6-test-marile-descoperiri-geografice-CT-var-A-rezultate.html"
+        }
+      ]
+    },
+    {
+      "name": "Geneza spiritului modern",
+      "tests": []
+    },
+    {
+      "name": "Spre o nouă epocă",
+      "tests": []
+    },
+    {
+      "name": "Secolul Naționalităților",
+      "tests": []
+    }
+  ],
+  "VII": [
+    {
+      "name": "Primul Război Mondial",
+      "tests": [
+        {
+          "title": "CG1 – Varianta A",
+          "competenceCode": "CG1",
+          "competence": "Utilizarea în contexte diverse a coordonatelor şi reprezentărilor de timp şi spaţiu",
+          "gridFile": "cls-7-test-primul-razboi-mondial-CG1-var-A-grila.html",
+          "resultsFile": "cls-7-test-primul-razboi-mondial-CG1-var-A-rezultate.html"
+        },
+        {
+          "title": "CG2 – Varianta A",
+          "competenceCode": "CG2",
+          "competence": "Utilizarea critică şi reflexivă a limbajului de specialitate şi a surselor istorice",
+          "gridFile": "cls-7-test-primul-razboi-mondial-CG2-var-A-grila.html",
+          "resultsFile": "cls-7-test-primul-razboi-mondial-CG2-var-A-rezultate.html"
+        },
+        {
+          "title": "CT – Varianta A",
+          "competenceCode": "CT",
+          "competence": "Dezvoltarea gândirii critice pentru demontarea mecanismelor de manipulare în mediile digitale",
+          "gridFile": "cls-7-test-primul-razboi-mondial-CT-var-A-grila.html",
+          "resultsFile": "cls-7-test-primul-razboi-mondial-CT-var-A-rezultate.html"
+        }
+      ]
+    },
+    {
+      "name": "Lumea interbelică: o lume în schimbare",
+      "tests": []
+    },
+    {
+      "name": "Lumea în război",
+      "tests": []
+    },
+    {
+      "name": "Lumea postbelică",
+      "tests": []
+    }
+  ],
+  "VIII": [
+    {
+      "name": "Preistoria în spațiul românesc",
+      "tests": []
+    },
+    {
+      "name": "Geto-dacii",
+      "tests": []
+    },
+    {
+      "name": "Etnogeneza românească",
+      "tests": []
+    },
+    {
+      "name": "Evul mediu românesc",
+      "tests": []
+    },
+    {
+      "name": "Modernitatea timpurie",
+      "tests": []
+    },
+    {
+      "name": "Lumea românească până la sfârșitul secolului al XIX-lea",
+      "tests": []
+    },
+    {
+      "name": "România modernă",
+      "tests": []
+    },
+    {
+      "name": "România în secolele XX-XXI",
+      "tests": []
+    }
+  ]
+};
+
+    const classLabels = { V: "Clasa a V-a", VI: "Clasa a VI-a", VII: "Clasa a VII-a", VIII: "Clasa a VIII-a" };
+    const classIcons = { V: "V", VI: "VI", VII: "VII", VIII: "VIII" };
+
+    function pathTo(folder, file) {
+      return `${encodeURIComponent(folder)}/${encodeURIComponent(file)}`;
+    }
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>'"]/g, ch => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;"
+      })[ch]);
+    }
+
+    function normalize(value) {
+      return String(value || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .trim();
+    }
+
+    function countTests() {
+      return Object.values(units).flat().reduce((sum, unit) => sum + unit.tests.length, 0);
+    }
+
+    function testMatches(test, unitName, query) {
+      if (!query) return true;
+      return normalize([test.title, test.competenceCode, test.competence, unitName].join(" ")).includes(query);
+    }
+
+    function renderTests(rawQuery = "") {
+      const query = normalize(rawQuery);
+      const root = document.getElementById("classCatalog");
+      let visibleTests = 0;
+
+      root.innerHTML = Object.entries(units).map(([classKey, classUnits]) => {
+        const filteredUnits = classUnits.map(unit => ({
+          ...unit,
+          tests: unit.tests.filter(test => testMatches(test, unit.name, query))
+        })).filter(unit => !query || normalize(unit.name).includes(query) || unit.tests.length > 0);
+
+        const classTestCount = filteredUnits.reduce((sum, unit) => sum + unit.tests.length, 0);
+        visibleTests += classTestCount;
+        if (query && filteredUnits.length === 0) return "";
+
+        const unitsHtml = filteredUnits.map(unit => {
+          const testCards = unit.tests.length
+            ? `<div class="test-list">${unit.tests.map(test => `
+                <article class="test-card">
+                  <span class="test-icon" aria-hidden="true">${escapeHtml(test.competenceCode)}</span>
+                  <span class="test-body">
+                    <span class="test-title">${escapeHtml(test.title)}</span>
+                    <span class="test-purpose">${escapeHtml(test.competence)}</span>
+                  </span>
+                  <span class="test-actions">
+                    <span class="code-badge">${escapeHtml(test.competenceCode)}</span>
+                    <a class="action-link primary" href="${pathTo(classFolders[classKey], test.gridFile)}" target="_blank" rel="noopener">Grilă</a>
+                    <a class="action-link secondary" href="${pathTo(classFolders[classKey], test.resultsFile)}" target="_blank" rel="noopener">Rezultate</a>
+                  </span>
+                </article>`).join("")}</div>`
+            : `<div class="empty-state"><span>○</span><span><strong>În pregătire.</strong> Momentan nu există teste în această unitate.</span></div>`;
+
+          const unitCount = unit.tests.length;
+          return `<details class="unit-window" ${query ? "open" : ""}>
+            <summary class="unit-summary">
+              <span class="unit-title">${escapeHtml(unit.name)}</span>
+              <span class="count-badge">${unitCount} ${unitCount === 1 ? "test" : "teste"}</span>
+              <span class="chevron" aria-hidden="true">›</span>
+            </summary>
+            <div class="unit-content">${testCards}</div>
+          </details>`;
+        }).join("");
+
+        const totalForClass = classUnits.reduce((sum, unit) => sum + unit.tests.length, 0);
+        const shownForClass = query ? classTestCount : totalForClass;
+        return `<details class="class-window" ${query ? "open" : ""}>
+          <summary class="class-summary">
+            <span class="class-number">${classIcons[classKey]}</span>
+            <span class="class-title">${classLabels[classKey]}<span class="summary-subtitle">${classUnits.length} unități de învățare</span></span>
+            <span class="count-badge">${shownForClass} ${shownForClass === 1 ? "test" : "teste"}</span>
+            <span class="chevron" aria-hidden="true">›</span>
+          </summary>
+          <div class="class-content"><div class="unit-grid">${unitsHtml}</div></div>
+        </details>`;
+      }).join("");
+
+      document.getElementById("testNoResults").style.display = visibleTests === 0 && query ? "flex" : "none";
+    }
+
+    const totalTests = countTests();
+    const totalContents = Object.values(units).reduce((sum, classUnits) => sum + classUnits.length, 0);
+    document.getElementById("classCount").textContent = Object.keys(units).length;
+    document.getElementById("testCount").textContent = totalTests;
+    document.getElementById("contentCount").textContent = totalContents;
+    document.getElementById("testSearch").addEventListener("input", event => renderTests(event.target.value));
+    renderTests();
+
+  </script>
+</body>
+</html>

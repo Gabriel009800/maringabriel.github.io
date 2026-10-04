@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ro"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Testul 9 – Memoria formelor geometrice</title><style>
+:root{--bg:#f5f1eb;--paper:#fffdf9;--card:#fff;--ink:#25211e;--muted:#746c64;--line:#e4dcd3;--accent:#795038;--accent2:#b88762;--soft:#f3e8dc;--good:#2e6a49;--warn:#986718;--danger:#a13c36;--blue:#35658a;--shadow:0 18px 50px rgba(80,57,40,.11);--radius:24px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:radial-gradient(circle at 12% 0,rgba(184,135,98,.15),transparent 34rem),linear-gradient(180deg,#fbf8f4,var(--bg));font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.55}
+button,input,select,textarea{font:inherit}.page{width:min(1160px,calc(100% - 30px));margin:auto;padding:30px 0 72px}.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(255,253,249,.98),rgba(243,232,220,.82));border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);padding:30px}.hero:after{content:"";position:absolute;right:-130px;top:-190px;width:360px;height:360px;border-radius:50%;background:rgba(121,80,56,.08)}
+.kicker{margin:0 0 8px;color:var(--accent);font-size:.8rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase}h1,h2,h3{font-family:Georgia,"Times New Roman",serif}h1{margin:0 0 10px;font-size:clamp(2rem,4.5vw,3.8rem);line-height:1;letter-spacing:-.04em}h2{margin:0 0 10px;font-size:clamp(1.35rem,2.2vw,2rem)}h3{margin:0}.muted{color:var(--muted)}.tiny{font-size:.84rem;color:var(--muted)}.section{margin-top:22px}
+.card{background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(80,57,40,.07);padding:22px}.notice{background:#fff8ef;border:1px solid #ead8c5;border-left:6px solid var(--accent2);padding:16px 18px;border-radius:18px;color:#4b3c31}.notice.good{background:#f1f8f4;border-left-color:var(--good)}.notice.pause{background:#f1f5f8;border-left-color:var(--blue)}
+.fields{display:grid;grid-template-columns:1.25fr .55fr .55fr .8fr;gap:14px}.field{display:grid;gap:7px}label{font-weight:780}input,select,textarea{width:100%;border:1px solid var(--line);border-radius:14px;padding:11px 12px;background:#fff;color:var(--ink);outline:none}textarea{min-height:82px;resize:vertical}input:focus,select:focus,textarea:focus{border-color:#b68a6d;box-shadow:0 0 0 3px rgba(184,135,98,.12)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.btn{border:0;border-radius:999px;padding:11px 16px;background:var(--accent);color:#fff;font-weight:880;cursor:pointer;box-shadow:0 10px 18px rgba(121,80,56,.16)}.btn.secondary{background:#fff;color:var(--accent);border:1px solid var(--line);box-shadow:none}.btn.soft{background:var(--soft);color:#5b3921;box-shadow:none}.btn.danger{background:var(--danger)}.btn:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}.btn:hover:not(:disabled){transform:translateY(-1px);filter:brightness(1.03)}.hidden{display:none!important}
+.biblio-card{background:#fffdf9}.biblio-card ol{margin:8px 0 0 20px;padding:0}.biblio-card li{margin:0 0 8px;color:#44372c}
+.shape-svg{width:100%;height:100%;display:block;overflow:visible}.shape-svg polygon{fill:#fff;stroke:#111;stroke-width:3;stroke-linejoin:miter}
+@media(max-width:780px){.page{width:min(100% - 16px,1160px);padding-top:14px}.hero{padding:22px;border-radius:22px}.fields{grid-template-columns:1fr 1fr}}@media(max-width:520px){.fields{grid-template-columns:1fr}}
+@media print{body{background:#fff}.no-print,.auth-screen{display:none!important}.page{width:100%;padding:0}.hero,.card{box-shadow:none}.section{break-inside:avoid}}
+
+.timerbar{position:sticky;top:0;z-index:45;padding:10px 0;backdrop-filter:blur(16px)}.timerbox{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:rgba(255,253,249,.95);border:1px solid var(--line);border-radius:20px;padding:10px 12px;box-shadow:0 8px 24px rgba(84,58,40,.08)}.phase-name{font-weight:900;color:var(--accent);white-space:nowrap}.timer{font-family:Georgia,"Times New Roman",serif;font-size:1.55rem;font-weight:700;color:var(--accent);min-width:76px}.timer.danger{color:var(--danger)}.progress{height:10px;flex:1;min-width:160px;border-radius:999px;background:#eadfd6;overflow:hidden}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:999px}.phase-note{font-size:.86rem;color:var(--muted);font-weight:750}
+.study-grid{display:grid;grid-template-columns:repeat(2,minmax(180px,250px));gap:28px 42px;justify-content:center;padding:18px 0}.study-item{position:relative;height:170px;border:1px solid transparent;border-radius:16px;padding:18px;cursor:pointer}.study-item:hover{background:#fffaf5;border-color:#ead8c5}.study-item.underlined:after{content:"";position:absolute;left:18%;right:18%;bottom:7px;height:4px;border-radius:4px;background:var(--accent)}
+.recog-grid{display:grid;grid-template-columns:repeat(4,minmax(130px,1fr));gap:18px;padding:6px}.recog-item{position:relative;height:145px;border:1px solid var(--line);border-radius:16px;background:#fff;cursor:pointer;padding:14px;transition:.12s ease}.recog-item:hover{border-color:#cba98e;background:#fffaf5;transform:translateY(-1px)}.recog-item.selected{border-color:var(--accent);background:#fff4e7}.recog-item.selected:before,.recog-item.selected:after{content:"";position:absolute;left:50%;top:50%;width:72%;height:4px;background:#111;border-radius:3px;z-index:3;transform-origin:center}.recog-item.selected:before{transform:translate(-50%,-50%) rotate(45deg)}.recog-item.selected:after{transform:translate(-50%,-50%) rotate(-45deg)}.recog-count{text-align:right;color:var(--muted);font-weight:800;margin-top:10px}
+.center-message{text-align:center;padding:42px 20px}.countdown{font-family:Georgia,"Times New Roman",serif;font-size:5rem;color:var(--accent);font-weight:700}
+@media(max-width:760px){.recog-grid{grid-template-columns:repeat(3,minmax(120px,1fr))}.study-grid{grid-template-columns:repeat(2,minmax(140px,1fr));gap:18px}.study-item{height:145px}.recog-item{height:125px}}@media(max-width:520px){.recog-grid{grid-template-columns:repeat(2,minmax(110px,1fr))}}
+</style></head>
+<body><main class="page">
+<section class="hero"><p class="kicker">Exerciții pentru evaluarea psihologică</p><h1>Testul 9 – Memoria formelor geometrice</h1><p class="muted">Variantă digitală construită după instrucțiunile și materialele furnizate.</p></section>
+
+<section class="section card"><h2>Date de identificare</h2><div class="fields">
+<div class="field"><label for="clientCode">Cod candidat / inițiale *</label><input id="clientCode" placeholder="Ex.: T9-001 sau A.B."></div>
+<div class="field"><label for="ageYears">Ani</label><input id="ageYears" type="number" min="0" max="100"></div>
+<div class="field"><label for="ageMonths">Luni</label><input id="ageMonths" type="number" min="0" max="11"></div>
+<div class="field"><label for="testDate">Data examinării</label><input id="testDate" type="date"></div>
+</div><div class="field section"><label for="contextNote">Observații / context</label><textarea id="contextNote"></textarea></div></section>
+
+<section id="initialInstructions" class="section notice"><strong>Instrucțiuni</strong>
+<p>Vei vedea o foaie cu <strong>8 figuri geometrice</strong>. Privește atent fiecare figură.</p>
+<p>Sarcina ta este să identifici figurile cărora le lipsește <strong>colțul stâng de sus</strong>. În varianta digitală, dă click pe fiecare astfel de figură pentru a o sublinia.</p>
+<p>Lucrează atent. Ai <strong>1 minut</strong>.</p>
+</section>
+
+<div class="timerbar no-print"><div class="timerbox"><div id="phaseName" class="phase-name">Pregătire</div><div id="timer" class="timer">01:00</div><div class="progress"><span id="progressBar"></span></div><div id="phaseNote" class="phase-note">Apasă „Începe testul”.</div><button id="startBtn" class="btn" type="button">Începe testul</button><button id="finishEarlyBtn" class="btn secondary hidden" type="button">Încheie etapa acum</button></div></div>
+
+<section id="studyCard" class="section card hidden"><h2>Planșa 9A</h2><p class="muted">Click pe figurile cărora le lipsește colțul stâng de sus.</p><div id="studyGrid" class="study-grid"></div></section>
+
+<section id="pauseCard" class="section notice pause hidden"><div class="center-message"><strong>Opriți-vă.</strong><div id="pauseCountdown" class="countdown">10</div><p>Așteptați următoarea instrucțiune.</p></div></section>
+
+
+<section id="secondInstructions" class="section notice hidden">
+<strong>Instrucțiunea următoare</strong>
+<p>Acum vei vedea o altă foaie, cu mai multe figuri geometrice.</p>
+<p>Dă click și pune câte un <strong>X</strong> pe fiecare figură pe care crezi că ai văzut-o pe foaia anterioară.</p>
+<p>Lucrează atent. Ai <strong>2 minute</strong>.</p>
+<div class="actions" style="margin-top:12px">
+  <button id="startRecognitionBtn" class="btn" type="button">Începeți</button>
+</div>
+</section>
+
+<section id="recognitionCard" class="section card hidden"><h2>Planșa 9B</h2><p class="muted">Selectează prin click figurile pe care crezi că le-ai văzut în 9A.</p><div id="recognitionGrid" class="recog-grid"></div><div class="recog-count"><span id="selectedCount">0</span> figuri selectate</div></section>
+
+<section id="finishCard" class="section card hidden"><h2>Finalizare</h2><p class="muted">Răspunsurile sunt pregătite pentru salvare.</p><div class="actions"><button id="finalizeBtn" class="btn" type="button">Finalizează și descarcă răspunsurile</button></div></section>
+<section id="success" class="section notice good hidden"><strong>Răspunsurile au fost descărcate.</strong><p>Fișierul JSON poate fi importat în pagina de rezultate pentru scorare automată.</p></section>
+
+<section class="section card biblio-card"><h2>Bibliografie relevantă</h2><ol><li>Bontilă, G. (1971). <em>Ghid practic pentru interpretarea testelor psihologice</em>. Centrul de Documentare și Publicații al Ministerului Muncii.</li></ol></section>
+</main>
+<script>
+const A_POLYS=[[[100.0,0.91],[73.87,0.91],[69.37,22.73],[36.94,22.73],[21.62,1.82],[0.0,1.82],[0.9,99.09],[99.1,99.09]],[[98.13,0.0],[71.03,0.91],[50.47,32.73],[29.91,33.64],[0.0,58.18],[0.93,99.09],[100.0,99.09]],[[96.43,0.0],[34.82,0.89],[31.25,25.89],[0.0,41.07],[0.89,99.11],[100.0,97.32]],[[98.18,23.21],[80.91,21.43],[67.27,0.0],[28.18,0.89],[25.45,23.21],[0.0,24.11],[1.82,100.0],[99.09,98.21]],[[0.9,27.36],[0.9,100.0],[99.1,99.06],[100.0,58.49],[66.67,33.02],[63.96,0.0],[27.03,0.0]],[[0.93,18.87],[0.93,99.06],[99.07,99.06],[100.0,24.53],[75.7,0.0],[53.27,23.58],[48.6,0.94],[21.5,0.0]],[[0.89,0.93],[1.79,99.07],[99.11,100.0],[100.0,55.56],[83.04,37.04],[54.46,37.04],[33.93,0.0]],[[0.93,26.85],[0.93,98.15],[100.0,98.15],[100.0,27.78],[68.22,26.85],[47.66,0.0],[30.84,25.93]]],B_POLYS=[[[100.0,21.33],[80.0,0.0],[22.5,1.33],[20.0,20.0],[1.25,21.33],[1.25,97.33],[97.5,98.67]],[[100.0,1.32],[69.33,1.32],[49.33,42.11],[26.67,2.63],[1.33,2.63],[1.33,100.0],[100.0,98.68]],[[25.0,0.0],[23.68,22.37],[1.32,25.0],[1.32,100.0],[98.68,100.0],[100.0,23.68],[76.32,23.68],[60.53,0.0]],[[98.73,1.27],[74.68,1.27],[72.15,26.58],[34.18,26.58],[18.99,2.53],[1.27,2.53],[0.0,98.73],[97.47,100.0]],[[100.0,0.0],[75.95,1.28],[73.42,34.62],[32.91,34.62],[31.65,1.28],[1.27,1.28],[0.0,97.44],[100.0,98.72]],[[48.0,0.0],[48.0,19.23],[25.33,20.51],[17.33,47.44],[0.0,50.0],[0.0,98.72],[98.67,98.72],[100.0,1.28]],[[100.0,0.0],[76.32,0.0],[64.47,24.36],[35.53,24.36],[22.37,1.28],[1.32,1.28],[0.0,100.0],[100.0,98.72]],[[98.72,0.0],[56.41,0.0],[53.85,15.38],[15.38,16.67],[1.28,33.33],[1.28,100.0],[100.0,98.72]],[[100.0,1.32],[64.56,0.0],[48.1,31.58],[25.32,31.58],[0.0,64.47],[0.0,97.37],[98.73,100.0]],[[100.0,0.0],[75.64,31.94],[25.64,30.56],[0.0,1.39],[2.56,97.22],[100.0,100.0]],[[28.0,0.0],[28.0,28.57],[0.0,31.17],[0.0,97.4],[98.67,100.0],[100.0,31.17],[68.0,29.87],[68.0,0.0]],[[30.38,1.28],[27.85,28.21],[0.0,43.59],[0.0,98.72],[100.0,98.72],[98.73,2.56]],[[0.0,32.0],[1.27,98.67],[98.73,100.0],[100.0,58.67],[70.89,32.0],[69.62,1.33],[30.38,0.0]],[[1.32,28.0],[2.63,98.67],[100.0,98.67],[98.68,26.67],[84.21,25.33],[82.89,1.33],[56.58,1.33],[52.63,18.67],[31.58,0.0]],[[0.0,31.08],[1.32,98.65],[100.0,98.65],[98.68,31.08],[67.11,29.73],[44.74,0.0],[17.11,29.73]],[[100.0,1.35],[46.15,1.35],[35.9,28.38],[21.79,16.22],[8.97,25.68],[0.0,98.65],[100.0,100.0]],[[0.0,35.9],[1.25,98.72],[100.0,97.44],[98.75,24.36],[72.5,34.62],[58.75,1.28],[43.75,0.0],[21.25,35.9]],[[1.32,0.0],[0.0,98.72],[100.0,100.0],[100.0,50.0],[82.89,37.18],[48.68,35.9],[30.26,1.28]],[[26.32,0.0],[0.0,27.85],[0.0,98.73],[100.0,98.73],[100.0,0.0],[68.42,0.0],[51.32,22.78]],[[0.0,27.5],[0.0,98.75],[100.0,97.5],[98.72,33.75],[76.92,22.5],[74.36,0.0],[46.15,0.0],[25.64,26.25]],[[1.25,25.97],[1.25,98.7],[98.75,100.0],[100.0,24.68],[77.5,1.3],[52.5,25.97],[51.25,1.3],[27.5,0.0]],[[31.58,0.0],[13.16,35.06],[13.16,66.23],[0.0,68.83],[0.0,96.1],[98.68,100.0],[100.0,50.65],[80.26,28.57],[52.63,27.27],[52.63,0.0]],[[97.4,0.0],[70.13,0.0],[45.45,29.87],[25.97,31.17],[25.97,55.84],[0.0,77.92],[1.3,98.7],[98.7,98.7]],[[98.72,20.0],[75.64,20.0],[60.26,0.0],[41.03,20.0],[1.28,20.0],[0.0,98.67],[98.72,100.0]]],MISSING_UL=[1,2,3,4,5,7],STORE_KEY='bontilaT9Submissions_v1';
+const $=id=>document.getElementById(id);
+let phase='ready',remaining=60,timerId=null,studyUnderlined=new Set(),selected=new Set();
+let studyStartedAt=null,studyEndedAt=null,recognitionStartedAt=null,recognitionEndedAt=null;
+$('testDate').value=new Date().toISOString().slice(0,10);
+
+function svgFor(poly){
+ const pts=poly.map(p=>p.join(',')).join(' ');
+ return `<svg class="shape-svg" viewBox="-7 -7 114 114" aria-hidden="true"><polygon points="${pts}"/></svg>`;
+}
+function renderStudy(){
+ $('studyGrid').innerHTML=A_POLYS.map((p,i)=>`<button type="button" class="study-item" data-i="${i}" aria-label="Figura ${i+1}">${svgFor(p)}</button>`).join('');
+ document.querySelectorAll('.study-item').forEach(b=>b.onclick=()=>{if(phase!=='study')return;const i=Number(b.dataset.i);if(studyUnderlined.has(i)){studyUnderlined.delete(i);b.classList.remove('underlined')}else{studyUnderlined.add(i);b.classList.add('underlined')}});
+}
+function renderRecognition(){
+ $('recognitionGrid').innerHTML=B_POLYS.map((p,i)=>`<button type="button" class="recog-item" data-i="${i}" aria-label="Figura ${i+1}">${svgFor(p)}</button>`).join('');
+ document.querySelectorAll('.recog-item').forEach(b=>b.onclick=()=>{if(phase!=='recognition')return;const i=Number(b.dataset.i);if(selected.has(i)){selected.delete(i);b.classList.remove('selected')}else{selected.add(i);b.classList.add('selected')}$('selectedCount').textContent=selected.size});
+}
+function updateTimer(total){
+ const m=Math.floor(remaining/60),s=remaining%60;$('timer').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;$('progressBar').style.width=((total-remaining)/total*100)+'%';$('timer').classList.toggle('danger',remaining<=15)
+}
+function countdown(seconds,onEnd){
+ clearInterval(timerId);remaining=seconds;updateTimer(seconds);const anchor=Date.now(),start=seconds;
+ timerId=setInterval(()=>{remaining=Math.max(0,start-Math.floor((Date.now()-anchor)/1000));updateTimer(seconds);if(remaining<=0){clearInterval(timerId);timerId=null;onEnd()}},200)
+}
+function startTest(){
+ if(!$('clientCode').value.trim()){alert('Completează codul candidatului / inițialele.');$('clientCode').focus();return}
+ $('startBtn').classList.add('hidden');phase='study';studyStartedAt=new Date().toISOString();$('studyCard').classList.remove('hidden');$('phaseName').textContent='9A · identificare';$('phaseNote').textContent='1 minut · marchează figurile cerute';$('finishEarlyBtn').classList.remove('hidden');countdown(60,endStudy)
+}
+function endStudy(){
+ if(phase!=='study')return;clearInterval(timerId);timerId=null;studyEndedAt=new Date().toISOString();phase='pause';$('studyCard').classList.add('hidden');$('finishEarlyBtn').classList.add('hidden');$('pauseCard').classList.remove('hidden');$('phaseName').textContent='Pauză';$('phaseNote').textContent='10 secunde';let n=10;$('pauseCountdown').textContent=n;$('timer').textContent='00:10';$('progressBar').style.width='0%';
+ const anchor=Date.now();timerId=setInterval(()=>{n=Math.max(0,10-Math.floor((Date.now()-anchor)/1000));$('pauseCountdown').textContent=n;$('timer').textContent=`00:${String(n).padStart(2,'0')}`;$('progressBar').style.width=((10-n)/10*100)+'%';if(n<=0){clearInterval(timerId);timerId=null;showSecondInstruction()}},200)
+}
+function showSecondInstruction(){
+ phase='second-instruction';
+ $('pauseCard').classList.add('hidden');
+ $('secondInstructions').classList.remove('hidden');
+ $('phaseName').textContent='Instrucțiune';
+ $('timer').textContent='02:00';
+ $('progressBar').style.width='0%';
+ $('phaseNote').textContent='Citește cerința și apasă „Începeți”.';
+}
+function startRecognition(){
+ if(phase!=='second-instruction')return;
+ phase='recognition';recognitionStartedAt=new Date().toISOString();$('secondInstructions').classList.add('hidden');$('pauseCard').classList.add('hidden');$('recognitionCard').classList.remove('hidden');$('phaseName').textContent='9B · recunoaștere';$('phaseNote').textContent='2 minute · marchează figurile recunoscute';$('finishEarlyBtn').classList.remove('hidden');countdown(120,endRecognition)
+}
+function endRecognition(){
+ if(phase!=='recognition')return;clearInterval(timerId);timerId=null;recognitionEndedAt=new Date().toISOString();phase='done';$('finishEarlyBtn').classList.add('hidden');$('recognitionCard').querySelectorAll('button').forEach(b=>b.disabled=true);$('finishCard').classList.remove('hidden');$('phaseName').textContent='Finalizat';$('timer').textContent='00:00';$('phaseNote').textContent='Poți descărca răspunsurile.';$('progressBar').style.width='100%'
+}
+function finishEarly(){if(phase==='study')endStudy();else if(phase==='recognition')endRecognition()}
+function buildSubmission(){return {schema:'bontila-t9-v1',id:'t9-'+Date.now()+'-'+Math.random().toString(36).slice(2,8),createdAt:new Date().toISOString(),clientCode:$('clientCode').value.trim(),ageYears:$('ageYears').value===''?null:Number($('ageYears').value),ageMonths:$('ageMonths').value===''?null:Number($('ageMonths').value),testDate:$('testDate').value,contextNote:$('contextNote').value.trim(),studyUnderlined:[...studyUnderlined].sort((a,b)=>a-b),selected:[...selected].sort((a,b)=>a-b),studyStartedAt,studyEndedAt,recognitionStartedAt,recognitionEndedAt}}
+function finalize(){
+ const sub=buildSubmission();let arr=[];try{arr=JSON.parse(localStorage.getItem(STORE_KEY)||'[]')}catch(e){}arr.push(sub);localStorage.setItem(STORE_KEY,JSON.stringify(arr));const blob=new Blob([JSON.stringify(sub,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`test9-${(sub.clientCode||'rezultat').replace(/[^a-zA-Z0-9_-]+/g,'_')}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);$('finalizeBtn').disabled=true;$('success').classList.remove('hidden')
+}
+$('startBtn').onclick=startTest;$('startRecognitionBtn').onclick=startRecognition;$('finishEarlyBtn').onclick=finishEarly;$('finalizeBtn').onclick=finalize;renderStudy();renderRecognition();updateTimer(60);
+</script></body></html>

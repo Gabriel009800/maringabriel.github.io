@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ro"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Testul 6 – Atenție concentrată</title><style>
+:root{--bg:#f5f1eb;--paper:#fffdf9;--card:#fff;--ink:#25211e;--muted:#756d65;--line:#e4dcd2;--accent:#795038;--accent2:#b88762;--soft:#f3e8dc;--good:#2e6a49;--warn:#9a681b;--danger:#a13c36;--blue:#35658a;--shadow:0 18px 50px rgba(80,57,40,.11);--radius:24px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:radial-gradient(circle at 12% 0,rgba(184,135,98,.15),transparent 34rem),linear-gradient(180deg,#fbf8f4,var(--bg));font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.55}
+button,input,select,textarea{font:inherit}.page{width:min(1180px,calc(100% - 30px));margin:auto;padding:30px 0 72px}.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(255,253,249,.98),rgba(243,232,220,.82));border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);padding:30px}.hero:after{content:"";position:absolute;right:-130px;top:-190px;width:360px;height:360px;border-radius:50%;background:rgba(121,80,56,.08)}
+.kicker{margin:0 0 8px;color:var(--accent);font-size:.8rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase}h1,h2,h3{font-family:Georgia,"Times New Roman",serif}h1{margin:0 0 10px;font-size:clamp(2rem,4.5vw,3.8rem);line-height:1;letter-spacing:-.04em}h2{margin:0 0 10px;font-size:clamp(1.35rem,2.2vw,2rem)}p{margin:.4rem 0}.muted{color:var(--muted)}.tiny{font-size:.84rem;color:var(--muted)}.section{margin-top:22px}.card{background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(80,57,40,.07);padding:22px}.notice{background:#fff8ef;border:1px solid #ead8c5;border-left:6px solid var(--accent2);padding:16px 18px;border-radius:18px;color:#4b3c31}.notice.good{background:#f1f8f4;border-left-color:var(--good)}.notice.warn{border-left-color:var(--warn)}
+.fields{display:grid;grid-template-columns:1.3fr .55fr .55fr .85fr;gap:14px}.field{display:grid;gap:7px}label{font-weight:780}input,select,textarea{width:100%;border:1px solid var(--line);border-radius:14px;padding:11px 12px;background:#fff;color:var(--ink);outline:none}textarea{min-height:82px;resize:vertical}input:focus,select:focus,textarea:focus{border-color:#b68a6d;box-shadow:0 0 0 3px rgba(184,135,98,.12)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.btn{border:0;border-radius:999px;padding:11px 16px;background:var(--accent);color:#fff;font-weight:880;cursor:pointer;box-shadow:0 10px 18px rgba(121,80,56,.16)}.btn.secondary{background:#fff;color:var(--accent);border:1px solid var(--line);box-shadow:none}.btn.soft{background:var(--soft);color:#5b3921;box-shadow:none}.btn.danger{background:var(--danger)}.btn:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}.btn:hover:not(:disabled){transform:translateY(-1px);filter:brightness(1.03)}.hidden{display:none!important}
+.timerbar{position:sticky;top:0;z-index:40;padding:10px 0;backdrop-filter:blur(16px)}.timerbox{display:flex;align-items:center;gap:13px;background:rgba(255,253,249,.94);border:1px solid var(--line);border-radius:999px;padding:8px 12px;box-shadow:0 8px 24px rgba(84,58,40,.08)}.timer{font-family:Georgia,"Times New Roman",serif;font-size:1.55rem;font-weight:700;color:var(--accent);min-width:75px}.timer.danger{color:var(--danger)}.progress{height:10px;flex:1;border-radius:999px;background:#eadfd6;overflow:hidden}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:999px}.counter{white-space:nowrap;color:var(--muted);font-weight:800}
+.sheet-shell{overflow:auto}.sheet{position:relative;width:min(100%,1000px);min-width:680px;margin:auto;background:#fff;border:1px solid #ddd3c8;border-radius:18px;box-shadow:0 12px 34px rgba(50,40,32,.08);overflow:hidden;user-select:none}.plate{display:block;width:100%;height:auto;background:#fff}.hotspots{position:absolute;inset:0}.hotspot{position:absolute;width:3.1%;aspect-ratio:1/1;transform:translate(-50%,-50%);border:1.5px solid transparent;border-radius:5px;background:transparent;cursor:pointer;padding:0;touch-action:manipulation}.hotspot:hover,.hotspot:focus-visible{border-color:rgba(121,80,56,.55);background:rgba(121,80,56,.10);outline:none}.hotspot:disabled{cursor:default}.hotspot.selected:before,.hotspot.selected:after{content:"";position:absolute;left:50%;top:50%;width:70%;height:2.2px;background:#111;border-radius:3px;transform-origin:center}.hotspot.selected:before{transform:translate(-50%,-50%) rotate(45deg)}.hotspot.selected:after{transform:translate(-50%,-50%) rotate(-45deg)}.hotspot.endpoint{border:2.5px solid var(--blue);background:rgba(53,101,138,.10)}
+.overlay-banner{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:8;width:min(540px,88%);background:rgba(255,253,249,.98);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 22px 65px rgba(0,0,0,.18);text-align:center}.overlay-banner h3{margin:0 0 8px}#endpointOverlay{pointer-events:none}.legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;font-size:.88rem;color:var(--muted)}.legend span{display:inline-flex;align-items:center;gap:6px}.dot{width:12px;height:12px;border-radius:50%;display:inline-block;border:2px solid currentColor}
+@media(max-width:760px){.page{width:min(100% - 16px,1180px);padding-top:14px}.hero{padding:22px;border-radius:22px}.fields{grid-template-columns:1fr 1fr}.sheet{min-width:650px}.timerbox{border-radius:18px;flex-wrap:wrap}.progress{order:4;flex-basis:100%}}@media(max-width:520px){.fields{grid-template-columns:1fr}}
+@media print{body{background:#fff}.no-print,.timerbar,.actions,.overlay-banner{display:none!important}.page{width:100%;padding:0}.hero,.card,.sheet{box-shadow:none}.sheet{min-width:0;border:0}.section{break-inside:avoid}}
+
+.biblio-card{background:#fffdf9}
+.biblio-card ol{margin:8px 0 0 20px;padding:0}
+.biblio-card li{margin:0 0 8px;color:#44372c}
+
+</style></head>
+<body><main class="page">
+<section class="hero"><p class="kicker">Exerciții pentru evaluarea psihologică</p><h1>Testul 6 – Atenție concentrată</h1><p class="muted">Planșă digitală cu 460 de pătrate, reconstruită după materialul furnizat. Cele patru modele de sus sunt țintele; în grilă, fiecare pătrat poate fi selectat direct cu mouse-ul și marcat cu X.</p></section>
+
+<section class="section card"><h2>Date de identificare</h2><div class="fields">
+<div class="field"><label for="clientCode">Cod candidat / inițiale *</label><input id="clientCode" placeholder="Ex.: T6-001 sau A.B."></div>
+<div class="field"><label for="ageYears">Ani</label><input id="ageYears" type="number" min="0" max="100"></div>
+<div class="field"><label for="ageMonths">Luni</label><input id="ageMonths" type="number" min="0" max="11"></div>
+<div class="field"><label for="testDate">Data examinării</label><input id="testDate" type="date"></div>
+</div><div class="field section"><label for="contextNote">Observații / context</label><textarea id="contextNote"></textarea></div></section>
+
+<section class="section notice"><strong>Instrucțiuni de lucru</strong><p>Priviți cele patru modele mari de sus. Parcurgeți rândurile de la stânga la dreapta și dați click pe fiecare pătrat care seamănă cu unul dintre cele patru modele. Un click pune un <strong>X</strong>; al doilea click îl șterge. Timpul standard este de <strong>4 minute</strong>.</p><p class="tiny">La expirarea timpului, selecțiile se blochează și veți indica ultimul pătrat la care ați ajuns. Acesta este folosit pentru calculul automat al omisiunilor numai în porțiunea parcursă.</p></section>
+
+<div class="timerbar no-print"><div class="timerbox"><div id="timer" class="timer">04:00</div><div class="progress"><span id="timeProgress"></span></div><div id="counter" class="counter">0 selectate</div><button id="startBtn" class="btn" type="button">Începe testul</button><button id="stopBtn" class="btn secondary hidden" type="button">Încheie acum</button></div></div>
+
+<section class="section card"><div class="sheet-shell"><div class="sheet" id="sheet">
+<svg id="plate" class="plate" viewBox="0 0 1000 1180" role="img" aria-label="Planșa Testului 6"></svg>
+<div class="hotspots" id="hotspots"></div>
+<div id="startOverlay" class="overlay-banner"><h3>Planșa este pregătită</h3><p>Apăsați <strong>Începe testul</strong> pentru a porni cronometrul și a activa pătratele.</p></div>
+<div id="endpointOverlay" class="overlay-banner hidden"><h3>Timpul s-a încheiat</h3><p>Dați click pe <strong>ultimul pătrat la care ați ajuns</strong>. Acesta va fi marcat cu un contur albastru.</p></div>
+</div></div></section>
+
+<section id="finishCard" class="section card hidden"><h2>Finalizare</h2><p id="finishText" class="muted"></p><div class="actions"><button id="finalizeBtn" class="btn" type="button">Finalizează și descarcă răspunsurile</button><button id="changeEndpointBtn" class="btn secondary" type="button">Schimbă ultimul pătrat</button></div></section>
+<section id="success" class="section notice good hidden"><strong>Răspunsurile au fost salvate și descărcate.</strong><p>Fișierul JSON poate fi importat în pagina de rezultate pentru scorare automată.</p></section>
+
+<section class="section card biblio-card">
+  <h2>Bibliografie relevantă</h2>
+  <ol>
+    <li>Bontilă, G. (1971). <em>Ghid practic pentru interpretarea testelor psihologice</em>. Centrul de Documentare și Publicații al Ministerului Muncii.</li>
+  </ol>
+</section>
+
+</main>
+<script>
+const GRID=[["W","E","NW","SE","NE","E","NW","SW","NE","S","N","SE","SW","W","E","NW","W","S","SW","N"],["NE","N","SE","E","S","NW","N","S","SW","W","SE","E","S","NE","N","N","NE","W","S","SE"],["SW","E","N","SE","S","NW","E","W","S","NE","E","N","W","SW","N","NW","SW","NE","W","NW"],["W","E","S","NW","NE","SE","W","N","N","S","SW","E","W","NW","SE","NE","N","N","SW","NE"],["NE","SE","W","E","SW","N","NE","E","N","W","S","NW","NE","N","E","SW","E","SE","S","SW"],["SW","N","NE","NW","S","E","SW","SE","N","NE","W","E","SW","N","NW","S","E","SE","W","S"],["S","E","SW","SE","W","NW","S","N","E","SW","NE","SE","S","NW","N","W","NW","N","NE","W"],["W","N","S","E","NE","SE","W","N","NW","S","SW","SE","W","NW","N","NE","E","NW","SW","NE"],["N","W","E","S","N","NE","NW","W","S","SE","NW","W","N","SW","W","NW","NE","S","SE","N"],["SE","NE","NW","W","N","SW","SE","NE","W","N","NW","NE","SE","S","NE","E","SW","W","SE","N"],["NW","SW","N","NE","E","S","N","SW","NE","SE","N","SW","SE","W","SW","N","S","NE","NW","E"],["E","S","E","SW","SE","W","NW","S","SW","N","SE","S","E","NE","S","NW","W","SW","N","NW"],["N","W","NW","S","SE","NE","SE","W","S","N","SE","W","N","SW","W","NW","NE","S","E","N"],["NW","S","NE","W","S","SW","W","E","N","N","SW","S","NW","E","SW","NE","N","NW","N","S"],["S","W","SW","NE","NW","S","NE","N","SE","E","S","W","N","E","S","SW","N","SE","E","W"],["N","NE","S","SW","N","W","SW","E","SE","E","W","NE","E","NW","W","S","SE","E","NW","NE"],["NE","SW","W","S","E","NE","S","E","N","N","NE","SW","E","SE","NE","W","SE","N","SE","SW"],["N","S","NE","W","E","SW","W","S","NW","N","SW","S","N","N","SW","NE","SE","E","NW","S"],["SW","N","SE","N","S","SE","E","W","S","NE","SE","NW","W","SW","NW","NW","SW","NE","W","NW"],["S","SE","N","SE","W","NW","E","NE","W","SW","N","SE","NE","S","E","N","S","SW","NE","NW"],["W","N","E","SE","NE","NW","SE","SW","NE","S","N","E","SW","W","NW","SE","W","S","SW","NW"],["NE","E","SE","N","SW","N","SE","S","SW","W","N","SE","S","NE","SE","N","NE","W","S","E"],["SW","N","E","N","S","SE","NW","W","S","NE","N","SE","W","SW","NW","NW","SW","NE","W","NW"]];
+const TARGETS=new Set(['SW','NE','E','N']);
+const STORE_KEY='bontilaT6Submissions_v3', DRAFT_KEY='bontilaT6Draft_v3';
+const TOTAL=460, DURATION=240;
+let selected=new Set(), endpoint=null, state='ready', remaining=DURATION, timerId=null, lastPointerId=null;
+const $=id=>document.getElementById(id);
+$('testDate').value=new Date().toISOString().slice(0,10);
+
+const items=[]; for(let r=0;r<23;r++)for(let c=0;c<20;c++)items.push({id:r*20+c+1,row:r+1,col:c+1,dir:GRID[r][c]});
+
+function svgEl(name,attrs={}){const e=document.createElementNS('http://www.w3.org/2000/svg',name);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,v);return e}
+function symbolGroup(x,y,dir,size=16,tail=10,stroke=2){
+ const g=svgEl('g',{'stroke':'#111','stroke-width':stroke,'fill':'none','stroke-linecap':'square'});
+ g.appendChild(svgEl('rect',{x:x-size/2,y:y-size/2,width:size,height:size}));
+ const r=size/2; let a,b;
+ const m={N:[[x,y-r],[x,y-r-tail]],S:[[x,y+r],[x,y+r+tail]],E:[[x+r,y],[x+r+tail,y]],W:[[x-r,y],[x-r-tail,y]],NE:[[x+r,y-r],[x+r+tail*.72,y-r-tail*.72]],NW:[[x-r,y-r],[x-r-tail*.72,y-r-tail*.72]],SE:[[x+r,y+r],[x+r+tail*.72,y+r+tail*.72]],SW:[[x-r,y+r],[x-r-tail*.72,y+r+tail*.72]]};
+ [a,b]=m[dir];g.appendChild(svgEl('line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1]}));return g
+}
+function drawPlate(){
+ const svg=$('plate');svg.innerHTML='';
+ const title=svgEl('text',{x:835,y:62,'font-family':'Georgia, serif','font-size':'19','font-weight':'700','fill':'#111'});title.textContent='TEST 6';svg.appendChild(title);
+ [['SW',360],['NE',460],['E',560],['N',660]].forEach(([d,x])=>svg.appendChild(symbolGroup(x,120,d,38,20,2.3)));
+ for(const it of items){
+   const x=120+(it.col-1)*40, y=225+(it.row-1)*38;
+   svg.appendChild(symbolGroup(x,y,it.dir,16,10,1.8));
+ }
+}
+function drawHotspots(){
+ const host=$('hotspots');host.innerHTML='';
+ for(const it of items){
+   const b=document.createElement('button');b.type='button';b.className='hotspot';b.dataset.id=it.id;
+   b.style.left=((120+(it.col-1)*40)/1000*100)+'%'; b.style.top=((225+(it.row-1)*38)/1180*100)+'%';
+   b.setAttribute('aria-label',`Rând ${it.row}, coloana ${it.col}`);
+   b.disabled=true;
+   b.addEventListener('pointerenter',()=>{if(state==='running')lastPointerId=it.id});
+   b.addEventListener('pointerdown',()=>{if(state==='running')lastPointerId=it.id});
+   b.addEventListener('click',()=>handleSquare(it.id,b));
+   host.appendChild(b);
+ }
+}
+function buttons(){return [...document.querySelectorAll('.hotspot')]}
+function handleSquare(id,b){
+ if(state==='running'){
+   if(selected.has(id)){selected.delete(id);b.classList.remove('selected')}else{selected.add(id);b.classList.add('selected')}
+   updateCounter();saveDraft();
+ }else if(state==='endpoint'){
+   setEndpoint(id);
+ }
+}
+function updateCounter(){$('counter').textContent=`${selected.size} selectate`}
+function updateTimer(){
+ const m=Math.floor(remaining/60),s=remaining%60;$('timer').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+ $('timeProgress').style.width=((DURATION-remaining)/DURATION*100)+'%';
+ $('timer').classList.toggle('danger',remaining<=30);
+}
+function start(){
+ if(!$('clientCode').value.trim()){alert('Completează codul candidatului / inițialele.');$('clientCode').focus();return}
+ state='running';$('startBtn').classList.add('hidden');$('stopBtn').classList.remove('hidden');$('startOverlay').classList.add('hidden');
+ buttons().forEach(b=>b.disabled=false);
+ const t0=Date.now(), startRemaining=remaining;
+ timerId=setInterval(()=>{
+   remaining=Math.max(0,startRemaining-Math.floor((Date.now()-t0)/1000));updateTimer();
+   if(remaining<=0)finishRun();
+ },250);
+}
+function finishRun(){
+ if(timerId)clearInterval(timerId);timerId=null;remaining=Math.max(0,remaining);updateTimer();
+ state='endpoint';buttons().forEach(b=>b.disabled=false);$('stopBtn').classList.add('hidden');$('endpointOverlay').classList.remove('hidden');
+}
+function setEndpoint(id){
+ endpoint=id;buttons().forEach(b=>b.classList.toggle('endpoint',Number(b.dataset.id)===id));
+ $('endpointOverlay').classList.add('hidden');state='done';buttons().forEach(b=>b.disabled=true);
+ $('finishCard').classList.remove('hidden');$('finishText').textContent=`Ultimul pătrat parcurs: rând ${Math.ceil(id/20)}, coloana ${((id-1)%20)+1} (poziția ${id} din 460).`;
+ saveDraft();
+}
+function endpointAgain(){state='endpoint';endpoint=null;buttons().forEach(b=>{b.classList.remove('endpoint');b.disabled=false});$('finishCard').classList.add('hidden');$('endpointOverlay').classList.remove('hidden')}
+function saveDraft(){
+ const d={selected:[...selected],endpoint,remaining,clientCode:$('clientCode').value,ageYears:$('ageYears').value,ageMonths:$('ageMonths').value,testDate:$('testDate').value,contextNote:$('contextNote').value};
+ localStorage.setItem(DRAFT_KEY,JSON.stringify(d));
+}
+function buildSubmission(){
+ return {schema:'bontila-t6-v3',id:'t6-'+Date.now()+'-'+Math.random().toString(36).slice(2,8),createdAt:new Date().toISOString(),clientCode:$('clientCode').value.trim(),ageYears:$('ageYears').value===''?null:Number($('ageYears').value),ageMonths:$('ageMonths').value===''?null:Number($('ageMonths').value),testDate:$('testDate').value,contextNote:$('contextNote').value.trim(),durationSeconds:DURATION-remaining,selected:[...selected].sort((a,b)=>a-b),endpoint,totalSquares:TOTAL};
+}
+function finalize(){
+ if(!endpoint){alert('Indică mai întâi ultimul pătrat parcurs.');return}
+ const sub=buildSubmission();let arr=[];try{arr=JSON.parse(localStorage.getItem(STORE_KEY)||'[]')}catch(e){}arr.push(sub);localStorage.setItem(STORE_KEY,JSON.stringify(arr));
+ const blob=new Blob([JSON.stringify(sub,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`test6-${sub.clientCode.replace(/[^a-zA-Z0-9_-]+/g,'_')||'rezultat'}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+ localStorage.removeItem(DRAFT_KEY);$('success').classList.remove('hidden');$('finalizeBtn').disabled=true;
+}
+$('startBtn').onclick=start;$('stopBtn').onclick=finishRun;$('changeEndpointBtn').onclick=endpointAgain;$('finalizeBtn').onclick=finalize;
+['clientCode','ageYears','ageMonths','testDate','contextNote'].forEach(id=>$(id).addEventListener('input',saveDraft));
+drawPlate();drawHotspots();updateTimer();updateCounter();
+</script></body></html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ro"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Testul 8 – rezultate</title><style>
+:root{--bg:#f5f1eb;--paper:#fffdf9;--card:#fff;--ink:#25211e;--muted:#746c64;--line:#e4dcd3;--accent:#795038;--accent2:#b88762;--soft:#f3e8dc;--good:#2e6a49;--warn:#986718;--danger:#a13c36;--blue:#35658a;--shadow:0 18px 50px rgba(80,57,40,.11);--radius:24px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:radial-gradient(circle at 12% 0,rgba(184,135,98,.15),transparent 34rem),linear-gradient(180deg,#fbf8f4,var(--bg));font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.55}
+button,input,select,textarea{font:inherit}.page{width:min(1140px,calc(100% - 30px));margin:auto;padding:30px 0 72px}.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(255,253,249,.98),rgba(243,232,220,.82));border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);padding:30px}.hero:after{content:"";position:absolute;right:-130px;top:-190px;width:360px;height:360px;border-radius:50%;background:rgba(121,80,56,.08)}
+.kicker{margin:0 0 8px;color:var(--accent);font-size:.8rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase}h1,h2,h3{font-family:Georgia,"Times New Roman",serif}h1{margin:0 0 10px;font-size:clamp(2rem,4.5vw,3.8rem);line-height:1;letter-spacing:-.04em}h2{margin:0 0 10px;font-size:clamp(1.35rem,2.2vw,2rem)}h3{margin:0}.muted{color:var(--muted)}.tiny{font-size:.84rem;color:var(--muted)}.section{margin-top:22px}
+.card{background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(80,57,40,.07);padding:22px}.notice{background:#fff8ef;border:1px solid #ead8c5;border-left:6px solid var(--accent2);padding:16px 18px;border-radius:18px;color:#4b3c31}.notice.good{background:#f1f8f4;border-left-color:var(--good)}.notice.warn{border-left-color:var(--warn)}
+.fields{display:grid;grid-template-columns:1.25fr .55fr .55fr .8fr;gap:14px}.field{display:grid;gap:7px}label{font-weight:780}input,select,textarea{width:100%;border:1px solid var(--line);border-radius:14px;padding:11px 12px;background:#fff;color:var(--ink);outline:none}textarea{min-height:82px;resize:vertical}input:focus,select:focus,textarea:focus{border-color:#b68a6d;box-shadow:0 0 0 3px rgba(184,135,98,.12)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.btn{border:0;border-radius:999px;padding:11px 16px;background:var(--accent);color:#fff;font-weight:880;cursor:pointer;box-shadow:0 10px 18px rgba(121,80,56,.16)}.btn.secondary{background:#fff;color:var(--accent);border:1px solid var(--line);box-shadow:none}.btn.soft{background:var(--soft);color:#5b3921;box-shadow:none}.btn.danger{background:var(--danger)}.btn:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}.btn:hover:not(:disabled){transform:translateY(-1px);filter:brightness(1.03)}.hidden{display:none!important}
+.biblio-card{background:#fffdf9}.biblio-card ol{margin:8px 0 0 20px;padding:0}.biblio-card li{margin:0 0 8px;color:#44372c}
+@media(max-width:780px){.page{width:min(100% - 16px,1140px);padding-top:14px}.hero{padding:22px;border-radius:22px}.fields{grid-template-columns:1fr 1fr}}@media(max-width:520px){.fields{grid-template-columns:1fr}}
+@media print{body{background:#fff}.no-print,.auth-screen{display:none!important}.page{width:100%;padding:0}.hero,.card{box-shadow:none}.section{break-inside:avoid}}
+
+.auth-screen{display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:24px;background:linear-gradient(180deg,#fbf8f4,var(--bg))}body.locked{overflow:hidden}body.locked .page{display:none!important}body.locked .auth-screen{display:flex}.auth-card{width:min(430px,calc(100% - 20px));background:#fffdf9;border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:28px;display:grid;gap:14px}.auth-error{color:var(--danger);font-weight:850;background:#f8e9e7;border:1px solid #eccbc7;border-radius:14px;padding:10px 12px;margin:0}
+.select-row{display:flex;gap:14px;flex-wrap:wrap;align-items:end}.select-row .field{flex:1 1 300px}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.stat{padding:18px;border:1px solid var(--line);border-radius:19px;background:var(--paper)}.stat .label{font-weight:850}.stat .value{font-family:Georgia,"Times New Roman",serif;font-size:2rem;color:var(--accent);font-weight:700;margin-top:3px}.stat .sub{font-size:.84rem;color:var(--muted);margin-top:3px}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px;background:#fff}table{width:100%;border-collapse:collapse;min-width:760px}th,td{padding:10px 11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#fbf5ef;color:#5b3b24;font-size:.78rem;text-transform:uppercase;letter-spacing:.055em}tr:last-child td{border-bottom:0}.ok{color:var(--good);font-weight:900}.bad{color:var(--danger);font-weight:900}.blank{color:var(--muted)}
+.norm-table{min-width:820px}.norm-table th,.norm-table td{text-align:center}.norm-table .selected-col{background:#fff4e7}.norm-table th.selected-col{background:#f3ddc8}.norm-table .exact{outline:3px solid #b88762;outline-offset:-3px;background:#f3e8dc!important;font-weight:950}.norm-table .between{background:#fff0df!important;font-weight:900}.fit-mark{display:inline-flex;margin-left:5px;padding:2px 6px;border-radius:999px;background:var(--accent);color:#fff;font-size:.66rem;font-weight:900}
+.manual-check{width:auto;transform:scale(1.1)}.raw-box{padding:14px;border:1px solid var(--line);border-radius:16px;background:var(--paper);font-family:Georgia,"Times New Roman",serif;line-height:1.7}.unmatched{display:flex;gap:8px;flex-wrap:wrap}.chip{display:inline-flex;padding:5px 9px;border-radius:999px;background:#f3e8dc;color:#5b3921;font-weight:750}.report-box{padding:18px;border:1px solid var(--line);border-radius:18px;background:var(--paper);font-family:Georgia,"Times New Roman",serif;font-size:1.05rem;line-height:1.72}.report-box p{text-align:justify;margin:0}
+@media(max-width:850px){.stats{grid-template-columns:1fr 1fr}.select-row{display:grid}}@media(max-width:520px){.stats{grid-template-columns:1fr}}
+</style></head>
+<body class="locked">
+<section id="authScreen" class="auth-screen"><form id="authForm" class="auth-card"><p class="kicker">Acces protejat</p><h2>Testul 8 – rezultate</h2><p class="muted">Introdu parola pentru pagina de scorare.</p><div class="field"><label for="authPassword">Parolă</label><input id="authPassword" type="password" autocomplete="current-password"></div><p id="authError" class="auth-error hidden">Parolă greșită.</p><button class="btn" type="submit">Intră</button></form></section>
+
+<main class="page">
+<section class="hero"><p class="kicker">Scorare și interpretare</p><h1>Testul 8 – Memorie auditivă a cuvintelor</h1><p class="muted">Importă răspunsul JSON. Pagina identifică automat cuvintele reproduse, permite acordarea manuală a punctului pentru erori ortografice evidente și raportează scorul la etalonul de vârstă furnizat.</p></section>
+
+<section class="section notice"><strong>Regula de scorare din material</strong><p>Se acordă <strong>1 punct pentru fiecare cuvânt reprodus corect</strong>. Sunt luate în considerare și cuvintele reproduse cu ortografie defectuoasă atunci când este evident că subiectul a reținut cuvântul, dar nu l-a redat corect. <strong>Ordinea reproducerii nu contează.</strong></p><p class="tiny">Din acest motiv, potrivirile clare sunt scorate automat, iar cazurile ortografice incerte pot fi validate manual de evaluator.</p></section>
+
+<section class="section card no-print"><div class="select-row"><div class="field"><label for="submissionSelect">Rezultat salvat</label><select id="submissionSelect"></select></div><div class="actions"><button id="importBtn" class="btn secondary" type="button">Importă JSON</button><input id="jsonImport" class="hidden" type="file" accept=".json,application/json"><button id="archiveBtn" class="btn secondary" type="button">Arhivează</button><button id="deleteBtn" class="btn danger" type="button">Șterge</button><button id="printBtn" class="btn secondary" type="button">Printează / PDF</button><button id="copyBtn" class="btn soft" type="button">Copiază formularea</button></div></div></section>
+
+<section id="emptyState" class="section notice"><strong>Nu există încă rezultate.</strong><p>Importă fișierul JSON descărcat din pagina de completare.</p></section>
+<section id="reportRoot" class="hidden"></section>
+
+<section class="section card biblio-card"><h2>Bibliografie relevantă</h2><ol><li>Bontilă, G. (1971). <em>Ghid practic pentru interpretarea testelor psihologice</em>. Centrul de Documentare și Publicații al Ministerului Muncii.</li></ol></section>
+</main>
+
+<script>
+const ACCESS_PASSWORD='kimkiduk',ACCESS_SESSION_KEY='bontilaT8ResultsAccess_v1',STORE_KEY='bontilaT8Submissions_v1';
+const WORDS=["carton", "vagon", "șervet", "clopoțel", "coș", "bătrîn", "albină", "tavă", "vînător", "pian", "baston", "floare", "castan", "plop", "cărbune", "copac", "prăjitură", "călimară", "lămîie", "caiet", "martă", "oțel", "șoarece", "sugativă", "supă", "lucru", "buchet", "cuțit", "barieră", "chibrit"],CENTILES=[100, 90, 80, 75, 70, 60, 50, 40, 30, 25, 20, 10, 0],NORMS={"13":[21,16,15,14,13,12,11,10,9,8,7,6,0],"14":[20,14,13,12,11,10,9,9,8,8,7,6,0],"15":[21,15,14,13,12,11,10,9,8,8,7,6,0],"16":[21,15,14,13,12,11,10,10,9,9,8,7,0],"17":[21,16,15,14,13,12,11,10,10,9,8,7,3],"adult":[21,16,15,14,13,12,11,10,9,9,8,7,0]};
+const GROUP_LABELS={'13':'13 ani','14':'14 ani','15':'15 ani','16':'16 ani','17':'17 ani',adult:'Adulți'};
+const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function readStore(){try{return JSON.parse(localStorage.getItem(STORE_KEY)||'[]')}catch(e){return[]}}function writeStore(v){localStorage.setItem(STORE_KEY,JSON.stringify(v))}
+function fmtDate(x){if(!x)return'—';const d=new Date(x+'T12:00:00');return isNaN(d)?esc(x):d.toLocaleDateString('ro-RO')}
+function normGroup(sub){const y=Number(sub.ageYears);if([13,14,15,16,17].includes(y))return String(y);if(y>=18)return'adult';return null}
+function baseNorm(s){return String(s??'').toLocaleLowerCase('ro-RO').normalize('NFD').replace(/\p{M}/gu,'').replace(/[^a-z]/g,'')}
+const ALIASES={
+ 'bătrîn':['bătrîn','bătrân'],
+ 'vînător':['vînător','vânător'],
+ 'lămîie':['lămîie','lămâie']
+};
+function acceptedForms(word){return (ALIASES[word]||[word]).map(baseNorm)}
+function scoreAuto(sub){
+ const tokens=(Array.isArray(sub.tokens)?sub.tokens:[]).map((t,i)=>({raw:String(t),norm:baseNorm(t),i})),used=new Set(),matched=new Map();
+ WORDS.forEach(w=>{const forms=acceptedForms(w);const hit=tokens.find(t=>!used.has(t.i)&&forms.includes(t.norm));if(hit){used.add(hit.i);matched.set(w,hit.raw)}});
+ const unmatched=tokens.filter(t=>!used.has(t.i)).map(t=>t.raw);
+ return {matched,unmatched,tokens};
+}
+function centileBand(table,score){
+ if(!table||!Number.isFinite(score))return null;const vals=CENTILES.map((c,i)=>({c,v:table[i]}));
+ if(score>vals[0].v)return{type:'above',high:vals[0]};if(score===vals[0].v)return{type:'exact',exact:vals[0]};
+ for(let i=0;i<vals.length-1;i++){const hi=vals[i],lo=vals[i+1];if(score===hi.v)return{type:'exact',exact:hi};if(score===lo.v)return{type:'exact',exact:lo};if(score<hi.v&&score>lo.v)return{type:'between',high:hi,low:lo}}
+ const last=vals[vals.length-1];if(score===last.v)return{type:'exact',exact:last};return{type:'below',low:last};
+}
+function bandText(b){if(!b)return'—';if(b.type==='exact')return`C${b.exact.c}`;if(b.type==='between')return`între C${b.low.c} și C${b.high.c}`;if(b.type==='above')return`peste pragul C${b.high.c}`;return`sub pragul C${b.low.c}`}
+function renderNorm(group,score){
+ const band=group?centileBand(NORMS[group],score):null;
+ return `<div class="table-wrap"><table class="norm-table"><thead><tr><th>Centila</th>${['13','14','15','16','17','adult'].map(g=>`<th class="${g===group?'selected-col':''}">${GROUP_LABELS[g]}</th>`).join('')}</tr></thead><tbody>
+ ${CENTILES.map((c,ri)=>`<tr><th>${c}</th>${['13','14','15','16','17','adult'].map(g=>{let cls=g===group?'selected-col ':'',mark='';if(g===group&&band){if(band.type==='exact'&&band.exact.c===c){cls+='exact';mark='<span class="fit-mark">aici</span>'}if(band.type==='between'&&(band.high.c===c||band.low.c===c)){cls+='between';mark='<span class="fit-mark">limită</span>'}if(band.type==='above'&&band.high.c===c){cls+='between';mark='<span class="fit-mark">prag</span>'}if(band.type==='below'&&band.low.c===c){cls+='between';mark='<span class="fit-mark">prag</span>'}}return `<td class="${cls}">${NORMS[g][ri]}${mark}</td>`}).join('')}</tr>`).join('')}
+ </tbody></table></div>`;
+}
+function renderSelector(){const data=readStore().sort((a,b)=>String(b.createdAt||'').localeCompare(String(a.createdAt||''))),sel=$('submissionSelect');sel.innerHTML=data.length?data.map(x=>`<option value="${esc(x.id)}">${x.archived?'Arhivat · ':''}${esc(x.clientCode||'fără cod')} · ${fmtDate(x.testDate)}</option>`).join(''):'<option value="">— niciun rezultat —</option>';$('emptyState').classList.toggle('hidden',!!data.length);$('reportRoot').classList.toggle('hidden',!data.length);sel.onchange=renderSelected;if(data.length)renderSelected()}
+function selectedSubmission(){return readStore().find(x=>x.id===$('submissionSelect').value)||null}
+function manualKey(subId){return 'bontilaT8Manual_'+subId}
+function readManual(subId){try{return new Set(JSON.parse(localStorage.getItem(manualKey(subId))||'[]'))}catch(e){return new Set()}}
+function writeManual(subId,set){localStorage.setItem(manualKey(subId),JSON.stringify([...set]))}
+function renderSelected(){
+ const sub=selectedSubmission();if(!sub)return;const auto=scoreAuto(sub),manual=readManual(sub.id),group=normGroup(sub);
+ const autoWords=new Set(auto.matched.keys());const finalWords=new Set([...autoWords,...manual]);const score=finalWords.size,band=group?centileBand(NORMS[group],score):null;
+ const age=sub.ageYears==null?'—':`${sub.ageYears} ani${sub.ageMonths!=null?' și '+sub.ageMonths+' luni':''}`,groupText=group?GROUP_LABELS[group]:'fără etalon automat';
+ $('reportRoot').innerHTML=`
+ <section class="section card"><h2>Scor</h2><div class="stats">
+ <div class="stat"><div class="label">Scor automat</div><div class="value">${autoWords.size}</div><div class="sub">potriviri clare</div></div>
+ <div class="stat"><div class="label">Acordate manual</div><div class="value">${manual.size}</div><div class="sub">erori ortografice acceptate</div></div>
+ <div class="stat"><div class="label">Total</div><div class="value">${score}</div><div class="sub">din 30 de cuvinte</div></div>
+ <div class="stat"><div class="label">Etalon</div><div class="value" style="font-size:1.55rem">${group?bandText(band):'—'}</div><div class="sub">${groupText}</div></div>
+ </div><p class="tiny" style="margin-top:12px">Candidat: <strong>${esc(sub.clientCode||'—')}</strong> · Vârstă: <strong>${age}</strong> · Data: <strong>${fmtDate(sub.testDate)}</strong>.</p></section>
+
+ <section class="section card"><h2>Corectarea celor 30 de cuvinte</h2><p class="muted">Bifează manual „Acordă punct” numai dacă un răspuns cu ortografie defectuoasă dovedește clar că subiectul a reținut cuvântul.</p>
+ <div class="table-wrap"><table><thead><tr><th>#</th><th>Cuvânt-țintă</th><th>Potrivire automată</th><th>Status</th><th>Acordă punct manual</th></tr></thead><tbody>
+ ${WORDS.map((w,i)=>{const hit=auto.matched.get(w),isMan=manual.has(w);return `<tr><td>${i+1}</td><td><strong>${w}</strong></td><td>${hit?esc(hit):'—'}</td><td class="${hit||isMan?'ok':'blank'}">${hit?'corect automat':isMan?'acceptat manual':'nereprodus / neidentificat'}</td><td><input class="manual-check" type="checkbox" data-word="${esc(w)}" ${isMan?'checked':''} ${hit?'disabled title="Deja punctat automat"':''}></td></tr>`}).join('')}
+ </tbody></table></div></section>
+
+ <section class="section card"><h2>Răspunsuri neasociate automat</h2>${auto.unmatched.length?`<div class="unmatched">${auto.unmatched.map(x=>`<span class="chip">${esc(x)}</span>`).join('')}</div>`:'<p class="muted">Nu există răspunsuri rămase neasociate.</p>'}
+ <div class="raw-box" style="margin-top:14px"><strong>Textul original introdus:</strong><br>${esc(sub.responseText||'').replace(/\n/g,'<br>')}</div></section>
+
+ <section class="section card"><h2>Etalon</h2><p class="muted">Coloana corespunzătoare vârstei este evidențiată; dacă scorul cade între două praguri, sunt marcate ambele limite.</p>${renderNorm(group,score)}</section>
+
+ <section class="section card"><h2>Formulare sintetică</h2><div id="reportText" class="report-box"><p>La Testul 8 – Memorie auditivă a cuvintelor, subiectul a reprodus <strong>${score}</strong> dintre cele 30 de cuvinte, dintre care <strong>${autoWords.size}</strong> au fost identificate automat și <strong>${manual.size}</strong> au fost acceptate manual ca reproduceri ortografice evidente. ${group?`Raportarea la etalonul pentru ${groupText} situează scorul ${bandText(band)}.`:'Pentru vârsta introdusă nu este disponibilă o coloană de etalon automată în tabelul furnizat.'}</p></div></section>`;
+ document.querySelectorAll('.manual-check').forEach(cb=>cb.addEventListener('change',()=>{const m=readManual(sub.id),w=cb.dataset.word;if(cb.checked)m.add(w);else m.delete(w);writeManual(sub.id,m);renderSelected()}));
+}
+function importJson(file){const rd=new FileReader();rd.onload=()=>{try{const sub=JSON.parse(rd.result);if(!Array.isArray(sub.tokens)&&typeof sub.responseText!=='string')throw new Error();if(!sub.id)sub.id='t8-import-'+Date.now();if(!Array.isArray(sub.tokens)){const m=String(sub.responseText||'').toLocaleLowerCase('ro-RO').match(/[\p{L}]+/gu);sub.tokens=m||[]}const arr=readStore(),i=arr.findIndex(x=>x.id===sub.id);if(i>=0)arr[i]=sub;else arr.push(sub);writeStore(arr);renderSelector();$('submissionSelect').value=sub.id;renderSelected()}catch(e){alert('Fișierul nu pare a fi un rezultat valid pentru Testul 8.')}};rd.readAsText(file)}
+$('importBtn').onclick=()=>$('jsonImport').click();$('jsonImport').onchange=e=>{if(e.target.files[0])importJson(e.target.files[0]);e.target.value=''};
+$('deleteBtn').onclick=()=>{const sub=selectedSubmission();if(!sub||!confirm('Ștergi acest rezultat?'))return;writeStore(readStore().filter(x=>x.id!==sub.id));localStorage.removeItem(manualKey(sub.id));renderSelector()};
+$('archiveBtn').onclick=()=>{const sub=selectedSubmission();if(!sub)return;const arr=readStore(),i=arr.findIndex(x=>x.id===sub.id);arr[i].archived=!arr[i].archived;writeStore(arr);renderSelector()};
+$('printBtn').onclick=()=>window.print();$('copyBtn').onclick=async()=>{const t=$('reportText')?.innerText||'';if(t){await navigator.clipboard.writeText(t);$('copyBtn').textContent='Copiat';setTimeout(()=>$('copyBtn').textContent='Copiază formularea',1200)}};
+$('authForm').onsubmit=e=>{e.preventDefault();if($('authPassword').value===ACCESS_PASSWORD){sessionStorage.setItem(ACCESS_SESSION_KEY,'1');document.body.classList.remove('locked');$('authError').classList.add('hidden');renderSelector()}else $('authError').classList.remove('hidden')};
+if(sessionStorage.getItem(ACCESS_SESSION_KEY)==='1'){document.body.classList.remove('locked');renderSelector()}
+</script></body></html>

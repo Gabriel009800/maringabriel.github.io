@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Testul de inteligență generală I₂</title>
+<style>
+:root{
+  --bg:#f5f1eb;--paper:#fffdf9;--card:#ffffff;--ink:#26211d;--muted:#766e66;--line:#e3dacf;
+  --accent:#7a5038;--accent2:#ba8964;--soft:#f3e8dc;--good:#2d6b49;--warn:#916a24;--danger:#a23d36;
+  --shadow:0 18px 50px rgba(84,58,40,.11);--radius:24px
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);background:radial-gradient(circle at 10% 0,rgba(186,137,100,.15),transparent 34rem),linear-gradient(180deg,#fbf8f4,var(--bg));font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.55}
+button,input,select,textarea{font:inherit}
+.page{width:min(1180px,calc(100% - 32px));margin:auto;padding:32px 0 76px}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(255,253,249,.98),rgba(243,232,220,.82));border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);padding:32px}
+.hero:after{content:"";position:absolute;right:-130px;top:-190px;width:360px;height:360px;border-radius:50%;background:rgba(122,80,56,.08)}
+.kicker{margin:0 0 8px;color:var(--accent);font-size:.8rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif} h1{margin:0 0 10px;font-size:clamp(2.1rem,4.5vw,3.9rem);line-height:1;letter-spacing:-.04em} h2{margin:0 0 10px;font-size:clamp(1.35rem,2.2vw,2rem)} h3{margin:0}
+.muted{color:var(--muted)} .tiny{font-size:.84rem;color:var(--muted)} .section{margin-top:22px}
+.card{background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(84,58,40,.07);padding:22px}
+.notice{background:#fff8ef;border:1px solid #ead8c5;border-left:6px solid var(--accent2);padding:16px 18px;border-radius:18px;color:#4b3c31}
+.notice.success{background:#f1f8f4;border-left-color:var(--good)}
+.progress-shell{position:sticky;top:0;z-index:50;padding:10px 0;backdrop-filter:blur(16px)}
+.progress{display:flex;align-items:center;gap:12px;background:rgba(255,253,249,.94);border:1px solid var(--line);border-radius:999px;padding:8px 12px;box-shadow:0 8px 24px rgba(84,58,40,.08)}
+.progress-bar{height:10px;flex:1;border-radius:999px;background:#eadfd6;overflow:hidden}.progress-bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:999px}
+.setup-grid{display:grid;grid-template-columns:1.1fr .65fr .65fr .75fr;gap:14px}.field{display:grid;gap:7px}.full{grid-column:1/-1}label{font-weight:780}
+input,select,textarea{width:100%;border:1px solid var(--line);border-radius:14px;padding:11px 12px;background:#fff;color:var(--ink);outline:none}
+input:focus,select:focus,textarea:focus{border-color:#b68a6d;box-shadow:0 0 0 3px rgba(184,135,98,.12)} textarea{min-height:84px;resize:vertical}
+.mode-row{display:flex;gap:10px;flex-wrap:wrap}.mode-chip{position:relative;cursor:pointer}.mode-chip input{position:absolute;opacity:0;pointer-events:none}.mode-chip span{display:block;border:1px solid var(--line);border-radius:16px;padding:12px 14px;background:#fff;font-weight:800}.mode-chip input:checked+span{border-color:#b68a6d;background:var(--soft);color:#543620;box-shadow:0 0 0 3px rgba(184,135,98,.1)}
+.general-instructions p{margin:.45rem 0}.quote-command{display:inline-flex;padding:3px 9px;border-radius:999px;background:var(--soft);font-weight:850;color:#5c3b24}
+.subtest{padding:0;overflow:hidden}.subtest-top{display:grid;grid-template-columns:1fr auto;gap:18px;padding:22px;border-bottom:1px solid var(--line);align-items:start}.subtest-heading{display:flex;gap:12px}.badge{display:flex;align-items:center;justify-content:center;min-width:44px;height:44px;padding:0 13px;border-radius:999px;background:var(--soft);color:#5b3921;font-weight:950}.subtest-name{font-family:Georgia,"Times New Roman",serif;font-size:1.65rem;font-weight:700}.subtest-sub{font-size:.86rem;color:var(--muted);font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.timer-panel{min-width:205px;text-align:center;border:1px solid var(--line);border-radius:18px;background:var(--paper);padding:11px 12px}.timer-label{font-size:.72rem;color:var(--muted);font-weight:900;letter-spacing:.09em;text-transform:uppercase}.timer{font-family:Georgia,"Times New Roman",serif;font-size:2rem;line-height:1.1;color:var(--accent);margin:3px 0 6px}.timer.danger{color:var(--danger)}.timer-note{font-size:.78rem;color:var(--muted)}
+.instruction-box{margin:18px 22px 0;padding:16px 17px;border-radius:18px;border:1px solid #ead8c5;background:#fff9f1;color:#44362b}.instruction-box p{margin:.45rem 0}
+.example{margin-top:12px;padding:14px 15px;border:1px dashed #cfb9a6;border-radius:15px;background:#fff;display:grid;gap:10px}.example-title{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:900}.example-stem{font-family:Georgia,"Times New Roman",serif;font-size:1.06rem;font-weight:700;line-height:1.45}.example-answerline{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:.92rem;color:#4b3c31;font-weight:700}.example-answer{display:inline-flex;min-width:42px;justify-content:center;padding:2px 8px;border:1px solid var(--line);border-radius:999px;background:var(--soft);font-weight:900}
+.start-zone{padding:20px 22px;text-align:center}.locked-msg{color:var(--muted);font-weight:700}
+.items{padding:8px 22px 22px}.item-row{display:grid;grid-template-columns:minmax(0,1fr) 78px;gap:14px;align-items:stretch;padding:14px 0;border-bottom:1px solid var(--line)}.item-row:last-child{border-bottom:0}.item-main{min-width:0}.item-head{display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap}.item-number{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#f2ece6;color:#6b4b35;font-size:.82rem;font-weight:950;flex:0 0 auto}.item-prompt{font-family:Georgia,"Times New Roman",serif;font-size:1.08rem;font-weight:700;line-height:1.45}.sequence{font-family:Georgia,"Times New Roman",serif;font-size:1.15rem;letter-spacing:.02em}
+.choice-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px 12px;margin-top:10px}
+.choice{position:relative;cursor:pointer;display:block}.choice input{position:absolute;opacity:0;pointer-events:none}.choice-box,.example-opt{display:flex;align-items:center;gap:10px;min-height:46px;padding:8px 12px;border:1px solid var(--line);border-radius:12px;background:#fff;transition:.12s ease;width:100%}
+.choice-code,.example-code{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:28px;padding:0 7px;border-radius:8px;background:#f2ece6;color:#69462f;font-size:.82rem;font-weight:800;flex:0 0 auto}.choice-text,.example-text{font-weight:700;line-height:1.3}.choice.missing .choice-code,.example-opt.missing .example-code{opacity:.55}
+.choice:hover .choice-box{border-color:#caa98f;transform:translateY(-1px)}.choice input:checked+.choice-box{background:var(--soft);border-color:#b78461;box-shadow:0 0 0 2px rgba(183,132,97,.12)}.choice input:disabled+.choice-box{opacity:.55;cursor:not-allowed;transform:none}
+.answer-margin{border-left:2px solid #b8ada4;display:flex;align-items:center;justify-content:center}.answer-bubble{width:58px;height:42px;border:1px solid #cfc4bb;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;font-family:Georgia,"Times New Roman",serif;font-size:1.06rem;font-weight:800}.answer-bubble.empty{color:#aaa19a;font-weight:500}
+.subtest-footer{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:14px 22px 22px}.paper-score{display:flex;align-items:center;gap:8px;font-family:Georgia,"Times New Roman",serif;font-size:1.05rem}.paper-score-box{width:70px;height:38px;border:1px solid #aaa19a;background:#fff;display:flex;align-items:center;justify-content:center;color:#9b938c}
+.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.btn{border:0;border-radius:999px;padding:11px 16px;background:var(--accent);color:#fff;font-weight:880;cursor:pointer;box-shadow:0 10px 18px rgba(121,80,56,.16);transition:.12s ease}.btn:hover:not(:disabled){transform:translateY(-1px);filter:brightness(1.03)}.btn.secondary{background:#fff;color:var(--accent);border:1px solid var(--line);box-shadow:none}.btn.soft{background:var(--soft);color:#5b3921;box-shadow:none}.btn.danger{background:var(--danger)}.btn.small{padding:8px 12px;font-size:.86rem}.btn:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
+.state-pill{display:inline-flex;padding:6px 10px;border-radius:999px;background:#f2ece6;color:#6b625b;font-size:.82rem;font-weight:850}.state-pill.good{background:#edf6f1;color:var(--good)}.state-pill.active{background:var(--soft);color:#674029}
+.final-check{display:flex;gap:10px;align-items:flex-start}.final-check input{width:auto;margin-top:5px}.hidden{display:none!important}
+@media(max-width:1020px){.choice-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:820px){.setup-grid{grid-template-columns:1fr 1fr}.subtest-top{grid-template-columns:1fr}.timer-panel{width:100%}.item-row{grid-template-columns:1fr 62px}.page{width:min(100% - 20px,1180px);padding-top:18px}.hero{padding:24px;border-radius:24px}.choice-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.setup-grid{grid-template-columns:1fr}.full{grid-column:auto}.choice-grid{grid-template-columns:1fr}.item-row{grid-template-columns:1fr}.answer-margin{border-left:0;border-top:1px dashed #cfc4bb;padding-top:10px;justify-content:flex-end}.answer-bubble{height:36px}.subtest-top,.items,.subtest-footer{padding-left:16px;padding-right:16px}.instruction-box{margin-left:16px;margin-right:16px}}
+@media print{body{background:#fff}.no-print,.progress-shell,.start-zone,.timer-panel,.actions{display:none!important}.page{width:100%;padding:0}.hero,.card{box-shadow:none}.subtest{break-inside:avoid}.items.hidden{display:block!important}.answer-margin{border-left:1px solid #777}}
+
+.biblio-card{background:#fffdf9}
+.biblio-card ol{margin:8px 0 0 20px;padding:0}
+.biblio-card li{margin:0 0 8px;color:#44372c}
+</style>
+</head>
+<body>
+<main class="page">
+  <section class="hero">
+    <p class="kicker">Exerciții pentru evaluarea psihologică</p>
+    <h1>Testul de inteligență generală I₂</h1>
+    <p class="muted">Variantă digitalizată a testului, transcrisă direct în HTML pentru lucru mai clar și mai apropiat de completarea pe foaie. Cele patru subteste rămîn separate, fiecare cu 10 itemuri și cu coloană de răspuns în dreapta.</p>
+  </section>
+
+  <div class="progress-shell no-print"><div class="progress"><strong id="progressText">0 / 40 răspunsuri</strong><div class="progress-bar"><span id="progressBar"></span></div><small id="progressPct">0%</small></div></div>
+
+  <section class="section card">
+    <h2>Date de identificare</h2>
+    <div class="setup-grid">
+      <div class="field"><label for="clientCode">Cod candidat / inițiale *</label><input id="clientCode" type="text" placeholder="Ex.: I2-001 sau A.B."></div>
+      <div class="field"><label for="sex">Sex</label><input id="sex" type="text" placeholder="M / F"></div>
+      <div class="field"><label for="ageYears">Ani</label><input id="ageYears" type="number" min="0" max="100"></div>
+      <div class="field"><label for="ageMonths">Luni</label><input id="ageMonths" type="number" min="0" max="11"></div>
+      <div class="field"><label for="birthDate">Data nașterii</label><input id="birthDate" type="date"></div>
+      <div class="field"><label for="profession">Profesia</label><input id="profession" type="text"></div>
+      <div class="field"><label for="domicile">Domiciliul</label><input id="domicile" type="text"></div>
+      <div class="field"><label for="testDate">Data examinării</label><input id="testDate" type="date"></div>
+      <div class="field full"><label for="contextNote">Observații / context</label><textarea id="contextNote"></textarea></div>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>Mod de administrare</h2>
+    <div class="mode-row">
+      <label class="mode-chip"><input type="radio" name="mode" value="standard" checked><span>Mod standard · 3 minute / subtest</span></label>
+      <label class="mode-chip"><input type="radio" name="mode" value="practice"><span>Mod de familiarizare · fără cronometru</span></label>
+    </div>
+    <div class="general-instructions section muted">
+      <p>În modul standard, subtestele se pornesc pe rînd și se blochează automat după încheierea timpului sau după apăsarea butonului <span class="quote-command">Încheie subtestul</span>.</p>
+      <p>În modul de familiarizare, toate subtestele sînt deschise și pot fi completate liber, fără limită de timp.</p>
+    </div>
+  </section>
+
+  <form id="i2Form">
+    <div id="subtests"></div>
+    <section class="section card">
+      <label class="final-check"><input id="consent" type="checkbox"><span>Confirm că am parcurs testul și înțeleg că fișierul JSON descărcat va fi folosit ulterior în pagina de scorare.</span></label>
+      <div class="actions section no-print">
+        <button class="btn" type="submit">Finalizează și descarcă răspunsurile</button>
+        <button class="btn secondary" type="button" id="saveDraftBtn">Salvează progresul</button>
+        <button class="btn secondary" type="button" id="restoreDraftBtn">Reia progresul</button>
+        <button class="btn secondary" type="button" id="resetBtn">Resetează</button>
+      </div>
+    </section>
+  </form>
+
+  <section id="successPanel" class="section notice success hidden"><strong>Răspunsurile au fost salvate.</strong><p style="margin:.45rem 0 0">Fișierul JSON poate fi importat în pagina „Test I₂ – rezultate”.</p><div class="actions section no-print"><button class="btn secondary" id="downloadLastBtn" type="button">Descarcă din nou</button></div></section>
+
+
+    <section class="section card biblio-card">
+      <h2>Bibliografie relevantă</h2>
+      <ol>
+        <li>Bontilă, G. (1971). <em>Ghid practic pentru interpretarea testelor psihologice</em>. Centrul de Documentare și Publicații al Ministerului Muncii.</li>
+      </ol>
+    </section>
+</main>
+
+<script>
+const SUBTESTS=[
+  {
+    id:'s1',nr:1,name:'Cuvinte contrarii',answerKind:'cifră',
+    intro:['Priviți la exemplele de mai jos:','Alegeți cuvîntul care înseamnă contrariul (opusul) primului cuvînt și scrieți la margine cifra lui.'],
+    examples:[
+      {stem:'aproape',opts:[['3','mare'],['5','departe'],['7','negru'],['6','bun'],['8','nord']],answer:'5',note:'Departe este contrariul lui aproape; la margine se scrie cifra 5.'},
+      {stem:'întuneric',opts:[['2','soare'],['9','apă'],['3','lumină'],['8','umbră'],['4','negru']],answer:'3',note:'Contrariul lui întuneric este lumină; se scrie cifra 3.'}
+    ],
+    instruction:'Nu uitați să scrieți la margine cifra care însoțește cuvîntul potrivit. Lucrați mai departe în același fel.',
+    items:[
+      {prompt:'afară',opts:[[null,'metru'],['1','înăuntru'],['4','încolo'],['2','închis'],['8','alături']]},
+      {prompt:'negru',opts:[['7','luminos'],['4','nori'],['3','întunecos'],['8','alb'],['9','umbră']]},
+      {prompt:'nou',opts:[['8','povestire'],['6','pălărie'],['5','vechi'],['9','proaspăt'],['7','îndepărtat']]},
+      {prompt:'prieten',opts:[['7','crud'],['3','vecin'],['4','răutăcios'],['9','dușman'],['1','binevoitor']]},
+      {prompt:'senin',opts:[['8','soare'],['6','vijelie'],['1','noros'],['3','întuneric'],['9','lumină']]},
+      {prompt:'ascuțit',opts:[['7','vîrf'],['8','tocit'],['5','lat'],['2','întins'],['3','tăios']]},
+      {prompt:'leneș',opts:[['8','vacanță'],['5','silitor'],['6','plimbare'],['5','ambițios'],['9','vioi']]},
+      {prompt:'trecut',opts:[['9','prezent'],['4','plecat'],['6','tîrziu'],['1','încet'],['7','devreme']]},
+      {prompt:'urcuș',opts:[['5','înclinat'],['9','movilă'],['7','cîmpie'],['1','coborîș'],['6','vale']]},
+      {prompt:'adormit',opts:[['8','treaz'],['3','fericit'],['2','leneș'],['7','zburdalnic'],['4','culcare']]}
+    ]
+  },
+  {
+    id:'s2',nr:2,name:'Analogii',answerKind:'cifră',
+    intro:['Priviți exemplele de mai jos:'],
+    examples:[
+      {stem:'pălărie — cap :: gheată —',opts:[['5','mînă'],['6','picior'],['7','gît'],['8','cer'],['9','mănușă']],answer:'6',note:'Răspunsul bun este picior; se scrie cifra 6.'},
+      {stem:'leagăn — copil :: grajd —',opts:[['8','om'],['3','cîine'],['4','cal'],['5','pisică'],['6','cuib']],answer:'4',note:'Răspunsul bun este cal; se scrie cifra 4.'}
+    ],
+    instruction:'Lucrați mai departe în același fel. Nu uitați să scrieți la margine cifra care însoțește cuvîntul potrivit.',
+    items:[
+      {prompt:'părinții — sfătuiesc :: copiii —',opts:[['6','poruncesc'],['2','întreabă'],['3','se joacă'],['1','ascultă'],['7','doresc']]},
+      {prompt:'hrană — om :: benzină —',opts:[['5','gaz'],['6','ulei'],['8','scînteie'],['7','automobil'],['9','cal']]},
+      {prompt:'biciul — lovește :: cuțitul —',opts:[['9','aleargă'],['8','taie'],['7','pălărie'],['6','pasăre'],['4','brici']]},
+      {prompt:'om — revolver :: albină —',opts:[['1','aripă'],['2','miere'],['4','zbor'],['5','ceară'],['9','ac']]},
+      {prompt:'tun — pușcă :: mare —',opts:[['2','ghiulea'],['3','pistol'],['1','mic'],['4','armată'],['5','mitralieră']]},
+      {prompt:'frumos — privire :: dulce —',opts:[['4','sărat'],['7','gust'],['2','frumusețe'],['5','vechi'],['6','drăguț']]},
+      {prompt:'muncă — oboseală :: răsplată —',opts:[['7','chitanță'],['5','datorie'],['8','mulțumire'],['6','bani'],['9','lucru']]},
+      {prompt:'nădejde — viitor :: amintire —',opts:[['2','teamă'],['3','plîns'],['5','grabă'],['9','trecut'],['8','uita']]},
+      {prompt:'iarbă — oi :: pîine —',opts:[['3','unt'],['6','floare'],['7','lapte'],['2','cal'],['1','om']]},
+      {prompt:'neștiință — învățătură :: sărăcie —',opts:[['2','lenevie'],['3','școală'],['7','bogăție'],['6','milă'],['9','învățător']]}
+    ]
+  },
+  {
+    id:'s3',nr:3,name:'Serii de numere',answerKind:'literă',
+    intro:['Priviți seriile de numere de mai jos și găsiți numărul care trebuie să urmeze. Alegeți apoi litera care însoțește răspunsul corect.'],
+    examples:[
+      {stem:'2 · 4 · 6 · 8 · 10 · 12 —',opts:[['A','17'],['B','13'],['C','14'],['D','15'],['E','9']],answer:'C',note:'Numărul căutat este 14; la margine se scrie litera C.'},
+      {stem:'1 · 8 · 2 · 8 · 3 · 8 —',opts:[['E','8'],['F','6'],['G','2'],['H','4'],['I','9']],answer:'H',note:'Numărul care urmează este 4 și este însoțit de litera H.'}
+    ],
+    instruction:'Lucrați mai departe în același fel. Nu uitați să scrieți la margine litera care însoțește numărul căutat.',
+    items:[
+      {prompt:'1 · 2 · 3 · 4 · 5 · 6 —',opts:[['C','5'],['D','2'],['E','7'],['F','3'],['G','8']]},
+      {prompt:'40 · 35 · 30 · 25 · 20 · 15 —',opts:[['R','10'],['T','5'],['U','14'],['V','15'],['W','20']]},
+      {prompt:'8 · 7 · 6 · 5 · 4 · 3 —',opts:[['B','1'],['X','3'],['L','9'],['E','2'],['Z','4']]},
+      {prompt:'3 · 3 · 5 · 5 · 7 · 7 —',opts:[['I','8'],['K','11'],['D','9'],['M','6'],['N','10']]},
+      {prompt:'5 · 9 · 13 · 17 · 21 · 25 —',opts:[['F','28'],['G','30'],['I','29'],['J','21'],['K','26']]},
+      {prompt:'9 · 9 · 7 · 7 · 5 · 5 —',opts:[['K','4'],['L','10'],['M','6'],['N','2'],['T','3']]},
+      {prompt:'4 · 3 · 5 · 4 · 6 · 5 —',opts:[['K','3'],['A','7'],['M','6'],['P','2'],['O','3']]},
+      {prompt:'19 · 16 · 14 · 11 · 9 · 6 —',opts:[['K','3'],['L','5'],['M','2'],['N','7'],['T','4']]},
+      {prompt:'103 · 95 · 87 · 79 · 71 · 63 —',opts:[['D','64'],['L','54'],['F','47'],['E','55'],['H','51']]},
+      {prompt:'81 · 27 · 9 · 3 · 1 · ⅓ —',opts:[['X','⅔'],['A','⅑'],['Z','0'],['G','1/27'],['H','1/81']]}
+    ]
+  },
+  {
+    id:'s4',nr:4,name:'Cuvinte de prisos',answerKind:'cifră',
+    intro:['Priviți exemplele de mai jos.','În fiecare rînd trebuie ales cuvîntul care nu se potrivește cu celelalte.'],
+    examples:[
+      {opts:[['2','Vasile'],['6','Ion'],['5','Maria'],['3','Mihai'],['9','Gheorghe']],answer:'5',note:'Maria nu trebuie să fie pe listă, pentru că Maria este nume de fată, iar celelalte sînt nume de băieți.'},
+      {opts:[['8','cal'],['7','cîine'],['2','trandafir'],['3','porc'],['6','capră']],answer:'2',note:'Cuvîntul trandafir nu are ce căuta pe listă; se scrie cifra 2.'}
+    ],
+    instruction:'Lucrați mai departe în același fel. Nu uitați să scrieți la margine cifra care însoțește cuvîntul de prisos.',
+    items:[
+      {prompt:'',opts:[['3','ciocîrlie'],['7','rîndunică'],['6','sticlete'],['1','găină'],['2','șoim']]},
+      {prompt:'',opts:[['5','strugure'],['4','castravete'],['2','măr'],['6','piersică'],['5','prună']]},
+      {prompt:'',opts:[['6','plug'],['9','tipografie'],['2','greblă'],['1','secerătoare'],['3','coasă']]},
+      {prompt:'',opts:[['7','roșu'],['8','verde'],['6','galben'],['9','albastru'],['2','alb']]},
+      {prompt:'',opts:[['7','auz'],['1','respirație'],['9','vedere'],['3','miros'],['8','pipăit']]},
+      {prompt:'',opts:[['7','tunet'],['5','fulger'],['3','ploaie'],['4','pîrîu'],['8','ninsoare']]},
+      {prompt:'',opts:[['1','mamă'],['9','văr'],['5','unchiu'],['8','tată'],['4','mătușă']]},
+      {prompt:'',opts:[['5','jos'],['6','aproape'],['2','curînd'],['9','sus'],['3','departe']]},
+      {prompt:'',opts:[['1','gîndire'],['5','spaimă'],['6','tristețe'],['3','veselie'],['9','milă']]},
+      {prompt:'',opts:[['7','Timișoara'],['6','Iași'],['4','Constanța'],['5','Ploiești'],['3','Cluj']]}
+    ]
+  }
+];
+
+const DRAFT_KEY='i2DigitalDraft_v3';
+const state={active:null,finished:new Set(),started:new Set(),timers:{},lastSubmission:null};
+const $=id=>document.getElementById(id);
+function todayISO(){const d=new Date(),off=d.getTimezoneOffset(),x=new Date(d.getTime()-off*60000);return x.toISOString().slice(0,10)}
+function mode(){return document.querySelector('input[name="mode"]:checked')?.value||'standard'}
+function safe(v){return String(v??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function responseName(st,i){return `${st.id}q${i+1}`}
+function responseValue(st,i){return document.querySelector(`input[name="${responseName(st,i)}"]:checked`)?.value||''}
+function responseLabel(st,i){const el=document.querySelector(`input[name="${responseName(st,i)}"]:checked`);return el?.dataset.label||''}
+function allAnswered(){let n=0;SUBTESTS.forEach(st=>st.items.forEach((_,i)=>{if(responseValue(st,i))n++}));return n}
+function updateProgress(){const n=allAnswered(),p=Math.round(n/40*100);$('progressText').textContent=`${n} / 40 răspunsuri`;$('progressBar').style.width=p+'%';$('progressPct').textContent=p+'%';SUBTESTS.forEach(st=>{const c=st.items.filter((_,i)=>responseValue(st,i)).length;const el=$(`count-${st.id}`);if(el)el.textContent=`${c}/10 completate`})}
+function updateBubble(st,i){const v=responseValue(st,i),b=$(`bubble-${st.id}-${i}`);if(!b)return;b.textContent=v?`(${v})`:'(   )';b.classList.toggle('empty',!v)}
+function renderOpt(code,text,cls=''){return `<div class="choice-box ${cls}"><span class="choice-code">${code!==null?safe(code):'—'}</span><span class="choice-text">${safe(text)}</span></div>`}
+function optionHtml(st,i,opt,j){const code=opt[0],text=opt[1],val=code??`?${j+1}`,cls=code===null?'missing':'';return `<label class="choice ${cls}"><input type="radio" name="${responseName(st,i)}" value="${safe(val)}" data-label="${safe(text)}">${renderOpt(code,text,cls)}</label>`}
+function renderExample(ex){const grid=(ex.opts||[]).map(o=>`<div class="example-opt ${o[0]===null?'missing':''}"><span class="example-code">${o[0]!==null?safe(o[0]):'—'}</span><span class="example-text">${safe(o[1])}</span></div>`).join('');return `<div class="example"><div class="example-title">Exemplu</div>${ex.stem?`<div class="example-stem">${safe(ex.stem)}</div>`:''}${grid?`<div class="choice-grid">${grid}</div>`:''}<div class="example-answerline">La margine se scrie <span class="example-answer">(${safe(ex.answer)})</span></div><div class="tiny">${safe(ex.note)}</div></div>`}
+function renderSubtests(){
+  $('subtests').innerHTML=SUBTESTS.map(st=>`<section class="section card subtest" id="subtest-${st.id}">
+    <div class="subtest-top">
+      <div class="subtest-heading"><span class="badge">${st.nr}</span><div><div class="subtest-sub">Subtestul ${st.nr}</div><div class="subtest-name">${safe(st.name)}</div><div class="tiny" id="count-${st.id}">0/10 completate</div></div></div>
+      <div class="timer-panel no-print"><div class="timer-label">Timp de lucru</div><div class="timer" id="timer-${st.id}">03:00</div><div class="timer-note" id="timer-note-${st.id}">3 minute în modul standard</div></div>
+    </div>
+    <div class="instruction-box">
+      ${st.intro.map(p=>`<p>${safe(p)}</p>`).join('')}
+      ${st.examples.map(renderExample).join('')}
+      <p style="margin-top:12px"><strong>${safe(st.instruction)}</strong></p>
+    </div>
+    <div class="start-zone no-print" id="start-zone-${st.id}"><div class="locked-msg" id="lockmsg-${st.id}"></div><button type="button" class="btn" id="start-${st.id}">Începe subtestul ${st.nr}</button></div>
+    <div class="items hidden" id="items-${st.id}">
+      ${st.items.map((item,i)=>`<div class="item-row"><div class="item-main"><div class="item-head"><span class="item-number">${i+1}</span>${item.prompt?`<span class="item-prompt ${st.id==='s3'?'sequence':''}">${safe(item.prompt)}</span>`:''}</div><div class="choice-grid">${item.opts.map((o,j)=>optionHtml(st,i,o,j)).join('')}</div></div><div class="answer-margin"><div class="answer-bubble empty" id="bubble-${st.id}-${i}">(   )</div></div></div>`).join('')}
+    </div>
+    <div class="subtest-footer"><span class="state-pill" id="state-${st.id}">Neînceput</span><div class="paper-score">P = <span class="paper-score-box">—</span></div><div class="actions no-print"><button type="button" class="btn secondary small hidden" id="finish-${st.id}">Încheie subtestul</button></div></div>
+  </section>`).join('');
+  SUBTESTS.forEach(st=>st.items.forEach((_,i)=>document.querySelectorAll(`input[name="${responseName(st,i)}"]`).forEach(x=>x.addEventListener('change',()=>{updateBubble(st,i);updateProgress()}))));
+}
+function fmt(sec){sec=Math.max(0,Math.ceil(sec));return `${String(Math.floor(sec/60)).padStart(2,'0')}:${String(sec%60).padStart(2,'0')}`}
+function setInputs(st,enabled){st.items.forEach((_,i)=>document.querySelectorAll(`input[name="${responseName(st,i)}"]`).forEach(x=>x.disabled=!enabled))}
+function nextAvailableId(){for(const st of SUBTESTS)if(!state.finished.has(st.id))return st.id;return null}
+function updateAccess(){
+  const m=mode();
+  SUBTESTS.forEach(st=>{
+    const items=$(`items-${st.id}`),start=$(`start-${st.id}`),finish=$(`finish-${st.id}`),msg=$(`lockmsg-${st.id}`),pill=$(`state-${st.id}`),timer=$(`timer-${st.id}`),note=$(`timer-note-${st.id}`);
+    if(m==='practice'){
+      items.classList.remove('hidden'); start.classList.add('hidden'); finish.classList.add('hidden'); msg.textContent=''; setInputs(st,true);
+      pill.textContent='Familiarizare'; pill.className='state-pill active'; timer.textContent='∞'; note.textContent='Fără limită de timp'; return;
+    }
+    const active=state.active===st.id,done=state.finished.has(st.id),available=!state.active&&!done&&nextAvailableId()===st.id;
+    items.classList.toggle('hidden',!active&&!done); setInputs(st,active&&!done); start.classList.toggle('hidden',!available); finish.classList.toggle('hidden',!active);
+    if(done){msg.textContent='Subtest încheiat.';pill.textContent='Încheiat';pill.className='state-pill good';note.textContent='Răspunsuri blocate';}
+    else if(active){msg.textContent='';pill.textContent='În lucru';pill.className='state-pill active';note.textContent='Cronometrul este în desfășurare';}
+    else if(available){msg.textContent='Citiți exemplele și porniți cînd sînteți gata.';pill.textContent='Disponibil';pill.className='state-pill';note.textContent='3 minute după pornire';timer.textContent='03:00';timer.classList.remove('danger');}
+    else{msg.textContent='Disponibil după încheierea subtestului anterior.';pill.textContent='Blocat';pill.className='state-pill';note.textContent='Așteaptă subtestul anterior';timer.textContent='03:00';timer.classList.remove('danger');}
+  });
+}
+function lockMode(){document.querySelectorAll('input[name="mode"]').forEach(x=>x.disabled=state.started.size>0)}
+function startSubtest(st){if(mode()!=='standard'||state.active||state.finished.has(st.id))return;state.active=st.id;state.started.add(st.id);lockMode();const now=Date.now();state.timers[st.id]={deadline:now+180000,remaining:180,interval:null};state.timers[st.id].interval=setInterval(()=>tick(st),250);updateAccess();tick(st);$(`items-${st.id}`).scrollIntoView({behavior:'smooth',block:'start'})}
+function tick(st){const t=state.timers[st.id];if(!t)return;t.remaining=Math.max(0,(t.deadline-Date.now())/1000);const el=$(`timer-${st.id}`);el.textContent=fmt(t.remaining);el.classList.toggle('danger',t.remaining<=30);if(t.remaining<=0)finishSubtest(st,true)}
+function finishSubtest(st,expired=false){if(state.active!==st.id&&!state.started.has(st.id))return;const t=state.timers[st.id];if(t?.interval)clearInterval(t.interval);if(t)t.interval=null;state.finished.add(st.id);state.active=null;setInputs(st,false);updateAccess();if(expired)setTimeout(()=>alert(`Timpul pentru subtestul ${st.nr} s-a încheiat.`),80);const next=SUBTESTS.find(x=>x.id===nextAvailableId());if(next)setTimeout(()=>$(`subtest-${next.id}`).scrollIntoView({behavior:'smooth',block:'start'}),220)}
+function collectResponses(){const out={},labels={};SUBTESTS.forEach(st=>{out[st.id]=st.items.map((_,i)=>responseValue(st,i));labels[st.id]=st.items.map((_,i)=>responseLabel(st,i))});return {out,labels}}
+function collectTiming(){const x={};SUBTESTS.forEach(st=>{const t=state.timers[st.id];x[st.id]={timed:mode()==='standard',secondsUsed:mode()==='standard'?(t?Math.round(180-Math.max(0,t.remaining)):0):null,finished:state.finished.has(st.id)}});return x}
+function draftData(){const {out,labels}=collectResponses();return {clientCode:$('clientCode').value,sex:$('sex').value,ageYears:$('ageYears').value,ageMonths:$('ageMonths').value,birthDate:$('birthDate').value,profession:$('profession').value,domicile:$('domicile').value,testDate:$('testDate').value,contextNote:$('contextNote').value,mode:mode(),responses:out,responseLabels:labels,finished:[...state.finished],started:[...state.started],timers:Object.fromEntries(Object.entries(state.timers).map(([k,v])=>[k,{remaining:v.remaining??180}]))}}
+function saveDraft(){localStorage.setItem(DRAFT_KEY,JSON.stringify(draftData()));alert('Progresul a fost salvat în acest browser.')}
+function restoreDraft(){const raw=localStorage.getItem(DRAFT_KEY);if(!raw)return alert('Nu există progres salvat.');try{const d=JSON.parse(raw);['clientCode','sex','ageYears','ageMonths','birthDate','profession','domicile','testDate','contextNote'].forEach(k=>$(k).value=d[k]??'');const mr=document.querySelector(`input[name="mode"][value="${d.mode||'standard'}"]`);if(mr)mr.checked=true;SUBTESTS.forEach(st=>st.items.forEach((_,i)=>{const v=d.responses?.[st.id]?.[i]||'';if(v){const q=Array.from(document.querySelectorAll(`input[name="${responseName(st,i)}"]`)).find(el=>el.value===v);if(q)q.checked=true}updateBubble(st,i)}));state.finished=new Set(d.finished||[]);state.started=new Set(d.started||[]);state.active=null;state.timers={};Object.entries(d.timers||{}).forEach(([k,v])=>state.timers[k]={remaining:Number(v.remaining||180),deadline:0,interval:null});lockMode();updateAccess();updateProgress();alert('Progresul a fost restaurat. Un subtest aflat anterior în desfășurare rămîne oprit; poate fi reluat numai prin resetare sau în modul de familiarizare.')}catch(e){alert('Progresul salvat nu a putut fi citit.')}}
+function makeSubmission(){const now=new Date(),{out,labels}=collectResponses(),code=$('clientCode').value.trim()||`I2-${now.getTime()}`;return {id:`i2_${now.getTime()}_${Math.random().toString(16).slice(2)}`,questionnaire:'I2',version:'I2 digital transcris v3',clientCode:code,sex:$('sex').value.trim(),ageYears:Number($('ageYears').value||0),ageMonths:Number($('ageMonths').value||0),birthDate:$('birthDate').value,profession:$('profession').value.trim(),domicile:$('domicile').value.trim(),testDate:$('testDate').value||todayISO(),contextNote:$('contextNote').value.trim(),createdAt:now.toISOString(),timedMode:mode()==='standard',timing:collectTiming(),responses:out,responseLabels:labels}}
+function downloadJson(data){const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`${(data.clientCode||'I2').replace(/[^a-z0-9_-]+/gi,'_')}_${data.testDate||'data'}_I2.json`;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  renderSubtests(); $('testDate').value=todayISO(); updateProgress(); updateAccess();
+  SUBTESTS.forEach(st=>{$(`start-${st.id}`).onclick=()=>startSubtest(st);$(`finish-${st.id}`).onclick=()=>{if(confirm(`Închei subtestul ${st.nr}? Răspunsurile lui vor fi blocate.`))finishSubtest(st,false)}});
+  document.querySelectorAll('input[name="mode"]').forEach(x=>x.addEventListener('change',updateAccess));
+  $('saveDraftBtn').onclick=saveDraft; $('restoreDraftBtn').onclick=restoreDraft; $('downloadLastBtn').onclick=()=>state.lastSubmission&&downloadJson(state.lastSubmission);
+  $('resetBtn').onclick=()=>{if(confirm('Resetez formularul și toate răspunsurile?')){Object.values(state.timers).forEach(t=>t.interval&&clearInterval(t.interval));localStorage.removeItem(DRAFT_KEY);location.reload()}};
+  $('i2Form').addEventListener('submit',e=>{e.preventDefault();if(!$('clientCode').value.trim())return alert('Completează codul candidatului / inițialele.');if(!$('consent').checked)return alert('Bifează confirmarea finală.');const n=allAnswered();if(n<40&&!confirm(`Sînt completate ${n} din 40 de răspunsuri. Continui?`))return;state.lastSubmission=makeSubmission();downloadJson(state.lastSubmission);localStorage.removeItem(DRAFT_KEY);$('successPanel').classList.remove('hidden');$('successPanel').scrollIntoView({behavior:'smooth',block:'center'})});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cabinet – administrativ</title>
+  <style>
+    :root{
+      --bg:#f6f3ef;--panel:#fffaf4;--card:#ffffff;--ink:#202020;--muted:#6f675d;
+      --line:#e6ded4;--accent:#7a4e2d;--accent-2:#b98250;--accent-soft:#f1e3d4;
+      --shadow:0 18px 50px rgba(74,52,33,.12);--radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;color:var(--ink);background:radial-gradient(circle at top left,rgba(184,130,80,.14),transparent 36rem),linear-gradient(180deg,#fbf8f3 0%,var(--bg) 100%);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.58}
+    a{color:inherit}
+    .page{width:min(1120px,calc(100% - 36px));margin:0 auto;padding:34px 0 70px}
+    .hero{background:linear-gradient(135deg,rgba(255,250,244,.92),rgba(241,227,212,.76));border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);padding:34px;position:relative;overflow:hidden}
+    .hero::after{content:"";position:absolute;width:360px;height:360px;border-radius:50%;right:-140px;top:-190px;background:rgba(122,78,45,.08)}
+    .kicker{color:var(--accent);font-size:.82rem;font-weight:850;letter-spacing:.14em;text-transform:uppercase;margin:0 0 8px}
+    h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,5vw,4.4rem);line-height:.98;letter-spacing:-.05em;margin:0}
+    h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.5rem,2.6vw,2.25rem);margin:0}
+    h3{font-size:1.03rem;margin:0;font-weight:900}
+    p{margin:0}
+    .section{margin-top:22px}
+    .card{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(74,52,33,.07);padding:22px}
+    .section-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
+    .category-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
+    .category{border:1px solid var(--line);border-radius:20px;background:#fffdf9;padding:17px}
+    .category.full{grid-column:1/-1}
+    .category-title{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+    .category-symbol{width:38px;height:38px;border-radius:13px;display:grid;place-items:center;background:var(--accent-soft);font-size:1.1rem}
+    .link-list{display:grid;gap:10px}
+    .portal-link{display:flex;align-items:center;gap:12px;min-height:58px;padding:10px 12px;border:1px solid var(--line);border-radius:16px;background:#fff;text-decoration:none;transition:.18s ease}
+    .portal-link:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(74,52,33,.09);border-color:#d6bca0;background:#fffaf5}
+    .portal-icon{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;flex:0 0 auto;background:var(--accent-soft);font-size:1.08rem}
+    .portal-name{font-weight:900;font-size:.96rem;line-height:1.25}
+    .portal-note{display:block;color:var(--muted);font-size:.78rem;font-weight:600;margin-top:2px}
+    .contest-link{display:flex;align-items:center;gap:14px;text-decoration:none;padding:16px;border:1px solid #d8c2ad;border-radius:17px;background:#fffaf5;transition:.18s ease}
+    .contest-link:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(74,52,33,.09)}
+    .contest-icon{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:var(--accent);color:#fff;font-size:1.3rem;flex:0 0 auto}
+    .contest-text strong{display:block;font-size:1rem}.contest-text span{display:block;color:var(--muted);font-size:.85rem;margin-top:2px}
+    .empty{display:flex;align-items:center;gap:12px;border:1px dashed #d8c2ad;border-radius:17px;background:#fffaf5;padding:17px;color:var(--muted)}
+    .empty span:first-child{font-size:1.25rem}
+    @media(max-width:760px){.page{width:min(100% - 22px,1120px);padding-top:18px}.hero{padding:24px;border-radius:24px}.category-grid{grid-template-columns:1fr}.category.full{grid-column:auto}.section-head{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <p class="kicker">Cabinet</p>
+      <h1>Administrativ</h1>
+    </section>
+
+    <section class="section card" id="angajare">
+      <div class="section-head">
+        <div>
+          <p class="kicker">Resurse</p>
+          <h2>Pentru angajare</h2>
+        </div>
+      </div>
+
+      <div class="category-grid">
+        <section class="category full">
+          <div class="category-title"><span class="category-symbol">🏛️</span><h3>Date despre posturi scoase la concurs</h3></div>
+          <a class="contest-link" href="4.%20psihologie%20materiale%20ajutatoare/concursuri-post-psiholog.html" target="_blank" rel="noopener noreferrer">
+            <span class="contest-icon">📋</span>
+            <span class="contest-text"><strong>Concursuri – post psiholog</strong><span>Deschide pagina dedicată posturilor scoase la concurs.</span></span>
+          </a>
+        </section>
+
+        <section class="category">
+          <div class="category-title"><span class="category-symbol">🧠</span><h3>Anunțuri de pe platforme specifice</h3></div>
+          <div class="link-list">
+            <a class="portal-link" href="https://monitorulpsihologiei.com/?s=psiholog+Bucuresti" target="_blank" rel="noopener noreferrer"><span class="portal-icon">MP</span><span><span class="portal-name">Monitorul Psihologiei</span><span class="portal-note">posturi pentru psihologi</span></span></a>
+            <a class="portal-link" href="https://posturi.gov.ro/?s=psiholog+Bucuresti" target="_blank" rel="noopener noreferrer"><span class="portal-icon">G</span><span><span class="portal-name">Posturi.gov.ro</span><span class="portal-note">administrație publică</span></span></a>
+            <a class="portal-link" href="https://jobs.edu.ro/?q=psiholog+Bucuresti" target="_blank" rel="noopener noreferrer"><span class="portal-icon">EDU</span><span><span class="portal-name">Jobs.edu.ro</span><span class="portal-note">posturi academice</span></span></a>
+            <a class="portal-link" href="https://www.romedic.ro/joburi/psihologie/bucuresti" target="_blank" rel="noopener noreferrer"><span class="portal-icon">RM</span><span><span class="portal-name">ROmedic</span><span class="portal-note">clinici &amp; sănătate</span></span></a>
+            <a class="portal-link" href="https://www.easp.eu/job-offers?search=psychologist+Bucharest" target="_blank" rel="noopener noreferrer"><span class="portal-icon">EASP</span><span><span class="portal-name">EASP</span><span class="portal-note">psihologie socială &amp; cercetare</span></span></a>
+          </div>
+        </section>
+
+        <section class="category">
+          <div class="category-title"><span class="category-symbol">🌐</span><h3>Anunțuri de pe platforme generale</h3></div>
+          <div class="link-list">
+            <a class="portal-link" href="https://www.ejobs.ro/locuri-de-munca/bucuresti/psiholog" target="_blank" rel="noopener noreferrer"><span class="portal-icon">E</span><span><span class="portal-name">eJobs</span><span class="portal-note">joburi generale</span></span></a>
+            <a class="portal-link" href="https://www.linkedin.com/jobs/search/?keywords=psiholog&amp;location=Bucure%C8%99ti%2C%20Rom%C3%A2nia" target="_blank" rel="noopener noreferrer"><span class="portal-icon">in</span><span><span class="portal-name">LinkedIn</span><span class="portal-note">rețea profesională</span></span></a>
+            <a class="portal-link" href="https://www.bestjobs.eu/locuri-de-munca-in-bucharest/psiholog" target="_blank" rel="noopener noreferrer"><span class="portal-icon">B</span><span><span class="portal-name">BestJobs</span><span class="portal-note">joburi generale</span></span></a>
+            <a class="portal-link" href="https://www.hipo.ro/locuri-de-munca/cautajob/Toate-Domeniile/BUCURESTI/Psiholog" target="_blank" rel="noopener noreferrer"><span class="portal-icon">H</span><span><span class="portal-name">Hipo</span><span class="portal-note">corporate &amp; internshipuri</span></span></a>
+            <a class="portal-link" href="https://ro.indeed.com/jobs?q=psiholog&amp;l=Bucure%C8%99ti" target="_blank" rel="noopener noreferrer"><span class="portal-icon">i</span><span><span class="portal-name">Indeed</span><span class="portal-note">agregator internațional</span></span></a>
+            <a class="portal-link" href="https://www.olx.ro/locuri-de-munca/bucuresti/q-psiholog/" target="_blank" rel="noopener noreferrer"><span class="portal-icon">O</span><span><span class="portal-name">OLX</span><span class="portal-note">anunțuri locale</span></span></a>
+            <a class="portal-link" href="https://ro.jooble.org/locuri-de-munca-psiholog/Bucure%C5%9Fti" target="_blank" rel="noopener noreferrer"><span class="portal-icon">J</span><span><span class="portal-name">Jooble</span><span class="portal-note">agregator de joburi</span></span></a>
+            <a class="portal-link" href="https://www.jobradar24.ro/locuri-de-munca/psiholog/bucuresti" target="_blank" rel="noopener noreferrer"><span class="portal-icon">JR</span><span><span class="portal-name">JobRadar24</span><span class="portal-note">agregator românesc</span></span></a>
+            <a class="portal-link" href="https://mediere.anofm.ro/app/module/mediere/jobs?query=psiholog&amp;county=Bucuresti" target="_blank" rel="noopener noreferrer"><span class="portal-icon">A</span><span><span class="portal-name">ANOFM</span><span class="portal-note">locuri de muncă vacante</span></span></a>
+            <a class="portal-link" href="https://www.publi24.ro/anunturi/locuri-de-munca/bucuresti/?q=psiholog" target="_blank" rel="noopener noreferrer"><span class="portal-icon">P</span><span><span class="portal-name">Publi24</span><span class="portal-note">anunțuri clasificate</span></span></a>
+            <a class="portal-link" href="https://www.careerjet.ro/locuri-de-munca-psiholog/Bucuresti" target="_blank" rel="noopener noreferrer"><span class="portal-icon">C</span><span><span class="portal-name">Careerjet</span><span class="portal-note">agregator de joburi</span></span></a>
+            <a class="portal-link" href="https://ro.jobsora.com/locuri-de-munc%C4%83-psiholog-bucure%C5%9Fti" target="_blank" rel="noopener noreferrer"><span class="portal-icon">Js</span><span><span class="portal-name">Jobsora</span><span class="portal-note">agregator internațional</span></span></a>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="section card" id="invatare">
+      <div class="section-head">
+        <div>
+          <p class="kicker">Resurse</p>
+          <h2>Pentru învățare</h2>
+        </div>
+      </div>
+      <div class="empty"><span>○</span><p><strong>Va urma.</strong></p></div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ro"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Test I₃ – rezultate</title><style>
+:root{--bg:#f4f0ea;--paper:#fffdf9;--card:#fff;--ink:#23201d;--muted:#746d66;--line:#e4dcd3;--accent:#795038;--accent2:#b88762;--soft:#f3e8dc;--good:#2e6a49;--danger:#a13c36;--warn:#8c651f;--shadow:0 18px 50px rgba(80,57,40,.11);--radius:24px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:radial-gradient(circle at 12% 0,rgba(184,135,98,.16),transparent 34rem),linear-gradient(180deg,#fbf8f4,var(--bg));font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.55}.page{width:min(1180px,calc(100% - 32px));margin:auto;padding:32px 0 76px}.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(255,253,249,.98),rgba(243,232,220,.8));border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);padding:32px}.hero:after{content:"";position:absolute;right:-130px;top:-190px;width:360px;height:360px;border-radius:50%;background:rgba(121,80,56,.08)}.kicker{margin:0 0 8px;color:var(--accent);font-size:.8rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase}h1,h2,h3{font-family:Georgia,"Times New Roman",serif}h1{margin:0 0 10px;font-size:clamp(2.1rem,4.5vw,3.9rem);line-height:1;letter-spacing:-.04em}h2{margin:0 0 10px;font-size:clamp(1.35rem,2.2vw,2rem)}h3{margin:0}.muted{color:var(--muted)}.tiny{font-size:.84rem;color:var(--muted)}.section{margin-top:22px}.card{background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(80,57,40,.07);padding:22px}.notice{background:#fff8ef;border:1px solid #ead8c5;border-left:6px solid var(--accent2);padding:16px 18px;border-radius:18px;color:#4b3c31}.notice.success{background:#f1f8f4;border-left-color:var(--good)}.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.btn{border:0;border-radius:999px;padding:11px 16px;background:var(--accent);color:#fff;font-weight:880;cursor:pointer;box-shadow:0 10px 18px rgba(121,80,56,.16)}.btn.secondary{background:#fff;color:var(--accent);border:1px solid var(--line);box-shadow:none}.btn.soft{background:var(--soft);color:#5b3921;box-shadow:none}.btn.danger{background:var(--danger)}.btn:hover{transform:translateY(-1px);filter:brightness(1.03)}input,select{width:100%;border:1px solid var(--line);border-radius:14px;padding:10px 11px;background:#fff;font:inherit}.hidden{display:none!important}.select-row{display:flex;gap:14px;flex-wrap:wrap;align-items:end}.field{display:grid;gap:7px;flex:1 1 280px}label{font-weight:780}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.stat{padding:18px;border:1px solid var(--line);border-radius:19px;background:var(--paper)}.stat .label{font-weight:850}.stat .value{font-family:Georgia,"Times New Roman",serif;font-size:2rem;color:var(--accent);font-weight:700;margin-top:3px}.stat .sub{font-size:.84rem;color:var(--muted);margin-top:3px}.subgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.subscore{padding:16px;border:1px solid var(--line);border-radius:18px;background:var(--paper)}.subscore strong{display:block}.subscore .n{font-family:Georgia,"Times New Roman",serif;font-size:1.9rem;color:var(--accent);font-weight:700}.subscore .formula{font-size:.78rem;color:var(--muted)}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px;background:#fff}table{width:100%;border-collapse:collapse;min-width:780px}th,td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#fbf5ef;color:#5b3b24;font-size:.76rem;text-transform:uppercase;letter-spacing:.05em}tr:last-child td{border-bottom:0}.blank{color:var(--muted)}.ok{color:var(--good);font-weight:900}.bad{color:var(--danger);font-weight:900}.neutral{color:var(--warn);font-weight:800}.report-box{padding:18px;border:1px solid var(--line);border-radius:18px;background:var(--paper);font-family:Georgia,"Times New Roman",serif;font-size:1.05rem;line-height:1.72}.report-box p{text-align:justify;margin:0}.answer-details{border:1px solid var(--line);border-radius:18px;background:#fff;margin-top:12px;overflow:hidden}.answer-details summary{cursor:pointer;padding:14px 16px;font-weight:900;background:#fbf6f1}.answer-details[open] summary{border-bottom:1px solid var(--line)}.answer-body{padding:0}.draw-preview{position:relative;width:520px;max-width:100%;height:90px;border:1px solid var(--line);border-radius:10px;background:#fff;overflow:hidden}.draw-preview.tall{height:115px}.draw-preview svg{position:absolute;inset:0;width:100%;height:100%}.draw-preview .stroke-layer{pointer-events:none}.manual-table td:nth-child(2){min-width:330px}.manual-grade{min-width:125px}.solution-text{font-size:.88rem;line-height:1.45}.score-rule{display:grid;grid-template-columns:180px 1fr;gap:8px 14px;padding:9px 0;border-bottom:1px solid var(--line)}.score-rule:last-child{border-bottom:0}.norm-banner{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}.norm-main,.position{border:1px solid var(--line);border-radius:18px;background:var(--paper);padding:18px}.norm-big{font-family:Georgia,"Times New Roman",serif;font-size:2.35rem;color:var(--accent);font-weight:700;line-height:1}.symbol{display:inline-flex;margin-top:10px;padding:5px 10px;border-radius:999px;background:var(--soft);font-weight:900;color:#5b3921}.meter{height:16px;border-radius:999px;background:linear-gradient(90deg,#efe8e0,#e3d3c5,#d1b49f,#b88762);position:relative;margin:18px 6px 7px}.marker{position:absolute;top:50%;width:20px;height:20px;border:4px solid white;border-radius:50%;background:var(--danger);box-shadow:0 2px 7px rgba(0,0,0,.18);transform:translate(-50%,-50%)}.meter-labels{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted)}.norm-table{min-width:620px}.norm-table th,.norm-table td{text-align:center}.selected-col{background:#fff6eb}.near-row{outline:2px solid #b88762;outline-offset:-2px;font-weight:950}.auth-screen{display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at 12% 0,rgba(184,135,98,.18),transparent 34rem),linear-gradient(180deg,#fbf8f4,var(--bg))}body.locked{overflow:hidden}body.locked .page{display:none!important}body.locked .auth-screen{display:flex}.auth-card{width:min(430px,calc(100% - 20px));background:rgba(255,253,249,.98);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:28px;display:grid;gap:14px}.auth-error{color:var(--danger);font-weight:850;background:#f8e9e7;border:1px solid #eccbc7;border-radius:14px;padding:10px 12px;margin:0}
+@media(max-width:900px){.stats,.subgrid{grid-template-columns:1fr 1fr}.norm-banner{grid-template-columns:1fr}.page{width:min(100% - 20px,1180px);padding-top:18px}.hero{padding:24px}.score-rule{grid-template-columns:1fr}.select-row{display:grid}.field{width:100%}}@media(max-width:560px){.stats,.subgrid{grid-template-columns:1fr}}@media print{body{background:#fff}.no-print,.auth-screen,.manual-grade{display:none!important}.page{width:100%;padding:0}.hero,.card{box-shadow:none}.section{break-inside:avoid}.table-wrap{overflow:visible}table{min-width:0;font-size:.73rem}th,td{padding:5px}.answer-details{break-inside:auto}.answer-details summary{display:none}.answer-details:not([open]) .answer-body{display:block}.draw-preview{width:360px}}
+
+.biblio-card{background:#fffdf9}
+.biblio-card ol{margin:8px 0 0 20px;padding:0}
+.biblio-card li{margin:0 0 8px;color:#44372c}
+</style>
+<!-- I3_AUTO_RESULTS_CSS_START -->
+<style>
+.eval-mode{display:grid;grid-template-columns:1fr 1fr;gap:12px}.eval-choice{border:1px solid var(--line);border-radius:18px;padding:16px;background:var(--paper);cursor:pointer;transition:.12s ease}.eval-choice:hover{transform:translateY(-1px);border-color:#c9aa91}.eval-choice.active{background:var(--soft);border-color:#b78461;box-shadow:0 0 0 2px rgba(183,132,97,.1)}.eval-choice strong{display:block;font-size:1.05rem}.eval-choice span{display:block;margin-top:4px;color:var(--muted);font-size:.86rem}.auto-badge{display:inline-flex;padding:4px 8px;border-radius:999px;font-size:.76rem;font-weight:900}.auto-badge.ok{background:#e9f5ee;color:var(--good)}.auto-badge.bad{background:#f8e9e7;color:var(--danger)}.auto-badge.pending{background:#f3eee8;color:var(--muted)}.structured-answer{font-size:.88rem;line-height:1.45;margin-top:7px;padding:8px 9px;border-radius:10px;background:#fbf7f3;border:1px solid var(--line)}.mode-callout{margin-top:12px;padding:11px 13px;border-radius:13px;background:#fff8ef;border:1px solid #ead8c5}.psych-actions{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.manual-grade{min-width:180px}.legacy-note{padding:10px 12px;border-radius:12px;background:#fff2e8;border:1px solid #e8d0bc;color:#6b482f;font-size:.86rem}.score-source{font-size:.78rem;color:var(--muted);font-weight:800;margin-top:2px}
+@media(max-width:700px){.eval-mode{grid-template-columns:1fr}}
+</style>
+<!-- I3_AUTO_RESULTS_CSS_END -->
+
+</head>
+<body class="locked"><section id="authScreen" class="auth-screen"><form id="authForm" class="auth-card"><p class="kicker">Acces protejat</p><h2>Test I₃ – rezultate</h2><p class="muted">Introdu parola pentru pagina de scorare.</p><div class="field"><label for="authPassword">Parolă</label><input id="authPassword" type="password" autocomplete="current-password"></div><p id="authError" class="auth-error hidden">Parolă greșită.</p><button class="btn" type="submit">Intră</button></form></section>
+<main class="page"><section class="hero"><p class="kicker">Scorare și interpretare</p><h1>Testul de inteligență generală I₃</h1><p class="muted">Cheia, regulile de corectare și etalonul din material sunt integrate. Subtestele 2–8 se corectează automat; Subtestul 1 se validează manual pe baza marcajelor grafice și a criteriilor din manual.</p></section>
+
+<section class="section card no-print"><div class="select-row"><div class="field"><label for="submissionSelect">Rezultat salvat</label><select id="submissionSelect"></select></div><div class="actions"><button class="btn secondary" id="importBtn" type="button">Importă JSON</button><input class="hidden" id="jsonImport" type="file" accept="application/json,.json"><button class="btn secondary" id="archiveBtn" type="button">Arhivează</button><button class="btn danger" id="deleteBtn" type="button">Șterge</button><button class="btn secondary" id="printBtn" type="button">Printează / PDF</button><button class="btn soft" id="copyReportBtn" type="button">Copiază sinteza</button></div></div></section>
+<section id="emptyState" class="section notice"><strong>Nu există încă rezultate I₃ în acest browser.</strong><br>Importă fișierul JSON descărcat din pagina de completare.</section><section id="reportRoot" class="hidden"></section>
+
+    <section class="section card biblio-card">
+      <h2>Bibliografie relevantă</h2>
+      <ol>
+        <li>Bontilă, G. (1971). <em>Ghid practic pentru interpretarea testelor psihologice</em>. Centrul de Documentare și Publicații al Ministerului Muncii.</li>
+      </ol>
+    </section>
+</main><script>const DATA={"s2": ["Cât fac 3 oameni și cu 7 oameni?", "Dacă economisiți 70 lei pe lună, în 4 luni cât veți economisi?", "Dacă 24 oameni sunt împărțiți în 8 grupe, câți oameni vor fi într-o grupă?", "Ion are 12 țigări, mai cumpără altele 3 și fumează 6. Câte țigări mai are el?", "O echipă înaintează cu 5 kilometri și se înapoiază 3 kilometri. La ce distanță se află ea de prima poziție?", "Câte țigări puteți cumpăra de 50 lei cu prețul de 2 țigări pentru 5 lei?", "Câte ore îi trebuie unei trăsuri ca să facă 66 kilometri, dacă această trăsură face 6 kilometri pe oră?", "Un regiment a făcut 40 kilometri în 5 zile; prima zi el merge 5 kilometri; a doua zi 9 kilometri, a treia 10 kilometri, a patra 8 kilometri. Câți kilometri a mers în ultima zi?", "Dacă cumpărați două pachete de tutun cu 3,50 lei unul și o lulea cu 6,50 lei, cât vă mai rămâne rest dintr-o sumă de 20 lei?", "Dacă trebuiesc 6 oameni timp de 3 zile ca să sape un șanț de 180 metri, câți oameni vor trebui ca să sape șanțul într-o jumătate de zi?", "Un I.A.S. a cumpărat niște berbeci cu 8.000 lei. Apoi îi vinde cu 10.000 lei și câștigă câte 400 lei de fiecare. Câți berbeci avea?", "O ladă conține 400 decimetri cubi de var. Dacă lada are 10 decimetri lungime și 5 decimetri lățime, ce adâncime are acea ladă?", "Un muncitor cheltuiește 1/8 din banii lui de buzunar pe cărți poștale și de 4 ori atât pentru plicuri. Îi mai rămân 0,90 lei. Câți bani a avut la început?", "Dacă 3 kilograme și 1/2 de mere costă 21 lei, cât au să coste 5 kilograme și 1/2?", "Un vapor are provizii pentru a-și hrăni echipajul său de 500 oameni timp de 6 luni. Cât timp va putea hrăni 1.500 oameni?", "Dacă un om parcurge 90 metri în 30 secunde, câți metri a făcut în 1/5 din secundă?", "Un submarin face 8 kilometri pe oră sub apă și 15 kilometri la suprafață. Cât timp îi va trebui să traverseze un canal de 100 kilometri dacă face sub apă 2/5 din drum?", "Dacă 90 de echipe sapă 4.500 metri de șanț, câți metri vor fi săpați de o singură echipă?", "La lucrările unui șantier lucrează 3.000 betoniști, 15.000 săpători și 1.000 transportori. Dacă trebuie să-și mărească efectivul până la 20.900 oameni, câți betoniști trebuie să adăugăm?", "O fermă care a furnizat deja 1.897 coșuri de mere unei cabane, predă restul la 29 restaurante. Astfel fiecare restaurant primește 54 coșuri. Care este numărul total al coșurilor furnizate?"], "s3": [{"stem": "Pisicile sunt animale folositoare pentru că:", "opts": ["prind șoareci", "sunt drăgălașe", "sperie câinii"]}, {"stem": "Pentru ce purtăm de obicei creioane în loc de tocuri? Pentru că:", "opts": ["sunt viu colorate", "sunt mai ușoare la purtat", "nu sunt așa de grele"]}, {"stem": "Pentru ce întrebuințăm pielea pentru încălțăminte? Pentru că:", "opts": ["se fabrică în toate țările", "îmbracă bine", "este un produs animal"]}, {"stem": "De ce judecăm un om prin ceea ce face nu prin ceea ce zice? Pentru că:", "opts": ["ceea ce face un om, arată cu adevărat ceea ce este", "nu e bine să mințim", "un surd nu poate auzi ceea ce se vorbește"]}, {"stem": "Dacă cineva v-ar întreba ce gândiți despre o persoană pe care nu o cunoașteți, ce veți răspunde?", "opts": ["îi voi face cunoștință", "gândesc că aceasta e o persoană foarte bine", "eu nu o cunosc și nu pot spune nimic"]}, {"stem": "Străzile sunt stropite vara:", "opts": ["pentru a răcori aerul", "pentru a împiedica automobilele să alunece", "pentru a înlătura praful"]}, {"stem": "Pentru ce grâul este o hrană mai bună decât porumbul? Pentru că:", "opts": ["este mai hrănitor", "este mai frumos", "poate fi măcinat mai mărunt"]}, {"stem": "Motivul pentru care cele mai multe păsări cântă primăvara este ca:", "opts": ["să ne anunțe că a sosit primăvara", "să atragă alte păsări", "să-și exercite glasul"]}, {"stem": "De ce oamenii preferă automobilele tramvaielor? Pentru că:", "opts": ["un automobil este făcut dintr-un material mai bun", "un automobil este mai comod", "tramvaiele nu sunt așa sigure"]}, {"stem": "Fulgii de la aripile păsărilor le ajută la zburat. Pentru că:", "opts": ["fac o suprafață mai întinsă și ușoară", "apără corpul lor de aer", "împiedică aripile să se răcească prea repede"]}, {"stem": "Toată circulația care merge în aceeași direcție păstrează aceeași parte a străzii. Pentru că:", "opts": ["o mică parte din oameni sunt stângaci", "agentul de circulație o face să meargă astfel", "aceasta evită accidentele"]}, {"stem": "Pentru ce inventatorii iau brevete de invenții? Pentru că:", "opts": ["aceasta le dă controlul invenției lor", "aceasta le aduce cereri mai numeroase", "este un obicei de a lua brevete"]}, {"stem": "Apa care îngheață face să se spargă țevile. Pentru că:", "opts": ["frigul face țevile mai puțin rezistente", "apa își mărește volumul când îngheață", "gheața împiedică curgerea apei"]}, {"stem": "Pentru ce munții înalți sunt acoperiți de zăpadă? Pentru că:", "opts": ["sunt mai aproape de nori", "soarele îi încălzește rar", "aerul este rece"]}, {"stem": "Dacă pământul ar fi fost mai aproape de soare:", "opts": ["stelele ar fi dispărut", "lunile noastre ar fi fost mai lungi", "pământul ar fi fost mai cald"]}, {"stem": "Pentru ce este mai frig la poli decât la ecuator? Pentru că:", "opts": ["polii sunt mai departe de soare", "lumina soarelui cade oblic la poli", "este mai multă gheață la poli"]}], "s4": ["umed-uscat", "înăuntru-afară", "colină-vale", "învoială-permis", "dilatat-contractat", "clasă-grupă", "primul-ultimul", "negru-negricios", "rezervat-timid", "delicat-drăgălaș", "liniștit-potolit", "vesel-trist", "primit-respins", "concav-convex", "liber-strâns", "afirmă-susține", "apărător-protector", "adaptat-conform", "umil-mândru", "nepotrivire-potrivire", "neânțelegere-înțelegere", "dezbinare-unire", "împăciuitor-îngăduitor", "înștiințat-prevenit", "slăvit-venerat", "greșeală-adevăr", "strânge-risipește", "trădare-viclenie", "seara-dimineața", "apus-răsărit", "coboară-urcă", "îngust-strâmt", "sătul-flămând", "stinge-aprinde", "aruncă-asvârle", "frumos-urât", "cântec-doină", "pădure-pădurice", "întorc-răsucesc", "isteț-deștept"], "s5": ["Case în oameni trăiesc", "Sunt săptămână într-o zile opt", "Picior mușcă singur un are", "Crește pământ din grâul", "Reci sunt cele mai luni vară în", "Dulce apa este mare de", "Pentru făcut grâul este pâine bun", "Are ochi cinci omul", "Mâncat și de aurul bune argintul metale sunt", "Dinamita este mâncat nu bună de", "Pădure în cresc fragi smeură și", "Râu în peștii apa trăiesc de", "Moldovei domnul fost a Mihai Viteazul", "Înșele toată poate lumea se să", "Bună pentru este scris lingura", "Câmpie la crește bradul", "Munților pe crește vârful porumbul", "Război tunul armă este o de", "Atac este o baionetă de armă", "Flori de pe albinele miere recoltează", "Laturi fiecare triunghi patru are", "Unele moartea aduc boli", "Apă din și unt face brânză se", "Fier este oglinda din făcută"], "s6": [["3", "4", "5", "6", "7", "8"], ["10", "15", "20", "25", "30", "35"], ["8", "7", "6", "5", "4", "3"], ["3", "6", "9", "12", "15", "18"], ["5", "9", "13", "17", "21", "25"], ["8", "1", "6", "1", "4", "1"], ["27", "27", "23", "23", "19", "19"], ["1", "2", "4", "8", "16", "32"], ["8", "9", "12", "13", "16", "17"], ["9", "9", "7", "7", "5", "5"], ["19", "16", "14", "11", "9", "6"], ["2", "3", "5", "8", "12", "17"], ["11", "13", "12", "14", "13", "15"], ["29", "28", "26", "23", "19", "14"], ["18", "14", "17", "13", "16", "12"], ["81", "27", "9", "3", "1", "1/3"], ["20", "17", "15", "14", "11", "9"], ["16", "17", "15", "18", "14", "19"], ["1", "4", "9", "16", "25", "36"], ["3", "6", "8", "16", "18", "36"]], "s7": [{"a": "câine", "b": "urlă", "c": "pisică", "opts": ["scaun", "miorlăie", "loc", "casă"]}, {"a": "picior", "b": "om", "c": "papuc", "opts": ["grăunțe", "talpă", "vaca", "topor"]}, {"a": "vacă", "b": "vițea", "c": "cal", "opts": ["mânz", "câine", "tigru", "pisică"]}, {"a": "spăla", "b": "figură", "c": "treiera", "opts": ["cucută", "meliță", "scândură", "grâu"]}, {"a": "ușe", "b": "casă", "c": "gard", "opts": ["leagăn", "curte", "lacăt", "tablă"]}, {"a": "apă", "b": "pește", "c": "aer", "opts": ["stea", "om", "ramă", "dor"]}, {"a": "alb", "b": "negru", "c": "bun", "opts": ["timp", "îmbrăcăminte", "mamă", "rău"]}, {"a": "băiat", "b": "om", "c": "miel", "opts": ["berbec", "câine", "cioban", "lână"]}, {"a": "zid", "b": "casă", "c": "pălărie", "opts": ["nasture", "pantof", "pai", "cap"]}, {"a": "pai", "b": "pălărie", "c": "piele", "opts": ["pantof", "căptușeală", "haină", "stofă"]}, {"a": "stânga", "b": "dreapta", "c": "vest", "opts": ["sud", "direcție", "est", "nord"]}, {"a": "dușumea", "b": "tavan", "c": "pământ", "opts": ["cer", "colină", "iarbă", "vale"]}, {"a": "rece", "b": "gheață", "c": "căldură", "opts": ["umezeală", "răceală", "vapori", "stele"]}, {"a": "luni", "b": "marți", "c": "vineri", "opts": ["săptămână", "joi", "zi", "sâmbătă"]}, {"a": "plumb", "b": "glonț", "c": "aur", "opts": ["hârtie", "monedă", "bani", "aramă"]}, {"a": "piele", "b": "corp", "c": "scoarță", "opts": ["arbore", "câine", "frunză", "rădăcină"]}, {"a": "tun", "b": "mare", "c": "pușcă", "opts": ["glonț", "mică", "calibru", "trăgaci"]}, {"a": "plin", "b": "gol", "c": "vale", "opts": ["izvor", "tub", "vârf", "casă"]}, {"a": "om", "b": "braț", "c": "arbore", "opts": ["tufiș", "ramură", "floare", "scoarță"]}, {"a": "vină", "b": "corp", "c": "drum de fier", "opts": ["țară", "tren", "încrucișare", "accident"]}, {"a": "ureche", "b": "auzi", "c": "ochi", "opts": ["masă", "vedea", "mână", "joc"]}, {"a": "pălărie", "b": "cap", "c": "pantof", "opts": ["deget", "umăr", "picior", "pat"]}, {"a": "leu", "b": "animal", "c": "trandafir", "opts": ["piatră", "plantă", "cărămidă", "hârtie"]}, {"a": "coș", "b": "fum", "c": "cremene", "opts": ["negru", "scânteie", "pământ", "lovit"]}, {"a": "cal", "b": "fugă", "c": "câine", "opts": ["sare", "mușcă", "aduce", "mănâncă"]}, {"a": "goarnă", "b": "sună", "c": "fluier", "opts": ["merge", "cântă", "joacă", "sparge"]}, {"a": "lacrimi", "b": "râs", "c": "tristețe", "opts": ["veselie", "durere", "suspin", "moarte"]}, {"a": "avion", "b": "aer", "c": "submarin", "opts": ["înoată", "mașină", "vas", "apă"]}, {"a": "bancă", "b": "odihnă", "c": "drum", "opts": ["copaci", "piatră", "oboseală", "frumos"]}, {"a": "frumos", "b": "urât", "c": "deștept", "opts": ["mare", "albastru", "prost", "singur"]}, {"a": "ogor", "b": "plug", "c": "grădină", "opts": ["sapă", "zarzavat", "flori", "furnici"]}, {"a": "otravă", "b": "moarte", "c": "doctor", "opts": ["apă", "viață", "liniște", "bucurie"]}, {"a": "taie", "b": "baionetă", "c": "lovește", "opts": ["om", "ciocan", "glonț", "pâine"]}, {"a": "negru", "b": "alb", "c": "seara", "opts": ["clopot", "turnă", "dimineață", "soare"]}, {"a": "cioban", "b": "turmă", "c": "sentinela", "opts": ["magazie", "câmp", "camarazi", "pedeapsă"]}, {"a": "spital", "b": "bolnav", "c": "închisoare", "opts": ["celulă", "dezertor", "grupă", "tufiș"]}, {"a": "pisică", "b": "zgârie", "c": "șarpe", "opts": ["aleargă", "omoară", "trăiește", "pădure"]}, {"a": "pâine", "b": "hrană", "c": "tutun", "opts": ["otravă", "copac", "piatră", "alege"]}, {"a": "bun", "b": "rău", "c": "alb", "opts": ["cenușiu", "nor", "negru", "ploaie"]}, {"a": "ploaie", "b": "vară", "c": "zăpadă", "opts": ["cer", "frig", "alunecă", "iarna"]}], "s8": [{"stem": "Nasicornul este nume de", "opts": ["animal", "plantă", "fluture", "insectă"]}, {"stem": "America a fost descoperită de", "opts": ["Drake", "Hudson", "Columb", "Balboa"]}, {"stem": "Oina se joacă cu", "opts": ["racheta", "zarul", "mingea", "funia"]}, {"stem": "La Brazi este o industrie", "opts": ["alimentară", "chimică", "electrică", "metalurgică"]}, {"stem": "Lipițanul este o rasă", "opts": ["ovină", "bovină", "porcină", "cabalină"]}, {"stem": "Capricornul este un fel de", "opts": ["șarpe", "plantă", "șopârlă", "pește"]}, {"stem": "Coralul se obține de", "opts": ["mine", "fildeș", "scoici", "recife"]}, {"stem": "Hamlet este o piesă de teatru scrisă de", "opts": ["Dumas", "Byron", "Shakespeare", "Dickens"]}, {"stem": "Smaraldul este de obicei", "opts": ["roșu", "verde", "albastru", "galben"]}, {"stem": "Năgâțul este un soi de", "opts": ["plantă", "sârmă", "pasăre", "șopârlă"]}, {"stem": "Geneva este un oraș din", "opts": ["Elveția", "Belgia", "Italia", "Franța"]}, {"stem": "Autorul piesei «Scrisoarea Pierdută» este", "opts": ["Slavici", "Rebreanu", "Alecsandri", "Caragiale"]}, {"stem": "Brâncuși a fost un mare", "opts": ["scriitor", "savant", "sculptor", "compozitor"]}, {"stem": "Gibonul este un soi de", "opts": ["crocodil", "antilopă", "reptilă", "maimuță"]}, {"stem": "O figură cu șase laturi este un", "opts": ["paralelogram", "romb", "hexagon", "trapez"]}, {"stem": "Homarul este un fel de", "opts": ["păianjen", "pește", "cârlig", "rac"]}, {"stem": "Pancreasul se găsește în", "opts": ["abdomen", "gât", "cap", "torace"]}, {"stem": "Terpentina se obține din", "opts": ["petrol", "bitum", "asfalt", "copac"]}, {"stem": "Jobenul este un fel de", "opts": ["stofă", "guler", "pălărie", "manșetă"]}, {"stem": "Autorul poemului «Corbul» este", "opts": ["Kipling", "Stevenson", "Arghezi", "Poe"]}, {"stem": "Hematita este", "opts": ["o globulă de sânge", "un mineral", "o plantă", "o moluscă"]}, {"stem": "Bordo este numele", "opts": ["unei băuturi", "a unui fruct", "culori", "fabrici"]}, {"stem": "Muscheta este un fel de", "opts": ["insectă", "cuțit", "sabie", "pușcă"]}, {"stem": "Mormântul lui Ștefan cel Mare se află la", "opts": ["Suceava", "Cetatea Neamț", "Putna", "Iași"]}, {"stem": "Pinguinul trăiește în", "opts": ["Canada", "Arctica", "Groenlanda", "Antarctica"]}, {"stem": "Numărul de picioare a unui Zulus este", "opts": ["două", "patru", "șase", "opt"]}, {"stem": "Lucrarea «Capitalul» a fost scrisă de", "opts": ["Engels", "Darwin", "Lenin", "Marx"]}, {"stem": "Jugastrul este", "opts": ["o îngrădire", "un animal", "un arbore", "o floare"]}, {"stem": "Lucarna este un fel de", "opts": ["mâncare", "insectă", "trompetă", "fereastră"]}, {"stem": "Anghinarea este", "opts": ["o otravă", "reptilă", "plantă", "insectă"]}, {"stem": "Sperjurul este un termen folosit în", "opts": ["pedagogie", "justiție", "medicină", "religie"]}, {"stem": "Merinos este numele unei rase de", "opts": ["cai", "vaci", "oi", "capre"]}, {"stem": "Revoluția lui Tudor Vladimirescu a fost în anul", "opts": ["1848", "1907", "1830", "1821"]}, {"stem": "Puma este un fel de", "opts": ["pumnal", "leu", "vidră", "plantă"]}, {"stem": "Kilimanjaro este un", "opts": ["lac", "vulcan", "fluviu", "munte"]}, {"stem": "La Codlea se găsește o mare fabrică de", "opts": ["mobilă", "hârtie", "coloranți", "textile"]}, {"stem": "Forry Etterle este numele unui", "opts": ["sportiv", "sculptor", "pictor", "actor"]}, {"stem": "Mandrina este un", "opts": ["fruct", "dispozitiv", "aparat", "copac"]}, {"stem": "Fierea este produsă de", "opts": ["ficat", "rinichi", "splină", "stomac"]}, {"stem": "Fleming este renumit ca", "opts": ["jucător de basket", "artist", "medic", "matematician"]}]};
+const ACCESS_PASSWORD='kimkiduk',ACCESS_SESSION_KEY='i3ResultsAccess_v2',STORAGE_KEY='i3Submissions_v1';
+const META=[['s1','Atenție și memorie',12],['s2','Aritmetică',20],['s3','Judecată rapidă',16],['s4','Înțelesul cuvintelor',40],['s5','Fraze deranjate',24],['s6','Serie de numere',20],['s7','Coordonare de idei',40],['s8','Informație',40]];const TOTAL=212;
+const KEYS={
+ s2:['10','280','3','9','2','20','11','8','6.50','36','5','8','2.40','33','2','0.60','9','50','1900','3463'],
+ s3:'1221331222131332'.split(''),
+ s4:['c','c','c','a','c','a','c','a','a','a','a','c','c','c','c','a','a','a','c','c','c','c','a','a','a','c','c','a','c','c','c','a','c','c','a','c','a','a','a','a'],
+ s5:['a','a','g','a','g','g','a','g','g','a','a','a','a','a','g','g','a','a','a','a','g','a','g','g'],
+ s6:[['9','10'],['40','45'],['2','1'],['21','24'],['29','33'],['2','1'],['15','15'],['64','128'],['20','21'],['3','3'],['4','1'],['23','30'],['14','16'],['8','1'],['15','11'],['1/9','1/27'],['8','5'],['13','20'],['49','64'],['38','76']],
+ s7:[2,2,1,4,2,2,4,1,3,1,3,1,3,4,3,4,1,4,3,4,2,3,2,2,2,2,1,4,3,3,1,2,2,3,3,2,2,1,3,4].map(String),
+ s8:[4,3,3,2,4,2,4,3,2,3,1,4,3,4,3,4,1,4,3,4,2,3,4,3,4,1,4,3,4,3,2,3,4,2,4,3,4,2,1,3].map(String)
+};
+const S1_SOLUTIONS=[
+ 'Cruce în primul cerc și cifra 1 în al treilea cerc.',
+ 'Linie de la cercul 1 la cercul 4, trecând pe deasupra cercului 2 și pe dedesubtul cercului 3; linia începe și se termină pe circumferințe și nu taie cercurile intermediare.',
+ 'Cruce în zona aflată în triunghi, dar nu în pătrat; cifra 1 în zona comună pătratului și triunghiului.',
+ 'Cifra 1 în cerc, dar în afara triunghiului și pătratului; cifra 2 în zona comună cercului și triunghiului, dar în afara pătratului.',
+ 'Cruce în al doilea cerc. (Răspunsul la condiția despre combină este afirmativ.)',
+ '12 în al doilea cerc; al treilea cerc rămâne gol; în al patrulea cerc se scrie un număr diferit de 12.',
+ 'Se taie litera D (imediat înaintea lui E) și se subliniază litera M (a doua literă înaintea lui O).',
+ 'În cele trei cercuri: M, P, A — prima literă din MILITAR, prima din PUȘCA, ultima din TABĂRA.',
+ 'Se taie numai 25 și 27 (numere mai mari de 20 și mai mici de 30).',
+ 'În cele două compartimente cele mai mici se trec separat 2 și 3; în compartimentul cel mai apropiat ca mărime de cel mai mare se trece o singură cifră între 4 și 7 (în cheia reprodusă apare 5).',
+ 'Se taie 7 din pătratul „7F”, 4 din triunghi, 8 din cerc și 6 din triunghi. Numerele indicate trebuie atinse de liniile de tăiere; simpla marcare a figurii nu este suficientă.',
+ 'Se taie cifra 6. Nu se subliniază 7, deoarece a doua condiție este falsă.'
+];
+const NORMS={
+ '14':[[100,180,'A'],[90,132,'A/B'],[80,129,'B'],[75,124,'B/C'],[70,119,'C'],[60,98,'C'],[50,85,'C'],[40,72,'C'],[30,65,'C'],[25,51,'C/D'],[20,25,'D'],[10,15,'D/E'],[0,10,'E']],
+ '15':[[100,190,'A'],[90,151,'A/B'],[80,133,'B'],[75,127,'B/C'],[70,121,'C'],[60,109,'C'],[50,98,'C'],[40,81,'C'],[30,65,'C'],[25,57,'C/D'],[20,31,'D'],[10,22,'D/E'],[0,12,'E']],
+ '16':[[100,192,'A'],[90,163,'A/B'],[80,142,'B'],[75,136,'B/C'],[70,127,'C'],[60,116,'C'],[50,98,'C'],[40,85,'C'],[30,73,'C'],[25,57,'C/D'],[20,36,'D'],[10,23,'D/E'],[0,12,'E']],
+ '17':[[100,194,'A'],[90,168,'A/B'],[80,145,'B'],[75,139,'B/C'],[70,127,'C'],[60,119,'C'],[50,105,'C'],[40,96,'C'],[30,74,'C'],[25,59,'C/D'],[20,39,'D'],[10,23,'D/E'],[0,14,'E']],
+ adult:[[100,205,'A'],[90,183,'A/B'],[80,171,'B'],[75,163,'B/C'],[70,154,'C'],[60,139,'C'],[50,123,'C'],[40,112,'C'],[30,94,'C'],[25,73,'C/D'],[20,44,'D'],[10,24,'D/E'],[0,14,'E']]
+};
+const $=id=>document.getElementById(id);const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function readStore(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]')}catch(e){return[]}}function writeStore(v){localStorage.setItem(STORAGE_KEY,JSON.stringify(v))}function isArchived(x){return!!x.archived}function fmtDate(x){if(!x)return'—';const d=new Date(x+'T12:00:00');return isNaN(d)?esc(x):d.toLocaleDateString('ro-RO')}function fmtTime(sec){if(sec===null||sec===undefined)return'—';sec=Math.max(0,Math.floor(Number(sec)||0));return`${Math.floor(sec/60)}m ${String(sec%60).padStart(2,'0')}s`}
+function setupAuth(){if(sessionStorage.getItem(ACCESS_SESSION_KEY)==='1'){document.body.classList.remove('locked');return true}$('authForm').onsubmit=e=>{e.preventDefault();if($('authPassword').value===ACCESS_PASSWORD){sessionStorage.setItem(ACCESS_SESSION_KEY,'1');document.body.classList.remove('locked');$('authError').classList.add('hidden');renderSelector()}else $('authError').classList.remove('hidden')};return false}
+function answeredCount(sub,sid){const a=sub.responses?.[sid]||[];if(sid==='s1')return a.filter(x=>Array.isArray(x)&&x.some(st=>Array.isArray(st)&&st.length)).length;if(sid==='s6')return a.filter(x=>Array.isArray(x)&&(String(x[0]||'').trim()||String(x[1]||'').trim())).length;return a.filter(x=>String(x??'').trim()).length}function totalAnswered(sub){return META.reduce((n,[sid])=>n+answeredCount(sub,sid),0)}
+function normText(v){return String(v??'').trim().toLowerCase().replace(/\s+/g,'').replace(',', '.')}
+function numValue(v){let s=normText(v).replace(/lei|metri|m|ore|luni/g,'');if(!s)return NaN;if(/^[-+]?\d+(?:\.\d+)?\/[-+]?\d+(?:\.\d+)?$/.test(s)){const [a,b]=s.split('/').map(Number);return b? a/b:NaN}const n=Number(s);return Number.isFinite(n)?n:NaN}
+function numericEqual(a,b){const x=numValue(a),y=numValue(b);if(Number.isFinite(x)&&Number.isFinite(y))return Math.abs(x-y)<1e-6;return normText(a)===normText(b)}
+function choiceValue(sub,sid,i){return String(sub.responses?.[sid]?.[i]??'')}
+function autoScore(sub){const subs={s1:0,s2:0,s3:0,s4:0,s5:0,s6:0,s7:0,s8:0},rows={s2:[],s3:[],s4:[],s5:[],s6:[],s7:[],s8:[]};
+ KEYS.s2.forEach((k,i)=>{const a=String(sub.responses?.s2?.[i]??''),blank=!a.trim(),ok=!blank&&numericEqual(a,k);if(ok)subs.s2++;rows.s2.push({item:i+1,answer:a,key:k,ok,blank,points:ok?1:0})});
+ KEYS.s3.forEach((k,i)=>{const a=choiceValue(sub,'s3',i),blank=!a,ok=a===k;if(ok)subs.s3++;rows.s3.push({item:i+1,answer:a,key:k,ok,blank,points:ok?1:0})});
+ KEYS.s4.forEach((k,i)=>{const raw=choiceValue(sub,'s4',i),a=raw==='asemănător'?'a':raw==='contrar'?'c':'',blank=!a,ok=a===k,pts=blank?0:ok?1:-1;subs.s4+=pts;rows.s4.push({item:i+1,answer:raw,key:k==='a'?'asemănător':'contrar',ok,blank,points:pts})});
+ KEYS.s5.forEach((k,i)=>{const raw=choiceValue(sub,'s5',i),a=raw==='adevărat'?'a':raw==='greșit'?'g':'',blank=!a,ok=a===k,pts=blank?0:ok?1:-1;subs.s5+=pts;rows.s5.push({item:i+1,answer:raw,key:k==='a'?'adevărat':'greșit',ok,blank,points:pts})});
+ KEYS.s6.forEach((k,i)=>{const a=sub.responses?.s6?.[i]||[],blank=!String(a[0]??'').trim()&&!String(a[1]??'').trim(),ok=!blank&&numericEqual(a[0],k[0])&&numericEqual(a[1],k[1]);if(ok)subs.s6++;rows.s6.push({item:i+1,answer:`${a[0]||'—'} ; ${a[1]||'—'}`,key:`${k[0]} ; ${k[1]}`,ok,blank,points:ok?1:0})});
+ for(const sid of ['s7','s8'])KEYS[sid].forEach((k,i)=>{const a=choiceValue(sub,sid,i),blank=!a,ok=a===k;if(ok)subs[sid]++;rows[sid].push({item:i+1,answer:a,key:k,ok,blank,points:ok?1:0})});
+ const grades=Array.isArray(sub.manualS1Grades)?sub.manualS1Grades.slice(0,12):[];while(grades.length<12)grades.push(null);const s1Pending=grades.filter(x=>x!==0&&x!==1).length;subs.s1=grades.filter(x=>x===1).length;const autoTotal=subs.s2+subs.s3+subs.s4+subs.s5+subs.s6+subs.s7+subs.s8;const knownTotal=autoTotal+subs.s1;return{subs,rows,grades,s1Pending,autoTotal,knownTotal,finalTotal:s1Pending?null:knownTotal}}
+function normGroup(sub){const y=Number(sub.ageYears);if([14,15,16,17].includes(y))return String(y);if(y>=18)return'adult';return null}function groupLabel(g){return g==='adult'?'Adulți':g?`${g} ani`:'—'}
+function normResult(score,g){if(score===null||!g)return null;const rows=NORMS[g].map(([c,raw,symbol])=>({c,raw,symbol}));if(score>rows[0].raw)return{type:'above',symbol:'AA',label:'excepțional',score,max:rows[0]};if(score<rows.at(-1).raw)return{type:'below',symbol:'<E',label:'sub limita etalonului',score,min:rows.at(-1)};const exact=rows.filter(r=>r.raw===score);if(exact.length)return{type:'exact',rows:exact,centile:exact.map(x=>x.c),symbols:[...new Set(exact.map(x=>x.symbol))]};for(let i=0;i<rows.length-1;i++)if(score<rows[i].raw&&score>rows[i+1].raw)return{type:'interval',upper:rows[i],lower:rows[i+1]};return null}
+function normHeadline(n){if(!n)return'—';if(n.type==='above')return'Peste limita C100';if(n.type==='below')return'Sub limita C0';if(n.type==='exact')return n.centile.length===1?`Centila C${n.centile[0]}`:`Interval centilar C${Math.min(...n.centile)}–C${Math.max(...n.centile)}`;return`Interval centilar C${n.lower.c}–C${n.upper.c}`}function normSymbol(n){if(!n)return'—';if(n.type==='above'||n.type==='below')return n.symbol;if(n.type==='exact')return n.symbols.join(' / ');return`${n.lower.symbol} – ${n.upper.symbol}`}
+function normDescription(n,g){if(!n)return'Etalon indisponibil.';if(n.type==='above')return`Scorul depășește valoarea maximă din coloana ${groupLabel(g)} (${n.max.raw} la C100). Manualul indică simbolul AA și clasificarea „excepțional”.`;if(n.type==='below')return`Scorul este sub valoarea minimă publicată pentru ${groupLabel(g)} (${n.min.raw} puncte la C0). Ultimul reper tabelar este C0, cu simbolul E; sub acest prag rezultatul este raportat ca fiind sub limita etalonului, fără atribuirea unui simbol tabelar suplimentar.`;if(n.type==='exact')return`Scorul coincide cu reperul din etalon pentru ${groupLabel(g)}: ${normHeadline(n)}, simbol ${normSymbol(n)}.`;return`Scorul se află între două repere publicate pentru ${groupLabel(g)}: C${n.lower.c} = ${n.lower.raw} puncte și C${n.upper.c} = ${n.upper.raw} puncte. Pagina nu inventează o centilă intermediară.`}
+function normTable(g,score,n){const cents=[100,90,80,75,70,60,50,40,30,25,20,10,0],groups=['14','15','16','17','adult'];const heads=groups.map(x=>`<th class="${x===g?'selected-col':''}">${groupLabel(x)}</th>`).join('');const near=new Set();if(n?.type==='exact')n.rows.forEach(r=>near.add(r.c));if(n?.type==='interval'){near.add(n.upper.c);near.add(n.lower.c)}if(n?.type==='above')near.add(100);if(n?.type==='below')near.add(0);const body=cents.map(c=>`<tr><th>C${c}</th>${groups.map(gr=>{const row=NORMS[gr].find(x=>x[0]===c);const cls=[gr===g?'selected-col':'',gr===g&&near.has(c)?'near-row':''].filter(Boolean).join(' ');return`<td class="${cls}">${row[1]}</td>`}).join('')}<td>${NORMS['14'].find(x=>x[0]===c)[2]}</td></tr>`).join('');return`<div class="table-wrap"><table class="norm-table"><thead><tr><th>Centilă</th>${heads}<th>Simbol</th></tr></thead><tbody>${body}</tbody></table></div>`}
+function s1Svg(i){const common='stroke="#2b2927" stroke-width="2" fill="none"';const t='font-family="Georgia,Times New Roman,serif" fill="#26211d"';if(i===0)return `<svg viewBox="0 0 840 130"><g ${common}>${[160,230,300,370,440].map(x=>`<circle cx="${x}" cy="65" r="23"/>`).join('')}</g></svg>`;if(i===1)return `<svg viewBox="0 0 840 130"><g ${common}>${[1,2,3,4,5,6,7,8,9].map((n,k)=>`<circle cx="${105+k*72}" cy="65" r="23"/><text x="${105+k*72}" y="72" text-anchor="middle" ${t} font-size="20" stroke="none">${n}</text>`).join('')}</g></svg>`;if(i===2)return `<svg viewBox="0 0 840 165"><g ${common}><rect x="190" y="38" width="90" height="72"/><polygon points="250,28 190,125 335,125"/></g></svg>`;if(i===3)return `<svg viewBox="0 0 840 165"><g ${common}><rect x="210" y="48" width="90" height="72"/><polygon points="265,52 165,135 345,135"/><circle cx="315" cy="85" r="65"/></g></svg>`;if(i===4)return `<svg viewBox="0 0 840 130"><g ${common}>${[165,235,305].map(x=>`<circle cx="${x}" cy="65" r="23"/>`).join('')}</g><text x="390" y="73" ${t} font-size="22">DA</text><text x="470" y="73" ${t} font-size="22">NU</text></svg>`;if(i===5)return `<svg viewBox="0 0 840 130"><g ${common}>${[165,235,305,375,445].map(x=>`<circle cx="${x}" cy="65" r="23"/>`).join('')}</g></svg>`;if(i===6)return `<svg viewBox="0 0 840 130"><text x="145" y="76" ${t} font-size="30" font-weight="700" letter-spacing="3">ABCDEFGHIJKLMNOP</text></svg>`;if(i===7)return `<svg viewBox="0 0 840 130"><g ${common}>${[165,235,305].map(x=>`<circle cx="${x}" cy="65" r="23"/>`).join('')}</g><text x="370" y="73" ${t} font-size="18">MILITAR</text><text x="515" y="73" ${t} font-size="18">PUȘCA</text><text x="645" y="73" ${t} font-size="18">TABĂRA</text></svg>`;if(i===8)return `<svg viewBox="0 0 840 130"><text x="105" y="72" ${t} font-size="23">34 - 79 - 56 - 87 - 68 - 25 - 82 - 47 - 27 - 31 - 64 - 93 - 71 - 41 - 52 - 99</text></svg>`;if(i===9)return `<svg viewBox="0 0 840 130"><g ${common}><rect x="110" y="43" width="650" height="45"/><line x1="195" y1="43" x2="195" y2="88"/><line x1="370" y1="43" x2="370" y2="88"/><line x1="585" y1="43" x2="585" y2="88"/><line x1="720" y1="43" x2="720" y2="88"/></g></svg>`;if(i===10)return `<svg viewBox="0 0 840 165"><g ${common}><rect x="85" y="55" width="62" height="62"/><polygon points="185,117 216,55 247,117"/><circle cx="295" cy="85" r="31"/><polygon points="350,117 381,55 412,117"/><circle cx="460" cy="85" r="31"/><rect x="515" y="55" width="62" height="62"/><polygon points="610,117 641,55 672,117"/><circle cx="720" cy="85" r="31"/><rect x="770" y="55" width="55" height="62"/></g><g ${t} font-size="17" text-anchor="middle"><text x="116" y="92">7F</text><text x="216" y="100">4</text><text x="295" y="92">3</text><text x="381" y="100">5A</text><text x="460" y="92">8</text><text x="546" y="92">2</text><text x="641" y="100">6</text><text x="720" y="92">9B</text><text x="797" y="92">3</text></g></svg>`;return `<svg viewBox="0 0 840 130"><text x="110" y="78" ${t} font-size="26" letter-spacing="25">1 2 3 4 5 6 7 8 9</text></svg>`}
+function strokeSvg(strokes,tall=false){const polys=(Array.isArray(strokes)?strokes:[]).map(st=>Array.isArray(st)&&st.length?`<polyline points="${st.map(p=>`${(+p.x*840).toFixed(1)},${(+p.y*(tall?165:130)).toFixed(1)}`).join(' ')}" fill="none" stroke="#2d2723" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>`:'').join('');return `<svg class="stroke-layer" viewBox="0 0 840 ${tall?165:130}">${polys}</svg>`}
+
+function promptFor(sid,i){if(sid==='s2')return DATA.s2[i]||'';if(sid==='s3')return DATA.s3[i]?.stem||'';if(sid==='s4')return DATA.s4[i]||'';if(sid==='s5')return DATA.s5[i]||'';if(sid==='s6')return (DATA.s6[i]||[]).join(' · ');if(sid==='s7'){const x=DATA.s7[i];return x?`${x.a} — ${x.b} :: ${x.c} — ?`:''}if(sid==='s8')return DATA.s8[i]?.stem||'';return`Item ${i+1}`}
+function optionLabel(sid,i,v){if(!v)return'—';if(['s3','s7','s8'].includes(sid)){const opts=DATA[sid][i]?.opts||[];return opts[Number(v)-1]||v}return v}
+function answerTable(sub,sid,score){const rows=score.rows[sid].map(r=>{const answer=optionLabel(sid,r.item-1,r.answer);const key=optionLabel(sid,r.item-1,r.key);const status=r.blank?'Omis':r.ok?'Corect':'Greșit';const cls=r.blank?'blank':r.ok?'ok':'bad';return`<tr><td>${r.item}</td><td>${esc(promptFor(sid,r.item-1))}</td><td class="${r.blank?'blank':''}">${esc(answer)}</td><td>${esc(key)}</td><td class="${cls}">${status}</td><td>${r.points>0?'+':''}${r.points}</td></tr>`}).join('');return`<details class="answer-details"><summary>${META.find(x=>x[0]===sid)[1]} · scor ${score.subs[sid]}</summary><div class="answer-body"><div class="table-wrap"><table><thead><tr><th>Item</th><th>Conținut</th><th>Răspuns dat</th><th>Cheie</th><th>Rezultat</th><th>Puncte</th></tr></thead><tbody>${rows}</tbody></table></div></div></details>`}
+function s1CorrectionHtml(sub,score){const rows=Array.from({length:12},(_,i)=>{const tall=[2,3,10].includes(i),st=sub.responses?.s1?.[i]||[],g=score.grades[i],val=g===1?'1':g===0?'0':'';return`<tr><td><strong>${i+1}</strong></td><td><div class="draw-preview ${tall?'tall':''}">${s1Svg(i)}${strokeSvg(st,tall)}</div></td><td class="solution-text">${esc(S1_SOLUTIONS[i])}</td><td><select class="manual-grade" data-s1-grade="${i}"><option value="" ${val===''?'selected':''}>— de corectat —</option><option value="1" ${val==='1'?'selected':''}>Corect · +1</option><option value="0" ${val==='0'?'selected':''}>Greșit · 0</option></select></td></tr>`}).join('');return`<section class="section card"><h2>Corectare manuală · Subtestul 1</h2><p class="muted">Marcajele grafice nu sunt interpretate automat. Compară fiecare rând cu soluția și marchează-l Corect/Greșit. Regula generală este 1 punct pentru item just, 0 pentru item greșit; nu se acordă jumătăți de punct.</p><div class="table-wrap"><table class="manual-table"><thead><tr><th>Item</th><th>Răspuns candidat</th><th>Soluție / criteriu</th><th>Corectare</th></tr></thead><tbody>${rows}</tbody></table></div><p class="tiny" style="margin-top:10px">Reguli speciale din material: la itemul 2 traseul trebuie să respecte circumferințele și cercurile intermediare; la itemul 6 numărul din cercul 4 poate fi orice număr diferit de 12; la itemul 11 liniile trebuie să atingă numerele cerute. Sublinierea în locul tăierii se consideră greșeală.</p></section>`}
+function updateS1Grade(i,v){const sub=selected();if(!sub)return;const data=readStore(),k=data.findIndex(x=>x.id===sub.id);if(k<0)return;const g=Array.isArray(data[k].manualS1Grades)?data[k].manualS1Grades.slice(0,12):[];while(g.length<12)g.push(null);g[i]=v===''?null:Number(v);data[k].manualS1Grades=g;data[k].manualScoredAt=new Date().toISOString();writeStore(data);renderSelected()}
+function reportPhrase(sub,s,g,n){const who=sub.clientCode||'—';if(s.finalTotal===null)return`La Testul de inteligență generală I₃, candidatul ${who} are scorurile automate calculate pentru subtestele 2–8, însă Subtestul 1 nu este corectat integral. Scorul provizoriu cunoscut este ${s.knownTotal} de puncte; ${s.s1Pending} itemuri din Subtestul 1 mai trebuie corectate manual înainte de raportarea la etalon.`;let t=`La Testul de inteligență generală I₃, candidatul ${who} a obținut scorul brut total ${s.finalTotal} din maximum 212 puncte. Pe subteste: Atenție și memorie ${s.subs.s1}/12, Aritmetică ${s.subs.s2}/20, Judecată rapidă ${s.subs.s3}/16, Înțelesul cuvintelor ${s.subs.s4} (J−G), Fraze deranjate ${s.subs.s5} (J−G), Serie de numere ${s.subs.s6}/20, Coordonare de idei ${s.subs.s7}/40 și Informație ${s.subs.s8}/40.`;if(!g)t+=' Vârsta introdusă nu corespunde grupelor etalonate afișate (14, 15, 16, 17 ani și adulți).';else t+=' '+normDescription(n,g);return t}
+function renderSelector(){const data=readStore().sort((a,b)=>String(b.createdAt||'').localeCompare(String(a.createdAt||''))),sel=$('submissionSelect'),keep=sel.value;sel.innerHTML=data.length?data.map(x=>{const s=autoScore(x),sc=s.finalTotal===null?`${s.knownTotal}+?`:`${s.finalTotal}`;return`<option value="${esc(x.id)}">${isArchived(x)?'Arhivat · ':''}${esc(x.clientCode||'fără cod')} · ${fmtDate(x.testDate)} · ${sc}/212</option>`}).join(''):'<option value="">— niciun rezultat —</option>';if(keep&&data.some(x=>x.id===keep))sel.value=keep;sel.onchange=renderSelected;$('emptyState').classList.toggle('hidden',!!data.length);$('reportRoot').classList.toggle('hidden',!data.length);if(data.length)renderSelected()}
+function selected(){return readStore().find(x=>x.id===$('submissionSelect').value)||null}
+function renderSelected(){const sub=selected();if(!sub){$('reportRoot').classList.add('hidden');return}const s=autoScore(sub),g=normGroup(sub),n=normResult(s.finalTotal,g);const ans=totalAnswered(sub);const formula={s1:'J',s2:'J',s3:'J',s4:'J − G',s5:'J − G',s6:'J',s7:'J',s8:'J'};const maxima={s1:12,s2:20,s3:16,s4:40,s5:24,s6:20,s7:40,s8:40};const subs=META.map(([sid,name])=>`<div class="subscore"><strong>${name}</strong><div class="n">${s.subs[sid]}${['s4','s5'].includes(sid)?'':`/${maxima[sid]}`}</div><div class="formula">Scor: ${formula[sid]} · completate ${answeredCount(sub,sid)}/${maxima[sid]}</div><div class="tiny">Timp: ${sub.timedMode===false?'necronometrat':fmtTime(sub.timing?.[sid]?.secondsUsed)}</div></div>`).join('');const totalValue=s.finalTotal===null?`${s.knownTotal} + ?`:`${s.finalTotal}/212`;const totalSub=s.finalTotal===null?`${s.s1Pending} itemuri S1 necorectate`:'scor final';let normPanel='';if(s.finalTotal===null)normPanel=`<section class="section notice"><strong>Etalonarea este blocată până la corectarea Subtestului 1.</strong><br>Mai sunt ${s.s1Pending} itemuri grafice de marcat Corect/Greșit.</section>`;else if(!g)normPanel=`<section class="section notice"><strong>Etalon neaplicabil vârstei introduse.</strong><br>Tabelul furnizat are coloane pentru 14, 15, 16, 17 ani și adulți.</section>`;else{const cent=n?.type==='exact'?n.centile[0]:n?.type==='interval'?(n.lower.c+n.upper.c)/2:n?.type==='above'?100:0;normPanel=`<section class="section card"><h2>Raportare la etalon</h2><div class="norm-banner"><div class="norm-main"><div class="tiny">Grup normativ: <strong>${groupLabel(g)}</strong></div><div class="norm-big">${normHeadline(n)}</div><span class="symbol">Simbol: ${normSymbol(n)}</span><p>${esc(normDescription(n,g))}</p></div><div class="position"><strong>Poziție orientativă în tabel</strong><div class="meter"><span class="marker" style="left:${Math.max(0,Math.min(100,cent))}%"></span></div><div class="meter-labels"><span>C0</span><span>C50</span><span>C100</span></div><p class="tiny">Pentru scorurile dintre două repere publicate este afișat intervalul, nu o centilă interpolată.</p></div></div><div class="section">${normTable(g,s.finalTotal,n)}</div></section>`}$('reportRoot').classList.remove('hidden');$('reportRoot').innerHTML=`<section class="section stats"><div class="stat"><div class="label">Scor brut</div><div class="value">${totalValue}</div><div class="sub">${totalSub}</div></div><div class="stat"><div class="label">Completare</div><div class="value">${ans}/${TOTAL}</div><div class="sub">${(ans/TOTAL*100).toFixed(1).replace('.',',')}% unități completate</div></div><div class="stat"><div class="label">Etalon</div><div class="value" style="font-size:1.5rem">${s.finalTotal!==null&&g?groupLabel(g):'—'}</div><div class="sub">după vârsta introdusă</div></div><div class="stat"><div class="label">Încadrare normativă</div><div class="value" style="font-size:1.35rem">${s.finalTotal!==null&&g?`${normHeadline(n)} · ${normSymbol(n)}`:'—'}</div><div class="sub">raportare la reperele discrete ale etalonului</div></div></section><section class="section card"><h2>Date candidat</h2><p><strong>${esc(sub.clientCode||'—')}</strong>${sub.lastName||sub.firstName?` · ${esc([sub.lastName,sub.firstName].filter(Boolean).join(' '))}`:''} · vârsta: ${Number(sub.ageYears)||0} ani · data examinării: ${fmtDate(sub.testDate)}</p><p class="muted">${[sub.birthPlace&&`locul nașterii: ${esc(sub.birthPlace)}`,sub.birthCounty&&`județ: ${esc(sub.birthCounty)}`,sub.schoolClass&&`școala generală: ${esc(sub.schoolClass)}`,sub.highSchoolClass&&`liceu: ${esc(sub.highSchoolClass)}`,sub.higherYears&&`studii superioare: ${esc(sub.higherYears)}`].filter(Boolean).join(' · ')||'—'}</p>${sub.examiner?`<p><strong>Psiholog / examinator:</strong> ${esc(sub.examiner)}</p>`:''}${sub.contextNote?`<p>${esc(sub.contextNote)}</p>`:''}</section><section class="section card"><h2>Scoruri pe subteste</h2><div class="subgrid">${subs}</div></section>${s1CorrectionHtml(sub,s)}${normPanel}<section class="section card"><h2>Reguli de scorare integrate</h2><div class="score-rule"><strong>Regulă generală</strong><span>Fiecare item este just sau greșit; nu se acordă jumătăți de punct. Corectările făcute clar de candidat înaintea corectării se consideră răspuns final.</span></div><div class="score-rule"><strong>Subtestele 1, 2, 3, 6, 7, 8</strong><span>Scor = numărul itemurilor juste.</span></div><div class="score-rule"><strong>Subtestele 4 și 5</strong><span>Scor = J − G. Omisiunile nu se scad; numai răspunsurile greșite se scad.</span></div><div class="score-rule"><strong>Aritmetică</strong><span>Pagina acceptă echivalențe numerice cu virgulă/punct zecimal; la itemul 15 este acceptată și forma zecimală a fracției.</span></div><div class="score-rule"><strong>Etalon</strong><span>Valorile sunt cele din tabelul furnizat. Peste maximul grupei: AA („excepțional”). Sub minimul publicat, rezultatul este indicat ca <C0 / sub E; ultimul simbol din tabel este E. Pentru scoruri între repere se arată intervalul dintre centile, fără interpolare inventată.</span></div></section><section class="section card"><h2>Răspunsuri și cheie</h2>${['s2','s3','s4','s5','s6','s7','s8'].map(sid=>answerTable(sub,sid,s)).join('')}</section><section class="section card"><h2>Formulare sintetică</h2><div class="report-box"><p id="reportText">${esc(reportPhrase(sub,s,g,n))}</p></div></section>`;document.querySelectorAll('[data-s1-grade]').forEach(el=>el.onchange=e=>updateS1Grade(Number(e.target.dataset.s1Grade),e.target.value))}
+function importJson(file){const r=new FileReader();r.onload=()=>{try{const p=JSON.parse(r.result),arr=Array.isArray(p)?p:[p],valid=arr.filter(x=>x&&x.questionnaire==='I3'&&x.responses);if(!valid.length)throw new Error('Fișierul nu conține un răspuns I₃ valid.');const cur=readStore(),map=new Map(cur.map(x=>[x.id,x]));valid.forEach(x=>{if(!x.id)x.id=`import_${Date.now()}_${Math.random().toString(16).slice(2)}`;const prev=map.get(x.id);if(prev?.manualS1Grades&&!x.manualS1Grades)x.manualS1Grades=prev.manualS1Grades;map.set(x.id,x)});writeStore([...map.values()]);renderSelector();alert(`Am importat ${valid.length} rezultat(e) I₃.`)}catch(e){alert('Import eșuat: '+e.message)}};r.readAsText(file)}
+function toggleArchive(){const s=selected();if(!s)return;const data=readStore(),i=data.findIndex(x=>x.id===s.id);data[i]={...data[i],archived:!isArchived(data[i]),archivedAt:!isArchived(data[i])?new Date().toISOString():null};writeStore(data);renderSelector()}function delSel(){const s=selected();if(!s||!confirm('Șterg acest rezultat?'))return;writeStore(readStore().filter(x=>x.id!==s.id));renderSelector()}
+document.addEventListener('DOMContentLoaded',()=>{const unlocked=setupAuth();if(unlocked)renderSelector();$('importBtn').onclick=()=>$('jsonImport').click();$('jsonImport').onchange=e=>{const f=e.target.files[0];if(f)importJson(f);e.target.value=''};$('archiveBtn').onclick=toggleArchive;$('deleteBtn').onclick=delSel;$('printBtn').onclick=()=>window.print();$('copyReportBtn').onclick=async()=>{const t=$('reportText')?.innerText||'';if(!t)return;try{await navigator.clipboard.writeText(t);alert('Sinteza a fost copiată.')}catch(e){alert('Nu am putut copia automat textul.')}}});
+</script>
+<!-- I3_AUTO_RESULTS_JS_START -->
+<script>
+/* Patch v5: evaluare automată completă pentru noul format S1 + mod de revizuire de psiholog */
+S1_SOLUTIONS[6]='Se taie litera D (imediat înaintea lui E) și se subliniază litera M (a doua literă înaintea lui O).';
+
+function cleanUpper(v){return String(v??'').trim().toUpperCase()}
+function setEq(a,b){const A=[...(a||[])].map(String).sort(),B=[...(b||[])].map(String).sort();return A.length===B.length&&A.every((x,i)=>x===B[i])}
+function scoreStructuredS1(arr){
+ if(!Array.isArray(arr)||arr.length<12)return Array(12).fill(null);
+ const g=[];let r;
+ r=arr[0]||{};g[0]=r.xCircle==='1'&&r.oneCircle==='3'?1:0;
+ r=arr[1]||{};g[1]=r.route==='correct'?1:0;
+ r=arr[2]||{};g[2]=r.xZone==='triangle_only'&&r.oneZone==='triangle_square'?1:0;
+ r=arr[3]||{};g[3]=r.oneZone==='circle_only'&&r.twoZone==='circle_triangle'?1:0;
+ r=arr[4]||{};g[4]=r.action==='x2'?1:0;
+ r=arr[5]||{};g[5]=numericEqual(r.c2,'12')&&!String(r.c3??'').trim()&&/^\d$/.test(String(r.c4??'').trim())?1:0;
+ r=arr[6]||{};g[6]=cleanUpper(r.strike)==='D'&&cleanUpper(r.underline)==='M'?1:0;
+ r=arr[7]||{};g[7]=cleanUpper(r.c1)==='M'&&cleanUpper(r.c2)==='P'&&cleanUpper(r.c3)==='A'?1:0;
+ r=arr[8]||{};g[8]=setEq(r.cuts,['25','27'])?1:0;
+ r=arr[9]||{};const c1=String(r.c1??'').trim(),c2=String(r.c2??'').trim(),c3=String(r.c3??'').trim(),c4=String(r.c4??'').trim(),c5=String(r.c5??'').trim();g[9]=setEq([c1,c5],['2','3'])&&/^[4-7]$/.test(c2)&&!c3&&!c4?1:0;
+ r=arr[10]||{};g[10]=setEq(r.cuts,['0','1','4','6'])?1:0;
+ r=arr[11]||{};g[11]=String(r.strike??'')==='6'&&String(r.underline??'')==='none'?1:0;
+ return g;
+}
+function s1StructuredAnsweredObj(r){return r&&Object.values(r).some(v=>Array.isArray(v)?v.length:String(v??'').trim())}
+function answeredCount(sub,sid){const a=sub.responses?.[sid]||[];if(sid==='s1'){const st=sub.responses?.s1Structured;if(Array.isArray(st))return st.filter(s1StructuredAnsweredObj).length;return a.filter(x=>Array.isArray(x)&&x.some(stroke=>Array.isArray(stroke)&&stroke.length)).length}if(sid==='s6')return a.filter(x=>Array.isArray(x)&&(String(x[0]||'').trim()||String(x[1]||'').trim())).length;return a.filter(x=>String(x??'').trim()).length}
+function effectiveScoringMode(sub){const structured=Array.isArray(sub.responses?.s1Structured)&&sub.responses.s1Structured.length>=12;if(sub.scoringMode==='psychologist')return'psychologist';if(sub.scoringMode==='auto'&&structured)return'auto';return structured?'auto':'psychologist'}
+function autoScore(sub){
+ const subs={s1:0,s2:0,s3:0,s4:0,s5:0,s6:0,s7:0,s8:0},rows={s2:[],s3:[],s4:[],s5:[],s6:[],s7:[],s8:[]};
+ KEYS.s2.forEach((k,i)=>{const a=String(sub.responses?.s2?.[i]??''),blank=!a.trim(),ok=!blank&&numericEqual(a,k);if(ok)subs.s2++;rows.s2.push({item:i+1,answer:a,key:k,ok,blank,points:ok?1:0})});
+ KEYS.s3.forEach((k,i)=>{const a=choiceValue(sub,'s3',i),blank=!a,ok=a===k;if(ok)subs.s3++;rows.s3.push({item:i+1,answer:a,key:k,ok,blank,points:ok?1:0})});
+ KEYS.s4.forEach((k,i)=>{const raw=choiceValue(sub,'s4',i),a=raw==='asemănător'?'a':raw==='contrar'?'c':'',blank=!a,ok=a===k,pts=blank?0:ok?1:-1;subs.s4+=pts;rows.s4.push({item:i+1,answer:raw,key:k==='a'?'asemănător':'contrar',ok,blank,points:pts})});
+ KEYS.s5.forEach((k,i)=>{const raw=choiceValue(sub,'s5',i),a=raw==='adevărat'?'a':raw==='greșit'?'g':'',blank=!a,ok=a===k,pts=blank?0:ok?1:-1;subs.s5+=pts;rows.s5.push({item:i+1,answer:raw,key:k==='a'?'adevărat':'greșit',ok,blank,points:pts})});
+ KEYS.s6.forEach((k,i)=>{const a=sub.responses?.s6?.[i]||[],blank=!String(a[0]??'').trim()&&!String(a[1]??'').trim(),ok=!blank&&numericEqual(a[0],k[0])&&numericEqual(a[1],k[1]);if(ok)subs.s6++;rows.s6.push({item:i+1,answer:`${a[0]||'—'} ; ${a[1]||'—'}`,key:`${k[0]} ; ${k[1]}`,ok,blank,points:ok?1:0})});
+ for(const sid of ['s7','s8'])KEYS[sid].forEach((k,i)=>{const a=choiceValue(sub,sid,i),blank=!a,ok=a===k;if(ok)subs[sid]++;rows[sid].push({item:i+1,answer:a,key:k,ok,blank,points:ok?1:0})});
+ const autoS1=scoreStructuredS1(sub.responses?.s1Structured),manual=Array.isArray(sub.manualS1Grades)?sub.manualS1Grades.slice(0,12):[];while(manual.length<12)manual.push(null);const mode=effectiveScoringMode(sub);const grades=autoS1.map((a,i)=>mode==='psychologist'&&(manual[i]===0||manual[i]===1)?manual[i]:a);const s1Pending=grades.filter(x=>x!==0&&x!==1).length;subs.s1=grades.filter(x=>x===1).length;const autoTotal=subs.s2+subs.s3+subs.s4+subs.s5+subs.s6+subs.s7+subs.s8;const knownTotal=autoTotal+subs.s1;return{subs,rows,grades,autoS1,manual,s1Pending,autoTotal,knownTotal,finalTotal:s1Pending?null:knownTotal,mode}
+}
+function s1ResponseText(r,i){if(!r)return'—';const show=v=>String(v??'').trim()||'—';switch(i){case 0:return`X: cerc ${show(r.xCircle)}; cifra 1: cerc ${show(r.oneCircle)}`;case 1:return`Traseu: ${show(r.route)}`;case 2:return`X: ${show(r.xZone)}; 1: ${show(r.oneZone)}`;case 3:return`1: ${show(r.oneZone)}; 2: ${show(r.twoZone)}`;case 4:return`Acțiune: ${show(r.action)}`;case 5:return`cercul 2=${show(r.c2)}; cercul 3=${show(r.c3)}; cercul 4=${show(r.c4)}`;case 6:return`taie ${show(r.strike)}; subliniază ${show(r.underline)}`;case 7:return`cercuri: ${show(r.c1)}, ${show(r.c2)}, ${show(r.c3)}`;case 8:return`tăiate: ${(r.cuts||[]).join(', ')||'—'}`;case 9:return`compartimente: ${[r.c1,r.c2,r.c3,r.c4,r.c5].map(show).join(' | ')}`;case 10:return`elemente tăiate: ${(r.cuts||[]).map(x=>Number(x)+1).join(', ')||'—'}`;default:return`taie: ${show(r.strike)}; subliniază: ${show(r.underline)}`}}
+function evaluationModeHtml(sub,score){const m=score.mode,hasStructured=Array.isArray(sub.responses?.s1Structured)&&sub.responses.s1Structured.length>=12;return `<section class="section card"><h2>Mod de evaluare</h2><div class="eval-mode"><div class="eval-choice ${m==='auto'?'active':''}" data-score-mode="auto"><strong>Evaluare automată</strong><span>Aplică cheia integrată tuturor subtestelor, inclusiv Subtestului 1 în noul format structurat.</span></div><div class="eval-choice ${m==='psychologist'?'active':''}" data-score-mode="psychologist"><strong>Revizuire de psiholog</strong><span>Păstrează scorarea automată ca reper, dar psihologul poate confirma sau suprascrie fiecare item din Subtestul 1.</span></div></div>${!hasStructured?`<div class="legacy-note" style="margin-top:12px">Acest rezultat provine dintr-o versiune veche, cu desen liber la Subtestul 1. Evaluarea automată completă nu este posibilă pentru S1; este necesară revizuirea de psiholog.</div>`:`<div class="mode-callout">Mod activ: <strong>${m==='auto'?'evaluare automată':'revizuire de psiholog'}</strong>. Schimbarea modului nu modifică răspunsurile candidatului.</div>`}</section>`}
+function s1CorrectionHtml(sub,score){
+ const structured=sub.responses?.s1Structured,hasStructured=Array.isArray(structured)&&structured.length>=12,oldStrokes=sub.responses?.s1||[];
+ const rows=Array.from({length:12},(_,i)=>{const auto=score.autoS1[i],manual=score.manual[i],effective=score.grades[i],autoBadge=auto===1?'<span class="auto-badge ok">Automat: corect</span>':auto===0?'<span class="auto-badge bad">Automat: greșit</span>':'<span class="auto-badge pending">Automat: indisponibil</span>';const val=manual===1?'1':manual===0?'0':'auto';const visual=hasStructured?`<div class="draw-preview ${[2,3,10].includes(i)?'tall':''}">${s1Svg(i)}</div><div class="structured-answer"><strong>Răspuns înregistrat:</strong> ${esc(s1ResponseText(structured[i],i))}</div>`:`<div class="draw-preview ${[2,3,10].includes(i)?'tall':''}">${s1Svg(i)}${strokeSvg(oldStrokes[i]||[],[2,3,10].includes(i))}</div>`;const grade=score.mode==='psychologist'?`<select class="manual-grade" data-s1-grade="${i}"><option value="auto" ${val==='auto'?'selected':''}>Păstrează automat</option><option value="1" ${val==='1'?'selected':''}>Psiholog: corect</option><option value="0" ${val==='0'?'selected':''}>Psiholog: greșit</option></select><div class="score-source">Scor folosit: ${effective===1?'1 punct':effective===0?'0 puncte':'neclar'}</div>`:`<strong class="${effective===1?'ok':effective===0?'bad':'blank'}">${effective===1?'Corect · +1':effective===0?'Greșit · 0':'Nescoreabil'}</strong>`;return`<tr><td><strong>${i+1}</strong></td><td>${visual}</td><td class="solution-text">${esc(S1_SOLUTIONS[i])}<div style="margin-top:7px">${autoBadge}</div></td><td>${grade}</td></tr>`}).join('');return`<section class="section card"><h2>${score.mode==='auto'?'Evaluare automată':'Revizuire de psiholog'} · Subtestul 1</h2><p class="muted">${score.mode==='auto'?'Cheia este aplicată automat răspunsurilor structurate. Psihologul poate trece oricând în modul de revizuire pentru a verifica sau modifica verdictul.':'Verdictul automat este afișat ca reper. Alegerea psihologului suprascrie verdictul automat numai pentru itemul respectiv.'}</p>${score.mode==='psychologist'?`<div class="psych-actions"><button class="btn secondary" type="button" id="clearManualS1">Șterge suprascrierile manuale</button><button class="btn soft" type="button" id="useAutoMode">Folosește evaluarea automată</button></div>`:''}<div class="table-wrap"><table class="manual-table"><thead><tr><th>Item</th><th>Răspuns candidat</th><th>Soluție / evaluare automată</th><th>${score.mode==='psychologist'?'Decizie psiholog':'Scor'}</th></tr></thead><tbody>${rows}</tbody></table></div><p class="tiny" style="margin-top:10px">Regulile speciale din material rămân aplicate: la itemul 6 răspunsul din cercul 4 trebuie să fie o singură cifră diferită de 12; la itemul 10 cele două compartimente cele mai mici trebuie să conțină separat 2 și 3; la itemul 11 se taie numerele, nu figurile.</p></section>`}
+function updateEvaluationMode(v){const sub=selected();if(!sub)return;const data=readStore(),i=data.findIndex(x=>x.id===sub.id);if(i<0)return;if(v==='auto'&&!(Array.isArray(data[i].responses?.s1Structured)&&data[i].responses.s1Structured.length>=12)){alert('Evaluarea automată completă nu este disponibilă pentru acest rezultat vechi, deoarece Subtestul 1 a fost salvat ca desen liber.');return}data[i].scoringMode=v;writeStore(data);renderSelected()}
+function updateS1Grade(i,v){const sub=selected();if(!sub)return;const data=readStore(),k=data.findIndex(x=>x.id===sub.id);if(k<0)return;const g=Array.isArray(data[k].manualS1Grades)?data[k].manualS1Grades.slice(0,12):[];while(g.length<12)g.push(null);g[i]=v==='auto'?null:Number(v);data[k].manualS1Grades=g;data[k].manualScoredAt=new Date().toISOString();data[k].scoringMode='psychologist';writeStore(data);renderSelected()}
+function clearManualS1(){const sub=selected();if(!sub)return;const data=readStore(),i=data.findIndex(x=>x.id===sub.id);if(i<0)return;data[i].manualS1Grades=Array(12).fill(null);data[i].scoringMode='psychologist';writeStore(data);renderSelected()}
+const __i3OldRenderSelected=renderSelected;
+renderSelected = function(){
+ __i3OldRenderSelected();
+ const sub=selected();if(!sub)return;const score=autoScore(sub),root=$('reportRoot');if(!root)return;
+ // Inserează selectorul modului înaintea statisticilor
+ const stats=root.querySelector('.stats');if(stats){const holder=document.createElement('div');holder.innerHTML=evaluationModeHtml(sub,score);stats.parentNode.insertBefore(holder.firstElementChild,stats)}
+ // înlocuiește secțiunea S1 produsă de versiunea veche cu versiunea nouă
+ const sections=Array.from(root.querySelectorAll('section.card'));const oldS1=sections.find(x=>x.querySelector('h2')?.textContent?.includes('Subtestul 1')&&(x.querySelector('table.manual-table')||x.querySelector('.manual-table')));if(oldS1){const temp=document.createElement('div');temp.innerHTML=s1CorrectionHtml(sub,score);oldS1.replaceWith(temp.firstElementChild)}
+ // repară valorile din cardurile principale, deoarece rendererul vechi a calculat folosind noul autoScore dar textul poate spune „manual”
+ document.querySelectorAll('[data-score-mode]').forEach(el=>el.onclick=()=>updateEvaluationMode(el.dataset.scoreMode));
+ document.querySelectorAll('[data-s1-grade]').forEach(el=>el.onchange=e=>updateS1Grade(Number(e.target.dataset.s1Grade),e.target.value));
+ const clear=$('clearManualS1');if(clear)clear.onclick=clearManualS1;const ua=$('useAutoMode');if(ua)ua.onclick=()=>updateEvaluationMode('auto');
+}
+</script>
+<!-- I3_AUTO_RESULTS_JS_END -->
+
+
+<script id="i3-results-v6-patch">
+/* v6: compatibilitate cu răspunsurile directe din S1 */
+const __scoreStructuredS1v5=scoreStructuredS1;
+scoreStructuredS1=function(arr){
+ const g=__scoreStructuredS1v5(arr);if(!Array.isArray(arr)||arr.length<12)return g;let r=arr[0]||{};
+ if(Array.isArray(r.cells)){const c=r.cells.map(v=>String(v??'').trim());g[0]=/^x$/i.test(c[0]||'')&&(c[2]||'')==='1'&&!c[1]&&!c[3]&&!c[4]?1:0}
+ r=arr[5]||{};if('c1' in r||'c5' in r)g[5]=!String(r.c1??'').trim()&&numericEqual(r.c2,'12')&&!String(r.c3??'').trim()&&/^\d$/.test(String(r.c4??'').trim())&&!String(r.c5??'').trim()?1:0;
+ r=arr[11]||{};g[11]=String(r.strike??'').trim()==='6'&&(!String(r.underline??'').trim()||String(r.underline??'').trim()==='none')?1:0;
+ return g
+};
+const __s1ResponseTextV5=s1ResponseText;
+s1ResponseText=function(r,i){if(!r)return'—';if(i===0&&Array.isArray(r.cells))return`cercuri: ${r.cells.map((v,k)=>`${k+1}=${String(v??'').trim()||'gol'}`).join(' · ')}`;if(i===5&&('c1' in r||'c5' in r))return`cercuri: ${[r.c1,r.c2,r.c3,r.c4,r.c5].map((v,k)=>`${k+1}=${String(v??'').trim()||'gol'}`).join(' · ')}`;return __s1ResponseTextV5(r,i)};
+</script>
+
+\n<!-- I3_RESULTS_CLEAN_PATCH -->
+<style>
+.i3-pill{display:inline-flex;align-items:center;padding:4px 9px;border-radius:999px;font-size:.78rem;font-weight:900;border:1px solid transparent;margin-right:5px}.i3-pill.ok{background:#e9f5ee;color:#176b45;border-color:#cbe8d6}.i3-pill.bad{background:#f8e9e7;color:#a23d36;border-color:#efcac6}.i3-pill.blank{background:#f3eee8;color:#6f6359;border-color:#e0d8cf}.i3-pill.pending{background:#fff8ef;color:#8c651f;border-color:#ead8c5}.i3-summary{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 14px}.i3-answerbox{padding:8px 10px;border:1px solid var(--line);border-radius:11px;background:#fbf7f3;font-size:.87rem;line-height:1.45}.i3-direct-preview{min-height:92px;border:1px solid var(--line);border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;padding:18px 12px;overflow:hidden}.i3-seq{display:flex;align-items:center;justify-content:center;gap:4px;font-family:Georgia,"Times New Roman",serif;font-size:1.05rem;white-space:nowrap}.i3-num{position:relative;display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:28px}.i3-num.cut::after{content:"";position:absolute;left:-1px;right:-1px;top:50%;border-top:3px solid #8f2c23;transform:rotate(43deg);transform-origin:center}.i3-num.under::before{content:"";position:absolute;left:0;right:0;bottom:0;border-bottom:3px solid #1d6a5b}.i3-sep{opacity:.8}.i3-syn-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}.i3-syn-sub{padding:13px 14px;border:1px solid var(--line);border-radius:14px;background:#fbf7f3}.i3-syn-sub h3{margin:0 0 6px;font-size:1rem;color:var(--accent)}.i3-syn-sub p{margin:0 0 7px;line-height:1.52}.i3-syn-sub p:last-child{margin-bottom:0}
+</style>
+<script>
+(function(){
+ const pill=(k,t)=>`<span class="i3-pill ${k}">${t}</span>`;
+ function hasS1(sub,i){const a=sub?.responses?.s1Structured;if(Array.isArray(a)&&a.length>i){const r=a[i]||{};return Object.values(r).some(v=>Array.isArray(v)?v.length:String(v??'').trim())}const old=sub?.responses?.s1?.[i]||[];return Array.isArray(old)&&old.some(x=>Array.isArray(x)&&x.length)}
+ function s1Stat(sub,score,i){if(!hasS1(sub,i))return{kind:'blank',label:'Lipsă'};const g=score.grades?.[i];if(g===1)return{kind:'ok',label:'Corect'};if(g===0)return{kind:'bad',label:'Greșit'};return{kind:'pending',label:'Neclasificat'}}
+ function counts(rows){return rows.reduce((a,r)=>{if(r.blank)a.blank++;else if(r.ok)a.ok++;else a.bad++;return a},{ok:0,bad:0,blank:0})}
+ function fullLabel(sid,i,v){if(v===undefined||v===null||v==='')return'—';if(['s3','s7','s8'].includes(sid)){const opts=DATA[sid]?.[i]?.opts||[];return`(${v}) ${opts[Number(v)-1]||v}`}return String(v)}
+ function row9(r){const n=['34','79','56','87','68','25','82','47','27','31','64','93','71','41','52','99'],c=new Set((r?.cuts||[]).map(String));return`<div class="i3-direct-preview"><div class="i3-seq">${n.map((x,i)=>`${i?'<span class="i3-sep">-</span>':''}<span class="i3-num ${c.has(x)?'cut':''}">${x}</span>`).join('')}</div></div>`}
+ function row12(r){const n=['1','2','3','4','5','6','7','8','9'],s=String(r?.strike??''),u=String(r?.underline??'');return`<div class="i3-direct-preview"><div class="i3-seq" style="gap:25px">${n.map(x=>`<span class="i3-num ${x===s?'cut':''} ${x===u?'under':''}">${x}</span>`).join('')}</div></div>`}
+ function overlay(i,r){if(!r)return'';const mark=(x,y,txt,col='#7a5038',sz=24)=>`<text x="${x}" y="${y}" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-weight="900" font-size="${sz}" fill="${col}">${esc(txt)}</text>`,strike=(x1,y1,x2,y2)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#8f2c23" stroke-width="4" stroke-linecap="round"/>`,under=(x1,x2,y)=>`<line x1="${x1}" y1="${y}" x2="${x2}" y2="${y}" stroke="#1d6a5b" stroke-width="4" stroke-linecap="round"/>`;
+ if(i===0){const c=[160,230,300,370,440],o=[],cells=Array.isArray(r.cells)?r.cells:[];if(cells.length)cells.forEach((v,k)=>{v=String(v??'').trim();if(v)o.push(mark(c[k],73,v,/^x$/i.test(v)?'#8f2c23':'#1d6a5b',24))});else{if(r.xCircle)o.push(mark(c[Number(r.xCircle)-1],73,'X','#8f2c23',26));if(r.oneCircle)o.push(mark(c[Number(r.oneCircle)-1],73,'1','#1d6a5b',24))}return`<svg class="stroke-layer" viewBox="0 0 840 130">${o.join('')}</svg>`}
+ if(i===1){const d={correct:'M105 65 C165 8 205 10 250 34 C302 62 333 108 392 94 C448 82 482 42 537 65',above:'M105 65 C190 8 330 8 537 65',below:'M105 65 C200 120 390 120 537 65',direct:'M105 65 L537 65'}[r.route];return d?`<svg class="stroke-layer" viewBox="0 0 840 130"><path d="${d}" fill="none" stroke="#8f2c23" stroke-width="6" stroke-linecap="round"/></svg>`:''}
+ if(i===2){const p={triangle_only:[305,113],triangle_square:[244,87],square_only:[218,78],outside:[160,128]},o=[];if(p[r.xZone])o.push(mark(p[r.xZone][0],p[r.xZone][1],'X','#8f2c23',26));if(p[r.oneZone])o.push(mark(p[r.oneZone][0],p[r.oneZone][1],'1','#1d6a5b',24));return`<svg class="stroke-layer" viewBox="0 0 840 165">${o.join('')}</svg>`}
+ if(i===3){const p={circle_only:[360,86],circle_triangle:[372,124],circle_square:[280,89],triangle_only:[210,132],square_only:[244,90],outside:[500,55]},o=[];if(p[r.oneZone])o.push(mark(p[r.oneZone][0],p[r.oneZone][1],'1','#1d6a5b',24));if(p[r.twoZone])o.push(mark(p[r.twoZone][0],p[r.twoZone][1],'2','#8f2c23',24));return`<svg class="stroke-layer" viewBox="0 0 840 165">${o.join('')}</svg>`}
+ if(i===4){const x={x1:165,x2:235,x3:305};return`<svg class="stroke-layer" viewBox="0 0 840 130">${x[r.action]?mark(x[r.action],73,'X','#8f2c23',26):''}${r.action==='underline_da'?under(375,410,83):''}${r.action==='underline_nu'?under(455,490,83):''}</svg>`}
+ if(i===5){const x=[165,235,305,375,445],v=[r.c1,r.c2,r.c3,r.c4,r.c5];return`<svg class="stroke-layer" viewBox="0 0 840 130">${v.map((z,k)=>String(z??'').trim()?mark(x[k],73,String(z).trim(),'#7a5038',23):'').join('')}</svg>`}
+ if(i===6){const L='ABCDEFGHIJKLMNOP'.split(''),o=[];L.forEach((ch,k)=>{const x=145+k*34;if(String(r.strike||'').toUpperCase()===ch)o.push(strike(x-10,58,x+10,80));if(String(r.underline||'').toUpperCase()===ch)o.push(under(x-11,x+11,86))});return`<svg class="stroke-layer" viewBox="0 0 840 130">${o.join('')}</svg>`}
+ if(i===7){const x=[165,235,305],v=[r.c1,r.c2,r.c3];return`<svg class="stroke-layer" viewBox="0 0 840 130">${v.map((z,k)=>String(z??'').trim()?mark(x[k],73,String(z).trim(),'#7a5038',23):'').join('')}</svg>`}
+ if(i===9){const x=[152,282,478,652,740],v=[r.c1,r.c2,r.c3,r.c4,r.c5];return`<svg class="stroke-layer" viewBox="0 0 840 130">${v.map((z,k)=>String(z??'').trim()?mark(x[k],73,String(z).trim(),'#7a5038',23):'').join('')}</svg>`}
+ if(i===10){const b=[[85,55,62,62],[185,55,62,62],[264,54,62,62],[350,55,62,62],[429,54,62,62],[515,55,62,62],[610,55,62,62],[689,54,62,62],[770,55,55,62]],c=new Set((r.cuts||[]).map(String));return`<svg class="stroke-layer" viewBox="0 0 840 165">${b.map((q,k)=>c.has(String(k))?strike(q[0]+5,q[1]+8,q[0]+q[2]-5,q[1]+q[3]-8):'').join('')}</svg>`}return''}
+ function rtext(r,i){if(!r)return'Nu există răspuns.';const sh=v=>String(v??'').trim()||'—';if(i===0)return`Cercuri: ${Array.isArray(r.cells)?r.cells.map((v,k)=>`${k+1}=${sh(v)}`).join(' · '):`X=${sh(r.xCircle)}; 1=${sh(r.oneCircle)}`}.`;if(i===1)return`Traseu selectat: ${sh(r.route)}.`;if(i===2)return`X: ${sh(r.xZone)}; 1: ${sh(r.oneZone)}.`;if(i===3)return`1: ${sh(r.oneZone)}; 2: ${sh(r.twoZone)}.`;if(i===4)return`Acțiune: ${sh(r.action)}.`;if(i===5)return`Cercuri: ${[r.c1,r.c2,r.c3,r.c4,r.c5].map((v,k)=>`${k+1}=${sh(v)}`).join(' · ')}.`;if(i===6)return`A tăiat litera ${sh(r.strike)} și a subliniat litera ${sh(r.underline)}.`;if(i===7)return`A scris: ${sh(r.c1)}, ${sh(r.c2)}, ${sh(r.c3)}.`;if(i===8)return`A tăiat numerele: ${(r.cuts||[]).join(', ')||'—'}.`;if(i===9)return`Compartimente: ${[r.c1,r.c2,r.c3,r.c4,r.c5].map((v,k)=>`${k+1}=${sh(v)}`).join(' · ')}.`;if(i===10)return`A tăiat elementele: ${(r.cuts||[]).map(x=>Number(x)+1).join(', ')||'—'}.`;return`A tăiat cifra ${sh(r.strike)}; a subliniat ${!r.underline||r.underline==='none'?'nimic':`cifra ${r.underline}`}.`}
+ function preview(i,r,old){if(r){if(i===8)return`${row9(r)}<div class="i3-answerbox"><strong>Răspuns consemnat:</strong> ${esc(rtext(r,i))}</div>`;if(i===11)return`${row12(r)}<div class="i3-answerbox"><strong>Răspuns consemnat:</strong> ${esc(rtext(r,i))}</div>`;const tall=[2,3,10].includes(i);return`<div class="draw-preview ${tall?'tall':''}">${s1Svg(i)}${overlay(i,r)}</div><div class="i3-answerbox"><strong>Răspuns consemnat:</strong> ${esc(rtext(r,i))}</div>`}const tall=[2,3,10].includes(i);return`<div class="draw-preview ${tall?'tall':''}">${s1Svg(i)}${strokeSvg(old||[],tall)}</div>`}
+ answerTable=function(sub,sid,score){const src=score.rows[sid]||[],c=counts(src),rows=src.map(r=>{const k=r.blank?'blank':r.ok?'ok':'bad',l=r.blank?'Lipsă':r.ok?'Corect':'Greșit';return`<tr><td><strong>${r.item}</strong></td><td>${esc(promptFor(sid,r.item-1))}</td><td><div class="i3-answerbox">${esc(fullLabel(sid,r.item-1,r.answer))}</div></td><td>${esc(fullLabel(sid,r.item-1,r.key))}</td><td>${pill(k,l)}</td><td class="${k==='ok'?'ok':k==='bad'?'bad':'blank'}">${r.points>0?'+':''}${r.points}</td></tr>`}).join('');return`<details class="answer-details"><summary>${META.find(x=>x[0]===sid)[1]} · scor ${score.subs[sid]} · corecte ${c.ok} · greșite ${c.bad} · lipsă ${c.blank}</summary><div class="answer-body"><div class="i3-summary">${pill('ok',`Corecte: ${c.ok}`)}${pill('bad',`Greșite: ${c.bad}`)}${pill('blank',`Lipsă: ${c.blank}`)}</div><div class="table-wrap"><table><thead><tr><th>Item</th><th>Conținut</th><th>Răspuns consemnat</th><th>Cheie</th><th>Clasificare</th><th>Puncte</th></tr></thead><tbody>${rows}</tbody></table></div></div></details>`}
+ s1CorrectionHtml=function(sub,score){const st=Array.isArray(sub.responses?.s1Structured)&&sub.responses.s1Structured.length>=12?sub.responses.s1Structured:null,old=sub.responses?.s1||[];let ok=0,bad=0,blank=0,pending=0;const rows=Array.from({length:12},(_,i)=>{const ss=s1Stat(sub,score,i);if(ss.kind==='ok')ok++;else if(ss.kind==='bad')bad++;else if(ss.kind==='blank')blank++;else pending++;const m=score.manual?.[i],e=score.grades?.[i],v=m===1?'1':m===0?'0':'auto',d=score.mode==='psychologist'?`<select class="manual-grade" data-s1-grade="${i}"><option value="auto" ${v==='auto'?'selected':''}>Păstrează automat</option><option value="1" ${v==='1'?'selected':''}>Psiholog: corect</option><option value="0" ${v==='0'?'selected':''}>Psiholog: greșit</option></select><div class="score-source">Scor folosit: ${e===1?'1 punct':e===0?'0 puncte':'neclar'}</div>`:`${pill(ss.kind,ss.label)}<div class="score-source">${e===1?'+1 punct':e===0?'0 puncte':'—'}</div>`;return`<tr><td><strong>${i+1}</strong></td><td>${preview(i,st?st[i]:null,old[i])}</td><td class="solution-text">${esc(S1_SOLUTIONS[i])}</td><td>${d}</td></tr>`}).join('');return`<section class="section card"><h2>${score.mode==='auto'?'Evaluare automată':'Revizuire de psiholog'} · Subtestul 1</h2><div class="i3-summary">${pill('ok',`Corecte: ${ok}`)}${pill('bad',`Greșite: ${bad}`)}${pill('blank',`Lipsă: ${blank}`)}${pending?pill('pending',`Neclasificate: ${pending}`):''}</div>${score.mode==='psychologist'?`<div class="psych-actions"><button class="btn secondary" type="button" id="clearManualS1">Șterge suprascrierile manuale</button><button class="btn soft" type="button" id="useAutoMode">Folosește evaluarea automată</button></div>`:''}<div class="table-wrap"><table class="manual-table"><thead><tr><th>Item</th><th>Răspuns candidat</th><th>Cheie</th><th>${score.mode==='psychologist'?'Decizie psiholog':'Clasificare'}</th></tr></thead><tbody>${rows}</tbody></table></div></section>`}
+ function perf(r){if(r>=.85)return'foarte ridicată';if(r>=.70)return'ridicată';if(r>=.50)return'moderată';if(r>=.30)return'scăzută';return'foarte scăzută'}
+ function suban(sub,score,sid){let o,b,l,m,sc,ratio;if(sid==='s1'){o=b=l=0;for(let i=0;i<12;i++){const s=s1Stat(sub,score,i);if(s.kind==='ok')o++;else if(s.kind==='bad')b++;else if(s.kind==='blank')l++}m=12;sc=score.subs.s1;ratio=sc/m}else{const r=score.rows[sid]||[];o=r.filter(x=>x.ok).length;b=r.filter(x=>!x.ok&&!x.blank).length;l=r.filter(x=>x.blank).length;m={s2:20,s3:16,s4:40,s5:24,s6:20,s7:40,s8:40}[sid];sc=score.subs[sid];ratio=(sid==='s4'||sid==='s5')?o/(r.length||1):sc/m}const inf={s1:['Atenție și memorie','precizia urmăririi instrucțiunilor și controlul execuției'],s2:['Aritmetică','calculul mintal și raporturile cantitative'],s3:['Judecată rapidă','judecata practică și alegerea rapidă a soluției'],s4:['Înțelesul cuvintelor','relațiile semantice de asemănare și opoziție'],s5:['Fraze deranjate','organizarea logică a limbajului și verificarea sensului'],s6:['Serie de numere','identificarea regulilor de succesiune numerică'],s7:['Coordonare de idei','raționamentul analogic verbal'],s8:['Informație','informația generală și selectarea factuală corectă']}[sid],scoreTxt=(sid==='s4'||sid==='s5')?`Scor: <strong>${sc}</strong> (J − G).`:`Scor: <strong>${sc}/${m}</strong>.`;return`<div class="i3-syn-sub"><h3>${inf[0]}</h3><p>${scoreTxt} Corecte: <strong>${o}</strong>; greșite: <strong>${b}</strong>; lipsă: <strong>${l}</strong>.</p><p>Subtestul evidențiază ${inf[1]}. Proporția de răspunsuri corecte este ${perf(ratio)} în cadrul subtestului. </p></div>`}
+ function synth(sub,score){const g=normGroup(sub),n=normResult(score.finalTotal,g),intro=`<p>La Testul de inteligență generală I₃, candidatul <strong>${esc(sub.clientCode||'—')}</strong> a obținut ${score.finalTotal===null?`un scor provizoriu de <strong>${score.knownTotal}</strong> puncte`:`scorul brut total de <strong>${score.finalTotal}</strong> puncte`}.</p>`,nr=score.finalTotal===null?`<p>Raportarea normativă este suspendată până la finalizarea scorării Subtestului 1.</p>`:`<p>Raportarea la grupa <strong>${g?groupLabel(g):'—'}</strong>: <strong>${esc(normHeadline(n))}</strong>${n?` · ${esc(normSymbol(n))}`:''}.</p>`;return`${intro}${nr}<div class="i3-syn-grid">${['s1','s2','s3','s4','s5','s6','s7','s8'].map(x=>suban(sub,score,x)).join('')}</div>`}
+ const prev=renderSelected;renderSelected=function(){prev();const sub=selected();if(!sub)return;const root=$('reportRoot');if(!root)return;const score=autoScore(sub),badge=root.querySelector('.norm-main .symbol');if(badge){const g=normGroup(sub),n=normResult(score.finalTotal,g);badge.textContent=normSymbol(n)}const card=Array.from(root.querySelectorAll('section.card')).find(x=>x.querySelector('h2')?.textContent?.includes('Formulare sintetică'));if(card){const box=card.querySelector('.report-box');if(box)box.innerHTML=`<div id="reportText">${synth(sub,score)}</div>`}const clear=$('clearManualS1');if(clear)clear.onclick=clearManualS1;const ua=$('useAutoMode');if(ua)ua.onclick=()=>updateEvaluationMode('auto')}
+})();
+</script>
+
+</body></html>
+<!-- I3_PSYCHOLOGICAL_REPORT_SYNTHESIS_V2 -->
+<style>
+.psych-report{font-family:Georgia,"Times New Roman",serif;line-height:1.72}
+.psych-report .pr-section{margin-top:18px}
+.psych-report .pr-section:first-child{margin-top:0}
+.psych-report .pr-title{font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:.78rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.psych-report .pr-sub{padding:12px 14px;border-left:3px solid #d8c5b5;background:#fbf7f3;border-radius:0 12px 12px 0;margin-top:10px}
+.psych-report .pr-sub strong{font-family:Inter,ui-sans-serif,system-ui,sans-serif}
+.psych-report .pr-caution{padding:12px 14px;border:1px solid #ead8c5;background:#fff8ef;border-radius:12px}
+</style>
+<script>
+(function(){
+  function prCounts(sub,score,sid){
+    if(sid==='s1'){
+      let ok=0,bad=0,blank=0;
+      for(let i=0;i<12;i++){
+        const s=s1Stat(sub,score,i);
+        if(s.kind==='ok')ok++; else if(s.kind==='bad')bad++; else if(s.kind==='blank')blank++;
+      }
+      return {ok,bad,blank,total:12,score:score.subs.s1,max:12,formula:'J'};
+    }
+    const rows=score.rows[sid]||[];
+    const ok=rows.filter(r=>r.ok).length;
+    const bad=rows.filter(r=>!r.ok&&!r.blank).length;
+    const blank=rows.filter(r=>r.blank).length;
+    const max={s2:20,s3:16,s4:40,s5:24,s6:20,s7:40,s8:40}[sid];
+    return {ok,bad,blank,total:rows.length,score:score.subs[sid],max,formula:(sid==='s4'||sid==='s5')?'J − G':'J'};
+  }
+
+  function prCompletion(c){return c.total?((c.total-c.blank)/c.total):0}
+  function prAccuracy(c){const attempted=c.ok+c.bad;return attempted?c.ok/attempted:null}
+  function pct(x){return `${Math.round(x*100)}%`}
+
+  function prSubtestText(sub,score,sid){
+    const c=prCounts(sub,score,sid), completed=c.total-c.blank, comp=prCompletion(c), acc=prAccuracy(c);
+    const meta={
+      s1:['Atenție și memorie','urmărirea și executarea corectă a unor instrucțiuni succesive, cu solicitarea atenției, memoriei imediate și controlului răspunsului'],
+      s2:['Aritmetică','calculul mintal, operarea cu relații cantitative și rapiditatea rezolvării problemelor aritmetice'],
+      s3:['Judecată rapidă','judecata practică și selectarea rapidă a răspunsului adecvat în situații uzuale'],
+      s4:['Înțelesul cuvintelor','discriminarea relațiilor semantice de asemănare și opoziție'],
+      s5:['Fraze deranjate','organizarea logică a limbajului și evaluarea sensului unei propoziții reconstruite'],
+      s6:['Serie de numere','identificarea regulilor de succesiune și raționamentul inductiv numeric'],
+      s7:['Coordonare de idei','raționamentul analogic verbal și transferul unei relații între termeni'],
+      s8:['Informație','volumul și acuratețea informațiilor generale accesibile subiectului']
+    }[sid];
+    const scorePart=(sid==='s4'||sid==='s5')?`scor ${c.score}, calculat prin formula J − G`:`scor ${c.score}/${c.max}`;
+    let interpretation='';
+    if(completed===0){
+      interpretation='Subtestul nu a fost abordat. În aceste condiții, nu se poate formula o concluzie privind nivelul funcției evaluate pe baza acestui subtest.';
+    }else if(comp<0.25){
+      interpretation=`Volumul de răspunsuri este foarte redus (${completed}/${c.total} itemi abordați), astfel încât rezultatul are valoare descriptivă limitată și nu permite o apreciere stabilă a funcției evaluate. Dintre itemii abordați, ${c.ok} au fost rezolvați corect și ${c.bad} greșit.`;
+    }else if(comp<0.60){
+      interpretation=`Protocolul este parțial completat (${completed}/${c.total} itemi abordați). Interpretarea trebuie făcută cu prudență, deoarece omisiunile pot reduce substanțial scorul. Dintre răspunsurile efectiv formulate, acuratețea a fost de ${acc===null?'—':pct(acc)}.`;
+    }else{
+      interpretation=`Subtestul a fost completat în proporție de ${pct(comp)}. Dintre răspunsurile formulate, ${c.ok} au fost corecte și ${c.bad} greșite${acc!==null?`, corespunzând unei acurateți de ${pct(acc)}`:''}. Rezultatul descrie performanța obținută la această administrare, fără a reprezenta o etalonare separată a subtestului.`;
+    }
+    return `<div class="pr-sub"><strong>${meta[0]}</strong> — ${scorePart}; ${c.ok} răspunsuri corecte, ${c.bad} greșite și ${c.blank} omisiuni. Subtestul explorează ${meta[1]}. ${interpretation}</div>`;
+  }
+
+  function prGlobalCompleteness(sub,score){
+    const arr=['s1','s2','s3','s4','s5','s6','s7','s8'].map(sid=>prCounts(sub,score,sid));
+    const total=arr.reduce((a,c)=>a+c.total,0), blank=arr.reduce((a,c)=>a+c.blank,0), completed=total-blank;
+    return {total,blank,completed,ratio:total?completed/total:0};
+  }
+
+  function psychologicalReport(sub,score){
+    const g=normGroup(sub), n=normResult(score.finalTotal,g), comp=prGlobalCompleteness(sub,score);
+    const name=[sub.lastName,sub.firstName].filter(Boolean).join(' ');
+    const who=name?`${esc(name)} (${esc(sub.clientCode||'—')})`:esc(sub.clientCode||'—');
+    const globalScore=score.finalTotal===null?`un scor brut provizoriu de <strong>${score.knownTotal}</strong> puncte`:`un scor brut total de <strong>${score.finalTotal}</strong> puncte`;
+    let norm='';
+    if(score.finalTotal===null){
+      norm='Raportarea normativă nu poate fi finalizată până la încheierea scorării Subtestului 1.';
+    }else if(!g){
+      norm='Vârsta introdusă nu corespunde grupelor normative disponibile în materialul utilizat.';
+    }else{
+      norm=`Raportat la grupa normativă <strong>${groupLabel(g)}</strong>, rezultatul se situează la <strong>${esc(normHeadline(n))}</strong>${n?` (${esc(normSymbol(n))})`:''}. ${esc(normDescription(n,g))}`;
+    }
+    const completionText=comp.ratio<0.50
+      ? `<div class="pr-caution"><strong>Observație privind validitatea interpretării:</strong> protocolul este puternic incomplet, fiind consemnate răspunsuri la ${comp.completed} din ${comp.total} unități (${pct(comp.ratio)}). Numărul mare de omisiuni reduce considerabil posibilitatea de a atribui scorul exclusiv nivelului aptitudinal; rezultatul trebuie interpretat în contextul modului de administrare, al timpului de lucru și al gradului de implicare în sarcină.</div>`
+      : comp.ratio<0.80
+      ? `<div class="pr-caution"><strong>Observație privind validitatea interpretării:</strong> protocolul este incomplet (${comp.completed}/${comp.total} unități completate; ${pct(comp.ratio)}). Omisiunile pot influența semnificativ scorul total și profilul pe subteste.</div>`
+      : `<p>Protocolul a fost completat în proporție de ${pct(comp.ratio)} (${comp.completed}/${comp.total} unități), ceea ce permite o descriere mai stabilă a performanței obținute în condițiile acestei administrări.</p>`;
+
+    const subs=['s1','s2','s3','s4','s5','s6','s7','s8'].map(sid=>prSubtestText(sub,score,sid)).join('');
+    return `<div class="psych-report">
+      <div class="pr-section"><div class="pr-title">Rezultate globale</div><p>La Testul de inteligență generală I₃, candidatul <strong>${who}</strong> a obținut ${globalScore}. ${norm}</p>${completionText}</div>
+      <div class="pr-section"><div class="pr-title">Profilul performanței pe subteste</div>${subs}</div>
+      <div class="pr-section"><div class="pr-title">Concluzie</div><p>${comp.ratio<0.50?'În forma actuală, scorul global și diferențele dintre subteste trebuie privite cu rezervă, deoarece protocolul conține un număr foarte mare de omisiuni. Datele descriu în primul rând comportamentul de răspuns din această administrare și nu susțin, singure, concluzii ferme privind nivelul general al funcționării cognitive.':'Profilul obținut poate fi utilizat ca indicator al performanței la această probă, cu integrarea obligatorie a rezultatelor în contextul celorlalte date de evaluare psihologică și al observațiilor din timpul examinării.'}</p></div>
+    </div>`;
+  }
+
+  const previousRenderPsych=renderSelected;
+  renderSelected=function(){
+    previousRenderPsych();
+    const sub=selected();if(!sub)return;
+    const root=$('reportRoot');if(!root)return;
+    const score=autoScore(sub);
+    const card=Array.from(root.querySelectorAll('section.card')).find(x=>x.querySelector('h2')?.textContent?.includes('Formulare sintetică')||x.querySelector('h2')?.textContent?.includes('Sinteză pentru raport'));
+    if(card){
+      const h=card.querySelector('h2');if(h)h.textContent='Sinteză pentru raportul de evaluare psihologică';
+      const box=card.querySelector('.report-box');if(box)box.innerHTML=`<div id="reportText">${psychologicalReport(sub,score)}</div>`;
+    }
+  };
+})();
+</script>
+
+<!-- I3_REPORT_SYNTHESIS_V2 -->
+<style>
+.psych-report-v2{display:grid;gap:18px}
+.pr2-section{display:grid;gap:9px}
+.pr2-title{font-family:Georgia,"Times New Roman",serif;font-size:1.2rem;font-weight:700;color:var(--accent)}
+.pr2-global{padding:15px 16px;border:1px solid var(--line);border-radius:15px;background:#fbf7f3}
+.pr2-caution{padding:13px 15px;border-left:5px solid var(--warn);border-radius:12px;background:#fff8ef}
+.pr2-subgrid{display:grid;gap:10px}
+.pr2-sub{padding:12px 14px;border:1px solid var(--line);border-radius:14px;background:#fff}
+.pr2-sub strong.name{font-family:Georgia,"Times New Roman",serif;color:var(--accent)}
+.pr2-sub p{margin:5px 0 0;line-height:1.55}
+</style>
+<script>
+(function(){
+  function countsFor(sub,score,sid){
+    if(sid==='s1'){
+      const structured=Array.isArray(sub.responses?.s1Structured)?sub.responses.s1Structured:[];
+      let answered=0,ok=0,bad=0;
+      for(let i=0;i<12;i++){
+        const r=structured[i];
+        const has=r&&Object.values(r).some(v=>Array.isArray(v)?v.length:String(v??'').trim());
+        if(has)answered++;
+        const g=score.grades?.[i];
+        if(has&&g===1)ok++;else if(has&&g===0)bad++;
+      }
+      return {total:12,answered,blank:12-answered,ok,bad,score:score.subs.s1,max:12};
+    }
+    const rows=score.rows?.[sid]||[];
+    const ok=rows.filter(r=>r.ok).length;
+    const bad=rows.filter(r=>!r.ok&&!r.blank).length;
+    const blank=rows.filter(r=>r.blank).length;
+    const max={s2:20,s3:16,s4:40,s5:24,s6:20,s7:40,s8:40}[sid];
+    return {total:rows.length,answered:rows.length-blank,blank,ok,bad,score:score.subs[sid],max};
+  }
+  function acc(c){return c.answered?c.ok/c.answered:null}
+  function comp(c){return c.total?c.answered/c.total:0}
+  function pct(v){return `${Math.round(v*100)}%`}
+  function accuracyPhrase(a){
+    if(a===null)return'';
+    if(a>=.85)return'acuratețe ridicată';
+    if(a>=.65)return'acuratețe bună';
+    if(a>=.45)return'acuratețe moderată';
+    if(a>=.25)return'acuratețe scăzută';
+    return'acuratețe foarte scăzută';
+  }
+  function scoreDisplay(c,sid){return (sid==='s4'||sid==='s5')?`${c.score} (J − G)`:`${c.score}/${c.max}`}
+
+  function subText(sub,score,sid){
+    const c=countsFor(sub,score,sid), completion=comp(c), a=acc(c), stat=`Scor ${scoreDisplay(c,sid)}; ${c.ok} corecte, ${c.bad} greșite, ${c.blank} omisiuni.`;
+    if(sid==='s1'){
+      if(c.answered===0)return`<div class="pr2-sub"><strong class="name">Atenție și memorie.</strong> ${stat}<p>Sarcinile de urmărire și executare a instrucțiunilor nu au fost abordate, astfel încât această componentă nu poate fi apreciată.</p></div>`;
+      if(completion<.5)return`<div class="pr2-sub"><strong class="name">Atenție și memorie.</strong> ${stat}<p>Numărul redus de răspunsuri limitează interpretarea. Datele disponibile indică ${accuracyPhrase(a)} la instrucțiunile efectiv executate, fără a permite o apreciere stabilă a atenției și memoriei imediate.</p></div>`;
+      return`<div class="pr2-sub"><strong class="name">Atenție și memorie.</strong> ${stat}<p>În sarcinile de urmărire a instrucțiunilor și control al execuției, candidatul a răspuns la ${c.answered} din 12 cerințe, cu ${accuracyPhrase(a)} (${pct(a)} dintre răspunsurile formulate corecte).</p></div>`;
+    }
+    if(sid==='s2'){
+      if(c.answered===0)return`<div class="pr2-sub"><strong class="name">Aritmetică.</strong> ${stat}<p>Componenta de calcul mintal nu a fost abordată; scorul zero provine din omisiuni și nu poate fi interpretat ca nivel aritmetic propriu-zis.</p></div>`;
+      return`<div class="pr2-sub"><strong class="name">Aritmetică.</strong> ${stat}<p>La problemele de calcul mintal au fost abordate ${c.answered} din 20 de probleme, cu ${accuracyPhrase(a)} (${pct(a)}). ${completion<.6?'Volumul redus de răspunsuri impune prudență în aprecierea acestei componente.':'Rezultatul descrie eficiența calculului mintal în condițiile administrării curente.'}</p></div>`;
+    }
+    if(sid==='s3'){
+      if(c.answered===0)return`<div class="pr2-sub"><strong class="name">Judecată rapidă.</strong> ${stat}<p>Nu au fost formulate răspunsuri, astfel încât judecata practică nu poate fi apreciată pe baza acestui protocol.</p></div>`;
+      return`<div class="pr2-sub"><strong class="name">Judecată rapidă.</strong> ${stat}<p>În situațiile de bun-simț practic, candidatul a abordat ${c.answered} din 16 itemi și a răspuns corect la ${c.ok}. ${completion<.6?'Numărul mare de omisiuni reduce relevanța interpretativă a scorului.':`Acuratețea răspunsurilor formulate a fost de ${pct(a)}.`}</p></div>`;
+    }
+    if(sid==='s4'){
+      if(c.answered===0)return`<div class="pr2-sub"><strong class="name">Înțelesul cuvintelor.</strong> ${stat}<p>Relațiile semantice de asemănare și opoziție nu au fost explorate efectiv, deoarece subtestul nu a fost abordat.</p></div>`;
+      return`<div class="pr2-sub"><strong class="name">Înțelesul cuvintelor.</strong> ${stat}<p>La discriminarea relațiilor semantice au fost formulate ${c.answered} răspunsuri; ${c.ok} au fost corecte și ${c.bad} greșite. ${completion<.6?'Caracterul fragmentar al răspunsurilor nu permite o concluzie robustă asupra vocabularului relațional.':`Acuratețea în itemii abordați a fost de ${pct(a)}.`}</p></div>`;
+    }
+    if(sid==='s5'){
+      if(c.answered===0)return`<div class="pr2-sub"><strong class="name">Fraze deranjate.</strong> ${stat}<p>Nu există suficiente date pentru aprecierea organizării logice a limbajului, deoarece subtestul nu a fost abordat.</p></div>`;
+      return`<div class="pr2-sub"><strong class="name">Fraze deranjate.</strong> ${stat}<p>În sarcinile de reorganizare a cuvintelor și verificare a sensului, ${c.ok} dintre cele ${c.answered} răspunsuri formulate au fost corecte. ${completion<.6?'Rezultatul este influențat major de omisiuni.':`Acuratețea pe itemii abordați a fost de ${pct(a)}.`}</p></div>`;
+    }
+    if(sid==='s6'){
+      if(c.answered===0)return`<div class="pr2-sub"><strong class="name">Serie de numere.</strong> ${stat}<p>Raționamentul inductiv numeric nu poate fi apreciat, întrucât seriile nu au fost completate.</p></div>`;
+      return`<div class="pr2-sub"><strong class="name">Serie de numere.</strong> ${stat}<p>La identificarea regulilor de succesiune au fost abordate ${c.answered} din 20 de serii, cu ${accuracyPhrase(a)}. ${completion<.6?'Interpretarea rămâne limitată de numărul de itemi necompletați.':`Proporția răspunsurilor corecte dintre cele formulate a fost de ${pct(a)}.`}</p></div>`;
+    }
+    if(sid==='s7'){
+      if(c.answered===0)return`<div class="pr2-sub"><strong class="name">Coordonare de idei.</strong> ${stat}<p>Raționamentul analogic verbal nu poate fi caracterizat deoarece nu au fost formulate răspunsuri.</p></div>`;
+      return`<div class="pr2-sub"><strong class="name">Coordonare de idei.</strong> ${stat}<p>În analogiile verbale au fost abordate ${c.answered} din 40 de relații, dintre care ${c.ok} corect. ${completion<.6?'Profilul acestei componente este insuficient conturat din cauza omisiunilor.':`Acuratețea răspunsurilor formulate a fost de ${pct(a)}.`}</p></div>`;
+    }
+    if(c.answered===0)return`<div class="pr2-sub"><strong class="name">Informație.</strong> ${stat}<p>Subtestul de informație generală nu a fost abordat; nu se poate aprecia nivelul cunoștințelor generale pe baza acestui protocol.</p></div>`;
+    return`<div class="pr2-sub"><strong class="name">Informație.</strong> ${stat}<p>Din cei ${c.answered} itemi de informație generală abordați, ${c.ok} au fost rezolvați corect. ${completion<.6?'Volumul redus de răspunsuri nu permite o caracterizare stabilă a acestei componente.':`Acuratețea a fost de ${pct(a)}.`}</p></div>`;
+  }
+
+  function generalAnalysis(sub,score){
+    const sids=['s1','s2','s3','s4','s5','s6','s7','s8'];
+    const all=sids.map(sid=>({sid,...countsFor(sub,score,sid)}));
+    const total=all.reduce((n,x)=>n+x.total,0), answered=all.reduce((n,x)=>n+x.answered,0), blank=total-answered;
+    const overallComp=total?answered/total:0;
+    const adequately=all.filter(x=>comp(x)>=.5&&x.answered>=3).map(x=>({...x,a:acc(x)}));
+    const names={s1:'Atenție și memorie',s2:'Aritmetică',s3:'Judecată rapidă',s4:'Înțelesul cuvintelor',s5:'Fraze deranjate',s6:'Serie de numere',s7:'Coordonare de idei',s8:'Informație'};
+    let profile='';
+    if(adequately.length>=2){
+      const sorted=[...adequately].sort((a,b)=>b.a-a.a),best=sorted[0],worst=sorted[sorted.length-1];
+      if(best.a-worst.a>=.20)profile=`Dintre subtestele suficient abordate, performanța relativ mai bună apare la <strong>${names[best.sid]}</strong> (${pct(best.a)} răspunsuri corecte dintre cele formulate), iar cea relativ mai redusă la <strong>${names[worst.sid]}</strong> (${pct(worst.a)}). Această comparație este internă profilului și nu reprezintă o etalonare separată a subtestelor.`;
+      else profile='În subtestele suficient abordate nu se conturează diferențe mari de acuratețe; profilul este relativ uniform la nivelul răspunsurilor formulate.';
+    }else if(adequately.length===1){
+      profile=`Doar subtestul <strong>${names[adequately[0].sid]}</strong> a fost abordat într-o măsură suficientă pentru o descriere mai stabilă; celelalte componente sunt afectate de omisiuni și nu pot fi comparate în mod valid.`;
+    }else{
+      profile='Niciun subtest nu a fost completat într-o proporție suficientă pentru construirea unui profil diferențial stabil între componente.';
+    }
+    let validity='';
+    if(overallComp<.5)validity=`Protocolul este puternic incomplet: au fost consemnate răspunsuri la <strong>${answered}</strong> din <strong>${total}</strong> unități (${pct(overallComp)}), cu ${blank} omisiuni. În aceste condiții, scorul global este influențat masiv de lipsa răspunsurilor și nu trebuie echivalat direct cu nivelul general al funcționării cognitive.`;
+    else if(overallComp<.8)validity=`Protocolul este parțial completat (${answered}/${total}; ${pct(overallComp)}). Omisiunile pot reduce scorul total și pot distorsiona diferențele dintre subteste, motiv pentru care concluziile trebuie formulate prudent.`;
+    else validity=`Gradul de completare este ridicat (${answered}/${total}; ${pct(overallComp)}), ceea ce permite o descriere mai stabilă a profilului obținut în această administrare.`;
+    return `<div class="pr2-global"><p>${validity}</p><p>${profile}</p></div>`;
+  }
+
+  function reportV2(sub,score){
+    const g=normGroup(sub),n=normResult(score.finalTotal,g),name=[sub.lastName,sub.firstName].filter(Boolean).join(' '),who=name?`${esc(name)} (${esc(sub.clientCode||'—')})`:esc(sub.clientCode||'—');
+    let norm='';
+    if(score.finalTotal===null)norm='Raportarea normativă nu poate fi finalizată până la încheierea scorării Subtestului 1.';
+    else if(!g)norm='Vârsta introdusă nu corespunde grupelor normative disponibile în material.';
+    else norm=`Raportat la grupa de <strong>${groupLabel(g)}</strong>, scorul total se situează la <strong>${esc(normHeadline(n))}</strong>${n?` (${esc(normSymbol(n))})`:''}.`;
+    const globalScore=score.finalTotal===null?`scor brut provizoriu <strong>${score.knownTotal}</strong>`:`scor brut total <strong>${score.finalTotal}</strong>`;
+    return `<div class="psych-report-v2">
+      <div class="pr2-section"><div class="pr2-title">Rezultate globale și analiză generală</div><p>Candidatul <strong>${who}</strong> a obținut un ${globalScore}. ${norm}</p>${generalAnalysis(sub,score)}</div>
+      <div class="pr2-section"><div class="pr2-title">Analiza profilului pe subteste</div><div class="pr2-subgrid">${['s1','s2','s3','s4','s5','s6','s7','s8'].map(sid=>subText(sub,score,sid)).join('')}</div></div>
+      <div class="pr2-section"><div class="pr2-title">Concluzie</div><p>${generalConclusion(sub,score)}</p></div>
+    </div>`;
+  }
+
+  function generalConclusion(sub,score){
+    const sids=['s1','s2','s3','s4','s5','s6','s7','s8'],all=sids.map(sid=>countsFor(sub,score,sid));
+    const total=all.reduce((n,x)=>n+x.total,0),answered=all.reduce((n,x)=>n+x.answered,0),ratio=total?answered/total:0;
+    if(ratio<.5)return'În ansamblu, protocolul actual are valoare interpretativă limitată din cauza numărului foarte mare de omisiuni. Rezultatele permit descrierea comportamentului de răspuns observat, dar nu susțin singure o concluzie fermă privind nivelul general al inteligenței. Pentru o interpretare psihologică validă, scorurile trebuie integrate cu observațiile din timpul administrării, motivația pentru sarcină, respectarea timpilor de lucru și celelalte date ale evaluării.';
+    if(ratio<.8)return'În ansamblu, profilul oferă informații utile, dar este influențat de omisiuni. Diferențele dintre subteste trebuie interpretate ca tendințe ale performanței din această administrare, nu ca estimări independente și definitive ale unor aptitudini. Integrarea cu datele anamnestice, observația comportamentală și alte instrumente de evaluare rămâne necesară.';
+    return'În ansamblu, profilul descrie performanța candidatului la cele opt tipuri de sarcini incluse în I₃. Scorul global poate fi raportat la etalonul disponibil, iar diferențele dintre subteste pot orienta analiza calitativă a profilului; acestea nu constituie însă etaloane separate și trebuie integrate cu celelalte informații relevante din evaluarea psihologică.';
+  }
+
+  const prevRenderReportV2=renderSelected;
+  renderSelected=function(){
+    prevRenderReportV2();
+    const sub=selected();if(!sub)return;
+    const root=$('reportRoot');if(!root)return;
+    const score=autoScore(sub);
+    const card=Array.from(root.querySelectorAll('section.card')).find(x=>x.querySelector('h2')?.textContent?.includes('Sinteză pentru raport')||x.querySelector('h2')?.textContent?.includes('Formulare sintetică'));
+    if(card){
+      const h=card.querySelector('h2');if(h)h.textContent='Sinteză pentru raportul de evaluare psihologică';
+      const box=card.querySelector('.report-box');if(box)box.innerHTML=`<div id="reportText">${reportV2(sub,score)}</div>`;
+    }
+  };
+})();
+</script>
+<!-- /I3_REPORT_SYNTHESIS_V2 -->
+
+<!-- I3_REPORT_SYNTHESIS_V3_AND_SCORE_RULE_LAYOUT -->
+<style>
+@media (min-width:901px){
+  .score-rule{grid-template-columns:245px 1fr!important}
+  .score-rule>strong{white-space:nowrap}
+}
+.pr3-report{display:grid;gap:20px}
+.pr3-section{display:grid;gap:10px}
+.pr3-title{font-family:Georgia,"Times New Roman",serif;font-size:1.22rem;font-weight:700;color:var(--accent)}
+.pr3-general{padding:16px 17px;border:1px solid var(--line);border-radius:15px;background:#fbf7f3}
+.pr3-general p{margin:.35rem 0;line-height:1.58}
+.pr3-grid{display:grid;gap:10px}
+.pr3-sub{padding:13px 15px;border:1px solid var(--line);border-radius:14px;background:#fff}
+.pr3-sub h3{margin:0 0 5px;font-size:1rem;color:var(--accent)}
+.pr3-sub p{margin:0;line-height:1.56}
+.pr3-meta{font-size:.84rem;color:var(--muted);margin-bottom:5px!important}
+.pr3-conclusion{padding:14px 16px;border-left:5px solid var(--accent2);border-radius:12px;background:#fff8ef}
+</style>
+<script>
+(function(){
+  function r3Counts(sub,score,sid){
+    if(sid==='s1'){
+      const structured=Array.isArray(sub.responses?.s1Structured)?sub.responses.s1Structured:[];
+      let answered=0,ok=0,bad=0;
+      for(let i=0;i<12;i++){
+        const r=structured[i];
+        const has=r&&Object.values(r).some(v=>Array.isArray(v)?v.length:String(v??'').trim());
+        if(has)answered++;
+        const g=score.grades?.[i];
+        if(has&&g===1)ok++; else if(has&&g===0)bad++;
+      }
+      return {total:12,answered,blank:12-answered,ok,bad,score:score.subs.s1,max:12};
+    }
+    const rows=score.rows?.[sid]||[];
+    const ok=rows.filter(r=>r.ok).length;
+    const bad=rows.filter(r=>!r.ok&&!r.blank).length;
+    const blank=rows.filter(r=>r.blank).length;
+    const max={s2:20,s3:16,s4:40,s5:24,s6:20,s7:40,s8:40}[sid];
+    return {total:rows.length,answered:rows.length-blank,blank,ok,bad,score:score.subs[sid],max};
+  }
+  const r3Names={s1:'Atenție și memorie',s2:'Aritmetică',s3:'Judecată rapidă',s4:'Înțelesul cuvintelor',s5:'Fraze deranjate',s6:'Serie de numere',s7:'Coordonare de idei',s8:'Informație'};
+  const r3Domain={
+    s1:'urmărirea și executarea precisă a instrucțiunilor, cu solicitarea atenției și a memoriei imediate',
+    s2:'calculul mintal și manipularea rapidă a relațiilor cantitative',
+    s3:'judecata practică și selectarea rapidă a unei soluții plauzibile',
+    s4:'discriminarea semantică a relațiilor de asemănare și opoziție',
+    s5:'organizarea logică a materialului verbal și verificarea sensului propoziției reconstruite',
+    s6:'identificarea regulilor de succesiune și raționamentul inductiv numeric',
+    s7:'raționamentul analogic verbal și transferul relației dintre termeni',
+    s8:'accesarea și selectarea informației generale corecte'
+  };
+  function r3Pct(v){return `${Math.round(v*100)}%`}
+  function r3Comp(c){return c.total?c.answered/c.total:0}
+  function r3Acc(c){return c.answered?c.ok/c.answered:null}
+  function r3AccuracyWord(a){
+    if(a===null)return'';
+    if(a>=.85)return'foarte bună';
+    if(a>=.70)return'bună';
+    if(a>=.50)return'moderată';
+    if(a>=.30)return'redusă';
+    return'foarte redusă';
+  }
+  function r3ScoreLabel(c,sid){return (sid==='s4'||sid==='s5')?`${c.score} (J − G)`:`${c.score}/${c.max}`}
+
+  function r3SubParagraph(sub,score,sid){
+    const c=r3Counts(sub,score,sid), comp=r3Comp(c), a=r3Acc(c);
+    const meta=`Scor ${r3ScoreLabel(c,sid)} · ${c.ok} corecte · ${c.bad} greșite · ${c.blank} omisiuni`;
+    let text='';
+    if(c.answered===0){
+      const variants={
+        s1:'Componenta nu a fost abordată, astfel încât nu există date comportamentale suficiente pentru aprecierea modului de urmărire și executare a instrucțiunilor.',
+        s2:'Problemele aritmetice au rămas integral necompletate; scorul rezultat reflectă omisiunea răspunsurilor și nu permite aprecierea nivelului de calcul mintal.',
+        s3:'Nu au fost oferite răspunsuri la situațiile de judecată practică, prin urmare această componentă nu poate fi caracterizată.',
+        s4:'Relațiile semantice nu au fost explorate efectiv, deoarece nu au fost consemnate răspunsuri.',
+        s5:'Subtestul nu a fost abordat, astfel încât organizarea logică a materialului verbal nu poate fi apreciată în această administrare.',
+        s6:'Seriile numerice nu au fost completate; nu există bază pentru aprecierea raționamentului inductiv numeric.',
+        s7:'Nu au fost formulate răspunsuri la analogiile verbale, astfel încât această componentă rămâne neexplorată.',
+        s8:'Itemii de informație generală nu au fost abordați; nivelul acestei componente nu poate fi estimat pe baza protocolului actual.'
+      };
+      text=variants[sid];
+    }else if(comp<.30){
+      const variants={
+        s1:`Au fost abordate doar ${c.answered} din 12 cerințe. Răspunsurile disponibile indică o acuratețe ${r3AccuracyWord(a)}, însă volumul foarte redus de date face ca aprecierea ${r3Domain[sid]} să rămână nesigură.`,
+        s2:`Au fost rezolvate ${c.answered} din 20 de probleme. Acuratețea răspunsurilor formulate a fost ${r3AccuracyWord(a)} (${r3Pct(a)}), dar numărul mare de omisiuni limitează sever interpretarea calculului mintal.`,
+        s3:`Candidatul a răspuns la ${c.answered} din 16 situații. Rezultatul sugerează ${r3AccuracyWord(a)} acuratețe în itemii efectiv abordați, fără a permite o caracterizare stabilă a judecății practice.`,
+        s4:`Au fost judecate doar ${c.answered} din 40 de perechi de cuvinte. Distribuția ${c.ok} răspunsuri corecte / ${c.bad} greșite oferă doar o indicație fragmentară asupra discriminării semantice.`,
+        s5:`Au fost abordate ${c.answered} din 24 de fraze. Datele sunt prea puține pentru o concluzie robustă privind organizarea logică a materialului verbal.`,
+        s6:`Au fost completate ${c.answered} din 20 de serii. Acuratețea pe răspunsurile oferite a fost ${r3AccuracyWord(a)}, însă profilul numeric rămâne insuficient conturat.`,
+        s7:`Au fost abordate ${c.answered} din 40 de analogii. Răspunsurile existente oferă numai o imagine parțială a raționamentului analogic verbal.`,
+        s8:`Au fost abordate ${c.answered} din 40 de itemi de informație. Volumul redus de răspunsuri nu permite o estimare stabilă a accesului la informația generală.`
+      };
+      text=variants[sid];
+    }else if(comp<.70){
+      const variants={
+        s1:`Subtestul a fost completat parțial (${c.answered}/12). Acuratețea răspunsurilor formulate a fost ${r3AccuracyWord(a)} (${r3Pct(a)}); omisiunile recomandă prudență în interpretarea atenției și controlului execuției.`,
+        s2:`Au fost abordate ${c.answered}/20 probleme, cu o acuratețe ${r3AccuracyWord(a)} (${r3Pct(a)}). Performanța la calcul mintal este interpretabilă doar parțial, deoarece o proporție importantă a itemilor a rămas fără răspuns.`,
+        s3:`Au fost abordate ${c.answered}/16 situații; dintre răspunsurile formulate, ${r3Pct(a)} au fost corecte. Se conturează o eficiență ${r3AccuracyWord(a)} a judecății practice, dar protocolul este incomplet.`,
+        s4:`În ${c.answered}/40 itemi abordați, candidatul a diferențiat corect ${c.ok} relații și a greșit ${c.bad}. Rezultatul oferă o estimare parțială a discriminării semantice, influențată de omisiuni.`,
+        s5:`Au fost abordate ${c.answered}/24 fraze; ${c.ok} au fost rezolvate corect. Datele sugerează o eficiență ${r3AccuracyWord(a)} în materialul parcurs, cu limitarea dată de itemii necompletați.`,
+        s6:`Au fost completate ${c.answered}/20 serii, iar ${r3Pct(a)} dintre răspunsurile formulate au fost corecte. Profilul indică o eficiență ${r3AccuracyWord(a)} în identificarea regulilor numerice, cu rezervă din cauza omisiunilor.`,
+        s7:`Au fost abordate ${c.answered}/40 analogii, cu ${c.ok} răspunsuri corecte. Se observă o eficiență ${r3AccuracyWord(a)} în itemii formulați, însă amplitudinea omisiunilor limitează concluzia.`,
+        s8:`Candidatul a răspuns la ${c.answered}/40 itemi, dintre care ${c.ok} corect. Performanța disponibilă sugerează o acuratețe ${r3AccuracyWord(a)}, dar nu acoperă întregul domeniu al subtestului.`
+      };
+      text=variants[sid];
+    }else{
+      const variants={
+        s1:`Gradul de completare permite o apreciere mai stabilă a ${r3Domain[sid]}. Acuratețea răspunsurilor formulate a fost ${r3AccuracyWord(a)} (${r3Pct(a)}).`,
+        s2:`Rezolvarea problemelor aritmetice a fost suficient de extinsă pentru o descriere mai stabilă: ${r3Pct(a)} dintre răspunsurile formulate au fost corecte, indicând o eficiență ${r3AccuracyWord(a)} a calculului mintal în condițiile probei.`,
+        s3:`Răspunsurile acoperă majoritatea situațiilor, cu o acuratețe de ${r3Pct(a)}. Judecata practică și selecția rapidă a soluțiilor s-au manifestat la un nivel ${r3AccuracyWord(a)} în cadrul probei.`,
+        s4:`Majoritatea relațiilor semantice au fost evaluate, iar ${r3Pct(a)} dintre răspunsurile formulate au fost corecte. Acest profil descrie o discriminare semantică ${r3AccuracyWord(a)} în materialul testului.`,
+        s5:`Subtestul a fost parcurs în proporție suficientă pentru interpretare; ${r3Pct(a)} dintre răspunsurile formulate au fost corecte, sugerând o organizare logică ${r3AccuracyWord(a)} a materialului verbal în sarcinile probei.`,
+        s6:`Seriile numerice au fost parcurse într-o proporție ridicată, cu ${r3Pct(a)} răspunsuri corecte dintre cele formulate. Identificarea regulilor de succesiune a fost ${r3AccuracyWord(a)} în condițiile administrării.`,
+        s7:`Protocolul oferă suficiente date pentru descrierea raționamentului analogic verbal: ${r3Pct(a)} dintre răspunsurile formulate au fost corecte, corespunzând unei eficiențe ${r3AccuracyWord(a)}.`,
+        s8:`Itemii de informație au fost abordați într-o proporție ridicată; ${r3Pct(a)} dintre răspunsurile formulate au fost corecte, indicând o acuratețe ${r3AccuracyWord(a)} a informației generale accesate în această probă.`
+      };
+      text=variants[sid];
+    }
+    return `<div class="pr3-sub"><h3>${r3Names[sid]}</h3><p class="pr3-meta">${meta}</p><p>${text}</p></div>`;
+  }
+
+  function r3General(sub,score){
+    const sids=['s1','s2','s3','s4','s5','s6','s7','s8'];
+    const all=sids.map(sid=>({sid,...r3Counts(sub,score,sid)}));
+    const total=all.reduce((n,x)=>n+x.total,0),answered=all.reduce((n,x)=>n+x.answered,0),blank=total-answered,ratio=answered/(total||1);
+    const totalOk=all.reduce((n,x)=>n+x.ok,0), totalBad=all.reduce((n,x)=>n+x.bad,0);
+    const attempted=totalOk+totalBad;
+    const responseAccuracy=attempted?totalOk/attempted:null;
+    const valid=all.filter(x=>r3Comp(x)>=.50&&x.answered>=3).map(x=>({...x,a:r3Acc(x)})).filter(x=>x.a!==null);
+    let completion='';
+    if(ratio<.50) completion=`Protocolul este puternic incomplet: au fost consemnate răspunsuri la <strong>${answered}</strong> din <strong>${total}</strong> unități (${r3Pct(ratio)}), cu ${blank} omisiuni. În această configurație, scorul total este influențat în mare măsură de lipsa răspunsurilor și trebuie interpretat cu rezervă.`;
+    else if(ratio<.80) completion=`Protocolul este parțial completat (${answered}/${total}; ${r3Pct(ratio)}), cu ${blank} omisiuni. Scorul total și diferențele dintre subteste pot fi afectate de necompletare, astfel încât profilul are valoare orientativă.`;
+    else completion=`Gradul de completare este ridicat (${answered}/${total}; ${r3Pct(ratio)}), ceea ce susține o descriere mai stabilă a performanței obținute în condițiile acestei administrări.`;
+    let style='';
+    if(attempted===0) style='Nu au fost formulate suficiente răspunsuri pentru analiza stilului de lucru.';
+    else if(blank>totalBad*2) style=`Patternul de răspuns este dominat de omisiuni mai degrabă decât de răspunsuri greșite (${blank} omisiuni față de ${totalBad} erori), aspect care sugerează că nivelul scorului brut nu poate fi atribuit exclusiv dificultății itemilor.`;
+    else if(totalBad>blank*1.5) style=`În protocol predomină răspunsurile formulate, inclusiv răspunsurile greșite, mai degrabă decât omisiunile; acuratețea globală a răspunsurilor efectiv date este de ${r3Pct(responseAccuracy)}.`;
+    else style=`Omisiunile și erorile contribuie ambele la profilul obținut; acuratețea globală a răspunsurilor efectiv formulate este de ${r3Pct(responseAccuracy)}.`;
+    let profile='';
+    if(valid.length>=2){
+      const sorted=[...valid].sort((a,b)=>b.a-a.a),best=sorted[0],worst=sorted[sorted.length-1];
+      if(best.a-worst.a>=.20) profile=`Dintre componentele suficient abordate, eficiența relativ mai bună apare la <strong>${r3Names[best.sid]}</strong> (${r3Pct(best.a)} răspunsuri corecte dintre cele formulate), iar cea relativ mai redusă la <strong>${r3Names[worst.sid]}</strong> (${r3Pct(worst.a)}). Diferența descrie profilul intern al acestei administrări și nu reprezintă o etalonare separată a subtestelor.`;
+      else profile='În componentele suficient abordate nu se observă contraste mari de acuratețe, profilul fiind relativ uniform la nivelul răspunsurilor formulate.';
+    }else if(valid.length===1) profile=`Doar componenta <strong>${r3Names[valid[0].sid]}</strong> a fost abordată suficient pentru o descriere mai stabilă; restul profilului este prea fragmentar pentru comparații valide între subteste.`;
+    else profile='Niciun subtest nu a fost abordat într-o proporție suficientă pentru construirea unui profil diferențial stabil între funcțiile explorate.';
+    return `<div class="pr3-general"><p>${completion}</p><p>${style}</p><p>${profile}</p></div>`;
+  }
+
+  function r3Conclusion(sub,score){
+    const sids=['s1','s2','s3','s4','s5','s6','s7','s8'],all=sids.map(sid=>r3Counts(sub,score,sid));
+    const total=all.reduce((n,x)=>n+x.total,0),answered=all.reduce((n,x)=>n+x.answered,0),ratio=answered/(total||1);
+    if(ratio<.50) return 'În ansamblu, protocolul are valoare interpretativă limitată prin numărul mare de omisiuni. Rezultatul descrie în primul rând comportamentul de răspuns din această administrare și nu susține, izolat, o concluzie fermă privind nivelul general al funcționării cognitive. Interpretarea trebuie integrată cu observația comportamentală, condițiile administrării, motivația pentru sarcină și celelalte date ale evaluării psihologice.';
+    if(ratio<.80) return 'În ansamblu, rezultatele oferă informații utile asupra profilului de performanță, dar incompletitudinea protocolului impune prudență. Diferențele dintre subteste sunt mai adecvat interpretate ca tendințe relative ale acestei administrări decât ca estimări independente și definitive ale unor aptitudini.';
+    return 'În ansamblu, protocolul permite conturarea unui profil al performanței la cele opt tipuri de sarcini cuprinse în I₃. Scorul global poate fi raportat la etalonul disponibil, iar variațiile dintre subteste pot orienta analiza calitativă; acestea trebuie însă integrate cu restul datelor obținute în evaluarea psihologică.';
+  }
+
+  function r3Report(sub,score){
+    const g=normGroup(sub),n=normResult(score.finalTotal,g),name=[sub.lastName,sub.firstName].filter(Boolean).join(' '),who=name?`${esc(name)} (${esc(sub.clientCode||'—')})`:esc(sub.clientCode||'—');
+    let norm='';
+    if(score.finalTotal===null) norm='Raportarea normativă nu poate fi finalizată până la încheierea scorării Subtestului 1.';
+    else if(!g) norm='Vârsta introdusă nu corespunde grupelor normative disponibile în material.';
+    else norm=`Raportat la grupa de <strong>${groupLabel(g)}</strong>, scorul global se situează la <strong>${esc(normHeadline(n))}</strong>${n?` (${esc(normSymbol(n))})`:''}.`;
+    const global=score.finalTotal===null?`scor brut provizoriu <strong>${score.knownTotal}</strong>`:`scor brut total <strong>${score.finalTotal}</strong>`;
+    return `<div class="pr3-report">
+      <div class="pr3-section"><div class="pr3-title">Analiză generală</div><p>Candidatul <strong>${who}</strong> a obținut un ${global}. ${norm}</p>${r3General(sub,score)}</div>
+      <div class="pr3-section"><div class="pr3-title">Analiza pe subteste</div><div class="pr3-grid">${['s1','s2','s3','s4','s5','s6','s7','s8'].map(sid=>r3SubParagraph(sub,score,sid)).join('')}</div></div>
+      <div class="pr3-section"><div class="pr3-title">Concluzie integrativă</div><div class="pr3-conclusion">${r3Conclusion(sub,score)}</div></div>
+    </div>`;
+  }
+
+  const prevR3=renderSelected;
+  renderSelected=function(){
+    prevR3();
+    const sub=selected();if(!sub)return;
+    const root=$('reportRoot');if(!root)return;
+    const score=autoScore(sub);
+    const card=Array.from(root.querySelectorAll('section.card')).find(x=>x.querySelector('h2')?.textContent?.includes('Sinteză pentru raport')||x.querySelector('h2')?.textContent?.includes('Formulare sintetică'));
+    if(card){
+      const h=card.querySelector('h2');if(h)h.textContent='Sinteză pentru raportul de evaluare psihologică';
+      const box=card.querySelector('.report-box');if(box)box.innerHTML=`<div id="reportText">${r3Report(sub,score)}</div>`;
+    }
+  };
+})();
+</script>
+<!-- /I3_REPORT_SYNTHESIS_V3_AND_SCORE_RULE_LAYOUT -->

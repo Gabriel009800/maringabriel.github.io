@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ro"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Testul 7 – Atenție distributivă</title><style>
+:root{--bg:#f5f1eb;--paper:#fffdf9;--card:#fff;--ink:#25211e;--muted:#746c64;--line:#e4dcd3;--accent:#795038;--accent2:#b88762;--soft:#f3e8dc;--good:#2e6a49;--warn:#986718;--danger:#a13c36;--blue:#35658a;--shadow:0 18px 50px rgba(80,57,40,.11);--radius:24px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:radial-gradient(circle at 12% 0,rgba(184,135,98,.15),transparent 34rem),linear-gradient(180deg,#fbf8f4,var(--bg));font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.55}
+button,input,select,textarea{font:inherit}.page{width:min(1220px,calc(100% - 30px));margin:auto;padding:30px 0 72px}.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(255,253,249,.98),rgba(243,232,220,.82));border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);padding:30px}.hero:after{content:"";position:absolute;right:-130px;top:-190px;width:360px;height:360px;border-radius:50%;background:rgba(121,80,56,.08)}
+.kicker{margin:0 0 8px;color:var(--accent);font-size:.8rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase}h1,h2,h3{font-family:Georgia,"Times New Roman",serif}h1{margin:0 0 10px;font-size:clamp(2rem,4.5vw,3.8rem);line-height:1;letter-spacing:-.04em}h2{margin:0 0 10px;font-size:clamp(1.35rem,2.2vw,2rem)}h3{margin:0}.muted{color:var(--muted)}.tiny{font-size:.84rem;color:var(--muted)}.section{margin-top:22px}
+.card{background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(80,57,40,.07);padding:22px}.notice{background:#fff8ef;border:1px solid #ead8c5;border-left:6px solid var(--accent2);padding:16px 18px;border-radius:18px;color:#4b3c31}.notice.good{background:#f1f8f4;border-left-color:var(--good)}
+.fields{display:grid;grid-template-columns:1.25fr .55fr .55fr .8fr;gap:14px}.field{display:grid;gap:7px}label{font-weight:780}input,select,textarea{width:100%;border:1px solid var(--line);border-radius:14px;padding:11px 12px;background:#fff;color:var(--ink);outline:none}textarea{min-height:82px;resize:vertical}input:focus,select:focus,textarea:focus{border-color:#b68a6d;box-shadow:0 0 0 3px rgba(184,135,98,.12)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.btn{border:0;border-radius:999px;padding:11px 16px;background:var(--accent);color:#fff;font-weight:880;cursor:pointer;box-shadow:0 10px 18px rgba(121,80,56,.16)}.btn.secondary{background:#fff;color:var(--accent);border:1px solid var(--line);box-shadow:none}.btn.soft{background:var(--soft);color:#5b3921;box-shadow:none}.btn.danger{background:var(--danger)}.btn:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}.btn:hover:not(:disabled){transform:translateY(-1px);filter:brightness(1.03)}.hidden{display:none!important}
+.biblio-card{background:#fffdf9}.biblio-card ol{margin:8px 0 0 20px;padding:0}.biblio-card li{margin:0 0 8px;color:#44372c}
+@media(max-width:780px){.page{width:min(100% - 16px,1220px);padding-top:14px}.hero{padding:22px;border-radius:22px}.fields{grid-template-columns:1fr 1fr}}@media(max-width:520px){.fields{grid-template-columns:1fr}}
+@media print{body{background:#fff}.no-print,.auth-screen{display:none!important}.page{width:100%;padding:0}.hero,.card{box-shadow:none}.section{break-inside:avoid}}
+
+.stagebar{position:sticky;top:0;z-index:45;padding:10px 0;backdrop-filter:blur(16px)}.stagebox{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:rgba(255,253,249,.95);border:1px solid var(--line);border-radius:20px;padding:10px 12px;box-shadow:0 8px 24px rgba(84,58,40,.08)}
+.stage-name{font-weight:900;color:var(--accent);white-space:nowrap}.timer{font-family:Georgia,"Times New Roman",serif;font-size:1.55rem;font-weight:700;color:var(--accent);min-width:76px}.timer.danger{color:var(--danger)}.progress{height:10px;flex:1;min-width:160px;border-radius:999px;background:#eadfd6;overflow:hidden}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:999px}.stage-note{font-size:.86rem;color:var(--muted);font-weight:750}
+.columns-wrap{overflow:auto;padding-bottom:4px}.answer-columns{display:grid;grid-template-columns:repeat(4,minmax(235px,1fr));gap:16px;min-width:1010px}.target-col{border:1px solid var(--line);border-radius:18px;background:var(--paper);overflow:visible}.target-col h3{padding:14px 15px;border-bottom:1px solid var(--line);background:#fbf5ef}.target-row{display:grid;grid-template-columns:54px minmax(90px,1fr) 25px;gap:8px;align-items:center;padding:7px 10px;border-bottom:1px solid #eee6de;position:relative}.target-row:last-child{border-bottom:0}.target-no{font-family:Georgia,"Times New Roman",serif;font-size:1.12rem;font-weight:850;text-align:center}.ans{padding:8px 9px;border-radius:10px;text-align:center;font-weight:850}.target-row.current{background:#fff3e6;box-shadow:inset 4px 0 0 var(--accent2)}.target-row.done{background:#fbfaf8}.target-row.frozen .ans{background:#f3f0ec;color:#4f4944}
+.lookup-help{position:relative;display:inline-flex;align-items:flex-start;justify-content:center}.lookup-help>button{width:21px;height:21px;border-radius:50%;border:1px solid #b88762;background:#fff;color:#795038;font-weight:950;font-size:.82rem;line-height:19px;padding:0;cursor:help;transform:translateY(-4px)}
+.lookup-pop{position:fixed;z-index:1000;left:50%;top:50%;transform:translate(-50%,-50%);width:min(850px,94vw);max-height:88vh;overflow:auto;padding:16px;border:1px solid #d8c7b6;border-radius:18px;background:#fffdf9;box-shadow:0 28px 80px rgba(0,0,0,.28);opacity:0;visibility:hidden;pointer-events:none;transition:.12s ease}.lookup-help:hover .lookup-pop,.lookup-help:focus-within .lookup-pop{opacity:1;visibility:visible;pointer-events:auto}.lookup-title{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:10px}.lookup-grid{display:grid;grid-template-columns:repeat(10,minmax(58px,1fr));border-left:1px solid #bdb4ab;border-top:1px solid #bdb4ab}.lookup-cell{min-height:66px;border-right:1px solid #bdb4ab;border-bottom:1px solid #bdb4ab;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff}.lookup-big{font-family:Georgia,"Times New Roman",serif;font-size:1.35rem;font-weight:900;line-height:1}.lookup-small{font-size:.75rem;margin-top:7px;color:#2f2b28}
+.break-card{background:#f3f6f8;border-color:#d8e1e7;border-left-color:var(--blue)}.finish-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.mini-stat{padding:13px;border:1px solid var(--line);border-radius:14px;background:var(--paper)}.mini-stat strong{display:block;font-size:1.4rem;color:var(--accent)}
+@media(max-width:780px){.stagebox{border-radius:16px}.progress{order:5;flex-basis:100%}.lookup-grid{grid-template-columns:repeat(5,minmax(55px,1fr))}.finish-grid{grid-template-columns:1fr 1fr}}
+</style></head>
+<body><main class="page">
+<section class="hero"><p class="kicker">Exerciții pentru evaluarea psihologică</p><h1>Testul 7 – Atenție distributivă</h1><p class="muted">Variantă digitală a probei de atenție distributivă „Praga” din materialul furnizat. Sarcina este împărțită în patru etape de lucru a câte 4 minute, cu pauză de 1 minut între etape.</p></section>
+
+<section class="section card"><h2>Date de identificare</h2><div class="fields">
+<div class="field"><label for="clientCode">Cod candidat / inițiale *</label><input id="clientCode" placeholder="Ex.: T7-001 sau A.B."></div>
+<div class="field"><label for="ageYears">Ani</label><input id="ageYears" type="number" min="0" max="100"></div>
+<div class="field"><label for="ageMonths">Luni</label><input id="ageMonths" type="number" min="0" max="11"></div>
+<div class="field"><label for="testDate">Data examinării</label><input id="testDate" type="date"></div>
+</div><div class="field section"><label for="contextNote">Observații / context</label><textarea id="contextNote"></textarea></div></section>
+
+<section class="section notice"><strong>Instrucțiuni</strong>
+<p>În fiecare rând apare un număr pe care trebuie să îl căutați printre <strong>numerele mari</strong> din tabelul de referință. După ce îl găsiți, introduceți în caseta din dreptul lui <strong>numărul mic care îl însoțește</strong>.</p>
+<p>Lucrați în ordine, de sus în jos: Coloana I, apoi II, III și IV. După fiecare interval de <strong>4 minute</strong>, lucrul se oprește pentru <strong>1 minut</strong>, apoi continuați exact de unde ați rămas. Testul are patru etape de câte 4 minute.</p>
+<p class="tiny">Semnul <strong>!</strong> de lângă fiecare casetă deschide, la trecerea cu mouse-ul sau la focalizare, tabelul cu cele 100 de numere mari și numerele mici asociate. După ce ai introdus răspunsul complet, apasă <strong>Enter</strong> sau <strong>Tab</strong> pentru a trece la următoarea casetă.</p></section>
+
+<div class="stagebar no-print"><div class="stagebox">
+<div id="stageName" class="stage-name">Pregătire</div><div id="timer" class="timer">04:00</div><div class="progress"><span id="progressBar"></span></div>
+<div id="stageNote" class="stage-note">Apasă „Începe testul”.</div>
+<button id="startBtn" class="btn" type="button">Începe testul</button><button id="stopBtn" class="btn secondary hidden" type="button">Încheie etapa acum</button>
+</div></div>
+
+<section id="breakNotice" class="section notice break-card hidden">
+<strong>Pauză de 1 minut.</strong>
+<p>Casetele sunt blocate. Următoarea etapă va începe automat la expirarea pauzei.</p>
+<div class="actions" style="margin-top:10px">
+  <button id="skipBreakBtn" class="btn secondary" type="button">Sari peste pauză</button>
+</div>
+</section>
+
+<section class="section card"><h2>Foaia de răspuns</h2><div class="columns-wrap"><div id="answerColumns" class="answer-columns"></div></div></section>
+
+<section id="finishCard" class="section card hidden"><h2>Finalizare</h2><div id="stageSummary" class="finish-grid"></div><div class="actions section"><button id="finalizeBtn" class="btn" type="button">Finalizează și descarcă răspunsurile</button></div></section>
+<section id="success" class="section notice good hidden"><strong>Răspunsurile au fost descărcate.</strong><p>Fișierul JSON poate fi importat în pagina de rezultate pentru corectarea și etalonarea automată.</p></section>
+
+<section class="section card biblio-card"><h2>Bibliografie relevantă</h2><ol><li>Bontilă, G. (1971). <em>Ghid practic pentru interpretarea testelor psihologice</em>. Centrul de Documentare și Publicații al Ministerului Muncii.</li></ol></section>
+</main>
+
+<script>
+const REFERENCE=[[[73,96],[18,39],[7,13],[4,66],[97,68],[33,62],[31,22],[69,48],[49,52],[35,92]],[[23,38],[8,55],[79,43],[96,30],[92,73],[40,19],[78,28],[22,4],[65,88],[1,84]],[[19,87],[24,18],[72,12],[51,75],[62,25],[81,35],[9,97],[91,31],[17,89],[61,50]],[[30,17],[41,8],[98,46],[80,95],[66,2],[59,20],[55,80],[95,67],[58,11],[6,83]],[[54,32],[21,40],[45,9],[84,81],[99,49],[75,69],[56,63],[10,41],[67,29],[38,76]],[[3,64],[93,14],[2,98],[20,71],[44,56],[77,5],[82,1],[36,6],[32,47],[88,27]],[[42,3],[94,65],[50,60],[76,61],[90,51],[71,70],[53,33],[5,86],[27,72],[13,59]],[[57,79],[63,45],[48,54],[68,91],[39,85],[29,74],[16,99],[52,82],[60,26],[89,36]],[[47,34],[64,58],[28,42],[83,10],[87,57],[86,37],[11,100],[85,21],[34,23],[26,44]],[[37,78],[46,94],[100,24],[15,77],[43,93],[12,16],[74,7],[14,90],[70,53],[25,15]]],TARGET_COLUMNS=[[75,20,79,26,2,11,74,21,57,19,83,6,39,52,27,47,25,64,96,58,42,68,88,59,50],[34,78,3,18,81,62,71,45,13,63,1,73,76,5,99,15,90,67,10,66,70,69,92,87,91],[46,56,7,4,17,12,61,9,38,28,89,94,95,29,37,85,55,51,22,30,53,23,32,40,97],[100,44,14,36,8,33,82,31,49,43,77,84,54,72,60,35,48,65,98,41,80,86,93,24,16]],TARGETS=[75,20,79,26,2,11,74,21,57,19,83,6,39,52,27,47,25,64,96,58,42,68,88,59,50,34,78,3,18,81,62,71,45,13,63,1,73,76,5,99,15,90,67,10,66,70,69,92,87,91,46,56,7,4,17,12,61,9,38,28,89,94,95,29,37,85,55,51,22,30,53,23,32,40,97,100,44,14,36,8,33,82,31,49,43,77,84,54,72,60,35,48,65,98,41,80,86,93,24,16],KEY=[69,71,43,44,98,100,7,40,79,87,10,83,85,82,72,34,15,58,30,11,3,91,27,20,60,23,28,64,39,35,25,70,9,59,45,84,96,61,86,49,77,51,29,41,2,53,48,73,57,31,94,63,13,66,89,16,50,97,76,42,36,65,67,74,78,21,80,75,4,17,33,38,47,19,68,24,56,90,6,55,62,1,22,52,93,5,81,32,12,26,92,54,88,46,8,95,37,14,18,99];
+const STORE_KEY='bontilaT7Submissions_v1',WORK_SECONDS=240,BREAK_SECONDS=60,MAX_STAGES=4;
+const $=id=>document.getElementById(id);
+let currentStage=0,mode='ready',remaining=WORK_SECONDS,timerId=null,responses=Array(100).fill(''),answerStage=Array(100).fill(null),frozenThrough=-1,currentIndex=0;
+let stageEndIndex=[null,null,null,null],stageStartedAt=[null,null,null,null],stageEndedAt=[null,null,null,null];
+$('testDate').value=new Date().toISOString().slice(0,10);
+
+function lookupMarkup(){return `<div class="lookup-pop"><div class="lookup-title"><div><strong>Tabelul de căutare</strong><div class="tiny">Numărul mare este cel căutat; numărul mic este răspunsul de introdus.</div></div></div><div class="lookup-grid">${REFERENCE.flat().map(([big,small])=>`<div class="lookup-cell"><span class="lookup-big">${big}</span><span class="lookup-small">${small}</span></div>`).join('')}</div></div>`}
+const lookupHTML=lookupMarkup();
+function renderRows(){
+ const root=$('answerColumns');root.innerHTML='';let global=0;
+ TARGET_COLUMNS.forEach((col,ci)=>{const box=document.createElement('div');box.className='target-col';box.innerHTML=`<h3>Coloana ${['I','II','III','IV'][ci]}</h3>`;
+ col.forEach(target=>{const idx=global++,row=document.createElement('div');row.className='target-row';row.id='row-'+idx;
+ row.innerHTML=`<div class="target-no">${target}</div><input class="ans" id="ans-${idx}" inputmode="numeric" autocomplete="off" maxlength="3" aria-label="Răspuns pentru ${target}" disabled><span class="lookup-help"><button type="button" aria-label="Arată tabelul de căutare">!</button>${lookupHTML}</span>`;box.appendChild(row)});root.appendChild(box)});
+ document.querySelectorAll('.ans').forEach((inp,idx)=>{
+   inp.addEventListener('input',()=>onInput(idx,inp));
+   inp.addEventListener('focus',()=>{
+     if(mode==='work' && idx>frozenThrough){
+       currentIndex=idx;
+       updateCurrentHighlight();
+     }
+   });
+   inp.addEventListener('keydown',e=>{
+     if(e.key==='Enter'){
+       e.preventDefault();
+       advanceFrom(idx);
+     }
+   });
+ });updateInputStates();
+}
+function valid(v){return /^\d{1,3}$/.test(v)&&Number(v)>=1&&Number(v)<=100}
+function onInput(idx,inp){
+ let v=inp.value.replace(/\D/g,'').slice(0,3);
+ inp.value=v;
+ responses[idx]=v;
+
+ // Nu mai trecem automat la caseta următoare după prima cifră.
+ // Utilizatorul poate introduce liniștit răspunsuri cu 1, 2 sau 3 cifre.
+ if(valid(v)&&answerStage[idx]==null) answerStage[idx]=currentStage;
+ if(!v&&answerStage[idx]===currentStage) answerStage[idx]=null;
+
+ updateInputStates();
+}
+function nextUnanswered(start=0){for(let i=start;i<100;i++)if(!valid(responses[i]))return i;return null}
+function updateCurrentHighlight(){
+ document.querySelectorAll('.target-row').forEach((row,idx)=>{
+   row.classList.toggle('current',mode==='work'&&idx===currentIndex);
+ });
+}
+function updateInputStates(){
+ document.querySelectorAll('.ans').forEach((inp,idx)=>{
+   const row=$('row-'+idx);
+   row.classList.toggle('done',valid(responses[idx]));
+   row.classList.toggle('current',mode==='work'&&idx===currentIndex);
+   row.classList.toggle('frozen',idx<=frozenThrough);
+
+   // În timpul unei etape, toate casetele încă neînghețate pot fi completate.
+   // Astfel poți trece normal cu Tab/click la următoarea casetă.
+   inp.disabled=!(mode==='work'&&idx>frozenThrough);
+   inp.value=responses[idx];
+ });
+}
+function advanceFrom(idx){
+ if(!valid(responses[idx])) return;
+ const n=nextUnanswered(idx+1);
+ if(n===null){finishAll();return}
+ currentIndex=n;
+ updateCurrentHighlight();
+ const el=$('ans-'+n);
+ if(el && !el.disabled) el.focus();
+}
+function updateTimer(){const mm=Math.floor(remaining/60),ss=remaining%60;$('timer').textContent=`${String(mm).padStart(2,'0')}:${String(ss).padStart(2,'0')}`;const total=mode==='break'?BREAK_SECONDS:WORK_SECONDS;$('progressBar').style.width=((total-remaining)/total*100)+'%';$('timer').classList.toggle('danger',remaining<=30&&mode==='work')}
+function runCountdown(seconds,onEnd){remaining=seconds;updateTimer();const anchor=Date.now(),start=seconds;clearInterval(timerId);timerId=setInterval(()=>{remaining=Math.max(0,start-Math.floor((Date.now()-anchor)/1000));updateTimer();if(remaining<=0){clearInterval(timerId);timerId=null;onEnd()}},200)}
+function startTest(){if(!$('clientCode').value.trim()){alert('Completează codul candidatului / inițialele.');$('clientCode').focus();return}currentStage=1;startWork()}
+function startWork(){
+ mode='work';
+ $('breakNotice').classList.add('hidden');
+ $('startBtn').classList.add('hidden');
+ $('stopBtn').classList.remove('hidden');
+ $('stageName').textContent=`Etapa ${['I','II','III','IV'][currentStage-1]}`;
+ $('stageNote').textContent=`4 minute de lucru · continuă de la poziția ${currentIndex+1}.`;
+ stageStartedAt[currentStage-1]=new Date().toISOString();
+ updateInputStates();
+ const el=$('ans-'+currentIndex);
+ if(el && !el.disabled) setTimeout(()=>el.focus(),0);
+ runCountdown(WORK_SECONDS,endStage);
+}
+function endStage(){if(mode!=='work')return;mode='transition';stageEndIndex[currentStage-1]=Math.max(frozenThrough,currentIndex-1,...answerStage.map((s,i)=>s===currentStage?i:-1));stageEndedAt[currentStage-1]=new Date().toISOString();frozenThrough=Math.max(frozenThrough,stageEndIndex[currentStage-1]??-1);$('stopBtn').classList.add('hidden');updateInputStates();if(currentStage>=MAX_STAGES||nextUnanswered(0)===null){finishAll();return}startBreak()}
+function beginNextStageAfterBreak(){
+ if(mode!=='break') return;
+ clearInterval(timerId);
+ timerId=null;
+ currentStage++;
+ currentIndex=nextUnanswered(0)??99;
+ startWork();
+}
+function startBreak(){
+ mode='break';
+ $('breakNotice').classList.remove('hidden');
+ $('stageName').textContent='Pauză';
+ $('stageNote').textContent=`După pauză începe etapa ${['II','III','IV'][currentStage-1]}.`;
+ updateInputStates();
+ runCountdown(BREAK_SECONDS,beginNextStageAfterBreak);
+}
+function finishAll(){clearInterval(timerId);timerId=null;mode='done';$('stopBtn').classList.add('hidden');$('breakNotice').classList.add('hidden');frozenThrough=99;updateInputStates();$('stageName').textContent='Finalizat';$('timer').textContent='00:00';$('stageNote').textContent='Poți descărca răspunsurile.';$('finishCard').classList.remove('hidden');renderStageSummary()}
+function renderStageSummary(){const root=$('stageSummary');root.innerHTML='';for(let st=1;st<=4;st++){const answered=answerStage.filter(x=>x===st).length,correct=answerStage.reduce((n,x,i)=>n+(x===st&&Number(responses[i])===KEY[i]?1:0),0);root.insertAdjacentHTML('beforeend',`<div class="mini-stat"><span>Etapa ${['I','II','III','IV'][st-1]}</span><strong>${correct}</strong><span class="tiny">${answered} completate</span></div>`)}const total=responses.reduce((n,v,i)=>n+(Number(v)===KEY[i]?1:0),0);root.insertAdjacentHTML('beforeend',`<div class="mini-stat"><span>Total</span><strong>${total}</strong><span class="tiny">răspunsuri corecte</span></div>`)}
+function buildSubmission(){return {schema:'bontila-t7-v1',id:'t7-'+Date.now()+'-'+Math.random().toString(36).slice(2,8),createdAt:new Date().toISOString(),clientCode:$('clientCode').value.trim(),ageYears:$('ageYears').value===''?null:Number($('ageYears').value),ageMonths:$('ageMonths').value===''?null:Number($('ageMonths').value),testDate:$('testDate').value,contextNote:$('contextNote').value.trim(),responses,answerStage,stageEndIndex,stageStartedAt,stageEndedAt}}
+function finalize(){const sub=buildSubmission();let arr=[];try{arr=JSON.parse(localStorage.getItem(STORE_KEY)||'[]')}catch(e){}arr.push(sub);localStorage.setItem(STORE_KEY,JSON.stringify(arr));const blob=new Blob([JSON.stringify(sub,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`test7-${(sub.clientCode||'rezultat').replace(/[^a-zA-Z0-9_-]+/g,'_')}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);$('success').classList.remove('hidden');$('finalizeBtn').disabled=true}
+$('startBtn').onclick=startTest;
+$('stopBtn').onclick=endStage;
+$('skipBreakBtn').onclick=beginNextStageAfterBreak;
+$('finalizeBtn').onclick=finalize;
+renderRows();updateTimer();
+</script></body></html>
