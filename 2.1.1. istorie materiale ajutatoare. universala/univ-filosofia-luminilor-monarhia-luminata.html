@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Filosofia Luminilor: monarhia luminată">
+<title>univ-filosofia-luminilor-monarhia-luminata</title>
+<style>
+:root {
+  --bg: #fbf6ea;
+  --paper: #fffaf0;
+  --paper-2: #ffffff;
+  --ink: #2d2418;
+  --title: #3c2d16;
+  --muted: #5e4d36;
+  --accent: #9a6519;
+  --accent-2: #c28a2c;
+  --accent-soft: #f5e8c8;
+  --line: rgba(92, 66, 30, 0.18);
+  --line-strong: rgba(92, 66, 30, 0.34);
+  --shadow: 0 26px 70px rgba(0,0,0,.28);
+  --shadow-small: 0 12px 30px rgba(0,0,0,.15);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin:0; min-height:100vh; color:var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(196,139,45,.70), transparent 32%),
+    radial-gradient(circle at 50% 100%, rgba(117,78,23,.45), transparent 37%),
+    radial-gradient(circle at 0 50%, rgba(18,14,8,.94), transparent 43%),
+    radial-gradient(circle at 100% 50%, rgba(18,14,8,.94), transparent 43%),
+    linear-gradient(180deg,#2c1e0c 0%,#58401c 48%,#170f06 100%);
+  background-attachment:fixed;
+}
+body::before { content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:radial-gradient(circle at center,transparent 0%,rgba(0,0,0,.08) 49%,rgba(0,0,0,.46) 100%),
+  linear-gradient(90deg,rgba(0,0,0,.18),transparent 18%,transparent 82%,rgba(0,0,0,.18)); }
+.page { position:relative; z-index:1; width:min(1180px,calc(100% - 32px)); margin:0 auto; padding:34px 0 70px; }
+.topbar { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:18px; flex-wrap:wrap; }
+.back-link,.tag { display:inline-flex; align-items:center; border:1px solid var(--line); background:rgba(255,250,240,.88); color:var(--title); border-radius:999px; padding:10px 15px; text-decoration:none; font-size:15px; font-weight:700; box-shadow:var(--shadow-small); }
+.back-link:hover { background:#fff6e4; }
+.hero,.section,.nav-card,.final-box,.related-card { background:rgba(255,250,240,.96); border:1px solid var(--line); border-radius:28px; box-shadow:var(--shadow); }
+.hero { padding:38px; margin-bottom:24px; position:relative; overflow:hidden; }
+.hero::after { content:var(--hero-year); position:absolute; right:26px; bottom:-24px; font-size:108px; font-weight:900; letter-spacing:-4px; color:rgba(154,101,25,.09); pointer-events:none; }
+.eyebrow { margin:0 0 8px; font-size:16px; color:var(--accent); font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+h1 { margin:0; font-size:clamp(38px,5vw,62px); line-height:1.04; color:var(--title); letter-spacing:-1.4px; }
+.subtitle { margin:18px 0 0; max-width:990px; font-size:19px; line-height:1.78; color:var(--muted); text-align:justify; text-align-last:left; }
+.series-links { display:flex; gap:9px; flex-wrap:wrap; margin-top:20px; }
+.series-links a { color:var(--title); background:#fff; border:1px solid rgba(92,66,30,.16); border-radius:999px; padding:9px 13px; text-decoration:none; font-weight:800; box-shadow:0 8px 20px rgba(0,0,0,.10); }
+.series-links a[aria-current="page"] { background:var(--accent); color:#fffaf3; }
+.series-links a:hover { transform:translateY(-1px); }
+.related-card { display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:16px 20px; margin:-10px 0 24px; border-radius:22px; box-shadow:var(--shadow-small); }
+.related-card b { color:var(--title); }
+.related-card a { color:var(--title); background:#f5e8c8; border:1px solid rgba(92,66,30,.16); border-radius:999px; text-decoration:none; padding:8px 12px; font-weight:700; font-size:14px; }
+.nav-card { display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:18px 20px; margin-bottom:24px; }
+.nav-card b { color:var(--title); }
+.nav-card a,.mini-btn { color:var(--title); background:var(--accent-soft); border:1px solid rgba(92,66,30,.16); border-radius:999px; text-decoration:none; padding:8px 12px; font-weight:700; font-size:14px; cursor:pointer; font-family:inherit; }
+.nav-card a:hover,.mini-btn:hover { background:#ead7a7; }
+.section { padding:30px; margin-bottom:24px; }
+h2 { margin:0 0 14px; color:var(--title); font-size:clamp(28px,3vw,38px); line-height:1.15; }
+h3 { margin:0 0 12px; color:var(--title); font-size:22px; line-height:1.22; }
+h4 { margin:16px 0 8px; color:var(--title); font-size:18px; }
+p,li,dd,.section-intro { font-size:17px; line-height:1.72; color:var(--muted); text-align:justify; text-align-last:left; hyphens:auto; }
+.section-intro { margin:0 0 20px; max-width:1020px; }
+.summary-grid,.three-col,.two-col,.four-col,.term-grid,.quick-grid,.cause-grid,.profile-grid,.principle-grid { display:grid; gap:14px; }
+.summary-grid,.quick-grid { grid-template-columns:repeat(4,1fr); margin-top:22px; }
+.three-col,.profile-grid { grid-template-columns:repeat(3,1fr); }
+.two-col,.cause-grid { grid-template-columns:repeat(2,1fr); }
+.four-col,.term-grid,.principle-grid { grid-template-columns:repeat(4,1fr); }
+.summary-card,.info-card,.wide-card,.term-card,.quick-card,.micro-card,.warning-box,.source-note,.profile-card,.principle-card { background:var(--paper-2); border:1px solid rgba(92,66,30,.14); border-radius:20px; box-shadow:var(--shadow-small); text-align:justify; text-align-last:left; }
+.summary-card,.info-card,.wide-card,.term-card,.quick-card,.micro-card,.warning-box,.source-note,.profile-card,.principle-card { padding:20px; }
+.summary-card { min-height:132px; padding:16px; }
+.summary-card strong,.quick-card strong,.term-card strong,.micro-card strong,.principle-card strong { display:block; color:var(--title); font-size:17px; margin-bottom:8px; text-align:left; }
+.summary-card span,.quick-card span,.term-card span,.micro-card span,.principle-card span { display:block; color:var(--muted); font-size:15.5px; line-height:1.58; }
+.profile-card h3 { margin-bottom:4px; }
+.profile-card .life { display:block; color:var(--accent); font-weight:800; margin-bottom:10px; }
+.profile-card p { font-size:16px; margin:8px 0; }
+.profile-card ul { margin:8px 0 0; padding-left:20px; }
+.profile-card li { font-size:15.5px; line-height:1.56; margin-bottom:5px; }
+.clean,.number-list { margin:0; padding-left:22px; }
+.clean li,.number-list li { margin:0 0 9px; padding-left:2px; }
+.date-pill { display:inline-block; color:var(--title); font-weight:800; background:#f7edda; border:1px solid rgba(92,66,30,.13); border-radius:999px; padding:2px 9px; margin-right:5px; white-space:nowrap; }
+.definition,.note,.fact-check,.quote-box { margin-top:18px; background:#fff8ea; border:1px solid rgba(154,101,25,.23); border-left:6px solid rgba(154,101,25,.55); border-radius:18px; padding:18px 20px; color:var(--muted); font-size:17px; line-height:1.7; text-align:justify; text-align-last:left; }
+.definition strong,.note strong,.fact-check strong,.quote-box strong { color:var(--title); }
+.quote-box { font-style:italic; }
+details { background:#fffdf8; border:1px solid rgba(92,66,30,.14); border-radius:20px; box-shadow:var(--shadow-small); margin-top:14px; overflow:hidden; }
+details[open] { background:#fffaf0; }
+summary { cursor:pointer; list-style:none; padding:18px 20px; font-size:19px; font-weight:800; color:var(--title); display:flex; justify-content:space-between; align-items:center; gap:18px; }
+summary::-webkit-details-marker { display:none; }
+summary::after { content:"Deschide"; color:var(--muted); font-size:14px; font-weight:700; background:#f7edda; border:1px solid rgba(92,66,30,.14); border-radius:999px; padding:7px 11px; white-space:nowrap; }
+details[open]>summary::after { content:"Ascunde"; }
+.details-body { border-top:1px solid rgba(92,66,30,.12); padding:18px 20px 20px; }
+.key-line { display:grid; grid-template-columns:220px 1fr; gap:14px; padding:14px 0; border-bottom:1px dashed rgba(92,66,30,.18); }
+.key-line:last-child { border-bottom:0; }
+.key-line strong { color:var(--title); }
+.key-line span { color:var(--muted); line-height:1.65; }
+.timeline { display:grid; gap:14px; margin-top:18px; }
+.event { display:grid; grid-template-columns:136px 1fr; gap:18px; align-items:stretch; background:#fff; border:1px solid rgba(92,66,30,.14); border-radius:20px; box-shadow:var(--shadow-small); overflow:hidden; }
+.date { background:linear-gradient(180deg,#a36b18,#6f430d); color:#fffaf3; display:flex; align-items:center; justify-content:center; text-align:center; padding:14px; font-size:18px; line-height:1.25; font-weight:900; }
+.event>div:last-child { padding:17px 18px 18px 0; }
+.event h3 { margin-bottom:6px; }
+.event p { margin:0; }
+.warning-box { background:#fff4df; border-color:rgba(154,101,25,.25); margin-top:16px; }
+.final-box { padding:28px; background:linear-gradient(135deg,#fffaf0,#f3dfb7); border-color:rgba(92,66,30,.25); }
+.final-box p { margin-bottom:0; }
+.table-wrap { overflow-x:auto; margin-top:14px; border-radius:18px; border:1px solid rgba(92,66,30,.14); background:#fff; box-shadow:var(--shadow-small); }
+table { width:100%; border-collapse:collapse; min-width:760px; }
+th,td { padding:13px 14px; border-bottom:1px solid rgba(92,66,30,.12); color:var(--muted); font-size:16px; line-height:1.55; vertical-align:top; text-align:left; }
+th { background:#f7edda; color:var(--title); font-weight:800; }
+tr:last-child td { border-bottom:0; }
+.badge-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+.badge { display:inline-flex; padding:6px 10px; border-radius:999px; background:#f7edda; border:1px solid rgba(92,66,30,.13); color:var(--title); font-weight:800; font-size:13px; }
+.flow { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin-top:16px; }
+.flow-item { position:relative; padding:16px; background:#fff; border:1px solid rgba(92,66,30,.14); border-radius:18px; box-shadow:var(--shadow-small); }
+.flow-item b { display:block; color:var(--title); margin-bottom:6px; }
+.flow-item span { font-size:15px; color:var(--muted); line-height:1.5; }
+.flow-item:not(:last-child)::after { content:'→'; position:absolute; right:-14px; top:50%; transform:translateY(-50%); font-size:22px; color:var(--accent); font-weight:900; z-index:3; }
+.source-map { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+.source-map article { background:#fff; border:1px solid rgba(92,66,30,.14); border-radius:18px; padding:17px; box-shadow:var(--shadow-small); }
+.source-map strong { display:block; color:var(--title); margin-bottom:6px; }
+.source-map span { color:var(--muted); font-size:15.5px; line-height:1.55; }
+footer { margin-top:24px; color:rgba(255,250,243,.82); text-align:center; font-size:14px; line-height:1.6; }
+@media(max-width:980px) {
+  .summary-grid,.three-col,.four-col,.term-grid,.quick-grid,.profile-grid,.principle-grid { grid-template-columns:repeat(2,1fr); }
+  .two-col,.cause-grid,.source-map { grid-template-columns:1fr; }
+  .flow { grid-template-columns:repeat(2,1fr); }
+  .flow-item::after { display:none; }
+}
+@media(max-width:680px) {
+  .page { width:min(100% - 22px,1180px); padding-top:22px; }
+  .hero,.section,.final-box { padding:22px; border-radius:22px; }
+  .summary-grid,.three-col,.four-col,.term-grid,.quick-grid,.profile-grid,.principle-grid,.flow { grid-template-columns:1fr; }
+  .event { grid-template-columns:1fr; }
+  .date { min-height:66px; }
+  .event>div:last-child { padding:0 16px 16px; }
+  .key-line { grid-template-columns:1fr; gap:6px; }
+  summary { align-items:flex-start; flex-direction:column; }
+  .hero::after { font-size:78px; }
+  .series-links a { width:100%; text-align:center; }
+  .subtitle,p,li,dd,.section-intro,.details-body,.key-line span,.event>div:last-child,.definition,.note,.fact-check,.quote-box { text-align:left; text-align-last:auto; hyphens:none; }
+}
+@media print {
+  body { background:#fff!important; }
+  body::before { display:none; }
+  .page { width:100%; padding:0; }
+  .topbar,.nav-card,.related-card { display:none!important; }
+  .hero,.section,.final-box { box-shadow:none; border:1px solid #ccb991; break-inside:avoid-page; }
+  details { break-inside:avoid-page; }
+  summary::after { display:none; }
+}
+</style>
+</head>
+<body id="top" style="--hero-year:'1781';">
+<main class="page">
+<div class="topbar"><a class="back-link" href="index.html">← Înapoi la materiale</a><span class="tag">Material ajutător · Istorie universală · Filosofia Luminilor</span></div>
+<section class="hero"><p class="eyebrow">Istorie universală · Epoca modernă · Reformism monarhic</p><h1>Filosofia Luminilor: monarhia luminată</h1><p class="subtitle">Absolutismul luminat și reformele inițiate de Frederic al II-lea, Petru cel Mare, Ecaterina a II-a, Maria Tereza, Iosif al II-lea și Leopold al II-lea: drept, educație, religie, șerbie, economie și limitele modernizării de sus în jos.</p><div class="series-links"><a href="univ-filosofia-luminilor-monarhia-luminata.html" aria-current="page">Monarhia luminată</a><a href="univ-filosofia-luminilor-idei-filosofice.html">Idei filosofice</a><a href="univ-filosofia-luminilor-personalitati-istorice.html">Personalități istorice</a></div></section>
+<div class="related-card"><b>Seria Filosofia Luminilor:</b><a href="univ-filosofia-luminilor-monarhia-luminata.html" aria-current="page">Monarhia luminată</a><a href="univ-filosofia-luminilor-idei-filosofice.html">Idei filosofice</a><a href="univ-filosofia-luminilor-personalitati-istorice.html">Personalități istorice</a></div>
+<nav class="nav-card" aria-label="Cuprinsul paginii"><b>Cuprins:</b><a href="#definitie">Definiție</a><a href="#mecanism">Mecanism</a><a href="#reforme">Reforme</a><a href="#prusia">Prusia</a><a href="#rusia">Rusia</a><a href="#habsburgi">Habsburgi</a><a href="#educatie">Educație</a><a href="#biserica">Biserică</a><a href="#serbie">Șerbie</a><a href="#economie">Economie</a><a href="#alte-state">Alte state</a><a href="#comparatie">Comparație</a><a href="#sfarsit">1789</a><button class="mini-btn" type="button" data-action="open">Deschide explicațiile</button><button class="mini-btn" type="button" data-action="close">Închide explicațiile</button></nav>
+
+<section class="section" id="definitie">
+<h2>I. Monarhia luminată: reformă de sus în jos</h2>
+<p class="section-intro">Monarhia luminată — numită și absolutism sau despotism luminat — a fost modelul prin care un suveran păstra puterea monarhică amplă, dar o utiliza pentru modernizarea administrației, dreptului, economiei, școlii și raporturilor religioase. Reforma pornea „de sus în jos”, de la conducător către supuși.</p>
+<div class="summary-grid"><article class="summary-card"><strong>Autoritate</strong><span>Monarhul rămâne centrul statului și își întărește aparatul administrativ.</span></article><article class="summary-card"><strong>Utilitate</strong><span>Reformele sunt justificate prin binele public, eficiență și prosperitate.</span></article><article class="summary-card"><strong>Modernizare</strong><span>Coduri juridice, școli, fiscalitate, armată, agricultură și economie.</span></article><article class="summary-card"><strong>Limită</strong><span>Poporul este beneficiar, nu autor al reformei; privilegiile nu dispar complet.</span></article></div>
+<div class="fact-check"><strong>Precizare conceptuală:</strong> documentul echivalează „monarhia luminată” cu „monarhia limitată”. În sens istoric strict, monarhul luminat nu era limitat constituțional asemenea regelui britanic; el rămânea suveran absolut, dar pretindea că guvernează rațional și ca „prim slujitor al statului”.</div>
+</section>
+
+<section class="section" id="mecanism">
+<h2>II. Cum funcționa modelul</h2>
+<div class="flow"><article class="flow-item"><b>Filosofia</b><span>Rațiune, utilitate, toleranță, egalitate juridică și progres.</span></article><article class="flow-item"><b>Monarhul</b><span>Selectează ideile compatibile cu întărirea statului.</span></article><article class="flow-item"><b>Birocrația</b><span>Elaborează coduri, recensăminte, școli și reforme fiscale.</span></article><article class="flow-item"><b>Societatea</b><span>Primește reforme fără participare politică deplină.</span></article><article class="flow-item"><b>Rezultatul</b><span>Stat mai eficient, dar ordine socială încă ierarhică.</span></article></div>
+<div class="two-col"><article class="info-card"><h3>Între absolutism și constituționalism</h3><p>Monarhia luminată a fost o cale intermediară între absolutismul tradițional și regimurile constituționale moderne. Ea a limitat unele abuzuri, nu autoritatea monarhului ca sursă a legii.</p></article><article class="info-card"><h3>Modernizare selectivă</h3><p>Conducătorii au adoptat reforme juridice, educaționale și religioase, dar au evitat desființarea completă a privilegiilor și participarea populară care le-ar fi amenințat puterea.</p></article></div>
+</section>
+
+<section class="section" id="reforme">
+<h2>III. Programul comun al suveranilor luminați</h2>
+<div class="table-wrap"><table><thead><tr><th>Domeniu</th><th>Măsuri</th><th>Scop</th></tr></thead><tbody><tr><td>Biserică</td><td>Secularizarea averilor, desființarea unor mănăstiri, reducerea zeciuielilor, cler salarizat de stat.</td><td>Subordonarea resurselor ecleziastice statului.</td></tr><tr><td>Religie</td><td>Toleranță pentru protestanți, ortodocși, catolici și evrei.</td><td>Ordine în state multiconfesionale și transformarea persecutaților în contribuabili utili.</td></tr><tr><td>Drept</td><td>Codificare, proceduri uniforme, limitarea torturii, egalitate mai mare în fața legii.</td><td>Justiție previzibilă și control central.</td></tr><tr><td>Șerbie</td><td>Limitarea dependenței personale, protecția țăranilor sau abolirea juridică.</td><td>Creșterea productivității și reducerea abuzurilor.</td></tr><tr><td>Educație</td><td>Școli de stat, frecvență obligatorie, manuale, școli pentru fete și instituții superioare.</td><td>Funcționari competenți și supuși loiali.</td></tr><tr><td>Economie</td><td>Manufacturi, bănci, infrastructură, colonizare internă, imigrație calificată, reforme agricole.</td><td>Venituri fiscale și putere militară.</td></tr></tbody></table></div>
+</section>
+
+<section class="section" id="prusia">
+<h2>IV. Prusia: Frederic al II-lea</h2>
+<p class="section-intro">Frederic al II-lea, rege între 1740 și 1786, a unit cultura filosofică franceză cu disciplina militară și birocratică prusacă. Formula sa celebră — „primul slujitor al statului” — exprima idealul monarhului care muncește pentru eficiența regatului.</p>
+<div class="timeline"><article class="event"><div class="date">1740–1786</div><div><h3>Domnia lui Frederic al II-lea</h3><p>Centralizează administrația, promovează meritul funcționarilor și urmărește creșterea populației, agriculturii și resurselor statului.</p></div></article><article class="event"><div class="date">anii 1740</div><div><h3>Toleranță și presă</h3><p>Protestanții, catolicii și alte comunități primesc o toleranță relativ largă. Cenzura este relaxată în anumite domenii, fără a dispărea complet.</p></div></article><article class="event"><div class="date">sec. XVIII</div><div><h3>Agricultură și colonizare</h3><p>Administrația promovează cartoful, drenarea mlaștinilor și aducerea coloniștilor pentru cultivarea terenurilor.</p></div></article><article class="event"><div class="date">1780</div><div><h3>Reforma justiției</h3><p>Statul caută simplificarea procedurilor și pregătește codificarea dreptului prusac, finalizată după moartea regelui.</p></div></article></div>
+<div class="three-col"><article class="info-card"><h3>Educație</h3><p>Sunt construite numeroase școli, iar Academia Prusacă este sprijinită ca instituție de prestigiu.</p></article><article class="info-card"><h3>Economie</h3><p>Politica este în principal mercantilistă; se creează o bancă de stat, manufacturi și stimulente pentru imigrația calificată.</p></article><article class="info-card"><h3>Țărănime</h3><p>Frederic încearcă să protejeze țăranii de unele abuzuri, dar nu desființează șerbia pe domeniile nobiliare.</p></article></div>
+<div class="fact-check"><strong>Precizare:</strong> afirmația că Prusia a fost „primul regat european care a acordat libertatea presei” trebuie nuanțată. Frederic a tolerat dezbaterea filosofică mai mult decât mulți contemporani, dar cenzura politică și militară a continuat.</div>
+</section>
+
+<section class="section" id="rusia">
+<h2>V. Rusia: Petru I și Ecaterina a II-a</h2>
+<details open><summary>Petru I cel Mare, 1682–1725 — precursor al despotismului luminat</summary><div class="details-body"><div class="two-col"><article class="info-card"><h3>Occidentalizarea vieții cotidiene</h3><ul class="clean"><li>impune portul vest-european la curte și taxează bărbile, cu excepții pentru cler;</li><li>la 20 decembrie 1699 hotărăște ca anul civil să înceapă la 1 ianuarie, începând cu 1700, nu la 1 septembrie;</li><li>impune ca logodna să preceadă căsătoria cu cel puțin șase săptămâni și încearcă să reglementeze mai strict viața familială;</li><li>creează Sankt Petersburg ca „fereastră spre Europa”.</li></ul></article><article class="info-card"><h3>Stat, industrie și societate</h3><ul class="clean"><li>dezvoltă industria și arsenalul militar;</li><li>prin Tabelul Rangurilor din 1722 permite ascensiunea prin serviciu, nu doar prin naștere;</li><li>subordonează Biserica statului prin Sfântul Sinod;</li><li>reorganizează administrația, armata și fiscalitatea.</li></ul></article></div><div class="fact-check"><strong>Precizare:</strong> Petru nu a introdus calendarul gregorian; Rusia a păstrat calendarul iulian. Reforma a schimbat începutul anului și numărarea anilor după era creștină.</div></div></details>
+<details open><summary>Ecaterina a II-a, 1762–1796</summary><div class="details-body"><div class="timeline"><article class="event"><div class="date">1767</div><div><h3><em>Nakaz</em></h3><p>Instrucțiunea adresată Comisiei Legislative sintetizează idei din Montesquieu și Beccaria: legalitate, egalitate formală și critică a torturii, fără a crea însă un cod complet.</p></div></article><article class="event"><div class="date">1760–1780</div><div><h3>Școli, orfelinate și instituții</h3><p>Curtea sprijină instituții de educație pentru nobili și fete, orfelinate, academii și proiecte sanitare. Documentul de curs reține pentru 1763 înființarea unui Colegiu de Medicină și dezvoltarea Academiei de Arte Frumoase; organizarea acestor instituții s-a realizat în mai multe etape.</p></div></article><article class="event"><div class="date">1782–1786</div><div><h3>Rețeaua școlară</h3><p>Comisia de educație și Statutul școlilor publice prevăd școli în capitalele de gubernie și în orașe.</p></div></article><article class="event"><div class="date">1785</div><div><h3>Carta Nobilimii</h3><p>Confirmă statutul și privilegiile nobilimii ruse, arătând limita socială a reformismului.</p></div></article></div><div class="two-col"><article class="info-card"><h3>Economie și colonizare</h3><p>Încurajează imigrația, popularea și cultivarea regiunilor Volgăi și sudului imperiului; dezvoltă flota comercială și relaxează unele restricții asupra schimbului.</p></article><article class="info-card"><h3>Religie și șerbie</h3><p>Confirmă secularizarea bunurilor ecleziastice și toleranța față de mai multe confesiuni, dar condiția șerbilor se agravează pe domeniile nobiliare, mai ales după răscoala lui Pugaciov.</p></article></div><div class="note"><strong>Contradicție:</strong> Ecaterina coresponda cu Voltaire și Diderot, dar se temea de educarea șerbilor și de participarea populară. Iluminismul era acceptat cât timp consolida statul și nu amenința ordinea nobiliară.</div></div></details>
+</section>
+
+<section class="section" id="habsburgi">
+<h2>VI. Monarhia Habsburgică: Maria Tereza, Iosif al II-lea și Leopold al II-lea</h2>
+<div class="profile-grid"><article class="profile-card"><h3>Maria Tereza</h3><span class="life">1740–1780</span><p>Reorganizează fiscalitatea, armata și administrația, începe reforma școlară și pregătește centralizarea care va fi radicalizată de fiul ei.</p><ul><li>școală elementară reglementată prin <em>Allgemeine Schulordnung</em> (1774);</li><li>modernizarea recensămintelor și a impozitelor;</li><li>reforme sanitare și administrative.</li></ul></article><article class="profile-card"><h3>Iosif al II-lea</h3><span class="life">co-regent 1765–1780 · împărat 1780–1790</span><p>Promovează „iosefinismul”: stat centralizat, Biserică utilă social, toleranță și reducerea dependenței personale.</p><ul><li>secularizează mănăstirile contemplative și folosește veniturile pentru parohii, școli și asistență;</li><li>Edictul de toleranță din 1781 acordă drepturi protestanților și ortodocșilor;</li><li>măsurile din 1782 extind emanciparea juridică a evreilor;</li><li>Patentul șerbiei din 1781 desființează dependența personală, fără a elimina toate obligațiile feudale;</li><li>reformă penală și tendință spre egalitate juridică.</li></ul></article><article class="profile-card"><h3>Leopold al II-lea</h3><span class="life">1790–1792</span><p>Adoptă o politică de împăcare, amnistii și negociere cu stările, păstrând reformele compatibile cu stabilitatea.</p><ul><li>în Toscana susținuse școli, orfelinate, spitale și reforma administrativă și sanitară;</li><li>Codul toscan din 1786 abolise tortura și pedeapsa cu moartea;</li><li>ca împărat, promovează amnistii, împăcarea stărilor și măsuri privind drepturile supușilor, revizuind reformele prea centralizatoare ale lui Iosif.</li></ul></article></div>
+<div class="note"><strong>Transilvania:</strong> toleranța iosefină a permis construirea mai liberă a bisericilor ortodoxe și a redus unele discriminări confesionale, deși ordinea politică a stărilor privilegiate nu a fost desființată.</div>
+</section>
+
+<section class="section" id="educatie">
+<h2>VII. Educația — între emancipare și disciplină</h2>
+<div class="two-col"><article class="info-card"><h3>Idealul filosofilor</h3><p>Poporul trebuie culturalizat și condus spre o dezvoltare intelectuală cât mai înaltă, astfel încât individul să judece singur și să participe la viața publică.</p></article><article class="info-card"><h3>Calculul monarhilor</h3><p>Școala trebuia să producă supuși alfabetizați, disciplinați, productivi și loiali. Mulți conducători acceptau educația elementară, dar se temeau de autonomia politică a maselor.</p></article></div>
+<ul class="clean"><li>în Rusia și Austria se creează rețele de școli de stat și se încearcă frecvența obligatorie;</li><li>elevii săraci puteau primi manuale ori sprijin;</li><li>apar școli pentru fete și școli mixte;</li><li>învățământul superior se dezvoltă prin academii, colegii medicale și instituții artistice;</li><li>Biserica pierde monopolul educației și al unei părți a cenzurii, iar programa intră sub controlul statului; tineretul este format în spiritul loialității față de monarh.</li></ul>
+</section>
+
+<section class="section" id="biserica">
+<h2>VIII. Biserica și toleranța religioasă</h2>
+<div class="table-wrap"><table><thead><tr><th>Stat</th><th>Reducerea puterii Bisericii</th><th>Toleranță</th></tr></thead><tbody><tr><td>Austria</td><td>Iosif II desființează mănăstiri considerate neproductive, reduce zeciuielile și transformă clerul într-un corp supravegheat de stat; veniturile finanțează parohii și asistență.</td><td>Edictul din 1781 acordă drepturi protestanților și ortodocșilor; măsurile din 1782 lărgesc drepturile evreilor.</td></tr><tr><td>Rusia</td><td>Ecaterina confirmă secularizarea averilor bisericești realizată sub Petru III, acordând compensații și salarii clerului.</td><td>Confirmă toleranța pentru protestanți și catolici și gestionează un imperiu multiconfesional.</td></tr><tr><td>Prusia</td><td>Bisericile sunt integrate în administrația unui stat predominant protestant.</td><td>Catolicii și minoritățile primesc protecție relativă, justificată pragmatic prin utilitatea fiecărui supus.</td></tr></tbody></table></div>
+<div class="definition"><strong>Toleranța religioasă</strong> era simultan un ideal moral și o tehnică de guvernare: prevenea dezordinea în statele multinaționale și transforma grupurile persecutate în cetățeni productivi, contribuabili și soldați loiali.</div>
+</section>
+
+<section class="section" id="serbie">
+<h2>IX. Șerbia și problema socială</h2>
+<p class="section-intro">Suveranii luminați declarau că dependența personală este irațională, dar reforma avansa lent din cauza opoziției nobilimii, a fricii de răscoale și a nevoii monarhului de sprijin social.</p>
+<div class="three-col"><article class="info-card"><h3>Prusia</h3><p>Frederic II limitează unele abuzuri și protejează țăranii de pe domeniile coroanei, dar nu înfruntă decisiv aristocrația iuncherilor.</p></article><article class="info-card"><h3>Rusia</h3><p>În afara unor domenii ale coroanei, condiția șerbilor se înrăutățește sub Ecaterina II, care recompensează nobilimea cu pământ și oameni dependenți.</p></article><article class="info-card"><h3>Austria</h3><p>Patentul din 1781 al lui Iosif II desființează șerbia ca dependență personală și permite căsătoria, mutarea și alegerea meseriei fără acordul seniorului; obligațiile funciare continuă.</p></article></div>
+<div class="fact-check"><strong>Nuanță:</strong> formularea „Iosif II abolește în întregime șerbia” descrie intenția juridică de eliminare a dependenței personale, nu dispariția imediată a tuturor prestațiilor feudale și a marii proprietăți.</div>
+</section>
+
+<section class="section" id="economie">
+<h2>X. Politici economice</h2>
+<div class="two-col"><article class="info-card"><h3>Prusia — mercantilism</h3><ul class="clean"><li>manufacturi și protecție vamală;</li><li>bancă de stat și credit;</li><li>colonizarea terenurilor și dezvoltarea agriculturii;</li><li>imigrație calificată stimulată prin pământ și scutiri fiscale.</li></ul></article><article class="info-card"><h3>Rusia — liberalizare selectivă</h3><ul class="clean"><li>dezvoltarea flotei comerciale;</li><li>relaxarea unor monopoluri și opțiuni pentru liberul schimb;</li><li>popularea Volgăi și a sudului cu imigranți;</li><li>extinderea pieței interne, dar păstrarea șerbiei.</li></ul></article></div>
+</section>
+
+<section class="section" id="alte-state">
+<h2>XI. Alte exemple europene</h2>
+<div class="profile-grid"><article class="profile-card"><h3>Carol al III-lea al Spaniei</h3><span class="life">1759–1788</span><p>Modernizează Madridul, promovează infrastructura, agricultura și comerțul, limitează unele privilegii ecleziastice și îi expulzează pe iezuiți.</p></article><article class="profile-card"><h3>Marchizul de Pombal</h3><span class="life">ministru în Portugalia, 1750–1777</span><p>Reclădește Lisabona după cutremurul din 1755, reformează educația, administrația și comerțul și reduce puterea iezuiților și a marii nobilimi.</p></article><article class="profile-card"><h3>Gustav al III-lea al Suediei</h3><span class="life">1771–1792</span><p>Protejează cultura și teatrul, reformează justiția și toleranța, dar întărește autoritatea regală prin lovitura de stat din 1772.</p></article></div>
+</section>
+
+<section class="section" id="comparatie">
+<h2>XII. Comparație între monarhiile luminate</h2>
+<div class="table-wrap"><table><thead><tr><th>Conducător</th><th>Reforme reprezentative</th><th>Contradicție principală</th></tr></thead><tbody><tr><td>Frederic II</td><td>Toleranță, școli, agricultură, administrație și drept.</td><td>Militarism și păstrarea șerbiei nobiliare.</td></tr><tr><td>Petru I</td><td>Occidentalizare, industrie, armată, administrație, Tabelul Rangurilor.</td><td>Modernizare coercitivă și fiscalitate apăsătoare.</td></tr><tr><td>Ecaterina II</td><td><em>Nakaz</em>, școli, colonizare, secularizare și cultură.</td><td>Consolidarea privilegiilor nobiliare și agravarea șerbiei.</td></tr><tr><td>Iosif II</td><td>Toleranță, secularizare, școală, drept și abolirea dependenței personale.</td><td>Centralizare rapidă, rezistență socială și retragerea unor măsuri.</td></tr><tr><td>Leopold II</td><td>Amnistie, reconciliere, reforme juridice și sanitare.</td><td>Prudență și domnie imperială foarte scurtă.</td></tr></tbody></table></div>
+</section>
+
+<section class="section" id="sfarsit">
+<h2>XIII. Revoluția Franceză și sfârșitul elanului reformator</h2>
+<p class="section-intro">Revoluția din 1789 a produs un seism politic. Suveranii au înțeles că limbajul drepturilor, egalității și suveranității populare putea răsturna monarhia, nu doar îmbunătăți administrația.</p>
+<div class="timeline"><article class="event"><div class="date">1789</div><div><h3>Frica de revoluție</h3><p>Curțile europene reduc ritmul reformelor, întăresc cenzura și supravegherea și privesc critic filosofia radicală.</p></div></article><article class="event"><div class="date">1790–1792</div><div><h3>Leopold II</h3><p>Încearcă să împace reformismul cu ordinea internă și cu amenințarea revoluționară externă.</p></div></article><article class="event"><div class="date">după 1792</div><div><h3>Războaiele revoluționare</h3><p>Monarhiile europene aleg mobilizarea militară și conservarea ordinii în locul experimentului luminat.</p></div></article></div>
+<div class="final-box"><h2>Concluzie</h2><p>Monarhia luminată a modernizat statul fără a democratiza puterea. A creat școli, coduri, administrații și forme de toleranță, dar a rămas dependentă de nobilime, armată și coerciție. Formula sa fundamentală poate fi rezumată astfel: „totul pentru popor, nimic prin popor”.</p></div>
+</section>
+
+<section class="section" id="surse"><h2>XIV. Informațiile integrate</h2><div class="source-map"><article><strong>„Monarhia Luminată”</strong><span>Definiție, Frederic II, Petru I, Ecaterina II, Iosif II, Leopold II, educație, drept, Biserică, toleranță, șerbie, economie și reacția la Revoluția Franceză.</span></article><article><strong>Completări istorice</strong><span>Maria Tereza, alte monarhii reformatoare, cronologia exactă a edictelor, limitele juridice ale abolirii șerbiei și nuanțarea conceptului de „monarhie limitată”.</span></article></div></section>
+
+<footer>Material amplu, structurat după documentele Word furnizate și completat cu informații istorice suplimentare · Seria „Filosofia Luminilor”</footer>
+</main><script>
+const openBtn=document.querySelector('[data-action="open"]');
+const closeBtn=document.querySelector('[data-action="close"]');
+if(openBtn)openBtn.addEventListener('click',()=>document.querySelectorAll('details').forEach(d=>d.open=true));
+if(closeBtn)closeBtn.addEventListener('click',()=>document.querySelectorAll('details').forEach(d=>d.open=false));
+</script>
+</body></html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Franța napoleoniană: campanii militare">
+<title>univ-franta-napoleoniana-campanii-militare</title>
+<style>
+
+:root {
+  --bg: #f6f0e7;
+  --paper: #fffaf3;
+  --paper-2: #ffffff;
+  --ink: #2f241c;
+  --title: #3c2a1e;
+  --muted: #5b4a3d;
+  --accent: #7a4f2a;
+  --accent-2: #9b6a3c;
+  --accent-soft: #f0e4d4;
+  --line: rgba(91, 62, 36, 0.18);
+  --line-strong: rgba(91, 62, 36, 0.34);
+  --outer-dark: #241208;
+  --outer-mid: #4a2a18;
+  --outer-warm: #7a4b2b;
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+  --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+    radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+}
+.page {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 34px 0 70px;
+}
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.back-link, .tag { display: inline-flex; align-items: center; border: 1px solid var(--line); background: rgba(255, 250, 243, 0.84); color: var(--title); border-radius: 999px; padding: 10px 15px; text-decoration: none; font-size: 15px; font-weight: 700; box-shadow: var(--shadow-small); }
+.back-link:hover { background: #fff6eb; }
+.hero, .section, .nav-card, .final-box { background: rgba(255, 250, 243, 0.96); border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow); }
+.hero { padding: 38px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.hero::after { content: var(--hero-year); position: absolute; right: 26px; bottom: -22px; font-size: 110px; font-weight: 900; letter-spacing: -4px; color: rgba(122, 79, 42, 0.08); pointer-events: none; }
+.eyebrow { margin: 0 0 8px; font-size: 16px; color: var(--accent); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; }
+h1 { margin: 0; font-size: clamp(38px, 5vw, 62px); line-height: 1.04; color: var(--title); letter-spacing: -1.4px; text-align: left; text-align-last: auto; }
+.subtitle { margin: 18px 0 0; max-width: 980px; font-size: 19px; line-height: 1.78; color: var(--muted); text-align: justify; text-align-last: left; }
+.summary-grid, .three-col, .two-col, .term-grid, .quick-grid, .cause-grid, .four-col { display: grid; gap: 14px; }
+.summary-grid { grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+.summary-card, .info-card, .wide-card, .term-card, .quick-card, .source-note, .micro-card, .warning-box { background: var(--paper-2); border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); text-align: justify; text-align-last: left; }
+.summary-card { padding: 16px; min-height: 132px; }
+.summary-card strong, .quick-card strong, .term-card strong, .micro-card strong { display: block; color: var(--title); font-size: 17px; margin-bottom: 8px; text-align: left; text-align-last: auto; }
+.summary-card span, .quick-card span, .term-card span, .micro-card span { display: block; color: var(--muted); font-size: 15.5px; line-height: 1.56; text-align: justify; text-align-last: left; }
+.nav-card { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 18px 20px; margin-bottom: 24px; }
+.nav-card b { color: var(--title); margin-right: 2px; }
+.nav-card a, .mini-btn { color: var(--title); background: var(--accent-soft); border: 1px solid rgba(91, 62, 36, 0.16); border-radius: 999px; text-decoration: none; padding: 8px 12px; font-weight: 700; font-size: 14px; cursor: pointer; font-family: inherit; }
+.nav-card a:hover, .mini-btn:hover { background: #e5d2bb; }
+.section { padding: 30px; margin-bottom: 24px; }
+h2 { margin: 0 0 14px; color: var(--title); font-size: clamp(28px, 3vw, 38px); line-height: 1.15; text-align: left; text-align-last: auto; }
+h3 { margin: 0 0 12px; color: var(--title); font-size: 22px; line-height: 1.22; text-align: left; text-align-last: auto; }
+h4 { margin: 16px 0 8px; color: var(--title); font-size: 18px; text-align: left; text-align-last: auto; }
+.section-intro, p, li, dd { font-size: 17px; line-height: 1.72; color: var(--muted); text-align: justify; text-align-last: left; hyphens: auto; }
+.section-intro { margin: 0 0 20px; max-width: 1000px; }
+.three-col { grid-template-columns: repeat(3, 1fr); }
+.two-col { grid-template-columns: repeat(2, 1fr); }
+.four-col { grid-template-columns: repeat(4, 1fr); }
+.cause-grid { grid-template-columns: 1.1fr 0.9fr; }
+.term-grid { grid-template-columns: repeat(4, 1fr); }
+.quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+.info-card, .wide-card, .term-card, .quick-card, .micro-card, .warning-box, .source-note { padding: 20px; }
+.wide-card { margin-top: 14px; }
+.wide-card p:last-child, .info-card p:last-child { margin-bottom: 0; }
+.clean, .number-list { margin: 0; padding-left: 22px; }
+.clean li, .number-list li { margin: 0 0 9px; padding-left: 2px; }
+.clean li:last-child, .number-list li:last-child { margin-bottom: 0; }
+.mini-title { display: inline; color: var(--title); font-weight: 800; background: transparent; border: 0; border-radius: 0; padding: 0; margin-right: 5px; white-space: normal; text-align: inherit; }
+.date-pill { display: inline-block; color: var(--title); font-weight: 800; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.13); border-radius: 999px; padding: 2px 9px; margin-right: 5px; white-space: nowrap; text-align: left; }
+.definition, .note { margin-top: 18px; background: #fff8ef; border: 1px solid rgba(122, 79, 42, 0.22); border-left: 6px solid rgba(122, 79, 42, 0.48); border-radius: 18px; padding: 18px 20px; color: var(--muted); font-size: 17px; line-height: 1.7; text-align: justify; text-align-last: left; }
+.definition strong, .note strong { color: var(--title); }
+details { background: #fffdf9; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); margin-top: 14px; overflow: hidden; }
+details[open] { background: #fffaf3; }
+summary { cursor: pointer; list-style: none; padding: 18px 20px; font-size: 19px; font-weight: 800; color: var(--title); display: flex; justify-content: space-between; align-items: center; gap: 18px; text-align: left; text-align-last: auto; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "Deschide"; color: var(--muted); font-size: 14px; font-weight: 700; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 999px; padding: 7px 11px; white-space: nowrap; }
+details[open] > summary::after { content: "Ascunde"; }
+.details-body { border-top: 1px solid rgba(91, 62, 36, 0.12); padding: 18px 20px 20px; text-align: justify; text-align-last: left; }
+.details-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.nested-details { margin-top: 10px; box-shadow: none; background: #ffffff; }
+.nested-details summary { font-size: 17px; padding: 14px 16px; }
+.key-line { display: grid; grid-template-columns: 220px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px dashed rgba(91, 62, 36, 0.18); }
+.key-line:last-child { border-bottom: 0; }
+.key-line strong { color: var(--title); text-align: left; text-align-last: auto; }
+.key-line span { color: var(--muted); line-height: 1.65; text-align: justify; text-align-last: left; }
+.timeline { position: relative; display: grid; gap: 14px; margin-top: 18px; }
+.event { display: grid; grid-template-columns: 132px 1fr; gap: 18px; align-items: stretch; background: #ffffff; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); overflow: hidden; }
+.date { background: linear-gradient(180deg, #7a4f2a, #5b351b); color: #fffaf3; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px; font-size: 18px; line-height: 1.25; font-weight: 900; letter-spacing: 0.2px; }
+.event > div:last-child { padding: 17px 18px 18px 0; text-align: justify; text-align-last: left; }
+.event h3 { margin-bottom: 6px; }
+.event p { margin: 0; }
+.small-muted { font-size: 15px; color: #725c49; line-height: 1.6; text-align: justify; text-align-last: left; }
+.warning-box { background: #fff7ec; border-color: rgba(122, 79, 42, 0.22); margin-top: 16px; }
+.final-box { padding: 28px; background: linear-gradient(135deg, #fffaf3, #f4e4d1); border-color: rgba(91, 62, 36, 0.25); }
+.final-box p { margin-bottom: 0; }
+.table-wrap { overflow-x: auto; margin-top: 14px; border-radius: 18px; border: 1px solid rgba(91,62,36,.14); background: #fff; box-shadow: var(--shadow-small); }
+table { width: 100%; border-collapse: collapse; min-width: 740px; }
+th, td { padding: 13px 14px; border-bottom: 1px solid rgba(91,62,36,.12); color: var(--muted); font-size: 16px; line-height: 1.55; vertical-align: top; text-align: justify; }
+th { background: #f3eadf; color: var(--title); text-align: left; font-weight: 800; }
+tr:last-child td { border-bottom: 0; }
+@media (max-width: 980px) {
+  .summary-grid, .three-col, .term-grid, .quick-grid, .four-col { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .cause-grid, .details-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .page { width: min(100% - 22px, 1180px); padding-top: 22px; }
+  .hero, .section, .final-box { padding: 22px; border-radius: 22px; }
+  .summary-grid, .term-grid, .quick-grid, .four-col { grid-template-columns: 1fr; }
+  .event { grid-template-columns: 1fr; }
+  .date { min-height: 66px; }
+  .event > div:last-child { padding: 0 16px 16px; }
+  .key-line { grid-template-columns: 1fr; gap: 6px; }
+  summary { align-items: flex-start; flex-direction: column; }
+  .hero::after { font-size: 82px; }
+}
+
+.related-card { display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:16px 20px; margin:-10px 0 24px; background:rgba(255,250,243,.90); border:1px solid var(--line); border-radius:22px; box-shadow:var(--shadow-small); }
+.related-card b { color:var(--title); }
+.related-card a { color:var(--title); background:#f3eadf; border:1px solid rgba(91,62,36,.16); border-radius:999px; text-decoration:none; padding:8px 12px; font-weight:700; font-size:14px; }
+.related-card a:hover { background:#e5d2bb; }
+.badge-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
+.badge { display:inline-flex; align-items:center; color:var(--title); background:#f3eadf; border:1px solid rgba(91,62,36,.14); border-radius:999px; padding:6px 10px; font-weight:700; font-size:14px; }
+blockquote { margin:16px 0 0; padding:16px 20px; background:#fff8ef; border-left:6px solid rgba(122,79,42,.48); border-radius:16px; color:var(--muted); font-size:17px; line-height:1.7; }
+.mini-table table { min-width:560px; }
+@media print {
+  body { background:#fff !important; }
+  body::before { display:none; }
+  .page { width:100%; padding:0; }
+  .topbar, .nav-card, .related-card { display:none !important; }
+  .hero, .section, .final-box { box-shadow:none; border:1px solid #cbb9a8; break-inside:avoid-page; }
+  details { break-inside:avoid-page; }
+  details > summary::after { display:none; }
+}
+
+
+@media (max-width: 680px) {
+  .subtitle, .section-intro, p, li, dd,
+  .summary-card span, .quick-card span, .term-card span, .micro-card span,
+  .details-body, .key-line span, .event > div:last-child, th, td,
+  .definition, .note, blockquote {
+    text-align: left;
+    text-align-last: auto;
+    hyphens: none;
+  }
+}
+
+
+td { text-align: left; text-align-last: auto; }
+
+  
+
+/* Extensii pentru seria „Civilizația bizantină” */
+.series-links { display:flex; gap:9px; flex-wrap:wrap; margin-top:20px; }
+.series-links a { color:var(--title); background:#fff; border:1px solid rgba(91,62,36,.16); border-radius:999px; padding:9px 13px; text-decoration:none; font-weight:800; box-shadow:0 8px 20px rgba(0,0,0,.10); }
+.series-links a[aria-current="page"] { background:var(--accent); color:#fffaf3; }
+.series-links a:hover { transform:translateY(-1px); }
+.quote-box { margin-top:15px; padding:18px 20px; background:#fffdf9; border:1px solid rgba(91,62,36,.15); border-left:6px solid var(--accent-2); border-radius:18px; color:var(--muted); font-size:17px; line-height:1.72; text-align:justify; text-align-last:left; }
+.step-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:18px; }
+.step-card { background:#fff; border:1px solid rgba(91,62,36,.14); border-radius:20px; padding:18px; box-shadow:var(--shadow-small); }
+.step-card::before { content:attr(data-step); display:inline-flex; width:34px; height:34px; align-items:center; justify-content:center; border-radius:50%; background:var(--accent); color:#fff; font-weight:900; margin-bottom:11px; }
+.step-card strong { display:block; color:var(--title); font-size:17px; margin-bottom:7px; }
+.step-card span { color:var(--muted); font-size:15.5px; line-height:1.58; }
+.status-strip { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:16px; }
+.status-item { background:linear-gradient(135deg,#fff,#fff7ec); border:1px solid rgba(91,62,36,.14); border-radius:18px; padding:16px; }
+.status-item b { display:block; color:var(--title); margin-bottom:6px; }
+.status-item span { color:var(--muted); line-height:1.55; font-size:15.5px; }
+footer { margin-top:24px; color:rgba(255,250,243,.80); text-align:center; font-size:14px; line-height:1.6; }
+@media (max-width:980px) { .step-grid { grid-template-columns:repeat(2,1fr); } .status-strip { grid-template-columns:1fr; } }
+@media (max-width:680px) { .step-grid { grid-template-columns:1fr; } .series-links a { width:100%; text-align:center; } h1 { font-size:clamp(34px,10vw,52px); } }
+
+
+/* Extensii pentru seria „Europa medievală” */
+.series-links{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}.series-links a{color:var(--title);background:#fff;border:1px solid rgba(91,62,36,.16);border-radius:999px;padding:9px 13px;text-decoration:none;font-weight:800;box-shadow:0 8px 20px rgba(0,0,0,.10)}.series-links a[aria-current="page"]{background:var(--accent);color:#fffaf3}.series-links a:hover{transform:translateY(-1px)}
+.chapter-banner{margin:18px 0;padding:18px 20px;border-radius:20px;background:linear-gradient(135deg,#fff7ec,#f0e4d4);border:1px solid rgba(91,62,36,.18);box-shadow:var(--shadow-small)}.chapter-banner strong{display:block;color:var(--title);font-size:20px;margin-bottom:6px}.chapter-banner span{display:block;color:var(--muted);font-size:16px;line-height:1.62}
+.fact-check{margin-top:16px;padding:18px 20px;background:#fff7ec;border:1px solid rgba(122,79,42,.26);border-left:6px solid #8a4c2a;border-radius:18px;color:var(--muted);font-size:16px;line-height:1.68}.fact-check strong{color:var(--title)}
+.catalogue{columns:3 260px;column-gap:18px;margin-top:12px}.catalogue-group{break-inside:avoid;background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:16px;margin:0 0 14px;box-shadow:var(--shadow-small)}.catalogue-group h4{margin:0 0 8px}.catalogue-group ul{margin:0;padding-left:20px}.catalogue-group li{font-size:15.5px;line-height:1.5;margin-bottom:5px}
+.verse{padding:16px 18px;margin:12px 0;background:#fffdf9;border-left:5px solid var(--accent-2);border-radius:0 16px 16px 0;color:var(--muted);font-style:italic;line-height:1.7}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px}.flow-item{position:relative;padding:16px;background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;box-shadow:var(--shadow-small)}.flow-item b{display:block;color:var(--title);margin-bottom:6px}.flow-item span{font-size:15px;color:var(--muted);line-height:1.5}.flow-item:not(:last-child)::after{content:'→';position:absolute;right:-14px;top:50%;transform:translateY(-50%);font-size:22px;color:var(--accent);font-weight:900;z-index:3}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}.badge{display:inline-flex;padding:6px 10px;border-radius:999px;background:#f3eadf;border:1px solid rgba(91,62,36,.13);color:var(--title);font-weight:800;font-size:13px}
+.source-map{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.source-map article{background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:17px;box-shadow:var(--shadow-small)}.source-map strong{display:block;color:var(--title);margin-bottom:6px}.source-map span{color:var(--muted);font-size:15.5px;line-height:1.55}
+footer{margin-top:24px;color:rgba(255,250,243,.80);text-align:center;font-size:14px;line-height:1.6}
+@media(max-width:980px){.flow{grid-template-columns:repeat(2,1fr)}.flow-item::after{display:none}.source-map{grid-template-columns:1fr}.catalogue{columns:2 240px}}
+@media(max-width:680px){.flow{grid-template-columns:1fr}.catalogue{columns:1}.series-links a{width:100%;text-align:center}h1{font-size:clamp(34px,10vw,52px)}}
+
+/* Extensii pentru seria „Franța napoleoniană” */
+.campaign-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}.campaign-card{background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:20px;padding:19px;box-shadow:var(--shadow-small)}.campaign-card .years{display:inline-flex;padding:4px 9px;border-radius:999px;background:#f3eadf;color:var(--title);font-weight:900;font-size:13px;margin-bottom:9px}.campaign-card h3{margin-bottom:7px}.campaign-card p{font-size:15.8px;margin:0}.battle-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px}.battle-item{position:relative;background:linear-gradient(135deg,#fff,#fff8ef);border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:16px;box-shadow:var(--shadow-small)}.battle-item b{display:block;color:var(--title);margin-bottom:5px}.battle-item span{display:block;color:var(--muted);font-size:14.5px;line-height:1.48}.coalition-table td:first-child{font-weight:800;color:var(--title);white-space:nowrap}.strategy-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.strategy-card{background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:17px;box-shadow:var(--shadow-small)}.strategy-card strong{display:block;color:var(--title);margin-bottom:7px}.strategy-card span{color:var(--muted);font-size:15.5px;line-height:1.55}.law-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.law-card{background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:20px;padding:20px;box-shadow:var(--shadow-small)}.law-card .law-year{display:block;color:var(--accent);font-size:14px;font-weight:900;margin-bottom:7px}.law-card h3{margin-bottom:8px}.law-card p{font-size:15.7px;margin:0}.legacy-scale{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}.legacy-item{background:linear-gradient(135deg,#fff,#f7eddf);border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:17px}.legacy-item b{display:block;color:var(--title);margin-bottom:6px}.legacy-item span{display:block;color:var(--muted);font-size:15px;line-height:1.52}.system-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px}.system-step{position:relative;background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:16px;box-shadow:var(--shadow-small)}.system-step b{display:block;color:var(--title);margin-bottom:6px}.system-step span{display:block;color:var(--muted);font-size:14.8px;line-height:1.5}.system-step:not(:last-child)::after{content:'→';position:absolute;right:-14px;top:50%;transform:translateY(-50%);font-size:22px;color:var(--accent);font-weight:900;z-index:3}.impact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.impact-card{background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:20px;padding:20px;box-shadow:var(--shadow-small)}.impact-card h3{margin-bottom:8px}.impact-card ul{margin:0;padding-left:21px}.impact-card li{font-size:15.8px;line-height:1.58;margin-bottom:6px}.correction{margin-top:16px;padding:18px 20px;background:#fff7ec;border:1px solid rgba(132,70,38,.25);border-left:6px solid #8a4c2a;border-radius:18px;color:var(--muted);font-size:16.5px;line-height:1.68}.correction strong{color:var(--title)}.quote-line{margin:14px 0 0;padding:16px 19px;background:#fffdf9;border-left:5px solid var(--accent-2);border-radius:0 16px 16px 0;color:var(--muted);font-style:italic;line-height:1.7}.mini-map{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.mini-map article{background:#fff;border:1px solid rgba(91,62,36,.14);border-radius:18px;padding:17px;box-shadow:var(--shadow-small)}.mini-map strong{display:block;color:var(--title);margin-bottom:6px}.mini-map span{display:block;color:var(--muted);font-size:15px;line-height:1.5}
+@media(max-width:980px){.campaign-grid,.law-grid{grid-template-columns:repeat(2,1fr)}.battle-strip,.strategy-grid,.legacy-scale,.system-flow{grid-template-columns:repeat(2,1fr)}.system-step::after{display:none}.impact-grid,.mini-map{grid-template-columns:1fr}}
+@media(max-width:680px){.campaign-grid,.law-grid,.battle-strip,.strategy-grid,.legacy-scale,.system-flow{grid-template-columns:1fr}}
+</style>
+</head>
+<body id="top" style="--hero-year:'1815';">
+<main class="page">
+<div class="topbar"><a class="back-link" href="index.html">← Înapoi la materiale</a><span class="tag">Material ajutător · Istorie universală · Franța napoleoniană</span></div>
+<section class="hero"><p class="eyebrow">Istorie universală · Epoca modernă · 1796–1815</p><h1>Franța napoleoniană: campanii militare</h1><p class="subtitle">Ascensiunea lui Napoleon, campaniile din Italia și Egipt, războaiele coalițiilor, apogeul Marii Armate, războiul peninsular, dezastrul din Rusia, Leipzig, Waterloo și bilanțul militar al Imperiului.</p><div class="series-links"><a href="univ-franta-napoleoniana-campanii-militare.html" aria-current="page">Campanii militare</a><a href="univ-franta-napoleoniana-legi-moderne.html">Legi moderne</a><a href="univ-franta-napoleoniana-sistemul-continental.html">Sistemul continental</a></div></section>
+<div class="related-card"><b>Seria Franța napoleoniană:</b><a href="univ-franta-napoleoniana-campanii-militare.html" aria-current="page">Campanii militare</a><a href="univ-franta-napoleoniana-legi-moderne.html">Legi moderne</a><a href="univ-franta-napoleoniana-sistemul-continental.html">Sistemul continental</a></div>
+<nav class="nav-card" aria-label="Cuprinsul paginii"><b>Cuprins:</b><a href="#ascensiune">Ascensiune</a><a href="#italia">Italia</a><a href="#egipt">Egipt</a><a href="#consulat">Consulat</a><a href="#coalitii">Coaliții</a><a href="#strategie">Strategie</a><a href="#iberica">Peninsula Iberică</a><a href="#rusia">Rusia</a><a href="#cadere">Căderea</a><a href="#bilant">Bilanț</a><button class="mini-btn" type="button" data-action="open">Deschide explicațiile</button><button class="mini-btn" type="button" data-action="close">Închide explicațiile</button></nav>
+
+<section class="section" id="ascensiune">
+<h2>I. De la ofițer corsican la conducător al Franței</h2>
+<p class="section-intro">Napoleon Bonaparte s-a format în contextul Revoluției Franceze, când vechea ierarhie militară s-a prăbușit, iar talentul, oportunitatea și loialitatea politică puteau accelera spectaculos o carieră. Războaiele începute în 1792 pentru apărarea Revoluției au devenit, sub Napoleon, instrumente de hegemonie continentală și de construcție a unei legende personale.</p>
+<div class="summary-grid"><article class="summary-card"><strong>15 august 1769</strong><span>Nașterea la Ajaccio, la un an după trecerea Corsicii sub control francez.</span></article><article class="summary-card"><strong>1793</strong><span>Se remarcă la asediul Toulonului și este avansat general de brigadă la 24 de ani.</span></article><article class="summary-card"><strong>1795</strong><span>Înăbușă insurecția regalistă din 13 Vendémiaire și devine indispensabil Directoratului.</span></article><article class="summary-card"><strong>1799</strong><span>Lovitura de stat de la 18–19 Brumar îl transformă în Prim-Consul și centrul puterii.</span></article></div>
+<details open><summary>Corsica, familia și relația cu Franța</summary><div class="details-body"><p>Corsica fusese legată de Republica Genova, care a cedat Franței drepturile asupra insulei în 1768. Familia Buonaparte aparținea micii nobilimi locale și a obținut recunoaștere în sistemul nobiliar francez, ceea ce i-a permis lui Napoleon să urmeze școli militare la Brienne și Paris. Inițial apropiat de patriotismul corsican, el s-a rupt de Pasquale Paoli și s-a fixat definitiv în serviciul Franței revoluționare.</p></div></details>
+<div class="correction"><strong>Corecții față de formulări răspândite:</strong> Toulonul a fost recucerit în decembrie 1793, nu în 1792; Napoleon avea 24 de ani când a fost avansat. Relația dintre Barras, Joséphine de Beauharnais și Napoleon a fost mediată de cercurile politice ale Directoratului, dar povestea potrivit căreia Barras „i-ar fi livrat amanta” este o versiune polemică, imposibil de tratat drept fapt sigur.</div>
+</section>
+
+<section class="section" id="italia">
+<h2>II. Prima campanie din Italia, 1796–1797</h2>
+<p class="section-intro">Comandând Armata Italiei — prost aprovizionată, dar mobilă și motivată — Napoleon a separat armatele Piemontului și Austriei, a trăit din resursele teritoriilor ocupate și a transformat succesele militare în influență politică.</p>
+<div class="timeline"><article class="event"><div class="date">aprilie 1796</div><div><h3>Montenotte și capitularea Piemontului</h3><p>Prin manevre rapide, francezii înving succesiv adversari care, numeric, puteau fi superiori dacă ar fi luptat împreună.</p></div></article><article class="event"><div class="date">10 mai 1796</div><div><h3>Lodi</h3><p>Trecerea podului peste Adda devine un episod central al mitologiei napoleoniene, deși victoria nu a fost decisivă strategic.</p></div></article><article class="event"><div class="date">15–17 nov. 1796</div><div><h3>Arcole</h3><p>Napoleon împiedică eliberarea Mantovei și consolidează controlul francez asupra nordului Italiei.</p></div></article><article class="event"><div class="date">14–15 ian. 1797</div><div><h3>Rivoli</h3><p>Înfrângerea ultimei mari tentative austriece de salvare a Mantovei decide campania.</p></div></article><article class="event"><div class="date">17 oct. 1797</div><div><h3>Tratatul de la Campo Formio</h3><p>Austria recunoaște anexarea Belgiei de către Franța și republicile-satelit din nordul Italiei; primește o mare parte din teritoriile Veneției.</p></div></article></div>
+<div class="three-col"><article class="info-card"><h3>Metoda</h3><p>Concentrarea rapidă împotriva unei părți a inamicului, marșuri forțate, folosirea terenului și comandă centralizată.</p></article><article class="info-card"><h3>Finanțarea</h3><p>Contribuții, rechiziții și transferuri de artă au întreținut armata și au alimentat vistieria franceză.</p></article><article class="info-card"><h3>Efectul politic</h3><p>Napoleon negociază aproape autonom, fondează republici-surori și începe să se comporte ca arbitru al politicii franceze.</p></article></div>
+</section>
+
+<section class="section" id="egipt">
+<h2>III. Expediția din Egipt și Siria, 1798–1801</h2>
+<p class="section-intro">Cum o invazie directă a Marii Britanii părea imposibilă, Directoratul a aprobat o expediție menită să lovească legăturile comerciale britanice cu India și să extindă influența franceză în Mediterana orientală. Egiptul nu era colonie britanică, ci provincie otomană controlată în practică de elite mameluce.</p>
+<div class="two-col"><article class="info-card"><h3>Succese terestre</h3><ul class="clean"><li>ocuparea Maltei în iunie 1798;</li><li>victoria de la Piramide, lângă Giza, la 21 iulie 1798;</li><li>ocuparea Cairo-ului;</li><li>campania din Siria, cucerirea Jaffei și victoria terestră de la Abukir din 1799.</li></ul></article><article class="info-card"><h3>Eșecuri strategice</h3><ul class="clean"><li>flota franceză este distrusă de Nelson în Bătălia Nilului, în golful Abukir, 1–2 august 1798;</li><li>asediul Acrei eșuează în 1799;</li><li>epidemii, revolte și izolarea maritimă erodează armata;</li><li>Napoleon revine în Franța, lăsând comanda lui Jean-Baptiste Kléber.</li></ul></article></div>
+<details open><summary>Savanții, Piatra de la Rosetta și nașterea egiptologiei</summary><div class="details-body"><p>Expediția a inclus ingineri, desenatori, naturaliști și orientaliști reuniți în Institutul Egiptului. În iulie 1799 a fost găsită Piatra de la Rosetta, cu texte în hieroglife, demotică și greacă. Cercetările au fost sintetizate ulterior în monumentala <em>Description de l’Égypte</em>. Jean-François Champollion a anunțat descifrarea decisivă a hieroglifelor în 1822.</p></div></details>
+<div class="correction"><strong>Bilanț:</strong> expediția a fost un eșec naval și geopolitic, dar a produs efecte științifice și culturale majore. Napoleon a transformat însă revenirea sa într-o victorie propagandistică și a exploatat criza Directoratului.</div>
+</section>
+
+<section class="section" id="consulat">
+<h2>IV. Consulatul și reluarea războiului</h2>
+<div class="timeline"><article class="event"><div class="date">9–10 nov. 1799</div><div><h3>18–19 Brumar</h3><p>Napoleon, Sieyès, Ducos și conducători militari înlătură Directoratul. Consiliile sunt dispersate, iar o comisie redactează Constituția anului VIII.</p></div></article><article class="event"><div class="date">14 iun. 1800</div><div><h3>Marengo</h3><p>Victoria asupra Austriei în nordul Italiei consolidează noul regim. În Germania, victoria lui Moreau la Hohenlinden completează presiunea franceză.</p></div></article><article class="event"><div class="date">1801</div><div><h3>Pacea de la Lunéville</h3><p>Austria acceptă dominația franceză pe malul stâng al Rinului și în Italia.</p></div></article><article class="event"><div class="date">1802</div><div><h3>Pacea de la Amiens</h3><p>Pauză scurtă cu Marea Britanie; Napoleon devine consul pe viață prin plebiscit.</p></div></article></div>
+<div class="note"><strong>De la pace la Imperiu:</strong> războiul cu Marea Britanie reîncepe în 1803. La 2 decembrie 1804, în prezența papei Pius al VII-lea, Napoleon se încoronează împărat și o încoronează pe Joséphine, afirmând că legitimitatea sa derivă din victorie, națiune și dinastie, nu din vechiul drept al Bourbonilor.</div>
+</section>
+
+<section class="section" id="coalitii">
+<h2>V. Coalițiile și apogeul Imperiului, 1805–1811</h2>
+<div class="table-wrap coalition-table"><table><thead><tr><th>Coaliție</th><th>Adversari principali</th><th>Momente decisive</th><th>Consecințe</th></tr></thead><tbody><tr><td>A III-a<br>1805</td><td>Marea Britanie, Austria, Rusia</td><td>Trafalgar; Ulm; Austerlitz</td><td>Franța pierde perspectiva invaziei Angliei, dar zdrobește armatele austro-ruse; Pacea de la Pressburg.</td></tr><tr><td>A IV-a<br>1806–1807</td><td>Prusia, Rusia, Marea Britanie</td><td>Jena–Auerstedt; Eylau; Friedland</td><td>Prusia pierde aproximativ jumătate din teritoriu; Tilsit; Marele Ducat al Varșoviei și Regatul Westfaliei.</td></tr><tr><td>A V-a<br>1809</td><td>Austria, sprijinită de Marea Britanie</td><td>Aspern–Essling; Wagram</td><td>Austria este din nou învinsă; Tratatul de la Schönbrunn; apogeul teritorial al Imperiului.</td></tr><tr><td>A VI-a<br>1813–1814</td><td>Rusia, Prusia, Austria, Marea Britanie și aliați</td><td>Leipzig; campania din Franța; căderea Parisului</td><td>Abdicarea din 1814 și exilul pe Elba.</td></tr><tr><td>A VII-a<br>1815</td><td>Marile puteri reunite</td><td>Quatre Bras; Ligny; Waterloo</td><td>A doua abdicare; exilul pe Sfânta Elena; restaurarea Bourbonilor.</td></tr></tbody></table></div>
+<div class="battle-strip"><article class="battle-item"><b>Trafalgar</b><span>21 octombrie 1805 · Nelson distruge flota franco-spaniolă.</span></article><article class="battle-item"><b>Austerlitz</b><span>2 decembrie 1805 · „Bătălia celor trei împărați”.</span></article><article class="battle-item"><b>Jena–Auerstedt</b><span>14 octombrie 1806 · armata prusacă este zdrobită.</span></article><article class="battle-item"><b>Friedland</b><span>14 iunie 1807 · Rusia acceptă negocierile de la Tilsit.</span></article><article class="battle-item"><b>Wagram</b><span>5–6 iulie 1809 · victoria decisivă asupra Austriei.</span></article></div>
+<details><summary>Harta politică napoleoniană</summary><div class="details-body"><div class="mini-map"><article><strong>Teritorii anexate</strong><span>Belgia, Țările de Jos, părți din Italia, coasta nord-germană și teritorii ilirice, integrate direct în Imperiul Francez.</span></article><article><strong>State-satelit</strong><span>Regatul Italiei, Confederația Rinului, Regatul Westfaliei, Marele Ducat al Varșoviei, Regatul Neapolelui.</span></article><article><strong>Dinastia Bonaparte</strong><span>Joseph în Neapole și apoi Spania, Louis în Olanda, Jérôme în Westfalia; loialitatea familială nu a eliminat interesele locale.</span></article></div></div></details>
+</section>
+
+<section class="section" id="strategie">
+<h2>VI. De ce a câștigat Napoleon atât de des?</h2>
+<div class="strategy-grid"><article class="strategy-card"><strong>Sistemul corpurilor de armată</strong><span>Unități capabile să mărșăluiască separat, să se susțină temporar și să se concentreze rapid pentru bătălie.</span></article><article class="strategy-card"><strong>Viteză operațională</strong><span>Marșuri forțate, bagaje reduse și exploatarea drumurilor permiteau surprinderea adversarului.</span></article><article class="strategy-card"><strong>Concentrarea forței</strong><span>Napoleon căuta poziția centrală, separa armatele coaliției și lovea succesiv.</span></article><article class="strategy-card"><strong>Artilerie și stat-major</strong><span>Artileria mobilă, cartografia și transmiterea rapidă a ordinelor susțineau manevra.</span></article><article class="strategy-card"><strong>Conscripție și promovare</strong><span>Revoluția oferise Franței efective mari, iar promovarea meritocratică a creat comandanți energici.</span></article><article class="strategy-card"><strong>Propagandă</strong><span>Buletinele Marii Armate amplificau victoriile, minimizau pierderile și construiau imaginea împăratului.</span></article><article class="strategy-card"><strong>Rechiziții</strong><span>Armata trăia parțial din teritoriile ocupate, reducând convoaiele, dar provocând ostilitate și rezistență.</span></article><article class="strategy-card"><strong>Limita sistemului</strong><span>Pe distanțe uriașe, în război de gherilă sau împotriva unei coaliții coordonate, avantajele se diminuau.</span></article></div>
+</section>
+
+<section class="section" id="iberica">
+<h2>VII. Războiul din Peninsula Iberică, 1807–1814</h2>
+<p class="section-intro">Refuzul Portugaliei de a aplica strict blocada continentală a dus la invazia din 1807. În 1808, Napoleon a forțat abdicarea Bourbonilor spanioli și l-a instalat pe fratele său Joseph, transformând o operațiune de control într-un război național și imperial de lungă durată.</p>
+<div class="two-col"><article class="info-card"><h3>„Ulcerul spaniol”</h3><ul class="clean"><li>revolta de la Madrid din 2 mai 1808;</li><li>capitularea franceză de la Bailén, prima mare înfrângere terestră a unei armate napoleoniene;</li><li>gherila atacă garnizoanele, convoaiele și administrația;</li><li>represiunea franceză alimentează rezistența.</li></ul></article><article class="info-card"><h3>Intervenția britanică</h3><ul class="clean"><li>Arthur Wellesley, viitorul duce de Wellington, construiește o bază în Portugalia;</li><li>Liniile de la Torres Vedras protejează Lisabona;</li><li>armata anglo-portugheză avansează în Spania și apoi spre Franța;</li><li>războiul consumă sute de mii de soldați și resurse.</li></ul></article></div>
+<div class="quote-line">Termenul <em>guerrilla</em> — „micul război” — a intrat în vocabularul european prin experiența spaniolă, deși forme de luptă neregulată existaseră cu mult înainte.</div>
+</section>
+
+<section class="section" id="rusia">
+<h2>VIII. Campania din Rusia, 1812</h2>
+<div class="timeline"><article class="event"><div class="date">24 iunie</div><div><h3>Trecerea Niemenului</h3><p>O armată multinațională de aproximativ 600.000 de oameni intră în Imperiul Rus, dar numai o parte sunt francezi.</p></div></article><article class="event"><div class="date">7 sept.</div><div><h3>Borodino</h3><p>Bătălie extrem de sângeroasă; rușii se retrag, dar armata lor nu este distrusă.</p></div></article><article class="event"><div class="date">14 sept.</div><div><h3>Intrarea în Moscova</h3><p>Orașul este în mare parte evacuat și devastat de incendii. Alexandru I refuză pacea.</p></div></article><article class="event"><div class="date">oct.–dec.</div><div><h3>Retragerea</h3><p>Foamea, frigul, bolile, epuizarea, atacurile cazacilor și luptele de la Maloiaroslavets și Berezina distrug armata.</p></div></article></div>
+<div class="correction"><strong>Despre pierderi:</strong> cifra „doar 7.000 s-au întors” simplifică excesiv. Efectivele diferă după criteriul folosit, dar din forța enormă care a trecut frontiera numai o mică fracțiune a revenit organizat și aptă de luptă; pierderile prin moarte, capturare, dezertare și boală au fost catastrofale.</div>
+<details open><summary>De ce a eșuat invazia?</summary><div class="details-body"><ul class="clean"><li>obiectiv politic neclar: constrângerea Rusiei să revină la sistemul continental, fără un plan realist de încheiere rapidă;</li><li>distanțe uriașe și linii logistice vulnerabile;</li><li>retragerea controlată și distrugerea depozitelor de către ruși;</li><li>lipsa furajelor și mortalitatea cailor, care paralizează cavaleria și transportul;</li><li>refuzul lui Alexandru I de a negocia după ocuparea Moscovei;</li><li>retragerea tardivă și apariția iernii peste o armată deja ruinată.</li></ul></div></details>
+</section>
+
+<section class="section" id="cadere">
+<h2>IX. Leipzig, prima abdicare și Cele O Sută de Zile</h2>
+<div class="timeline"><article class="event"><div class="date">16–19 oct. 1813</div><div><h3>Leipzig — Bătălia Națiunilor</h3><p>Cea mai mare bătălie europeană de până atunci. Napoleon este învins de forțele ruse, prusace, austriece și suedeze.</p></div></article><article class="event"><div class="date">31 mart. 1814</div><div><h3>Căderea Parisului</h3><p>Coaliția intră în capitală după o campanie remarcabilă defensivă a lui Napoleon, insuficientă numeric.</p></div></article><article class="event"><div class="date">11 apr. 1814</div><div><h3>Tratatul de la Fontainebleau</h3><p>Napoleon abdică și primește suveranitatea insulei Elba. Fontainebleau este tratat și loc al abdicării, nu o „bătălie”.</p></div></article><article class="event"><div class="date">1 mart. 1815</div><div><h3>Revenirea</h3><p>Debarcă în Franța, armatele trimise să-l oprească i se alătură, iar Ludovic XVIII părăsește Parisul.</p></div></article><article class="event"><div class="date">18 iun. 1815</div><div><h3>Waterloo</h3><p>Armata anglo-aliată a lui Wellington rezistă până la sosirea prusacilor lui Blücher. Napoleon pierde ultima sa bătălie.</p></div></article></div>
+<p>Napoleon abdică din nou la 22 iunie 1815. Britanicii îl trimit pe insula Sfânta Elena, în Atlanticul de Sud, unde moare la <strong>5 mai 1821</strong>. Congresul de la Viena, reunit din 1814, reconstruiește echilibrul european și restaurează dinastii, dar nu poate șterge transformările juridice și naționale ale epocii.</p>
+</section>
+
+<section class="final-box" id="bilant"><h2>X. Bilanțul campaniilor napoleoniene</h2><p>Napoleon a unit talentul militar, administrația centralizată și mobilizarea societății revoluționare. A distrus vechi structuri feudale, a redesenat hărți și a răspândit coduri juridice, dar a impus ocupație, rechiziții, conscripție și dominație dinastică. Imperiul a eșuat deoarece nu a putut învinge puterea maritimă britanică, a provocat rezistențe naționale, a supraextins resursele Franței și a permis adversarilor să-i învețe metodele și să formeze o coaliție durabilă.</p></section>
+
+<footer>Material amplu, structurat și corectat istoric · Seria „Franța napoleoniană”</footer>
+</main>
+<script>
+const openBtn=document.querySelector('[data-action="open"]');const closeBtn=document.querySelector('[data-action="close"]');
+if(openBtn)openBtn.addEventListener('click',()=>document.querySelectorAll('details').forEach(d=>d.open=true));
+if(closeBtn)closeBtn.addEventListener('click',()=>document.querySelectorAll('details').forEach(d=>d.open=false));
+</script>
+</body></html>

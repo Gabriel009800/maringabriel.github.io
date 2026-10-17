@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ro-al-doilea-razboi-mondial-inceputul-conflictului</title>
+  <style>
+:root {
+  --bg: #f6f0e7;
+  --paper: #fffaf3;
+  --paper-2: #ffffff;
+  --ink: #2f241c;
+  --title: #3c2a1e;
+  --muted: #5b4a3d;
+  --accent: #6f4a2b;
+  --accent-2: #9b6a3c;
+  --accent-soft: #f0e4d4;
+  --line: rgba(91, 62, 36, 0.18);
+  --line-strong: rgba(91, 62, 36, 0.34);
+  --shadow: 0 26px 70px rgba(0,0,0,.28);
+  --shadow-small: 0 12px 30px rgba(0,0,0,.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 78, 40, .72), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(112, 63, 31, .44), transparent 36%),
+    radial-gradient(circle at 0% 50%, rgba(29,13,6,.92), transparent 42%),
+    radial-gradient(circle at 100% 50%, rgba(29,13,6,.92), transparent 42%),
+    linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+body::before {
+  content:""; position: fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0,0,0,.10) 48%, rgba(0,0,0,.44) 100%),
+    linear-gradient(90deg, rgba(0,0,0,.20), transparent 18%, transparent 82%, rgba(0,0,0,.20));
+}
+.page { position:relative; z-index:1; width:min(1180px, calc(100% - 32px)); margin:0 auto; padding:34px 0 70px; }
+.topbar { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:18px; flex-wrap:wrap; }
+.back-link, .tag { display:inline-flex; align-items:center; border:1px solid var(--line); background:rgba(255,250,243,.84); color:var(--title); border-radius:999px; padding:10px 15px; text-decoration:none; font-size:15px; font-weight:700; box-shadow:var(--shadow-small); }
+.back-link:hover { background:#fff6eb; }
+.hero, .section, .nav-card, .final-box { background:rgba(255,250,243,.96); border:1px solid var(--line); border-radius:28px; box-shadow:var(--shadow); }
+.hero { padding:38px; margin-bottom:24px; position:relative; overflow:hidden; }
+.hero::after { content: attr(data-watermark); position:absolute; right:26px; bottom:-25px; font-size:108px; font-weight:900; letter-spacing:-4px; color:rgba(122,79,42,.08); pointer-events:none; }
+.eyebrow { margin:0 0 8px; font-size:16px; color:var(--accent); font-weight:800; letter-spacing:.08em; text-transform:uppercase; text-align:left; }
+h1 { margin:0; font-size:clamp(38px,5vw,62px); line-height:1.04; color:var(--title); letter-spacing:-1.4px; text-align:left; }
+.subtitle { margin:18px 0 0; max-width:990px; font-size:19px; line-height:1.78; color:var(--muted); text-align:justify; text-align-last:left; }
+.summary-grid, .three-col, .two-col, .term-grid, .quick-grid, .cause-grid { display:grid; gap:14px; }
+.summary-grid { grid-template-columns:repeat(4, 1fr); margin-top:26px; }
+.summary-card, .info-card, .wide-card, .term-card, .quick-card, .source-note, .micro-card, .warning-box { background:var(--paper-2); border:1px solid rgba(91,62,36,.14); border-radius:20px; box-shadow:var(--shadow-small); text-align:justify; text-align-last:left; }
+.summary-card { padding:16px; min-height:132px; }
+.summary-card strong, .quick-card strong, .term-card strong, .micro-card strong { display:block; color:var(--title); font-size:17px; margin-bottom:8px; text-align:left; }
+.summary-card span, .quick-card span, .term-card span, .micro-card span { display:block; color:var(--muted); font-size:15.5px; line-height:1.56; text-align:justify; text-align-last:left; }
+.nav-card { display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:18px 20px; margin-bottom:24px; }
+.nav-card b { color:var(--title); margin-right:2px; }
+.nav-card a, .mini-btn { color:var(--title); background:var(--accent-soft); border:1px solid rgba(91,62,36,.16); border-radius:999px; text-decoration:none; padding:8px 12px; font-weight:700; font-size:14px; cursor:pointer; font-family:inherit; }
+.nav-card a:hover, .mini-btn:hover { background:#e5d2bb; }
+.section { padding:30px; margin-bottom:24px; }
+h2 { margin:0 0 14px; color:var(--title); font-size:clamp(28px,3vw,38px); line-height:1.15; text-align:left; }
+h3 { margin:0 0 12px; color:var(--title); font-size:22px; line-height:1.22; text-align:left; }
+h4 { margin:16px 0 8px; color:var(--title); font-size:18px; text-align:left; }
+.section-intro, p, li, dd { font-size:17px; line-height:1.72; color:var(--muted); text-align:justify; text-align-last:left; hyphens:auto; }
+.section-intro { margin:0 0 20px; max-width:1000px; }
+.three-col { grid-template-columns:repeat(3,1fr); }
+.two-col { grid-template-columns:repeat(2,1fr); }
+.cause-grid { grid-template-columns:1.05fr .95fr; }
+.term-grid { grid-template-columns:repeat(4,1fr); }
+.quick-grid { grid-template-columns:repeat(4,1fr); margin-top:18px; }
+.info-card, .wide-card, .term-card, .quick-card, .micro-card, .warning-box { padding:20px; }
+.wide-card { margin-top:14px; }
+.wide-card p:last-child, .info-card p:last-child { margin-bottom:0; }
+.clean, .number-list { margin:0; padding-left:22px; }
+.clean li, .number-list li { margin:0 0 9px; padding-left:2px; }
+.clean li:last-child, .number-list li:last-child { margin-bottom:0; }
+.mini-title { display:inline; color:var(--title); font-weight:800; margin-right:5px; }
+.date-pill { display:inline-block; color:var(--title); font-weight:800; background:#f3eadf; border:1px solid rgba(91,62,36,.13); border-radius:999px; padding:2px 9px; margin-right:5px; white-space:nowrap; text-align:left; }
+.definition, .note { margin-top:18px; background:#fff8ef; border:1px solid rgba(122,79,42,.22); border-left:6px solid rgba(122,79,42,.48); border-radius:18px; padding:18px 20px; color:var(--muted); font-size:17px; line-height:1.7; text-align:justify; text-align-last:left; }
+.definition strong, .note strong { color:var(--title); }
+details { background:#fffdf9; border:1px solid rgba(91,62,36,.14); border-radius:20px; box-shadow:var(--shadow-small); margin-top:14px; overflow:hidden; }
+details[open] { background:#fffaf3; }
+summary { cursor:pointer; list-style:none; padding:18px 20px; font-size:19px; font-weight:800; color:var(--title); display:flex; justify-content:space-between; align-items:center; gap:18px; text-align:left; }
+summary::-webkit-details-marker { display:none; }
+summary::after { content:"Deschide"; color:var(--muted); font-size:14px; font-weight:700; background:#f3eadf; border:1px solid rgba(91,62,36,.14); border-radius:999px; padding:7px 11px; white-space:nowrap; }
+details[open] > summary::after { content:"Ascunde"; }
+.details-body { border-top:1px solid rgba(91,62,36,.12); padding:18px 20px 20px; text-align:justify; text-align-last:left; }
+.details-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+.nested-details { margin-top:10px; box-shadow:none; background:#fff; }
+.nested-details summary { font-size:17px; padding:14px 16px; }
+.key-line { display:grid; grid-template-columns:240px 1fr; gap:14px; padding:14px 0; border-bottom:1px dashed rgba(91,62,36,.18); }
+.key-line:last-child { border-bottom:0; }
+.key-line strong { color:var(--title); text-align:left; }
+.key-line span { color:var(--muted); line-height:1.65; text-align:justify; text-align-last:left; }
+.timeline { position:relative; display:grid; gap:14px; margin-top:18px; }
+.event { display:grid; grid-template-columns:150px 1fr; gap:18px; align-items:stretch; background:#fff; border:1px solid rgba(91,62,36,.14); border-radius:20px; box-shadow:var(--shadow-small); overflow:hidden; }
+.date { background:linear-gradient(180deg,#7a4f2a,#5b351b); color:#fffaf3; display:flex; align-items:center; justify-content:center; text-align:center; padding:14px; font-size:18px; line-height:1.25; font-weight:900; letter-spacing:.2px; }
+.event > div:last-child { padding:17px 18px 18px 0; text-align:justify; text-align-last:left; }
+.event h3 { margin-bottom:6px; }
+.event p { margin:0; }
+.small-muted { font-size:15px; color:#725c49; line-height:1.6; text-align:justify; text-align-last:left; }
+.warning-box { background:#fff7ec; border-color:rgba(122,79,42,.22); margin-top:16px; }
+.final-box { padding:28px; background:linear-gradient(135deg,#fffaf3,#f4e4d1); border-color:rgba(91,62,36,.25); }
+.final-box p { margin-bottom:0; }
+.table-wrap { overflow-x:auto; margin-top:18px; border-radius:20px; box-shadow:var(--shadow-small); border:1px solid rgba(91,62,36,.14); background:#fff; }
+table { width:100%; border-collapse:collapse; min-width:760px; }
+th, td { padding:14px 16px; border-bottom:1px solid rgba(91,62,36,.13); vertical-align:top; font-size:16px; line-height:1.58; color:var(--muted); text-align:left; }
+th { color:var(--title); background:#f3eadf; font-weight:900; }
+tr:last-child td { border-bottom:0; }
+.badge { display:inline-block; padding:3px 9px; border-radius:999px; background:#f3eadf; border:1px solid rgba(91,62,36,.13); color:var(--title); font-weight:800; font-size:14px; margin:0 3px 5px 0; }
+@media (max-width: 980px) { .summary-grid, .three-col, .term-grid, .quick-grid { grid-template-columns:repeat(2,1fr); } .two-col, .cause-grid, .details-grid { grid-template-columns:1fr; } }
+@media (max-width: 680px) { .page { width:min(100% - 22px, 1180px); padding-top:22px; } .hero, .section, .final-box { padding:22px; border-radius:22px; } .summary-grid, .term-grid, .quick-grid { grid-template-columns:1fr; } .event { grid-template-columns:1fr; } .date { min-height:66px; } .event > div:last-child { padding:0 16px 16px; } .key-line { grid-template-columns:1fr; gap:6px; } summary { align-items:flex-start; flex-direction:column; } .hero::after { font-size:82px; } }
+</style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a class="back-link" href="./">← Înapoi la materiale</a>
+      <span class="tag">Material ajutător · Istoria românilor · Epoca contemporană</span>
+    </div>
+
+    <section class="hero" data-watermark="1939">
+      <p class="eyebrow">Al Doilea Război Mondial · Perspectiva României</p>
+      <h1>Începutul conflictului</h1>
+      <p class="subtitle">Din perspectiva României, începutul celui de-al Doilea Război Mondial înseamnă prăbușirea sistemului de securitate interbelic, neutralitatea dintre <strong>6 septembrie 1939</strong> și <strong>22 iunie 1941</strong>, pierderile teritoriale din <strong>1940</strong> și alegerea alianței cu Germania pentru recuperarea Basarabiei și nordului Bucovinei.</p>
+      <div class="summary-grid">
+        <div class="summary-card"><strong>Interval-cheie</strong><span>1918-1941: de la România Mare și sistemul de la Versailles la intrarea României în război, la 22 iunie 1941.</span></div>
+<div class="summary-card"><strong>Problema centrală</strong><span>România încearcă să apere frontierele din 1918 într-o Europă dominată tot mai mult de revizionism, dictaturi și presiuni militare.</span></div>
+<div class="summary-card"><strong>Ruptura din 1940</strong><span>26 iunie, 30 august și 7 septembrie 1940 marchează pierderea Basarabiei, nordului Bucovinei, nord-vestului Transilvaniei și Cadrilaterului.</span></div>
+<div class="summary-card"><strong>Intrarea în război</strong><span>22 iunie 1941: România intră în război alături de Germania împotriva URSS, sub lozinca recuperării Basarabiei și nordului Bucovinei.</span></div>
+      </div>
+    </section>
+
+    
+<nav class="nav-card" aria-label="Navigare între lecții">
+  <b>Al Doilea Război Mondial · România:</b>
+  <a href="ro-al-doilea-razboi-mondial-inceputul-conflictului.html">Începutul conflictului</a>
+  <a href="ro-al-doilea-razboi-mondial-desfasurarea-conflictului.html">Desfășurarea conflictului</a>
+  <a href="ro-al-doilea-razboi-mondial-consecintele-conflictului.html">Consecințele conflictului</a>
+</nav>
+
+<nav class="nav-card" aria-label="Cuprins local">
+  <b>Cuprins:</b>
+  <a href="#context">I. Context</a>
+  <a href="#neutralitate">II. Neutralitatea</a>
+  <a href="#ruptura-1940">III. Anul 1940</a>
+  <a href="#antonescu">IV. Antonescu</a>
+  <a href="#intrare">V. 22 iunie 1941</a>
+  <a href="#sinteza">Sinteză</a>
+</nav>
+
+
+    
+<section class="section" id="cronologie">
+  <h2>Cronologie extinsă: de la România Mare la 22 iunie 1941</h2>
+  <p class="section-intro">Pentru România, începutul celui de-al Doilea Război Mondial nu poate fi înțeles doar prin atacarea Poloniei de către Germania, la <strong>1 septembrie 1939</strong>. El trebuie urmărit de la construcția României Mari, după <strong>1918</strong>, până la prăbușirea garanțiilor externe, la izolarea diplomatică din <strong>1940</strong> și la intrarea efectivă în război, la <strong>22 iunie 1941</strong>.</p>
+  <div class="timeline">
+    <article class="event"><div class="date">1 dec.<br>1918</div><div><h3>România Mare devine proiect politic unificat</h3><p>Unirea Transilvaniei cu România, alături de unirea Basarabiei și Bucovinei din același an, creează statul român întregit. Tocmai aceste frontiere vor deveni, în anii 1930-1940, ținta revizionismului sovietic, maghiar și bulgar.</p></div></article>
+    <article class="event"><div class="date">1920-1921</div><div><h3>Consolidarea diplomatică a frontierelor</h3><p>România se sprijină pe tratatele de pace și pe alianțe regionale. Mica Înțelegere, conturată în <strong>1921</strong> împreună cu Cehoslovacia și Iugoslavia, urmărește apărarea ordinii de la Versailles și blocarea revizionismului ungar.</p></div></article>
+    <article class="event"><div class="date">9 feb.<br>1934</div><div><h3>Înțelegerea Balcanică</h3><p>România, Iugoslavia, Grecia și Turcia semnează o alianță regională pentru menținerea frontierelor balcanice. Sistemul pare util pe hârtie, dar va fi prea slab când Germania, Italia și URSS vor schimba raportul de forțe din Europa.</p></div></article>
+    <article class="event"><div class="date">29-30 sep.<br>1938</div><div><h3>Acordul de la München</h3><p>Cehoslovacia este forțată să cedeze Sudetenland Germaniei. Pentru România, episodul arată că garanțiile occidentale pot fi sacrificate în numele compromisului cu Hitler.</p></div></article>
+    <article class="event"><div class="date">13 apr.<br>1939</div><div><h3>Garanții franco-britanice pentru România</h3><p>Marea Britanie și Franța oferă garanții politice României și Greciei. Totuși, aceste garanții nu sunt însoțite de o prezență militară directă care să poată apăra România în caz de criză.</p></div></article>
+    <article class="event"><div class="date">23 aug.<br>1939</div><div><h3>Pactul Ribbentrop-Molotov</h3><p>Germania nazistă și URSS semnează pactul de neagresiune. Protocolul secret plasează Basarabia în sfera de interes sovietică, ceea ce lovește direct securitatea României.</p></div></article>
+    <article class="event"><div class="date">1 sep.<br>1939</div><div><h3>Germania atacă Polonia</h3><p>Începe războiul european. România declară neutralitatea la <strong>6 septembrie 1939</strong>, dar neutralitatea este dificilă deoarece România are frontieră cu Polonia, interese economice germane și presiune sovietică în est.</p></div></article>
+    <article class="event"><div class="date">17 sep.<br>1939</div><div><h3>URSS atacă Polonia din est</h3><p>Prăbușirea Poloniei pune România într-o situație delicată: permite trecerea refugiaților polonezi și a unor valori militare și civile, dar trebuie să evite pretextul unei intervenții germane sau sovietice.</p></div></article>
+    <article class="event"><div class="date">26-28 iun.<br>1940</div><div><h3>Ultimatumul sovietic</h3><p>URSS cere Basarabia și nordul Bucovinei. România acceptă evacuarea, deoarece era izolată militar și diplomatic, iar o rezistență ar fi putut duce la atac sovietic fără sprijin extern real.</p></div></article>
+    <article class="event"><div class="date">30 aug.<br>1940</div><div><h3>Al Doilea Arbitraj de la Viena</h3><p>Germania și Italia impun cedarea nord-vestului Transilvaniei către Ungaria. Pierderea produce o traumă politică majoră și delegitimează regimul lui Carol al II-lea.</p></div></article>
+    <article class="event"><div class="date">7 sep.<br>1940</div><div><h3>Tratatul de la Craiova</h3><p>România cedează Cadrilaterul Bulgariei. În câteva luni, România pierde teritorii în est, vest și sud, iar orientarea spre Germania devine aproape inevitabilă pentru conducerea de la București.</p></div></article>
+    <article class="event"><div class="date">6 sep.<br>1940</div><div><h3>Abdicarea regelui Carol al II-lea</h3><p>Carol al II-lea abdică, Mihai I devine rege, iar generalul Ion Antonescu devine conducătorul efectiv al statului. Criza teritorială se transformă într-o schimbare radicală de regim.</p></div></article>
+    <article class="event"><div class="date">23 nov.<br>1940</div><div><h3>Aderarea la Pactul Tripartit</h3><p>România intră oficial în sistemul Axei. Decizia este prezentată ca mijloc de protecție împotriva URSS și ca drum spre recuperarea teritoriilor pierdute în est.</p></div></article>
+    <article class="event"><div class="date">22 iun.<br>1941</div><div><h3>Intrarea României în război</h3><p>Odată cu declanșarea Operațiunii Barbarossa, România atacă URSS alături de Germania. Obiectivul declarat este eliberarea Basarabiei și nordului Bucovinei.</p></div></article>
+  </div>
+</section>
+
+<section class="section" id="context">
+  <h2>I. Contextul românesc al războiului</h2>
+  <p class="section-intro">România intră în criza celui de-al Doilea Război Mondial ca stat rezultat din unirile anului <strong>1918</strong>. Din acest motiv, pentru București, problema fundamentală nu era cucerirea, ci <strong>apărarea frontierelor României Mari</strong>. Totuși, frontierele din 1918-1920 erau contestate de vecini, iar sistemul european care le garantase se destramă treptat.</p>
+  <div class="three-col">
+    <article class="info-card"><h3>România Mare și vulnerabilitatea frontierelor</h3><p><span class="date-pill">1918-1920</span> România obține Basarabia, Bucovina, Transilvania, Banatul românesc, Crișana și Maramureșul de sud. Această extindere îi dă un teritoriu mai mare, o populație mai numeroasă și resurse importante, dar aduce și frontiere lungi, minorități importante și vecini nemulțumiți. URSS nu recunoaște unirea Basarabiei, Ungaria consideră Trianonul o nedreptate, iar Bulgaria urmărește recuperarea Cadrilaterului.</p></article>
+    <article class="info-card"><h3>Sistemul de alianțe interbelice</h3><p><span class="date-pill">1921</span> Mica Înțelegere și <span class="date-pill">9 feb. 1934</span> Înțelegerea Balcanică încearcă să apere ordinea postbelică. Aceste alianțe sunt însă defensive și regionale. Ele funcționează cât timp marile puteri occidentale sunt suficient de puternice pentru a garanta sistemul de la Versailles. După <span class="date-pill">1938</span>, când Germania domină Europa Centrală, alianțele regionale devin tot mai fragile.</p></article>
+    <article class="info-card"><h3>Presiunea economică germană</h3><p><span class="date-pill">23 mart. 1939</span> România semnează un acord economic cu Germania. Petrolul românesc, cerealele, lemnul și poziția strategică devin vitale pentru Reich. Din perspectiva Berlinului, România trebuia atrasă în sfera germană pentru ca Germania să aibă combustibil și materii prime în războiul european.</p></article>
+  </div>
+  <div class="definition"><strong>Ideea-cheie:</strong> înainte de a fi un aliat militar al Germaniei, România a devenit un stat prins între trei presiuni: revizionismul sovietic în est, revizionismul maghiar în vest și dependența economică tot mai mare de Germania.</div>
+</section>
+
+<section class="section" id="neutralitate">
+  <h2>II. Neutralitatea României, 1 septembrie 1939 - 22 iunie 1941</h2>
+  <p class="section-intro">România nu intră în război la <strong>1 septembrie 1939</strong>, când Germania atacă Polonia, și nici la <strong>3 septembrie 1939</strong>, când Marea Britanie și Franța declară război Germaniei. La <strong>6 septembrie 1939</strong>, Consiliul de Coroană decide neutralitatea. Această neutralitate nu înseamnă însă liniște, ci o politică de supraviețuire între mari puteri ostile.</p>
+  <details open><summary>De ce România a ales neutralitatea la 6 septembrie 1939?</summary><div class="details-body">
+    <div class="key-line"><strong>Slăbiciune militară relativă</strong><span>România avea o armată numeroasă, dar insuficient modernizată. În fața Germaniei, URSS și Ungariei, o intrare grăbită în război putea însemna atac pe mai multe fronturi.</span></div>
+    <div class="key-line"><strong>Garanții occidentale greu de aplicat</strong><span>Garanțiile franco-britanice din <strong>13 aprilie 1939</strong> aveau valoare politică, dar Franța și Marea Britanie nu puteau trimite rapid trupe în România. Distanța geografică și controlul german asupra Europei Centrale limitau sprijinul efectiv.</span></div>
+    <div class="key-line"><strong>Poziția față de Polonia</strong><span>După atacul sovietic asupra Poloniei din <strong>17 septembrie 1939</strong>, România permite trecerea unor refugiați, militari și autorități poloneze. Ajutorul umanitar și tranzitul au fost importante, dar Bucureștiul evită transformarea acestui sprijin într-un casus belli.</span></div>
+    <div class="key-line"><strong>Teama de URSS</strong><span>După pactul germano-sovietic din <strong>23 august 1939</strong>, România știe că Basarabia este vulnerabilă. Neutralitatea încearcă să amâne o confruntare pentru care țara nu era pregătită.</span></div>
+  </div></details>
+  <details open><summary>Refugiații polonezi și rolul României, septembrie 1939</summary><div class="details-body"><p><span class="date-pill">17-18 sept. 1939</span> După intrarea Armatei Roșii în Polonia, o parte a conducerii politice și militare poloneze se refugiază prin România. România internează oficial militarii, conform regulilor neutralității, dar permite în practică evacuarea multor polonezi spre Occident, unde vor continua lupta. Această acțiune arată caracterul ambiguu al neutralității românești: oficial prudentă, dar în plan umanitar și strategic favorabilă supraviețuirii statului polonez.</p></div></details>
+</section>
+
+<section class="section" id="ruptura-1940">
+  <h2>III. Anul 1940: anul prăbușirii României Mari</h2>
+  <p class="section-intro">Anul <strong>1940</strong> este momentul decisiv al începutului războiului pentru România. În mai puțin de trei luni, statul pierde teritorii în est, vest și sud. Aceste cedări nu sunt simple episoade diplomatice, ci lovituri care schimbă regimul politic, orientarea externă și intrarea ulterioară în război.</p>
+  <div class="cause-grid">
+    <article class="info-card"><h3><span class="date-pill">26-28 iunie 1940</span> Ultimatumul sovietic</h3><p>La <strong>26 iunie 1940</strong>, URSS cere României evacuarea Basarabiei și a nordului Bucovinei. Cererea sovietică este susținută de contextul creat prin pactul Ribbentrop-Molotov din <strong>23 august 1939</strong>. Basarabia fusese menționată în sfera sovietică, iar nordul Bucovinei este adăugat de Moscova ca pretenție suplimentară. România acceptă retragerea, iar între <strong>28 iunie și începutul lui iulie 1940</strong> administrația, armata și o parte a populației se retrag în grabă.</p><p>Pentru România, pierderea are o încărcătură dublă: strategică, fiindcă frontiera se mută pe Prut, și simbolică, fiindcă Basarabia fusese unită cu România la <strong>27 martie 1918</strong>. De aici se va naște una dintre principalele justificări ale intrării în război, la <strong>22 iunie 1941</strong>.</p></article>
+    <article class="info-card"><h3><span class="date-pill">30 august 1940</span> Al Doilea Arbitraj de la Viena</h3><p>La <strong>30 august 1940</strong>, Germania și Italia impun României cedarea nord-vestului Transilvaniei către Ungaria. Decizia nu este rezultatul unui război direct româno-maghiar, ci al arbitrajului puterilor Axei. Pentru Hitler, scopul era menținerea ambelor state în sfera germană și evitarea unui conflict local care ar fi afectat interesele economice și militare germane.</p><p>Consecința politică este enormă: regimul Carol al II-lea devine imposibil de apărat. Pierderea Transilvaniei de nord-vest produce manifestații, revoltă publică și sentimentul că statul român a fost abandonat de sistemul european interbelic.</p></article>
+  </div>
+  <details open><summary><span class="date-pill">7 septembrie 1940</span> Tratatul de la Craiova și Cadrilaterul</summary><div class="details-body"><p>La <strong>7 septembrie 1940</strong>, România cedează Cadrilaterul Bulgariei. Teritoriul fusese obținut de România în urma celui de-al Doilea Război Balcanic, prin pacea din <strong>1913</strong>. Cedarea este însoțită de schimburi de populație și completează seria pierderilor teritoriale din 1940. În discursul public românesc, anul 1940 devine astfel anul „ciuntirii” României Mari.</p></div></details>
+  <details open><summary>De ce România nu a rezistat militar în 1940?</summary><div class="details-body"><div class="key-line"><strong>Izolare diplomatică</strong><span>Franța capitulase în iunie <strong>1940</strong>, Marea Britanie era singură în fața Germaniei, iar România nu avea sprijin militar imediat.</span></div><div class="key-line"><strong>Risc de război pe mai multe fronturi</strong><span>O rezistență contra URSS putea fi urmată de atacuri maghiare și bulgare sau de presiuni germane. Conducerea de la București a considerat că rezistența ar putea duce la dezmembrarea totală a statului.</span></div><div class="key-line"><strong>Presiunea Germaniei</strong><span>Germania avea interes ca România să rămână stabilă și să livreze petrol, nu să intre într-un război regional imprevizibil. Berlinul a presat Bucureștiul să accepte compromisuri teritoriale.</span></div></div></details>
+</section>
+
+<section class="section" id="antonescu">
+  <h2>IV. Schimbarea de regim: Antonescu, legionarii și apropierea de Axă</h2>
+  <p class="section-intro">După pierderile teritoriale din vara anului <strong>1940</strong>, criza internă devine criză de regim. Între <strong>4 și 14 septembrie 1940</strong>, România trece de la monarhia autoritară a lui Carol al II-lea la un regim condus de generalul Ion Antonescu, sprijinit inițial de Mișcarea Legionară.</p>
+  <div class="three-col">
+    <article class="info-card"><h3><span class="date-pill">4-6 sept. 1940</span> Preluarea puterii</h3><p>La <strong>4 septembrie 1940</strong>, Ion Antonescu este chemat la conducerea guvernului. La <strong>5 septembrie 1940</strong>, primește puteri excepționale. La <strong>6 septembrie 1940</strong>, Carol al II-lea abdică, iar Mihai I devine rege. În realitate, regele are un rol redus, iar centrul puterii se mută la Antonescu.</p></article>
+    <article class="info-card"><h3><span class="date-pill">14 sept. 1940</span> Statul național-legionar</h3><p>La <strong>14 septembrie 1940</strong>, România este proclamată stat național-legionar. Mișcarea Legionară participă la guvernare, dar relația cu Antonescu este tensionată. Legionarii urmăresc control politic și răzbunare internă, în timp ce Antonescu urmărește disciplină militară și autoritate centralizată.</p></article>
+    <article class="info-card"><h3><span class="date-pill">21-23 ian. 1941</span> Rebeliunea legionară</h3><p>Între <strong>21 și 23 ianuarie 1941</strong>, legionarii se ridică împotriva lui Antonescu. Rebeliunea este înfrântă cu acordul Germaniei, care preferă stabilitatea militară oferită de Antonescu. După această dată, Antonescu conduce fără legionari, iar România rămâne aliată Germaniei.</p></article>
+  </div>
+  <details open><summary><span class="date-pill">12 octombrie 1940</span> Misiunea militară germană și controlul strategic</summary><div class="details-body"><p>Începând cu luna <strong>octombrie 1940</strong>, misiunea militară germană sosește în România. Oficial, rolul ei era instruirea armatei române și protejarea intereselor germane. În realitate, prezența militară germană avea legătură directă cu petrolul de la Ploiești, cu pregătirea războiului contra URSS și cu transformarea României într-un spațiu logistic al Axei.</p></div></details>
+  <details open><summary><span class="date-pill">23 noiembrie 1940</span> Aderarea României la Pactul Tripartit</summary><div class="details-body"><p>La <strong>23 noiembrie 1940</strong>, România aderă la Pactul Tripartit, alianța politico-militară dominată de Germania, Italia și Japonia. Pentru Antonescu, apropierea de Germania era justificată prin speranța recuperării Basarabiei și nordului Bucovinei de la URSS. Pentru Germania, România era importantă prin petrol, cereale, poziție geografică și armata care putea participa la atacul împotriva Uniunii Sovietice.</p></div></details>
+</section>
+
+<section class="section" id="intrare">
+  <h2>V. Intrarea României în război: 22 iunie 1941</h2>
+  <p class="section-intro">La <strong>22 iunie 1941</strong>, Germania declanșează Operațiunea Barbarossa împotriva URSS. România intră în război alături de Germania. În discursul oficial românesc, războiul este prezentat ca luptă pentru recuperarea Basarabiei și nordului Bucovinei, pierdute în <strong>iunie 1940</strong>.</p>
+  <div class="two-col">
+    <article class="info-card"><h3>Obiectivul imediat: Prutul și Nistrul</h3><p><span class="date-pill">22 iun. 1941</span> Proclamația „Ostași, vă ordon: treceți Prutul!” exprimă obiectivul inițial: împingerea Armatei Roșii dincolo de Prut și recuperarea teritoriilor cedate URSS. Din punct de vedere militar, România participă cu armate proprii sub coordonare germană, iar operațiunile din vara anului <strong>1941</strong> duc la ocuparea Basarabiei și nordului Bucovinei.</p></article>
+    <article class="info-card"><h3>Dilema strategică: până unde?</h3><p>După atingerea Nistrului, problema devine mult mai complicată. Recuperarea Basarabiei putea fi prezentată ca război de reîntregire. Continuarea operațiunilor dincolo de Nistru, în Transnistria, la Odessa, în Crimeea, Caucaz și spre Stalingrad, transformă participarea României într-un război de agresiune al Axei împotriva URSS. Această diferență va conta enorm în judecarea responsabilităților de după război.</p></article>
+  </div>
+  <div class="warning-box"><h3>Atenție la interpretare</h3><p>Începutul participării României la război are două niveluri: un nivel național, legat de recuperarea teritoriilor pierdute în <strong>1940</strong>, și un nivel geopolitic, legat de alianța cu Germania nazistă și de participarea la războiul de exterminare dus de Axă în est. O lecție corectă trebuie să le prezinte pe amândouă.</p></div>
+</section>
+
+<section class="section" id="sinteza">
+  <h2>Sinteză finală: cum se ajunge de la România Mare la războiul din Est</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Moment / dată</th><th>Ce se întâmplă</th><th>Semnificație pentru România</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1918-1920</strong></td><td>Se formează și se recunoaște internațional România Mare.</td><td>România devine stat național extins, dar și țintă pentru revizionismul vecinilor.</td></tr>
+      <tr><td><strong>23 aug. 1939</strong></td><td>Pactul Ribbentrop-Molotov include Basarabia în sfera sovietică.</td><td>Securitatea estică a României este compromisă înainte de începerea războiului.</td></tr>
+      <tr><td><strong>1-6 sep. 1939</strong></td><td>Germania atacă Polonia, apoi România își declară neutralitatea.</td><td>Bucureștiul încearcă să evite războiul, deși războiul ajunge imediat la frontierele sale.</td></tr>
+      <tr><td><strong>26-28 iun. 1940</strong></td><td>URSS ocupă Basarabia și nordul Bucovinei.</td><td>România pierde frontiera estică și capătă motivul principal al intrării în război din 1941.</td></tr>
+      <tr><td><strong>30 aug. 1940</strong></td><td>Nord-vestul Transilvaniei este cedat Ungariei.</td><td>Criza națională devine criză de regim; Carol al II-lea pierde puterea.</td></tr>
+      <tr><td><strong>7 sep. 1940</strong></td><td>Cadrilaterul este cedat Bulgariei.</td><td>România Mare este redusă teritorial în est, vest și sud.</td></tr>
+      <tr><td><strong>23 nov. 1940</strong></td><td>România aderă la Pactul Tripartit.</td><td>România intră oficial în sistemul Axei și se apropie decisiv de Germania.</td></tr>
+      <tr><td><strong>22 iun. 1941</strong></td><td>România atacă URSS alături de Germania.</td><td>Începe participarea militară românească la al Doilea Război Mondial.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="final-box"><h3>Concluzie</h3><p>Din perspectiva României, începutul celui de-al Doilea Război Mondial este o succesiune de constrângeri: apărarea frontierelor din <strong>1918</strong>, eșecul garanțiilor occidentale în <strong>1938-1940</strong>, presiunea pactului germano-sovietic din <strong>23 august 1939</strong>, pierderile teritoriale din <strong>iunie-septembrie 1940</strong> și alegerea Germaniei ca protector strategic. Intrarea în război la <strong>22 iunie 1941</strong> apare astfel ca rezultat al dorinței de recuperare teritorială, dar și al subordonării României față de strategia Axei.</p></div>
+</section>
+
+  </main>
+</body>
+</html>

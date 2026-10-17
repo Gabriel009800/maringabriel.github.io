@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>revolutia-industriala-prima-etapa</title>
+  <style>
+:root {
+  --bg: #f6f0e7;
+  --paper: #fffaf3;
+  --paper-2: #ffffff;
+  --ink: #2f241c;
+  --title: #3c2a1e;
+  --muted: #5b4a3d;
+  --accent: #7a4f2a;
+  --accent-2: #9b6a3c;
+  --accent-soft: #f0e4d4;
+  --line: rgba(91, 62, 36, 0.18);
+  --line-strong: rgba(91, 62, 36, 0.34);
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+  --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+    radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+}
+.page { position: relative; z-index: 1; width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 34px 0 70px; }
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.back-link, .tag { display: inline-flex; align-items: center; border: 1px solid var(--line); background: rgba(255, 250, 243, 0.84); color: var(--title); border-radius: 999px; padding: 10px 15px; text-decoration: none; font-size: 15px; font-weight: 700; box-shadow: var(--shadow-small); }
+.back-link:hover { background: #fff6eb; }
+.hero, .section, .nav-card, .final-box { background: rgba(255, 250, 243, 0.96); border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow); }
+.hero { padding: 38px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.hero::after { content: attr(data-watermark); position: absolute; right: 24px; bottom: -24px; font-size: 104px; font-weight: 900; letter-spacing: -4px; color: rgba(122, 79, 42, 0.08); pointer-events: none; }
+.eyebrow { margin: 0 0 8px; font-size: 16px; color: var(--accent); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; }
+h1 { margin: 0; font-size: clamp(38px, 5vw, 62px); line-height: 1.04; color: var(--title); letter-spacing: -1.4px; text-align: left; text-align-last: auto; }
+.subtitle { margin: 18px 0 0; max-width: 990px; font-size: 19px; line-height: 1.78; color: var(--muted); text-align: justify; text-align-last: left; }
+.summary-grid, .three-col, .two-col, .four-grid, .term-grid, .quick-grid, .cause-grid, .details-grid { display: grid; gap: 14px; }
+.summary-grid { grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+.three-col { grid-template-columns: repeat(3, 1fr); }
+.two-col { grid-template-columns: repeat(2, 1fr); }
+.four-grid { grid-template-columns: repeat(4, 1fr); }
+.cause-grid { grid-template-columns: 1.05fr 0.95fr; }
+.term-grid { grid-template-columns: repeat(4, 1fr); }
+.quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+.summary-card, .info-card, .wide-card, .term-card, .quick-card, .source-note, .micro-card, .warning-box, .table-wrap { background: var(--paper-2); border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); text-align: justify; text-align-last: left; }
+.summary-card { padding: 16px; min-height: 132px; }
+.summary-card strong, .quick-card strong, .term-card strong, .micro-card strong { display: block; color: var(--title); font-size: 17px; margin-bottom: 8px; text-align: left; text-align-last: auto; }
+.summary-card span, .quick-card span, .term-card span, .micro-card span { display: block; color: var(--muted); font-size: 15.5px; line-height: 1.56; text-align: justify; text-align-last: left; }
+.nav-card { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 18px 20px; margin-bottom: 24px; }
+.nav-card b { color: var(--title); margin-right: 2px; }
+.nav-card a, .mini-btn { color: var(--title); background: var(--accent-soft); border: 1px solid rgba(91, 62, 36, 0.16); border-radius: 999px; text-decoration: none; padding: 8px 12px; font-weight: 700; font-size: 14px; cursor: pointer; font-family: inherit; }
+.nav-card a:hover, .mini-btn:hover { background: #e5d2bb; }
+.section { padding: 30px; margin-bottom: 24px; }
+h2 { margin: 0 0 14px; color: var(--title); font-size: clamp(28px, 3vw, 38px); line-height: 1.15; text-align: left; text-align-last: auto; }
+h3 { margin: 0 0 12px; color: var(--title); font-size: 22px; line-height: 1.22; text-align: left; text-align-last: auto; }
+h4 { margin: 16px 0 8px; color: var(--title); font-size: 18px; text-align: left; text-align-last: auto; }
+.section-intro, p, li, dd { font-size: 17px; line-height: 1.72; color: var(--muted); text-align: justify; text-align-last: left; hyphens: auto; }
+.section-intro { margin: 0 0 20px; max-width: 1000px; }
+.info-card, .wide-card, .term-card, .quick-card, .micro-card, .warning-box, .table-wrap { padding: 20px; }
+.wide-card { margin-top: 14px; }
+.wide-card p:last-child, .info-card p:last-child { margin-bottom: 0; }
+.clean, .number-list { margin: 0; padding-left: 22px; }
+.clean li, .number-list li { margin: 0 0 9px; padding-left: 2px; }
+.clean li:last-child, .number-list li:last-child { margin-bottom: 0; }
+.mini-title { display: inline; color: var(--title); font-weight: 800; background: transparent; border: 0; border-radius: 0; padding: 0; margin-right: 5px; white-space: normal; text-align: inherit; }
+.date-pill { display: inline-block; color: var(--title); font-weight: 800; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.13); border-radius: 999px; padding: 2px 9px; margin-right: 5px; white-space: nowrap; text-align: left; }
+.definition, .note { margin-top: 18px; background: #fff8ef; border: 1px solid rgba(122, 79, 42, 0.22); border-left: 6px solid rgba(122, 79, 42, 0.48); border-radius: 18px; padding: 18px 20px; color: var(--muted); font-size: 17px; line-height: 1.7; text-align: justify; text-align-last: left; }
+.definition strong, .note strong { color: var(--title); }
+details { background: #fffdf9; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); margin-top: 14px; overflow: hidden; }
+details[open] { background: #fffaf3; }
+summary { cursor: pointer; list-style: none; padding: 18px 20px; font-size: 19px; font-weight: 800; color: var(--title); display: flex; justify-content: space-between; align-items: center; gap: 18px; text-align: left; text-align-last: auto; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "Deschide"; color: var(--muted); font-size: 14px; font-weight: 700; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 999px; padding: 7px 11px; white-space: nowrap; }
+details[open] > summary::after { content: "Ascunde"; }
+.details-body { border-top: 1px solid rgba(91, 62, 36, 0.12); padding: 18px 20px 20px; text-align: justify; text-align-last: left; }
+.details-grid { grid-template-columns: repeat(2, 1fr); }
+.key-line { display: grid; grid-template-columns: 220px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px dashed rgba(91, 62, 36, 0.18); }
+.key-line:last-child { border-bottom: 0; }
+.key-line strong { color: var(--title); text-align: left; text-align-last: auto; }
+.key-line span { color: var(--muted); line-height: 1.65; text-align: justify; text-align-last: left; }
+.timeline { position: relative; display: grid; gap: 14px; margin-top: 18px; }
+.event { display: grid; grid-template-columns: 142px 1fr; gap: 18px; align-items: stretch; background: #ffffff; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); overflow: hidden; }
+.date { background: linear-gradient(180deg, #7a4f2a, #5b351b); color: #fffaf3; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px; font-size: 18px; line-height: 1.25; font-weight: 900; letter-spacing: 0.2px; }
+.event > div:last-child { padding: 17px 18px 18px 0; text-align: justify; text-align-last: left; }
+.event h3 { margin-bottom: 6px; }
+.event p { margin: 0; }
+.small-muted { font-size: 15px; color: #725c49; line-height: 1.6; text-align: justify; text-align-last: left; }
+.warning-box { background: #fff7ec; border-color: rgba(122, 79, 42, 0.22); margin-top: 16px; }
+.final-box { padding: 28px; background: linear-gradient(135deg, #fffaf3, #f4e4d1); border-color: rgba(91, 62, 36, 0.25); }
+.final-box p { margin-bottom: 0; }
+.table-wrap { overflow-x: auto; margin-top: 14px; }
+table { width: 100%; border-collapse: collapse; font-size: 16px; color: var(--muted); }
+th, td { border-bottom: 1px solid rgba(91, 62, 36, 0.14); padding: 12px 10px; vertical-align: top; text-align: left; }
+th { color: var(--title); background: #f7ecdd; font-weight: 900; }
+tr:last-child td { border-bottom: 0; }
+.badge { display: inline-block; font-size: 14px; font-weight: 800; color: var(--title); background: #f2e4d2; border: 1px solid rgba(91,62,36,0.14); padding: 3px 8px; border-radius: 999px; margin: 2px 2px 2px 0; }
+@media (max-width: 980px) { .summary-grid, .three-col, .term-grid, .quick-grid, .four-grid { grid-template-columns: repeat(2, 1fr); } .two-col, .cause-grid, .details-grid { grid-template-columns: 1fr; } }
+@media (max-width: 680px) { .page { width: min(100% - 22px, 1180px); padding-top: 22px; } .hero, .section, .final-box { padding: 22px; border-radius: 22px; } .summary-grid, .term-grid, .quick-grid, .four-grid { grid-template-columns: 1fr; } .event { grid-template-columns: 1fr; } .date { min-height: 66px; } .event > div:last-child { padding: 0 16px 16px; } .key-line { grid-template-columns: 1fr; gap: 6px; } summary { align-items: flex-start; flex-direction: column; } .hero::after { font-size: 72px; } }
+</style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a class="back-link" href="#">← Înapoi la materiale</a>
+      <span class="tag">Material ajutător · Istorie universală · Epoca modernă și contemporană</span>
+    </div>
+    <section class="hero" data-watermark="1760">
+      <p class="eyebrow">Revoluția industrială</p>
+      <h1>Prima Revoluție Industrială</h1>
+      <p class="subtitle">Prima Revoluție Industrială a mecanizat producția și a transformat Marea Britanie în primul mare centru industrial al lumii. Ea s-a bazat pe cărbune, abur, fier, textile și pe trecerea de la atelierul manufacturier la sistemul de fabrică.</p>
+      <div class="summary-grid"><div class="summary-card"><strong>Perioadă</strong><span>Aprox. 1760-1840, cu extindere treptată în Europa și SUA.</span></div><div class="summary-card"><strong>Epicentru</strong><span>Marea Britanie: textile, cărbune, fier, porturi și capital.</span></div><div class="summary-card"><strong>Energie</strong><span>Cărbunele și motorul cu abur.</span></div><div class="summary-card"><strong>Efect major</strong><span>Fabrica, proletariatul industrial și urbanizarea accelerată.</span></div></div>
+    </section>
+    <nav class="nav-card" aria-label="Cuprins"><b>Cuprins:</b><a href="#definitie">I. Definiție</a><a href="#cauze">II. Cauze</a><a href="#sectoare">III. Sectoare</a><a href="#cronologie">IV. Cronologie</a><a href="#inventii">V. Invenții</a><a href="#geografie">VI. Geografie</a><a href="#efecte">VII. Efecte</a></nav>
+    
+<section class="section" id="definitie">
+  <h2>I. Ce este prima Revoluție Industrială?</h2>
+  <p class="section-intro">Prima Revoluție Industrială desemnează trecerea de la o economie dominată de agricultură, meșteșuguri și manufacturi la o economie mecanizată, bazată pe fabrici, mașini, cărbune, fier și abur. Ea începe în Marea Britanie în a doua jumătate a secolului al XVIII-lea și se extinde treptat în Franța, Belgia, spațiul german, Statele Unite și alte zone ale Europei.</p>
+  <div class="two-col">
+    <article class="info-card"><h3>De ce este „revoluție”?</h3><p>Nu a fost o revoluție politică de tip 1789, ci o revoluție economică și socială. În locul atelierului mic apare fabrica; în locul producerii lente apare producția mecanizată; în locul energiei umane, animale sau hidraulice apare energia aburului. Schimbarea este revoluționară prin efecte: ritmul producției, transporturile, orașele, munca și clasele sociale se transformă profund.</p></article>
+    <article class="info-card"><h3>De ce începe în Marea Britanie?</h3><p>Marea Britanie avea cărbune și minereu de fier, porturi active, o piață internă în creștere, capital comercial acumulat, instituții financiare dezvoltate, stabilitate politică relativă, un imperiu colonial și o cultură antreprenorială favorabilă inovației. În plus, revoluția agricolă și închiderea pământurilor au eliberat forță de muncă pentru orașe.</p></article>
+  </div>
+  <div class="definition"><strong>Formula de reținut:</strong> prima etapă a industrializării înseamnă mecanizare + fabrică + cărbune + abur + fier + bumbac + urbanizare accelerată.</div>
+</section>
+
+<section class="section" id="cauze">
+  <h2>II. Cauzele primei industrializări</h2>
+  <p class="section-intro">Industrializarea nu apare dintr-o singură cauză. Ea este rezultatul întâlnirii dintre factori tehnologici, agricoli, demografici, financiari, politici și geografici.</p>
+  <div class="three-col">
+    <article class="info-card"><h3>1. Revoluția agricolă</h3><ul class="clean"><li>rotația culturilor și noile metode agricole cresc producția de hrană;</li><li>creșterea animalelor devine mai eficientă;</li><li>o populație mai bine alimentată crește numeric;</li><li>o parte a țăranilor părăsește mediul rural și intră în industrie.</li></ul></article>
+    <article class="info-card"><h3>2. Enclosure Acts</h3><ul class="clean"><li>terenurile comune sunt împrejmuite și transformate în proprietăți private;</li><li>agricultura devine mai productivă, dar mulți țărani pierd accesul la resurse;</li><li>procesul accelerează migrația către orașe;</li><li>fabricile găsesc forță de muncă numeroasă și ieftină.</li></ul></article>
+    <article class="info-card"><h3>3. Cărbune și fier</h3><ul class="clean"><li>cărbunele devine „pâinea industriei”;</li><li>fierul este folosit pentru mașini, poduri, șine, locomotive și unelte;</li><li>bazinele carbonifere atrag fabrici, furnale și orașe industriale;</li><li>zonele industriale dense sunt numite uneori „zone negre”.</li></ul></article>
+    <article class="info-card"><h3>4. Capital și bănci</h3><ul class="clean"><li>comerțul, porturile și imperiul aduc capital;</li><li>băncile și creditul finanțează fabrici, mine, canale și căi ferate;</li><li>antreprenorii investesc în mașini costisitoare;</li><li>profitul industrial devine o sursă majoră de putere socială.</li></ul></article>
+    <article class="info-card"><h3>5. Piață și consum</h3><ul class="clean"><li>creșterea populației mărește cererea de haine, unelte, locuințe și transport;</li><li>coloniile și comerțul maritim oferă piețe externe;</li><li>bumbacul devine materia primă a industriei textile moderne;</li><li>producția ieftină creează consum de masă incipient.</li></ul></article>
+    <article class="info-card"><h3>6. Stat, drept și invenție</h3><ul class="clean"><li>stabilitatea politică încurajează investițiile;</li><li>brevetele protejează inventatorii;</li><li>legislația comercială favorizează afacerile;</li><li>inovația tehnică este conectată cu atelierele, minele și nevoile comerciale.</li></ul></article>
+  </div>
+</section>
+
+<section class="section" id="sectoare">
+  <h2>III. Sectoarele dominante</h2>
+  <p class="section-intro">Prima Revoluție Industrială este legată mai ales de textile, cărbune, fier, mașini-unelte, transporturi și comunicare timpurie. Fiecare sector îl stimulează pe celălalt.</p>
+  <details open><summary>Industria textilă: bumbacul și fabrica</summary><div class="details-body"><p>Industria textilă este sectorul de pornire. Cererea mare pentru pânzeturi ieftine stimulează mecanizarea filării și țeserii. Suveica zburătoare, Spinning Jenny, water frame, mule-jenny, războiul mecanic și mecanismul Jacquard accelerează producția. Orașe precum Manchester devin simboluri ale noii lumi industriale, cu fabrici mari, muncitori numeroși și cartiere muncitorești aglomerate.</p></div></details>
+  <details open><summary>Mineritul și cărbunele</summary><div class="details-body"><p>Creșterea industriei cere energie. Cărbunele alimentează motoarele cu abur, furnalele, încălzirea industrială și transporturile. Minele devin tot mai adânci, iar problema apei din galerii stimulează folosirea motorului Newcomen și apoi a motorului Watt. În timp, mineritul devine unul dintre cele mai dure sectoare ale muncii industriale.</p></div></details>
+  <details open><summary>Fierul, fonta și metalurgia</summary><div class="details-body"><p>Fierul este materialul central al primei industrializări. Se dezvoltă furnale, laminoare, procedee de pudlare și turnătorii. Fonta și fierul intră în poduri, mașini, locomotive, șine, utilaje textile și structuri industriale. Producția de fier crește atât pentru că există cerere, cât și pentru că noile tehnici o fac mai ieftină.</p></div></details>
+  <details open><summary>Transporturi: canale, drumuri, căi ferate, nave cu aburi</summary><div class="details-body"><p>Transportul ieftin este vital pentru cărbune, fier și textile. Canalele reduc costurile de deplasare a materiilor prime. Macadamul îmbunătățește drumurile. Navele cu aburi accelerează transportul fluvial și maritim. Căile ferate schimbă complet ritmul economiei: mărfurile, oamenii și informațiile circulă mai rapid, iar piețele regionale devin tot mai integrate.</p></div></details>
+</section>
+
+<section class="section" id="cronologie">
+  <h2>IV. Cronologie esențială: 1709-1844</h2>
+  <p class="section-intro">Prima Revoluție Industrială nu începe brusc într-un singur an. Ea este rezultatul unei acumulări de invenții, investiții și transformări sociale.</p>
+  <div class="timeline">
+    <article class="event"><div class="date">1709</div><div><h3>Abraham Darby folosește cocsul la topirea fierului</h3><p>Folosirea cocsului în locul cărbunelui de lemn reduce dependența de păduri și pregătește expansiunea metalurgiei.</p></div></article>
+    <article class="event"><div class="date">1712</div><div><h3>Motorul atmosferic Newcomen</h3><p>Thomas Newcomen construiește un motor cu abur utilizat mai ales pentru pomparea apei din mine. Este încă lent și ineficient, dar foarte important pentru minerit.</p></div></article>
+    <article class="event"><div class="date">1733</div><div><h3>Suveica zburătoare</h3><p>John Kay accelerează țesutul și creează presiune pentru mecanizarea filării, deoarece țesătorii pot lucra mai repede decât filatorii manuali.</p></div></article>
+    <article class="event"><div class="date">1764</div><div><h3>Spinning Jenny</h3><p>James Hargreaves mecanizează filarea și permite unui muncitor să controleze mai multe fuse simultan.</p></div></article>
+    <article class="event"><div class="date">1769</div><div><h3>James Watt brevetează condensatorul separat</h3><p>Îmbunătățirea motorului cu abur reduce consumul de combustibil și transformă aburul într-o sursă industrială eficientă.</p></div></article>
+    <article class="event"><div class="date">1769</div><div><h3>Water frame</h3><p>Richard Arkwright dezvoltă o mașină de filat acționată hidraulic, potrivită pentru producția concentrată în fabrici.</p></div></article>
+    <article class="event"><div class="date">1779</div><div><h3>Mule-jenny</h3><p>Samuel Crompton combină avantajele Spinning Jenny și water frame, producând fir fin și rezistent.</p></div></article>
+    <article class="event"><div class="date">1784</div><div><h3>Procedeul de pudlare</h3><p>Henry Cort perfecționează pudlarea și laminarea, contribuind la producția de fier forjat pe scară mai mare.</p></div></article>
+    <article class="event"><div class="date">1785</div><div><h3>Războiul de țesut mecanic</h3><p>Edmund Cartwright mecanizează țesutul și întărește sistemul de fabrică în textile.</p></div></article>
+    <article class="event"><div class="date">1793</div><div><h3>Cotton gin</h3><p>Eli Whitney mecanizează separarea semințelor de fibrele de bumbac, accelerând producția, dar contribuind și la extinderea sclaviei în sudul Statelor Unite.</p></div></article>
+    <article class="event"><div class="date">1800</div><div><h3>Pila voltaică</h3><p>Alessandro Volta produce prima sursă practică de curent electric continuu, importantă pentru electrochimie și cercetarea electricității.</p></div></article>
+    <article class="event"><div class="date">1814</div><div><h3>Locomotiva lui George Stephenson</h3><p>Stephenson construiește locomotive practice; în 1825, Stockton-Darlington devine prima cale ferată publică importantă pentru transport.</p></div></article>
+    <article class="event"><div class="date">1830</div><div><h3>Liverpool-Manchester Railway</h3><p>Linia ferată dintre Liverpool și Manchester arată potențialul transportului regulat de pasageri și mărfuri.</p></div></article>
+    <article class="event"><div class="date">1839</div><div><h3>Dagherotipul</h3><p>Louis Daguerre face fotografia practic utilizabilă, după experimentele anterioare ale lui Nicéphore Niépce.</p></div></article>
+    <article class="event"><div class="date">1844</div><div><h3>Telegraful electric Morse</h3><p>Mesajul Washington-Baltimore marchează intrarea comunicării rapide în era electrică.</p></div></article>
+  </div>
+</section>
+
+<section class="section" id="inventii">
+  <h2>V. 20 de invenții reprezentative</h2>
+  <p class="section-intro">Aceste invenții arată trecerea de la munca manuală la mecanizare, de la drumuri lente la căi ferate și de la comunicare prin curieri la comunicare aproape instantanee.</p>
+  <div class="table-wrap"><table><thead><tr><th>Invenție</th><th>Inventator / dată</th><th>Rol istoric</th></tr></thead><tbody>
+    <tr><td>Motorul cu abur cu condensator separat</td><td>James Watt, brevet 1769; parteneriat Boulton & Watt, 1775</td><td>Crește eficiența aburului și permite folosirea sa în fabrici, mine și transport.</td></tr>
+    <tr><td>Spinning Jenny</td><td>James Hargreaves, 1764</td><td>Mecanizează filarea și mărește productivitatea în industria textilă.</td></tr>
+    <tr><td>Războiul de țesut mecanic</td><td>Edmund Cartwright, 1785</td><td>Automatizează țesutul și întărește sistemul de fabrică.</td></tr>
+    <tr><td>Suveica zburătoare</td><td>John Kay, 1733</td><td>Accelerează țesutul manual și creează presiune pentru noi mașini de filat.</td></tr>
+    <tr><td>Mașina de egrenat bumbacul</td><td>Eli Whitney, 1793</td><td>Separă rapid semințele de fibrele de bumbac; crește producția de bumbac brut.</td></tr>
+    <tr><td>Locomotiva cu abur</td><td>George Stephenson, 1814-1830</td><td>Revoluționează transportul terestru și creează rețele feroviare moderne.</td></tr>
+    <tr><td>Vaporul cu aburi</td><td>Robert Fulton, 1807</td><td>Transformă transportul fluvial și contribuie la globalizarea comerțului.</td></tr>
+    <tr><td>Procedeul de pudlare</td><td>Henry Cort, 1784</td><td>Permite obținerea fierului forjat în cantități mai mari și la costuri mai mici.</td></tr>
+    <tr><td>Strungul industrial pentru metale</td><td>Henry Maudslay, începutul sec. XIX</td><td>Crește precizia pieselor și facilitează standardizarea mecanică.</td></tr>
+    <tr><td>Pila voltaică</td><td>Alessandro Volta, 1800</td><td>Deschide etapa cercetărilor moderne asupra curentului electric.</td></tr>
+    <tr><td>Telegraful optic</td><td>Claude Chappe, 1792-1794</td><td>Permite transmiterea rapidă a mesajelor pe distanțe mari prin semnale vizuale.</td></tr>
+    <tr><td>Cimentul Portland</td><td>Joseph Aspdin, 1824</td><td>Devine baza betonului modern și a construcțiilor urbane.</td></tr>
+    <tr><td>Presa de tipar mecanică cu cilindru</td><td>Friedrich Koenig, 1810-1814</td><td>Mărește viteza tipăririi ziarelor și contribuie la cultura de masă.</td></tr>
+    <tr><td>Macadamul</td><td>John Loudon McAdam, începutul sec. XIX</td><td>Îmbunătățește drumurile și reduce costurile transportului rutier.</td></tr>
+    <tr><td>Mașina de treierat</td><td>Andrew Meikle, 1786</td><td>Mecanizează separarea boabelor de paie și sporește productivitatea agricolă.</td></tr>
+    <tr><td>Fotografia timpurie</td><td>Niépce, 1826/1827; Daguerre, 1839</td><td>Permite fixarea imaginilor și schimbă memoria vizuală a societății.</td></tr>
+    <tr><td>Chibriturile cu frecare</td><td>John Walker, 1826/1827</td><td>Oferă aprinderea rapidă și portabilă a focului.</td></tr>
+    <tr><td>Mașina de cusut timpurie</td><td>Barthélemy Thimonnier, 1830</td><td>Pune bazele mecanizării industriei de confecții.</td></tr>
+    <tr><td>Iluminatul stradal cu gaz</td><td>William Murdoch, sfârșitul sec. XVIII; extindere urbană în sec. XIX</td><td>Modifică viața urbană, siguranța stradală și timpul de lucru.</td></tr>
+    <tr><td>Telegraful electric comercial</td><td>Cooke și Wheatstone, 1837; Morse, 1844</td><td>Transformă comunicarea economică, politică și militară.</td></tr>
+  </tbody></table></div>
+</section>
+
+<section class="section" id="geografie">
+  <h2>VI. Geografia industrializării</h2>
+  <p class="section-intro">Industrializarea nu se răspândește uniform. Unele spații se industrializează rapid, altele rămân dominate de agricultură tradițională.</p>
+  <div class="table-wrap"><table><thead><tr><th>Spațiu</th><th>Ritm și caracteristici</th><th>Exemple</th></tr></thead><tbody>
+    <tr><td>Marea Britanie</td><td>Primul centru major, „atelierul lumii”; textile, cărbune, fier, mașini și căi ferate.</td><td>Manchester, Liverpool, Birmingham, Sheffield, Newcastle, Lancashire, Yorkshire.</td></tr>
+    <tr><td>Franța</td><td>Industrializare mai lentă și mai regională; combină industria cu un sector agricol puternic.</td><td>Nordul Franței, Alsacia, bazinul Loarei, Lyon pentru textile.</td></tr>
+    <tr><td>Belgia</td><td>Una dintre primele zone continentale industrializate, apropiată de modelul britanic.</td><td>Valonia, Liège, Charleroi.</td></tr>
+    <tr><td>Spațiul german</td><td>Industrializare mai târzie, accelerată în secolul al XIX-lea; pregătește saltul celei de-a doua revoluții industriale.</td><td>Ruhr, Saxonia, Silezia, Rinul.</td></tr>
+    <tr><td>Statele Unite</td><td>Creștere rapidă după 1820-1850, favorizată de teritoriu, resurse, imigrație și piață internă.</td><td>Noua Anglie, Pennsylvania, apoi Midwest.</td></tr>
+    <tr><td>Sudul și estul Europei</td><td>Industrializare inegală, cu „insule industriale” într-un peisaj încă agrar.</td><td>Italia de nord, Boemia, unele zone din Imperiul Habsburgic și Rusia.</td></tr>
+  </tbody></table></div>
+</section>
+
+<section class="section" id="efecte">
+  <h2>VII. Efecte economice și sociale</h2>
+  <p class="section-intro">Prima etapă a industrializării produce bogăție, dar și dezechilibre: orașe supraaglomerate, exploatare a muncii, accidente, sărăcie urbană și apariția unei noi clase muncitoare.</p>
+  <div class="three-col">
+    <article class="info-card"><h3>Fabrica</h3><p>Fabrica devine unitatea centrală a producției. Ea impune program fix, disciplină, supraveghere, specializare și ritm mecanic. Munca nu mai este organizată după anotimpuri sau gospodărie, ci după ceas, mașină și profit.</p></article>
+    <article class="info-card"><h3>Proletariatul</h3><p>Apare o clasă muncitoare industrială dependentă de salariu. Muncitorii nu dețin mașinile și nu controlează producția; ei vând forță de muncă. Această realitate va alimenta sindicalismul, socialismul, cooperatismul și revendicările sociale.</p></article>
+    <article class="info-card"><h3>Burghezia industrială</h3><p>Proprietarii de fabrici, bancherii, comercianții și antreprenorii devin o forță socială și politică majoră. Ei promovează libertatea economică, proprietatea privată, investiția, profitul și modernizarea infrastructurii.</p></article>
+    <article class="info-card"><h3>Urbanizare</h3><p>Orașele cresc repede, adesea fără infrastructură adecvată. Cartierele muncitorești sunt dense, insalubre și expuse bolilor. Industrializarea creează metropole moderne, dar și mahalale industriale.</p></article>
+    <article class="info-card"><h3>Piețe și informații</h3><p>Căile ferate, presa mecanizată și telegraful accelerează circulația bunurilor, oamenilor și informațiilor. Apar agenții de presă, crește tirajul ziarelor și se formează opinia publică modernă.</p></article>
+    <article class="info-card"><h3>Contradicții</h3><p>Productivitatea crește, dar nu toți beneficiază egal. Salariile mici, munca copiilor, lipsa protecției sociale și accidentele industriale arată limitele capitalismului industrial timpuriu.</p></article>
+  </div>
+</section>
+
+    <section class="final-box"><h2>Ideea finală</h2><p>Revoluția industrială nu a fost un eveniment unic, ci o transformare pe etape: mai întâi mecanizarea cu abur, cărbune, fier și textile, apoi electrificarea, oțelul, petrolul, chimia, comunicațiile globale și producția de masă. În paralel, societatea a fost obligată să inventeze noi forme de protecție socială, drepturi ale muncii și instituții publice moderne.</p></section>
+  </main>
+</body>
+</html>

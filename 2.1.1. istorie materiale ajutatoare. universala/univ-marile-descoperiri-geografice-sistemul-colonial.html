@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>marile-descoperiri-geografice-sistemul-colonial</title>
+  <style>
+:root {
+  --bg: #f6f0e7; --paper: #fffaf3; --paper-2: #ffffff; --ink: #2f241c; --title: #3c2a1e;
+  --muted: #5b4a3d; --accent: #7a4f2a; --accent-2: #9b6a3c; --accent-soft: #f0e4d4;
+  --line: rgba(91, 62, 36, 0.18); --line-strong: rgba(91, 62, 36, 0.34);
+  --outer-dark: #241208; --outer-mid: #4a2a18; --outer-warm: #7a4b2b;
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.28); --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+    radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+  background-attachment: fixed; color: var(--ink); font-family: Georgia, "Times New Roman", serif;
+}
+body::before { content:""; position:fixed; inset:0; z-index:0; pointer-events:none; background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,.10) 48%, rgba(0,0,0,.44) 100%), linear-gradient(90deg, rgba(0,0,0,.20), transparent 18%, transparent 82%, rgba(0,0,0,.20)); }
+.page { position:relative; z-index:1; width:min(1180px, calc(100% - 32px)); margin:0 auto; padding:34px 0 70px; }
+.topbar { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:18px; flex-wrap:wrap; }
+.back-link, .tag { display:inline-flex; align-items:center; border:1px solid var(--line); background:rgba(255,250,243,.84); color:var(--title); border-radius:999px; padding:10px 15px; text-decoration:none; font-size:15px; font-weight:700; box-shadow:var(--shadow-small); }
+.back-link:hover { background:#fff6eb; }
+.hero, .section, .nav-card, .final-box { background: rgba(255,250,243,.96); border:1px solid var(--line); border-radius:28px; box-shadow:var(--shadow); }
+.hero { padding:38px; margin-bottom:24px; position:relative; overflow:hidden; }
+.hero::after { content: attr(data-year); position:absolute; right:26px; bottom:-22px; font-size:105px; font-weight:900; letter-spacing:-4px; color:rgba(122,79,42,.08); pointer-events:none; }
+.eyebrow { margin:0 0 8px; font-size:16px; color:var(--accent); font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+h1 { margin:0; font-size:clamp(38px, 5vw, 62px); line-height:1.04; color:var(--title); letter-spacing:-1.4px; }
+.subtitle { margin:18px 0 0; max-width:1000px; font-size:19px; line-height:1.78; color:var(--muted); text-align:justify; }
+.summary-grid, .three-col, .two-col, .four-col, .five-col, .term-grid, .cause-grid, .details-grid, .mini-grid { display:grid; gap:14px; }
+.summary-grid { grid-template-columns: repeat(4, 1fr); margin-top:26px; }
+.three-col { grid-template-columns: repeat(3, 1fr); }
+.two-col { grid-template-columns: repeat(2, 1fr); }
+.four-col { grid-template-columns: repeat(4, 1fr); }
+.five-col { grid-template-columns: repeat(5, 1fr); }
+.cause-grid { grid-template-columns: 1.1fr .9fr; }
+.term-grid { grid-template-columns: repeat(4, 1fr); }
+.mini-grid { grid-template-columns: repeat(2, 1fr); }
+.summary-card, .info-card, .wide-card, .term-card, .micro-card, .warning-box, .source-note, .table-wrap, .expedition-card { background:var(--paper-2); border:1px solid rgba(91,62,36,.14); border-radius:20px; box-shadow:var(--shadow-small); text-align:justify; }
+.summary-card { padding:16px; min-height:132px; }
+.summary-card strong, .term-card strong, .micro-card strong { display:block; color:var(--title); font-size:17px; margin-bottom:8px; text-align:left; }
+.summary-card span, .term-card span, .micro-card span { display:block; color:var(--muted); font-size:15.5px; line-height:1.56; text-align:justify; }
+.nav-card { display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:18px 20px; margin-bottom:24px; }
+.nav-card b { color:var(--title); margin-right:2px; }
+.nav-card a, .mini-btn { color:var(--title); background:var(--accent-soft); border:1px solid rgba(91,62,36,.16); border-radius:999px; text-decoration:none; padding:8px 12px; font-weight:700; font-size:14px; cursor:pointer; font-family:inherit; }
+.nav-card a:hover, .mini-btn:hover { background:#e5d2bb; }
+.section { padding:30px; margin-bottom:24px; }
+h2 { margin:0 0 14px; color:var(--title); font-size:clamp(28px, 3vw, 38px); line-height:1.15; }
+h3 { margin:0 0 12px; color:var(--title); font-size:22px; line-height:1.22; }
+h4 { margin:16px 0 8px; color:var(--title); font-size:18px; }
+.section-intro, p, li, dd { font-size:17px; line-height:1.72; color:var(--muted); text-align:justify; hyphens:auto; }
+.section-intro { margin:0 0 20px; max-width:1000px; }
+.info-card, .wide-card, .term-card, .micro-card, .warning-box, .source-note, .table-wrap, .expedition-card { padding:20px; }
+.wide-card { margin-top:14px; }
+.clean, .number-list { margin:0; padding-left:22px; }
+.clean li, .number-list li { margin:0 0 9px; padding-left:2px; }
+.mini-title { display:inline; color:var(--title); font-weight:800; margin-right:5px; }
+.date-pill { display:inline-block; color:var(--title); font-weight:800; background:#f3eadf; border:1px solid rgba(91,62,36,.13); border-radius:999px; padding:2px 9px; margin-right:5px; white-space:nowrap; }
+.definition, .note { margin-top:18px; background:#fff8ef; border:1px solid rgba(122,79,42,.22); border-left:6px solid rgba(122,79,42,.48); border-radius:18px; padding:18px 20px; color:var(--muted); font-size:17px; line-height:1.7; text-align:justify; }
+.definition strong, .note strong { color:var(--title); }
+details { background:#fffdf9; border:1px solid rgba(91,62,36,.14); border-radius:20px; box-shadow:var(--shadow-small); margin-top:14px; overflow:hidden; }
+details[open] { background:#fffaf3; }
+summary { cursor:pointer; list-style:none; padding:18px 20px; font-size:19px; font-weight:800; color:var(--title); display:flex; justify-content:space-between; align-items:center; gap:18px; text-align:left; }
+summary::-webkit-details-marker { display:none; }
+summary::after { content:"Deschide"; color:var(--muted); font-size:14px; font-weight:700; background:#f3eadf; border:1px solid rgba(91,62,36,.14); border-radius:999px; padding:7px 11px; white-space:nowrap; }
+details[open] > summary::after { content:"Ascunde"; }
+.details-body { border-top:1px solid rgba(91,62,36,.12); padding:18px 20px 20px; text-align:justify; }
+.details-grid { grid-template-columns: repeat(2, 1fr); }
+.key-line { display:grid; grid-template-columns:220px 1fr; gap:14px; padding:13px 0; border-bottom:1px dashed rgba(91,62,36,.18); }
+.key-line:last-child { border-bottom:0; }
+.key-line strong { color:var(--title); text-align:left; }
+.key-line span { color:var(--muted); line-height:1.65; text-align:justify; }
+.timeline { position:relative; display:grid; gap:14px; margin-top:18px; }
+.event { display:grid; grid-template-columns:150px 1fr; gap:18px; align-items:stretch; background:#ffffff; border:1px solid rgba(91,62,36,.14); border-radius:20px; box-shadow:var(--shadow-small); overflow:hidden; }
+.date { background:linear-gradient(180deg, #7a4f2a, #5b351b); color:#fffaf3; display:flex; align-items:center; justify-content:center; text-align:center; padding:14px; font-size:18px; line-height:1.25; font-weight:900; letter-spacing:.2px; }
+.event > div:last-child { padding:17px 18px 18px 0; text-align:justify; }
+.event h3 { margin-bottom:6px; }
+.event p { margin:0; }
+.table-wrap { overflow:auto; margin-top:16px; }
+table { width:100%; border-collapse:collapse; min-width:760px; }
+th, td { border-bottom:1px solid rgba(91,62,36,.13); padding:12px 13px; vertical-align:top; text-align:left; }
+th { color:var(--title); background:#f3eadf; font-size:16px; }
+td { color:var(--muted); font-size:16px; line-height:1.58; }
+tr:last-child td { border-bottom:0; }
+.exp-meta { display:grid; grid-template-columns: repeat(4, 1fr); gap:10px; margin:14px 0; }
+.exp-meta div { background:#fff8ef; border:1px solid rgba(91,62,36,.12); border-radius:14px; padding:10px 12px; color:var(--muted); font-size:15.5px; line-height:1.45; }
+.exp-meta strong { display:block; color:var(--title); font-size:14px; margin-bottom:4px; }
+.small-muted { font-size:15px; color:#725c49; line-height:1.6; }
+.warning-box { background:#fff7ec; border-color:rgba(122,79,42,.22); margin-top:16px; }
+.final-box { padding:28px; background:linear-gradient(135deg, #fffaf3, #f4e4d1); border-color:rgba(91,62,36,.25); }
+.final-box p { margin-bottom:0; }
+@media (max-width: 980px) {
+  .summary-grid, .three-col, .term-grid, .four-col, .five-col { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .cause-grid, .details-grid, .mini-grid { grid-template-columns:1fr; }
+  .exp-meta { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 680px) {
+  .page { width:min(100% - 22px, 1180px); padding-top:22px; }
+  .hero, .section, .final-box { padding:22px; border-radius:22px; }
+  .summary-grid, .term-grid, .four-col, .five-col { grid-template-columns:1fr; }
+  .event { grid-template-columns:1fr; }
+  .date { min-height:66px; }
+  .event > div:last-child { padding:0 16px 16px; }
+  .key-line { grid-template-columns:1fr; gap:6px; }
+  summary { align-items:flex-start; flex-direction:column; }
+  .hero::after { font-size:82px; }
+  .exp-meta { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a class="back-link" href="#">← Înapoi la materiale</a>
+      <span class="tag">Material ajutător · Istorie universală · Epoca modernă timpurie</span>
+    </div>
+    <section class="hero" data-year="1494">
+      <p class="eyebrow">Marile descoperiri geografice</p>
+      <h1>Sistemul colonial</h1>
+      <p class="subtitle">Imperiile coloniale, tratatele de împărțire a lumii, administrația coloniilor, comerțul triangular, sclavia atlantică, schimbul columbian și rivalitățile maritime care au urmat marilor descoperiri geografice.</p>
+      <div class="summary-grid">
+        <div class="summary-card"><strong>Interval principal</strong><span>Secolele XV-XVI: de la explorarea Atlanticului african la legarea Europei de America, Africa, Asia și Pacific.</span></div>
+        <div class="summary-card"><strong>Miza centrală</strong><span>Rute maritime, mirodenii, metale prețioase, misiune religioasă, prestigiu politic și control comercial.</span></div>
+        <div class="summary-card"><strong>Actori principali</strong><span>Portugalia și Spania deschid cursa; Anglia, Franța și Țările de Jos intră ulterior în competiție.</span></div>
+        <div class="summary-card"><strong>Efect global</strong><span>Se formează o lume conectată atlantic și oceanic, dar și un sistem colonial violent și inegal.</span></div>
+      </div>
+    </section>
+    <nav class="nav-card" aria-label="Cuprins"><b>Cuprins:</b><a href="#tratate">I. Tratate</a><a href="#imperii">II. Imperii</a><a href="#administratie">III. Administrație</a><a href="#economie">IV. Economie</a><a href="#triunghi">V. Comerț triangular</a><a href="#schimb">VI. Schimb columbian</a><a href="#societate">VII. Societate</a><a href="#conflicte">VIII. Conflicte</a></nav>
+    
+<section class="section" id="tratate"><h2>I. Tratate, linii de demarcație și reguli ale expansiunii</h2><p class="section-intro">Sistemul colonial s-a născut nu doar prin cucerire, ci și prin documente juridice, bule papale, tratate, privilegii comerciale și instituții administrative.</p><div class="table-wrap"><table><thead><tr><th>Data</th><th>Document / acord</th><th>Participanți</th><th>Semnificație</th></tr></thead><tbody>
+<tr><td>4 sept. 1479</td><td>Tratatul de la Alcáçovas</td><td>Castilia și Portugalia</td><td>A reglementat rivalități iberice după războiul de succesiune castilian și a recunoscut interese portugheze în Atlanticul african.</td></tr>
+<tr><td>1493</td><td>Bulele alexandrine</td><td>Papalitatea, Spania, Portugalia</td><td>Au oferit un cadru religios și juridic pentru pretențiile iberice asupra teritoriilor descoperite.</td></tr>
+<tr><td>7 iunie 1494</td><td>Tratatul de la Tordesillas</td><td>Spania și Portugalia</td><td>A trasat o linie de demarcație la 370 de leghe vest de Capul Verde: vestul pentru Spania, estul pentru Portugalia.</td></tr>
+<tr><td>22 aprilie 1529</td><td>Tratatul de la Zaragoza</td><td>Spania și Portugalia</td><td>A completat împărțirea lumii printr-o delimitare în Asia-Pacific, legată de disputa pentru Moluce.</td></tr>
+<tr><td>1600</td><td>Charterul Companiei Engleze a Indiilor de Est</td><td>Coroana engleză și negustori</td><td>A creat un actor privat privilegiat pentru comerțul asiatic.</td></tr>
+<tr><td>1602</td><td>Fondarea Companiei Olandeze a Indiilor de Est (VOC)</td><td>Republica Olandeză</td><td>A creat una dintre cele mai puternice companii comerciale coloniale, cu drepturi de război, tratate și administrație.</td></tr>
+<tr><td>1621</td><td>Compania Olandeză a Indiilor de Vest (WIC)</td><td>Republica Olandeză</td><td>A vizat Atlanticul, Africa de Vest, Brazilia, Caraibele și comerțul cu sclavi.</td></tr>
+<tr><td>1713</td><td>Tratatul de la Utrecht și asiento-ul britanic</td><td>Spania, Marea Britanie și alte puteri</td><td>Marea Britanie a primit drepturi importante în comerțul atlantic cu sclavi către America spaniolă.</td></tr>
+</tbody></table></div></section>
+<section class="section" id="imperii"><h2>II. Imperiile coloniale formate</h2><p class="section-intro">Primele imperii coloniale moderne au fost construite de Portugalia și Spania. Din secolul al XVII-lea, Olanda, Anglia și Franța au contestat monopolul iberic.</p><div class="table-wrap"><table><thead><tr><th>Imperiu</th><th>Zone principale</th><th>Instituții și mecanisme</th><th>Model dominant</th></tr></thead><tbody>
+<tr><td>Portughez</td><td>Brazilia, Angola, Mozambic, Goa, Malacca, Ormuz, Macao, Timor</td><td>Estado da Índia, forturi, factorii, cartaz, vicerege la Goa</td><td>Imperiu maritim de puncte comerciale, cu Brazilia ca mare colonie teritorială.</td></tr>
+<tr><td>Spaniol</td><td>Caraibe, Mexic, Peru, America Centrală, Anzi, Río de la Plata, Filipine</td><td>Consiliul Indiilor, Casa de Contratación, viceregate, audiencias, encomienda</td><td>Imperiu teritorial, minier, misionar și administrativ.</td></tr>
+<tr><td>Olandez</td><td>Indonezia, Capul Bunei Speranțe, Surinam, Antile, Noua Olandă pentru scurt timp</td><td>VOC, WIC, monopoluri comerciale, porturi fortificate</td><td>Imperiu comercial corporativ, bazat pe companii privilegiate.</td></tr>
+<tr><td>Englez / britanic</td><td>America de Nord, Caraibe, India, coaste africane</td><td>companii, colonii de așezare, plantații, guvernatori, adunări coloniale</td><td>Colonizare de populație, comerț atlantic, plantații și ulterior dominație asiatică.</td></tr>
+<tr><td>Francez</td><td>Canada, Louisiana, Antile, Senegal, India franceză</td><td>companii comerciale, guvernatori, misiuni, alianțe indigene</td><td>Comerț cu blănuri, plantații caraibiene, misiuni și rivalitate cu Anglia.</td></tr>
+<tr><td>Rus</td><td>Siberia, Pacificul de Nord, Alaska mai târziu</td><td>cazaci, forturi, yasak, negustori de blănuri</td><td>Expansiune continentală, nu oceanică în sens iberic.</td></tr>
+</tbody></table></div>
+<details open><summary>Imperiul portughez: forturi, rute și Brazilia</summary><div class="details-body"><p>Portugalia a construit un imperiu discontinu. În Africa și Asia a preferat porturile, forturile și taxarea comerțului. Elmina, Mozambic, Mombasa, Goa, Malacca, Ormuz și Macao nu formau un teritoriu continuu, ci o rețea de puncte strategice. În Brazilia, mai ales după 1530 și sistemul căpităniilor ereditare, colonizarea a devenit teritorială: zahăr, plantații, mână de lucru forțată, apoi aur și diamante în secolul al XVIII-lea.</p></div></details><details><summary>Imperiul spaniol: viceregate și control administrativ</summary><div class="details-body"><p>Spania a creat un aparat administrativ amplu. Casa de Contratación din Sevilla controla navigația, comerțul și informația; Consiliul Indiilor coordona legislația și guvernarea; viceregii reprezentau monarhul. Cele două mari viceregate inițiale au fost Noua Spanie și Peru, completate în secolul al XVIII-lea de Noua Granada și Río de la Plata.</p></div></details>
+</section>
+<section class="section" id="administratie"><h2>III. Instituții coloniale și control politic</h2><p class="section-intro">Sistemul colonial a funcționat prin combinația dintre putere militară, administrație, Biserică, economie extractivă și ierarhii sociale.</p><div class="three-col">
+<article class="info-card"><h3>Consiliul Indiilor</h3><p>Instituție supremă a monarhiei spaniole pentru problemele americane. Pregătea legi, numiri, politici administrative și controlul asupra viceregatului.</p></article>
+<article class="info-card"><h3>Casa de Contratación</h3><p>Creată la Sevilla în 1503, supraveghea comerțul, flotele, taxele, hărțile, pregătirea piloților și circulația legală dintre Spania și colonii.</p></article>
+<article class="info-card"><h3>Audiencias</h3><p>Tribunale și organisme administrative regionale. Ele controlau justiția, supravegheau funcționarii și puteau limita abuzurile viceregilor.</p></article>
+<article class="info-card"><h3>Encomienda</h3><p>Sistem prin care coloniștii primeau dreptul de a percepe muncă sau tribut de la comunități indigene, în teorie în schimbul protecției și creștinării.</p></article>
+<article class="info-card"><h3>Mita și repartimiento</h3><p>Sisteme de muncă obligatorie, adaptate unor structuri indigene sau impuse de administrația colonială, folosite mai ales în mine și lucrări publice.</p></article>
+<article class="info-card"><h3>Misiunile religioase</h3><p>Franciscanii, dominicanii, augustinienii și iezuiții au întemeiat misiuni, au convertit populații, au creat școli și au participat la controlul cultural al coloniilor.</p></article>
+</div></section>
+<section class="section" id="economie"><h2>IV. Economia colonială</h2><p class="section-intro">Economia colonială a legat metalele americane, plantațiile atlantice, sclavia africană, manufacturile europene și piețele asiatice într-un sistem global.</p><div class="timeline">
+<article class="event"><div class="date">1503</div><div><h3>Casa de Contratación la Sevilla</h3><p>Sevilla devine centrul controlului spaniol asupra navigației și comerțului cu America.</p></div></article><article class="event"><div class="date">1545</div><div><h3>Potosí</h3><p>Descoperirea argintului de la Potosí transformă Anzii într-un centru major al economiei globale.</p></div></article><article class="event"><div class="date">1546</div><div><h3>Zacatecas</h3><p>Minele din Noua Spanie contribuie la fluxul masiv de argint spre Europa și Asia.</p></div></article><article class="event"><div class="date">1565</div><div><h3>Ruta Manila-Acapulco</h3><p>Galionul de Manila conectează America spaniolă cu Filipine și China, folosind argint american pentru produse asiatice.</p></div></article><article class="event"><div class="date">sec. XVI-XVII</div><div><h3>Plantația atlantică</h3><p>Zahărul, tutunul, cafeaua și bumbacul devin produse coloniale majore, bazate frecvent pe muncă forțată.</p></div></article><article class="event"><div class="date">sec. XVII-XVIII</div><div><h3>Comerțul triangular</h3><p>Europa, Africa și America sunt legate prin manufacturi, sclavi, produse de plantație și metale prețioase.</p></div></article>
+</div><div class="table-wrap"><table><thead><tr><th>Sector</th><th>Produse</th><th>Zone</th><th>Efecte</th></tr></thead><tbody><tr><td>Minerit</td><td>aur, argint, mercur</td><td>Mexic, Peru, Bolivia, Noua Granada</td><td>finanțează imperii, produce inflație europeană, conectează America de Asia prin argint.</td></tr><tr><td>Plantații</td><td>zahăr, tutun, cafea, cacao, bumbac</td><td>Caraibe, Brazilia, sudul Americii de Nord</td><td>monocultură, sclavie, export, concentrare a proprietății.</td></tr><tr><td>Comerț asiatic</td><td>mirodenii, mătase, porțelan, ceai</td><td>India, Moluce, China, Japonia, Indonezia</td><td>companii comerciale, monopoluri, forturi, războaie maritime.</td></tr><tr><td>Blănuri</td><td>castor și alte blănuri</td><td>Canada, Marile Lacuri, Siberia</td><td>alianțe indigene, explorare continentală, extindere spre interior.</td></tr></tbody></table></div></section>
+<section class="section" id="triunghi"><h2>V. Comerțul triangular și sclavia atlantică</h2><p class="section-intro">Comerțul triangular nu a fost o schemă perfectă și identică pentru toate navele, dar descrie o logică majoră: Europa trimitea produse manufacturate spre Africa, Africa era integrată forțat prin traficul de sclavi, iar America furniza produse coloniale și metale spre Europa.</p><div class="three-col"><article class="info-card"><h3>Europa → Africa</h3><p>Textile, arme, alcool, obiecte metalice, mărgele, bunuri de schimb. Negustorii europeni se bazau pe forturi de coastă și pe intermediari africani, într-un sistem violent și instabil.</p></article><article class="info-card"><h3>Africa → America</h3><p>Transportul forțat al oamenilor sclavizați peste Atlantic, cunoscut ca Middle Passage, a alimentat plantațiile din Brazilia, Caraibe și America de Nord.</p></article><article class="info-card"><h3>America → Europa</h3><p>Zahăr, tutun, cacao, cafea, bumbac, rom, argint și aur. Aceste produse au schimbat consumul european și au finanțat expansiunea comercială.</p></article></div><div class="warning-box"><h3>Clarificare morală și istorică</h3><p>Sclavia atlantică nu a fost un simplu „schimb comercial”, ci deportare, violență, dezumanizare și exploatare sistematică. Ea a devenit una dintre bazele economiei coloniale moderne și a produs consecințe sociale și rasiale de lungă durată.</p></div></section>
+<section class="section" id="schimb"><h2>VI. Schimbul columbian</h2><p class="section-intro">Contactul dintre continente a mutat plante, animale, boli, oameni, tehnologii și obiceiuri alimentare. Efectele au fost globale și inegale.</p><div class="table-wrap"><table><thead><tr><th>Din America spre Europa / Africa / Asia</th><th>Din Europa / Africa / Asia spre America</th><th>Efecte</th></tr></thead><tbody><tr><td>porumb, cartof, roșie, fasole, cacao, tutun, ardei, curcan</td><td>cal, vită, porc, oaie, capră, grâu, viță-de-vie, trestie de zahăr, piersic, măr</td><td>schimbări alimentare, creștere demografică în unele regiuni, transformarea agriculturii și a mediului.</td></tr><tr><td>argint american, produse tropicale, noi culturi alimentare</td><td>boli eurasiatice precum variola, rujeola, gripa; animale mari de tracțiune</td><td>catastrofă demografică pentru multe populații indigene, expansiune a economiei coloniale și modificări ecologice.</td></tr></tbody></table></div></section>
+<section class="section" id="societate"><h2>VII. Societăți coloniale și ierarhii</h2><p class="section-intro">Colonizarea a produs societăți noi, stratificate juridic, etnic, economic și religios. Identitatea socială era influențată de origine, culoare, statut juridic, avere și apropierea de puterea metropolitană.</p><div class="four-col"><article class="term-card"><strong>Peninsulares</strong><span>Europeni născuți în Spania sau Portugalia, de obicei privilegiați în funcțiile superioare.</span></article><article class="term-card"><strong>Criollos / creoli</strong><span>Descendenți ai europenilor născuți în colonii; bogați adesea, dar limitați politic.</span></article><article class="term-card"><strong>Mestizos</strong><span>Persoane de origine mixtă europeană și indigenă, cu statut variabil în funcție de regiune.</span></article><article class="term-card"><strong>Mulatos</strong><span>Persoane de origine mixtă europeană și africană, frecvent afectate de discriminare juridică și socială.</span></article><article class="term-card"><strong>Indigeni</strong><span>Populații amerindiene supuse tributului, misiunilor, muncii forțate sau relocărilor.</span></article><article class="term-card"><strong>Africani sclavizați</strong><span>Oameni deportați forțat și exploatați în plantații, mine, porturi și gospodării.</span></article><article class="term-card"><strong>Misionari</strong><span>Agenți ai convertirii, educației, controlului cultural, dar uneori și critici ai abuzurilor coloniale.</span></article><article class="term-card"><strong>Negustori și companii</strong><span>Actori ai economiei coloniale: finanțare, transport, monopol, asigurări, credit și distribuție.</span></article></div></section>
+<section class="section" id="conflicte"><h2>VIII. Rivalități coloniale și războaie maritime</h2><p class="section-intro">Sistemul colonial a produs rapid conflicte: Spania și Portugalia au încercat să păstreze monopoluri, iar Anglia, Franța și Țările de Jos au contestat ordinea iberică.</p><div class="timeline">
+<article class="event"><div class="date">1580-1640</div><div><h3>Uniunea Iberică</h3><p>Spania și Portugalia sunt unite dinastic, iar posesiunile portugheze devin ținte pentru rivalii Spaniei.</p></div></article><article class="event"><div class="date">1588</div><div><h3>Armada Spaniolă</h3><p>Eșecul invaziei spaniole asupra Angliei marchează slăbirea prestigiului naval spaniol.</p></div></article><article class="event"><div class="date">1602</div><div><h3>VOC</h3><p>Olanda creează o companie capabilă să concureze Portugalia în Asia.</p></div></article><article class="event"><div class="date">1624-1654</div><div><h3>Olanda în Brazilia</h3><p>Olandezii controlează temporar părți din Brazilia portugheză, mai ales în nord-estul zahărului.</p></div></article><article class="event"><div class="date">1652</div><div><h3>Colonia Capului</h3><p>Olandezii fondează o bază strategică la Capul Bunei Speranțe.</p></div></article><article class="event"><div class="date">1756-1763</div><div><h3>Războiul de Șapte Ani</h3><p>Conflict global care schimbă balanța colonială în favoarea Marii Britanii.</p></div></article>
+</div></section>
+
+<section class="section" id="imperii-fise">
+  <h2>IX. Fișe detaliate ale principalelor imperii coloniale</h2>
+  <p class="section-intro">Fiecare imperiu colonial a avut o logică proprie. Unele s-au bazat pe porturi și monopoluri maritime, altele pe cucerire teritorială, colonizare de populație, plantații, companii sau control continental.</p>
+  <details open><summary>Portugalia: imperiu maritim, mirodenii și Brazilia</summary><div class="details-body">
+    <div class="key-line"><strong>Interval de formare</strong><span>1415-1557: de la Ceuta la Madeira, Azore, coasta Africii, India, Malacca, Ormuz, Brazilia și Macao.</span></div>
+    <div class="key-line"><strong>Centre</strong><span>Lisabona, Goa, Malacca, Ormuz, Macao, Salvador da Bahia, Luanda, Mozambic.</span></div>
+    <div class="key-line"><strong>Specific</strong><span>Portugalia a controlat noduri comerciale și rute maritime. Nu avea populația necesară pentru cuceriri continentale uriașe în Asia, așa că a preferat forturi, garnizoane, taxe și superioritate navală.</span></div>
+    <div class="key-line"><strong>Brazilia</strong><span>După 1500, Brazilia devine treptat o colonie de plantație. După 1530, colonizarea se organizează mai sistematic; zahărul, sclavia africană, apoi aurul din Minas Gerais schimbă importanța Braziliei.</span></div>
+  </div></details>
+  <details><summary>Spania: America, minele și administrația imperială</summary><div class="details-body">
+    <div class="key-line"><strong>Interval de formare</strong><span>1492-1570: Caraibe, Mexic, Peru, America Centrală, Chile, nordul Americii de Sud și Filipine.</span></div>
+    <div class="key-line"><strong>Centre</strong><span>Sevilla, Santo Domingo, Mexico, Lima, Potosí, Veracruz, Cartagena, Manila.</span></div>
+    <div class="key-line"><strong>Specific</strong><span>Imperiu teritorial, bazat pe viceregate, misiuni, orașe, mine, muncă obligatorie și integrarea populațiilor indigene într-un sistem de tribut și convertire.</span></div>
+    <div class="key-line"><strong>Metale</strong><span>Argintul din Potosí și Zacatecas a alimentat finanțele spaniole, comerțul european și schimburile cu Asia prin Manila.</span></div>
+  </div></details>
+  <details><summary>Țările de Jos: companii, monopoluri și porturi</summary><div class="details-body"><p>Olanda a creat un model de capitalism comercial avansat. VOC, fondată în 1602, avea dreptul de a purta războaie, de a încheia tratate și de a administra teritorii. Batavia, în Indonezia, a devenit centrul puterii olandeze în Asia. WIC, fondată în 1621, a vizat Atlanticul, Brazilia, Africa de Vest și Caraibele. Modelul olandez a fost mai puțin misionar decât cel iberic și mai concentrat pe profit, monopol și control portuar.</p></div></details>
+  <details><summary>Anglia / Marea Britanie: colonii de așezare și imperiu comercial</summary><div class="details-body"><p>Anglia a intrat mai târziu în cursă, dar a combinat corsa, colonizarea, companiile comerciale și expansiunea navală. Jamestown (1607), Plymouth (1620), Barbados (1627), coloniile din Noua Anglie, Virginia și Caraibe au creat un model mixt: colonii de populație în America de Nord și plantații în insule. În Asia, Compania Indiilor de Est, fondată în 1600, va deveni treptat un actor politic major.</p></div></details>
+  <details><summary>Franța: Noua Franță, blănuri, misiuni și Caraibe</summary><div class="details-body"><p>Franța a dezvoltat un imperiu mai puțin populat în America de Nord, concentrat pe fluviul Sfântul Laurențiu, Marile Lacuri, Mississippi și comerțul cu blănuri. Quebec a fost fondat în 1608. În Caraibe, coloniile franceze au devenit extrem de profitabile prin zahăr și sclavie, mai ales Saint-Domingue în secolul al XVIII-lea.</p></div></details>
+</section>
+<section class="section" id="drept-dezbatere">
+  <h2>X. Justificarea colonizării și criticile ei</h2>
+  <p class="section-intro">Sistemul colonial nu a fost doar economic și militar. El a fost justificat prin argumente religioase, juridice și civilizaționale, dar a fost contestat încă din secolul al XVI-lea.</p>
+  <div class="three-col">
+    <article class="info-card"><h3>Doctrina descoperirii</h3><p>Monarhiile europene au susținut că descoperirea, creștinarea și autorizarea papală ofereau drepturi asupra teritoriilor. Această viziune ignora suveranitatea populațiilor existente.</p></article>
+    <article class="info-card"><h3>Valladolid, 1550-1551</h3><p>Dezbaterea dintre Bartolomé de las Casas și Juan Ginés de Sepúlveda a pus în discuție legitimitatea cuceririi, tratamentul indigenilor și natura puterii spaniole în America.</p></article>
+    <article class="info-card"><h3>Legile Noi, 1542</h3><p>Coroana spaniolă a încercat să limiteze unele abuzuri ale encomenderos. Aplicarea a fost însă dificilă, deoarece coloniștii locali aveau interese economice puternice.</p></article>
+  </div>
+  <div class="note"><strong>Observație:</strong> existența unor critici nu anulează violența sistemului. Ea arată doar că în interiorul Europei au existat conflicte între profit, creștinare, drept, monarhie și interesele coloniștilor.</div>
+</section>
+<section class="section" id="orase-porturi">
+  <h2>XI. Orașe, porturi și noduri ale lumii coloniale</h2>
+  <p class="section-intro">Colonialismul s-a sprijinit pe rețele urbane. Porturile erau spații de control fiscal, militar și comercial; orașele miniere și administrative concentrau puterea imperială.</p>
+  <div class="table-wrap"><table><thead><tr><th>Oraș / port</th><th>Data / perioadă</th><th>Rol colonial</th></tr></thead><tbody>
+    <tr><td>Sevilla</td><td>sec. XVI</td><td>Centrul legal al comerțului spaniol cu America prin Casa de Contratación.</td></tr>
+    <tr><td>Lisabona</td><td>sec. XV-XVI</td><td>Centru al comerțului portughez cu Africa, India și Brazilia.</td></tr>
+    <tr><td>Goa</td><td>1510</td><td>Capitala Estado da Índia și centru al dominației portugheze în Oceanul Indian.</td></tr>
+    <tr><td>Mexico</td><td>după 1521</td><td>Capitala Noii Spanii, construită pe ruinele Tenochtitlanului.</td></tr>
+    <tr><td>Lima</td><td>1535</td><td>Capitală a viceregatului Peru și centru al administrației spaniole sud-americane.</td></tr>
+    <tr><td>Potosí</td><td>după 1545</td><td>Oraș minier legat de argint, muncă forțată și economia globală.</td></tr>
+    <tr><td>Manila</td><td>1571</td><td>Nod al comerțului transpacific dintre China, Filipine și Mexic.</td></tr>
+    <tr><td>Batavia</td><td>1619</td><td>Centru al VOC în Asia de Sud-Est.</td></tr>
+    <tr><td>Quebec</td><td>1608</td><td>Capitală a Noii Franțe și bază pentru comerțul cu blănuri.</td></tr>
+    <tr><td>Jamestown</td><td>1607</td><td>Primă colonie engleză durabilă în America de Nord.</td></tr>
+  </tbody></table></div>
+</section>
+<section class="section" id="produse-coloniale">
+  <h2>XII. Produse coloniale și transformarea consumului european</h2>
+  <p class="section-intro">Colonialismul a schimbat alimentația, moda, medicina, finanțele și obiceiurile cotidiene ale europenilor. Multe produse considerate astăzi obișnuite au devenit comune prin rețele coloniale.</p>
+  <div class="four-col">
+    <article class="term-card"><strong>Zahărul</strong><span>Din lux medieval devine produs de consum tot mai răspândit, datorită plantațiilor atlantice și muncii sclavizate.</span></article>
+    <article class="term-card"><strong>Tutunul</strong><span>Introdus din America, devine produs fiscal important pentru statele europene.</span></article>
+    <article class="term-card"><strong>Cacaoa</strong><span>Preluată din lumea mesoamericană, intră în cultura europeană a băuturilor de lux.</span></article>
+    <article class="term-card"><strong>Cartoful</strong><span>Ajunge treptat în Europa și va deveni, mai târziu, aliment esențial pentru creșterea populației.</span></article>
+    <article class="term-card"><strong>Porumbul</strong><span>Se răspândește în Europa, Africa și Asia, adaptându-se la regiuni diverse.</span></article>
+    <article class="term-card"><strong>Argintul</strong><span>Devine metal al economiei globale, legând minele americane de piețele europene și asiatice.</span></article>
+    <article class="term-card"><strong>Mirodeniile</strong><span>Piperul, scorțișoara, cuișoarele și nucșoara au motivat rutele portugheze spre India și Moluce.</span></article>
+    <article class="term-card"><strong>Bumbacul</strong><span>Va deveni esențial în economia atlantică și, mai târziu, în revoluția industrială.</span></article>
+  </div>
+</section>
+<section class="section" id="consecinte-lungi">
+  <h2>XIII. Consecințe pe termen lung</h2>
+  <p class="section-intro">Sistemul colonial a produs o lume modernă conectată, dar construită pe dominație și inegalitate.</p>
+  <div class="two-col">
+    <article class="info-card"><h3>Pentru Europa</h3><ul class="clean"><li>mutarea centrului economic spre Atlantic;</li><li>creșterea porturilor occidentale: Lisabona, Sevilla, Anvers, Amsterdam, Londra, Nantes, Bordeaux;</li><li>acumulare de capital comercial;</li><li>dezvoltarea companiilor, burselor, asigurărilor și creditului;</li><li>rivalități coloniale și războaie maritime.</li></ul></article>
+    <article class="info-card"><h3>Pentru Americi, Africa și Asia</h3><ul class="clean"><li>catastrofă demografică în multe societăți indigene americane;</li><li>deportarea forțată a milioane de africani prin sclavia atlantică;</li><li>reorganizarea economiilor locale pentru export;</li><li>misiuni religioase, amestec cultural și sincretisme;</li><li>formarea unor societăți coloniale ierarhizate.</li></ul></article>
+  </div>
+</section>
+
+
+<!-- EXTINDERE-2026-07-10-START -->
+<section class="section" id="cronologie-coloniala-extinsa">
+  <h2>VIII. Cronologie extinsă a formării sistemului colonial</h2>
+  <p class="section-intro">Sistemul colonial nu apare într-un singur moment. El se construiește prin tratate, porturi, companii comerciale, viceregate, plantații, forturi și rute oceanice.</p>
+  <div class="timeline">
+    <article class="event"><div class="date">1479</div><div><h3>Tratatul de la Alcáçovas</h3><p>Castilia și Portugalia își delimitează interesele atlantice: Castilia păstrează Canarele, Portugalia își consolidează spațiile africane și insulele atlantice.</p></div></article>
+    <article class="event"><div class="date">1493</div><div><h3>Bulele alexandrine</h3><p>Papa Alexandru al VI-lea emite documente care acordă Castiliei drepturi asupra unor teritorii descoperite spre vest. Ele sunt urmate de negocierea directă dintre Spania și Portugalia.</p></div></article>
+    <article class="event"><div class="date">7 iun. 1494</div><div><h3>Tratatul de la Tordesillas</h3><p>Linia de demarcație este mutată la 370 de leghe vest de Capul Verde. Vestul revine Castiliei, estul Portugaliei, ceea ce va permite includerea Braziliei în sfera portugheză.</p></div></article>
+    <article class="event"><div class="date">1503</div><div><h3>Casa de Contratación</h3><p>Instituție creată la Sevilla pentru controlul comerțului, navigației, taxelor, hărților și fluxului de oameni și mărfuri dintre Spania și America.</p></div></article>
+    <article class="event"><div class="date">1510</div><div><h3>Goa portugheză</h3><p>Afonso de Albuquerque cucerește Goa, devenită capitală a Estado da Índia, centrul administrativ al dominației portugheze în Oceanul Indian.</p></div></article>
+    <article class="event"><div class="date">1511</div><div><h3>Malacca</h3><p>Cucerirea Malaccăi oferă Portugaliei control asupra unui nod major între Oceanul Indian, China și Insulele Mirodeniilor.</p></div></article>
+    <article class="event"><div class="date">1515</div><div><h3>Ormuz</h3><p>Portugalia obține control asupra unui nod strategic de la intrarea în Golful Persic.</p></div></article>
+    <article class="event"><div class="date">1524</div><div><h3>Consiliul Indiilor</h3><p>Spania creează un organism central pentru legislație, administrație, justiție și numiri în posesiunile americane.</p></div></article>
+    <article class="event"><div class="date">22 apr. 1529</div><div><h3>Tratatul de la Zaragoza</h3><p>Spania și Portugalia stabilesc o linie de demarcație în Asia-Pacific, completând logica Tordesillas pe cealaltă parte a lumii.</p></div></article>
+    <article class="event"><div class="date">1535</div><div><h3>Viceregatul Noua Spanie</h3><p>Spania organizează Mexicul și zonele nord-americane/caraibiene într-o mare unitate administrativă.</p></div></article>
+    <article class="event"><div class="date">1542</div><div><h3>Legile Noi</h3><p>Coroana spaniolă încearcă să limiteze abuzurile encomiendei și să întărească autoritatea regală asupra coloniștilor.</p></div></article>
+    <article class="event"><div class="date">1542</div><div><h3>Viceregatul Peru</h3><p>Spania organizează teritoriile andine și minele de argint într-o structură administrativă centrală.</p></div></article>
+    <article class="event"><div class="date">1543</div><div><h3>Contact portughez cu Japonia</h3><p>Portughezii ajung în arhipelagul japonez, iar armele de foc, comerțul și misionarii intră în relațiile regionale.</p></div></article>
+    <article class="event"><div class="date">1557</div><div><h3>Macao</h3><p>Portugalia obține un punct stabil la Macao, devenit interfață comercială între China, Japonia, India și Europa.</p></div></article>
+    <article class="event"><div class="date">1565</div><div><h3>Manila-Acapulco</h3><p>Ruta galionului de Manila leagă Asia de America spaniolă și creează un circuit global al argintului, mătăsii și porțelanului.</p></div></article>
+    <article class="event"><div class="date">1600</div><div><h3>Compania Engleză a Indiilor de Est</h3><p>Comerțul colonial devine instrument al companiilor privilegiate, cu drepturi comerciale, militare și administrative.</p></div></article>
+    <article class="event"><div class="date">1602</div><div><h3>Compania Olandeză a Indiilor de Est</h3><p>VOC devine un actor imperial major în Asia, combinând capital privat, sprijin de stat, flotă, forturi și monopoluri.</p></div></article>
+    <article class="event"><div class="date">1664</div><div><h3>Compania Franceză a Indiilor de Est</h3><p>Franța intră mai organizat în competiția companiilor comerciale asiatice.</p></div></article>
+    <article class="event"><div class="date">1717</div><div><h3>Viceregatul Noua Granada</h3><p>Spania reorganizează administrativ nordul Americii de Sud pentru control fiscal, militar și comercial mai eficient.</p></div></article>
+    <article class="event"><div class="date">1776</div><div><h3>Viceregatul Río de la Plata</h3><p>Buenos Aires și sudul atlantic spaniol capătă importanță administrativă și comercială.</p></div></article>
+  </div>
+</section>
+
+<section class="section" id="imperii-comparate-extins">
+  <h2>IX. Imperii coloniale comparate</h2>
+  <p class="section-intro">Imperiile coloniale nu au funcționat identic. Unele au fost imperii de forturi și rute, altele imperii de cucerire continentală, altele imperii de plantație, companie sau colonizare de populație.</p>
+  <div class="table-wrap"><table><thead><tr><th>Imperiu</th><th>Zone principale</th><th>Instituții / mecanisme</th><th>Produse și interese</th><th>Trăsături</th></tr></thead><tbody>
+    <tr><td>Portughez</td><td>Brazilia, coasta Africii, Goa, Malacca, Ormuz, Macao, Timor.</td><td>Estado da Índia, Casa da Índia, forturi, factorii, sistemul cartaz, guvernatori și viceregi.</td><td>Mirodenii, aur, sclavi, zahăr, lemn brazilian, textile asiatice, porțelan.</td><td>Imperiu maritim în rețea: puncte strategice, porturi, monopoluri și comerț oceanic.</td></tr>
+    <tr><td>Spaniol</td><td>Caraibe, Mexic, America Centrală, Anzi, Filipine, California, Florida.</td><td>Viceregate, audiencias, cabildos, Consiliul Indiilor, Casa de Contratación, encomienda, mita.</td><td>Argint, aur, zahăr, cacao, tutun, produse agricole, tribut, muncă forțată.</td><td>Imperiu teritorial și administrativ, cu cucerire militară și integrare juridică în monarhia spaniolă.</td></tr>
+    <tr><td>Olandez</td><td>Indonezia, Capul Bunei Speranțe, Antile, Surinam, pentru o vreme Brazilia nord-estică.</td><td>VOC 1602, WIC 1621, acționari, consilii comerciale, forturi, flote, monopoluri.</td><td>Mirodenii, zahăr, sclavi, blănuri, textile, transport maritim.</td><td>Imperiu al companiei comerciale, flexibil și orientat spre profit.</td></tr>
+    <tr><td>Englez / britanic</td><td>America de Nord, Caraibe, India, Atlantic, apoi Australia.</td><td>Companii privilegiate, colonii de coroană, colonii de proprietar, adunări locale, Royal Navy.</td><td>Tutun, zahăr, bumbac, ceai, textile, blănuri, sclavi, produse asiatice.</td><td>Combină colonizarea de populație, plantațiile, comerțul global și puterea navală.</td></tr>
+    <tr><td>Francez</td><td>Canada, Louisiana, Antile, Senegal, India franceză.</td><td>Companii, guvernatori, misiuni, alianțe indigene, comerț cu blănuri.</td><td>Blănuri, zahăr, pește, sclavi, produse de plantație.</td><td>Mai slab demografic în America de Nord, dar important prin rețele comerciale și alianțe.</td></tr>
+    <tr><td>Rus</td><td>Siberia, Alaska.</td><td>Cazaci, forturi, tribut în blănuri, companii comerciale.</td><td>Blănuri, taxe, control continental.</td><td>Expansiune mai ales terestră, nu oceanică atlantică.</td></tr>
+  </tbody></table></div>
+</section>
+
+<section class="section" id="comert-triangular-detaliat">
+  <h2>X. Comerțul triangular și economia atlantică</h2>
+  <p class="section-intro">Comerțul triangular este o schemă didactică utilă, dar realitatea a fost mai complexă: existau mai multe triunghiuri, rute directe, contrabandă, monopoluri și porturi specializate. Totuși, modelul arată cum Europa, Africa și America au fost integrate într-o economie violentă a plantațiilor și a sclaviei.</p>
+  <div class="three-col">
+    <article class="info-card"><h3>Europa → Africa</h3><p>Corăbiile europene duceau textile, arme, alcool, obiecte metalice, mărgele, produse manufacturate și credit comercial. Acestea erau schimbate, prin rețele africane și europene, pentru captivi transformați în sclavi.</p></article>
+    <article class="info-card"><h3>Africa → America</h3><p>Pasajul de Mijloc transporta persoane înrobite spre plantații, mine, porturi și orașe coloniale. Mortalitatea era ridicată, iar violența era structurală: oamenii erau tratați ca marfă și capital.</p></article>
+    <article class="info-card"><h3>America → Europa</h3><p>Din colonii plecau zahăr, tutun, bumbac, cafea, cacao, rom, indigo, argint, aur și lemn. Profiturile alimentau bănci, asigurări, porturi, șantiere navale și manufacturi europene.</p></article>
+  </div>
+  <div class="table-wrap"><table><thead><tr><th>Port / regiune</th><th>Rol în sistem</th><th>Produse / activități</th></tr></thead><tbody>
+    <tr><td>Sevilla, apoi Cádiz</td><td>Control spaniol al comerțului american.</td><td>Argint, registre de flotă, taxe, Casa de Contratación.</td></tr>
+    <tr><td>Lisabona</td><td>Nod portughez pentru India, Africa și Brazilia.</td><td>Mirodenii, zahăr, sclavi, produse asiatice.</td></tr>
+    <tr><td>Amsterdam</td><td>Capitală comercială și financiară a secolului al XVII-lea.</td><td>Asigurări, bursă, depozitare, redistribuție europeană.</td></tr>
+    <tr><td>Liverpool, Bristol, Nantes, Bordeaux</td><td>Porturi importante în comerțul atlantic și în economia sclaviei.</td><td>Triunghi atlantic, zahăr, tutun, sclavi, manufacturi.</td></tr>
+    <tr><td>Havana, Veracruz, Cartagena, Portobelo</td><td>Noduri spaniole în America.</td><td>Flote, argint, apărare, comerț colonial.</td></tr>
+    <tr><td>Bahia, Pernambuco, Rio de Janeiro</td><td>Centre portugheze în Brazilia.</td><td>Zahăr, aur, sclavi, porturi atlantice.</td></tr>
+  </tbody></table></div>
+</section>
+
+<section class="section" id="schimb-columbian-detaliat">
+  <h2>XI. Schimbul columbian: plante, animale, boli și populații</h2>
+  <p class="section-intro">Colonizarea a schimbat ecosistemele. Nu au circulat doar oameni și mărfuri, ci și plante, animale, microbi, tehnici agricole și moduri de alimentație.</p>
+  <div class="table-wrap"><table><thead><tr><th>Direcție</th><th>Elemente transferate</th><th>Impact</th></tr></thead><tbody>
+    <tr><td>America → Europa / Africa / Asia</td><td>Porumb, cartof, roșie, cacao, tutun, fasole, ardei, dovleac, arahide, curcan, quinina.</td><td>Schimbă alimentația globală, crește productivitatea agricolă în multe regiuni și susține creșteri demografice pe termen lung.</td></tr>
+    <tr><td>Europa / Africa / Asia → America</td><td>Cai, vite, porci, oi, capre, grâu, viță-de-vie, trestie de zahăr, cafea, citrice, mere, piersici.</td><td>Transformă peisajele americane, creează economia plantațiilor și schimbă mobilitatea populațiilor indigene prin cal.</td></tr>
+    <tr><td>Lumea Veche → America</td><td>Variolă, rujeolă, gripă, tifos și alte boli.</td><td>Populațiile amerindiene, fără imunitate anterioară la multe boli eurasiatice, suferă pierderi demografice catastrofale.</td></tr>
+    <tr><td>Circulație umană forțată</td><td>Europeni, africani înrobiți, misionari, soldați, coloniști, mestizaj, deportări.</td><td>Apar societăți coloniale ierarhizate rasial și juridic, cu caste, privilegii și forme de muncă dependentă.</td></tr>
+  </tbody></table></div>
+</section>
+<!-- EXTINDERE-2026-07-10-END -->
+<section class="final-box"><h2>Ideea de reținut</h2><p>Sistemul colonial a transformat descoperirea în dominație. A creat imperii maritime, administrații coloniale, economie de plantație, exploatare minieră, comerț global, sclavie atlantică și schimburi biologice planetare. A îmbogățit metropolele și a devastat numeroase societăți indigene și africane.</p></section>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ro-primul-razboi-mondial-inceputul-conflictului</title>
+  <style>
+:root {
+  --bg: #f6f0e7;
+  --paper: #fffaf3;
+  --paper-2: #ffffff;
+  --ink: #2f241c;
+  --title: #3c2a1e;
+  --muted: #5b4a3d;
+  --accent: #7a4f2a;
+  --accent-2: #9b6a3c;
+  --accent-soft: #f0e4d4;
+  --line: rgba(91, 62, 36, 0.18);
+  --line-strong: rgba(91, 62, 36, 0.34);
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+  --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+    radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0,0,0,.10) 48%, rgba(0,0,0,.44) 100%),
+    linear-gradient(90deg, rgba(0,0,0,.20), transparent 18%, transparent 82%, rgba(0,0,0,.20));
+}
+.page { position: relative; z-index: 1; width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 34px 0 70px; }
+.topbar { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:18px; flex-wrap:wrap; }
+.back-link, .tag, .link-chip { display:inline-flex; align-items:center; border:1px solid var(--line); background:rgba(255,250,243,.84); color:var(--title); border-radius:999px; padding:10px 15px; text-decoration:none; font-size:15px; font-weight:700; box-shadow:var(--shadow-small); }
+.back-link:hover, .link-chip:hover { background:#fff6eb; }
+.hero, .section, .nav-card, .final-box { background:rgba(255,250,243,.96); border:1px solid var(--line); border-radius:28px; box-shadow:var(--shadow); }
+.hero { padding:38px; margin-bottom:24px; position:relative; overflow:hidden; }
+.hero::after { content: attr(data-watermark); position:absolute; right:26px; bottom:-24px; font-size:102px; font-weight:900; letter-spacing:-4px; color:rgba(122,79,42,.08); pointer-events:none; }
+.eyebrow { margin:0 0 8px; font-size:16px; color:var(--accent); font-weight:800; letter-spacing:.08em; text-transform:uppercase; text-align:left; }
+h1 { margin:0; font-size:clamp(38px,5vw,62px); line-height:1.04; color:var(--title); letter-spacing:-1.4px; text-align:left; }
+.subtitle { margin:18px 0 0; max-width:980px; font-size:19px; line-height:1.78; color:var(--muted); text-align:justify; text-align-last:left; }
+.summary-grid, .three-col, .two-col, .term-grid, .quick-grid, .cause-grid, .four-col { display:grid; gap:14px; }
+.summary-grid { grid-template-columns:repeat(4,1fr); margin-top:26px; }
+.summary-card, .info-card, .wide-card, .term-card, .quick-card, .source-note, .micro-card, .warning-box, .table-wrap, .dated-card { background:var(--paper-2); border:1px solid rgba(91,62,36,.14); border-radius:20px; box-shadow:var(--shadow-small); text-align:justify; text-align-last:left; }
+.summary-card { padding:16px; min-height:132px; }
+.summary-card strong, .quick-card strong, .term-card strong, .micro-card strong, .dated-card strong { display:block; color:var(--title); font-size:17px; margin-bottom:8px; text-align:left; text-align-last:auto; }
+.summary-card span, .quick-card span, .term-card span, .micro-card span, .dated-card span { display:block; color:var(--muted); font-size:15.5px; line-height:1.56; text-align:justify; text-align-last:left; }
+.nav-card { display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:18px 20px; margin-bottom:24px; }
+.nav-card b { color:var(--title); margin-right:2px; }
+.nav-card a { color:var(--title); background:var(--accent-soft); border:1px solid rgba(91,62,36,.16); border-radius:999px; text-decoration:none; padding:8px 12px; font-weight:700; font-size:14px; cursor:pointer; font-family:inherit; }
+.nav-card a:hover { background:#e5d2bb; }
+.section { padding:30px; margin-bottom:24px; }
+h2 { margin:0 0 14px; color:var(--title); font-size:clamp(28px,3vw,38px); line-height:1.15; text-align:left; text-align-last:auto; }
+h3 { margin:0 0 12px; color:var(--title); font-size:22px; line-height:1.22; text-align:left; text-align-last:auto; }
+h4 { margin:16px 0 8px; color:var(--title); font-size:18px; text-align:left; text-align-last:auto; }
+.section-intro, p, li, dd { font-size:17px; line-height:1.72; color:var(--muted); text-align:justify; text-align-last:left; hyphens:auto; }
+.section-intro { margin:0 0 20px; max-width:1000px; }
+.three-col { grid-template-columns:repeat(3,1fr); }
+.four-col { grid-template-columns:repeat(4,1fr); }
+.two-col { grid-template-columns:repeat(2,1fr); }
+.cause-grid { grid-template-columns:1.1fr .9fr; }
+.term-grid { grid-template-columns:repeat(4,1fr); }
+.quick-grid { grid-template-columns:repeat(4,1fr); margin-top:18px; }
+.info-card, .wide-card, .term-card, .quick-card, .micro-card, .warning-box, .table-wrap, .dated-card { padding:20px; }
+.wide-card { margin-top:14px; }
+.wide-card p:last-child, .info-card p:last-child { margin-bottom:0; }
+.clean, .number-list { margin:0; padding-left:22px; }
+.clean li, .number-list li { margin:0 0 9px; padding-left:2px; }
+.clean li:last-child, .number-list li:last-child { margin-bottom:0; }
+.mini-title { display:inline; color:var(--title); font-weight:800; background:transparent; border:0; border-radius:0; padding:0; margin-right:5px; white-space:normal; text-align:inherit; }
+.date-pill { display:inline-block; color:var(--title); font-weight:800; background:#f3eadf; border:1px solid rgba(91,62,36,.13); border-radius:999px; padding:2px 9px; margin-right:5px; white-space:nowrap; text-align:left; }
+.date-badge { display:inline-flex; align-items:center; justify-content:center; color:#fffaf3; background:linear-gradient(180deg,#7a4f2a,#5b351b); border-radius:999px; padding:5px 11px; margin:0 8px 7px 0; font-weight:900; font-size:14.5px; letter-spacing:.1px; white-space:nowrap; }
+.definition, .note { margin-top:18px; background:#fff8ef; border:1px solid rgba(122,79,42,.22); border-left:6px solid rgba(122,79,42,.48); border-radius:18px; padding:18px 20px; color:var(--muted); font-size:17px; line-height:1.7; text-align:justify; text-align-last:left; }
+.definition strong, .note strong { color:var(--title); }
+details { background:#fffdf9; border:1px solid rgba(91,62,36,.14); border-radius:20px; box-shadow:var(--shadow-small); margin-top:14px; overflow:hidden; }
+details[open] { background:#fffaf3; }
+summary { cursor:pointer; list-style:none; padding:18px 20px; font-size:19px; font-weight:800; color:var(--title); display:flex; justify-content:space-between; align-items:center; gap:18px; text-align:left; text-align-last:auto; }
+summary::-webkit-details-marker { display:none; }
+summary::after { content:"Deschide"; color:var(--muted); font-size:14px; font-weight:700; background:#f3eadf; border:1px solid rgba(91,62,36,.14); border-radius:999px; padding:7px 11px; white-space:nowrap; }
+details[open] > summary::after { content:"Ascunde"; }
+.details-body { border-top:1px solid rgba(91,62,36,.12); padding:18px 20px 20px; text-align:justify; text-align-last:left; }
+.details-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+.nested-details { margin-top:10px; box-shadow:none; background:#ffffff; }
+.nested-details summary { font-size:17px; padding:14px 16px; }
+.key-line { display:grid; grid-template-columns:260px 1fr; gap:14px; padding:14px 0; border-bottom:1px dashed rgba(91,62,36,.18); }
+.key-line:last-child { border-bottom:0; }
+.key-line strong { color:var(--title); text-align:left; text-align-last:auto; }
+.key-line span { color:var(--muted); line-height:1.65; text-align:justify; text-align-last:left; }
+.timeline { position:relative; display:grid; gap:14px; margin-top:18px; }
+.event { display:grid; grid-template-columns:150px 1fr; gap:18px; align-items:stretch; background:#ffffff; border:1px solid rgba(91,62,36,.14); border-radius:20px; box-shadow:var(--shadow-small); overflow:hidden; }
+.date { background:linear-gradient(180deg,#7a4f2a,#5b351b); color:#fffaf3; display:flex; align-items:center; justify-content:center; text-align:center; padding:14px; font-size:18px; line-height:1.25; font-weight:900; letter-spacing:.2px; }
+.event > div:last-child { padding:17px 18px 18px 0; text-align:justify; text-align-last:left; }
+.event h3 { margin-bottom:6px; }
+.event p { margin:0; }
+.small-muted { font-size:15px; color:#725c49; line-height:1.6; text-align:justify; text-align-last:left; }
+.warning-box { background:#fff7ec; border-color:rgba(122,79,42,.22); margin-top:16px; }
+.final-box { padding:28px; background:linear-gradient(135deg,#fffaf3,#f4e4d1); border-color:rgba(91,62,36,.25); }
+.final-box p { margin-bottom:0; }
+.table-wrap { overflow-x:auto; margin-top:16px; }
+table { width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; border-radius:16px; }
+th, td { border-bottom:1px solid rgba(91,62,36,.14); border-right:1px solid rgba(91,62,36,.11); padding:12px 13px; vertical-align:top; font-size:16px; line-height:1.55; color:var(--muted); text-align:left; }
+th { background:#f3eadf; color:var(--title); font-weight:900; }
+tr:last-child td { border-bottom:0; }
+th:last-child, td:last-child { border-right:0; }
+.page-links { display:flex; gap:10px; flex-wrap:wrap; margin-top:18px; }
+@media (max-width:980px) {
+  .summary-grid, .three-col, .term-grid, .quick-grid, .four-col { grid-template-columns:repeat(2,1fr); }
+  .two-col, .cause-grid, .details-grid { grid-template-columns:1fr; }
+}
+@media (max-width:680px) {
+  .page { width:min(100% - 22px, 1180px); padding-top:22px; }
+  .hero, .section, .final-box { padding:22px; border-radius:22px; }
+  .summary-grid, .term-grid, .quick-grid, .four-col { grid-template-columns:1fr; }
+  .event { grid-template-columns:1fr; }
+  .date { min-height:66px; }
+  .event > div:last-child { padding:0 16px 16px; }
+  .key-line { grid-template-columns:1fr; gap:6px; }
+  summary { align-items:flex-start; flex-direction:column; }
+  .hero::after { font-size:74px; }
+}
+</style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a class="back-link" href="evaluare_cu_material_primul_razboi_corectat.html">← Înapoi la materiale</a>
+      <span class="tag">Material ajutător · Istoria românilor · Primul Război Mondial</span>
+    </div>
+    <section class="hero" data-watermark="1916">
+      <p class="eyebrow">Perspectivă românească · 1883-1916</p>
+      <h1>Primul Război Mondial: începutul conflictului</h1>
+      <p class="subtitle">Din perspectivă românească, începutul Primului Război Mondial înseamnă mai mult decât vara anului 1914. Înseamnă dilema dintre tratatul secret cu Puterile Centrale, neîncrederea față de Rusia, obiectivul unirii românilor din Austro-Ungaria și negocierile care au dus la intrarea României în război la 14/27 august 1916.</p>
+      <div class="summary-grid"><div class="summary-card"><strong>18/30 oct. 1883</strong><span>Tratatul secret defensiv cu Tripla Alianță fixează orientarea diplomatică inițială a României.</span></div><div class="summary-card"><strong>21 iul./3 aug. 1914</strong><span>Consiliul de Coroană de la Sinaia alege neutralitatea activă, nu intrarea imediată în război.</span></div><div class="summary-card"><strong>4/17 aug. 1916</strong><span>România semnează Tratatul de Alianță și Convenția Militară cu Antanta.</span></div><div class="summary-card"><strong>14/27 aug. 1916</strong><span>România declară război Austro-Ungariei și începe ofensiva spre Transilvania.</span></div></div>
+      <div class="page-links">
+        <a class="link-chip" href="ro-primul-razboi-mondial-inceputul-conflictului.html">I. Începutul conflictului</a>
+        <a class="link-chip" href="ro-primul-razboi-mondial-desfasurarea-conflictului.html">II. Desfășurarea conflictului</a>
+        <a class="link-chip" href="ro-primul-razboi-mondial-consecintele-conflictului.html">III. Consecințele conflictului</a>
+      </div>
+    </section>
+    <nav class="nav-card" aria-label="Cuprins"><b>Cuprins:</b><a href="#context">I. Context</a><a href="#alianta1883">II. Tratatul din 1883</a><a href="#consiliu">III. Consiliul de Coroană</a><a href="#neutralitate">IV. Neutralitatea</a><a href="#tratat1916">V. Acordurile din 1916</a><a href="#planuri">VI. Planuri</a><a href="#intrare">VII. Intrarea</a><a href="#cronologie">VIII. Cronologie</a><a href="#dosar-explicativ">IX. Dosar</a></nav>
+
+<section class="section" id="context">
+  <h2>I. Contextul general: de ce Primul Război Mondial devine o problemă românească</h2>
+  <p class="section-intro"><span class="date-badge">28 iulie 1914</span> izbucnirea războiului dintre Austro-Ungaria și Serbia a pus România într-o situație diplomatică extrem de delicată. Regatul României era legat printr-un tratat secret de Puterile Centrale, dar cele mai mari obiective naționale românești vizau tocmai teritorii stăpânite de Austro-Ungaria: Transilvania, Banatul, Crișana, Maramureșul și Bucovina.</p>
+  <div class="three-col">
+    <article class="info-card"><h3><span class="date-badge">1812</span> Problema Basarabiei</h3><p>Prin Pacea de la București din <strong>1812</strong>, Imperiul Rus a anexat Basarabia. Pentru elita politică românească, Rusia nu era doar un posibil aliat al Antantei, ci și puterea care ocupase un teritoriu românesc. De aceea, apropierea de Rusia în timpul războiului era utilă împotriva Austro-Ungariei, dar psihologic și politic era dificilă.</p></article>
+    <article class="info-card"><h3><span class="date-badge">1877-1878</span> Independența și neîncrederea</h3><p>În <strong>1877-1878</strong>, România își câștigă independența, dar la Congresul de la Berlin din <strong>1878</strong> constată că marile puteri puteau decide asupra intereselor sale. Rusia primește sudul Basarabiei, iar România primește Dobrogea. Episodul a întărit ideea că statul român avea nevoie de garanții diplomatice clare, nu de promisiuni vagi.</p></article>
+    <article class="info-card"><h3><span class="date-badge">1914</span> Dilema strategică</h3><p>În <strong>1914</strong>, România trebuia să aleagă între două riscuri. De partea Puterilor Centrale, putea spera cel mult la Basarabia, dar ar fi renunțat la românii din Austro-Ungaria. De partea Antantei, putea cere Transilvania și Bucovina, dar trebuia să coopereze cu Rusia și să apere un front foarte întins.</p></article>
+  </div>
+  <div class="definition"><strong>Ideea-cheie:</strong> începutul războiului pentru România nu înseamnă doar intrarea efectivă în luptă din <strong>14/27 august 1916</strong>, ci întregul proces diplomatic dintre <strong>1883</strong> și <strong>1916</strong>: alianță secretă, neutralitate, negocieri, garanții teritoriale, convenție militară și alegerea momentului de intervenție.</div>
+</section>
+
+<section class="section" id="alianta1883">
+  <h2>II. <span class="date-badge">18/30 octombrie 1883</span> Tratatul secret cu Tripla Alianță</h2>
+  <p class="section-intro">În <strong>18/30 octombrie 1883</strong>, România aderă printr-un tratat secret la sistemul Triplei Alianțe, apropiindu-se de Germania, Austro-Ungaria și Italia. Tratatul era <strong>defensiv</strong>, adică obliga intervenția doar dacă unul dintre aliați era atacat. Această nuanță va deveni decisivă în <strong>1914</strong>.</p>
+  <div class="two-col">
+    <article class="info-card"><h3>De ce s-a apropiat România de Puterile Centrale?</h3><ul class="clean"><li><span class="date-pill">1812</span><strong>Pericolul rusesc:</strong> Rusia anexase Basarabia, iar memoria acestei pierderi domina politica externă românească.</li><li><span class="date-pill">1878</span><strong>Bugeacul și Congresul de la Berlin:</strong> după independență, România pierde din nou sudul Basarabiei, ceea ce întărește neîncrederea față de Rusia.</li><li><span class="date-pill">1878-1883</span><strong>Ieșirea din izolare:</strong> după recunoașterea independenței, România caută un protector diplomatic într-o Europă dominată de marile puteri.</li><li><span class="date-pill">1866-1914</span><strong>Carol I:</strong> regele, provenit dintr-o dinastie germană, avea o orientare filogermană și considera Germania un model de disciplină politică și militară.</li></ul></article>
+    <article class="info-card"><h3>De ce tratatul nu a dus automat la intrarea în război?</h3><p><span class="date-pill">15/28 iulie 1914</span> Austro-Ungaria declară război Serbiei. Fiindcă Austro-Ungaria era atacatorul, România putea susține că tratatul defensiv din <strong>1883</strong> nu se activa automat. În plus, România nu fusese consultată în deciziile austro-germane din iulie <strong>1914</strong>. Lipsa consultării era importantă: un aliat nu putea fi obligat moral să intre într-un război pregătit fără el.</p><p><span class="date-pill">10/23 mai 1915</span> Italia, și ea membră a Triplei Alianțe, intră de partea Antantei împotriva Austro-Ungariei. Din acel moment, vechea alianță devine și mai puțin convingătoare ca obligație politică pentru România.</p></article>
+  </div>
+  <details open><summary>Reușitele României moderne care au creat suspiciuni în jurul ei</summary><div class="details-body"><div class="key-line"><strong><span class="date-pill">5/17 ian. și 24 ian./5 feb. 1859</span> Dubla alegere</strong><span>Românii îl aleg pe Alexandru Ioan Cuza în Moldova și Țara Românească, transformând o soluție aparent limitată într-un pas decisiv spre unire.</span></div><div class="key-line"><strong><span class="date-pill">24 ian./5 feb. 1862</span> Unirea deplină</strong><span>Instituțiile comune se consolidează, iar Bucureștiul devine centrul politic al statului. Pentru marile puteri, România demonstra că putea depăși limitele impuse diplomatic.</span></div><div class="key-line"><strong><span class="date-pill">10/22 mai 1866</span> Carol I</strong><span>Aducerea principelui străin consolidează statul, dar modifică echilibrul politic acceptat inițial în vremea lui Cuza.</span></div><div class="key-line"><strong><span class="date-pill">9/21 mai 1877</span> Independența</strong><span>România se proclamă independentă și participă la războiul ruso-otoman, dar după victorie constată că independența nu exclude presiunile marilor puteri.</span></div></div></details>
+</section>
+
+<section class="section" id="consiliu">
+  <h2>III. <span class="date-badge">21 iulie/3 august 1914</span> Consiliul de Coroană de la Sinaia</h2>
+  <p class="section-intro">Consiliul de Coroană este convocat atunci când statul se află într-o criză majoră. În <strong>21 iulie/3 august 1914</strong>, la Sinaia, România decide să nu intre imediat în război. Hotărârea nu însemna pasivitate, ci <strong>neutralitate activă</strong>: România aștepta momentul și condițiile cele mai avantajoase.</p>
+  <div class="three-col">
+    <article class="info-card"><h3>Cine participa?</h3><ul class="clean"><li><span class="date-pill">3 aug. 1914</span> Regele Carol I, care conducea discuția și susținea respectarea alianței cu Puterile Centrale.</li><li><span class="date-pill">3 aug. 1914</span> Prințul moștenitor Ferdinand, viitorul rege al României.</li><li><span class="date-pill">3 aug. 1914</span> Membrii guvernului, foști prim-miniștri și liderii principalelor partide politice.</li></ul></article>
+    <article class="info-card"><h3>Poziția germanofilă</h3><p><span class="date-pill">3 aug. 1914</span> Carol I și Petre P. Carp au cerut intrarea României în război alături de Germania și Austro-Ungaria. Pentru ei, tratatul din <strong>1883</strong>, onoarea diplomatică și orientarea tradițională filogermană contau mai mult decât riscul politic intern.</p></article>
+    <article class="info-card"><h3>Poziția majorității</h3><p><span class="date-pill">3 aug. 1914</span> Majoritatea oamenilor politici a susținut neutralitatea. Argumentul central era juridic și strategic: tratatul era defensiv, Austro-Ungaria atacase Serbia, România nu fusese consultată, iar intrarea imediată ar fi putut distruge șansa de a obține provinciile românești din Austro-Ungaria.</p></article>
+  </div>
+  <div class="note"><strong>De ce e importantă data?</strong> <strong>21 iulie/3 august 1914</strong> marchează desprinderea practică a României de obligația politică față de Puterile Centrale. Statul român nu rupe încă alianța secretă, dar refuză să o transforme în participare militară.</div>
+</section>
+
+<section class="section" id="neutralitate">
+  <h2>IV. <span class="date-badge">1914-1916</span> Neutralitatea activă și negocierile</h2>
+  <p class="section-intro">Între <strong>august 1914</strong> și <strong>august 1916</strong>, România nu a stat pur și simplu în afara războiului. Guvernul Ion I. C. Brătianu a negociat cu ambele tabere și a încercat să transforme intrarea în război într-un schimb politic: participare militară contra recunoașterea drepturilor românești asupra provinciilor locuite de români.</p>
+  <div class="two-col">
+    <article class="info-card"><h3>Varianta Puterilor Centrale</h3><p><span class="date-pill">1914-1916</span> Dacă România ar fi intrat de partea Germaniei, Austro-Ungariei, Bulgariei și Imperiului Otoman, s-ar fi creat o linie strategică nord-sud favorabilă Puterilor Centrale. Problema era că România nu putea cere Transilvania de la un aliat austro-ungar. Singura promisiune posibilă privea Basarabia, dar aceasta depindea de o înfrângere a Rusiei și de o conjunctură foarte incertă.</p></article>
+    <article class="info-card"><h3>Varianta Antantei</h3><p><span class="date-pill">1914-1916</span> Dacă România se alia cu Antanta, putea cere Transilvania, Banatul, Crișana, Maramureșul și Bucovina. În schimb, se expunea unui front de aproximativ <strong>1400 km</strong>, aproape cât celelalte fronturi europene la un loc, și depindea de sprijinul Rusiei în est și în Dobrogea.</p></article>
+  </div>
+  <details open><summary>De ce a durat neutralitatea până în august 1916?</summary><div class="details-body"><ul class="clean"><li><span class="date-pill">1914</span> România nu era pregătită pentru un război lung, industrializat, dus împotriva mai multor adversari.</li><li><span class="date-pill">1915</span> Intrarea Italiei de partea Antantei a arătat că schimbarea taberei era posibilă, dar România a continuat să ceară garanții mai clare.</li><li><span class="date-pill">1916</span> Brătianu a cerut formulări precise în tratat pentru a evita situația din <strong>1878</strong>, când România ajunsese dependentă de deciziile aliaților mai puternici.</li><li><span class="date-pill">aug. 1916</span> România avea nevoie de promisiuni de aprovizionare, de sprijin rusesc în Dobrogea și de ofensiva aliată de la Salonic împotriva Bulgariei.</li></ul></div></details>
+</section>
+
+<section class="section" id="tratat1916">
+  <h2>V. <span class="date-badge">4/17 august 1916</span> Tratatul de Alianță și Convenția Militară</h2>
+  <p class="section-intro">La <strong>4/17 august 1916</strong>, România semnează cu Antanta două documente: <strong>Tratatul de Alianță</strong>, care fixa obiectivele politice și garanțiile teritoriale, și <strong>Convenția Militară</strong>, care stabilea obligațiile militare. De acum, neutralitatea se încheia: România urma să intre în război.</p>
+  <div class="two-col">
+    <article class="info-card"><h3>Tratatul de Alianță</h3><ul class="clean"><li><span class="date-pill">4/17 aug. 1916</span> Antanta garanta integritatea teritorială a României.</li><li><span class="date-pill">4/17 aug. 1916</span> România se angaja să declare război Puterilor Centrale și să atace Austro-Ungaria.</li><li><span class="date-pill">4/17 aug. 1916</span> România promitea să nu încheie pace separată cu Puterile Centrale.</li><li><span class="date-pill">4/17 aug. 1916</span> Tratatul recunoștea revendicările românești asupra teritoriilor românești din Austro-Ungaria.</li></ul></article>
+    <article class="info-card"><h3>Rolul lui Ion I. C. Brătianu</h3><p><span class="date-pill">1914-1916</span> Brătianu a negociat dur pentru ca angajamentele Antantei să fie cât mai clare. El nu voia să repete lecția Războiului de Independență, când România a luptat alături de Rusia, dar la final a fost constrânsă să accepte pierderea sudului Basarabiei. De aceea, textul tratatului trebuia să fie explicit și garantat de aliați.</p></article>
+  </div>
+  <div class="wide-card"><h3>Convenția Militară și obligațiile concrete</h3><p><span class="date-pill">4/17 aug. 1916</span> Convenția Militară stabilea relațiile dintre armata română și armata rusă. Rusia trebuia să trimită în Dobrogea <strong>două divizii de infanterie și o divizie de cavalerie</strong>, să atace frontul austro-ungar și să apere portul Constanța.</p><p><span class="date-pill">cel târziu 15/28 aug. 1916</span> România trebuia să mobilizeze toate forțele terestre și navale și să atace Austro-Ungaria la maximum 8 zile după ofensiva de la Salonic. Antanta mai promitea livrări de medicamente, provizii, echipamente și cai, pe ruta nordică: Scandinavia, porturile baltice, Rusia, apoi calea ferată spre România.</p></div>
+</section>
+
+<section class="section" id="planuri">
+  <h2>VI. <span class="date-badge">august 1916</span> Planurile de război și „Ipoteza Z”</h2>
+  <p class="section-intro">Înaintea intrării în război, România trebuia să aleagă între prudența strategică și obiectivul național. Planul Antantei era mai defensiv, iar planul românesc era mai ofensiv, pentru că urmărea eliberarea Transilvaniei.</p>
+  <div class="three-col">
+    <article class="info-card"><h3>Planul Antantei</h3><ul class="clean"><li><span class="date-pill">aug. 1916</span> Apărarea pe linia Dunării.</li><li><span class="date-pill">aug. 1916</span> Apărarea Carpaților și a Dobrogei.</li><li><span class="date-pill">aug. 1916</span> Posibilă ofensivă împotriva Turciei, împreună cu Rusia.</li><li><span class="date-pill">aug. 1916</span> Menținerea frontului românesc ca piesă de legătură între Rusia și Balcani.</li></ul></article>
+    <article class="info-card"><h3>Planul inițial al României</h3><ul class="clean"><li><span class="date-pill">aug. 1916</span> Apărarea liniei Dunării și a Dobrogei.</li><li><span class="date-pill">aug. 1916</span> Ofensivă peste Carpați pentru eliberarea Transilvaniei.</li><li><span class="date-pill">aug. 1916</span> Mobilizare rapidă pentru a transforma intrarea în război într-un act național vizibil.</li></ul></article>
+    <article class="info-card"><h3>Riscul „Ipotezei Z”</h3><p><span class="date-pill">aug. 1916</span> România schimbă strategia în ultimele momente și acordă prioritate ofensivei în Transilvania. Aceasta răspundea idealului național, dar lăsa Dobrogea expusă atacului bulgar și german. Când Dobrogea cedează, ofensiva din Transilvania trebuie încetinită.</p></article>
+  </div>
+  <details open><summary>Dispunerea armatelor române în „Ipoteza Z”</summary><div class="details-body"><div class="key-line"><strong><span class="date-pill">aug. 1916</span> Armata 1</strong><span>Acoperea sectorul estic al Carpaților Meridionali, având rol în ofensiva spre Transilvania și în apărarea trecătorilor.</span></div><div class="key-line"><strong><span class="date-pill">aug. 1916</span> Armata 2</strong><span>Opera în sectorul vestic al Carpaților Meridionali, parte a efortului de intrare în Transilvania.</span></div><div class="key-line"><strong><span class="date-pill">aug. 1916</span> Armata 3</strong><span>Apăra Dunărea și sudul Dobrogei, zona cea mai vulnerabilă la atacul Bulgariei și al trupelor conduse de Mackensen.</span></div><div class="key-line"><strong><span class="date-pill">aug. 1916</span> Armata 4</strong><span>Acoperea Carpații Orientali și legătura strategică dintre Moldova, frontul rusesc și operațiunile din Transilvania.</span></div></div></details>
+</section>
+
+<section class="section" id="intrare">
+  <h2>VII. <span class="date-badge">14/27 august 1916</span> Intrarea României în război</h2>
+  <p class="section-intro">La <strong>14/27 august 1916</strong>, România declară război Austro-Ungariei. Intrarea în război avea o încărcătură simbolică uriașă: armata română trecea Carpații pentru a elibera Transilvania, teritoriu perceput ca centrul istoric și demografic al românilor aflați sub stăpânire austro-ungară.</p>
+  <div class="two-col">
+    <article class="info-card"><h3>Semnificație politică</h3><p><span class="date-pill">14/27 aug. 1916</span> Declarația de război împotriva Austro-Ungariei arăta că România nu lupta pentru cuceriri coloniale sau prestigiu abstract, ci pentru un obiectiv național: unirea teritoriilor locuite de români. Din acest motiv, începutul conflictului românesc se leagă direct de ideea de unitate națională.</p></article>
+    <article class="info-card"><h3>Semnificație militară</h3><p><span class="date-pill">aug. 1916</span> Intrarea României deschidea un front nou, foarte lung. Pentru Antantă, România putea slăbi Austro-Ungaria și Bulgaria; pentru Puterile Centrale, România devenea o țintă prioritară, deoarece controlează petrol, cereale, Dunărea, Dobrogea și legătura strategică spre Balcani.</p></article>
+  </div>
+</section>
+
+<section class="section" id="cronologie">
+  <h2>VIII. Cronologie detaliată: de la problema Basarabiei la intrarea în război</h2>
+  <p class="section-intro">Cronologia păstrează reperele esențiale, dar ele sunt explicate și în secțiunile de mai sus, cu datele trecute lângă fiecare eveniment important.</p>
+  <div class="timeline">
+    <article class="event"><div class="date">1812</div><div><h3>Pacea de la București</h3><p>Rusia anexează Basarabia. Evenimentul explică orientarea antirusească a unei părți a elitei românești.</p></div></article>
+    <article class="event"><div class="date">1877-1878</div><div><h3>Independența și Congresul de la Berlin</h3><p>România devine independentă, dar pierde sudul Basarabiei și primește Dobrogea.</p></div></article>
+    <article class="event"><div class="date">18/30 oct.<br>1883</div><div><h3>Tratatul secret defensiv</h3><p>România se apropie de Tripla Alianță pentru a contrabalansa pericolul rusesc.</p></div></article>
+    <article class="event"><div class="date">15/28 iul.<br>1914</div><div><h3>Austro-Ungaria atacă Serbia</h3><p>Caracterul ofensiv al acțiunii austro-ungare permite României să invoce caracterul defensiv al tratatului din 1883.</p></div></article>
+    <article class="event"><div class="date">21 iul./<br>3 aug. 1914</div><div><h3>Consiliul de Coroană</h3><p>România decide neutralitatea, deși Carol I și Petre Carp susțin intrarea alături de Germania.</p></div></article>
+    <article class="event"><div class="date">27 sept./<br>10 oct. 1914</div><div><h3>Moartea regelui Carol I</h3><p>Ferdinand devine rege, iar presiunea personală a orientării filogermane scade.</p></div></article>
+    <article class="event"><div class="date">10/23 mai<br>1915</div><div><h3>Italia intră de partea Antantei</h3><p>Exemplul italian arată că vechile alianțe puteau fi reconsiderate în funcție de interesele naționale.</p></div></article>
+    <article class="event"><div class="date">4/17 aug.<br>1916</div><div><h3>Tratatul cu Antanta</h3><p>România obține recunoașterea obiectivelor teritoriale și își asumă atacarea Austro-Ungariei.</p></div></article>
+    <article class="event"><div class="date">14/27 aug.<br>1916</div><div><h3>Declarația de război</h3><p>România intră în război împotriva Austro-Ungariei și începe ofensiva spre Transilvania.</p></div></article>
+  </div>
+</section>
+
+
+<section class="section" id="dosar-explicativ">
+  <h2>IX. Dosar explicativ: ce însemna concret alegerea taberei</h2>
+  <p class="section-intro">Pentru România, alegerea taberei nu era o simplă opțiune ideologică. Fiecare variantă avea câștiguri posibile, pierderi probabile și riscuri militare imediate. De aceea, între <strong>1914</strong> și <strong>1916</strong>, guvernul român a evitat să intre într-un război fără garanții.</p>
+  <div class="table-wrap"><table><thead><tr><th>Variantă</th><th>Dată / interval</th><th>Avantaje posibile</th><th>Riscuri majore</th></tr></thead><tbody><tr><td><strong>Alături de Puterile Centrale</strong></td><td>1914-1916</td><td>Menținerea continuității cu tratatul secret din 1883; apropierea de Germania, putere militară foarte puternică; posibilitatea de a ridica problema Basarabiei împotriva Rusiei.</td><td>Imposibilitatea de a revendica Transilvania și Bucovina de la Austro-Ungaria; ostilitate internă puternică, deoarece opinia publică era sensibilă la situația românilor ardeleni; risc de a fi izolată dacă Antanta câștiga.</td></tr><tr><td><strong>Alături de Antanta</strong></td><td>1914-1916</td><td>Recunoașterea revendicărilor asupra Transilvaniei, Banatului, Crișanei, Maramureșului și Bucovinei; intrarea în tabăra care susținea, cel puțin declarativ, principiul naționalităților.</td><td>Colaborarea cu Rusia, statul care anexase Basarabia; front de aproximativ 1400 km; amenințarea Bulgariei în Dobrogea; dependență de promisiunile de aprovizionare ale aliaților.</td></tr><tr><td><strong>Neutralitatea prelungită</strong></td><td>21 iul./3 aug. 1914 - 14/27 aug. 1916</td><td>Timp pentru negociere, pregătirea armatei și obținerea garanțiilor scrise; evitarea intrării într-un moment nefavorabil.</td><td>Riscul ca războiul să se decidă fără România; presiuni diplomatice din ambele tabere; posibilitatea ca aliații să considere România prea ezitantă.</td></tr></tbody></table></div>
+  <details open><summary>De ce Brătianu cerea precizie maximă în tratatul din 4/17 august 1916?</summary><div class="details-body"><p><span class="date-pill">1877-1878</span> Experiența Războiului de Independență fusese instructivă: România luptase alături de Rusia, dar la final Rusia a impus retrocedarea sudului Basarabiei. Pentru Brătianu, o nouă participare militară fără garanții scrise ar fi fost o repetare a aceleiași greșeli.</p><p><span class="date-pill">4/17 aug. 1916</span> De aceea, tratatul cu Antanta trebuia să precizeze clar ce teritorii urma să primească România, ce obligații militare aveau aliații și în ce condiții intra România în război. Nu era suficientă simpatia pentru cauza românească; era nevoie de un text diplomatic care să poată fi invocat la pace.</p></div></details>
+  <details open><summary>De ce era Dobrogea o slăbiciune încă din planul de intrare în război?</summary><div class="details-body"><p><span class="date-pill">aug. 1916</span> Dobrogea era expusă atacului Bulgariei, iar Bulgaria avea motive de revanșă după pierderea Cadrilaterului în <strong>1913</strong>. În plus, dacă Germania și Bulgaria atacau din sud, România trebuia să rupă trupe de pe frontul principal din Transilvania.</p><p><span class="date-pill">4/17 aug. 1916</span> Convenția Militară prevedea sprijin rusesc în Dobrogea tocmai pentru că această zonă era vulnerabilă. În practică, sprijinul nu a fost suficient, iar dezastrul de la Turtucaia din <strong>1-6 septembrie 1916</strong> a confirmat gravitatea riscului.</p></div></details>
+  <details open><summary>Ce însemna „front de 1400 km”?</summary><div class="details-body"><p><span class="date-pill">1916</span> România nu avea de apărat doar o graniță scurtă. Trebuia să controleze Carpații, Dunărea, Dobrogea, legătura cu Rusia, accesul spre Marea Neagră și direcțiile de pătrundere spre București și Iași. Un asemenea front cerea trupe numeroase, artilerie, căi ferate, aprovizionare și coordonare cu aliații.</p><p><span class="date-pill">1916</span> Problema era că armata română avea curaj și efective, dar era slabă la capitole precum armament greu, muniții, comunicații și logistică. Această disproporție dintre miza politică și posibilitățile militare explică de ce începutul campaniei a fost spectaculos, dar fragil.</p></div></details>
+</section>
+
+<section class="final-box" id="sinteza">
+  <h2>Sinteză finală</h2>
+  <p>Între <strong>1883</strong> și <strong>1916</strong>, România trece de la o alianță secretă defensivă cu Puterile Centrale la o alianță publică și negociată cu Antanta. Decizia din <strong>21 iulie/3 august 1914</strong> a fost una de așteptare calculată, iar acordurile din <strong>4/17 august 1916</strong> au transformat neutralitatea în participare militară. Intrarea din <strong>14/27 august 1916</strong> nu poate fi înțeleasă fără problema Basarabiei din <strong>1812</strong>, fără experiența diplomatică din <strong>1878</strong> și fără obiectivul național al unirii românilor din Austro-Ungaria.</p>
+</section>
+
+  </main>
+</body>
+</html>

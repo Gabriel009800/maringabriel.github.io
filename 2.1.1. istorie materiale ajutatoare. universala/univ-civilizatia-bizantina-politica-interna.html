@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Civilizația bizantină: politica internă">
+  <title>civilizatia-bizantina-politica-interna</title>
+  <style>
+
+:root {
+  --bg: #f6f0e7;
+  --paper: #fffaf3;
+  --paper-2: #ffffff;
+  --ink: #2f241c;
+  --title: #3c2a1e;
+  --muted: #5b4a3d;
+  --accent: #7a4f2a;
+  --accent-2: #9b6a3c;
+  --accent-soft: #f0e4d4;
+  --line: rgba(91, 62, 36, 0.18);
+  --line-strong: rgba(91, 62, 36, 0.34);
+  --outer-dark: #241208;
+  --outer-mid: #4a2a18;
+  --outer-warm: #7a4b2b;
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+  --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+    radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+}
+.page {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 34px 0 70px;
+}
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.back-link, .tag { display: inline-flex; align-items: center; border: 1px solid var(--line); background: rgba(255, 250, 243, 0.84); color: var(--title); border-radius: 999px; padding: 10px 15px; text-decoration: none; font-size: 15px; font-weight: 700; box-shadow: var(--shadow-small); }
+.back-link:hover { background: #fff6eb; }
+.hero, .section, .nav-card, .final-box { background: rgba(255, 250, 243, 0.96); border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow); }
+.hero { padding: 38px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.hero::after { content: var(--hero-year); position: absolute; right: 26px; bottom: -22px; font-size: 110px; font-weight: 900; letter-spacing: -4px; color: rgba(122, 79, 42, 0.08); pointer-events: none; }
+.eyebrow { margin: 0 0 8px; font-size: 16px; color: var(--accent); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; }
+h1 { margin: 0; font-size: clamp(38px, 5vw, 62px); line-height: 1.04; color: var(--title); letter-spacing: -1.4px; text-align: left; text-align-last: auto; }
+.subtitle { margin: 18px 0 0; max-width: 980px; font-size: 19px; line-height: 1.78; color: var(--muted); text-align: justify; text-align-last: left; }
+.summary-grid, .three-col, .two-col, .term-grid, .quick-grid, .cause-grid, .four-col { display: grid; gap: 14px; }
+.summary-grid { grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+.summary-card, .info-card, .wide-card, .term-card, .quick-card, .source-note, .micro-card, .warning-box { background: var(--paper-2); border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); text-align: justify; text-align-last: left; }
+.summary-card { padding: 16px; min-height: 132px; }
+.summary-card strong, .quick-card strong, .term-card strong, .micro-card strong { display: block; color: var(--title); font-size: 17px; margin-bottom: 8px; text-align: left; text-align-last: auto; }
+.summary-card span, .quick-card span, .term-card span, .micro-card span { display: block; color: var(--muted); font-size: 15.5px; line-height: 1.56; text-align: justify; text-align-last: left; }
+.nav-card { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 18px 20px; margin-bottom: 24px; }
+.nav-card b { color: var(--title); margin-right: 2px; }
+.nav-card a, .mini-btn { color: var(--title); background: var(--accent-soft); border: 1px solid rgba(91, 62, 36, 0.16); border-radius: 999px; text-decoration: none; padding: 8px 12px; font-weight: 700; font-size: 14px; cursor: pointer; font-family: inherit; }
+.nav-card a:hover, .mini-btn:hover { background: #e5d2bb; }
+.section { padding: 30px; margin-bottom: 24px; }
+h2 { margin: 0 0 14px; color: var(--title); font-size: clamp(28px, 3vw, 38px); line-height: 1.15; text-align: left; text-align-last: auto; }
+h3 { margin: 0 0 12px; color: var(--title); font-size: 22px; line-height: 1.22; text-align: left; text-align-last: auto; }
+h4 { margin: 16px 0 8px; color: var(--title); font-size: 18px; text-align: left; text-align-last: auto; }
+.section-intro, p, li, dd { font-size: 17px; line-height: 1.72; color: var(--muted); text-align: justify; text-align-last: left; hyphens: auto; }
+.section-intro { margin: 0 0 20px; max-width: 1000px; }
+.three-col { grid-template-columns: repeat(3, 1fr); }
+.two-col { grid-template-columns: repeat(2, 1fr); }
+.four-col { grid-template-columns: repeat(4, 1fr); }
+.cause-grid { grid-template-columns: 1.1fr 0.9fr; }
+.term-grid { grid-template-columns: repeat(4, 1fr); }
+.quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+.info-card, .wide-card, .term-card, .quick-card, .micro-card, .warning-box, .source-note { padding: 20px; }
+.wide-card { margin-top: 14px; }
+.wide-card p:last-child, .info-card p:last-child { margin-bottom: 0; }
+.clean, .number-list { margin: 0; padding-left: 22px; }
+.clean li, .number-list li { margin: 0 0 9px; padding-left: 2px; }
+.clean li:last-child, .number-list li:last-child { margin-bottom: 0; }
+.mini-title { display: inline; color: var(--title); font-weight: 800; background: transparent; border: 0; border-radius: 0; padding: 0; margin-right: 5px; white-space: normal; text-align: inherit; }
+.date-pill { display: inline-block; color: var(--title); font-weight: 800; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.13); border-radius: 999px; padding: 2px 9px; margin-right: 5px; white-space: nowrap; text-align: left; }
+.definition, .note { margin-top: 18px; background: #fff8ef; border: 1px solid rgba(122, 79, 42, 0.22); border-left: 6px solid rgba(122, 79, 42, 0.48); border-radius: 18px; padding: 18px 20px; color: var(--muted); font-size: 17px; line-height: 1.7; text-align: justify; text-align-last: left; }
+.definition strong, .note strong { color: var(--title); }
+details { background: #fffdf9; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); margin-top: 14px; overflow: hidden; }
+details[open] { background: #fffaf3; }
+summary { cursor: pointer; list-style: none; padding: 18px 20px; font-size: 19px; font-weight: 800; color: var(--title); display: flex; justify-content: space-between; align-items: center; gap: 18px; text-align: left; text-align-last: auto; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "Deschide"; color: var(--muted); font-size: 14px; font-weight: 700; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 999px; padding: 7px 11px; white-space: nowrap; }
+details[open] > summary::after { content: "Ascunde"; }
+.details-body { border-top: 1px solid rgba(91, 62, 36, 0.12); padding: 18px 20px 20px; text-align: justify; text-align-last: left; }
+.details-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.nested-details { margin-top: 10px; box-shadow: none; background: #ffffff; }
+.nested-details summary { font-size: 17px; padding: 14px 16px; }
+.key-line { display: grid; grid-template-columns: 220px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px dashed rgba(91, 62, 36, 0.18); }
+.key-line:last-child { border-bottom: 0; }
+.key-line strong { color: var(--title); text-align: left; text-align-last: auto; }
+.key-line span { color: var(--muted); line-height: 1.65; text-align: justify; text-align-last: left; }
+.timeline { position: relative; display: grid; gap: 14px; margin-top: 18px; }
+.event { display: grid; grid-template-columns: 132px 1fr; gap: 18px; align-items: stretch; background: #ffffff; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); overflow: hidden; }
+.date { background: linear-gradient(180deg, #7a4f2a, #5b351b); color: #fffaf3; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px; font-size: 18px; line-height: 1.25; font-weight: 900; letter-spacing: 0.2px; }
+.event > div:last-child { padding: 17px 18px 18px 0; text-align: justify; text-align-last: left; }
+.event h3 { margin-bottom: 6px; }
+.event p { margin: 0; }
+.small-muted { font-size: 15px; color: #725c49; line-height: 1.6; text-align: justify; text-align-last: left; }
+.warning-box { background: #fff7ec; border-color: rgba(122, 79, 42, 0.22); margin-top: 16px; }
+.final-box { padding: 28px; background: linear-gradient(135deg, #fffaf3, #f4e4d1); border-color: rgba(91, 62, 36, 0.25); }
+.final-box p { margin-bottom: 0; }
+.table-wrap { overflow-x: auto; margin-top: 14px; border-radius: 18px; border: 1px solid rgba(91,62,36,.14); background: #fff; box-shadow: var(--shadow-small); }
+table { width: 100%; border-collapse: collapse; min-width: 740px; }
+th, td { padding: 13px 14px; border-bottom: 1px solid rgba(91,62,36,.12); color: var(--muted); font-size: 16px; line-height: 1.55; vertical-align: top; text-align: justify; }
+th { background: #f3eadf; color: var(--title); text-align: left; font-weight: 800; }
+tr:last-child td { border-bottom: 0; }
+@media (max-width: 980px) {
+  .summary-grid, .three-col, .term-grid, .quick-grid, .four-col { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .cause-grid, .details-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .page { width: min(100% - 22px, 1180px); padding-top: 22px; }
+  .hero, .section, .final-box { padding: 22px; border-radius: 22px; }
+  .summary-grid, .term-grid, .quick-grid, .four-col { grid-template-columns: 1fr; }
+  .event { grid-template-columns: 1fr; }
+  .date { min-height: 66px; }
+  .event > div:last-child { padding: 0 16px 16px; }
+  .key-line { grid-template-columns: 1fr; gap: 6px; }
+  summary { align-items: flex-start; flex-direction: column; }
+  .hero::after { font-size: 82px; }
+}
+
+.related-card { display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:16px 20px; margin:-10px 0 24px; background:rgba(255,250,243,.90); border:1px solid var(--line); border-radius:22px; box-shadow:var(--shadow-small); }
+.related-card b { color:var(--title); }
+.related-card a { color:var(--title); background:#f3eadf; border:1px solid rgba(91,62,36,.16); border-radius:999px; text-decoration:none; padding:8px 12px; font-weight:700; font-size:14px; }
+.related-card a:hover { background:#e5d2bb; }
+.badge-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
+.badge { display:inline-flex; align-items:center; color:var(--title); background:#f3eadf; border:1px solid rgba(91,62,36,.14); border-radius:999px; padding:6px 10px; font-weight:700; font-size:14px; }
+blockquote { margin:16px 0 0; padding:16px 20px; background:#fff8ef; border-left:6px solid rgba(122,79,42,.48); border-radius:16px; color:var(--muted); font-size:17px; line-height:1.7; }
+.mini-table table { min-width:560px; }
+@media print {
+  body { background:#fff !important; }
+  body::before { display:none; }
+  .page { width:100%; padding:0; }
+  .topbar, .nav-card, .related-card { display:none !important; }
+  .hero, .section, .final-box { box-shadow:none; border:1px solid #cbb9a8; break-inside:avoid-page; }
+  details { break-inside:avoid-page; }
+  details > summary::after { display:none; }
+}
+
+
+@media (max-width: 680px) {
+  .subtitle, .section-intro, p, li, dd,
+  .summary-card span, .quick-card span, .term-card span, .micro-card span,
+  .details-body, .key-line span, .event > div:last-child, th, td,
+  .definition, .note, blockquote {
+    text-align: left;
+    text-align-last: auto;
+    hyphens: none;
+  }
+}
+
+
+td { text-align: left; text-align-last: auto; }
+
+  
+
+/* Extensii pentru seria „Civilizația bizantină” */
+.series-links { display:flex; gap:9px; flex-wrap:wrap; margin-top:20px; }
+.series-links a { color:var(--title); background:#fff; border:1px solid rgba(91,62,36,.16); border-radius:999px; padding:9px 13px; text-decoration:none; font-weight:800; box-shadow:0 8px 20px rgba(0,0,0,.10); }
+.series-links a[aria-current="page"] { background:var(--accent); color:#fffaf3; }
+.series-links a:hover { transform:translateY(-1px); }
+.quote-box { margin-top:15px; padding:18px 20px; background:#fffdf9; border:1px solid rgba(91,62,36,.15); border-left:6px solid var(--accent-2); border-radius:18px; color:var(--muted); font-size:17px; line-height:1.72; text-align:justify; text-align-last:left; }
+.step-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:18px; }
+.step-card { background:#fff; border:1px solid rgba(91,62,36,.14); border-radius:20px; padding:18px; box-shadow:var(--shadow-small); }
+.step-card::before { content:attr(data-step); display:inline-flex; width:34px; height:34px; align-items:center; justify-content:center; border-radius:50%; background:var(--accent); color:#fff; font-weight:900; margin-bottom:11px; }
+.step-card strong { display:block; color:var(--title); font-size:17px; margin-bottom:7px; }
+.step-card span { color:var(--muted); font-size:15.5px; line-height:1.58; }
+.status-strip { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:16px; }
+.status-item { background:linear-gradient(135deg,#fff,#fff7ec); border:1px solid rgba(91,62,36,.14); border-radius:18px; padding:16px; }
+.status-item b { display:block; color:var(--title); margin-bottom:6px; }
+.status-item span { color:var(--muted); line-height:1.55; font-size:15.5px; }
+footer { margin-top:24px; color:rgba(255,250,243,.80); text-align:center; font-size:14px; line-height:1.6; }
+@media (max-width:980px) { .step-grid { grid-template-columns:repeat(2,1fr); } .status-strip { grid-template-columns:1fr; } }
+@media (max-width:680px) { .step-grid { grid-template-columns:1fr; } .series-links a { width:100%; text-align:center; } h1 { font-size:clamp(34px,10vw,52px); } }
+</style>
+</head>
+<body id="top" style="--hero-year: '330';">
+  <main class="page">
+    <div class="topbar">
+      <a class="back-link" href="index.html">← Înapoi la materiale</a>
+      <span class="tag">Material ajutător · Evul Mediu · Civilizația bizantină</span>
+    </div>
+    <section class="hero">
+      <p class="eyebrow">Istorie universală · Antichitate târzie și Evul Mediu</p>
+      <h1>Civilizația bizantină: politica internă</h1>
+      <p class="subtitle">De la instituțiile romane târzii și inaugurarea Constantinopolului la autocrația basileului, birocrație, teme, dreptul lui Iustinian, succesiunea porfirogeneților, reformele macedonene și comnene, Imperiul de la Niceea și declinul paleolog, materialul explică mecanismele interne ale celui mai durabil stat medieval european.</p>
+      <div class="series-links"><a href="civilizatia-bizantina-diplomatie-si-conflict.html">Diplomație și conflict</a><a href="civilizatia-bizantina-conflictele-religioase.html">Conflictele religioase</a><a href="civilizatia-bizantina-politica-interna.html" aria-current="page">Politica internă</a></div>
+    </section>
+    <div class="related-card"><b>Materiale conexe:</b><a href="civilizatia-bizantina-diplomatie-si-conflict.html">Diplomație și conflict</a><a href="civilizatia-bizantina-conflictele-religioase.html">Conflictele religioase</a></div>
+    <nav class="nav-card" aria-label="Cuprinsul paginii">
+      <b>Cuprins:</b><a href="#geneza">Geneza</a><a href="#periodizare">Periodizare</a><a href="#ideologie">Împăratul</a><a href="#institutii">Instituții</a><a href="#teme">Teme</a><a href="#iustinian">Iustinian</a><a href="#succesiune">Succesiune</a><a href="#macedoneni">Macedoneni</a><a href="#comneni">Comneni</a><a href="#niceea">Niceea</a><a href="#paleologi">Paleologi</a>
+      <button class="mini-btn" type="button" data-action="open">Deschide explicațiile</button>
+      <button class="mini-btn" type="button" data-action="close">Închide explicațiile</button>
+    </nav>
+    
+<section class="section" id="geneza">
+  <h2>I. De la Imperiul Roman de Răsărit la Bizanț</h2>
+  <p class="section-intro">„Imperiul Bizantin” este un nume modern. Locuitorii săi se numeau romani, iar statul era considerat continuarea Imperiului Roman. Transformarea într-un imperiu medieval greco-creștin a fost treptată, între secolele al IV-lea și al VII-lea.</p>
+  <div class="timeline">
+    <article class="event"><div class="date">313</div><div><h3>Creștinism tolerat</h3><p>Acordul de la Milano asociat lui Constantin și Licinius permite practicarea creștinismului și restituirea bunurilor comunităților creștine.</p></div></article>
+    <article class="event"><div class="date">11 mai 330</div><div><h3>Noua Romă</h3><p>Constantinopolul este inaugurat pe locul coloniei Byzantion. Capitala combină poziția defensivă, accesul la comerț și apropierea de frontierele decisive.</p></div></article>
+    <article class="event"><div class="date">380–392</div><div><h3>Imperiul creștin</h3><p>Edictul de la Tesalonic din 380 favorizează creștinismul niceean; legislația lui Teodosie I limitează cultele păgâne, iar religia creștină devine fundament al ideologiei imperiale.</p></div></article>
+    <article class="event"><div class="date">395</div><div><h3>Arcadius în Orient</h3><p>La moartea lui Teodosie I, conducerea este împărțită între Arcadius și Honorius. Orientul dispune de orașe, impozite și administrație mai rezistente.</p></div></article>
+    <article class="event"><div class="date">476</div><div><h3>Dispariția curții occidentale</h3><p>Înlăturarea lui Romulus Augustulus lasă împăratul de la Constantinopol drept principalul continuator al puterii romane.</p></div></article>
+    <article class="event"><div class="date">610–641</div><div><h3>Heraclius și transformarea medievală</h3><p>Greaca înlocuiește latina în mare parte din administrație, titlul de <em>basileus</em> se impune, iar pierderile teritoriale reduc imperiul la un nucleu predominant grec și ortodox.</p></div></article>
+  </div>
+  <div class="four-col">
+    <article class="summary-card"><strong>Roman</strong><span>Drept, ideea imperială, titulatura, fiscalitatea și conștiința continuității.</span></article>
+    <article class="summary-card"><strong>Grec</strong><span>Limba administrației și culturii, tradiția elenistică și predominanța Asiei Mici.</span></article>
+    <article class="summary-card"><strong>Creștin</strong><span>Legitimarea divină a împăratului, Biserica imperială și misiunea universală.</span></article>
+    <article class="summary-card"><strong>Oriental</strong><span>Ceremonial de curte, centralizare și contact permanent cu Persia și lumea islamică.</span></article>
+  </div>
+</section>
+
+<section class="section" id="periodizare">
+  <h2>II. Periodizarea și marile dinastii</h2>
+  <p class="section-intro">Periodizarea ajută la înțelegerea schimbărilor de structură: de la statul roman târziu la imperiul tematic, apogeul macedonean, reorganizarea comnenă și declinul paleolog.</p>
+  <div class="table-wrap"><table><thead><tr><th>Perioadă</th><th>Dinastii / etape</th><th>Caracteristici interne</th></tr></thead><tbody>
+    <tr><td>395–610</td><td>Teodosieni, Leonizi, Iustinieni</td><td>Instituții romane târzii, latină administrativă, mari controverse hristologice; Iustinian încearcă restaurarea imperială.</td></tr>
+    <tr><td>610–717</td><td>Heraclizi și anarhii militare</td><td>Criză persană și arabă, grecizare, reducere teritorială, începuturile sistemului temelor.</td></tr>
+    <tr><td>717–802</td><td>Dinastia Isauriană</td><td>Reorganizare militară și fiscală, iconoclasm, apărarea capitalei împotriva arabilor.</td></tr>
+    <tr><td>802–867</td><td>Nikeforieni, Amoriani</td><td>Instabilitate dinastică, reluarea iconoclasmului, refacere treptată.</td></tr>
+    <tr><td>867–1057</td><td>Dinastia Macedoneană</td><td>Apogeu militar și cultural, legislație, expansiune, centralizare și conflict cu aristocrația funciară.</td></tr>
+    <tr><td>1057–1081</td><td>Criză militară și civilă</td><td>Competiție între aristocrația birocratică și cea militară; pierderea Anatoliei după Manzikert.</td></tr>
+    <tr><td>1081–1185</td><td>Comnenii</td><td>Monarhie familială aristocratică, pronoia, reformă monetară și refacere parțială.</td></tr>
+    <tr><td>1185–1204</td><td>Angelii</td><td>Slăbirea autorității centrale, fiscalitate, răscoale și intervenție occidentală.</td></tr>
+    <tr><td>1204–1261</td><td>State succesoare și ocupație latină</td><td>Niceea păstrează instituțiile imperiale și patriarhia; Constantinopolul este condus de latini.</td></tr>
+    <tr><td>1261–1453</td><td>Paleologii</td><td>Restaurare fără baza economică veche, războaie civile, influență italiană, expansiune otomană și renaștere culturală.</td></tr>
+  </tbody></table></div>
+</section>
+
+<section class="section" id="ideologie">
+  <h2>III. Împăratul: imperator, autocrator și basileu</h2>
+  <p class="section-intro">Puterea imperială combina moștenirea romană cu legitimarea creștină. Împăratul era comandant suprem, legislator și judecător, dar succesul său depindea de armată, curte, patriarh, administrație și acceptarea capitalei.</p>
+  <div class="three-col">
+    <article class="info-card"><h3><em>Imperator</em></h3><p>Titlul roman sublinia comanda armatei și autoritatea legislativă. Împăratul emitea legi, numea funcționari, negocia tratate și reprezenta statul.</p></article>
+    <article class="info-card"><h3><em>Basileus autokrator</em></h3><p>Titulatura greacă exprima suveranitatea deplină. Din 629, Heraclius folosește oficial formula <em>basileus</em>, deși tradiția romană rămâne esențială.</p></article>
+    <article class="info-card"><h3>Unsul lui Dumnezeu</h3><p>Împăratul era „egal al apostolilor” și protector al credinței. Încoronarea religioasă îi întărea legitimitatea, fără a-l transforma formal în cleric.</p></article>
+  </div>
+  <div class="table-wrap"><table><thead><tr><th>Dimensiune</th><th>Atribuții</th><th>Limitări practice</th></tr></thead><tbody>
+    <tr><td>Legislativă</td><td>Emitea novele, edicte și ordine; interpreta dreptul și putea reforma instituțiile.</td><td>Aplicarea depindea de funcționari, judecători, fisc și tradiția juridică.</td></tr>
+    <tr><td>Executivă</td><td>Numea demnitari, administra provincii, controla tezaurul și politica externă.</td><td>Birocrația, familiile aristocratice și eunucii palatului puteau forma grupuri de putere.</td></tr>
+    <tr><td>Militară</td><td>Comandant suprem, numea strategii și generalii, decidea campaniile.</td><td>Înfrângerile puteau duce la uzurpare; armatele provinciale proclamau uneori împărați.</td></tr>
+    <tr><td>Religioasă</td><td>Convoca sinoade, susținea misiunea și proteja Biserica.</td><td>Patriarhul, monahii și opinia religioasă puteau respinge politica imperială.</td></tr>
+    <tr><td>Judiciară</td><td>Instanță supremă și izvor al dreptății.</td><td>Reputația de împărat drept era esențială; abuzurile alimentau revolte și conspirații.</td></tr>
+  </tbody></table></div>
+  <div class="quote-box"><strong>Autocrație, nu putere nelimitată în fapt:</strong> basileul nu era controlat de o constituție modernă, dar putea fi înlăturat de armată, palat, populația Constantinopolului sau o coaliție aristocratică.</div>
+</section>
+
+<section class="section" id="institutii">
+  <h2>IV. Curtea, administrația și capitala</h2>
+  <p class="section-intro">Statul bizantin s-a remarcat prin continuitatea unei administrații profesioniste. Titlurile și instituțiile s-au schimbat, dar impozitele, arhivele, dreptul, diplomația și controlul capitalei au rămas fundamentale.</p>
+  <div class="four-col">
+    <article class="info-card"><h3>Palatul Sacru</h3><p>Reședință, centru administrativ și scenă ceremonială. Accesul la împărat era reglementat, iar apropierea fizică de suveran reflecta rangul politic.</p></article>
+    <article class="info-card"><h3>Senatul</h3><p>Moștenire romană cu prestigiu și funcții consultative. Nu controla guvernarea ca în Republica Romană, dar senatorii formau o elită importantă a capitalei.</p></article>
+    <article class="info-card"><h3>Patriarhia</h3><p>Instituție religioasă centrală, legată de Sfânta Sofia. Patriarhul încorona împăratul și participa la legitimarea ordinii politice.</p></article>
+    <article class="info-card"><h3>Eparhul orașului</h3><p>Guvernatorul Constantinopolului supraveghea ordinea, piețele, corporațiile, prețurile, aprovizionarea și uneori jurisdicția urbană.</p></article>
+  </div>
+  <details open><summary>De la marile prefecturi la logoteți</summary><div class="details-body"><p>În epoca romană târzie, administrația era organizată prin prefecturi, dioceze și provincii. Din secolele VII–IX, funcțiile se transformă: <em>logothetes tou genikou</em> conduce finanțele generale, <em>logothetes tou dromou</em> supraveghează poșta, informațiile și diplomația, iar <em>sakellarios</em> controlează cheltuielile. Titlurile au evoluat, dar specializarea birocratică s-a păstrat.</p></div></details>
+  <details><summary>Eunucii și serviciul palatului</summary><div class="details-body"><p>Eunucii puteau ocupa funcții administrative, militare și ecleziastice înalte. Neputând întemeia în mod obișnuit dinastii proprii, erau considerați uneori slujitori utili ai împăratului, dar puteau controla accesul la suveran și crea rețele politice puternice.</p></div></details>
+  <details><summary>Corporațiile și economia urbană</summary><div class="details-body"><p>Constantinopolul avea asociații profesionale legate de alimente, construcții și produse de lux. Statul supraveghea meseriile esențiale, greutățile, prețurile și aprovizionarea. Orașul era simultan centru de consum, producție, administrație și comerț internațional.</p></div></details>
+</section>
+
+<section class="section" id="teme">
+  <h2>V. Provinciile, temele și armata</h2>
+  <p class="section-intro">Pierderea provinciilor orientale a impus o administrație mai apropiată de nevoile militare. Sistemul temelor a legat apărarea, fiscalitatea și conducerea provincială.</p>
+  <div class="two-col">
+    <article class="info-card"><h3>Tema</h3><p>Inițial, termenul desemna o armată; apoi a desemnat teritoriul în care aceasta era instalată. Strategul concentra atribuții militare și civile. Primele mari teme anatoliene au fost Anatolikon, Armeniakon, Opsikion și Thrakesion.</p></article>
+    <article class="info-card"><h3>Soldatul-stratiot</h3><p>Statul urmărea existența gospodăriilor capabile să asigure serviciu militar și impozite. Relația exactă dintre pământ și obligația militară a variat, dar mica proprietate liberă a fost importantă pentru baza fiscală și defensivă.</p></article>
+  </div>
+  <div class="table-wrap"><table><thead><tr><th>Etapă</th><th>Organizare</th><th>Avantaj</th><th>Risc</th></tr></thead><tbody>
+    <tr><td>Sec. IV–VI</td><td>Prefecturi, dioceze, provincii; separarea civil–militar</td><td>Administrație romană detaliată și control fiscal</td><td>Lentă în fața invaziilor rapide și costisitoare.</td></tr>
+    <tr><td>Sec. VII–IX</td><td>Teme conduse de strategi</td><td>Răspuns militar regional și integrarea resurselor locale</td><td>Strategii puteau deveni uzurpatori; marile teme erau prea puternice.</td></tr>
+    <tr><td>Sec. IX–XI</td><td>Teme mai mici și armate centrale, <em>tagmata</em></td><td>Împăratul echilibrează provinciile prin trupe profesioniste ale capitalei</td><td>Costuri crescute și conflict cu aristocrația militară.</td></tr>
+    <tr><td>Sec. XI–XII</td><td>Armată comnenă și pronoia</td><td>Mobilizarea aristocrației și recompensarea serviciului</td><td>Personalizarea resurselor și slăbirea controlului fiscal direct.</td></tr>
+  </tbody></table></div>
+</section>
+
+<section class="section" id="iustinian">
+  <h2>VI. Iustinian: centralizare, drept și revoltă</h2>
+  <p class="section-intro">Domnia lui Iustinian I, 527–565, reprezintă ultima mare încercare de restaurare a unității romane. Politica internă a combinat codificarea dreptului, centralizarea, construcțiile, fiscalitatea intensă și controlul religios.</p>
+  <div class="four-col">
+    <article class="micro-card"><strong>Corpus Juris Civilis</strong><span>Codexul, Digestele, Instituțiile și Novelele ordonează tradiția juridică romană și influențează dreptul european.</span></article>
+    <article class="micro-card"><strong>Reforma administrativă</strong><span>Iustinian combate formal corupția, reorganizează provincii și unește în unele regiuni puterea civilă cu cea militară.</span></article>
+    <article class="micro-card"><strong>Sfânta Sofia</strong><span>Reconstruită după revolta Nika, între 532 și 537, devine simbol al împăratului creștin și al capitalei.</span></article>
+    <article class="micro-card"><strong>Fiscalitate</strong><span>Războaiele și construcțiile cer venituri uriașe; prefectul Ioan de Cappadocia devine simbolul administrației fiscale dure.</span></article>
+  </div>
+  <details open><summary>Revolta Nika, ianuarie 532</summary><div class="details-body"><p>Facțiunile hipodromului, Albaștrii și Verzii, se unesc împotriva funcționarilor și a împăratului. Revolta capătă caracter politic, iar Hypatios este proclamat împărat. Iustinian ezită să fugă; împărăteasa Teodora susține rezistența. Belisarie și Mundus reprimă revolta în Hipodrom, cu pierderi enorme.</p></div></details>
+  <details><summary>Raportul dintre drept și putere</summary><div class="details-body"><p>Codificarea prezenta împăratul drept izvor al legii, dar păstra patrimoniul juriștilor romani. Limba principală a codului a fost latina, în timp ce Novelele au fost adesea redactate în greacă, semn al tranziției culturale a imperiului.</p></div></details>
+</section>
+
+<section class="section" id="succesiune">
+  <h2>VII. Succesiunea, porfirogeneții și revoluțiile de palat</h2>
+  <p class="section-intro">Bizanțul nu a avut o lege fixă a succesiunii. Dinastia, asocierea la tron, încoronarea, căsătoria, aclamația armatei și acceptarea Constantinopolului puteau legitima un împărat.</p>
+  <div class="cause-grid">
+    <article class="info-card"><h3>De ce era succesiunea instabilă?</h3><ul class="clean"><li>Nu exista primogenitură obligatorie.</li><li>Un general victorios putea fi proclamat de armată.</li><li>Împărătesele, patriarhii și eunucii palatului puteau decide accesul la tron.</li><li>Mutilarea era folosită pentru a declara un rival inapt să domnească.</li><li>Asocierea unui fiu la tron prevenea uneori criza, dar nu elimina uzurparea.</li></ul></article>
+    <article class="info-card"><h3>Porfirogenetul</h3><p>Copilul născut după urcarea tatălui pe tron, în camera de purpură a palatului, dobândea un prestigiu dinastic special. Din secolul al IX-lea, titulatura întărește ideea unei legitimități ereditare fără a deveni o regulă juridică absolută.</p></article>
+  </div>
+  <div class="table-wrap"><table><thead><tr><th>Mecanism de legitimare</th><th>Semnificație</th><th>Limită</th></tr></thead><tbody>
+    <tr><td>Naștere dinastică</td><td>Continuitate, mai ales pentru porfirogeneți</td><td>Copiii puteau fi minori, detronați sau înlăturați de un general.</td></tr>
+    <tr><td>Asociere la tron</td><td>Împăratul încorona un coîmpărat în timpul vieții</td><td>Coîmpărații puteau intra în conflict.</td></tr>
+    <tr><td>Căsătorie</td><td>Un outsider se lega de dinastia legitimă</td><td>Rivalități între familii și regențe.</td></tr>
+    <tr><td>Victorie militară</td><td>Protecția imperiului demonstra favor divin</td><td>Înfrângerea putea distruge prestigiul foarte rapid.</td></tr>
+    <tr><td>Încoronare și aclamație</td><td>Patriarhul, Senatul, armata și poporul confirmau public puterea</td><td>Ritualul putea legitima și un uzurpator victorios.</td></tr>
+  </tbody></table></div>
+  <div class="warning-box"><strong>Despre numărul suveranilor:</strong> documentele sintetice indică 107 împărați între 395 și 1453 și subliniază frecvența abdicărilor, asasinatelor și mutilărilor. Cifra exactă variază în funcție de includerea coîmpăraților și a pretendenților, dar instabilitatea succesorală este incontestabilă.</div>
+</section>
+
+<section class="section" id="macedoneni">
+  <h2>VIII. Apogeul macedonean, 867–1057</h2>
+  <p class="section-intro">Dinastia Macedoneană reface autoritatea imperială, extinde frontierele și stimulează cultura și dreptul. Conflictul intern central opune statul și micii proprietari aristocrației latifundiare.</p>
+  <div class="three-col">
+    <article class="info-card"><h3>Vasile I</h3><p>Fondatorul dinastiei, reorganizează dreptul prin <em>Procheiron</em> și <em>Epanagoge</em>, întărește administrația și susține misiunea bizantină în lumea slavă.</p></article>
+    <article class="info-card"><h3>Constantin VII Porfirogenetul</h3><p>Împărat cărturar, coordonează lucrări despre ceremonii, administrație și popoarele vecine. Curtea sa transformă cunoașterea în instrument de guvernare.</p></article>
+    <article class="info-card"><h3>Vasile II, 976–1025</h3><p>Învinge aristocrații răsculați și Bulgaria, limitează marile proprietăți prin legislație și lasă un tezaur puternic. După moartea sa, echilibrul se degradează.</p></article>
+  </div>
+  <details open><summary>Legislația împotriva „puternicilor”</summary><div class="details-body"><p>Împărații au încercat să împiedice <em>dynatoi</em>, marii proprietari, să absoarbă pământurile țăranilor și soldaților. Miza era fiscală și militară: contribuabilul liber și gospodăria militară susțineau statul. Vasile II a impus <em>allelengyon</em>, obligând marii proprietari să acopere unele restanțe fiscale ale comunităților.</p></div></details>
+  <details><summary>Renașterea macedoneană</summary><div class="details-body"><p>Copierea manuscriselor, enciclopediile, dreptul, teologia și arta cunosc o dezvoltare majoră. Cultura clasică nu era opusă creștinismului, ci selectată și integrată în educația elitei administrative.</p></div></details>
+</section>
+
+<section class="section" id="comneni">
+  <h2>IX. Comnenii: refacerea prin familie, pronoia și monedă</h2>
+  <p class="section-intro">Alexios I urcă pe tron în 1081 într-un imperiu amenințat de normanzi, pecenegi și selgiucizi. Dinastia Comnenă reconstruiește statul, dar îl transformă într-o monarhie dominată de familia imperială și de aristocrația militară.</p>
+  <div class="table-wrap"><table><thead><tr><th>Măsură</th><th>Dată / domnie</th><th>Conținut</th><th>Efect</th></tr></thead><tbody>
+    <tr><td>Reforma monetară</td><td>1092</td><td>Introducerea <em>hyperpyronului</em> de aur și reorganizarea sistemului monetar</td><td>Stabilizarea tranzacțiilor și a veniturilor după devalorizarea secolului XI.</td></tr>
+    <tr><td>Pronoia</td><td>Sec. XI–XII</td><td>Acordarea temporară a veniturilor fiscale ale unui domeniu în schimbul serviciului</td><td>Mobilizare militară și recompensarea elitei; nu era identică feudalismului occidental.</td></tr>
+    <tr><td>Rețeaua familială</td><td>1081–1185</td><td>Funcțiile înalte sunt încredințate rudelor și familiilor aliate</td><td>Loialitate sporită, dar accesul la putere devine aristocratic și personal.</td></tr>
+    <tr><td>Privilegii venețiene</td><td>1082</td><td>Scutiri comerciale în schimbul sprijinului naval</td><td>Ajutor imediat împotriva normanzilor, dependență economică pe termen lung.</td></tr>
+  </tbody></table></div>
+  <details open><summary>Andronic I Comnenul, 1183–1185</summary><div class="details-body"><p>Andronic a încercat să combată abuzurile aristocrației și corupția provincială, dar domnia sa a devenit violentă și represivă. Înfrângerea în fața normanzilor și revolta capitalei au dus la detronarea și uciderea sa brutală, urmată de instaurarea dinastiei Angelilor.</p></div></details>
+</section>
+
+<section class="section" id="niceea">
+  <h2>X. 1204, Imperiul de la Niceea și restaurarea</h2>
+  <p class="section-intro">Ocupația latină nu a distrus ideea imperială. Niceea a transferat în Asia Mică curtea, administrația și patriarhia, demonstrând că statul putea supraviețui temporar fără Constantinopol.</p>
+  <div class="timeline">
+    <article class="event"><div class="date">1204</div><div><h3>Teodor I Laskaris</h3><p>Întemeiază nucleul imperial de la Niceea și obține recunoașterea patriarhului. Administrația continuă tradițiile bizantine într-un teritoriu mai compact.</p></div></article>
+    <article class="event"><div class="date">1211</div><div><h3>Consolidarea anatoliană</h3><p>Victoria de la Antiohia pe Meandru împotriva Sultanatului de Rum protejează statul și întărește dinastia Laskarizilor.</p></div></article>
+    <article class="event"><div class="date">1258–1261</div><div><h3>Mihail VIII Paleologul</h3><p>Preia regența și apoi tronul, învinge rivalii la Pelagonia și recucerește Constantinopolul prin generalul Alexios Strategopoulos.</p></div></article>
+  </div>
+  <div class="two-col">
+    <article class="info-card"><h3>Continuitate</h3><p>Niceea păstrează fiscalitatea, demnitățile, dreptul și proiectul universal roman. Patriarhul de la Niceea încoronează împărații și legitimează statul.</p></article>
+    <article class="info-card"><h3>Costul restaurării</h3><p>După 1261, resursele sunt mutate spre reconstruirea și apărarea capitalei. Frontiera anatoliană este neglijată, iar emiratele turcești se extind.</p></article>
+  </div>
+</section>
+
+<section class="section" id="paleologi">
+  <h2>XI. Paleologii: restaurare politică și declin economic</h2>
+  <p class="section-intro">Imperiul restaurat în 1261 păstrează prestigiul universal, dar este în realitate o putere regională fragmentată. Republicile maritime italiene controlează o parte tot mai mare a comerțului, iar războaiele civile subminează fiscalitatea și armata.</p>
+  <div class="four-col">
+    <article class="info-card"><h3>Mihail VIII</h3><p>Reconstruiește capitala, încheie alianțe și acceptă unirea de la Lyon în 1274 pentru a neutraliza proiectele lui Carol de Anjou.</p></article>
+    <article class="info-card"><h3>Andronic II</h3><p>Reduce armata și flota pentru economie, se bazează pe genovezi și angajează Compania Catalană. Măsurile slăbesc controlul statului.</p></article>
+    <article class="info-card"><h3>Războaie civile</h3><p>Conflictele din 1321–1328 și 1341–1347 implică aristocrați, sârbi, bulgari și otomani și distrug resursele provinciilor.</p></article>
+    <article class="info-card"><h3>Renaștere culturală</h3><p>În pofida declinului politic, filologia, filosofia, teologia și arta înfloresc; interesul pentru Antichitate pregătește transferuri culturale spre Renașterea italiană.</p></article>
+  </div>
+  <div class="table-wrap"><table><thead><tr><th>Problemă</th><th>Manifestare</th><th>Consecință</th></tr></thead><tbody>
+    <tr><td>Moneda</td><td>Hyperpyronul își pierde treptat greutatea și rolul internațional</td><td>Monedele venețiene și genoveze domină schimburile mediteraneene.</td></tr>
+    <tr><td>Orașele</td><td>Comunitățile italiene dețin cartiere, docuri și privilegii</td><td>Veniturile vamale ale statului scad.</td></tr>
+    <tr><td>Aristocrația</td><td>Domenii mari și autoritate provincială</td><td>Centralizarea și baza fiscală a împăratului se restrâng.</td></tr>
+    <tr><td>Armata</td><td>Mercenari și contingente limitate</td><td>Apărarea depinde de aliați, ziduri și diplomație.</td></tr>
+    <tr><td>Teritoriul</td><td>Secolul XIV: pierderi în Anatolia și Balcani</td><td>Imperiul devine aproape sinonim cu Constantinopolul și Moreea.</td></tr>
+  </tbody></table></div>
+</section>
+
+<section class="section" id="final">
+  <h2>XII. Ultima conducere și căderea Constantinopolului</h2>
+  <p class="section-intro">Constantin XI Paleologul, împărat între 1449 și 1453, conduce un stat redus, dependent de ajutor extern și înconjurat de teritoriile otomane.</p>
+  <div class="three-col">
+    <article class="info-card"><h3>Resurse limitate</h3><p>Capitala avea o populație mult mai mică decât în epoca sa de apogeu, iar zidurile lungi necesitau mai mulți apărători decât putea mobiliza imperiul.</p></article>
+    <article class="info-card"><h3>Ajutor occidental</h3><p>Contingentul genovez al lui Giovanni Giustiniani Longo a fost important, dar marile puteri occidentale nu au organizat o expediție capabilă să înfrunte armata lui Mehmed II.</p></article>
+    <article class="info-card"><h3>29 mai 1453</h3><p>După aproape două luni de asediu, otomanii pătrund în oraș. Constantin XI moare în luptă, iar instituția imperială romană de la Constantinopol dispare.</p></article>
+  </div>
+  <div class="final-box"><h2>Ideea de reținut</h2><p>Politica internă bizantină a combinat o autocrație spectaculoasă cu o administrație sofisticată, dar și cu o succesiune permanent negociată. Imperiul a fost capabil să se transforme radical — roman, grec, creștin, tematic, aristocratic — fără să-și abandoneze identitatea romană. Tocmai această flexibilitate instituțională explică durata sa excepțională.</p></div>
+</section>
+
+    <footer>Material structurat și dezvoltat după documentele Word furnizate · Seria „Civilizația bizantină”</footer>
+  </main>
+<script>
+  document.querySelector('[data-action="open"]').addEventListener('click', () => document.querySelectorAll('details').forEach(d => d.open = true));
+  document.querySelector('[data-action="close"]').addEventListener('click', () => document.querySelectorAll('details').forEach(d => d.open = false));
+</script>
+</body>
+</html>

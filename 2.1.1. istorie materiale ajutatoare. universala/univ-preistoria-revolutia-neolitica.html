@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Domesticirea plantelor și animalelor, sedentarizarea și apariția satelor">
+  <title>Preistoria: Revoluția neolitică - Material ajutător de istorie</title>
+  <style>
+    :root {
+      --bg: #f6f0e7;
+      --paper: #fffaf3;
+      --paper-2: #ffffff;
+      --ink: #2f241c;
+      --muted: #695747;
+      --accent: #6f3f24;
+      --accent-2: #a66a3f;
+      --line: rgba(91, 62, 36, 0.18);
+      --soft: #f1e4d3;
+      --note: #fff1cf;
+      --good: #eaf2e6;
+      --shadow: 0 14px 36px rgba(69, 46, 25, 0.08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: Georgia, "Times New Roman", serif; line-height: 1.72; }
+    a { color: var(--accent); }
+    .page { width: min(1120px, calc(100% - 28px)); margin: 0 auto; padding: 26px 0 70px; }
+    .topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; }
+    .back { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 700; background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 10px 15px; box-shadow: 0 7px 18px rgba(69,46,25,.05); }
+    .category { color: var(--muted); font-size: 14px; text-align: right; }
+    .hero { background: linear-gradient(135deg, #fffaf3 0%, #f8ead7 100%); border: 1px solid var(--line); border-radius: 28px; padding: clamp(27px, 5vw, 55px); box-shadow: var(--shadow); margin-bottom: 24px; }
+    .eyebrow { display: inline-block; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .09em; background: var(--accent); color: white; padding: 7px 11px; border-radius: 999px; margin-bottom: 17px; }
+    h1 { font-size: clamp(34px, 6vw, 58px); line-height: 1.05; letter-spacing: -.035em; margin: 0 0 15px; color: #3c2a1e; }
+    .subtitle { font-size: clamp(18px, 2.4vw, 23px); color: var(--accent); font-weight: 700; margin: 0 0 17px; }
+    .lead { font-size: 18px; color: var(--muted); margin: 0; max-width: 900px; text-align: justify; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 24px; align-items: start; }
+    .content, .side-card { background: var(--paper); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); }
+    .content { padding: clamp(23px, 4vw, 43px); }
+    .sidebar { position: sticky; top: 18px; display: grid; gap: 16px; }
+    .side-card { padding: 20px; }
+    .side-card h2 { margin: 0 0 11px; font-size: 18px; }
+    .toc a { display: block; padding: 7px 0; border-bottom: 1px dashed var(--line); text-decoration: none; font-size: 14px; line-height: 1.35; }
+    .toc a:last-child { border-bottom: none; }
+    section { scroll-margin-top: 20px; margin-bottom: 34px; }
+    section:last-child { margin-bottom: 0; }
+    h2 { font-size: 29px; line-height: 1.2; margin: 0 0 17px; color: #3c2a1e; }
+    h3 { font-size: 21px; margin: 23px 0 9px; color: var(--accent); }
+    p { margin: 0 0 15px; text-align: justify; }
+    ul, ol { padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    .callout { border-left: 5px solid var(--accent-2); background: var(--note); padding: 16px 18px; border-radius: 0 15px 15px 0; margin: 19px 0; }
+    .callout.good { background: var(--good); }
+    .callout strong { color: #4a2e1b; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; margin: 17px 0; }
+    .mini-card { background: var(--paper-2); border: 1px solid var(--line); border-radius: 17px; padding: 17px; }
+    .mini-card h3 { margin-top: 0; }
+    .timeline { border-left: 3px solid var(--accent-2); margin: 18px 0 22px 9px; padding-left: 23px; }
+    .event { position: relative; margin-bottom: 17px; }
+    .event::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); position: absolute; left: -30px; top: 7px; box-shadow: 0 0 0 4px var(--paper); }
+    .event b { color: var(--accent); }
+    table { width: 100%; border-collapse: collapse; margin: 18px 0 23px; background: white; font-size: 15px; }
+    th, td { border: 1px solid var(--line); padding: 11px 12px; vertical-align: top; text-align: left; }
+    th { background: var(--soft); color: #3c2a1e; }
+    .keywords { display: flex; flex-wrap: wrap; gap: 8px; }
+    .keywords span { border: 1px solid var(--line); background: var(--soft); border-radius: 999px; padding: 7px 10px; font-size: 13px; font-weight: 700; }
+    .questions { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 19px 22px; }
+    .bibliography { font-size: 14px; color: var(--muted); }
+    .footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 26px; }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; grid-row: 1; }
+      .toc { display: none; }
+    }
+    @media (max-width: 650px) {
+      .page { width: min(100% - 18px, 1120px); padding-top: 12px; }
+      .topbar { align-items: flex-start; }
+      .category { display: none; }
+      .hero, .content, .side-card { border-radius: 20px; }
+      .grid-2 { grid-template-columns: 1fr; }
+      table { display: block; overflow-x: auto; white-space: normal; }
+      h2 { font-size: 25px; }
+    }
+    @media print {
+      body { background: white; }
+      .page { width: 100%; padding: 0; }
+      .topbar, .sidebar { display: none; }
+      .layout { display: block; }
+      .hero, .content { box-shadow: none; border-color: #bbb; }
+      .hero { break-after: avoid; }
+      section, table { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a class="back" href="../evaluare.html">← Înapoi la Evaluare</a>
+      <div class="category">Material ajutător · Istorie universală · Preistoria</div>
+    </div>
+
+    <header class="hero">
+      <span class="eyebrow">Istorie universală · Preistoria</span>
+      <h1>Preistoria: Revoluția neolitică</h1>
+      <p class="subtitle">Domesticirea plantelor și animalelor, sedentarizarea și apariția satelor</p>
+      <p class="lead">O analiză comparativă a originilor agriculturii, centrelor independente de domesticire, răspândirii modului de viață neolitic și consecințelor sale demografice, sociale și ecologice.</p>
+    </header>
+
+    <div class="layout">
+      <article class="content">
+        
+<section id="context">
+  <h2>1. Ce înseamnă „Revoluția neolitică”?</h2>
+  <p>Expresia <strong>„Revoluția neolitică”</strong> a fost popularizată de arheologul V. Gordon Childe pentru a descrie trecerea de la procurarea hranei prin vânătoare, pescuit și cules la producerea ei prin cultivarea plantelor și creșterea animalelor. Termenul „revoluție” subliniază amploarea consecințelor: creșterea populației, apariția satelor, transformarea peisajului, specializarea muncii și, pe termen lung, formarea orașelor și statelor.</p>
+  <div class="callout"><strong>Clarificare:</strong> schimbarea nu a fost bruscă, universală sau ireversibilă. În multe regiuni a durat secole ori milenii, iar comunitățile au combinat agricultura cu vânătoarea și culesul. Unele populații au cunoscut plante domestice fără a deveni imediat sedentare; altele au devenit sedentare înainte de agricultură.</div>
+</section>
+
+<section id="dezvoltare">
+  <h2>2. Condițiile tranziției</h2>
+  <p>Sfârșitul Pleistocenului și începutul Holocenului au modificat clima și distribuția resurselor. Încălzirea a favorizat extinderea unor plante sălbatice, dar transformările locale au fost diferite. Creșterea populației, cunoașterea detaliată a mediului, presiunea asupra anumitor resurse, concurența dintre comunități și avantajele depozitării au contribuit în combinații variabile.</p>
+  <p>Nu există o singură cauză. Agricultura nu a apărut pentru că oamenii „au descoperit” dintr-odată semințele, ci printr-o lungă interacțiune cu plantele: selectarea spicelor, curățarea terenurilor, semănarea în locuri favorabile și recoltarea repetată au schimbat treptat frecvența trăsăturilor genetice.</p>
+
+  <h2>3. Asia de Sud-Vest și Semiluna Fertilă</h2>
+  <p>Unul dintre cele mai timpurii și bine documentate centre ale neolitizării a fost Asia de Sud-Vest, de la Levant și Anatolia până la nordul Mesopotamiei și Munții Zagros. Aici existau forme sălbatice de grâu, orz, linte, mazăre, oi, capre, porci și vite.</p>
+  <h3>De la comunități sedentare la cultivare</h3>
+  <p>În Levant, unele comunități epipaleolitice, precum cele natufiene, au construit așezări relativ stabile și au exploatat intens cerealele sălbatice. În Neoliticul preceramic A și B au apărut construcții mai durabile, spații de depozitare și dovezi din ce în ce mai clare ale cultivării și domesticirii. Agricultura a precedat în unele zone răspândirea ceramicii, motiv pentru care „neolitic” nu înseamnă automat „epoca vaselor de lut”.</p>
+  <div class="grid-2">
+    <div class="mini-card"><h3>Ierihon</h3><p>Așezarea din valea Iordanului oferă o succesiune lungă de locuire. Zidul și turnul din fazele timpurii au fost interpretate ca apărare, protecție împotriva inundațiilor sau construcții cu rol comunitar. Funcția lor exactă rămâne discutată.</p></div>
+    <div class="mini-card"><h3>Çatalhöyük</h3><p>Așezarea anatoliană din mileniile VII–VI î.Hr. avea case lipite unele de altele, acces prin acoperiș, picturi și instalații domestice. Nu era un oraș-stat, ci o comunitate mare fără palate sau clădiri administrative dominante.</p></div>
+  </div>
+
+  <h2>4. Domesticirea plantelor și animalelor</h2>
+  <h3>Ce este domesticirea?</h3>
+  <p>Domesticirea este o schimbare biologică produsă prin relația îndelungată dintre oameni și alte specii. La cereale, selecția a favorizat spice care nu se destrămau ușor și semințe mai mari. La animale, oamenii controlau reproducerea, deplasarea și sacrificarea, ceea ce a modificat treptat dimensiunea, comportamentul și structura populațiilor.</p>
+  <p><strong>Îmblânzirea</strong> unui animal individual nu este identică domesticirii unei specii. Domesticirea presupune reproducere controlată de-a lungul generațiilor. Câinele fusese domesticit înaintea agriculturii, în timp ce oile, caprele, porcii și vitele au fost integrate în economiile neolitice în ritmuri diferite.</p>
+
+  <h2>5. Mai multe centre independente</h2>
+  <p>Agricultura nu a avut un singur loc de origine. Cercetările indică mai multe centre în care plante și animale au fost domesticite independent sau prin combinații de inovație locală și influențe externe.</p>
+  <table>
+    <thead><tr><th>Regiune</th><th>Plante sau animale importante</th><th>Observații</th></tr></thead>
+    <tbody>
+      <tr><td>Asia de Sud-Vest</td><td>grâu, orz, leguminoase; oi, capre, porci, vite</td><td>Unul dintre cele mai timpurii complexe agricole, răspândit ulterior spre Europa și Africa de Nord.</td></tr>
+      <tr><td>China de nord</td><td>mei; porci</td><td>Agricultură adaptată mediilor mai uscate ale bazinului Fluviului Galben.</td></tr>
+      <tr><td>China de sud</td><td>orez</td><td>Domesticirea orezului a fost legată de zone umede și de managementul apelor.</td></tr>
+      <tr><td>Noua Guinee</td><td>taro, banane și alte plante tropicale</td><td>Sisteme horticole vechi, greu de detectat arheologic deoarece plantele lasă urme diferite de cereale.</td></tr>
+      <tr><td>Mesoamerica</td><td>porumb, dovleac, fasole</td><td>Porumbul a fost transformat treptat din teosinte; complexul alimentar s-a format în timp.</td></tr>
+      <tr><td>Anzi și bazinul amazonian</td><td>cartof, quinoa, manioc; lama și alpaca</td><td>Agricultură și păstorit adaptate altitudinilor și mediilor foarte diferite.</td></tr>
+      <tr><td>Africa subsahariană</td><td>sorg, mei african, orez african și plante locale</td><td>Procese multiple, uneori combinate cu păstoritul și cu culturi introduse din alte regiuni.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>6. Tehnologiile neolitice</h2>
+  <p>Neoliticul este asociat cu un ansamblu de inovații, dar acestea nu apar obligatoriu împreună. Piatra șlefuită era eficientă pentru topoare și tesle, însă uneltele cioplite au continuat să fie folosite. Râșnițele și mojarurile procesau cerealele; coșurile și gropile păstrau hrana; țesutul transforma fibrele vegetale și lâna în îmbrăcăminte.</p>
+  <p>Ceramica a permis fierberea și depozitarea alimentelor, dar a apărut și la unele comunități de vânători-culegători. În Asia de Sud-Vest, agricultura timpurie s-a dezvoltat înaintea ceramicii. Din acest motiv, arheologii definesc Neoliticul prin economie și organizare socială, nu printr-un singur obiect.</p>
+
+  <h2>7. Răspândirea agriculturii</h2>
+  <p>Din Asia de Sud-Vest, agricultura s-a răspândit în Europa pe două rute principale: una mediteraneană, de-a lungul coastelor și insulelor, și una continentală, prin Balcani și valea Dunării. Procesul a inclus atât migrarea unor comunități de agricultori, cât și adoptarea tehnicilor de către populații locale. Ponderea celor două mecanisme a variat regional.</p>
+  <p>În Europa centrală, cultura ceramicii liniare a extins așezările agricole de-a lungul solurilor fertile. În nordul și vestul continentului, comunitățile de vânători-culegători au păstrat mult timp un rol important. Contactul a implicat schimburi, căsătorii, conflicte și amestec genetic.</p>
+
+  <h2>8. Satul, gospodăria și proprietatea</h2>
+  <p>Viața sedentară a permis acumularea de bunuri, construirea repetată a locuințelor și revendicarea terenurilor. Gospodăriile puteau organiza producția și consumul, iar depozitele făceau posibilă păstrarea surplusului. Totuși, nu toate satele erau egalitare și nu toate erau ierarhizate; diferențele se observă prin mărimea caselor, inventarele funerare și accesul la bunuri rare.</p>
+  <p>Oamenii au modificat peisajul prin defrișări, incendieri controlate, pășunat și irigații. Solurile s-au erodat în unele regiuni, iar apropierea permanentă dintre oameni și animale a schimbat mediul epidemiologic.</p>
+
+  <h2>9. Avantaje și costuri</h2>
+  <div class="grid-2">
+    <div class="mini-card"><h3>Avantaje</h3><ul><li>mai multă hrană pe unitatea de suprafață;</li><li>posibilitatea depozitării și planificării;</li><li>susținerea unor populații mai numeroase;</li><li>apariția specializării și a schimburilor regulate;</li><li>crearea unor comunități stabile și a unor proiecte colective.</li></ul></div>
+    <div class="mini-card"><h3>Costuri</h3><ul><li>muncă repetitivă și dependență de recolte;</li><li>dietă uneori mai puțin variată;</li><li>boli infecțioase favorizate de densitate și animale;</li><li>conflicte pentru pământ, apă și surplus;</li><li>posibilitatea acumulării inegale a resurselor și puterii.</li></ul></div>
+  </div>
+  <p>Agricultura nu a îmbunătățit automat sănătatea fiecărui individ. În numeroase populații timpurii, scheletele indică stres nutrițional, carii și boli. Totuși, avantajul demografic al comunităților agricole a fost major: puteau susține mai mulți copii și ocupa treptat teritorii întinse.</p>
+</section>
+
+<section id="cronologie">
+  <h2>10. Cronologia orientativă a neolitizării</h2>
+  <div class="timeline">
+    <div class="event"><b>cca 12.500–9.500 î.Hr.</b> – comunități natufiene relativ sedentare în Levant.</div>
+    <div class="event"><b>cca 9.700–8.800 î.Hr.</b> – cultivare timpurie și așezări ale Neoliticului preceramic A în Asia de Sud-Vest.</div>
+    <div class="event"><b>cca 8.800–6.500 î.Hr.</b> – domesticirea devine mai clară pentru mai multe plante și animale în Neoliticul preceramic B.</div>
+    <div class="event"><b>mileniile VII–VI î.Hr.</b> – extinderea comunităților agricole în Anatolia, Balcani și bazinul mediteranean.</div>
+    <div class="event"><b>mileniile VI–V î.Hr.</b> – agricultura se răspândește în Europa centrală și occidentală.</div>
+    <div class="event"><b>date regionale diferite</b> – se dezvoltă centre agricole independente în China, Noua Guinee, Africa și Americi.</div>
+  </div>
+</section>
+
+<section id="interpretare">
+  <h2>11. De ce este conceptul încă util, dar trebuie nuanțat?</h2>
+  <table>
+    <thead><tr><th>Formulare tradițională</th><th>Nuanțare necesară</th></tr></thead>
+    <tbody>
+      <tr><td>Agricultura a fost inventată într-un singur loc.</td><td>Au existat mai multe centre independente și numeroase procese de transfer.</td></tr>
+      <tr><td>Oamenii au abandonat imediat vânătoarea și culesul.</td><td>Economiile mixte au continuat timp îndelungat.</td></tr>
+      <tr><td>Satul a apărut după agricultură.</td><td>În unele regiuni, sedentarismul parțial a precedat domesticirea deplină.</td></tr>
+      <tr><td>Neoliticul este definit prin ceramică.</td><td>Au existat agricultori preceramici și vânători-culegători care fabricau ceramică.</td></tr>
+      <tr><td>Agricultura a fost un progres fără costuri.</td><td>A produs avantaje demografice și sociale, dar și boli, muncă intensă, inegalitate și vulnerabilitate la recolte slabe.</td></tr>
+    </tbody>
+  </table>
+  <p>Conceptul rămâne util deoarece schimbarea modului de obținere a hranei a restructurat profund societatea. Totuși, istoria reală este alcătuită din mai multe „revoluții neolitice”, desfășurate în ritmuri și combinații diferite.</p>
+</section>
+
+<section id="sinteza">
+  <h2>12. Sinteză</h2>
+  <div class="callout good"><strong>Ideea principală:</strong> Revoluția neolitică a fost un proces global, dar nu uniform, prin care unele comunități au domesticit plante și animale și au construit economii de producție. Ea a făcut posibilă creșterea populației și apariția societăților complexe, însă a adus și dependență de recolte, boli, modificarea mediului și noi forme de inegalitate.</div>
+</section>
+        <section id="verificare">
+          <h2>Întrebări de verificare</h2>
+          <div class="questions"><ol><li>De ce termenul „revoluție” este util, dar poate crea o impresie greșită asupra ritmului schimbării?</li><li>Care este diferența dintre îmblânzirea unui animal și domesticirea unei specii?</li><li>Ce dovezi arată că sedentarismul putea preceda agricultura?</li><li>Numește cel puțin patru centre independente ale domesticirii și produsele lor caracteristice.</li><li>Cum s-a răspândit agricultura din Asia de Sud-Vest spre Europa?</li><li>Prezintă două avantaje și două costuri ale modului de viață agricol.</li></ol></div>
+        </section>
+        <section id="bibliografie">
+          <h2>Bibliografie orientativă</h2>
+          <ul class="bibliography"><li>Chris Scarre (coord.), The Human Past: World Prehistory and the Development of Human Societies.</li><li>Brian M. Fagan, World Prehistory: A Brief Introduction.</li><li>Graeme Barker, The Agricultural Revolution in Prehistory: Why Did Foragers Become Farmers?</li><li>Peter Bellwood, First Farmers: The Origins of Agricultural Societies.</li><li>V. Gordon Childe, Man Makes Himself; lucrare clasică în care a fost popularizat conceptul de „revoluție neolitică”.</li><li>Barry Cunliffe, Europe Between the Oceans, 9000 BC–AD 1000.</li><li>Robert J. Wenke și Deborah I. Olszewski, Patterns in Prehistory: Humankind’s First Three Million Years.</li></ul>
+        </section>
+      </article>
+
+      <aside class="sidebar">
+        <div class="side-card">
+          <h2>Termeni-cheie</h2>
+          <div class="keywords"><span>Neolitic</span><span>domesticire</span><span>agricultură</span><span>sedentarizare</span><span>Semiluna Fertilă</span><span>sat</span><span>surplus</span><span>difuzie</span></div>
+        </div>
+        <div class="side-card toc">
+          <h2>Cuprins</h2>
+          <a href="#context">Context și delimitări</a>
+          <a href="#dezvoltare">Dezvoltarea temei</a>
+          <a href="#cronologie">Cronologie</a>
+          <a href="#interpretare">Interpretare istorică</a>
+          <a href="#sinteza">Sinteză</a>
+          <a href="#verificare">Întrebări</a>
+        </div>
+      </aside>
+    </div>
+    <footer class="footer">© 2026 Marin Gabriel · Material educațional pentru disciplina Istorie</footer>
+  </main>
+</body>
+</html>

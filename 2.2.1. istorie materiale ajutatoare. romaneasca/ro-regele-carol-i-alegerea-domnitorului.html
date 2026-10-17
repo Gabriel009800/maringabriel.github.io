@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="De la abdicarea lui Alexandru Ioan Cuza la plebiscitul din aprilie 1866, călătoria clandestină a principelui de Hohenzollern și intrarea sa în București la 10/22 mai 1866."/>
+<title>Regele Carol I — alegerea domnitorului</title>
+<style>
+
+    :root {
+      --bg: #171411;
+      --paper: #f4ead7;
+      --paper-2: #fff7e8;
+      --ink: #211915;
+      --muted: #6c5b4f;
+      --accent: #b85c38;
+      --accent-dark: #74351f;
+      --gold: #d7a94f;
+      --green: #586b4d;
+      --red: #8d2f24;
+      --line: rgba(33, 25, 21, 0.18);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(216, 151, 71, 0.2), transparent 34%),
+        radial-gradient(circle at 88% 5%, rgba(184, 92, 56, 0.22), transparent 28%),
+        linear-gradient(135deg, #171411 0%, #2c241d 50%, #16120f 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.18;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mix-blend-mode: screen;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      margin-bottom: 22px;
+      padding: 12px;
+      border: 1px solid rgba(244, 234, 215, 0.22);
+      border-radius: 999px;
+      background: rgba(23, 20, 17, 0.72);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.24);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--paper);
+      font-size: 0.88rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      padding-left: 10px;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+      display: grid;
+      place-items: center;
+      color: #1d140f;
+      font-weight: 900;
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,0.25);
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 7px;
+    }
+
+    .nav a,
+    .print-btn {
+      border: 1px solid rgba(244, 234, 215, 0.2);
+      border-radius: 999px;
+      padding: 9px 13px;
+      color: var(--paper);
+      background: rgba(244, 234, 215, 0.06);
+      text-decoration: none;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .nav a:hover,
+    .print-btn:hover {
+      background: rgba(244, 234, 215, 0.18);
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      background:
+        linear-gradient(120deg, rgba(255, 247, 232, 0.96), rgba(244, 234, 215, 0.92)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Cg fill='none' stroke='%2374351f' stroke-opacity='.18'%3E%3Cpath d='M40 320C140 270 210 365 320 300s145-40 245-88'/%3E%3Cpath d='M0 180c85-30 135 25 210-8s160-78 320-16'/%3E%3Cpath d='M70 80c120 75 210 10 310 44 70 24 104 88 170 72'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: cover;
+      padding: clamp(34px, 5vw, 70px);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .hero::after {
+      content: "1914–1918";
+      position: absolute;
+      right: -16px;
+      bottom: -24px;
+      font-size: clamp(4rem, 12vw, 10rem);
+      line-height: 0.8;
+      color: rgba(116, 53, 31, 0.09);
+      font-weight: 900;
+      letter-spacing: -0.08em;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 16px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(184, 92, 56, 0.12);
+      color: var(--accent-dark);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-weight: 750;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      max-width: 900px;
+      font-size: clamp(2.35rem, 5.9vw, 5.75rem);
+      line-height: 0.92;
+      letter-spacing: -0.07em;
+      color: var(--ink);
+    }
+
+    .subtitle {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 24px 0 0;
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .stat-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.44);
+      border: 1px solid rgba(116, 53, 31, 0.14);
+      min-height: 116px;
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 1.65rem;
+      line-height: 1;
+      color: var(--accent-dark);
+      margin-bottom: 8px;
+    }
+
+    .stat-card span {
+      display: block;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.35;
+      color: var(--muted);
+    }
+
+    .panel {
+      margin-top: 24px;
+      border-radius: 30px;
+      padding: clamp(22px, 4vw, 42px);
+      background: rgba(244, 234, 215, 0.96);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.36);
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 24px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.75rem, 3vw, 3rem);
+      letter-spacing: -0.045em;
+      line-height: 1;
+      color: var(--accent-dark);
+    }
+
+    .panel-note {
+      margin: 0;
+      max-width: 460px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.95rem;
+    }
+
+    .map-grid {
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .front-map {
+      min-height: 360px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(116, 53, 31, 0.14);
+      background:
+        linear-gradient(rgba(255, 247, 232, 0.84), rgba(255, 247, 232, 0.84)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='520' viewBox='0 0 900 520'%3E%3Crect width='900' height='520' fill='%23f4ead7'/%3E%3Cg fill='none' stroke='%2374351f' stroke-width='3' stroke-opacity='.28'%3E%3Cpath d='M82 365c70-48 111-42 175-16 58 24 107 6 159-26 82-51 133-34 218 0 59 23 111 8 184-31'/%3E%3Cpath d='M115 142c75 42 112 95 190 72 72-21 104-99 194-73 104 31 139 151 266 118'/%3E%3Cpath d='M520 68c-8 62 54 102 86 149 42 61 34 130 11 212'/%3E%3C/g%3E%3Cg font-family='Georgia' font-weight='700' font-size='28' fill='%2374351f' fill-opacity='.35'%3E%3Ctext x='94' y='98'%3EVEST%3C/text%3E%3Ctext x='685' y='124'%3EEST%3C/text%3E%3Ctext x='382' y='410'%3EBALCANI%3C/text%3E%3C/g%3E%3C/svg%3E");
+      background-size: cover;
+      position: relative;
+      overflow: hidden;
+      padding: 26px;
+    }
+
+    .front-map::before,
+    .front-map::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(0.5px);
+      opacity: 0.94;
+    }
+
+    .front-map::before {
+      width: 72%;
+      height: 9px;
+      left: 7%;
+      top: 50%;
+      background: repeating-linear-gradient(90deg, var(--red), var(--red) 18px, transparent 18px, transparent 27px);
+      transform: rotate(-7deg);
+    }
+
+    .front-map::after {
+      width: 57%;
+      height: 9px;
+      right: 2%;
+      top: 35%;
+      background: repeating-linear-gradient(90deg, var(--green), var(--green) 18px, transparent 18px, transparent 27px);
+      transform: rotate(72deg);
+    }
+
+    .map-label {
+      position: absolute;
+      z-index: 2;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(33, 25, 21, 0.85);
+      color: var(--paper-2);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.8rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.23);
+    }
+
+    .map-label.vest { left: 13%; top: 43%; }
+    .map-label.est { right: 8%; top: 45%; }
+    .map-label.balcani { left: 43%; bottom: 17%; }
+
+    .info-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .info-item {
+      padding: 17px 18px;
+      border-radius: 20px;
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+    }
+
+    .info-item strong {
+      display: block;
+      color: var(--accent-dark);
+      margin-bottom: 5px;
+      font-size: 1.06rem;
+    }
+
+    .info-item span {
+      display: block;
+      color: var(--muted);
+      line-height: 1.45;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.94rem;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 26px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 34px;
+      top: 6px;
+      bottom: 6px;
+      width: 4px;
+      border-radius: 999px;
+      background: linear-gradient(var(--accent), var(--gold), var(--green));
+    }
+
+    .year-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .year-badge {
+      position: sticky;
+      top: 90px;
+      z-index: 3;
+      width: 72px;
+      height: 72px;
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, var(--accent-dark), var(--accent));
+      color: var(--paper-2);
+      font-size: 1.28rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      box-shadow: 0 16px 42px rgba(116, 53, 31, 0.28);
+      border: 1px solid rgba(255,255,255,0.22);
+    }
+
+    .year-content {
+      border-radius: 28px;
+      background: var(--paper-2);
+      border: 1px solid rgba(116, 53, 31, 0.14);
+      overflow: hidden;
+      box-shadow: 0 16px 42px rgba(33, 25, 21, 0.09);
+    }
+
+    .year-title {
+      padding: 24px 26px 20px;
+      background:
+        linear-gradient(120deg, rgba(184, 92, 56, 0.14), transparent 70%),
+        linear-gradient(0deg, rgba(215, 169, 79, 0.16), transparent);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .year-title h3 {
+      margin: 0;
+      color: var(--accent-dark);
+      font-size: clamp(1.45rem, 2.6vw, 2.35rem);
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+    }
+
+    .year-title p {
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      padding: 18px;
+    }
+
+    .content-grid.one {
+      grid-template-columns: 1fr;
+    }
+
+    .note-card {
+      padding: 20px;
+      border-radius: 22px;
+      background: rgba(244, 234, 215, 0.6);
+      border: 1px solid var(--line);
+    }
+
+    .note-card.full {
+      grid-column: 1 / -1;
+    }
+
+    .note-card h4 {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 14px;
+      color: var(--accent-dark);
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .note-card p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      line-height: 1.58;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.96rem;
+    }
+
+    .note-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .lead {
+      color: var(--ink) !important;
+      font-weight: 650;
+    }
+
+    .memory-line {
+      margin-top: 12px;
+      padding: 13px 15px;
+      border-radius: 15px;
+      background: rgba(88, 107, 77, 0.12);
+      border: 1px solid rgba(88, 107, 77, 0.18);
+      color: #415138;
+      line-height: 1.5;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-weight: 700;
+    }
+
+    .micro-heading {
+      display: block;
+      margin-top: 12px;
+      margin-bottom: 4px;
+      color: var(--accent-dark);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.82rem;
+      font-weight: 850;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: rgba(184, 92, 56, 0.13);
+      color: var(--accent-dark);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    ul, ol {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    li {
+      margin: 8px 0;
+      line-height: 1.52;
+    }
+
+    li::marker {
+      color: var(--accent);
+    }
+
+    .sublist {
+      margin-top: 7px;
+      color: var(--muted);
+    }
+
+    .sublist li {
+      margin: 6px 0;
+    }
+
+    .mini-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.93rem;
+    }
+
+    .mini-table th,
+    .mini-table td {
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .mini-table th {
+      background: rgba(116, 53, 31, 0.1);
+      color: var(--accent-dark);
+    }
+
+    .mini-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .callout {
+      margin-top: 16px;
+      padding: 16px 18px;
+      border-left: 5px solid var(--accent);
+      border-radius: 16px;
+      background: rgba(184, 92, 56, 0.1);
+      color: var(--accent-dark);
+      line-height: 1.55;
+      font-weight: 700;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+      gap: 12px;
+    }
+
+    .summary-card {
+      padding: 18px;
+      min-height: 170px;
+      border-radius: 20px;
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(33, 25, 21, 0.07);
+    }
+
+    .summary-card strong {
+      display: block;
+      color: var(--accent-dark);
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+    }
+
+    .summary-card span {
+      display: block;
+      color: var(--muted);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.91rem;
+      line-height: 1.45;
+    }
+
+
+
+    /* OCD-friendly: textul de conținut este justificat, dar titlurile rămân aliniate normal. */
+    .subtitle,
+    .panel-note,
+    .stat-card span,
+    .info-item span,
+    .year-title p,
+    .note-card p,
+    .note-card li,
+    .lead,
+    .memory-line,
+    .callout,
+    .summary-card span,
+    .date-card span,
+    .date-card p,
+    .date-card li,
+    .date-band p {
+      text-align: justify;
+      text-align-last: left;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .date-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+      gap: 14px;
+    }
+
+    .date-card {
+      position: relative;
+      padding: 18px 18px 18px 20px;
+      border-radius: 20px;
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(33, 25, 21, 0.06);
+      overflow: hidden;
+    }
+
+    .date-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 6px;
+      background: linear-gradient(var(--accent), var(--gold));
+    }
+
+    .date-card strong {
+      display: block;
+      color: var(--accent-dark);
+      font-size: 1.05rem;
+      line-height: 1.15;
+      margin-bottom: 7px;
+    }
+
+    .date-card span,
+    .date-card p {
+      display: block;
+      color: var(--muted);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.93rem;
+      line-height: 1.5;
+    }
+
+    .date-band {
+      margin-bottom: 18px;
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: rgba(184, 92, 56, 0.1);
+      border: 1px solid rgba(184, 92, 56, 0.18);
+    }
+
+    .date-band p {
+      margin: 0;
+      color: var(--accent-dark);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-weight: 700;
+      line-height: 1.55;
+    }
+
+    .footer {
+      color: rgba(244, 234, 215, 0.78);
+      text-align: center;
+      padding: 28px 12px 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .map-grid,
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        width: min(100% - 20px, 1180px);
+        padding-top: 12px;
+      }
+
+      .topbar {
+        position: static;
+        border-radius: 24px;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        border-radius: 24px;
+      }
+
+      .hero-grid,
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .panel-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .timeline::before {
+        left: 22px;
+      }
+
+      .year-card {
+        grid-template-columns: 58px 1fr;
+        gap: 12px;
+      }
+
+      .year-badge {
+        width: 48px;
+        height: 48px;
+        border-radius: 16px;
+        font-size: 0.92rem;
+        top: 12px;
+      }
+
+      .year-title,
+      .content-grid {
+        padding: 16px;
+      }
+
+      .front-map {
+        min-height: 270px;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      body::before,
+      .topbar,
+      .footer {
+        display: none;
+      }
+
+      .page {
+        width: 100%;
+        padding: 0;
+      }
+
+      .hero,
+      .panel,
+      .year-content,
+      .summary-card,
+      .date-card {
+        box-shadow: none;
+      }
+
+      .year-card,
+      .date-card {
+        break-inside: avoid;
+      }
+
+      .year-badge {
+        position: static;
+      }
+    }
+  
+
+    /* Topbar comună pentru toate materialele despre Primul Război Mondial */
+    .topbar {
+      position: static !important;
+      top: auto !important;
+      z-index: auto !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      gap: 16px !important;
+      margin-bottom: 18px !important;
+      padding: 0 !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      backdrop-filter: none !important;
+      box-shadow: none !important;
+      flex-wrap: wrap !important;
+    }
+
+    .back-link,
+    .material-tag {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 243, 0.84);
+      color: #3c2a1e;
+      border-radius: 999px;
+      padding: 10px 15px;
+      text-decoration: none;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.25;
+      box-shadow: var(--shadow-small, 0 8px 20px rgba(69, 46, 25, 0.10));
+    }
+
+    .back-link:hover {
+      background: #fff6eb;
+    }
+
+    @media (max-width: 680px) {
+      .topbar {
+        align-items: flex-start !important;
+        flex-direction: column !important;
+      }
+    }
+
+    @media print {
+      body { background: white !important; }
+      body::before,
+      .topbar,
+      .footer { display: none !important; }
+    }
+  
+    /* Ajustare cerută: titlul din hero puțin mai mic. */
+    header.hero > h1,
+    .hero > h1 {
+      font-size: clamp(2.35rem, 5.9vw, 5.75rem) !important;
+      line-height: 0.94 !important;
+    }
+
+  
+
+    /* Adaptări pentru seria „Cruciadele târzii” */
+    .hero::after { content: attr(data-period) !important; white-space: nowrap; }
+    .top-actions { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+    .series-nav { display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; position:relative; z-index:2; }
+    .series-nav a { text-decoration:none; color:var(--accent-dark); background:rgba(255,255,255,.52); border:1px solid rgba(116,53,31,.16); border-radius:999px; padding:9px 13px; font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:.84rem; font-weight:750; }
+    .series-nav a:hover { background:rgba(255,255,255,.8); transform:translateY(-1px); }
+    .small { font-size:.88rem !important; }
+    .muted { color:var(--muted); }
+    .center { text-align:center; }
+    .two-col { columns:2; column-gap:34px; }
+    .two-col li { break-inside:avoid; }
+    .certainty { display:inline-flex; align-items:center; gap:6px; padding:5px 9px; border-radius:999px; font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:.72rem; font-weight:800; letter-spacing:.04em; text-transform:uppercase; margin-left:7px; }
+    .certainty.high { background:rgba(88,107,77,.15); color:#40513a; }
+    .certainty.medium { background:rgba(215,169,79,.18); color:#765a22; }
+    .certainty.low { background:rgba(141,47,36,.12); color:#7d3028; }
+    .quote-lite { margin:14px 0 0; padding:14px 16px; border-left:4px solid var(--gold); background:rgba(215,169,79,.11); border-radius:14px; color:var(--muted); font-style:italic; line-height:1.55; }
+    .mini-table td:first-child { white-space:nowrap; font-weight:750; color:var(--accent-dark); }
+    .source-note { margin-top:14px; font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; color:var(--muted); font-size:.84rem; line-height:1.5; }
+    .rule { height:1px; background:var(--line); margin:18px 0; }
+    @media (max-width:720px) { .two-col { columns:1; } .top-actions{width:100%;} .print-btn{flex:1;} }
+
+:root{--accent:#4f716d;--accent-dark:#2f514e;--green:#4f6a58;--red:#8b4339;}
+
+
+    /* Adaptări pentru seria „Alexandru Ioan Cuza” */
+    .hero::after { content: attr(data-period) !important; white-space: nowrap; }
+    .compact-list li { margin: 5px 0; }
+    .keyline { border-top: 1px solid var(--line); margin: 18px 0; }
+    .pill-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
+    .pill { display:inline-flex; align-items:center; padding:7px 11px; border-radius:999px; background:rgba(255,255,255,.56); border:1px solid var(--line); color:var(--accent-dark); font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:.8rem; font-weight:750; }
+    .big-number { font-size:2rem; font-weight:900; color:var(--accent-dark); line-height:1; display:block; margin-bottom:8px; }
+    .quote-box { margin-top:14px; padding:16px 18px; border-radius:18px; background:rgba(255,255,255,.42); border:1px solid var(--line); color:var(--muted); line-height:1.6; font-style:italic; }
+    .compare-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+    .compare-grid.three { grid-template-columns:repeat(3,minmax(0,1fr)); }
+    .status-pro { border-top:5px solid var(--green); }
+    .status-contra { border-top:5px solid var(--red); }
+    .status-mix { border-top:5px solid var(--gold); }
+    .timeline .year-badge.wide { font-size:1rem; padding:0 7px; text-align:center; }
+    .source-list { columns:2; column-gap:32px; }
+    .source-list li { break-inside:avoid; }
+    .subtitle strong { color:var(--accent-dark); }
+    @media (max-width: 780px) {
+      .compare-grid, .compare-grid.three { grid-template-columns:1fr; }
+      .source-list { columns:1; }
+    }
+
+:root{--accent:#5a5f8a;--accent-dark:#34395f;--green:#55705d;--red:#8c4740;--gold:#c19a4a;}
+
+    /* Adaptări pentru seria „Regele Carol I” */
+    .hero::after { content: attr(data-period) !important; white-space: nowrap; }
+    .compact-list li { margin: 5px 0; }
+    .keyline { border-top: 1px solid var(--line); margin: 18px 0; }
+    .pill-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
+    .pill { display:inline-flex; align-items:center; padding:7px 11px; border-radius:999px; background:rgba(255,255,255,.56); border:1px solid var(--line); color:var(--accent-dark); font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:.8rem; font-weight:750; }
+    .big-number { font-size:2rem; font-weight:900; color:var(--accent-dark); line-height:1; display:block; margin-bottom:8px; }
+    .quote-box { margin-top:14px; padding:16px 18px; border-radius:18px; background:rgba(255,255,255,.42); border:1px solid var(--line); color:var(--muted); line-height:1.6; font-style:italic; }
+    .compare-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+    .compare-grid.three { grid-template-columns:repeat(3,minmax(0,1fr)); }
+    .status-pro { border-top:5px solid var(--green); }
+    .status-contra { border-top:5px solid var(--red); }
+    .status-mix { border-top:5px solid var(--gold); }
+    .timeline .year-badge.wide { font-size:1rem; padding:0 7px; text-align:center; }
+    .source-list { columns:2; column-gap:32px; }
+    .source-list li { break-inside:avoid; }
+    .subtitle strong { color:var(--accent-dark); }
+    .fact-strip { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin-top:18px; }
+    .fact { padding:15px; border-radius:17px; background:rgba(255,255,255,.42); border:1px solid var(--line); font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.45; }
+    .fact strong { color:var(--accent-dark); display:block; margin-bottom:4px; }
+    .battle-card { border-left:5px solid var(--red); }
+    .institution-card { border-left:5px solid var(--green); }
+    .constitution-card { border-left:5px solid var(--gold); }
+    .route { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; counter-reset:route; }
+    .route-step { position:relative; padding:17px 15px 15px 48px; border-radius:18px; background:var(--paper-2); border:1px solid var(--line); min-height:94px; }
+    .route-step::before { counter-increment:route; content:counter(route); position:absolute; left:14px; top:15px; width:25px; height:25px; border-radius:50%; display:grid; place-items:center; background:var(--accent-dark); color:var(--paper-2); font:800 .78rem system-ui; }
+    .route-step strong { display:block; color:var(--accent-dark); margin-bottom:5px; }
+    .route-step span { color:var(--muted); font: .9rem/1.45 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    .small-note { font-size:.86rem; color:var(--muted); font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.5; }
+    @media (max-width: 780px) {
+      .compare-grid, .compare-grid.three { grid-template-columns:1fr; }
+      .source-list { columns:1; }
+    }
+
+.hero { background: linear-gradient(120deg, rgba(255,247,232,.97), rgba(236,229,210,.93)), radial-gradient(circle at 83% 28%, rgba(94,112,132,.22), transparent 30%); }</style>
+</head>
+<body>
+<main class="page">
+  <div class="topbar">
+    <a class="back-link" href="javascript:history.back()">← Înapoi la materiale</a>
+    <div class="top-actions"><span class="material-tag">Material ajutător · Istoria românilor · Epoca modernă</span><button class="print-btn" type="button" onclick="window.print()">Tipărește / PDF</button></div>
+  </div>
+  <header class="hero" data-period="1866">
+    <h1>Carol I: alegerea domnitorului</h1>
+    <p class="subtitle">De la abdicarea lui Alexandru Ioan Cuza la <strong>plebiscitul din aprilie 1866</strong>, călătoria clandestină a principelui de Hohenzollern și intrarea sa în București la <strong>10/22 mai 1866</strong>.</p>
+    <section class="hero-grid" aria-label="Repere rapide"><article class="stat-card"><strong>11/23 II</strong><span>Abdicarea lui Cuza</span></article><article class="stat-card"><strong>685.969</strong><span>Voturi pentru Carol</span></article><article class="stat-card"><strong>10/22 V</strong><span>Jurământul din București</span></article><article class="stat-card"><strong>48 ani</strong><span>Durata domniei, 1866–1914</span></article></section>
+    
+<nav class="series-nav" aria-label="Navigare în seria Carol I">
+  <a href="ro-regele-carol-i-alegerea%20domnitorului.html">Alegerea domnitorului</a>
+  <a href="ro-regele-carol-i-reformele-modernizarii.html">Reformele modernizării</a>
+  <a href="ro-regele-carol-i-razboiul-de-independenta.html">Războiul de Independență</a>
+</nav>
+  </header>
+  
+<section class="panel" id="caderea-lui-cuza">
+  <div class="panel-header"><h2>De la abdicarea lui Cuza la problema succesiunii</h2><p class="panel-note">În februarie 1866, statul român unificat administrativ de numai patru ani a intrat într-o criză dinastică și diplomatică. Miza nu era doar înlocuirea unui conducător, ci păstrarea Unirii și obținerea unei dinastii recunoscute în Europa.</p></div>
+  <div class="content-grid">
+    <section class="note-card"><h4><span class="tag">1859–64</span>De ce se erodase regimul lui Cuza</h4><p class="lead">Reformele lui Alexandru Ioan Cuza au modernizat statul, dar lovitura de stat din 2/14 mai 1864 și concentrarea puterii au lărgit opoziția.</p><ul><li>Conservatorii criticau reforma rurală, secularizarea averilor mănăstirești și restrângerea rolului vechii elite funciare.</li><li>Liberalii radicali considerau ritmul democratizării insuficient și condamnau autoritarismul domnesc.</li><li>În jurul palatului era denunțată existența unei camarile, asociată cu favoritismul și influența exercitată de apropiați.</li><li>Despărțirea politică de Mihail Kogălniceanu, în ianuarie 1865, l-a lipsit pe Cuza de principalul său colaborator reformator.</li><li>Viața privată a domnitorului, inclusiv relația cu Maria Obrenovici și existența celor doi fii ai lor, a fost exploatată politic de adversari.</li></ul></section>
+    <section class="note-card"><h4><span class="tag">Coaliție</span>„Monstruoasa coaliție”</h4><p class="lead">Conservatorii și liberalii radicali, adversari în aproape toate celelalte probleme, au colaborat pentru îndepărtarea lui Cuza.</p><ul><li>Între figurile radicale se aflau C. A. Rosetti, Ion C. Brătianu, Dimitrie Brătianu și Eugeniu Carada.</li><li>Între conservatori se remarcau Lascăr Catargiu, Manolache Costache Epureanu și alți lideri ai marii proprietăți.</li><li>Ion Ghica a devenit un personaj central al tranziției politice.</li><li>Mihail Kogălniceanu se îndepărtase de Cuza, însă rolul său trebuie separat de nucleul militar și civil care a organizat efectiv conspirația.</li><li>Maiorul Dimitrie Lecca, comandant al gărzii palatului, a permis conspiratorilor accesul în reședința domnească.</li></ul><div class="memory-line">Alianța era tactică: un singur obiectiv comun — înlăturarea lui Cuza și aducerea unui principe străin.</div></section>
+    <section class="note-card full"><h4><span class="tag">11/23 II</span>Noaptea abdicării</h4><div class="compare-grid"><div><p class="lead">În noaptea de <strong>10/22 spre 11/23 februarie 1866</strong>, militari și civili pătrund în Palatul Domnesc din București.</p><ul><li>Cuza este trezit și silit să semneze actul de abdicare.</li><li>Textul invoca dorința de a încredința puterea unei Locotenențe Domnești și unui principe străin.</li><li>Domnitorul este escortat, apoi părăsește țara; își va trăi ultimii ani în exil și va muri la Heidelberg la <strong>3/15 mai 1873</strong>.</li></ul></div><div><p class="lead">Puterea este preluată imediat pentru a evita vidul de autoritate.</p><ul><li>Se formează <strong>Locotenența Domnească</strong>: Lascăr Catargiu, generalul Nicolae Golescu și colonelul Nicolae Haralambie.</li><li>Guvernul provizoriu este condus de Ion Ghica.</li><li>Armata, administrația și telegraful sunt folosite pentru menținerea ordinii și comunicarea faptului împlinit.</li><li>Noua conducere anunță că Unirea va fi păstrată și că programul Divanurilor ad-hoc — principe străin și dinastie ereditară — va fi îndeplinit.</li></ul></div></div></section>
+  </div>
+</section>
+
+<section class="panel" id="principe-strain">
+  <div class="panel-header"><h2>De ce se dorea un principe străin</h2><p class="panel-note">Ideea fusese formulată de Adunările ad-hoc în 1857. În 1866, ea părea soluția prin care elitele puteau conserva Unirea, reduce luptele pentru tron și lega România de sistemul european al monarhiilor.</p></div>
+  <div class="summary-grid">
+    <article class="summary-card"><strong>Imparțialitate</strong><span>Un principe din afara familiilor boierești nu depindea de o facțiune moldoveană sau munteană și putea arbitra competiția dintre partide.</span></article>
+    <article class="summary-card"><strong>Dinastie ereditară</strong><span>Succesiunea stabilă trebuia să înlocuiască tradiția domniilor scurte, a intervențiilor externe și a luptelor dintre pretendenți.</span></article>
+    <article class="summary-card"><strong>Prestigiu extern</strong><span>Înrudirea cu marile case europene putea crește șansele recunoașterii diplomatice și ale independenței.</span></article>
+    <article class="summary-card"><strong>Păstrarea Unirii</strong><span>Un principe acceptat în ambele foste principate făcea mai dificilă revenirea la separarea Moldovei de Țara Românească.</span></article>
+    <article class="summary-card"><strong>Modernizare</strong><span>Monarhia constituțională belgiană și modelul occidental erau asociate cu administrația profesională, legalitatea și economia modernă.</span></article>
+  </div>
+</section>
+
+<section class="panel" id="candidati">
+  <div class="panel-header"><h2>Candidați, refuzuri și negocieri europene</h2><p class="panel-note">Alegerea nu putea fi separată de Franța lui Napoleon al III-lea, Prusia lui Wilhelm I și Bismarck, Austria, Rusia și Imperiul Otoman.</p></div>
+  <div class="timeline">
+    <article class="year-card"><div class="year-badge wide">23 II</div><div class="year-content"><div class="year-title"><h3>Filip de Flandra, prima alegere</h3><p>Parlamentul votează în unanimitate candidatura prințului Filip al Belgiei, conte de Flandra.</p></div><div class="content-grid"><section class="note-card"><h4>De ce Belgia?</h4><ul><li>Belgia era o monarhie constituțională tânără, creată în 1830 și protejată prin garanții internaționale.</li><li>Constituția belgiană din 1831 era considerată una dintre cele mai liberale din Europa.</li><li>Statul belgian oferea exemplul unei țări relativ mici, dezvoltate și independente între mari puteri.</li><li>Filip era fiul regelui Leopold I și fratele regelui Leopold al II-lea.</li></ul></section><section class="note-card"><h4>De ce a refuzat?</h4><ul><li>Prințul nu solicitase tronul și nu dorea aventura politică de la Dunărea de Jos.</li><li>Curtea belgiană se temea de reacția marilor puteri și de dezechilibre dinastice.</li><li>Refuzul este comunicat rapid și devine oficial până la sfârșitul lunii martie 1866.</li><li>Eșecul obligă conducerea de la București să caute un candidat cu sprijin francez și prusac.</li></ul></section></div></div></article>
+    <article class="year-card"><div class="year-badge wide">mart.</div><div class="year-content"><div class="year-title"><h3>Conferința de la Paris și riscul desfacerii Unirii</h3><p>Puterile garante redeschid dosarul Principatelor după abdicarea domnului ales în 1859.</p></div><div class="content-grid"><section class="note-card"><h4>Poziții ostile</h4><ul><li>Imperiul Otoman considera că aducerea unui principe străin încălca Convenția de la Paris din 1858.</li><li>Austria se temea de consolidarea unui stat național în vecinătatea Transilvaniei.</li><li>Rusia putea folosi criza pentru a redeschide problema Unirii și pentru a sprijini tendințe separatiste în Moldova.</li></ul></section><section class="note-card"><h4>Fereastra diplomatică</h4><ul><li>Franța lui Napoleon al III-lea era favorabilă menținerii construcției românești.</li><li>Prusia vedea cu simpatie candidatura unui Hohenzollern, deși acționa prudent înaintea războiului cu Austria.</li><li>Criza austro-prusacă din 1866 reducea posibilitatea unei intervenții militare coordonate împotriva României.</li></ul></section></div></div></article>
+  </div>
+</section>
+
+<section class="panel" id="carol">
+  <div class="panel-header"><h2>Cine era Carol de Hohenzollern-Sigmaringen</h2><p class="panel-note">Tânărul ofițer catolic din ramura șvabă a Hohenzollernilor a fost ales pentru disciplina sa militară, originea dinastică și conexiunile cu Franța și Prusia.</p></div>
+  <div class="content-grid">
+    <section class="note-card"><h4><span class="tag">20 IV 1839</span>Origine și familie</h4><ul><li>Numele complet: <strong>Karl Eitel Friedrich Zephyrinus Ludwig</strong> de Hohenzollern-Sigmaringen.</li><li>Născut la castelul Sigmaringen, la <strong>20 aprilie 1839</strong>.</li><li>Tatăl: principele Karl Anton de Hohenzollern-Sigmaringen, fost prim-ministru al Prusiei.</li><li>Mama: principesa Josephine de Baden.</li><li>Familia aparținea ramurii catolice a Casei de Hohenzollern; ramura de Berlin conducea Prusia.</li></ul></section>
+    <section class="note-card"><h4><span class="tag">Ofițer</span>Formare militară</h4><ul><li>Primește educație la Dresda și în mediul militar prusac.</li><li>Devine ofițer de dragoni și participă la războiul pruso-danez din <strong>1864</strong>, inclusiv la operațiunile de la Düppel.</li><li>Era descris ca riguros, rezervat, punctual și orientat spre datorie.</li><li>Experiența militară va conta decisiv în 1877, când va conduce armata română la Plevna.</li></ul></section>
+    <section class="note-card"><h4><span class="tag">Negocieri</span>Cine l-a propus</h4><ul><li>Ion C. Brătianu desfășoară negocieri în Occident și se întâlnește cu familia princiară.</li><li>Carol Davila furnizează informații despre populație, teritoriu, armată și perspectivele țării.</li><li>În documente apare și numele lui Ion Bălăceanu, diplomat implicat în susținerea candidaturii.</li><li>Napoleon al III-lea acceptă soluția; Wilhelm I și Bismarck nu o blochează, cu condiția unei acțiuni prudente.</li><li>Fratele mai mare, Leopold, fusese și el avut în vedere, dar nu a acceptat tronul.</li></ul></section>
+    <section class="note-card"><h4><span class="tag">Calcul</span>Ce l-a convins</h4><ul><li>Poziția geografică apărată de Dunăre, Carpați și Prut.</li><li>Existența unei populații românești numeroase și dincolo de granițe, în Transilvania, Bucovina și Basarabia.</li><li>Posibilitatea de a construi o dinastie și un stat modern într-o regiune strategică.</li><li>Promisiunea unei Constituții liberale și a unei autorități domnești ereditare.</li></ul></section>
+  </div>
+</section>
+
+<section class="panel" id="plebiscit">
+  <div class="panel-header"><h2>Plebiscitul și alegerea din aprilie 1866</h2><p class="panel-note">Conducerea provizorie a transformat candidatura lui Carol într-un fapt împlinit înainte ca toate puterile garante să ajungă la un acord.</p></div>
+  <div class="content-grid">
+    <section class="note-card"><h4><span class="tag">2–8 IV</span>Consultarea populară</h4><p class="lead">Plebiscitul s-a desfășurat între <strong>2–8 aprilie stil vechi / 14–20 aprilie stil nou 1866</strong>.</p><table class="mini-table"><thead><tr><th>Opțiune</th><th>Rezultat</th></tr></thead><tbody><tr><td>Da</td><td><strong>685.969</strong> voturi</td></tr><tr><td>Nu</td><td><strong>224</strong> voturi</td></tr><tr><td>Abțineri / neparticipare</td><td><strong>124.837</strong></td></tr></tbody></table><p class="small-note">Votul nu corespundea standardelor democratice actuale, dar a oferit guvernului o legitimare politică masivă și un argument diplomatic.</p></section>
+    <section class="note-card"><h4><span class="tag">8/20 IV</span>Validarea parlamentară</h4><ul><li>Adunarea votează candidatura lui Carol și confirmă rezultatul plebiscitului.</li><li>Principele este proclamat domn ereditar sub numele de <strong>Carol I</strong>.</li><li>La <strong>2/14 mai 1866</strong>, puterile reunite la Paris cer o nouă alegere; Adunarea de la București își reafirmă însă aproape unanim opțiunea.</li><li>Naturalizarea și alegerea sunt prezentate ca expresie a suveranității naționale.</li></ul></section>
+    <section class="note-card full"><h4><span class="tag">3/15 IV</span>Mișcarea separatistă de la Iași</h4><div class="compare-grid"><div><p class="lead">O parte a boierimii moldovene, susținută de cercuri rusofile, se teme că alegerea unui principe străin va face Unirea ireversibilă și va reduce definitiv rolul Iașiului.</p><ul><li>Nicolae Rosetti-Roznovanu este propus drept candidat la un tron separat al Moldovei.</li><li>Printre liderii mișcării se află mitropolitul Calinic Miclescu, Teodor Boldur-Lățescu și membri ai familiilor Roznovanu și Moruzi.</li><li>Manifestanții încearcă să ocupe centrul administrativ al Iașiului.</li></ul></div><div><p class="lead">Locotenența trimite trupe și pe Nicolae Golescu pentru a apăra Unirea.</p><ul><li>Ciocnirile din <strong>3/15 aprilie 1866</strong> sunt sângeroase; numărul exact al victimelor a rămas controversat, relatările contemporane variind considerabil.</li><li>Conducătorii sunt arestați, iar separatismul este înfrânt.</li><li>La <strong>22 mai/3 iunie 1866</strong>, Carol acordă o amnistie politică, facilitând reconcilierea.</li><li>Rosetti-Roznovanu va deveni ulterior deputat și va participa la campania din 1877.</li></ul></div></div></section>
+  </div>
+</section>
+
+<section class="panel" id="calatoria">
+  <div class="panel-header"><h2>Călătoria clandestină și intrarea în România</h2><p class="panel-note">Războiul iminent dintre Prusia și Austria făcea periculoasă traversarea teritoriilor habsburgice de către un ofițer prusac destinat tronului de la București.</p></div>
+  <div class="route">
+    <article class="route-step"><strong>Düsseldorf</strong><span>Carol pleacă în mai 1866, după ce primește rezultatul plebiscitului și acordul familiei.</span></article>
+    <article class="route-step"><strong>Elveția</strong><span>Obține un pașaport sub identitatea de negustor elvețian <em>Karl Hettingen</em>.</span></article>
+    <article class="route-step"><strong>Bavaria și Austria</strong><span>Călătorește incognito, la clasa a doua, prin Salzburg, Viena și Pesta, evitând recunoașterea.</span></article>
+    <article class="route-step"><strong>Baziaș</strong><span>Ajunge la Dunăre și așteaptă vaporul, în condițiile mobilizării militare din regiune.</span></article>
+    <article class="route-step"><strong>Turnu Severin</strong><span>La <strong>8/20 mai</strong> pășește pe teritoriul României și este întâmpinat de Ion C. Brătianu.</span></article>
+    <article class="route-step"><strong>București</strong><span>La <strong>10/22 mai 1866</strong> intră în capitală și depune jurământul.</span></article>
+  </div>
+  <div class="callout">Jurământul, rostit în limba franceză: Carol promite să păzească legile României, drepturile poporului și integritatea teritoriului.</div>
+</section>
+
+<section class="panel" id="reactii">
+  <div class="panel-header"><h2>Reacția puterilor și consolidarea domniei</h2><p class="panel-note">Acceptarea internațională a fost obținută prin combinarea faptului împlinit românesc cu schimbarea raportului de forțe european din vara anului 1866.</p></div>
+  <div class="compare-grid three">
+    <section class="note-card status-contra"><h4>Austria</h4><p>Se opunea unui Hohenzollern la Dunărea de Jos și păstrării Unirii fără acordul său. Înfrângerea de la Königgrätz/Sadowa, la <strong>3 iulie 1866</strong>, i-a anulat însă capacitatea de intervenție.</p></section>
+    <section class="note-card status-contra"><h4>Imperiul Otoman</h4><p>A amenințat cu intervenția și a concentrat forțe la Dunăre, dar izolarea diplomatică și lipsa sprijinului austriac au împins Poarta spre compromis.</p></section>
+    <section class="note-card status-mix"><h4>Rusia</h4><p>Privea cu suspiciune candidatura germană și putea exploata separatismul moldovean, dar nu a declanșat o intervenție militară.</p></section>
+    <section class="note-card status-pro"><h4>Franța</h4><p>Napoleon al III-lea a sprijinit păstrarea Unirii și a acceptat candidatura, văzând România drept element de influență franceză în Orient.</p></section>
+    <section class="note-card status-pro"><h4>Prusia</h4><p>Wilhelm I și Bismarck au tolerat inițiativa, fără a transforma oficial candidatura într-o acțiune de stat prusacă înaintea războiului cu Austria.</p></section>
+    <section class="note-card status-mix"><h4>Marea Britanie</h4><p>Inițial rezervată față de încălcarea Convenției din 1858, a acceptat treptat soluția care asigura stabilitatea la Dunărea de Jos.</p></section>
+  </div>
+  <div class="fact-strip"><div class="fact"><strong>23 octombrie 1866</strong>Poarta îl recunoaște pe Carol ca domn ereditar, iar România continuă formal sub suzeranitate otomană.</div><div class="fact"><strong>1/13 iulie 1866</strong>Constituția este promulgată fără aprobarea prealabilă a Porții, semn major de autonomie.</div><div class="fact"><strong>1866–1914</strong>Carol va avea cea mai lungă domnie din istoria statului român modern până la acel moment: 48 de ani.</div></div>
+</section>
+
+<section class="panel" id="cronologie">
+  <div class="panel-header"><h2>Cronologia alegerii lui Carol I</h2><p class="panel-note">Date în stil vechi și, unde este util, echivalentul lor în stil nou.</p></div>
+  <div class="date-grid">
+    <article class="date-card"><strong>10/22–11/23 februarie 1866</strong><span>Cuza este silit să abdice; se formează Locotenența Domnească.</span></article>
+    <article class="date-card"><strong>11/23 februarie 1866</strong><span>Filip, conte de Flandra, este ales de Parlament.</span></article>
+    <article class="date-card"><strong>24 februarie–30 martie</strong><span>Refuzul candidaturii belgiene devine definitiv.</span></article>
+    <article class="date-card"><strong>10 martie 1866</strong><span>Se deschide Conferința de la Paris asupra Principatelor.</span></article>
+    <article class="date-card"><strong>3/15 aprilie 1866</strong><span>Mișcarea separatistă de la Iași este înfrântă.</span></article>
+    <article class="date-card"><strong>2–8/14–20 aprilie 1866</strong><span>Plebiscitul pentru Carol de Hohenzollern-Sigmaringen.</span></article>
+    <article class="date-card"><strong>8/20 aprilie 1866</strong><span>Parlamentul validează alegerea lui Carol I.</span></article>
+    <article class="date-card"><strong>8/20 mai 1866</strong><span>Carol ajunge la Turnu Severin.</span></article>
+    <article class="date-card"><strong>10/22 mai 1866</strong><span>Intrarea în București și depunerea jurământului.</span></article>
+    <article class="date-card"><strong>29 VI/11 VII 1866</strong><span>Adunarea Constituantă votează noua Constituție.</span></article>
+    <article class="date-card"><strong>1/13 iulie 1866</strong><span>Promulgarea Constituției României.</span></article>
+    <article class="date-card"><strong>23 octombrie 1866</strong><span>Recunoașterea domniei ereditare de către Poartă.</span></article>
+  </div>
+</section>
+
+<section class="panel" id="bibliografie"><div class="panel-header"><h2>Bibliografie selectivă</h2><p class="panel-note">Repere pentru aprofundarea crizei din 1866 și a începutului dinastiei.</p></div><ul class="source-list"><li>Keith Hitchins, <em>România, 1866–1947</em>.</li><li>Memoriile regelui Carol I, ediții românești.</li><li>Dan Berindei, studii despre formarea statului român modern.</li><li>Constituția României din 1866.</li><li>Documente diplomatice privind Conferința de la Paris din 1866.</li><li>Materialele furnizate: <em>Domnia lui Carol I</em> și cronologia legislativă 1860–1890.</li></ul></section>
+
+  <footer class="footer">Seria „Regele Carol I” · Alegerea domnitorului · România modernă</footer>
+</main>
+</body>
+</html>

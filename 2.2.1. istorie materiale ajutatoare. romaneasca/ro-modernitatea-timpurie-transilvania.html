@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Modernitatea timpurie în Transilvania: principatul autonom, Reforma religioasă, Diploma Leopoldină, reformele habsburgice, Horea, Școala Ardeleană și Supplex."/>
+<title>ro-modernitatea-timpurie-transilvania</title>
+<style>
+
+:root {
+  --bg: #f6f0e7;
+  --paper: #fffaf3;
+  --paper-2: #ffffff;
+  --ink: #2f241c;
+  --title: #3c2a1e;
+  --muted: #5b4a3d;
+  --accent: #7a4f2a;
+  --accent-2: #9b6a3c;
+  --accent-soft: #f0e4d4;
+  --line: rgba(91, 62, 36, 0.18);
+  --line-strong: rgba(91, 62, 36, 0.34);
+  --outer-dark: #241208;
+  --outer-mid: #4a2a18;
+  --outer-warm: #7a4b2b;
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+  --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+    radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+}
+.page {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 34px 0 70px;
+}
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.back-link, .tag { display: inline-flex; align-items: center; border: 1px solid var(--line); background: rgba(255, 250, 243, 0.84); color: var(--title); border-radius: 999px; padding: 10px 15px; text-decoration: none; font-size: 15px; font-weight: 700; box-shadow: var(--shadow-small); }
+.back-link:hover { background: #fff6eb; }
+.hero, .section, .nav-card, .final-box { background: rgba(255, 250, 243, 0.96); border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow); }
+.hero { padding: 38px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.hero::after { content: var(--hero-year); position: absolute; right: 26px; bottom: -22px; font-size: 110px; font-weight: 900; letter-spacing: -4px; color: rgba(122, 79, 42, 0.08); pointer-events: none; }
+.eyebrow { margin: 0 0 8px; font-size: 16px; color: var(--accent); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; }
+h1 { margin: 0; font-size: clamp(38px, 5vw, 62px); line-height: 1.04; color: var(--title); letter-spacing: -1.4px; text-align: left; text-align-last: auto; }
+.subtitle { margin: 18px 0 0; max-width: 980px; font-size: 19px; line-height: 1.78; color: var(--muted); text-align: justify; text-align-last: left; }
+.summary-grid, .three-col, .two-col, .term-grid, .quick-grid, .cause-grid, .four-col { display: grid; gap: 14px; }
+.summary-grid { grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+.summary-card, .info-card, .wide-card, .term-card, .quick-card, .source-note, .micro-card, .warning-box { background: var(--paper-2); border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); text-align: justify; text-align-last: left; }
+.summary-card { padding: 16px; min-height: 132px; }
+.summary-card strong, .quick-card strong, .term-card strong, .micro-card strong { display: block; color: var(--title); font-size: 17px; margin-bottom: 8px; text-align: left; text-align-last: auto; }
+.summary-card span, .quick-card span, .term-card span, .micro-card span { display: block; color: var(--muted); font-size: 15.5px; line-height: 1.56; text-align: justify; text-align-last: left; }
+.nav-card { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 18px 20px; margin-bottom: 24px; }
+.nav-card b { color: var(--title); margin-right: 2px; }
+.nav-card a, .mini-btn { color: var(--title); background: var(--accent-soft); border: 1px solid rgba(91, 62, 36, 0.16); border-radius: 999px; text-decoration: none; padding: 8px 12px; font-weight: 700; font-size: 14px; cursor: pointer; font-family: inherit; }
+.nav-card a:hover, .mini-btn:hover { background: #e5d2bb; }
+.section { padding: 30px; margin-bottom: 24px; }
+h2 { margin: 0 0 14px; color: var(--title); font-size: clamp(28px, 3vw, 38px); line-height: 1.15; text-align: left; text-align-last: auto; }
+h3 { margin: 0 0 12px; color: var(--title); font-size: 22px; line-height: 1.22; text-align: left; text-align-last: auto; }
+h4 { margin: 16px 0 8px; color: var(--title); font-size: 18px; text-align: left; text-align-last: auto; }
+.section-intro, p, li, dd { font-size: 17px; line-height: 1.72; color: var(--muted); text-align: justify; text-align-last: left; hyphens: auto; }
+.section-intro { margin: 0 0 20px; max-width: 1000px; }
+.three-col { grid-template-columns: repeat(3, 1fr); }
+.two-col { grid-template-columns: repeat(2, 1fr); }
+.four-col { grid-template-columns: repeat(4, 1fr); }
+.cause-grid { grid-template-columns: 1.1fr 0.9fr; }
+.term-grid { grid-template-columns: repeat(4, 1fr); }
+.quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+.info-card, .wide-card, .term-card, .quick-card, .micro-card, .warning-box, .source-note { padding: 20px; }
+.wide-card { margin-top: 14px; }
+.wide-card p:last-child, .info-card p:last-child { margin-bottom: 0; }
+.clean, .number-list { margin: 0; padding-left: 22px; }
+.clean li, .number-list li { margin: 0 0 9px; padding-left: 2px; }
+.clean li:last-child, .number-list li:last-child { margin-bottom: 0; }
+.mini-title { display: inline; color: var(--title); font-weight: 800; background: transparent; border: 0; border-radius: 0; padding: 0; margin-right: 5px; white-space: normal; text-align: inherit; }
+.date-pill { display: inline-block; color: var(--title); font-weight: 800; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.13); border-radius: 999px; padding: 2px 9px; margin-right: 5px; white-space: nowrap; text-align: left; }
+.definition, .note { margin-top: 18px; background: #fff8ef; border: 1px solid rgba(122, 79, 42, 0.22); border-left: 6px solid rgba(122, 79, 42, 0.48); border-radius: 18px; padding: 18px 20px; color: var(--muted); font-size: 17px; line-height: 1.7; text-align: justify; text-align-last: left; }
+.definition strong, .note strong { color: var(--title); }
+details { background: #fffdf9; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); margin-top: 14px; overflow: hidden; }
+details[open] { background: #fffaf3; }
+summary { cursor: pointer; list-style: none; padding: 18px 20px; font-size: 19px; font-weight: 800; color: var(--title); display: flex; justify-content: space-between; align-items: center; gap: 18px; text-align: left; text-align-last: auto; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "Deschide"; color: var(--muted); font-size: 14px; font-weight: 700; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 999px; padding: 7px 11px; white-space: nowrap; }
+details[open] > summary::after { content: "Ascunde"; }
+.details-body { border-top: 1px solid rgba(91, 62, 36, 0.12); padding: 18px 20px 20px; text-align: justify; text-align-last: left; }
+.details-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.nested-details { margin-top: 10px; box-shadow: none; background: #ffffff; }
+.nested-details summary { font-size: 17px; padding: 14px 16px; }
+.key-line { display: grid; grid-template-columns: 220px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px dashed rgba(91, 62, 36, 0.18); }
+.key-line:last-child { border-bottom: 0; }
+.key-line strong { color: var(--title); text-align: left; text-align-last: auto; }
+.key-line span { color: var(--muted); line-height: 1.65; text-align: justify; text-align-last: left; }
+.timeline { position: relative; display: grid; gap: 14px; margin-top: 18px; }
+.event { display: grid; grid-template-columns: 132px 1fr; gap: 18px; align-items: stretch; background: #ffffff; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); overflow: hidden; }
+.date { background: linear-gradient(180deg, #7a4f2a, #5b351b); color: #fffaf3; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px; font-size: 18px; line-height: 1.25; font-weight: 900; letter-spacing: 0.2px; }
+.event > div:last-child { padding: 17px 18px 18px 0; text-align: justify; text-align-last: left; }
+.event h3 { margin-bottom: 6px; }
+.event p { margin: 0; }
+.small-muted { font-size: 15px; color: #725c49; line-height: 1.6; text-align: justify; text-align-last: left; }
+.warning-box { background: #fff7ec; border-color: rgba(122, 79, 42, 0.22); margin-top: 16px; }
+.final-box { padding: 28px; background: linear-gradient(135deg, #fffaf3, #f4e4d1); border-color: rgba(91, 62, 36, 0.25); }
+.final-box p { margin-bottom: 0; }
+.table-wrap { overflow-x: auto; margin-top: 14px; border-radius: 18px; border: 1px solid rgba(91,62,36,.14); background: #fff; box-shadow: var(--shadow-small); }
+table { width: 100%; border-collapse: collapse; min-width: 740px; }
+th, td { padding: 13px 14px; border-bottom: 1px solid rgba(91,62,36,.12); color: var(--muted); font-size: 16px; line-height: 1.55; vertical-align: top; text-align: justify; }
+th { background: #f3eadf; color: var(--title); text-align: left; font-weight: 800; }
+tr:last-child td { border-bottom: 0; }
+@media (max-width: 980px) {
+  .summary-grid, .three-col, .term-grid, .quick-grid, .four-col { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .cause-grid, .details-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .page { width: min(100% - 22px, 1180px); padding-top: 22px; }
+  .hero, .section, .final-box { padding: 22px; border-radius: 22px; }
+  .summary-grid, .term-grid, .quick-grid, .four-col { grid-template-columns: 1fr; }
+  .event { grid-template-columns: 1fr; }
+  .date { min-height: 66px; }
+  .event > div:last-child { padding: 0 16px 16px; }
+  .key-line { grid-template-columns: 1fr; gap: 6px; }
+  summary { align-items: flex-start; flex-direction: column; }
+  .hero::after { font-size: 82px; }
+}
+
+
+/* Extensii pentru această sinteză */
+.tool-row { display:flex; gap:10px; flex-wrap:wrap; margin-top:18px; }
+.tool-row button { border:1px solid rgba(91,62,36,.18); background:#f3eadf; color:var(--title); border-radius:999px; padding:9px 13px; font:700 14px Georgia,"Times New Roman",serif; cursor:pointer; }
+.tool-row button:hover { background:#e5d2bb; }
+.metric { font-size:34px; line-height:1; color:var(--accent); font-weight:900; display:block; margin-bottom:8px; }
+.ribbon { display:inline-block; margin-bottom:10px; padding:5px 10px; border-radius:999px; background:#efe0cf; border:1px solid rgba(91,62,36,.15); color:var(--accent); font-size:13px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; }
+.compare-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.compare-head { background:linear-gradient(180deg,#7a4f2a,#5b351b); color:#fffaf3; padding:15px 18px; font-weight:900; font-size:18px; }
+.compare-body { padding:18px; }
+.compare-card { background:#fff; border:1px solid rgba(91,62,36,.14); border-radius:20px; overflow:hidden; box-shadow:var(--shadow-small); }
+.quote { margin:16px 0 0; padding:18px 20px; border-left:6px solid rgba(122,79,42,.55); background:#fff8ef; border-radius:0 18px 18px 0; color:var(--muted); font-size:17px; line-height:1.7; font-style:italic; }
+.badge-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+.badge { display:inline-flex; padding:6px 10px; border-radius:999px; background:#f3eadf; border:1px solid rgba(91,62,36,.14); color:var(--title); font-size:13.5px; font-weight:700; }
+.kicker { color:var(--accent); font-weight:800; text-transform:uppercase; letter-spacing:.06em; font-size:14px; margin:0 0 8px; }
+.checklist { list-style:none; margin:0; padding:0; }
+.checklist li { position:relative; padding-left:28px; margin-bottom:10px; }
+.checklist li::before { content:"✓"; position:absolute; left:0; top:0; color:var(--accent); font-weight:900; }
+.redflag { list-style:none; margin:0; padding:0; }
+.redflag li { position:relative; padding-left:28px; margin-bottom:10px; }
+.redflag li::before { content:"!"; position:absolute; left:4px; top:0; color:#8b3e2f; font-weight:900; }
+.progress { position:fixed; left:0; top:0; height:4px; background:#d3a46f; width:0; z-index:99; box-shadow:0 1px 5px rgba(0,0,0,.25); }
+@media (max-width:980px){ .compare-grid{grid-template-columns:1fr;} }
+@media print {
+  body { background:#fff; }
+  body::before, .progress, .topbar, .nav-card, .tool-row { display:none !important; }
+  .page { width:100%; padding:0; }
+  .hero,.section,.final-box { box-shadow:none; border:1px solid #bbb; break-inside:avoid; }
+  details { break-inside:avoid; }
+  details > .details-body { display:block !important; }
+  summary::after { display:none; }
+}
+
+.data-strip { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:18px; }
+.data-item { background:#fff; border:1px solid rgba(91,62,36,.14); border-radius:18px; padding:16px; box-shadow:var(--shadow-small); }
+.data-item b { display:block; color:var(--accent); font-size:24px; line-height:1.05; margin-bottom:7px; text-align:left; }
+.data-item span { display:block; color:var(--muted); font-size:14.5px; line-height:1.5; text-align:justify; }
+.period-band { display:grid; grid-template-columns:160px 1fr; border:1px solid rgba(91,62,36,.14); border-radius:20px; overflow:hidden; background:#fff; box-shadow:var(--shadow-small); margin-top:13px; }
+.period-band .period-date { display:flex; align-items:center; justify-content:center; padding:18px; background:linear-gradient(180deg,#7a4f2a,#5b351b); color:#fffaf3; text-align:center; font-weight:900; font-size:18px; }
+.period-band .period-copy { padding:17px 19px; }
+.period-band h3 { margin-bottom:7px; }
+.period-band p { margin:0; }
+.concept-chain { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:16px; }
+.concept-chain span { background:#fff; border:1px solid rgba(91,62,36,.16); border-radius:999px; padding:8px 11px; color:var(--title); font-weight:700; font-size:14px; box-shadow:var(--shadow-small); }
+.concept-chain i { color:var(--accent); font-style:normal; font-weight:900; }
+.source-box { margin-top:16px; background:#fffdf8; border:1px solid rgba(91,62,36,.16); border-radius:20px; padding:20px; }
+.source-box h3 { margin-bottom:8px; }
+.source-box p:last-child { margin-bottom:0; }
+.dense-table table { min-width:980px; }
+.dense-table th, .dense-table td { font-size:15.2px; line-height:1.48; padding:11px 12px; }
+.correction { background:#f8efe5; border:1px solid rgba(122,79,42,.24); border-left:6px solid #7a4f2a; border-radius:18px; padding:17px 19px; margin-top:15px; }
+.correction strong { color:var(--title); }
+.smallcaps { font-variant:small-caps; letter-spacing:.03em; }
+@media (max-width:980px){ .data-strip{grid-template-columns:repeat(2,1fr);} .period-band{grid-template-columns:130px 1fr;} }
+@media (max-width:680px){ .data-strip{grid-template-columns:1fr;} .period-band{grid-template-columns:1fr;} .period-band .period-date{min-height:62px;} }
+
+
+/* Structură editorială pe părți tematice */
+.part-divider {
+  position: relative;
+  margin: 38px 0 22px;
+  padding: 24px 28px;
+  border-radius: 24px;
+  color: #fffaf3;
+  background: linear-gradient(135deg, rgba(83,45,22,.98), rgba(128,78,40,.96));
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.part-divider::after {
+  content: attr(data-mark);
+  position: absolute;
+  right: 22px;
+  bottom: -22px;
+  font-size: 92px;
+  line-height: 1;
+  font-weight: 900;
+  color: rgba(255,255,255,.09);
+  pointer-events: none;
+}
+.part-divider .part-kicker {
+  margin: 0 0 6px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-weight: 900;
+  color: #f0d3b1;
+}
+.part-divider h2 { margin: 0 0 8px; color: #fffaf3; font-size: clamp(27px,3vw,38px); }
+.part-divider p { margin: 0; max-width: 940px; color: rgba(255,250,243,.88); }
+.section-label {
+  display: inline-flex;
+  margin: 0 0 9px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(91,62,36,.14);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.nav-card { align-items: stretch; }
+.nav-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 6px 0;
+  border-bottom: 1px dashed rgba(91,62,36,.16);
+}
+.nav-group:last-child { border-bottom: 0; }
+.nav-group > span {
+  min-width: 165px;
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.reform-overview { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 16px; }
+.reform-domain {
+  padding: 20px;
+  background: #fff;
+  border: 1px solid rgba(91,62,36,.14);
+  border-radius: 20px;
+  box-shadow: var(--shadow-small);
+}
+.reform-domain h3 { display:flex; align-items:center; gap:9px; margin-bottom:10px; }
+.reform-icon {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:34px; height:34px; border-radius:50%; background:var(--accent-soft);
+  color:var(--accent); font-size:16px; flex:0 0 auto;
+}
+.reform-domain p { margin:0; }
+.ruler-profile {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 0;
+  margin-top: 15px;
+  border: 1px solid rgba(91,62,36,.15);
+  border-radius: 22px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: var(--shadow-small);
+}
+.ruler-side {
+  padding: 22px;
+  background: linear-gradient(180deg,#754825,#4e2b17);
+  color:#fffaf3;
+}
+.ruler-side .years { display:block; margin-bottom:8px; color:#f0d3b1; font-weight:800; font-size:14px; }
+.ruler-side strong { display:block; font-size:20px; line-height:1.22; }
+.ruler-main { padding: 21px 22px; }
+.ruler-main h3 { margin-bottom: 9px; }
+.ruler-main p { margin: 0 0 11px; }
+.ruler-main p:last-child { margin-bottom:0; }
+.reform-list { list-style:none; padding:0; margin:12px 0 0; }
+.reform-list li { position:relative; padding: 10px 0 10px 31px; margin:0; border-top:1px dashed rgba(91,62,36,.16); }
+.reform-list li::before { content:'◆'; position:absolute; left:4px; top:11px; color:var(--accent); font-size:13px; }
+.reform-list strong { color:var(--title); }
+.reform-verdict {
+  margin-top: 13px;
+  padding: 13px 15px;
+  border-radius: 16px;
+  background:#fff8ef;
+  border-left:5px solid rgba(122,79,42,.5);
+}
+.reform-table td:first-child { min-width: 150px; color:var(--title); font-weight:800; }
+.reform-table td:nth-child(2) { min-width: 145px; }
+@media (max-width:980px){
+  .reform-overview{grid-template-columns:repeat(2,1fr)}
+  .ruler-profile{grid-template-columns:150px 1fr}
+}
+@media (max-width:680px){
+  .nav-group > span{min-width:100%;}
+  .reform-overview{grid-template-columns:1fr}
+  .ruler-profile{grid-template-columns:1fr}
+  .ruler-side{padding:17px 19px}
+}
+
+
+/* Extensii specifice paginii despre Transilvania */
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 5px;
+  width: 0;
+  z-index: 9999;
+  background: linear-gradient(90deg, #e4b575, #fff0c9);
+  box-shadow: 0 2px 8px rgba(0,0,0,.25);
+}
+.section-label {
+  display: inline-block;
+  margin-bottom: 9px;
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+.nav-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.nav-group + .nav-group {
+  padding-top: 12px;
+  margin-top: 2px;
+  border-top: 1px dashed rgba(91,62,36,.16);
+}
+.nav-group > span {
+  min-width: 165px;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.part-divider {
+  position: relative;
+  overflow: hidden;
+  margin: 28px 0 22px;
+  padding: 28px 30px;
+  border: 1px solid rgba(255,250,243,.18);
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 90% 15%, rgba(255,255,255,.13), transparent 30%),
+    linear-gradient(135deg, #5f3b22, #2d190d);
+  box-shadow: var(--shadow);
+}
+.part-divider::after {
+  content: attr(data-mark);
+  position: absolute;
+  right: 24px;
+  bottom: -34px;
+  color: rgba(255,250,243,.09);
+  font-size: 126px;
+  line-height: 1;
+  font-weight: 900;
+}
+.part-divider .part-kicker {
+  margin: 0 0 7px;
+  color: #e9c79e;
+  font-weight: 900;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+.part-divider h2 {
+  margin: 0 0 8px;
+  color: #fffaf3;
+  font-size: clamp(27px,3vw,38px);
+}
+.part-divider p {
+  margin: 0;
+  max-width: 960px;
+  color: rgba(255,250,243,.88);
+}
+.metric {
+  font-size: 34px;
+  line-height: 1;
+  color: var(--accent);
+  font-weight: 900;
+  display: block;
+  margin-bottom: 8px;
+}
+.period-band {
+  display: grid;
+  grid-template-columns: 185px 1fr;
+  gap: 18px;
+  margin-top: 13px;
+  overflow: hidden;
+  border: 1px solid rgba(91,62,36,.14);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: var(--shadow-small);
+}
+.period-date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: linear-gradient(180deg,#7a4f2a,#5b351b);
+  color: #fffaf3;
+  font-size: 18px;
+  line-height: 1.25;
+  font-weight: 900;
+  text-align: center;
+}
+.period-copy {
+  padding: 17px 18px 17px 0;
+}
+.period-copy h3 {
+  margin: 0 0 5px;
+}
+.period-copy p {
+  margin: 0;
+}
+.concept-chain {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+.concept-chain span {
+  padding: 8px 12px;
+  border: 1px solid rgba(91,62,36,.15);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--title);
+  font-weight: 800;
+  box-shadow: var(--shadow-small);
+}
+.concept-chain i {
+  color: var(--accent);
+  font-style: normal;
+  font-weight: 900;
+}
+.source-box, .correction {
+  margin-top: 16px;
+  padding: 19px 21px;
+  border: 1px solid rgba(91,62,36,.18);
+  border-radius: 19px;
+  background: #fff9f1;
+  color: var(--muted);
+  font-size: 16.5px;
+  line-height: 1.68;
+}
+.correction {
+  border-left: 6px solid #8c5f34;
+}
+.source-box h3 {
+  margin-bottom: 7px;
+}
+.estates-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 13px;
+}
+.estate {
+  overflow: hidden;
+  border: 1px solid rgba(91,62,36,.14);
+  border-radius: 19px;
+  background: #fff;
+  box-shadow: var(--shadow-small);
+}
+.estate-head {
+  padding: 14px 16px;
+  background: #f3eadf;
+  color: var(--title);
+  font-size: 17px;
+  font-weight: 900;
+}
+.estate-body {
+  padding: 16px;
+}
+.estate-body p {
+  margin: 0;
+  font-size: 15.8px;
+}
+.profile {
+  display: grid;
+  grid-template-columns: 175px 1fr;
+  overflow: hidden;
+  margin-top: 15px;
+  border: 1px solid rgba(91,62,36,.14);
+  border-radius: 21px;
+  background: #fff;
+  box-shadow: var(--shadow-small);
+}
+.profile-side {
+  padding: 20px;
+  background: linear-gradient(180deg,#7a4f2a,#5b351b);
+  color: #fffaf3;
+}
+.profile-side strong {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 18px;
+}
+.profile-side span {
+  display: block;
+  color: rgba(255,250,243,.82);
+  line-height: 1.55;
+}
+.profile-main {
+  padding: 21px;
+}
+.profile-main h3 {
+  margin-bottom: 8px;
+}
+.profile-main p:first-of-type {
+  margin-top: 0;
+}
+.profile-main p:last-child {
+  margin-bottom: 0;
+}
+.balance-grid {
+  display: grid;
+  grid-template-columns: 1fr 72px 1fr;
+  gap: 14px;
+  align-items: stretch;
+  margin-top: 15px;
+}
+.balance-side, .balance-center {
+  border: 1px solid rgba(91,62,36,.14);
+  border-radius: 20px;
+  box-shadow: var(--shadow-small);
+}
+.balance-side {
+  padding: 20px;
+  background: #fff;
+}
+.balance-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0e4d4;
+  color: var(--accent);
+  font-size: 30px;
+  font-weight: 900;
+}
+.claim-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 13px;
+  margin-top: 15px;
+}
+.claim {
+  padding: 18px;
+  border: 1px solid rgba(91,62,36,.14);
+  border-radius: 19px;
+  background: #fff;
+  box-shadow: var(--shadow-small);
+}
+.claim strong {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--title);
+  font-size: 17px;
+}
+.claim p {
+  margin: 0;
+  font-size: 15.8px;
+}
+.checklist {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.checklist li {
+  position: relative;
+  margin-bottom: 9px;
+  padding-left: 25px;
+}
+.checklist li::before {
+  content: "◆";
+  position: absolute;
+  left: 0;
+  top: 1px;
+  color: var(--accent);
+  font-size: 12px;
+}
+.compare-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 14px;
+}
+.compare-card {
+  overflow: hidden;
+  border: 1px solid rgba(91,62,36,.14);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: var(--shadow-small);
+}
+.compare-head {
+  padding: 15px 18px;
+  background: linear-gradient(180deg,#7a4f2a,#5b351b);
+  color: #fffaf3;
+  font-size: 18px;
+  font-weight: 900;
+}
+.compare-body {
+  padding: 18px;
+}
+.quote {
+  margin: 16px 0 0;
+  padding: 18px 20px;
+  border-left: 6px solid rgba(122,79,42,.55);
+  border-radius: 0 18px 18px 0;
+  background: #fff8ef;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.7;
+  font-style: italic;
+}
+.tool-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+.tool-row button {
+  border: 1px solid rgba(91,62,36,.18);
+  border-radius: 999px;
+  padding: 9px 13px;
+  background: #f3eadf;
+  color: var(--title);
+  font: 700 14px Georgia,"Times New Roman",serif;
+  cursor: pointer;
+}
+.tool-row button:hover {
+  background: #e5d2bb;
+}
+@media (max-width:980px) {
+  .estates-grid, .claim-grid, .compare-grid { grid-template-columns: repeat(2,1fr); }
+  .balance-grid { grid-template-columns: 1fr; }
+  .balance-center { min-height: 58px; }
+}
+@media (max-width:680px) {
+  .period-band, .profile { grid-template-columns: 1fr; }
+  .period-copy { padding: 0 16px 16px; }
+  .estates-grid, .claim-grid, .compare-grid { grid-template-columns: 1fr; }
+  .nav-group > span { min-width: 100%; }
+}
+@media print {
+  body { background:#fff; }
+  body::before, .progress, .topbar, .tool-row { display:none !important; }
+  .page { width:100%; padding:0; }
+  .hero, .section, .final-box, .part-divider { box-shadow:none; break-inside:avoid; }
+  details { break-inside:avoid; }
+  details > * { display:block !important; }
+  summary::after { display:none; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<main class="page">
+  <div class="topbar">
+    <a class="back-link" href="javascript:history.back()">← Înapoi</a>
+    <span class="tag">Istoria României · Transilvania · secolele XVI–XIX</span>
+  </div>
+
+  <header class="hero" style="--hero-year:'1541–1848'">
+    <p class="eyebrow">De la principatul autonom la afirmarea politică a românilor</p>
+    <h1>Modernitatea timpurie în Transilvania</h1>
+    <p class="subtitle">Sinteză amplă și structurată despre formarea Principatului Transilvaniei, ordinea celor trei stări privilegiate, Reforma religioasă și Edictul de la Turda, epoca principilor Báthory, Bethlen și Rákóczi, integrarea habsburgică, Diploma Leopoldină, unirea religioasă cu Roma, rezistența ortodoxă, reformele Mariei Terezia și ale lui Iosif al II-lea, răscoala lui Horea, Cloșca și Crișan, Școala Ardeleană și petițiile Supplex Libellus Valachorum. Materia este organizată în narațiuni tematice, profiluri, comparații și cronologii, nu într-o succesiune seacă de idei numerotate.</p>
+
+    <div class="summary-grid">
+      <div class="summary-card"><span class="metric">1541 / 1570</span><strong>Nașterea principatului</strong><span>După destrămarea Ungariei medievale, Transilvania devine o formațiune politică autonomă, aflată în cea mai mare parte a epocii sub suzeranitate otomană.</span></div>
+      <div class="summary-card"><span class="metric">1568</span><strong>Edictul de la Turda</strong><span>Dieta autorizează comunitățile să își aleagă predicatorii și consacră o formă remarcabilă, dar limitată, de pluralism confesional.</span></div>
+      <div class="summary-card"><span class="metric">1691</span><strong>Diploma Leopoldină</strong><span>Transilvania intră sub autoritatea Habsburgilor, păstrându-și instituțiile, dreptul tradițional și privilegiile stărilor.</span></div>
+      <div class="summary-card"><span class="metric">1784–1792</span><strong>De la revoltă la petiție</strong><span>Răscoala țărănească și Supplex-ul transformă problema socială și confesională într-o revendicare politică națională.</span></div>
+    </div>
+
+    <div class="tool-row">
+      <button type="button" onclick="toggleAll(true)">Deschide toate explicațiile</button>
+      <button type="button" onclick="toggleAll(false)">Închide toate explicațiile</button>
+      <button type="button" onclick="window.print()">Printează / salvează PDF</button>
+    </div>
+  </header>
+
+  <nav class="nav-card" aria-label="Cuprins">
+    <div class="nav-group"><span>Ordinea timpurie</span><a href="#periodizare">Periodizare</a><a href="#stari">Stări și drept</a><a href="#principat">Formarea principatului</a><a href="#institutii">Instituții</a></div>
+    <div class="nav-group"><span>Principatul autonom</span><a href="#echilibru">Echilibrul extern</a><a href="#bathory">Ștefan Báthory</a><a href="#confesiuni">Reforma religioasă</a><a href="#secolul-xvii">Secolul al XVII-lea</a></div>
+    <div class="nav-group"><span>Ordinea habsburgică</span><a href="#preluare">Preluarea habsburgică</a><a href="#leopoldina">Diploma Leopoldină</a><a href="#administratie">Guvernarea imperială</a><a href="#rakoczi">Rákóczi și 1711</a></div>
+    <div class="nav-group"><span>Biserici și cultură</span><a href="#unirea-religioasa">Unirea cu Roma</a><a href="#micu-klein">Inocențiu Micu-Klein</a><a href="#ortodoxie">Rezistența ortodoxă</a><a href="#blaj">Blaj și școlile</a><a href="#scoala-ardeleana">Școala Ardeleană</a></div>
+    <div class="nav-group"><span>Reforme și conflict social</span><a href="#maria-terezia">Maria Terezia</a><a href="#granita">Granița militară</a><a href="#iosif">Iosif al II-lea</a><a href="#horea">Răscoala din 1784</a></div>
+    <div class="nav-group"><span>Națiune și tranziție</span><a href="#supplex">Supplex</a><a href="#comparatie-miscari">Trei căi de emancipare</a><a href="#1848">Epilog: 1848–1867</a><a href="#cronologie">Cronologie</a><a href="#glosar">Glosar</a></div>
+  </nav>
+
+  <section class="part-divider" data-mark="I">
+    <p class="part-kicker">Fundamentele ordinii transilvănene</p>
+    <h2>Stări privilegiate, drept cutumiar și formarea principatului</h2>
+    <p>Modernitatea timpurie începe într-o societate profund ierarhizată. Autonomia politică a Transilvaniei se sprijină pe instituții reprezentative ale stărilor, dar majoritatea populației rămâne în afara corpului politic.</p>
+  </section>
+
+  <section class="section" id="periodizare">
+    <div class="section-label">Cadru general</div>
+    <h2>Periodizarea corectă a modernității timpurii transilvănene</h2>
+    <p class="section-intro">Transilvania nu trece direct de la „Evul Mediu” la statul național modern. Între secolul al XVI-lea și mijlocul secolului al XIX-lea se succed mai multe regimuri: principat autonom sub suzeranitate otomană, principat integrat în Monarhia Habsburgică, Mare Principat și, după 1848, provincie a Imperiului Austriac. Fiecare etapă păstrează elemente mai vechi și introduce instituții noi.</p>
+
+    <div class="period-band"><div class="period-date">1526–1541</div><div class="period-copy"><h3>Destrămarea Ungariei medievale</h3><p>Înfrângerea de la Mohács și conflictul dintre Ioan Zápolya și Ferdinand de Habsburg fragmentează vechiul regat. Transilvania devine baza politică a taberei Zápolya.</p></div></div>
+    <div class="period-band"><div class="period-date">1541–1570</div><div class="period-copy"><h3>Regatul Ungariei de Răsărit</h3><p>După ocuparea Budei de către otomani, teritoriile estice formează o construcție autonomă, dependentă de Poartă. Tratatul de la Speyer din 1570 clarifică titulatura de principe al Transilvaniei.</p></div></div>
+    <div class="period-band"><div class="period-date">1570–1691</div><div class="period-copy"><h3>Principatul autonom</h3><p>Principele este ales de Dietă și confirmat în raporturile externe. Statul plătește tribut Porții, dar își păstrează administrația, armata, dreptul, fiscalitatea și o politică externă relativ flexibilă.</p></div></div>
+    <div class="period-band"><div class="period-date">1691–1711</div><div class="period-copy"><h3>Tranziția spre dominația habsburgică</h3><p>Diploma Leopoldină organizează noua ordine imperială. Războiul curuților condus de Francisc al II-lea Rákóczi prelungește conflictul până la Pacea de la Satu Mare.</p></div></div>
+    <div class="period-band"><div class="period-date">1711–1848</div><div class="period-copy"><h3>Principatul habsburgic</h3><p>Curtea de la Viena conduce prin guvernator, Guberniu, Cancelarie Aulică și comandament militar, dar menține Dieta și privilegiile stărilor. Din 1765 teritoriul poartă titlul de Mare Principat.</p></div></div>
+    <div class="period-band"><div class="period-date">1848–1867</div><div class="period-copy"><h3>De la revoluție la dualism</h3><p>Iobăgia este desființată, iar naționalitățile formulează programe politice moderne. După o perioadă neoabsolutistă și una liberală, Compromisul austro-ungar din 1867 integrează Transilvania în Regatul Ungariei, fără autonomie proprie.</p></div></div>
+
+    <div class="concept-chain"><span>societate de stări</span><i>→</i><span>principat autonom</span><i>→</i><span>pluralism confesional</span><i>→</i><span>centralizare habsburgică</span><i>→</i><span>reforme luminate</span><i>→</i><span>mișcare națională</span></div>
+    <div class="correction"><strong>Precizare importantă:</strong> anul 1541 marchează începutul autonomiei politice est-transilvănene după ocuparea Budei, iar anul 1570, prin Tratatul de la Speyer, consacră juridic Principatul Transilvaniei. După 1867 Transilvania nu a fost un „principat autonom” în cadrul Ungariei, ci a fost integrată administrativ în Regatul Ungariei.</div>
+  </section>
+
+  <section class="section" id="stari">
+    <div class="section-label">Societate și drept</div>
+    <h2>„Trei națiuni” politice și o majoritate fără reprezentare</h2>
+    <p class="section-intro">În limbajul politic medieval și premodern, „națiune” nu însemna întreaga populație a unei etnii, ci o comunitate privilegiată, recunoscută juridic și reprezentată în Dietă. Sistemul s-a format înaintea principatului și a continuat să structureze puterea până în secolul al XIX-lea.</p>
+
+    <div class="estates-grid">
+      <article class="estate"><div class="estate-head">Nobilimea</div><div class="estate-body"><p>Organizată mai ales în comitate, nobilimea beneficia de privilegii fiscale, jurisdicționale și politice. Era predominant maghiară, dar existau și nobili de alte origini, inclusiv români integrați prin înnobilare și confesionalizare.</p></div></article>
+      <article class="estate"><div class="estate-head">Sașii</div><div class="estate-body"><p>Comunitățile săsești dispuneau de autonomie teritorială și urbană pe Pământul Crăiesc, reprezentată de Universitatea Săsească. Orașele lor controlau meșteșuguri, comerț și instituții municipale.</p></div></article>
+      <article class="estate"><div class="estate-head">Secuii</div><div class="estate-body"><p>Organizați în scaune și legați tradițional de serviciul militar de frontieră, secuii aveau libertăți colective. Diferențierea socială internă a redus însă treptat numărul celor efectiv liberi.</p></div></article>
+      <article class="estate"><div class="estate-head">Țărănimea și românii</div><div class="estate-body"><p>Țăranii, indiferent de origine, nu formau o stare politică. Românii, majoritar ortodocși și în mare parte rurali, erau excluși ca grup colectiv din sistemul națiunilor privilegiate și al religiilor recepte.</p></div></article>
+    </div>
+
+    <details open><summary>Unio Trium Nationum: ce a fost și ce nu a fost</summary><div class="details-body">
+      <p>Pactul încheiat în contextul răscoalei țărănești din 1437 și codificat în 1438 a unit nobilimea, fruntașii sașilor și secuii liberi într-un sistem de ajutor reciproc. El urmărea apărarea ordinii sociale și a privilegiilor împotriva revoltei țărănești și a amenințărilor externe.</p>
+      <p>Unio Trium Nationum nu trebuie înțeleasă ca o alianță modernă între trei etnii complete. Țăranii maghiari, sași, secui sau români nu erau reprezentați doar pentru că aparțineau unei comunități lingvistice. Criteriul esențial era statutul de stare privilegiată.</p>
+    </div></details>
+
+    <details><summary>Tripartitum și întărirea ordinii feudale</summary><div class="details-body">
+      <p>István Werbőczy a redactat în 1514 o sinteză în trei părți a dreptului cutumiar al Regatului Ungariei, tipărită la Viena în 1517. Deși nu a fost promulgată formal ca un cod regal complet, lucrarea a devenit o autoritate juridică majoră și a fost utilizată timp de secole.</p>
+      <p>Tripartitum afirma unitatea juridică a nobilimii, privilegiile ei față de puterea regală și obligațiile apăsătoare ale iobagilor. Contextul imediat al redactării a fost înfrângerea răscoalei conduse de Gheorghe Doja în 1514. În Transilvania, el a rămas una dintre bazele ordinii nobiliare confirmate ulterior și de Diploma Leopoldină.</p>
+    </div></details>
+
+    <div class="definition"><strong>Cheia de interpretare:</strong> excluderea politică a românilor nu provenea dintr-o singură lege „etnică”, ci din suprapunerea mai multor mecanisme: lipsa recunoașterii ca stare colectivă, predominanța statutului de iobag, nerecunoașterea ortodoxiei ca religie receptă și controlul Dietei de către grupurile privilegiate.</div>
+  </section>
+
+  <section class="section" id="principat">
+    <div class="section-label">Geneza politică</div>
+    <h2>De la Mohács la Principatul Transilvaniei</h2>
+    <p class="section-intro">Bătălia de la Mohács din 1526 a deschis o criză de succesiune. O parte a nobilimii l-a ales rege pe Ioan Zápolya, voievodul Transilvaniei, iar alta pe arhiducele Ferdinand de Habsburg. Competiția dintre cele două tabere și intervenția otomană au împărțit spațiul fostului regat maghiar.</p>
+
+    <div class="timeline">
+      <div class="event"><div class="date">29 aug. 1526</div><div><h3>Mohács</h3><p>Armata regelui Ludovic al II-lea este înfrântă de otomani. Moartea regelui produce o dublă alegere regală și un război dinastic.</p></div></div>
+      <div class="event"><div class="date">1538</div><div><h3>Pacea de la Oradea</h3><p>Ioan Zápolya și Ferdinand acceptă temporar împărțirea stăpânirii, dar succesiunea rămâne disputată.</p></div></div>
+      <div class="event"><div class="date">1541</div><div><h3>Ocuparea Budei</h3><p>Imperiul Otoman transformă centrul Ungariei în pașalâc. Teritoriile estice, conduse pentru fiul lui Zápolya, se organizează autonom sub protecție și suzeranitate otomană.</p></div></div>
+      <div class="event"><div class="date">16 aug. 1570</div><div><h3>Tratatul de la Speyer</h3><p>Ioan Sigismund renunță la titlul de rege al Ungariei și este recunoscut ca principe al Transilvaniei și al părților regatului aflate sub autoritatea sa.</p></div></div>
+    </div>
+
+    <div class="two-col">
+      <article class="info-card"><h3>Ce păstra principatul</h3><ul class="checklist"><li>Dieta și alegerea principelui;</li><li>un Consiliu princiar și o cancelarie proprie;</li><li>fiscalitate, monedă și armată;</li><li>dreptul tradițional al stărilor;</li><li>o politică externă negociată între Poartă și Habsburgi.</li></ul></article>
+      <article class="info-card"><h3>Ce limita autonomia</h3><ul class="checklist"><li>tributul anual către sultan;</li><li>nevoia confirmării politice externe;</li><li>interdicția unei politici ostile Porții;</li><li>intervențiile militare otomane;</li><li>rivalitatea permanentă cu Habsburgii.</li></ul></article>
+    </div>
+  </section>
+
+  <section class="section" id="institutii">
+    <div class="section-label">Constituția nescrisă</div>
+    <h2>Cum funcționa Principatul Transilvaniei</h2>
+    <p class="section-intro">Principatul nu avea o constituție într-un singur document. Ordinea sa era alcătuită din cutume, hotărâri dietale, privilegii teritoriale, tratate și colecții de legi. Puterea era împărțită între principe și stările privilegiate.</p>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Instituție</th><th>Rol</th><th>Limite și particularități</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Principele</strong></td><td>Conducea executivul, armata și diplomația; numea dregători, convoca Dieta și sancționa hotărârile.</td><td>Era ales de Dietă, trebuia să respecte privilegiile stărilor și se afla sub presiunea Porții și a Habsburgilor.</td></tr>
+        <tr><td><strong>Dieta</strong></td><td>Vota dări, legi, recrutări și participa la alegerea principelui.</td><td>Reprezenta cele trei stări privilegiate, nu întreaga populație. Românii și țăranii nu aveau reprezentare colectivă proporțională.</td></tr>
+        <tr><td><strong>Consiliul princiar</strong></td><td>Reunea mari demnitari și consilieri care pregăteau deciziile politice.</td><td>Componența sa reflecta echilibrul dintre familiile nobiliare și confesiunile dominante.</td></tr>
+        <tr><td><strong>Cancelaria</strong></td><td>Redacta acte, purta corespondența diplomatică și administra documentele.</td><td>Latina, maghiara și germana circulau în diferite medii; româna avea o utilizare redusă în administrația centrală.</td></tr>
+        <tr><td><strong>Comitate, scaune, districte</strong></td><td>Organizau administrația locală a nobilimii, secuilor și sașilor.</td><td>Nu formau un sistem uniform; fiecare teritoriu avea privilegii și jurisdicții proprii.</td></tr>
+      </tbody>
+    </table></div>
+
+    <details><summary>Partium: de ce principatul era mai întins decât Transilvania propriu-zisă</summary><div class="details-body"><p>Principatul controla în diferite perioade și „Părțile” estice ale fostului Regat al Ungariei, numite Partium. Aceste comitate vestice și nord-vestice legau Transilvania de Crișana, Maramureș și zonele de câmpie. Întinderea lor a variat în funcție de războaie și tratate.</p></div></details>
+  </section>
+
+  <section class="part-divider" data-mark="II">
+    <p class="part-kicker">Principatul autonom</p>
+    <h2>Între Poartă și Habsburgi: politică, confesiuni și cultură</h2>
+    <p>În secolele al XVI-lea și al XVII-lea, supraviețuirea principatului a depins de echilibrul diplomatic. Aceeași autonomie a favorizat Reforma religioasă, dezvoltarea școlilor și apariția unei culturi politice proprii.</p>
+  </section>
+
+  <section class="section" id="echilibru">
+    <div class="section-label">Geopolitică</div>
+    <h2>Politica de echilibru între Imperiul Otoman și Monarhia Habsburgică</h2>
+    <p class="section-intro">Principii transilvăneni au încercat să evite absorbția de către una dintre marile puteri. Poarta oferea protecție împotriva Habsburgilor, dar cerea tribut și loialitate; Viena oferea titluri și alianțe, dar urmărea integrarea teritoriului.</p>
+
+    <div class="balance-grid">
+      <article class="balance-side"><h3>Relația cu Poarta</h3><p>Principatul plătea tribut și trebuia să evite acțiuni contrare intereselor otomane. Sultanul putea confirma sau contesta alegerea principelui. În schimb, administrația internă și credințele recepte nu erau organizate direct ca într-un pașalâc.</p></article>
+      <div class="balance-center">⇄</div>
+      <article class="balance-side"><h3>Relația cu Viena</h3><p>Habsburgii revendicau moștenirea coroanei ungare și sprijineau partide nobiliare favorabile lor. Principii căutau uneori recunoaștere imperială, alianțe militare ori garanții, fără să accepte pierderea autonomiei.</p></article>
+    </div>
+
+    <details open><summary>De ce a fost posibilă o „epocă de aur” în secolul al XVII-lea?</summary><div class="details-body"><p>În timpul lui Gabriel Bethlen și al lui Gheorghe Rákóczi I, principatul a profitat de Războiul de Treizeci de Ani și de slăbiciunea relativă a adversarilor pentru a-și consolida finanțele, armata și diplomația. Curtea de la Alba Iulia a atras profesori, tipografi și meșteșugari, iar principele a sprijinit colegii și burse externe.</p><p>Expansiunea a avut însă limite. Campania poloneză a lui Gheorghe Rákóczi al II-lea, inițiată fără acordul Porții, a provocat intervenția otomană din 1658–1662, devastări și o diminuare severă a autonomiei efective.</p></div></details>
+  </section>
+
+  <section class="section" id="bathory">
+    <div class="section-label">Profil de principe</div>
+    <h2>Ștefan Báthory: Transilvania între Padova, Cracovia și Istanbul</h2>
+
+    <div class="profile">
+      <div class="profile-side"><strong>Ștefan Báthory</strong><span>n. 1533, Șimleu<br/>principe: 1571–1575<br/>rege al Poloniei: 1576–1586</span></div>
+      <div class="profile-main">
+        <h3>Un principe transilvănean cu anvergură europeană</h3>
+        <p>Format în mediul juridic italian și implicat în conflictul dintre Zápolya și Habsburgi, Báthory a fost ales principe în 1571. A învins partida imperială condusă de Gáspár Bekes și a consolidat autoritatea principatului.</p>
+        <p>Alegerea sa ca rege al Poloniei a transformat familia Báthory într-un actor central al Europei de Est. Conducerea directă a Transilvaniei a fost încredințată fratelui său Cristofor, în timp ce Ștefan a păstrat o influență puternică asupra principatului.</p>
+      </div>
+    </div>
+
+    <div class="three-col">
+      <article class="info-card"><h3>Educație și iezuiți</h3><p>Báthory a folosit ordinul iezuit pentru consolidarea învățământului catolic. Colegiul de la Cluj, întemeiat în 1581, a devenit un important centru de studii superioare și precursor al tradiției universitare clujene.</p></article>
+      <article class="info-card"><h3>Toleranță controlată</h3><p>Deși favoriza Contrareforma catolică, Báthory nu putea elimina pluralismul confesional protejat de stări. Politica sa a combinat patronajul catolic cu respectarea echilibrului intern.</p></article>
+      <article class="info-card"><h3>Proiecte externe</h3><p>Ca rege al Poloniei, a purtat războaie victorioase împotriva Moscovei și a imaginat o coaliție mai largă împotriva otomanilor. Moartea sa din 1586 a întrerupt aceste proiecte.</p></article>
+    </div>
+
+    <div class="correction"><strong>Selecție tematică:</strong> biografia poloneză a lui Báthory este prezentată numai în măsura în care explică poziția internațională a Transilvaniei, rolul iezuiților și prestigiul dinastiei. Reformele monetare și campaniile poloneze sunt secundare pentru tema acestei pagini.</div>
+  </section>
+
+  <section class="section" id="confesiuni">
+    <div class="section-label">Reformă și pluralism</div>
+    <h2>Edictul de la Turda și sistemul confesiunilor recepte</h2>
+    <p class="section-intro">Reforma protestantă a pătruns rapid prin orașele săsești și mediile nobiliare. Luteranismul, calvinismul și unitarianismul s-au adăugat catolicismului, iar Dieta a fost obligată să creeze un cadru de conviețuire.</p>
+
+    <details open><summary>Ce a stabilit Edictul de la Turda din 1568</summary><div class="details-body">
+      <p>Hotărârea Dietei, adoptată la 28 ianuarie 1568, permitea comunităților locale să își aleagă predicatorul și interzicea persecutarea acestuia pentru învățătura religioasă. Măsura a fost legată de politica lui Ioan Sigismund și de influența predicatorului unitarian Francisc Dávid.</p>
+      <p>Edictul nu proclama egalitatea modernă a tuturor indivizilor și tuturor religiilor. El proteja în primul rând pluralismul dintre confesiunile creștine organizate și recunoscute de sistemul politic. Totuși, admiterea unitarianismului a fost un fapt neobișnuit în Europa epocii.</p>
+    </div></details>
+
+    <div class="four-col">
+      <article class="info-card"><h3>Romano-catolică</h3><p>Vechea confesiune dominantă, slăbită după Reformă și susținută ulterior de principii Báthory și de Habsburgi.</p></article>
+      <article class="info-card"><h3>Luterană</h3><p>Adoptată mai ales în comunitățile săsești, organizată prin biserici urbane și școli proprii.</p></article>
+      <article class="info-card"><h3>Reformată</h3><p>Calvinismul devine influent în rândul nobilimii maghiare și al mai multor principi.</p></article>
+      <article class="info-card"><h3>Unitariană</h3><p>Confesiune antitrinitariană legată de Francisc Dávid și de mediul urban din Cluj.</p></article>
+    </div>
+
+    <div class="definition"><strong>Religie receptă versus religie tolerată:</strong> o confesiune receptă avea existență juridică și participare în sistemul politic al stărilor. Ortodoxia, deși era credința unei mari părți a populației, a rămas mult timp doar tolerată. Această diferență a avut consecințe asupra proprietății bisericești, reprezentării și statutului clerului.</div>
+  </section>
+
+  <section class="section" id="secolul-xvii">
+    <div class="section-label">Stat, cultură și societate</div>
+    <h2>Secolul al XVII-lea: consolidare și criză</h2>
+    <p class="section-intro">Secolul al XVII-lea nu a fost doar o epocă de războaie confesionale. El a adus centralizare fiscală, dezvoltare curială, tipar, școli și codificarea dreptului, dar și o exploatare tot mai sistematică a iobagilor.</p>
+
+    <div class="two-col">
+      <article class="info-card"><h3>Gabriel Bethlen</h3><p>Principe între 1613 și 1629, a consolidat veniturile domeniului princiar, a sprijinit manufacturile, mineritul și comerțul și a transformat Alba Iulia într-un centru diplomatic și cultural. Colegiul princiar a atras profesori străini și a acordat burse pentru studii în universități protestante.</p></article>
+      <article class="info-card"><h3>Gheorghe Rákóczi I</h3><p>A continuat politica de afirmare externă și a participat la faza finală a Războiului de Treizeci de Ani. Pacea de la Linz din 1645 a confirmat drepturile protestanților din Ungaria regală și prestigiul principatului.</p></article>
+    </div>
+
+    <details><summary>Approbatae Constitutiones și Compilatae Constitutiones</summary><div class="details-body">
+      <p>Hotărârile Dietei au fost reunite în colecții juridice: <em>Approbatae Constitutiones</em> în 1653 și <em>Compilatae Constitutiones</em> în 1669. Împreună cu Tripartitum și privilegiile teritoriale, ele au format baza dreptului principatului.</p>
+      <p>Codificarea a făcut administrația mai previzibilă, dar nu a democratizat societatea. Ea a confirmat dominația stărilor, obligațiile iobăgești și diferențele dintre confesiuni.</p>
+    </div></details>
+
+    <details><summary>Românii în principatul secolelor XVI–XVII</summary><div class="details-body">
+      <p>Românii trăiau în comitate, districte și sate de pe domenii nobiliare, în Țara Făgărașului, Maramureș, Hațeg, Banat și zonele montane. Unele comunități aveau cnezi, juzi și forme locale de autonomie; o parte a elitei s-a înnobilat și s-a integrat în structurile politice dominante.</p>
+      <p>Biserica Ortodoxă și mănăstirile au rămas principalii organizatori ai vieții culturale românești. Tipăriturile slavone și românești, legăturile cu Țara Românească și Moldova și activitatea unor ierarhi au menținut o rețea culturală dincolo de granițele politice.</p>
+    </div></details>
+  </section>
+
+  <section class="part-divider" data-mark="III">
+    <p class="part-kicker">Schimbarea suzeranității</p>
+    <h2>Transilvania sub Habsburgi: continuitate juridică și centralizare imperială</h2>
+    <p>Viena nu a desființat imediat ordinea principatului. A confirmat instituțiile și privilegiile pentru a obține loialitatea stărilor, apoi a construit treptat un aparat administrativ, militar și confesional propriu.</p>
+  </section>
+
+  <section class="section" id="preluare">
+    <div class="section-label">1683–1711</div>
+    <h2>Cum a intrat Transilvania în Monarhia Habsburgică</h2>
+
+    <div class="timeline">
+      <div class="event"><div class="date">1683</div><div><h3>Înfrângerea otomană la Viena</h3><p>Contraofensiva Ligii Sfinte schimbă raportul de forțe în Europa Centrală și deschide drumul armatei imperiale spre Transilvania.</p></div></div>
+      <div class="event"><div class="date">1686</div><div><h3>Tratatul Hallerian</h3><p>O înțelegere cu reprezentanții principatului acceptă protecția imperială și menținerea lui Mihai Apafi al II-lea.</p></div></div>
+      <div class="event"><div class="date">1687–1688</div><div><h3>Prezență militară habsburgică</h3><p>Trupele imperiale ocupă punctele strategice, iar Dieta recunoaște treptat autoritatea Casei de Habsburg.</p></div></div>
+      <div class="event"><div class="date">4 dec. 1691</div><div><h3>Diploma Leopoldină</h3><p>Actul stabilește principiile guvernării principatului în cadrul monarhiei.</p></div></div>
+      <div class="event"><div class="date">26 ian. 1699</div><div><h3>Pacea de la Karlowitz</h3><p>Imperiul Otoman recunoaște juridic pierderea Transilvaniei în favoarea Habsburgilor.</p></div></div>
+      <div class="event"><div class="date">1703–1711</div><div><h3>Războiul lui Rákóczi</h3><p>O parte a stărilor și a populației se ridică împotriva centralizării imperiale. Conflictul se încheie prin Pacea de la Satu Mare.</p></div></div>
+    </div>
+  </section>
+
+  <section class="section" id="leopoldina">
+    <div class="section-label">Act fundamental</div>
+    <h2>Diploma Leopoldină din 1691</h2>
+    <p class="section-intro">Diploma promulgată de Leopold I a fost compromisul dintre cucerirea militară habsburgică și constituția tradițională a principatului. Ea a garantat continuitatea juridică, dar a transferat suveranitatea efectivă către Curtea de la Viena.</p>
+
+    <div class="claim-grid">
+      <article class="claim"><strong>Statut separat</strong><p>Transilvania nu era absorbită imediat în administrația Ungariei habsburgice, ci păstra o organizare proprie sub autoritatea monarhului.</p></article>
+      <article class="claim"><strong>Privilegii confirmate</strong><p>Nobilimea, sașii și secuii își păstrau libertățile, jurisdicțiile și reprezentarea politică.</p></article>
+      <article class="claim"><strong>Drept tradițional</strong><p>Tripartitum, Approbatele, Compilatele și hotărârile Dietei continuau să fie aplicate.</p></article>
+      <article class="claim"><strong>Patru religii recepte</strong><p>Catolicismul, luteranismul, calvinismul și unitarianismul erau recunoscute; ortodoxia rămânea tolerată.</p></article>
+      <article class="claim"><strong>Fiscalitate negociată</strong><p>Contribuțiile către monarhie urmau să fie stabilite în cadrul ordinii principatului, deși presiunea militară a crescut.</p></article>
+      <article class="claim"><strong>Conducere imperială</strong><p>Monarhul numea sau confirma guvernatorul și controla politica externă și militară.</p></article>
+    </div>
+
+    <details open><summary>De ce a păstrat Viena vechile privilegii?</summary><div class="details-body"><p>Habsburgii aveau nevoie de cooperarea elitelor locale pentru impozite, aprovizionarea armatei și stabilitate. Desființarea imediată a privilegiilor ar fi provocat rezistență. Diploma a permis integrarea teritoriului fără o ruptură constituțională totală.</p><p>Pe termen lung, tocmai conservarea stărilor a creat o contradicție: statul imperial se moderniza și centraliza, dar Dieta și dreptul local continuau să excludă majoritatea țărănească și pe români ca grup politic.</p></div></details>
+  </section>
+
+  <section class="section" id="administratie">
+    <div class="section-label">Instituții habsburgice</div>
+    <h2>Guberniul, Cancelaria Aulică și administrația militară</h2>
+    <p class="section-intro">După 1691, principele ales dispare treptat din centrul sistemului. Împăratul devine titularul puterii, iar conducerea cotidiană este exercitată de instituții care leagă Sibiul, Clujul și Viena.</p>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Instituție</th><th>Funcție</th><th>Efect asupra autonomiei</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Guvernatorul</strong></td><td>Reprezentantul monarhului și șef al administrației politice locale.</td><td>Înlocuiește treptat rolul principelui ales și depinde de confirmarea imperială.</td></tr>
+        <tr><td><strong>Guberniul</strong></td><td>Consiliu executiv cu atribuții administrative, fiscale și judiciare.</td><td>Păstrează participarea elitelor locale, dar aplică directivele Curții.</td></tr>
+        <tr><td><strong>Cancelaria Aulică Transilvană</strong></td><td>Instituție de la Viena care pregătește deciziile privind principatul.</td><td>Mută centrul deciziei politice din Transilvania spre capitala imperială.</td></tr>
+        <tr><td><strong>Tezaurariatul</strong></td><td>Administrează veniturile, minele, sarea și proprietățile fiscale.</td><td>Integrează resursele provinciei în economia monarhiei.</td></tr>
+        <tr><td><strong>Comandamentul militar</strong></td><td>Controlează garnizoanele, fortificațiile și frontiera.</td><td>Funcționează adesea paralel cu autoritățile civile și întărește centralizarea.</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="definition"><strong>Modernizare conservatoare:</strong> apar registre, recensăminte, servicii fiscale și instituții mai stabile, dar acestea nu elimină privilegiile. Statul devine mai eficient fără să devină automat mai reprezentativ.</div>
+  </section>
+
+  <section class="section" id="rakoczi">
+    <div class="section-label">Rezistență antiimperială</div>
+    <h2>Războiul lui Francisc al II-lea Rákóczi și Pacea de la Satu Mare</h2>
+    <p class="section-intro">Între 1703 și 1711, curuții au contestat dominația habsburgică, fiscalitatea și prezența militară. Mișcarea a reunit nobili nemulțumiți, soldați, țărani și comunități afectate de război, fără a avea un program social unitar.</p>
+
+    <div class="two-col">
+      <article class="info-card"><h3>De ce au participat românii</h3><p>Unii români s-au alăturat curuților din cauza obligațiilor militare și fiscale, a conflictelor locale și a speranței într-o îmbunătățire socială. Alții au rămas de partea imperială sau au încercat să evite războiul.</p></article>
+      <article class="info-card"><h3>Ce a însemnat anul 1711</h3><p>Pacea de la Satu Mare a consolidat stăpânirea Casei de Austria. Nobilimea a primit garanții pentru privilegii și confesiunile protestante, iar Viena a obținut stabilitate și loialitate politică.</p></article>
+    </div>
+  </section>
+
+  <section class="part-divider" data-mark="IV">
+    <p class="part-kicker">Religie, educație și emancipare</p>
+    <h2>Unirea cu Roma, rezistența ortodoxă și formarea elitei românești</h2>
+    <p>În secolul al XVIII-lea, problema confesională devine și problemă politică. Accesul la drepturi, școli și funcții este negociat prin Biserica Greco-Catolică, în timp ce comunitățile ortodoxe luptă pentru recunoaștere proprie.</p>
+  </section>
+
+  <section class="section" id="unirea-religioasa">
+    <div class="section-label">1697–1716</div>
+    <h2>Formarea Bisericii Române Unite cu Roma</h2>
+    <p class="section-intro">Curtea de la Viena a urmărit întărirea catolicismului și crearea unei elite românești loiale monarhiei. O parte majoră a clerului ortodox transilvănean, condusă de mitropolitul Atanasie Anghel, a acceptat unirea cu Roma în schimbul promisiunii egalității cu clerul catolic.</p>
+
+    <div class="timeline">
+      <div class="event"><div class="date">1697</div><div><h3>Primele declarații de unire</h3><p>Clerul discută acceptarea condițiilor doctrinare formulate după modelul Uniunii de la Brest.</p></div></div>
+      <div class="event"><div class="date">1698</div><div><h3>Sinodul de la Alba Iulia</h3><p>Atanasie Anghel și protopopii semnează actul unirii, păstrând ritul bizantin și disciplina orientală.</p></div></div>
+      <div class="event"><div class="date">16 feb. 1699</div><div><h3>Prima diplomă confesională</h3><p>Leopold I recunoaște clerului unit privilegii similare clerului latin.</p></div></div>
+      <div class="event"><div class="date">19 mart. 1701</div><div><h3>A doua diplomă</h3><p>Documentul extinde în principiu avantajele către mirenii uniți, promisiune aplicată incomplet din cauza opoziției stărilor.</p></div></div>
+      <div class="event"><div class="date">6 iul. 1716</div><div><h3>Organizare canonică</h3><p>Decretul papal <em>Indulgendum esse</em> consolidează organizarea oficială a Bisericii Române Unite.</p></div></div>
+    </div>
+
+    <div class="four-col">
+      <article class="info-card"><h3>Primatul papei</h3><p>Recunoașterea autorității pontifului roman.</p></article>
+      <article class="info-card"><h3>Filioque</h3><p>Acceptarea formulei occidentale privind purcederea Duhului Sfânt.</p></article>
+      <article class="info-card"><h3>Purgatoriul</h3><p>Recunoașterea doctrinei catolice despre purificarea după moarte.</p></article>
+      <article class="info-card"><h3>Azima</h3><p>Acceptarea validității folosirii pâinii nedospite în ritul latin, fără abandonarea ritului bizantin propriu.</p></article>
+    </div>
+
+    <details open><summary>Ce a păstrat Biserica Unită</summary><div class="details-body"><p>Clerul și credincioșii uniți au păstrat liturghia bizantină, limba de cult, calendarul, sărbătorile, disciplina preoților căsătoriți și majoritatea tradițiilor răsăritene. Unirea nu a însemnat trecerea la ritul latin.</p></div></details>
+
+    <details><summary>Promisiuni și realitate</summary><div class="details-body"><p>Unirea deschidea accesul clerului la educație catolică, privilegii și reprezentare. Totuși, Dieta și stările privilegiate au refuzat să accepte că toți românii uniți devin automat egali politic. Astfel, noua Biserică a creat o elită intelectuală, dar nu a desființat sistemul de stări.</p></div></details>
+  </section>
+
+  <section class="section" id="micu-klein">
+    <div class="section-label">Luptă petiționară</div>
+    <h2>Inocențiu Micu-Klein: de la drepturi confesionale la drepturi naționale</h2>
+
+    <div class="profile">
+      <div class="profile-side"><strong>Ioan Inocențiu Micu-Klein</strong><span>1692–1768<br/>episcop unit<br/>membru al Dietei<br/>exilat la Roma</span></div>
+      <div class="profile-main">
+        <h3>Schimbarea limbajului politic</h3>
+        <p>La început, Micu-Klein a cerut aplicarea privilegiilor promise clerului și credincioșilor uniți. Treptat, petițiile sale au susținut drepturile întregii populații românești, invocând vechimea, numărul, contribuția fiscală și serviciul militar.</p>
+        <p>El a mutat sediul episcopal la Blaj în 1737 și a pus bazele catedralei în 1741. Conflictul cu Dieta și cu autoritățile imperiale l-a obligat să plece la Roma în 1744; a demisionat în 1751, dar programul său a fost continuat de generațiile următoare.</p>
+      </div>
+    </div>
+
+    <div class="claim-grid">
+      <article class="claim"><strong>Egalitate confesională</strong><p>Clerul unit trebuia să primească aceleași privilegii ca clerul romano-catolic.</p></article>
+      <article class="claim"><strong>Reprezentare în Dietă</strong><p>Românii contribuiau la impozite și armată, deci trebuiau să participe la decizia politică.</p></article>
+      <article class="claim"><strong>Acces la funcții</strong><p>Originea etnică și ritul nu trebuiau să blocheze ocuparea dregătoriilor.</p></article>
+      <article class="claim"><strong>Reducerea iobăgiei</strong><p>Eliberarea socială era legată de emanciparea politică și confesională.</p></article>
+      <article class="claim"><strong>Argumentul majorității</strong><p>Românii erau prezentați drept cea mai numeroasă populație a principatului.</p></article>
+      <article class="claim"><strong>Argumentul istoric</strong><p>Originea romană și continuitatea erau folosite pentru a revendica drepturi vechi.</p></article>
+    </div>
+  </section>
+
+  <section class="section" id="ortodoxie">
+    <div class="section-label">Rezistență confesională</div>
+    <h2>Mișcarea ortodoxă și lupta pentru libertatea cultului</h2>
+    <p class="section-intro">Unirea cu Roma nu a fost acceptată unanim. Numeroase sate, preoți și călugări au cerut păstrarea ortodoxiei și o ierarhie proprie. Conflictul a fost religios, dar și social: comunitățile contestau presiunile administrative și controlul asupra bisericilor.</p>
+
+    <div class="timeline">
+      <div class="event"><div class="date">1744</div><div><h3>Visarion Sarai</h3><p>Predica sa împotriva unirii mobilizează comunități din sudul Transilvaniei. Este arestat și moare în detenție.</p></div></div>
+      <div class="event"><div class="date">1748–1752</div><div><h3>Nicolae Oprea Miclăuș</h3><p>Țăranul din Săliște duce petiții la Viena pentru recunoașterea ortodoxiei și este întemnițat.</p></div></div>
+      <div class="event"><div class="date">1759–1761</div><div><h3>Mișcarea lui Sofronie de la Cioara</h3><p>Adunări populare cer libertatea cultului, alegerea preoților și restituirea bisericilor. Sinodul de la Alba Iulia din februarie 1761 formulează revendicările mișcării.</p></div></div>
+      <div class="event"><div class="date">1761</div><div><h3>Recunoaștere limitată</h3><p>Curtea acceptă existența unei episcopii ortodoxe conduse de Dionisie Novacović, dar administrația militară a generalului Buccow reprimă rezistența și desființează numeroase așezăminte monahale.</p></div></div>
+    </div>
+
+    <div class="correction"><strong>Nu trebuie confundate:</strong> Edictul de toleranță al lui Iosif al II-lea din 1781 a lărgit drepturile necatolicilor, dar nu a transformat instantaneu toate confesiunile în stări politice egale. Recunoașterea cultului și participarea politică erau două probleme distincte.</div>
+  </section>
+
+  <section class="section" id="blaj">
+    <div class="section-label">Educație și tipar</div>
+    <h2>Blajul și formarea unei elite intelectuale românești</h2>
+    <p class="section-intro">Blajul a devenit centrul instituțional al Bisericii Unite și principalul laborator al culturii românești transilvănene. Școala, tiparul și studiile în universități catolice au creat o elită capabilă să transforme revendicarea confesională într-un program istoric și politic.</p>
+
+    <div class="three-col">
+      <article class="info-card"><h3>Școlile din 1754</h3><p>Episcopul Petru Pavel Aron a deschis o școală de obște cu predare în română, un gimnaziu latin și o instituție pentru formarea clerului. Accesul la învățătură a devenit mai larg decât în vechile școli parohiale.</p></article>
+      <article class="info-card"><h3>Tipografia</h3><p>Tipografia de la Blaj a publicat cărți liturgice, manuale, lucrări teologice și texte lingvistice. Ea a oferit mișcării culturale o infrastructură proprie.</p></article>
+      <article class="info-card"><h3>Rețeaua de școli</h3><p>Episcopia a încurajat deschiderea școlilor sătești și pregătirea dascălilor. Gheorghe Șincai va organiza ulterior o amplă rețea școlară greco-catolică.</p></article>
+    </div>
+
+    <details><summary>De ce educația a devenit instrument politic</summary><div class="details-body"><p>Un cler instruit putea redacta petiții, administra parohii, traduce cărți și participa la dezbateri istorice. Absolvenții de la Blaj, Roma, Viena și Trnava au dobândit instrumentele filologiei, dreptului natural și istoriei critice. Ei au demonstrat că emanciparea nu depinde doar de revoltă, ci și de producerea unei argumentații erudite.</p></div></details>
+  </section>
+
+  <section class="section" id="scoala-ardeleana">
+    <div class="section-label">Iluminism românesc</div>
+    <h2>Școala Ardeleană: istorie, limbă și program politic</h2>
+    <p class="section-intro">Școala Ardeleană nu a fost o instituție cu sediu și statut unic, ci o rețea de cărturari formați în mediul greco-catolic. Ea a adaptat iluminismul central-european și iozefin la nevoile unei comunități lipsite de reprezentare politică.</p>
+
+    <div class="profile">
+      <div class="profile-side"><strong>Samuil Micu</strong><span>teolog, istoric, filolog<br/>1745–1806</span></div>
+      <div class="profile-main"><h3>Istorie și gramatică</h3><p>A redactat sinteze istorice și, împreună cu Gheorghe Șincai, <em>Elementa linguae daco-romanae sive valachicae</em> din 1780. Lucrarea a argumentat originea latină a limbii și a favorizat trecerea spre grafia latină.</p></div>
+    </div>
+    <div class="profile">
+      <div class="profile-side"><strong>Gheorghe Șincai</strong><span>istoric și organizator școlar<br/>1754–1816</span></div>
+      <div class="profile-main"><h3>Școli și cronologie istorică</h3><p>A organizat învățământul elementar greco-catolic și a lucrat la <em>Hronica românilor și a mai multor neamuri</em>, reunind izvoare pentru demonstrarea continuității istorice.</p></div>
+    </div>
+    <div class="profile">
+      <div class="profile-side"><strong>Petru Maior</strong><span>istoric, filolog și polemist<br/>c. 1760–1821</span></div>
+      <div class="profile-main"><h3>Continuitatea și limba</h3><p>În <em>Istoria pentru începutul românilor în Dachia</em> și în studiile lingvistice a combătut teoriile care negau continuitatea românilor și a susținut unitatea limbii.</p></div>
+    </div>
+    <div class="profile">
+      <div class="profile-side"><strong>Ion Budai-Deleanu</strong><span>jurist, filolog și scriitor<br/>1760–1820</span></div>
+      <div class="profile-main"><h3>Critică socială și literatură</h3><p>Autorul <em>Țiganiadei</em> a combinat satira socială, cultura clasică și reflecția politică. A participat la mediul intelectual care a elaborat argumentele Supplex-ului.</p></div>
+    </div>
+
+    <div class="two-col">
+      <article class="info-card"><h3>Contribuții durabile</h3><ul class="checklist"><li>afirmarea originii romanice a limbii;</li><li>folosirea alfabetului latin și elaborarea gramaticilor;</li><li>studiul critic al izvoarelor;</li><li>dezvoltarea școlilor și manualelor;</li><li>legarea culturii de revendicarea politică.</li></ul></article>
+      <article class="info-card"><h3>Limitele latinismului</h3><p>Unii cărturari au exagerat puritatea latină a limbii și au propus etimologizări artificiale. Aceste excese nu anulează contribuția lor la filologie, istoriografie și formarea conștiinței naționale moderne.</p></article>
+    </div>
+
+    <div class="quote">„Virtus Romana Rediviva” exprima ideea renașterii virtuților romane și a demnității politice, transformând originea istorică într-un argument pentru drepturi prezente.</div>
+  </section>
+
+  <section class="part-divider" data-mark="V">
+    <p class="part-kicker">Reformism luminat și rezistență socială</p>
+    <h2>Maria Terezia, Iosif al II-lea și răscoala din 1784</h2>
+    <p>Statul habsburgic a încercat să facă populația mai ușor de impozitat, educat și recrutat. Reformele au creat școli și administrații mai regulate, dar au provocat și rezistență atunci când au intrat în conflict cu privilegiile locale.</p>
+  </section>
+
+  <section class="section" id="maria-terezia">
+    <div class="section-label">1740–1780</div>
+    <h2>Reformele Mariei Terezia în Transilvania</h2>
+    <p class="section-intro">Reformismul terezian urmărea consolidarea statului după războaiele de succesiune. În Transilvania, Viena a încercat să mărească veniturile, să profesionalizeze funcționarii, să controleze frontiera și să formeze supuși utili monarhiei.</p>
+
+    <div class="claim-grid">
+      <article class="claim"><strong>Evidență fiscală</strong><p>Conscripțiile populației și proprietăților au urmărit o repartizare mai precisă a contribuțiilor și recrutărilor.</p></article>
+      <article class="claim"><strong>Controlul resurselor</strong><p>Minele, sarea, pădurile și veniturile fiscale au fost supravegheate mai atent de Tezaurariat.</p></article>
+      <article class="claim"><strong>Reorganizarea armatei</strong><p>Crearea graniței militare a integrat comunități românești și secuiești în sistemul defensiv imperial.</p></article>
+      <article class="claim"><strong>Educație</strong><p>Școlile confesionale și normele școlare au fost integrate într-o politică de formare a funcționarilor, clericilor și soldaților.</p></article>
+      <article class="claim"><strong>Catolicizare moderată</strong><p>Curtea a susținut Biserica Unită și instituțiile catolice, dar a fost obligată să negocieze cu protestanții și ortodocșii.</p></article>
+      <article class="claim"><strong>Marele Principat</strong><p>În 1765 Transilvania a fost ridicată formal la rangul de Mare Principat, accentuând statutul său distinct în monarhie.</p></article>
+    </div>
+  </section>
+
+  <section class="section" id="granita">
+    <div class="section-label">Militarizare și mobilitate socială</div>
+    <h2>Granița militară transilvăneană</h2>
+    <p class="section-intro">Începând din 1762, Curtea a creat regimente de frontieră românești și secuiești pentru apărarea Carpaților. Sistemul modifica raportul dintre țărani, nobili și stat: grănicerul primea anumite libertăți și loturi, dar era supus disciplinei militare și serviciului permanent.</p>
+
+    <div class="two-col">
+      <article class="info-card"><h3>Regimente românești</h3><p>Principalele centre au fost Orlatul și Năsăudul. Comunitățile militarizate au beneficiat de școli, administrație proprie și o mobilitate socială mai mare decât satele iobăgești, deși obligațiile militare erau grele.</p></article>
+      <article class="info-card"><h3>Regimente secuiești</h3><p>Încercarea de a înlocui vechile libertăți militare cu recrutarea imperială controlată a provocat opoziție. La 7 ianuarie 1764, trupele imperiale au atacat adunarea secuilor de la Siculeni, eveniment cunoscut drept Siculicidium.</p></article>
+    </div>
+
+    <details><summary>De ce doreau țăranii români înrolarea</summary><div class="details-body"><p>Pentru o parte a țăranilor, intrarea în regiment însemna ieșirea de sub jurisdicția directă a nobilului, acces la pământ și protecție militară. De aceea, dreptul de înrolare apare printre revendicările asociate răscoalei din 1784.</p></div></details>
+  </section>
+
+  <section class="section" id="iosif">
+    <div class="section-label">1780–1790</div>
+    <h2>Iosif al II-lea și reformismul de sus</h2>
+    <p class="section-intro">Iosif al II-lea a încercat să transforme monarhia într-un stat centralizat, uniform și rațional. El a guvernat adesea fără consultarea dietelor, ceea ce a provocat opoziția nobilimii, chiar atunci când reformele sale ameliorau situația neprivilegiaților.</p>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Măsură</th><th>Conținut</th><th>Semnificație și limită</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Edictul de toleranță, 1781</strong></td><td>Lărgește libertatea de cult și accesul la activități economice pentru necatolici, inclusiv ortodocși și protestanți.</td><td>Reduce monopolul catolic, fără a acorda automat tuturor confesiunilor aceeași putere politică.</td></tr>
+        <tr><td><strong>Reforma mănăstirilor, 1782</strong></td><td>Desființează ordinele contemplative considerate „neutile” și transferă resurse spre parohii, educație și asistență.</td><td>Aplică ideea utilității sociale a instituțiilor religioase și întărește controlul statului.</td></tr>
+        <tr><td><strong>Recensământul, 1784–1787</strong></td><td>Înregistrează populația și gospodăriile pentru administrație, fiscalitate și recrutare.</td><td>Face societatea mai vizibilă statului, dar provoacă suspiciuni și rezistență.</td></tr>
+        <tr><td><strong>Patenta din 1785</strong></td><td>Desființează dependența personală a iobagului: libertate de căsătorie, mutare, meserie și școlarizare fără acordul stăpânului.</td><td>Nu desființează proprietatea nobilului, robotul și toate obligațiile feudale; de aceea nu echivalează cu eliberarea economică deplină.</td></tr>
+        <tr><td><strong>Centralizare administrativă</strong></td><td>Reduce autonomia vechilor corpuri și încearcă uniformizarea limbii și procedurilor administrației.</td><td>Produce reacția nobilimii și este parțial retrasă la sfârșitul domniei.</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="correction"><strong>Corectarea unei formule frecvente:</strong> iobăgia nu a fost pur și simplu „desființată în 1785 și reintrodusă în 1790”. Patenta a eliminat dependența personală, dar obligațiile economice față de stăpân au rămas până la revoluția din 1848.</div>
+  </section>
+
+  <section class="section" id="horea">
+    <div class="section-label">Răscoală socială cu ecou european</div>
+    <h2>Horea, Cloșca și Crișan: răscoala din 1784</h2>
+    <p class="section-intro">Răscoala a izbucnit într-un spațiu minier și forestier în care țăranii suportau robotă, dări, restricții asupra pădurilor și pășunilor și abuzuri administrative. Speranța în împărat și în înrolarea grănicerească a alimentat mobilizarea.</p>
+
+    <div class="timeline">
+      <div class="event"><div class="date">31 oct. 1784</div><div><h3>Adunarea de la Mesteacăn</h3><p>Crișan îi cheamă pe țărani să meargă spre Alba Iulia pentru a fi înscriși în regimentele de graniță.</p></div></div>
+      <div class="event"><div class="date">2 nov. 1784</div><div><h3>Ciocnirea de la Curechiu</h3><p>Confruntarea cu autoritățile transformă deplasarea într-o răscoală deschisă, care se extinde în Zarand și Hunedoara.</p></div></div>
+      <div class="event"><div class="date">nov. 1784</div><div><h3>Program radical</h3><p>Ultimatumurile atribuite răsculaților cer desființarea privilegiilor nobiliare, împărțirea pământului și plata impozitelor de către toți.</p></div></div>
+      <div class="event"><div class="date">14 dec. 1784</div><div><h3>Înfrângerea</h3><p>Trupele imperiale și nobiliare înăbușă principalele grupuri. Horea și Cloșca sunt prinși la sfârșitul lunii decembrie.</p></div></div>
+      <div class="event"><div class="date">13 feb. 1785</div><div><h3>Moartea lui Crișan</h3><p>Crișan se sinucide în închisoare, înaintea execuției publice.</p></div></div>
+      <div class="event"><div class="date">28 feb. 1785</div><div><h3>Execuția de la Alba Iulia</h3><p>Horea și Cloșca sunt trași pe roată pentru a intimida populația. Evenimentul produce un puternic ecou european.</p></div></div>
+    </div>
+
+    <div class="three-col">
+      <article class="info-card"><h3>Cauze sociale</h3><p>Robotă, lipsa pământului, restricții economice, fiscalitate și abuzuri ale administrației domeniale.</p></article>
+      <article class="info-card"><h3>Dimensiune politică</h3><p>Contestarea privilegiilor nobiliare și apelul la împărat ca sursă a dreptății.</p></article>
+      <article class="info-card"><h3>Dimensiune națională</h3><p>Majoritatea răsculaților erau români, iar inegalitatea confesională și politică a amplificat conflictul; programul imediat a rămas însă în primul rând social.</p></article>
+    </div>
+
+    <details open><summary>Legătura dintre răscoală și Patenta din 1785</summary><div class="details-body"><p>Iosif al II-lea pregătea reforme ale raporturilor iobăgești și înaintea răscoalei, dar violența din 1784 a demonstrat urgența problemei. Patenta din august 1785 a limitat dependența personală a țăranilor, fără a le da pământ și fără a elimina robotul. Răscoala a fost deci un accelerator și un avertisment, nu singura cauză a reformei.</p></div></details>
+  </section>
+
+  <section class="part-divider" data-mark="VI">
+    <p class="part-kicker">De la supus la cetățean</p>
+    <h2>Supplex Libellus Valachorum și formularea programului național</h2>
+    <p>După moartea lui Iosif al II-lea, elita românească a încercat să transforme argumentele istorice, demografice și confesionale într-o cerere coerentă de egalitate politică.</p>
+  </section>
+
+  <section class="section" id="supplex">
+    <div class="section-label">1791–1792</div>
+    <h2>Cele două petiții ale românilor din Transilvania</h2>
+    <p class="section-intro">Supplex Libellus Valachorum Transsilvaniae a cerut ca românii să nu mai fie considerați doar tolerați, ci să fie recunoscuți ca națiune politică egală. Programul nu urmărea distrugerea monarhiei, ci includerea românilor în constituția principatului.</p>
+
+    <div class="two-col">
+      <article class="info-card"><h3>Prima petiție — martie 1791</h3><p>A fost transmisă Consiliului de Stat de la Viena de episcopul greco-catolic Ignațiu Darabant. Textul a sintetizat revendicările politice și confesionale formulate în mediul cărturăresc românesc.</p></article>
+      <article class="info-card"><h3>A doua petiție — 30 martie 1792</h3><p>O versiune mult extinsă a fost prezentată de episcopul unit Ioan Bob și episcopul ortodox Gherasim Adamovici, semn al colaborării dintre cele două Biserici în problema națională.</p></article>
+    </div>
+
+    <div class="claim-grid">
+      <article class="claim"><strong>Înlăturarea denumirilor ofensatoare</strong><p>Termenii „tolerați”, „admiși” și formulele de inferioritate trebuiau abrogate.</p></article>
+      <article class="claim"><strong>Drepturi civile și regnicolare</strong><p>Românii cereau acces la drepturile recunoscute locuitorilor politici ai principatului.</p></article>
+      <article class="claim"><strong>Egalitatea clerului</strong><p>Clerul unit și ortodox trebuia tratat precum clerul confesiunilor recepte.</p></article>
+      <article class="claim"><strong>Reprezentare proporțională</strong><p>Funcțiile și locurile în Dietă trebuiau repartizate în raport cu numărul populației.</p></article>
+      <article class="claim"><strong>Argumentul istoric</strong><p>Românii erau prezentați ca urmași ai coloniștilor romani și locuitori vechi ai țării.</p></article>
+      <article class="claim"><strong>Argumentul fiscal și militar</strong><p>Contribuția majoritară la impozite și apărare justifica participarea la putere.</p></article>
+    </div>
+
+    <div class="quote">„Națiunea română să fie repusă în folosința tuturor drepturilor civile și regnicolare” — formularea concentrează trecerea de la tolerarea unei populații la recunoașterea ei ca subiect politic.</div>
+
+    <details open><summary>De ce a fost respins Supplex-ul</summary><div class="details-body">
+      <p>Dieta a susținut că drepturile depindeau de apartenența la stare și de privilegiile teritoriale, nu de numărul unei etnii. Acceptarea românilor ca a patra națiune ar fi modificat întregul echilibru constituțional și ar fi amenințat privilegiile nobilimii, sașilor și secuilor.</p>
+      <p>Curtea de la Viena nu a dorit să provoace o ruptură cu stările într-un moment de criză europeană. A folosit uneori revendicările românilor pentru presiune politică, dar nu a impus egalitatea colectivă cerută.</p>
+    </div></details>
+  </section>
+
+  <section class="section" id="comparatie-miscari">
+    <div class="section-label">Analiză comparativă</div>
+    <h2>Trei căi de emancipare în secolul al XVIII-lea</h2>
+
+    <div class="compare-grid">
+      <div class="compare-card"><div class="compare-head">Inocențiu Micu-Klein</div><div class="compare-body"><p><strong>Instrument:</strong> petiția confesională și participarea în Dietă.</p><p><strong>Bază socială:</strong> clerul unit și comunitățile românești.</p><p><strong>Țintă:</strong> aplicarea privilegiilor și includerea românilor în sistem.</p></div></div>
+      <div class="compare-card"><div class="compare-head">Horea, Cloșca și Crișan</div><div class="compare-body"><p><strong>Instrument:</strong> mobilizarea armată țărănească.</p><p><strong>Bază socială:</strong> iobagi, mineri, pădurari și comunități montane.</p><p><strong>Țintă:</strong> desființarea privilegiilor și ameliorarea radicală a raporturilor agrare.</p></div></div>
+      <div class="compare-card"><div class="compare-head">Școala Ardeleană și Supplex</div><div class="compare-body"><p><strong>Instrument:</strong> istorie, filologie, drept natural și memoriu politic.</p><p><strong>Bază socială:</strong> elita clericală și intelectuală.</p><p><strong>Țintă:</strong> egalitate națională, confesională și reprezentare proporțională.</p></div></div>
+    </div>
+
+    <div class="source-box"><h3>Firul comun</h3><p>Toate cele trei căi pornesc de la aceeași contradicție: românii contribuiau la economia, fiscalitatea și apărarea principatului, dar nu erau recunoscuți ca națiune politică. Diferența este metoda — negociere, revoltă sau argumentație erudită.</p></div>
+  </section>
+
+  <section class="section" id="1848">
+    <div class="section-label">Epilogul modernității timpurii</div>
+    <h2>De la Supplex la revoluția din 1848 și reorganizarea imperială</h2>
+    <p class="section-intro">Programul secolului al XVIII-lea a fost reluat într-un limbaj modern al naționalităților, libertăților și cetățeniei. Revoluția a desființat iobăgia și a transformat definitiv problema românească într-o problemă politică europeană.</p>
+
+    <details open><summary>Adunările de la Blaj</summary><div class="details-body"><p>În primăvara anului 1848, românii transilvăneni s-au adunat la Blaj. Discursul lui Simion Bărnuțiu și programul adoptat au cerut recunoașterea națiunii române, reprezentare proporțională, libertăți civile, desființarea iobăgiei și opoziție față de unirea Transilvaniei cu Ungaria fără consimțământul românilor.</p></div></details>
+
+    <details><summary>Conflictul din 1848–1849</summary><div class="details-body"><p>Dieta de la Cluj a votat unirea cu Ungaria, în timp ce românii au cerut autonomie națională. Conflictul s-a militarizat, iar Avram Iancu a organizat rezistența în Munții Apuseni. Violențele au afectat comunități românești și maghiare, iar intervenția armatelor imperiale și ruse a încheiat revoluția maghiară.</p></div></details>
+
+    <div class="timeline">
+      <div class="event"><div class="date">1848</div><div><h3>Desființarea iobăgiei</h3><p>Revoluția și legislația imperială elimină obligațiile feudale personale și juridice care supraviețuiseră reformelor lui Iosif al II-lea.</p></div></div>
+      <div class="event"><div class="date">1849–1860</div><div><h3>Neoabsolutismul</h3><p>Transilvania este administrată ca provincie distinctă a Imperiului Austriac, printr-un aparat centralizat și birocratic.</p></div></div>
+      <div class="event"><div class="date">1861</div><div><h3>ASTRA</h3><p>La Sibiu se înființează Asociația Transilvană pentru Literatura Română și Cultura Poporului Român, condusă inițial de Andrei Șaguna, Timotei Cipariu și George Barițiu.</p></div></div>
+      <div class="event"><div class="date">1863–1864</div><div><h3>Dieta de la Sibiu</h3><p>Românii obțin pentru scurt timp o reprezentare importantă; sunt adoptate legi privind egalitatea națiunii române și folosirea limbii române.</p></div></div>
+      <div class="event"><div class="date">1867</div><div><h3>Dualismul austro-ungar</h3><p>Transilvania este integrată în Regatul Ungariei. Autonomia sa istorică este desființată, iar mișcarea românească intră într-o nouă etapă.</p></div></div>
+    </div>
+  </section>
+
+  <section class="part-divider" data-mark="VII">
+    <p class="part-kicker">Sinteză și recapitulare</p>
+    <h2>Comparații, cronologie și concepte-cheie</h2>
+    <p>Ultima parte leagă instituțiile de schimbările sociale și arată cum pluralismul confesional, centralizarea imperială și mișcarea națională au coexistat într-o modernizare contradictorie.</p>
+  </section>
+
+  <section class="section" id="comparatii">
+    <div class="section-label">Privire de ansamblu</div>
+    <h2>Trei regimuri comparate</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Dimensiune</th><th>Principatul autonom, 1570–1691</th><th>Principatul habsburgic, 1691–1790</th><th>Epoca națională, 1790–1848</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Putere externă</strong></td><td>Suzeranitate otomană și presiune habsburgică.</td><td>Autoritatea Casei de Habsburg, confirmată după 1699 și 1711.</td><td>Monarhie centralizată confruntată cu ideile Revoluției Franceze și naționalităților.</td></tr>
+        <tr><td><strong>Instituții</strong></td><td>Principe ales, Dietă, Consiliu, cancelarie.</td><td>Guvernator, Guberniu, Dietă, Cancelarie Aulică și comandament militar.</td><td>Administrație imperială mai birocratică și mișcări politice moderne.</td></tr>
+        <tr><td><strong>Religie</strong></td><td>Patru confesiuni recepte; ortodoxia tolerată.</td><td>Susținerea catolicismului și apariția Bisericii Unite; recunoaștere treptată a ortodoxiei.</td><td>Toleranță extinsă, dar revendicarea politică depășește problema strict confesională.</td></tr>
+        <tr><td><strong>Societate</strong></td><td>Stări privilegiate și iobăgie.</td><td>Privilegii păstrate, stat mai centralizat și graniță militară.</td><td>Patenta din 1785 limitează dependența personală; iobăgia economică dispare abia în 1848.</td></tr>
+        <tr><td><strong>Program românesc</strong></td><td>Supraviețuire comunitară, Biserică și elite locale.</td><td>Egalitate confesională și petiții ale lui Micu-Klein.</td><td>Școala Ardeleană, Supplex, reprezentare națională și revoluția din 1848.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="section" id="cronologie">
+    <div class="section-label">Repere</div>
+    <h2>Cronologie extinsă</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Data</th><th>Eveniment</th><th>Semnificație</th></tr></thead>
+      <tbody>
+        <tr><td>1437–1438</td><td>Unio Trium Nationum</td><td>Alianța stărilor privilegiate împotriva răscoalei țărănești și pentru apărarea ordinii politice.</td></tr>
+        <tr><td>1514</td><td>Răscoala lui Gheorghe Doja</td><td>Înfrângerea răscoalei agravează obligațiile iobagilor.</td></tr>
+        <tr><td>1514 / 1517</td><td>Tripartitum</td><td>Redactarea și tipărirea sintezei dreptului nobiliar.</td></tr>
+        <tr><td>29 aug. 1526</td><td>Mohács</td><td>Criza Regatului Ungariei și începutul împărțirii sale.</td></tr>
+        <tr><td>1541</td><td>Ocuparea Budei</td><td>Teritoriile estice intră într-o construcție autonomă sub suzeranitate otomană.</td></tr>
+        <tr><td>28 ian. 1568</td><td>Edictul de la Turda</td><td>Libertate de alegere a predicatorului și pluralism confesional limitat.</td></tr>
+        <tr><td>16 aug. 1570</td><td>Tratatul de la Speyer</td><td>Consacrarea juridică a Principatului Transilvaniei.</td></tr>
+        <tr><td>1571</td><td>Alegerea lui Ștefan Báthory</td><td>Consolidarea principatului după moartea lui Ioan Sigismund.</td></tr>
+        <tr><td>1581</td><td>Colegiul iezuit din Cluj</td><td>Centru important al învățământului superior catolic.</td></tr>
+        <tr><td>1599–1601</td><td>Stăpânirea lui Mihai Viteazul</td><td>Episod militar și politic care leagă pentru scurt timp Transilvania de Țara Românească și Moldova.</td></tr>
+        <tr><td>1613–1629</td><td>Domnia lui Gabriel Bethlen</td><td>Consolidare economică, culturală și diplomatică.</td></tr>
+        <tr><td>1645</td><td>Pacea de la Linz</td><td>Prestigiul extern al principatului și confirmarea drepturilor protestante.</td></tr>
+        <tr><td>1653</td><td>Approbatae Constitutiones</td><td>Codificarea hotărârilor Dietei.</td></tr>
+        <tr><td>1658–1662</td><td>Intervenții otomane</td><td>Criza provocată de politica lui Gheorghe Rákóczi al II-lea.</td></tr>
+        <tr><td>1669</td><td>Compilatae Constitutiones</td><td>Completarea corpusului juridic al principatului.</td></tr>
+        <tr><td>1683</td><td>Asediul Vienei</td><td>Începutul marii contraofensive habsburgice.</td></tr>
+        <tr><td>1686</td><td>Tratatul Hallerian</td><td>Protecție habsburgică și recunoașterea lui Mihai Apafi al II-lea.</td></tr>
+        <tr><td>4 dec. 1691</td><td>Diploma Leopoldină</td><td>Organizarea principatului în cadrul Monarhiei Habsburgice.</td></tr>
+        <tr><td>1697–1698</td><td>Unirea religioasă</td><td>Clerul condus de Atanasie Anghel acceptă comuniunea cu Roma.</td></tr>
+        <tr><td>16 feb. 1699</td><td>Prima diplomă confesională</td><td>Privilegii pentru clerul unit.</td></tr>
+        <tr><td>26 ian. 1699</td><td>Karlowitz</td><td>Poarta recunoaște pierderea Transilvaniei.</td></tr>
+        <tr><td>19 mart. 1701</td><td>A doua diplomă confesională</td><td>Promite drepturi mirenilor uniți.</td></tr>
+        <tr><td>1703–1711</td><td>Războiul lui Rákóczi</td><td>Ultima mare contestare a dominației habsburgice în epocă.</td></tr>
+        <tr><td>29 apr. 1711</td><td>Pacea de la Satu Mare</td><td>Consolidarea stăpânirii habsburgice.</td></tr>
+        <tr><td>1716</td><td>Indulgendum esse</td><td>Organizarea oficială a Bisericii Române Unite.</td></tr>
+        <tr><td>1737</td><td>Sediul episcopal la Blaj</td><td>Inocențiu Micu-Klein transformă Blajul în centru instituțional românesc.</td></tr>
+        <tr><td>1741</td><td>Începutul catedralei din Blaj</td><td>Consolidarea centrului episcopal.</td></tr>
+        <tr><td>1744</td><td>Visarion Sarai și plecarea lui Micu-Klein</td><td>Conflict confesional și politic accentuat.</td></tr>
+        <tr><td>1754</td><td>Deschiderea școlilor din Blaj</td><td>Formarea sistematică a elitei românești.</td></tr>
+        <tr><td>1759–1761</td><td>Mișcarea lui Sofronie</td><td>Luptă pentru libertatea cultului ortodox.</td></tr>
+        <tr><td>1761</td><td>Episcopie ortodoxă recunoscută</td><td>Dionisie Novacović este acceptat ca episcop.</td></tr>
+        <tr><td>1762</td><td>Granița militară</td><td>Încep organizarea regimentelor românești și secuiești.</td></tr>
+        <tr><td>7 ian. 1764</td><td>Siculicidium</td><td>Reprimarea secuilor care se opuneau recrutării imperiale.</td></tr>
+        <tr><td>1765</td><td>Marele Principat</td><td>Ridicarea formală a rangului Transilvaniei.</td></tr>
+        <tr><td>1777</td><td>Reforma educației în monarhie</td><td>Învățământul este integrat mai strâns în politica de stat.</td></tr>
+        <tr><td>1780</td><td>Elementa linguae daco-romanae</td><td>Reper al filologiei române moderne.</td></tr>
+        <tr><td>13 oct. 1781</td><td>Edictul de toleranță</td><td>Lărgirea drepturilor confesionale ale necatolicilor.</td></tr>
+        <tr><td>1782</td><td>Reforma mănăstirilor</td><td>Desființarea ordinelor contemplative considerate neproductive.</td></tr>
+        <tr><td>31 oct.–14 dec. 1784</td><td>Răscoala lui Horea</td><td>Contestarea violentă a ordinii feudale.</td></tr>
+        <tr><td>28 feb. 1785</td><td>Execuția lui Horea și Cloșca</td><td>Reprimare exemplară la Alba Iulia.</td></tr>
+        <tr><td>22 aug. 1785</td><td>Patenta iobăgiei</td><td>Desființarea dependenței personale, nu și a obligațiilor economice.</td></tr>
+        <tr><td>mart. 1791</td><td>Primul Supplex</td><td>Cerere de egalitate politică și confesională.</td></tr>
+        <tr><td>30 mart. 1792</td><td>Al doilea Supplex</td><td>Versiune extinsă prezentată de Ioan Bob și Gherasim Adamovici.</td></tr>
+        <tr><td>1825</td><td>Lexiconul de la Buda</td><td>Important proiect lexicografic al tradiției Școlii Ardelene.</td></tr>
+        <tr><td>mai 1848</td><td>Adunarea Națională de la Blaj</td><td>Program național, social și democratic al românilor.</td></tr>
+        <tr><td>1848–1849</td><td>Revoluție și război civil</td><td>Desființarea iobăgiei și conflictul asupra unirii cu Ungaria.</td></tr>
+        <tr><td>1849</td><td>Transilvania, provincie distinctă</td><td>Integrare centralizată în Imperiul Austriac.</td></tr>
+        <tr><td>1861</td><td>Înființarea ASTREI</td><td>Organizarea culturală modernă a românilor transilvăneni.</td></tr>
+        <tr><td>1863–1864</td><td>Dieta de la Sibiu</td><td>Recunoașterea temporară a egalității națiunii și limbii române.</td></tr>
+        <tr><td>1867</td><td>Compromisul austro-ungar</td><td>Integrarea Transilvaniei în Regatul Ungariei.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="section" id="glosar">
+    <div class="section-label">Concepte</div>
+    <h2>Glosar extins</h2>
+    <div class="term-grid">
+      <div class="term-card"><strong>Stare</strong><span>Corp social privilegiat și reprezentat politic; nu este identic cu o clasă sau etnie modernă.</span></div>
+      <div class="term-card"><strong>Națiune politică</strong><span>Comunitate recunoscută juridic în Dietă; în Transilvania premodernă desemna nobilimea, sașii și secuii privilegiați.</span></div>
+      <div class="term-card"><strong>Unio Trium Nationum</strong><span>Pact al celor trei stări privilegiate, codificat în 1438.</span></div>
+      <div class="term-card"><strong>Tripartitum</strong><span>Sinteză a dreptului cutumiar nobiliar, redactată de Werbőczy în 1514 și tipărită în 1517.</span></div>
+      <div class="term-card"><strong>Iobag</strong><span>Țăran dependent de domeniul nobiliar, supus robotului, dărilor și jurisdicției stăpânului.</span></div>
+      <div class="term-card"><strong>Robotă</strong><span>Muncă obligatorie prestată de iobag pentru proprietar.</span></div>
+      <div class="term-card"><strong>Comitat</strong><span>Unitate administrativă nobiliară a fostului Regat al Ungariei și a principatului.</span></div>
+      <div class="term-card"><strong>Scaun</strong><span>Unitate autonomă a secuilor sau sașilor, cu instituții și jurisdicție proprii.</span></div>
+      <div class="term-card"><strong>Partium</strong><span>„Părțile” estice ale Regatului Ungariei aflate în diferite perioade sub autoritatea principatului.</span></div>
+      <div class="term-card"><strong>Suzeranitate</strong><span>Dependență externă față de o putere superioară, compatibilă cu autonomie internă.</span></div>
+      <div class="term-card"><strong>Dieta</strong><span>Adunarea stărilor privilegiate, cu atribuții legislative, fiscale și electorale.</span></div>
+      <div class="term-card"><strong>Religie receptă</strong><span>Confesiune recunoscută juridic și integrată în sistemul politic.</span></div>
+      <div class="term-card"><strong>Religie tolerată</strong><span>Cult a cărui practică este permisă fără egalitate politică deplină.</span></div>
+      <div class="term-card"><strong>Edictul de la Turda</strong><span>Hotărârea din 1568 care a protejat alegerea predicatorului și pluralismul confesional.</span></div>
+      <div class="term-card"><strong>Guberniu</strong><span>Consiliul executiv al Transilvaniei habsburgice.</span></div>
+      <div class="term-card"><strong>Cancelarie Aulică</strong><span>Instituție de la Viena care pregătea deciziile monarhului privind principatul.</span></div>
+      <div class="term-card"><strong>Diploma Leopoldină</strong><span>Actul fundamental din 1691 al guvernării Transilvaniei sub Habsburgi.</span></div>
+      <div class="term-card"><strong>Greco-catolic</strong><span>Credincios de rit bizantin aflat în comuniune cu Biserica Romei.</span></div>
+      <div class="term-card"><strong>Josephinism</strong><span>Politică de centralizare, toleranță controlată și subordonare a Bisericilor față de stat în epoca lui Iosif al II-lea.</span></div>
+      <div class="term-card"><strong>Graniță militară</strong><span>Teritoriu organizat în regimente de țărani-soldați pentru apărarea frontierei imperiale.</span></div>
+      <div class="term-card"><strong>Siculicidium</strong><span>Masacrul de la Siculeni din 7 ianuarie 1764, legat de organizarea regimentelor secuiești.</span></div>
+      <div class="term-card"><strong>Școala Ardeleană</strong><span>Mișcare iluministă românească de istorici, filologi, clerici și juriști din secolele XVIII–XIX.</span></div>
+      <div class="term-card"><strong>Latinism</strong><span>Accent pus pe originea latină, uneori dus la exagerări etimologice și ortografice.</span></div>
+      <div class="term-card"><strong>Supplex</strong><span>Petiție politică prin care românii cereau egalitate, reprezentare și eliminarea statutului de tolerați.</span></div>
+      <div class="term-card"><strong>Mitul bunului împărat</strong><span>Credința că monarhul este drept, iar abuzurile provin de la nobili și funcționari locali.</span></div>
+      <div class="term-card"><strong>Neoabsolutism</strong><span>Regim centralizat instaurat după 1849, bazat pe administrație imperială și control politic strict.</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="retinut">
+    <div class="section-label">Învățare logică</div>
+    <h2>Relații cauzale și formule de reținut</h2>
+    <div class="two-col">
+      <article class="info-card"><h3>Instituții și confesiuni</h3><ul class="checklist">
+        <li>Mohács + rivalitatea Zápolya–Habsburg → fragmentarea Ungariei și autonomia Transilvaniei.</li>
+        <li>Suzeranitatea otomană + competiția habsburgică → politică de echilibru a principilor.</li>
+        <li>Reforma protestantă + diversitatea stărilor → Edictul de la Turda și confesiuni recepte.</li>
+        <li>Cucerirea habsburgică + nevoia cooperării locale → Diploma Leopoldină și păstrarea privilegiilor.</li>
+        <li>Politica de recatolicizare + promisiunea privilegiilor → Biserica Română Unită.</li>
+      </ul></article>
+      <article class="info-card"><h3>Societate și mișcare națională</h3><ul class="checklist">
+        <li>Excludere politică + statut confesional inferior → petițiile lui Inocențiu Micu-Klein.</li>
+        <li>Școli și studii occidentale → apariția Școlii Ardelene.</li>
+        <li>Robotă + abuzuri + speranța în împărat → răscoala din 1784.</li>
+        <li>Istorie romană + majoritate demografică + contribuție fiscală → argumentele Supplex-ului.</li>
+        <li>Supplex respins + liberalism european → programul național din 1848.</li>
+      </ul></article>
+    </div>
+
+    <div class="source-box"><h3>Teză sintetică</h3><p>Modernitatea timpurie transilvăneană nu a însemnat dispariția bruscă a vechii ordini. Principatul autonom a creat instituții și pluralism confesional, dar a păstrat societatea de stări. Habsburgii au centralizat administrația și au introdus reforme, dar au confirmat privilegiile. Biserica Unită, școlile din Blaj și Școala Ardeleană au creat elita care a formulat problema românească în limbajul drepturilor istorice și naturale. Răscoala din 1784 și Supplex-ul din 1791–1792 reprezintă cele două fețe — socială și politică — ale aceleiași crize a vechii ordini.</p></div>
+  </section>
+
+  <section class="section" id="surse">
+    <div class="section-label">Notă metodologică</div>
+    <h2>Cum au fost integrate și verificate informațiile</h2>
+    <p class="section-intro">Pagina folosește materialele furnizate despre secolele XVI–XVIII, viața religioasă, Diploma Leopoldină, Sinodul de la Alba Iulia, Tripartitum, Unio Trium Nationum, Școala Ardeleană și evoluția ulterioară a Transilvaniei. Informațiile evident contradictorii sau anacronice din unele notițe au fost verificate și corectate înainte de integrare.</p>
+    <div class="two-col">
+      <article class="info-card"><h3>Exemple de corecturi</h3><p>Nu a fost păstrată ideea că Transilvania ar fi avut autonomie proprie după 1867; nu a fost preluată afirmația că iobăgia a fost complet desființată în 1785 și reintrodusă în 1790; nu au fost incluse evenimente religioase ori edificii atribuite unor date imposibile.</p></article>
+      <article class="info-card"><h3>Principiul selecției</h3><p>Au fost reținute datele care explică modernitatea timpurie a Transilvaniei: ordinea politică, instituțiile, statutul social, confesiunile, educația, reformele și formarea programului național. Informațiile despre Bucovina și Basarabia au fost omise când nu aveau legătură directă cu tema.</p></article>
+    </div>
+  </section>
+
+  <section class="final-box">
+    <h2>Ideea de reținut</h2>
+    <p>Între 1541 și 1848, Transilvania a trecut de la un principat autonom, capabil să negocieze între Poartă și Viena, la o provincie centralizată a Monarhiei Habsburgice. Modernizarea a adus legi sistematizate, administrație, școli, recensăminte, toleranță confesională mai largă și limitarea dependenței personale. Dar stările privilegiate, iobăgia și excluderea românilor au supraviețuit. Din această contradicție s-au născut mișcarea ortodoxă, programul lui Inocențiu Micu-Klein, răscoala lui Horea, Școala Ardeleană, Supplex-ul și, în cele din urmă, revoluția din 1848.</p>
+  </section>
+</main>
+
+<script>
+function toggleAll(openState) {
+  document.querySelectorAll('details').forEach(d => d.open = openState);
+}
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const max = h.scrollHeight - h.clientHeight;
+  const progress = document.getElementById('progress');
+  if (progress) progress.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+});
+</script>
+
+</body>
+</html>

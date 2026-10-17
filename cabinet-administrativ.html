@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html lang="ro">
+<head>
+<!-- Catalog verificat 15.10.2026: 100 documente distincte din 4.4.2, distribuite 2 in L2.1 si 98 in L2.2; fara duplicate introduse. -->
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cabinet – administrativ</title>
+<style>
+    :root{
+      --bg:#f6f3ef;--panel:#fffaf4;--card:#ffffff;--ink:#202020;--muted:#6f675d;
+      --line:#e6ded4;--accent:#7a4e2d;--accent-2:#b98250;--accent-soft:#f1e3d4;
+      --shadow:0 18px 50px rgba(74,52,33,.12);--radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;color:var(--ink);background:radial-gradient(circle at top left,rgba(184,130,80,.14),transparent 36rem),linear-gradient(180deg,#fbf8f3 0%,var(--bg) 100%);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.58}
+    a{color:inherit}
+    .page{width:min(1120px,calc(100% - 36px));margin:0 auto;padding:34px 0 70px}
+    .hero{background:linear-gradient(135deg,rgba(255,250,244,.92),rgba(241,227,212,.76));border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);padding:34px;position:relative;overflow:hidden}
+    .hero::after{content:"";position:absolute;width:360px;height:360px;border-radius:50%;right:-140px;top:-190px;background:rgba(122,78,45,.08)}
+    .kicker{color:var(--accent);font-size:.82rem;font-weight:850;letter-spacing:.14em;text-transform:uppercase;margin:0 0 8px}
+    h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,5vw,4.4rem);line-height:.98;letter-spacing:-.05em;margin:0}
+    h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.5rem,2.6vw,2.25rem);margin:0}
+    h3{font-size:1.03rem;margin:0;font-weight:900}
+    p{margin:0}
+    .section{margin-top:22px}
+    .card{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(74,52,33,.07);padding:22px}
+    .section-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
+    .category-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
+    .category{border:1px solid var(--line);border-radius:20px;background:#fffdf9;padding:17px}
+    .category.full{grid-column:1/-1}
+    .category-title{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+    .category-symbol{width:38px;height:38px;border-radius:13px;display:grid;place-items:center;background:var(--accent-soft);font-size:1.1rem}
+    .link-list{display:grid;gap:10px}
+    .portal-link{display:flex;align-items:center;gap:12px;min-height:58px;padding:10px 12px;border:1px solid var(--line);border-radius:16px;background:#fff;text-decoration:none;transition:.18s ease}
+    .portal-link:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(74,52,33,.09);border-color:#d6bca0;background:#fffaf5}
+    .portal-icon{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;flex:0 0 auto;background:var(--accent-soft);font-size:1.08rem}
+    .portal-name{font-weight:900;font-size:.96rem;line-height:1.25}
+    .portal-note{display:block;color:var(--muted);font-size:.78rem;font-weight:600;margin-top:2px}
+    .contest-link{display:flex;align-items:center;gap:14px;text-decoration:none;padding:16px;border:1px solid #d8c2ad;border-radius:17px;background:#fffaf5;transition:.18s ease}
+    .contest-link:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(74,52,33,.09)}
+    .contest-icon{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:var(--accent);color:#fff;font-size:1.3rem;flex:0 0 auto}
+    .contest-text strong{display:block;font-size:1rem}.contest-text span{display:block;color:var(--muted);font-size:.85rem;margin-top:2px}
+    .empty{display:flex;align-items:center;gap:12px;border:1px dashed #d8c2ad;border-radius:17px;background:#fffaf5;padding:17px;color:var(--muted)}
+    .empty span:first-child{font-size:1.25rem}
+    @media(max-width:760px){.page{width:min(100% - 22px,1120px);padding-top:18px}.hero{padding:24px;border-radius:24px}.category-grid{grid-template-columns:1fr}.category.full{grid-column:auto}.section-head{align-items:flex-start;flex-direction:column}}
+
+    /* Navigare către pagina concursurilor — fără card intermediar */
+    .contest-heading-link{display:flex;text-decoration:none;cursor:pointer;border-radius:13px;padding:8px 10px;margin:-8px -10px;transition:background .18s ease}
+    .contest-heading-link:hover,.contest-heading-link:focus-visible{background:var(--accent-soft)}
+    .contest-heading-link:focus-visible{outline:3px solid var(--accent-2);outline-offset:2px}
+    .contest-arrow{margin-left:auto;color:var(--accent);font-size:1.2rem;line-height:1}
+
+    /* Secțiunea Resurse — Pentru învățare */
+    .learning-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
+    .learn-category,.learn-year,.learn-semester{min-width:0;border:1px solid var(--line);background:#fffdf9;border-radius:18px;overflow:hidden}
+    .learn-category[open],.learn-year[open],.learn-semester[open]{border-color:#d6b99b}
+    .learn-category-summary,.learn-year-summary,.learn-semester-summary{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;list-style:none;user-select:none}
+    .learn-category-summary::-webkit-details-marker,.learn-year-summary::-webkit-details-marker,.learn-semester-summary::-webkit-details-marker{display:none}
+    .learn-category-summary{font-size:1.03rem;font-weight:900;padding:18px}
+    .learn-year-summary{font-size:.96rem;font-weight:850;padding:13px 15px}
+    .learn-semester-summary{font-size:.90rem;font-weight:750;padding:11px 13px}
+    .learn-category-summary:hover,.learn-year-summary:hover,.learn-semester-summary:hover{background:#fff7ed}
+    .learn-category-summary:focus-visible,.learn-year-summary:focus-visible,.learn-semester-summary:focus-visible{outline:3px solid var(--accent-2);outline-offset:-3px}
+    .learn-chevron{font-size:1.35rem;color:var(--accent);transition:transform .18s ease;flex:0 0 auto}
+    details[open] > summary > .learn-chevron{transform:rotate(90deg)}
+    .learn-category-content{display:grid;gap:11px;padding:15px;background:#fffaf5;border-top:1px solid var(--line)}
+    .learn-year{background:#fff}
+    .learn-semesters{padding:12px;display:grid;gap:9px;border-top:1px solid var(--line)}
+    .learn-semester{background:#fffdfb}
+    .learn-semester-content,.learn-placeholder{padding:12px 14px;font-size:.84rem;color:var(--muted)}
+    .learn-semester-content{border-top:1px solid var(--line)}
+    .learn-placeholder{margin:0}
+    @media(max-width:760px){.learning-grid{grid-template-columns:1fr}}
+
+    /* Catalogul Legi — grupare pe categorii și căutare rapidă */
+    .laws-panel{padding:14px;min-width:0;display:grid;gap:12px;background:#fffaf5;border-top:1px solid var(--line)}
+    .laws-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+    .laws-search-label{width:100%;font-size:.84rem;font-weight:800;color:var(--muted)}
+    .laws-search{flex:1 1 220px;min-width:0;width:100%;border:1px solid #dfd1c3;border-radius:12px;background:white;padding:11px 12px;font:inherit;font-size:.89rem;outline:none;color:var(--ink)}
+    .laws-search:focus{border-color:var(--accent-2);box-shadow:0 0 0 3px rgba(185,130,80,.16)}
+    .laws-count{font-size:.8rem;color:var(--muted);font-weight:750;white-space:nowrap}
+    .laws-groups{display:grid;gap:9px;min-width:0}
+    .law-group{min-width:0;border:1px solid var(--line);border-radius:13px;overflow:hidden;background:white}
+    .law-group-summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px 12px;font-size:.89rem;font-weight:850}
+    .law-group-summary::-webkit-details-marker{display:none}
+    .law-group-summary:hover{background:#fff7ed}
+    .law-group-summary:focus-visible{outline:3px solid var(--accent-2);outline-offset:-3px}
+    .law-group-count{display:inline-block;color:var(--muted);font-size:.74rem;font-weight:800;border-radius:99px;background:#f4ebe2;padding:2px 7px;margin-left:4px}
+    .law-items{border-top:1px solid var(--line);padding:5px 10px}
+    .law-item{display:flex;align-items:flex-start;gap:8px;padding:9px 2px;border-bottom:1px solid #f0ebe4;min-width:0}
+    .law-item:last-child{border-bottom:0}
+    .law-file-icon{flex:0 0 auto;font-size:.98rem;line-height:1.55}
+    .law-file-name{font-size:.82rem;line-height:1.52;flex:1;min-width:0;overflow-wrap:anywhere;color:var(--ink)}
+    .law-file-type{flex:0 0 auto;font-size:.66rem;color:var(--muted);font-weight:800;background:#f7f3ee;border-radius:7px;padding:3px 5px;margin-top:2px}
+    .laws-no-results{color:var(--muted);font-size:.84rem;padding:10px 2px}
+    [hidden]{display:none!important}
+    @media(max-width:430px){.law-file-type{display:none}.laws-search{flex-basis:100%}}
+
+    /* Legături locale directe spre documente, fără selector de dosar. */
+    a.law-item{width:100%;text-align:left;text-decoration:none;border:0;border-bottom:1px solid #f0ebe4;border-radius:0;background:#fff;cursor:pointer}
+    a.law-item:hover{background:#fff7ec}
+    a.law-item:focus-visible{outline:3px solid var(--accent-2);outline-offset:2px}
+    a.law-item:last-child{border-bottom:0}
+    .law-open-arrow{color:var(--accent);font-size:.93rem;align-self:center;padding:0 3px}
+
+    /* În „Altele”, tipul actului are prioritate, apoi data descrescătoare. */
+    .law-subgroup{min-width:0}
+    .law-subgroup+.law-subgroup{border-top:1px solid var(--line);margin-top:9px;padding-top:9px}
+    .law-subgroup-heading{display:flex;align-items:center;gap:7px;margin:0;padding:7px 2px;font-family:inherit;font-size:.81rem;font-weight:850;color:var(--accent)}
+    .law-subgroup-count{display:inline-flex;align-items:center;justify-content:center;min-width:22px;padding:1px 6px;font-size:.69rem;border-radius:12px;background:#f4ebe2;color:var(--muted)}
+
+
+
+    /* Catalog de PDF-uri din 4.2.1 — Referințe psihologice */
+    .standards-panel{padding:14px;min-width:0;display:grid;gap:12px;background:#fffaf5;border-top:1px solid var(--line)}
+    .standards-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+    .standards-items{display:grid;gap:8px}
+    .standard-item{display:flex;align-items:center;gap:11px;padding:12px 13px;border:1px solid var(--line);background:#fff;border-radius:13px;min-width:0}
+    .standard-pdf-icon{flex:0 0 auto;font-size:1.15rem}
+    .standard-title{flex:1;min-width:0;overflow-wrap:anywhere;font-size:.84rem;font-weight:650;line-height:1.45}
+    /* Etichetă pentru limba documentului, aliniată înaintea butonului Citește. */
+    .standard-actions{display:grid;grid-template-columns:49px 36px 68px 80px;align-items:center;gap:6px;flex:0 0 auto}
+    .standard-year{display:inline-flex;align-items:center;justify-content:center;min-width:49px;padding:5px 4px;border-radius:8px;background:#f3eee9;color:#755d4c;box-shadow:inset 0 0 0 1px #e1d5c9;font-size:.74rem;font-weight:850;line-height:1.4;font-variant-numeric:tabular-nums;white-space:nowrap}
+    .standard-lang{display:inline-flex;align-items:center;justify-content:center;min-width:36px;padding:5px 3px;border-radius:8px;background:#f4ebe2;color:var(--accent);font-size:.74rem;font-weight:850;line-height:1.4;white-space:nowrap}
+    /* Etichete discrete: engleză — albastru pal; română — galben prăfos. */
+    .standard-lang[title="Engleză"]{background:#e5eef7;color:#3e6383;box-shadow:inset 0 0 0 1px #cbdce9}
+    .standard-lang[title="Română"]{background:#f2e9c9;color:#75602b;box-shadow:inset 0 0 0 1px #e2d5ab}
+    .standard-lang-empty{visibility:hidden}
+    .standard-action{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;padding:5px 9px;border:1px solid #d9c3ae;border-radius:9px;background:#fff9f3;color:var(--accent);font-size:.76rem;font-weight:800;white-space:nowrap}
+    .standard-actions .standard-action{width:100%;min-width:0}
+    .standard-action:hover,.standard-action:focus-visible{background:var(--accent-soft);outline-offset:2px}
+    .standard-download{background:white}
+    .standard-unresolved{font-size:.72rem;color:var(--muted);background:#f7f3ee;border-radius:8px;padding:5px 8px;max-width:155px;text-align:center;line-height:1.25}
+    @media(max-width:600px){.standard-item{align-items:flex-start;flex-wrap:wrap}.standard-actions,.standard-unresolved{margin-left:31px}}
+  
+/* Cursuri – Anul I: fișiere pe discipline, câmp de căutare, acțiuni directe. */
+.course-content { padding:12px; color:var(--ink); }
+.course-sem-code { margin-left:5px; font-size:.73rem; font-weight:750; color:var(--muted); }
+.course-semester-panel { display:grid; gap:12px; min-width:0; }
+.course-searchbar { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.course-searchbar .course-search { flex:1 1 185px; }
+.course-list { display:grid; gap:10px; }
+.course-subject { border:1px solid #e4d6c7; border-radius:13px; overflow:hidden; background:white; min-width:0; }
+.course-subject-head { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:11px 12px; font-size:.88rem; font-weight:850; cursor:pointer; list-style:none; }
+.course-subject-head::-webkit-details-marker { display:none; }
+.course-subject-head:hover { background:#fff7ed; }
+.course-subject-head:focus-visible { outline:3px solid var(--accent-2); outline-offset:-3px; }
+.course-subject-body { padding:8px 10px 11px; border-top:1px solid var(--line); display:grid; gap:12px; }
+.course-type-title { font-size:.78rem; letter-spacing:.01em; font-weight:800; color:var(--accent); padding:6px 2px; }
+.course-type-count { font-size:.7rem; color:var(--muted); background:#f4ebe2; border-radius:999px; padding:2px 6px; margin-left:3px; }
+.course-files { display:grid; gap:6px; }
+.course-file { display:flex; align-items:center; flex-wrap:wrap; gap:7px; min-width:0; padding:9px; border:1px solid #ece5dc; border-radius:11px; background:#fffdfb; }
+.course-file-icon { font-size:1.08rem; flex:0 0 auto; }
+.course-file-name { font-size:.81rem; line-height:1.45; color:var(--ink); flex:1 1 170px; min-width:100px; overflow-wrap:anywhere; font-weight:600; }
+.course-file-kind { font-size:.68rem; border-radius:7px; background:#f7f3ee; color:var(--muted); padding:3px 6px; font-weight:800; white-space:nowrap; }
+.course-file-actions { margin-left:auto; display:flex; gap:5px; flex:0 0 auto; }
+.course-file-actions .standard-action { font-size:.72rem; padding:5px 7px; }
+.course-empty { margin:0; padding:8px; }
+@media(max-width:480px) { .course-file-actions { margin-left:22px; } .course-file-name { flex-basis:calc(100% - 36px); } }
+
+/* Fișiere al căror nume complet nu era vizibil în captură */
+.course-file-pending{border-style:dashed;background:#fcfaf7}
+.course-file-unavailable{font-size:.72rem;font-weight:700;color:#806d58;background:#f4ece2;border:1px solid #e5d6c5;border-radius:8px;padding:5px 8px;white-space:nowrap}
+
+/* Biblioteca - rubrica Cărți */
+.library-panel { padding:14px; }
+.library-searchbar { margin-bottom:2px; }
+.library-file .course-file-name { flex-basis:240px; }
+.library-file .course-file-kind { min-width:37px; text-align:center; }
+.library-panel .library-group .course-subject-body { padding:9px 10px; }
+.library-panel .library-group .course-files { gap:7px; }
+@media (max-width:620px) { .library-panel { padding:10px; } .library-file .course-file-name { flex-basis:calc(100% - 35px); } .library-file .course-file-actions { margin-left:27px; } }
+</style>
+<style>
+/* Biblioteca: subcategorii tematice, cu același limbaj vizual. */
+.library-group .course-subject-body{display:grid;gap:9px}
+.library-subcategory{border:1px solid #e9ded1;border-radius:12px;background:#fffdf9;overflow:hidden;min-width:0}
+.library-subcategory[open]{background:#fff}
+.library-subcategory-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;font-size:.84rem;font-weight:780;cursor:pointer;list-style:none}
+.library-subcategory-head::-webkit-details-marker{display:none}
+.library-subcategory-head:hover{background:#fff7ed}
+.library-subcategory-head:focus-visible{outline:3px solid var(--accent-2);outline-offset:-3px}
+.library-subcategory-body{border-top:1px solid var(--line);padding:9px;display:grid;gap:7px}
+.library-subcategory .library-file{background:white}
+@media(max-width:620px){.library-subcategory-head{padding:11px;font-size:.80rem}.library-subcategory-body{padding:6px}}
+
+/* Navigare discretă între secțiunile separate ale Cabinetului */
+</style></head>
+<body>
+<main class="page">
+<section class="hero">
+<h1>Cabinet</h1>
+</section>
+<section class="section card" id="angajare">
+<div class="section-head">
+<div>
+<p class="kicker">Resurse</p>
+<h2>Pentru angajare</h2>
+</div>
+</div>
+<div class="category-grid">
+<section class="category full">
+<a aria-label="Date despre posturi scoase la concurs – deschide pagina de concursuri" class="category-title contest-heading-link" href="concursuri-post-psiholog.html" rel="noopener noreferrer" target="_blank">
+<span class="category-symbol">🏛️</span><h3>Date despre posturi scoase la concurs</h3><span aria-hidden="true" class="contest-arrow">↗</span>
+</a>
+</section>
+<section class="category">
+<div class="category-title"><span class="category-symbol">🧠</span><h3>Anunțuri de pe platforme specifice</h3></div>
+<div class="link-list">
+<a class="portal-link" href="https://monitorulpsihologiei.com/?s=psiholog+Bucuresti" rel="noopener noreferrer" target="_blank"><span class="portal-icon">MP</span><span><span class="portal-name">Monitorul Psihologiei</span><span class="portal-note">posturi pentru psihologi</span></span></a>
+<a class="portal-link" href="https://posturi.gov.ro/?s=psiholog+Bucuresti" rel="noopener noreferrer" target="_blank"><span class="portal-icon">G</span><span><span class="portal-name">Posturi.gov.ro</span><span class="portal-note">administrație publică</span></span></a>
+<a class="portal-link" href="https://jobs.edu.ro/?q=psiholog+Bucuresti" rel="noopener noreferrer" target="_blank"><span class="portal-icon">EDU</span><span><span class="portal-name">Jobs.edu.ro</span><span class="portal-note">posturi academice</span></span></a>
+<a class="portal-link" href="https://www.romedic.ro/joburi/psihologie/bucuresti" rel="noopener noreferrer" target="_blank"><span class="portal-icon">RM</span><span><span class="portal-name">ROmedic</span><span class="portal-note">clinici &amp; sănătate</span></span></a>
+<a class="portal-link" href="https://www.easp.eu/job-offers?search=psychologist+Bucharest" rel="noopener noreferrer" target="_blank"><span class="portal-icon">EASP</span><span><span class="portal-name">EASP</span><span class="portal-note">psihologie socială &amp; cercetare</span></span></a>
+</div>
+</section>
+<section class="category">
+<div class="category-title"><span class="category-symbol">🌐</span><h3>Anunțuri de pe platforme generale</h3></div>
+<div class="link-list">
+<a class="portal-link" href="https://www.ejobs.ro/locuri-de-munca/bucuresti/psiholog" rel="noopener noreferrer" target="_blank"><span class="portal-icon">E</span><span><span class="portal-name">eJobs</span><span class="portal-note">joburi generale</span></span></a>
+<a class="portal-link" href="https://www.linkedin.com/jobs/search/?keywords=psiholog&amp;location=Bucure%C8%99ti%2C%20Rom%C3%A2nia" rel="noopener noreferrer" target="_blank"><span class="portal-icon">in</span><span><span class="portal-name">LinkedIn</span><span class="portal-note">rețea profesională</span></span></a>
+<a class="portal-link" href="https://www.bestjobs.eu/locuri-de-munca-in-bucharest/psiholog" rel="noopener noreferrer" target="_blank"><span class="portal-icon">B</span><span><span class="portal-name">BestJobs</span><span class="portal-note">joburi generale</span></span></a>
+<a class="portal-link" href="https://www.hipo.ro/locuri-de-munca/cautajob/Toate-Domeniile/BUCURESTI/Psiholog" rel="noopener noreferrer" target="_blank"><span class="portal-icon">H</span><span><span class="portal-name">Hipo</span><span class="portal-note">corporate &amp; internshipuri</span></span></a>
+<a class="portal-link" href="https://ro.indeed.com/jobs?q=psiholog&amp;l=Bucure%C8%99ti" rel="noopener noreferrer" target="_blank"><span class="portal-icon">i</span><span><span class="portal-name">Indeed</span><span class="portal-note">agregator internațional</span></span></a>
+<a class="portal-link" href="https://www.olx.ro/locuri-de-munca/bucuresti/q-psiholog/" rel="noopener noreferrer" target="_blank"><span class="portal-icon">O</span><span><span class="portal-name">OLX</span><span class="portal-note">anunțuri locale</span></span></a>
+<a class="portal-link" href="https://ro.jooble.org/locuri-de-munca-psiholog/Bucure%C5%9Fti" rel="noopener noreferrer" target="_blank"><span class="portal-icon">J</span><span><span class="portal-name">Jooble</span><span class="portal-note">agregator de joburi</span></span></a>
+<a class="portal-link" href="https://www.jobradar24.ro/locuri-de-munca/psiholog/bucuresti" rel="noopener noreferrer" target="_blank"><span class="portal-icon">JR</span><span><span class="portal-name">JobRadar24</span><span class="portal-note">agregator românesc</span></span></a>
+<a class="portal-link" href="https://mediere.anofm.ro/app/module/mediere/jobs?query=psiholog&amp;county=Bucuresti" rel="noopener noreferrer" target="_blank"><span class="portal-icon">A</span><span><span class="portal-name">ANOFM</span><span class="portal-note">locuri de muncă vacante</span></span></a>
+<a class="portal-link" href="https://www.publi24.ro/anunturi/locuri-de-munca/bucuresti/?q=psiholog" rel="noopener noreferrer" target="_blank"><span class="portal-icon">P</span><span><span class="portal-name">Publi24</span><span class="portal-note">anunțuri clasificate</span></span></a>
+<a class="portal-link" href="https://www.careerjet.ro/locuri-de-munca-psiholog/Bucuresti" rel="noopener noreferrer" target="_blank"><span class="portal-icon">C</span><span><span class="portal-name">Careerjet</span><span class="portal-note">agregator de joburi</span></span></a>
+<a class="portal-link" href="https://ro.jobsora.com/locuri-de-munc%C4%83-psiholog-bucure%C5%9Fti" rel="noopener noreferrer" target="_blank"><span class="portal-icon">Js</span><span><span class="portal-name">Jobsora</span><span class="portal-note">agregator internațional</span></span></a>
+</div>
+</section>
+</div>
+</section>
+</main>
+</body>
+</html>

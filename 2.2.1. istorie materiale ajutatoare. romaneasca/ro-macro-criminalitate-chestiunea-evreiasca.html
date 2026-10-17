@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Politici antisemite și crime de stat împotriva evreilor din România</title>
+  <style>
+
+    :root {
+      --bg: #f6f0e7;
+      --paper: #fffaf3;
+      --paper-2: #ffffff;
+      --ink: #2f241c;
+      --title: #3c2a1e;
+      --muted: #5b4a3d;
+      --accent: #7a4f2a;
+      --accent-2: #9b6a3c;
+      --accent-soft: #f0e4d4;
+      --line: rgba(91, 62, 36, 0.18);
+      --line-strong: rgba(91, 62, 36, 0.34);
+      --outer-dark: #241208;
+      --outer-mid: #4a2a18;
+      --outer-warm: #7a4b2b;
+      --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+      --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+        radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+        radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+        radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+        linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+      background-attachment: fixed;
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0 70px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .back-link,
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 243, 0.84);
+      color: var(--title);
+      border-radius: 999px;
+      padding: 10px 15px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      box-shadow: var(--shadow-small);
+    }
+
+    .back-link:hover { background: #fff6eb; }
+
+    .hero,
+    .section,
+    .nav-card,
+    .final-box {
+      background: rgba(255, 250, 243, 0.96);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 38px;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: attr(data-watermark);
+      position: absolute;
+      right: 26px;
+      bottom: -22px;
+      font-size: 110px;
+      font-weight: 900;
+      letter-spacing: -4px;
+      color: rgba(122, 79, 42, 0.08);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      font-size: 16px;
+      color: var(--accent);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: left;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 1.04;
+      color: var(--title);
+      letter-spacing: -1.4px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    .subtitle {
+      margin: 18px 0 0;
+      max-width: 980px;
+      font-size: 19px;
+      line-height: 1.78;
+      color: var(--muted);
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .summary-grid,
+    .three-col,
+    .two-col,
+    .term-grid,
+    .quick-grid,
+    .cause-grid,
+    .four-col {
+      display: grid;
+      gap: 14px;
+    }
+
+    .summary-grid { grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+    .three-col { grid-template-columns: repeat(3, 1fr); }
+    .two-col { grid-template-columns: repeat(2, 1fr); }
+    .four-col { grid-template-columns: repeat(4, 1fr); }
+    .cause-grid { grid-template-columns: 1.1fr 0.9fr; }
+    .term-grid { grid-template-columns: repeat(4, 1fr); }
+    .quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+
+    .summary-card,
+    .info-card,
+    .wide-card,
+    .term-card,
+    .quick-card,
+    .source-note,
+    .micro-card,
+    .warning-box,
+    .quote-card {
+      background: var(--paper-2);
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 20px;
+      box-shadow: var(--shadow-small);
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .summary-card { padding: 16px; min-height: 132px; }
+
+    .summary-card strong,
+    .quick-card strong,
+    .term-card strong,
+    .micro-card strong {
+      display: block;
+      color: var(--title);
+      font-size: 17px;
+      margin-bottom: 8px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    .summary-card span,
+    .quick-card span,
+    .term-card span,
+    .micro-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.56;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .nav-card {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 18px 20px;
+      margin-bottom: 24px;
+    }
+
+    .nav-card b { color: var(--title); margin-right: 2px; }
+
+    .nav-card a,
+    .mini-btn {
+      color: var(--title);
+      background: var(--accent-soft);
+      border: 1px solid rgba(91, 62, 36, 0.16);
+      border-radius: 999px;
+      text-decoration: none;
+      padding: 8px 12px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .nav-card a:hover,
+    .mini-btn:hover { background: #e5d2bb; }
+
+    .section { padding: 30px; margin-bottom: 24px; }
+
+    h2 {
+      margin: 0 0 14px;
+      color: var(--title);
+      font-size: clamp(28px, 3vw, 38px);
+      line-height: 1.15;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    h3 {
+      margin: 0 0 12px;
+      color: var(--title);
+      font-size: 22px;
+      line-height: 1.22;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    h4 {
+      margin: 16px 0 8px;
+      color: var(--title);
+      font-size: 18px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    .section-intro,
+    p,
+    li,
+    dd {
+      font-size: 17px;
+      line-height: 1.72;
+      color: var(--muted);
+      text-align: justify;
+      text-align-last: left;
+      hyphens: auto;
+    }
+
+    .section-intro { margin: 0 0 20px; max-width: 1000px; }
+
+    .info-card,
+    .wide-card,
+    .term-card,
+    .quick-card,
+    .micro-card,
+    .warning-box,
+    .quote-card { padding: 20px; }
+
+    .wide-card { margin-top: 14px; }
+    .wide-card p:last-child,
+    .info-card p:last-child { margin-bottom: 0; }
+
+    .clean,
+    .number-list { margin: 0; padding-left: 22px; }
+
+    .clean li,
+    .number-list li { margin: 0 0 9px; padding-left: 2px; }
+
+    .clean li:last-child,
+    .number-list li:last-child { margin-bottom: 0; }
+
+    .mini-title {
+      display: inline;
+      color: var(--title);
+      font-weight: 800;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      padding: 0;
+      margin-right: 5px;
+      white-space: normal;
+      text-align: inherit;
+    }
+
+    .date-pill {
+      display: inline-block;
+      color: var(--title);
+      font-weight: 800;
+      background: #f3eadf;
+      border: 1px solid rgba(91, 62, 36, 0.13);
+      border-radius: 999px;
+      padding: 2px 9px;
+      margin-right: 5px;
+      white-space: nowrap;
+      text-align: left;
+    }
+
+    .definition,
+    .note {
+      margin-top: 18px;
+      background: #fff8ef;
+      border: 1px solid rgba(122, 79, 42, 0.22);
+      border-left: 6px solid rgba(122, 79, 42, 0.48);
+      border-radius: 18px;
+      padding: 18px 20px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .definition strong,
+    .note strong { color: var(--title); }
+
+    details {
+      background: #fffdf9;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 20px;
+      box-shadow: var(--shadow-small);
+      margin-top: 14px;
+      overflow: hidden;
+    }
+
+    details[open] { background: #fffaf3; }
+
+    summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 18px 20px;
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--title);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    summary::after {
+      content: "Deschide";
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+      background: #f3eadf;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 999px;
+      padding: 7px 11px;
+      white-space: nowrap;
+    }
+
+    details[open] > summary::after { content: "Ascunde"; }
+
+    .details-body {
+      border-top: 1px solid rgba(91, 62, 36, 0.12);
+      padding: 18px 20px 20px;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .nested-details { margin-top: 10px; box-shadow: none; background: #ffffff; }
+
+    .nested-details summary { font-size: 17px; padding: 14px 16px; }
+
+    .key-line {
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px dashed rgba(91, 62, 36, 0.18);
+    }
+
+    .key-line:last-child { border-bottom: 0; }
+
+    .key-line strong { color: var(--title); text-align: left; text-align-last: auto; }
+
+    .key-line span { color: var(--muted); line-height: 1.65; text-align: justify; text-align-last: left; }
+
+    .timeline { position: relative; display: grid; gap: 14px; margin-top: 18px; }
+
+    .event {
+      display: grid;
+      grid-template-columns: 132px 1fr;
+      gap: 18px;
+      align-items: stretch;
+      background: #ffffff;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 20px;
+      box-shadow: var(--shadow-small);
+      overflow: hidden;
+    }
+
+    .date {
+      background: linear-gradient(180deg, #7a4f2a, #5b351b);
+      color: #fffaf3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 14px;
+      font-size: 18px;
+      line-height: 1.25;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+    }
+
+    .event > div:last-child { padding: 17px 18px 18px 0; text-align: justify; text-align-last: left; }
+
+    .event h3 { margin-bottom: 6px; }
+    .event p { margin: 0; }
+
+    .small-muted {
+      font-size: 15px;
+      color: #725c49;
+      line-height: 1.6;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .warning-box { background: #fff7ec; border-color: rgba(122, 79, 42, 0.22); margin-top: 16px; }
+
+    .quote-card { background: linear-gradient(135deg, #fffdf9, #f8eddf); }
+
+    .source-note { margin-top: 14px; padding: 16px; background: #fffdf9; }
+    .source-note a { color: var(--accent); font-weight: 700; text-decoration: none; }
+    .source-note a:hover { text-decoration: underline; }
+
+    .controls { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+
+    .final-box { padding: 28px; background: linear-gradient(135deg, #fffaf3, #f4e4d1); border-color: rgba(91, 62, 36, 0.25); }
+
+    .final-box p { margin-bottom: 0; }
+
+    @media (max-width: 980px) {
+      .summary-grid,
+      .three-col,
+      .term-grid,
+      .quick-grid,
+      .four-col { grid-template-columns: repeat(2, 1fr); }
+      .two-col,
+      .cause-grid,
+      .details-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .page { width: min(100% - 22px, 1180px); padding-top: 22px; }
+      .hero,
+      .section,
+      .final-box { padding: 22px; border-radius: 22px; }
+      .summary-grid,
+      .term-grid,
+      .quick-grid,
+      .four-col { grid-template-columns: 1fr; }
+      .event { grid-template-columns: 1fr; }
+      .date { min-height: 66px; }
+      .event > div:last-child { padding: 0 16px 16px; }
+      .key-line { grid-template-columns: 1fr; gap: 6px; }
+      summary { align-items: flex-start; flex-direction: column; }
+      .hero::after { font-size: 82px; }
+    }
+
+  
+    .source-list { margin: 0; padding-left: 22px; }
+    .source-list li { margin-bottom: 8px; }
+    .source-list a { color: var(--accent); font-weight: 700; text-decoration: none; }
+    .source-list a:hover { text-decoration: underline; }
+    .divider-note { margin-top: 14px; }
+    .case-label { display:inline-block; font-weight:800; color:var(--title); background:#f3eadf; border:1px solid rgba(91,62,36,.13); border-radius:999px; padding:2px 9px; margin:0 4px 4px 0; }
+    .dense-list li { margin-bottom: 11px; }
+    .quote-box { margin-top: 14px; background:#fff8ef; border:1px dashed rgba(122,79,42,.28); border-radius:18px; padding:16px 18px; }
+  
+    .fact-table { width: 100%; border-collapse: collapse; margin-top: 14px; overflow: hidden; border-radius: 18px; box-shadow: var(--shadow-small); background: #fffdf9; }
+    .fact-table th, .fact-table td { border: 1px solid rgba(91,62,36,.16); padding: 12px 14px; vertical-align: top; color: var(--muted); font-size: 16px; line-height: 1.58; text-align: justify; text-align-last: left; }
+    .fact-table th { background: #f3eadf; color: var(--title); font-weight: 900; text-align: left; text-align-last: auto; }
+    .chapter-note { margin: 12px 0 0; font-size: 15.5px; color: #725c49; line-height: 1.6; }
+    .badge-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .badge { display:inline-flex; align-items:center; border:1px solid rgba(91,62,36,.16); background:#f3eadf; color:var(--title); border-radius:999px; padding:6px 10px; font-weight:800; font-size:14px; }
+    .reading-box { background:#fffdf9; border:1px dashed rgba(122,79,42,.32); border-radius:18px; padding:18px 20px; margin-top:14px; }
+    .reading-box p { margin-top: 0; }
+    .reading-box p:last-child { margin-bottom: 0; }
+    @media (max-width: 680px) { .fact-table, .fact-table tbody, .fact-table tr, .fact-table th, .fact-table td { display:block; width:100%; } .fact-table th { border-bottom:0; } }
+
+    .fact-table { width: 100%; border-collapse: collapse; margin-top: 14px; overflow: hidden; border-radius: 18px; box-shadow: var(--shadow-small); background: #fffdf9; }
+    .fact-table th, .fact-table td { border: 1px solid rgba(91,62,36,.16); padding: 12px 14px; vertical-align: top; color: var(--muted); font-size: 16px; line-height: 1.58; text-align: justify; text-align-last: left; }
+    .fact-table th { background: #f3eadf; color: var(--title); font-weight: 900; text-align: left; text-align-last: auto; }
+    .chapter-note { margin: 12px 0 0; font-size: 15.5px; color: #725c49; line-height: 1.6; }
+    .badge-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .badge { display:inline-flex; align-items:center; border:1px solid rgba(91,62,36,.16); background:#f3eadf; color:var(--title); border-radius:999px; padding:6px 10px; font-weight:800; font-size:14px; }
+    .reading-box { background:#fffdf9; border:1px dashed rgba(122,79,42,.32); border-radius:18px; padding:18px 20px; margin-top:14px; }
+    .reading-box p { margin-top: 0; }
+    .reading-box p:last-child { margin-bottom: 0; }
+    .dense-list li { margin-bottom: 6px; }
+    .source-list { margin: 0; padding-left: 22px; }
+    .source-list li { margin-bottom: 8px; }
+    .case-title { color: var(--title); font-weight: 900; display:block; margin-bottom: 4px; }
+    .subtle-divider { height:1px; background:rgba(91,62,36,.14); margin:18px 0; }
+    .question-box { margin-top:16px; background:#fff7ec; border:1px solid rgba(122,79,42,.22); border-radius:20px; padding:20px; }
+    .question-box h3 { margin-bottom:8px; }
+    @media (max-width: 680px) { .fact-table, .fact-table tbody, .fact-table tr, .fact-table th, .fact-table td { display:block; width:100%; } .fact-table th { border-bottom:0; } }
+</style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a class="back-link" href="#">← Înapoi la materiale</a>
+      <span class="tag">Material ajutător · Istoria României · Al Doilea Război Mondial</span>
+    </div>
+
+    <section class="hero" data-watermark="1940-1944">
+      <p class="eyebrow">Material ajutător · Istoria României · Al Doilea Război Mondial</p>
+      <h1>Politici antisemite și crime de stat împotriva evreilor din România</h1>
+      <p class="subtitle">Material amplu despre așa-numita „chestiune evreiască” în România anilor 1940-1944: legislație antisemită, alianța cu Germania nazistă, pogromuri, Iași, Podu Iloaiei, Călărași, munca obligatorie, confiscările, deportările și memoria responsabilității statului.</p>
+      <div class="summary-grid">
+        <div class="summary-card"><strong>Tema centrală</strong><span>Transformarea evreilor din cetățeni și vecini în „problemă” politică, rasială și administrativă.</span></div>
+        <div class="summary-card"><strong>Exemple concrete</strong><span>Dorohoi, București, Iași, Podu Iloaiei, Călărași, Chișinău, Cernăuți și deportările spre Transnistria.</span></div>
+        <div class="summary-card"><strong>Responsabili</strong><span>Ion Antonescu, Mihai Antonescu, Horia Sima, Radu Lecca, Constantin Z. Vasiliu, Gheorghe Alexianu și aparatul local.</span></div>
+        <div class="summary-card"><strong>Nuanță necesară</strong><span>România a colaborat cu Hitler, dar a avut și inițiative proprii; politica a variat regional, fără a anula responsabilitatea.</span></div>
+      </div>
+    </section>
+
+    <nav class="nav-card" aria-label="Cuprins">
+      <b>Cuprins:</b>
+      <a href="#cadru">I. Cadru</a>
+      <a href="#cronologie">II. Cronologie</a>
+      <a href="#actori">III. Actori</a>
+      <a href="#legislatie">IV. Legislație</a>
+      <a href="#pogromuri">V. Pogromuri</a>
+      <a href="#iasi">VI. Iași</a>
+      <a href="#basarabia">VII. Est</a>
+      <a href="#munca">VIII. Muncă</a>
+      <a href="#nuante">IX. Nuanțe</a>
+      <a href="#memorie">X. Memorie</a>
+      <a href="#surse">Surse</a>
+    </nav>
+
+    <section class="section" id="cadru">
+  <h2>I. Cadru general: de la antisemitism politic la crimă de stat</h2>
+  <p class="section-intro">În limbajul epocii, autoritățile și propaganda au vorbit despre așa-numita „chestiune evreiască”. Formula nu descria o problemă reală produsă de evrei, ci modul în care statul, partidele extremiste, presa, administrația și armata au construit artificial o categorie de populație ca „dușman intern”.</p>
+  <div class="three-col">
+    <article class="info-card"><h3>O formulă ideologică</h3><p>„Chestiunea evreiască” era o expresie de propagandă prin care o comunitate diversă era redusă la o presupusă amenințare. Evreii erau prezentați contradictoriu: ca bogați și exploatatori, dar și ca bolșevici; ca străini, dar și ca prea influenți în societatea românească; ca trădători, deși mulți erau cetățeni români, veterani sau integrați local.</p></article>
+    <article class="info-card"><h3>De la excludere la ucidere</h3><p>Radicalizarea nu începe direct cu masacrul. Mai întâi apar revizuirea cetățeniei, excluderea profesională, confiscările, restricțiile de circulație, presiunea polițienească și propaganda. Apoi, în contextul războiului antisovietic, această construcție se transformă în pogrom, deportare, ghetou și moarte.</p></article>
+    <article class="info-card"><h3>Responsabilitate instituțională</h3><p>Crimele au implicat armată, poliție, jandarmerie, administrație locală, servicii de informații, căi ferate, autorități sanitare, primării, prefecți și civili radicalizați. De aceea, fenomenul trebuie înțeles ca violență de stat, nu doar ca izbucnire populară.</p></article>
+  </div>
+  <div class="definition"><strong>Ideea-cheie:</strong> persecuția evreilor în România anilor 1940-1944 a combinat legislația discriminatorie, jaful economic, propaganda anticomunistă, războiul de pe Frontul de Est, presiunea Germaniei naziste și inițiative proprii ale regimului Antonescu.</div>
+  <div class="badge-row"><span class="badge">antisemitism de stat</span><span class="badge">pogrom</span><span class="badge">trenurile morții</span><span class="badge">muncă obligatorie</span><span class="badge">confiscări</span><span class="badge">deportări</span><span class="badge">Transnistria</span><span class="badge">responsabilitate administrativă</span></div>
+</section><section class="section" id="cronologie">
+  <h2>II. Cronologie extinsă: radicalizarea politicii antievreiești</h2>
+  <p class="section-intro">Cronologia arată că violența din 1941 nu a fost un accident izolat. Ea a fost pregătită de ani de antisemitism politic și administrativ, apoi accelerată de prăbușirea teritorială din 1940 și de intrarea României în războiul împotriva Uniunii Sovietice.</p>
+  <div class="timeline">
+        <article class="event"><div class="date">1937-1938</div><div><h3>Guvernul Goga-Cuza și revizuirea cetățeniei</h3><p>Guvernul condus de Octavian Goga, susținut de A. C. Cuza, introduce politici antisemite dure. Revizuirea cetățeniei lovește zeci de mii de evrei și stabilește un precedent: statul poate transforma apartenența civică într-un privilegiu revocabil.</p></div></article>
+        <article class="event"><div class="date">8 aug. 1940</div><div><h3>Statutul juridic al evreilor</h3><p>În vara anului 1940 sunt adoptate norme inspirate de legislația rasială europeană. Evreii sunt definiți administrativ, limitați profesional și împinși în afara corpului politic al națiunii.</p></div></article>
+        <article class="event"><div class="date">iun. 1940</div><div><h3>Basarabia și Bucovina de Nord sunt cedate URSS</h3><p>Retragerea românească este însoțită de panică, zvonuri și acuzații colective împotriva evreilor, prezentați ca susținători ai sovieticilor. Această asociere falsă între evrei și bolșevism devine un argument pentru violență.</p></div></article>
+        <article class="event"><div class="date">30 iun. 1940</div><div><h3>Violențe la Galați</h3><p>În contextul evacuării și al circulației refugiaților, autoritățile trag asupra civililor și militarizează suspiciunea. Episodul arată climatul de panică și răzbunare care precedă pogromurile mari.</p></div></article>
+        <article class="event"><div class="date">1 iul. 1940</div><div><h3>Pogromul de la Dorohoi</h3><p>Militari români atacă evrei locali și evrei din armată. Este important pentru că arată că violența antievreiască precedă intrarea României în războiul din 1941 și nu poate fi redusă doar la presiunea germană.</p></div></article>
+        <article class="event"><div class="date">6 sept. 1940</div><div><h3>Ion Antonescu preia puterea</h3><p>După prăbușirea regimului Carol al II-lea, Antonescu devine conducătorul statului. Începe o guvernare autoritară, militarizată și profund anticomunistă, deschisă alianței cu Germania nazistă.</p></div></article>
+        <article class="event"><div class="date">sept. 1940</div><div><h3>Statul Național-Legionar</h3><p>Antonescu guvernează împreună cu Garda de Fier. Legionarii intensifică jafurile, confiscările, violențele, intimidarea stradală și controlul asupra proprietăților evreiești.</p></div></article>
+        <article class="event"><div class="date">20 nov. 1940</div><div><h3>Aderarea României la Pactul Tripartit</h3><p>România intră oficial în alianța Axei. Relația cu Hitler devine esențială pentru strategia lui Antonescu de recuperare a teritoriilor pierdute.</p></div></article>
+        <article class="event"><div class="date">21-23 ian. 1941</div><div><h3>Rebeliunea legionară și pogromul de la București</h3><p>Horia Sima și Garda de Fier se ridică împotriva lui Antonescu. În timpul violențelor, evrei din București sunt torturați, uciși, jefuiți, iar sinagogi sunt devastate. Antonescu zdrobește rebeliunea, dar păstrează direcția antisemită a statului.</p></div></article>
+        <article class="event"><div class="date">22 iun. 1941</div><div><h3>Operațiunea Barbarossa</h3><p>Germania și aliații săi, inclusiv România, atacă Uniunea Sovietică. Antonescu prezintă războiul ca eliberare a Basarabiei și Bucovinei de Nord, dar și ca luptă împotriva „iudeo-bolșevismului”.</p></div></article>
+        <article class="event"><div class="date">27 iun. 1941</div><div><h3>Ordinul de „curățare” a Iașului</h3><p>În ajunul pogromului, Antonescu cere comandantului garnizoanei Iași, colonelul Constantin Lupu, măsuri împotriva evreilor. În oraș acționează militari, polițiști, jandarmi, agenți ai serviciilor și elemente germane.</p></div></article>
+        <article class="event"><div class="date">28-30 iun. 1941</div><div><h3>Pogromul de la Iași</h3><p>Mii de evrei sunt uciși pe străzi, în case, în curtea Chesturii și apoi în trenurile morții. Iași devine unul dintre cele mai mari masacre antievreiești din Europa de Est din acel moment.</p></div></article>
+        <article class="event"><div class="date">iul.-aug. 1941</div><div><h3>Bessarabia și Bucovina de Nord</h3><p>După recucerire, evreii sunt supuși execuțiilor, jafurilor, ghetourilor și deportărilor. Chișinău, Cernăuți și multe localități mici intră într-o logică a epurării etnice.</p></div></article>
+        <article class="event"><div class="date">oct. 1941</div><div><h3>Deportări către Transnistria</h3><p>Supraviețuitorii din Basarabia și Bucovina sunt împinși peste Nistru, în coloane, trenuri sau convoaie păzite. Mulți mor pe drum prin foame, frig, boală, împușcare sau jaf.</p></div></article>
+        <article class="event"><div class="date">1942</div><div><h3>Muncă obligatorie și presiuni de deportare</h3><p>Evreii rămași în Vechiul Regat și sudul Transilvaniei sunt supuși muncii obligatorii, taxelor speciale, excluderii și fricii de deportare. Există planuri și discuții privind deportarea către sistemul german, dar acestea nu se finalizează pentru întreaga populație evreiască din România veche.</p></div></article>
+        <article class="event"><div class="date">1943-1944</div><div><h3>Schimbarea cursului războiului</h3><p>Pe măsură ce Germania pierde inițiativa, regimul român devine mai prudent. Unele repatrieri din Transnistria sunt permise târziu, dar pentru zeci de mii de oameni măsura vine prea târziu.</p></div></article>
+        <article class="event"><div class="date">23 aug. 1944</div><div><h3>Căderea lui Antonescu</h3><p>Regele Mihai și opoziția îl înlătură pe Antonescu. România întoarce armele împotriva Germaniei, dar responsabilitatea pentru crimele anilor 1940-1944 rămâne o problemă istorică și juridică majoră.</p></div></article>
+        <article class="event"><div class="date">1 iun. 1946</div><div><h3>Execuția lui Ion Antonescu</h3><p>Ion Antonescu, Mihai Antonescu, Gheorghe Alexianu și Constantin Z. Vasiliu sunt executați după condamnarea pentru crime de război. Multe niveluri locale ale complicității rămân însă insuficient pedepsite.</p></div></article>
+      </div>
+</section><section class="section" id="actori">
+  <h2>III. Persoane, instituții și responsabilități</h2>
+  <p class="section-intro">Pentru a înțelege crimele de stat, trebuie urmărit lanțul deciziei: lideri politici, ministere, armată, jandarmerie, poliție, servicii de informații, administrație locală, căi ferate și civili. Nu toți au avut același rol, dar fiecare nivel putea transforma ordinul politic în faptă concretă.</p>
+  <table class="fact-table"><thead><tr><th>Persoană / instituție</th><th>Rol istoric</th><th>Exemple de responsabilitate sau relevanță</th></tr></thead><tbody>
+<tr><td>Ion Antonescu</td><td>Conducătorul statului între 1940 și 1944; aliat al Germaniei naziste.</td><td>A decis orientarea militară pro-germană, războiul antisovietic, politicile antisemite radicale, deportările și represaliile. A fost judecat și executat la 1 iunie 1946.</td></tr>
+<tr><td>Mihai Antonescu</td><td>Vicepreședinte al Consiliului de Miniștri și ministru de externe.</td><td>A participat la politica de stat a regimului, la justificarea ideologică a războiului și la administrarea relației cu Germania nazistă.</td></tr>
+<tr><td>Horia Sima</td><td>Lider al Gărzii de Fier după moartea lui Corneliu Zelea Codreanu.</td><td>În timpul Statului Național-Legionar, legionarii au intensificat teroarea antisemită; rebeliunea din ianuarie 1941 a inclus pogromul de la București.</td></tr>
+<tr><td>Radu Lecca</td><td>Comisar general pentru probleme evreiești.</td><td>A administrat relația regimului cu comunitatea evreiască, taxele, constrângerile și instituțiile de control, inclusiv „Centrala Evreilor”.</td></tr>
+<tr><td>Constantin Z. Vasiliu</td><td>Șef al Jandarmeriei.</td><td>Jandarmeria a avut rol major în deportări, pază, convoaie, lagăre, execuții și controlul populațiilor vizate. Vasiliu a fost executat în 1946.</td></tr>
+<tr><td>Gheorghe Alexianu</td><td>Guvernator al Transnistriei.</td><td>A condus administrația românească a Transnistriei, unde au funcționat ghetouri, lagăre, colonii și politici de deportare și exterminare prin condiții.</td></tr>
+<tr><td>Eugen Cristescu</td><td>Șef al Serviciului Special de Informații.</td><td>Serviciile de informații au alimentat suspiciuni, liste și rapoarte despre presupusa legătură dintre evrei și comunism, contribuind la climatul represiv.</td></tr>
+<tr><td>Colonelul Constantin Lupu</td><td>Comandant al garnizoanei Iași.</td><td>Numele său apare în contextul ordinelor și pregătirii pogromului de la Iași, inclusiv al formulei de „curățare” a orașului de evrei.</td></tr>
+<tr><td>Ionescu Micandru</td><td>Ofițer al SSI, menționat în relatări despre Iași.</td><td>Este asociat în cercetări cu pregătirea și instigarea locală a pogromului, alături de structuri românești și germane.</td></tr>
+<tr><td>Hermann von Stransky</td><td>Ofițer german Abwehr prezent la Iași.</td><td>Apare în relatări ca element german implicat în climatul de pregătire și instigare, dar responsabilitatea principală a pogromului rămâne legată de autoritățile române.</td></tr>
+<tr><td>Căile Ferate, gări, personal feroviar</td><td>Infrastructură logistică.</td><td>Trenurile morții au fost posibile prin vagoane, rute, opriri, pază și refuzul apei. Logistica poate deveni instrument de crimă.</td></tr>
+<tr><td>Primării, prefecți, poliții locale</td><td>Administrație locală.</td><td>Au întocmit liste, au aplicat restricții, au participat la confiscări, arestări și deportări sau au tolerat abuzuri.</td></tr>
+</tbody></table><div class="note"><strong>Atenție metodologică:</strong> responsabilitatea juridică se stabilește individual și instituțional. Nu trebuie transformată în vină colectivă asupra tuturor românilor, dar nici diluată prin formule de tipul „au fost vremuri grele”.</div>
+</section><section class="section" id="legislatie">
+  <h2>IV. Legislație, confiscări și distrugerea vieții cotidiene</h2>
+  <p class="section-intro">Persecuția nu înseamnă doar masacru. Ea începe cu documente, clasificări, interdicții, formulare și ordine. Tocmai caracterul birocratic al excluderii a făcut posibilă trecerea rapidă de la discriminare la deportare.</p>
+  <div class="term-grid">
+        <div class="term-card"><strong>Revizuirea cetățeniei</strong><span>Evreii au fost forțați să dovedească apartenența la stat, iar pierderea cetățeniei a dus la vulnerabilitate politică, juridică și economică.</span></div>
+        <div class="term-card"><strong>Statut rasial</strong><span>Legislația a încercat să definească „evreul” biologic sau genealogic, nu doar religios, după modele rasiale europene.</span></div>
+        <div class="term-card"><strong>Excludere profesională</strong><span>Avocați, medici, profesori, funcționari, comercianți, artiști și elevi/studenți au fost restricționați sau excluși.</span></div>
+        <div class="term-card"><strong>Românizare</strong><span>Proprietățile evreiești au fost confiscate, vândute, transferate sau administrate în beneficiul statului și al clientelei politice.</span></div>
+        <div class="term-card"><strong>Taxe și contribuții</strong><span>Comunitățile evreiești au fost împovărate cu obligații financiare speciale, adesea arbitrare.</span></div>
+        <div class="term-card"><strong>Muncă obligatorie</strong><span>Bărbații evrei au fost trimiși la muncă sub control militar sau administrativ, fără statut egal cu ceilalți cetățeni.</span></div>
+        <div class="term-card"><strong>Ostatici și registre</strong><span>Listele au permis arestări rapide, intimidare și control; un nume pe o listă putea însemna deportare sau moarte.</span></div>
+        <div class="term-card"><strong>Semne și umilire</strong><span>În unele localități s-au impus semne distinctive, restricții de circulație, cozi separate, insulte și excludere publică.</span></div>
+      </div><details open><summary>Exemplu de mecanism: de la formular la crimă</summary><div class="details-body">
+<p>Un formular aparent neutru putea întreba numele, vârsta, profesia, adresa, familia, averea, originea și religia. Într-un stat democratic, asemenea date pot fi statistice. Într-un stat persecutor, aceleași date devin instrument pentru confiscare, muncă forțată, arestare, deportare sau execuție. De aceea, istoria Holocaustului trebuie predată și ca istorie a birocrației criminale.</p>
+  </div></details>
+</section><section class="section" id="pogromuri">
+  <h2>V. Pogromuri înainte și în timpul războiului</h2>
+  <p class="section-intro">Pogromurile au fost episoade în care propaganda, autoritatea statului și violența civilă s-au suprapus. Ele nu au fost doar izbucniri haotice, ci au avut adesea protecție, complicitate sau organizare instituțională.</p>
+  <div class="two-col">
+    <article class="info-card"><h3>Dorohoi, 1 iulie 1940</h3><p>După cedarea Basarabiei și Bucovinei de Nord, într-un climat de acuzații împotriva evreilor, militari români atacă evrei din Dorohoi, inclusiv evrei care serviseră în armată. Episodul este important pentru că arată că armata nu a fost doar instrument de apărare, ci a putut deveni actor al violenței interne.</p></article>
+    <article class="info-card"><h3>București, 21-23 ianuarie 1941</h3><p>În timpul rebeliunii legionare, Garda de Fier comite crime, jafuri, torturi și profanări. Sinagogi sunt devastate, locuințe și magazine evreiești sunt jefuite, iar uciderea unor civili evrei devine parte a luptei pentru putere dintre Antonescu și legionari.</p></article>
+  </div>
+  <div class="wide-card"><h3>Ce arată aceste episoade?</h3><p>Ele arată că violența antievreiască nu a fost produsă exclusiv de invazia URSS. Antisemitismul militarizat exista deja, iar războiul din 1941 a oferit un context de radicalizare: evreul a fost transformat propagandistic în spion, comunist, sabotor, dușman intern și țintă legitimă.</p></div>
+</section><section class="section" id="iasi">
+  <h2>VI. Studiu de caz major: Iași, Podu Iloaiei și Călărași</h2>
+  <p class="section-intro">Pogromul de la Iași este unul dintre cele mai importante cazuri pentru înțelegerea Holocaustului din România. El combină ordin politic, suspiciune militară, participare administrativă, crimă urbană, jaf, trenuri ale morții și apoi o memorie greu de asumat.</p>
+  <div class="three-col">
+    <article class="info-card"><h3>Oraș de frontieră simbolică</h3><p>Iași era aproape de front și de spațiul recucerit din est. Propaganda a transformat orașul într-un loc al suspiciunii: evreii au fost acuzați că ar semnaliza avioanelor sovietice, că ar sprijini Armata Roșie sau că ar pregăti sabotaje.</p></article>
+    <article class="info-card"><h3>Chestura</h3><p>Mii de evrei au fost aduși la Chestura Poliției. Curtea și împrejurimile au devenit spații ale umilinței, bătăilor, împușcăturilor și trierii. Pentru mulți, drumul spre Chestură a fost ultima deplasare prin oraș.</p></article>
+    <article class="info-card"><h3>Gara și vagonul</h3><p>După masacrul urban, supraviețuitorii au fost încărcați în vagoane închise. Fără apă, aer, hrană și îngrijire, vagonul s-a transformat în instrument de ucidere lentă.</p></article>
+  </div><div class="timeline">
+        <article class="event"><div class="date">24-26 iun. 1941</div><div><h3>Bombardamente și zvonuri</h3><p>Bombardamentele sovietice asupra Iașului sunt folosite pentru a alimenta acuzația că evreii ar fi ghidat aviația inamică. Zvonurile devin justificare pentru măsuri colective.</p></div></article>
+        <article class="event"><div class="date">27 iun. 1941</div><div><h3>Ordin politic și militar</h3><p>Antonescu cere măsuri dure la Iași. Comandantul garnizoanei, colonelul Constantin Lupu, serviciile, poliția și unitățile militare intră într-o logică de „curățare” a orașului.</p></div></article>
+        <article class="event"><div class="date">28 iun. 1941</div><div><h3>Primele arestări și violențe</h3><p>Evreii sunt ridicați de acasă, bătuți, insultați, jefuiți și împinși spre centre de control. Civili locali participă uneori la denunțuri sau jafuri.</p></div></article>
+        <article class="event"><div class="date">29 iun. 1941</div><div><h3>Masacrul de la Chestură</h3><p>În curtea Chesturii și în oraș sunt uciși mii de oameni. Trupurile rămân pe străzi sau sunt transportate în grabă. Fotografii ale victimelor devin ulterior probe istorice.</p></div></article>
+        <article class="event"><div class="date">30 iun. 1941</div><div><h3>Încărcarea în trenuri</h3><p>Supraviețuitorii sunt înghesuiți în vagoane de marfă. Destinațiile principale devin Podu Iloaiei și Călărași.</p></div></article>
+        <article class="event"><div class="date">iul. 1941</div><div><h3>Podu Iloaiei</h3><p>Trenul spre Podu Iloaiei parcurge o distanță scurtă, dar mortală. Setea, sufocarea și căldura ucid rapid. Oamenii sunt coborâți morți sau aproape morți.</p></div></article>
+        <article class="event"><div class="date">iul. 1941</div><div><h3>Călărași</h3><p>Trenul spre Călărași are un traseu lung, cu opriri, întoarceri și zile de agonie. Cadavrele sunt aruncate pe traseu, iar supraviețuitorii ajung traumatizați și epuizați.</p></div></article>
+        <article class="event"><div class="date">2 iul. 1941</div><div><h3>Viorica Agarici la Roman</h3><p>Președintă locală a Crucii Roșii, Viorica Agarici intervine pentru ca oamenii dintr-un tren al morții să primească apă și ajutor. Cazul arată că a ajuta era posibil, dar periculos și social condamnat în acel climat.</p></div></article>
+        <article class="event"><div class="date">după 1945</div><div><h3>Mărturii și supraviețuitori</h3><p>Supraviețuitori precum Iancu Țucărman și Leonard Zăicescu au transmis memoria trenurilor morții, explicând dimensiunea concretă a setei, sufocării, fricii și pierderii familiei.</p></div></article>
+      </div><details open><summary>Podu Iloaiei: de ce este un exemplu important?</summary><div class="details-body">
+<p>Podu Iloaiei arată că moartea nu depindea de distanță. Iași-Podu Iloaiei este o rută scurtă, dar vagoanele închise, supraaglomerarea, căldura, lipsa apei și refuzul ajutorului au făcut ca oamenii să moară în masă. Aici trebuie explicată ideea de crimă prin condiții: nu doar glonțul ucide, ci și decizia de a lăsa oameni fără aer și apă.</p><div class="key-line"><strong>Spațiu</strong><span>Vagon de marfă, închis, păzit, fără apă și fără îngrijire.</span></div><div class="key-line"><strong>Victime</strong><span>Bărbați evrei ridicați după pogrom; unii erau răniți, bătuți sau epuizați.</span></div><div class="key-line"><strong>Mecanism</strong><span>Înghesuire, temperatură ridicată, sufocare, sete, panică, imposibilitatea evacuării morților.</span></div><div class="key-line"><strong>Memorie</strong><span>Podu Iloaiei trebuie tratat ca loc al crimei, nu doar ca localitate de pe hartă.</span></div>
+  </div></details><details open><summary>Călărași: deportarea ca agonie prelungită</summary><div class="details-body">
+<p>Trenul spre Călărași a devenit simbol al uciderii lente prin transport. Oamenii au stat zile întregi în vagoane, iar opririle nu au însemnat salvare. Pentru elevi este importantă întrebarea: când un transport devine metodă de exterminare? Răspunsul este: atunci când organizatorii știu că oamenii mor și continuă să îi transporte în aceleași condiții.</p>
+  </div></details><details open><summary>Nume de reținut</summary><div class="details-body">
+<ul class="clean dense-list"><li><strong>Ion Antonescu</strong> – conducătorul statului și figura politică centrală a responsabilității.</li><li><strong>Colonelul Constantin Lupu</strong> – comandantul garnizoanei Iași, menționat în contextul pregătirii represiunii.</li><li><strong>Viorica Agarici</strong> – președintă locală a Crucii Roșii la Roman, cunoscută pentru intervenția de ajutorare a deportaților.</li><li><strong>Iancu Țucărman</strong> – supraviețuitor al trenului morții, devenit martor al pogromului.</li><li><strong>Leonard Zăicescu</strong> – supraviețuitor al pogromului și al trenurilor morții, important pentru memoria publică a evenimentului.</li></ul>
+  </div></details>
+</section><section class="section" id="basarabia">
+  <h2>VII. Basarabia, Bucovina și evreii din teritoriile recucerite</h2>
+  <p class="section-intro">După 22 iunie 1941, politica antisemită devine și mai violentă în Basarabia și Bucovina de Nord. Evreii sunt asociați colectiv cu ocupația sovietică, deși comunitățile evreiești erau diverse, iar acuzația de vină colectivă era propagandistică.</p>
+  <div class="two-col">
+    <article class="info-card"><h3>Chișinău / Kishinev</h3><p>După ocuparea orașului de către trupele române și germane, evreii supraviețuitori masacrelor inițiale sunt concentrați într-un ghetou. În octombrie 1941, cei rămași sunt deportați în Transnistria. Orașul devine exemplu de trecere de la execuție locală la ghetou și deportare.</p></article>
+    <article class="info-card"><h3>Cernăuți</h3><p>În Cernăuți, autoritățile române creează ghetou și pregătesc deportări. Primarul Traian Popovici a intervenit pentru salvarea unui număr de evrei considerați utili orașului, dar mulți alții au fost deportați. Cazul arată tensiunea dintre utilitate economică, compasiune, corupție și politică de epurare.</p></article>
+  </div><details open><summary>Deportarea ca politică regională</summary><div class="details-body">
+<p>În Basarabia și Bucovina, deportarea către Transnistria nu a fost un episod marginal. Ea a fost metoda prin care regimul a încercat să curețe teritoriile de populația evreiască, folosind coloane, convoaie, ghetouri de tranzit și administrație militară. Mulți au murit înainte de a ajunge la destinație.</p>
+  </div></details><details open><summary>Wilhelm Filderman și presiunea comunitară</summary><div class="details-body">
+<p>Wilhelm Filderman, lider al comunității evreiești din România, a încercat să intervină prin memorii, negocieri și presiuni pentru a limita deportările și abuzurile. Cazul lui arată că supraviețuirea unei părți a evreilor din România nu a venit din bunăvoința generală a regimului, ci dintr-o combinație de intervenții, corupție, calcule diplomatice, schimbarea situației militare și rezistență comunitară.</p>
+  </div></details>
+</section><section class="section" id="munca">
+  <h2>VIII. Munca obligatorie, spolierea și frica zilnică</h2>
+  <p class="section-intro">Pentru evreii care nu au fost deportați imediat, viața nu a fost normală. Munca obligatorie, confiscările, taxele, excluderile și teama permanentă de o nouă decizie administrativă au distrus viața cotidiană.</p>
+  <div class="term-grid">
+        <div class="term-card"><strong>Detașamente de muncă</strong><span>Bărbații evrei erau trimiși la lucrări de drumuri, deszăpezire, întreținere, muncă fizică grea sau sarcini umilitoare.</span></div>
+        <div class="term-card"><strong>Averi confiscate</strong><span>Proprietățile puteau fi trecute sub control românesc, vândute sau ocupate de persoane favorizate politic.</span></div>
+        <div class="term-card"><strong>Educație ruptă</strong><span>Elevii și studenții evrei erau excluși sau împinși în forme separate de învățământ, cu acces limitat.</span></div>
+        <div class="term-card"><strong>Control comunitar</strong><span>Centrala Evreilor și alte instituții impuse de regim au funcționat ca instrumente de control și transmitere a ordinelor.</span></div>
+        <div class="term-card"><strong>Frica de deportare</strong><span>Chiar atunci când deportarea nu avea loc, amenințarea ei disciplina comunitatea și producea panică.</span></div>
+        <div class="term-card"><strong>Jaf legal și jaf ilegal</strong><span>Unele bunuri erau luate prin acte oficiale, altele prin violență locală, șantaj sau denunț.</span></div>
+        <div class="term-card"><strong>Umilire publică</strong><span>Bătăi, insulte, interdicții, semne, cozi și marginalizare au făcut parte din pedagogia antisemită a statului.</span></div>
+        <div class="term-card"><strong>Supraviețuire negociată</strong><span>Unii au supraviețuit prin bani, relații, certificate de utilitate, intervenții externe sau noroc, nu prin siguranță juridică.</span></div>
+      </div>
+</section><section class="section" id="nuante">
+  <h2>IX. Nuanțe istorice: colaborare cu Hitler, inițiativă proprie și supraviețuiri parțiale</h2>
+  <p class="section-intro">Un material bun trebuie să evite două greșeli: să prezinte România doar ca simplu executant al Germaniei sau, invers, să transforme supraviețuirea unei părți a evreilor în argument de disculpare. Realitatea este mai complexă și mai dură.</p>
+  <div class="two-col">
+    <article class="info-card"><h3>România nu a fost doar executant</h3><p>Regimul Antonescu a inițiat și aplicat politici proprii de masacrare, deportare și jaf, mai ales în Basarabia, Bucovina și Transnistria. Germanii au influențat, încurajat și uneori cooperat, dar multe crime au fost decise și executate de autorități române.</p></article>
+    <article class="info-card"><h3>Supraviețuirea nu anulează crima</h3><p>Faptul că o parte importantă a evreilor din Vechiul Regat și sudul Transilvaniei a supraviețuit nu anulează responsabilitatea pentru Iași, Dorohoi, București, Basarabia, Bucovina, Odessa, Bogdanovca și deportările din Transnistria.</p></article>
+  </div><details open><summary>Cum formulezi la clasă?</summary><div class="details-body">
+<p>O formulare potrivită este: România antonesciană a colaborat cu Germania nazistă și a comis propriile crime antievreiești, cu intensitate diferită în funcție de regiune. Evreii din Iași, Basarabia, Bucovina și Transnistria au fost expuși unei violențe extreme; evreii din alte zone au suferit discriminare, muncă obligatorie, confiscări și amenințarea deportării, iar supraviețuirea lor a depins de conjuncturi politice și militare.</p>
+  </div></details>
+</section><section class="section" id="memorie">
+  <h2>X. Justiție, memorie și întrebări de lucru</h2>
+  <p class="section-intro">După război, unele figuri centrale au fost judecate, dar memoria Holocaustului din România a rămas mult timp fragmentată. În comunism, accentul a căzut adesea pe antifascism generic, nu pe responsabilitatea concretă a statului român.</p>
+  <details open><summary>Procese și limite</summary><div class="details-body">
+<p>Antonescu și câțiva colaboratori importanți au fost condamnați, dar multe niveluri ale complicității locale nu au fost pedepsite proporțional. În crimele de masă, responsabilitatea nu aparține doar liderilor: ea include paznici, funcționari, denunțători, jandarmi, polițiști, șefi de gară, prefecți și administratori ai bunurilor confiscate.</p>
+  </div></details><details open><summary>Întrebări de lucru</summary><div class="details-body">
+<ol class="number-list"><li>De ce expresia „chestiunea evreiască” trebuie explicată ca limbaj de propagandă?</li><li>Cum se trece de la discriminare legală la pogrom?</li><li>De ce trenurile morții sunt instrumente de ucidere, nu simple transporturi?</li><li>Care este diferența dintre responsabilitatea Germaniei naziste și responsabilitatea regimului Antonescu?</li><li>De ce nu trebuie confundată vina juridică a instituțiilor cu vina colectivă asupra tuturor românilor?</li></ol>
+  </div></details>
+</section>
+
+    
+<section class="section" id="dosare-locale">
+  <h2>XI. Dosare concrete de localități și episoade</h2>
+  <p class="section-intro">Pentru a evita o prezentare prea abstractă, materialul poate fi lucrat și pe dosare locale. Fiecare dosar arată altă formă a persecuției: pogrom urban, tren al morții, deportare, ghetou, confiscare, intervenție de salvare sau administrație locală complice.</p>
+  <table class="fact-table"><thead><tr><th>Loc / episod</th><th>Dată / perioadă</th><th>Persoane și instituții de reținut</th><th>Ce exemplifică</th></tr></thead><tbody>
+<tr><td>Galați</td><td>30 iunie 1940</td><td>Autorități militare și civile locale; refugiați și civili prinși în retragere</td><td>Violența produsă de panică, zvon, militarizare și suspiciune colectivă înainte de intrarea României în războiul din 1941.</td></tr>
+<tr><td>Dorohoi</td><td>1 iulie 1940</td><td>Militari români; evrei locali și evrei din armată</td><td>Pogrom militar local, important pentru că arată că violența antievreiască exista înainte de Operațiunea Barbarossa.</td></tr>
+<tr><td>București</td><td>21-23 ianuarie 1941</td><td>Horia Sima, Garda de Fier, legionari locali, civili evrei uciși sau jefuiți</td><td>Pogrom legionar în timpul luptei pentru putere cu Antonescu; jaf, tortură, profanare de sinagogi, crimă ritualizată propagandistic.</td></tr>
+<tr><td>Iași</td><td>28-30 iunie 1941</td><td>Ion Antonescu, colonelul Constantin Lupu, poliție, armată, jandarmerie, SSI, elemente germane</td><td>Trecerea de la propagandă antievreiască și acuzații de sabotaj la ucidere în masă și deportare.</td></tr>
+<tr><td>Chestura Poliției Iași</td><td>29 iunie 1941</td><td>Polițiști, militari, jandarmi, evrei aduși în curtea Chesturii</td><td>Spațiu urban al crimei: arestare, umilire, împușcare, triere și pregătirea deportării.</td></tr>
+<tr><td>Podu Iloaiei</td><td>iulie 1941</td><td>Victime evreiești din trenul morții; personal feroviar și pază românească</td><td>Moartea prin transport scurt: sufocare, sete, căldură, imposibilitatea de a deschide vagoanele.</td></tr>
+<tr><td>Călărași</td><td>iulie 1941</td><td>Deportați evrei din Iași, jandarmi, CFR, autorități locale</td><td>Moartea prin transport lung: zile de agonie, cadavre aruncate pe traseu, supraviețuitori distruși fizic.</td></tr>
+<tr><td>Roman</td><td>2 iulie 1941</td><td>Viorica Agarici, Crucea Roșie locală, deportați din tren</td><td>Exemplu de intervenție umanitară într-un sistem criminal; arată că ajutorul era posibil, dar cerea curaj și autoritate.</td></tr>
+<tr><td>Chișinău / Kishinev</td><td>iulie-octombrie 1941</td><td>Armată română, unități germane, jandarmerie, administrație locală</td><td>Execuții, ghetou, muncă forțată și deportare în Transnistria.</td></tr>
+<tr><td>Cernăuți</td><td>1941</td><td>Traian Popovici, administrația românească, evrei deportați sau salvați temporar</td><td>Ghetou, liste de utilitate, intervenții de salvare parțială și deportări.</td></tr>
+<tr><td>Dorohoi și județul Dorohoi</td><td>1941</td><td>Comunități evreiești locale, refugiați, autorități române</td><td>Zonă de trecere între persecuția din România veche și deportările spre Transnistria.</td></tr>
+<tr><td>Bacău, Iași, Cernăuți, Botoșani</td><td>1941</td><td>Autorități locale și populație evreiască obligată la semne sau restricții</td><td>Exemple de aplicare locală a umilirii publice și a diferențierii vizibile.</td></tr>
+</tbody></table>
+  <details open><summary>Cum se folosește acest tabel la clasă?</summary><div class="details-body">
+<p>Elevii pot primi câte un dosar și pot răspunde la aceleași întrebări: cine decide, cine execută, cine sunt victimele, ce instituții apar, ce spațiu devine instrument al crimei, ce justificare propagandistică este folosită și ce urme rămân în memorie.</p>
+</div></details>
+</section>
+
+<section class="section" id="persoane">
+  <h2>XII. Persoane: responsabili, martori, salvatori și autori ai memoriei</h2>
+  <p class="section-intro">Numele proprii ajută materialul să nu rămână abstract. Ele trebuie însă folosite corect: unii sunt decidenți, alții executanți, alții martori, salvatori, victime sau istorici ai fenomenului.</p>
+  <table class="fact-table"><thead><tr><th>Nume</th><th>Categorie</th><th>De ce este important</th></tr></thead><tbody>
+<tr><td>Ion Antonescu</td><td>decident politic</td><td>Conducătorul statului; a orientat România spre alianța cu Germania nazistă, războiul antisovietic și politicile antisemite radicale.</td></tr>
+<tr><td>Mihai Antonescu</td><td>decident politic și diplomatic</td><td>A susținut politica regimului și a participat la formularea discursului de stat în timpul războiului.</td></tr>
+<tr><td>Horia Sima</td><td>lider legionar</td><td>Numele său este legat de Garda de Fier, Statul Național-Legionar și rebeliunea legionară în timpul căreia a avut loc pogromul de la București.</td></tr>
+<tr><td>Radu Lecca</td><td>administrator al politicii antievreiești</td><td>Comisar general pentru probleme evreiești; asociat cu controlul comunității, taxele, constrângerile și relația cu structurile impuse evreilor.</td></tr>
+<tr><td>Constantin Z. Vasiliu</td><td>șef al Jandarmeriei</td><td>Jandarmeria a avut rol central în deportări, pază, convoaie și aplicarea represiunii.</td></tr>
+<tr><td>Gheorghe Alexianu</td><td>administrator al Transnistriei</td><td>Guvernatorul Transnistriei; important pentru legătura dintre politica antievreiască și spațiul deportării.</td></tr>
+<tr><td>Colonelul Constantin Lupu</td><td>autoritate militară locală</td><td>Comandant al garnizoanei Iași; apare în contextul ordinelor și pregătirii pogromului de la Iași.</td></tr>
+<tr><td>Viorica Agarici</td><td>salvatoare / intervenție umanitară</td><td>A intervenit la Roman pentru deportați aflați într-un tren al morții, oferind un exemplu de curaj civil.</td></tr>
+<tr><td>Traian Popovici</td><td>primar al Cernăuțiului</td><td>A obținut scutiri și a contribuit la salvarea unor evrei din Cernăuți de la deportare, deși mulți alții au fost deportați.</td></tr>
+<tr><td>Wilhelm Filderman</td><td>lider comunitar evreu</td><td>A adresat memorii și intervenții autorităților, încercând să limiteze deportările și persecuțiile.</td></tr>
+<tr><td>Iancu Țucărman</td><td>supraviețuitor și martor</td><td>A supraviețuit trenurilor morții și a transmis memoria pogromului de la Iași.</td></tr>
+<tr><td>Leonard Zăicescu</td><td>supraviețuitor și martor</td><td>A fost unul dintre martorii importanți ai trenurilor morții și ai violenței de la Iași.</td></tr>
+<tr><td>Matatias Carp</td><td>documentarist al persecuției</td><td>Autor al unei lucrări fundamentale despre suferințele evreilor din România în timpul războiului.</td></tr>
+<tr><td>Elie Wiesel</td><td>martor, simbol memorial, președinte al comisiei</td><td>Născut la Sighet, supraviețuitor al Holocaustului; numele său este legat de Comisia internațională care a fixat responsabilitatea statului român.</td></tr>
+</tbody></table>
+</section>
+
+<section class="section" id="drumul-victimei">
+  <h2>XIII. Drumul unei victime: de la vecin la deportat</h2>
+  <p class="section-intro">Această schemă arată cum un om obișnuit putea fi transformat de stat în țintă. Nu este povestea unei singure persoane, ci un model istoric construit din experiențe repetate.</p>
+  <div class="key-line"><strong>1. Identificarea</strong><span>Numele apare într-un registru: religie, origine, profesie, adresă, familie, avere.</span></div><div class="key-line"><strong>2. Etichetarea</strong><span>Persoana este prezentată ca evreu, suspect, bolșevic, străin, parazit sau inamic intern.</span></div><div class="key-line"><strong>3. Excluderea</strong><span>Își pierde drepturi, loc de muncă, acces la școală, protecție juridică sau libertate de circulație.</span></div><div class="key-line"><strong>4. Deposedarea</strong><span>Bunurile sunt confiscate, magazinul este românizat, casa este ocupată, banii sunt luați.</span></div><div class="key-line"><strong>5. Arestarea</strong><span>Poliția, jandarmeria sau armata îl ridică de acasă ori de pe stradă.</span></div><div class="key-line"><strong>6. Concentrarea</strong><span>Este dus la Chestură, ghetou, gară, curte militară sau punct de adunare.</span></div><div class="key-line"><strong>7. Transportul</strong><span>Vagonul, coloana sau căruța devin instrumente de umilire și moarte.</span></div><div class="key-line"><strong>8. Moartea sau supraviețuirea</strong><span>Destinul depinde de violența paznicilor, apă, hrană, vreme, boală, bani, noroc și intervenții exterioare.</span></div><div class="key-line"><strong>9. Memoria</strong><span>Dacă supraviețuiește, martorul trebuie să lupte cu uitarea, negarea, rușinea publică și trauma.</span></div>
+</section>
+
+
+    <section class="section" id="surse">
+      <h2>Surse orientative pentru documentare</h2>
+      <p class="section-intro">Lista este orientativă și poate fi folosită pentru aprofundare. Într-un material public, cifrele, numele și încadrările juridice trebuie verificate în raport cu rapoarte oficiale, arhive, studii academice și muzee specializate. Unele episoade, mai ales cele din Transilvania anului 1944, au și o memorie locală conflictuală; de aceea este importantă separarea faptelor documentate de propagandă, legendă politică sau justificare ulterioară.</p>
+      <ul class="source-list">
+        <li>Raportul Final al Comisiei Internaționale pentru Studierea Holocaustului în România, coordonată de Elie Wiesel.</li>
+        <li>United States Holocaust Memorial Museum, articolele despre România, Iași, Odessa și Transnistria.</li>
+        <li>Radu Ioanid, <em>Holocaustul în România</em> / <em>The Holocaust in Romania</em>.</li>
+        <li>Jean Ancel, <em>History of the Holocaust: Romania</em>.</li>
+        <li>Dennis Deletant, lucrări despre Ion Antonescu și regimul antonescian.</li>
+        <li>Institutul Național pentru Studierea Holocaustului din România „Elie Wiesel” – materiale educaționale și arhivistice.</li>
+        <li>Yad Vashem – dosare, mărturii și materiale despre pogromul de la Iași și Holocaustul în România.</li>
+      </ul>
+    </section>
+
+    <section class="final-box">
+      <h2>Idee de final pentru elevi</h2>
+      <p>Crimele de stat și violențele de război trebuie analizate prin întrebări despre ordine, instituții, responsabilitate, victime, complicitate, propagandă și memorie. Nu este suficient să întrebăm „cine a tras?”, ci și cine a dat ordinul, cine a făcut listele, cine a asigurat transportul, cine a păzit, cine a confiscat, cine a tăcut și cine a încercat să salveze.</p>
+    </section>
+  </main>
+</body>
+</html>

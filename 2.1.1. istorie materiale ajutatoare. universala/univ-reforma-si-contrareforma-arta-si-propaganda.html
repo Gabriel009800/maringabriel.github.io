@@ -1,0 +1,379 @@
+<!DOCTYPE html><html lang="ro"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>reforma-si-contrareforma-arta-si-propaganda</title><style>
+:root {
+  --bg: #f6f0e7; --paper: #fffaf3; --paper-2: #ffffff; --ink: #2f241c;
+  --title: #3c2a1e; --muted: #5b4a3d; --accent: #7a4f2a; --accent-2: #9b6a3c;
+  --accent-soft: #f0e4d4; --line: rgba(91,62,36,.18); --line-strong: rgba(91,62,36,.34);
+  --shadow: 0 26px 70px rgba(0,0,0,.28); --shadow-small: 0 12px 30px rgba(0,0,0,.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin:0; min-height:100vh; color:var(--ink); font-family:Georgia,"Times New Roman",serif;
+  background: radial-gradient(circle at 50% 0%,rgba(132,78,40,.72),transparent 34%),
+  radial-gradient(circle at 50% 100%,rgba(112,63,31,.44),transparent 36%),
+  radial-gradient(circle at 0 50%,rgba(29,13,6,.92),transparent 42%),
+  radial-gradient(circle at 100% 50%,rgba(29,13,6,.92),transparent 42%),
+  linear-gradient(180deg,#32190c 0%,#4a2a18 46%,#1e0e05 100%); background-attachment:fixed; }
+body::before { content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:radial-gradient(circle at center,transparent 0%,rgba(0,0,0,.10) 48%,rgba(0,0,0,.44) 100%),
+  linear-gradient(90deg,rgba(0,0,0,.20),transparent 18%,transparent 82%,rgba(0,0,0,.20)); }
+#reading-progress { position:fixed; left:0; top:0; height:4px; width:0; z-index:20; background:#d9b480; box-shadow:0 1px 5px rgba(0,0,0,.35); }
+.page { position:relative; z-index:1; width:min(1180px,calc(100% - 32px)); margin:0 auto; padding:34px 0 70px; }
+.topbar { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:18px; flex-wrap:wrap; }
+.top-actions { display:flex; align-items:center; gap:9px; flex-wrap:wrap; }
+.back-link,.tag,.tool-btn { display:inline-flex; align-items:center; border:1px solid var(--line); background:rgba(255,250,243,.88); color:var(--title); border-radius:999px; padding:10px 15px; text-decoration:none; font-size:14px; font-weight:700; box-shadow:var(--shadow-small); font-family:inherit; cursor:pointer; }
+.back-link:hover,.tool-btn:hover { background:#fff6eb; }
+.hero,.section,.nav-card,.final-box { background:rgba(255,250,243,.96); border:1px solid var(--line); border-radius:28px; box-shadow:var(--shadow); }
+.hero { padding:38px; margin-bottom:24px; position:relative; overflow:hidden; }
+.hero::after { content:var(--hero-year); position:absolute; right:26px; bottom:-22px; font-size:108px; font-weight:900; letter-spacing:-4px; color:rgba(122,79,42,.075); pointer-events:none; }
+.eyebrow,.section-kicker { margin:0 0 8px; font-size:15px; color:var(--accent); font-weight:800; letter-spacing:.08em; text-transform:uppercase; text-align:left; }
+h1 { margin:0; max-width:980px; font-size:clamp(38px,5vw,62px); line-height:1.04; color:var(--title); letter-spacing:-1.4px; text-align:left; }
+h2 { margin:0 0 14px; color:var(--title); font-size:clamp(28px,3vw,38px); line-height:1.15; text-align:left; }
+h3 { margin:0 0 12px; color:var(--title); font-size:22px; line-height:1.22; text-align:left; }
+h4 { margin:16px 0 8px; color:var(--title); font-size:18px; text-align:left; }
+.subtitle,.section-intro,p,li,dd,td { color:var(--muted); text-align:justify; text-align-last:left; hyphens:auto; }
+.subtitle { margin:18px 0 0; max-width:1000px; font-size:19px; line-height:1.78; }
+.section-intro,p,li,dd { font-size:17px; line-height:1.72; }
+.section-intro { margin:0 0 20px; max-width:1040px; }
+.summary-grid,.three-col,.two-col,.four-col,.term-grid,.quick-grid,.details-grid { display:grid; gap:14px; }
+.summary-grid { grid-template-columns:repeat(4,1fr); margin-top:26px; }
+.three-col { grid-template-columns:repeat(3,1fr); }
+.two-col { grid-template-columns:repeat(2,1fr); }
+.four-col,.term-grid,.quick-grid { grid-template-columns:repeat(4,1fr); }
+.details-grid { grid-template-columns:repeat(2,1fr); gap:12px; }
+.summary-card,.info-card,.wide-card,.term-card,.quick-card,.micro-card,.warning-box,.source-note,.fact-card { background:var(--paper-2); border:1px solid rgba(91,62,36,.14); border-radius:20px; box-shadow:var(--shadow-small); text-align:justify; text-align-last:left; }
+.summary-card { padding:16px; min-height:132px; }
+.info-card,.wide-card,.term-card,.quick-card,.micro-card,.warning-box,.source-note,.fact-card { padding:20px; }
+.wide-card { margin-top:14px; }
+.summary-card strong,.term-card strong,.quick-card strong,.micro-card strong,.fact-card strong { display:block; color:var(--title); font-size:17px; margin-bottom:8px; text-align:left; }
+.summary-card span,.term-card span,.quick-card span,.micro-card span,.fact-card span { display:block; color:var(--muted); font-size:15.5px; line-height:1.58; }
+.nav-card { display:flex; gap:9px; align-items:center; flex-wrap:wrap; padding:18px 20px; margin-bottom:24px; }
+.nav-card b { color:var(--title); }
+.nav-card a,.mini-btn { color:var(--title); background:var(--accent-soft); border:1px solid rgba(91,62,36,.16); border-radius:999px; text-decoration:none; padding:8px 12px; font-weight:700; font-size:14px; cursor:pointer; font-family:inherit; }
+.nav-card a:hover,.mini-btn:hover { background:#e5d2bb; }
+.section { padding:30px; margin-bottom:24px; }
+.clean,.number-list { margin:0; padding-left:22px; }
+.clean li,.number-list li { margin:0 0 9px; padding-left:2px; }
+.date-pill { display:inline-block; color:var(--title); font-weight:800; background:#f3eadf; border:1px solid rgba(91,62,36,.13); border-radius:999px; padding:2px 9px; margin-right:5px; white-space:nowrap; }
+.definition,.note,.correction { margin-top:18px; background:#fff8ef; border:1px solid rgba(122,79,42,.22); border-left:6px solid rgba(122,79,42,.48); border-radius:18px; padding:18px 20px; color:var(--muted); font-size:17px; line-height:1.7; text-align:justify; }
+.correction { background:#fff4e8; border-left-color:#a65f32; }
+.definition strong,.note strong,.correction strong { color:var(--title); }
+details { background:#fffdf9; border:1px solid rgba(91,62,36,.14); border-radius:20px; box-shadow:var(--shadow-small); margin-top:14px; overflow:hidden; }
+details[open] { background:#fffaf3; }
+summary { cursor:pointer; list-style:none; padding:18px 20px; font-size:19px; font-weight:800; color:var(--title); display:flex; justify-content:space-between; align-items:center; gap:18px; text-align:left; }
+summary::-webkit-details-marker { display:none; }
+summary::after { content:"Deschide"; color:var(--muted); font-size:14px; background:#f3eadf; border:1px solid rgba(91,62,36,.14); border-radius:999px; padding:7px 11px; white-space:nowrap; }
+details[open]>summary::after { content:"Ascunde"; }
+.details-body { border-top:1px solid rgba(91,62,36,.12); padding:18px 20px 20px; }
+.key-line { display:grid; grid-template-columns:220px 1fr; gap:14px; padding:14px 0; border-bottom:1px dashed rgba(91,62,36,.18); }
+.key-line:last-child { border-bottom:0; }
+.key-line strong { color:var(--title); text-align:left; }
+.key-line span { color:var(--muted); line-height:1.65; text-align:justify; }
+.timeline { display:grid; gap:14px; margin-top:18px; }
+.event { display:grid; grid-template-columns:138px 1fr; gap:18px; align-items:stretch; background:#fff; border:1px solid rgba(91,62,36,.14); border-radius:20px; box-shadow:var(--shadow-small); overflow:hidden; }
+.date { background:linear-gradient(180deg,#7a4f2a,#5b351b); color:#fffaf3; display:flex; align-items:center; justify-content:center; text-align:center; padding:14px; font-size:18px; line-height:1.25; font-weight:900; }
+.event>div:last-child { padding:17px 18px 18px 0; }
+.event h3 { margin-bottom:6px; }
+.event p { margin:0; }
+.table-wrap { overflow-x:auto; margin-top:14px; border-radius:18px; border:1px solid rgba(91,62,36,.14); background:#fff; box-shadow:var(--shadow-small); }
+table { width:100%; border-collapse:collapse; min-width:760px; }
+th,td { padding:13px 14px; border-bottom:1px solid rgba(91,62,36,.12); font-size:16px; line-height:1.55; vertical-align:top; }
+th { background:#f3eadf; color:var(--title); text-align:left; font-weight:800; }
+tr:last-child td { border-bottom:0; }
+.date-list { display:grid; gap:10px; }
+.date-row { display:grid; grid-template-columns:150px 1fr; gap:16px; padding:14px 16px; background:#fff; border:1px solid rgba(91,62,36,.13); border-radius:16px; box-shadow:var(--shadow-small); }
+.date-row strong { color:var(--title); text-align:left; }
+.date-row span { color:var(--muted); line-height:1.6; text-align:justify; }
+.final-box { padding:28px; background:linear-gradient(135deg,#fffaf3,#f4e4d1); }
+.final-box p:last-child { margin-bottom:0; }
+.small-muted { font-size:15px; color:#725c49; line-height:1.6; }
+.crosslinks { display:flex; gap:10px; flex-wrap:wrap; margin-top:16px; }
+.crosslinks a { text-decoration:none; color:var(--title); font-weight:800; background:#fff; border:1px solid var(--line); padding:10px 13px; border-radius:14px; }
+@media(max-width:980px){.summary-grid,.three-col,.four-col,.term-grid,.quick-grid{grid-template-columns:repeat(2,1fr)}.two-col,.details-grid{grid-template-columns:1fr}}
+@media(max-width:680px){.page{width:min(100% - 22px,1180px);padding-top:22px}.hero,.section,.final-box{padding:22px;border-radius:22px}.summary-grid,.three-col,.four-col,.term-grid,.quick-grid{grid-template-columns:1fr}.event{grid-template-columns:1fr}.date{min-height:66px}.event>div:last-child{padding:0 16px 16px}.key-line,.date-row{grid-template-columns:1fr;gap:6px}summary{align-items:flex-start;flex-direction:column}.hero::after{font-size:78px}}
+@media print { body{background:white!important}.page{width:100%;padding:0}.topbar,.nav-card,#reading-progress{display:none!important}.hero,.section,.final-box{box-shadow:none;border:1px solid #aaa;break-inside:avoid}.section{break-before:auto}details{break-inside:avoid}details:not([open])>.details-body{display:block}.hero::after{display:none} }
+
+.chapter-note{margin:16px 0;padding:16px 18px;border-radius:16px;background:#f7efe4;border:1px solid rgba(91,62,36,.16);font-size:16px;line-height:1.65;color:var(--muted)}
+.hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.hero-meta span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 11px;color:var(--muted);font-size:14px;font-weight:700}
+</style></head>
+<body style="--hero-year:'1656';"><div id="reading-progress"></div><main class="page">
+<div class="topbar"><a class="back-link" href="evaluare_cu_material_reforma_si_contrareforma.html">← Înapoi la materiale</a><div class="top-actions"><span class="tag">Material ajutător · Epoca modernă timpurie</span><button class="tool-btn" onclick="toggleAll(true)">Deschide tot</button><button class="tool-btn" onclick="toggleAll(false)">Închide tot</button><button class="tool-btn" onclick="window.print()">Tipărește</button></div></div>
+<section class="hero"><p class="eyebrow">Barocul · aproximativ 1580–1750</p><h1>Reforma și Contrareforma: arta și propaganda</h1><p class="subtitle">Barocul este prezentat ca limbaj al Contrareformei, dar și ca stil al monarhiilor, orașelor și culturilor protestante. Monumentele, operele și datele sunt grupate pe arhitectură, pictură, sculptură, muzică, patronaj și regiuni.</p><div class="hero-meta"><span>Material extins</span><span>Cronologie comentată</span><span>Exemple și clarificări</span><span>Versiune pentru studiu</span></div><div class="summary-grid"><div class="summary-card"><strong>Trento</strong><span>Imaginile sacre trebuie să fie clare, demne și capabile să instruiască și să emoționeze.</span></div><div class="summary-card"><strong>Roma</strong><span>Bernini, Borromini și Maderno transformă bazilica, piața și orașul în scenă ceremonială.</span></div><div class="summary-card"><strong>Pictură</strong><span>Caravaggio, Rubens, Velázquez și Artemisia folosesc lumina și corpul pentru narațiuni intense.</span></div><div class="summary-card"><strong>Răspândire</strong><span>Barocul devine catolic, regal, civic, colonial și protestant, în forme regionale distincte.</span></div></div></section>
+<nav class="nav-card" aria-label="Cuprins"><b>Cuprins:</b><a href="#definitie">Definiție</a><a href="#context">Context</a><a href="#trento">Trento și imagini</a><a href="#arhitectura">Arhitectură</a><a href="#pictura">Pictură</a><a href="#sculptura">Sculptură</a><a href="#muzica">Muzică</a><a href="#propaganda">Propagandă</a><a href="#regiuni">Regiuni</a><a href="#transilvania">Transilvania</a><a href="#comparatie">Comparație</a><a href="#cronologie">Cronologie</a><a href="#gramatica-barocului">Gramatica stilului</a><a href="#roma-studii">Roma</a><a href="#pictura-studii">Opere pictate</a><a href="#bernini-studii">Bernini</a><a href="#propaganda-mecanisme">Mecanisme</a><a href="#muzica-extinsa">Muzică extinsă</a><a href="#regiuni-extinse">Baroc global</a><a href="#transilvania-baroc-extins">Spațiul românesc</a><a href="#analiza-operei">Analiza operei</a><a href="#curte-festival-tipar">Curte și festival</a><a href="#femei-materiale">Femei și materiale</a></nav>
+<section class="section" id="definitie"><p class="section-kicker">Un limbaj al emoției și puterii</p><h2>I. Ce este barocul?</h2><p class="section-intro">Barocul este stilul dominant al unei mari părți din cultura europeană aproximativ între sfârșitul secolului al XVI-lea și mijlocul secolului al XVIII-lea. El preferă mișcarea, contrastul, lumina dramatică, spațiul teatral și integrarea arhitecturii cu sculptura, pictura și muzica. Contrareforma l-a folosit intens, dar barocul nu a fost exclusiv catolic: a servit și monarhiilor absolute, republicilor comerciale și culturilor protestante.</p>
+<div class="four-col"><div class="micro-card"><strong>Emoție</strong><span>Gestul, lumina și expresia urmăresc o reacție imediată a privitorului.</span></div><div class="micro-card"><strong>Mișcare</strong><span>Diagonalele, curbele și corpurile răsucite înlocuiesc calmul static.</span></div><div class="micro-card"><strong>Teatru</strong><span>Altarul, piața, ceremonia și decorul funcționează ca o scenă.</span></div><div class="micro-card"><strong>Putere</strong><span>Papii, regii și ordinele religioase folosesc arta pentru prestigiu și persuasiune.</span></div></div></section>
+
+<section class="section" id="context"><p class="section-kicker">De la Renaștere la baroc</p><h2>II. Contextul apariției</h2><div class="timeline"><article class="event"><div class="date">1527</div><div><h3>Jefuirea Romei</h3><p>Criza politică și culturală a Renașterii înalte favorizează manierismul, cu forme tensionate, spații instabile și eleganță artificială.</p></div></article><article class="event"><div class="date">1545–1563</div><div><h3>Conciliul de la Trento</h3><p>Reafirmă rolul imaginilor sacre și cere evitarea indecenței, superstiției și confuziei doctrinare.</p></div></article><article class="event"><div class="date">1568–1584</div><div><h3>Il Gesù</h3><p>Biserica-mamă a iezuiților, proiectată de Vignola și încheiată cu fațada lui Giacomo della Porta, oferă un model de navă unică, predică audibilă și capele laterale.</p></div></article><article class="event"><div class="date">c. 1590–1610</div><div><h3>Nașterea picturii baroce</h3><p>Caravaggio și Annibale Carracci propun două soluții: realismul luminat dramatic și monumentalitatea clasică.</p></div></article><article class="event"><div class="date">1620–1670</div><div><h3>Barocul matur</h3><p>Bernini, Borromini, Rubens și Velázquez transformă Roma, Flandra și Spania în centre ale unei arte spectaculoase.</p></div></article><article class="event"><div class="date">c. 1680–1750</div><div><h3>Baroc târziu și rococo</h3><p>Stilul se răspândește în Europa Centrală, Rusia și Americi, devenind mai luminos, ornamental și festiv.</p></div></article></div>
+<div class="correction"><strong>Despre „stilul iezuit”:</strong> materialele atașate descriu o primă etapă modestă, severă și ascetică și o a doua etapă spectaculoasă. Această schemă este utilă didactic, dar nu este o periodizare universală. Il Gesù are un exterior controlat și un plan funcțional; decorul său interior exuberant este în mare parte ulterior, mai ales după 1670.</div></section>
+
+<section class="section" id="trento"><p class="section-kicker">Imaginea ca pedagogie</p><h2>III. Arta după Trento: claritate, decență și devoțiune</h2><p class="section-intro">Sesiunea a XXV-a a Conciliului, la 3–4 decembrie 1563, nu a „inventat” barocul și nu a impus un stil unic. A oferit însă principii care au influențat patronajul catolic: imaginile trebuiau să instruiască, să amintească modelele sfinte, să miște afectele și să evite ambiguitatea.</p>
+<div class="three-col"><article class="info-card"><h3>Claritate narativă</h3><p>Personajele și acțiunea trebuie să fie ușor de recunoscut. În <em>Chemarea Sfântului Matei</em> (1599–1600), Caravaggio concentrează scena asupra gestului lui Hristos și a fasciculului de lumină.</p></article><article class="info-card"><h3>Prezență corporală</h3><p>Durerea, extazul și sacrificiul sunt redate cu realism. Privitorul trebuie să simtă că participă la eveniment, nu că privește o alegorie îndepărtată.</p></article><article class="info-card"><h3>Decorum</h3><p>Nuditatea gratuită, anecdota confuză și interpretările teologic riscante sunt criticate. Artiștii, episcopii și patronii negociază permanent limitele reprezentării.</p></article></div>
+<details open><summary>Propagandă sau comunicare religioasă?</summary><div class="details-body"><p>Termenul „propagandă” este util dacă desemnează o comunicare organizată care urmărește să convingă. Totuși, operele baroce nu sunt simple afișe. Ele funcționează simultan ca obiecte de cult, experiențe estetice, afirmații de putere, donații comemorative și demonstrații tehnice. Sensul depinde de patron, loc și public.</p><p>În <strong>1622</strong> este creată Congregația <em>de Propaganda Fide</em>, instituție destinată coordonării misiunilor. Cuvântul „propaganda” provine din ideea de „răspândire” a credinței și va dobândi conotația modernă mult mai târziu.</p></div></details></section>
+
+<section class="section" id="arhitectura"><p class="section-kicker">Orașul transformat în scenă</p><h2>IV. Arhitectura barocă</h2><div class="table-wrap"><table><thead><tr><th>Monument</th><th>Date</th><th>Autor(i)</th><th>De ce este important</th></tr></thead><tbody>
+<tr><td>Il Gesù, Roma</td><td>1568–1584</td><td>Vignola; fațada de Giacomo della Porta</td><td>Navă unică pentru predică, transept scurt, cupolă centrală și capele laterale; model pentru bisericile iezuite.</td></tr>
+<tr><td>Fațada Bazilicii Sf. Petru</td><td>1607–1614</td><td>Carlo Maderno</td><td>Transformă planul central renascentist într-o bazilică longitudinală și creează o fațadă monumentală.</td></tr>
+<tr><td>Baldachinul Sf. Petru</td><td>1624–1633</td><td>Gian Lorenzo Bernini</td><td>Unește altarul, mormântul apostolului și cupola prin coloane răsucite de bronz și o scară colosală.</td></tr>
+<tr><td>San Carlo alle Quattro Fontane</td><td>1638–1641; fațada după 1665</td><td>Francesco Borromini</td><td>Plan oval, pereți ondulați și geometrie complexă într-un spațiu foarte mic.</td></tr>
+<tr><td>Sant'Ivo alla Sapienza</td><td>1642–1660</td><td>Borromini</td><td>Stea, triunghi și curbe concave/convexe creează un spațiu intelectual și dinamic.</td></tr>
+<tr><td>Piața Sf. Petru</td><td>1656–1667</td><td>Bernini</td><td>Colonada eliptică este comparată cu brațele Bisericii care primesc mulțimea; gestionează procesiunea și vederea fațadei.</td></tr>
+<tr><td>Versailles</td><td>1661–1715</td><td>Le Vau, Hardouin-Mansart, Le Nôtre, Le Brun</td><td>Barocul devine limbaj al monarhiei absolute, al ceremoniei și centralizării curții.</td></tr>
+<tr><td>San Lorenzo, Torino</td><td>1668–1687</td><td>Guarino Guarini</td><td>Cupolă cu nervuri intersectate și lumină filtrată; geometria devine spectacol.</td></tr>
+</tbody></table></div>
+<div class="correction"><strong>Clarificare:</strong> Donato Bramante, menționat uneori printre artiștii baroci, aparține Renașterii înalte. El a început proiectul noii Bazilici Sf. Petru în 1506; barocul a reinterpretat și finalizat ulterior complexul prin Maderno și Bernini.</div></section>
+
+<section class="section" id="pictura"><p class="section-kicker">Lumină, corp și narațiune</p><h2>V. Pictura barocă: mai multe soluții, nu un singur stil</h2><div class="three-col"><article class="info-card"><h3>Caravaggio</h3><p><strong>1599–1600:</strong> ciclul Sfântului Matei din San Luigi dei Francesi. <strong>1601:</strong> <em>Convertirea lui Saul</em> și <em>Răstignirea Sfântului Petru</em>. Tenebrismul, modelele populare și lumina direcțională dau scenelor sacre o actualitate tulburătoare.</p></article><article class="info-card"><h3>Annibale Carracci</h3><p>Între <strong>1597 și 1608</strong>, decorează Galeria Farnese. Combină studiul naturii, desenul clasic și iluzionismul. Tradiția academistă și cea caravaggistă se dezvoltă în paralel.</p></article><article class="info-card"><h3>Artemisia Gentileschi</h3><p><em>Iudita ucigându-l pe Holofern</em>, în versiuni din jurul anilor <strong>1612–1613</strong> și <strong>c. 1620</strong>, folosește realismul caravaggist pentru o scenă de forță fizică și tensiune psihologică.</p></article></div>
+<div class="table-wrap"><table><thead><tr><th>Artist</th><th>Operă / dată</th><th>Funcție și limbaj</th></tr></thead><tbody>
+<tr><td>Peter Paul Rubens</td><td><em>Înălțarea Crucii</em>, 1610–1611; ciclul Maria de Medici, 1622–1625</td><td>Corpurile în spirală și culoarea intensă servesc atât devoțiunii catolice, cât și glorificării dinastice.</td></tr>
+<tr><td>Jusepe de Ribera</td><td><em>Martiriul Sf. Filip</em>, 1639</td><td>Naturalism dur, sfinți bătrâni și săraci, corpul ca probă a credinței.</td></tr>
+<tr><td>Francisco de Zurbarán</td><td>cicluri monastice, anii 1620–1640</td><td>Simplitate monumentală și tăcere contemplativă, potrivite spiritualității ordinelor.</td></tr>
+<tr><td>Diego Velázquez</td><td><em>Predarea Bredei</em>, 1634–1635; <em>Las Meninas</em>, 1656</td><td>Propagandă regală nuanțată de observație psihologică și reflecție asupra reprezentării.</td></tr>
+<tr><td>Nicolas Poussin</td><td><em>Et in Arcadia ego</em>, c. 1637–1638</td><td>Baroc clasic, ordonat și intelectual, diferit de exuberanța lui Rubens.</td></tr>
+<tr><td>Rembrandt</td><td><em>Rondul de noapte</em>, 1642</td><td>În lumea protestantă olandeză, drama luminii este folosită pentru portret civic și narațiune biblică.</td></tr>
+</tbody></table></div>
+<div class="note"><strong>El Greco:</strong> activ mai ales la Toledo între 1577 și 1614, este de obicei clasificat ca manierist, dar alungirea formelor, lumina spirituală și intensitatea sa au pregătit sensibilitatea barocă. De aceea poate fi discutat ca precursor, nu ca reprezentant tipic al barocului matur.</div></section>
+
+<section class="section" id="sculptura"><p class="section-kicker">Materia pusă în mișcare</p><h2>VI. Sculptura și „opera totală” a lui Bernini</h2><div class="timeline"><article class="event"><div class="date">1622–1625</div><div><h3><em>Apollo și Daphne</em></h3><p>Metamorfoza are loc în fața privitorului: degetele devin frunze, pielea devine scoarță, iar marmura pare lipsită de greutate.</p></div></article><article class="event"><div class="date">1623–1624</div><div><h3><em>David</em></h3><p>Spre deosebire de calmul renascentist al lui Michelangelo, David este surprins în momentul răsucirii și aruncării.</p></div></article><article class="event"><div class="date">1647–1652</div><div><h3><em>Extazul Sfintei Tereza</em></h3><p>În Capela Cornaro, sculptura, arhitectura, lumina ascunsă și „lojele” cu membri ai familiei formează un teatru al experienței mistice.</p></div></article><article class="event"><div class="date">1671–1678</div><div><h3>Mormântul papei Alexandru al VII-lea</h3><p>Scheletul morții ridică o draperie de marmură, transformând monumentul funerar într-o meditație teatrală asupra timpului.</p></div></article></div></section>
+
+<section class="section" id="muzica"><p class="section-kicker">Sunet, spectacol și ceremonie</p><h2>VII. Muzica și teatrul baroc</h2><div class="three-col"><article class="info-card"><h3>Nașterea operei</h3><p><em>Euridice</em> de Jacopo Peri este reprezentată în <strong>1600</strong>, iar <em>Orfeo</em> de Monteverdi în <strong>1607</strong>. Monodia, recitativul și orchestra fac textul dramatic inteligibil și emoționant.</p></article><article class="info-card"><h3>Spațiul sacru</h3><p>La San Marco din Veneția, tradiția policorală folosește tribune opuse și ecoul arhitecturii. Monteverdi devine maestro di cappella în <strong>1613</strong>. Oratoriul, legat de Filip Neri, oferă dramă religioasă fără scenografie completă.</p></article><article class="info-card"><h3>Barocul târziu</h3><p>Bach și Händel se nasc în <strong>1685</strong>. Cantata, pasiunea, concertul și oratoriul ating maturitatea în prima jumătate a secolului al XVIII-lea; moartea lui Bach în <strong>1750</strong> este folosită convențional ca reper final al barocului muzical.</p></article></div>
+<details><summary>Teatrul iezuit și educația</summary><div class="details-body"><p>Colegiile iezuiților folosesc teatrul în latină și în limbile locale pentru retorică, disciplină, memorie și transmiterea modelelor morale. <em>Ratio Studiorum</em> din 1599 integrează exercițiul retoric; spectacolele publice transformă școala într-un instrument de prezență urbană.</p></div></details></section>
+
+<section class="section" id="propaganda"><p class="section-kicker">Cine comandă și ce mesaj transmite?</p><h2>VIII. Barocul ca artă a persuasiunii</h2><div class="table-wrap"><table><thead><tr><th>Patron</th><th>Public</th><th>Mesaj</th><th>Exemple</th></tr></thead><tbody>
+<tr><td>Papalitatea</td><td>Pelerini, cler, diplomați, locuitorii Romei</td><td>Roma este centrul vizibil al catolicismului universal</td><td>Sf. Petru, Piazza Navona, fântâni, procesiuni, canonizări</td></tr>
+<tr><td>Iezuiții și ordinele</td><td>Elevi, credincioși urbani, comunități misionare</td><td>Doctrină clară, disciplină și misiune globală</td><td>Il Gesù, colegii, teatru școlar, fresce iluzioniste</td></tr>
+<tr><td>Monarhii absoluți</td><td>Nobilime, ambasadori, supuși</td><td>Regele ordonează cosmosul politic și ceremonial</td><td>Versailles, portretele lui Ludovic al XIV-lea, intrări triumfale</td></tr>
+<tr><td>Monarhia spaniolă</td><td>Curte și imperiu</td><td>Pietate, victorie, continuitate dinastică</td><td>Escorialul târziu, Buen Retiro, pictura lui Velázquez</td></tr>
+<tr><td>Republica olandeză</td><td>Burghezie, corporații, piețe de artă</td><td>Virtute civică, prosperitate, memorie familială</td><td>Portrete de grup, peisaje, naturi moarte, interioare</td></tr>
+</tbody></table></div></section>
+
+<section class="section" id="regiuni"><p class="section-kicker">Răspândirea europeană și globală</p><h2>IX. Barocuri regionale</h2><div class="three-col"><article class="info-card"><h3>Italia</h3><p>Roma dezvoltă barocul papal și monumental; Napoli cultivă tenebrismul; Veneția pune accent pe culoare și muzică; Torino experimentează geometria lui Guarini.</p></article><article class="info-card"><h3>Flandra și Spania</h3><p>Rubens creează o artă catolică triumfală și diplomatică. În Spania, realismul mistic al lui Zurbarán și Ribera coexistă cu rafinamentul curții lui Velázquez.</p></article><article class="info-card"><h3>Franța</h3><p>Clasicismul francez controlează exuberanța italiană. Versailles, început ca mare șantier în 1661, transformă arhitectura, grădina și ritualul într-un sistem de dominație curială.</p></article><article class="info-card"><h3>Europa Centrală</h3><p>După 1648, Habsburgii, episcopii și ordinele monastice dezvoltă biserici cu cupole, fresce și altare monumentale în Austria, Boemia, Bavaria, Ungaria și Transilvania.</p></article><article class="info-card"><h3>America Latină</h3><p>În secolele XVII–XVIII, barocul colonial combină modele iberice cu meșteșuguri indigene și africane. Fațadele și retablourile devin suprafețe dense de simboluri locale.</p></article><article class="info-card"><h3>Lumea protestantă</h3><p>Iconoclasmul reduce arta cultică în unele regiuni, dar nu elimină barocul: Olanda dezvoltă pictura de piață, iar Germania luterană produce o muzică sacră monumentală.</p></article></div></section>
+
+<section class="section" id="transilvania"><p class="section-kicker">Moștenirea barocă în Transilvania și Banat</p><h2>X. De la Contrareformă la barocul secolului al XVIII-lea</h2><p class="section-intro">Majoritatea monumentelor baroce catolice celebre din Transilvania și Banat sunt mai târzii decât Conciliul de la Trento și apar după integrarea regiunii în monarhia habsburgică. Ele reprezintă însă continuarea culturală a recatolicizării.</p>
+<div class="timeline"><article class="event"><div class="date">1718–1724</div><div><h3>Biserica iezuită din Cluj</h3><p>Actuala Biserică a Piaristilor, dedicată Sfintei Treimi, este una dintre primele construcții baroce majore ale Transilvaniei.</p></div></article><article class="event"><div class="date">1726–1733</div><div><h3>Biserica iezuită din Sibiu</h3><p>Actuala Biserică Romano-Catolică „Sfânta Treime” din Piața Mare exprimă revenirea cultului catolic în centrul urban săsesc.</p></div></article><article class="event"><div class="date">1728–1764</div><div><h3>Biserica Sf. Ioan Botezătorul, Târgu Mureș</h3><p>Construită de iezuiți, folosește fațadă cu turnuri și un interior bogat pentru predică și ceremonie.</p></div></article><article class="event"><div class="date">1736–1774</div><div><h3>Domul romano-catolic din Timișoara</h3><p>Catedrala Sf. Gheorghe, ridicată în mai multe etape, este reper al barocului imperial bănățean.</p></div></article><article class="event"><div class="date">1741–1749</div><div><h3>Catedrala Sfânta Treime din Blaj</h3><p>Monument major al barocului transilvănean și al Bisericii Române Unite cu Roma.</p></div></article><article class="event"><div class="date">1752–1780</div><div><h3>Bazilica romano-catolică din Oradea</h3><p>Ansamblul episcopal integrează catedrala, palatul și spațiul ceremonial.</p></div></article><article class="event"><div class="date">1778–1788</div><div><h3>Palatul Brukenthal, Sibiu</h3><p>Palat urban baroc târziu, construit pentru Samuel von Brukenthal; este un exemplu secular și administrativ, nu o creație directă a Contrareformei secolului al XVI-lea.</p></div></article></div>
+<div class="correction"><strong>Corectarea cronologiei:</strong> bisericile iezuite din Cluj, Sibiu și Târgu Mureș, catedralele din Timișoara și Oradea și Palatul Brukenthal apar în principal în secolul al XVIII-lea. Ele nu trebuie prezentate ca monumente construite imediat după 1563, ci ca efecte târzii ale recatolicizării și administrației habsburgice.</div></section>
+
+<section class="section" id="comparatie"><p class="section-kicker">Vocabular vizual</p><h2>XI. Renaștere, manierism și baroc</h2><div class="table-wrap"><table><thead><tr><th>Element</th><th>Renaștere</th><th>Manierism</th><th>Baroc</th></tr></thead><tbody>
+<tr><td>Compoziție</td><td>Echilibru, axă clară, geometrie stabilă</td><td>Dezechilibru calculat, spațiu ambiguu</td><td>Diagonale, curbe, expansiune în spațiul privitorului</td></tr>
+<tr><td>Corp</td><td>Proporție ideală și calm</td><td>Alungire, poziții sofisticate</td><td>Torsiune, efort, expresie și contact fizic</td></tr>
+<tr><td>Lumină</td><td>Uniformă și descriptivă</td><td>Artificială, uneori rece</td><td>Contrast puternic și efect teatral</td></tr>
+<tr><td>Relația cu privitorul</td><td>Contemplare ordonată</td><td>Provocare intelectuală</td><td>Imersiune, emoție și participare</td></tr>
+<tr><td>Arhitectură</td><td>Ordine clasice și proporție</td><td>Reguli manipulate deliberat</td><td>Fațade ondulate, axe scenografice, integrarea artelor</td></tr>
+</tbody></table></div></section>
+
+
+<section class="section" id="gramatica-barocului">
+  <p class="section-kicker">Cum se citește stilul</p>
+  <h2>XII. Gramatica vizuală a barocului: spațiu, lumină, corp și spectator</h2>
+  <p class="section-intro">Barocul nu este doar „mult decor”. El organizează experiența spectatorului prin mișcare, lumină, perspectivă, scară și efecte teatrale. Într-o biserică sau într-un palat, arhitectura stabilește traseul, pictura deschide bolta către un cer imaginar, sculptura invadează spațiul real, iar muzica și ceremonia transformă clădirea într-un eveniment.</p>
+  <div class="four-col">
+    <div class="micro-card"><strong>Mișcare</strong><span>Diagonale, curbe, draperii și gesturi surprinse în momentul culminant evită calmul static.</span></div>
+    <div class="micro-card"><strong>Lumină</strong><span>Ferestre ascunse, clarobscur, raze aurite și contraste dramatice dirijează atenția.</span></div>
+    <div class="micro-card"><strong>Iluzie</strong><span>Perspectiva de jos în sus, arhitectura pictată și oglinzile extind spațiul dincolo de limitele reale.</span></div>
+    <div class="micro-card"><strong>Participare</strong><span>Personajele se apropie de marginea tabloului, iar piețele și colonadele includ mulțimea în scenografie.</span></div>
+  </div>
+  <div class="table-wrap"><table><thead><tr><th>Element</th><th>Renaștere</th><th>Manierism</th><th>Baroc</th><th>Efect urmărit</th></tr></thead><tbody>
+    <tr><td>Compoziție</td><td>Echilibru, axe clare</td><td>Instabilitate sofisticată</td><td>Diagonale, spirale, expansiune</td><td>Energie și tensiune.</td></tr>
+    <tr><td>Corp</td><td>Proporție ideală</td><td>Alungire, artificialitate</td><td>Greutate, răsucire, emoție</td><td>Empatie fizică.</td></tr>
+    <tr><td>Spațiu</td><td>Închis și măsurabil</td><td>Ambiguu</td><td>Deschis, continuu, teatral</td><td>Implicarea spectatorului.</td></tr>
+    <tr><td>Lumină</td><td>Uniformă</td><td>Neobișnuită, rece</td><td>Contrast și focalizare</td><td>Revelație, dramatism.</td></tr>
+    <tr><td>Raportul artelor</td><td>Discipline distincte</td><td>Experiment</td><td>Integrare în „operă totală”</td><td>Experiență multisenzorială.</td></tr>
+  </tbody></table></div>
+  <details open><summary>Barocul și hotărârile de la Trento</summary><div class="details-body"><p>Ultima sesiune a Conciliului de la Trento, din <strong>3–4 decembrie 1563</strong>, reafirmă rolul imaginilor în instruirea credincioșilor și cere eliminarea elementelor indecente, confuze sau superstițioase. Conciliul nu prescrie un „stil baroc” și nici nu oferă reguli tehnice pentru coloane, cupole sau clarobscur. Episcopii, teologii, artiștii și patronii traduc treptat aceste principii în imagini lizibile, emoționante și doctrinar controlate.</p></div></details>
+</section>
+
+<section class="section" id="roma-studii">
+  <p class="section-kicker">Orașul-pilot al catolicismului posttridentin</p>
+  <h2>XIII. Roma barocă: opt șantiere și transformarea capitalei papale</h2>
+  <div class="timeline">
+    <article class="event"><div class="date">1568–1584</div><div><h3>Il Gesù</h3><p>Giacomo Barozzi da Vignola proiectează biserica Societății lui Isus, iar Giacomo della Porta realizează fațada. Nava unică largă, capelele laterale și cupola favorizează predica, vizibilitatea altarului și procesiunea.</p></div></article>
+    <article class="event"><div class="date">1603–1612</div><div><h3>Santa Susanna</h3><p>Fațada lui Carlo Maderno folosește relief progresiv, coloane și nișe pentru a crea mișcare către centru. Este un reper al trecerii de la manierismul târziu la arhitectura barocă.</p></div></article>
+    <article class="event"><div class="date">1607–1615</div><div><h3>Fațada și nava Sfântului Petru</h3><p>Maderno extinde planul bazilicii și construiește fațada monumentală. Lucrările modifică proiectul central al lui Bramante și Michelangelo pentru nevoile liturgice și ceremoniale.</p></div></article>
+    <article class="event"><div class="date">1624–1633</div><div><h3>Baldachinul lui Bernini</h3><p>Structura de bronz de aproape treizeci de metri marchează mormântul Sfântului Petru și altarul papal. Coloanele răsucite, albinele Barberini și draperiile metalice unesc relicva, liturghia și puterea dinastică.</p></div></article>
+    <article class="event"><div class="date">1634–1641</div><div><h3>San Carlo alle Quattro Fontane</h3><p>Borromini folosește geometrie ovală, pereți ondulați și o cupolă casetată într-un sit foarte mic. Fațada, terminată în etape până după 1665, transformă zidul într-o suprafață vie.</p></div></article>
+    <article class="event"><div class="date">1642–1660</div><div><h3>Sant'Ivo alla Sapienza</h3><p>Planul stelat, alternanța concav-convex și lanterna spiralată exprimă invenția geometrică a lui Borromini. Clădirea servește Universității La Sapienza.</p></div></article>
+    <article class="event"><div class="date">1656–1667</div><div><h3>Piața Sfântul Petru</h3><p>Colonada lui Bernini creează două brațe simbolice care organizează mulțimile, procesiunile și binecuvântarea papală. Obeliscul central, mutat în 1586, devine axa unei scenografii urbane.</p></div></article>
+    <article class="event"><div class="date">1658–1670</div><div><h3>Sant'Andrea al Quirinale</h3><p>Bernini proiectează pentru novicii iezuiți o biserică ovală în care arhitectura, sculptura, marmura și lumina conduc privirea de la martiriul Sfântului Andrei la ascensiunea sa cerească.</p></div></article>
+  </div>
+  <details><summary>Urbanismul lui Sixt al V-lea, 1585–1590</summary><div class="details-body"><p>Papa Sixt al V-lea și Domenico Fontana leagă marile bazilici prin artere drepte, ridică obeliscuri ca puncte de orientare și reorganizează alimentarea cu apă prin Acqua Felice. Programul precede barocul matur, dar creează orașul ceremonial pe care Bernini și succesorii îl vor transforma. Roma devine o hartă a pelerinajului și o demonstrație a ordinii pontificale.</p></div></details>
+</section>
+
+<section class="section" id="pictura-studii">
+  <p class="section-kicker">De la naturalism la triumful plafonului</p>
+  <h2>XIV. Pictura barocă prin opere analizate</h2>
+  <div class="three-col">
+    <article class="info-card"><h3>Caravaggio: <em>Vocația Sfântului Matei</em>, 1599–1600</h3><p>O rază laterală traversează o încăpere contemporană și transformă chemarea spirituală într-un eveniment imediat. Gestul lui Hristos trimite la creația lui Adam, iar spectatorul trebuie să identifice personajul chemat. Sacrul intră în lumea tavernelor, banilor și hainelor obișnuite.</p></article>
+    <article class="info-card"><h3>Annibale Carracci: Galeria Farnese, 1597–1608</h3><p>Frescele mitologice folosesc cadre pictate, nuduri și iluzii sculpturale. Carracci combină studiul lui Rafael și Michelangelo cu observația naturii, oferind o alternativă clasicizantă la naturalismul caravaggist.</p></article>
+    <article class="info-card"><h3>Artemisia Gentileschi: <em>Iudita ucigându-l pe Holofern</em>, c. 1612–1613 / c. 1620</h3><p>Compoziția comprimă corpurile într-o acțiune violentă și hotărâtă. Lumina, diagonalele și forța fizică a eroinelor transformă un subiect biblic într-o afirmație despre curaj, dreptate și agenție feminină.</p></article>
+    <article class="info-card"><h3>Rubens: <em>Ridicarea crucii</em>, 1610–1611</h3><p>Tripticul de la Anvers combină anatomia eroică italiană, culoarea venețiană și energia nordică. Crucea formează o diagonală uriașă, iar efortul colectiv al călăilor face drama aproape corporală.</p></article>
+    <article class="info-card"><h3>Velázquez: <em>Las Meninas</em>, 1656</h3><p>O scenă de curte devine reflecție asupra privirii, rangului și picturii. Regele și regina apar în oglindă, pictorul se reprezintă lucrând, iar spectatorul ocupă o poziție instabilă în spațiul imaginii.</p></article>
+    <article class="info-card"><h3>Pietro da Cortona: <em>Triumful Providenței Divine</em>, 1633–1639</h3><p>Plafonul Palazzo Barberini deschide sala către un cer populat de alegorii. Emblemele familiei papale sunt integrate într-o glorificare politică și providențială.</p></article>
+  </div>
+  <details open><summary>Tenebrism, clarobscur și lumină teatrală</summary><div class="details-body"><p><strong>Clarobscurul</strong> modelează volumele prin treceri între lumină și umbră. <strong>Tenebrismul</strong> folosește contraste extreme și fundaluri întunecate, asociate mai ales cu Caravaggio și adepții săi. Lumina nu este doar efect natural: poate indica momentul harului, identifica protagonistul și separa adevărul de confuzie.</p></div></details>
+  <div class="table-wrap"><table><thead><tr><th>Artist</th><th>Viață</th><th>Centru</th><th>Exemple</th><th>Contribuție</th></tr></thead><tbody>
+    <tr><td>Caravaggio</td><td>1571–1610</td><td>Roma, Napoli, Malta</td><td><em>Cina la Emaus</em>, <em>Moartea Fecioarei</em></td><td>Naturalism și lumină dramatică.</td></tr>
+    <tr><td>Annibale Carracci</td><td>1560–1609</td><td>Bologna, Roma</td><td>Galeria Farnese</td><td>Reformă clasicizantă și academie.</td></tr>
+    <tr><td>Artemisia Gentileschi</td><td>1593–c. 1654</td><td>Roma, Florența, Napoli</td><td><em>Iudita</em>, <em>Susana</em></td><td>Eroine puternice și tenebrism.</td></tr>
+    <tr><td>Peter Paul Rubens</td><td>1577–1640</td><td>Anvers</td><td>Ciclul Maria de Medici</td><td>Mișcare, culoare, diplomație artistică.</td></tr>
+    <tr><td>Diego Velázquez</td><td>1599–1660</td><td>Sevilla, Madrid</td><td><em>Predarea Bredei</em>, <em>Las Meninas</em></td><td>Realism de curte și reflecție asupra reprezentării.</td></tr>
+    <tr><td>Francisco de Zurbarán</td><td>1598–1664</td><td>Sevilla</td><td>Serii monastice</td><td>Asceză, obiecte tactile, lumină austeră.</td></tr>
+    <tr><td>Bartolomé Murillo</td><td>1617–1682</td><td>Sevilla</td><td>Imaculate Concepții, copii săraci</td><td>Devoțiune accesibilă și tandrețe.</td></tr>
+  </tbody></table></div>
+</section>
+
+<section class="section" id="bernini-studii">
+  <p class="section-kicker">Sculptura devine eveniment</p>
+  <h2>XV. Bernini, Borromini și competiția pentru spațiul baroc</h2>
+  <div class="timeline">
+    <article class="event"><div class="date">1621–1622</div><div><h3><em>Răpirea Proserpinei</em></h3><p>Degetele lui Pluto par să pătrundă în marmură, iar corpul Proserpinei se răsucește în încercarea de a scăpa. Virtuozitatea face materialul să simuleze carne, lacrimi și păr.</p></div></article>
+    <article class="event"><div class="date">1623–1624</div><div><h3><em>David</em></h3><p>Bernini surprinde clipa în care eroul își răsucește corpul pentru a arunca piatra. Spre deosebire de Davidul calm al lui Michelangelo, spectatorul se află în spațiul acțiunii și aproape în poziția lui Goliat.</p></div></article>
+    <article class="event"><div class="date">1647–1652</div><div><h3>Capela Cornaro și <em>Extazul Sfintei Tereza</em></h3><p>Un înger pătrunde inima sfintei cu o săgeată, după relatarea autobiografică a Terezei de Ávila. Lumina naturală ascunsă cade pe raze aurite, membrii familiei Cornaro asistă din loji, iar altarul devine teatru mistic.</p></div></article>
+    <article class="event"><div class="date">1656–1665</div><div><h3><em>Cathedra Petri</em></h3><p>În absida bazilicii Sfântul Petru, tronul-relicvar, doctorii Bisericii, norii, îngerii și vitraliul cu porumbelul Duhului Sfânt creează o viziune a autorității apostolice.</p></div></article>
+    <article class="event"><div class="date">1644–1651</div><div><h3>Fântâna celor Patru Fluvii</h3><p>În Piazza Navona, personificările Dunării, Gangelui, Nilului și Río de la Plata susțin simbolic obeliscul. Monumentul leagă geografia globală, papalitatea și spectacolul apei.</p></div></article>
+  </div>
+  <div class="two-col">
+    <article class="info-card"><h3>Bernini</h3><p>Lucrează ca sculptor, arhitect, scenograf și organizator de ceremonii. Pentru el, diferențele dintre arte sunt permeabile. Materialele colorate, lumina, sunetul și poziția spectatorului formează un singur program.</p></article>
+    <article class="info-card"><h3>Borromini</h3><p>Experimentează cu geometria, structura și deformarea ordinelor clasice. Spațiile sale nu depind de ornament excesiv, ci de tensiunea matematică a pereților și cupolelor. Rivalitatea cu Bernini simbolizează două căi ale barocului roman.</p></article>
+  </div>
+</section>
+
+<section class="section" id="propaganda-mecanisme">
+  <p class="section-kicker">Persuasiunea prin experiență</p>
+  <h2>XVI. Cum funcționa propaganda barocă?</h2>
+  <p class="section-intro">Termenul „propagandă” trebuie folosit cu grijă. În epoca modernă timpurie, imaginile nu erau doar instrumente de manipulare, ci și obiecte de rugăciune, educație, memorie, prestigiu civic și legitimare dinastică. Eficiența lor provenea din repetarea mesajului în spații, ritualuri și medii diferite.</p>
+  <div class="details-grid">
+    <div class="micro-card"><strong>Claritatea narativă</strong><span>Personajele, gesturile și atributele trebuiau să permită identificarea subiectului și a doctrinei.</span></div>
+    <div class="micro-card"><strong>Emoția</strong><span>Lacrimile, rănile, extazul și sacrificiul creează empatie și invită la pocăință sau admirație.</span></div>
+    <div class="micro-card"><strong>Scara</strong><span>Cupolele, fațadele și altarele monumentale transformă puterea instituției într-o experiență corporală.</span></div>
+    <div class="micro-card"><strong>Repetiția</strong><span>Imagini similare circulă prin gravuri, cărți, medalioane, procesiuni și altare.</span></div>
+    <div class="micro-card"><strong>Canonizarea</strong><span>Noii sfinți ai Reformei Catolice — Ignațiu de Loyola, Francisc Xaveriu, Tereza de Ávila, Filip Neri — oferă modele contemporane.</span></div>
+    <div class="micro-card"><strong>Teatrul sacru</strong><span>Predica, muzica, tămâia, costumele și decorurile temporare integrează toate simțurile.</span></div>
+  </div>
+  <details open><summary>Congregația „de Propaganda Fide”, 1622</summary><div class="details-body"><p>Papa Grigore al XV-lea creează la <strong>22 iunie 1622</strong> Congregația pentru Propagarea Credinței, destinată coordonării misiunilor în teritorii necatolice și extraeuropene. Termenul latin <em>propaganda</em> înseamnă „ceea ce trebuie răspândit”. Sensul modern, exclusiv negativ, se dezvoltă mult mai târziu.</p></div></details>
+  <div class="table-wrap"><table><thead><tr><th>Public</th><th>Mesaj</th><th>Mediu</th><th>Exemplu</th></tr></thead><tbody>
+    <tr><td>Pelerini</td><td>Roma este centrul apostolic al creștinătății.</td><td>Bazilici, relicve, trasee jubiliare.</td><td>Străzile și obeliscurile lui Sixt al V-lea.</td></tr>
+    <tr><td>Credincioși locali</td><td>Sacramentele și sfinții fac harul vizibil.</td><td>Altare, predici, confrerii.</td><td>Capela Cornaro.</td></tr>
+    <tr><td>Curți europene</td><td>Monarhul guvernează prin ordine și splendoare.</td><td>Palate, grădini, ceremonii.</td><td>Versailles după 1661.</td></tr>
+    <tr><td>Elitele educate</td><td>Catolicismul poate integra știința și cultura clasică.</td><td>Colegii, hărți, teatru.</td><td>Educația iezuită și misiunea lui Ricci.</td></tr>
+    <tr><td>Populații coloniale</td><td>Noua religie este prezentată prin forme locale și europene.</td><td>Biserici, muzică, imagini portabile.</td><td>Barocul mestizo din Anzi.</td></tr>
+  </tbody></table></div>
+</section>
+
+<section class="section" id="muzica-extinsa">
+  <p class="section-kicker">Sunetul baroc</p>
+  <h2>XVII. Muzică, operă și oratoriu: emoția organizată în timp</h2>
+  <div class="timeline">
+    <article class="event"><div class="date">c. 1570–1600</div><div><h3>Camerata florentină</h3><p>Intelectuali și muzicieni caută să refacă declamația teatrului antic. Monodia acompaniată pune textul în prim-plan și pregătește apariția operei.</p></div></article>
+    <article class="event"><div class="date">1600</div><div><h3><em>Euridice</em></h3><p>Opera lui Jacopo Peri, prezentată la Florența pentru căsătoria Mariei de Medici, este una dintre cele mai vechi opere păstrate.</p></div></article>
+    <article class="event"><div class="date">1607</div><div><h3>Monteverdi, <em>L'Orfeo</em></h3><p>Lucrarea combină recitativ, arii, coruri și o orchestrație bogată, demonstrând capacitatea noii forme de a reprezenta afecte și acțiune dramatică.</p></div></article>
+    <article class="event"><div class="date">1627</div><div><h3>Schütz, <em>Dafne</em></h3><p>Prima operă germană cunoscută este pierdută, dar arată răspândirea rapidă a modelului italian în spațiul protestant.</p></div></article>
+    <article class="event"><div class="date">1640–1650</div><div><h3>Carissimi și oratoriul</h3><p>Giacomo Carissimi dezvoltă la Roma narațiunea biblică fără decor scenic complet. <em>Jephte</em> transformă corul într-un comentator emoțional.</p></div></article>
+    <article class="event"><div class="date">1685–1750</div><div><h3>Bach și barocul protestant</h3><p>Cantatele, Pasiunile și muzica de orgă demonstrează că limbajul baroc nu aparține exclusiv Contrareformei. Retorica afectelor servește teologiei luterane.</p></div></article>
+    <article class="event"><div class="date">1711–1741</div><div><h3>Händel la Londra</h3><p>De la <em>Rinaldo</em> la <em>Messiah</em>, compozitorul unește opera italiană, oratoriul englez și publicul comercial al concertelor.</p></div></article>
+  </div>
+  <div class="two-col"><article class="info-card"><h3>Muzica în spațiul catolic</h3><p>Polifonia nu este interzisă de Trento, dar se cere ca textul sacru să poată fi înțeles. Palestrina devine retrospectiv modelul unei polifonii clare. În secolul al XVII-lea, policoralitatea venețiană, orga și instrumentele intensifică monumentalitatea liturgică.</p></article><article class="info-card"><h3>Muzica în spațiul protestant</h3><p>Coralul luteran permite participarea comunității, iar compozitorii dezvoltă preludii, cantate și pasiuni. În tradiția reformată, muzica poate fi mai austeră, cu accent pe psalmi metrici.</p></article></div>
+</section>
+
+<section class="section" id="regiuni-extinse">
+  <p class="section-kicker">Barocuri, nu un singur baroc</p>
+  <h2>XVIII. Europa și lumea: variante regionale ale stilului</h2>
+  <div class="table-wrap"><table><thead><tr><th>Regiune</th><th>Context</th><th>Caracteristici</th><th>Exemple</th></tr></thead><tbody>
+    <tr><td>Italia</td><td>Papalitate, ordine, orașe și curți</td><td>Integrarea artelor, cupole, lumină, urbanism.</td><td>Roma, Torino, Veneția, Napoli.</td></tr>
+    <tr><td>Flandra catolică</td><td>Habsburgii spanioli și recatolicizare</td><td>Culoare, corpuri puternice, altare monumentale.</td><td>Rubens, biserica Sf. Carol Borromeu din Anvers.</td></tr>
+    <tr><td>Spania</td><td>Monarhie confesională și ordine monastice</td><td>Naturalism auster, policromie, procesiuni.</td><td>Velázquez, Zurbarán, Murillo, sculptura lui Gregorio Fernández.</td></tr>
+    <tr><td>Franța</td><td>Monarhie centralizată</td><td>Clasicism monumental și ceremonial de curte.</td><td>Versailles, Les Invalides, Le Brun.</td></tr>
+    <tr><td>Republica Olandeză</td><td>Piață urbană și pluralism protestant</td><td>Portret, peisaj, natură moartă, interior domestic.</td><td>Rembrandt, Vermeer, Frans Hals.</td></tr>
+    <tr><td>Europa Centrală</td><td>Recatolicizare habsburgică</td><td>Mănăstiri-palat, fresce iluzioniste, stuc.</td><td>Melk, Wies, Praga, Viena.</td></tr>
+    <tr><td>America Latină</td><td>Misiune și imperiu</td><td>Modele iberice reinterpretate de meșteri locali.</td><td>Barocul andin, Puebla, Ouro Preto.</td></tr>
+    <tr><td>Filipine și Goa</td><td>Rețele iberice asiatice</td><td>Fațade fortificate, motive locale, sculptură policromă.</td><td>Bisericile baroce filipineze, Bom Jesus din Goa.</td></tr>
+  </tbody></table></div>
+  <details><summary>De ce Rembrandt și Vermeer sunt baroci dacă nu servesc propaganda catolică?</summary><div class="details-body"><p>Barocul este și o categorie formală și cronologică. Rembrandt folosește lumină dramatică, gest și psihologie; Vermeer organizează spațiul și lumina cu intensitate concentrată. În Republica Olandeză, piața liberă și casele urbane înlocuiesc parțial marile comenzi bisericești. Rezultatul este un baroc domestic, civic și comercial, diferit de monumentalitatea romană.</p></div></details>
+</section>
+
+<section class="section" id="transilvania-baroc-extins">
+  <p class="section-kicker">Barocul în Transilvania, Banat și Crișana</p>
+  <h2>XIX. Arhitectură, recatolicizare și reprezentare socială în spațiul românesc</h2>
+  <p class="section-intro">În Transilvania, barocul se afirmă mai ales după integrarea principatului în monarhia habsburgică. El este legat de revenirea instituțiilor catolice, de administrația imperială, de ordine religioase și de aristocrație. În secolul al XVIII-lea, stilul devine limbajul bisericilor, palatelor, piețelor și reședințelor episcopale.</p>
+  <div class="timeline">
+    <article class="event"><div class="date">1718–1724</div><div><h3>Biserica iezuită din Cluj</h3><p>Actuala biserică a piariștilor este primul mare edificiu baroc catolic al Transilvaniei după Reformă. Exteriorul relativ sobru contrastează cu interiorul bogat și altarele dedicate Trinității și sfinților iezuiți.</p></div></article>
+    <article class="event"><div class="date">1726–1733</div><div><h3>Biserica iezuită din Sibiu</h3><p>Construită în Piața Mare, biserica Sfânta Treime marchează vizual revenirea catolică într-un oraș predominant luteran. Turnul este terminat în 1738.</p></div></article>
+    <article class="event"><div class="date">1728–1764</div><div><h3>Biserica Sfântul Ioan Botezătorul din Târgu Mureș</h3><p>Fațada cu turnuri, volute și statui ale lui Ignațiu și Francisc Xaveriu, precum și altarul monumental, ilustrează programul iezuit.</p></div></article>
+    <article class="event"><div class="date">1736–1774</div><div><h3>Domul romano-catolic din Timișoara</h3><p>Catedrala din Piața Unirii combină arhitectura imperială austriacă, turnurile gemene și decorul baroc târziu.</p></div></article>
+    <article class="event"><div class="date">1752–1780</div><div><h3>Bazilica romano-catolică din Oradea</h3><p>Ansamblul episcopal, catedrala și palatul baroc exprimă refacerea instituțională a diecezei după războaiele otomane.</p></div></article>
+    <article class="event"><div class="date">1762–1777</div><div><h3>Palatul episcopal din Oradea</h3><p>Proiectat de Franz Anton Hillebrandt, palatul folosește monumentalitatea vieneză pentru reprezentarea autorității ecleziastice.</p></div></article>
+    <article class="event"><div class="date">1778–1788</div><div><h3>Palatul Brukenthal din Sibiu</h3><p>Reședința guvernatorului Samuel von Brukenthal introduce modelul palatului vienez în țesutul urban săsesc. Colecțiile sale sunt accesibile publicului din 1790, iar muzeul se deschide în 1817.</p></div></article>
+  </div>
+  <div class="note"><strong>Baroc și confesiune:</strong> nu toate clădirile baroce din Transilvania sunt catolice, iar stilul nu dovedește automat o campanie de convertire. În secolul al XVIII-lea, barocul devine și limbaj administrativ, aristocratic și urban.</div>
+</section>
+
+<section class="section" id="analiza-operei">
+  <p class="section-kicker">Metodă de lucru</p>
+  <h2>XX. Cum analizăm profesionist o operă barocă?</h2>
+  <ol class="number-list">
+    <li><strong>Identificarea:</strong> autor, titlu, datare, material, dimensiuni, locul inițial și comanditarul.</li>
+    <li><strong>Contextul:</strong> confesional, politic, urban și biografic. O capelă funerară nu funcționează la fel ca o piață sau un palat.</li>
+    <li><strong>Compoziția:</strong> axe, diagonale, centru, raportul dintre plin și gol, poziția spectatorului.</li>
+    <li><strong>Lumina și culoarea:</strong> sursa reală sau pictată, contrastul, aurul, marmura și efectele asupra focalizării.</li>
+    <li><strong>Corpul și emoția:</strong> gesturi, expresii, draperii, contact fizic și moment narativ.</li>
+    <li><strong>Iconografia:</strong> personaje, atribute, texte biblice, embleme dinastice și simboluri ale ordinelor.</li>
+    <li><strong>Funcția:</strong> devoțiune, învățare, memorie, legitimare, spectacol, propagandă sau divertisment.</li>
+    <li><strong>Recepția:</strong> cum a fost percepută de publicul epocii și cum s-a schimbat interpretarea în muzeu sau în cultura modernă.</li>
+  </ol>
+  <details><summary>Lecturi recomandate</summary><div class="details-body"><ul class="clean"><li>Rudolf Wittkower, <em>Art and Architecture in Italy, 1600–1750</em>.</li><li>John Rupert Martin, <em>Baroque</em>.</li><li>Helen Hills, studii despre arhitectura barocă, materialitate și spațiu.</li><li>Evonne Levy, <em>Propaganda and the Jesuit Baroque</em>.</li><li>Gauvin Alexander Bailey, lucrări despre arta iezuită și barocul global.</li><li>Tomaso Montanari, studii despre Bernini și patronajul roman.</li><li>Giovanni Careri, analize ale Capelei Cornaro și experienței spectatorului.</li></ul></div></details>
+</section>
+
+
+<section class="section" id="curte-festival-tipar">
+  <p class="section-kicker">Dincolo de biserică</p>
+  <h2>XXI. Curtea, festivalul și imaginea tipărită</h2>
+  <p class="section-intro">Barocul a devenit limbajul monarhiilor și orașelor deoarece putea transforma puterea abstractă într-o experiență vizibilă. Intrările triumfale, funeraliile, nunțile, focurile de artificii și spectacolele de apă foloseau arhitecturi temporare, costume, muzică și embleme. Gravurile păstrau apoi memoria evenimentului și o răspândeau la distanță.</p>
+  <div class="timeline">
+    <article class="event"><div class="date">1610</div><div><h3>Funeraliile lui Henric al IV-lea</h3><p>Ceremoniile franceze combină efigia regală, procesiunea și decorul efemer pentru a reprezenta continuitatea monarhiei dincolo de moartea suveranului.</p></div></article>
+    <article class="event"><div class="date">1625</div><div><h3>Jubileul lui Urban al VIII-lea</h3><p>Roma primește pelerini printr-un program de liturghii, relicve, procesiuni și decoruri. Familia Barberini leagă ceremonialul universal al Bisericii de propria emblemă dinastică.</p></div></article>
+    <article class="event"><div class="date">1638</div><div><h3>Jurământul lui Ludovic al XIII-lea</h3><p>Consacrarea Franței Fecioarei Maria generează comenzi artistice și o iconografie în care monarhia este prezentată ca protejată de providență.</p></div></article>
+    <article class="event"><div class="date">1661–1682</div><div><h3>Versailles</h3><p>Ludovic al XIV-lea transformă un pavilion de vânătoare într-un complex de palat, grădini și ceremonii. Galeria Oglinzilor, începută în 1678, prezintă războaiele și guvernarea regelui ca ordine cosmică și istorică.</p></div></article>
+    <article class="event"><div class="date">1689</div><div><h3>Focurile de artificii și ceremonialul public</h3><p>În marile orașe europene, victoriile militare și nașterile princiare sunt celebrate prin mașinării efemere, muzică și pirotehnie. Puterea este percepută ca spectacol colectiv.</p></div></article>
+    <article class="event"><div class="date">1727–1730</div><div><h3>Gravura și reproducerea</h3><p>Serii de vedute, portrete și reproduceri ale operelor permit circulația stilului și a prestigiului. Roma, Versailles și Dresda sunt cunoscute de publicuri care nu le-au vizitat.</p></div></article>
+  </div>
+  <div class="three-col">
+    <article class="info-card"><h3>Emblema</h3><p>Imaginea, deviza și explicația morală formează un limbaj compact. Familiile papale folosesc albine, dragoni, stele și munți pentru a-și inscripționa patronajul în oraș.</p></article>
+    <article class="info-card"><h3>Portretul de stat</h3><p>Coloanele, draperiile, armura, bastonul de comandă și coroana stabilesc rangul. Velázquez, Van Dyck, Rigaud și Largillière construiesc tipuri vizuale imitate în Europa.</p></article>
+    <article class="info-card"><h3>Arhitectura efemeră</h3><p>Arcuri de triumf din lemn și pânză, catafalcuri, altare temporare și scene stradale puteau fi mai experimentale decât clădirile permanente.</p></article>
+  </div>
+  <details><summary>Portretul lui Ludovic al XIV-lea de Hyacinthe Rigaud, 1701</summary><div class="details-body"><p>Regele este reprezentat la vârsta de 63 de ani, purtând mantia înflorată cu crini, sabia lui Carol cel Mare și pantofi cu toc roșu. Coloana și draperia creează un cadru monumental, dar picioarele expuse amintesc de cultura dansului de curte. Portretul nu descrie doar persoana regelui, ci instituția monarhiei și continuitatea dinastică.</p></div></details>
+</section>
+
+<section class="section" id="femei-materiale">
+  <p class="section-kicker">Artiști, patroane și ateliere</p>
+  <h2>XXII. Femeile și materialele barocului</h2>
+  <p class="section-intro">Istoria tradițională a barocului a fost concentrată asupra marilor artiști bărbați și a patronilor papali sau regali. Cercetarea recentă a evidențiat rolul pictorițelor, sculptorițelor, patroanelor, călugărițelor, brodezilor, aurarilor și meșterilor anonimi care au produs experiența materială a epocii.</p>
+  <div class="three-col">
+    <article class="info-card"><h3>Lavinia Fontana (1552–1614)</h3><p>Activă la Bologna și Roma, realizează portrete, altare și compoziții mitologice. Este una dintre primele femei care trăiesc profesional din pictură și primesc mari comenzi publice.</p></article>
+    <article class="info-card"><h3>Artemisia Gentileschi</h3><p>Lucrează pentru curți și colecționari din Florența, Roma, Napoli și Londra. În 1616 este prima femeie admisă la Accademia delle Arti del Disegno din Florența.</p></article>
+    <article class="info-card"><h3>Luisa Roldán (1652–1706)</h3><p>Sculptoriță spaniolă, numită sculptor de cameră al regelui Carol al II-lea în 1692. Produce grupuri policrome de teracotă și lemn cu intensitate devoțională.</p></article>
+    <article class="info-card"><h3>Maria de Medici (1575–1642)</h3><p>Comandă lui Rubens ciclul monumental realizat între 1622 și 1625 pentru Palatul Luxembourg. Biografia reginei este transformată într-o epopee mitologică și politică.</p></article>
+    <article class="info-card"><h3>Christina a Suediei (1626–1689)</h3><p>După abdicare și convertirea la catolicism, se stabilește la Roma în 1655. Devine patroană a muzicii, teatrului și savanților și contribuie la prestigiul cultural al papalității.</p></article>
+    <article class="info-card"><h3>Mănăstirile feminine</h3><p>Călugărițele comandă altare, compun muzică, scriu piese și întrețin rețele de patronaj. Spațiul claustrat nu exclude producția culturală, deși limitează vizibilitatea publică.</p></article>
+  </div>
+  <div class="table-wrap"><table><thead><tr><th>Material</th><th>Tehnică</th><th>Efect baroc</th><th>Exemplu</th></tr></thead><tbody>
+    <tr><td>Marmură colorată</td><td>Placare, intarsie, sculptură</td><td>Suprafață luxoasă și contrast cromatic.</td><td>Capela Cornaro.</td></tr>
+    <tr><td>Stuc</td><td>Modelare pe structură ușoară</td><td>Nori, îngeri și rame care unesc pictura cu arhitectura.</td><td>Biserici din Roma și Europa Centrală.</td></tr>
+    <tr><td>Lemn policrom</td><td>Sculptură, grund, culoare, lac</td><td>Realism tactil și emoție în procesiuni.</td><td>Spania și America Latină.</td></tr>
+    <tr><td>Bronz aurit</td><td>Turnare și aurire</td><td>Strălucire, durabilitate și prestigiu.</td><td>Baldachinul Sfântului Petru.</td></tr>
+    <tr><td>Textile</td><td>Țesere, broderie, aplicații</td><td>Mișcare, culoare și schimbarea decorului după calendar.</td><td>Veșminte, baldachine, draperii de altar.</td></tr>
+    <tr><td>Oglindă</td><td>Plăci montate în ritm arhitectural</td><td>Multiplicarea luminii și a curții.</td><td>Galeria Oglinzilor, Versailles.</td></tr>
+  </tbody></table></div>
+  <div class="note"><strong>Atelierul:</strong> o operă semnată de Bernini sau Rubens este adesea rezultatul unui atelier numeros. Maestrul concepea, desena și controla calitatea, iar asistenții executau părți, multiplicau modele și adaptau compoziții pentru alți clienți.</div>
+</section>
+
+<section class="section" id="cronologie"><p class="section-kicker">Cronologie comentată</p><h2>XXIII. Repere ale barocului, 1563–1817</h2><div class="date-list">
+<div class="date-row"><strong>1563–1584</strong><span>Decretul despre imagini și construirea Il Gesù oferă cadrul teologic și arhitectural al artei post-tridentine.</span></div><div class="date-row"><strong>1597–1610</strong><span>Carracci și Caravaggio formulează două dintre principalele limbaje ale picturii baroce.</span></div><div class="date-row"><strong>1600–1613</strong><span>Opera și muzica dramatică se dezvoltă prin Peri și Monteverdi.</span></div><div class="date-row"><strong>1622–1633</strong><span>Bernini realizează sculpturile timpurii și Baldachinul Sf. Petru; <em>Propaganda Fide</em> este creată în 1622.</span></div><div class="date-row"><strong>1638–1667</strong><span>Borromini și Bernini transformă arhitectura Romei prin spații curbe și urbanism ceremonial.</span></div><div class="date-row"><strong>1647–1652</strong><span><em>Extazul Sfintei Tereza</em> devine model al integrării sculpturii, luminii și teatrului.</span></div><div class="date-row"><strong>1661–1715</strong><span>Versailles arată cum barocul poate servi monarhiei absolute, nu doar papalității.</span></div><div class="date-row"><strong>1685–1750</strong><span>Bach și Händel reprezintă maturitatea barocului muzical european.</span></div><div class="date-row"><strong>1718–1788</strong><span>Barocul catolic și imperial se manifestă în Transilvania, Banat și Crișana prin biserici, catedrale și palate.</span></div>
+<div class="date-row"><strong>1750–1770</strong><span>Rococoul, clasicismul și reformele iluministe încep să modifice limbajul baroc, fără a-l elimina imediat.</span></div>
+<div class="date-row"><strong>1790–1817</strong><span>Colecția Brukenthal devine accesibilă publicului, iar deschiderea muzeului în 1817 transformă patronajul aristocratic în instituție culturală.</span></div></div></section>
+
+<section class="final-box"><h2>Legătura dintre cele trei materiale</h2><p>Reforma explică fragmentarea creștinismului occidental; Reforma Catolică arată modul în care papalitatea și ordinele religioase au răspuns; barocul arată cum doctrina, emoția, ritualul și puterea au fost transformate într-un limbaj vizual și ceremonial.</p><div class="crosslinks"><a href="reforma-si-contrareforma-fragmentarea-bisericii.html">Reforma</a><a href="reforma-si-contrareforma-raspunsul-papalitatii.html">Răspunsul papalității</a><a href="reforma-si-contrareforma-arta-si-propaganda.html">Arta și propaganda</a></div></section>
+</main>
+<script>
+const bar=document.getElementById('reading-progress');
+window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-innerHeight;bar.style.width=(h>0?(scrollY/h)*100:0)+'%';});
+function toggleAll(open){document.querySelectorAll('details').forEach(d=>d.open=open)}
+</script>
+</body></html>

@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transnistria sub administrație românească: deportări, lagăre și masacre</title>
+  <style>
+
+    :root {
+      --bg: #f6f0e7;
+      --paper: #fffaf3;
+      --paper-2: #ffffff;
+      --ink: #2f241c;
+      --title: #3c2a1e;
+      --muted: #5b4a3d;
+      --accent: #7a4f2a;
+      --accent-2: #9b6a3c;
+      --accent-soft: #f0e4d4;
+      --line: rgba(91, 62, 36, 0.18);
+      --line-strong: rgba(91, 62, 36, 0.34);
+      --outer-dark: #241208;
+      --outer-mid: #4a2a18;
+      --outer-warm: #7a4b2b;
+      --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+      --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+        radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+        radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+        radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+        linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+      background-attachment: fixed;
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0 70px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .back-link,
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 243, 0.84);
+      color: var(--title);
+      border-radius: 999px;
+      padding: 10px 15px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      box-shadow: var(--shadow-small);
+    }
+
+    .back-link:hover { background: #fff6eb; }
+
+    .hero,
+    .section,
+    .nav-card,
+    .final-box {
+      background: rgba(255, 250, 243, 0.96);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 38px;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: attr(data-watermark);
+      position: absolute;
+      right: 26px;
+      bottom: -22px;
+      font-size: 110px;
+      font-weight: 900;
+      letter-spacing: -4px;
+      color: rgba(122, 79, 42, 0.08);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      font-size: 16px;
+      color: var(--accent);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: left;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 1.04;
+      color: var(--title);
+      letter-spacing: -1.4px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    .subtitle {
+      margin: 18px 0 0;
+      max-width: 980px;
+      font-size: 19px;
+      line-height: 1.78;
+      color: var(--muted);
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .summary-grid,
+    .three-col,
+    .two-col,
+    .term-grid,
+    .quick-grid,
+    .cause-grid,
+    .four-col {
+      display: grid;
+      gap: 14px;
+    }
+
+    .summary-grid { grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+    .three-col { grid-template-columns: repeat(3, 1fr); }
+    .two-col { grid-template-columns: repeat(2, 1fr); }
+    .four-col { grid-template-columns: repeat(4, 1fr); }
+    .cause-grid { grid-template-columns: 1.1fr 0.9fr; }
+    .term-grid { grid-template-columns: repeat(4, 1fr); }
+    .quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+
+    .summary-card,
+    .info-card,
+    .wide-card,
+    .term-card,
+    .quick-card,
+    .source-note,
+    .micro-card,
+    .warning-box,
+    .quote-card {
+      background: var(--paper-2);
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 20px;
+      box-shadow: var(--shadow-small);
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .summary-card { padding: 16px; min-height: 132px; }
+
+    .summary-card strong,
+    .quick-card strong,
+    .term-card strong,
+    .micro-card strong {
+      display: block;
+      color: var(--title);
+      font-size: 17px;
+      margin-bottom: 8px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    .summary-card span,
+    .quick-card span,
+    .term-card span,
+    .micro-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.56;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .nav-card {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 18px 20px;
+      margin-bottom: 24px;
+    }
+
+    .nav-card b { color: var(--title); margin-right: 2px; }
+
+    .nav-card a,
+    .mini-btn {
+      color: var(--title);
+      background: var(--accent-soft);
+      border: 1px solid rgba(91, 62, 36, 0.16);
+      border-radius: 999px;
+      text-decoration: none;
+      padding: 8px 12px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .nav-card a:hover,
+    .mini-btn:hover { background: #e5d2bb; }
+
+    .section { padding: 30px; margin-bottom: 24px; }
+
+    h2 {
+      margin: 0 0 14px;
+      color: var(--title);
+      font-size: clamp(28px, 3vw, 38px);
+      line-height: 1.15;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    h3 {
+      margin: 0 0 12px;
+      color: var(--title);
+      font-size: 22px;
+      line-height: 1.22;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    h4 {
+      margin: 16px 0 8px;
+      color: var(--title);
+      font-size: 18px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    .section-intro,
+    p,
+    li,
+    dd {
+      font-size: 17px;
+      line-height: 1.72;
+      color: var(--muted);
+      text-align: justify;
+      text-align-last: left;
+      hyphens: auto;
+    }
+
+    .section-intro { margin: 0 0 20px; max-width: 1000px; }
+
+    .info-card,
+    .wide-card,
+    .term-card,
+    .quick-card,
+    .micro-card,
+    .warning-box,
+    .quote-card { padding: 20px; }
+
+    .wide-card { margin-top: 14px; }
+    .wide-card p:last-child,
+    .info-card p:last-child { margin-bottom: 0; }
+
+    .clean,
+    .number-list { margin: 0; padding-left: 22px; }
+
+    .clean li,
+    .number-list li { margin: 0 0 9px; padding-left: 2px; }
+
+    .clean li:last-child,
+    .number-list li:last-child { margin-bottom: 0; }
+
+    .mini-title {
+      display: inline;
+      color: var(--title);
+      font-weight: 800;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      padding: 0;
+      margin-right: 5px;
+      white-space: normal;
+      text-align: inherit;
+    }
+
+    .date-pill {
+      display: inline-block;
+      color: var(--title);
+      font-weight: 800;
+      background: #f3eadf;
+      border: 1px solid rgba(91, 62, 36, 0.13);
+      border-radius: 999px;
+      padding: 2px 9px;
+      margin-right: 5px;
+      white-space: nowrap;
+      text-align: left;
+    }
+
+    .definition,
+    .note {
+      margin-top: 18px;
+      background: #fff8ef;
+      border: 1px solid rgba(122, 79, 42, 0.22);
+      border-left: 6px solid rgba(122, 79, 42, 0.48);
+      border-radius: 18px;
+      padding: 18px 20px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .definition strong,
+    .note strong { color: var(--title); }
+
+    details {
+      background: #fffdf9;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 20px;
+      box-shadow: var(--shadow-small);
+      margin-top: 14px;
+      overflow: hidden;
+    }
+
+    details[open] { background: #fffaf3; }
+
+    summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 18px 20px;
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--title);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      text-align: left;
+      text-align-last: auto;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    summary::after {
+      content: "Deschide";
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+      background: #f3eadf;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 999px;
+      padding: 7px 11px;
+      white-space: nowrap;
+    }
+
+    details[open] > summary::after { content: "Ascunde"; }
+
+    .details-body {
+      border-top: 1px solid rgba(91, 62, 36, 0.12);
+      padding: 18px 20px 20px;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .nested-details { margin-top: 10px; box-shadow: none; background: #ffffff; }
+
+    .nested-details summary { font-size: 17px; padding: 14px 16px; }
+
+    .key-line {
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px dashed rgba(91, 62, 36, 0.18);
+    }
+
+    .key-line:last-child { border-bottom: 0; }
+
+    .key-line strong { color: var(--title); text-align: left; text-align-last: auto; }
+
+    .key-line span { color: var(--muted); line-height: 1.65; text-align: justify; text-align-last: left; }
+
+    .timeline { position: relative; display: grid; gap: 14px; margin-top: 18px; }
+
+    .event {
+      display: grid;
+      grid-template-columns: 132px 1fr;
+      gap: 18px;
+      align-items: stretch;
+      background: #ffffff;
+      border: 1px solid rgba(91, 62, 36, 0.14);
+      border-radius: 20px;
+      box-shadow: var(--shadow-small);
+      overflow: hidden;
+    }
+
+    .date {
+      background: linear-gradient(180deg, #7a4f2a, #5b351b);
+      color: #fffaf3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 14px;
+      font-size: 18px;
+      line-height: 1.25;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+    }
+
+    .event > div:last-child { padding: 17px 18px 18px 0; text-align: justify; text-align-last: left; }
+
+    .event h3 { margin-bottom: 6px; }
+    .event p { margin: 0; }
+
+    .small-muted {
+      font-size: 15px;
+      color: #725c49;
+      line-height: 1.6;
+      text-align: justify;
+      text-align-last: left;
+    }
+
+    .warning-box { background: #fff7ec; border-color: rgba(122, 79, 42, 0.22); margin-top: 16px; }
+
+    .quote-card { background: linear-gradient(135deg, #fffdf9, #f8eddf); }
+
+    .source-note { margin-top: 14px; padding: 16px; background: #fffdf9; }
+    .source-note a { color: var(--accent); font-weight: 700; text-decoration: none; }
+    .source-note a:hover { text-decoration: underline; }
+
+    .controls { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+
+    .final-box { padding: 28px; background: linear-gradient(135deg, #fffaf3, #f4e4d1); border-color: rgba(91, 62, 36, 0.25); }
+
+    .final-box p { margin-bottom: 0; }
+
+    @media (max-width: 980px) {
+      .summary-grid,
+      .three-col,
+      .term-grid,
+      .quick-grid,
+      .four-col { grid-template-columns: repeat(2, 1fr); }
+      .two-col,
+      .cause-grid,
+      .details-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .page { width: min(100% - 22px, 1180px); padding-top: 22px; }
+      .hero,
+      .section,
+      .final-box { padding: 22px; border-radius: 22px; }
+      .summary-grid,
+      .term-grid,
+      .quick-grid,
+      .four-col { grid-template-columns: 1fr; }
+      .event { grid-template-columns: 1fr; }
+      .date { min-height: 66px; }
+      .event > div:last-child { padding: 0 16px 16px; }
+      .key-line { grid-template-columns: 1fr; gap: 6px; }
+      summary { align-items: flex-start; flex-direction: column; }
+      .hero::after { font-size: 82px; }
+    }
+
+  
+    .source-list { margin: 0; padding-left: 22px; }
+    .source-list li { margin-bottom: 8px; }
+    .source-list a { color: var(--accent); font-weight: 700; text-decoration: none; }
+    .source-list a:hover { text-decoration: underline; }
+    .divider-note { margin-top: 14px; }
+    .case-label { display:inline-block; font-weight:800; color:var(--title); background:#f3eadf; border:1px solid rgba(91,62,36,.13); border-radius:999px; padding:2px 9px; margin:0 4px 4px 0; }
+    .dense-list li { margin-bottom: 11px; }
+    .quote-box { margin-top: 14px; background:#fff8ef; border:1px dashed rgba(122,79,42,.28); border-radius:18px; padding:16px 18px; }
+  
+    .fact-table { width: 100%; border-collapse: collapse; margin-top: 14px; overflow: hidden; border-radius: 18px; box-shadow: var(--shadow-small); background: #fffdf9; }
+    .fact-table th, .fact-table td { border: 1px solid rgba(91,62,36,.16); padding: 12px 14px; vertical-align: top; color: var(--muted); font-size: 16px; line-height: 1.58; text-align: justify; text-align-last: left; }
+    .fact-table th { background: #f3eadf; color: var(--title); font-weight: 900; text-align: left; text-align-last: auto; }
+    .chapter-note { margin: 12px 0 0; font-size: 15.5px; color: #725c49; line-height: 1.6; }
+    .badge-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .badge { display:inline-flex; align-items:center; border:1px solid rgba(91,62,36,.16); background:#f3eadf; color:var(--title); border-radius:999px; padding:6px 10px; font-weight:800; font-size:14px; }
+    .reading-box { background:#fffdf9; border:1px dashed rgba(122,79,42,.32); border-radius:18px; padding:18px 20px; margin-top:14px; }
+    .reading-box p { margin-top: 0; }
+    .reading-box p:last-child { margin-bottom: 0; }
+    @media (max-width: 680px) { .fact-table, .fact-table tbody, .fact-table tr, .fact-table th, .fact-table td { display:block; width:100%; } .fact-table th { border-bottom:0; } }
+
+    .fact-table { width: 100%; border-collapse: collapse; margin-top: 14px; overflow: hidden; border-radius: 18px; box-shadow: var(--shadow-small); background: #fffdf9; }
+    .fact-table th, .fact-table td { border: 1px solid rgba(91,62,36,.16); padding: 12px 14px; vertical-align: top; color: var(--muted); font-size: 16px; line-height: 1.58; text-align: justify; text-align-last: left; }
+    .fact-table th { background: #f3eadf; color: var(--title); font-weight: 900; text-align: left; text-align-last: auto; }
+    .chapter-note { margin: 12px 0 0; font-size: 15.5px; color: #725c49; line-height: 1.6; }
+    .badge-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .badge { display:inline-flex; align-items:center; border:1px solid rgba(91,62,36,.16); background:#f3eadf; color:var(--title); border-radius:999px; padding:6px 10px; font-weight:800; font-size:14px; }
+    .reading-box { background:#fffdf9; border:1px dashed rgba(122,79,42,.32); border-radius:18px; padding:18px 20px; margin-top:14px; }
+    .reading-box p { margin-top: 0; }
+    .reading-box p:last-child { margin-bottom: 0; }
+    .dense-list li { margin-bottom: 6px; }
+    .source-list { margin: 0; padding-left: 22px; }
+    .source-list li { margin-bottom: 8px; }
+    .case-title { color: var(--title); font-weight: 900; display:block; margin-bottom: 4px; }
+    .subtle-divider { height:1px; background:rgba(91,62,36,.14); margin:18px 0; }
+    .question-box { margin-top:16px; background:#fff7ec; border:1px solid rgba(122,79,42,.22); border-radius:20px; padding:20px; }
+    .question-box h3 { margin-bottom:8px; }
+    @media (max-width: 680px) { .fact-table, .fact-table tbody, .fact-table tr, .fact-table th, .fact-table td { display:block; width:100%; } .fact-table th { border-bottom:0; } }
+</style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a class="back-link" href="#">← Înapoi la materiale</a>
+      <span class="tag">Material ajutător · Istoria României · Al Doilea Război Mondial</span>
+    </div>
+
+    <section class="hero" data-watermark="NISTRU-BUG">
+      <p class="eyebrow">Material ajutător · Istoria României · Al Doilea Război Mondial</p>
+      <h1>Transnistria sub administrație românească: deportări, lagăre și masacre</h1>
+      <p class="subtitle">Material amplu despre Guvernământul Transnistriei: Odessa, Dalnic, Bogdanovca, Domanivka, Akhmetchetka, Pechora, Vapniarka, Berezovca, deportările evreilor și romilor, rolul jandarmeriei, al administrației românești și al auxiliarelor locale.</p>
+      <div class="summary-grid">
+        <div class="summary-card"><strong>Teritoriu ocupat</strong><span>Spațiul dintre Nistru și Bug, administrat de România între 1941 și 1944.</span></div>
+        <div class="summary-card"><strong>Cazuri centrale</strong><span>Odessa, Dalnic, Bogdanovca, Domanivka, Akhmetchetka, Pechora, Vapniarka și Berezovca.</span></div>
+        <div class="summary-card"><strong>Mecanisme</strong><span>Deportări, marșuri, ghetouri, colonii, lagăre, foamete, tifos, incendieri, împușcări și muncă forțată.</span></div>
+        <div class="summary-card"><strong>Victime</strong><span>Evreii deportați sau locali și romii deportați de regimul Antonescu.</span></div>
+      </div>
+    </section>
+
+    <nav class="nav-card" aria-label="Cuprins">
+      <b>Cuprins:</b>
+      <a href="#cadru">I. Cadru</a>
+      <a href="#cronologie">II. Cronologie</a>
+      <a href="#actori">III. Actori</a>
+      <a href="#odessa">IV. Odessa</a>
+      <a href="#lagare">V. Ghetouri</a>
+      <a href="#bogdanovca">VI. Bogdanovca</a>
+      <a href="#roma">VII. Romi</a>
+      <a href="#memorie">VIII. Memorie</a>
+      <a href="#surse">Surse</a>
+    </nav>
+
+    <section class="section" id="cadru">
+  <h2>I. Ce a fost Transnistria sub administrație românească?</h2>
+  <p class="section-intro">În 1941, după atacul Axei asupra Uniunii Sovietice, România a primit administrarea teritoriului dintre Nistru și Bug. Regimul Antonescu a transformat acest spațiu într-o zonă de deportare, ghetouri, colonii, lagăre, jaf, muncă forțată și ucidere prin execuție sau condiții de viață.</p>
+  <div class="three-col">
+    <article class="info-card"><h3>Teritoriu de ocupație</h3><p>Transnistria nu era parte tradițională a statului român interbelic. A fost un teritoriu sovietic ocupat militar și administrat temporar de România între 1941 și 1944, cu capitala la Odessa după cucerirea orașului.</p></article>
+    <article class="info-card"><h3>Loc de deportare</h3><p>Evreii din Basarabia, Bucovina și uneori din alte zone au fost deportați spre Transnistria. Acolo au fost plasați în ghetouri, colonii sau lagăre, adesea fără hrană, adăpost, medicamente sau protecție.</p></article>
+    <article class="info-card"><h3>Moarte prin sistem</h3><p>Moartea a venit prin împușcare, incendiere, marșuri, frig, foame, tifos, jaf, abandon medical și muncă forțată. De multe ori, condițiile au fost atât de intenționat distructive încât devin formă de exterminare.</p></article>
+  </div>
+  <div class="definition"><strong>Ideea-cheie:</strong> Transnistria trebuie înțeleasă ca spațiu al administrației criminale: un teritoriu în care statul român a deportat oameni și i-a expus deliberat la moarte, prin execuții directe și prin condiții de viață imposibile.</div>
+</section><section class="section" id="cronologie">
+  <h2>II. Cronologie extinsă: de la ocupație la deportare și masacru</h2>
+  <p class="section-intro">Cronologia arată cum Transnistria a devenit o zonă de concentrare și exterminare a populației evreiești și rome deportate de autoritățile române, în colaborare sau vecinătate cu unități germane și auxiliare locale.</p>
+  <div class="timeline">
+        <article class="event"><div class="date">22 iun. 1941</div><div><h3>România intră în războiul antisovietic</h3><p>România participă la Operațiunea Barbarossa alături de Germania nazistă, cu obiectivul declarat de a recupera Basarabia și Bucovina de Nord.</p></div></article>
+        <article class="event"><div class="date">iul. 1941</div><div><h3>Masacre în Basarabia și Bucovina</h3><p>Evreii sunt supuși execuțiilor, jafurilor și concentrării în ghetouri. Supraviețuitorii devin candidați pentru deportare peste Nistru.</p></div></article>
+        <article class="event"><div class="date">aug. 1941</div><div><h3>Acorduri de administrație</h3><p>După înaintarea militară, teritoriul dintre Nistru și Bug intră sub administrație românească. Se conturează Guvernământul Transnistriei.</p></div></article>
+        <article class="event"><div class="date">sept. 1941</div><div><h3>Încep deportările peste Nistru</h3><p>Coloane de evrei din Basarabia și Bucovina sunt împinse către Transnistria. Mulți mor pe drum, înainte să ajungă la un ghetou sau lagăr.</p></div></article>
+        <article class="event"><div class="date">16 oct. 1941</div><div><h3>Cucerirea Odessei</h3><p>Trupele române ocupă Odessa după un asediu greu. Orașul devine capitală administrativă și loc central al represiunii antievreiești.</p></div></article>
+        <article class="event"><div class="date">22 oct. 1941</div><div><h3>Explozia comandamentului român din Odessa</h3><p>O explozie distruge sediul militar român și ucide zeci de persoane, inclusiv pe generalul Ioan Glogojanu. Autoritățile române atribuie vina evreilor și comuniștilor.</p></div></article>
+        <article class="event"><div class="date">22-26 oct. 1941</div><div><h3>Masacrul din Odessa și Dalnic</h3><p>Au loc spânzurări, împușcări, incendieri și execuții masive. Dalnic devine unul dintre locurile centrale ale represaliilor.</p></div></article>
+        <article class="event"><div class="date">27 oct. 1941</div><div><h3>Marșuri către Bogdanovca</h3><p>Mii de evrei din Odessa sunt forțați să meargă pe jos spre Bogdanovca, la mare distanță, păziți de jandarmi și expuși frigului, jafului și violenței.</p></div></article>
+        <article class="event"><div class="date">dec. 1941-ian. 1942</div><div><h3>Bogdanovca</h3><p>În contextul tifosului și al supraaglomerării, zeci de mii de evrei sunt uciși prin împușcare, ardere și alte metode. Este unul dintre cele mai mari masacre din Holocaustul din Transnistria.</p></div></article>
+        <article class="event"><div class="date">ian.-feb. 1942</div><div><h3>Deportări din Odessa spre Berezovca</h3><p>Evreii rămași în Odessa sunt trimiși spre zone rurale și lagăre. Frigul, vagoanele, marșurile și milițiile locale duc la moartea multora.</p></div></article>
+        <article class="event"><div class="date">1941-1942</div><div><h3>Domanivka, Akhmetchetka, Pechora, Vapniarka</h3><p>Ghetouri și lagăre devin spații ale foametei, bolii, muncii forțate și execuțiilor. Condițiile nu sunt accidente, ci parte a abandonului criminal.</p></div></article>
+        <article class="event"><div class="date">iun.-sept. 1942</div><div><h3>Deportarea romilor</h3><p>Regimul Antonescu deportează zeci de mii de romi, mai ales nomazi și persoane etichetate arbitrar drept „periculoase”, către Transnistria. Mulți mor de foame, frig și boală.</p></div></article>
+        <article class="event"><div class="date">oct. 1942</div><div><h3>Încetinirea deportărilor</h3><p>Deportările masive sunt reduse sau oprite în anumite direcții, dar cei deja deportați rămân în condiții devastatoare.</p></div></article>
+        <article class="event"><div class="date">1943</div><div><h3>Supraviețuire, corupție, repatrieri limitate</h3><p>Unele grupuri reușesc să obțină ajutor, repatriere sau protecție, dar pentru cei mai mulți supraviețuirea depinde de hazard, mită, rețele locale și rezistență fizică.</p></div></article>
+        <article class="event"><div class="date">primăvara 1944</div><div><h3>Retragerea românească</h3><p>Armata Roșie recucerește regiunea. Supraviețuitorii sunt puțini în raport cu populația deportată și cu evreii locali uciși.</p></div></article>
+        <article class="event"><div class="date">1946</div><div><h3>Procesele postbelice</h3><p>Ion Antonescu, Gheorghe Alexianu și Constantin Z. Vasiliu sunt judecați și executați. Totuși, mulți executanți locali scapă de răspundere sau sunt pedepsiți limitat.</p></div></article>
+      </div>
+</section><section class="section" id="actori">
+  <h2>III. Actori și administrație: cine decide, cine aplică?</h2>
+  <p class="section-intro">Transnistria nu a fost doar un spațiu de front, ci un teritoriu administrat. Crimele au fost posibile prin ordine politice, instituții militare, jandarmerie, prefecți, primari, poliții locale, auxiliari ucraineni și miliții ale germanilor locali.</p>
+  <table class="fact-table"><thead><tr><th>Persoană / grup</th><th>Funcție sau poziție</th><th>Rol în mecanismul represiv</th></tr></thead><tbody>
+<tr><td>Ion Antonescu</td><td>Conducătorul statului român</td><td>A decis politica generală de deportare, represalii și administrare a teritoriului ocupat. A ordonat represalii dure după explozia de la Odessa.</td></tr>
+<tr><td>Mihai Antonescu</td><td>Vicepreședinte al Consiliului de Miniștri</td><td>A participat la linia politică și diplomatică a regimului, inclusiv la justificarea ideologică a războiului și a politicilor antievreiești.</td></tr>
+<tr><td>Gheorghe Alexianu</td><td>Guvernator al Transnistriei</td><td>A condus administrația civilă a teritoriului ocupat; ordinele sale și ale subordonaților au structurat ghetouri, muncă forțată și deportări.</td></tr>
+<tr><td>Constantin Z. Vasiliu</td><td>Șef al Jandarmeriei</td><td>Jandarmeria a păzit convoaie, lagăre, ghetouri și a participat la aplicarea deportărilor și represiunilor.</td></tr>
+<tr><td>Generalul Ioan Glogojanu</td><td>Comandant militar român la Odessa</td><td>A murit în explozia din 22 octombrie 1941, eveniment folosit de autorități pentru declanșarea represaliilor masive.</td></tr>
+<tr><td>Colonelul / prefectul Modest Isopescu</td><td>Autoritate în zona Golta</td><td>Numele său apare în legătură cu administrarea criminală a unor colonii și lagăre, inclusiv contextul Bogdanovca.</td></tr>
+<tr><td>Jandarmeria română</td><td>Forță de pază și deportare</td><td>A escortat convoaie, a supravegheat ghetouri și lagăre, a confiscat bunuri, a exercitat violență și a colaborat cu auxiliari locali.</td></tr>
+<tr><td>Selbstschutz</td><td>Miliții ale germanilor locali</td><td>Au participat la masacre, mai ales în zona Berezovca, uneori sub influență sau coordonare germană, în vecinătatea administrației românești.</td></tr>
+<tr><td>Poliții și auxiliari ucraineni</td><td>Forțe locale auxiliare</td><td>Au ajutat la pază, jaf, marșuri, execuții și controlul ghetourilor, în funcție de localitate și comandă.</td></tr>
+<tr><td>Victimele deportate</td><td>Evreii din Basarabia, Bucovina, Odessa, Transnistria locală și romii deportați</td><td>Au fost supuse la marșuri, frig, foame, tifos, jaf, împușcare, muncă forțată și separarea de familie.</td></tr>
+</tbody></table>
+</section><section class="section" id="odessa">
+  <h2>IV. Odessa: ocupație, explozie, represalii și deportare</h2>
+  <p class="section-intro">Odessa este cel mai important studiu de caz al violenței românești în Transnistria. Orașul a fost ocupat la 16 octombrie 1941, iar după explozia din 22 octombrie, autoritățile române au declanșat represalii masive împotriva evreilor și comuniștilor reali sau presupuşi.</p>
+  <div class="two-col">
+    <article class="info-card"><h3>16 octombrie 1941</h3><p>Odessa este ocupată după un asediu costisitor. În oraș rămân zeci de mii de evrei, localnici și refugiați din Basarabia. Românii ordonă înregistrarea evreilor și încep detenția, umilirea, munca forțată și violențele.</p></article>
+    <article class="info-card"><h3>22 octombrie 1941</h3><p>Explozia sediului comandamentului român ucide zeci de persoane, inclusiv pe generalul Ioan Glogojanu. Fără anchetă reală, evreii și comuniștii sunt transformați în ținte colective ale răzbunării.</p></article>
+  </div><div class="timeline">
+        <article class="event"><div class="date">22 oct. seara</div><div><h3>Spânzurări publice</h3><p>Autoritățile încep imediat execuții prin spânzurare și împușcare. Scopul este terorizarea orașului și transmiterea unui mesaj de represalii.</p></div></article>
+        <article class="event"><div class="date">23 oct.</div><div><h3>Execuții masive</h3><p>Mii de evrei sunt executați, inclusiv prin spânzurare publică. Violența devine demonstrativă și colectivă.</p></div></article>
+        <article class="event"><div class="date">24-25 oct.</div><div><h3>Dalnic</h3><p>Mii de oameni sunt duși spre Dalnic, închiși în clădiri, mitraliați, arși sau uciși prin explozie. Locul devine simbol al masacrului de la Odessa.</p></div></article>
+        <article class="event"><div class="date">25 oct.</div><div><h3>Slobidka</h3><p>Supraviețuitorii sunt concentrați în ghetoul Slobidka, în condiții de frig, foame și supraaglomerare.</p></div></article>
+        <article class="event"><div class="date">27 oct.</div><div><h3>Drumul spre Bogdanovca</h3><p>Grupuri mari sunt forțate să pornească spre Bogdanovca. Marșul însuși devine mecanism de ucidere prin epuizare, frig și violență.</p></div></article>
+        <article class="event"><div class="date">ian.-feb. 1942</div><div><h3>Deportări feroviare</h3><p>Evreii rămași în Odessa sunt deportați spre Berezovca și alte zone. Mulți mor pe drum, iar alții sunt uciși de miliții locale.</p></div></article>
+      </div><details open><summary>De ce Odessa este un caz central?</summary><div class="details-body">
+<p>Odessa arată cum o autoritate militară poate folosi un atac real sau presupus drept justificare pentru ucidere colectivă. Represalia nu a vizat numai vinovați individuali, ci o categorie etnică și politică definită propagandistic. În acest sens, Odessa este o crimă de stat: ordinul, execuția, paza, ghetoul, marșul și deportarea sunt legate între ele.</p>
+  </div></details><details open><summary>Nume și locuri de reținut</summary><div class="details-body">
+<ul class="clean dense-list"><li><strong>Ion Antonescu</strong> – autoritatea politică a represaliilor.</li><li><strong>Generalul Ioan Glogojanu</strong> – comandant român ucis în explozia din 22 octombrie 1941.</li><li><strong>Gheorghe Alexianu</strong> – guvernator al Transnistriei, implicat în administrarea ulterioară a teritoriului.</li><li><strong>Slobidka</strong> – cartier/ghetou de tranzit pentru evreii din Odessa.</li><li><strong>Dalnic</strong> – loc al execuțiilor, incendiilor și uciderii masive.</li><li><strong>Bogdanovca</strong> – destinație a marșurilor morții și loc al unui masacru uriaș.</li></ul>
+  </div></details>
+</section><section class="section" id="lagare">
+  <h2>V. Ghetouri, colonii și lagăre: cum funcționa moartea prin administrație</h2>
+  <p class="section-intro">În Transnistria, termenii „ghetou”, „colonie”, „lagăr” sau „punct de muncă” se suprapun uneori. Important este mecanismul: oamenii erau concentrați, deposedați, păziți, înfometați, puși la muncă, expuși bolii și uciși direct sau indirect.</p>
+  <table class="fact-table"><thead><tr><th>Loc</th><th>Tip / funcție</th><th>Ce trebuie reținut</th></tr></thead><tbody>
+<tr><td>Bogdanovca / Bohdanivka</td><td>Colonie-lagăr pe malul Bugului</td><td>Unul dintre cele mai mari locuri ale masacrului din Transnistria. În decembrie 1941-ianuarie 1942, zeci de mii de evrei au fost împușcați, arși sau lăsați să moară în contextul tifosului și supraaglomerării.</td></tr>
+<tr><td>Domanivka</td><td>Lagăr / zonă de concentrare</td><td>A funcționat ca spațiu de internare, foamete, boală și execuții. Este adesea menționat alături de Bogdanovca și Akhmetchetka.</td></tr>
+<tr><td>Akhmetchetka</td><td>Lagăr / colonie</td><td>Parte a complexului de locuri unde deportații evrei au fost concentrați și uciși direct sau prin condiții.</td></tr>
+<tr><td>Pechora</td><td>Lagăr de moarte prin condiții</td><td>Cunoscut pentru foame, boală și abandon; mulți deportați au murit fără execuție formală, prin faptul că li s-au refuzat condiții minime de supraviețuire.</td></tr>
+<tr><td>Vapniarka</td><td>Lagăr pentru deținuți politici evrei</td><td>A adăpostit deținuți politici evrei deportați din România; condițiile de hrană, boală și tratament au produs suferință gravă.</td></tr>
+<tr><td>Moghilev-Podolsk</td><td>Ghetou / centru de concentrare</td><td>A devenit un loc important pentru deportați, inclusiv pentru orfani și supraviețuitori ai marșurilor. A existat o viață comunitară precară, sub amenințarea foametei și bolii.</td></tr>
+<tr><td>Berezovca</td><td>Zonă de deportare și masacru</td><td>Evreii deportați din Odessa au fost trimiși spre această zonă; miliții ale germanilor locali au comis numeroase execuții în masă.</td></tr>
+<tr><td>Balta, Râbnița, Tulcin, Golta</td><td>Județe / centre administrative</td><td>Au concentrat deportați, au organizat muncă forțată, pază, transport și supraviețuire prin condiții extreme.</td></tr>
+</tbody></table><details open><summary>Tipuri de moarte în Transnistria</summary><div class="details-body">
+<div class="term-grid">
+        <div class="term-card"><strong>Împușcare</strong><span>Execuții directe în șanțuri, curți, câmpuri, păduri sau lângă clădiri improvizate.</span></div>
+        <div class="term-card"><strong>Incendiere</strong><span>Victime închise în grajduri, magazii sau clădiri incendiate.</span></div>
+        <div class="term-card"><strong>Explozie</strong><span>Folosirea explozibilului ca formă de ucidere simbolică sau represivă, mai ales în contextul Odessa-Dalnic.</span></div>
+        <div class="term-card"><strong>Foame</strong><span>Rații inexistente sau insuficiente, furtul bunurilor și imposibilitatea de a procura hrană.</span></div>
+        <div class="term-card"><strong>Frig</strong><span>Deportări de iarnă, lipsă de haine, adăposturi improvizate și expunere la temperaturi extreme.</span></div>
+        <div class="term-card"><strong>Tifos și boală</strong><span>Supraaglomerarea, păduchii, lipsa igienei și absența medicinei au transformat boala în instrument de moarte.</span></div>
+        <div class="term-card"><strong>Marșuri</strong><span>Drumuri lungi pe jos, cu oameni bătuți, jefuiți, împușcați sau abandonați.</span></div>
+        <div class="term-card"><strong>Muncă forțată</strong><span>Epuizare, abuz, hrană insuficientă, muncă fără protecție și lipsă de tratament medical.</span></div>
+      </div>
+  </div></details>
+</section><section class="section" id="bogdanovca">
+  <h2>VI. Bogdanovca: dosar de aprofundare</h2>
+  <p class="section-intro">Bogdanovca este unul dintre cele mai cumplite episoade ale Holocaustului din România și din teritoriile administrate de România. El trebuie tratat separat, nu doar ca notă într-o listă.</p>
+  <div class="wide-card"><h3>Context</h3><p>În zona Golta, la Bogdanovca, au fost concentrați evrei din Odessa, Basarabia, Bucovina și alte părți ale Transnistriei. Condițiile erau catastrofale: oameni înghesuiți în grajduri și clădiri agricole, lipsă de hrană, frig, boală și epidemie de tifos. În loc să organizeze îngrijire și evacuare umană, autoritățile au recurs la ucidere în masă.</p></div><div class="timeline">
+        <article class="event"><div class="date">toamna 1941</div><div><h3>Concentrarea deportaților</h3><p>Mii și apoi zeci de mii de evrei sunt aduși în zona Bogdanovca, inclusiv după marșurile din Odessa.</p></div></article>
+        <article class="event"><div class="date">dec. 1941</div><div><h3>Tifos și decizie criminală</h3><p>Epidemia de tifos este tratată ca problemă de eliminare a oamenilor, nu de salvare a bolnavilor.</p></div></article>
+        <article class="event"><div class="date">21 dec. 1941</div><div><h3>Începerea masacrului</h3><p>Încep execuții în masă, cu participarea structurilor românești, a polițiilor auxiliare și a unor miliții locale.</p></div></article>
+        <article class="event"><div class="date">dec. 1941-ian. 1942</div><div><h3>Ardere, împușcare, jaf</h3><p>Oamenii sunt împușcați, arși, jefuiți, iar cadavrele sunt distruse. Cei prea slăbiți pentru deplasare pot fi arși în clădiri.</p></div></article>
+        <article class="event"><div class="date">după masacru</div><div><h3>Urme ascunse, supraviețuitori puțini</h3><p>Distrugerea corpurilor și dezorganizarea administrativă fac dificilă stabilirea completă a listelor de victime.</p></div></article>
+      </div><details open><summary>Cum explici la clasă?</summary><div class="details-body">
+<p>Bogdanovca nu trebuie prezentată doar ca „masacru”. Este exemplul în care boala, foametea, administrația, ordinul, auxiliarii locali și uciderea directă se contopesc. Elevii trebuie să înțeleagă că genocidul nu este întotdeauna o singură scenă de împușcare; poate fi un sistem în care oamenii sunt duși într-un loc unde toate condițiile produc moartea, apoi sunt uciși când devin „problemă”.</p>
+  </div></details>
+</section><section class="section" id="roma">
+  <h2>VII. Deportarea romilor în Transnistria</h2>
+  <p class="section-intro">Transnistria nu a fost doar spațiu de deportare pentru evrei. În 1942, regimul Antonescu a deportat și romi, mai ales persoane etichetate ca nomade sau ca „periculoase”, categorie aplicată adesea arbitrar și abuziv.</p>
+  <div class="three-col">
+    <article class="info-card"><h3>Criterii arbitrare</h3><p>Autoritățile au folosit categorii precum „nomazi”, „fără ocupație”, „periculoși” sau „cu antecedente”. În practică, aceste etichete puteau lovi familii întregi, inclusiv copii, bătrâni și persoane care nu comiseseră nicio infracțiune.</p></article>
+    <article class="info-card"><h3>Drumul spre Transnistria</h3><p>Unii romi au fost transportați cu trenul, alții au fost obligați să plece cu căruțele proprii. Li s-au confiscat bunuri, au fost rupți de locurile lor și trimiși într-un teritoriu care nu putea hrăni nici populația locală.</p></article>
+    <article class="info-card"><h3>Moarte prin abandon</h3><p>Mulți au murit de foame, frig, boală și lipsă de adăpost. În cazul romilor, memoria publică a rămas mult timp și mai slabă decât memoria victimelor evreiești, deși persecuția a fost reală și masivă.</p></article>
+  </div><details open><summary>Elemente concrete de predat</summary><div class="details-body">
+<ul class="clean dense-list"><li><strong>Perioadă:</strong> deportările romilor sunt concentrate mai ales în 1942.</li><li><strong>Instituții:</strong> decizia politică vine de sus, dar identificarea și transportul depind de poliție, jandarmerie și administrație locală.</li><li><strong>Destinații:</strong> zone precum Golta, Oceacov și Berezovca apar frecvent în documentarea deportărilor.</li><li><strong>Victime:</strong> familii întregi, inclusiv copii, nu doar bărbați adulți.</li><li><strong>Moarte:</strong> foamete, frig, tifos, lipsă de tratament, lipsă de adăpost și violență.</li></ul>
+  </div></details>
+</section><section class="section" id="memorie">
+  <h2>VIII. Supraviețuire, justiție și memorie</h2>
+  <p class="section-intro">Transnistria este dificil de predat deoarece nu există o singură imagine simplă: au existat masacre directe, ghetouri cu viață comunitară precară, lagăre de moarte prin condiții, corupție, acte de ajutor, administrație criminală și zone unde controlul românesc, german și local s-a suprapus.</p>
+  <details open><summary>Supraviețuire</summary><div class="details-body">
+<p>Supraviețuirea depindea de sănătate, vârstă, haine, hrană, meserie, mită, ajutor local, noroc, documente, rețele comunitare și momentul sosirii. Copiii, bătrânii, bolnavii și cei fără bunuri de schimb au fost cei mai vulnerabili.</p>
+  </div></details><details open><summary>Justiție</summary><div class="details-body">
+<p>După război, conducători precum Ion Antonescu, Gheorghe Alexianu și Constantin Z. Vasiliu au fost condamnați. Totuși, pentru multe crime locale, nivelul inferior al responsabilității a rămas insuficient investigat sau pedepsit.</p>
+  </div></details><details open><summary>Întrebări de lucru</summary><div class="details-body">
+<ol class="number-list"><li>Ce diferență există între deportare și evacuare?</li><li>De ce un ghetou sau lagăr poate ucide chiar fără execuții zilnice?</li><li>Ce rol are jandarmeria într-un sistem de deportare?</li><li>De ce Odessa și Bogdanovca trebuie studiate separat?</li><li>Cum se discută despre romii deportați fără a-i reduce la notă de subsol?</li></ol>
+  </div></details>
+</section>
+
+    
+<section class="section" id="dosare-transnistria">
+  <h2>IX. Dosare concrete de localități, lagăre și ghetouri</h2>
+  <p class="section-intro">Pentru Transnistria este important să nu rămânem doar la termenul general „deportări”. Spațiul a funcționat printr-o rețea de locuri: orașe, sate, ferme de stat, ghetouri, colonii, lagăre, puncte de tranzit și drumuri ale morții.</p>
+  <table class="fact-table"><thead><tr><th>Loc</th><th>Date / perioadă</th><th>Persoane sau structuri asociate</th><th>Ce exemplifică</th></tr></thead><tbody>
+<tr><td>Odessa</td><td>16 octombrie 1941 - 1944</td><td>Ion Antonescu, generalul Ioan Glogojanu, Gheorghe Alexianu, administrația românească</td><td>Oraș ocupat, capitală a Guvernământului, loc al represaliilor și al deportării aproape totale a comunității evreiești.</td></tr>
+<tr><td>Fontanska / închisoarea transformată în loc de detenție</td><td>18 octombrie 1941</td><td>Autorități române de ocupație</td><td>Transformarea infrastructurii urbane în spațiu de încarcerare a evreilor.</td></tr>
+<tr><td>Dalnic / Dalnyk</td><td>23-25 octombrie 1941</td><td>Unități române, pază militară, victime evreiești</td><td>Împușcare, incendiere și ucidere în clădiri; represalia ca masacru colectiv.</td></tr>
+<tr><td>Slobidka</td><td>octombrie 1941 - iunie 1942</td><td>Administrație românească, jandarmi, evrei din Odessa</td><td>Ghetou de tranzit, frig, foame, supraaglomerare și deportări succesive.</td></tr>
+<tr><td>Bogdanovca / Bohdanivka</td><td>decembrie 1941 - ianuarie 1942</td><td>Modest Isopescu, jandarmi, auxiliari locali, Selbstschutz</td><td>Masacru uriaș produs prin epidemie, decizie administrativă, împușcare, incendiere și distrugerea cadavrelor.</td></tr>
+<tr><td>Domanivka</td><td>1941-1942</td><td>Autorități române și auxiliare</td><td>Lagăr/colonie asociată cu foamete, boală, ucideri și abandon criminal.</td></tr>
+<tr><td>Akhmetchetka</td><td>1941-1942</td><td>Administrație locală și forțe de pază</td><td>Loc de concentrare și moarte, adesea menționat în complexul crimelor din zona Golta.</td></tr>
+<tr><td>Pechora</td><td>1941-1944</td><td>Administrație românească locală, deportați evrei</td><td>Exemplu de lagăr în care moartea survine prin foame, boală, lipsă de tratament și abandon.</td></tr>
+<tr><td>Vapniarka</td><td>iarna 1941-1942 și după</td><td>Deținuți politici evrei, administrație de lagăr</td><td>Caz important pentru deținuții politici, alimentație toxică/insuficientă, boală și regim de detenție dur.</td></tr>
+<tr><td>Moghilev-Podolsk</td><td>1941-1944</td><td>Deportați evrei, comitete de ajutor, administrație românească</td><td>Ghetou și centru de supraviețuire precară; loc al orfanilor, bolii și negocierilor pentru ajutor.</td></tr>
+<tr><td>Berezovca</td><td>ianuarie-iunie 1942</td><td>Jandarmi români, poliții auxiliare, Selbstschutz</td><td>Zonă în care evreii deportați din Odessa sunt interceptați, jefuiți și uciși în masă.</td></tr>
+<tr><td>Golta</td><td>1941-1942</td><td>Prefectură locală, Modest Isopescu</td><td>Județ asociat cu Bogdanovca, Domanivka, Akhmetchetka și politici de eliminare prin masacru și condiții.</td></tr>
+<tr><td>Oceacov</td><td>1942</td><td>Romi deportați, autorități române</td><td>Zonă asociată deportării romilor și supraviețuirii în condiții extreme.</td></tr>
+<tr><td>Balta, Râbnița, Tulcin</td><td>1941-1944</td><td>Administrație românească, jandarmerie, deportați</td><td>Rețea de ghetouri și puncte de control în care viața depinde de hrană, muncă, boală și relații locale.</td></tr>
+</tbody></table>
+</section>
+
+<section class="section" id="drumul-deportatului">
+  <h2>X. Drumul deportatului în Transnistria</h2>
+  <p class="section-intro">O deportare nu începea în clipa trecerii Nistrului. Ea începea cu o decizie politică, continua cu liste și arestări, apoi cu drum, jaf, concentrare, muncă forțată, boală și moarte.</p>
+  <div class="key-line"><strong>1. Ordinul</strong><span>Decizia venea de la nivel central sau regional: evreii ori romii erau desemnați pentru îndepărtare.</span></div><div class="key-line"><strong>2. Lista</strong><span>Administrația locală identifica familii, case, meserii, vârste, bunuri și persoane considerate deportabile.</span></div><div class="key-line"><strong>3. Ridicarea</strong><span>Jandarmi, polițiști sau militari adunau oamenii din case, curți, ghetouri ori puncte de adunare.</span></div><div class="key-line"><strong>4. Confiscarea</strong><span>Banii, hainele, animalele, căruțele, bijuteriile și actele puteau fi luate înainte sau pe drum.</span></div><div class="key-line"><strong>5. Coloana</strong><span>Drumul pe jos devenea selecție: copiii, bătrânii și bolnavii cedau primii.</span></div><div class="key-line"><strong>6. Tranzitul</strong><span>În gări, hambare, curți sau margini de sat, oamenii așteptau fără apă, hrană și adăpost.</span></div><div class="key-line"><strong>7. Ghetoul / colonia</strong><span>La sosire nu exista locuință reală, ci grajd, bordei, magazie, casă părăsită sau câmp.</span></div><div class="key-line"><strong>8. Munca</strong><span>Cei capabili erau puși la muncă, adesea fără hrană suficientă și fără tratament.</span></div><div class="key-line"><strong>9. Epidemia</strong><span>Tifosul și alte boli erau rezultat al păduchilor, foametei, frigului și supraaglomerării.</span></div><div class="key-line"><strong>10. Moartea</strong><span>Oamenii mureau prin împușcare, ardere, frig, foame, boală sau epuizare.</span></div><div class="key-line"><strong>11. Urmele</strong><span>Cadavrele puteau fi arse, îngropate în gropi comune sau lăsate fără identificare.</span></div><div class="key-line"><strong>12. Supraviețuirea</strong><span>Supraviețuitorii rămâneau cu traume, pierderi familiale și adesea fără bunurile sau casele de dinainte.</span></div>
+</section>
+
+<section class="section" id="cifre-prudenta">
+  <h2>XI. Cifre, estimări și prudență istorică</h2>
+  <p class="section-intro">În Transnistria cifrele diferă de la o sursă la alta deoarece deportările au fost haotice, registrele incomplete, frontul s-a schimbat, cadavrele au fost distruse, iar mulți oameni au murit pe drum sau în locuri neînregistrate.</p>
+  <div class="term-grid">
+<div class="term-card"><strong>Deportați evrei</strong><span>Zeci și sute de mii de evrei au fost afectați de deportările și masacrele din teritoriile controlate de România.</span></div>
+<div class="term-card"><strong>Victime în Transnistria</strong><span>Estimările includ evrei români, evrei ucraineni locali și persoane moarte prin masacre sau condiții.</span></div>
+<div class="term-card"><strong>Romi deportați</strong><span>Aproximativ 25.000 de romi au fost deportați de regimul Antonescu, potrivit estimărilor frecvent citate.</span></div>
+<div class="term-card"><strong>Romi morți</strong><span>Mii și zeci de mii au murit, în funcție de metodologia folosită de istorici.</span></div>
+<div class="term-card"><strong>Odessa</strong><span>Estimările pentru masacrul inițial, deportări și ucideri ulterioare se discută separat.</span></div>
+<div class="term-card"><strong>Bogdanovca</strong><span>Cifrele variază, dar amploarea masacrului este incontestabilă.</span></div>
+<div class="term-card"><strong>Berezovca</strong><span>Deportații din Odessa au fost uciși frecvent de miliții ale germanilor locali.</span></div>
+<div class="term-card"><strong>Prudență</strong><span>Nu se folosesc cifre pentru a diminua crima; se explică de ce estimările istorice au intervale.</span></div>
+</div>
+  <details open><summary>Formulare recomandată</summary><div class="details-body">
+<p>În loc să spunem „nu se știe exact, deci este discutabil”, spunem: „numărul exact este dificil de stabilit, dar documentele, mărturiile și rapoartele confirmă caracterul masiv, sistematic și criminal al deportărilor și masacrelor”.</p>
+</div></details>
+</section>
+
+
+    <section class="section" id="surse">
+      <h2>Surse orientative pentru documentare</h2>
+      <p class="section-intro">Lista este orientativă și poate fi folosită pentru aprofundare. Într-un material public, cifrele, numele și încadrările juridice trebuie verificate în raport cu rapoarte oficiale, arhive, studii academice și muzee specializate. Unele episoade, mai ales cele din Transilvania anului 1944, au și o memorie locală conflictuală; de aceea este importantă separarea faptelor documentate de propagandă, legendă politică sau justificare ulterioară.</p>
+      <ul class="source-list">
+        <li>Raportul Final al Comisiei Internaționale pentru Studierea Holocaustului în România.</li>
+        <li>United States Holocaust Memorial Museum, articolele despre România și Odesa/Odessa.</li>
+        <li>Radu Ioanid, <em>The Holocaust in Romania</em>.</li>
+        <li>Jean Ancel, lucrări despre Holocaustul din România și Transnistria.</li>
+        <li>Dennis Deletant, lucrări despre regimul Antonescu.</li>
+        <li>Yad Vashem – materiale despre deportările în Transnistria și masacrele din Odessa/Bogdanovca.</li>
+        <li>Studii despre deportarea romilor în Transnistria, inclusiv lucrări de Michelle Kelso, Shannon Woodcock și Adrian-Nicolae Furtună.</li>
+      </ul>
+    </section>
+
+    <section class="final-box">
+      <h2>Idee de final pentru elevi</h2>
+      <p>Crimele de stat și violențele de război trebuie analizate prin întrebări despre ordine, instituții, responsabilitate, victime, complicitate, propagandă și memorie. Nu este suficient să întrebăm „cine a tras?”, ci și cine a dat ordinul, cine a făcut listele, cine a asigurat transportul, cine a păzit, cine a confiscat, cine a tăcut și cine a încercat să salveze.</p>
+    </section>
+  </main>
+</body>
+</html>

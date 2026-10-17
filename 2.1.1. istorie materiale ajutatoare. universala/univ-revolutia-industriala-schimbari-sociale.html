@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>revolutia-industriala-schimbari-sociale</title>
+  <style>
+:root {
+  --bg: #f6f0e7;
+  --paper: #fffaf3;
+  --paper-2: #ffffff;
+  --ink: #2f241c;
+  --title: #3c2a1e;
+  --muted: #5b4a3d;
+  --accent: #7a4f2a;
+  --accent-2: #9b6a3c;
+  --accent-soft: #f0e4d4;
+  --line: rgba(91, 62, 36, 0.18);
+  --line-strong: rgba(91, 62, 36, 0.34);
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+  --shadow-small: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(132, 78, 40, 0.72), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(112, 63, 31, 0.44), transparent 36%),
+    radial-gradient(circle at 0% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    radial-gradient(circle at 100% 50%, rgba(29, 13, 6, 0.92), transparent 42%),
+    linear-gradient(180deg, #32190c 0%, #4a2a18 46%, #1e0e05 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.44) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.20), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.20));
+}
+.page { position: relative; z-index: 1; width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 34px 0 70px; }
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.back-link, .tag { display: inline-flex; align-items: center; border: 1px solid var(--line); background: rgba(255, 250, 243, 0.84); color: var(--title); border-radius: 999px; padding: 10px 15px; text-decoration: none; font-size: 15px; font-weight: 700; box-shadow: var(--shadow-small); }
+.back-link:hover { background: #fff6eb; }
+.hero, .section, .nav-card, .final-box { background: rgba(255, 250, 243, 0.96); border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow); }
+.hero { padding: 38px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.hero::after { content: attr(data-watermark); position: absolute; right: 24px; bottom: -24px; font-size: 104px; font-weight: 900; letter-spacing: -4px; color: rgba(122, 79, 42, 0.08); pointer-events: none; }
+.eyebrow { margin: 0 0 8px; font-size: 16px; color: var(--accent); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; }
+h1 { margin: 0; font-size: clamp(38px, 5vw, 62px); line-height: 1.04; color: var(--title); letter-spacing: -1.4px; text-align: left; text-align-last: auto; }
+.subtitle { margin: 18px 0 0; max-width: 990px; font-size: 19px; line-height: 1.78; color: var(--muted); text-align: justify; text-align-last: left; }
+.summary-grid, .three-col, .two-col, .four-grid, .term-grid, .quick-grid, .cause-grid, .details-grid { display: grid; gap: 14px; }
+.summary-grid { grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+.three-col { grid-template-columns: repeat(3, 1fr); }
+.two-col { grid-template-columns: repeat(2, 1fr); }
+.four-grid { grid-template-columns: repeat(4, 1fr); }
+.cause-grid { grid-template-columns: 1.05fr 0.95fr; }
+.term-grid { grid-template-columns: repeat(4, 1fr); }
+.quick-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+.summary-card, .info-card, .wide-card, .term-card, .quick-card, .source-note, .micro-card, .warning-box, .table-wrap { background: var(--paper-2); border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); text-align: justify; text-align-last: left; }
+.summary-card { padding: 16px; min-height: 132px; }
+.summary-card strong, .quick-card strong, .term-card strong, .micro-card strong { display: block; color: var(--title); font-size: 17px; margin-bottom: 8px; text-align: left; text-align-last: auto; }
+.summary-card span, .quick-card span, .term-card span, .micro-card span { display: block; color: var(--muted); font-size: 15.5px; line-height: 1.56; text-align: justify; text-align-last: left; }
+.nav-card { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 18px 20px; margin-bottom: 24px; }
+.nav-card b { color: var(--title); margin-right: 2px; }
+.nav-card a, .mini-btn { color: var(--title); background: var(--accent-soft); border: 1px solid rgba(91, 62, 36, 0.16); border-radius: 999px; text-decoration: none; padding: 8px 12px; font-weight: 700; font-size: 14px; cursor: pointer; font-family: inherit; }
+.nav-card a:hover, .mini-btn:hover { background: #e5d2bb; }
+.section { padding: 30px; margin-bottom: 24px; }
+h2 { margin: 0 0 14px; color: var(--title); font-size: clamp(28px, 3vw, 38px); line-height: 1.15; text-align: left; text-align-last: auto; }
+h3 { margin: 0 0 12px; color: var(--title); font-size: 22px; line-height: 1.22; text-align: left; text-align-last: auto; }
+h4 { margin: 16px 0 8px; color: var(--title); font-size: 18px; text-align: left; text-align-last: auto; }
+.section-intro, p, li, dd { font-size: 17px; line-height: 1.72; color: var(--muted); text-align: justify; text-align-last: left; hyphens: auto; }
+.section-intro { margin: 0 0 20px; max-width: 1000px; }
+.info-card, .wide-card, .term-card, .quick-card, .micro-card, .warning-box, .table-wrap { padding: 20px; }
+.wide-card { margin-top: 14px; }
+.wide-card p:last-child, .info-card p:last-child { margin-bottom: 0; }
+.clean, .number-list { margin: 0; padding-left: 22px; }
+.clean li, .number-list li { margin: 0 0 9px; padding-left: 2px; }
+.clean li:last-child, .number-list li:last-child { margin-bottom: 0; }
+.mini-title { display: inline; color: var(--title); font-weight: 800; background: transparent; border: 0; border-radius: 0; padding: 0; margin-right: 5px; white-space: normal; text-align: inherit; }
+.date-pill { display: inline-block; color: var(--title); font-weight: 800; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.13); border-radius: 999px; padding: 2px 9px; margin-right: 5px; white-space: nowrap; text-align: left; }
+.definition, .note { margin-top: 18px; background: #fff8ef; border: 1px solid rgba(122, 79, 42, 0.22); border-left: 6px solid rgba(122, 79, 42, 0.48); border-radius: 18px; padding: 18px 20px; color: var(--muted); font-size: 17px; line-height: 1.7; text-align: justify; text-align-last: left; }
+.definition strong, .note strong { color: var(--title); }
+details { background: #fffdf9; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); margin-top: 14px; overflow: hidden; }
+details[open] { background: #fffaf3; }
+summary { cursor: pointer; list-style: none; padding: 18px 20px; font-size: 19px; font-weight: 800; color: var(--title); display: flex; justify-content: space-between; align-items: center; gap: 18px; text-align: left; text-align-last: auto; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "Deschide"; color: var(--muted); font-size: 14px; font-weight: 700; background: #f3eadf; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 999px; padding: 7px 11px; white-space: nowrap; }
+details[open] > summary::after { content: "Ascunde"; }
+.details-body { border-top: 1px solid rgba(91, 62, 36, 0.12); padding: 18px 20px 20px; text-align: justify; text-align-last: left; }
+.details-grid { grid-template-columns: repeat(2, 1fr); }
+.key-line { display: grid; grid-template-columns: 220px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px dashed rgba(91, 62, 36, 0.18); }
+.key-line:last-child { border-bottom: 0; }
+.key-line strong { color: var(--title); text-align: left; text-align-last: auto; }
+.key-line span { color: var(--muted); line-height: 1.65; text-align: justify; text-align-last: left; }
+.timeline { position: relative; display: grid; gap: 14px; margin-top: 18px; }
+.event { display: grid; grid-template-columns: 142px 1fr; gap: 18px; align-items: stretch; background: #ffffff; border: 1px solid rgba(91, 62, 36, 0.14); border-radius: 20px; box-shadow: var(--shadow-small); overflow: hidden; }
+.date { background: linear-gradient(180deg, #7a4f2a, #5b351b); color: #fffaf3; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px; font-size: 18px; line-height: 1.25; font-weight: 900; letter-spacing: 0.2px; }
+.event > div:last-child { padding: 17px 18px 18px 0; text-align: justify; text-align-last: left; }
+.event h3 { margin-bottom: 6px; }
+.event p { margin: 0; }
+.small-muted { font-size: 15px; color: #725c49; line-height: 1.6; text-align: justify; text-align-last: left; }
+.warning-box { background: #fff7ec; border-color: rgba(122, 79, 42, 0.22); margin-top: 16px; }
+.final-box { padding: 28px; background: linear-gradient(135deg, #fffaf3, #f4e4d1); border-color: rgba(91, 62, 36, 0.25); }
+.final-box p { margin-bottom: 0; }
+.table-wrap { overflow-x: auto; margin-top: 14px; }
+table { width: 100%; border-collapse: collapse; font-size: 16px; color: var(--muted); }
+th, td { border-bottom: 1px solid rgba(91, 62, 36, 0.14); padding: 12px 10px; vertical-align: top; text-align: left; }
+th { color: var(--title); background: #f7ecdd; font-weight: 900; }
+tr:last-child td { border-bottom: 0; }
+.badge { display: inline-block; font-size: 14px; font-weight: 800; color: var(--title); background: #f2e4d2; border: 1px solid rgba(91,62,36,0.14); padding: 3px 8px; border-radius: 999px; margin: 2px 2px 2px 0; }
+@media (max-width: 980px) { .summary-grid, .three-col, .term-grid, .quick-grid, .four-grid { grid-template-columns: repeat(2, 1fr); } .two-col, .cause-grid, .details-grid { grid-template-columns: 1fr; } }
+@media (max-width: 680px) { .page { width: min(100% - 22px, 1180px); padding-top: 22px; } .hero, .section, .final-box { padding: 22px; border-radius: 22px; } .summary-grid, .term-grid, .quick-grid, .four-grid { grid-template-columns: 1fr; } .event { grid-template-columns: 1fr; } .date { min-height: 66px; } .event > div:last-child { padding: 0 16px 16px; } .key-line { grid-template-columns: 1fr; gap: 6px; } summary { align-items: flex-start; flex-direction: column; } .hero::after { font-size: 72px; } }
+</style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a class="back-link" href="#">← Înapoi la materiale</a>
+      <span class="tag">Material ajutător · Istorie universală · Epoca modernă și contemporană</span>
+    </div>
+    <section class="hero" data-watermark="SOCIAL">
+      <p class="eyebrow">Revoluția industrială</p>
+      <h1>Revoluția Industrială: schimbări sociale și drepturi ale muncitorilor</h1>
+      <p class="subtitle">Industrializarea a creat fabrici, orașe și bogăție, dar și muncă grea, exploatarea copiilor, accidente, sărăcie urbană și conflicte sociale. De aici au apărut sindicatele, legislația muncii, asigurările sociale și începuturile statului social modern.</p>
+      <div class="summary-grid"><div class="summary-card"><strong>Problema centrală</strong><span>Cum poate fi protejat muncitorul într-o economie de fabrică?</span></div><div class="summary-card"><strong>Actori</strong><span>Muncitori, patroni, stat, sindicate, reformatori, partide.</span></div><div class="summary-card"><strong>Teme</strong><span>Ziua de lucru, salarii, copii, femei, accidente, pensii, sănătate publică.</span></div><div class="summary-card"><strong>Rezultat</strong><span>De la laissez-faire la primele forme de protecție socială modernă.</span></div></div>
+    </section>
+    <nav class="nav-card" aria-label="Cuprins"><b>Cuprins:</b><a href="#societate">I. Societate</a><a href="#probleme">II. Probleme</a><a href="#raspunsuri">III. Răspunsuri</a><a href="#legi-britania">IV. Legi UK</a><a href="#legi-europa">V. Europa/SUA</a><a href="#miscari">VI. Mișcări</a><a href="#teme">VII. Drepturi</a><a href="#ideologii">VIII. Ideologii</a></nav>
+    
+<section class="section" id="societate">
+  <h2>I. Industrializarea ca revoluție socială</h2>
+  <p class="section-intro">Revoluția industrială nu schimbă doar tehnologia. Ea schimbă structura societății: apar noi clase, noi orașe, noi conflicte sociale și o nouă întrebare politică: cât trebuie să intervină statul pentru a proteja muncitorii?</p>
+  <div class="three-col">
+    <article class="info-card"><h3>Muncitorimea industrială</h3><p>Muncitorii depind de salariu, lucrează în fabrici, mine, ateliere și docuri, nu controlează mijloacele de producție și sunt expuși concedierii, accidentelor și fluctuațiilor pieței.</p></article>
+    <article class="info-card"><h3>Burghezia industrială</h3><p>Antreprenorii, comercianții, bancherii și proprietarii de fabrici câștigă influență socială și politică. Ei promovează proprietatea privată, investiția, libertatea economică și modernizarea infrastructurii.</p></article>
+    <article class="info-card"><h3>Clasa de mijloc</h3><p>A doua Revoluție Industrială mărește numărul inginerilor, funcționarilor, profesorilor, contabililor, medicilor, tehnicienilor și angajaților de birou.</p></article>
+    <article class="info-card"><h3>Urbanizarea</h3><p>Orașele cresc rapid, adesea înaintea canalizării, apei potabile, locuințelor decente și sistemelor sanitare. Apar cartiere muncitorești dense și insalubre.</p></article>
+    <article class="info-card"><h3>Familia și genul</h3><p>Femeile și copiii muncesc în textile, mine, gospodării urbane, servicii și ateliere. Industrializarea modifică rolurile familiale și stimulează dezbateri despre educație, maternitate, salariu și drepturi.</p></article>
+    <article class="info-card"><h3>Conflictul social</h3><p>Grevele, sindicatele, mutualismul, socialismul, reformismul liberal și legislația muncii apar ca răspuns la tensiunea dintre profit, disciplină industrială și protecție socială.</p></article>
+  </div>
+</section>
+
+<section class="section" id="probleme">
+  <h2>II. Problemele sociale create de fabrica industrială</h2>
+  <p class="section-intro">Industrializarea timpurie a crescut productivitatea, dar a creat condiții de muncă foarte dure. Multe legi sociale apar tocmai pentru a corecta excesele fabricii nereglementate.</p>
+  <details open><summary>Munca copiilor</summary><div class="details-body"><p>Copiii erau folosiți în textile, mine, ateliere și servicii deoarece puteau fi plătiți mai puțin și puteau lucra în spații înguste. Programul lung, accidentele, lipsa educației și epuizarea au transformat munca copiilor într-una dintre primele teme ale reformei sociale.</p></div></details>
+  <details open><summary>Munca femeilor</summary><div class="details-body"><p>Femeile au lucrat masiv în textile, confecții, servicii, mine în unele regiuni și munci prost plătite. Reformerii au cerut protecție pentru femei, dar uneori protecția a fost folosită și pentru a le limita accesul la anumite locuri de muncă. În timp, dezbaterea se leagă de salariu egal, maternitate, educație și drept de vot.</p></div></details>
+  <details open><summary>Ziua de lucru</summary><div class="details-body"><p>În prima jumătate a secolului al XIX-lea, ziua de muncă putea depăși 12-14 ore. Lupta pentru reducerea programului a devenit centrală: 10 ore, apoi 8 ore. Sloganul „opt ore muncă, opt ore odihnă, opt ore viață” exprimă idealul mișcării muncitorești.</p></div></details>
+  <details open><summary>Accidentele și bolile profesionale</summary><div class="details-body"><p>Minele, mașinile neprotejate, praful, fumul, substanțele toxice, zgomotul și ritmul intens au produs accidente și boli. Legislația socială introduce treptat inspecții, răspunderea patronului și compensații pentru accidente.</p></div></details>
+  <details open><summary>Locuințe și sănătate urbană</summary><div class="details-body"><p>Orașele industriale au crescut mai repede decât serviciile publice. Lipsa canalizării, apa contaminată, locuințele supraaglomerate și epidemiile au dus la primele politici moderne de sănătate publică, igienă urbană, canalizare și alimentare cu apă.</p></div></details>
+</section>
+
+<section class="section" id="raspunsuri">
+  <h2>III. Răspunsuri sociale și politice</h2>
+  <p class="section-intro">Muncitorii și reformatorii nu au așteptat pasiv intervenția statului. Ei au construit organizații, presiune publică, greve și alternative sociale.</p>
+  <div class="three-col">
+    <article class="info-card"><h3>Asociații de ajutor mutual</h3><p>Înainte de statul social, muncitorii creează case de ajutor pentru boală, accidente, înmormântare și șomaj. Ele sunt forme timpurii de solidaritate.</p></article>
+    <article class="info-card"><h3>Sindicate</h3><p>Sindicatele negociază salarii, program, condiții de muncă și protecție. Ele trec treptat de la ilegalitate sau tolerare precară la recunoaștere legală.</p></article>
+    <article class="info-card"><h3>Luddism</h3><p>În Anglia, la începutul secolului al XIX-lea, unele grupuri distrug mașini, nu pentru că urăsc tehnologia în sine, ci pentru că o asociază cu pierderea locului de muncă și scăderea salariilor.</p></article>
+    <article class="info-card"><h3>Chartism</h3><p>Mișcarea chartistă cere reforme politice, inclusiv extinderea reprezentării. Ea arată că problema muncitorească este și politică, nu doar economică.</p></article>
+    <article class="info-card"><h3>Socialism și comunism</h3><p>Marx, Engels și alți teoreticieni interpretează industrializarea ca luptă între burghezie și proletariat. Manifestul Partidului Comunist din 1848 devine text central al criticii capitalismului industrial.</p></article>
+    <article class="info-card"><h3>Reformism liberal și creștin-social</h3><p>Nu toate răspunsurile sunt revoluționare. Liberalii sociali, creștinii sociali, filantropii și reformatorii urbani cer inspecții, școli, locuințe, sănătate publică și asigurări sociale.</p></article>
+  </div>
+</section>
+
+<section class="section" id="legi-britania">
+  <h2>IV. Marea Britanie: laboratorul legislației sociale</h2>
+  <p class="section-intro">Pentru că industrializarea a început mai devreme în Marea Britanie, aici apar și unele dintre primele legi moderne de protecție a muncii.</p>
+  <div class="table-wrap"><table><thead><tr><th>Dată</th><th>Lege / măsură</th><th>Conținut și importanță</th></tr></thead><tbody>
+    <tr><td>1802</td><td>Health and Morals of Apprentices Act</td><td>Vizează ucenicii din fabrici textile: igienă, educație minimă, limitări privind programul. Aplicarea era slabă, dar marchează începutul intervenției statului.</td></tr>
+    <tr><td>1819</td><td>Cotton Mills and Factories Act</td><td>Interzice munca copiilor foarte mici în fabricile de bumbac și limitează munca copiilor sub 16 ani, însă controlul rămâne insuficient.</td></tr>
+    <tr><td>1833</td><td>Factory Act</td><td>Introduce inspectori de fabrică și limitează munca copiilor în industria textilă. Este un pas major deoarece statul începe să verifice aplicarea legii.</td></tr>
+    <tr><td>1834</td><td>New Poor Law</td><td>Reformează asistența pentru săraci prin workhouses. A fost foarte controversată, deoarece ajutorul era legat de condiții dure.</td></tr>
+    <tr><td>1842</td><td>Mines and Collieries Act</td><td>Interzice munca femeilor și fetelor în subteran și limitează munca băieților foarte mici în mine.</td></tr>
+    <tr><td>1844</td><td>Factory Act</td><td>Întărește protecția femeilor și copiilor, introduce reguli de siguranță pentru mașini.</td></tr>
+    <tr><td>1847</td><td>Ten Hours Act</td><td>Limitează ziua de lucru pentru femei și tineri în textile la aproximativ 10 ore, devenind simbol al mișcării pentru reducerea programului.</td></tr>
+    <tr><td>1848</td><td>Public Health Act</td><td>Leagă industrializarea de sănătatea urbană: apă, canalizare, igienă, autorități locale de sănătate.</td></tr>
+    <tr><td>1870</td><td>Elementary Education Act</td><td>Construiește baza învățământului elementar modern, reducând treptat dependența copiilor de muncă.</td></tr>
+    <tr><td>1871</td><td>Trade Union Act</td><td>Recunoaște legal sindicatele, un moment crucial pentru organizarea muncitorilor.</td></tr>
+    <tr><td>1875</td><td>Employers and Workmen Act + Conspiracy and Protection of Property Act</td><td>Îmbunătățesc statutul juridic al muncitorilor și reduc criminalizarea activității sindicale pașnice.</td></tr>
+    <tr><td>1875</td><td>Public Health Act</td><td>Consolidează legislația sanitară urbană: canalizare, apă, locuințe și igienă publică.</td></tr>
+    <tr><td>1878</td><td>Factory and Workshop Act</td><td>Unifică și extinde reglementările privind fabricile și atelierele.</td></tr>
+    <tr><td>1880</td><td>Employers' Liability Act</td><td>Face mai ușoară despăgubirea muncitorilor accidentați din vina angajatorului sau a supraveghetorilor.</td></tr>
+    <tr><td>1897</td><td>Workmen's Compensation Act</td><td>Introduce compensații mai clare pentru accidente de muncă, fără ca muncitorul să dovedească mereu vinovăția patronului.</td></tr>
+    <tr><td>1908</td><td>Old Age Pensions Act</td><td>Introduce pensii pentru vârstnici săraci, pas important spre statul social.</td></tr>
+    <tr><td>1909</td><td>Trade Boards Act</td><td>Stabilește salarii minime în unele industrii prost plătite.</td></tr>
+    <tr><td>1911</td><td>National Insurance Act</td><td>Introduce asigurări sociale pentru boală și șomaj în anumite sectoare.</td></tr>
+  </tbody></table></div>
+</section>
+
+<section class="section" id="legi-europa">
+  <h2>V. Europa și Statele Unite: alte modele de protecție socială</h2>
+  <p class="section-intro">Legislația socială nu se dezvoltă identic peste tot. Germania bismarckiană construiește un sistem de asigurări sociale de stat; Franța avansează prin recunoașterea sindicatelor și protecția accidentelor; SUA combină sindicalismul cu reforme progresiste, mai ales după accidente industriale majore.</p>
+  <div class="table-wrap"><table><thead><tr><th>Țară</th><th>Date și legi</th><th>Semnificație</th></tr></thead><tbody>
+    <tr><td>Germania</td><td>1883 asigurare de boală; 1884 asigurare pentru accidente; 1889 pensii de bătrânețe și invaliditate.</td><td>Bismarck folosește legislația socială pentru a integra muncitorimea și a reduce influența socialismului revoluționar. Este unul dintre primele modele de stat social.</td></tr>
+    <tr><td>Franța</td><td>1841 lege privind munca copiilor; 1864 recunoașterea dreptului la grevă; 1884 legea Waldeck-Rousseau privind sindicatele; 1898 accidente de muncă; 1906 repaus săptămânal; 1910 pensii muncitorești și țărănești.</td><td>Modelul francez combină republicanism, sindicalism, protecția copiilor și reglementări progresive.</td></tr>
+    <tr><td>Statele Unite</td><td>1869 Knights of Labor; 1886 American Federation of Labor; 1911 incendiul Triangle Shirtwaist; 1914 Clayton Antitrust Act.</td><td>Mișcarea muncitorească se dezvoltă într-un context de capitalism corporatist puternic; reformele se intensifică în Era Progresistă.</td></tr>
+    <tr><td>Italia</td><td>1898 forme de asigurare împotriva accidentelor; începutul sec. XX: extinderea legislației sociale și a mișcării sindicale.</td><td>Industrializarea nordului produce conflicte sociale, greve și dezvoltarea mișcărilor socialiste și catolice sociale.</td></tr>
+    <tr><td>Austria-Ungaria</td><td>1880-1890: reglementări privind munca, asigurări de boală și accidente în unele sectoare.</td><td>Imperiul combină industrializare regională, birocrație puternică și tensiuni naționale.</td></tr>
+    <tr><td>Rusia</td><td>1882 limitarea muncii copiilor; 1885 limitări pentru munca de noapte a femeilor și copiilor; 1897 ziua de lucru limitată legal.</td><td>Industrializarea târzie, dură și concentrată produce tensiuni sociale care vor alimenta revoluțiile din 1905 și 1917.</td></tr>
+    <tr><td>România</td><td>1887 legea de încurajare a industriei naționale; 1897 repaus duminical; 1902 legea meseriilor; 1912 legislație de asigurări pentru muncitori.</td><td>Industrializarea este mai lentă, dar apar reglementări privind munca, repausul și organizarea profesională.</td></tr>
+  </tbody></table></div>
+</section>
+
+<section class="section" id="miscari">
+  <h2>VI. Mișcarea muncitorească: de la revendicări la instituții</h2>
+  <p class="section-intro">Drepturile sociale nu au fost acordate automat. Ele au fost obținute prin presiune socială, greve, petiții, campanii de presă, anchete parlamentare, organizații sindicale și partide muncitorești.</p>
+  <div class="timeline">
+    <article class="event"><div class="date">1811-1816</div><div><h3>Luddismul</h3><p>Distrugeri de mașini în Anglia, ca reacție la pierderea locurilor de muncă și scăderea salariilor în textile.</p></div></article>
+    <article class="event"><div class="date">1838-1848</div><div><h3>Chartismul</h3><p>Mișcare politică muncitorească britanică pentru reformă electorală și reprezentare.</p></div></article>
+    <article class="event"><div class="date">1848</div><div><h3>Manifestul Partidului Comunist</h3><p>Marx și Engels oferă o interpretare radicală a conflictului dintre burghezie și proletariat.</p></div></article>
+    <article class="event"><div class="date">1864</div><div><h3>Prima Internațională</h3><p>Asociația Internațională a Muncitorilor încearcă să coordoneze mișcările muncitorești europene.</p></div></article>
+    <article class="event"><div class="date">1871</div><div><h3>Comuna din Paris</h3><p>Experiență revoluționară care influențează profund stânga europeană și reacția conservatoare.</p></div></article>
+    <article class="event"><div class="date">1889</div><div><h3>A Doua Internațională</h3><p>Partidele socialiste și muncitorești se coordonează internațional; 1 Mai devine simbol al luptei pentru ziua de 8 ore.</p></div></article>
+    <article class="event"><div class="date">1891</div><div><h3>Rerum Novarum</h3><p>Enciclica papei Leon al XIII-lea formulează poziția socială catolică: critica exploatării, apărarea proprietății și recunoașterea drepturilor muncitorilor.</p></div></article>
+    <article class="event"><div class="date">1919</div><div><h3>Organizația Internațională a Muncii</h3><p>După Primul Război Mondial, protecția muncii devine problemă internațională instituționalizată.</p></div></article>
+  </div>
+</section>
+
+<section class="section" id="teme">
+  <h2>VII. Marile drepturi sociale revendicate</h2>
+  <div class="table-wrap"><table><thead><tr><th>Drept / revendicare</th><th>De ce era important</th><th>Cum se impune treptat</th></tr></thead><tbody>
+    <tr><td>Limitarea zilei de muncă</td><td>Programul excesiv distruge sănătatea și viața de familie.</td><td>Ten Hours Act, campanii sindicale, apoi lupta pentru ziua de 8 ore.</td></tr>
+    <tr><td>Interzicerea muncii copiilor</td><td>Copiii aveau nevoie de educație, sănătate și protecție.</td><td>Factory Acts, școală obligatorie, inspecții.</td></tr>
+    <tr><td>Protecția femeilor</td><td>Munca industrială, maternitatea și salariile mici ridică probleme sociale majore.</td><td>Limitări ale muncii de noapte, protecția maternității, dezbateri despre egalitate.</td></tr>
+    <tr><td>Dreptul de asociere</td><td>Muncitorul izolat are putere mică de negociere.</td><td>Legalizarea sindicatelor și reducerea represiunii împotriva grevelor.</td></tr>
+    <tr><td>Siguranța muncii</td><td>Minele, mașinile și substanțele toxice provocau accidente frecvente.</td><td>Inspecții, reguli tehnice, compensații pentru accidente.</td></tr>
+    <tr><td>Asigurări sociale</td><td>Boala, accidentul, invaliditatea și bătrânețea puteau arunca familii întregi în sărăcie.</td><td>Modelul german al asigurărilor sociale și reformele liberale britanice.</td></tr>
+    <tr><td>Educația elementară</td><td>Industrializarea are nevoie de muncitori alfabetizați și cetățeni integrați.</td><td>Legi școlare, reducerea muncii copiilor, școli publice.</td></tr>
+    <tr><td>Sănătate publică urbană</td><td>Epidemiile și insalubritatea afectau întregul oraș, nu doar clasele sărace.</td><td>Canalizare, apă potabilă, autorități sanitare, urbanism.</td></tr>
+  </tbody></table></div>
+</section>
+
+<section class="section" id="ideologii">
+  <h2>VIII. Ideologii născute sau transformate de industrializare</h2>
+  <p class="section-intro">Industrializarea produce nu doar mașini, ci și idei noi despre societate.</p>
+  <div class="three-col">
+    <article class="info-card"><h3>Liberalism economic</h3><p>Apără piața liberă, proprietatea privată, inițiativa individuală și intervenția minimă a statului. Este ideologia burgheziei industriale timpurii.</p></article>
+    <article class="info-card"><h3>Socialism utopic</h3><p>Robert Owen, Charles Fourier și alții imaginează comunități cooperative și reforme morale ale societății industriale.</p></article>
+    <article class="info-card"><h3>Marxism</h3><p>Marxismul interpretează capitalismul industrial ca sistem de exploatare a proletariatului de către burghezie și propune transformarea revoluționară a societății.</p></article>
+    <article class="info-card"><h3>Sindicalism</h3><p>Pune accent pe organizația muncitorilor, grevă, negociere colectivă și solidaritate profesională.</p></article>
+    <article class="info-card"><h3>Creștin-democrație socială</h3><p>Critică exploatarea, dar respinge lupta de clasă radicală; susține solidaritatea, familia, proprietatea și protecția muncitorilor.</p></article>
+    <article class="info-card"><h3>Darwinism social</h3><p>Aplică abuziv ideea selecției naturale la societate, justificând inegalitatea, imperialismul și competiția dură.</p></article>
+  </div>
+</section>
+
+    <section class="final-box"><h2>Ideea finală</h2><p>Revoluția industrială nu a fost un eveniment unic, ci o transformare pe etape: mai întâi mecanizarea cu abur, cărbune, fier și textile, apoi electrificarea, oțelul, petrolul, chimia, comunicațiile globale și producția de masă. În paralel, societatea a fost obligată să inventeze noi forme de protecție socială, drepturi ale muncii și instituții publice moderne.</p></section>
+  </main>
+</body>
+</html>
